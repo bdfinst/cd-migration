@@ -7,16 +7,16 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 — Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
-The practices in Phase 1 — trunk-based development, testing, small work, and fast review — only work when the whole team commits to them. Working agreements make that commitment explicit. This page covers the key agreements a team needs before moving to pipeline automation in Phase 2.
+The practices in Phase 1 - trunk-based development, testing, small work, and fast review - only work when the whole team commits to them. Working agreements make that commitment explicit. This page covers the key agreements a team needs before moving to pipeline automation in Phase 2.
 {{% /pageinfo %}}
 
 ## Why Working Agreements Matter
 
 A working agreement is a shared commitment that the team creates, owns, and enforces together. It is not a policy imposed from outside. It is the team's own answer to the question: "How do we work together?"
 
-Without working agreements, CD practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD — they are practicing individual preferences.
+Without working agreements, CD practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD - they are practicing individual preferences.
 
 Working agreements prevent this drift by making expectations explicit. When everyone agrees on what "done" means, what "ready" means, and how CI works, the team can hold each other accountable without conflict.
 
@@ -42,7 +42,7 @@ Many teams define "done" as "code is merged." This creates a gap between "done" 
 
 In a CD organization, "done" means the change is in production (or ready to be deployed to production at any time). This is the ultimate test of completeness: the change works in the real environment, with real data, under real load.
 
-In Phase 1, you may not yet have the pipeline to deploy every change to production automatically. That is fine — your DoD should still include "deployable to production" as the standard, even if the deployment step is not yet automated. The pipeline work in [Phase 2](../../pipeline/) will close that gap.
+In Phase 1, you may not yet have the pipeline to deploy every change to production automatically. That is fine - your DoD should still include "deployable to production" as the standard, even if the deployment step is not yet automated. The pipeline work in [Phase 2](../../pipeline/) will close that gap.
 
 ### Extending Your Definition of Done
 
@@ -57,7 +57,7 @@ As your CD maturity grows, extend the DoD:
 
 ## Definition of Ready
 
-The Definition of Ready (DoR) answers: "When is a work item ready to be worked on?" Pulling unready work into development creates waste — unclear requirements lead to rework, missing acceptance criteria lead to untestable changes, and oversized stories lead to long-lived branches.
+The Definition of Ready (DoR) answers: "When is a work item ready to be worked on?" Pulling unready work into development creates waste - unclear requirements lead to rework, missing acceptance criteria lead to untestable changes, and oversized stories lead to long-lived branches.
 
 ### Minimum Definition of Ready for CD
 
@@ -65,7 +65,7 @@ A work item is **ready** when all of the following are true:
 
 - [ ] Acceptance criteria are defined and specific (using Given-When-Then or equivalent)
 - [ ] The work item is small enough to complete in 2 days or less
-- [ ] The work item is testable — the team knows how to verify it works
+- [ ] The work item is testable - the team knows how to verify it works
 - [ ] Dependencies are identified and resolved (or the work item is independent)
 - [ ] The team has discussed the work item (Three Amigos or equivalent)
 - [ ] The work item is estimated (or the team has agreed estimation is unnecessary for items this small)
@@ -98,7 +98,7 @@ The team agrees to the following practices:
 
 **Broken builds:**
 
-- [ ] A broken build is the team's top priority — it is fixed before any new work begins
+- [ ] A broken build is the team's top priority - it is fixed before any new work begins
 - [ ] The developer(s) who broke the build are responsible for fixing it immediately
 - [ ] If the fix will take more than 10 minutes, revert the change and fix it offline
 - [ ] No one commits to a broken trunk (except to fix the break)
@@ -117,13 +117,13 @@ This is the single most important CI agreement. When the build is broken:
 - Trunk is not releasable. The team has lost its safety net.
 - Every minute the build stays broken, the team accumulates risk.
 
-"Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive — it is the team protecting its own ability to deliver.
+"Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive - it is the team protecting its own ability to deliver.
 
 ### The Revert Rule
 
-If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished — they are protecting the team's flow.
+If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished - they are protecting the team's flow.
 
-Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost — the code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative — a broken trunk for hours while someone debugs — is far more costly.
+Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost - the code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative - a broken trunk for hours while someone debugs - is far more costly.
 
 ## How Working Agreements Support the CD Migration
 
@@ -196,7 +196,7 @@ All changes require team consensus.
 
 1. **Include everyone.** Every team member should participate in creating the agreement. Agreements imposed by a manager or tech lead are policies, not agreements.
 2. **Start simple.** Do not try to cover every scenario. Start with the essentials (DoD, DoR, CI) and add specifics as the team identifies gaps.
-3. **Make them visible.** Post the agreements where the team sees them daily — on a team wiki, in the team channel, or on a physical board.
+3. **Make them visible.** Post the agreements where the team sees them daily - on a team wiki, in the team channel, or on a physical board.
 4. **Review regularly.** Agreements should evolve as the team matures. Review them monthly. Remove agreements that are second nature. Add agreements for new challenges.
 5. **Enforce collectively.** Working agreements are only effective if the team holds each other accountable. This is a team responsibility, not a manager responsibility.
 6. **Start with agreements you can keep.** If the team is currently integrating once a week, do not agree to integrate three times daily. Agree to integrate daily, practice for a month, then tighten.

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 — Optimize** | Original content combining DORA recommendations and improvement kata
+**Phase 3 - Optimize** | Original content combining DORA recommendations and improvement kata
 
 Improvement without measurement is guesswork. This page combines the DORA four key metrics with the improvement kata pattern to create a systematic, repeatable approach to getting better at delivery.
 {{% /pageinfo %}}
@@ -65,7 +65,7 @@ The percentage of deployments that cause a failure in production requiring remed
 
 **What it tells you:** How effective your testing and validation pipeline is. High failure rates indicate gaps in test coverage, insufficient pre-production validation, or overly large changes.
 
-**How to measure:** Track deployments that result in a degraded service, require rollback, or need a hotfix. Divide by total deployments. A "failure" is defined by the team — typically any incident that requires immediate human intervention.
+**How to measure:** Track deployments that result in a degraded service, require rollback, or need a hotfix. Divide by total deployments. A "failure" is defined by the team - typically any incident that requires immediate human intervention.
 
 ### 4. Mean Time to Restore (MTTR)
 
@@ -150,12 +150,12 @@ This is already defined by the phases of this migration guide. In Phase 3, your 
 
 ### Step 2: Grasp the Current Condition
 
-Measure your current DORA metrics. Be honest — the point is to understand reality, not to look good.
+Measure your current DORA metrics. Be honest - the point is to understand reality, not to look good.
 
 **Practical approach:**
 
 1. Collect two weeks of data for all four DORA metrics
-2. Plot the data — do not just calculate averages. Look at the distribution.
+2. Plot the data - do not just calculate averages. Look at the distribution.
 3. Identify which metric is furthest from your target
 4. Investigate the related capabilities to understand why
 

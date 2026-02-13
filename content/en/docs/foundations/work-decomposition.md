@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 — Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
 Trunk-based development requires daily integration, and daily integration requires small work. If a feature takes two weeks to build, you cannot integrate it daily without decomposing it first. This page covers the techniques for breaking work into small, deliverable increments that flow through your pipeline continuously.
 {{% /pageinfo %}}
@@ -20,7 +20,7 @@ Every practice in Phase 1 reinforces this:
 
 - [Trunk-based development](../trunk-based-development/) requires that you integrate at least daily. You cannot integrate a two-week feature daily unless you decompose it.
 - [Testing fundamentals](../testing-fundamentals/) work best when each change is small enough to test thoroughly.
-- [Code review](../code-review/) is fast when the change is small. A 50-line change can be reviewed in minutes. A 2,000-line change takes hours — if it gets reviewed at all.
+- [Code review](../code-review/) is fast when the change is small. A 50-line change can be reviewed in minutes. A 2,000-line change takes hours - if it gets reviewed at all.
 
 The data supports this. The DORA research consistently shows that smaller batch sizes correlate with higher delivery performance. Small changes have:
 
@@ -117,7 +117,7 @@ Each slice is independently deployable, testable, and completable within 2 days.
 
 ## BDD as a Decomposition Tool
 
-Behavior-Driven Development (BDD) is not just a testing practice — it is a powerful tool for decomposing work into small, clear increments.
+Behavior-Driven Development (BDD) is not just a testing practice - it is a powerful tool for decomposing work into small, clear increments.
 
 ### Three Amigos
 
@@ -243,7 +243,7 @@ Each task results in a commit to trunk. The story is completed through a series 
 
 ## Next Step
 
-Small, well-decomposed work flows through the system quickly — but only if code review does not become a bottleneck. Continue to [Code Review](../code-review/) to learn how to keep review fast and effective.
+Small, well-decomposed work flows through the system quickly - but only if code review does not become a bottleneck. Continue to [Code Review](../code-review/) to learn how to keep review fast and effective.
 
 ---
 

@@ -3,17 +3,17 @@ title: "Single Path to Production"
 linkTitle: "Single Path to Production"
 weight: 1
 description: >
-  All changes reach production through the same automated pipeline — no exceptions.
+  All changes reach production through the same automated pipeline - no exceptions.
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
 
-A single path to production means that every change — whether it is a feature, a bug fix,
-a configuration update, or an infrastructure change — follows the same automated pipeline
+A single path to production means that every change - whether it is a feature, a bug fix,
+a configuration update, or an infrastructure change - follows the same automated pipeline
 to reach production. There is exactly one route from a developer's commit to a running
 production system. No side doors. No emergency shortcuts. No "just this once" manual
 deployments.
@@ -25,7 +25,7 @@ this phase.
 
 ## Why It Matters for CD Migration
 
-Teams migrating to continuous delivery often carry legacy deployment processes — a manual
+Teams migrating to continuous delivery often carry legacy deployment processes - a manual
 runbook for "emergency" fixes, a separate path for database changes, or a distinct
 workflow for infrastructure updates. Each additional path is a source of unvalidated risk.
 
@@ -42,11 +42,11 @@ the gates.
 
 Every type of change uses the same pipeline:
 
-- **Application code** — features, fixes, refactors
-- **Infrastructure as Code** — Terraform, CloudFormation, Pulumi, Ansible
-- **Pipeline definitions** — the pipeline itself is versioned and deployed through the pipeline
-- **Configuration changes** — environment variables, feature flags, routing rules
-- **Database migrations** — schema changes, data migrations
+- **Application code** - features, fixes, refactors
+- **Infrastructure as Code** - Terraform, CloudFormation, Pulumi, Ansible
+- **Pipeline definitions** - the pipeline itself is versioned and deployed through the pipeline
+- **Configuration changes** - environment variables, feature flags, routing rules
+- **Database migrations** - schema changes, data migrations
 
 ### Same pipeline for all environments
 
@@ -76,15 +76,15 @@ cannot be confident that the hotfix has undergone the same validation.
 
 ### Environment-specific pipelines
 
-Building a separate pipeline for staging versus production — or worse, manually deploying
-to staging and only using automation for production — means you are not testing your
+Building a separate pipeline for staging versus production - or worse, manually deploying
+to staging and only using automation for production - means you are not testing your
 deployment process in lower environments.
 
 ### "Emergency" manual deployments
 
 The most dangerous anti-pattern is the manual deployment reserved for emergencies. Under
 pressure, teams bypass the pipeline "just this once," introducing an unvalidated change
-into production. The fix for this is not to allow exceptions — it is to make the pipeline
+into production. The fix for this is not to allow exceptions - it is to make the pipeline
 fast enough that it is always the fastest path to production.
 
 ### Separate pipelines for different change types
@@ -106,12 +106,12 @@ need for long-lived branches and separate deployment paths for "not-ready" featu
 For large-scale refactors or technology migrations, use branch by abstraction to make
 incremental changes that can be deployed through the standard pipeline at every step.
 Create an abstraction layer, build the new implementation behind it, switch over
-incrementally, and remove the old implementation — all through the same pipeline.
+incrementally, and remove the old implementation - all through the same pipeline.
 
 ### Dark launching
 
 Deploy new functionality to production without exposing it to users. The code runs in
-production, processes real data, and generates real metrics — but its output is not shown
+production, processes real data, and generates real metrics - but its output is not shown
 to users. This validates the change under production conditions while managing risk.
 
 ### Connect tests last

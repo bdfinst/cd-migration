@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 — Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 3 - Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
 Feature flags are the mechanism that makes trunk-based development and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant rollback of features without redeploying.
 {{% /pageinfo %}}
@@ -122,7 +122,7 @@ class FeatureFlags:
 
 **Pros:** No redeployment needed. Supports percentage rollout. Simple to implement.
 
-**Cons:** Each instance reads its own config — no centralized view. Limited targeting capabilities.
+**Cons:** Each instance reads its own config - no centralized view. Limited targeting capabilities.
 
 **Best for:** Teams that need gradual rollout but do not want to adopt a third-party service yet.
 
@@ -273,7 +273,7 @@ Feature flags and configuration are different concerns. Flags are temporary (the
 
 ### 3. "Testing both paths doubles our test burden"
 
-It does increase test effort, but this is a temporary cost. When the flag is removed, the extra tests go away too. The alternative — deploying untested code paths — is far more expensive.
+It does increase test effort, but this is a temporary cost. When the flag is removed, the extra tests go away too. The alternative - deploying untested code paths - is far more expensive.
 
 ### 4. "Nested flags create combinatorial complexity"
 

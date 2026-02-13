@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
@@ -16,8 +16,8 @@ A deployable definition is the set of automated quality criteria that every arti
 satisfy before it is considered ready for production. It is the pipeline's answer to the
 question: "How do we know this is safe to deploy?"
 
-This is not a checklist that a human reviews. It is a set of automated gates — executable
-validations built into the pipeline — that every change must pass. If the pipeline is
+This is not a checklist that a human reviews. It is a set of automated gates - executable
+validations built into the pipeline - that every change must pass. If the pipeline is
 green, the artifact is deployable. If the pipeline is red, it is not. There is no
 ambiguity, no judgment call, and no "looks good enough."
 
@@ -30,7 +30,7 @@ safe). All three are enemies of continuous delivery.
 
 During a CD migration, the deployable definition replaces manual approval processes with
 automated confidence. It is what allows a team to say "any green build can go to
-production" — which is the prerequisite for continuous deployment.
+production" - which is the prerequisite for continuous deployment.
 
 ## Key Principles
 
@@ -47,48 +47,48 @@ production readiness:
 
 #### Security
 
-- **Static Application Security Testing (SAST)** — scan source code for known vulnerability patterns
-- **Dependency vulnerability scanning** — check all dependencies against known vulnerability databases (CVE lists)
-- **Secret detection** — verify that no credentials, API keys, or tokens are present in the codebase
-- **Container image scanning** — if deploying containers, scan images for known vulnerabilities
-- **License compliance** — verify that dependency licenses are compatible with your distribution requirements
+- **Static Application Security Testing (SAST)** - scan source code for known vulnerability patterns
+- **Dependency vulnerability scanning** - check all dependencies against known vulnerability databases (CVE lists)
+- **Secret detection** - verify that no credentials, API keys, or tokens are present in the codebase
+- **Container image scanning** - if deploying containers, scan images for known vulnerabilities
+- **License compliance** - verify that dependency licenses are compatible with your distribution requirements
 
 #### Functionality
 
-- **Unit tests** — fast, isolated tests that verify individual components behave correctly
-- **Integration tests** — tests that verify components work together correctly
-- **End-to-end tests** — tests that verify the system works from the user's perspective
-- **Regression tests** — tests that verify previously fixed defects have not reappeared
-- **Contract tests** — tests that verify APIs conform to their published contracts
+- **Unit tests** - fast, isolated tests that verify individual components behave correctly
+- **Integration tests** - tests that verify components work together correctly
+- **End-to-end tests** - tests that verify the system works from the user's perspective
+- **Regression tests** - tests that verify previously fixed defects have not reappeared
+- **Contract tests** - tests that verify APIs conform to their published contracts
 
 #### Compliance
 
-- **Audit trail** — the pipeline itself produces the compliance artifact: who changed what, when, and what validations it passed
-- **Policy as code** — organizational policies (e.g., "no deployments on Friday") encoded as pipeline logic
-- **Change documentation** — automatically generated from commit metadata and pipeline results
+- **Audit trail** - the pipeline itself produces the compliance artifact: who changed what, when, and what validations it passed
+- **Policy as code** - organizational policies (e.g., "no deployments on Friday") encoded as pipeline logic
+- **Change documentation** - automatically generated from commit metadata and pipeline results
 
 #### Performance
 
-- **Performance benchmarks** — verify that key operations complete within acceptable thresholds
-- **Load test baselines** — verify that the system handles expected load without degradation
-- **Resource utilization checks** — verify that the change does not introduce memory leaks or excessive CPU usage
+- **Performance benchmarks** - verify that key operations complete within acceptable thresholds
+- **Load test baselines** - verify that the system handles expected load without degradation
+- **Resource utilization checks** - verify that the change does not introduce memory leaks or excessive CPU usage
 
 #### Reliability
 
-- **Health check validation** — verify that the application starts up correctly and responds to health checks
-- **Graceful degradation tests** — verify that the system behaves acceptably when dependencies fail
-- **Rollback verification** — verify that the deployment can be rolled back (see [Rollback](../rollback/))
+- **Health check validation** - verify that the application starts up correctly and responds to health checks
+- **Graceful degradation tests** - verify that the system behaves acceptably when dependencies fail
+- **Rollback verification** - verify that the deployment can be rolled back (see [Rollback](../rollback/))
 
 #### Code Quality
 
-- **Linting and static analysis** — enforce code style and detect common errors
-- **Code coverage thresholds** — not as a target, but as a safety net to detect large untested areas
-- **Complexity metrics** — flag code that exceeds complexity thresholds for review
+- **Linting and static analysis** - enforce code style and detect common errors
+- **Code coverage thresholds** - not as a target, but as a safety net to detect large untested areas
+- **Complexity metrics** - flag code that exceeds complexity thresholds for review
 
 ### The definition must be fast
 
 A deployable definition that takes hours to evaluate will not support continuous delivery.
-The entire pipeline — including all deployable definition checks — should complete in
+The entire pipeline - including all deployable definition checks - should complete in
 minutes, not hours. This often requires running checks in parallel, investing in test
 infrastructure, and making hard choices about which slow checks provide enough value to
 keep.
@@ -107,7 +107,7 @@ the definition.
 Requiring a human to review and approve a deployment after the pipeline has passed all
 automated checks is an anti-pattern. It adds latency, creates bottlenecks, and implies
 that the automated checks are not sufficient. If a human must approve, it means your
-automated definition is incomplete — fix the definition rather than adding a manual gate.
+automated definition is incomplete - fix the definition rather than adding a manual gate.
 
 ### "Good enough" tolerance
 
@@ -159,7 +159,7 @@ configuration.
 
 ### Step 1: Document your current "definition of done"
 
-Write down every check that currently happens before a deployment — automated or manual.
+Write down every check that currently happens before a deployment - automated or manual.
 Include formal checks (tests, scans) and informal ones (someone eyeballs the logs,
 someone clicks through the UI).
 
@@ -189,7 +189,7 @@ challenging step.
 ## Connection to the Pipeline Phase
 
 The deployable definition is the contract between the pipeline and the organization. It is
-what makes the [single path to production](../single-path-to-production/) trustworthy —
+what makes the [single path to production](../single-path-to-production/) trustworthy -
 because every change that passes through the path has been validated against a clear,
 comprehensive standard.
 

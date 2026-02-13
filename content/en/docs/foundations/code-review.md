@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 — Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
 Code review is essential for quality, but it is also the most common bottleneck in teams adopting trunk-based development. If reviews take days, daily integration is impossible. This page covers review techniques that maintain quality while enabling the flow that CD requires.
 {{% /pageinfo %}}
@@ -21,7 +21,7 @@ Code review serves multiple purposes:
 - **Consistency:** Reviews enforce coding standards and architectural patterns.
 - **Mentoring:** Junior developers learn by having their code reviewed and by reviewing others' code.
 
-These are real benefits. The challenge is that traditional code review — open a pull request, wait for someone to review it, address comments, wait again — is too slow for CD.
+These are real benefits. The challenge is that traditional code review - open a pull request, wait for someone to review it, address comments, wait again - is too slow for CD.
 
 In a CD workflow, code review must happen **within minutes or hours, not days**. The review is still rigorous, but the process is designed for speed.
 
@@ -56,12 +56,12 @@ In synchronous review, the reviewer and author are engaged at the same time. Fee
 
 - Zero wait time between "ready for review" and "review complete"
 - Higher bandwidth communication (tone, context, visual cues) catches more issues
-- Immediate resolution of questions — no async back-and-forth
+- Immediate resolution of questions - no async back-and-forth
 - Knowledge transfer happens naturally through the shared work
 
 ### Asynchronous Review (When Necessary)
 
-Sometimes synchronous review is not possible — time zones, schedules, or team preferences may require asynchronous review. This is fine, but it must be fast.
+Sometimes synchronous review is not possible - time zones, schedules, or team preferences may require asynchronous review. This is fine, but it must be fast.
 
 **Rules for async review in a CD workflow:**
 
@@ -142,7 +142,7 @@ Not everything in a code change deserves the same level of scrutiny. Focus revie
 
 ## Review Scope for Small Changes
 
-In a CD workflow, most changes are small — tens of lines, not hundreds. This changes the economics of review.
+In a CD workflow, most changes are small - tens of lines, not hundreds. This changes the economics of review.
 
 | Change Size | Expected Review Time | Review Depth |
 |-------------|----------------------|--------------|
@@ -151,7 +151,7 @@ In a CD workflow, most changes are small — tens of lines, not hundreds. This c
 | 100-200 lines | 15-30 minutes | Detailed review: design, contracts, edge cases |
 | > 200 lines | Consider splitting the change | Large changes get superficial reviews |
 
-Research consistently shows that reviewer effectiveness drops sharply after 200-400 lines. If you are regularly reviewing changes larger than 200 lines, the problem is not the review process — it is the [work decomposition](../work-decomposition/).
+Research consistently shows that reviewer effectiveness drops sharply after 200-400 lines. If you are regularly reviewing changes larger than 200 lines, the problem is not the review process - it is the [work decomposition](../work-decomposition/).
 
 ## Working Agreements for Review SLAs
 

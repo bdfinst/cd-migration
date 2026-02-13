@@ -16,10 +16,10 @@ organizational patterns that make continuous deployment sustainable.
 
 ## What You'll Do
 
-1. **[Deploy on demand](deploy-on-demand/)** — Remove the last manual gates
-2. **[Use progressive rollout](progressive-rollout/)** — Canary, blue-green, and percentage-based deployments
-3. **[Explore agentic CD](agentic-cd/)** — AI-assisted continuous deployment patterns
-4. **[Learn from experience reports](experience-reports/)** — How other teams made the journey
+1. **[Deploy on demand](deploy-on-demand/)** - Remove the last manual gates
+2. **[Use progressive rollout](progressive-rollout/)** - Canary, blue-green, and percentage-based deployments
+3. **[Explore agentic CD](agentic-cd/)** - AI-assisted continuous deployment patterns
+4. **[Learn from experience reports](experience-reports/)** - How other teams made the journey
 
 ## Why This Phase Matters
 

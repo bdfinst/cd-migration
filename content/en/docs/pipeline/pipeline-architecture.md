@@ -7,12 +7,12 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 2 - Pipeline** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 {{% /pageinfo %}}
 
 ## Definition
 
-Pipeline architecture is the structural design of your delivery pipeline — how stages are
+Pipeline architecture is the structural design of your delivery pipeline - how stages are
 organized, how quality gates are sequenced, how feedback loops operate, and how the
 pipeline evolves over time. It encompasses both the technical design of the pipeline and
 the improvement journey that a team follows from an initial, fragile pipeline to a mature,
@@ -27,7 +27,7 @@ can be built, tested, and deployed independently through their own pipelines.
 
 Most teams beginning a CD migration have a pipeline that is somewhere between "barely
 functional" and "works most of the time." The pipeline may be slow, fragile, or tightly
-coupled to other systems. Improving it requires a deliberate architectural approach — not
+coupled to other systems. Improving it requires a deliberate architectural approach - not
 just adding more stages or more tests, but designing the pipeline for the flow
 characteristics that continuous delivery demands.
 
@@ -46,17 +46,17 @@ to prioritize.
 In the entangled state, the pipeline has significant structural problems that prevent
 reliable delivery:
 
-- **Multiple applications share a single pipeline** — a change to one application triggers
+- **Multiple applications share a single pipeline** - a change to one application triggers
   builds and tests for all applications, causing unnecessary delays and false failures
-- **Shared, mutable infrastructure** — pipeline stages depend on shared databases, shared
+- **Shared, mutable infrastructure** - pipeline stages depend on shared databases, shared
   environments, or shared services that introduce coupling and contention
-- **Manual stages interrupt automated flow** — manual approval gates, manual test
+- **Manual stages interrupt automated flow** - manual approval gates, manual test
   execution, or manual environment provisioning block the pipeline for hours or days
-- **No clear ownership** — the pipeline is maintained by a central team, and application
+- **No clear ownership** - the pipeline is maintained by a central team, and application
   teams cannot modify it without filing tickets and waiting
-- **Build times measured in hours** — the pipeline is so slow that developers batch
+- **Build times measured in hours** - the pipeline is so slow that developers batch
   changes and avoid running it
-- **Flaky tests are accepted** — the team routinely re-runs failed pipelines, and failures
+- **Flaky tests are accepted** - the team routinely re-runs failed pipelines, and failures
   are assumed to be transient
 
 **Remediation priorities:**
@@ -71,15 +71,15 @@ reliable delivery:
 In the tightly coupled state, each application has its own pipeline, but pipelines depend
 on each other or on shared resources:
 
-- **Integration tests span multiple services** — a pipeline for service A runs integration
+- **Integration tests span multiple services** - a pipeline for service A runs integration
   tests that require service B, C, and D to be deployed in a specific state
-- **Shared test environments** — multiple pipelines deploy to the same staging environment,
+- **Shared test environments** - multiple pipelines deploy to the same staging environment,
   creating contention and sequencing constraints
-- **Coordinated deployments** — deploying service A requires simultaneously deploying
+- **Coordinated deployments** - deploying service A requires simultaneously deploying
   service B, which requires coordinating two pipelines
-- **Shared build infrastructure** — pipelines compete for limited build agent capacity,
+- **Shared build infrastructure** - pipelines compete for limited build agent capacity,
   causing queuing delays
-- **Pipeline definitions are centralized** — a shared pipeline library controls the
+- **Pipeline definitions are centralized** - a shared pipeline library controls the
   structure, and application teams cannot customize it for their needs
 
 **Improvement priorities:**
@@ -95,17 +95,17 @@ on each other or on shared resources:
 In the loosely coupled state, each service has an independent pipeline that can build,
 test, and deploy without depending on other services' pipelines:
 
-- **Independent deployability** — any service can be deployed at any time without
+- **Independent deployability** - any service can be deployed at any time without
   coordinating with other teams
-- **Contract-based integration** — services verify their interactions through contract
+- **Contract-based integration** - services verify their interactions through contract
   tests, not cross-service integration tests
-- **Ephemeral, isolated environments** — each pipeline creates its own test environment
+- **Ephemeral, isolated environments** - each pipeline creates its own test environment
   and tears it down when done
-- **Team-owned pipelines** — each team controls their pipeline definition and can optimize
+- **Team-owned pipelines** - each team controls their pipeline definition and can optimize
   it for their service's needs
-- **Fast feedback** — the pipeline completes in minutes, providing rapid feedback to
+- **Fast feedback** - the pipeline completes in minutes, providing rapid feedback to
   developers
-- **Self-service infrastructure** — teams provision their own pipeline infrastructure
+- **Self-service infrastructure** - teams provision their own pipeline infrastructure
   without waiting for a central team
 
 ## Applying the Theory of Constraints
@@ -117,12 +117,12 @@ bottleneck, resolve it, and repeat. The key steps:
 
 Measure where time is spent in the pipeline. Common constraints include:
 
-- **Slow test suites** — tests that take 30+ minutes dominate the pipeline duration
-- **Queuing for shared resources** — pipelines waiting for build agents, shared
+- **Slow test suites** - tests that take 30+ minutes dominate the pipeline duration
+- **Queuing for shared resources** - pipelines waiting for build agents, shared
   environments, or manual approvals
-- **Flaky failures and re-runs** — time lost to investigating and re-running non-deterministic
+- **Flaky failures and re-runs** - time lost to investigating and re-running non-deterministic
   failures
-- **Large batch sizes** — pipelines triggered by large, infrequent commits that take
+- **Large batch sizes** - pipelines triggered by large, infrequent commits that take
   longer to build and are harder to debug when they fail
 
 ### Step 2: Exploit the constraint
@@ -188,11 +188,11 @@ the application.
 
 Instrument the pipeline itself with metrics and monitoring. Track:
 
-- **Lead time** — time from commit to production deployment
-- **Pipeline duration** — time from pipeline start to completion
-- **Failure rate** — percentage of pipeline runs that fail
-- **Recovery time** — time from failure detection to successful re-run
-- **Queue time** — time spent waiting before the pipeline starts
+- **Lead time** - time from commit to production deployment
+- **Pipeline duration** - time from pipeline start to completion
+- **Failure rate** - percentage of pipeline runs that fail
+- **Recovery time** - time from failure detection to successful re-run
+- **Queue time** - time spent waiting before the pipeline starts
 
 These metrics identify bottlenecks and measure improvement over time.
 
@@ -225,7 +225,7 @@ own independent pipeline.
 
 ### Step 1: Assess your current state
 
-Determine which architecture state — entangled, tightly coupled, or loosely coupled —
+Determine which architecture state - entangled, tightly coupled, or loosely coupled -
 best describes your current pipeline. Be honest about where you are.
 
 ### Step 2: Measure your pipeline
@@ -259,7 +259,7 @@ architecture determines how these elements are organized, sequenced, and optimiz
 flow.
 
 As teams mature their pipeline architecture toward loose coupling, they build the
-foundation for [Phase 3: Optimize](../../optimize/) — where the focus shifts from building
+foundation for [Phase 3: Optimize](../../optimize/) - where the focus shifts from building
 the pipeline to improving its speed and reliability.
 
 ---

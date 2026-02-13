@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 — Assess** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 0 - Assess** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 {{% /pageinfo %}}
 
 You cannot improve what you have not measured. Before making any changes to your delivery process,
@@ -107,7 +107,7 @@ deployment.
 
 **How to capture it:** Look at your production incidents from the last 3-6 months. For each
 incident caused by a deployment, note the time from detection to resolution. Take the median.
-If you have not had any deployment-caused incidents, note that — it either means your quality
+If you have not had any deployment-caused incidents, note that - it either means your quality
 is excellent or your deployment frequency is so low that you have insufficient data.
 
 **What it tells you:**
@@ -135,7 +135,7 @@ You do not need specialized tooling to capture these four numbers. Here is a pra
    members can provide reasonable estimates for all four metrics.
 
 Record these numbers somewhere the whole team can see them. A wiki page, a whiteboard, a shared
-document — the format does not matter. What matters is that they are written down and dated.
+document - the format does not matter. What matters is that they are written down and dated.
 
 {{% alert title="What About Automation?" %}}
 If you already have a CI/CD system that tracks deployments, you can extract most of these numbers

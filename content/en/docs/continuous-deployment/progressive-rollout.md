@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 — Continuous Deployment** | Original content
+**Phase 4 - Continuous Deployment** | Original content
 
 Progressive rollout strategies let you deploy to production without deploying to all users simultaneously. By exposing changes to a small group first and expanding gradually, you catch problems before they affect your entire user base. This page covers the three major strategies, when to use each, and how to implement automated rollback.
 {{% /pageinfo %}}
@@ -16,7 +16,7 @@ Progressive rollout strategies let you deploy to production without deploying to
 
 Even with comprehensive tests, production-like environments, and small batch sizes, some issues only surface under real production traffic. Progressive rollout is the final safety layer: it limits the blast radius of any deployment by exposing the change to a small audience first.
 
-This is not a replacement for testing. It is an addition. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest — the issues that depend on real user behavior, real data volumes, or real infrastructure conditions that cannot be fully replicated in test environments.
+This is not a replacement for testing. It is an addition. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest - the issues that depend on real user behavior, real data volumes, or real infrastructure conditions that cannot be fully replicated in test environments.
 
 ## The Three Strategies
 
@@ -107,7 +107,7 @@ Blue-green deployment maintains two identical production environments. At any ti
 
 ### Strategy 3: Percentage-Based Rollout
 
-Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based — a specific user always sees the same version during the rollout period.
+Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based - a specific user always sees the same version during the rollout period.
 
 ```
   Hour 0:   1% of users  → v2,  99% → v1
@@ -247,7 +247,7 @@ Replace the manual monitoring with automated checks:
 
 ### 1. "Our canary doesn't get enough traffic for meaningful metrics"
 
-If your service handles 100 requests per hour, a 5% canary gets 5 requests per hour — not enough to detect problems statistically. Solutions: use a higher canary percentage (25-50%), use longer monitoring windows, or use blue-green instead (which does not require traffic splitting).
+If your service handles 100 requests per hour, a 5% canary gets 5 requests per hour - not enough to detect problems statistically. Solutions: use a higher canary percentage (25-50%), use longer monitoring windows, or use blue-green instead (which does not require traffic splitting).
 
 ### 2. "We have progressive rollout but rollback is still manual"
 
@@ -255,7 +255,7 @@ Progressive rollout without automated rollback is half a solution. If the canary
 
 ### 3. "We treat progressive rollout as a replacement for testing"
 
-Progressive rollout is the last line of defense, not the first. If you are regularly catching bugs in canary that your test suite should have caught, your test suite needs improvement. Progressive rollout should catch rare, production-specific issues — not common bugs.
+Progressive rollout is the last line of defense, not the first. If you are regularly catching bugs in canary that your test suite should have caught, your test suite needs improvement. Progressive rollout should catch rare, production-specific issues - not common bugs.
 
 ### 4. "Our rollout takes days because we're too cautious"
 

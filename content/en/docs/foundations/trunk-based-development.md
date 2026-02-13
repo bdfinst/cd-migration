@@ -7,23 +7,23 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 — Foundations** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 1 - Foundations** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
 Trunk-based development is the first foundation to establish. Without daily integration to a shared trunk, the rest of the CD migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
 {{% /pageinfo %}}
 
 ## What Is Trunk-Based Development?
 
-Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch — the trunk — at least once per day. The trunk is always kept in a releasable state.
+Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch - the trunk - at least once per day. The trunk is always kept in a releasable state.
 
 This is a **non-negotiable prerequisite for continuous delivery**. If your team is not integrating to trunk daily, you are not doing CI, and you cannot do CD. There is no workaround.
 
 > "If it hurts, do it more often, and bring the pain forward."
-> — Jez Humble, *Continuous Delivery*
+> - Jez Humble, *Continuous Delivery*
 
 ### What TBD Is Not
 
-- It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work — you just do it in small increments.
+- It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work - you just do it in small increments.
 - It is **not** incompatible with code review. It requires review to happen quickly.
 - It is **not** reckless. It is the opposite: small, frequent integrations are far safer than large, infrequent merges.
 
@@ -92,7 +92,7 @@ Ask these questions:
 
 1. **Do you have automated tests that catch real defects?** If no, start with Path 1 and invest in [testing fundamentals](../testing-fundamentals/) in parallel.
 2. **Does your organization require documented review approvals?** If yes, use Path 1 with rapid pull requests.
-3. **Does your team practice pair programming?** If yes, Path 2 may work immediately — pairing is a continuous review process.
+3. **Does your team practice pair programming?** If yes, Path 2 may work immediately - pairing is a continuous review process.
 4. **How large is your team?** Teams of 2-4 can adopt Path 2 more easily. Larger teams may start with Path 1 and transition later.
 
 Both paths are valid. The important thing is **daily integration to trunk**. Do not spend weeks debating which path to use. Pick one, start today, and adjust.
@@ -116,7 +116,7 @@ else:
 **Rules for feature flags in TBD:**
 
 - Use flags to decouple deployment from release
-- Remove flags within days or weeks — they are temporary by design
+- Remove flags within days or weeks - they are temporary by design
 - Keep flag logic simple; avoid nested or dependent flags
 - Test both flag states in your automated test suite
 
@@ -184,7 +184,7 @@ Once the team is integrating daily with a green trunk, eliminate the option of l
 
 - Configure branch protection rules to warn or block branches older than 24 hours
 - Remove any workflow that depends on long-lived branches (e.g., "dev" or "release" branches)
-- Celebrate the transition — this is a significant shift in how the team works
+- Celebrate the transition - this is a significant shift in how the team works
 
 ## Key Pitfalls
 
@@ -194,7 +194,7 @@ If you are merging to trunk daily but also maintaining a long-lived feature bran
 
 ### 2. "Our builds are too slow for frequent integration"
 
-If your CI pipeline takes 30 minutes, integrating multiple times a day feels impractical. This is a real constraint — address it by investing in [build automation](../build-automation/) and parallelizing your test suite. Target a build time under 10 minutes.
+If your CI pipeline takes 30 minutes, integrating multiple times a day feels impractical. This is a real constraint - address it by investing in [build automation](../build-automation/) and parallelizing your test suite. Target a build time under 10 minutes.
 
 ### 3. "We can't integrate incomplete features to trunk"
 
@@ -223,9 +223,9 @@ Track these metrics to verify your TBD adoption:
 
 This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios, see the full source material:
 
-- [MinimumCD.org: Trunk-Based Development](https://minimumcd.org) — The authoritative definition and full context
-- [MinimumCD.org: TBD Migration Guide](https://minimumcd.org/minimumcd/tbd-migration/) — Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
-- [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) — Comprehensive reference by Paul Hammant
+- [MinimumCD.org: Trunk-Based Development](https://minimumcd.org) - The authoritative definition and full context
+- [MinimumCD.org: TBD Migration Guide](https://minimumcd.org/minimumcd/tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
+- [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
 
 ## Next Step
 

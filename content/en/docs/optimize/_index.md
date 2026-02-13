@@ -16,16 +16,16 @@ delivery frequency.
 
 ## What You'll Do
 
-1. **[Reduce batch size](small-batches/)** — Deliver smaller, more frequent changes
-2. **[Use feature flags](feature-flags/)** — Decouple deployment from release
-3. **[Limit work in progress](limiting-wip/)** — Focus on finishing over starting
-4. **[Drive improvement with metrics](metrics-driven-improvement/)** — Use DORA metrics and improvement kata
-5. **[Run effective retrospectives](retrospectives/)** — Continuously improve the delivery process
-6. **[Decouple architecture](architecture-decoupling/)** — Enable independent deployment of components
+1. **[Reduce batch size](small-batches/)** - Deliver smaller, more frequent changes
+2. **[Use feature flags](feature-flags/)** - Decouple deployment from release
+3. **[Limit work in progress](limiting-wip/)** - Focus on finishing over starting
+4. **[Drive improvement with metrics](metrics-driven-improvement/)** - Use DORA metrics and improvement kata
+5. **[Run effective retrospectives](retrospectives/)** - Continuously improve the delivery process
+6. **[Decouple architecture](architecture-decoupling/)** - Enable independent deployment of components
 
 ## Why This Phase Matters
 
-Having a pipeline isn't enough — you need to optimize the flow through it. Teams that
+Having a pipeline isn't enough - you need to optimize the flow through it. Teams that
 deploy weekly with a CD pipeline are missing most of the benefits. Small batches reduce
 risk, feature flags enable testing in production, and metrics-driven improvement creates
 a virtuous cycle of getting better at getting better.

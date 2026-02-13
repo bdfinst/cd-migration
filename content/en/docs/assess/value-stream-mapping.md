@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 — Assess** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 0 - Assess** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 {{% /pageinfo %}}
 
 Before you change anything about how your team delivers software, you need to see how it works
@@ -24,9 +24,9 @@ goes, where quality breaks down, and which constraint to attack first.
 A value stream map is a visual representation of every step required to deliver a change from
 request to production. For each step, you capture:
 
-- **Process time** — the time someone is actively working on that step
-- **Wait time** — the time the work sits idle between steps (in a queue, awaiting approval, blocked on an environment)
-- **Percent Complete and Accurate (%C/A)** — the percentage of work arriving at this step that is usable without rework
+- **Process time** - the time someone is actively working on that step
+- **Wait time** - the time the work sits idle between steps (in a queue, awaiting approval, blocked on an environment)
+- **Percent Complete and Accurate (%C/A)** - the percentage of work arriving at this step that is usable without rework
 
 The ratio of process time to total time (process time + wait time) is your **flow efficiency**.
 Most teams are shocked to discover that their flow efficiency is below 15%, meaning that for
@@ -50,7 +50,7 @@ Before running a value stream mapping session, make sure you have:
 
 ### Step 1: Start From Delivery, Work Backward
 
-Begin at the right side of your map — the moment a change reaches production. Then work backward
+Begin at the right side of your map - the moment a change reaches production. Then work backward
 through every step until you reach the point where a request enters the system. This prevents teams
 from getting bogged down in the early stages and never reaching the deployment process, which is
 often where the largest delays hide.
@@ -80,14 +80,14 @@ when you can get it.
 {{% alert title="Migration Tip" %}}
 Pay close attention to these migration-critical delays:
 
-- **Handoffs that block flow** — Every time work passes from one team or role to another (dev to QA,
+- **Handoffs that block flow** - Every time work passes from one team or role to another (dev to QA,
   QA to ops, ops to security), there is a queue. Count the handoffs. Each one is a candidate for
   elimination or automation.
-- **Manual gates** — CAB approvals, manual regression testing, sign-off meetings. These often add
+- **Manual gates** - CAB approvals, manual regression testing, sign-off meetings. These often add
   days of wait time for minutes of actual value.
-- **Environment provisioning delays** — If developers wait hours or days for a test environment,
+- **Environment provisioning delays** - If developers wait hours or days for a test environment,
   that is a constraint you will need to address in Phase 2.
-- **Rework loops** — Any step where work frequently bounces back to a previous step. Track the
+- **Rework loops** - Any step where work frequently bounces back to a previous step. Track the
   percentage of times this happens. These loops are destroying your cycle time.
 {{% /alert %}}
 
@@ -103,7 +103,7 @@ rather than inspected after the fact.
 
 ### Step 4: Identify Constraints (Kaizen Bursts)
 
-Mark the steps with the largest wait times and the lowest %C/A with a "kaizen burst" — a starburst
+Mark the steps with the largest wait times and the lowest %C/A with a "kaizen burst" - a starburst
 symbol indicating an improvement opportunity. These are your constraints. They will become the
 focus of your migration roadmap.
 
@@ -136,9 +136,9 @@ your work to [identify constraints](../identify-constraints/).
 You are not aiming for a perfect value stream map. You are aiming for a shared, honest picture of
 reality that the whole team agrees on. The map should be:
 
-- **Visible** — posted on a wall or in a shared digital tool where the team sees it daily
-- **Honest** — reflecting what actually happens, including the workarounds and shortcuts
-- **Actionable** — with constraints clearly marked so the team knows where to focus
+- **Visible** - posted on a wall or in a shared digital tool where the team sees it daily
+- **Honest** - reflecting what actually happens, including the workarounds and shortcuts
+- **Actionable** - with constraints clearly marked so the team knows where to focus
 
 You will revisit and update this map as you progress through each migration phase. It is a living
 document, not a one-time exercise.

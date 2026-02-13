@@ -3,46 +3,44 @@ title = "CD Migration Guide"
 linkTitle = "CD Migration Guide"
 +++
 
-{{< blocks/cover title="Migrate to Continuous Deployment" image_anchor="top" height="min" color="dark" >}}
-<p class="lead mt-4">A phased guide for teams moving from quarterly releases to deploying every change.</p>
+{{< blocks/cover title="Continuous Delivery for Every Team" image_anchor="top" height="min" color="dark" >}}
+<p class="lead mt-4">Whether you're starting fresh or migrating an existing system, this guide gives you the practices, patterns, and solutions to deploy every change with confidence.</p>
 {{< /blocks/cover >}}
 
 {{% blocks/lead color="primary" %}}
-## Your Migration Journey
+## Start Where You Are
 
-Most teams don't leap to continuous deployment overnight. This guide organizes proven practices from
-[MinimumCD.org](https://minimumcd.org) and the [Dojo Consortium](https://dojoconsortium.org) into
-five progressive phases — from assessing where you are today to deploying every commit with confidence.
+Every team's path to continuous delivery is different. Choose the entry point that matches your situation.
 {{% /blocks/lead %}}
 
 {{< blocks/section color="white" >}}
 
-{{% blocks/feature icon="fa-magnifying-glass" title="Phase 0: Assess" url="/docs/assess/" %}}
-Understand where you are. Map your value stream, establish baseline metrics, and identify constraints.
+{{% blocks/feature icon="fa-triangle-exclamation" title="Common Problems" url="/docs/problems/" %}}
+Something is slowing your team down? Start here. Find the problem you're facing and follow the path to solving it.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-layer-group" title="Phase 1: Foundations" url="/docs/foundations/" %}}
-Build the essential practices: trunk-based development, testing fundamentals, small work decomposition.
+{{% blocks/feature icon="fa-seedling" title="CD for Greenfield" url="/docs/greenfield/" %}}
+Starting a new project? Build continuous delivery in from day one instead of retrofitting it later.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-timeline" title="Phase 2: Pipeline" url="/docs/pipeline/" %}}
-Create the automated path to production: a single, deterministic pipeline that deploys immutable artifacts.
+{{% blocks/feature icon="fa-arrows-rotate" title="Brownfield Migration" url="/docs/brownfield/" %}}
+Already have a running system? A phased approach to migrating existing applications and teams to CD.
 {{% /blocks/feature %}}
 
 {{< /blocks/section >}}
 
 {{< blocks/section color="light" >}}
 
-{{% blocks/feature icon="fa-gauge-high" title="Phase 3: Optimize" url="/docs/optimize/" %}}
-Improve flow with smaller batches, feature flags, WIP limits, and metrics-driven improvement.
+{{% blocks/feature icon="fa-layer-group" title="Foundations" url="/docs/foundations/" %}}
+Trunk-based development, testing fundamentals, small work decomposition, and the practices that make CD possible.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fa-rocket" title="Phase 4: Continuous Deployment" url="/docs/continuous-deployment/" %}}
-Deploy every change on demand with progressive rollout strategies and full confidence.
+{{% blocks/feature icon="fa-timeline" title="Pipeline" url="/docs/pipeline/" %}}
+A single, deterministic pipeline that deploys immutable artifacts through automated quality gates.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fa-book" title="Reference" url="/docs/reference/" %}}
-Glossary, metrics definitions, testing guides, and additional resources.
+Glossary, metrics definitions, testing guides, common blockers, and additional resources.
 {{% /blocks/feature %}}
 
 {{< /blocks/section >}}

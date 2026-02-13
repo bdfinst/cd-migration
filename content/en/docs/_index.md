@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 This guide organizes practices from [MinimumCD.org](https://minimumcd.org) and the
 [Dojo Consortium](https://dojoconsortium.org) into a phased migration journey.
-Each phase builds on the previous one — start where you are, progress at your own pace.
+Each phase builds on the previous one - start where you are, progress at your own pace.
 {{% /pageinfo %}}
 
 ## The Five Phases
@@ -33,7 +33,7 @@ Each phase builds on the previous one — start where you are, progress at your 
 
 This guide adapts content from two CC BY 4.0 licensed sources:
 
-- **[MinimumCD.org](https://minimumcd.org)** — The minimum practices for continuous delivery
-- **[Dojo Consortium](https://dojoconsortium.org)** — Production-tested playbooks for delivering software better
+- **[MinimumCD.org](https://minimumcd.org)** - The minimum practices for continuous delivery
+- **[Dojo Consortium](https://dojoconsortium.org)** - Production-tested playbooks for delivering software better
 
 Each adapted page includes attribution to its source material.

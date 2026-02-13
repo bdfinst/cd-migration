@@ -16,15 +16,15 @@ the constraints that will guide your improvement roadmap.
 
 ## What You'll Do
 
-1. **[Map your value stream](value-stream-mapping/)** — Visualize the flow from idea to production
-2. **[Establish baseline metrics](baseline-metrics/)** — Measure your current delivery performance
-3. **[Identify constraints](identify-constraints/)** — Find the bottlenecks limiting your flow
-4. **[Complete the current-state checklist](current-state-checklist/)** — Self-assess against MinimumCD practices
+1. **[Map your value stream](value-stream-mapping/)** - Visualize the flow from idea to production
+2. **[Establish baseline metrics](baseline-metrics/)** - Measure your current delivery performance
+3. **[Identify constraints](identify-constraints/)** - Find the bottlenecks limiting your flow
+4. **[Complete the current-state checklist](current-state-checklist/)** - Self-assess against MinimumCD practices
 
 ## Why This Phase Matters
 
 Teams that skip assessment often invest in the wrong improvements. A team with a 3-week manual
-testing cycle doesn't need better deployment automation first — they need testing fundamentals.
+testing cycle doesn't need better deployment automation first - they need testing fundamentals.
 Understanding your constraints ensures you invest effort where it will have the biggest impact.
 
 ## When You're Ready to Move On

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
@@ -26,9 +26,9 @@ environment needs the right infrastructure, networking, and data characteristics
 ## Why It Matters for CD Migration
 
 The gap between pre-production environments and production is where deployment failures
-hide. Teams that test in environments that differ significantly from production — in
+hide. Teams that test in environments that differ significantly from production - in
 operating system, database version, network topology, resource constraints, or
-configuration — routinely discover issues only after deployment.
+configuration - routinely discover issues only after deployment.
 
 For a CD migration, production-like environments are what transform pre-production testing
 from "we hope this works" to "we know this works." They close the gap between the
@@ -42,14 +42,14 @@ automatically.
 Your staging environment should match production in the dimensions that affect application
 behavior:
 
-- **Infrastructure platform** — same cloud provider, same orchestrator, same service mesh
-- **Network topology** — same load balancer configuration, same DNS resolution patterns,
+- **Infrastructure platform** - same cloud provider, same orchestrator, same service mesh
+- **Network topology** - same load balancer configuration, same DNS resolution patterns,
   same firewall rules
-- **Database engine and version** — same database type, same version, same configuration
+- **Database engine and version** - same database type, same version, same configuration
   parameters
-- **Operating system and runtime** — same OS distribution, same runtime version, same
+- **Operating system and runtime** - same OS distribution, same runtime version, same
   system libraries
-- **Service dependencies** — same versions of downstream services, or accurate test doubles
+- **Service dependencies** - same versions of downstream services, or accurate test doubles
 
 Staging does not necessarily need the same scale as production (fewer replicas, smaller
 instances), but the architecture must be the same.
@@ -58,10 +58,10 @@ instances), but the architecture must be the same.
 
 Every aspect of the environment that can be defined in code must be:
 
-- **Infrastructure definitions** — Terraform, CloudFormation, Pulumi, or equivalent
-- **Configuration** — Kubernetes manifests, Helm charts, Ansible playbooks
-- **Network policies** — security groups, firewall rules, service mesh configuration
-- **Monitoring and alerting** — the same observability configuration in all environments
+- **Infrastructure definitions** - Terraform, CloudFormation, Pulumi, or equivalent
+- **Configuration** - Kubernetes manifests, Helm charts, Ansible playbooks
+- **Network policies** - security groups, firewall rules, service mesh configuration
+- **Monitoring and alerting** - the same observability configuration in all environments
 
 Version-controlled environments can be reproduced, compared, and audited. Manual
 environment configuration cannot.
@@ -69,20 +69,20 @@ environment configuration cannot.
 ### Ephemeral environments
 
 Ephemeral environments are full-stack, on-demand, short-lived environments spun up for a
-specific purpose — a pull request, a test run, a demo — and destroyed when that purpose is
+specific purpose - a pull request, a test run, a demo - and destroyed when that purpose is
 complete.
 
 Key characteristics of ephemeral environments:
 
-- **Full-stack** — they include the application and all of its dependencies (databases,
+- **Full-stack** - they include the application and all of its dependencies (databases,
   message queues, caches, downstream services), not just the application in isolation
-- **On-demand** — any developer or pipeline can spin one up at any time without waiting
+- **On-demand** - any developer or pipeline can spin one up at any time without waiting
   for a shared resource
-- **Short-lived** — they exist for hours or days, not weeks or months. This prevents
+- **Short-lived** - they exist for hours or days, not weeks or months. This prevents
   configuration drift and stale state
-- **Version controlled** — the environment definition is in code, and the environment is
+- **Version controlled** - the environment definition is in code, and the environment is
   created from a specific version of that code
-- **Isolated** — they do not share resources with other environments. No shared databases,
+- **Isolated** - they do not share resources with other environments. No shared databases,
   no shared queues, no shared service instances
 
 Ephemeral environments eliminate the "shared staging" bottleneck where multiple teams
@@ -94,12 +94,12 @@ The data in pre-production environments must be representative of production dat
 structure, volume, and characteristics. This does not mean using production data directly
 (which raises security and privacy concerns). It means:
 
-- **Schema matches production** — same tables, same columns, same constraints
-- **Volume is realistic** — tests run against data sets large enough to reveal performance
+- **Schema matches production** - same tables, same columns, same constraints
+- **Volume is realistic** - tests run against data sets large enough to reveal performance
   issues
-- **Data characteristics are representative** — edge cases, special characters,
+- **Data characteristics are representative** - edge cases, special characters,
   null values, and data distributions that match what the application will encounter
-- **Data is anonymized** — if production data is used as a seed, all personally
+- **Data is anonymized** - if production data is used as a seed, all personally
   identifiable information is removed or masked
 
 ## Anti-Patterns
@@ -140,7 +140,7 @@ edge cases that only appear in real-world data distributions.
 
 ### Infrastructure as Code for all environments
 
-Define every environment — from local development to production — using the same
+Define every environment - from local development to production - using the same
 Infrastructure as Code templates. The differences between environments are captured in
 configuration variables (instance sizes, replica counts, domain names), not in different
 templates.
@@ -192,7 +192,7 @@ environments from the same definitions with different parameter values.
 
 ### Step 3: Address the highest-risk parity gaps
 
-From your audit, identify the differences most likely to cause production failures —
+From your audit, identify the differences most likely to cause production failures -
 typically database version mismatches, missing infrastructure components, or network
 configuration differences. Fix these first.
 
@@ -216,12 +216,12 @@ on drift. Make parity a continuous concern, not a one-time setup.
 
 Production-like environments are where the pipeline's quality gates run. Without
 production-like environments, the [deployable definition](../deployable-definition/)
-produces a false signal — tests pass in an environment that does not resemble production,
+produces a false signal - tests pass in an environment that does not resemble production,
 and failures appear only after deployment.
 
 [Immutable artifacts](../immutable-artifacts/) flow through these environments unchanged,
-with only [configuration](../application-config/) varying. This combination — same
-artifact, production-like environment, environment-specific configuration — is what gives
+with only [configuration](../application-config/) varying. This combination - same
+artifact, production-like environment, environment-specific configuration - is what gives
 the pipeline its predictive power.
 
 Production-like environments also support effective [rollback](../rollback/) testing: you

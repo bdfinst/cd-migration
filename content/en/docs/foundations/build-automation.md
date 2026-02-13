@@ -7,14 +7,14 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 — Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
 Build automation is the mechanism that turns trunk-based development and testing into a continuous integration loop. If you cannot build, test, and package your application with a single command, you cannot automate your pipeline. This page covers the practices that make your build reproducible, fast, and trustworthy.
 {{% /pageinfo %}}
 
 ## What Build Automation Means
 
-Build automation is the practice of scripting every step required to go from source code to a deployable artifact. A single command — or a single CI trigger — should execute the entire sequence:
+Build automation is the practice of scripting every step required to go from source code to a deployable artifact. A single command - or a single CI trigger - should execute the entire sequence:
 
 1. **Compile** the source code (if applicable)
 2. **Run** all automated tests
@@ -90,7 +90,7 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 
 - Cache aggressively for local development and CI
 - Invalidate caches when dependencies or build configuration change
-- Do not cache test results — tests must always run
+- Do not cache test results - tests must always run
 
 ### 4. Single Build Script Entry Point
 
@@ -127,7 +127,7 @@ Every build artifact must be traceable to the exact commit that produced it.
 
 - Tag artifacts with the Git commit SHA or a build number derived from it
 - Store build metadata (commit, branch, timestamp, builder) in the artifact or alongside it
-- Never overwrite an existing artifact — if the version exists, the artifact is immutable
+- Never overwrite an existing artifact - if the version exists, the artifact is immutable
 
 This becomes critical in [Phase 2](../../pipeline/immutable-artifacts/) when you establish immutable artifact practices.
 

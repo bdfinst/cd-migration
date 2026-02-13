@@ -7,14 +7,14 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
 
 A deterministic pipeline produces consistent, repeatable results. Given the same commit,
 the same environment definition, and the same configuration, the pipeline will build the
-same artifact, run the same tests, and produce the same outcome — every time. There is no
+same artifact, run the same tests, and produce the same outcome - every time. There is no
 variance introduced by uncontrolled dependencies, environmental drift, manual
 intervention, or non-deterministic test behavior.
 
@@ -40,12 +40,12 @@ replace manual verification.
 
 Every input to the pipeline must be version controlled:
 
-- **Application source code** — the obvious one
-- **Infrastructure as Code** — the environment definitions themselves
-- **Pipeline definitions** — the CI/CD configuration files
-- **Test data and fixtures** — the data used by automated tests
-- **Dependency lockfiles** — exact versions of every dependency (e.g., `package-lock.json`, `Pipfile.lock`, `go.sum`)
-- **Tool versions** — the versions of compilers, runtimes, linters, and build tools
+- **Application source code** - the obvious one
+- **Infrastructure as Code** - the environment definitions themselves
+- **Pipeline definitions** - the CI/CD configuration files
+- **Test data and fixtures** - the data used by automated tests
+- **Dependency lockfiles** - exact versions of every dependency (e.g., `package-lock.json`, `Pipfile.lock`, `go.sum`)
+- **Tool versions** - the versions of compilers, runtimes, linters, and build tools
 
 If an input to the pipeline is not version controlled, it can change without notice, and
 the pipeline is no longer deterministic.
@@ -74,7 +74,7 @@ run, deciding whether to skip a stage, or manually approving a step introduces
 non-determinism. The pipeline should run from commit to deployment without human
 decisions.
 
-This does not mean humans have no role — it means the pipeline's behavior is fully
+This does not mean humans have no role - it means the pipeline's behavior is fully
 determined by its inputs, not by who is watching it run.
 
 ### Fix flaky tests immediately
@@ -85,9 +85,9 @@ the test suite.
 
 When a flaky test is detected, the response must be immediate:
 
-1. **Quarantine the test** — remove it from the pipeline so it does not block other changes
-2. **Fix it or delete it** — flaky tests provide negative value; they are worse than no test
-3. **Investigate the root cause** — flakiness often indicates a real problem (race conditions, shared state, time dependencies, external service reliance)
+1. **Quarantine the test** - remove it from the pipeline so it does not block other changes
+2. **Fix it or delete it** - flaky tests provide negative value; they are worse than no test
+3. **Investigate the root cause** - flakiness often indicates a real problem (race conditions, shared state, time dependencies, external service reliance)
 
 Never allow a culture of "just re-run it" to take hold. Every re-run masks a real problem.
 
@@ -109,13 +109,13 @@ build should start from a clean, known state.
 
 Tests that call live external APIs, depend on shared databases, or rely on network
 resources introduce uncontrolled variance. External services change, experience outages,
-and respond with different latency — all of which make the pipeline non-deterministic.
+and respond with different latency - all of which make the pipeline non-deterministic.
 
 ### Time-dependent tests
 
 Tests that depend on the current time, current date, or elapsed time are inherently
 non-deterministic. A test that passes at 2:00 PM and fails at midnight is not testing
-your application — it is testing the clock.
+your application - it is testing the clock.
 
 ### Manual retry culture
 
@@ -145,7 +145,7 @@ the service. Combine with service virtualization or test doubles for integration
 
 ### Deterministic test ordering
 
-Run tests in a fixed, deterministic order — or better, ensure every test is independent
+Run tests in a fixed, deterministic order - or better, ensure every test is independent
 and can run in any order. Many test frameworks default to random ordering to detect
 inter-test dependencies; use this during development but ensure no ordering dependencies
 exist.
@@ -191,7 +191,7 @@ it to zero.
 Determinism is what gives the [single path to production](../single-path-to-production/)
 its authority. If the pipeline produces inconsistent results, teams will work around it.
 A deterministic pipeline is also the prerequisite for a meaningful
-[deployable definition](../deployable-definition/) — your quality gates are only as
+[deployable definition](../deployable-definition/) - your quality gates are only as
 reliable as the pipeline that enforces them.
 
 When the pipeline is deterministic, [immutable artifacts](../immutable-artifacts/) become

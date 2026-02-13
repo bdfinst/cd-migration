@@ -7,9 +7,9 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 — Continuous Deployment** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 4 - Continuous Deployment** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
-As AI coding agents become capable of generating production-ready code changes, the continuous deployment pipeline must evolve to handle agent-generated work with the same rigor applied to human-generated work — and in some cases, more rigor. Agentic CD defines the additional constraints and artifacts needed when agents contribute to the delivery pipeline.
+As AI coding agents become capable of generating production-ready code changes, the continuous deployment pipeline must evolve to handle agent-generated work with the same rigor applied to human-generated work - and in some cases, more rigor. Agentic CD defines the additional constraints and artifacts needed when agents contribute to the delivery pipeline.
 {{% /pageinfo %}}
 
 ## What Is Agentic CD?
@@ -214,7 +214,7 @@ Agent-generated changes must be small. Large agent-generated changes are harder 
 
 ### Mandatory Human Review
 
-Every agent-generated change must be reviewed by a human before merging to trunk. This is a non-negotiable constraint. The purpose is not to check the agent's "work" in a supervisory sense — it is to verify that the change matches the intent and fits the system.
+Every agent-generated change must be reviewed by a human before merging to trunk. This is a non-negotiable constraint. The purpose is not to check the agent's "work" in a supervisory sense - it is to verify that the change matches the intent and fits the system.
 
 ### Comprehensive Test Coverage
 
@@ -252,7 +252,7 @@ If the agent writes both the tests and the code, the tests may be designed to pa
 
 ### 2. "The agent generates changes faster than we can review them"
 
-This is a feature, not a bug — but only if you have the discipline to not merge unreviewed changes. The agent's speed should not pressure humans to review faster. WIP limits apply: if the review queue is full, the agent stops generating new changes.
+This is a feature, not a bug - but only if you have the discipline to not merge unreviewed changes. The agent's speed should not pressure humans to review faster. WIP limits apply: if the review queue is full, the agent stops generating new changes.
 
 ### 3. "We trust the agent because it passed the tests"
 

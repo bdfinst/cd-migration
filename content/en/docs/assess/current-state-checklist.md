@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 — Assess**
+**Phase 0 - Assess**
 {{% /pageinfo %}}
 
 This checklist translates the practices defined by [MinimumCD.org](https://minimumcd.org) into
@@ -15,12 +15,12 @@ concrete yes-or-no questions you can answer about your team today. It is not a t
 a diagnostic tool that shows you which practices are already in place and which ones your migration
 needs to establish.
 
-Work through each category with your team. Be honest — checking a box you have not earned gives
+Work through each category with your team. Be honest - checking a box you have not earned gives
 you a migration plan that skips steps you actually need.
 
 ## How to Use This Checklist
 
-For each item, mark it with an `[x]` if your team consistently does this today — not occasionally,
+For each item, mark it with an `[x]` if your team consistently does this today - not occasionally,
 not aspirationally, but as a default practice. If you do it sometimes but not reliably, leave it
 unchecked.
 
@@ -75,7 +75,7 @@ pipelines are what make deployment a non-event rather than a high-risk ceremony.
 ## Deployment
 
 - [ ] The team has at least one environment that closely mirrors production configuration (OS, middleware, networking, data shape)
-- [ ] Application configuration is externalized from the build artifact (config files, environment variables, or a config service — not baked into the binary)
+- [ ] Application configuration is externalized from the build artifact (config files, environment variables, or a config service - not baked into the binary)
 - [ ] The team can roll back a production deployment within minutes, not hours
 - [ ] Deployments to production do not require downtime
 - [ ] The deployment process is the same for every environment (dev, staging, production) with only configuration differences
@@ -110,16 +110,16 @@ Count the number of items you checked across all categories.
 
 | Score | Your Starting Point | Recommended Phase |
 |-------|--------------------|--------------------|
-| **0-5** | You are early in your journey. Most foundational practices are not yet in place. | Start at the beginning of **[Phase 1 — Foundations](../../foundations/)**. Focus on trunk-based development and basic test automation first. |
-| **6-12** | You have some practices in place but significant gaps remain. This is the most common starting point. | Start with **[Phase 1 — Foundations](../../foundations/)** but focus on the categories where you had the fewest checks. Your [constraint analysis](../identify-constraints/) will tell you which gap to close first. |
-| **13-18** | Your foundations are solid. The gaps are likely in pipeline automation and deployment practices. | You may be able to move quickly through Phase 1 and focus your effort on **[Phase 2 — Pipeline](../../pipeline/)**. Validate with your value stream map that your remaining constraints match. |
-| **19-22** | You are well-practiced in most areas. Your migration is about closing specific gaps and optimizing flow. | Review your unchecked items — they point to specific topics in **[Phase 3 — Optimize](../../optimize/)** or **[Phase 4 — Continuous Deployment](../../continuous-deployment/)**. |
-| **23-25** | You are already practicing most of what MinimumCD defines. Your focus should be on consistency and the final push to continuous deployment. | Jump to **[Phase 4 — Continuous Deployment](../../continuous-deployment/)** and focus on deploying every change. |
+| **0-5** | You are early in your journey. Most foundational practices are not yet in place. | Start at the beginning of **[Phase 1 - Foundations](../../foundations/)**. Focus on trunk-based development and basic test automation first. |
+| **6-12** | You have some practices in place but significant gaps remain. This is the most common starting point. | Start with **[Phase 1 - Foundations](../../foundations/)** but focus on the categories where you had the fewest checks. Your [constraint analysis](../identify-constraints/) will tell you which gap to close first. |
+| **13-18** | Your foundations are solid. The gaps are likely in pipeline automation and deployment practices. | You may be able to move quickly through Phase 1 and focus your effort on **[Phase 2 - Pipeline](../../pipeline/)**. Validate with your value stream map that your remaining constraints match. |
+| **19-22** | You are well-practiced in most areas. Your migration is about closing specific gaps and optimizing flow. | Review your unchecked items - they point to specific topics in **[Phase 3 - Optimize](../../optimize/)** or **[Phase 4 - Continuous Deployment](../../continuous-deployment/)**. |
+| **23-25** | You are already practicing most of what MinimumCD defines. Your focus should be on consistency and the final push to continuous deployment. | Jump to **[Phase 4 - Continuous Deployment](../../continuous-deployment/)** and focus on deploying every change. |
 
 {{% alert title="A Score Is Not a Grade" %}}
 This checklist exists to help your team find its starting point, not to judge your team's
-competence. A score of 5 does not mean your team is failing — it means your team has a clear
-picture of what to work on. A score of 22 does not mean you are done — it means your remaining
+competence. A score of 5 does not mean your team is failing - it means your team has a clear
+picture of what to work on. A score of 22 does not mean you are done - it means your remaining
 gaps are specific and targeted.
 
 The only wrong answer is a dishonest one.
@@ -139,5 +139,5 @@ you are, you know what is slowing you down, and you know which practices to esta
 
 ## Next Step
 
-You are ready to begin [Phase 1 — Foundations](../../foundations/). Start with the practice area
+You are ready to begin [Phase 1 - Foundations](../../foundations/). Start with the practice area
 that addresses your top constraint.

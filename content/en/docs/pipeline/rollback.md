@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
@@ -25,7 +25,7 @@ mechanism.
 
 Fear of deployment is the single biggest cultural barrier to continuous delivery. Teams
 that have experienced painful, irreversible deployments develop a natural aversion to
-deploying frequently. They batch changes, delay releases, and add manual approval gates —
+deploying frequently. They batch changes, delay releases, and add manual approval gates -
 all of which slow delivery and increase risk.
 
 Reliable, fast rollback breaks this cycle. When the team knows that any deployment can be
@@ -38,14 +38,14 @@ system improves.
 ### Fast
 
 Rollback must complete in minutes, not hours. A rollback that takes an hour to execute
-is not a rollback — it is a prolonged outage with a recovery plan. Target rollback times
+is not a rollback - it is a prolonged outage with a recovery plan. Target rollback times
 of 5 minutes or less for the deployment mechanism itself. If the previous artifact is
 already in the artifact repository and the deployment mechanism is automated, there is
 no reason rollback should take longer than a fresh deployment.
 
 ### Automated
 
-Rollback must be a single command or a single click — or better, fully automated based
+Rollback must be a single command or a single click - or better, fully automated based
 on health checks. It should not require:
 
 - SSH access to production servers
@@ -79,13 +79,13 @@ practice rollback as part of routine deployment validation.
 
 ### Blue-Green Deployment
 
-Maintain two identical production environments — blue and green. At any time, one is live
+Maintain two identical production environments - blue and green. At any time, one is live
 (serving traffic) and the other is idle. To deploy, deploy to the idle environment, verify
 it, and switch traffic. To roll back, switch traffic back to the previous environment.
 
 **Advantages:**
 
-- Rollback is instantaneous — just a traffic switch
+- Rollback is instantaneous - just a traffic switch
 - The previous version remains running and warm
 - Zero-downtime deployment and rollback
 
@@ -104,9 +104,9 @@ all traffic back to the previous version.
 
 **Advantages:**
 
-- Limits blast radius — problems affect only a fraction of users
+- Limits blast radius - problems affect only a fraction of users
 - Provides real production data for validation before full rollout
-- Rollback is fast — stop sending traffic to the canary
+- Rollback is fast - stop sending traffic to the canary
 
 **Considerations:**
 
@@ -118,12 +118,12 @@ all traffic back to the previous version.
 
 When a deployment introduces new behavior behind a feature flag, rollback can be as
 simple as turning off the flag. The code remains deployed, but the new behavior is
-disabled. This is the fastest possible rollback — it requires no deployment at all.
+disabled. This is the fastest possible rollback - it requires no deployment at all.
 
 **Advantages:**
 
-- Instantaneous — no deployment, no traffic switch
-- Granular — roll back a single feature without affecting other changes
+- Instantaneous - no deployment, no traffic switch
+- Granular - roll back a single feature without affecting other changes
 - No infrastructure changes required
 
 **Considerations:**
@@ -140,11 +140,11 @@ incompatible with the new schema.
 
 The expand-contract pattern (also called parallel change) solves this:
 
-1. **Expand** — add new columns, tables, or structures alongside the existing ones. The
+1. **Expand** - add new columns, tables, or structures alongside the existing ones. The
    old application code continues to work. Deploy this change.
-2. **Migrate** — update the application to write to both old and new structures, and read
+2. **Migrate** - update the application to write to both old and new structures, and read
    from the new structure. Deploy this change. Backfill historical data.
-3. **Contract** — once all application versions using the old structure are retired, remove
+3. **Contract** - once all application versions using the old structure are retired, remove
    the old columns or tables. Deploy this change.
 
 At every step, the previous application version remains compatible with the current
@@ -183,7 +183,7 @@ Always use the expand-contract pattern for schema changes.
 ### Manual rollback requiring specialized knowledge
 
 If only one person on the team knows how to perform a rollback, the team does not have a
-rollback capability — it has a single point of failure. Rollback must be simple enough
+rollback capability - it has a single point of failure. Rollback must be simple enough
 for any team member to execute.
 
 ## Good Patterns
@@ -214,7 +214,7 @@ verify that the rollback was successful.
 
 ### Rollback runbook exercises
 
-Regularly practice rollback as a team exercise — not just as part of automated testing,
+Regularly practice rollback as a team exercise - not just as part of automated testing,
 but as a deliberate drill. This builds team confidence and identifies gaps in the process.
 
 ## How to Get Started
@@ -226,7 +226,7 @@ Who would need to be involved? What could go wrong? Be honest about the answers.
 
 ### Step 2: Implement a basic automated rollback
 
-Start with the simplest mechanism available for your deployment platform — redeploying the
+Start with the simplest mechanism available for your deployment platform - redeploying the
 previous container image, switching a load balancer target, or reverting a Kubernetes
 deployment. Automate this as a single command.
 
@@ -243,7 +243,7 @@ always compatible with the current database schema.
 
 ### Step 5: Reduce rollback time
 
-Measure how long rollback takes. Identify and eliminate delays — slow artifact downloads,
+Measure how long rollback takes. Identify and eliminate delays - slow artifact downloads,
 slow startup times, manual steps. Target rollback completion in under 5 minutes.
 
 ### Step 6: Build team confidence
@@ -258,8 +258,8 @@ Rollback is the capstone of the Pipeline phase. It is what makes the rest of the
 safe:
 
 - The [single path to production](../single-path-to-production/) is how rollback is
-  deployed — the same pipeline, the same path, in reverse
-- [Immutable artifacts](../immutable-artifacts/) are what make rollback reliable — the
+  deployed - the same pipeline, the same path, in reverse
+- [Immutable artifacts](../immutable-artifacts/) are what make rollback reliable - the
   previous artifact is unchanged in the artifact repository, ready to be redeployed
 - The [deployable definition](../deployable-definition/) should include rollback
   verification as one of its quality gates

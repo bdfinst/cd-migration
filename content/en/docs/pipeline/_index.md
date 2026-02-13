@@ -9,21 +9,21 @@ description: >
 {{% pageinfo %}}
 **Key question:** "Can we deploy any commit automatically?"
 
-This phase creates the delivery pipeline — the automated path that takes every commit
+This phase creates the delivery pipeline - the automated path that takes every commit
 through build, test, and deployment stages. When done right, the pipeline is the only
 way changes reach production.
 {{% /pageinfo %}}
 
 ## What You'll Do
 
-1. **[Establish a single path to production](single-path-to-production/)** — One pipeline for all changes
-2. **[Make the pipeline deterministic](deterministic-pipeline/)** — Same inputs always produce same outputs
-3. **[Define "deployable"](deployable-definition/)** — Clear criteria for what's ready to ship
-4. **[Use immutable artifacts](immutable-artifacts/)** — Build once, deploy everywhere
-5. **[Externalize application config](application-config/)** — Separate config from code
-6. **[Use production-like environments](production-like-environments/)** — Test in environments that match production
-7. **[Design your pipeline architecture](pipeline-architecture/)** — Efficient quality gates for your context
-8. **[Enable rollback](rollback/)** — Fast recovery from any deployment
+1. **[Establish a single path to production](single-path-to-production/)** - One pipeline for all changes
+2. **[Make the pipeline deterministic](deterministic-pipeline/)** - Same inputs always produce same outputs
+3. **[Define "deployable"](deployable-definition/)** - Clear criteria for what's ready to ship
+4. **[Use immutable artifacts](immutable-artifacts/)** - Build once, deploy everywhere
+5. **[Externalize application config](application-config/)** - Separate config from code
+6. **[Use production-like environments](production-like-environments/)** - Test in environments that match production
+7. **[Design your pipeline architecture](pipeline-architecture/)** - Efficient quality gates for your context
+8. **[Enable rollback](rollback/)** - Fast recovery from any deployment
 
 ## Why This Phase Matters
 

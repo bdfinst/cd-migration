@@ -15,12 +15,13 @@ Without these foundations, pipeline automation just speeds up a broken process.
 
 ## What You'll Do
 
-1. **[Adopt trunk-based development](trunk-based-development/)** — Integrate to trunk at least daily
-2. **[Build testing fundamentals](testing-fundamentals/)** — Create a fast, reliable test suite
-3. **[Automate your build](build-automation/)** — One command to build, test, and package
-4. **[Decompose work](work-decomposition/)** — Break features into small, deliverable increments
-5. **[Streamline code review](code-review/)** — Fast, effective review that doesn't block flow
-6. **[Establish working agreements](working-agreements/)** — Shared definitions of done and ready
+1. **[Adopt trunk-based development](trunk-based-development/)** - Integrate to trunk at least daily
+2. **[Build testing fundamentals](testing-fundamentals/)** - Create a fast, reliable test suite
+3. **[Automate your build](build-automation/)** - One command to build, test, and package
+4. **[Decompose work](work-decomposition/)** - Break features into small, deliverable increments
+5. **[Streamline code review](code-review/)** - Fast, effective review that doesn't block flow
+6. **[Establish working agreements](working-agreements/)** - Shared definitions of done and ready
+7. **[Everything as code](everything-as-code/)** - Infrastructure, pipelines, schemas, monitoring, and security policies in version control, delivered through pipelines
 
 ## Why This Phase Matters
 

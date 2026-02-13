@@ -7,9 +7,9 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 — Continuous Deployment** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 4 - Continuous Deployment** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
-Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted continuous deployment at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that CD is not limited to startups or greenfield projects — it works in large, complex, regulated environments.
+Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted continuous deployment at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that CD is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
 {{% /pageinfo %}}
 
 ## Why Experience Reports Matter
@@ -122,7 +122,7 @@ Amazon's transformation to service-oriented architecture and team ownership is o
 
 1. **Ownership drives quality.** When the team that writes the code also operates it in production, they write better code and build better monitoring.
 2. **Small teams move faster.** Two-pizza teams (6-10 people) can make decisions without bureaucratic overhead.
-3. **Automation eliminates toil.** Amazon's internal deployment tooling means that deploying is not a skilled activity — any team member can deploy (and the pipeline usually deploys automatically).
+3. **Automation eliminates toil.** Amazon's internal deployment tooling means that deploying is not a skilled activity - any team member can deploy (and the pipeline usually deploys automatically).
 
 ## HP: CD in Hardware-Adjacent Software
 
@@ -172,7 +172,7 @@ Flickr's 2009 presentation "10+ Deploys Per Day: Dev and Ops Cooperation" is cre
 
 ### Key Lessons
 
-1. **Culture is the enabler.** Flickr's technical practices were important, but the cultural shift — developers and operations working together, shared responsibility, mutual respect — was what made frequent deployment possible.
+1. **Culture is the enabler.** Flickr's technical practices were important, but the cultural shift - developers and operations working together, shared responsibility, mutual respect - was what made frequent deployment possible.
 2. **Tooling should reduce friction.** Flickr's deployment tools were designed to make deploying as easy as possible. The easier it is to deploy, the more often people deploy, and the smaller each deployment becomes.
 3. **Transparency builds trust.** Logging every deployment in a shared channel let everyone see what was deploying, who deployed it, and whether it caused problems. This transparency built organizational trust in frequent deployment.
 
@@ -182,7 +182,7 @@ Despite the diversity of these organizations, several patterns emerge consistent
 
 ### 1. Investment in Automation Precedes Cultural Change
 
-Every organization built the tooling first. Automated testing, automated deployment, automated rollback — these created the conditions where frequent deployment was possible. Cultural change followed when people saw that the automation worked.
+Every organization built the tooling first. Automated testing, automated deployment, automated rollback - these created the conditions where frequent deployment was possible. Cultural change followed when people saw that the automation worked.
 
 ### 2. Incremental Adoption, Not Big Bang
 
@@ -194,7 +194,7 @@ Organizations that gave teams ownership of their deployments (build it, run it) 
 
 ### 4. Feature Flags Are Universal
 
-Every organization in these reports uses feature flags to decouple deployment from release. This is not optional for continuous deployment — it is foundational.
+Every organization in these reports uses feature flags to decouple deployment from release. This is not optional for continuous deployment - it is foundational.
 
 ### 5. The Results Are Consistent
 
@@ -216,16 +216,16 @@ You do not need to be Google-sized to benefit from these patterns. Extract what 
 4. **Use feature flags.** Decouple deployment from release.
 5. **Measure and improve.** Track DORA metrics. Run experiments. Use retrospectives.
 
-These are the practices covered throughout this migration guide. The experience reports confirm that they work — not in theory, but in production, at scale, in the real world.
+These are the practices covered throughout this migration guide. The experience reports confirm that they work - not in theory, but in production, at scale, in the real world.
 
 ## Further Reading
 
 For detailed experience reports and additional case studies, see:
 
-- [MinimumCD.org Experience Reports](https://minimumcd.org) — Collected reports from organizations practicing minimum CD
-- *Accelerate* by Nicole Forsgren, Jez Humble, and Gene Kim — The research behind DORA metrics, with extensive case study data
-- *Continuous Delivery* by Jez Humble and David Farley — The foundational text, with detailed examples from multiple organizations
-- *The DevOps Handbook* by Gene Kim, Jez Humble, Patrick Debois, and John Willis — Case studies from organizations across industries
+- [MinimumCD.org Experience Reports](https://minimumcd.org) - Collected reports from organizations practicing minimum CD
+- *Accelerate* by Nicole Forsgren, Jez Humble, and Gene Kim - The research behind DORA metrics, with extensive case study data
+- *Continuous Delivery* by Jez Humble and David Farley - The foundational text, with detailed examples from multiple organizations
+- *The DevOps Handbook* by Gene Kim, Jez Humble, Patrick Debois, and John Willis - Case studies from organizations across industries
 
 ---
 

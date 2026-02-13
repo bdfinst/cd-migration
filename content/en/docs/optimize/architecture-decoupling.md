@@ -7,14 +7,14 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 — Optimize** | Original content based on Dojo Consortium delivery journey patterns
+**Phase 3 - Optimize** | Original content based on Dojo Consortium delivery journey patterns
 
 You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to continuous deployment and provides practical strategies for moving from entangled to loosely coupled.
 {{% /pageinfo %}}
 
 ## Why Architecture Matters for CD
 
-Every practice in this guide — small batches, feature flags, WIP limits — assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
+Every practice in this guide - small batches, feature flags, WIP limits - assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
 
 Architecture is either an enabler or a blocker for continuous deployment. There is no neutral.
 
@@ -44,7 +44,7 @@ In an entangled architecture, everything is connected to everything. Changes in 
 | Change failure rate | High (because big releases mean big risk) |
 | MTTR | Long (because failures cascade across boundaries) |
 
-**How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. It is not a failure — it is a stage that almost every system passes through.
+**How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. It is not a failure - it is a stage that almost every system passes through.
 
 ### State 2: Tightly Coupled
 
@@ -53,7 +53,7 @@ In a tightly coupled architecture, there are identifiable boundaries between com
 **Characteristics:**
 
 - Services exist but share a database or use synchronous point-to-point calls
-- API contracts exist but are not versioned — breaking changes require simultaneous updates
+- API contracts exist but are not versioned - breaking changes require simultaneous updates
 - Teams can deploy some changes independently, but cross-cutting changes require coordination
 - Integration testing requires multiple services but not the entire system
 - Release trains still exist but are smaller and more frequent
@@ -73,12 +73,12 @@ In a loosely coupled architecture, components communicate through well-defined i
 
 **Characteristics:**
 
-- Each service owns its own data store — no shared databases
+- Each service owns its own data store - no shared databases
 - APIs are versioned; consumers and producers can be updated independently
 - Asynchronous communication (events, queues) is used where possible
 - Each team can deploy without coordinating with any other team
 - Services are designed to degrade gracefully if a dependency is unavailable
-- No release trains — each team deploys when ready
+- No release trains - each team deploys when ready
 
 **Impact on delivery:**
 
@@ -129,7 +129,7 @@ Assign clear ownership of each module or component to a single team. Ownership m
 ### What to Avoid
 
 - **The "big rewrite":** Rewriting a monolith from scratch almost always fails. Use the strangler fig pattern instead.
-- **Premature microservices:** Do not split into microservices until you have clear domain boundaries and team ownership. Microservices with unclear boundaries are a distributed monolith — the worst of both worlds.
+- **Premature microservices:** Do not split into microservices until you have clear domain boundaries and team ownership. Microservices with unclear boundaries are a distributed monolith - the worst of both worlds.
 - **Shared databases across services:** This is the most common coupling mechanism. If two services share a database, they cannot be deployed independently because a schema change in one service can break the other.
 
 ## Moving from Tightly Coupled to Loosely Coupled
@@ -188,7 +188,7 @@ Prefer asynchronous communication wherever the business requirements allow it. N
 In a loosely coupled system, dependencies will be unavailable sometimes. Design for this:
 
 - **Circuit breakers:** Stop calling a failing dependency after N failures. Return a degraded response instead.
-- **Timeouts:** Set aggressive timeouts on all external calls. A 30-second timeout on a service that should respond in 100ms is not a timeout — it is a hang.
+- **Timeouts:** Set aggressive timeouts on all external calls. A 30-second timeout on a service that should respond in 100ms is not a timeout - it is a hang.
 - **Bulkheads:** Isolate failures so that one failing dependency does not consume all resources.
 - **Graceful degradation:** Define what the user experience should be when a dependency is down. "Recommendations unavailable" is better than a 500 error.
 

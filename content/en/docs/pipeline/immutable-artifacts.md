@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 — Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
 {{% /pageinfo %}}
 
 ## Definition
@@ -24,8 +24,8 @@ changes.
 
 ## Why It Matters for CD Migration
 
-If you build a separate artifact for each environment — or worse, make manual adjustments
-to artifacts at deployment time — you can never be certain that what you tested is what
+If you build a separate artifact for each environment - or worse, make manual adjustments
+to artifacts at deployment time - you can never be certain that what you tested is what
 you deployed. Every rebuild introduces the possibility of variance: a different dependency
 resolved, a different compiler flag applied, a different snapshot of the source.
 
@@ -43,8 +43,8 @@ staging to production, the deployment process becomes verifiable instead of hope
 
 The artifact is produced exactly once, during the build stage of the pipeline. It is
 stored in an artifact repository (such as a container registry, Maven repository, npm
-registry, or object store) and every subsequent stage of the pipeline — and every
-environment — pulls and deploys that same artifact.
+registry, or object store) and every subsequent stage of the pipeline - and every
+environment - pulls and deploys that same artifact.
 
 ### No manual adjustments
 
@@ -60,10 +60,10 @@ Artifacts are never modified after creation. This means:
 Because the artifact is built once and cannot be changed, every input must be correct at
 build time:
 
-- **Source code** — committed to version control at a specific commit hash
-- **Dependencies** — locked to exact versions via lockfiles
-- **Build tools** — pinned to specific versions
-- **Build configuration** — stored in version control alongside the source
+- **Source code** - committed to version control at a specific commit hash
+- **Dependencies** - locked to exact versions via lockfiles
+- **Build tools** - pinned to specific versions
+- **Build configuration** - stored in version control alongside the source
 
 ### Tag and trace
 
@@ -75,8 +75,8 @@ semantic version tags, or build metadata that links the artifact to its source.
 
 ### Rebuilding per environment
 
-Building the artifact separately for development, staging, and production — even from the
-same source — means each artifact is a different build. Different builds can produce
+Building the artifact separately for development, staging, and production - even from the
+same source - means each artifact is a different build. Different builds can produce
 different results due to non-deterministic build processes, updated dependencies, or
 changed build environments.
 
@@ -149,7 +149,7 @@ configuration.
 
 ### Step 2: Set up an artifact repository
 
-Choose an artifact repository appropriate for your technology stack — a container registry
+Choose an artifact repository appropriate for your technology stack - a container registry
 for container images, a package registry for libraries, or an object store for compiled
 binaries. All downstream pipeline stages pull from this repository.
 
@@ -183,8 +183,8 @@ Immutable artifacts are the physical manifestation of trust in the pipeline. The
 [single path to production](../single-path-to-production/) ensures all changes flow
 through the pipeline. The [deterministic pipeline](../deterministic-pipeline/) ensures the
 build is repeatable. The [deployable definition](../deployable-definition/) ensures the
-artifact meets quality criteria. Immutability ensures that the validated artifact — and
-only that artifact — reaches production.
+artifact meets quality criteria. Immutability ensures that the validated artifact - and
+only that artifact - reaches production.
 
 This practice also directly supports [rollback](../rollback/): because previous artifacts
 are stored unchanged in the artifact repository, rolling back is simply deploying a

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 — Continuous Deployment** | Original content
+**Phase 4 - Continuous Deployment** | Original content
 
 Deploy on demand means that any change which passes the full automated pipeline can reach production without waiting for a human to press a button, open a ticket, or schedule a window. This page covers the prerequisites, the transition from continuous delivery to continuous deployment, and how to address the organizational concerns that are the real barriers.
 {{% /pageinfo %}}
@@ -115,7 +115,7 @@ Work with your change management team to classify pipeline-passing deployments a
 
 ### "What about compliance and audit?"
 
-Continuous deployment does not eliminate audit trails — it strengthens them. Every deployment is:
+Continuous deployment does not eliminate audit trails - it strengthens them. Every deployment is:
 
 - **Traceable:** Tied to a specific commit, which is tied to a specific story or ticket
 - **Reproducible:** The same pipeline produces the same result every time
@@ -154,7 +154,7 @@ The key insight: this sequence takes minutes with continuous deployment. With ma
 | Before | After |
 |--------|-------|
 | "Are we deploying today?" | Deploys happen automatically, all the time |
-| "Who's doing the deploy?" | Nobody — the pipeline does it |
+| "Who's doing the deploy?" | Nobody - the pipeline does it |
 | "Can I get this into the next release?" | Every merge to trunk is the next release |
 | "We need to coordinate the deploy with team X" | Teams deploy independently |
 | "Let's wait for the deploy window" | There are no deploy windows |
@@ -173,17 +173,17 @@ The first week of continuous deployment will feel uncomfortable. This is normal.
 
 - Watch the monitoring dashboards more closely than usual
 - Have the team discuss each automatic deployment in standup for the first week
-- Celebrate the first deployment that goes out without anyone noticing — that is the goal
+- Celebrate the first deployment that goes out without anyone noticing - that is the goal
 
 ## Key Pitfalls
 
 ### 1. "We adopted continuous deployment but kept the approval step 'just in case'"
 
-If the approval step exists, it will be used, and you have not actually adopted continuous deployment. Remove the gate completely. If something goes wrong, use rollback — do not use a pre-deployment gate.
+If the approval step exists, it will be used, and you have not actually adopted continuous deployment. Remove the gate completely. If something goes wrong, use rollback - do not use a pre-deployment gate.
 
 ### 2. "Our deploy cadence didn't actually increase"
 
-Continuous deployment only increases deploy frequency if the team is integrating to trunk frequently. If the team still merges weekly, they will deploy weekly — automatically, but still weekly. Revisit [Trunk-Based Development](../../foundations/trunk-based-development/) and [Small Batches](../../optimize/small-batches/).
+Continuous deployment only increases deploy frequency if the team is integrating to trunk frequently. If the team still merges weekly, they will deploy weekly - automatically, but still weekly. Revisit [Trunk-Based Development](../../foundations/trunk-based-development/) and [Small Batches](../../optimize/small-batches/).
 
 ### 3. "We have continuous deployment for the application but not the database/infrastructure"
 

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 — Optimize** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 3 - Optimize** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
 Work in progress (WIP) is inventory. Like physical inventory, it loses value the longer it sits unfinished. Limiting WIP is the most counterintuitive and most impactful practice in this entire migration: doing less work at once makes you deliver more.
 {{% /pageinfo %}}
@@ -22,7 +22,7 @@ Every item of work in progress has a cost:
 - **Longer cycle time:** Little's Law states that cycle time = WIP / throughput. If throughput is constant, the only way to reduce cycle time is to reduce WIP.
 
 > "Stop starting, start finishing."
-> — Lean saying
+> - Lean saying
 
 ## How to Set Your WIP Limit
 
@@ -36,18 +36,18 @@ A practical starting WIP limit for a team is **N+2**, where N is the number of t
 | 5 developers | 7 items | Same principle at larger scale |
 | 8 developers | 10 items | Buffer becomes proportionally smaller |
 
-**Why N+2 and not N?** Because some items will be blocked waiting for review, testing, or external dependencies. A small buffer prevents team members from being idle when their primary task is blocked. But the buffer should be small — two items, not ten.
+**Why N+2 and not N?** Because some items will be blocked waiting for review, testing, or external dependencies. A small buffer prevents team members from being idle when their primary task is blocked. But the buffer should be small - two items, not ten.
 
 ### Continuously Lower the Limit
 
 The N+2 formula is a starting point, not a destination. Once the team is comfortable with the initial limit, reduce it:
 
 1. **Start at N+2.** Run for 2-4 weeks. Observe where work gets stuck.
-2. **Reduce to N+1.** Tighten the limit. Some team members will occasionally be "idle" — this is a feature, not a bug. They should swarm on blocked items.
+2. **Reduce to N+1.** Tighten the limit. Some team members will occasionally be "idle" - this is a feature, not a bug. They should swarm on blocked items.
 3. **Reduce to N.** At this point, every team member is working on exactly one thing. Blocked work gets immediate attention because someone is always available to help.
 4. **Consider going below N.** Some teams find that pairing (two people, one item) further reduces cycle time. A team of 6 with a WIP limit of 3 means everyone is pairing.
 
-Each reduction will feel uncomfortable. That discomfort is the point — it exposes problems in your workflow that were previously hidden by excess WIP.
+Each reduction will feel uncomfortable. That discomfort is the point - it exposes problems in your workflow that were previously hidden by excess WIP.
 
 ## What Happens When You Hit the Limit
 
@@ -125,7 +125,7 @@ Before setting limits, make current WIP visible:
 ### Step 4: Reduce the Limit (Monthly)
 
 - Every month, consider reducing the limit by 1
-- Each reduction will expose new bottlenecks — this is the intended effect
+- Each reduction will expose new bottlenecks - this is the intended effect
 - Stop reducing when the team reaches a sustainable flow where items move from start to done predictably
 
 ## Key Pitfalls
@@ -140,7 +140,7 @@ This is the most common failure mode. Management sees "idle" developers and conc
 
 ### 3. "We have WIP limits but we also have expedite lanes for everything"
 
-If every urgent request bypasses the WIP limit, you do not have a WIP limit. Expedite lanes should be rare — one per week at most. If everything is urgent, nothing is.
+If every urgent request bypasses the WIP limit, you do not have a WIP limit. Expedite lanes should be rare - one per week at most. If everything is urgent, nothing is.
 
 ### 4. "We limit WIP per person but not per team"
 

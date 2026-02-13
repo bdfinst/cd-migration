@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 — Assess**
+**Phase 0 - Assess**
 {{% /pageinfo %}}
 
 Your [value stream map](../value-stream-mapping/) shows you where time goes. Your
@@ -51,7 +51,7 @@ continuous activity during development. Manual test suites have grown to cover e
 ever encountered, and running them takes longer with every release. The test environment is
 shared and frequently broken.
 
-**Migration path:** [Phase 1 — Testing Fundamentals](../../foundations/testing-fundamentals/)
+**Migration path:** [Phase 1 - Testing Fundamentals](../../foundations/testing-fundamentals/)
 
 ### Deployment Gates
 
@@ -65,7 +65,7 @@ of approval have been added. These approvals add delay but rarely catch issues t
 testing would not. They exist because the deployment process is not trustworthy, and they
 persist because removing them feels dangerous.
 
-**Migration path:** [Phase 2 — Pipeline Architecture](../../pipeline/pipeline-architecture/) and
+**Migration path:** [Phase 2 - Pipeline Architecture](../../pipeline/pipeline-architecture/) and
 building the automated quality evidence that makes manual approvals unnecessary.
 
 ### Environment Provisioning
@@ -79,7 +79,7 @@ pets rather than cattle. There is no automated way to create a production-like e
 demand. Teams queue for shared environments, and environment configuration has diverged from
 production.
 
-**Migration path:** [Phase 2 — Production-Like Environments](../../pipeline/production-like-environments/)
+**Migration path:** [Phase 2 - Production-Like Environments](../../pipeline/production-like-environments/)
 
 ### Code Review Delays
 
@@ -91,7 +91,7 @@ collaborative activity. Reviews happen when the reviewer "gets to it" rather tha
 near-immediate response. Large pull requests make review daunting, which increases queue time
 further.
 
-**Migration path:** [Phase 1 — Code Review](../../foundations/code-review/) and
+**Migration path:** [Phase 1 - Code Review](../../foundations/code-review/) and
 [Trunk-Based Development](../../foundations/trunk-based-development/) to reduce branch lifetime
 and review size.
 
@@ -118,7 +118,7 @@ Pull out your value stream map and follow this process:
 
 List every step in your value stream and sort them by wait time, longest first. Your biggest
 constraint is almost certainly in the top three. Wait time is more important than process time
-because wait time is pure waste — nothing is happening, no value is being created.
+because wait time is pure waste - nothing is happening, no value is being created.
 
 ### Step 2: Look for Rework Loops
 
@@ -158,14 +158,14 @@ Once you have identified your top constraint, map it to a migration phase:
 
 | If Your Top Constraint Is... | Start With... |
 |------------------------------|---------------|
-| Integration and merge conflicts | [Phase 1 — Trunk-Based Development](../../foundations/trunk-based-development/) |
-| Manual testing cycles | [Phase 1 — Testing Fundamentals](../../foundations/testing-fundamentals/) |
-| Large work items that take weeks | [Phase 1 — Work Decomposition](../../foundations/work-decomposition/) |
-| Code review bottlenecks | [Phase 1 — Code Review](../../foundations/code-review/) |
-| Manual or inconsistent deployments | [Phase 2 — Single Path to Production](../../pipeline/single-path-to-production/) |
-| Environment availability | [Phase 2 — Production-Like Environments](../../pipeline/production-like-environments/) |
-| Change approval processes | [Phase 2 — Pipeline Architecture](../../pipeline/pipeline-architecture/) |
-| Large batch sizes | [Phase 3 — Small Batches](../../optimize/small-batches/) |
+| Integration and merge conflicts | [Phase 1 - Trunk-Based Development](../../foundations/trunk-based-development/) |
+| Manual testing cycles | [Phase 1 - Testing Fundamentals](../../foundations/testing-fundamentals/) |
+| Large work items that take weeks | [Phase 1 - Work Decomposition](../../foundations/work-decomposition/) |
+| Code review bottlenecks | [Phase 1 - Code Review](../../foundations/code-review/) |
+| Manual or inconsistent deployments | [Phase 2 - Single Path to Production](../../pipeline/single-path-to-production/) |
+| Environment availability | [Phase 2 - Production-Like Environments](../../pipeline/production-like-environments/) |
+| Change approval processes | [Phase 2 - Pipeline Architecture](../../pipeline/pipeline-architecture/) |
+| Large batch sizes | [Phase 3 - Small Batches](../../optimize/small-batches/) |
 
 ## The Next Constraint
 
@@ -179,7 +179,7 @@ pipeline constraints. Phase 3 optimizes flow. You will cycle through constraint 
 and resolution throughout your migration.
 
 Plan to revisit your value stream map and metrics after addressing each major constraint. Your
-map from today will be outdated within weeks of starting your migration — and that is a sign of
+map from today will be outdated within weeks of starting your migration - and that is a sign of
 progress.
 
 ## Next Step

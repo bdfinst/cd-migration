@@ -7,9 +7,9 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 — Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 3 - Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
-Batch size is the single biggest lever for improving delivery performance. This page covers what batch size means at every level — deploy frequency, commit size, and story size — and provides concrete techniques for reducing it.
+Batch size is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
 {{% /pageinfo %}}
 
 ## Why Batch Size Matters
@@ -19,7 +19,7 @@ Large batches create large risks. When you deploy 50 changes at once, any failur
 This is not a theory. The DORA research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes this possible.
 
 > "If it hurts, do it more often, and bring the pain forward."
-> — Jez Humble, *Continuous Delivery*
+> - Jez Humble, *Continuous Delivery*
 
 ## Three Levels of Batch Size
 
@@ -58,7 +58,7 @@ How much scope each user story or work item contains.
 
 A story that takes a week to complete is a large batch. It means a week of work piles up before integration, a week of assumptions go untested, and a week of inventory sits in progress.
 
-**Target:** Every story should be completable — coded, tested, reviewed, and integrated — in two days or less. If it cannot be, it needs to be decomposed further.
+**Target:** Every story should be completable - coded, tested, reviewed, and integrated - in two days or less. If it cannot be, it needs to be decomposed further.
 
 ## Behavior-Driven Development for Decomposition
 
@@ -179,7 +179,7 @@ Almost anything can be decomposed further. Database migrations can be done in ba
 
 ### 3. "We tried small stories but our throughput dropped"
 
-This usually means the team is still working sequentially. Small stories require limiting WIP and swarming — see [Limiting WIP](../limiting-wip/). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
+This usually means the team is still working sequentially. Small stories require limiting WIP and swarming - see [Limiting WIP](../limiting-wip/). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
 
 ## Measuring Success
 
