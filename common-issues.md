@@ -36,8 +36,8 @@ Working document for deciding which problems to address and mapping them to solu
 10. **Painful merges** - Integration is a dreaded, multi-day event. Teams delay merging because
     it's painful, which makes the next merge even more painful.
 
-11. **No continuous integration** - The build has been red for weeks and nobody cares. "CI" means
-    a build server exists, not that anyone actually integrates continuously.
+11. ~~**No continuous integration**~~ **DONE** - The build has been red for weeks and nobody cares.
+    "CI" means a build server exists, not that anyone actually integrates continuously.
 
 12. **Cherry-pick releases** - Hand-selecting specific commits for release instead of deploying
     trunk. Indicates trunk isn't trusted to be deployable at all times.
@@ -353,6 +353,12 @@ Working document for deciding which problems to address and mapping them to solu
      development is especially difficult because integration conflicts can't be resolved in
      real time.
 
+106. **Manually triggered tests** - Tests exist but are not run automatically. Developers must
+     remember to run them locally before pushing, or someone must manually kick off the CI suite.
+     Tests that depend on a human remembering to run them do not get run consistently. Gaps in
+     execution become gaps in confidence, and the team drifts toward "we'll test it later" or
+     "it worked when I tried it."
+
 ---
 
 ## Summary by Category
@@ -361,7 +367,7 @@ Working document for deciding which problems to address and mapping them to solu
 |----------|-------|--------|
 | Delivery Speed & Frequency | 8 | 1-8 |
 | Branching & Integration | 7 | 9-15 |
-| Testing & Quality | 12 | 16-27 |
+| Testing & Quality | 13 | 16-27, 106 |
 | Work Decomposition & Planning | 8 | 28-35 |
 | Pipeline & Infrastructure | 13 | 36-48 |
 | Monitoring & Observability | 6 | 49-54 |
@@ -371,4 +377,4 @@ Working document for deciding which problems to address and mapping them to solu
 | Developer Experience | 7 | 84-90 |
 | Legacy & Migration-Specific | 7 | 91-97 |
 | Missing Practices | 8 | 98-105 |
-| **Total** | **105** | |
+| **Total** | **106** | |
