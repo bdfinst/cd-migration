@@ -210,8 +210,8 @@ During backlog refinement:
 
 ## Related Content
 
-- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - The practice guide for breaking work into small increments
-- [Small Batches](../../../under-construction/) <!-- target: optimize/small-batches --> - Batch size reduction at every level, from stories to commits to deploys
+- [Work Decomposition](../../../under-construction/) <!-- target: migration-path/foundations/work-decomposition --> - The practice guide for breaking work into small increments
+- [Small Batches](../../../under-construction/) <!-- target: migration-path/optimize/small-batches --> - Batch size reduction at every level, from stories to commits to deploys
 - [Too Much Work in Progress](../too-much-wip/) - Large items inflate WIP because they occupy a slot for days
 - [PR Review Bottlenecks](../pr-review-bottlenecks/) - Large items produce large PRs that reviewers avoid
-- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Daily integration requires items small enough to finish in a day or two
+- [Trunk-Based Development](../../../under-construction/) <!-- target: migration-path/foundations/trunk-based-development --> - Daily integration requires items small enough to finish in a day or two

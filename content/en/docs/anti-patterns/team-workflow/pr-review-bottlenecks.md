@@ -191,8 +191,8 @@ often the most effective solution.
 
 ## Related Content
 
-- [Code Review](../../../under-construction/) <!-- target: foundations/code-review --> - The practice guide for CD-compatible review techniques
-- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Daily integration requires fast reviews
+- [Code Review](../../../under-construction/) <!-- target: migration-path/foundations/code-review --> - The practice guide for CD-compatible review techniques
+- [Trunk-Based Development](../../../under-construction/) <!-- target: migration-path/foundations/trunk-based-development --> - Daily integration requires fast reviews
 - [Push-Based Work Assignment](../push-based-work-assignment/) - Push assignment makes reviews feel like a distraction from "my work"
 - [Too Much Work in Progress](../too-much-wip/) - Slow reviews create hidden WIP as PRs queue up
-- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - Small PRs start with small stories
+- [Work Decomposition](../../../under-construction/) <!-- target: migration-path/foundations/work-decomposition --> - Small PRs start with small stories

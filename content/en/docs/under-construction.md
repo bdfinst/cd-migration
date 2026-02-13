@@ -1,6 +1,7 @@
 ---
 title: "Under Construction"
 linkTitle: "Under Construction"
+toc_hide: true
 weight: 999
 description: >
   This content is being developed. Check back soon.

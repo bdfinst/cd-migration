@@ -227,7 +227,7 @@ test distribution even as the team works through the legacy E2E suite.
 
 ## Related Content
 
-- [Testing Fundamentals](../../../under-construction/) <!-- target: foundations/testing-fundamentals --> - The test architecture guide for CD pipelines
+- [Testing Fundamentals](../../../migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
 - [Unit Tests](../../../under-construction/) <!-- target: reference/testing/unit --> - Writing fast, deterministic tests for logic
 - [Functional Tests](../../../under-construction/) <!-- target: reference/testing/functional --> - Testing your system in isolation with test doubles
 - [Contract Tests](../../../under-construction/) <!-- target: reference/testing/contract --> - Verifying that test doubles match reality

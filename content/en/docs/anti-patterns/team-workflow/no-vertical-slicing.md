@@ -209,7 +209,7 @@ Break this cycle:
 
 ## Related Content
 
-- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - The practice guide for vertical slicing techniques
-- [Small Batches](../../../under-construction/) <!-- target: optimize/small-batches --> - Vertical slicing is how you achieve small batch size at the story level
+- [Work Decomposition](../../../under-construction/) <!-- target: migration-path/foundations/work-decomposition --> - The practice guide for vertical slicing techniques
+- [Small Batches](../../../under-construction/) <!-- target: migration-path/optimize/small-batches --> - Vertical slicing is how you achieve small batch size at the story level
 - [Work Items Too Large](../stories-too-large/) - Horizontal slices are often large because they span an entire layer
-- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Vertical slices enable daily integration because each is independently complete
+- [Trunk-Based Development](../../../under-construction/) <!-- target: migration-path/foundations/trunk-based-development --> - Vertical slices enable daily integration because each is independently complete

@@ -237,7 +237,7 @@ The target is under 10 minutes for the feedback loop that developers use on ever
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Build duration](../../reference/metrics/build-duration/) | < 10 minutes | Enables fast feedback and frequent integration |
+| [Build duration](../../../reference/metrics/build-duration/) | < 10 minutes | Enables fast feedback and frequent integration |
 | Build success rate | > 95% | Indicates reliable, reproducible builds |
 | Time from commit to build result | < 15 minutes (including queue time) | Measures the full feedback loop |
 | Developer ability to build locally | 100% of team | Confirms the build is portable and documented |

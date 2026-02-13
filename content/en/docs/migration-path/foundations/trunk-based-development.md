@@ -166,7 +166,7 @@ Tighten the window from 2 days to 1 day.
 
 - Every developer merges to trunk at least once per day, every day they write code
 - If work is not complete, use a feature flag or other technique to merge safely
-- Track [integration frequency](../../reference/metrics/integration-frequency/) as your primary metric
+- Track [integration frequency](../../../reference/metrics/integration-frequency/) as your primary metric
 
 ### Step 3: Ensure Trunk Stays Green (Week 2-3)
 
@@ -216,9 +216,9 @@ Track these metrics to verify your TBD adoption:
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Integration frequency](../../reference/metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
+| [Integration frequency](../../../reference/metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
 | Branch age | < 24 hours | Catches long-lived branches |
-| [Build duration](../../reference/metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
+| [Build duration](../../../reference/metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
 | Merge conflict frequency | Decreasing over time | Confirms small changes reduce conflicts |
 
 ## Further Reading

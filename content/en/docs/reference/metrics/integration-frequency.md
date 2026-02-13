@@ -94,7 +94,7 @@ frequent integration, every downstream metric suffers:
 To improve Integration Frequency:
 
 - Decompose stories into smaller increments using
-  [Behavior-Driven Development](/docs/foundations/work-decomposition/).
+  [Behavior-Driven Development](/docs/migration-path/foundations/work-decomposition/).
 - Use Test-Driven Development to produce modular, independently testable code.
 - Adopt feature flags or branch by abstraction to decouple integration from release.
 - Practice [Trunk-Based Development](https://trunkbaseddevelopment.com/) with

@@ -152,8 +152,8 @@ Per-person WIP limits miss the point. The goal is to limit team WIP so that team
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Work in progress](../../reference/metrics/work-in-progress/) | At or below team limit | Confirms the limit is being respected |
-| [Development cycle time](../../reference/metrics/development-cycle-time/) | Decreasing | Confirms that less WIP leads to faster delivery |
+| [Work in progress](../../../reference/metrics/work-in-progress/) | At or below team limit | Confirms the limit is being respected |
+| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Decreasing | Confirms that less WIP leads to faster delivery |
 | Items completed per week | Stable or increasing | Confirms that finishing more, starting less works |
 | Time items spend blocked | Decreasing | Confirms bottlenecks are being addressed |
 

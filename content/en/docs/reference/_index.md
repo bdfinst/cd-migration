@@ -15,6 +15,7 @@ Use it alongside the phase guides for detailed definitions, metrics, and pattern
 - **[Glossary](glossary/)** - Key terms and definitions
 - **[CD Dependency Tree](cd-dependency-tree/)** - How CD practices depend on each other
 - **[Common Blockers](common-blockers/)** - Frequently encountered obstacles and how to address them
+- **[Defect Sources](../defect-sources/)** - Defect causes across the delivery value stream with detection methods and AI enhancements
 - **[DORA Capabilities](dora-capabilities/)** - The capabilities that drive software delivery performance
 - **[Resources](resources/)** - Books, videos, and further reading
 - **[Metrics](metrics/)** - Detailed definitions for key delivery metrics

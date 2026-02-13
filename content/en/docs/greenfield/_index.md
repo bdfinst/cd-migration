@@ -111,7 +111,7 @@ There is no reason to start with long-lived branches. From commit one:
 - The pipeline runs on every integration to trunk
 - Trunk is always in a deployable state
 
-See [Trunk-Based Development](../foundations/trunk-based-development/) for the practices.
+See [Trunk-Based Development](../migration-path/foundations/trunk-based-development/) for the practices.
 
 ### Test architecture from the start
 
@@ -123,14 +123,14 @@ Design your test architecture before you have tests to migrate. Establish:
 - Contract tests for every external dependency
 - A clear rule: everything that blocks deployment is deterministic
 
-See [Testing Fundamentals](../foundations/testing-fundamentals/) for the full test architecture.
+See [Testing Fundamentals](../migration-path/foundations/testing-fundamentals/) for the full test architecture.
 
 ### Small, vertical slices from the start
 
 Decompose the first features into small, independently deployable increments. Establish the habit
 of delivering thin vertical slices before the team has a chance to develop a batch mindset.
 
-See [Work Decomposition](../foundations/work-decomposition/) for slicing techniques.
+See [Work Decomposition](../migration-path/foundations/work-decomposition/) for slicing techniques.
 
 ## Greenfield Checklist
 
@@ -174,8 +174,8 @@ Use this checklist to verify your new project is set up for CD from the start.
 
 ## Related Content
 
-- [Testing Fundamentals](../foundations/testing-fundamentals/) - Build the right test architecture from the start
-- [Trunk-Based Development](../foundations/trunk-based-development/) - The branching model for CD
-- [Pipeline Architecture](../pipeline/pipeline-architecture/) - Design your pipeline structure
-- [Work Decomposition](../foundations/work-decomposition/) - Deliver in small, vertical slices
-- [Feature Flags](../optimize/feature-flags/) - Decouple deployment from release
+- [Testing Fundamentals](../migration-path/foundations/testing-fundamentals/) - Build the right test architecture from the start
+- [Trunk-Based Development](../migration-path/foundations/trunk-based-development/) - The branching model for CD
+- [Pipeline Architecture](../migration-path/pipeline/pipeline-architecture/) - Design your pipeline structure
+- [Work Decomposition](../migration-path/foundations/work-decomposition/) - Deliver in small, vertical slices
+- [Feature Flags](../migration-path/optimize/feature-flags/) - Decouple deployment from release

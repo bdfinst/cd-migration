@@ -187,10 +187,10 @@ This usually means the team is still working sequentially. Small stories require
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Development cycle time](../../reference/metrics/development-cycle-time/) | < 2 days per story | Confirms stories are small enough to complete quickly |
-| [Integration frequency](../../reference/metrics/integration-frequency/) | Multiple times per day | Confirms commits are small and frequent |
-| [Release frequency](../../reference/metrics/release-frequency/) | Daily or more | Confirms deploys are routine |
-| [Change fail rate](../../reference/metrics/change-fail-rate/) | Decreasing | Confirms small changes reduce failure risk |
+| [Development cycle time](../../../reference/metrics/development-cycle-time/) | < 2 days per story | Confirms stories are small enough to complete quickly |
+| [Integration frequency](../../../reference/metrics/integration-frequency/) | Multiple times per day | Confirms commits are small and frequent |
+| [Release frequency](../../../reference/metrics/release-frequency/) | Daily or more | Confirms deploys are routine |
+| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Decreasing | Confirms small changes reduce failure risk |
 
 ## Next Step
 

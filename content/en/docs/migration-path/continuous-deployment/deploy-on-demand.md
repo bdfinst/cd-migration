@@ -194,11 +194,11 @@ Partial continuous deployment creates a split experience: application changes fl
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Deployment frequency](../../reference/metrics/release-frequency/) | Multiple per day | Confirms the pipeline is deploying every change |
-| [Lead time](../../reference/metrics/lead-time/) | < 1 hour from commit to production | Confirms no manual gates are adding delay |
+| [Deployment frequency](../../../reference/metrics/release-frequency/) | Multiple per day | Confirms the pipeline is deploying every change |
+| [Lead time](../../../reference/metrics/lead-time/) | < 1 hour from commit to production | Confirms no manual gates are adding delay |
 | Manual interventions per deploy | Zero | Confirms the process is fully automated |
-| [Change failure rate](../../reference/metrics/change-fail-rate/) | Stable or improving | Confirms automation is not introducing new failures |
-| [MTTR](../../reference/metrics/mean-time-to-repair/) | < 15 minutes | Confirms automated rollback is working |
+| [Change failure rate](../../../reference/metrics/change-fail-rate/) | Stable or improving | Confirms automation is not introducing new failures |
+| [MTTR](../../../reference/metrics/mean-time-to-repair/) | < 15 minutes | Confirms automated rollback is working |
 
 ## Next Step
 

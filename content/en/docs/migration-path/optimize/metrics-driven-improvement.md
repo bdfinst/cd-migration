@@ -137,7 +137,7 @@ These affect the environment in which teams operate:
 - Job satisfaction
 - Transformational leadership
 
-For a detailed breakdown, see the [DORA Capabilities reference](../../reference/dora-capabilities/).
+For a detailed breakdown, see the [DORA Capabilities reference](../../../reference/dora-capabilities/).
 
 ## The Improvement Kata
 

@@ -31,7 +31,7 @@ work items take a week.
 
 **What to do:** Adopt vertical slicing. Every story should deliver a thin slice of user-visible
 functionality across all layers of the system. Target a maximum of two days from start to
-done. See [Work Decomposition](../../foundations/work-decomposition/).
+done. See [Work Decomposition](../../migration-path/foundations/work-decomposition/).
 
 ### No Vertical Slicing
 
@@ -61,7 +61,7 @@ delivery pipeline sees sporadic, large commits rather than a steady stream of sm
 
 **What to do:** Set explicit WIP limits. A team of 6 developers should have no more than 3-4
 items in progress at any time. The goal is to finish work, not to start it. See
-[Limiting WIP](../../optimize/limiting-wip/).
+[Limiting WIP](../../migration-path/optimize/limiting-wip/).
 
 ### Distant Date Commitments
 
@@ -110,8 +110,8 @@ during feature sprints because "we'll fix it in hardening."
 **What to do:** Eliminate the need for hardening by building quality in. Adopt TDD to ensure
 test coverage. Use a CI pipeline that runs the full test suite on every commit. Define
 "deployable" as an automated pipeline outcome, not as a manual assessment. See
-[Testing Fundamentals](../../foundations/testing-fundamentals/) and
-[Deployable Definition](../../pipeline/deployable-definition/).
+[Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) and
+[Deployable Definition](../../migration-path/pipeline/deployable-definition/).
 
 ### Manual Regression Testing
 
@@ -126,7 +126,7 @@ The longer regression takes, the less frequently you can deploy. This is the opp
 **What to do:** Automate regression tests. Not all at once -- start with the highest-risk
 areas and the tests that block deployments most frequently. Your automated test suite should
 give you the same confidence as manual regression, but in minutes rather than days. See
-[Testing Fundamentals](../../foundations/testing-fundamentals/).
+[Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/).
 
 ## Organizational Anti-Patterns
 
@@ -143,7 +143,7 @@ persist indefinitely.
 **What to do:** Limit retrospective action items to one or two per sprint and track them as
 work items with the same visibility as feature work. Make the action items specific and
 completable. "Improve testing" is not an action item. "Automate the login flow regression
-test" is. See [Retrospectives](../../optimize/retrospectives/).
+test" is. See [Retrospectives](../../migration-path/optimize/retrospectives/).
 
 ### Team Instability
 
@@ -170,8 +170,8 @@ the cause. Rollback means losing the entire sprint's work. Feedback is delayed b
 
 **What to do:** Start deploying individual stories as they are completed, not at the end of
 the sprint. This requires a working CI pipeline, trunk-based development, and the ability to
-deploy independently. These are the outcomes of [Phase 1](../../foundations/) and
-[Phase 2](../../pipeline/).
+deploy independently. These are the outcomes of [Phase 1](../../migration-path/foundations/) and
+[Phase 2](../../migration-path/pipeline/).
 
 ## Anti-Patterns Summary
 
@@ -180,23 +180,23 @@ addresses it.
 
 | Blocker | Root Cause | Migration Phase |
 |---------|-----------|-----------------|
-| Stories take a week or more | No vertical slicing discipline | [Phase 1 -- Work Decomposition](../../foundations/work-decomposition/) |
-| Too much WIP | No WIP limits; starting over finishing | [Phase 3 -- Limiting WIP](../../optimize/limiting-wip/) |
-| Hardening sprints | Quality not built in during development | [Phase 1 -- Testing Fundamentals](../../foundations/testing-fundamentals/) |
-| Manual regression testing | Test automation insufficient | [Phase 1 -- Testing Fundamentals](../../foundations/testing-fundamentals/) |
-| One delivery per sprint | Batch mindset; no pipeline | [Phase 2 -- Pipeline](../../pipeline/) |
-| Meaningless retrospectives | No accountability for improvement actions | [Phase 3 -- Retrospectives](../../optimize/retrospectives/) |
-| Velocity as productivity metric | Measuring output instead of outcomes | [Phase 3 -- Metrics-Driven Improvement](../../optimize/metrics-driven-improvement/) |
+| Stories take a week or more | No vertical slicing discipline | [Phase 1 -- Work Decomposition](../../migration-path/foundations/work-decomposition/) |
+| Too much WIP | No WIP limits; starting over finishing | [Phase 3 -- Limiting WIP](../../migration-path/optimize/limiting-wip/) |
+| Hardening sprints | Quality not built in during development | [Phase 1 -- Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) |
+| Manual regression testing | Test automation insufficient | [Phase 1 -- Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) |
+| One delivery per sprint | Batch mindset; no pipeline | [Phase 2 -- Pipeline](../../migration-path/pipeline/) |
+| Meaningless retrospectives | No accountability for improvement actions | [Phase 3 -- Retrospectives](../../migration-path/optimize/retrospectives/) |
+| Velocity as productivity metric | Measuring output instead of outcomes | [Phase 3 -- Metrics-Driven Improvement](../../migration-path/optimize/metrics-driven-improvement/) |
 | Team instability | Organizational project-based staffing | Organizational change (all phases) |
 | Distant date commitments | Fixed-scope commitments made too early | Incremental delivery + stakeholder education |
-| Flaky tests tolerated | Tests not maintained as production code | [Phase 1 -- Testing Fundamentals](../../foundations/testing-fundamentals/) |
-| Long-lived feature branches | No TBD practice | [Phase 1 -- Trunk-Based Development](../../foundations/trunk-based-development/) |
-| Manual deployments | No deployment automation | [Phase 2 -- Single Path to Production](../../pipeline/single-path-to-production/) |
+| Flaky tests tolerated | Tests not maintained as production code | [Phase 1 -- Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) |
+| Long-lived feature branches | No TBD practice | [Phase 1 -- Trunk-Based Development](../../migration-path/foundations/trunk-based-development/) |
+| Manual deployments | No deployment automation | [Phase 2 -- Single Path to Production](../../migration-path/pipeline/single-path-to-production/) |
 
 {{% alert title="Where to Start" %}}
 If you recognize many of these blockers in your team, do not try to address them all at once.
 Use the [CD Dependency Tree](../cd-dependency-tree/) to understand which practices are
-prerequisite to others, and use your [value stream map](../../assess/value-stream-mapping/)
+prerequisite to others, and use your [value stream map](../../migration-path/assess/value-stream-mapping/)
 to identify which blocker is the current constraint. Fix the biggest constraint first, then
 move to the next.
 {{% /alert %}}

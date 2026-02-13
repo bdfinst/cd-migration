@@ -227,6 +227,11 @@ The pipeline must record which changes were agent-generated, which agent generat
 
 ## Getting Started with Agentic CD
 
+Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices
+in place. The [AI Adoption Roadmap](../../../under-construction/) <!-- target: brownfield/ai-adoption-roadmap --> provides a
+step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced
+delivery friction - all before accelerating with AI coding.
+
 ### Phase 1: Agent as Assistant
 
 The agent helps human developers write code, but the human makes all decisions and commits all changes. The pipeline does not know or care about agent involvement.

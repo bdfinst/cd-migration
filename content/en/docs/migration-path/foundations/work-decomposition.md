@@ -238,9 +238,9 @@ Each task results in a commit to trunk. The story is completed through a series 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
 | Story cycle time | < 2 days from start to trunk | Confirms stories are small enough |
-| [Development cycle time](../../reference/metrics/development-cycle-time/) | Decreasing | Shows improved flow from smaller work |
+| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Decreasing | Shows improved flow from smaller work |
 | Stories completed per week | Increasing (with same team size) | Indicates better decomposition and less rework |
-| [Work in progress](../../reference/metrics/work-in-progress/) | Decreasing | Fewer large stories blocking the pipeline |
+| [Work in progress](../../../reference/metrics/work-in-progress/) | Decreasing | Fewer large stories blocking the pipeline |
 
 ## Next Step
 
