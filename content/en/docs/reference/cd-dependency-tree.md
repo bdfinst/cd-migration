@@ -127,7 +127,7 @@ or wrong. If tests are unreliable, CI is unreliable. And if CI is unreliable, CD
 ### Work Decomposition enables Small Batches enables CD
 
 You cannot deploy small batches if your work items are large. Work decomposition -- breaking
-features into [vertical slices](glossary/#vertical-sliced-story) that can each be completed in
+features into [vertical slices](../glossary/#vertical-sliced-story) that can each be completed in
 two days or less -- is what makes small batches possible. Small batches in turn reduce
 deployment risk and enable the rapid feedback that CD depends on.
 

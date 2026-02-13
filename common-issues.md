@@ -68,8 +68,8 @@ Working document for deciding which problems to address and mapping them to solu
 20. **Testing only at the end** - QA as a phase after development. Testers are downstream
     consumers of developer output rather than integrated team members.
 
-21. **Inverted test pyramid** - Most tests are slow end-to-end/UI tests. Few unit tests. The
-    test suite is slow, brittle, and expensive to maintain.
+21. ~~**Inverted test pyramid**~~ **DONE** - Most tests are slow end-to-end/UI tests. Few unit
+    tests. The test suite is slow, brittle, and expensive to maintain.
 
 22. **No testing in production** - No smoke tests, no synthetic monitoring, no canary analysis.
     The team only discovers production issues when users report them.
@@ -91,11 +91,12 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Work Decomposition & Planning
 
-28. **Stories too large** - User stories regularly take more than a week. Developers work on a
-    single story for days without integrating.
+28. ~~**Stories too large**~~ **DONE** (as "Work Items Too Large") - User stories regularly take
+    more than a week. Developers work on a single story for days without integrating.
 
-29. **No vertical slicing** - Stories organized by technical layer ("build the API," "build the
-    UI") rather than by user-visible behavior. Nothing is deployable until all layers are done.
+29. ~~**No vertical slicing**~~ **DONE** - Stories organized by technical layer ("build the API,"
+    "build the UI") rather than by user-visible behavior. Nothing is deployable until all layers
+    are done.
 
 30. ~~**Too much work in progress**~~ **DONE** - Every developer on a different story. 8 items in
     progress, 0 done. Nothing gets the focused attention needed to finish.
