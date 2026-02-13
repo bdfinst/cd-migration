@@ -1,0 +1,10 @@
+{
+  "default": true,
+  "MD010": { "code_blocks": false },
+  "MD013": false,
+  "MD024": false,
+  "MD033": { "allowed_elements": ["div", "h6", "br"] },
+  "MD036": false,
+  "MD040": false,
+  "MD060": false
+}

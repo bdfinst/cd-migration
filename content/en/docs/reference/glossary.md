@@ -1,0 +1,285 @@
+---
+title: "Glossary"
+linkTitle: "Glossary"
+weight: 1
+description: >
+  Key terms and definitions used throughout this guide.
+---
+
+{{% pageinfo %}}
+Adapted from [Dojo Consortium](https://dojoconsortium.org)
+{{% /pageinfo %}}
+
+This glossary defines the terms used across every phase of the CD migration guide. Where a term
+has a specific meaning within a migration phase, the relevant phase is noted.
+
+## A
+
+### Artifact
+
+A packaged, versioned output of a build process (e.g., a container image, JAR file, or binary).
+In a CD pipeline, artifacts are built once and promoted through environments without
+modification. See [Immutable Artifacts](../../pipeline/immutable-artifacts/).
+
+## B
+
+### Baseline Metrics
+
+The set of delivery measurements taken before beginning a migration, used as the benchmark
+against which improvement is tracked. See [Phase 0 -- Baseline Metrics](../../assess/baseline-metrics/).
+
+### Batch Size
+
+The amount of change included in a single deployment. Smaller batches reduce risk, simplify
+debugging, and shorten feedback loops. Reducing batch size is a core focus of
+[Phase 3 -- Small Batches](../../optimize/small-batches/).
+
+### BDD (Behavior-Driven Development)
+
+A collaboration practice where developers, testers, and product representatives define expected
+behavior using structured examples before code is written. BDD produces executable
+specifications that serve as both documentation and automated tests. BDD supports effective
+[work decomposition](../../foundations/work-decomposition/) by forcing clarity about what a
+story actually means before development begins.
+
+### Blue-Green Deployment
+
+A deployment strategy that maintains two identical production environments. New code is deployed
+to the inactive environment, verified, and then traffic is switched. See
+[Progressive Rollout](../../continuous-deployment/progressive-rollout/).
+
+### Branch Lifetime
+
+The elapsed time between creating a branch and merging it to trunk. CD requires branch lifetimes
+measured in hours, not days or weeks. Long branch lifetimes are a symptom of poor work
+decomposition or slow code review. See [Trunk-Based Development](../../foundations/trunk-based-development/).
+
+## C
+
+### Canary Deployment
+
+A deployment strategy where a new version is rolled out to a small subset of users or servers
+before full rollout. If the canary shows no issues, the deployment proceeds to 100%. See
+[Progressive Rollout](../../continuous-deployment/progressive-rollout/).
+
+### CD (Continuous Delivery)
+
+The practice of ensuring that every change to the codebase is always in a deployable state and
+can be released to production at any time through a fully automated pipeline. Continuous
+delivery does not require that every change is deployed automatically, but it requires that
+every change *could be* deployed automatically. This is the primary goal of this migration
+guide.
+
+### Change Failure Rate (CFR)
+
+The percentage of deployments to production that result in a degraded service and require
+remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. See
+[Metrics -- Change Fail Rate](../metrics/change-fail-rate/).
+
+### CI (Continuous Integration)
+
+The practice of integrating code changes to a shared trunk at least once per day, where each
+integration is verified by an automated build and test suite. CI is a prerequisite for CD, not
+a synonym. A team that runs automated builds on feature branches but merges weekly is not doing
+CI. See [Build Automation](../../foundations/build-automation/).
+
+### Constraint
+
+In the Theory of Constraints, the single factor most limiting the throughput of a system.
+During a CD migration, your job is to find and fix constraints in order of impact. See
+[Identify Constraints](../../assess/identify-constraints/).
+
+### Continuous Deployment
+
+An extension of continuous delivery where every change that passes the automated pipeline is
+deployed to production without manual intervention. Continuous delivery ensures every change
+*can* be deployed; continuous deployment ensures every change *is* deployed. See
+[Phase 4 -- Continuous Deployment](../../continuous-deployment/).
+
+## D
+
+### Deployable
+
+A change that has passed all automated quality gates defined by the team and is ready for
+production deployment. The definition of deployable is codified in the pipeline, not decided
+by a person at deployment time. See [Deployable Definition](../../pipeline/deployable-definition/).
+
+### Deployment Frequency
+
+How often an organization successfully deploys to production. One of the four DORA metrics.
+See [Metrics -- Release Frequency](../metrics/release-frequency/).
+
+### Development Cycle Time
+
+The elapsed time from the first commit on a change to that change being deployable. This
+measures the efficiency of your development and pipeline process, excluding upstream wait times.
+See [Metrics -- Development Cycle Time](../metrics/development-cycle-time/).
+
+### DORA Metrics
+
+The four key metrics identified by the DORA (DevOps Research and Assessment) research program
+as predictive of software delivery performance: deployment frequency, lead time for changes,
+change failure rate, and mean time to restore service. See [DORA Capabilities](../dora-capabilities/).
+
+## F
+
+### Feature Flag
+
+A mechanism that allows code to be deployed to production with new functionality disabled,
+then selectively enabled for specific users, percentages of traffic, or environments. Feature
+flags decouple deployment from release. See [Feature Flags](../../optimize/feature-flags/).
+
+### Flow Efficiency
+
+The ratio of active work time to total elapsed time in a delivery process. A flow efficiency of
+15% means that for every hour of actual work, roughly 5.7 hours are spent waiting. Value stream
+mapping reveals your flow efficiency. See [Value Stream Mapping](../../assess/value-stream-mapping/).
+
+## H
+
+### Hard Dependency
+
+A dependency that must be resolved before work can proceed. In delivery, hard dependencies
+include things like waiting for another team's API, a shared database migration, or an
+infrastructure provisioning request. Hard dependencies create queues and increase lead time.
+Eliminating hard dependencies is a focus of
+[Architecture Decoupling](../../optimize/architecture-decoupling/).
+
+### Hardening Sprint
+
+A sprint dedicated to stabilizing and fixing defects before a release. The existence of
+hardening sprints is a strong signal that quality is not being built in during regular
+development. Teams practicing CD do not need hardening sprints because every commit is
+deployable. See [Common Blockers](../common-blockers/).
+
+## I
+
+### Immutable Artifact
+
+A build artifact that is never modified after creation. The same artifact that is tested in the
+pipeline is the exact artifact that is deployed to production. Configuration differences between
+environments are handled externally. See [Immutable Artifacts](../../pipeline/immutable-artifacts/).
+
+### Integration Frequency
+
+How often a developer integrates code to the shared trunk. CD requires at least daily
+integration. See [Metrics -- Integration Frequency](../metrics/integration-frequency/).
+
+## L
+
+### Lead Time for Changes
+
+The elapsed time from when a commit is made to when it is successfully running in production.
+One of the four DORA metrics. See [Metrics -- Lead Time](../metrics/lead-time/).
+
+## M
+
+### Mean Time to Restore (MTTR)
+
+The elapsed time from when a production incident is detected to when service is restored. One
+of the four DORA metrics. Teams practicing CD have short MTTR because deployments are small,
+rollback is automated, and the cause of failure is easy to identify. See
+[Metrics -- Mean Time to Repair](../metrics/mean-time-to-repair/).
+
+## P
+
+### Pipeline
+
+The automated sequence of build, test, and deployment stages that every change passes through
+on its way to production. See [Phase 2 -- Pipeline](../../pipeline/).
+
+### Production-Like Environment
+
+A test or staging environment that matches production in configuration, infrastructure, and
+data characteristics. Testing in environments that differ from production is a common source
+of deployment failures. See [Production-Like Environments](../../pipeline/production-like-environments/).
+
+## R
+
+### Rollback
+
+The ability to revert a production deployment to a previous known-good state. CD requires
+automated rollback that takes minutes, not hours. See [Rollback](../../pipeline/rollback/).
+
+## S
+
+### Soft Dependency
+
+A dependency that can be worked around or deferred. Unlike hard dependencies, soft dependencies
+do not block work but may influence sequencing or design decisions. Feature flags can turn many
+hard dependencies into soft dependencies by allowing incomplete integrations to be deployed in
+a disabled state.
+
+### Story Points
+
+A relative estimation unit used by some teams to forecast effort. Story points are frequently
+misused as a productivity metric, which creates perverse incentives to inflate estimates and
+discourages the small work decomposition that CD requires. If your organization uses story
+points as a velocity target, see [Common Blockers](../common-blockers/).
+
+## T
+
+### TBD (Trunk-Based Development)
+
+A source-control branching model where all developers integrate to a single shared branch
+(trunk) at least once per day. Short-lived feature branches (less than a day) are acceptable.
+Long-lived feature branches are not. TBD is a prerequisite for CI, which is in turn a
+prerequisite for CD. See [Trunk-Based Development](../../foundations/trunk-based-development/).
+
+### TDD (Test-Driven Development)
+
+A development practice where tests are written before the production code that makes them
+pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
+a fast, reliable test suite. TDD feeds into the [testing fundamentals](../../foundations/testing-fundamentals/)
+required in Phase 1.
+
+### Toil
+
+Repetitive, manual work related to maintaining a production service that is automatable, has
+no lasting value, and scales linearly with service size. Examples include manual deployments,
+manual environment provisioning, and manual test execution. Eliminating toil is a primary
+benefit of building a CD pipeline.
+
+## U
+
+### Unplanned Work
+
+Work that arrives outside the planned backlog -- production incidents, urgent bug fixes,
+ad hoc requests. High levels of unplanned work indicate systemic quality or operational
+problems. Teams with high change failure rates generate their own unplanned work through
+failed deployments. Reducing unplanned work is a natural outcome of improving change failure
+rate through CD practices.
+
+## V
+
+### Value Stream Map
+
+A visual representation of every step required to deliver a change from request to production,
+showing process time, wait time, and percent complete and accurate at each step. The
+foundational tool for [Phase 0 -- Assess](../../assess/value-stream-mapping/).
+
+### Vertical Sliced Story
+
+A user story that delivers a thin slice of functionality across all layers of the system
+(UI, API, database, etc.) rather than a horizontal slice that implements one layer completely.
+Vertical slices are independently deployable and testable, which is essential for CD. Vertical
+slicing is a core technique in [Work Decomposition](../../foundations/work-decomposition/).
+
+## W
+
+### WIP (Work in Progress)
+
+The number of work items that have been started but not yet completed. High WIP increases lead
+time, reduces focus, and increases context-switching overhead. Limiting WIP is a key practice
+in [Phase 3 -- Limiting WIP](../../optimize/limiting-wip/).
+
+### Working Agreement
+
+An explicit, documented set of team norms covering how work is defined, reviewed, tested, and
+deployed. Working agreements create shared expectations and reduce friction. See
+[Working Agreements](../../foundations/working-agreements/).
+
+---
+
+> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
+> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

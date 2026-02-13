@@ -1,0 +1,96 @@
+baseURL = "https://cd-migration.org/"
+title = "CD Migration Guide"
+description = "A phased migration guide from quarterly releases to continuous deployment"
+
+enableGitInfo = false
+enableRobotsTXT = true
+
+disableKinds = ["taxonomy", "term"]
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[permalinks]
+blog = "/:section/:year/:month/:day/:slug/"
+
+[imaging]
+anchor = "Smart"
+quality = 75
+resampleFilter = "CatmullRom"
+
+[markup.goldmark.parser.attribute]
+block = true
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+style = "tango"
+
+[outputs]
+section = ["HTML", "RSS", "print"]
+
+[[module.mounts]]
+source = "content/en"
+target = "content"
+
+[languages.en]
+languageName = "English"
+
+  [languages.en.params]
+    description = "A phased migration guide from quarterly releases to continuous deployment"
+    title = "CD Migration Guide"
+
+[params]
+images = ["/images/cd-migration-logo.png"]
+github_branch = "main"
+github_repo = "https://github.com/Minimum-CD/cd-migration"
+github_project_repo = "https://github.com/Minimum-CD/cd-migration"
+
+offlineSearch = true
+
+prism_syntax_highlighting = true
+pygmentsCodeFences = true
+pygmentsStyle = "tango"
+pygmentsUseClasses = false
+pygmentsUseClassic = false
+
+[params.taxonomy]
+taxonomyCloud = ["categories", "tags"]
+taxonomyCloudTitle = ["Categories", "Tag Cloud"]
+taxonomyPageHeader = ["categories", "tags"]
+
+[params.copyright]
+authors = "CD Migration Authors | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) | "
+from_year = 2025
+
+[params.ui]
+breadcrumb_disable = false
+navbar_translucent_over_cover_disable = true
+show_nav_title = true
+sidebar_cache_limit = 10
+sidebar_menu_compact = true
+sidebar_menu_foldable = true
+sidebar_search_disable = true
+
+[params.ui.feedback]
+enable = false
+
+[params.ui.readingtime]
+enable = true
+
+[params.links]
+[[params.links.developer]]
+desc = "Contribute!"
+icon = "fab fa-github"
+name = "GitHub"
+url = "https://github.com/Minimum-CD/cd-migration"
+
+[module]
+proxy = "direct"
+  [module.hugoVersion]
+    extended = true
+    min = "0.73.0"
+  [[module.imports]]
+    path = "github.com/google/docsy"
