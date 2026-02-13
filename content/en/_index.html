@@ -4,43 +4,76 @@ linkTitle = "CD Migration Guide"
 +++
 
 {{< blocks/cover title="Continuous Delivery for Every Team" image_anchor="top" height="min" color="dark" >}}
-<p class="lead mt-4">Whether you're starting fresh or migrating an existing system, this guide gives you the practices, patterns, and solutions to deploy every change with confidence.</p>
+<p class="lead mt-2">Practices, patterns, and solutions to deploy every change with confidence.</p>
 {{< /blocks/cover >}}
 
-{{% blocks/lead color="primary" %}}
-## Start Where You Are
+{{< blocks/section color="white" type="section" >}}
 
-Every team's path to continuous delivery is different. Choose the entry point that matches your situation.
-{{% /blocks/lead %}}
+<div class="landing-section">
+  <div class="landing-section-title">Start Here</div>
+  <div class="entry-cards">
+    <a href="/docs/anti-patterns/" class="entry-card">
+      <div class="entry-icon"><i class="fas fa-triangle-exclamation"></i></div>
+      <div class="entry-title">Anti-Patterns</div>
+      <p class="entry-desc">Something slowing you down? Find the problem and follow the fix.</p>
+    </a>
+    <a href="/docs/brownfield/" class="entry-card">
+      <div class="entry-icon"><i class="fas fa-arrows-rotate"></i></div>
+      <div class="entry-title">Brownfield Migration</div>
+      <p class="entry-desc">Migrate an existing system to CD with a phased approach.</p>
+    </a>
+    <a href="/docs/greenfield/" class="entry-card">
+      <div class="entry-icon"><i class="fas fa-seedling"></i></div>
+      <div class="entry-title">Greenfield CD</div>
+      <p class="entry-desc">Starting fresh? Build continuous delivery in from day one.</p>
+    </a>
+  </div>
+</div>
 
-{{< blocks/section color="white" >}}
+<div class="landing-section-alt">
+  <div class="landing-section-title">Migration Phases</div>
+  <div class="phase-track">
+    <div class="phase-step">
+      <a href="/docs/assess/" class="phase-card">
+        <div class="phase-number">Phase 0</div>
+        <div class="phase-title">Assess</div>
+      </a>
+      <span class="phase-arrow"><i class="fas fa-chevron-right"></i></span>
+    </div>
+    <div class="phase-step">
+      <a href="/docs/foundations/" class="phase-card">
+        <div class="phase-number">Phase 1</div>
+        <div class="phase-title">Foundations</div>
+      </a>
+      <span class="phase-arrow"><i class="fas fa-chevron-right"></i></span>
+    </div>
+    <div class="phase-step">
+      <a href="/docs/pipeline/" class="phase-card">
+        <div class="phase-number">Phase 2</div>
+        <div class="phase-title">Pipeline</div>
+      </a>
+      <span class="phase-arrow"><i class="fas fa-chevron-right"></i></span>
+    </div>
+    <div class="phase-step">
+      <a href="/docs/optimize/" class="phase-card">
+        <div class="phase-number">Phase 3</div>
+        <div class="phase-title">Optimize</div>
+      </a>
+      <span class="phase-arrow"><i class="fas fa-chevron-right"></i></span>
+    </div>
+    <div class="phase-step">
+      <a href="/docs/continuous-deployment/" class="phase-card">
+        <div class="phase-number">Phase 4</div>
+        <div class="phase-title">CD</div>
+      </a>
+    </div>
+  </div>
+</div>
 
-{{% blocks/feature icon="fa-triangle-exclamation" title="Anti-Patterns" url="/docs/anti-patterns/" %}}
-Something is slowing your team down? Start here. Find the anti-pattern you're facing and follow the path to solving it.
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fa-seedling" title="CD for Greenfield" url="/docs/greenfield/" %}}
-Starting a new project? Build continuous delivery in from day one instead of retrofitting it later.
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fa-arrows-rotate" title="Brownfield Migration" url="/docs/brownfield/" %}}
-Already have a running system? A phased approach to migrating existing applications and teams to CD.
-{{% /blocks/feature %}}
-
-{{< /blocks/section >}}
-
-{{< blocks/section color="light" >}}
-
-{{% blocks/feature icon="fa-layer-group" title="Foundations" url="/docs/foundations/" %}}
-Trunk-based development, testing fundamentals, small work decomposition, and the practices that make CD possible.
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fa-timeline" title="Pipeline" url="/docs/pipeline/" %}}
-A single, deterministic pipeline that deploys immutable artifacts through automated quality gates.
-{{% /blocks/feature %}}
-
-{{% blocks/feature icon="fa-book" title="Reference" url="/docs/reference/" %}}
-Glossary, metrics definitions, testing guides, common blockers, and additional resources.
-{{% /blocks/feature %}}
+<div class="landing-section">
+  <div class="reference-bar">
+    <a href="/docs/reference/"><i class="fas fa-book"></i> Reference: Glossary, Metrics, Testing Guides, and Resources</a>
+  </div>
+</div>
 
 {{< /blocks/section >}}

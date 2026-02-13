@@ -1,0 +1,215 @@
+// Landing page styles - scoped to .td-home to avoid affecting docs pages
+
+.td-home {
+
+  // Compact hero
+  .td-cover-block {
+    padding: 2rem 0 1.5rem;
+    min-height: auto !important;
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  // Section titles
+  .landing-section-title {
+    text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  // Start Here - 3-column card grid
+  .entry-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .entry-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    transition: box-shadow 0.15s, border-color 0.15s;
+    text-align: center;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+      border-color: #224968;
+      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.15);
+    }
+
+    .entry-icon {
+      font-size: 1.5rem;
+      color: #224968;
+      margin-bottom: 0.4rem;
+    }
+
+    .entry-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .entry-desc {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  // Migration Phases - horizontal progression
+  .phase-track {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .phase-step {
+    display: flex;
+    align-items: center;
+
+    &:last-child .phase-arrow {
+      display: none;
+    }
+  }
+
+  .phase-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    min-width: 120px;
+    transition: box-shadow 0.15s, border-color 0.15s;
+
+    &:hover {
+      text-decoration: none;
+      color: inherit;
+      border-color: #224968;
+      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.15);
+    }
+
+    .phase-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #224968;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .phase-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0.15rem 0 0;
+    }
+  }
+
+  .phase-arrow {
+    color: #adb5bd;
+    font-size: 0.85rem;
+    padding: 0 0.35rem;
+    display: flex;
+    align-items: center;
+  }
+
+  // Reference bar
+  .reference-bar {
+    text-align: center;
+    padding: 0.5rem 0 0;
+
+    a {
+      color: #224968;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      i {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  // Compact section spacing
+  .landing-section {
+    padding: 1.5rem 0;
+
+    &:first-of-type {
+      padding-top: 1rem;
+    }
+  }
+
+  .landing-section-alt {
+    background: #f8f9fa;
+    padding: 1.5rem 0;
+  }
+
+  // Mobile responsive
+  @media (max-width: 768px) {
+    .entry-cards {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .phase-track {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .phase-step {
+      flex-direction: column;
+    }
+
+    .phase-arrow {
+      transform: rotate(90deg);
+      padding: 0.2rem 0;
+    }
+
+    .phase-card {
+      min-width: 200px;
+      width: 200px;
+    }
+
+    .td-cover-block h1 {
+      font-size: 1.8rem;
+    }
+  }
+}
