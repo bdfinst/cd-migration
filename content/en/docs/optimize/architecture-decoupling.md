@@ -1,5 +1,6 @@
 ---
 title: "Architecture Decoupling"
+draft: true
 linkTitle: "Architecture Decoupling"
 weight: 6
 description: >

@@ -203,13 +203,13 @@ Break this cycle:
 |--------|-----------------|
 | Percentage of work items that are independently deployable | Should increase toward 100% |
 | Time from feature start to first production deploy | Should decrease as the first vertical slice ships early |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as items no longer wait for other layers |
+| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as items no longer wait for other layers |
 | Integration issues discovered late | Should decrease as integration happens with every slice |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase as deployable slices are completed and merged daily |
+| [Integration frequency](../../../under-construction/) <!-- target: reference/metrics/integration-frequency --> | Should increase as deployable slices are completed and merged daily |
 
 ## Related Content
 
-- [Work Decomposition](../../../foundations/work-decomposition/) - The practice guide for vertical slicing techniques
-- [Small Batches](../../../optimize/small-batches/) - Vertical slicing is how you achieve small batch size at the story level
+- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - The practice guide for vertical slicing techniques
+- [Small Batches](../../../under-construction/) <!-- target: optimize/small-batches --> - Vertical slicing is how you achieve small batch size at the story level
 - [Work Items Too Large](../stories-too-large/) - Horizontal slices are often large because they span an entire layer
-- [Trunk-Based Development](../../../foundations/trunk-based-development/) - Vertical slices enable daily integration because each is independently complete
+- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Vertical slices enable daily integration because each is independently complete

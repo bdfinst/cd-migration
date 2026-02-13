@@ -1,5 +1,6 @@
 ---
 title: "Phase 1: Foundations"
+draft: true
 linkTitle: "1 - Foundations"
 weight: 2
 description: >

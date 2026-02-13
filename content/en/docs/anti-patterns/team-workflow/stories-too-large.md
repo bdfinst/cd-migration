@@ -202,16 +202,16 @@ During backlog refinement:
 | Metric | What to look for |
 |--------|-----------------|
 | Item cycle time | Should be two days or less from start to trunk |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as items get smaller |
+| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as items get smaller |
 | Items completed per week | Should increase even if total output stays the same |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase as developers integrate completed items daily |
+| [Integration frequency](../../../under-construction/) <!-- target: reference/metrics/integration-frequency --> | Should increase as developers integrate completed items daily |
 | Items that exceed the 2-day rule | Track violations and discuss in retrospectives |
-| [Work in progress](../../../reference/metrics/work-in-progress/) | Should decrease as smaller items flow through faster |
+| [Work in progress](../../../under-construction/) <!-- target: reference/metrics/work-in-progress --> | Should decrease as smaller items flow through faster |
 
 ## Related Content
 
-- [Work Decomposition](../../../foundations/work-decomposition/) - The practice guide for breaking work into small increments
-- [Small Batches](../../../optimize/small-batches/) - Batch size reduction at every level, from stories to commits to deploys
+- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - The practice guide for breaking work into small increments
+- [Small Batches](../../../under-construction/) <!-- target: optimize/small-batches --> - Batch size reduction at every level, from stories to commits to deploys
 - [Too Much Work in Progress](../too-much-wip/) - Large items inflate WIP because they occupy a slot for days
 - [PR Review Bottlenecks](../pr-review-bottlenecks/) - Large items produce large PRs that reviewers avoid
-- [Trunk-Based Development](../../../foundations/trunk-based-development/) - Daily integration requires items small enough to finish in a day or two
+- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Daily integration requires items small enough to finish in a day or two

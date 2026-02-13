@@ -1,5 +1,6 @@
 ---
 title: "Phase 2: Pipeline"
+draft: true
 linkTitle: "2 - Pipeline"
 weight: 3
 description: >

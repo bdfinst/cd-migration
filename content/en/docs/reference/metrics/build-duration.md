@@ -1,5 +1,6 @@
 ---
 title: "Build Duration"
+draft: true
 linkTitle: "Build Duration"
 weight: 2
 description: >

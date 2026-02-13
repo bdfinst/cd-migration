@@ -227,9 +227,9 @@ test distribution even as the team works through the legacy E2E suite.
 
 ## Related Content
 
-- [Testing Fundamentals](../../../foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
-- [Unit Tests](../../../reference/testing/unit/) - Writing fast, deterministic tests for logic
-- [Functional Tests](../../../reference/testing/functional/) - Testing your system in isolation with test doubles
-- [Contract Tests](../../../reference/testing/contract/) - Verifying that test doubles match reality
-- [Test Doubles](../../../reference/testing/test-doubles/) - Techniques for replacing external dependencies in tests
-- [End-to-End Tests](../../../reference/testing/e2e/) - When and how to use E2E tests appropriately
+- [Testing Fundamentals](../../../under-construction/) <!-- target: foundations/testing-fundamentals --> - The test architecture guide for CD pipelines
+- [Unit Tests](../../../under-construction/) <!-- target: reference/testing/unit --> - Writing fast, deterministic tests for logic
+- [Functional Tests](../../../under-construction/) <!-- target: reference/testing/functional --> - Testing your system in isolation with test doubles
+- [Contract Tests](../../../under-construction/) <!-- target: reference/testing/contract --> - Verifying that test doubles match reality
+- [Test Doubles](../../../under-construction/) <!-- target: reference/testing/test-doubles --> - Techniques for replacing external dependencies in tests
+- [End-to-End Tests](../../../under-construction/) <!-- target: reference/testing/e2e --> - When and how to use E2E tests appropriately

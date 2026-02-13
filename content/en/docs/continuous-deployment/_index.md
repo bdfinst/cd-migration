@@ -1,5 +1,6 @@
 ---
 title: "Phase 4: Continuous Deployment"
+draft: true
 linkTitle: "4 - Continuous Deployment"
 weight: 5
 description: >

@@ -1,5 +1,6 @@
 ---
 title: "Contract Tests"
+draft: true
 linkTitle: "Contract Tests"
 weight: 5
 description: >

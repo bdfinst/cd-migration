@@ -1,5 +1,6 @@
 ---
 title: "Work Decomposition"
+draft: true
 linkTitle: "Work Decomposition"
 weight: 4
 description: >

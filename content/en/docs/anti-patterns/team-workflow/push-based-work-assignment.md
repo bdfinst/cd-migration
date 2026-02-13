@@ -178,7 +178,7 @@ Pull-based work and WIP limits reinforce each other:
   whatever the manager thinks of next.
 - Together, they create a system where work flows continuously from backlog to done.
 
-See [Limiting WIP](../../../optimize/limiting-wip/) for how to set and enforce WIP limits.
+See [Limiting WIP](../../../under-construction/) <!-- target: optimize/limiting-wip --> for how to set and enforce WIP limits.
 
 ### What managers do instead
 
@@ -197,15 +197,15 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 | Metric | What to look for |
 |--------|-----------------|
 | Percentage of stories pre-assigned at sprint start | Should drop to near zero |
-| [Work in progress](../../../reference/metrics/work-in-progress/) | Should decrease as team focuses on finishing |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as swarming increases |
+| [Work in progress](../../../under-construction/) <!-- target: reference/metrics/work-in-progress --> | Should decrease as team focuses on finishing |
+| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as swarming increases |
 | Stories completed per sprint | Should stabilize or increase despite less "busyness" |
 | Rework rate | Stories returned for rework or reopened after completion - should decrease |
 | Knowledge distribution | Track who works on which parts of the system - should broaden over time |
 
 ## Related Content
 
-- [Limiting WIP](../../../optimize/limiting-wip/) - Pull-based work and WIP limits are complementary practices
-- [Work Decomposition](../../../foundations/work-decomposition/) - Pull works best when items are small and well-defined
-- [Working Agreements](../../../foundations/working-agreements/) - The team's agreement to pull, not push, should be explicit
-- [Common Blockers](../../../reference/common-blockers/) - Push-based assignment contributes to several listed blockers
+- [Limiting WIP](../../../under-construction/) <!-- target: optimize/limiting-wip --> - Pull-based work and WIP limits are complementary practices
+- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - Pull works best when items are small and well-defined
+- [Working Agreements](../../../under-construction/) <!-- target: foundations/working-agreements --> - The team's agreement to pull, not push, should be explicit
+- [Common Blockers](../../../under-construction/) <!-- target: reference/common-blockers --> - Push-based assignment contributes to several listed blockers

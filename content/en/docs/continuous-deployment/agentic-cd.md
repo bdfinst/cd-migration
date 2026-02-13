@@ -1,5 +1,6 @@
 ---
 title: "Agentic CD"
+draft: true
 linkTitle: "Agentic CD"
 weight: 3
 description: >

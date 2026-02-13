@@ -1,5 +1,6 @@
 ---
 title: "Glossary"
+draft: true
 linkTitle: "Glossary"
 weight: 1
 description: >

@@ -1,5 +1,6 @@
 ---
 title: "Work in Progress"
+draft: true
 linkTitle: "Work in Progress"
 weight: 8
 description: >

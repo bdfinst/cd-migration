@@ -177,21 +177,21 @@ Expect resistance and prepare for it:
 | "Management will see people not typing and think we're wasting time" | Track cycle time and throughput. When both improve, the data speaks for itself. |
 | "We have too many priorities to limit WIP" | Having many priorities is exactly why you need a WIP limit. Without one, nothing gets the focus needed to finish. Everything is "in progress," nothing is done. |
 | "What about urgent production issues?" | Keep one expedite slot. If a production issue arrives, it takes the slot. If the slot is full, the new issue replaces the current one. Expedite is not a way to bypass the limit - it is part of the limit. |
-| "Our stories are too big to pair on" | That is a separate problem. See [Work Decomposition](../../../foundations/work-decomposition/). Stories should be small enough that anyone can pick them up. |
+| "Our stories are too big to pair on" | That is a separate problem. See [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition -->. Stories should be small enough that anyone can pick them up. |
 
 ## Measuring Progress
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Work in progress](../../../reference/metrics/work-in-progress/) | Should stay at or below the team's limit |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as WIP drops |
+| [Work in progress](../../../under-construction/) <!-- target: reference/metrics/work-in-progress --> | Should stay at or below the team's limit |
+| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as WIP drops |
 | Stories completed per week | Should stabilize or increase despite starting fewer items |
 | Time items spend blocked | Should decrease as the team swarms on blockers |
 | Sprint-end scramble | Should disappear as work finishes continuously through the sprint |
 
 ## Related Content
 
-- [Limiting WIP](../../../optimize/limiting-wip/) - The practice guide for implementing WIP limits
-- [Small Batches](../../../optimize/small-batches/) - Reducing batch size at every level reinforces low WIP
-- [Work Decomposition](../../../foundations/work-decomposition/) - Stories must be small enough to flow through a WIP-limited system
+- [Limiting WIP](../../../under-construction/) <!-- target: optimize/limiting-wip --> - The practice guide for implementing WIP limits
+- [Small Batches](../../../under-construction/) <!-- target: optimize/small-batches --> - Reducing batch size at every level reinforces low WIP
+- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - Stories must be small enough to flow through a WIP-limited system
 - [Push-Based Work Assignment](../push-based-work-assignment/) - Push assignment and high WIP are mutually reinforcing anti-patterns

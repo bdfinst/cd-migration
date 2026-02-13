@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+draft: true
 linkTitle: "FAQ"
 weight: 20
 description: >

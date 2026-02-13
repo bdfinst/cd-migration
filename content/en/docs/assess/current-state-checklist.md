@@ -1,5 +1,6 @@
 ---
 title: "Current State Checklist"
+draft: true
 linkTitle: "Current State Checklist"
 weight: 4
 description: >

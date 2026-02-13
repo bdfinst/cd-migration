@@ -1,5 +1,6 @@
 ---
 title: "Integration Frequency"
+draft: true
 linkTitle: "Integration Frequency"
 weight: 1
 description: >

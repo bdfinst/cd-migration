@@ -187,12 +187,12 @@ often the most effective solution.
 | Open PR count | Should stay low - ideally fewer than the number of team members |
 | PR size (lines changed) | Should trend below 200 lines |
 | Review rework cycles | Should stay under 2 rounds per PR |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as review wait time drops |
+| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as review wait time drops |
 
 ## Related Content
 
-- [Code Review](../../../foundations/code-review/) - The practice guide for CD-compatible review techniques
-- [Trunk-Based Development](../../../foundations/trunk-based-development/) - Daily integration requires fast reviews
+- [Code Review](../../../under-construction/) <!-- target: foundations/code-review --> - The practice guide for CD-compatible review techniques
+- [Trunk-Based Development](../../../under-construction/) <!-- target: foundations/trunk-based-development --> - Daily integration requires fast reviews
 - [Push-Based Work Assignment](../push-based-work-assignment/) - Push assignment makes reviews feel like a distraction from "my work"
 - [Too Much Work in Progress](../too-much-wip/) - Slow reviews create hidden WIP as PRs queue up
-- [Work Decomposition](../../../foundations/work-decomposition/) - Small PRs start with small stories
+- [Work Decomposition](../../../under-construction/) <!-- target: foundations/work-decomposition --> - Small PRs start with small stories

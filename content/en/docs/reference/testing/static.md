@@ -1,5 +1,6 @@
 ---
 title: "Static Analysis"
+draft: true
 linkTitle: "Static Analysis"
 weight: 6
 description: >
