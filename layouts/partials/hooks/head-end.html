@@ -1,0 +1,36 @@
+{{/* Canonical URL */}}
+{{ with .Params.canonical -}}
+  <link rel="canonical" href="{{ . }}">
+{{ else -}}
+  <link rel="canonical" href="{{ .Permalink }}">
+{{ end -}}
+
+{{/* JSON-LD Structured Data */}}
+{{ if .IsHome -}}
+<script type="application/ld+json">
+{{ dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" site.Title
+  "url" site.BaseURL
+  "description" site.Params.description
+| jsonify | safeJS }}
+</script>
+{{ else -}}
+<script type="application/ld+json">
+{{ $desc := partial "page-description.html" . -}}
+{{ $data := dict
+  "@context" "https://schema.org"
+  "@type" "TechArticle"
+  "headline" .Title
+  "url" .Permalink
+  "description" $desc
+  "datePublished" (.Date.Format "2006-01-02")
+  "dateModified" (.Lastmod.Format "2006-01-02")
+-}}
+{{ with .Params.author -}}
+  {{ $data = merge $data (dict "author" (dict "@type" "Person" "name" .)) -}}
+{{ end -}}
+{{ $data | jsonify | safeJS }}
+</script>
+{{ end -}}

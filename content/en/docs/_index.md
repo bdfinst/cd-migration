@@ -3,13 +3,18 @@ title: "Your Migration Journey"
 linkTitle: "Documentation"
 weight: 1
 description: >
-  A step-by-step guide for migrating from traditional release processes to continuous deployment.
+  A learning path for migrating to continuous delivery, built on years of hands-on experience
+  helping teams remove friction and improve delivery outcomes.
 ---
 
 {{% pageinfo %}}
-This guide organizes practices from [MinimumCD.org](https://minimumcd.org) and the
-[Dojo Consortium](https://dojoconsortium.org) into a practical migration guide.
-Start with the problem your team feels most, then follow the path to solving it.
+This guide is a learning path built on years of helping teams across industries remove
+friction, improve delivery outcomes, and raise team morale through continuous delivery.
+It expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and the
+production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org),
+grounded in hands-on application of one driving question: "Why can't I deliver today's
+work to production today?" Start with the problem your team feels most, then follow the
+path to solving it.
 {{% /pageinfo %}}
 
 ## Where to Start

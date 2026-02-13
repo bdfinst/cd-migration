@@ -1,0 +1,16 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+
+{{ range site.RegularPages -}}
+{{ if not .Draft -}}
+### {{ .Title }}
+
+URL: {{ .Permalink }}
+
+{{ .RawContent }}
+
+---
+
+{{ end -}}
+{{ end -}}

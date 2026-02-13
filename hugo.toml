@@ -2,10 +2,29 @@ baseURL = "https://cd-migration.org/"
 title = "CD Migration Guide"
 description = "A phased migration guide from quarterly releases to continuous deployment"
 
-enableGitInfo = false
+enableGitInfo = true
 enableRobotsTXT = true
 
 disableKinds = ["taxonomy", "term"]
+
+[sitemap]
+changeFreq = "monthly"
+priority = 0.5
+
+[mediaTypes."text/plain"]
+suffixes = ["txt"]
+
+[outputFormats.LLMS]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+notAlternative = true
+
+[outputFormats.LLMSFull]
+mediaType = "text/plain"
+baseName = "llms-full"
+isPlainText = true
+notAlternative = true
 
 [taxonomies]
 category = "categories"
@@ -29,6 +48,7 @@ unsafe = true
 style = "tango"
 
 [outputs]
+home = ["HTML", "RSS", "LLMS", "LLMSFull"]
 section = ["HTML", "RSS", "print"]
 
 [[module.mounts]]

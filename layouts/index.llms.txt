@@ -1,0 +1,24 @@
+# {{ site.Title }}
+
+> {{ site.Params.description }}
+{{ range site.Sections -}}
+{{ $pages := where .Pages "Draft" false -}}
+{{ if $pages }}
+## {{ .Title }}
+{{ range $pages }}
+- [{{ .Title }}]({{ .Permalink }}): {{ partial "page-description.html" . }}
+{{- end }}
+{{ end -}}
+{{ end -}}
+{{ $docs := site.GetPage "docs" -}}
+{{ with $docs -}}
+{{ range .Sections -}}
+{{ $pages := where .Pages "Draft" false -}}
+{{ if $pages }}
+## {{ .Title }}
+{{ range $pages }}
+- [{{ .Title }}]({{ .Permalink }}): {{ partial "page-description.html" . }}
+{{- end }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
