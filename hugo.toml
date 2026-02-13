@@ -62,7 +62,7 @@ taxonomyCloudTitle = ["Categories", "Tag Cloud"]
 taxonomyPageHeader = ["categories", "tags"]
 
 [params.copyright]
-authors = "CD Migration Authors | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) | "
+authors = "[MinimumCD.org](https://minimumcd.org) & [DojoConsortium.org](https://dojoconsortium.org) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) | "
 from_year = 2025
 
 [params.ui]

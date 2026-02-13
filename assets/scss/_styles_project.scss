@@ -31,7 +31,7 @@
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #6c757d;
+    color: #224968;
     margin-bottom: 1rem;
     font-weight: 600;
   }
@@ -52,6 +52,7 @@
     color: inherit;
     background: #fff;
     border: 1px solid #dee2e6;
+    border-top: 3px solid #224968;
     border-radius: 6px;
     padding: 1rem 1.2rem;
     transition: box-shadow 0.15s, border-color 0.15s;
@@ -61,7 +62,8 @@
       text-decoration: none;
       color: inherit;
       border-color: #224968;
-      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.15);
+      border-top-color: #224968;
+      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.25);
     }
 
     .entry-icon {
@@ -73,6 +75,7 @@
     .entry-title {
       font-size: 1rem;
       font-weight: 600;
+      color: #224968;
       margin-bottom: 0.25rem;
     }
 
@@ -107,26 +110,26 @@
   .phase-card {
     display: block;
     text-decoration: none;
-    color: inherit;
-    background: #fff;
-    border: 1px solid #dee2e6;
+    color: #fff;
+    background: #224968;
+    border: 1px solid #1a3a54;
     border-radius: 6px;
     padding: 0.75rem 1rem;
     text-align: center;
     min-width: 120px;
-    transition: box-shadow 0.15s, border-color 0.15s;
+    transition: box-shadow 0.15s, background-color 0.15s;
 
     &:hover {
       text-decoration: none;
-      color: inherit;
-      border-color: #224968;
-      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.15);
+      color: #fff;
+      background: #1a3a54;
+      box-shadow: 0 2px 8px rgba(34, 73, 104, 0.35);
     }
 
     .phase-number {
       font-size: 0.75rem;
       font-weight: 700;
-      color: #224968;
+      color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -139,7 +142,7 @@
   }
 
   .phase-arrow {
-    color: #adb5bd;
+    color: #224968;
     font-size: 0.85rem;
     padding: 0 0.35rem;
     display: flex;
