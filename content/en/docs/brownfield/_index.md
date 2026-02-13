@@ -1,7 +1,7 @@
 ---
 title: "Migrating Brownfield to CD"
 linkTitle: "Brownfield CD"
-weight: 3
+weight: 2
 description: >
   Already have a running system? A phased approach to migrating existing applications and teams to continuous delivery.
 ---

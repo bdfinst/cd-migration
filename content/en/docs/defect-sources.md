@@ -1,7 +1,7 @@
 ---
 title: "Defect Sources"
 linkTitle: "Defect Sources"
-weight: 4
+weight: 5
 description: >
   A catalog of defect causes across the delivery value stream with detection methods, AI enhancement opportunities, and systemic fixes.
 ---
