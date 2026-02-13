@@ -13,11 +13,11 @@
   ],
   "homepage": "https://cd-migration.org/",
   "bugs": {
-    "url": "https://github.com/Minimum-CD/cd-migration/issues"
+    "url": "https://github.com/bdfinst/cd-migration/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Minimum-CD/cd-migration.git"
+    "url": "git+https://github.com/bdfinst/cd-migration.git"
   },
   "license": "CC-BY-4.0",
   "author": "CD Migration Authors",

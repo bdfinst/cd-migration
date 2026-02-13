@@ -45,8 +45,8 @@ languageName = "English"
 [params]
 images = ["/images/cd-migration-logo.png"]
 github_branch = "main"
-github_repo = "https://github.com/Minimum-CD/cd-migration"
-github_project_repo = "https://github.com/Minimum-CD/cd-migration"
+github_repo = "https://github.com/bdfinst/cd-migration"
+github_project_repo = "https://github.com/bdfinst/cd-migration"
 
 offlineSearch = true
 
@@ -85,7 +85,7 @@ enable = true
 desc = "Contribute!"
 icon = "fab fa-github"
 name = "GitHub"
-url = "https://github.com/Minimum-CD/cd-migration"
+url = "https://github.com/bdfinst/cd-migration"
 
 [module]
 proxy = "direct"
