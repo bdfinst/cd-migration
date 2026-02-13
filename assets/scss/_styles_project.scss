@@ -1,3 +1,32 @@
+// Risk indicator badges for anti-pattern pages
+.risk-indicator {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant: small-caps;
+  border-radius: 999px;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.risk-critical {
+  background-color: #dc3545;
+}
+
+.risk-high {
+  background-color: #fd7e14;
+}
+
+.risk-medium {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.risk-low {
+  background-color: #6c757d;
+}
+
 // Navbar - primary color background to match MinimumCD
 .td-navbar {
   --td-navbar-bg-color: #{$primary};

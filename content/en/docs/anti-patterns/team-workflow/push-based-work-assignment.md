@@ -2,10 +2,16 @@
 title: "Push-Based Work Assignment"
 linkTitle: "Push-Based Work Assignment"
 weight: 104
+category: "Team Workflow"
+risk_level: high
 description: >
   Work is assigned to individuals by a manager or lead instead of team members pulling the next
   highest-priority item.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

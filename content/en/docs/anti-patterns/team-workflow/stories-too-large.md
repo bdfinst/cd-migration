@@ -2,10 +2,16 @@
 title: "Work Items Too Large"
 linkTitle: "Work Items Too Large"
 weight: 28
+category: "Team Workflow"
+risk_level: high
 description: >
   Work items regularly take more than a week. Developers work on a single item for days
   without integrating.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

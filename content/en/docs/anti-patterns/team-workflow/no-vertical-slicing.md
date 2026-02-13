@@ -2,10 +2,16 @@
 title: "No Vertical Slicing"
 linkTitle: "No Vertical Slicing"
 weight: 29
+category: "Team Workflow"
+risk_level: medium
 description: >
   Work is organized by technical layer - "build the API," "build the UI" - rather than by
   user-visible behavior. Nothing is deployable until all layers are done.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

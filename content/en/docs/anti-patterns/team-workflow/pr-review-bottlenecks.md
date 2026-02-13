@@ -2,10 +2,16 @@
 title: "Pull Request Review Bottlenecks"
 linkTitle: "PR Review Bottlenecks"
 weight: 14
+category: "Team Workflow"
+risk_level: high
 description: >
   Pull requests sit for days waiting for review. Reviews happen in large batches. Authors have
   moved on by the time feedback arrives.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

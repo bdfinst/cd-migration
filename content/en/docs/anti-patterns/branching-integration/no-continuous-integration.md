@@ -2,13 +2,15 @@
 title: "No Continuous Integration"
 linkTitle: "No Continuous Integration"
 weight: 11
+category: "Branching & Integration"
+risk_level: critical
 description: >
   The build has been red for weeks and nobody cares. "CI" means a build server exists, not that
   anyone actually integrates continuously.
 ---
 
 {{% pageinfo %}}
-**Category:** Branching & Integration
+**Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
 ## What This Looks Like

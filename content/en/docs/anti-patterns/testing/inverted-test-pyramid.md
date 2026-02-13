@@ -2,10 +2,16 @@
 title: "Inverted Test Pyramid"
 linkTitle: "Inverted Test Pyramid"
 weight: 21
+category: "Testing & Quality"
+risk_level: high
 description: >
   Most tests are slow end-to-end or UI tests. Few unit tests. The test suite is slow, brittle,
   and expensive to maintain.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

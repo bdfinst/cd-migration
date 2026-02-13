@@ -2,13 +2,15 @@
 title: "Long-Lived Feature Branches"
 linkTitle: "Long-Lived Feature Branches"
 weight: 9
+category: "Branching & Integration"
+risk_level: critical
 description: >
   Branches that live for weeks or months, turning merging into a project in itself. The longer
   the branch, the bigger the risk.
 ---
 
 {{% pageinfo %}}
-**Category:** Branching & Integration
+**Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
 ## What This Looks Like

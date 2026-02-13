@@ -1,0 +1,35 @@
+{{- $levelOrder := dict "critical" 1 "high" 2 "medium" 3 "low" 4 -}}
+{{- $pages := slice -}}
+{{- range .Page.Sections -}}
+  {{- range .Pages -}}
+    {{- $pages = $pages | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $sorted := sort $pages (printf ".Params.%s" "risk_level") -}}
+{{- /* Sort by risk level order, then alphabetically within each level */ -}}
+{{- $grouped := slice -}}
+{{- range $level := slice "critical" "high" "medium" "low" -}}
+  {{- range $pages -}}
+    {{- if eq (lower (.Params.risk_level | default "")) $level -}}
+      {{- $grouped = $grouped | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Category</th>
+<th>Quality impact</th>
+</tr>
+</thead>
+<tbody>
+{{- range $grouped }}
+<tr>
+<td><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+<td>{{ .Params.category }}</td>
+<td><span class="risk-indicator risk-{{ .Params.risk_level }}">Quality Impact: {{ .Params.risk_level | title }}</span></td>
+</tr>
+{{- end }}
+</tbody>
+</table>

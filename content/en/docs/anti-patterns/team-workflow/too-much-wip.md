@@ -2,10 +2,16 @@
 title: "Too Much Work in Progress"
 linkTitle: "Too Much Work in Progress"
 weight: 30
+category: "Team Workflow"
+risk_level: high
 description: >
   Every developer is on a different story. Eight items in progress, zero done. Nothing gets the
   focused attention needed to finish.
 ---
+
+{{% pageinfo %}}
+**Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
+{{% /pageinfo %}}
 
 ## What This Looks Like
 

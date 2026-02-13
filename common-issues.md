@@ -56,8 +56,8 @@ Working document for deciding which problems to address and mapping them to solu
 16. **No test automation** - Zero automated tests. The team has no idea where to start and the
     codebase wasn't designed for testability.
 
-17. **Manual regression testing gates** - Every release requires days or weeks of manual testing.
-    Testers execute scripted test cases. Test effort scales linearly with app size.
+17. ~~**Manual regression testing gates**~~ **DONE** - Every release requires days or weeks of
+    manual testing. Testers execute scripted test cases. Test effort scales linearly with app size.
 
 18. **Flaky/unreliable test suites** - Tests that randomly pass or fail. Developers re-run the
     pipeline until it goes green. "Oh that test always fails, just ignore it."
@@ -118,11 +118,11 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Pipeline & Infrastructure
 
-36. **No pipeline exists** - Builds and deployments are manual processes. Someone runs a script
-    on their laptop. There is no automated path from commit to production.
+36. ~~**No pipeline exists**~~ **DONE** - Builds and deployments are manual processes. Someone
+    runs a script on their laptop. There is no automated path from commit to production.
 
-37. **Manual deployments** - SSH into servers and run scripts by hand. Deployments are an art
-    form that only certain people know how to do.
+37. ~~**Manual deployments**~~ **DONE** - SSH into servers and run scripts by hand. Deployments
+    are an art form that only certain people know how to do.
 
 38. **Snowflake environments** - Each environment is hand-configured and unique. Nobody knows
     exactly what's running where. Configuration drift is constant.
