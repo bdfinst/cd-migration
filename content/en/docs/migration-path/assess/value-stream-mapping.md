@@ -47,6 +47,92 @@ Before running a value stream mapping session, make sure you have:
   time is when someone is actively working. A code review that takes "two days" but involves 30
   minutes of actual review has 30 minutes of process time and roughly 15.5 hours of wait time.
 
+## Choose Your Mapping Approach
+
+Value stream maps can be built from two directions. Most organizations benefit from starting
+bottom-up and then combining into a top-down view, but the right choice depends on where your
+delivery pain is concentrated.
+
+### Bottom-Up: Map at the Team Level First
+
+Each delivery team maps its own process independently - from the moment a developer is ready to
+push a change to the moment that change is running in production. This is the approach described
+in [Document Your Current Process](../../brownfield/document-current-process/), elevated to a
+formal value stream map with measured process times, wait times, and %C/A.
+
+**When to use bottom-up:**
+
+- You have multiple teams that each own their own deployment process (or think they do).
+- Teams have different pain points and different levels of CD maturity.
+- You want each team to own its improvement work rather than waiting for an organizational
+  initiative.
+
+**How it works:**
+
+1. Each team maps its own value stream using the session format described below.
+2. Teams identify and fix their own constraints. Many constraints are local - flaky tests,
+   manual deployment steps, slow code review - and do not require cross-team coordination.
+3. After teams have mapped and improved their own streams, combine the maps to reveal
+   cross-team dependencies. Lay the team-level maps side by side and draw the connections:
+   shared environments, shared libraries, shared approval processes, upstream/downstream
+   dependencies.
+
+The combined view often reveals constraints that no single team can see: a shared staging
+environment that serializes deployments across five teams, a security review team that is
+the bottleneck for every release, or a shared library with a release cycle that blocks
+downstream teams for weeks.
+
+**Advantages:** Fast to start, builds team ownership, surfaces team-specific friction that
+a high-level map would miss. Teams see results quickly, which builds momentum for the
+harder cross-team work.
+
+### Top-Down: Map Across Dependent Teams
+
+Start with the full flow from a customer request (or business initiative) entering the system
+to the delivered outcome in production, mapping across every team the work touches. This
+produces a single map that shows the end-to-end flow including all inter-team handoffs,
+shared queues, and organizational boundaries.
+
+**When to use top-down:**
+
+- Delivery pain is concentrated at the boundaries between teams, not within them.
+- A single change routinely touches multiple teams (front-end, back-end, platform,
+  data, etc.) and the coordination overhead dominates cycle time.
+- Leadership needs a full picture of organizational delivery performance to prioritize
+  investment.
+
+**How it works:**
+
+1. Identify a representative value stream - a type of work that flows through the teams
+   you want to map. For example: "a customer-facing feature that requires API changes,
+   a front-end update, and a database migration."
+2. Get representatives from every team in the room. Each person maps their team's portion
+   of the flow, including the handoff to the next team.
+3. Connect the segments. The gaps between teams - where work queues, waits for
+   prioritization, or gets lost in a ticket system - are usually the largest sources of
+   delay.
+
+**Advantages:** Reveals organizational constraints that team-level maps cannot see.
+Shows the true end-to-end lead time including inter-team wait times. Essential for
+changes that require coordinated delivery across multiple teams.
+
+### Combining Both Approaches
+
+The most effective strategy for large organizations:
+
+1. **Start bottom-up.** Have each team [document its current process](../../brownfield/document-current-process/)
+   and then run its own value stream mapping session. Fix team-level quick wins immediately.
+2. **Combine into a top-down view.** Once team-level maps exist, connect them to see the
+   full organizational flow. The team-level detail makes the top-down map more accurate
+   because each segment was mapped by the people who actually do the work.
+3. **Fix constraints at the right level.** Team-level constraints (flaky tests, manual
+   deploys) are fixed by the team. Cross-team constraints (shared environments, approval
+   bottlenecks, dependency coordination) are fixed at the organizational level.
+
+This layered approach prevents two common failure modes: mapping at too high a level (which
+misses team-specific friction) and mapping only at the team level (which misses the
+organizational constraints that dominate end-to-end lead time).
+
 ## How to Run the Session
 
 ### Step 1: Start From Delivery, Work Backward

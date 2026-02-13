@@ -2,7 +2,7 @@
 title: "FAQ"
 draft: true
 linkTitle: "FAQ"
-weight: 20
+weight: 5
 description: >
   Frequently asked questions about continuous delivery and this migration guide.
 ---

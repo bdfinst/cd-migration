@@ -1,3 +1,23 @@
+// Navbar - primary color background to match MinimumCD
+.td-navbar {
+  --td-navbar-bg-color: #{$primary};
+  border-bottom: none;
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+
+    &:hover,
+    &.active {
+      color: #fff;
+    }
+  }
+}
+
+// On-scroll state
+.navbar-bg-onscroll {
+  background: $primary !important;
+}
+
 // Landing page styles - scoped to .td-home to avoid affecting docs pages
 
 .td-home {
@@ -31,7 +51,7 @@
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #224968;
+    color: $primary;
     margin-bottom: 1rem;
     font-weight: 600;
   }
@@ -52,7 +72,7 @@
     color: inherit;
     background: #fff;
     border: 1px solid #dee2e6;
-    border-top: 3px solid #224968;
+    border-top: 3px solid $primary;
     border-radius: 6px;
     padding: 1rem 1.2rem;
     transition: box-shadow 0.15s, border-color 0.15s;
@@ -61,21 +81,21 @@
     &:hover {
       text-decoration: none;
       color: inherit;
-      border-color: #224968;
-      border-top-color: #224968;
+      border-color: $primary;
+      border-top-color: $primary;
       box-shadow: 0 2px 8px rgba(34, 73, 104, 0.25);
     }
 
     .entry-icon {
       font-size: 1.5rem;
-      color: #224968;
+      color: $primary;
       margin-bottom: 0.4rem;
     }
 
     .entry-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #224968;
+      color: $primary;
       margin-bottom: 0.25rem;
     }
 
@@ -111,7 +131,7 @@
     display: block;
     text-decoration: none;
     color: #fff;
-    background: #224968;
+    background: $primary;
     border: 1px solid #1a3a54;
     border-radius: 6px;
     padding: 0.75rem 1rem;
@@ -142,7 +162,7 @@
   }
 
   .phase-arrow {
-    color: #224968;
+    color: $primary;
     font-size: 0.85rem;
     padding: 0 0.35rem;
     display: flex;
@@ -155,7 +175,7 @@
     padding: 0.5rem 0 0;
 
     a {
-      color: #224968;
+      color: $primary;
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;

@@ -1,7 +1,7 @@
 ---
 title: "Replacing Manual Validations with Automation"
 linkTitle: "Replacing Manual Validations"
-weight: 1
+weight: 2
 description: >
   The repeating mechanical cycle at the heart of every brownfield CD migration: identify a manual validation, automate it, prove the automation works, and remove the manual step.
 ---

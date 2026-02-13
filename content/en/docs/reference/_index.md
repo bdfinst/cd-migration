@@ -2,7 +2,7 @@
 title: "Reference"
 draft: true
 linkTitle: "Reference"
-weight: 10
+weight: 8
 description: >
   Supporting material: glossary, metrics definitions, testing guides, and additional resources.
 ---

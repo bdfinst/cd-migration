@@ -2,7 +2,7 @@
 title: "AI Adoption Roadmap"
 draft: true
 linkTitle: "AI Adoption Roadmap"
-weight: 2
+weight: 1
 description: >
   A prescriptive guide for incorporating AI into your delivery process safely - remove friction and add safety before accelerating with AI coding.
 ---
