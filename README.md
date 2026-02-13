@@ -4,4 +4,4 @@
 
 A phased migration guide from quarterly releases to continuous deployment.
 
-**Site:** [cd-migration.org](https://cd-migration.org/)
+**Site:** [CD Migration Guide](https://migration.minimumcd.org/)
