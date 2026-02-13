@@ -3,4 +3,5 @@ resources/
 node_modules/
 .DS_Store
 .hugo_build.lock
+_vendor/
 tmp/
