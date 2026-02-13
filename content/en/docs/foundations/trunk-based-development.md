@@ -19,6 +19,7 @@ Trunk-based development (TBD) is a branching strategy where all developers integ
 This is a **non-negotiable prerequisite for continuous delivery**. If your team is not integrating to trunk daily, you are not doing CI, and you cannot do CD. There is no workaround.
 
 > "If it hurts, do it more often, and bring the pain forward."
+>
 > - Jez Humble, *Continuous Delivery*
 
 ### What TBD Is Not
@@ -224,7 +225,7 @@ Track these metrics to verify your TBD adoption:
 This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios, see the full source material:
 
 - [MinimumCD.org: Trunk-Based Development](https://minimumcd.org) - The authoritative definition and full context
-- [MinimumCD.org: TBD Migration Guide](https://minimumcd.org/minimumcd/tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
+- [MinimumCD.org: TBD Migration Guide](https://minimumcd.org/minimumcd/trunk-based-development/tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
 
 ## Next Step

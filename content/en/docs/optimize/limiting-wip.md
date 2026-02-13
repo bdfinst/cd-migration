@@ -22,6 +22,7 @@ Every item of work in progress has a cost:
 - **Longer cycle time:** Little's Law states that cycle time = WIP / throughput. If throughput is constant, the only way to reduce cycle time is to reduce WIP.
 
 > "Stop starting, start finishing."
+>
 > - Lean saying
 
 ## How to Set Your WIP Limit

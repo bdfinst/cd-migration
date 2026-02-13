@@ -45,8 +45,8 @@ Working document for deciding which problems to address and mapping them to solu
 13. **Release branches with extensive backporting** - Maintaining multiple release branches and
     manually backporting fixes. Exponential overhead as branches multiply.
 
-14. **Pull request review bottlenecks** - PRs sit for days waiting for review. Reviews happen in
-    large batches. Authors have moved on by the time feedback arrives.
+14. ~~**Pull request review bottlenecks**~~ **DONE** - PRs sit for days waiting for review.
+    Reviews happen in large batches. Authors have moved on by the time feedback arrives.
 
 15. **"Don't merge, I'm about to deploy"** - Developers announcing merge freezes because the
     integration process is fragile. Deploying requires coordination in chat.
@@ -97,8 +97,8 @@ Working document for deciding which problems to address and mapping them to solu
 29. **No vertical slicing** - Stories organized by technical layer ("build the API," "build the
     UI") rather than by user-visible behavior. Nothing is deployable until all layers are done.
 
-30. **Too much work in progress** - Every developer on a different story. 8 items in progress, 0
-    done. Nothing gets the focused attention needed to finish.
+30. ~~**Too much work in progress**~~ **DONE** - Every developer on a different story. 8 items in
+    progress, 0 done. Nothing gets the focused attention needed to finish.
 
 31. **Distant date commitments** - Fixed scope committed to months in advance. Pressure to cut
     corners when the deadline approaches. Scope is locked, quality flexes.
@@ -339,11 +339,11 @@ Working document for deciding which problems to address and mapping them to solu
 103. **Irregular or absent demos** - Stakeholders don't see working software until release.
      No cadence for showing incremental progress. Feedback is delayed by months.
 
-104. **Push-based work assignment** - Work is assigned to individuals by a manager or lead
-     rather than team members pulling the next highest-priority item. Creates uneven workloads,
-     hides bottlenecks, and removes team ownership of flow. When work is pushed, individuals
-     optimize locally instead of collaborating to finish what matters most. WIP limits become
-     meaningless because the person assigning work doesn't see the full picture.
+104. ~~**Push-based work assignment**~~ **DONE** - Work is assigned to individuals by a manager
+     or lead rather than team members pulling the next highest-priority item. Creates uneven
+     workloads, hides bottlenecks, and removes team ownership of flow. When work is pushed,
+     individuals optimize locally instead of collaborating to finish what matters most. WIP limits
+     become meaningless because the person assigning work doesn't see the full picture.
 
 105. **Distributed team without sufficient timezone overlap** - Team members spread across
      timezones with little or no shared working hours. Code reviews wait overnight. Questions

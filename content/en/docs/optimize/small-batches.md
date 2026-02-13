@@ -19,6 +19,7 @@ Large batches create large risks. When you deploy 50 changes at once, any failur
 This is not a theory. The DORA research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes this possible.
 
 > "If it hurts, do it more often, and bring the pain forward."
+>
 > - Jez Humble, *Continuous Delivery*
 
 ## Three Levels of Batch Size

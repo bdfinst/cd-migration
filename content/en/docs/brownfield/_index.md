@@ -45,7 +45,7 @@ where you stand and which phase to begin with.
 
 ### If you know your biggest pain point
 
-Start with [Common Problems](../problems/). Find the problem your team feels most, and follow the
+Start with [Anti-Patterns](../anti-patterns/). Find the problem your team feels most, and follow the
 links to the practices and migration phases that address it.
 
 ### Quick self-assessment
@@ -93,7 +93,7 @@ to follow.
 ## Common Brownfield Challenges
 
 These challenges are specific to migrating existing systems. For the full catalog of problems
-teams face, see [Common Problems](../problems/).
+teams face, see [Anti-Patterns](../anti-patterns/).
 
 | Challenge | Why it's hard | Approach |
 |-----------|--------------|----------|
@@ -121,7 +121,7 @@ not a project with a deadline.
 
 ## Related Content
 
-- [Common Problems](../problems/) - Start with the problem you feel most
+- [Anti-Patterns](../anti-patterns/) - Start with the problem you feel most
 - [Phase 0 - Assess](../assess/) - Understand your current state
 - [Common Blockers](../reference/common-blockers/) - Frequently encountered obstacles
 - [FAQ](../faq/) - Frequently asked questions about CD migration
