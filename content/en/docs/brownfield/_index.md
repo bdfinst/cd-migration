@@ -33,7 +33,7 @@ Phase 0 to understand where you are, then work through the phases in order.
 | 1 | [Foundations](../migration-path/foundations/) | Daily integration, testing, small work | "Can we integrate safely every day?" |
 | 2 | [Pipeline](../migration-path/pipeline/) | Automated path to production | "Can we deploy any commit automatically?" |
 | 3 | [Optimize](../migration-path/optimize/) | Improve flow, reduce batch size | "Can we deliver small changes quickly?" |
-| 4 | [Continuous Deployment](../migration-path/continuous-deployment/) | Deploy on demand | "Can we deploy every change?" |
+| 4 | [Deliver on Demand](../migration-path/continuous-deployment/) | Deploy any change when needed | "Can we deliver any change to production when needed?" |
 
 ## Where to Start
 
@@ -114,7 +114,7 @@ These ranges assume a single team working on the migration alongside regular del
 | Phase 1 - Foundations | 1-6 months | Current testing and trunk-based development maturity |
 | Phase 2 - Pipeline | 1-3 months | Complexity of existing deployment process |
 | Phase 3 - Optimize | 2-6 months | Organizational willingness to change batch size and approval processes |
-| Phase 4 - Continuous Deployment | 1-3 months | Confidence in pipeline and rollback capability |
+| Phase 4 - Deliver on Demand | 1-3 months | Confidence in pipeline and rollback capability |
 
 Do not treat these timelines as commitments. The migration is an iterative improvement process,
 not a project with a deadline.

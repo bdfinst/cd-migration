@@ -118,7 +118,7 @@ These capabilities address how work is planned, prioritized, and delivered.
 Product decisions are informed by direct feedback from customers. Teams can observe how
 features are used in production and adjust accordingly.
 
-**Migration relevance:** Becomes fully enabled in [Phase 4 -- Continuous Deployment](../../migration-path/continuous-deployment/)
+**Migration relevance:** Becomes fully enabled in [Phase 4 -- Deliver on Demand](../../migration-path/continuous-deployment/)
 when every change reaches production quickly enough for real customer feedback to inform
 the next change.
 

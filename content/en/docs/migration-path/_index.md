@@ -19,7 +19,7 @@ deployment. Each phase builds on the previous one, so work through them in order
 | [1 - Foundations](foundations/) | Daily integration, testing, small batches | Can we integrate safely every day? |
 | [2 - Pipeline](pipeline/) | Automated path from commit to production | Can we deploy any commit automatically? |
 | [3 - Optimize](optimize/) | Reduce batch size, limit WIP, measure | Can we deliver small changes quickly? |
-| [4 - Continuous Deployment](continuous-deployment/) | Deploy every change on demand | Can we deploy every change? |
+| [4 - Deliver on Demand](continuous-deployment/) | Deploy any change when the business needs it | Can we deliver any change to production when needed? |
 
 ## Where to Start
 

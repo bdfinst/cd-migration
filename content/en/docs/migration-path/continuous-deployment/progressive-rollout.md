@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 - Continuous Deployment** | Original content
+**Phase 4 - Deliver on Demand** | Original content
 
 Progressive rollout strategies let you deploy to production without deploying to all users simultaneously. By exposing changes to a small group first and expanding gradually, you catch problems before they affect your entire user base. This page covers the three major strategies, when to use each, and how to implement automated rollback.
 {{% /pageinfo %}}

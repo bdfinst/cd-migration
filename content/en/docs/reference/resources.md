@@ -49,8 +49,8 @@ relevant to.
 : Covers the design and architecture patterns that make production systems resilient. Topics
   include stability patterns (circuit breakers, bulkheads, timeouts), deployment patterns, and
   the operational realities of running software at scale. Essential reading before entering
-  Phase 4, where every change deploys to production automatically.
-: *Most relevant to: [Phase 4 -- Continuous Deployment](../../migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../../migration-path/pipeline/rollback/)*
+  Phase 4, where the team has the capability to deploy any change on demand.
+: *Most relevant to: [Phase 4 -- Deliver on Demand](../../migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../../migration-path/pipeline/rollback/)*
 
 **The DevOps Handbook** by Gene Kim, Jez Humble, Patrick Debois, and John Willis
 : A practical companion to *The Phoenix Project*. Covers the Three Ways (flow, feedback, and

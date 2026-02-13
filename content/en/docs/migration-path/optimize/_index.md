@@ -32,7 +32,7 @@ a virtuous cycle of getting better at getting better.
 
 ## When You're Ready to Move On
 
-You're ready for [Phase 4: Continuous Deployment](../continuous-deployment/) when:
+You're ready for [Phase 4: Deliver on Demand](../continuous-deployment/) when:
 
 - Most changes are small enough to deploy independently
 - Feature flags let you deploy incomplete features safely

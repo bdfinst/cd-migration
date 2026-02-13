@@ -1,37 +1,53 @@
 ---
-title: "Phase 4: Continuous Deployment"
-linkTitle: "4 - Continuous Deployment"
+title: "Phase 4: Deliver on Demand"
+linkTitle: "4 - Deliver on Demand"
 weight: 5
 description: >
-  Deploy every change on demand with progressive rollout strategies and full confidence.
+  The capability to deploy any change to production at any time, using the delivery strategy that fits your context.
 ---
 
 {{% pageinfo %}}
-**Key question:** "Can we deploy every change?"
+**Key question:** "Can we deliver any change to production when the business needs it?"
 
-This is the destination: every change that passes the pipeline is automatically deployed
-to production. This phase introduces progressive rollout strategies and addresses the
-organizational patterns that make continuous deployment sustainable.
+This is the destination: you can deploy any change that passes the pipeline to production
+whenever you choose. Some teams will auto-deploy every commit (continuous deployment). Others
+will deploy on demand when the business is ready. Both are valid - the capability is what
+matters, not the trigger.
 {{% /pageinfo %}}
 
 ## What You'll Do
 
-1. **[Deploy on demand](deploy-on-demand/)** - Remove the last manual gates
+1. **[Deploy on demand](deploy-on-demand/)** - Remove the last manual gates so any green build can reach production
 2. **[Use progressive rollout](progressive-rollout/)** - Canary, blue-green, and percentage-based deployments
-3. **[Explore agentic CD](agentic-cd/)** - AI-assisted continuous deployment patterns
+3. **[Explore agentic CD](agentic-cd/)** - AI-assisted continuous delivery patterns
 4. **[Learn from experience reports](experience-reports/)** - How other teams made the journey
+
+## Continuous Delivery vs. Continuous Deployment
+
+These terms are often confused. The distinction matters for this phase:
+
+- **Continuous delivery** means every commit that passes the pipeline *could* be deployed to
+  production at any time. The capability exists. A human or business process decides when.
+- **Continuous deployment** means every commit that passes the pipeline *is* deployed to
+  production automatically. No human decision is involved.
+
+Continuous delivery is the goal of this migration guide. Continuous deployment is one delivery
+strategy that works well for certain contexts - SaaS products, internal tools, services behind
+feature flags. It is not a higher level of maturity. A team that deploys on demand with a
+one-click deploy is just as capable as a team that auto-deploys every commit.
 
 ## Why This Phase Matters
 
-Continuous deployment is the natural culmination of all previous phases. When your
-foundations are solid, your pipeline is reliable, and your batch sizes are small,
-deploying every change becomes the lowest-risk option. Holding changes back in a
-queue actually increases risk.
+When your foundations are solid, your pipeline is reliable, and your batch sizes are small,
+deploying any change becomes low-risk. The remaining barriers are organizational, not
+technical: approval processes, change windows, release coordination. This phase addresses those
+barriers so the team has the *option* to deploy whenever the business needs it.
 
 ## Signs You've Arrived
 
-- Every commit that passes the pipeline deploys to production automatically
-- Deployments happen multiple times per day with no drama
+- Any commit that passes the pipeline can reach production within minutes
+- The team deploys frequently (daily or more) with no drama
 - Mean time to recovery is measured in minutes
 - The team has confidence that any deployment can be safely rolled back
 - New team members can deploy on their first day
+- The deployment strategy (on-demand or automatic) is a team choice, not a constraint

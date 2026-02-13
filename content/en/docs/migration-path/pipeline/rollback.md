@@ -270,7 +270,7 @@ safe:
 
 With rollback in place, the team has the confidence to deploy frequently, which is the
 foundation for [Phase 3: Optimize](../../optimize/) and ultimately
-[Phase 4: Continuous Deployment](../../continuous-deployment/).
+[Phase 4: Deliver on Demand](../../continuous-deployment/).
 
 ---
 

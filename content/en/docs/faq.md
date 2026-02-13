@@ -183,7 +183,7 @@ It depends on where you start and how much organizational support you have. As a
 - **Phase 1 (Foundations):** 1-6 months, depending on current testing and TBD maturity
 - **Phase 2 (Pipeline):** 1-3 months
 - **Phase 3 (Optimize):** 2-6 months
-- **Phase 4 (Continuous Deployment):** 1-3 months
+- **Phase 4 (Deliver on Demand):** 1-3 months
 
 These ranges assume a single team working on the migration alongside regular delivery work.
 The biggest variable is Phase 1: teams with no test automation or TBD practice will spend

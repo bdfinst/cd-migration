@@ -53,7 +53,7 @@ As your CD maturity grows, extend the DoD:
 | Phase 1 (Foundations) | Code integrated to trunk, tests pass, reviewed, deployable |
 | Phase 2 (Pipeline) | Artifact built and validated by the pipeline |
 | Phase 3 (Optimize) | Change deployed to production behind a feature flag |
-| Phase 4 (Continuous Deployment) | Change deployed to production and monitored |
+| Phase 4 (Deliver on Demand) | Change deployed to production and monitored |
 
 ## Definition of Ready
 

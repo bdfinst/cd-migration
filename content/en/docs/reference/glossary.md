@@ -94,7 +94,7 @@ During a CD migration, your job is to find and fix constraints in order of impac
 An extension of continuous delivery where every change that passes the automated pipeline is
 deployed to production without manual intervention. Continuous delivery ensures every change
 *can* be deployed; continuous deployment ensures every change *is* deployed. See
-[Phase 4 -- Continuous Deployment](../../migration-path/continuous-deployment/).
+[Phase 4 -- Deliver on Demand](../../migration-path/continuous-deployment/).
 
 ## D
 

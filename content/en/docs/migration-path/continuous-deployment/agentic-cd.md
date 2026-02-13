@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 - Continuous Deployment** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 4 - Deliver on Demand** | Adapted from [MinimumCD.org](https://minimumcd.org)
 
 As AI coding agents become capable of generating production-ready code changes, the continuous deployment pipeline must evolve to handle agent-generated work with the same rigor applied to human-generated work - and in some cases, more rigor. Agentic CD defines the additional constraints and artifacts needed when agents contribute to the delivery pipeline.
 {{% /pageinfo %}}
