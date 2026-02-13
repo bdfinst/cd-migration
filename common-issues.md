@@ -30,8 +30,8 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Branching & Integration
 
-9. **Long-lived feature branches** - Branches that live for weeks or months. Merging becomes a
-   project in itself. The longer the branch, the bigger the risk.
+9. ~~**Long-lived feature branches**~~ **DONE** - Branches that live for weeks or months. Merging
+   becomes a project in itself. The longer the branch, the bigger the risk.
 
 10. **Painful merges** - Integration is a dreaded, multi-day event. Teams delay merging because
     it's painful, which makes the next merge even more painful.
