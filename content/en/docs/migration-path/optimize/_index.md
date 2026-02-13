@@ -1,6 +1,5 @@
 ---
 title: "Phase 3: Optimize"
-draft: true
 linkTitle: "3 - Optimize"
 weight: 4
 description: >

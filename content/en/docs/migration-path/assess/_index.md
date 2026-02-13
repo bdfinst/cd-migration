@@ -1,6 +1,5 @@
 ---
 title: "Phase 0: Assess"
-draft: true
 linkTitle: "0 - Assess"
 weight: 1
 description: >

@@ -119,7 +119,7 @@ feedback loop - developers should see results in seconds while coding.
 **What they cannot do:** Verify that components work together, that your code correctly calls
 external services, or that the system behaves correctly as a whole.
 
-See [Unit Tests](../../../under-construction/) <!-- target: reference/testing/unit --> for detailed guidance.
+See [Unit Tests](../../../reference/testing/unit/) for detailed guidance.
 
 ### Layer 2: Integration tests - verify boundaries
 
@@ -140,7 +140,7 @@ The line between unit tests and integration tests is often debated. As Ham Vocke
 the naming matters less than the discipline. The key question is whether the test is fast,
 deterministic, and tests something your unit tests cannot. If yes, it belongs here.
 
-See [Integration Tests](../../../under-construction/) <!-- target: reference/testing/integration --> for detailed guidance.
+See [Integration Tests](../../../reference/testing/integration/) for detailed guidance.
 
 ### Layer 3: Functional tests - verify your system works in isolation
 
@@ -160,7 +160,7 @@ simulate the expected behavior of those dependencies. As long as your doubles ar
 is what contract tests verify), your functional tests prove your system handles those interactions
 correctly.
 
-See [Functional Tests](../../../under-construction/) <!-- target: reference/testing/functional --> for detailed guidance.
+See [Functional Tests](../../../reference/testing/functional/) for detailed guidance.
 
 ### Layer 4: Contract tests - verify your assumptions about others
 
@@ -181,7 +181,7 @@ Contract tests are **non-deterministic** because they hit live systems. They sho
 your pipeline. Instead, failures trigger a review: has the contract changed, or was it a transient
 network issue? If the contract has changed, update your test doubles and re-verify.
 
-See [Contract Tests](../../../under-construction/) <!-- target: reference/testing/contract --> for detailed guidance.
+See [Contract Tests](../../../reference/testing/contract/) for detailed guidance.
 
 ### Layer 5: End-to-end tests - verify the integrated system post-deployment
 
@@ -198,7 +198,7 @@ instability. If your pipeline depends on E2E tests passing before you can deploy
 frequency is limited by the reliability of every system in the chain. This is the opposite of the
 independence CD requires.
 
-See [End-to-End Tests](../../../under-construction/) <!-- target: reference/testing/e2e --> for detailed guidance.
+See [End-to-End Tests](../../../reference/testing/e2e/) for detailed guidance.
 
 ### How the layers work together
 
@@ -346,12 +346,12 @@ Use this reference to decide what type of test to write and where it runs in you
 
 | What You Need to Verify | Test Type | Speed | Deterministic? | Blocks Deploy? | See Also |
 |--------------------------|-----------|-------|----------------|----------------|----------|
-| A function or method behaves correctly | [Unit](../../../under-construction/) <!-- target: reference/testing/unit --> | Milliseconds | Yes | Yes | |
-| Components interact correctly at a boundary | [Integration](../../../under-construction/) <!-- target: reference/testing/integration --> | Milliseconds to seconds | Yes | Yes | |
-| Your whole service works in isolation | [Functional](../../../under-construction/) <!-- target: reference/testing/functional --> | Seconds | Yes | Yes | |
-| Your test doubles match reality | [Contract](../../../under-construction/) <!-- target: reference/testing/contract --> | Seconds | No | No | |
-| A critical user journey works end-to-end | [E2E](../../../under-construction/) <!-- target: reference/testing/e2e --> | Minutes | No | No | |
-| Code quality, security, and style compliance | [Static Analysis](../../../under-construction/) <!-- target: reference/testing/static --> | Seconds | Yes | Yes | |
+| A function or method behaves correctly | [Unit](../../../reference/testing/unit/) | Milliseconds | Yes | Yes | |
+| Components interact correctly at a boundary | [Integration](../../../reference/testing/integration/) | Milliseconds to seconds | Yes | Yes | |
+| Your whole service works in isolation | [Functional](../../../reference/testing/functional/) | Seconds | Yes | Yes | |
+| Your test doubles match reality | [Contract](../../../reference/testing/contract/) | Seconds | No | No | |
+| A critical user journey works end-to-end | [E2E](../../../reference/testing/e2e/) | Minutes | No | No | |
+| Code quality, security, and style compliance | [Static Analysis](../../../reference/testing/static/) | Seconds | Yes | Yes | |
 
 ## Best Practices Summary
 
@@ -483,7 +483,7 @@ the [CD Defect Detection and Remediation Patterns](https://bdfinst.github.io/ai-
 ## Next Step
 
 With a reliable test suite in place, automate your build process so that building, testing, and
-packaging happens with a single command. Continue to [Build Automation](../../../under-construction/) <!-- target: migration-path/foundations/build-automation -->.
+packaging happens with a single command. Continue to [Build Automation](../../../migration-path/foundations/build-automation/).
 
 ---
 

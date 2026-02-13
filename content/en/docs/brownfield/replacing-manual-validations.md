@@ -36,7 +36,7 @@ Two rules make this cycle work:
 ## Inventory Your Manual Validations
 
 Before you can replace manual validations, you need to know what they are. A
-[value stream map](../../under-construction/) <!-- target: migration-path/assess/value-stream-mapping --> is the fastest way to find them. Walk the
+[value stream map](../../migration-path/assess/value-stream-mapping/) is the fastest way to find them. Walk the
 path from commit to production and mark every point where a human has to inspect, approve, verify,
 or execute something before the change can move forward.
 
@@ -76,7 +76,7 @@ High-frequency, long-duration, error-prone validations cause the most friction.
 
 Start with high-friction, low-effort validations. These give you the fastest return and build
 momentum for harder automations later. This is the same constraint-based thinking described in
-[Identify Constraints](../../under-construction/) <!-- target: migration-path/assess/identify-constraints --> - fix the biggest bottleneck first.
+[Identify Constraints](../../migration-path/assess/identify-constraints/) - fix the biggest bottleneck first.
 
 | | Low Effort | High Effort |
 |---|-----------|-------------|
@@ -143,7 +143,7 @@ manual cases. The manual suite shrinks with each cycle:
 Each cycle also gets faster because the team builds skill and the test infrastructure matures.
 For more on structuring automated tests effectively, see
 [Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) and
-[Functional Testing](../../under-construction/) <!-- target: reference/testing/functional -->.
+[Functional Testing](../../reference/testing/functional/).
 
 ## When Refactoring Is a Prerequisite
 
@@ -163,7 +163,7 @@ automating. Do not expand the refactoring scope beyond what the current cycle re
 the refactoring small, low-risk, and tied to a concrete outcome.
 
 For more on decoupling strategies, see
-[Architecture Decoupling](../../under-construction/) <!-- target: migration-path/optimize/architecture-decoupling -->.
+[Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/).
 
 ## The Compounding Effect
 
@@ -184,7 +184,7 @@ the highest-friction, lowest-effort validation matters - it frees the most time 
 investment.
 
 The same compounding dynamic applies to
-[small batches](../../under-construction/) <!-- target: migration-path/optimize/small-batches --> - smaller changes are easier to validate, which
+[small batches](../../migration-path/optimize/small-batches/) - smaller changes are easier to validate, which
 makes each cycle faster, which enables even smaller changes.
 
 ## Small Steps in Everything
@@ -210,12 +210,12 @@ This connects directly to the brownfield migration principle:
 iteration, not only at the end.
 
 For more on decomposing work into small steps, see
-[Work Decomposition](../../under-construction/) <!-- target: migration-path/foundations/work-decomposition -->.
+[Work Decomposition](../../migration-path/foundations/work-decomposition/).
 
 ## Measuring Progress
 
 Track these metrics to gauge migration progress. Start collecting them from
-[baseline](../../under-construction/) <!-- target: migration-path/assess/baseline-metrics --> before you begin replacing validations.
+[baseline](../../migration-path/assess/baseline-metrics/) before you begin replacing validations.
 
 | Metric | What It Tells You | Target Direction |
 |--------|-------------------|-----------------|
@@ -231,13 +231,13 @@ prioritization and focus on the validations that are actually blocking faster de
 
 ## Related Content
 
-- [Value Stream Mapping](../../under-construction/) <!-- target: migration-path/assess/value-stream-mapping --> - Find your manual validations
-- [Identify Constraints](../../under-construction/) <!-- target: migration-path/assess/identify-constraints --> - Prioritize which validation to replace first
-- [Baseline Metrics](../../under-construction/) <!-- target: migration-path/assess/baseline-metrics --> - Measure your starting point
+- [Value Stream Mapping](../../migration-path/assess/value-stream-mapping/) - Find your manual validations
+- [Identify Constraints](../../migration-path/assess/identify-constraints/) - Prioritize which validation to replace first
+- [Baseline Metrics](../../migration-path/assess/baseline-metrics/) - Measure your starting point
 - [Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) - Build automated tests that replace manual testing
-- [Work Decomposition](../../under-construction/) <!-- target: migration-path/foundations/work-decomposition --> - Break migration work into small steps
-- [Small Batches](../../under-construction/) <!-- target: migration-path/optimize/small-batches --> - The principle behind incremental replacement
-- [Architecture Decoupling](../../under-construction/) <!-- target: migration-path/optimize/architecture-decoupling --> - Refactoring strategies for testability
-- [Deterministic Pipeline](../../under-construction/) <!-- target: migration-path/pipeline/deterministic-pipeline --> - Where automated validations live
-- [Common Blockers](../../under-construction/) <!-- target: reference/common-blockers --> - Frequently encountered obstacles during migration
-- [Functional Testing](../../under-construction/) <!-- target: reference/testing/functional --> - Structuring automated functional tests
+- [Work Decomposition](../../migration-path/foundations/work-decomposition/) - Break migration work into small steps
+- [Small Batches](../../migration-path/optimize/small-batches/) - The principle behind incremental replacement
+- [Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/) - Refactoring strategies for testability
+- [Deterministic Pipeline](../../migration-path/pipeline/deterministic-pipeline/) - Where automated validations live
+- [Common Blockers](../../reference/common-blockers/) - Frequently encountered obstacles during migration
+- [Functional Testing](../../reference/testing/functional/) - Structuring automated functional tests

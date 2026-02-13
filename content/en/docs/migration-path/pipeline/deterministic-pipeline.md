@@ -1,6 +1,5 @@
 ---
 title: "Deterministic Pipeline"
-draft: true
 linkTitle: "Deterministic Pipeline"
 weight: 2
 description: >

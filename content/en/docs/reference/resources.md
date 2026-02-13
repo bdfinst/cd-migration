@@ -1,6 +1,5 @@
 ---
 title: "Resources"
-draft: true
 linkTitle: "Resources"
 weight: 5
 description: >

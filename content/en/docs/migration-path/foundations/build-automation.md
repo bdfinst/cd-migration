@@ -1,6 +1,5 @@
 ---
 title: "Build Automation"
-draft: true
 linkTitle: "Build Automation"
 weight: 3
 description: >

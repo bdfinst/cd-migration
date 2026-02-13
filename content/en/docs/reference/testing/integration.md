@@ -1,6 +1,5 @@
 ---
 title: "Integration Tests"
-draft: true
 linkTitle: "Integration Tests"
 weight: 2
 description: >

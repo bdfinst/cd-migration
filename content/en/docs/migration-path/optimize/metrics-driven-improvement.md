@@ -1,6 +1,5 @@
 ---
 title: "Metrics-Driven Improvement"
-draft: true
 linkTitle: "Metrics-Driven Improvement"
 weight: 4
 description: >

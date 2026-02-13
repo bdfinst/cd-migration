@@ -1,6 +1,5 @@
 ---
 title: "Release Frequency"
-draft: true
 linkTitle: "Release Frequency"
 weight: 7
 description: >

@@ -1,6 +1,5 @@
 ---
 title: "Small Batches"
-draft: true
 linkTitle: "Small Batches"
 weight: 1
 description: >

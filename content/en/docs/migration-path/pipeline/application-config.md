@@ -1,6 +1,5 @@
 ---
 title: "Application Configuration"
-draft: true
 linkTitle: "Application Config"
 weight: 5
 description: >

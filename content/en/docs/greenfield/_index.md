@@ -1,8 +1,7 @@
 ---
 title: "CD for Greenfield Projects"
-draft: true
 linkTitle: "Greenfield CD"
-weight: 6
+weight: 4
 description: >
   Starting a new project? Build continuous delivery in from day one instead of retrofitting it later.
 ---

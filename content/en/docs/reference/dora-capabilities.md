@@ -1,6 +1,5 @@
 ---
 title: "DORA Capabilities"
-draft: true
 linkTitle: "DORA Capabilities"
 weight: 4
 description: >

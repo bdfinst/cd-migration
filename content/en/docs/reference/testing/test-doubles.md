@@ -49,15 +49,15 @@ Test doubles allow you to:
 
 Test doubles are used in every layer of deterministic testing:
 
-- **[Unit tests](../../under-construction/) <!-- target: reference/testing/unit -->** -- nearly all dependencies are replaced with test doubles to
+- **[Unit tests](../../reference/testing/unit/)** -- nearly all dependencies are replaced with test doubles to
   achieve full isolation.
-- **[Integration tests](../../under-construction/) <!-- target: reference/testing/integration -->** -- external sub-systems (APIs, databases, message
+- **[Integration tests](../../reference/testing/integration/)** -- external sub-systems (APIs, databases, message
   queues) are replaced, but internal collaborators remain real.
-- **[Functional tests](../../under-construction/) <!-- target: reference/testing/functional -->** -- dependencies that cross the sub-system boundary
+- **[Functional tests](../../reference/testing/functional/)** -- dependencies that cross the sub-system boundary
   are replaced to maintain determinism.
 
 Test doubles should be used **less** in later pipeline stages.
-[End-to-end tests](../../under-construction/) <!-- target: reference/testing/e2e --> use no test doubles by design.
+[End-to-end tests](../../reference/testing/e2e/) use no test doubles by design.
 
 ## Examples
 
@@ -117,7 +117,7 @@ class FakeUserRepository {
   the implementation. Tests become brittle and break on every refactor. Only mock what is
   necessary to maintain determinism.
 - **Not validating test doubles** -- if the real dependency changes its contract, your test
-  doubles silently drift. Use [contract tests](../../under-construction/) <!-- target: reference/testing/contract --> to keep doubles honest.
+  doubles silently drift. Use [contract tests](../../reference/testing/contract/) to keep doubles honest.
 - **Complex mock setup** -- if setting up mocks requires dozens of lines, the system under test
   may have too many dependencies. Consider refactoring the production code rather than adding
   more mocks.
