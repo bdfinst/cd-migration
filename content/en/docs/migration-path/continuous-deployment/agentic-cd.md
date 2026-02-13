@@ -1,6 +1,5 @@
 ---
 title: "Agentic CD"
-draft: true
 linkTitle: "Agentic CD"
 weight: 3
 description: >
@@ -228,7 +227,7 @@ The pipeline must record which changes were agent-generated, which agent generat
 ## Getting Started with Agentic CD
 
 Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices
-in place. The [AI Adoption Roadmap](../../../under-construction/) <!-- target: brownfield/ai-adoption-roadmap --> provides a
+in place. The [AI Adoption Roadmap](../../../ai-adoption-roadmap/) provides a
 step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced
 delivery friction - all before accelerating with AI coding.
 

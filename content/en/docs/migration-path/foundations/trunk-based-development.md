@@ -1,6 +1,5 @@
 ---
 title: "Trunk-Based Development"
-draft: true
 linkTitle: "Trunk-Based Development"
 weight: 1
 description: >

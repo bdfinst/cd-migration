@@ -29,17 +29,17 @@ Phase 0 to understand where you are, then work through the phases in order.
 
 | Phase | Name | Goal | Key Question |
 |-------|------|------|--------------|
-| 0 | [Assess](../under-construction/) <!-- target: migration-path/assess --> | Understand where you are | "How far are we from CD?" |
-| 1 | [Foundations](../under-construction/) <!-- target: migration-path/foundations --> | Daily integration, testing, small work | "Can we integrate safely every day?" |
-| 2 | [Pipeline](../under-construction/) <!-- target: migration-path/pipeline --> | Automated path to production | "Can we deploy any commit automatically?" |
-| 3 | [Optimize](../under-construction/) <!-- target: migration-path/optimize --> | Improve flow, reduce batch size | "Can we deliver small changes quickly?" |
-| 4 | [Continuous Deployment](../under-construction/) <!-- target: migration-path/continuous-deployment --> | Deploy on demand | "Can we deploy every change?" |
+| 0 | [Assess](../migration-path/assess/) | Understand where you are | "How far are we from CD?" |
+| 1 | [Foundations](../migration-path/foundations/) | Daily integration, testing, small work | "Can we integrate safely every day?" |
+| 2 | [Pipeline](../migration-path/pipeline/) | Automated path to production | "Can we deploy any commit automatically?" |
+| 3 | [Optimize](../migration-path/optimize/) | Improve flow, reduce batch size | "Can we deliver small changes quickly?" |
+| 4 | [Continuous Deployment](../migration-path/continuous-deployment/) | Deploy on demand | "Can we deploy every change?" |
 
 ## Where to Start
 
 ### If you don't know where you stand
 
-Start with [Phase 0 - Assess](../under-construction/) <!-- target: migration-path/assess -->. Complete the value stream mapping exercise, take
+Start with [Phase 0 - Assess](../migration-path/assess/). Complete the value stream mapping exercise, take
 baseline metrics, and fill out the current-state checklist. These activities tell you exactly
 where you stand and which phase to begin with.
 
@@ -53,12 +53,12 @@ links to the practices and migration phases that address it.
 If you don't have time for a full assessment, answer these questions:
 
 - **Do all developers integrate to trunk at least daily?** If no, start with
-  [Phase 1](../under-construction/) <!-- target: migration-path/foundations -->.
+  [Phase 1](../migration-path/foundations/).
 - **Do you have a single automated pipeline that every change goes through?** If no, start with
-  [Phase 2](../under-construction/) <!-- target: migration-path/pipeline -->.
+  [Phase 2](../migration-path/pipeline/).
 - **Can you deploy any green build to production on demand?** If no, focus on the gap between
-  your current state and [Phase 2](../under-construction/) <!-- target: migration-path/pipeline --> completion criteria.
-- **Do you deploy at least weekly?** If no, look at [Phase 3](../under-construction/) <!-- target: migration-path/optimize --> for batch size and
+  your current state and [Phase 2](../migration-path/pipeline/) completion criteria.
+- **Do you deploy at least weekly?** If no, look at [Phase 3](../migration-path/optimize/) for batch size and
   flow optimization.
 
 ## Principles for Brownfield Migration
@@ -73,8 +73,8 @@ incrementally. You do not stop the world to rewrite your test suite or redesign 
 Use your value stream map and metrics to identify which blocker is the current constraint. Fix
 that one thing. Then find the next constraint and fix that. Do not try to fix everything at once.
 
-See [Identify Constraints](../under-construction/) <!-- target: migration-path/assess/identify-constraints --> and the
-[CD Dependency Tree](../under-construction/) <!-- target: reference/cd-dependency-tree -->.
+See [Identify Constraints](../migration-path/assess/identify-constraints/) and the
+[CD Dependency Tree](../reference/cd-dependency-tree/).
 
 ### Make progress visible
 
@@ -82,7 +82,7 @@ Track your DORA metrics from day one: deployment frequency, lead time for change
 rate, and mean time to restore. These metrics show whether your changes are working and build the
 case for continued investment.
 
-See [Baseline Metrics](../under-construction/) <!-- target: migration-path/assess/baseline-metrics -->.
+See [Baseline Metrics](../migration-path/assess/baseline-metrics/).
 
 ### Start with one team
 
@@ -122,7 +122,7 @@ not a project with a deadline.
 ## Related Content
 
 - [Anti-Patterns](../anti-patterns/) - Start with the problem you feel most
-- [Phase 0 - Assess](../under-construction/) <!-- target: migration-path/assess --> - Understand your current state
-- [AI Adoption Roadmap](../under-construction/) <!-- target: ai-adoption-roadmap --> - How to safely incorporate AI into your delivery process
-- [Common Blockers](../under-construction/) <!-- target: reference/common-blockers --> - Frequently encountered obstacles
-- [FAQ](../under-construction/) <!-- target: faq --> - Frequently asked questions about CD migration
+- [Phase 0 - Assess](../migration-path/assess/) - Understand your current state
+- [AI Adoption Roadmap](../ai-adoption-roadmap/) - How to safely incorporate AI into your delivery process
+- [Common Blockers](../reference/common-blockers/) - Frequently encountered obstacles
+- [FAQ](../faq/) - Frequently asked questions about CD migration

@@ -1,6 +1,5 @@
 ---
 title: "Migration Path"
-draft: true
 linkTitle: "Migration Path"
 weight: 7
 description: >

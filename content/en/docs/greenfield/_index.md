@@ -1,6 +1,5 @@
 ---
 title: "CD for Greenfield Projects"
-draft: true
 linkTitle: "Greenfield CD"
 weight: 6
 description: >

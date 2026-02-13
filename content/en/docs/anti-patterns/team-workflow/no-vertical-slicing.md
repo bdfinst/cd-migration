@@ -203,13 +203,13 @@ Break this cycle:
 |--------|-----------------|
 | Percentage of work items that are independently deployable | Should increase toward 100% |
 | Time from feature start to first production deploy | Should decrease as the first vertical slice ships early |
-| [Development cycle time](../../../under-construction/) <!-- target: reference/metrics/development-cycle-time --> | Should decrease as items no longer wait for other layers |
+| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as items no longer wait for other layers |
 | Integration issues discovered late | Should decrease as integration happens with every slice |
-| [Integration frequency](../../../under-construction/) <!-- target: reference/metrics/integration-frequency --> | Should increase as deployable slices are completed and merged daily |
+| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase as deployable slices are completed and merged daily |
 
 ## Related Content
 
-- [Work Decomposition](../../../under-construction/) <!-- target: migration-path/foundations/work-decomposition --> - The practice guide for vertical slicing techniques
-- [Small Batches](../../../under-construction/) <!-- target: migration-path/optimize/small-batches --> - Vertical slicing is how you achieve small batch size at the story level
+- [Work Decomposition](../../../migration-path/foundations/work-decomposition/) - The practice guide for vertical slicing techniques
+- [Small Batches](../../../migration-path/optimize/small-batches/) - Vertical slicing is how you achieve small batch size at the story level
 - [Work Items Too Large](../stories-too-large/) - Horizontal slices are often large because they span an entire layer
-- [Trunk-Based Development](../../../under-construction/) <!-- target: migration-path/foundations/trunk-based-development --> - Vertical slices enable daily integration because each is independently complete
+- [Trunk-Based Development](../../../migration-path/foundations/trunk-based-development/) - Vertical slices enable daily integration because each is independently complete

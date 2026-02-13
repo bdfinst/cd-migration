@@ -1,6 +1,5 @@
 ---
 title: "Limiting Work in Progress"
-draft: true
 linkTitle: "Limiting WIP"
 weight: 3
 description: >

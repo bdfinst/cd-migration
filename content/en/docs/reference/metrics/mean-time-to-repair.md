@@ -1,6 +1,5 @@
 ---
 title: "Mean Time to Repair"
-draft: true
 linkTitle: "Mean Time to Repair"
 weight: 6
 description: >

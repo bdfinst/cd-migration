@@ -1,6 +1,5 @@
 ---
 title: "Metrics"
-draft: true
 linkTitle: "Metrics"
 weight: 10
 description: >

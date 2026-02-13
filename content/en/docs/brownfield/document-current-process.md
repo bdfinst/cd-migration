@@ -14,7 +14,7 @@ developer finishing a change and that change running in production.
 
 ## Why Document Before Mapping
 
-[Value stream mapping](../../under-construction/) <!-- target: migration-path/assess/value-stream-mapping --> is a powerful tool for systemic improvement. It requires measurement, cross-team
+[Value stream mapping](../../migration-path/assess/value-stream-mapping/) is a powerful tool for systemic improvement. It requires measurement, cross-team
 coordination, and careful analysis. That takes time to do well, and it should not be rushed.
 
 But you do not need a value stream map to spot obvious friction. Manual steps that could be
@@ -174,14 +174,14 @@ coordination, and deeper analysis.
 1. **Fix the quick wins.** Assign each one to someone with a target of this week or next week.
    Do not create a backlog of improvements that sits untouched.
 2. **Schedule the value stream mapping session.** Use the documented process as the starting
-   point. See [Value Stream Mapping](../../under-construction/) <!-- target: migration-path/assess/value-stream-mapping -->.
+   point. See [Value Stream Mapping](../../migration-path/assess/value-stream-mapping/).
 3. **Start the replacement cycle.** For manual validations that are not quick wins, use the
    [Replacing Manual Validations](../replacing-manual-validations/) cycle to systematically
    automate and remove them.
 
 ## Related Content
 
-- [Value Stream Mapping](../../under-construction/) <!-- target: migration-path/assess/value-stream-mapping --> - The formal analysis tool for systemic improvements
+- [Value Stream Mapping](../../migration-path/assess/value-stream-mapping/) - The formal analysis tool for systemic improvements
 - [Replacing Manual Validations](../replacing-manual-validations/) - The cycle for automating and removing manual steps
-- [Identify Constraints](../../under-construction/) <!-- target: migration-path/assess/identify-constraints --> - Prioritize which bottleneck to fix first
-- [Baseline Metrics](../../under-construction/) <!-- target: migration-path/assess/baseline-metrics --> - Measure your starting point before making changes
+- [Identify Constraints](../../migration-path/assess/identify-constraints/) - Prioritize which bottleneck to fix first
+- [Baseline Metrics](../../migration-path/assess/baseline-metrics/) - Measure your starting point before making changes

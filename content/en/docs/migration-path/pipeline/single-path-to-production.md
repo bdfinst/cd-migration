@@ -1,6 +1,5 @@
 ---
 title: "Single Path to Production"
-draft: true
 linkTitle: "Single Path to Production"
 weight: 1
 description: >

@@ -1,6 +1,5 @@
 ---
 title: "Immutable Artifacts"
-draft: true
 linkTitle: "Immutable Artifacts"
 weight: 4
 description: >

@@ -1,6 +1,5 @@
 ---
 title: "Pipeline Architecture"
-draft: true
 linkTitle: "Pipeline Architecture"
 weight: 7
 description: >

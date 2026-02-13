@@ -1,6 +1,5 @@
 ---
 title: "Common Blockers"
-draft: true
 linkTitle: "Common Blockers"
 weight: 3
 description: >

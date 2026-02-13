@@ -1,6 +1,5 @@
 ---
 title: "Deployable Definition"
-draft: true
 linkTitle: "Deployable Definition"
 weight: 3
 description: >

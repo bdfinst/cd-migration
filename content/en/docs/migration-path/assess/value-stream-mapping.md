@@ -1,6 +1,5 @@
 ---
 title: "Value Stream Mapping"
-draft: true
 linkTitle: "Value Stream Mapping"
 weight: 1
 description: >

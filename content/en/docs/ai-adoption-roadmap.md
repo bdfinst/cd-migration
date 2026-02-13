@@ -1,6 +1,5 @@
 ---
 title: "AI Adoption Roadmap"
-draft: true
 linkTitle: "AI Adoption Roadmap"
 weight: 1
 description: >
@@ -111,7 +110,7 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests](under-construction/) <!-- target: reference/testing --> at service boundaries. AI-generated code is
+- Add [contract tests](reference/testing/) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in minutes, not hours. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.
@@ -152,7 +151,7 @@ change is deterministic regardless of whether a human or an AI wrote it.
 **What to do:**
 
 - Use AI for code generation with the test-first workflow described in
-  [Agentic CD](under-construction/) <!-- target: migration-path/continuous-deployment/agentic-cd -->. Write tests first, then let
+  [Agentic CD](migration-path/continuous-deployment/agentic-cd/). Write tests first, then let
   AI generate the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
   These are high-value, low-risk tasks where AI excels.
@@ -176,7 +175,7 @@ the author.
 {{% alert title="The Destination: Agentic CD" %}}
 The end state of this roadmap is a delivery pipeline where AI agents can contribute code with the
 same safety guarantees as human developers. This is
-[Agentic CD](under-construction/) <!-- target: migration-path/continuous-deployment/agentic-cd --> - the extension of
+[Agentic CD](migration-path/continuous-deployment/agentic-cd/) - the extension of
 continuous deployment to handle agent-generated changes. You do not need to be at CD maturity to
 start the AI adoption roadmap, but the roadmap leads there.
 {{% /alert %}}
@@ -186,9 +185,9 @@ start the AI adoption roadmap, but the roadmap leads there.
 - [Brownfield CD Overview](brownfield/) - The phased migration approach this roadmap parallels
 - [Replacing Manual Validations](brownfield/replacing-manual-validations/) - The core mechanical cycle for Step 4
 - [Defect Sources](defect-sources/) - Catalog of defect causes that AI can help detect (Step 2)
-- [Agentic CD](under-construction/) <!-- target: migration-path/continuous-deployment/agentic-cd --> - The destination for teams completing this roadmap
+- [Agentic CD](migration-path/continuous-deployment/agentic-cd/) - The destination for teams completing this roadmap
 - [Anti-Patterns](anti-patterns/) - Problems that Steps 3 and 4 are designed to eliminate
-- [Common Blockers](under-construction/) <!-- target: reference/common-blockers --> - Obstacles you will encounter along the way
+- [Common Blockers](reference/common-blockers/) - Obstacles you will encounter along the way
 
 ---
 

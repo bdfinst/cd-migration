@@ -1,6 +1,5 @@
 ---
 title: "Everything as Code"
-draft: true
 linkTitle: "Everything as Code"
 weight: 7
 description: >
