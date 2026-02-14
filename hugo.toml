@@ -2,7 +2,7 @@ baseURL = "https://cd-migration.org/"
 title = "CD Migration Guide"
 description = "A phased migration guide from quarterly releases to continuous deployment"
 
-enableGitInfo = true
+enableGitInfo = false
 enableRobotsTXT = true
 
 disableKinds = []
