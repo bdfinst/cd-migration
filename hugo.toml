@@ -3,6 +3,9 @@ title = "CD Migration Guide"
 description = "A phased migration guide from quarterly releases to continuous deployment"
 
 enableGitInfo = false
+
+[services.googleAnalytics]
+id = "G-KVLFMQXEF1"
 enableRobotsTXT = true
 
 disableKinds = []
