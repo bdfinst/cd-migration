@@ -483,7 +483,7 @@ the [CD Defect Detection and Remediation Patterns](https://bdfinst.github.io/ai-
 ## Next Step
 
 With a reliable test suite in place, automate your build process so that building, testing, and
-packaging happens with a single command. Continue to [Build Automation](../../../migration-path/foundations/build-automation/).
+packaging happens with a single command. Continue to [Build Automation](../build-automation/).
 
 ---
 

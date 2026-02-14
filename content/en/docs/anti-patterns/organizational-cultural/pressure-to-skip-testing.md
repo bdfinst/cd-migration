@@ -210,5 +210,5 @@ raise it with engineering leadership.
 - [Testing Fundamentals](../../../foundations/testing-fundamentals/) - Building a test strategy that becomes part of how the team works
 - [Working Agreements](../../../foundations/working-agreements/) - Making "done includes tests" an explicit team agreement
 - [No Test Automation](../../testing/no-test-automation/) - Where this anti-pattern ends up if left unchecked
-- [Flaky Test Suites](../../testing/flaky-test-suites/) - Another way trust in the test suite erodes
+- [Flaky Tests](../../../symptoms/flaky-tests/) - Another way trust in the test suite erodes
 - [Metrics-Driven Improvement](../../../optimize/metrics-driven-improvement/) - Using data to make the case for quality practices

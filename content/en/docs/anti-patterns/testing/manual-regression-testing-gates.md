@@ -238,8 +238,8 @@ The goal is to eliminate the dedicated testing phase entirely:
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migration-path/foundations/testing-fundamentals/) - The test architecture that replaces manual regression suites
-- [Deterministic Pipeline](../../../migration-path/pipeline/deterministic-pipeline/) - Automated tests in the pipeline replace manual gates
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture that replaces manual regression suites
+- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Automated tests in the pipeline replace manual gates
 - [Inverted Test Pyramid](inverted-test-pyramid/) - Manual regression testing often coexists with an inverted pyramid
-- [Build Automation](../../../migration-path/foundations/build-automation/) - The pipeline infrastructure needed to run tests on every commit
-- [Value Stream Mapping](../../../migration-path/assess/value-stream-mapping/) - Reveals how much time the manual testing phase adds to lead time
+- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The pipeline infrastructure needed to run tests on every commit
+- [Value Stream Mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/) - Reveals how much time the manual testing phase adds to lead time

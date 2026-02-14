@@ -18,11 +18,18 @@ relevant to.
 
 ### Continuous Delivery and Deployment
 
+**Modern Software Engineering** by Dave Farley
+: Farley's broader take on what it means to do software engineering well. Covers the principles
+  behind CD - iterating toward a goal, getting fast feedback, working in small steps - and
+  connects them to test-driven development, managing complexity, and designing for testability.
+  Useful for teams that want to understand the why behind CD practices, not just the how.
+: *Most relevant to: All phases*
+
 **Continuous Delivery Pipelines** by Dave Farley
 : A practical, focused guide to building CD pipelines. Farley covers pipeline design, testing
   strategies, and deployment patterns in a direct, implementation-oriented style. Start here
   if you want a concise guide to the pipeline practices in Phase 2.
-: *Most relevant to: [Phase 2 -- Pipeline](../../migration-path/pipeline/)*
+: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
 
 **Continuous Delivery** by Jez Humble and Dave Farley
 : The foundational text on CD. Published in 2010, it remains the most comprehensive treatment
@@ -36,7 +43,7 @@ relevant to.
   performance. Covers the four key metrics (deployment frequency, lead time, change failure
   rate, MTTR) and the capabilities that predict high performance. Essential reading for anyone
   who needs to make the business case for a CD migration.
-: *Most relevant to: [Phase 0 -- Assess](../../migration-path/assess/) and [Phase 3 -- Metrics-Driven Improvement](../../migration-path/optimize/metrics-driven-improvement/)*
+: *Most relevant to: [Phase 0 -- Assess](../../migrate-to-cd/migration-path/assess/) and [Phase 3 -- Metrics-Driven Improvement](../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)*
 
 **Engineering the Digital Transformation** by Gary Gruver
 : Addresses the organizational and leadership challenges of large-scale delivery
@@ -50,7 +57,7 @@ relevant to.
   include stability patterns (circuit breakers, bulkheads, timeouts), deployment patterns, and
   the operational realities of running software at scale. Essential reading before entering
   Phase 4, where the team has the capability to deploy any change on demand.
-: *Most relevant to: [Phase 4 -- Deliver on Demand](../../migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../../migration-path/pipeline/rollback/)*
+: *Most relevant to: [Phase 4 -- Deliver on Demand](../../migrate-to-cd/migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/)*
 
 **The DevOps Handbook** by Gene Kim, Jez Humble, Patrick Debois, and John Willis
 : A practical companion to *The Phoenix Project*. Covers the Three Ways (flow, feedback, and
@@ -62,7 +69,7 @@ relevant to.
 : A novel that illustrates DevOps principles through the story of a fictional IT organization
   in crisis. Useful for building organizational understanding of why delivery improvement
   matters, especially for stakeholders who will not read a technical book.
-: *Most relevant to: Building organizational buy-in during [Phase 0](../../migration-path/assess/)*
+: *Most relevant to: Building organizational buy-in during [Phase 0](../../migrate-to-cd/migration-path/assess/)*
 
 ### Testing
 
@@ -70,39 +77,39 @@ relevant to.
 : The definitive guide to test-driven development in practice. Goes beyond unit testing to
   cover acceptance testing, test doubles, and how TDD drives design. Essential reading for
   Phase 1 testing fundamentals.
-: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/)*
+: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
 
 **Working Effectively with Legacy Code** by Michael Feathers
 : Practical techniques for adding tests to untested code, breaking dependencies, and
   incrementally improving code that was not designed for testability. Indispensable if your
   migration starts with a codebase that has little or no automated testing.
-: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/)*
+: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
 
 ### Work Decomposition and Flow
 
 **User Story Mapping** by Jeff Patton
 : A practical guide to breaking features into deliverable increments using story maps. Patton's
   approach directly supports the vertical slicing discipline required for small batch delivery.
-: *Most relevant to: [Phase 1 -- Work Decomposition](../../migration-path/foundations/work-decomposition/)*
+: *Most relevant to: [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/)*
 
 **The Principles of Product Development Flow** by Donald Reinertsen
 : A rigorous treatment of flow economics in product development. Covers queue theory, batch
   size economics, WIP limits, and the cost of delay. Dense but transformative. Reading this
   book will change how you think about every aspect of your delivery process.
-: *Most relevant to: [Phase 3 -- Optimize](../../migration-path/optimize/)*
+: *Most relevant to: [Phase 3 -- Optimize](../../migrate-to-cd/migration-path/optimize/)*
 
 **Making Work Visible** by Dominica DeGrandis
 : Focuses on identifying and eliminating the "time thieves" that steal productivity: too much
   WIP, unknown dependencies, unplanned work, conflicting priorities, and neglected work. A
   practical companion to the WIP limiting practices in Phase 3.
-: *Most relevant to: [Phase 3 -- Limiting WIP](../../migration-path/optimize/limiting-wip/)*
+: *Most relevant to: [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/)*
 
 ### Architecture
 
 **Building Microservices** by Sam Newman
 : Covers the architectural patterns that enable independent deployment, including service
   boundaries, API design, data management, and testing strategies for distributed systems.
-: *Most relevant to: [Phase 3 -- Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/)*
+: *Most relevant to: [Phase 3 -- Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/)*
 
 **Team Topologies** by Matthew Skelton and Manuel Pais
 : Addresses the relationship between team structure and software architecture (Conway's Law in
@@ -142,7 +149,7 @@ relevant to.
 
 ## Videos
 
-**"Continuous Delivery" by Dave Farley (YouTube channel)**
+**["Modern Software Engineering" by Dave Farley (YouTube channel)](https://www.youtube.com/@ModernSoftwareEngineeringYT)**
 : Dave Farley's YouTube channel provides weekly videos covering CD practices, pipeline design,
   testing strategies, and software engineering principles. Accessible and practical.
 : *Most relevant to: All phases*
@@ -151,17 +158,17 @@ relevant to.
 : Jez Humble's conference presentations cover the principles and research behind CD. His talk
   "Why Continuous Delivery?" is an excellent introduction for teams and stakeholders who are
   new to the concept.
-: *Most relevant to: Building understanding during [Phase 0](../../migration-path/assess/)*
+: *Most relevant to: Building understanding during [Phase 0](../../migrate-to-cd/migration-path/assess/)*
 
 **"Refactoring" and "TDD" talks by Martin Fowler and Kent Beck**
 : Foundational talks on the development practices that support CD. Understanding TDD and
   refactoring is essential for Phase 1 testing fundamentals.
-: *Most relevant to: [Phase 1 -- Foundations](../../migration-path/foundations/)*
+: *Most relevant to: [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/)*
 
 **"The Smallest Thing That Could Possibly Work" by Bryan Finster**
 : Covers the work decomposition and small batch delivery practices that are central to this
   migration guide. Focuses on practical techniques for breaking work into vertical slices.
-: *Most relevant to: [Phase 1 -- Work Decomposition](../../migration-path/foundations/work-decomposition/) and [Phase 3 -- Small Batches](../../migration-path/optimize/small-batches/)*
+: *Most relevant to: [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) and [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)*
 
 ## Recommended Reading Order
 

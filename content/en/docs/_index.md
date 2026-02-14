@@ -19,8 +19,9 @@ path to solving it.
 
 ## Where to Start
 
+- **[Dysfunction Symptoms](symptoms/)** - Are you seeing these problems? Let's learn why.
 - **[Anti-Patterns](anti-patterns/)** - Find the problems your team is facing and learn the concrete steps to fix each one.
-- **[Brownfield CD](brownfield/)** - Already have a running system? A phased approach to migrating existing applications and teams to continuous delivery.
+- **[Brownfield CD](migrate-to-cd/brownfield/)** - Already have a running system? A phased approach to migrating existing applications and teams to continuous delivery.
 
 ## Content Sources
 

@@ -233,8 +233,8 @@ grows, drop the manual verification.
 
 ## Related Content
 
-- [Build Automation](../../../migration-path/foundations/build-automation/) - The first step in building a pipeline
-- [Pipeline Architecture](../../../migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline from commit to production
-- [Single Path to Production](../../../migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path
-- [Everything as Code](../../../migration-path/foundations/everything-as-code/) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
-- [Identify Constraints](../../../migration-path/assess/identify-constraints/) - The absence of a pipeline is often the primary constraint on delivery
+- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The first step in building a pipeline
+- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline from commit to production
+- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path
+- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
+- [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - The absence of a pipeline is often the primary constraint on delivery

@@ -14,6 +14,9 @@ fix each one.
 
 **Start with the problem you feel most.** Each page links to the practices and migration phases
 that address it.
+
+**Not sure which anti-pattern applies?** Try the [Dysfunction Symptoms](../symptoms/) section - are you seeing
+these problems? Let's learn why.
 {{% /pageinfo %}}
 
 ## Anti-pattern index

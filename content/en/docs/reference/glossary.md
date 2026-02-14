@@ -19,40 +19,40 @@ has a specific meaning within a migration phase, the relevant phase is noted.
 
 A packaged, versioned output of a build process (e.g., a container image, JAR file, or binary).
 In a CD pipeline, artifacts are built once and promoted through environments without
-modification. See [Immutable Artifacts](../../migration-path/pipeline/immutable-artifacts/).
+modification. See [Immutable Artifacts](../../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 ## B
 
 ### Baseline Metrics
 
 The set of delivery measurements taken before beginning a migration, used as the benchmark
-against which improvement is tracked. See [Phase 0 -- Baseline Metrics](../../migration-path/assess/baseline-metrics/).
+against which improvement is tracked. See [Phase 0 -- Baseline Metrics](../../migrate-to-cd/migration-path/assess/baseline-metrics/).
 
 ### Batch Size
 
 The amount of change included in a single deployment. Smaller batches reduce risk, simplify
 debugging, and shorten feedback loops. Reducing batch size is a core focus of
-[Phase 3 -- Small Batches](../../migration-path/optimize/small-batches/).
+[Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/).
 
 ### BDD (Behavior-Driven Development)
 
 A collaboration practice where developers, testers, and product representatives define expected
 behavior using structured examples before code is written. BDD produces executable
 specifications that serve as both documentation and automated tests. BDD supports effective
-[work decomposition](../../migration-path/foundations/work-decomposition/) by forcing clarity about what a
+[work decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) by forcing clarity about what a
 story actually means before development begins.
 
 ### Blue-Green Deployment
 
 A deployment strategy that maintains two identical production environments. New code is deployed
 to the inactive environment, verified, and then traffic is switched. See
-[Progressive Rollout](../../migration-path/continuous-deployment/progressive-rollout/).
+[Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/).
 
 ### Branch Lifetime
 
 The elapsed time between creating a branch and merging it to trunk. CD requires branch lifetimes
 measured in hours, not days or weeks. Long branch lifetimes are a symptom of poor work
-decomposition or slow code review. See [Trunk-Based Development](../../migration-path/foundations/trunk-based-development/).
+decomposition or slow code review. See [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 ## C
 
@@ -60,7 +60,7 @@ decomposition or slow code review. See [Trunk-Based Development](../../migration
 
 A deployment strategy where a new version is rolled out to a small subset of users or servers
 before full rollout. If the canary shows no issues, the deployment proceeds to 100%. See
-[Progressive Rollout](../../migration-path/continuous-deployment/progressive-rollout/).
+[Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/).
 
 ### CD (Continuous Delivery)
 
@@ -81,20 +81,20 @@ remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. Se
 The practice of integrating code changes to a shared trunk at least once per day, where each
 integration is verified by an automated build and test suite. CI is a prerequisite for CD, not
 a synonym. A team that runs automated builds on feature branches but merges weekly is not doing
-CI. See [Build Automation](../../migration-path/foundations/build-automation/).
+CI. See [Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/).
 
 ### Constraint
 
 In the Theory of Constraints, the single factor most limiting the throughput of a system.
 During a CD migration, your job is to find and fix constraints in order of impact. See
-[Identify Constraints](../../migration-path/assess/identify-constraints/).
+[Identify Constraints](../../migrate-to-cd/migration-path/assess/identify-constraints/).
 
 ### Continuous Deployment
 
 An extension of continuous delivery where every change that passes the automated pipeline is
 deployed to production without manual intervention. Continuous delivery ensures every change
 *can* be deployed; continuous deployment ensures every change *is* deployed. See
-[Phase 4 -- Deliver on Demand](../../migration-path/continuous-deployment/).
+[Phase 4 -- Deliver on Demand](../../migrate-to-cd/migration-path/continuous-deployment/).
 
 ## D
 
@@ -102,7 +102,7 @@ deployed to production without manual intervention. Continuous delivery ensures 
 
 A change that has passed all automated quality gates defined by the team and is ready for
 production deployment. The definition of deployable is codified in the pipeline, not decided
-by a person at deployment time. See [Deployable Definition](../../migration-path/pipeline/deployable-definition/).
+by a person at deployment time. See [Deployable Definition](../../migrate-to-cd/migration-path/pipeline/deployable-definition/).
 
 ### Deployment Frequency
 
@@ -127,13 +127,13 @@ change failure rate, and mean time to restore service. See [DORA Capabilities](.
 
 A mechanism that allows code to be deployed to production with new functionality disabled,
 then selectively enabled for specific users, percentages of traffic, or environments. Feature
-flags decouple deployment from release. See [Feature Flags](../../migration-path/optimize/feature-flags/).
+flags decouple deployment from release. See [Feature Flags](../../migrate-to-cd/migration-path/optimize/feature-flags/).
 
 ### Flow Efficiency
 
 The ratio of active work time to total elapsed time in a delivery process. A flow efficiency of
 15% means that for every hour of actual work, roughly 5.7 hours are spent waiting. Value stream
-mapping reveals your flow efficiency. See [Value Stream Mapping](../../migration-path/assess/value-stream-mapping/).
+mapping reveals your flow efficiency. See [Value Stream Mapping](../../migrate-to-cd/migration-path/assess/value-stream-mapping/).
 
 ## H
 
@@ -143,7 +143,7 @@ A dependency that must be resolved before work can proceed. In delivery, hard de
 include things like waiting for another team's API, a shared database migration, or an
 infrastructure provisioning request. Hard dependencies create queues and increase lead time.
 Eliminating hard dependencies is a focus of
-[Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/).
+[Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
 
 ### Hardening Sprint
 
@@ -158,7 +158,7 @@ deployable. See [Common Blockers](../common-blockers/).
 
 A build artifact that is never modified after creation. The same artifact that is tested in the
 pipeline is the exact artifact that is deployed to production. Configuration differences between
-environments are handled externally. See [Immutable Artifacts](../../migration-path/pipeline/immutable-artifacts/).
+environments are handled externally. See [Immutable Artifacts](../../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 ### Integration Frequency
 
@@ -186,20 +186,20 @@ rollback is automated, and the cause of failure is easy to identify. See
 ### Pipeline
 
 The automated sequence of build, test, and deployment stages that every change passes through
-on its way to production. See [Phase 2 -- Pipeline](../../migration-path/pipeline/).
+on its way to production. See [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/).
 
 ### Production-Like Environment
 
 A test or staging environment that matches production in configuration, infrastructure, and
 data characteristics. Testing in environments that differ from production is a common source
-of deployment failures. See [Production-Like Environments](../../migration-path/pipeline/production-like-environments/).
+of deployment failures. See [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/).
 
 ## R
 
 ### Rollback
 
 The ability to revert a production deployment to a previous known-good state. CD requires
-automated rollback that takes minutes, not hours. See [Rollback](../../migration-path/pipeline/rollback/).
+automated rollback that takes minutes, not hours. See [Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/).
 
 ## S
 
@@ -224,13 +224,13 @@ points as a velocity target, see [Common Blockers](../common-blockers/).
 A source-control branching model where all developers integrate to a single shared branch
 (trunk) at least once per day. Short-lived feature branches (less than a day) are acceptable.
 Long-lived feature branches are not. TBD is a prerequisite for CI, which is in turn a
-prerequisite for CD. See [Trunk-Based Development](../../migration-path/foundations/trunk-based-development/).
+prerequisite for CD. See [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 ### TDD (Test-Driven Development)
 
 A development practice where tests are written before the production code that makes them
 pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
-a fast, reliable test suite. TDD feeds into the [testing fundamentals](../../migration-path/foundations/testing-fundamentals/)
+a fast, reliable test suite. TDD feeds into the [testing fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
 required in Phase 1.
 
 ### Toil
@@ -256,14 +256,14 @@ rate through CD practices.
 
 A visual representation of every step required to deliver a change from request to production,
 showing process time, wait time, and percent complete and accurate at each step. The
-foundational tool for [Phase 0 -- Assess](../../migration-path/assess/value-stream-mapping/).
+foundational tool for [Phase 0 -- Assess](../../migrate-to-cd/migration-path/assess/value-stream-mapping/).
 
 ### Vertical Sliced Story
 
 A user story that delivers a thin slice of functionality across all layers of the system
 (UI, API, database, etc.) rather than a horizontal slice that implements one layer completely.
 Vertical slices are independently deployable and testable, which is essential for CD. Vertical
-slicing is a core technique in [Work Decomposition](../../migration-path/foundations/work-decomposition/).
+slicing is a core technique in [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/).
 
 ## W
 
@@ -271,13 +271,13 @@ slicing is a core technique in [Work Decomposition](../../migration-path/foundat
 
 The number of work items that have been started but not yet completed. High WIP increases lead
 time, reduces focus, and increases context-switching overhead. Limiting WIP is a key practice
-in [Phase 3 -- Limiting WIP](../../migration-path/optimize/limiting-wip/).
+in [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/).
 
 ### Working Agreement
 
 An explicit, documented set of team norms covering how work is defined, reviewed, tested, and
 deployed. Working agreements create shared expectations and reduce friction. See
-[Working Agreements](../../migration-path/foundations/working-agreements/).
+[Working Agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/).
 
 ---
 

@@ -24,6 +24,7 @@ different types of tests, when to use each, and best practices for test architec
 | [Contract Tests](contract/) | Verify API contracts between services |
 | [Static Analysis](static/) | Catch issues without running code |
 | [Test Doubles](test-doubles/) | Patterns for isolating dependencies in tests |
+| [Feedback Speed](feedback-speed/) | Why test suite speed matters and the cognitive science behind the targets |
 
 ---
 

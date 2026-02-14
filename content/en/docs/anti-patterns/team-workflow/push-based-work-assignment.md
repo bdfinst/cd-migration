@@ -184,7 +184,7 @@ Pull-based work and WIP limits reinforce each other:
   whatever the manager thinks of next.
 - Together, they create a system where work flows continuously from backlog to done.
 
-See [Limiting WIP](../../../migration-path/optimize/limiting-wip/) for how to set and enforce WIP limits.
+See [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) for how to set and enforce WIP limits.
 
 ### What managers do instead
 
@@ -211,7 +211,7 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 
 ## Related Content
 
-- [Limiting WIP](../../../migration-path/optimize/limiting-wip/) - Pull-based work and WIP limits are complementary practices
-- [Work Decomposition](../../../migration-path/foundations/work-decomposition/) - Pull works best when items are small and well-defined
-- [Working Agreements](../../../migration-path/foundations/working-agreements/) - The team's agreement to pull, not push, should be explicit
+- [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Pull-based work and WIP limits are complementary practices
+- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Pull works best when items are small and well-defined
+- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The team's agreement to pull, not push, should be explicit
 - [Common Blockers](../../../reference/common-blockers/) - Push-based assignment contributes to several listed blockers

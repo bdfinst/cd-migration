@@ -213,7 +213,7 @@ enable short-lived branches. The two practices reinforce each other.
 | "Merging incomplete code to trunk is dangerous"                | Incomplete code behind a feature flag or without a UI entry point is not dangerous - it is invisible. The danger is a three-week branch that lands as a single untested merge.                                                                        |
 | "I need my branch to keep my work separate from other changes" | That separation is the problem. You want to discover conflicts early, when they are small and cheap to fix. A branch that hides conflicts for three weeks is not protecting you - it is accumulating risk.                                            |
 | "We tried short-lived branches and it was chaos"               | Short-lived branches require supporting practices: feature flags, good decomposition, fast CI, and a culture of small changes. Without those supports, it will feel chaotic. The fix is to build the supports, not to retreat to long-lived branches. |
-| "Code review takes too long for daily merges"                  | Small changes take minutes to review, not hours. If reviews are slow, that is a review process problem, not a branching problem. See [PR Review Bottlenecks](../team-workflow/pr-review-bottlenecks/).                                                |
+| "Code review takes too long for daily merges"                  | Small changes take minutes to review, not hours. If reviews are slow, that is a review process problem, not a branching problem. See [PRs Waiting for Review](../../../symptoms/prs-waiting-for-review/).                                                |
 
 ### Step 6: Continuously tighten the limit (Week 5+)
 
@@ -240,8 +240,8 @@ a non-event.
 
 ## Related Content
 
-- [Trunk-Based Development](../../../migration-path/foundations/trunk-based-development/) - The branching model that eliminates long-lived branches
-- [Code Review](../../../migration-path/foundations/code-review/) - Small changes enable fast reviews, which enable short-lived branches
-- [Small Batches](../../../migration-path/optimize/small-batches/) - The principle behind breaking large features into daily integrations
-- [Work Decomposition](../../../migration-path/foundations/work-decomposition/) - Techniques for breaking features into small, mergeable increments
-- [PR Review Bottlenecks](../team-workflow/pr-review-bottlenecks/) - Slow reviews are a common reason branches live too long
+- [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - The branching model that eliminates long-lived branches
+- [Code Review](../../../migrate-to-cd/migration-path/foundations/code-review/) - Small changes enable fast reviews, which enable short-lived branches
+- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - The principle behind breaking large features into daily integrations
+- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Techniques for breaking features into small, mergeable increments
+- [PRs Waiting for Review](../../../symptoms/prs-waiting-for-review/) - Slow reviews are a common reason branches live too long

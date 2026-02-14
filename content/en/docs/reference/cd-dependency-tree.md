@@ -151,10 +151,10 @@ The dependency tree directly informs the sequencing of migration phases:
 
 | Dependency Layer | Migration Phase | Why This Order |
 |-----------------|-----------------|----------------|
-| Development practices (TBD, TDD, BDD, work decomposition, code review) | [Phase 1 -- Foundations](../../migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
-| Build and test infrastructure (build automation, test suite, production-like environments) | [Phase 1](../../migration-path/foundations/) and [Phase 2](../../migration-path/pipeline/) | You need a reliable build and test infrastructure before you can build a reliable pipeline |
-| Pipeline practices (single path, deterministic pipeline, immutable artifacts, config, rollback) | [Phase 2 -- Pipeline](../../migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
-| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 -- Optimize](../../migration-path/optimize/) | Optimization requires a working pipeline to optimize |
+| Development practices (TBD, TDD, BDD, work decomposition, code review) | [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
+| Build and test infrastructure (build automation, test suite, production-like environments) | [Phase 1](../../migrate-to-cd/migration-path/foundations/) and [Phase 2](../../migrate-to-cd/migration-path/pipeline/) | You need a reliable build and test infrastructure before you can build a reliable pipeline |
+| Pipeline practices (single path, deterministic pipeline, immutable artifacts, config, rollback) | [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
+| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 -- Optimize](../../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
 | Organizational practices (working agreements, retrospectives, architecture decoupling) | All phases | These cross-cutting practices support every phase and should be established early |
 
 ## Using the Tree to Diagnose Problems
@@ -191,10 +191,10 @@ resolves itself.
 The tree above focuses on the core technical and process practices. Several important
 supporting practices are not shown for clarity but are covered elsewhere in this guide:
 
-- **Observability and monitoring** -- essential for [progressive rollout](../../migration-path/continuous-deployment/progressive-rollout/) and fast incident response
+- **Observability and monitoring** -- essential for [progressive rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) and fast incident response
 - **Security automation** -- integrated into the pipeline as automated checks rather than manual gates
-- **Database change management** -- a common constraint addressed during [pipeline architecture](../../migration-path/pipeline/pipeline-architecture/)
-- **Team topology and organizational design** -- addressed through [working agreements](../../migration-path/foundations/working-agreements/) and architectural decoupling
+- **Database change management** -- a common constraint addressed during [pipeline architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
+- **Team topology and organizational design** -- addressed through [working agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/) and architectural decoupling
 
 ---
 

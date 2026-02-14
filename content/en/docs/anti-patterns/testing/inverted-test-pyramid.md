@@ -61,9 +61,9 @@ switch to a different task. When the result comes back, they have lost the menta
 code they changed. Investigating a failure takes longer because they have to re-read their own
 code. Fixing the failure takes longer because they are now juggling two streams of work.
 
-A well-structured suite - heavy on unit tests, light on E2E - runs in under 10 minutes. Developers
-run it locally before pushing. Failures are caught while the code is still fresh. The feedback
-loop is tight enough to support continuous integration.
+A well-structured suite - built on functional tests with test doubles and unit tests for complex
+logic - runs in under 10 minutes. Developers run it locally before pushing. Failures are caught
+while the code is still fresh. The feedback loop is tight enough to support continuous integration.
 
 ### Flaky tests destroy trust
 
@@ -96,9 +96,10 @@ When a feature changes, every E2E test that touches that feature must be updated
 the checkout page breaks 30 E2E tests even if the underlying behavior has not changed. The team
 spends more time maintaining E2E tests than writing new features.
 
-Unit tests are cheap to write and cheap to maintain. They test behavior, not UI layout. A function
-that calculates a discount does not care whether the button is blue or green. When the discount
-logic changes, one or two unit tests need updating - not thirty browser flows.
+Functional tests and unit tests are cheap to write and cheap to maintain. They test behavior from
+the actor's perspective, not UI layout or browser flows. A functional test that verifies a
+discount is applied correctly does not care whether the button is blue or green. When the discount
+logic changes, a handful of focused tests need updating - not thirty browser flows.
 
 ### It couples your pipeline to external systems
 
@@ -131,109 +132,121 @@ Fixing the architecture is the only sustainable path.
 
 ## How to Fix It
 
-Inverting the pyramid does not mean deleting all your E2E tests and writing unit tests from
-scratch. It means shifting the balance deliberately over time so that most confidence comes from
-fast, deterministic tests and only a small amount comes from slow, non-deterministic ones.
+The goal is a test suite that is fast, gives you confidence, and costs less to maintain than the
+value it provides. The target architecture looks like this:
 
-### Step 1: Audit your current test distribution (Week 1)
+| Test type | Role | Runs in pipeline? | Uses real external services? |
+|-----------|------|-------------------|----------------------------|
+| **Unit** | Verify high-complexity logic - business rules, calculations, edge cases | Yes, gates the build | No |
+| **Functional** | Verify component behavior from the actor's perspective with [test doubles](../../../reference/testing/test-doubles/) for external dependencies | Yes, gates the build | No (localhost only) |
+| **Contract** | Validate that test doubles still match live external services | Asynchronously, does not gate | Yes |
+| **E2E** | Smoke-test critical business paths in a fully integrated environment | Post-deploy verification only | Yes |
 
-Count your tests by type and measure their characteristics:
+Functional tests are the workhorse. They test what the system does for its actors - a user
+interacting with a UI, a service consuming an API - without coupling to internal implementation
+or external infrastructure. They are fast because they avoid real I/O. They are deterministic
+because they use test doubles for anything outside the component boundary. They survive
+refactoring because they assert on outcomes, not method calls.
 
-| Test type | Count | Total duration | Flaky? | Requires external systems? |
-|-----------|-------|---------------|--------|---------------------------|
-| Unit | ? | ? | ? | ? |
-| Integration | ? | ? | ? | ? |
-| Functional | ? | ? | ? | ? |
-| E2E | ? | ? | ? | ? |
-| Manual | ? | N/A | N/A | N/A |
+Unit tests complement functional tests for code with high cyclomatic complexity where you need to
+exercise many permutations quickly - branching business rules, validation logic, calculations
+with boundary conditions. Do not write unit tests for trivial code just to increase coverage.
 
-Run the full suite three times. Note which tests fail intermittently. Record the total duration.
-This is your baseline.
+E2E tests exist only for the small number of critical paths that genuinely require a fully
+integrated environment to validate. A typical application needs fewer than a dozen.
 
-### Step 2: Quarantine flaky tests immediately (Week 1)
+### Step 1: Audit and stabilize (Week 1)
 
-Move every flaky test out of the pipeline-gating suite into a separate quarantine suite. This is
-not deleting them - it is removing them from the critical path so that real failures are visible.
+Map your current test distribution. Count tests by type, measure total duration, and identify
+every test that requires a real external service or produces intermittent failures.
 
-For each quarantined test, decide:
+Quarantine every flaky test immediately - move it out of the pipeline-gating suite. For each one,
+decide: fix it if the flakiness has a solvable cause, replace it with a deterministic functional
+test, or delete it if the behavior is already covered elsewhere. Flaky tests erode confidence and
+train developers to ignore failures. Target zero flaky tests in the gating suite by end of week.
 
-- **Fix it** if the behavior it tests is important and the flakiness has a solvable cause (timing
-  dependency, shared state, test order dependency).
-- **Replace it** with a faster, deterministic test that covers the same behavior at a lower level.
-- **Delete it** if the behavior is already covered by other tests or is not worth the maintenance
-  cost.
+### Step 2: Build functional tests for your highest-risk components (Weeks 2-4)
 
-Target: zero flaky tests in the pipeline-gating suite by end of week.
+Pick the components with the highest defect rate or the most E2E test coverage. For each one:
 
-### Step 3: Push tests down the pyramid (Weeks 2-4)
+1. Identify the actors - who or what interacts with this component?
+2. Write functional tests from the actor's perspective. A user submitting a form, a service
+   calling an API endpoint, a consumer reading from a queue. Test through the component's public
+   interface.
+3. Replace external dependencies with [test doubles](../../../reference/testing/test-doubles/).
+   Use in-memory databases or testcontainers for data stores, HTTP stubs (WireMock, nock, MSW)
+   for external APIs, and fakes or spies for message queues. Prefer running a dependency locally
+   over mocking it entirely - don't poke more holes in reality than you need to stay
+   deterministic.
+4. Add [contract tests](../../../reference/testing/contract/) to validate that your test doubles
+   still match the real services. Contract tests verify format, not specific data. Run them
+   asynchronously - they should not block the build, but failures should trigger investigation.
 
-For each E2E test in your suite, ask: "Can the behavior this test verifies be tested at a lower
-level?"
+As functional tests come online, remove the E2E tests that covered the same behavior. Each
+replacement makes the suite faster and more reliable.
 
-Most of the time, the answer is yes. An E2E test that verifies "user can apply a discount code"
-is actually testing three things:
+### Step 3: Add unit tests where complexity demands them (Weeks 2-4)
 
-1. The discount calculation logic (testable with a unit test)
-2. The API endpoint that accepts the code (testable with a functional test)
-3. The UI flow for entering the code (testable with a component test)
+While building out functional tests, identify the high-complexity logic within each component -
+discount calculations, eligibility rules, parsing, validation. Write unit tests for these using
+TDD: failing test first, implementation, then refactor.
 
-Write the lower-level tests first. Once they exist and pass, the E2E test is redundant for gating
-purposes. Move it to a post-deployment smoke suite or delete it.
+Test public APIs, not private methods. If a refactoring that preserves behavior breaks your unit
+tests, the tests are coupled to implementation details. Move that coverage up to a functional
+test.
 
-Work through your E2E suite systematically, starting with the slowest and most flaky tests. Each
-test you push down the pyramid makes the suite faster and more reliable.
+### Step 4: Reduce E2E to critical-path smoke tests (Weeks 4-6)
 
-### Step 4: Replace external dependencies with test doubles (Weeks 2-4)
+With functional tests covering component behavior, most E2E tests are now redundant. For each
+remaining E2E test, ask: "Does this test a scenario that functional tests with test doubles
+already cover?" If yes, remove it.
 
-Identify every test that calls a real external service and replace the dependency:
+Keep E2E tests only for the critical business paths that require a fully integrated environment -
+paths where the interaction between independently deployed systems is the thing you need to
+verify. Horizontal E2E tests that span multiple teams should never block the pipeline due to
+their failure surface area. Move surviving E2E tests to a post-deploy verification suite.
 
-| Dependency type | Test double approach |
-|----------------|---------------------|
-| Database | In-memory database, testcontainers, or repository fakes |
-| External HTTP API | HTTP stubs (WireMock, nock, MSW) |
-| Message queue | In-memory fake or test spy |
-| File storage | In-memory filesystem or temp directory |
-| Third-party service | Stub that returns canned responses |
+### Step 5: Set the standard for new code (Ongoing)
 
-Validate your test doubles with contract tests that run asynchronously. This ensures your doubles
-stay accurate without coupling your pipeline to external systems.
+Every change gets tests. Establish the team norm for what kind:
 
-### Step 5: Adopt the test-for-every-change rule (Ongoing)
+- **Functional tests are the default.** Every new feature, endpoint, or workflow gets tests from
+  the actor's perspective, with test doubles for external dependencies.
+- **Unit tests are for complex logic.** Business rules with many branches, calculations with
+  edge cases, parsing and validation.
+- **E2E tests are rare.** Added only for new critical business paths where functional tests
+  cannot provide equivalent confidence.
+- **Bug fixes get a regression test** at the level that catches the defect most directly.
 
-New code should be tested at the lowest possible level. Establish the team norm:
+Test code is a first-class citizen that requires as much design and maintenance as production
+code. Duplication in tests is acceptable - tests should be readable and independent, not DRY at
+the expense of clarity.
 
-- Every new function with logic gets a unit test.
-- Every new API endpoint or integration boundary gets a functional test.
-- E2E tests are only added for critical smoke paths - not for every feature.
-- Every bug fix includes a regression test at the lowest level that catches the bug.
-
-Over time, this rule shifts the pyramid naturally. New code enters the codebase with the right
-test distribution even as the team works through the legacy E2E suite.
-
-### Step 6: Address the objections
+### Address the objections
 
 | Objection | Response |
 |-----------|----------|
-| "Unit tests with mocks don't test anything real" | They test logic, which is where most bugs live. A discount calculation that returns the wrong number is a real bug whether it is caught by a unit test or an E2E test. The unit test catches it in milliseconds. The E2E test catches it in minutes - if it is not flaky that day. |
-| "E2E tests catch integration bugs that unit tests miss" | Functional tests with test doubles catch most integration bugs. Contract tests catch the rest. The small number of integration bugs that only E2E can find do not justify a suite of hundreds of slow, flaky E2E tests. |
-| "We can't delete E2E tests - they're our safety net" | They are a safety net with holes. Flaky tests miss real failures. Slow tests delay feedback. Replace them with faster, deterministic tests that actually catch bugs reliably, then keep a small E2E smoke suite for post-deployment verification. |
-| "Our code is too tightly coupled to unit test" | That is an architecture problem, not a testing problem. Start by writing tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) - wrap untestable code in a testable layer. |
-| "We don't have time to rewrite the test suite" | You are already paying the cost of the inverted pyramid in slow feedback, flaky builds, and manual verification. The fix is incremental: push one test down the pyramid each day. After a month, the suite is measurably faster and more reliable. |
+| "Functional tests with test doubles don't test anything real" | They test real behavior from the actor's perspective. A functional test verifies the logic of order submission and that the component handles each possible response correctly - success, validation failure, timeout - without waiting on a live service. Contract tests running asynchronously validate that your test doubles still match the real service contracts. |
+| "E2E tests catch bugs that other tests miss" | A small number of critical-path E2E tests catch bugs that cross system boundaries. But hundreds of E2E tests do not catch proportionally more - they add flakiness and wait time. Most integration bugs are caught by functional tests with well-maintained test doubles validated by contract tests. |
+| "We can't delete E2E tests - they're our safety net" | A flaky safety net gives false confidence. Replace E2E tests with deterministic functional tests that catch bugs reliably, then keep a small E2E smoke suite for post-deploy verification of critical paths. |
+| "Our code is too tightly coupled to test at the component level" | That is an architecture problem. Start by writing functional tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) to wrap untestable code in a testable layer. |
+| "We don't have time to redesign the test suite" | You are already paying the cost in slow feedback, flaky builds, and manual verification. The fix is incremental: replace one E2E test with a functional test each day. After a month, the suite is measurably faster and more reliable. |
 
 ## Measuring Progress
 
 | Metric | What to look for |
 |--------|-----------------|
-| Test suite duration | Should decrease toward under 10 minutes |
+| Test suite duration | Should decrease toward [under 10 minutes](../../../reference/testing/feedback-speed/) |
 | Flaky test count in gating suite | Should reach and stay at zero |
-| Test distribution (unit : integration : E2E ratio) | Unit tests should be the largest category |
-| Pipeline pass rate | Should increase as flaky tests are removed |
+| Functional test coverage of key components | Should increase as E2E tests are replaced |
+| E2E test count | Should decrease to a small set of critical-path smoke tests |
+| Pipeline pass rate | Should increase as non-deterministic tests are removed from the gate |
 | Developers running tests locally | Should increase as the suite gets faster |
-| External dependencies in gating tests | Should reach zero |
+| External dependencies in gating tests | Should reach zero (localhost only) |
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
 - [Unit Tests](../../../reference/testing/unit/) - Writing fast, deterministic tests for logic
 - [Functional Tests](../../../reference/testing/functional/) - Testing your system in isolation with test doubles
 - [Contract Tests](../../../reference/testing/contract/) - Verifying that test doubles match reality

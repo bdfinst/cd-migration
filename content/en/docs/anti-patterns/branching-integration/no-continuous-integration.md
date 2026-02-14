@@ -239,8 +239,8 @@ the team works.
 
 ## Related Content
 
-- [Trunk-Based Development](../../../migration-path/foundations/trunk-based-development/) - CI requires integrating to a shared trunk, not just building branches
-- [Build Automation](../../../migration-path/foundations/build-automation/) - The pipeline infrastructure that CI depends on
-- [Testing Fundamentals](../../../migration-path/foundations/testing-fundamentals/) - Fast, reliable tests are essential for a CI build that teams trust
+- [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - CI requires integrating to a shared trunk, not just building branches
+- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The pipeline infrastructure that CI depends on
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Fast, reliable tests are essential for a CI build that teams trust
 - [Long-Lived Feature Branches](long-lived-feature-branches/) - Long branches prevent daily integration and are both a cause and symptom of missing CI
-- [Working Agreements](../../../migration-path/foundations/working-agreements/) - The team agreement to keep the build green must be explicit
+- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The team agreement to keep the build green must be explicit

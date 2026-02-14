@@ -250,8 +250,8 @@ The team should be able to deploy without watching. The monitoring watches for t
 
 ## Related Content
 
-- [Pipeline Architecture](../../../migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline that includes deployment
-- [Single Path to Production](../../../migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path through the same pipeline
-- [Rollback](../../../migration-path/pipeline/rollback/) - Automated rollback depends on automated deployment
-- [Everything as Code](../../../migration-path/foundations/everything-as-code/) - Deployment scripts, configuration, and infrastructure belong in version control
+- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline that includes deployment
+- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path through the same pipeline
+- [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Automated rollback depends on automated deployment
+- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Deployment scripts, configuration, and infrastructure belong in version control
 - [No Pipeline Exists](no-pipeline-exists/) - If the build is also manual, start there first

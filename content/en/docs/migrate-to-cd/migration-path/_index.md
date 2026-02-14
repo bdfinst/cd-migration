@@ -1,7 +1,7 @@
 ---
 title: "Migration Path"
 linkTitle: "Migration Path"
-weight: 3
+weight: 30
 description: >
   A phased approach to adopting continuous delivery, from assessing your current state through full continuous deployment.
 ---
