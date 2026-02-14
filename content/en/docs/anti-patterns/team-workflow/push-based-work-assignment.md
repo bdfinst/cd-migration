@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Work is assigned to individuals by a manager or lead instead of team members pulling the next
   highest-priority item.
+tags:
+  - team-dynamics
+  - work-decomposition
 ---
 
 {{% pageinfo %}}

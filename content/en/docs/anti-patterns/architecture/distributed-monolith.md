@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Services exist but the boundaries are wrong. Every business operation requires a synchronous
   chain across multiple services, and nothing can be deployed independently.
+tags:
+  - architecture
+  - deployment-automation
 ---
 
 {{% pageinfo %}}
@@ -189,4 +192,4 @@ access when all consumers have migrated.
 - [Premature Microservices](../premature-microservices/) - When the problem is not wrong boundaries but unnecessary decomposition
 - [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Strategies for creating real service boundaries
 - [Horizontal Slicing](../../team-workflow/horizontal-slicing/) - Technical-layer decomposition that produces distributed monoliths
-- [Multiple Services Must Be Deployed Together](../../../symptoms/coordinated-deployments/) - The primary symptom of a distributed monolith
+- [Multiple Services Must Be Deployed Together](../../../symptoms/deployment/coordinated-deployments/) - The primary symptom of a distributed monolith

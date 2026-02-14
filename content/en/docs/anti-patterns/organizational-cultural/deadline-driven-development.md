@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Arbitrary deadlines override quality, scope, and sustainability. Everything is priority one.
   The team cuts corners to hit dates and accumulates debt that slows future delivery.
+tags:
+  - team-dynamics
+  - batch-size
 ---
 
 {{% pageinfo %}}

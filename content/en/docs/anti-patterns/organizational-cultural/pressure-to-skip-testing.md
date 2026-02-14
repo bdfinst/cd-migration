@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Management pressures developers to skip or shortcut testing to meet deadlines. The test suite
   rots sprint by sprint as skipped tests become the norm.
+tags:
+  - test-strategy
+  - team-dynamics
 ---
 
 {{% pageinfo %}}
@@ -210,5 +213,5 @@ raise it with engineering leadership.
 - [Testing Fundamentals](../../../foundations/testing-fundamentals/) - Building a test strategy that becomes part of how the team works
 - [Working Agreements](../../../foundations/working-agreements/) - Making "done includes tests" an explicit team agreement
 - [Manual Testing Only](../../testing/manual-testing-only/) - Where this anti-pattern ends up if left unchecked
-- [Flaky Tests](../../../symptoms/flaky-tests/) - Another way trust in the test suite erodes
+- [Flaky Tests](../../../symptoms/testing/flaky-tests/) - Another way trust in the test suite erodes
 - [Metrics-Driven Improvement](../../../optimize/metrics-driven-improvement/) - Using data to make the case for quality practices

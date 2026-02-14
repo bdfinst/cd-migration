@@ -7,6 +7,9 @@ risk_level: high
 description: >
   The team has no dedicated product owner. Tech leads handle product decisions, coding,
   and stakeholder management simultaneously.
+tags:
+  - work-decomposition
+  - team-dynamics
 ---
 
 {{% pageinfo %}}

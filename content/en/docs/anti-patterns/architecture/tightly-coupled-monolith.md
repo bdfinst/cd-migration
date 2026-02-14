@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Changing one module breaks others. No clear boundaries. Every change is high-risk because
   blast radius is unpredictable.
+tags:
+  - architecture
+  - test-strategy
 ---
 
 {{% pageinfo %}}

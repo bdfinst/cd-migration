@@ -1,10 +1,14 @@
 ---
+aliases:
+  - /docs/symptoms/team-burnout/
 title: "Team Burnout and Unsustainable Pace"
 linkTitle: "Burnout and unsustainable pace"
-weight: 90
 description: >
   The team is exhausted. Every sprint is a crunch sprint. There is no time for learning,
   improvement, or recovery.
+tags:
+  - team-dynamics
+  - process-gates
 ---
 
 ## What you are seeing
@@ -31,7 +35,7 @@ Context switching consumes 20 to 40 percent of their capacity. The team looks fu
 delivers less than a focused team half its size. The utilization trap ("keep everyone busy") masks
 the real problem: the team has more responsibilities than it can sustain.
 
-**Read more:** [Thin-Spread Teams](../anti-patterns/organizational-cultural/thin-spread-teams/)
+**Read more:** [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/)
 
 ### Deadline-Driven Development
 
@@ -40,7 +44,7 @@ pace. There is no recovery period after a crunch because the next deadline start
 Quality is the first casualty, which creates rework, which consumes future capacity, which makes
 the next deadline even harder to meet. The cycle accelerates until the team collapses.
 
-**Read more:** [Deadline-Driven Development](../anti-patterns/organizational-cultural/deadline-driven-development/)
+**Read more:** [Deadline-Driven Development](../../anti-patterns/organizational-cultural/deadline-driven-development/)
 
 ### Unbounded WIP
 
@@ -49,7 +53,7 @@ developer juggles multiple items, each getting fragmented attention. The sensati
 constantly busy but never finishing anything is a direct contributor to burnout. The team is
 working hard on everything and completing nothing.
 
-**Read more:** [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/)
+**Read more:** [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/)
 
 ### Velocity as Individual Metric
 
@@ -59,21 +63,21 @@ individually eliminates the slack that teams need to stay healthy. Helping a tea
 a junior developer, or improving a build script all become career risks because they do not
 produce points.
 
-**Read more:** [Velocity as Individual Metric](../anti-patterns/organizational-cultural/velocity-as-individual-metric/)
+**Read more:** [Velocity as Individual Metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/)
 
 ## How to narrow it down
 
 1. **Is the team responsible for more products than it can sustain?** If developers are spread
    across many products with constant context switching, the workload exceeds what the team
    structure can handle. Start with
-   [Thin-Spread Teams](../anti-patterns/organizational-cultural/thin-spread-teams/).
+   [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/).
 2. **Is every sprint driven by an external deadline?** If the team has not had a sprint without
    deadline pressure in months, the pace is unsustainable by design. Start with
-   [Deadline-Driven Development](../anti-patterns/organizational-cultural/deadline-driven-development/).
+   [Deadline-Driven Development](../../anti-patterns/organizational-cultural/deadline-driven-development/).
 3. **Does the team have more items in progress than team members?** If WIP is unbounded and
    developers juggle multiple items, the team is thrashing rather than delivering. Start with
-   [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/).
+   [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
 4. **Are individuals measured by story points or velocity?** If developers feel pressure to
    maximize personal output at the expense of collaboration and sustainability, the measurement
    system is contributing to burnout. Start with
-   [Velocity as Individual Metric](../anti-patterns/organizational-cultural/velocity-as-individual-metric/).
+   [Velocity as Individual Metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/).

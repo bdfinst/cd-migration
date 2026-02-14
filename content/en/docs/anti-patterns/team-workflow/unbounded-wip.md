@@ -7,6 +7,9 @@ risk_level: high
 description: >
   The team has no constraint on how many items can be in progress at once. Work accumulates
   because there is nothing to stop starting and force finishing.
+tags:
+  - work-decomposition
+  - batch-size
 ---
 
 {{% pageinfo %}}

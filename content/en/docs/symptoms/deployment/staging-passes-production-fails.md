@@ -1,9 +1,13 @@
 ---
+aliases:
+  - /docs/symptoms/staging-passes-production-fails/
 title: "Staging Passes but Production Fails"
 linkTitle: "Staging passes, production fails"
-weight: 10
 description: >
   Deployments pass every pre-production check but break when they reach production.
+tags:
+  - environment-consistency
+  - deployment-automation
 ---
 
 ## What you are seeing
@@ -25,7 +29,7 @@ and production are never truly the same. Different library versions, different e
 variables, different network configurations. Code that works in one context silently fails in
 another because the environments are only superficially similar.
 
-**Read more:** [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/)
 
 ### Blind Operations
 
@@ -34,7 +38,7 @@ failures go undetected until a customer reports them. Without monitoring and ale
 has no way to verify production health after a deploy. "It works in staging" becomes the only
 signal, and production problems surface hours or days late.
 
-**Read more:** [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/)
 
 ### Tightly Coupled Monolith
 
@@ -43,7 +47,7 @@ another. In staging, these interactions may behave differently because the data 
 load is lighter, or a dependent service is stubbed. In production, the full weight of real usage
 exposes coupling the team did not know existed.
 
-**Read more:** [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
 
 ### Manual Deployments
 
@@ -52,17 +56,17 @@ copying files), the process is never identical twice. A step skipped in staging,
 configuration applied in production, a different order of operations. The deployment itself
 becomes a source of variance between environments.
 
-**Read more:** [Manual Deployments](../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
 
 ## How to narrow it down
 
 1. **Are your environments provisioned from the same infrastructure code?** If not, or if you
-   are not sure, start with [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/).
+   are not sure, start with [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/).
 2. **How did you discover the production failure?** If a customer or support team reported it
    rather than an automated alert, start with
-   [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/).
+   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/).
 3. **Does the failure involve a different service or module than the one you changed?** If yes,
    the issue is likely hidden coupling. Start with
-   [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/).
+   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 4. **Is the deployment process identical and automated across all environments?** If not, start
-   with [Manual Deployments](../anti-patterns/pipeline/manual-deployments/).
+   with [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).

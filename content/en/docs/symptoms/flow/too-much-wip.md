@@ -1,9 +1,14 @@
 ---
+aliases:
+  - /docs/symptoms/too-much-wip/
 title: "Everything Started, Nothing Finished"
 linkTitle: "Everything started, nothing finished"
-weight: 50
 description: >
   The board shows many items in progress but few reaching done. The team is busy but not delivering.
+tags:
+  - work-decomposition
+  - batch-size
+  - team-dynamics
 ---
 
 ## What you are seeing
@@ -26,7 +31,7 @@ backlog, each person ends up with their own queue of assigned items. WIP grows b
 distributed across individuals rather than flowing through the team. Nobody swarms on blocked
 items because everyone is busy with "their" assigned work.
 
-**Read more:** [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/)
+**Read more:** [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/)
 
 ### Horizontal Slicing
 
@@ -35,7 +40,7 @@ UI"), each layer must be completed before anything is deployable. Multiple devel
 different layers of the same feature simultaneously, all "in progress," none independently done.
 WIP is high because the decomposition prevents any single item from reaching completion quickly.
 
-**Read more:** [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/)
+**Read more:** [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/)
 
 ### Unbounded WIP
 
@@ -44,16 +49,16 @@ there is nothing to prevent WIP from growing. Developers start new work whenever
 blocked, waiting for review, or between tasks. Without a limit, the natural tendency is to stay
 busy by starting things rather than finishing them.
 
-**Read more:** [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/)
+**Read more:** [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/)
 
 ## How to narrow it down
 
 1. **Does each developer have their own assigned backlog of work?** If yes, the assignment model
    prevents swarming and drives individual queues. Start with
-   [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/).
+   [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 2. **Are work items split by technical layer rather than by user-visible behavior?** If yes,
    items cannot be completed independently. Start with
-   [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/).
+   [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
 3. **Is there any explicit limit on how many items can be in progress at once?** If no, the team
    has no mechanism to stop starting and start finishing. Start with
-   [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/).
+   [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).

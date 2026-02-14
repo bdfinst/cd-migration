@@ -7,6 +7,9 @@ risk_level: high
 description: >
   A small team owns too many products. Everyone context-switches constantly and nobody has
   enough focus to deliver any single product well.
+tags:
+  - team-dynamics
+  - work-decomposition
 ---
 
 {{% pageinfo %}}

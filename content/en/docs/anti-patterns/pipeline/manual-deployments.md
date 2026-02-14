@@ -7,6 +7,9 @@ risk_level: high
 description: >
   The build is automated but deployment is not. Someone must SSH into servers, run scripts, and
   shepherd each release to production by hand.
+tags:
+  - deployment-automation
+  - process-gates
 ---
 
 {{% pageinfo %}}

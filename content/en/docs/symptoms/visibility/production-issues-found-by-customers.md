@@ -1,9 +1,12 @@
 ---
+aliases:
+  - /docs/symptoms/production-issues-found-by-customers/
 title: "Production Issues Discovered by Customers"
 linkTitle: "Issues found by customers"
-weight: 80
 description: >
   The team finds out about production problems from support tickets, not alerts.
+tags:
+  - observability
 ---
 
 ## What you are seeing
@@ -26,7 +29,7 @@ infrastructure may report that servers are running, but nobody can tell whether 
 is actually working correctly. Without instrumentation, the only way to discover a problem is to
 wait for someone to experience it and report it.
 
-**Read more:** [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/)
 
 ### Manual Deployments
 
@@ -36,7 +39,7 @@ steps, not when the system confirms it is healthy. Without an automated pipeline
 health metrics after deploying, verification falls to manual spot-checking or waiting for
 complaints.
 
-**Read more:** [Manual Deployments](../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
 
 ### Missing Deployment Pipeline
 
@@ -45,18 +48,18 @@ automated health checks. A deployment pipeline can include post-deploy verificat
 compares metrics before and after. Without a pipeline, verification is entirely manual and
 usually skipped under time pressure.
 
-**Read more:** [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
 
 ## How to narrow it down
 
 1. **Does the team have application-level metrics and alerts?** If no, the team has no way to
    detect problems automatically. Start with
-   [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/).
+   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/).
 2. **Is the deployment process automated with health checks?** If deployments are manual or
    automated without post-deploy verification, problems go undetected until users report them.
-   Start with [Manual Deployments](../anti-patterns/pipeline/manual-deployments/) or
-   [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/).
+   Start with [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/) or
+   [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Does the team check a dashboard after every deployment?** If the answer is "sometimes" or
    "we click through the app manually," the verification step is unreliable. Start with
-   [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/) to build
+   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) to build
    automated verification.

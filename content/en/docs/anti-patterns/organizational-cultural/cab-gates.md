@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Manual committee approval required for every production change. Meetings are weekly. One-line
   fixes wait alongside major migrations.
+tags:
+  - process-gates
+  - deployment-automation
 ---
 
 {{% pageinfo %}}

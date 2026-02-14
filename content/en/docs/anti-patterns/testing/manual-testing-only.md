@@ -7,6 +7,9 @@ risk_level: critical
 description: >
   Zero automated tests. The team has no idea where to start and the codebase was not designed
   for testability.
+tags:
+  - test-strategy
+  - deployment-automation
 ---
 
 {{% pageinfo %}}

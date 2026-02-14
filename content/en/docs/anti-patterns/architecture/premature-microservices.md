@@ -7,6 +7,9 @@ risk_level: high
 description: >
   The team adopted microservices without a problem that required them. The architecture may be
   correctly decomposed, but the operational cost far exceeds any benefit.
+tags:
+  - architecture
+  - deployment-automation
 ---
 
 {{% pageinfo %}}
@@ -186,4 +189,4 @@ If any answer is unsatisfactory, keep it as a module.
 - [Distributed Monolith](../distributed-monolith/) - When the boundaries are wrong, not just premature
 - [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - How to create real boundaries, whether in a monolith or between services
 - [Blind Operations](../../monitoring-observability/blind-operations/) - The operational maturity gap that makes microservices unmanageable
-- [Multiple Services Must Be Deployed Together](../../../symptoms/coordinated-deployments/) - The symptom that reveals unnecessary service coupling
+- [Multiple Services Must Be Deployed Together](../../../symptoms/deployment/coordinated-deployments/) - The symptom that reveals unnecessary service coupling

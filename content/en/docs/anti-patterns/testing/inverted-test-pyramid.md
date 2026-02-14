@@ -7,6 +7,8 @@ risk_level: high
 description: >
   Most tests are slow end-to-end or UI tests. Few unit tests. The test suite is slow, brittle,
   and expensive to maintain.
+tags:
+  - test-strategy
 ---
 
 {{% pageinfo %}}

@@ -148,6 +148,15 @@ Now - and only now - expand AI use to code generation, refactoring, and autonomo
 The guardrails are in place. The pipeline is fast. Requirements are clear. The outcome of every
 change is deterministic regardless of whether a human or an AI wrote it.
 
+{{% alert title="Do not skip to 'let AI write the tests'" color="warning" %}}
+Teams commonly jump straight to AI-generated tests without the infrastructure from Steps 1-4
+underneath. When you have proper skill installation - developers who understand testing
+principles, agent orchestration that enforces workflow constraints, and pipelines that validate
+every change - the testing principles do not change much. AI just applies them faster. But teams
+without that foundation get tests that look right and verify nothing. The AI is not the problem.
+The missing infrastructure is.
+{{% /alert %}}
+
 **What to do:**
 
 - Use AI for code generation with the test-first workflow described in

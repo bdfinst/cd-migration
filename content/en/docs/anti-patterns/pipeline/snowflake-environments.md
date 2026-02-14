@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Each environment is hand-configured and unique. Nobody knows exactly what is running where.
   Configuration drift is constant.
+tags:
+  - environment-consistency
+  - deployment-automation
 ---
 
 {{% pageinfo %}}

@@ -7,6 +7,9 @@ risk_level: medium
 description: >
   A mandatory coverage target drives teams to write tests that hit lines of code without verifying
   behavior, inflating the coverage number while defects continue reaching production.
+tags:
+  - test-strategy
+  - process-gates
 ---
 
 {{% pageinfo %}}

@@ -1,9 +1,12 @@
 ---
+aliases:
+  - /docs/symptoms/high-coverage-ineffective-tests/
 title: "High Coverage but Tests Miss Defects"
 linkTitle: "High coverage, tests miss defects"
-weight: 20
 description: >
   Test coverage numbers look healthy but defects still reach production.
+tags:
+  - test-strategy
 ---
 
 ## What you are seeing
@@ -26,7 +29,7 @@ completes without errors, not that each piece of logic produces the correct resu
 clicks through a form and checks for a success message covers dozens of functions without
 validating any of them in detail.
 
-**Read more:** [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
 
 ### Pressure to Skip Testing
 
@@ -35,7 +38,7 @@ tests with trivial assertions - checking that a function returns without throwin
 value is not null - just to get the number up. The coverage metric looks healthy, but the tests
 do not actually verify behavior. They exist to satisfy a gate, not to catch defects.
 
-**Read more:** [Pressure to Skip Testing](../anti-patterns/organizational-cultural/pressure-to-skip-testing/)
+**Read more:** [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/)
 
 ### Code Coverage Mandates
 
@@ -44,7 +47,7 @@ rather than for defect detection. Developers write assertion-free tests, cover t
 add single integration tests that execute hundreds of lines without validating any of them. The
 coverage metric rises while the tests remain unable to catch meaningful defects.
 
-**Read more:** [Code Coverage Mandates](../anti-patterns/testing/code-coverage-mandates/)
+**Read more:** [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/)
 
 ### Manual Testing Only
 
@@ -53,21 +56,21 @@ coverage from integration-level runs that touch many lines without asserting mea
 The coverage tool counts every line that executes, regardless of whether any test validates the
 result.
 
-**Read more:** [Manual Testing Only](../anti-patterns/testing/manual-testing-only/)
+**Read more:** [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/)
 
 ## How to narrow it down
 
 1. **Do most tests assert on behavior and expected outcomes, or do they just verify that code
    runs without errors?** If tests mostly check for no-exceptions or non-null returns, the
    problem is testing theater - tests written to hit a number, not to catch defects. Start with
-   [Pressure to Skip Testing](../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+   [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
 2. **Are the majority of your tests end-to-end or integration tests?** If most of the suite runs
    through a browser, API, or multi-service flow rather than testing units of logic directly,
-   start with [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/).
+   start with [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
 3. **Does the pipeline gate on a specific coverage percentage?** If the team writes tests
    primarily to keep coverage above a mandated threshold, start with
-   [Code Coverage Mandates](../anti-patterns/testing/code-coverage-mandates/).
+   [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/).
 4. **Were tests added retroactively to meet a coverage target?** If the bulk of tests were
    written after the code to satisfy a coverage gate rather than to verify design decisions,
    start with
-   [Pressure to Skip Testing](../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+   [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).

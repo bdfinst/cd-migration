@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Work items go from product request to developer without being broken into smaller pieces.
   Items are as large as the feature they describe.
+tags:
+  - work-decomposition
+  - batch-size
 ---
 
 {{% pageinfo %}}

@@ -7,6 +7,9 @@ risk_level: medium
 description: >
   Work is organized by technical layer ("build the API," "update the schema") rather than by
   independently deliverable behavior. Nothing ships until all the pieces are assembled.
+tags:
+  - work-decomposition
+  - batch-size
 ---
 
 {{% pageinfo %}}
@@ -228,6 +231,6 @@ enter the sprint.
 
 - [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice guide for vertical slicing techniques
 - [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Vertical slicing is how you achieve small batch size at the story level
-- [Work Items Take Too Long](../../../symptoms/work-items-take-too-long/) - Horizontal slices are often large because they span an entire layer
+- [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - Horizontal slices are often large because they span an entire layer
 - [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Vertical slices enable daily integration because each is independently complete
 - [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Loose coupling between services enables independent vertical slicing

@@ -7,6 +7,9 @@ risk_level: medium
 description: >
   Only specific individuals can work on or review certain parts of the codebase. The team's
   capacity is constrained by who knows what.
+tags:
+  - team-dynamics
+  - integration-frequency
 ---
 
 {{% pageinfo %}}

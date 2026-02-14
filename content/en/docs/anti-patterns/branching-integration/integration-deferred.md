@@ -7,6 +7,9 @@ risk_level: critical
 description: >
   The build has been red for weeks and nobody cares. "CI" means a build server exists, not that
   anyone actually integrates continuously.
+tags:
+  - integration-frequency
+  - batch-size
 ---
 
 {{% pageinfo %}}

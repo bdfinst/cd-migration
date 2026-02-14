@@ -7,6 +7,9 @@ risk_level: critical
 description: >
   Every release requires days or weeks of manual testing. Testers execute scripted test cases.
   Test effort scales linearly with application size.
+tags:
+  - test-strategy
+  - process-gates
 ---
 
 {{% pageinfo %}}

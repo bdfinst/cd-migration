@@ -7,6 +7,9 @@ risk_level: high
 description: >
   Work is marked complete before it is truly done. Hidden steps remain after the story is
   closed, including testing, validation, or deployment that someone else must finish.
+tags:
+  - process-gates
+  - work-decomposition
 ---
 
 {{% pageinfo %}}

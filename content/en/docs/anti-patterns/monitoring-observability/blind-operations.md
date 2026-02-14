@@ -7,6 +7,9 @@ risk_level: high
 description: >
   The team cannot tell if a deployment is healthy. No metrics, no log aggregation, no tracing.
   Issues are discovered when customers call support.
+tags:
+  - observability
+  - deployment-automation
 ---
 
 {{% pageinfo %}}

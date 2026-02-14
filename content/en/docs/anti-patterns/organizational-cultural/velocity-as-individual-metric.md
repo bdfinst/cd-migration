@@ -7,6 +7,8 @@ risk_level: high
 description: >
   Story points or velocity are used to evaluate individual performance. Developers game the
   metrics instead of delivering value.
+tags:
+  - team-dynamics
 ---
 
 {{% pageinfo %}}

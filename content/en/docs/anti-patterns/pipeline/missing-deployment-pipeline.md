@@ -7,6 +7,8 @@ risk_level: critical
 description: >
   Builds and deployments are manual processes. Someone runs a script on their laptop. There is no
   automated path from commit to production.
+tags:
+  - deployment-automation
 ---
 
 {{% pageinfo %}}

@@ -1,9 +1,13 @@
 ---
+aliases:
+  - /docs/symptoms/refactoring-breaks-tests/
 title: "Refactoring Breaks Tests"
 linkTitle: "Refactoring breaks tests"
-weight: 30
 description: >
   Internal code changes that do not alter behavior cause widespread test failures.
+tags:
+  - test-strategy
+  - architecture
 ---
 
 ## What you are seeing
@@ -29,7 +33,7 @@ it does.
 Unit tests focused on behavior ("given this input, expect this output") survive refactoring.
 Tests coupled to implementation ("this method was called with these arguments") do not.
 
-**Read more:** [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
 
 ### Tightly Coupled Monolith
 
@@ -38,17 +42,17 @@ refactoring in module A breaks tests for module B - not because B's behavior cha
 because B's tests were calling A's internal methods directly. Without well-defined boundaries,
 every internal change ripples across the test suite.
 
-**Read more:** [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
 
 ## How to narrow it down
 
 1. **Do the broken tests assert on internal method calls, mock interactions, or DOM structure?**
    If yes, the tests are coupled to implementation rather than behavior. This is a test design
-   issue - start with [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/) for guidance
+   issue - start with [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) for guidance
    on building a behavior-focused test suite.
 2. **Are the broken tests end-to-end or UI tests that fail because of layout or selector
    changes?** If yes, you have too many tests at the wrong level of the pyramid. Start with
-   [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/).
+   [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
 3. **Do the broken tests span multiple modules - testing code in one area but breaking because
    of changes in another?** If yes, the problem is missing boundaries between components. Start
-   with [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/).
+   with [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).

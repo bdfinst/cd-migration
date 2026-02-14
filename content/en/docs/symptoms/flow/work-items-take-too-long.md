@@ -1,9 +1,13 @@
 ---
+aliases:
+  - /docs/symptoms/work-items-take-too-long/
 title: "Work Items Take Days or Weeks to Complete"
 linkTitle: "Work items take too long"
-weight: 60
 description: >
   Stories regularly take more than a week from start to done. Developers go days without integrating.
+tags:
+  - work-decomposition
+  - batch-size
 ---
 
 ## What you are seeing
@@ -27,7 +31,7 @@ UI" are each multi-day items. Nothing is deployable until all layers are done. V
 (cutting thin slices through all layers to deliver complete functionality) produces items that
 can be finished in one to two days.
 
-**Read more:** [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/)
+**Read more:** [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/)
 
 ### Monolithic Work Items
 
@@ -37,7 +41,7 @@ a login form, avatar upload, email verification, notification preferences, and p
 Without a decomposition practice during refinement, items arrive at planning already too large
 to flow.
 
-**Read more:** [Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/)
+**Read more:** [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/)
 
 ### Long-Lived Feature Branches
 
@@ -46,16 +50,16 @@ size: large. The branching model reinforces large items because there is no inte
 to finish quickly. Trunk-based development creates natural pressure to keep items small enough to
 integrate daily.
 
-**Read more:** [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/)
+**Read more:** [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/)
 
 ## How to narrow it down
 
 1. **Are work items split by technical layer?** If the board shows items like "backend for
    feature X" and "frontend for feature X," the decomposition is horizontal. Start with
-   [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/).
+   [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
 2. **Do items arrive at planning without being broken down?** If items go from "product owner
    describes a feature" to "developer starts coding" without a decomposition step, start with
-   [Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/).
+   [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
 3. **Do developers work on branches for more than a day?** If yes, the branching model allows
    and encourages large items. Start with
-   [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/).
+   [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/).

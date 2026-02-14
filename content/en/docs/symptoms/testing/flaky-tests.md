@@ -1,9 +1,13 @@
 ---
+aliases:
+  - /docs/symptoms/flaky-tests/
 title: "Tests Randomly Pass or Fail"
 linkTitle: "Tests randomly pass or fail"
-weight: 40
 description: >
   The pipeline fails, the developer reruns it without changing anything, and it passes.
+tags:
+  - test-strategy
+  - environment-consistency
 ---
 
 ## What you are seeing
@@ -30,7 +34,7 @@ Replacing E2E tests with functional tests that use test doubles for external dep
 the suite deterministic by design. The test produces the same result every time because it
 controls all its inputs.
 
-**Read more:** [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
 
 ### Snowflake Environments
 
@@ -42,7 +46,7 @@ Tests that depend on specific environment configurations, installed packages, fi
 or network access are vulnerable to environment drift. Infrastructure-as-code eliminates this
 class of flakiness by ensuring environments are identical and reproducible.
 
-**Read more:** [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/)
 
 ### Tightly Coupled Monolith
 
@@ -54,17 +58,17 @@ but fail together, or pass in one order but fail in another.
 Without clear component boundaries, tests cannot be isolated. The flakiness is a symptom of
 architectural coupling, not a testing problem.
 
-**Read more:** [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
 
 ## How to narrow it down
 
 1. **Do the flaky tests hit real external services or shared environments?** If yes, the tests
    are non-deterministic by design. Start with
-   [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/) and replace them with
+   [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) and replace them with
    functional tests using test doubles.
 2. **Do tests pass locally but fail in CI, or vice versa?** If yes, the environments differ.
-   Start with [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/).
+   Start with [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/).
 3. **Do tests pass individually but fail when run together, or fail in a different order?** If
    yes, tests share mutable state. Start with
-   [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/) for the
+   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/) for the
    architectural root cause, and isolate test data as an immediate fix.

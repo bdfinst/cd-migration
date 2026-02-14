@@ -5,7 +5,7 @@ description = "A phased migration guide from quarterly releases to continuous de
 enableGitInfo = true
 enableRobotsTXT = true
 
-disableKinds = ["taxonomy", "term"]
+disableKinds = []
 
 [sitemap]
 changeFreq = "monthly"
