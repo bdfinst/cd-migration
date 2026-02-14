@@ -111,7 +111,7 @@ on testing" grows from days to weeks to months, making it even less likely that 
 allocate the time.
 
 Eventually, the team reaches a state where the test suite is so degraded that it provides no
-confidence. The team is effectively back to [no test automation](../../testing/no-test-automation/)
+confidence. The team is effectively back to [manual testing only](../../testing/manual-testing-only/)
 but with the added burden of maintaining a broken test infrastructure that nobody trusts.
 
 ### Impact on continuous delivery
@@ -209,6 +209,6 @@ raise it with engineering leadership.
 
 - [Testing Fundamentals](../../../foundations/testing-fundamentals/) - Building a test strategy that becomes part of how the team works
 - [Working Agreements](../../../foundations/working-agreements/) - Making "done includes tests" an explicit team agreement
-- [No Test Automation](../../testing/no-test-automation/) - Where this anti-pattern ends up if left unchecked
+- [Manual Testing Only](../../testing/manual-testing-only/) - Where this anti-pattern ends up if left unchecked
 - [Flaky Tests](../../../symptoms/flaky-tests/) - Another way trust in the test suite erodes
 - [Metrics-Driven Improvement](../../../optimize/metrics-driven-improvement/) - Using data to make the case for quality practices

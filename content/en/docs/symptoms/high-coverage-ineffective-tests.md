@@ -46,14 +46,14 @@ coverage metric rises while the tests remain unable to catch meaningful defects.
 
 **Read more:** [Code Coverage Mandates](../anti-patterns/testing/code-coverage-mandates/)
 
-### No Test Automation
+### Manual Testing Only
 
 When test automation is absent or minimal, teams sometimes generate superficial tests or rely on
 coverage from integration-level runs that touch many lines without asserting meaningful outcomes.
 The coverage tool counts every line that executes, regardless of whether any test validates the
 result.
 
-**Read more:** [No Test Automation](../anti-patterns/testing/no-test-automation/)
+**Read more:** [Manual Testing Only](../anti-patterns/testing/manual-testing-only/)
 
 ## How to narrow it down
 

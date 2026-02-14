@@ -1,6 +1,6 @@
 ---
-title: "No WIP Limits"
-linkTitle: "No WIP Limits"
+title: "Unbounded WIP"
+linkTitle: "Unbounded WIP"
 weight: 31
 category: "Team Workflow"
 risk_level: high

@@ -1,6 +1,6 @@
 ---
-title: "No Observability"
-linkTitle: "No Observability"
+title: "Blind Operations"
+linkTitle: "Blind Operations"
 weight: 49
 category: "Monitoring & Observability"
 risk_level: high

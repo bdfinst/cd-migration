@@ -1,6 +1,6 @@
 ---
-title: "No Test Automation"
-linkTitle: "No Test Automation"
+title: "Manual Testing Only"
+linkTitle: "Manual Testing Only"
 weight: 16
 category: "Testing & Quality"
 risk_level: critical

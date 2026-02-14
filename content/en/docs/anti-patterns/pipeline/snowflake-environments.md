@@ -228,5 +228,5 @@ loss and no human intervention:
 - [Everything as Code](../../../foundations/everything-as-code/) - Infrastructure, configuration, and environments defined in source control
 - [Production-Like Environments](../../../pipeline/production-like-environments/) - Ensuring test environments match production
 - [Pipeline Architecture](../../../pipeline/pipeline-architecture/) - How environments fit into the deployment pipeline
-- [No Pipeline Exists](../no-pipeline-exists/) - Snowflake environments often coexist with manual deployment processes
+- [Missing Deployment Pipeline](../missing-deployment-pipeline/) - Snowflake environments often coexist with manual deployment processes
 - [Deterministic Pipeline](../../../pipeline/deterministic-pipeline/) - A pipeline that gives the same answer every time requires identical environments

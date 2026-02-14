@@ -28,23 +28,23 @@ items because everyone is busy with "their" assigned work.
 
 **Read more:** [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/)
 
-### No Vertical Slicing
+### Horizontal Slicing
 
-When work is split by technical layer - "build the database schema," "build the API," "build the
-UI" - each layer must be completed before anything is deployable. Multiple developers work on
+When work is split by technical layer ("build the database schema," "build the API," "build the
+UI"), each layer must be completed before anything is deployable. Multiple developers work on
 different layers of the same feature simultaneously, all "in progress," none independently done.
 WIP is high because the decomposition prevents any single item from reaching completion quickly.
 
-**Read more:** [No Vertical Slicing](../anti-patterns/team-workflow/no-vertical-slicing/)
+**Read more:** [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/)
 
-### No WIP Limits
+### Unbounded WIP
 
 When the team has no explicit constraint on how many items can be in progress simultaneously,
 there is nothing to prevent WIP from growing. Developers start new work whenever they are
 blocked, waiting for review, or between tasks. Without a limit, the natural tendency is to stay
 busy by starting things rather than finishing them.
 
-**Read more:** [No WIP Limits](../anti-patterns/team-workflow/no-wip-limits/)
+**Read more:** [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/)
 
 ## How to narrow it down
 
@@ -53,7 +53,7 @@ busy by starting things rather than finishing them.
    [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/).
 2. **Are work items split by technical layer rather than by user-visible behavior?** If yes,
    items cannot be completed independently. Start with
-   [No Vertical Slicing](../anti-patterns/team-workflow/no-vertical-slicing/).
+   [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/).
 3. **Is there any explicit limit on how many items can be in progress at once?** If no, the team
    has no mechanism to stop starting and start finishing. Start with
-   [No WIP Limits](../anti-patterns/team-workflow/no-wip-limits/).
+   [Unbounded WIP](../anti-patterns/team-workflow/unbounded-wip/).

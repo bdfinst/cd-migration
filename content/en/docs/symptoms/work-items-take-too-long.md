@@ -19,17 +19,17 @@ that only surface mid-implementation.
 
 ## Common causes
 
-### No Vertical Slicing
+### Horizontal Slicing
 
 When work is split by technical layer rather than by user-visible behavior, each item spans an
 entire layer and takes days to complete. "Build the database schema," "build the API," "build the
-UI" are each multi-day items. Nothing is deployable until all layers are done. Vertical slicing -
-cutting thin slices through all layers to deliver complete functionality - produces items that
+UI" are each multi-day items. Nothing is deployable until all layers are done. Vertical slicing
+(cutting thin slices through all layers to deliver complete functionality) produces items that
 can be finished in one to two days.
 
-**Read more:** [No Vertical Slicing](../anti-patterns/team-workflow/no-vertical-slicing/)
+**Read more:** [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/)
 
-### No Work Decomposition
+### Monolithic Work Items
 
 When the team takes requirements as they arrive without breaking them into smaller pieces, work
 items are as large as the feature they describe. A ticket titled "Add user profile page" hides
@@ -37,12 +37,12 @@ a login form, avatar upload, email verification, notification preferences, and p
 Without a decomposition practice during refinement, items arrive at planning already too large
 to flow.
 
-**Read more:** [No Work Decomposition](../anti-patterns/team-workflow/no-work-decomposition/)
+**Read more:** [Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/)
 
 ### Long-Lived Feature Branches
 
 When developers work on branches for days or weeks, the branch and the work item are the same
-size - large. The branching model reinforces large items because there is no integration pressure
+size: large. The branching model reinforces large items because there is no integration pressure
 to finish quickly. Trunk-based development creates natural pressure to keep items small enough to
 integrate daily.
 
@@ -52,10 +52,10 @@ integrate daily.
 
 1. **Are work items split by technical layer?** If the board shows items like "backend for
    feature X" and "frontend for feature X," the decomposition is horizontal. Start with
-   [No Vertical Slicing](../anti-patterns/team-workflow/no-vertical-slicing/).
+   [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/).
 2. **Do items arrive at planning without being broken down?** If items go from "product owner
    describes a feature" to "developer starts coding" without a decomposition step, start with
-   [No Work Decomposition](../anti-patterns/team-workflow/no-work-decomposition/).
+   [Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/).
 3. **Do developers work on branches for more than a day?** If yes, the branching model allows
    and encourages large items. Start with
    [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/).

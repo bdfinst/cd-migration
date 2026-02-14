@@ -1,6 +1,6 @@
 ---
-title: "No Work Decomposition"
-linkTitle: "No Work Decomposition"
+title: "Monolithic Work Items"
+linkTitle: "Monolithic Work Items"
 weight: 29
 category: "Team Workflow"
 risk_level: high
@@ -139,5 +139,5 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 ## Related Content
 
 - [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice guide for breaking work into small increments
-- [No Vertical Slicing](../no-vertical-slicing/) - Decomposition without vertical slicing still produces items that cannot flow independently
+- [Horizontal Slicing](../horizontal-slicing/) - Decomposition without vertical slicing still produces items that cannot flow independently
 - [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Batch size reduction at every level

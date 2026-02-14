@@ -1,6 +1,6 @@
 ---
-title: "No Continuous Integration"
-linkTitle: "No Continuous Integration"
+title: "Integration Deferred"
+linkTitle: "Integration Deferred"
 weight: 11
 category: "Branching & Integration"
 risk_level: critical

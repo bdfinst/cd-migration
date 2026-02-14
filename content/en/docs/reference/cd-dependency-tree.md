@@ -13,7 +13,7 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 Continuous delivery is not a single practice you adopt. It is a system of interdependent
 practices where each one supports and enables others. This dependency tree shows those
 relationships. Understanding the dependencies helps you plan your migration in the right
-order -- addressing foundational practices before building on them.
+order, addressing foundational practices before building on them.
 
 ## The Dependency Tree
 
@@ -64,6 +64,7 @@ graph BT
     subgraph "Organizational Practices"
         WA["Working Agreements"]
         Retro["Retrospectives"]
+        TT["Team Topology"]
         AD["Architecture Decoupling"]
     end
 
@@ -104,6 +105,9 @@ graph BT
     WA --> CR
     WA --> DD
     Retro --> MDI
+    TT --> AD
+    TT --> WD
+    TT --> SPP
     AD --> FF
     AD --> SB
 ```
@@ -126,23 +130,48 @@ or wrong. If tests are unreliable, CI is unreliable. And if CI is unreliable, CD
 
 ### Work Decomposition enables Small Batches enables CD
 
-You cannot deploy small batches if your work items are large. Work decomposition -- breaking
+You cannot deploy small batches if your work items are large. Work decomposition (breaking
 features into [vertical slices](../glossary/#vertical-sliced-story) that can each be completed in
-two days or less -- is what makes small batches possible. Small batches in turn reduce
+two days or less) is what makes small batches possible. Small batches in turn reduce
 deployment risk and enable the rapid feedback that CD depends on.
 
 ### Trunk-Based Development enables CI
 
 CI requires that all developers integrate to a shared trunk at least once per day. If your team
 uses long-lived feature branches, you are not doing CI regardless of how often your build server
-runs. TBD is not optional for CD -- it is a prerequisite.
+runs. TBD is not optional for CD. It is a prerequisite.
+
+### Team Topology enables Architecture Decoupling, Work Decomposition, and Single Path to Production
+
+How teams are organized determines what they can deliver independently. A team organized around a
+domain (owning the services, data, and interfaces for that domain) can decompose work into
+vertical slices within their boundary and deploy without coordinating with other teams. A team
+organized around a technical layer (the "frontend team," the "DBA team") cannot. Every feature
+requires handoffs across layer teams, and deployment requires coordinating all of them.
+
+Conway's Law makes this structural: the system's architecture will mirror the team structure. If
+teams are organized by layer, the architecture will be layered and tightly coupled. If teams are
+organized around domains with clear ownership boundaries, the architecture will have well-defined
+service boundaries that enable independent deployment.
+
+Team topology feeds three critical dependencies:
+
+- **Architecture Decoupling.** Domain-aligned teams naturally create service boundaries at their
+  domain edges. Layer-aligned teams create boundaries between layers, which forces cross-team
+  coordination for every feature.
+- **Work Decomposition.** A team that owns its domain can decompose features into independently
+  deliverable slices. A team that owns only a layer must wait for other layer teams before
+  anything is deliverable.
+- **Single Path to Production.** Each domain-aligned team can own its pipeline end-to-end. When
+  multiple layer teams share a deployment process, the pipeline becomes a coordination bottleneck
+  rather than an independent delivery mechanism.
 
 ### Architecture Decoupling enables Feature Flags and Small Batches
 
 Tightly coupled architectures force coordinated deployments. When changing service A requires
 simultaneously changing services B and C, small independent deployments become impossible.
-Architecture decoupling -- through well-defined APIs, contract testing, and service boundaries
--- enables teams to deploy independently, use feature flags effectively, and maintain small
+Architecture decoupling through well-defined APIs, contract testing, and service boundaries
+enables teams to deploy independently, use feature flags effectively, and maintain small
 batch sizes.
 
 ## Mapping to Migration Phases
@@ -151,11 +180,11 @@ The dependency tree directly informs the sequencing of migration phases:
 
 | Dependency Layer | Migration Phase | Why This Order |
 |-----------------|-----------------|----------------|
-| Development practices (TBD, TDD, BDD, work decomposition, code review) | [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
+| Development practices (TBD, TDD, BDD, work decomposition, code review) | [Phase 1 - Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
 | Build and test infrastructure (build automation, test suite, production-like environments) | [Phase 1](../../migrate-to-cd/migration-path/foundations/) and [Phase 2](../../migrate-to-cd/migration-path/pipeline/) | You need a reliable build and test infrastructure before you can build a reliable pipeline |
-| Pipeline practices (single path, deterministic pipeline, immutable artifacts, config, rollback) | [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
-| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 -- Optimize](../../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
-| Organizational practices (working agreements, retrospectives, architecture decoupling) | All phases | These cross-cutting practices support every phase and should be established early |
+| Pipeline practices (single path, deterministic pipeline, immutable artifacts, config, rollback) | [Phase 2 - Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
+| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 - Optimize](../../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
+| Organizational practices (team topology, working agreements, retrospectives, architecture decoupling) | All phases | These cross-cutting practices support every phase. Team topology should be addressed early because it constrains architecture and work decomposition |
 
 ## Using the Tree to Diagnose Problems
 
@@ -178,6 +207,13 @@ flags available so partial work can be deployed safely? Is the architecture deco
 to allow independent deployment? The batch size problem originates in one of these upstream
 practices.
 
+**Example 4: Every feature requires cross-team coordination to deploy.**
+Look at team topology. Are teams organized around domains they can deliver independently, or
+around technical layers that force handoffs for every feature? If deploying a feature requires
+the frontend team, backend team, and DBA team to coordinate a release window, the team
+structure is preventing independent delivery. No amount of pipeline automation fixes this.
+The team boundaries need to change.
+
 {{% alert title="Migration Tip" %}}
 When you encounter a problem, resist the urge to fix the symptom. Use the dependency tree to
 trace the problem to its root cause. Fixing the symptom (for example, adding more manual
@@ -191,10 +227,9 @@ resolves itself.
 The tree above focuses on the core technical and process practices. Several important
 supporting practices are not shown for clarity but are covered elsewhere in this guide:
 
-- **Observability and monitoring** -- essential for [progressive rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) and fast incident response
-- **Security automation** -- integrated into the pipeline as automated checks rather than manual gates
-- **Database change management** -- a common constraint addressed during [pipeline architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
-- **Team topology and organizational design** -- addressed through [working agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/) and architectural decoupling
+- **Observability and monitoring:** essential for [progressive rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) and fast incident response
+- **Security automation:** integrated into the pipeline as automated checks rather than manual gates
+- **Database change management:** a common constraint addressed during [pipeline architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
 
 ---
 

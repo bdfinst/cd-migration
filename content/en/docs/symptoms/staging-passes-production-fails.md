@@ -9,7 +9,7 @@ description: >
 ## What you are seeing
 
 Code passes tests, QA signs off, staging looks fine. Then the release
-hits production and something breaks - a feature behaves differently, a dependent service times
+hits production and something breaks: a feature behaves differently, a dependent service times
 out, or data that never appeared in staging triggers an unhandled edge case.
 
 The team scrambles to roll back or hotfix. Confidence in the pipeline drops. People start adding
@@ -20,21 +20,21 @@ surprise.
 
 ### Snowflake Environments
 
-When each environment is configured by hand - or was set up once and has drifted since - staging
+When each environment is configured by hand (or was set up once and has drifted since), staging
 and production are never truly the same. Different library versions, different environment
 variables, different network configurations. Code that works in one context silently fails in
 another because the environments are only superficially similar.
 
 **Read more:** [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/)
 
-### No Observability
+### Blind Operations
 
-Sometimes the problem is not that staging passes and production fails - it is that production
+Sometimes the problem is not that staging passes and production fails. It is that production
 failures go undetected until a customer reports them. Without monitoring and alerting, the team
 has no way to verify production health after a deploy. "It works in staging" becomes the only
 signal, and production problems surface hours or days late.
 
-**Read more:** [No Observability](../anti-patterns/monitoring-observability/no-observability/)
+**Read more:** [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/)
 
 ### Tightly Coupled Monolith
 
@@ -47,8 +47,8 @@ exposes coupling the team did not know existed.
 
 ### Manual Deployments
 
-When deployment involves human steps - running scripts by hand, clicking through a console,
-copying files - the process is never identical twice. A step skipped in staging, an extra
+When deployment involves human steps (running scripts by hand, clicking through a console,
+copying files), the process is never identical twice. A step skipped in staging, an extra
 configuration applied in production, a different order of operations. The deployment itself
 becomes a source of variance between environments.
 
@@ -60,7 +60,7 @@ becomes a source of variance between environments.
    are not sure, start with [Snowflake Environments](../anti-patterns/pipeline/snowflake-environments/).
 2. **How did you discover the production failure?** If a customer or support team reported it
    rather than an automated alert, start with
-   [No Observability](../anti-patterns/monitoring-observability/no-observability/).
+   [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/).
 3. **Does the failure involve a different service or module than the one you changed?** If yes,
    the issue is likely hidden coupling. Start with
    [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/).

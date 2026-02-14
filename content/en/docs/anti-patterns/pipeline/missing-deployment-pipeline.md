@@ -1,6 +1,6 @@
 ---
-title: "No Pipeline Exists"
-linkTitle: "No Pipeline Exists"
+title: "Missing Deployment Pipeline"
+linkTitle: "Missing Deployment Pipeline"
 weight: 36
 category: "Pipeline & Infrastructure"
 risk_level: critical

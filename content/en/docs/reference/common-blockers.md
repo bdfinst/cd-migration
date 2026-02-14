@@ -32,7 +32,7 @@ work items take a week.
 functionality across all layers of the system. Target a maximum of two days from start to
 done. See [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/).
 
-### No Vertical Slicing
+### Horizontal Slicing
 
 **What it looks like:** Stories are organized by technical layer ("build the API," "build the
 database schema," "build the UI") rather than by user-visible behavior. Multiple stories must
