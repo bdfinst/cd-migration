@@ -69,7 +69,6 @@ languageName = "English"
 images = ["/images/cd-migration-logo.png"]
 github_branch = "main"
 github_repo = "https://github.com/bdfinst/cd-migration"
-github_project_repo = "https://github.com/bdfinst/cd-migration"
 
 offlineSearch = true
 
@@ -105,10 +104,10 @@ enable = true
 
 [params.links]
 [[params.links.developer]]
-desc = "Contribute!"
+desc = "Report a defect or suggest an improvement"
 icon = "fab fa-github"
 name = "GitHub"
-url = "https://github.com/bdfinst/cd-migration"
+url = "https://github.com/bdfinst/cd-migration/issues/new/choose"
 
 [module]
 proxy = "direct"
