@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -85,8 +85,10 @@ Key characteristics of ephemeral environments:
 - **Isolated** - they do not share resources with other environments. No shared databases,
   no shared queues, no shared service instances
 
-Ephemeral environments eliminate the "shared staging" bottleneck where multiple teams
-compete for a single pre-production environment and block each other's progress.
+Ephemeral environments replace the long-lived "static" environments - "development,"
+"QA1," "QA2," "testing" - and the maintenance burden required to keep those stable.
+They eliminate the "shared staging" bottleneck where multiple teams compete for a single
+pre-production environment and block each other's progress.
 
 ### Data is representative
 
@@ -227,11 +229,6 @@ the pipeline its predictive power.
 Production-like environments also support effective [rollback](../rollback/) testing: you
 can validate that a rollback works correctly in a staging environment before relying on it
 in production.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

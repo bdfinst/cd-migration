@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 3 - Optimize**
 
 Batch size is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
 {{% /pageinfo %}}
@@ -39,6 +39,11 @@ How often you push changes to production.
 
 **How to reduce:** Remove manual gates, automate approval workflows, build confidence through progressive rollout. If your pipeline is reliable (Phase 2), the only thing preventing more frequent deploys is organizational habit.
 
+**Common objections to deploying more often:**
+
+- **"Incomplete features have no value."** Value is not limited to end-user features. Every deployment provides value to other stakeholders: operations verifies that the change is safe, QA confirms quality gates pass, and the team reduces inventory waste by keeping unintegrated work near zero. A partially built feature deployed behind a flag validates the deployment pipeline and reduces the risk of the final release.
+- **"Our customers don't want changes that frequently."** CD is not about shipping user-visible changes every hour. It is about maintaining the ability to deploy at any time. That ability is what lets you ship an emergency fix in minutes instead of days, roll out a security patch without a war room, and support production without heroics.
+
 ### Level 2: Commit Size
 
 How much code changes in each commit to trunk.
@@ -60,6 +65,12 @@ How much scope each user story or work item contains.
 A story that takes a week to complete is a large batch. It means a week of work piles up before integration, a week of assumptions go untested, and a week of inventory sits in progress.
 
 **Target:** Every story should be completable - coded, tested, reviewed, and integrated - in two days or less. If it cannot be, it needs to be decomposed further.
+
+> "If a story is going to take more than a day to complete, it is too big."
+>
+> - Paul Hammant
+
+This target is not aspirational. Teams that adopt hyper-sprints - iterations as short as 2.5 days - find that the discipline of writing one-day stories forces better decomposition and faster feedback. Teams that make this shift routinely see throughput double, not because people work faster, but because smaller stories flow through the system with less wait time, fewer handoffs, and fewer defects.
 
 ## Behavior-Driven Development for Decomposition
 
@@ -104,6 +115,65 @@ When a story has too many scenarios, it is too large. Use this process:
 |----------------|-----------|-------------|
 | "As a user, I can manage my profile" | 12 scenarios covering name, email, password, avatar, notifications, privacy, deactivation | 5 stories: basic info (2 scenarios), password (2), avatar (2), notifications (3), deactivation (3) |
 
+## ATDD: Connecting Scenarios to Daily Integration
+
+BDD scenarios define *what* to build. Acceptance Test-Driven Development (ATDD) defines *how* to build it in small, integrated steps. The workflow is:
+
+1. **Pick one scenario.** Choose the next Given-When-Then from your story.
+2. **Write the acceptance test first.** Automate the scenario so it runs against the real system (or a close approximation). It will fail - this is the RED state.
+3. **Write just enough code to pass.** Implement the minimum production code to make the acceptance test pass - the GREEN state.
+4. **Refactor.** Clean up the code while the test stays green.
+5. **Commit and integrate.** Push to trunk. The pipeline verifies the change.
+6. **Repeat.** Pick the next scenario.
+
+Each cycle produces a commit that is independently deployable and verified by an automated test. This is how BDD scenarios translate directly into a stream of small, safe integrations rather than a batch of changes delivered at the end of a story.
+
+**Key benefits:**
+
+- Every commit has a corresponding acceptance test, so you know exactly what it does and that it works.
+- You never go more than a few hours without integrating to trunk.
+- The acceptance tests accumulate into a regression suite that protects future changes.
+- If a commit breaks something, the scope of the change is small enough to diagnose quickly.
+
+## Service-Level Decomposition Example
+
+ATDD works at the API and service level, not just at the UI level. Here is an example of building an order history endpoint day by day:
+
+**Day 1 - Return an empty list for a customer with no orders:**
+
+```gherkin
+Scenario: Customer with no order history
+  Given a customer with no previous orders
+  When I request their order history
+  Then I receive an empty list with a 200 status
+```
+
+Commit: Implement the endpoint, return an empty JSON array. Acceptance test passes.
+
+**Day 2 - Return a single order with basic fields:**
+
+```gherkin
+Scenario: Customer with one completed order
+  Given a customer with one completed order for $49.99
+  When I request their order history
+  Then I receive a list with one order showing the total and status
+```
+
+Commit: Query the orders table, serialize basic fields. Previous test still passes.
+
+**Day 3 - Return multiple orders sorted by date:**
+
+```gherkin
+Scenario: Orders returned in reverse chronological order
+  Given a customer with orders placed on Jan 1, Feb 1, and Mar 1
+  When I request their order history
+  Then the orders are returned with the Mar 1 order first
+```
+
+Commit: Add sorting logic and pagination. All three tests pass.
+
+Each day produces a deployable change. The endpoint is usable (though minimal) after day 1. No day requires more than a few hours of coding because the scope is constrained by a single scenario.
+
 ## Vertical Slicing
 
 A vertical slice cuts through all layers of the system to deliver a thin piece of end-to-end functionality. This is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
@@ -138,6 +208,26 @@ Ask these questions about each proposed story:
 2. **Can I write an end-to-end test for it?** If not, the slice is incomplete.
 3. **Does it require all other slices to be useful?** If yes, find a thinner first slice.
 4. **Can it be deployed independently?** If not, check whether feature flags could help.
+
+### Story Slicing Anti-Patterns
+
+These are common ways teams slice stories that undermine the benefits of small batches:
+
+**Wrong: Slice by layer.**
+"Story 1: Build the database. Story 2: Build the API. Story 3: Build the UI."
+**Right:** Slice vertically so each story touches all layers and delivers observable behavior.
+
+**Wrong: Slice by activity.**
+"Story 1: Design. Story 2: Implement. Story 3: Test."
+**Right:** Each story includes all activities needed to deliver and verify one behavior.
+
+**Wrong: Create dependent stories.**
+"Story 2 cannot start until Story 1 is finished because it depends on the data model."
+**Right:** Each story is independently deployable. Use contracts, feature flags, or stubs to break dependencies between stories.
+
+**Wrong: Lose testability.**
+"This story just sets up infrastructure - there is nothing to test yet."
+**Right:** Every story has at least one automated test that verifies its behavior. If you cannot write a test, the slice does not deliver observable value.
 
 ## Practical Steps for Reducing Batch Size
 
@@ -194,13 +284,6 @@ This usually means the team is still working sequentially. Small stories require
 ## Next Step
 
 Small batches often require deploying incomplete features to production. [Feature Flags](../feature-flags/) provide the mechanism to do this safely.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
 
 ## Related Content
 

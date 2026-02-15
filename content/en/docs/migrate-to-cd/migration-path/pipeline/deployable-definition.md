@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -148,6 +148,77 @@ After every production incident, add or improve a check in the deployable defini
 would have caught the issue. Over time, the definition becomes a comprehensive record of
 everything the team has learned about quality.
 
+### Progressive quality gates
+
+Structure the pipeline to fail fast on quick checks, then run progressively more expensive
+validations. This gives developers the fastest possible feedback while still running
+comprehensive checks:
+
+```text
+Stage 1: Fast Feedback (< 5 min)
+  - Linting
+  - Unit tests
+  - Security scan
+
+Stage 2: Integration (< 15 min)
+  - Integration tests
+  - Database migrations
+  - API contract tests
+
+Stage 3: Comprehensive (< 30 min)
+  - E2E tests
+  - Performance tests
+  - Compliance checks
+```
+
+Each stage acts as a gate. If Stage 1 fails, the pipeline stops immediately rather than
+wasting time on slower checks that will not matter.
+
+### Context-specific definitions
+
+While the categories of validation should be consistent across the organization, the
+specific checks may vary by deployment target. Define a base set of checks that always
+apply, then layer additional checks for higher-risk environments:
+
+```yaml
+# Base definition (always required)
+base_deployable:
+  - unit_tests: pass
+  - security_scan: pass
+  - code_coverage: >= 80%
+
+# Production-specific (additional requirements)
+production_deployable:
+  - load_tests: pass
+  - disaster_recovery_tested: true
+  - runbook_updated: true
+
+# Feature branch (relaxed for experimentation)
+feature_deployable:
+  - unit_tests: pass
+  - security_scan: no_critical
+```
+
+This approach lets teams move fast during development while maintaining rigorous
+standards for production deployments.
+
+### Error budget approach
+
+Use error budgets to connect the deployable definition to production reliability. When
+the service is within its error budget, the pipeline allows normal deployment. When the
+error budget is exhausted, the pipeline shifts focus to reliability work:
+
+```yaml
+definition_of_deployable:
+  error_budget_remaining: > 0
+  slo_compliance: >= 99.9%
+  recent_incidents: < 2 per week
+```
+
+This creates a self-correcting system. Teams that ship changes causing incidents consume
+their error budget, which automatically tightens the deployment criteria until reliability
+improves.
+
 ### Visible, shared definitions
 
 Make the deployable definition visible to all team members. Display the current pipeline
@@ -199,10 +270,58 @@ definition ensures that green means green and red means red. Combined with
 is the artifact you deploy. It is the bridge between automated process and organizational
 confidence.
 
----
+## Health Metrics
 
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Track these metrics to evaluate whether your deployable definition is well-calibrated:
+
+- **Pipeline pass rate** - should be 70-90%. Too high suggests tests are too lax and not catching real problems. Too low suggests tests are too strict or too flaky, causing unnecessary rework.
+- **Pipeline execution time** - should be under 30 minutes for full validation. Longer pipelines slow feedback and discourage frequent commits.
+- **Production incident rate** - should decrease over time as the definition improves and catches more failure modes before deployment.
+- **Manual override rate** - should be near zero. Frequent manual overrides indicate the automated definition is incomplete or that the team does not trust it.
+
+## FAQ
+
+### Who decides what goes in the deployable definition?
+
+The entire team - developers, QA, operations, security, and product - should collaboratively
+define these standards. The definition should reflect genuine risks and requirements, not
+arbitrary bureaucracy. If a check does not prevent a real production problem, question
+whether it belongs.
+
+### What if the pipeline passes but a bug reaches production?
+
+This indicates a gap in the deployable definition. Add a test that catches that class of
+failure in the future. Over time, every production incident should result in a stronger
+definition. This is how the definition becomes a comprehensive record of everything the
+team has learned about quality.
+
+### Can we skip pipeline checks for urgent hotfixes?
+
+No. If the pipeline cannot validate a hotfix quickly enough, the problem is with the
+pipeline, not the process. Fix the pipeline speed rather than bypassing quality checks.
+Bypassing checks for "urgent" changes is how critical bugs compound in production.
+
+### How strict should the definition be?
+
+Strict enough to prevent production incidents, but not so strict that it becomes a
+bottleneck. If the pipeline rejects 90% of commits, standards may be too rigid or tests
+may be too flaky. If production incidents are frequent, standards are too lax. Use the
+health metrics above to calibrate.
+
+### Should manual testing be part of the definition?
+
+Manual exploratory testing is valuable for discovering edge cases, but it should inform the
+definition, not be the definition. When manual testing discovers a defect, automate a test
+for that failure mode. Over time, manual testing shifts from gatekeeping to exploration.
+
+### What about requirements that cannot be tested automatically?
+
+Some requirements - like UX quality or nuanced accessibility - are harder to automate
+fully. For these:
+
+1. Automate what you can (accessibility scanners, visual regression tests)
+2. Make remaining manual checks lightweight and concurrent, not deployment blockers
+3. Continuously work to automate more as tooling improves
 
 ## Related Content
 

@@ -28,7 +28,7 @@ path to solving it.
 - **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
 - **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
 - **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
-- **[Defect Detection and Prevention](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
+- **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
 - **[AI Adoption Roadmap](ai-adoption-roadmap/)** - A prescriptive sequence for incorporating AI into delivery safely.
 - **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
 - **[Reference](reference/)** - Glossary, metrics definitions, testing guides, and DORA capabilities.

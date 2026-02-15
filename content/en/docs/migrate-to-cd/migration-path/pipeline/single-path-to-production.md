@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -74,6 +74,53 @@ deployment workflow creates multiple paths. GitFlow is a common source of this a
 When a hotfix branch deploys through a different pipeline than the `develop` branch, you
 cannot be confident that the hotfix has undergone the same validation.
 
+**Integration Branch:**
+
+```text
+trunk -> integration <- features
+```
+
+This creates two merge structures instead of one. When trunk changes, you merge to the
+integration branch immediately. When features change, you merge to integration at least
+daily. The integration branch lives a parallel life to trunk, acting as a temporary
+container for partially finished features. This attempts to mimic feature flags to keep
+inactive features out of production but adds complexity and accumulates abandoned features
+that stay unfinished forever.
+
+**GitFlow (multiple long-lived branches):**
+
+```text
+master (production)
+  |
+develop (integration)
+  |
+feature branches -> develop
+  |
+release branches -> master
+  |
+hotfix branches -> master -> develop
+```
+
+GitFlow creates multiple merge patterns depending on change type:
+
+- Features: feature -> develop -> release -> master
+- Hotfixes: hotfix -> master AND hotfix -> develop
+- Releases: develop -> release -> master
+
+Different types of changes follow different paths to production. Multiple long-lived
+branches (master, develop, release) create merge complexity. Hotfixes have a different
+path than features, release branches delay integration and create batch deployments, and
+merge conflicts multiply across integration points.
+
+**The correct approach** is direct trunk integration - all work integrates directly to
+trunk using the same process:
+
+```text
+trunk <- features
+trunk <- bugfixes
+trunk <- hotfixes
+```
+
 ### Environment-specific pipelines
 
 Building a separate pipeline for staging versus production - or worse, manually deploying
@@ -101,6 +148,14 @@ Use feature flags to decouple deployment from release. Code can be merged and de
 through the pipeline while the feature remains hidden behind a flag. This eliminates the
 need for long-lived branches and separate deployment paths for "not-ready" features.
 
+```javascript
+// Feature code lives in trunk, controlled by flags
+if (featureFlags.newCheckout) {
+  return renderNewCheckout()
+}
+return renderOldCheckout()
+```
+
 ### Branch by abstraction
 
 For large-scale refactors or technology migrations, use branch by abstraction to make
@@ -108,11 +163,27 @@ incremental changes that can be deployed through the standard pipeline at every 
 Create an abstraction layer, build the new implementation behind it, switch over
 incrementally, and remove the old implementation - all through the same pipeline.
 
+```javascript
+// Old behavior behind abstraction
+class PaymentProcessor {
+  process() {
+    // Gradually replace implementation while maintaining interface
+  }
+}
+```
+
 ### Dark launching
 
 Deploy new functionality to production without exposing it to users. The code runs in
 production, processes real data, and generates real metrics - but its output is not shown
 to users. This validates the change under production conditions while managing risk.
+
+```javascript
+// New API route exists but isn't exposed to users
+router.post('/api/v2/checkout', newCheckoutHandler)
+
+// Final commit: update client to use new route
+```
 
 ### Connect tests last
 
@@ -120,6 +191,17 @@ When building a new integration, start by deploying the code without connecting 
 live dependency. Validate the deployment, the configuration, and the basic behavior first.
 Connect to the real dependency as the final step. This keeps the change deployable through
 the pipeline at every stage of development.
+
+```javascript
+// Build new feature code, integrate to trunk
+// Connect to UI/API only in final commit
+function newCheckoutFlow() {
+  // Complete implementation ready
+}
+
+// Final commit: wire it up
+<button onClick={newCheckoutFlow}>Checkout</button>
+```
 
 ## How to Get Started
 
@@ -152,6 +234,105 @@ Once the pipeline is fast and reliable, remove the ability to deploy outside of 
 Revoke direct production access. Disable manual deployment scripts. Make the pipeline the
 only way.
 
+## Example Implementation
+
+### Single Pipeline for Everything
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deployment Pipeline
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Manual trigger for rollbacks
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm test
+      - run: npm run lint
+      - run: npm run security-scan
+
+  build:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run build
+      - run: docker build -t app:${{ github.sha }} .
+      - run: docker push app:${{ github.sha }}
+
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: kubectl set image deployment/app app=app:${{ github.sha }}
+      - run: kubectl rollout status deployment/app
+
+  smoke-test:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm run smoke-test:staging
+
+  deploy-production:
+    needs: smoke-test
+    runs-on: ubuntu-latest
+    steps:
+      - run: kubectl set image deployment/app app=app:${{ github.sha }}
+      - run: kubectl rollout status deployment/app
+```
+
+Every deployment - normal, hotfix, or rollback - uses this pipeline. Consistent, validated,
+traceable.
+
+## FAQ
+
+### What if the pipeline is broken and we need to deploy a critical fix?
+
+Fix the pipeline first. If your pipeline is so fragile that it cannot deploy critical
+fixes, that is a pipeline problem, not a process problem. Invest in pipeline reliability.
+
+### What about emergency hotfixes that cannot wait for the full pipeline?
+
+The pipeline should be fast enough to handle emergencies. If it is not, optimize the
+pipeline. A "fast-track" mode that skips some tests is acceptable, but it must still be
+the same pipeline, not a separate manual process.
+
+### Can we manually patch production "just this once"?
+
+No. "Just this once" becomes "just this once again." Manual production changes always
+create problems. Commit the fix, push through the pipeline, deploy.
+
+### What if deploying through the pipeline takes too long?
+
+Optimize your pipeline:
+
+1. Parallelize tests
+2. Use faster test environments
+3. Implement progressive deployment (canary, blue-green)
+4. Cache dependencies
+5. Optimize build times
+
+A well-optimized pipeline should deploy to production in under 30 minutes.
+
+### Can operators make manual changes for maintenance?
+
+Infrastructure maintenance (patching servers, scaling resources) is separate from
+application deployment. However, application deployment must still only happen through the
+pipeline.
+
+## Health Metrics
+
+- **Pipeline deployment rate**: Should be 100% (all deployments go through pipeline)
+- **Manual override rate**: Should be 0%
+- **Hotfix pipeline time**: Should be less than 30 minutes
+- **Rollback success rate**: Should be greater than 99%
+- **Deployment frequency**: Should increase over time as confidence grows
+
 ## Connection to the Pipeline Phase
 
 Single path to production is the foundation of Phase 2. Without it, every other pipeline
@@ -164,11 +345,6 @@ practice is compromised:
 
 Establishing this practice first creates the constraint that makes the rest of the
 pipeline meaningful.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

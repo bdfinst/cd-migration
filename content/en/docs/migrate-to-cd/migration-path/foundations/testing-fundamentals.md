@@ -185,6 +185,19 @@ external services, or that the system behaves correctly as a whole.
 
 See [Unit Tests](../../../reference/testing/unit/) for detailed guidance.
 
+#### Sociable vs solitary unit tests
+
+Unit tests fall into two styles. **Solitary** unit tests replace every collaborator with a test
+double so the class under test runs completely alone. **Sociable** unit tests allow the code to
+use its real collaborators, only substituting test doubles for external dependencies (databases,
+network calls, file systems).
+
+Prefer sociable unit tests as your default. Solitary tests can over-specify internal structure,
+tying your tests to implementation details that break during refactoring. Sociable tests exercise
+the real interactions between objects, catching integration issues earlier without sacrificing
+speed. Reserve solitary tests for cases where a collaborator is expensive, non-deterministic, or
+not yet built.
+
 ### Layer 2: Integration tests - verify boundaries
 
 Integration tests verify that components interact correctly at their boundaries: database queries
@@ -283,6 +296,66 @@ The critical insight: **everything that blocks deployment is deterministic and u
 control.** Everything that involves external systems runs asynchronously or post-deployment. This
 is what gives you the independence to deploy any time, regardless of the state of the world
 around you.
+
+### Pre-merge vs post-merge
+
+The table above maps to two distinct phases of your pipeline, each with different goals and
+constraints.
+
+**Pre-merge** (before code lands on trunk): Run unit, integration, and functional tests. These
+must all be deterministic and fast. Target: under 10 minutes total. This is the quality gate that
+every change must pass. If pre-merge tests are slow, developers batch up changes or skip local
+runs, both of which undermine continuous integration.
+
+**Post-merge** (after code lands on trunk, before or after deployment): Re-run the full
+deterministic suite against the integrated trunk to catch merge-order interactions. Run contract
+tests, E2E smoke tests, and synthetic monitoring. Target: under 30 minutes for the full
+post-merge cycle.
+
+Why re-run pre-merge tests post-merge? Two changes can each pass pre-merge independently but
+conflict when combined on trunk. The post-merge run catches these integration effects. If a
+post-merge failure occurs, the team fixes it immediately - trunk must always be releasable.
+
+## Starting Without Full Coverage
+
+Teams often delay adopting CI because their existing code lacks tests. This is backwards. You do
+not need tests for existing code to begin. You need one rule applied without exception:
+
+> **Every new change gets a test. We will not go lower than the current level of code coverage.**
+
+Record your current coverage percentage as a baseline. Configure CI to fail if coverage drops
+below that number. This does not mean the baseline is good enough - it means the trend only moves
+in one direction. Every bug fix, every new feature, and every refactoring adds tests. Over time,
+coverage grows organically in the areas that matter most: the code that is actively changing.
+
+Do not attempt to retrofit tests across the entire codebase before starting CI. That approach
+takes months, delivers no incremental value, and often produces low-quality tests written by
+developers who are testing code they did not write and do not fully understand.
+
+## Test Quality Over Coverage Percentage
+
+Code coverage tells you which lines executed during tests. It does not tell you whether the tests
+verified anything meaningful. A test suite with 90% coverage and no assertions has high coverage
+and zero value.
+
+Better questions than "what is our coverage percentage?":
+
+- When a test fails, does it point directly to the defect?
+- When we refactor, do tests break because behavior changed or because implementation details
+  shifted?
+- Do our tests catch the bugs that actually reach production?
+- Can a developer trust a green build enough to deploy immediately?
+
+**Why coverage mandates are harmful.** When teams are required to hit a coverage target, they
+write tests to satisfy the metric rather than to verify behavior. This produces tests that
+exercise code paths without asserting outcomes, tests that mirror implementation rather than
+specify behavior, and tests that inflate the number without improving confidence. The metric goes
+up while the defect escape rate stays the same. Worse, meaningless tests add maintenance cost and
+slow down the suite.
+
+Instead of mandating a coverage number, set a floor (as described above) and focus team
+attention on test quality: mutation testing scores, defect escape rates, and whether developers
+actually trust the suite enough to deploy on green.
 
 ## Week 1 Action Plan
 

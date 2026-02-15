@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 - Deliver on Demand** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 4 - Deliver on Demand**
 
 Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted continuous deployment at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that CD is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
 {{% /pageinfo %}}
@@ -218,21 +218,20 @@ You do not need to be Google-sized to benefit from these patterns. Extract what 
 
 These are the practices covered throughout this migration guide. The experience reports confirm that they work - not in theory, but in production, at scale, in the real world.
 
+## Additional Experience Reports
+
+These reports did not fit neatly into the case studies above but provide valuable perspectives:
+
+- [Ken Mugrage on trunk-based development as part of modern Continuous Delivery](https://www.youtube.com/watch?v=w008iz_UwDk&t=1151s) - A practitioner's view of how TBD enables CD in practice
+- [Integrating Security Feedback into a BDD-Driven Minimum CD Pipeline](https://www.the-effective-software-engineer.at/tese/minimumcd-practice/) - A detailed walk-through of building a CD pipeline with security testing integrated from the start
+
 ## Further Reading
 
-For detailed experience reports and additional case studies, see:
+For additional case studies, see:
 
-- [MinimumCD.org Experience Reports](https://minimumcd.org) - Collected reports from organizations practicing minimum CD
 - *Accelerate* by Nicole Forsgren, Jez Humble, and Gene Kim - The research behind DORA metrics, with extensive case study data
 - *Continuous Delivery* by Jez Humble and David Farley - The foundational text, with detailed examples from multiple organizations
 - *The DevOps Handbook* by Gene Kim, Jez Humble, Patrick Debois, and John Willis - Case studies from organizations across industries
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
 
 ## Related Content
 

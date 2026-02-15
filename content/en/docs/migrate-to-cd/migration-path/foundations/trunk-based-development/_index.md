@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 1 - Foundations**
 
 Trunk-based development is the first foundation to establish. Without daily integration to a shared trunk, the rest of the CD migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
 {{% /pageinfo %}}
@@ -121,7 +121,74 @@ else:
 - Keep flag logic simple; avoid nested or dependent flags
 - Test both flag states in your automated test suite
 
+**When NOT to use feature flags:**
+
+- New features that can be built and connected in a final commit - use Connect Last instead
+- Behavior changes that replace existing logic - use Branch by Abstraction instead
+- New API routes - build the route, expose it as the last change
+- Bug fixes or hotfixes - deploy immediately without a flag
+- Simple changes where standard deployment is sufficient
+
 Feature flags are covered in more depth in [Phase 3: Optimize](../../optimize/).
+
+### Evolutionary Coding Practices
+
+The ability to make code changes that are not complete features and integrate them to trunk without breaking existing behavior is a core skill for trunk-based development. You never make big-bang changes. You make small changes that limit risk. Feature flags are one approach, but two other patterns are equally important.
+
+#### Branch by Abstraction
+
+Branch by abstraction lets you gradually replace existing behavior while continuously integrating to trunk. It works in four steps:
+
+```javascript
+// Step 1: Create abstraction (integrate to trunk)
+class PaymentProcessor {
+  process(payment) {
+    return this.implementation.process(payment)
+  }
+}
+
+// Step 2: Add new implementation alongside old (integrate to trunk)
+class StripePaymentProcessor {
+  process(payment) {
+    // New Stripe implementation
+  }
+}
+
+// Step 3: Switch implementations (integrate to trunk)
+const processor = useNewStripe
+  ? new StripePaymentProcessor()
+  : new LegacyProcessor()
+
+// Step 4: Remove old implementation (integrate to trunk)
+```
+
+Each step is a separate commit that keeps trunk working. The old behavior runs until you explicitly switch, and you can remove the abstraction layer once the migration is complete.
+
+#### Connect Last
+
+Connect Last means you build all the components of a feature, each individually tested and integrated to trunk, and wire them into the user-visible path only in the final commit.
+
+```javascript
+// Commits 1-10: Build new checkout components (all tested, all integrated)
+function CheckoutStep1() { /* tested, working */ }
+function CheckoutStep2() { /* tested, working */ }
+function CheckoutStep3() { /* tested, working */ }
+
+// Commit 11: Wire up to UI (final integration)
+<Route path="/checkout" component={CheckoutStep1} />
+```
+
+Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.
+
+#### Which Pattern Should I Use?
+
+| Pattern | Best for | Example |
+|---------|----------|---------|
+| **Connect Last** | New features that do not affect existing code | Building a new checkout flow, adding a new report page |
+| **Branch by Abstraction** | Replacing or modifying existing behavior | Swapping a payment processor, migrating a data layer |
+| **Feature Flags** | Gradual rollout, testing in production, or customer-specific features | Dark launches, A/B tests, beta programs |
+
+If your change does not touch existing code paths, Connect Last is the simplest option. If you are replacing something that already exists, Branch by Abstraction gives you a safe migration path. Reserve feature flags for cases where you need runtime control over who sees the change.
 
 ### Commit Small, Commit Often
 
@@ -165,7 +232,7 @@ Tighten the window from 2 days to 1 day.
 
 - Every developer merges to trunk at least once per day, every day they write code
 - If work is not complete, use a feature flag or other technique to merge safely
-- Track [integration frequency](../../../reference/metrics/integration-frequency/) as your primary metric
+- Track [integration frequency](../../../../reference/metrics/integration-frequency/) as your primary metric
 
 ### Step 3: Ensure Trunk Stays Green (Week 2-3)
 
@@ -215,35 +282,28 @@ Track these metrics to verify your TBD adoption:
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
+| [Integration frequency](../../../../reference/metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
 | Branch age | < 24 hours | Catches long-lived branches |
-| [Build duration](../../../reference/metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
+| [Build duration](../../../../reference/metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
 | Merge conflict frequency | Decreasing over time | Confirms small changes reduce conflicts |
 
 ## Further Reading
 
-This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios, see the full source material:
+This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios:
 
-- [MinimumCD.org: Trunk-Based Development](https://minimumcd.org) - The authoritative definition and full context
-- [MinimumCD.org: TBD Migration Guide](https://minimumcd.org/minimumcd/trunk-based-development/tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
+- [TBD Migration Guide](tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
+- [Trunk-Based Development](../../../../reference/practices/trunk-based-development/) - Practice definition and minimum criteria
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
 
 ## Next Step
 
 Once your team is integrating to trunk daily, build the test suite that makes that integration trustworthy. Continue to [Testing Fundamentals](../testing-fundamentals/).
 
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
-- [Painful Merges](../../../symptoms/flow/painful-merges/) - Symptom eliminated by integrating to trunk daily
-- [Merge Freeze](../../../symptoms/deployment/merge-freeze/) - Symptom caused by long-lived branches and infrequent integration
-- [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - Symptom that daily integration and CI address directly
-- [Long-Lived Feature Branches](../../../anti-patterns/branching-integration/long-lived-feature-branches/) - Anti-pattern that TBD replaces
-- [Integration Deferred](../../../anti-patterns/branching-integration/integration-deferred/) - Anti-pattern where integration is postponed until late in development
-- [Integration Frequency](../../../reference/metrics/integration-frequency/) - Key metric for tracking TBD adoption
+- [Painful Merges](../../../../symptoms/flow/painful-merges/) - Symptom eliminated by integrating to trunk daily
+- [Merge Freeze](../../../../symptoms/deployment/merge-freeze/) - Symptom caused by long-lived branches and infrequent integration
+- [No Fast Feedback](../../../../symptoms/flow/no-fast-feedback/) - Symptom that daily integration and CI address directly
+- [Long-Lived Feature Branches](../../../../anti-patterns/branching-integration/long-lived-feature-branches/) - Anti-pattern that TBD replaces
+- [Integration Deferred](../../../../anti-patterns/branching-integration/integration-deferred/) - Anti-pattern where integration is postponed until late in development
+- [Integration Frequency](../../../../reference/metrics/integration-frequency/) - Key metric for tracking TBD adoption

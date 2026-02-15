@@ -119,11 +119,64 @@ This is the single most important CI agreement. When the build is broken:
 
 "Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive - it is the team protecting its own ability to deliver.
 
+#### Stop the Line - Why All Work Stops
+
+Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops** - not just merges. Every developer on the team shifts attention to restoring green.
+
+This sounds extreme, but the reasoning is straightforward:
+
+- **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-leverage activity anyone on the team can do.
+- **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress - it is inventory.
+- **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not just the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
+
+#### Two Timelines: Stop vs. Do Not Stop
+
+Consider two teams that encounter the same broken build at 10:00 AM.
+
+**Team A stops all feature work:**
+
+- 10:00 - Build breaks. The team sees the alert and stops.
+- 10:05 - Two developers pair on the fix while a third reviews the failing test.
+- 10:20 - Fix is pushed. Build goes green.
+- 10:25 - The team resumes feature work. Total disruption: roughly 30 minutes.
+
+**Team B treats it as one person's problem:**
+
+- 10:00 - Build breaks. The developer who caused it starts investigating alone.
+- 10:30 - Other developers commit new changes on top of the broken trunk. Some changes conflict with the fix in progress.
+- 11:30 - The original developer's fix does not work because the codebase has shifted underneath them.
+- 14:00 - After multiple failed attempts, the team reverts three commits (the original break plus two that depended on the broken state).
+- 15:00 - Trunk is finally green. The team has lost most of the day, and three developers need to redo work. Total disruption: 5+ hours.
+
+The team that stops immediately pays a small, predictable cost. The team that does not stop pays a large, unpredictable one.
+
 ### The Revert Rule
 
 If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished - they are protecting the team's flow.
 
 Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost - the code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative - a broken trunk for hours while someone debugs - is far more costly.
+
+#### When to Forward Fix vs. Revert
+
+Not every broken build requires a revert. If the developer who broke it can identify the cause quickly, a forward fix is faster and simpler. The key is a strict time limit:
+
+1. **Start a 15-minute timer** the moment the build goes red.
+2. If the developer has a fix ready and pushed within 15 minutes, ship the forward fix.
+3. If the timer expires and the fix is not in trunk, **revert immediately** - no extensions, no "I'm almost done."
+
+The timer prevents the most common failure mode: a developer who is "five minutes away" from a fix for an hour. After 15 minutes without a fix, the probability of a quick resolution drops sharply, and the cost to the rest of the team climbs. Revert, restore green, and fix the problem offline without time pressure.
+
+### Common Objections to Stop-the-Line
+
+Teams adopting stop-the-line discipline encounter predictable pushback. These responses can help.
+
+| Objection | Response |
+|-----------|----------|
+| "We can't afford to stop - we have a deadline." | You cannot afford not to stop. Every minute the build is red, you accumulate changes that are untested against the real baseline. Stopping for 20 minutes now prevents losing half a day later. The fastest path to your deadline runs through a green build. |
+| "Stopping kills our velocity." | Velocity that includes work built on a broken trunk is an illusion. Those story points will come back as rework, failed deployments, or production incidents. Real velocity requires a releasable trunk. |
+| "We already stop all the time - it's not working." | Frequent stops indicate a different problem: the team is merging changes that break the build too often. Address that root cause with better pre-merge testing, smaller commits, and pair programming on risky changes. Stop-the-line is the safety net, not the solution for chronic build instability. |
+| "It's a known flaky test - we can ignore it." | A flaky test you ignore trains the team to ignore all red builds. Fix the flaky test or remove it. There is no middle ground. A red build must always mean "something is wrong" or the signal loses all value. |
+| "Management won't support stopping feature work." | Frame it in terms management cares about: lead time and rework cost. Show the two-timeline comparison above. Teams that stop immediately have shorter cycle times and less unplanned rework. This is not about being cautious - it is about being fast. |
 
 ## How Working Agreements Support the CD Migration
 

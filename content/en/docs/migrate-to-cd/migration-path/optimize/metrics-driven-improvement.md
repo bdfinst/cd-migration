@@ -82,6 +82,49 @@ How long it takes to recover from a failure in production.
 
 **How to measure:** Record the timestamp when a production failure is detected and the timestamp when service is fully restored. Track the median.
 
+## CI Health Metrics
+
+DORA metrics are outcome metrics - they tell you how delivery is performing overall. CI health metrics are leading indicators that give you earlier feedback on the health of your integration practices. Problems in these metrics show up days or weeks before they surface in DORA numbers.
+
+Track these alongside DORA metrics to catch issues before they compound.
+
+### Commits Per Day Per Developer
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The average number of commits integrated to trunk per developer per day |
+| **How to measure** | Count trunk commits (or merged pull requests) over a period and divide by the number of active developers and working days |
+| **Good target** | 2 or more per developer per day |
+| **Why it matters** | Low commit frequency indicates large batch sizes, long-lived branches, or developers waiting to integrate. All of these increase merge risk and slow feedback. |
+
+**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate branch lifetimes and work decomposition.
+
+**If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
+
+### Build Success Rate
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The percentage of CI builds that pass on the first attempt |
+| **How to measure** | Divide the number of green builds by total builds over a period |
+| **Good target** | 90% or higher |
+| **Why it matters** | A frequently broken build disrupts the entire team. Developers cannot integrate confidently when the build is unreliable, leading to longer feedback cycles and batching of changes. |
+
+**If the number is low:** Common causes include flaky tests, insufficient local validation before committing, or environmental inconsistencies between developer machines and CI. Start by identifying and quarantining flaky tests, then ensure developers can run a representative build locally before pushing.
+
+**If the number is high but DORA metrics are still lagging:** The build may pass but take too long, or the build may not cover enough to catch real problems. Check build duration and test coverage.
+
+### Time to Fix a Broken Build
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The elapsed time from a build breaking to the next green build on trunk |
+| **How to measure** | Record the timestamp of the first red build and the timestamp of the next green build. Track the median. |
+| **Good target** | Less than 10 minutes |
+| **Why it matters** | A broken build blocks everyone. The longer it stays broken, the more developers stack changes on top of a broken baseline, compounding the problem. Fast fix times are a sign of strong CI discipline. |
+
+**If the number is high:** The team may not be treating broken builds as a stop-the-line event. Establish a team agreement: when the build breaks, fixing it takes priority over all other work. If builds break frequently and take long to fix, reduce change size so failures are easier to diagnose.
+
 ## The DORA Capabilities
 
 Behind these four metrics are 24 capabilities that the DORA research has shown to drive performance. They organize into five categories. Use this as a diagnostic tool: when a metric is lagging, look at the related capabilities to identify what to improve.
@@ -253,16 +296,74 @@ When a metric is lagging, use this guide to identify where to focus.
 | Hard to deploy fixes quickly | Measure fix lead time | Ensure pipeline supports rapid hotfix deployment |
 | Dependencies fail in cascade | Map failure domains | Improve [architecture decoupling](../architecture-decoupling/) |
 
+## Pipeline Visibility
+
+Metrics only drive improvement when people see them. Pipeline visibility means making the current state of your build and deployment pipeline impossible to ignore. When the build is red, everyone should know immediately - not when someone checks a dashboard twenty minutes later.
+
+### Making Build Status Visible
+
+The most effective teams use ambient visibility - information that is passively available without anyone needing to seek it out.
+
+**Build radiators:** A large monitor in the team area showing the current pipeline status. Green means the build is passing. Red means it is broken. The radiator should be visible from every desk in the team space. For remote teams, a persistent widget in the team chat channel serves the same purpose.
+
+**Browser extensions and desktop notifications:** Tools like CCTray, BuildNotify, or CI server plugins can display build status in the system tray or browser toolbar. These provide individual-level ambient awareness without requiring a shared physical space.
+
+**Chat integrations:** Post build results to the team channel automatically. Keep these concise - a green checkmark or red alert with a link to the build is enough. Verbose build logs in chat become noise.
+
+### Notification Best Practices
+
+Notifications are powerful when used well and destructive when overused. The goal is to notify the right people at the right time with the right level of urgency.
+
+**When to notify:**
+
+- Build breaks on trunk - notify the whole team immediately
+- Build is fixed - notify the whole team (this is a positive signal worth reinforcing)
+- Deployment succeeds - notify the team channel (low urgency)
+- Deployment fails - notify the on-call and the person who triggered it
+
+**When not to notify:**
+
+- Every commit or pull request update (too noisy)
+- Successful builds on feature branches (nobody else needs to know)
+- Metrics that have not changed (no signal in "things are the same")
+
+**Avoiding notification fatigue:** If your team ignores notifications, you have too many of them. Audit your notification channels quarterly. Remove any notification that the team consistently ignores. A notification that nobody reads is worse than no notification at all - it trains people to tune out the channel entirely.
+
 ## Building a Metrics Dashboard
 
-Make your DORA metrics visible to the team at all times. A dashboard on a wall monitor or a shared link is ideal.
+Make your DORA metrics and CI health metrics visible to the team at all times. A dashboard on a wall monitor or a shared link is ideal.
 
-**Essential elements:**
+### Essential Information
 
+Organize your dashboard around three categories:
+
+**Current status** - what is happening right now:
+
+- Pipeline status (green/red) for trunk and any active deployments
 - Current values for all four DORA metrics
+- Active experiment description and target condition
+
+**Trends** - where are we heading:
+
 - Trend lines showing direction over the past 4-8 weeks
-- Current target condition highlighted
-- Active experiment description
+- CI health metrics (build success rate, time to fix, commit frequency) plotted over time
+- Whether the current improvement target is on track
+
+**Team health** - how is the team doing:
+
+- Current improvement target highlighted
+- Days since last production incident
+- Number of experiments completed this quarter
+
+### Dashboard Anti-Patterns
+
+**The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, it is not useful. Include metrics that challenge the team, not just ones that reassure management.
+
+**The everything dashboard:** Crams dozens of metrics, charts, and tables onto one screen. Nobody can parse it at a glance, so nobody looks at it. Limit your dashboard to 6-8 key indicators. If you need more detail, put it on a drill-down page.
+
+**The stale dashboard:** Data is updated manually and falls behind. Automate data collection wherever possible. A dashboard showing last month's numbers is worse than no dashboard - it creates false confidence.
+
+**The blame dashboard:** Ties metrics to individual developers rather than teams. This creates fear and gaming rather than improvement. Always present metrics at the team level.
 
 **Keep it simple.** A spreadsheet updated weekly is better than a sophisticated dashboard that nobody maintains. The goal is visibility, not tooling sophistication.
 

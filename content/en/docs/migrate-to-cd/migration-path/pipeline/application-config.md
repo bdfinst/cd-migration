@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -198,6 +198,38 @@ Ensure that configuration injection is fully automated in the deployment pipelin
 human should manually set environment variables or edit configuration files during
 deployment.
 
+## Common Questions
+
+### How do I change application config for a specific environment?
+
+You should not need to. If a value needs to vary by environment, it is environment
+configuration and should be injected via environment variables or a secrets manager.
+Application configuration is the same everywhere by definition.
+
+### What if I need to hotfix a config value in production?
+
+If it is truly application configuration, make the change in code, commit it, let the
+pipeline validate it, and deploy the new artifact. Hotfixing config outside the pipeline
+defeats the purpose of immutable artifacts.
+
+### What about config that changes frequently?
+
+If a value changes frequently enough that redeploying is impractical, it might be **data**,
+not configuration. Consider whether it belongs in a database or content management system
+instead. Configuration should be relatively stable - it defines how the application
+behaves, not what content it serves.
+
+## Measuring Progress
+
+Track these metrics to confirm that configuration is being handled correctly:
+
+- **Configuration drift incidents** - should be zero when application config is immutable
+  with the artifact
+- **Config-related rollbacks** - track how often configuration changes cause production
+  rollbacks; this should decrease steadily
+- **Time from config commit to production** - should match your normal deployment cycle
+  time, confirming that config changes flow through the same pipeline as code changes
+
 ## Connection to the Pipeline Phase
 
 Application configuration is the enabler that makes
@@ -213,11 +245,6 @@ configuration, which is itself version controlled and automated.
 When configuration is externalized correctly, [rollback](../rollback/) becomes
 straightforward: deploy the previous artifact with the appropriate configuration, and the
 system returns to its prior state.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

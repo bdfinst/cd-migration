@@ -6,10 +6,6 @@ description: >
   Books, videos, and further reading on continuous delivery and deployment.
 ---
 
-{{% pageinfo %}}
-Adapted from [MinimumCD.org](https://minimumcd.org)
-{{% /pageinfo %}}
-
 This page collects the books, websites, and videos that inform the practices in this migration
 guide. Resources are organized by topic and annotated with which migration phase they are most
 relevant to.
@@ -104,6 +100,14 @@ relevant to.
   practical companion to the WIP limiting practices in Phase 3.
 : *Most relevant to: [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/)*
 
+### Databases
+
+**Refactoring Databases: Evolutionary Database Design** by Scott Ambler and Pramod Sadalage
+: The definitive guide to managing database schema changes incrementally. Covers expand-contract
+  migrations, backward-compatible schema changes, and techniques for evolving databases without
+  downtime. Essential reading for teams whose deployment pipeline includes database changes.
+: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/) and [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)*
+
 ### Architecture
 
 **Building Microservices** by Sam Newman
@@ -170,6 +174,23 @@ relevant to.
   migration guide. Focuses on practical techniques for breaking work into vertical slices.
 : *Most relevant to: [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) and [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)*
 
+**["Real Example of a Deployment Pipeline in the Fintech Industry" by Dave Farley](https://youtu.be/bHKHdp4H-8w)**
+: A concrete walkthrough of a production deployment pipeline in a regulated financial services
+  environment. Demonstrates that CD practices are compatible with compliance requirements.
+: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
+
+## Blog Posts and Articles
+
+**[Continuous Integration Certification](https://martinfowler.com/bliki/ContinuousIntegrationCertification.html)** by Martin Fowler
+: A short, practical test for whether your team is actually practicing continuous integration.
+  Useful as a self-assessment during Phase 1.
+: *Most relevant to: [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/)*
+
+**[Continuous Delivery: Anatomy of the Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)** by Dave Farley
+: An article-length overview of deployment pipeline structure, covering commit stage, acceptance
+  testing, and release stages. A good companion to the pipeline phase of this guide.
+: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
+
 ## Recommended Reading Order
 
 If you are starting your migration and want to read in the most useful order:
@@ -187,8 +208,3 @@ in Phase 1, read *Accelerate* for the business case, and refer to the other reso
 reach the relevant migration phase. The most important thing is to start delivering
 improvements, not to finish a reading list.
 {{% /alert %}}
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

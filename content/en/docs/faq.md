@@ -6,10 +6,6 @@ description: >
   Frequently asked questions about continuous delivery and this migration guide.
 ---
 
-{{% pageinfo %}}
-Adapted from [MinimumCD.org](https://minimumcd.org)
-{{% /pageinfo %}}
-
 ## About This Guide
 
 ### Why does this migration guide exist?
@@ -281,7 +277,16 @@ If you do not have time for a full assessment, ask yourself these questions:
 - **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2](../migrate-to-cd/migration-path/pipeline/) completion criteria.
 - **Do you deploy at least weekly?** If no, look at [Phase 3](../migrate-to-cd/migration-path/optimize/) for batch size and flow optimization.
 
----
+### Is CD about speed or quality?
 
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Quality. The purpose of the pipeline is to validate that an artifact is production-worthy or
+reject it. Do not chase daily deployments without first building confidence in your ability to
+detect failure. Move validation as close to the developer as possible: run it on the desktop,
+run it again on merge to trunk, run it again when the trunk changes.
+
+Testing is not limited to functional tests. You need to test for security, compliance,
+performance, and everything else required in your context. Set error budgets and do not exceed
+them. When your error budget is spent, stop shipping features and invest in pipeline
+hardening. When something breaks in production, harden the pipeline. When exploratory testing
+uncovers an edge case, harden the pipeline. The primary goal is to build efficient and
+effective quality gates. Only then can you move quickly.

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -85,6 +85,11 @@ changed build environments.
 Using version identifiers like `-SNAPSHOT` (Maven), `latest` (container images), or
 unversioned "current" references means the same version label can point to different
 artifacts at different times. This makes it impossible to know exactly what is deployed.
+This applies to both the artifacts you produce and the dependencies you consume. A
+dependency pinned to a `-SNAPSHOT` version can change underneath you between builds,
+silently altering your artifact's behavior without any version change. Version numbers
+are cheap - assign a new one for every meaningful change rather than reusing a mutable
+label.
 
 ### Manual intervention at failure points
 
@@ -189,11 +194,6 @@ only that artifact - reaches production.
 This practice also directly supports [rollback](../rollback/): because previous artifacts
 are stored unchanged in the artifact repository, rolling back is simply deploying a
 previous known-good artifact.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

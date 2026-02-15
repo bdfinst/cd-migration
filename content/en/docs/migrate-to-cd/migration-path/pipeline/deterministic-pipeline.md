@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -91,6 +91,69 @@ When a flaky test is detected, the response must be immediate:
 
 Never allow a culture of "just re-run it" to take hold. Every re-run masks a real problem.
 
+## Example: Non-Deterministic vs Deterministic Pipeline
+
+Seeing anti-patterns and good patterns side by side makes the difference concrete.
+
+### Anti-Pattern: Non-Deterministic Pipeline
+
+```yaml
+# Bad: Uses floating versions
+dependencies:
+  nodejs: "latest"
+  postgres: "14"  # No minor/patch version
+
+# Bad: Relies on external state
+test:
+  - curl https://api.example.com/test-data
+  - run_tests --use-production-data
+
+# Bad: Time-dependent tests
+test('shows current date', () => {
+  expect(getDate()).toBe(new Date())  # Fails at midnight!
+})
+
+# Bad: Manual steps
+deploy:
+  - echo "Manually verify staging before approving"
+  - wait_for_approval
+```
+
+Results vary based on when the pipeline runs, what is in production, which dependency
+versions are "latest," and human availability.
+
+### Good Pattern: Deterministic Pipeline
+
+```yaml
+# Good: Pinned versions
+dependencies:
+  nodejs: "18.17.1"
+  postgres: "14.9"
+
+# Good: Version-controlled test data
+test:
+  - docker-compose up -d
+  - ./scripts/seed-test-data.sh  # From version control
+  - npm run test
+
+# Good: Deterministic time handling
+test('shows date', () => {
+  const mockDate = new Date('2024-01-15')
+  jest.useFakeTimers().setSystemTime(mockDate)
+  expect(getDate()).toBe(mockDate)
+})
+
+# Good: Automated verification
+deploy:
+  - deploy_to_staging
+  - run_smoke_tests
+  - if: smoke_tests_pass
+    deploy_to_production
+```
+
+Same inputs always produce same outputs. Pipeline results are trustworthy and
+reproducible.
+
 ## Anti-Patterns
 
 ### Unpinned dependencies
@@ -156,6 +219,98 @@ Treat CI build agents as cattle, not pets. Provision them from images. Replace t
 rather than updating them. Never allow state to accumulate on a build agent between
 pipeline runs.
 
+## Tactical Patterns
+
+### Immutable Build Containers
+
+Define your build environment as a versioned container image with every dependency pinned:
+
+```dockerfile
+# Dockerfile.build - version controlled
+FROM node:18.17.1-alpine3.18
+
+RUN apk add --no-cache \
+    python3=3.11.5-r0 \
+    make=4.4.1-r1
+
+WORKDIR /app
+COPY package-lock.json .
+RUN npm ci --frozen-lockfile
+```
+
+Every build runs inside a fresh instance of this image. No drift, no accumulated state.
+
+### Dependency Lockfiles
+
+Always use dependency lockfiles. This is essential for deterministic builds:
+
+```json
+// package-lock.json (ALWAYS commit to version control)
+{
+  "dependencies": {
+    "express": {
+      "version": "4.18.2",
+      "resolved": "https://registry.npmjs.org/express/-/express-4.18.2.tgz",
+      "integrity": "sha512-5/PsL6iGPdfQ/..."
+    }
+  }
+}
+```
+
+Rules for lockfiles:
+
+- **Use `npm ci` in CI** (not `npm install`) - `npm ci` installs exactly what the lockfile specifies
+- **Never add lockfiles to `.gitignore`** - they must be committed
+- **Avoid version ranges in production dependencies** - no `^`, `~`, or `>=` without a lockfile enforcing exact resolution
+- **Never rely on "latest" tags** for any dependency, base image, or tool
+
+### Quarantine Pattern for Flaky Tests
+
+When a flaky test is detected, move it to quarantine immediately. Do not leave it in the
+main suite where it erodes trust in the pipeline:
+
+```javascript
+// tests/quarantine/flaky-test.spec.js
+describe.skip('Quarantined: Flaky integration test', () => {
+  // Quarantined due to intermittent timeout
+  // Tracking issue: #1234
+  // Fix deadline: 2024-02-01
+  it('should respond within timeout', () => {
+    // Test code
+  })
+})
+```
+
+Quarantine is not a permanent home. Every quarantined test must have:
+
+1. A tracking issue linked in the test file
+2. A deadline for resolution (no more than one sprint)
+3. A clear root cause investigation plan
+
+If a quarantined test cannot be fixed by the deadline, delete it and write a better test.
+
+### Hermetic Test Environments
+
+Give each pipeline run a fresh, isolated environment with no shared state:
+
+```yaml
+# GitHub Actions example
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    services:
+      postgres:
+        image: postgres:14.9
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_PASSWORD: testpass
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm test
+      # Each workflow run gets a fresh database
+```
+
 ## How to Get Started
 
 ### Step 1: Audit your pipeline inputs
@@ -186,6 +341,55 @@ Track the rate of pipeline failures that are resolved by re-running without code
 This metric (sometimes called the "re-run rate") directly measures non-determinism. Drive
 it to zero.
 
+## FAQ
+
+### What if a test is occasionally flaky but hard to reproduce?
+
+This is still a problem. Flaky tests indicate either a real bug in your code (race
+conditions, shared state) or a problem with your test (dependency on external state,
+timing sensitivity). Both need to be fixed. Quarantine the test, investigate thoroughly,
+and fix the root cause.
+
+### Can we use retries to handle flaky tests?
+
+Retries mask problems rather than fixing them. A test that passes on retry is hiding a
+failure, not succeeding. Fix the flakiness instead of retrying.
+
+### How do we handle tests that involve randomness?
+
+Seed your random number generators with a fixed seed in tests:
+
+```javascript
+// Deterministic randomness
+const rng = new Random(12345) // Fixed seed
+const result = shuffle(array, rng)
+expect(result).toEqual([3, 1, 4, 2]) // Predictable
+```
+
+### What if our deployment requires manual verification?
+
+Manual verification can happen after deployment, not before. Deploy automatically based on
+pipeline results, then verify in production using automated smoke tests or observability
+tooling. If verification fails, roll back automatically.
+
+### Should the pipeline ever be non-deterministic?
+
+There are rare cases where controlled non-determinism is useful (chaos engineering, fuzz
+testing), but these should be:
+
+1. Explicitly designed and documented
+2. Separate from the core deployment pipeline
+3. Reproducible via saved seeds or recorded inputs
+
+## Health Metrics
+
+Track these metrics to measure your pipeline's determinism:
+
+- **Test flakiness rate** - percentage of test runs that produce different results for the same commit. Target less than 1%, ideally zero.
+- **Pipeline re-run rate** - percentage of pipeline failures resolved by re-running without code changes. This directly measures non-determinism. Target zero.
+- **Time to fix flaky tests** - elapsed time from detection to resolution. Target less than one day.
+- **Manual override rate** - how often someone manually approves, skips, or re-runs a stage. Target near zero.
+
 ## Connection to the Pipeline Phase
 
 Determinism is what gives the [single path to production](../single-path-to-production/)
@@ -197,11 +401,6 @@ reliable as the pipeline that enforces them.
 When the pipeline is deterministic, [immutable artifacts](../immutable-artifacts/) become
 trustworthy: you know that the artifact was built by a consistent, repeatable process, and
 its validation results are real.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

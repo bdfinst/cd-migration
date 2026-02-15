@@ -70,7 +70,7 @@ not, so subsequent steps build on working code rather than compensating for brok
 
 Use AI to improve requirements before code is written, not to write code from vague requirements.
 Ambiguous requirements are the single largest source of defects
-(see [Defect Detection and Prevention](defect-sources/)), and AI can detect ambiguity faster than
+(see [Systemic Defect Fixes](defect-sources/)), and AI can detect ambiguity faster than
 manual review.
 
 **What to do:**
@@ -193,7 +193,7 @@ start the AI adoption roadmap, but the roadmap leads there.
 
 - [Brownfield CD Overview](migrate-to-cd/brownfield/) - The phased migration approach this roadmap parallels
 - [Replacing Manual Validations](migrate-to-cd/brownfield/replacing-manual-validations/) - The core mechanical cycle for Step 4
-- [Defect Detection and Prevention](defect-sources/) - Catalog of defect causes that AI can help detect (Step 2)
+- [Systemic Defect Fixes](defect-sources/) - Catalog of defect causes that AI can help detect (Step 2)
 - [Agentic CD](migrate-to-cd/migration-path/continuous-deployment/agentic-cd/) - The destination for teams completing this roadmap
 - [Anti-Patterns](anti-patterns/) - Problems that Steps 3 and 4 are designed to eliminate
 - [Common Blockers](reference/common-blockers/) - Obstacles you will encounter along the way

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -83,6 +83,17 @@ Maintain two identical production environments - blue and green. At any time, on
 (serving traffic) and the other is idle. To deploy, deploy to the idle environment, verify
 it, and switch traffic. To roll back, switch traffic back to the previous environment.
 
+```text
+Blue (current): v1.2.3
+Green (idle):   v1.2.2
+
+Issue detected in Blue
+  |
+Switch traffic to Green (v1.2.2)
+  |
+Instant rollback (< 30 seconds)
+```
+
 **Advantages:**
 
 - Rollback is instantaneous - just a traffic switch
@@ -102,6 +113,16 @@ route a percentage of traffic to it. Monitor the canary for errors, latency, and
 metrics. If the canary is healthy, gradually increase traffic. If problems appear, route
 all traffic back to the previous version.
 
+```text
+Deploy v1.2.3 to 10% of servers
+  |
+Issue detected in monitoring
+  |
+Automatically roll back 10% to v1.2.2
+  |
+Issue contained, minimal user impact
+```
+
 **Advantages:**
 
 - Limits blast radius - problems affect only a fraction of users
@@ -119,6 +140,17 @@ all traffic back to the previous version.
 When a deployment introduces new behavior behind a feature flag, rollback can be as
 simple as turning off the flag. The code remains deployed, but the new behavior is
 disabled. This is the fastest possible rollback - it requires no deployment at all.
+
+```javascript
+// Feature flag controls new behavior
+if (featureFlags.isEnabled('new-checkout')) {
+  return renderNewCheckout()
+}
+return renderOldCheckout()
+
+// Rollback: Toggle flag off via configuration
+// No deployment needed, instant effect
+```
 
 **Advantages:**
 
@@ -149,6 +181,19 @@ The expand-contract pattern (also called parallel change) solves this:
 
 At every step, the previous application version remains compatible with the current
 database schema. Rollback is always safe.
+
+```sql
+-- Safe: Additive change (expand)
+ALTER TABLE users ADD COLUMN phone VARCHAR(20);
+-- Old code ignores the new column
+-- New code uses the new column
+-- Rolling back code does not break anything
+
+-- Unsafe: Destructive change
+ALTER TABLE users DROP COLUMN email;
+-- Old code breaks because email column is gone
+-- Rollback requires schema rollback (risky)
+```
 
 **Anti-pattern:** Destructive schema changes (dropping columns, renaming tables,
 changing types) deployed simultaneously with the application code change that requires
@@ -272,10 +317,69 @@ With rollback in place, the team has the confidence to deploy frequently, which 
 foundation for [Phase 3: Optimize](../../optimize/) and ultimately
 [Phase 4: Deliver on Demand](../../continuous-deployment/).
 
----
+## FAQ
 
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+### How far back should we be able to roll back?
+
+At minimum, keep the last 3 to 5 production releases available for rollback. Ideally,
+retain any production release from the past 30 to 90 days. Balance storage costs with
+rollback flexibility by defining a retention policy for your artifact repository.
+
+### What if the database schema changed?
+
+Design schema changes to be backward-compatible:
+
+- Use the expand-contract pattern described above
+- Make schema changes in a separate deployment from the code changes that depend on them
+- Test that the old application code works with the new schema before deploying the code change
+
+### What if we need to roll back the database too?
+
+Database rollbacks are inherently risky because they can destroy data. Instead of rolling
+back the database:
+
+1. Design schema changes to support application rollback (backward compatibility)
+2. Use feature flags to disable code that depends on the new schema
+3. If absolutely necessary, maintain tested database rollback scripts - but treat this as a last resort
+
+### Should rollback require approval?
+
+No. The on-call engineer should be empowered to roll back immediately without waiting for
+approval. Speed of recovery is critical during an incident. Post-rollback review is
+appropriate, but requiring approval before rollback adds delay when every minute counts.
+
+### How do we test rollback?
+
+1. **Practice regularly** - perform rollback drills during low-traffic periods
+2. **Automate testing** - include rollback verification in your pipeline
+3. **Use staging** - test rollback in staging before every production deployment
+4. **Run chaos exercises** - randomly trigger rollbacks to ensure they work under realistic conditions
+
+### What if rollback fails?
+
+Have a contingency plan:
+
+1. Roll forward to the next known-good version
+2. Use feature flags to disable the problematic behavior
+3. Have an out-of-band deployment method as a last resort
+
+If rollback is regularly tested, failures should be extremely rare.
+
+### How long should rollback take?
+
+Target under 5 minutes from the decision to roll back to service restored.
+
+Typical breakdown:
+
+- Trigger rollback: under 30 seconds
+- Deploy previous artifact: 2 to 3 minutes
+- Verify with smoke tests: 1 to 2 minutes
+
+### What about configuration changes?
+
+Configuration should be versioned and separated from the application artifact. Rolling
+back the artifact should not require separately rolling back environment configuration.
+See [Application Configuration](../application-config/) for how to achieve this.
 
 ## Related Content
 

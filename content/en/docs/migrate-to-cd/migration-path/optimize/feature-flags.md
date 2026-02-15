@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Adapted from [MinimumCD.org](https://minimumcd.org)
+**Phase 3 - Optimize**
 
 Feature flags are the mechanism that makes trunk-based development and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant rollback of features without redeploying.
 {{% /pageinfo %}}
@@ -27,24 +27,52 @@ Not every change requires a feature flag. Flags add complexity, and unnecessary 
 
 ### Decision Tree
 
-```
-Is the change user-visible?
-├── No → Deploy without a flag
-│         (refactoring, performance improvements, dependency updates)
-│
-└── Yes → Can it be completed and deployed in a single small batch?
-          ├── Yes → Deploy without a flag
-          │         (bug fixes, copy changes, small UI tweaks)
-          │
-          └── No → Is there a seam in the code where you can introduce the change?
-                   ├── Yes → Consider Branch by Abstraction
-                   │         (replacing a subsystem, swapping an implementation)
-                   │
-                   └── No → Is it a new feature with a clear entry point?
-                            ├── Yes → Use a Feature Flag
-                            │
-                            └── No → Consider Connect Tests Last
-                                     (build the internals first, wire them up last)
+```mermaid
+graph TD
+    Start[New Code Change] --> Q1{Is this a large or<br/>high-risk change?}
+
+    Q1 -->|Yes| Q2{Do you need gradual<br/>rollout or testing<br/>in production?}
+    Q1 -->|No| Q3{Is the feature<br/>incomplete or spans<br/>multiple releases?}
+
+    Q2 -->|Yes| UseFF1[YES - USE FEATURE FLAG<br/>Enables safe rollout<br/>and quick rollback]
+    Q2 -->|No| Q4{Do you need to<br/>test in production<br/>before full release?}
+
+    Q3 -->|Yes| Q3A{Can you use an<br/>alternative pattern?}
+    Q3 -->|No| Q5{Do different users/<br/>customers need<br/>different behavior?}
+
+    Q3A -->|New Feature| NoFF_NewFeature[NO FLAG NEEDED<br/>Connect to tests only,<br/>integrate in final commit]
+    Q3A -->|Behavior Change| NoFF_Abstraction[NO FLAG NEEDED<br/>Use branch by<br/>abstraction pattern]
+    Q3A -->|New API Route| NoFF_API[NO FLAG NEEDED<br/>Build route, expose<br/>as last change]
+    Q3A -->|Not Applicable| UseFF2[YES - USE FEATURE FLAG<br/>Enables trunk-based<br/>development]
+
+    Q4 -->|Yes| UseFF3[YES - USE FEATURE FLAG<br/>Dark launch or<br/>beta testing]
+    Q4 -->|No| Q6{Is this an<br/>experiment or<br/>A/B test?}
+
+    Q5 -->|Yes| UseFF4[YES - USE FEATURE FLAG<br/>Customer-specific<br/>toggles needed]
+    Q5 -->|No| Q7{Does change require<br/>coordination with<br/>other teams/services?}
+
+    Q6 -->|Yes| UseFF5[YES - USE FEATURE FLAG<br/>Required for<br/>experimentation]
+    Q6 -->|No| NoFF1[NO FLAG NEEDED<br/>Simple change,<br/>deploy directly]
+
+    Q7 -->|Yes| UseFF6[YES - USE FEATURE FLAG<br/>Enables independent<br/>deployment]
+    Q7 -->|No| Q8{Is this a bug fix<br/>or hotfix?}
+
+    Q8 -->|Yes| NoFF2[NO FLAG NEEDED<br/>Deploy immediately]
+    Q8 -->|No| NoFF3[NO FLAG NEEDED<br/>Standard deployment<br/>sufficient]
+
+    style UseFF1 fill:#90EE90
+    style UseFF2 fill:#90EE90
+    style UseFF3 fill:#90EE90
+    style UseFF4 fill:#90EE90
+    style UseFF5 fill:#90EE90
+    style UseFF6 fill:#90EE90
+    style NoFF1 fill:#FFB6C6
+    style NoFF2 fill:#FFB6C6
+    style NoFF3 fill:#FFB6C6
+    style NoFF_NewFeature fill:#FFB6C6
+    style NoFF_Abstraction fill:#FFB6C6
+    style NoFF_API fill:#FFB6C6
+    style Start fill:#87CEEB
 ```
 
 ### Alternatives to Feature Flags
@@ -261,6 +289,86 @@ Once the feature has been stable at 100% for an agreed period (e.g., 2 weeks):
 
 **Set a maximum flag lifetime.** A common practice is 90 days. Any flag older than 90 days triggers an automatic review. Stale flags are a maintenance burden and a source of confusion.
 
+### Lifecycle Timeline Example
+
+| Day | Action | Flag State |
+|-----|--------|------------|
+| 1 | Deploy flag infrastructure and create removal ticket | OFF |
+| 2-5 | Build feature behind flag, integrate daily | OFF |
+| 6 | Enable for internal users (dark launch) | ON for 0.1% |
+| 7 | Enable for 1% of users | ON for 1% |
+| 8 | Enable for 5% of users | ON for 5% |
+| 9 | Enable for 25% of users | ON for 25% |
+| 10 | Enable for 50% of users | ON for 50% |
+| 11 | Enable for 100% of users | ON for 100% |
+| 12-18 | Stability period (monitor) | ON for 100% |
+| 19-21 | Remove flag from code | DELETED |
+
+**Total lifecycle: approximately 3 weeks from creation to removal.**
+
+## Long-Lived Feature Flags
+
+Not all flags are temporary. Some flags are intentionally permanent and should be managed differently from release flags.
+
+### Operational Flags (Kill Switches)
+
+**Purpose:** Disable expensive or non-critical features under load during incidents.
+
+**Lifecycle:** Permanent.
+
+**Management:** Treat as system configuration, not as a release mechanism.
+
+```python
+# PERMANENT FLAG - System operational control
+# Used to disable expensive features during incidents
+if flags.is_enabled("enable-recommendations"):
+    recommendations = compute_recommendations(user)
+else:
+    recommendations = []  # Graceful degradation under load
+```
+
+### Customer-Specific Toggles
+
+**Purpose:** Different customers receive different features based on their subscription or contract.
+
+**Lifecycle:** Permanent, tied to customer configuration.
+
+**Management:** Part of the customer entitlement system, not the feature flag system.
+
+```python
+# PERMANENT FLAG - Customer entitlement
+# Controlled by customer subscription level
+if customer.subscription.includes("analytics"):
+    show_advanced_analytics(customer)
+```
+
+### Experimentation Flags
+
+**Purpose:** A/B testing and experimentation.
+
+**Lifecycle:** The flag infrastructure is permanent, but individual experiments expire.
+
+**Management:** Each experiment has its own expiration date and success criteria. The experimentation platform itself persists.
+
+```python
+# PERMANENT FLAG - Experimentation platform
+# Individual experiments expire, platform remains
+variant = experiments.get("checkout-optimization")
+if variant == "streamlined":
+    return streamlined_checkout(cart, user)
+else:
+    return standard_checkout(cart, user)
+```
+
+### Managing Long-Lived Flags
+
+Long-lived flags need different discipline than temporary ones:
+
+- **Use a separate naming convention** (e.g., `KILL_SWITCH_*`, `ENTITLEMENT_*`) to distinguish them from temporary release flags
+- **Document why each flag is permanent** so future team members understand the intent
+- **Store them separately** from temporary flags in your management system
+- **Review regularly** to confirm they are still needed
+
 ## Key Pitfalls
 
 ### 1. "We have 200 feature flags and nobody knows what they all do"
@@ -279,6 +387,30 @@ It does increase test effort, but this is a temporary cost. When the flag is rem
 
 Avoid nesting flags whenever possible. If feature B depends on feature A, do not create a separate flag for B. Instead, extend the behavior behind feature A's flag. If you must nest, document the dependency and test the specific combinations that matter.
 
+## Flag Removal Anti-Patterns
+
+These specific patterns are the most common ways teams fail at flag cleanup.
+
+**Don't skip the removal ticket:**
+
+- WRONG: "We'll remove it later when we have time"
+- RIGHT: Create a removal ticket at the same time you create the flag
+
+**Don't leave flags after full rollout:**
+
+- WRONG: Flag still in code 6 months after 100% rollout
+- RIGHT: Remove within 2-4 weeks of full rollout
+
+**Don't forget to remove the old code path:**
+
+- WRONG: Flag removed but old implementation still in the codebase
+- RIGHT: Remove the flag check AND the old implementation together
+
+**Don't keep flags "just in case":**
+
+- WRONG: "Let's keep it in case we need to roll back in the future"
+- RIGHT: After the stability period, rollback is handled by deployment, not by re-enabling a flag
+
 ## Measuring Success
 
 | Metric | Target | Why It Matters |
@@ -291,13 +423,6 @@ Avoid nesting flags whenever possible. If feature B depends on feature A, do not
 ## Next Step
 
 Small batches and feature flags let you deploy more frequently, but deploying more means more work in progress. [Limiting WIP](../limiting-wip/) ensures that increased deploy frequency does not create chaos.
-
----
-
-> This content is adapted from [MinimumCD.org](https://minimumcd.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
 
 ## Related Content
 

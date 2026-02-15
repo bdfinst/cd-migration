@@ -13,7 +13,7 @@ This guide expands on the practices defined at [MinimumCD.org](https://minimumcd
 - **Dysfunction Symptoms** - Observable problems teams experience, organized by testing, deployment, flow, and visibility
 - **Anti-Patterns** - Common practices that undermine delivery performance, with concrete steps to fix each one
 - **Migration Phases** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment
-- **Defect Detection and Prevention** - A catalog of defect sources with earliest detection points, AI shift-left opportunities, and systemic fixes
+- **Systemic Defect Fixes** - A catalog of defect sources with earliest detection points, AI shift-left opportunities, and systemic fixes
 - **AI Adoption Roadmap** - A prescriptive sequence for incorporating AI into delivery safely
 - **Reference** - Glossary, metrics definitions, testing guides, DORA capabilities, and additional resources
 
@@ -112,6 +112,7 @@ These rules are enforced on every page:
 ### Content Page Templates
 
 **Symptom pages** follow this structure:
+
 1. Front matter with title, description, tags
 2. What you are seeing
 3. Common causes (with sub-sections linking to anti-patterns)
@@ -119,6 +120,7 @@ These rules are enforced on every page:
 5. Related content
 
 **Anti-pattern pages** follow this structure:
+
 1. Front matter with title, description, tags
 2. What this looks like (observable symptoms)
 3. Why this is a problem (sub-sections per impact)
@@ -135,6 +137,7 @@ Pages in draft mode are linked with `under-construction` and the original target
 ```
 
 When removing `draft: true` from a page:
+
 1. Search all content files for `<!-- target:` comments referencing that page
 2. Replace the `under-construction` link with the actual target path
 3. Run `npm test` to verify no broken links remain
@@ -142,6 +145,7 @@ When removing `draft: true` from a page:
 ### Quality Checks
 
 A pre-commit hook runs `npm test` automatically, which includes:
+
 1. **Markdown linting** - Enforces consistent style via markdownlint
 2. **Internal link checking** - Builds the site and validates all internal links with htmltest
 
