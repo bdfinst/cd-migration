@@ -1,0 +1,9 @@
+DirectoryPath: "public"
+CheckInternal: true
+CheckExternal: false
+CheckMailto: false
+CheckFavicons: false
+CheckDoctype: false
+IgnoreDirs:
+  - "node_modules"
+  - "_print"

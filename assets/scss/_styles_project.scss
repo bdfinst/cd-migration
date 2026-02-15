@@ -1,3 +1,32 @@
+// Risk indicator badges for anti-pattern pages
+.risk-indicator {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-variant: small-caps;
+  border-radius: 999px;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.risk-critical {
+  background-color: #dc3545;
+}
+
+.risk-high {
+  background-color: #fd7e14;
+}
+
+.risk-medium {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.risk-low {
+  background-color: #6c757d;
+}
+
 // Navbar - primary color background to match MinimumCD
 .td-navbar {
   --td-navbar-bg-color: #{$primary};
@@ -10,6 +39,46 @@
     &.active {
       color: #fff;
     }
+  }
+
+  // Social links in navbar header
+  .td-navbar__social {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .td-navbar__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.15s, color 0.15s;
+
+    i {
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.16);
+      text-decoration: none;
+    }
+  }
+
+  .td-navbar__divider {
+    display: block;
+    width: 1px;
+    height: 1.2rem;
+    margin: 0 0.6rem;
+    background: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -56,10 +125,61 @@
     font-weight: 600;
   }
 
-  // Start Here - 3-column card grid
+  // Triage CTA - full-width featured card
+  .triage-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    max-width: 900px;
+    margin: 0 auto 1.2rem;
+    padding: 1rem 1.5rem;
+    background: $primary;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: box-shadow 0.15s, background-color 0.15s;
+
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+      background: #1a3a54;
+      box-shadow: 0 2px 12px rgba(34, 73, 104, 0.35);
+    }
+
+    .triage-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      opacity: 0.9;
+    }
+
+    .triage-content {
+      flex: 1;
+    }
+
+    .triage-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .triage-desc {
+      font-size: 0.85rem;
+      margin: 0;
+      opacity: 0.85;
+      line-height: 1.4;
+    }
+
+    .triage-arrow {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+  }
+
+  // Card grids - auto-fit to available cards
   .entry-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1rem;
     max-width: 900px;
     margin: 0 auto;
@@ -206,6 +326,11 @@
 
   // Mobile responsive
   @media (max-width: 768px) {
+    .triage-card {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
     .entry-cards {
       grid-template-columns: 1fr;
       max-width: 400px;

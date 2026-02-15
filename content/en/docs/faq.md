@@ -32,8 +32,8 @@ infrequently (monthly, quarterly, or less) and want to reach a state where any c
 deployed to production at any time.
 
 You do not need to be starting from zero. If your team already has CI in place, you can begin
-with [Phase 2 -- Pipeline](../migration-path/pipeline/). If you have a pipeline but deploy infrequently, start
-with [Phase 3 -- Optimize](../migration-path/optimize/). Use the [Phase 0 assessment](../migration-path/assess/) to find your
+with [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/). If you have a pipeline but deploy infrequently, start
+with [Phase 3 -- Optimize](../migrate-to-cd/migration-path/optimize/). Use the [Phase 0 assessment](../migrate-to-cd/migration-path/assess/) to find your
 starting point.
 
 ### Should we adopt this guide as an organization or as a team?
@@ -50,7 +50,7 @@ corners on quality.
 
 ### How do we use this guide for improvement?
 
-Start with [Phase 0 -- Assess](../migration-path/assess/). Map your value stream, measure your current
+Start with [Phase 0 -- Assess](../migrate-to-cd/migration-path/assess/). Map your value stream, measure your current
 performance, and identify your top constraints. Then work through the phases in order, focusing
 on one constraint at a time.
 
@@ -92,7 +92,7 @@ Continuous delivery requires:
 
 If your team has a pipeline but uses long-lived feature branches, deploys only at the end of a
 sprint, or requires manual testing before a release, you have a pipeline tool but you are not
-practicing continuous delivery. The [current-state checklist](../migration-path/assess/current-state-checklist/)
+practicing continuous delivery. The [current-state checklist](../migrate-to-cd/migration-path/assess/current-state-checklist/)
 in Phase 0 helps you assess the gap.
 
 ### What does "the pipeline is the only path to production" mean?
@@ -107,7 +107,7 @@ If exceptions are allowed, you lose that guarantee, and your ability to reason a
 state degrades.
 
 During your migration, establishing this single path is a key milestone in
-[Phase 2](../migration-path/pipeline/single-path-to-production/).
+[Phase 2](../migrate-to-cd/migration-path/pipeline/single-path-to-production/).
 
 ### What does "application configuration" mean in the context of CD?
 
@@ -116,14 +116,14 @@ the application code: database connection strings, API endpoints, feature flag s
 levels, and similar settings.
 
 In a CD pipeline, configuration is externalized -- it lives outside the artifact and is injected
-at deployment time. This is what makes [immutable artifacts](../migration-path/pipeline/immutable-artifacts/)
+at deployment time. This is what makes [immutable artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/)
 possible. You build the artifact once and deploy it to any environment by providing the
 appropriate configuration.
 
 If configuration is embedded in the artifact (for example, hardcoded URLs or environment-specific
 config files baked into a container image), you must rebuild the artifact for each environment,
 which means the artifact you tested is not the artifact you deploy. This breaks the immutability
-guarantee. See [Application Config](../migration-path/pipeline/application-config/).
+guarantee. See [Application Config](../migrate-to-cd/migration-path/pipeline/application-config/).
 
 ### What is an "immutable artifact" and why does it matter?
 
@@ -137,7 +137,7 @@ staging but not in production" caused by differences in the build. If the same b
 deployed everywhere, build-related discrepancies are impossible.
 
 Immutability requires externalizing configuration (see above) and storing artifacts in a
-registry or repository. See [Immutable Artifacts](../migration-path/pipeline/immutable-artifacts/).
+registry or repository. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 ### What does "deployable" mean?
 
@@ -155,7 +155,7 @@ A typical deployable definition includes:
 - Smoke tests in the production-like environment pass
 
 If any of these gates fail, the change is not deployable. The pipeline makes this determination
-automatically and consistently. See [Deployable Definition](../migration-path/pipeline/deployable-definition/).
+automatically and consistently. See [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/).
 
 ### What is the difference between deployment and release?
 
@@ -165,7 +165,7 @@ automatically and consistently. See [Deployable Definition](../migration-path/pi
 
 These are different events, and decoupling them is one of the most powerful techniques in CD.
 You can deploy code to production without releasing it to users by using
-[feature flags](../migration-path/optimize/feature-flags/). The code is running in production, but the new
+[feature flags](../migrate-to-cd/migration-path/optimize/feature-flags/). The code is running in production, but the new
 functionality is disabled. When you are ready, you enable the flag and the feature is released.
 
 This decoupling is important because it separates the technical risk (will the deployment
@@ -183,7 +183,7 @@ It depends on where you start and how much organizational support you have. As a
 - **Phase 1 (Foundations):** 1-6 months, depending on current testing and TBD maturity
 - **Phase 2 (Pipeline):** 1-3 months
 - **Phase 3 (Optimize):** 2-6 months
-- **Phase 4 (Continuous Deployment):** 1-3 months
+- **Phase 4 (Deliver on Demand):** 1-3 months
 
 These ranges assume a single team working on the migration alongside regular delivery work.
 The biggest variable is Phase 1: teams with no test automation or TBD practice will spend
@@ -241,7 +241,7 @@ well-structured monolith with a comprehensive test suite and a reliable pipeline
 CD. A poorly structured collection of microservices with shared databases and coordinated
 releases cannot.
 
-Architecture decoupling is addressed in [Phase 3](../migration-path/optimize/architecture-decoupling/), but
+Architecture decoupling is addressed in [Phase 3](../migrate-to-cd/migration-path/optimize/architecture-decoupling/), but
 it is about enabling independent deployment and reducing coordination costs, not about adopting
 any particular architectural style.
 
@@ -263,23 +263,23 @@ The solution is incremental, not wholesale:
 4. **Set a time budget.** Your full pipeline -- build, test, deploy to a staging environment
    -- should complete in under 10 minutes. If it takes longer, that is a constraint to address.
 
-See [Testing Fundamentals](../migration-path/foundations/testing-fundamentals/) and the
+See [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and the
 [Testing reference section](../reference/testing/) for detailed guidance.
 
 ### Where do I start if I am not sure which phase applies to us?
 
-Start with [Phase 0 -- Assess](../migration-path/assess/). Complete the
-[value stream mapping](../migration-path/assess/value-stream-mapping/) exercise, take
-[baseline metrics](../migration-path/assess/baseline-metrics/), and fill out the
-[current-state checklist](../migration-path/assess/current-state-checklist/). These activities will tell you
+Start with [Phase 0 -- Assess](../migrate-to-cd/migration-path/assess/). Complete the
+[value stream mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/) exercise, take
+[baseline metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/), and fill out the
+[current-state checklist](../migrate-to-cd/migration-path/assess/current-state-checklist/). These activities will tell you
 exactly where you stand and which phase to begin with.
 
 If you do not have time for a full assessment, ask yourself these questions:
 
-- **Do all developers integrate to trunk at least daily?** If no, start with [Phase 1](../migration-path/foundations/).
-- **Do you have a single automated pipeline that every change goes through?** If no, start with [Phase 2](../migration-path/pipeline/).
-- **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2](../migration-path/pipeline/) completion criteria.
-- **Do you deploy at least weekly?** If no, look at [Phase 3](../migration-path/optimize/) for batch size and flow optimization.
+- **Do all developers integrate to trunk at least daily?** If no, start with [Phase 1](../migrate-to-cd/migration-path/foundations/).
+- **Do you have a single automated pipeline that every change goes through?** If no, start with [Phase 2](../migrate-to-cd/migration-path/pipeline/).
+- **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2](../migrate-to-cd/migration-path/pipeline/) completion criteria.
+- **Do you deploy at least weekly?** If no, look at [Phase 3](../migrate-to-cd/migration-path/optimize/) for batch size and flow optimization.
 
 ---
 

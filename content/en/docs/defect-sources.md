@@ -134,7 +134,7 @@ stream, with systemic fixes that prevent the same category of defect from recurr
 - [Common Blockers](reference/common-blockers/) - Frequently encountered obstacles on the path to CD
 - [Testing](reference/testing/) - Testing types, patterns, and best practices
 - [Anti-Patterns](anti-patterns/) - Patterns that undermine delivery performance
-- [Replacing Manual Validations](brownfield/replacing-manual-validations/) - The mechanical cycle of replacing manual checks with automation
+- [Replacing Manual Validations](migrate-to-cd/brownfield/replacing-manual-validations/) - The mechanical cycle of replacing manual checks with automation
 - [AI Adoption Roadmap](ai-adoption-roadmap/) - How to safely incorporate AI into your delivery process
 
 ---

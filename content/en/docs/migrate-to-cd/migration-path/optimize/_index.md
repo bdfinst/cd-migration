@@ -1,0 +1,40 @@
+---
+title: "Phase 3: Optimize"
+linkTitle: "3 - Optimize"
+weight: 4
+description: >
+  Improve flow by reducing batch size, limiting work in progress, and using metrics to drive improvement.
+---
+
+{{% pageinfo %}}
+**Key question:** "Can we deliver small changes quickly?"
+
+With a working pipeline in place, this phase focuses on optimizing the flow of changes
+through it. Smaller batches, feature flags, and WIP limits reduce risk and increase
+delivery frequency.
+{{% /pageinfo %}}
+
+## What You'll Do
+
+1. **[Reduce batch size](small-batches/)** - Deliver smaller, more frequent changes
+2. **[Use feature flags](feature-flags/)** - Decouple deployment from release
+3. **[Limit work in progress](limiting-wip/)** - Focus on finishing over starting
+4. **[Drive improvement with metrics](metrics-driven-improvement/)** - Use DORA metrics and improvement kata
+5. **[Run effective retrospectives](retrospectives/)** - Continuously improve the delivery process
+6. **[Decouple architecture](architecture-decoupling/)** - Enable independent deployment of components
+
+## Why This Phase Matters
+
+Having a pipeline isn't enough - you need to optimize the flow through it. Teams that
+deploy weekly with a CD pipeline are missing most of the benefits. Small batches reduce
+risk, feature flags enable testing in production, and metrics-driven improvement creates
+a virtuous cycle of getting better at getting better.
+
+## When You're Ready to Move On
+
+You're ready for [Phase 4: Deliver on Demand](../continuous-deployment/) when:
+
+- Most changes are small enough to deploy independently
+- Feature flags let you deploy incomplete features safely
+- Your WIP limits keep work flowing without bottlenecks
+- You're measuring and improving your DORA metrics regularly

@@ -30,14 +30,14 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Branching & Integration
 
-9. **Long-lived feature branches** - Branches that live for weeks or months. Merging becomes a
-   project in itself. The longer the branch, the bigger the risk.
+9. ~~**Long-lived feature branches**~~ **DONE** - Branches that live for weeks or months. Merging
+   becomes a project in itself. The longer the branch, the bigger the risk.
 
 10. **Painful merges** - Integration is a dreaded, multi-day event. Teams delay merging because
     it's painful, which makes the next merge even more painful.
 
-11. **No continuous integration** - The build has been red for weeks and nobody cares. "CI" means
-    a build server exists, not that anyone actually integrates continuously.
+11. ~~**No continuous integration**~~ **DONE** - The build has been red for weeks and nobody cares.
+    "CI" means a build server exists, not that anyone actually integrates continuously.
 
 12. **Cherry-pick releases** - Hand-selecting specific commits for release instead of deploying
     trunk. Indicates trunk isn't trusted to be deployable at all times.
@@ -53,14 +53,14 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Testing & Quality
 
-16. **No test automation** - Zero automated tests. The team has no idea where to start and the
-    codebase wasn't designed for testability.
+16. ~~**No test automation**~~ **DONE** - Zero automated tests. The team has no idea where to
+    start and the codebase wasn't designed for testability.
 
-17. **Manual regression testing gates** - Every release requires days or weeks of manual testing.
-    Testers execute scripted test cases. Test effort scales linearly with app size.
+17. ~~**Manual regression testing gates**~~ **DONE** - Every release requires days or weeks of
+    manual testing. Testers execute scripted test cases. Test effort scales linearly with app size.
 
-18. **Flaky/unreliable test suites** - Tests that randomly pass or fail. Developers re-run the
-    pipeline until it goes green. "Oh that test always fails, just ignore it."
+18. ~~**Flaky/unreliable test suites**~~ **DONE** - Tests that randomly pass or fail. Developers
+    re-run the pipeline until it goes green. "Oh that test always fails, just ignore it."
 
 19. **Slow test suites** - Test suites that take 30+ minutes. Developers don't run them locally.
     Feedback is so delayed it's nearly useless.
@@ -118,14 +118,14 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Pipeline & Infrastructure
 
-36. **No pipeline exists** - Builds and deployments are manual processes. Someone runs a script
-    on their laptop. There is no automated path from commit to production.
+36. ~~**No pipeline exists**~~ **DONE** - Builds and deployments are manual processes. Someone
+    runs a script on their laptop. There is no automated path from commit to production.
 
-37. **Manual deployments** - SSH into servers and run scripts by hand. Deployments are an art
-    form that only certain people know how to do.
+37. ~~**Manual deployments**~~ **DONE** - SSH into servers and run scripts by hand. Deployments
+    are an art form that only certain people know how to do.
 
-38. **Snowflake environments** - Each environment is hand-configured and unique. Nobody knows
-    exactly what's running where. Configuration drift is constant.
+38. ~~**Snowflake environments**~~ **DONE** - Each environment is hand-configured and unique.
+    Nobody knows exactly what's running where. Configuration drift is constant.
 
 39. **No infrastructure as code** - Servers provisioned manually through UIs. Environment
     creation takes days or weeks and requires tickets to another team.
@@ -159,8 +159,8 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Monitoring & Observability
 
-49. **No observability** - Can't tell if a deployment is healthy after it goes out. No metrics,
-    no logs aggregation, no tracing. Issues are discovered when customers call support.
+49. ~~**No observability**~~ **DONE** - Can't tell if a deployment is healthy after it goes out.
+    No metrics, no logs aggregation, no tracing. Issues are discovered when customers call support.
 
 50. **Alert fatigue** - So many noisy alerts that the team ignores them all. Pages fire for
     non-issues. Real problems are lost in the noise.
@@ -179,8 +179,8 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Organizational & Cultural
 
-55. **Change Advisory Board (CAB) gates** - Manual committee approval required for every
-    production change. Meetings are weekly. One-line changes wait alongside major migrations.
+55. ~~**Change Advisory Board (CAB) gates**~~ **DONE** - Manual committee approval required for
+    every production change. Meetings are weekly. One-line changes wait alongside major migrations.
 
 56. **Separate ops/release team** - Developers throw code over the wall. A different team is
     responsible for deploying it. Feedback loops between dev and ops are long or nonexistent.
@@ -248,8 +248,8 @@ Working document for deciding which problems to address and mapping them to solu
 
 ## Architecture
 
-76. **Tightly coupled monolith** - Changing one module breaks others. No clear boundaries. Every
-    change is high-risk because blast radius is unpredictable.
+76. ~~**Tightly coupled monolith**~~ **DONE** - Changing one module breaks others. No clear
+    boundaries. Every change is high-risk because blast radius is unpredictable.
 
 77. **Shared database across services** - Multiple services read and write the same tables.
     Schema changes require coordinating across all consumers. Migrations are multi-team events.
@@ -353,6 +353,17 @@ Working document for deciding which problems to address and mapping them to solu
      development is especially difficult because integration conflicts can't be resolved in
      real time.
 
+106. **Manually triggered tests** - Tests exist but are not run automatically. Developers must
+     remember to run them locally before pushing, or someone must manually kick off the CI suite.
+     Tests that depend on a human remembering to run them do not get run consistently. Gaps in
+     execution become gaps in confidence, and the team drifts toward "we'll test it later" or
+     "it worked when I tried it."
+
+107. ~~**Pressure to skip testing**~~ **DONE** - Management pressures developers to skip or
+     shortcut testing to meet deadlines. Tests are deferred, then forgotten. Coverage erodes
+     sprint by sprint. The test suite rots as skipped tests become the norm, and the team loses
+     its automated safety net incrementally rather than all at once.
+
 ---
 
 ## Summary by Category
@@ -361,14 +372,14 @@ Working document for deciding which problems to address and mapping them to solu
 |----------|-------|--------|
 | Delivery Speed & Frequency | 8 | 1-8 |
 | Branching & Integration | 7 | 9-15 |
-| Testing & Quality | 12 | 16-27 |
+| Testing & Quality | 13 | 16-27, 106 |
 | Work Decomposition & Planning | 8 | 28-35 |
 | Pipeline & Infrastructure | 13 | 36-48 |
 | Monitoring & Observability | 6 | 49-54 |
-| Organizational & Cultural | 15 | 55-69 |
+| Organizational & Cultural | 16 | 55-69, 107 |
 | Compliance & Security | 6 | 70-75 |
 | Architecture | 8 | 76-83 |
 | Developer Experience | 7 | 84-90 |
 | Legacy & Migration-Specific | 7 | 91-97 |
 | Missing Practices | 8 | 98-105 |
-| **Total** | **105** | |
+| **Total** | **107** | |

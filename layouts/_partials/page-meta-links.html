@@ -1,0 +1,36 @@
+{{ if .File -}}
+{{ $gh_repo := $.Param "github_repo" -}}
+{{ $gh_subdir := $.Param "github_subdir" | default "" -}}
+{{ $gh_branch := $.Param "github_branch" | default "main" -}}
+<div class="td-page-meta ms-2 pb-1 pt-2 mb-0">
+{{ if $gh_repo -}}
+
+  {{ $path := strings.TrimPrefix (add hugo.WorkingDir "/") $.File.Filename -}}
+  {{ $ghs_base := $.Param "path_base_for_github_subdir" -}}
+  {{ $ghs_rename := "" -}}
+  {{ if reflect.IsMap $ghs_base -}}
+    {{ $ghs_rename = $ghs_base.to -}}
+    {{ $ghs_base = $ghs_base.from -}}
+  {{ end -}}
+  {{ with $ghs_base -}}
+    {{ $path = replaceRE . $ghs_rename $path -}}
+  {{ end -}}
+
+  {{ $gh_repo_path := printf "%s/%s/%s" $gh_branch $gh_subdir $path -}}
+  {{ $gh_repo_path = replaceRE "//+" "/" $gh_repo_path -}}
+
+  {{ $viewURL := printf "%s/tree/%s" $gh_repo $gh_repo_path -}}
+  {{ $issueChooseURL := printf "%s/issues/new/choose" $gh_repo -}}
+
+  <a href="{{ $viewURL }}" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> {{ T "post_view_this" }}</a>
+  <a href="{{ $issueChooseURL }}" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-bug fa-fw"></i> Report defect</a>
+  <a href="{{ $issueChooseURL }}" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-lightbulb fa-fw"></i> Suggest improvement</a>
+  {{ $symptomURL := printf "%s/issues/new?template=dysfunction-symptom.md" $gh_repo -}}
+  <a href="{{ $symptomURL }}" class="td-page-meta--symptom td-page-meta__symptom-issue" target="_blank" rel="noopener"><i class="fa-solid fa-stethoscope fa-fw"></i> Add Dysfunction Symptom</a>
+
+{{ end -}}
+{{ with .CurrentSection.AlternativeOutputFormats.Get "print" -}}
+  <a id="print" href="{{ .RelPermalink | safeURL }}"><i class="fa-solid fa-print fa-fw"></i> {{ T "print_entire_section" }}</a>
+{{ end }}
+</div>
+{{ end -}}
