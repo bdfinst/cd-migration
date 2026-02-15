@@ -69,3 +69,13 @@ where those dependencies happen to exist.
    not declared in the codebase?** If the application has implicit environmental dependencies,
    it will behave differently wherever those dependencies differ. Start with
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+
+---
+
+## Related Content
+
+- [Tests Pass in One Environment but Fail in Another](../../symptoms/testing/environment-dependent-failures/) - The same root cause manifests in both development and testing
+- [Staging Passes but Production Fails](../../symptoms/deployment/staging-passes-production-fails/) - Environment inconsistency at the deployment stage
+- [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Unique environments that diverge over time
+- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making all environments consistent and reproducible
+- [Everything as Code](../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Infrastructure and configuration managed in version control

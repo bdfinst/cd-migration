@@ -88,3 +88,14 @@ less effective, more expensive, and blocks the release.
 5. **Is there pressure to prioritize features over testing?** If testing is consistently deferred
    to hit deadlines, the hardening sprint absorbs the cost. Start with
    [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+
+---
+
+## Related Content
+
+- [Merge Freezes Before Deployments](../merge-freeze/) - Hardening and freezes are companion symptoms
+- [The Team Is Afraid to Deploy](../fear-of-deploying/) - Hardening sprints reinforce the belief that deployment is risky
+- [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/) - Manual testing phases that drive hardening cycles
+- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Automated testing that builds quality in continuously
+- [Deployable Definition](../../migrate-to-cd/migration-path/pipeline/deployable-definition/) - Making every commit production-ready by definition
+- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track whether quality improves without hardening

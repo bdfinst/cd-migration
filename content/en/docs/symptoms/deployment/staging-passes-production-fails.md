@@ -70,3 +70,13 @@ becomes a source of variance between environments.
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 4. **Is the deployment process identical and automated across all environments?** If not, start
    with [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+---
+
+## Related Content
+
+- [It Works on My Machine](../../symptoms/visibility/works-on-my-machine/) - The same environment inconsistency pattern at a different stage
+- [Tests Pass in One Environment but Fail in Another](../../symptoms/testing/environment-dependent-failures/) - Environment-dependent behavior is the common root
+- [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Unique environments that diverge from production
+- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making staging match production
+- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track deployment failures that staging should have caught

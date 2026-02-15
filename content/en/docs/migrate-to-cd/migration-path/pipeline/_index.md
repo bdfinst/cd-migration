@@ -39,3 +39,14 @@ You're ready for [Phase 3: Optimize](../optimize/) when:
 - The pipeline produces the same result for the same inputs
 - You can deploy any green build to production with confidence
 - Rollback takes minutes, not hours
+
+---
+
+## Related Content
+
+- [Phase 1: Foundations](../foundations/) - prerequisites to complete before starting the Pipeline phase
+- [Phase 3: Optimize](../optimize/) - the next phase after Pipeline is established
+- [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - a common symptom that pipeline architecture improvements address
+- [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a cultural symptom that reliable rollback and automated pipelines help resolve
+- [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern this entire phase eliminates
+- [DORA Capabilities](../../../reference/dora-capabilities/) - industry-recognized capabilities that pipeline practices support

@@ -231,3 +231,14 @@ For detailed experience reports and additional case studies, see:
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Retrospectives](../../optimize/retrospectives/) - the practice of learning from experience that these reports exemplify at an industry scale
+- [Metrics-Driven Improvement](../../optimize/metrics-driven-improvement/) - the approach every experience report team used to guide their CD adoption
+- [Feature Flags](../../optimize/feature-flags/) - a universal pattern across all experience reports for decoupling deployment from release
+- [Progressive Rollout](../progressive-rollout/) - the rollout strategies (canary, ring-based, percentage) described in the Microsoft and Google reports
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the research-backed capabilities that these experience reports validate in practice
+- [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a symptom every organization in these reports eliminated through independent service deployment

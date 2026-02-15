@@ -80,3 +80,14 @@ automated prefix.
 4. **Does the pipeline include any manual steps?** If a human must approve or act before the
    pipeline completes, the human is the bottleneck. Start with
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
+
+---
+
+## Related Content
+
+- [Feedback Takes Hours Instead of Minutes](../no-fast-feedback/) - Slow pipelines are the primary cause of slow feedback
+- [Test Suite Is Too Slow to Run](../../symptoms/testing/slow-test-suites/) - Slow tests are the most common cause of slow pipelines
+- [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - Too many slow tests at the wrong level
+- [Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/) - Pipeline design for speed
+- [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Optimizing pipeline structure
+- [Build Duration](../../reference/metrics/build-duration/) - Track pipeline speed as a first-class metric

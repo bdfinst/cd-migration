@@ -245,3 +245,14 @@ You cannot afford not to. Every week spent doing coordinated releases is a week 
 ## Next Step
 
 With optimized flow, small batches, metrics-driven improvement, and a decoupled architecture, your team is ready for the final phase. Continue to [Phase 4: Deliver on Demand](../../continuous-deployment/).
+
+---
+
+## Related Content
+
+- [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - the primary symptom that architecture coupling causes
+- [Tightly Coupled Monolith](../../../anti-patterns/architecture/tightly-coupled-monolith/) - the anti-pattern of a monolith with no internal boundaries
+- [Distributed Monolith](../../../anti-patterns/architecture/distributed-monolith/) - the anti-pattern of microservices that still require coordinated releases
+- [Premature Microservices](../../../anti-patterns/architecture/premature-microservices/) - splitting into services before domain boundaries are clear
+- [Contract Testing](../../../reference/testing/contract/) - the testing approach that enables independent deployment of services
+- [Progressive Rollout](../../continuous-deployment/progressive-rollout/) - the deployment strategy enabled by a decoupled architecture

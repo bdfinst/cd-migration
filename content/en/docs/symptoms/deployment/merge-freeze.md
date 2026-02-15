@@ -68,3 +68,13 @@ freeze merges to prevent the target from moving while they deploy.
    pipeline that pins the deployment to an immutable artifact, the team must manually ensure the
    target does not move. Start with
    [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+
+---
+
+## Related Content
+
+- [Hardening Sprints Are Needed Before Every Release](../hardening-sprints/) - Freezes and hardening sprints often go together
+- [Releases Are Infrequent and Painful](../infrequent-releases/) - Freezes are a symptom of high-risk release processes
+- [Integration Deferred](../../anti-patterns/branching-integration/integration-deferred/) - Batching integration creates the instability that freezes try to control
+- [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Continuous integration eliminates the need for freezes
+- [Integration Frequency](../../reference/metrics/integration-frequency/) - Track how often the team integrates to trunk

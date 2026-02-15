@@ -169,3 +169,12 @@ pipeline meaningful.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a symptom that emerges when multiple deployment paths exist
+- [Merge Freeze](../../../symptoms/deployment/merge-freeze/) - a symptom of deployment processes that lack a single, trusted automated path
+- [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - the anti-pattern that a single path to production eliminates
+- [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern of having no automated delivery path at all
+- [Deterministic Pipeline](../deterministic-pipeline/) - the Pipeline practice that makes the single path reliable and trustworthy
+- [Lead Time](../../../reference/metrics/lead-time/) - a key metric that improves when all changes follow one automated path

@@ -81,3 +81,14 @@ produce points.
    maximize personal output at the expense of collaboration and sustainability, the measurement
    system is contributing to burnout. Start with
    [Velocity as Individual Metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/).
+
+---
+
+## Related Content
+
+- [Everything Started, Nothing Finished](../../symptoms/flow/too-much-wip/) - High WIP is a direct contributor to burnout
+- [Pull Requests Sit for Days Waiting for Review](../../symptoms/flow/prs-waiting-for-review/) - Blocked work creates frustration and context switching
+- [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/) - Teams spread across too many responsibilities
+- [Working Agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/) - Explicit team norms that protect sustainable pace
+- [Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Reducing overload by constraining work in progress
+- [Work in Progress](../../reference/metrics/work-in-progress/) - Track WIP as a leading indicator of team health

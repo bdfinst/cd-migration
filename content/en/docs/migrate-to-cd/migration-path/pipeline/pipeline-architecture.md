@@ -266,3 +266,12 @@ the pipeline to improving its speed and reliability.
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - a symptom directly addressed by applying the Theory of Constraints to pipeline architecture
+- [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a symptom of tightly coupled pipeline architecture
+- [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - a symptom that pipeline architecture improvements resolve through stage ordering and parallelization
+- [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern that pipeline architecture replaces
+- [Release Frequency](../../../reference/metrics/release-frequency/) - a key metric that improves as pipeline architecture matures toward loose coupling
+- [Phase 3: Optimize](../../optimize/) - the next phase, which builds on mature pipeline architecture

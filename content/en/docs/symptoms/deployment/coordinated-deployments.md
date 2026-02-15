@@ -91,3 +91,13 @@ independent changes into a single release event.
    integration test gate) rather than in the code, the constraint is organizational. Start with
    [Undone Work](../../anti-patterns/team-workflow/undone-work/) and examine whether the definition
    of done requires unnecessary coordination.
+
+---
+
+## Related Content
+
+- [Releases Are Infrequent and Painful](../infrequent-releases/) - Coordination overhead makes releases less frequent
+- [Distributed Monolith](../../anti-patterns/architecture/distributed-monolith/) - Services that cannot deploy independently
+- [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/) - Architectural coupling that forces coordination
+- [Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Breaking dependencies between services
+- [Lead Time](../../reference/metrics/lead-time/) - Measure the cost of coordination in delivery speed

@@ -219,3 +219,14 @@ With metrics-driven improvement and effective retrospectives, you have the engin
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Team Burnout](../../../symptoms/visibility/team-burnout/) - a symptom that effective retrospectives help detect and address early
+- [Deadline-Driven Development](../../../anti-patterns/organizational-cultural/deadline-driven-development/) - an anti-pattern that retrospectives can surface and challenge
+- [Velocity as Individual Metric](../../../anti-patterns/organizational-cultural/velocity-as-individual-metric/) - an anti-pattern that undermines the psychological safety retrospectives require
+- [Metrics-Driven Improvement](../metrics-driven-improvement/) - provides the data that retrospectives use to drive decisions
+- [Limiting WIP](../limiting-wip/) - WIP limits expose problems that retrospectives turn into action items
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the capability framework that informs improvement priorities

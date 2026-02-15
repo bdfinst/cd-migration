@@ -94,3 +94,14 @@ deployments reduce risk per deployment rather than accumulating it.
 5. **How many changes are in a typical deployment?** If deployments are large batches, the risk
    per deployment is high by construction. Start with
    [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
+
+---
+
+## Related Content
+
+- [Releases Are Infrequent and Painful](../infrequent-releases/) - Fear of deploying leads to batching, which increases risk further
+- [Hardening Sprints Are Needed Before Every Release](../hardening-sprints/) - Teams afraid to deploy often need stabilization periods
+- [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/) - Manual steps make deployments unpredictable
+- [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Automated pipelines that make deployment routine
+- [Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/) - Fast rollback reduces deployment risk
+- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track deployment reliability over time

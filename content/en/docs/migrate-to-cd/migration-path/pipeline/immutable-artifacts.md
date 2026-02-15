@@ -194,3 +194,12 @@ previous known-good artifact.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Staging Passes, Production Fails](../../../symptoms/deployment/staging-passes-production-fails/) - a symptom eliminated when the same artifact is deployed to every environment
+- [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - an anti-pattern that undermines artifact immutability through environment-specific builds
+- [Application Configuration](../application-config/) - the Pipeline practice that enables immutability by externalizing environment-specific values
+- [Deterministic Pipeline](../deterministic-pipeline/) - the Pipeline practice that ensures the build process itself is repeatable
+- [Rollback](../rollback/) - the Pipeline practice that relies on stored immutable artifacts for fast recovery
+- [Change Fail Rate](../../../reference/metrics/change-fail-rate/) - a metric that improves when validated artifacts are deployed without modification

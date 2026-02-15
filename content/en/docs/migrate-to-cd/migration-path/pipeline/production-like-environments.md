@@ -232,3 +232,12 @@ in production.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Staging Passes, Production Fails](../../../symptoms/deployment/staging-passes-production-fails/) - the symptom that production-like environments directly address
+- ["Works on My Machine"](../../../symptoms/visibility/works-on-my-machine/) - a symptom caused by environments that differ from production
+- [Environment-Dependent Failures](../../../symptoms/testing/environment-dependent-failures/) - test failures rooted in environment parity gaps
+- [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - the anti-pattern of manually configured, irreproducible environments
+- [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that flows unchanged through production-like environments
+- [Application Configuration](../application-config/) - the Pipeline practice that handles the configuration differences between environments

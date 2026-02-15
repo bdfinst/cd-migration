@@ -644,3 +644,15 @@ packaging happens with a single command. Continue to [Build Automation](../build
 > [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html),
 > and Toby Clemson,
 > [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
+
+---
+
+## Related Content
+
+- [Flaky Tests](../../../symptoms/testing/flaky-tests/) - Symptom of non-deterministic tests that destroy pipeline trust
+- [High Coverage, Ineffective Tests](../../../symptoms/testing/high-coverage-ineffective-tests/) - Symptom where coverage metrics mask poor test quality
+- [Refactoring Breaks Tests](../../../symptoms/testing/refactoring-breaks-tests/) - Symptom of white-box tests that assert on implementation details
+- [Slow Test Suites](../../../symptoms/testing/slow-test-suites/) - Symptom caused by an inverted test pyramid or missing test doubles
+- [Environment-Dependent Failures](../../../symptoms/testing/environment-dependent-failures/) - Symptom of tests coupled to external systems
+- [Inverted Test Pyramid](../../../anti-patterns/testing/inverted-test-pyramid/) - Anti-pattern where too many slow E2E tests replace fast unit tests
+- [Pressure to Skip Testing](../../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - Anti-pattern where testing is treated as optional under deadline pressure

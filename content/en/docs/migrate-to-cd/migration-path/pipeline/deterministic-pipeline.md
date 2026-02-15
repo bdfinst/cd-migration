@@ -202,3 +202,12 @@ its validation results are real.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Flaky Tests](../../../symptoms/testing/flaky-tests/) - the most common source of non-determinism in pipelines
+- [Environment-Dependent Failures](../../../symptoms/testing/environment-dependent-failures/) - failures caused by uncontrolled environmental variance
+- [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - often worsened by re-runs of non-deterministic failures
+- [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - an anti-pattern that introduces environmental variance into the pipeline
+- [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that depends on deterministic builds to be trustworthy
+- [Build Duration](../../../reference/metrics/build-duration/) - a metric directly affected by pipeline determinism and re-run rates

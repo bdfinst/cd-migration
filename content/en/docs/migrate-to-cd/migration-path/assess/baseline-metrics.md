@@ -182,3 +182,14 @@ determine which bottleneck to address first.
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Deployment Frequency](../../../reference/metrics/release-frequency/) - detailed guidance on measuring how often you deploy
+- [Lead Time for Changes](../../../reference/metrics/lead-time/) - how to measure the time from commit to production
+- [Change Failure Rate](../../../reference/metrics/change-fail-rate/) - measuring the percentage of deployments that cause failures
+- [Mean Time to Restore](../../../reference/metrics/mean-time-to-repair/) - measuring recovery speed after production incidents
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the research-backed capabilities these metrics reflect
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a symptom that low deployment frequency baselines often reveal

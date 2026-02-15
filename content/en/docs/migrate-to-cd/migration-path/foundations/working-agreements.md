@@ -220,3 +220,14 @@ You are ready to move to [Phase 2: Pipeline](../../pipeline/), where you will bu
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Team Burnout](../../../symptoms/visibility/team-burnout/) - Symptom that clear agreements and sustainable practices help prevent
+- [Unbounded WIP](../../../anti-patterns/team-workflow/unbounded-wip/) - Anti-pattern addressed by WIP limit agreements
+- [Undone Work](../../../anti-patterns/team-workflow/undone-work/) - Anti-pattern prevented by a strong Definition of Done
+- [Deadline-Driven Development](../../../anti-patterns/organizational-cultural/deadline-driven-development/) - Anti-pattern where pressure overrides team agreements
+- [Velocity as Individual Metric](../../../anti-patterns/organizational-cultural/velocity-as-individual-metric/) - Anti-pattern that undermines collaborative working agreements
+- [DORA Capabilities](../../../reference/dora-capabilities/) - Research-backed capabilities that working agreements support

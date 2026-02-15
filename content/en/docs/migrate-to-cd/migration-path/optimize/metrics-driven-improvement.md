@@ -296,3 +296,14 @@ Most experiments need at least two weeks to show results. One bad day is not a r
 ## Next Step
 
 Metrics tell you what to improve. [Retrospectives](../retrospectives/) provide the team forum for deciding how to improve it.
+
+---
+
+## Related Content
+
+- [Deployment Frequency](../../../reference/metrics/release-frequency/) - one of the four key DORA metrics
+- [Lead Time](../../../reference/metrics/lead-time/) - one of the four key DORA metrics
+- [Change Fail Rate](../../../reference/metrics/change-fail-rate/) - one of the four key DORA metrics
+- [Mean Time to Repair](../../../reference/metrics/mean-time-to-repair/) - one of the four key DORA metrics
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the 24 capabilities that drive delivery performance
+- [Retrospectives](../retrospectives/) - the team forum for acting on what metrics reveal

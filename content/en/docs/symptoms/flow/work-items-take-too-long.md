@@ -63,3 +63,13 @@ integrate daily.
 3. **Do developers work on branches for more than a day?** If yes, the branching model allows
    and encourages large items. Start with
    [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/).
+
+---
+
+## Related Content
+
+- [Everything Started, Nothing Finished](../too-much-wip/) - High WIP and long cycle times reinforce each other
+- [Merging Is Painful and Time-Consuming](../painful-merges/) - Long-lived work creates merge pain that further slows delivery
+- [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/) - Stories too large to finish quickly
+- [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Breaking work into small, deliverable slices
+- [Development Cycle Time](../../reference/metrics/development-cycle-time/) - Measure time from first commit to deployable

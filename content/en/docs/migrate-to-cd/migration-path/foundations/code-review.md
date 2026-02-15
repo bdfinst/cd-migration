@@ -206,3 +206,14 @@ Code review practices need to be codified in team agreements alongside other sha
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [PRs Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/) - Symptom that slow review practices cause
+- [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - Symptom worsened when review blocks flow
+- [Knowledge Silos](../../../anti-patterns/team-workflow/knowledge-silos/) - Anti-pattern that pairing and mob programming help break down
+- [Trunk-Based Development](../trunk-based-development/) - Branching strategy that requires fast review to work
+- [Work Decomposition](../work-decomposition/) - Smaller work items make review faster and more effective
+- [Working Agreements](../working-agreements/) - Where review SLAs are codified as team commitments

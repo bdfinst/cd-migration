@@ -35,3 +35,14 @@ manifest as missed commitments, quality problems, and retention risk.
 - **[Merging Is Painful and Time-Consuming](flow/painful-merges/)** - Developers spend significant time resolving merge conflicts instead of building features. This is invisible overhead that slows delivery.
 - **[Pull Requests Sit for Days Waiting for Review](flow/prs-waiting-for-review/)** - Developers are blocked waiting for reviews. This creates frustration and drives up work-in-progress as they start new things while waiting.
 - **[It Works on My Machine](visibility/works-on-my-machine/)** - Environment inconsistency means developers waste time debugging problems that only appear in certain environments. This is preventable friction.
+
+## What to do next
+
+If these symptoms sound familiar, these resources can help you build a case for change and
+find a starting point:
+
+- **[Phase 0: Assess](../migrate-to-cd/migration-path/assess/)** - Map your value stream, take baseline measurements, and identify your top constraints.
+- **[DORA Capabilities](../reference/dora-capabilities/)** - The research-backed capabilities that predict delivery performance. Use this to connect symptoms to organizational capabilities.
+- **[Metrics Reference](../reference/metrics/)** - Definitions for the metrics used throughout this guide, including the four DORA metrics.
+- **[FAQ: How long does the migration take?](../faq/#how-long-does-the-migration-take)** - Rough timelines for each phase of the migration.
+- **[FAQ: What if our organization requires CAB?](../faq/#what-if-our-organization-requires-manual-change-approval-cab)** - How to move from manual change approval to automated evidence.

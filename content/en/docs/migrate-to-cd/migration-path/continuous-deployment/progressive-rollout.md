@@ -273,3 +273,14 @@ A rollout that takes a week negates the benefits of continuous deployment. If yo
 ## Next Step
 
 With deploy on demand and progressive rollout, your technical deployment infrastructure is complete. [Agentic CD](../agentic-cd/) explores how AI-assisted patterns can extend these practices further.
+
+---
+
+## Related Content
+
+- [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a symptom that progressive rollout eliminates by limiting blast radius
+- [Production Issues Found by Customers](../../../symptoms/visibility/production-issues-found-by-customers/) - a visibility problem that automated canary analysis helps detect before users are affected
+- [Staging Passes, Production Fails](../../../symptoms/deployment/staging-passes-production-fails/) - a symptom that progressive rollout mitigates by catching production-specific issues early
+- [Feature Flags](../../optimize/feature-flags/) - the foundation for percentage-based rollout strategies
+- [Blind Operations](../../../anti-patterns/monitoring-observability/blind-operations/) - an anti-pattern that must be resolved before automated rollback can work
+- [Change Failure Rate](../../../reference/metrics/change-fail-rate/) - the metric that progressive rollout helps keep low by catching issues before full exposure

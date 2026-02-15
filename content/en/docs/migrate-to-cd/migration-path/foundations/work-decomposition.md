@@ -249,3 +249,14 @@ Small, well-decomposed work flows through the system quickly - but only if code 
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Too Much WIP](../../../symptoms/flow/too-much-wip/) - Symptom caused by large work items that block the pipeline
+- [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - Symptom that smaller decomposition directly addresses
+- [Monolithic Work Items](../../../anti-patterns/team-workflow/monolithic-work-items/) - Anti-pattern where stories are too large to integrate daily
+- [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) - Anti-pattern where work is split by layer instead of by user value
+- [Development Cycle Time](../../../reference/metrics/development-cycle-time/) - Metric that improves with smaller work items
+- [Work in Progress](../../../reference/metrics/work-in-progress/) - Metric for tracking WIP limits and flow

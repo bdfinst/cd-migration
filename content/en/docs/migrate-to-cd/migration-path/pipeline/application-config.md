@@ -218,3 +218,12 @@ system returns to its prior state.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- ["Works on My Machine"](../../../symptoms/visibility/works-on-my-machine/) - a symptom caused by configuration that is not externalized or consistent across environments
+- [Environment-Dependent Failures](../../../symptoms/testing/environment-dependent-failures/) - failures often rooted in configuration differences between environments
+- [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - an anti-pattern that proper configuration separation helps prevent
+- [Everything as Code](../../foundations/everything-as-code/) - the Foundations practice that establishes version control for configuration
+- [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that depends on correct configuration separation
+- [Production-Like Environments](../production-like-environments/) - environments where externalized configuration is injected at deployment time

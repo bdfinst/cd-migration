@@ -63,3 +63,13 @@ usually skipped under time pressure.
    "we click through the app manually," the verification step is unreliable. Start with
    [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) to build
    automated verification.
+
+---
+
+## Related Content
+
+- [Production Problems Are Discovered Hours or Days Late](../slow-detection/) - Both symptoms indicate missing observability
+- [Staging Passes but Production Fails](../../symptoms/deployment/staging-passes-production-fails/) - Staging does not catch what monitoring would
+- [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - No monitoring, no alerting, no visibility
+- [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Canary deployments that detect problems before full rollout
+- [Mean Time to Repair](../../reference/metrics/mean-time-to-repair/) - Measure how quickly the team detects and resolves incidents

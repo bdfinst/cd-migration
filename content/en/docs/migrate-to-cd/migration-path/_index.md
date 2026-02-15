@@ -25,3 +25,13 @@ deployment. Each phase builds on the previous one, so work through them in order
 
 If you are unsure where to begin, start with [Phase 0: Assess](assess/) to understand your
 current state and identify the constraints holding you back.
+
+---
+
+## Related Content
+
+- [Phase 0 - Assess](assess/) - The recommended starting point for any migration
+- [Baseline Metrics](assess/baseline-metrics/) - Measure where you are before making changes
+- [For Managers](../../symptoms/for-managers/) - How delivery problems appear from a management perspective
+- [FAQ](../../faq/) - Frequently asked questions about continuous delivery
+- [Common Blockers](../../reference/common-blockers/) - Frequently encountered obstacles and how to address them

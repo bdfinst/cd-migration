@@ -62,3 +62,13 @@ busy by starting things rather than finishing them.
 3. **Is there any explicit limit on how many items can be in progress at once?** If no, the team
    has no mechanism to stop starting and start finishing. Start with
    [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
+
+---
+
+## Related Content
+
+- [Work Items Take Days or Weeks to Complete](../work-items-take-too-long/) - High WIP directly increases cycle time
+- [Pull Requests Sit for Days Waiting for Review](../prs-waiting-for-review/) - Review queues are a common source of excess WIP
+- [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/) - No limits on work in progress
+- [Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Setting and enforcing WIP limits
+- [Work in Progress](../../reference/metrics/work-in-progress/) - Measuring and tracking WIP over time

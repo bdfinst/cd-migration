@@ -71,3 +71,13 @@ fragile.
    configuration?** If tests assume specific external state rather than declaring explicit
    dependencies, the code's coupling to its environment is the issue. Start with
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+
+---
+
+## Related Content
+
+- [Tests Randomly Pass or Fail](../flaky-tests/) - Environment differences are a common cause of flaky tests
+- [It Works on My Machine](../../symptoms/visibility/works-on-my-machine/) - The same root cause affects both testing and development
+- [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Eliminating environment variance
+- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making all environments consistent
+- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Designing tests that are environment-independent

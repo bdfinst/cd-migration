@@ -141,3 +141,14 @@ you are, you know what is slowing you down, and you know which practices to esta
 
 You are ready to begin [Phase 1 - Foundations](../../foundations/). Start with the practice area
 that addresses your top constraint.
+
+---
+
+## Related Content
+
+- [Painful Merges](../../../symptoms/flow/painful-merges/) - a symptom indicating trunk-based development practices are missing
+- [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a symptom that often correlates with unchecked deployment practices
+- [Slow Test Suites](../../../symptoms/testing/slow-test-suites/) - a symptom that surfaces when automated testing practices are immature
+- [Manual Regression Testing Gates](../../../anti-patterns/testing/manual-regression-testing-gates/) - an anti-pattern the Quality section of this checklist helps identify
+- [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - an anti-pattern the Pipeline Practices section helps detect
+- [Phase 1: Foundations](../../foundations/) - where to begin after completing your assessment

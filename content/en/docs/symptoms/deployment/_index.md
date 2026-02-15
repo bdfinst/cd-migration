@@ -9,3 +9,17 @@ description: >
 These symptoms indicate problems with your deployment and release process. When deploying is
 painful, teams deploy less often, which increases batch size and risk. Each page describes what
 you are seeing and links to the anti-patterns most likely causing it.
+
+## How to use this section
+
+Start with the symptom that matches what your team experiences. Each symptom page explains what
+you are seeing, identifies the most likely root causes (anti-patterns), and provides diagnostic
+questions to narrow down which cause applies to your situation. Follow the anti-pattern link to
+find concrete fix steps.
+
+**Related anti-pattern categories:** [Pipeline Anti-Patterns](../../anti-patterns/pipeline/),
+[Architecture Anti-Patterns](../../anti-patterns/architecture/)
+
+**Related guides:** [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/),
+[Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/),
+[Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)

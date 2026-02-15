@@ -199,3 +199,14 @@ Small batches often require deploying incomplete features to production. [Featur
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - the symptom of deploying too rarely that small batches directly address
+- [Hardening Sprints](../../../symptoms/deployment/hardening-sprints/) - a symptom caused by large batch sizes requiring stabilization periods
+- [Monolithic Work Items](../../../anti-patterns/team-workflow/monolithic-work-items/) - the anti-pattern of stories too large to deliver in small increments
+- [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern of splitting work by layer instead of by value
+- [Work Decomposition](../../foundations/work-decomposition/) - the foundational practice for breaking work into small deliverable pieces
+- [Feature Flags](../feature-flags/) - the mechanism that makes deploying incomplete small batches safe

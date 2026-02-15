@@ -91,3 +91,14 @@ Automated testing in the pipeline replaces this queue with instant feedback.
 5. **Is there a manual QA gate in the pipeline?** If changes wait in a QA queue, the manual gate
    is the bottleneck. Start with
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
+
+---
+
+## Related Content
+
+- [Pipelines Take Too Long](../slow-pipelines/) - Pipeline speed is the most common feedback bottleneck
+- [Pull Requests Sit for Days Waiting for Review](../prs-waiting-for-review/) - Review queues add days to the feedback loop
+- [Integration Deferred](../../anti-patterns/branching-integration/integration-deferred/) - Delayed integration delays feedback
+- [Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/) - Automated builds that give feedback in minutes
+- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Fast tests as the foundation of fast feedback
+- [Build Duration](../../reference/metrics/build-duration/) - Track the speed of your feedback loop

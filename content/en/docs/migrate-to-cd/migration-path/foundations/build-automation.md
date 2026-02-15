@@ -249,3 +249,14 @@ With build automation in place, you can build, test, and package your applicatio
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - Symptom caused by unoptimized or missing build automation
+- [Works on My Machine](../../../symptoms/visibility/works-on-my-machine/) - Symptom eliminated when the build runs the same everywhere
+- [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - Anti-pattern where no automated path from commit to production exists
+- [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - Anti-pattern caused by environment-specific builds
+- [Everything as Code](../everything-as-code/) - Companion guide for versioning build scripts, pipelines, and infrastructure
+- [Build Duration](../../../reference/metrics/build-duration/) - Metric for tracking build speed improvements

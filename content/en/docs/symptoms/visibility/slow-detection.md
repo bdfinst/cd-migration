@@ -67,3 +67,14 @@ actually healthy is a separate question that may or may not get answered.
 3. **Does the deployment process include automated health checks?** If deployments end when the
    human finishes the script, there is no automated verification. Start with
    [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+---
+
+## Related Content
+
+- [Production Issues Discovered by Customers](../production-issues-found-by-customers/) - The next stage of the same problem: customers become the monitoring
+- [The Team Is Afraid to Deploy](../../symptoms/deployment/fear-of-deploying/) - Slow detection makes deployments feel riskier
+- [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - The root cause when no automated detection exists
+- [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Embedding health checks into the deployment process
+- [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Automated rollback on health check failure
+- [Mean Time to Repair](../../reference/metrics/mean-time-to-repair/) - Track detection and recovery speed

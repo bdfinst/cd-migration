@@ -69,3 +69,13 @@ code provides no lower-level testing seams.
    were bolted on after the fact using E2E tests because the code cannot be unit-tested, the
    codebase needs refactoring for testability. Start with
    [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/).
+
+---
+
+## Related Content
+
+- [Pipelines Take Too Long](../../symptoms/flow/slow-pipelines/) - Slow tests are the most common cause of slow pipelines
+- [Feedback Takes Hours Instead of Minutes](../../symptoms/flow/no-fast-feedback/) - Slow suites force developers into long feedback loops
+- [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - Too many slow tests at the wrong level
+- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Rebalancing the test pyramid for speed
+- [Build Duration](../../reference/metrics/build-duration/) - Track pipeline speed as a first-class metric

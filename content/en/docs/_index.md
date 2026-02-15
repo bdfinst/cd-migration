@@ -19,9 +19,19 @@ path to solving it.
 
 ## Where to Start
 
-- **[Dysfunction Symptoms](symptoms/)** - Are you seeing these problems? Let's learn why.
-- **[Anti-Patterns](anti-patterns/)** - Find the problems your team is facing and learn the concrete steps to fix each one.
-- **[Brownfield CD](migrate-to-cd/brownfield/)** - Already have a running system? A phased approach to migrating existing applications and teams to continuous delivery.
+- **[Not sure what is wrong? Find your symptom.](symptoms/triage/)** Answer a few questions to find the symptoms and anti-patterns that match your situation.
+- **[For Developers](symptoms/for-developers/)** - Symptoms you hit while writing, testing, and shipping code.
+- **[For Managers](symptoms/for-managers/)** - Symptoms that show up as unpredictable delivery, quality gaps, and team health.
+
+## Explore
+
+- **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
+- **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
+- **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
+- **[Defect Detection and Prevention](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
+- **[AI Adoption Roadmap](ai-adoption-roadmap/)** - A prescriptive sequence for incorporating AI into delivery safely.
+- **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
+- **[Reference](reference/)** - Glossary, metrics definitions, testing guides, and DORA capabilities.
 
 ## Content Sources
 

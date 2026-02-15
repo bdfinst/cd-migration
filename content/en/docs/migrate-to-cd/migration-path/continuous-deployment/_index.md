@@ -51,3 +51,14 @@ barriers so the team has the *option* to deploy whenever the business needs it.
 - The team has confidence that any deployment can be safely rolled back
 - New team members can deploy on their first day
 - The deployment strategy (on-demand or automatic) is a team choice, not a constraint
+
+---
+
+## Related Content
+
+- [Phase 3: Optimize](../optimize/) - the previous phase that establishes small batches, feature flags, and flow improvements
+- [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a deployment symptom that this phase eliminates by making deployment routine and low-risk
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a symptom directly addressed by delivering on demand
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the research-backed capabilities that underpin delivery performance
+- [Deployment Frequency](../../../reference/metrics/release-frequency/) - the primary metric that reflects delivery-on-demand capability
+- [Mean Time to Repair](../../../reference/metrics/mean-time-to-repair/) - the recovery metric that progressive rollout and automated rollback improve

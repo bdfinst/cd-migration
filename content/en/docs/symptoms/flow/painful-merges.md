@@ -70,3 +70,13 @@ merges.
 3. **How large are the typical work items?** If stories take a week or more, the work
    decomposition forces long branches. Start with
    [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
+
+---
+
+## Related Content
+
+- [Work Items Take Days or Weeks to Complete](../work-items-take-too-long/) - Long-lived work creates the divergence that makes merges painful
+- [Feedback Takes Hours Instead of Minutes](../no-fast-feedback/) - Merge pain discourages frequent integration
+- [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/) - The primary cause of merge conflicts
+- [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Integrating at least daily to prevent divergence
+- [Integration Frequency](../../reference/metrics/integration-frequency/) - Measure how often developers integrate to trunk

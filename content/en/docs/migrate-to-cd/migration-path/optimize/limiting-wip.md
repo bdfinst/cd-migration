@@ -164,3 +164,14 @@ WIP limits expose problems. [Metrics-Driven Improvement](../metrics-driven-impro
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Too Much WIP](../../../symptoms/flow/too-much-wip/) - the primary symptom that WIP limits address
+- [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - a symptom caused by excess work in progress
+- [PRs Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/) - a bottleneck that WIP limits expose
+- [Unbounded WIP](../../../anti-patterns/team-workflow/unbounded-wip/) - the anti-pattern of having no limits on work in progress
+- [Push-Based Work Assignment](../../../anti-patterns/team-workflow/push-based-work-assignment/) - the anti-pattern of assigning work rather than letting teams pull it
+- [Work in Progress metric](../../../reference/metrics/work-in-progress/) - how to measure and track WIP over time

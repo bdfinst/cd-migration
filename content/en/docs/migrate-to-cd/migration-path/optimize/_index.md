@@ -38,3 +38,14 @@ You're ready for [Phase 4: Deliver on Demand](../continuous-deployment/) when:
 - Feature flags let you deploy incomplete features safely
 - Your WIP limits keep work flowing without bottlenecks
 - You're measuring and improving your DORA metrics regularly
+
+---
+
+## Related Content
+
+- [Phase 2: Pipeline](../pipeline/) - the previous phase that establishes the deployment pipeline this phase optimizes
+- [Phase 4: Deliver on Demand](../continuous-deployment/) - the next phase after flow is optimized
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a key symptom that the Optimize phase addresses
+- [Too Much WIP](../../../symptoms/flow/too-much-wip/) - a flow symptom targeted by WIP limits and small batches
+- [DORA Capabilities](../../../reference/dora-capabilities/) - the research-backed capabilities that drive delivery performance
+- [Deployment Frequency](../../../reference/metrics/release-frequency/) - the primary metric that improves as optimization takes hold

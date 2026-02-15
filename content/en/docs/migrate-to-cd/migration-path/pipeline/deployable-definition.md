@@ -203,3 +203,12 @@ confidence.
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Hardening Sprints](../../../symptoms/deployment/hardening-sprints/) - a symptom indicating the deployable definition is incomplete, forcing manual quality efforts before release
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - often caused by unclear or manual criteria for what is ready to ship
+- [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - an anti-pattern that automated quality gates in the deployable definition replace
+- [Deterministic Pipeline](../deterministic-pipeline/) - the Pipeline practice that ensures deployable definition checks produce reliable results
+- [Change Fail Rate](../../../reference/metrics/change-fail-rate/) - a key metric that improves as the deployable definition becomes more comprehensive
+- [Testing Fundamentals](../../foundations/testing-fundamentals/) - the Foundations practice that provides the test suite enforced by the deployable definition

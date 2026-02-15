@@ -89,3 +89,13 @@ because the test suite is manual and grows with every feature.
 5. **Does a manual test pass gate every release?** If QA takes days per release, the testing
    process is the constraint. Start with
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
+
+---
+
+## Related Content
+
+- [The Team Is Afraid to Deploy](../fear-of-deploying/) - Infrequent releases are often driven by deployment fear
+- [Merge Freezes Before Deployments](../merge-freeze/) - Stabilization overhead that accompanies large releases
+- [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/) - No automated path from commit to production
+- [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - Reducing release size to reduce risk
+- [Release Frequency](../../reference/metrics/release-frequency/) - Measure how often the team ships to production

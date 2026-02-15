@@ -236,3 +236,14 @@ Once your team is integrating to trunk daily, build the test suite that makes th
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [Painful Merges](../../../symptoms/flow/painful-merges/) - Symptom eliminated by integrating to trunk daily
+- [Merge Freeze](../../../symptoms/deployment/merge-freeze/) - Symptom caused by long-lived branches and infrequent integration
+- [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - Symptom that daily integration and CI address directly
+- [Long-Lived Feature Branches](../../../anti-patterns/branching-integration/long-lived-feature-branches/) - Anti-pattern that TBD replaces
+- [Integration Deferred](../../../anti-patterns/branching-integration/integration-deferred/) - Anti-pattern where integration is postponed until late in development
+- [Integration Frequency](../../../reference/metrics/integration-frequency/) - Key metric for tracking TBD adoption

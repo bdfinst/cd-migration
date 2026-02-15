@@ -276,3 +276,12 @@ foundation for [Phase 3: Optimize](../../optimize/) and ultimately
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Related Content
+
+- [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - the symptom that reliable rollback capability directly resolves
+- [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a symptom driven by deployment risk that rollback mitigates
+- [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - an anti-pattern incompatible with fast, automated rollback
+- [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that makes rollback reliable by preserving previous artifacts
+- [Mean Time to Repair](../../../reference/metrics/mean-time-to-repair/) - a key metric that rollback capability directly improves
+- [Feature Flags](../../optimize/feature-flags/) - an Optimize practice that provides an alternative rollback mechanism at the feature level

@@ -186,3 +186,14 @@ progress.
 
 Complete the [Current State Checklist](../current-state-checklist/) to assess your team against
 specific MinimumCD practices and confirm your migration starting point.
+
+---
+
+## Related Content
+
+- [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - a flow symptom often traced back to the constraints this guide helps identify
+- [Too Much WIP](../../../symptoms/flow/too-much-wip/) - a symptom that constraint analysis frequently uncovers
+- [Unbounded WIP](../../../anti-patterns/team-workflow/unbounded-wip/) - an anti-pattern that shows up as a queue constraint in your value stream
+- [CAB Gates](../../../anti-patterns/organizational-cultural/cab-gates/) - an organizational anti-pattern that commonly surfaces as a deployment gate constraint
+- [Monolithic Work Items](../../../anti-patterns/team-workflow/monolithic-work-items/) - an anti-pattern that increases lead time by inflating batch size
+- [Value Stream Mapping](../value-stream-mapping/) - the prerequisite exercise that produces the data this guide analyzes

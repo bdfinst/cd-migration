@@ -284,3 +284,14 @@ For real-world examples of teams that have made the full journey to continuous d
 
 > This content is adapted from [MinimumCD.org](https://minimumcd.org),
 > licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+---
+
+## Related Content
+
+- [AI Adoption Roadmap](../../../ai-adoption-roadmap/) - the prerequisite sequence for adopting AI coding agents safely within a delivery pipeline
+- [Defect Sources](../../../defect-sources/) - understanding where defects originate, which informs executable truth and system constraints for agents
+- [Small Batches](../../optimize/small-batches/) - the practice of limiting change size that applies with extra rigor to agent-generated changes
+- [Code Coverage Mandates](../../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern that is especially dangerous when agents optimize for coverage rather than intent
+- [Pressure to Skip Testing](../../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that agentic CD counters by making test-first workflow mandatory
+- [High Coverage but Ineffective Tests](../../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on
