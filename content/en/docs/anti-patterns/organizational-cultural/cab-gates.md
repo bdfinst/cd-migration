@@ -233,8 +233,8 @@ changes that actually benefit from human review rather than rubber-stamping rout
 
 ## Related Content
 
-- [Single Path to Production](../../../pipeline/single-path-to-production/) - The pipeline replaces manual gates
-- [Deterministic Pipeline](../../../pipeline/deterministic-pipeline/) - Automated controls that provide consistent quality checks
-- [Rollback](../../../pipeline/rollback/) - Automated rollback replaces manual rollback plans in change requests
-- [Metrics-Driven Improvement](../../../optimize/metrics-driven-improvement/) - Using data to prove that automated controls work
-- [Deploy on Demand](../../../deliver-on-demand/deploy-on-demand/) - The end state where any change can deploy when ready
+- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - The pipeline replaces manual gates
+- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Automated controls that provide consistent quality checks
+- [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Automated rollback replaces manual rollback plans in change requests
+- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using data to prove that automated controls work
+- [Deploy on Demand](../../../migrate-to-cd/migration-path/continuous-deployment/deploy-on-demand/) - The end state where any change can deploy when ready

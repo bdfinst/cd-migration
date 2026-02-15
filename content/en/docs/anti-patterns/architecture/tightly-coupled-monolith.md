@@ -238,8 +238,8 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 
 ## Related Content
 
-- [Architecture Decoupling](../../../optimize/architecture-decoupling/) - Strategies for creating module boundaries
-- [Small Batches](../../../optimize/small-batches/) - Decoupling enables smaller, safer changes
-- [Testing Fundamentals](../../../foundations/testing-fundamentals/) - Scoping tests to module boundaries
-- [Identify Constraints](../../../assess/identify-constraints/) - Finding the coupling that hurts most
-- [Value Stream Mapping](../../../assess/value-stream-mapping/) - Making coordination overhead visible
+- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Strategies for creating module boundaries
+- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Decoupling enables smaller, safer changes
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Scoping tests to module boundaries
+- [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - Finding the coupling that hurts most
+- [Value Stream Mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/) - Making coordination overhead visible

@@ -210,8 +210,8 @@ raise it with engineering leadership.
 
 ## Related Content
 
-- [Testing Fundamentals](../../../foundations/testing-fundamentals/) - Building a test strategy that becomes part of how the team works
-- [Working Agreements](../../../foundations/working-agreements/) - Making "done includes tests" an explicit team agreement
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building a test strategy that becomes part of how the team works
+- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - Making "done includes tests" an explicit team agreement
 - [Manual Testing Only](../../testing/manual-testing-only/) - Where this anti-pattern ends up if left unchecked
 - [Flaky Tests](../../../symptoms/testing/flaky-tests/) - Another way trust in the test suite erodes
-- [Metrics-Driven Improvement](../../../optimize/metrics-driven-improvement/) - Using data to make the case for quality practices
+- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using data to make the case for quality practices

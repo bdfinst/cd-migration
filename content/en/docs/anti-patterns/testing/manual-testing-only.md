@@ -197,8 +197,8 @@ coverage - they need to ensure that coverage only goes up.
 
 ## Related Content
 
-- [Testing Fundamentals](../../../foundations/testing-fundamentals/) - How to build a test strategy for CD
-- [Build Automation](../../../foundations/build-automation/) - Tests need a pipeline to run in
+- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - How to build a test strategy for CD
+- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - Tests need a pipeline to run in
 - [Inverted Test Pyramid](../inverted-test-pyramid/) - The next problem to solve once you have tests
 - [Manual Regression Testing Gates](../manual-regression-testing-gates/) - The manual testing this replaces
-- [Deterministic Pipeline](../../../pipeline/deterministic-pipeline/) - Tests as automated quality gates
+- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Tests as automated quality gates
