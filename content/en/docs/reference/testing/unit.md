@@ -3,7 +3,7 @@ title: "Unit Tests"
 linkTitle: "Unit Tests"
 weight: 1
 description: >
-  Fast, deterministic tests that verify individual functions, methods, or components in isolation with test doubles for dependencies.
+  Fast, deterministic tests that verify a unit of behavior through its public interface, asserting on what the code does rather than how it works.
 ---
 
 {{% pageinfo %}}
@@ -12,18 +12,26 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 
 ## Definition
 
-A unit test is a deterministic test that exercises a discrete unit of the application -- such as
-a function, method, or UI component -- in isolation to determine whether it behaves as expected.
+A unit test is a deterministic test that exercises a **unit of behavior** -- a single
+meaningful action or decision your code makes -- and verifies that the observable outcome is
+correct. The "unit" is not a function, method, or class. It is a behavior: given these inputs,
+the system produces this result. A single behavior may involve one function or several
+collaborating objects. What matters is that the test treats the code as a
+[black box](../../reference/glossary/#black-box-testing) and asserts only on what it produces,
+not on how it produces it.
+
 All external dependencies are replaced with [test doubles](../test-doubles/) so the test runs
 quickly and produces the same result every time.
 
-When testing the behavior of functions, prefer testing public APIs (methods, interfaces,
-exported functions) over private internals. Testing private implementation details creates
-change-detector tests that break during routine refactoring without adding safety.
+[White box testing](../../reference/glossary/#white-box-testing) -- asserting on internal method
+calls, call order, or private state -- creates change-detector tests that break during routine
+refactoring without catching real defects. Prefer testing through the public interface (methods,
+APIs, exported functions) and asserting on return values, state changes visible to consumers,
+or observable side effects.
 
 The purpose of unit tests is to:
 
-- Verify the functionality of a single unit (method, class, function) in isolation.
+- Verify that a unit of behavior produces the correct observable outcome.
 - Cover high-complexity logic where many input permutations exist, such as business rules, calculations, and state transitions.
 - Keep cyclomatic complexity visible and manageable through good separation of concerns.
 
@@ -46,7 +54,7 @@ an [integration test](../integration/) or a [functional test](../functional/) in
 |-----------------|------------------------------------------|
 | **Speed**       | Milliseconds per test                    |
 | **Determinism** | Always deterministic                     |
-| **Scope**       | Single function, method, or component    |
+| **Scope**       | A single unit of behavior                |
 | **Dependencies**| All replaced with test doubles           |
 | **Network**     | None                                     |
 | **Database**    | None                                     |
@@ -96,18 +104,23 @@ public void shouldReturnUserDetails() {
 
 ## Anti-Patterns
 
-- **Testing private methods** -- private implementations are meant to change. Test the public
-  interface that calls them instead.
+- **[White box testing](../../reference/glossary/#white-box-testing)** -- asserting on internal
+  state, call order, or private method behavior rather than observable output. These
+  change-detector tests break during refactoring without catching real defects. Test through
+  the public interface instead.
+- **Testing private methods** -- private implementations are meant to change. They are
+  exercised indirectly through the behavior they support. Test the public interface instead.
 - **No assertions** -- a test that runs code without asserting anything provides false
-  confidence. Lint rules like `jest/expect-expect` can catch this.
+  confidence. Lint rules can catch this automatically.
 - **Disabling or skipping tests** -- skipped tests erode confidence over time. Fix or remove
   them.
-- **Testing implementation details** -- asserting on internal state or call order rather than
-  observable output creates brittle tests that break during refactoring.
+- **Confusing "unit" with "function"** -- a unit of behavior may span multiple collaborating
+  objects. Forcing one-test-per-function creates brittle tests that mirror the implementation
+  structure rather than verifying meaningful outcomes.
 - **Ice cream cone testing** -- relying primarily on slow E2E tests while neglecting fast unit
   tests inverts the test pyramid and slows feedback.
 - **Chasing coverage numbers** -- gaming coverage metrics (e.g., running code paths without
-  meaningful assertions) creates a false sense of confidence. Focus on use-case coverage
+  meaningful assertions) creates a false sense of confidence. Focus on behavior coverage
   instead.
 
 ## Connection to CD Pipeline
@@ -121,8 +134,10 @@ Unit tests occupy the base of the test pyramid. They run in the earliest stages 
 4. **Trunk verification** -- CI reruns tests on the merged HEAD to catch integration issues.
 
 Because unit tests are fast and deterministic, they should always break the build on failure.
-A healthy CD pipeline depends on a large, reliable unit test suite that gives developers
-confidence to ship small changes frequently.
+A healthy CD pipeline depends on a large, reliable suite of
+[black box](../../reference/glossary/#black-box-testing) unit tests that verify behavior
+rather than implementation, giving developers the confidence to refactor freely and ship
+small changes frequently.
 
 ---
 

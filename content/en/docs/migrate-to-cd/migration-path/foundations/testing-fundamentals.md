@@ -101,20 +101,84 @@ The ice cream cone makes CD impossible. Manual testing gates block every release
 take hours, fail randomly, and depend on external systems being healthy. The pipeline cannot give
 a fast, reliable answer about deployability, so deployments become high-ceremony events.
 
+## What to Test - and What Not To
+
+Before diving into the architecture, internalize the mindset that makes it work. The test
+architecture below is not just a structure to follow - it flows from a few principles about
+what testing should focus on and what it should ignore.
+
+### Interfaces are the most important thing to test
+
+Most integration failures originate at interfaces - the boundaries where your system talks to
+other systems. These boundaries are the highest-risk areas in your codebase, and they deserve
+the most testing attention. But testing interfaces does not require integrating with the real
+system on the other side.
+
+When you test an interface you consume, the question is: **"Can I understand the response and
+act accordingly?"** If you send a request for a user's information, you do not test that you
+get that specific user back. You test that you receive and understand the properties you need -
+that your code can parse the response structure and make correct decisions based on it. This
+distinction matters because it keeps your tests deterministic and focused on what you control.
+
+Use contract mocks, [virtual services](../../../reference/glossary/#virtual-service), or any
+test double that faithfully represents the interface contract. The test validates your side of
+the conversation, not theirs.
+
+### Frontend and backend follow the same pattern
+
+Both frontend and backend applications provide interfaces to consumers and consume interfaces
+from providers. The only difference is the consumer: a frontend provides an interface for
+humans, while a backend provides one for machines. The testing strategy is the same.
+
+For a frontend:
+
+- **Validate the interface you provide.** The UI contains the components it should and they
+  appear correctly. This is the equivalent of verifying your API returns the right response
+  structure.
+- **Test behavior isolated from presentation.** Use your unit test framework to test the
+  logic that UI controls trigger, separated from the rendering layer. This gives you the same
+  speed and control you get from testing backend logic in isolation.
+- **Verify that controls trigger the right logic.** Confirm that user actions invoke the
+  correct behavior, without needing a running backend or browser-based E2E test.
+
+This approach gives you targeted testing with far more control. Testing exception flows -
+what happens when a service returns an error, when a network request times out, when data is
+malformed - becomes straightforward instead of requiring elaborate E2E setups that are hard
+to make fail on demand.
+
+### If you cannot fix it, do not test for it
+
+This is the principle that most teams get wrong. You should never test the behavior of
+services you consume. Testing their behavior is the responsibility of the team that builds
+them. If their service returns incorrect data, you cannot fix that - so testing for it is
+waste.
+
+What you **should** test is how your system responds when a consumed service is unstable or
+unavailable. Can you degrade gracefully? Do you return a meaningful error? Do you retry
+appropriately? These are behaviors you own and can fix, so they belong in your test suite.
+
+This principle directly enables the test architecture below. When you stop testing things you
+cannot fix, you stop depending on external systems in your pipeline. Your tests become faster,
+more deterministic, and more focused on the code your team actually ships.
+
 ## Test Architecture for the CD Pipeline
 
 A test architecture is the deliberate structure of how different test types work together across
 your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
 reinforce each other.
 
-### Layer 1: Unit tests - verify logic in isolation
+### Layer 1: Unit tests - verify behavior in isolation
 
-Unit tests exercise individual functions, methods, or components with all external dependencies
-replaced by [test doubles](../../../reference/testing/test-doubles/). They are the fastest and most
-deterministic tests you have.
+Unit tests exercise a unit of behavior - a single meaningful action or decision your code
+makes - with all external dependencies replaced by
+[test doubles](../../../reference/testing/test-doubles/). They use a
+[black box](../../../reference/glossary/#black-box-testing) approach: assert on what the code
+produces, not on how it works internally. They are the fastest and most deterministic tests you
+have.
 
 **Role in CD:** Catch logic errors, regressions, and edge cases instantly. Provide the tightest
-feedback loop - developers should see results in seconds while coding.
+feedback loop - developers should see results in seconds while coding. Because they test
+behavior rather than implementation, they survive refactoring without breaking.
 
 **What they cannot do:** Verify that components work together, that your code correctly calls
 external services, or that the system behaves correctly as a whole.
@@ -363,9 +427,11 @@ Use this reference to decide what type of test to write and where it runs in you
 - **Fix broken tests immediately.** A broken test is equivalent to a broken build.
 - **Delete tests that do not provide value.** A test that never fails and tests trivial behavior
   is maintenance cost with no benefit.
-- **Test behavior, not implementation.** Tests should verify what the code does, not how it
-  does it. As Ham Vocke advises: "if I enter values `x` and `y`, will the result be `z`?" - not
-  the sequence of internal calls that produce `z`.
+- **Test behavior, not implementation.** Use a
+  [black box](../../../reference/glossary/#black-box-testing) approach - verify what the code
+  does, not how it does it. As Ham Vocke advises: "if I enter values `x` and `y`, will the
+  result be `z`?" - not the sequence of internal calls that produce `z`. Avoid
+  [white box testing](../../../reference/glossary/#white-box-testing) that asserts on internals.
 - **Use test doubles for external dependencies.** Your deterministic tests should run without
   network access to external systems.
 - **Validate test doubles with contract tests.** Test doubles that drift from reality give false

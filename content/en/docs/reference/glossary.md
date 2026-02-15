@@ -23,6 +23,17 @@ modification. See [Immutable Artifacts](../../migrate-to-cd/migration-path/pipel
 
 ## B
 
+### Black Box Testing
+
+A testing approach where the test exercises code through its public interface and asserts
+only on observable outputs - return values, state changes visible to consumers, or side
+effects such as messages sent. The test has no knowledge of internal implementation details.
+Black box tests are resilient to refactoring because they verify **what** the code does, not
+**how** it does it. Contrast with [white box testing](#white-box-testing).
+
+Referenced in: [Unit Tests](../testing/unit/),
+[Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
+
 ### Baseline Metrics
 
 The set of delivery measurements taken before beginning a migration, used as the benchmark
@@ -252,6 +263,18 @@ rate through CD practices.
 
 ## V
 
+### Virtual Service
+
+A test double that simulates a real external service over the network, responding to HTTP
+requests with pre-configured or recorded responses. Unlike in-process stubs or mocks, a
+virtual service runs as a standalone process and is accessed via real network calls, making
+it suitable for functional testing and integration testing where your application needs to
+make actual HTTP requests against a dependency. Tools such as WireMock, Mountebank, and
+Hoverfly can create virtual services from recorded traffic or API specifications. See
+[Test Doubles](../testing/test-doubles/).
+
+Referenced in: [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
+
 ### Value Stream Map
 
 A visual representation of every step required to deliver a change from request to production,
@@ -265,6 +288,8 @@ A user story that delivers a thin slice of functionality across all layers of th
 Vertical slices are independently deployable and testable, which is essential for CD. Vertical
 slicing is a core technique in [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/).
 
+Referenced in: [CD Dependency Tree](../cd-dependency-tree/)
+
 ## W
 
 ### WIP (Work in Progress)
@@ -272,6 +297,18 @@ slicing is a core technique in [Work Decomposition](../../migrate-to-cd/migratio
 The number of work items that have been started but not yet completed. High WIP increases lead
 time, reduces focus, and increases context-switching overhead. Limiting WIP is a key practice
 in [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/).
+
+### White Box Testing
+
+A testing approach where the test has knowledge of and asserts on internal implementation
+details - specific methods called, call order, internal state, or code paths taken. White
+box tests verify **how** the code works, not **what** it produces. These tests are fragile
+because any refactoring of internals breaks them, even when behavior is unchanged. Avoid
+white box testing in unit tests; prefer [black box testing](#black-box-testing) that asserts
+on observable outcomes.
+
+Referenced in: [Unit Tests](../testing/unit/),
+[Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
 
 ### Working Agreement
 

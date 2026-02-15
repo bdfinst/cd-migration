@@ -40,6 +40,46 @@
       color: #fff;
     }
   }
+
+  // Social links in navbar header
+  .td-navbar__social {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .td-navbar__social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.15s, color 0.15s;
+
+    i {
+      font-size: 0.95rem;
+    }
+
+    &:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.16);
+      text-decoration: none;
+    }
+  }
+
+  .td-navbar__divider {
+    display: block;
+    width: 1px;
+    height: 1.2rem;
+    margin: 0 0.6rem;
+    background: rgba(255, 255, 255, 0.2);
+  }
 }
 
 // On-scroll state

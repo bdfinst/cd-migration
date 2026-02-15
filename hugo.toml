@@ -109,6 +109,12 @@ icon = "fab fa-github"
 name = "GitHub"
 url = "https://github.com/bdfinst/cd-migration/issues/new/choose"
 
+[[params.links.developer]]
+desc = "Support the project"
+icon = "fas fa-mug-hot"
+name = "Contribute"
+url = "https://ko-fi.com/bryanfinster"
+
 [module]
 proxy = "direct"
   [module.hugoVersion]

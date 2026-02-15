@@ -7,133 +7,52 @@ description: >
 ---
 
 {{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
+The full interactive dependency tree is at
+[practices.minimumcd.org](https://practices.minimumcd.org). This page summarizes the key
+dependency chains and how they map to the migration phases in this guide.
 {{% /pageinfo %}}
 
 Continuous delivery is not a single practice you adopt. It is a system of interdependent
-practices where each one supports and enables others. This dependency tree shows those
-relationships. Understanding the dependencies helps you plan your migration in the right
-order, addressing foundational practices before building on them.
+practices where each one supports and enables others. The
+[interactive CD dependency tree](https://practices.minimumcd.org) maps the full set of practices
+and their dependency relationships. Understanding these dependencies helps you plan your migration
+in the right order, addressing foundational practices before building on them.
 
-## The Dependency Tree
+## How Dependencies Work
 
-The diagram below shows how the core practices of CD relate to each other. Read it from
-bottom to top: lower practices enable higher ones. The migration phases in this guide are
-sequenced to follow these dependencies.
+CD sits at the top of the tree. It depends directly on many practices, each of which has its own
+dependencies. When practice A depends on practice B, it means B is a prerequisite or enabler
+for A. You cannot reliably adopt A without B in place.
 
-```mermaid
-graph BT
-    subgraph "Goal"
-        CD["Continuous Delivery"]
-    end
+For example, continuous delivery depends directly on:
 
-    subgraph "Continuous Integration"
-        CI["Continuous Integration"]
-    end
+| Category | Direct Dependencies |
+|----------|-------------------|
+| **Pipeline** | Application pipeline, immutable artifacts, on-demand rollback, configuration management |
+| **Testing** | Continuous testing, automated database changes, test environments |
+| **Integration** | Continuous integration |
+| **Environment** | Automated environment provisioning, monitoring and alerting |
+| **Organizational** | Cross-functional product teams, developer-driven support, prioritized features |
+| **Development** | ATDD, modular system design |
 
-    subgraph "Development Practices"
-        TBD["Trunk-Based Development"]
-        TDD["Test-Driven Development"]
-        BDD["Behavior-Driven Development"]
-        WD["Work Decomposition"]
-        CR["Code Review"]
-    end
+Each of these has its own dependency chain. The application pipeline alone depends on automated
+testing, deployment automation, automated artifact versioning, and quality gates. Automated
+testing in turn depends on build automation. Build automation depends on version control and
+dependency management. The chain runs deep.
 
-    subgraph "Build & Test Infrastructure"
-        BA["Build Automation"]
-        TS["Test Suite"]
-        PLEnv["Production-Like Environments"]
-    end
+Explore the full tree at [practices.minimumcd.org](https://practices.minimumcd.org) to trace
+any dependency chain from CD down to its foundations.
 
-    subgraph "Pipeline Practices"
-        SPP["Single Path to Production"]
-        DP["Deterministic Pipeline"]
-        IA["Immutable Artifacts"]
-        AC["Application Config"]
-        RB["Rollback"]
-        DD["Deployable Definition"]
-    end
+## Key Dependency Chains
 
-    subgraph "Flow Optimization"
-        SB["Small Batches"]
-        FF["Feature Flags"]
-        WIP["WIP Limits"]
-        MDI["Metrics-Driven Improvement"]
-    end
-
-    subgraph "Organizational Practices"
-        WA["Working Agreements"]
-        Retro["Retrospectives"]
-        TT["Team Topology"]
-        AD["Architecture Decoupling"]
-    end
-
-    %% Development Practices feed CI
-    TDD --> CI
-    BDD --> TDD
-    BDD --> WD
-    TBD --> CI
-    WD --> SB
-    CR --> TBD
-
-    %% Build infrastructure feeds CI
-    BA --> CI
-    TS --> CI
-    TDD --> TS
-
-    %% CI feeds pipeline
-    CI --> SPP
-    CI --> DP
-    PLEnv --> DP
-
-    %% Pipeline practices feed CD
-    SPP --> CD
-    DP --> CD
-    IA --> CD
-    AC --> IA
-    RB --> CD
-    DD --> CD
-
-    %% Flow optimization feeds CD
-    SB --> CD
-    FF --> SB
-    FF --> CD
-    WIP --> SB
-    MDI --> CD
-
-    %% Organizational practices support everything
-    WA --> CR
-    WA --> DD
-    Retro --> MDI
-    TT --> AD
-    TT --> WD
-    TT --> SPP
-    AD --> FF
-    AD --> SB
-```
-
-## How to Read the Dependency Tree
-
-Each arrow means "supports" or "enables." When practice A has an arrow pointing to practice B,
-it means A is a prerequisite or enabler for B.
-
-**Key dependency chains to understand:**
-
-### BDD enables TDD enables CI enables CD
+### BDD enables testing enables CI enables CD
 
 Behavior-Driven Development produces clear, testable acceptance criteria. Those criteria drive
-Test-Driven Development at the code level. A comprehensive, fast test suite enables
-Continuous Integration with confidence. And CI is the foundational prerequisite for CD.
+functional testing and acceptance test-driven development. A comprehensive, fast test suite
+enables Continuous Integration with confidence. And CI is the foundational prerequisite for CD.
 
 If your team skips BDD, stories are ambiguous. If stories are ambiguous, tests are incomplete
 or wrong. If tests are unreliable, CI is unreliable. And if CI is unreliable, CD is impossible.
-
-### Work Decomposition enables Small Batches enables CD
-
-You cannot deploy small batches if your work items are large. Work decomposition (breaking
-features into [vertical slices](../glossary/#vertical-sliced-story) that can each be completed in
-two days or less) is what makes small batches possible. Small batches in turn reduce
-deployment risk and enable the rapid feedback that CD depends on.
 
 ### Trunk-Based Development enables CI
 
@@ -141,38 +60,25 @@ CI requires that all developers integrate to a shared trunk at least once per da
 uses long-lived feature branches, you are not doing CI regardless of how often your build server
 runs. TBD is not optional for CD. It is a prerequisite.
 
-### Team Topology enables Architecture Decoupling, Work Decomposition, and Single Path to Production
+### Cross-functional teams enable component ownership enables modular systems
 
 How teams are organized determines what they can deliver independently. A team organized around a
 domain (owning the services, data, and interfaces for that domain) can decompose work into
-vertical slices within their boundary and deploy without coordinating with other teams. A team
-organized around a technical layer (the "frontend team," the "DBA team") cannot. Every feature
-requires handoffs across layer teams, and deployment requires coordinating all of them.
+[vertical slices](../glossary/#vertical-sliced-story) within their boundary and deploy without
+coordinating with other teams. A team organized around a technical layer (the "frontend team,"
+the "DBA team") cannot. Every feature requires handoffs across layer teams, and deployment
+requires coordinating all of them.
 
-Conway's Law makes this structural: the system's architecture will mirror the team structure. If
-teams are organized by layer, the architecture will be layered and tightly coupled. If teams are
-organized around domains with clear ownership boundaries, the architecture will have well-defined
-service boundaries that enable independent deployment.
+Conway's Law makes this structural: the system's architecture will mirror the team structure.
+In the dependency tree, cross-functional product teams enable component ownership, which enables
+the modular system design that CD requires.
 
-Team topology feeds three critical dependencies:
+### Version control is the root of everything
 
-- **Architecture Decoupling.** Domain-aligned teams naturally create service boundaries at their
-  domain edges. Layer-aligned teams create boundaries between layers, which forces cross-team
-  coordination for every feature.
-- **Work Decomposition.** A team that owns its domain can decompose features into independently
-  deliverable slices. A team that owns only a layer must wait for other layer teams before
-  anything is deliverable.
-- **Single Path to Production.** Each domain-aligned team can own its pipeline end-to-end. When
-  multiple layer teams share a deployment process, the pipeline becomes a coordination bottleneck
-  rather than an independent delivery mechanism.
-
-### Architecture Decoupling enables Feature Flags and Small Batches
-
-Tightly coupled architectures force coordinated deployments. When changing service A requires
-simultaneously changing services B and C, small independent deployments become impossible.
-Architecture decoupling through well-defined APIs, contract testing, and service boundaries
-enables teams to deploy independently, use feature flags effectively, and maintain small
-batch sizes.
+Nearly every automation practice traces back to version control. Build automation, configuration
+management, infrastructure automation, and component ownership all depend on it. If your version
+control practices are weak (infrequent commits, poor branching discipline, configuration stored
+outside version control), the entire tree above it is compromised.
 
 ## Mapping to Migration Phases
 
@@ -180,58 +86,59 @@ The dependency tree directly informs the sequencing of migration phases:
 
 | Dependency Layer | Migration Phase | Why This Order |
 |-----------------|-----------------|----------------|
-| Development practices (TBD, TDD, BDD, work decomposition, code review) | [Phase 1 - Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
-| Build and test infrastructure (build automation, test suite, production-like environments) | [Phase 1](../../migrate-to-cd/migration-path/foundations/) and [Phase 2](../../migrate-to-cd/migration-path/pipeline/) | You need a reliable build and test infrastructure before you can build a reliable pipeline |
-| Pipeline practices (single path, deterministic pipeline, immutable artifacts, config, rollback) | [Phase 2 - Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
+| Development practices (TBD, BDD, trunk-based development) | [Phase 1 - Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
+| Build and test infrastructure (build automation, automated testing, test environments) | [Phase 1](../../migrate-to-cd/migration-path/foundations/) and [Phase 2](../../migrate-to-cd/migration-path/pipeline/) | You need reliable build and test infrastructure before you can build a reliable pipeline |
+| Pipeline practices (application pipeline, immutable artifacts, configuration management, rollback) | [Phase 2 - Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
 | Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 - Optimize](../../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
-| Organizational practices (team topology, working agreements, retrospectives, architecture decoupling) | All phases | These cross-cutting practices support every phase. Team topology should be addressed early because it constrains architecture and work decomposition |
+| Organizational practices (cross-functional teams, component ownership, developer-driven support) | All phases | These cross-cutting practices support every phase. Team structure should be addressed early because it constrains architecture and work decomposition |
 
 ## Using the Tree to Diagnose Problems
 
 When something in your delivery process is not working, trace it through the dependency tree
 to find the root cause.
 
-**Example 1: Deployments keep failing.**
+**Deployments keep failing.**
 Look at what feeds CD in the tree. Is your pipeline deterministic? Are you using immutable
 artifacts? Is your application config externalized? The failure is likely in one of the
 pipeline practices.
 
-**Example 2: CI builds are constantly broken.**
+**CI builds are constantly broken.**
 Look at what feeds CI. Are developers actually practicing TBD (integrating daily)? Is the test
 suite reliable, or is it full of flaky tests? Is the build automated end-to-end? The broken
 builds are a symptom of a problem in the development practices layer.
 
-**Example 3: You cannot reduce batch size.**
+**You cannot reduce batch size.**
 Look at what feeds small batches. Is work being decomposed into vertical slices? Are feature
 flags available so partial work can be deployed safely? Is the architecture decoupled enough
 to allow independent deployment? The batch size problem originates in one of these upstream
 practices.
 
-**Example 4: Every feature requires cross-team coordination to deploy.**
-Look at team topology. Are teams organized around domains they can deliver independently, or
+**Every feature requires cross-team coordination to deploy.**
+Look at team structure. Are teams organized around domains they can deliver independently, or
 around technical layers that force handoffs for every feature? If deploying a feature requires
 the frontend team, backend team, and DBA team to coordinate a release window, the team
 structure is preventing independent delivery. No amount of pipeline automation fixes this.
 The team boundaries need to change.
 
 {{% alert title="Migration Tip" %}}
-When you encounter a problem, resist the urge to fix the symptom. Use the dependency tree to
-trace the problem to its root cause. Fixing the symptom (for example, adding more manual
-testing to catch deployment failures) will not solve the underlying issue and often adds
-toil that makes things worse. Fix the dependency that is broken, and the downstream problem
-resolves itself.
+When you encounter a problem, resist the urge to fix the symptom. Use the
+[dependency tree](https://practices.minimumcd.org) to trace the problem to its root cause.
+Fixing the symptom (for example, adding more manual testing to catch deployment failures) will
+not solve the underlying issue and often adds toil that makes things worse. Fix the dependency
+that is broken, and the downstream problem resolves itself.
 {{% /alert %}}
 
-## Practices Not Shown
+## Explore the Full Tree
 
-The tree above focuses on the core technical and process practices. Several important
-supporting practices are not shown for clarity but are covered elsewhere in this guide:
+The static summary on this page covers the most important dependency chains. The full
+interactive tree at [practices.minimumcd.org](https://practices.minimumcd.org) lets you:
 
-- **Observability and monitoring:** essential for [progressive rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) and fast incident response
-- **Security automation:** integrated into the pipeline as automated checks rather than manual gates
-- **Database change management:** a common constraint addressed during [pipeline architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
+- Trace any practice's complete dependency chain from CD down to its foundations
+- Browse practices organized by category (automation, behavior, behavior-enabled automation)
+- Understand maturity levels from foundational practices to advanced CD enablers
+- Track your team's adoption progress across the full practice set
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+> The CD dependency tree is maintained at
+> [practices.minimumcd.org](https://practices.minimumcd.org).
