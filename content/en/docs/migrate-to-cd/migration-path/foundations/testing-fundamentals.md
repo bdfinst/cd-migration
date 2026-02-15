@@ -468,25 +468,110 @@ entire categories of defects from occurring.
 This is the difference between a team that writes more tests to catch more bugs and a team that
 changes how it works so that fewer bugs are created in the first place.
 
+Two questions sharpen this thinking:
+
+1. **What is the earliest point we can detect this defect?** The later a defect is found, the
+   more expensive it is to fix. A requirements defect caught during example mapping costs
+   minutes. The same defect caught in production costs days of incident response, rollback,
+   and rework.
+2. **Can AI help us detect it earlier?** AI-assisted tools can now surface defects at stages
+   where only human review was previously possible, shifting detection left without adding
+   manual effort.
+
 ### Trace every defect to its origin
 
 When a test catches a defect - or worse, when a defect escapes to production - ask: **where was
 this defect introduced, and what would have prevented it from being created?**
 
-Defects do not originate randomly. They cluster around specific causes, and each cause has a
-systemic fix:
+Defects do not originate randomly. They cluster around specific causes. The
+[CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/)
+documents over 30 defect types across eight categories, with detection methods, AI
+opportunities, and systemic fixes for each. The examples below illustrate the pattern for
+the defect sources most commonly encountered during a CD migration.
 
-| Where Defects Originate | Example Defects | Detection Method | Systemic Fix |
-|-------------------------|-----------------|------------------|-------------|
-| **Requirements** | Building the right thing wrong, or the wrong thing right | UX analytics, task completion tracking, A/B testing | Acceptance criteria as user outcomes, not implementation tasks. Three Amigos sessions before work starts. Example mapping to surface edge cases before coding begins. |
-| **Missing domain knowledge** | Business rules encoded incorrectly, implicit assumptions | Magic number detection, knowledge-concentration metrics | Embed domain rules in code using ubiquitous language (DDD). Pair programming to spread knowledge. Living documentation generated from code. |
-| **Integration boundaries** | Interface mismatches, wrong assumptions about upstream behavior | Consumer-driven contract tests, schema validation | Contract tests mandatory per boundary. API-first design. Document behavioral contracts, not just data schemas. |
-| **Untested edge cases** | Null handling, boundary values, error paths | Mutation testing, branch coverage thresholds, property-based testing | Require a test for every bug fix. Adopt property-based testing for logic with many input permutations. Boundary value analysis as a standard practice. |
-| **Unintended side effects** | Change to module A breaks module B | Mutation testing, change impact analysis | Small focused commits. Trunk-based development (integrate daily so side effects surface immediately). Modular design with clear boundaries. |
-| **Accumulated complexity** | Defects cluster in the most complex, most-changed files | Complexity trends, duplication scoring, dependency cycle detection | Refactoring as part of every story, not deferred to a "tech debt sprint." Dedicated complexity budget. |
-| **Long-lived branches** | Merge conflicts, integration failures, stale code | Branch age alerts, merge conflict frequency | Trunk-based development. Merge at least daily. CI rejects stale branches. |
-| **Configuration drift** | Works in staging, fails in production | IaC drift detection, environment comparison, smoke tests | All infrastructure as code. Same provisioning for every environment. Immutable infrastructure. |
-| **Data assumptions** | Null pointer exceptions, schema migration failures | Null safety static analysis, schema compatibility checks, migration dry-runs | Enforce null-safe types. Expand-then-contract for all schema changes. |
+### Requirements
+
+| | |
+|---|---|
+| **Example defects** | Building the right thing wrong, or the wrong thing right |
+| **Earliest detection** | Discovery - before coding begins, during story refinement or example mapping |
+| **Traditional detection** | UX analytics, task completion tracking, A/B testing (all post-deployment) |
+| **AI-assisted detection** | LLM review of acceptance criteria to flag ambiguity, missing edge cases, or contradictions before development begins. AI-generated test scenarios from user stories to validate completeness. |
+| **Systemic fix** | Acceptance criteria as user outcomes, not implementation tasks. Three Amigos sessions before work starts. Example mapping to surface edge cases before coding begins. |
+
+### Missing domain knowledge
+
+| | |
+|---|---|
+| **Example defects** | Business rules encoded incorrectly, implicit assumptions, tribal knowledge loss |
+| **Earliest detection** | During coding - when the developer writes the logic |
+| **Traditional detection** | Magic number detection, knowledge-concentration metrics, bus factor analysis from git history |
+| **AI-assisted detection** | Identify undocumented business rules, missing context that a new developer would hit, and knowledge gaps. Compare implementation against domain documentation or specification files. |
+| **Systemic fix** | Embed domain rules in code using ubiquitous language (DDD). Pair programming to spread knowledge. Living documentation generated from code. Rotate ownership regularly. |
+
+### Integration boundaries
+
+| | |
+|---|---|
+| **Example defects** | Interface mismatches, wrong assumptions about upstream behavior, race conditions at service boundaries |
+| **Earliest detection** | During design - when defining the interface contract |
+| **Traditional detection** | Consumer-driven contract tests, schema validation, chaos engineering, fault injection |
+| **AI-assisted detection** | Review code and documentation to identify undocumented behavioral assumptions (timeouts, retries, error semantics). Predict which consumers break from API changes based on usage patterns when formal contracts do not exist. |
+| **Systemic fix** | Contract tests mandatory per boundary. API-first design. Document behavioral contracts, not just data schemas. Circuit breakers as default at every external boundary. |
+
+### Untested edge cases
+
+| | |
+|---|---|
+| **Example defects** | Null handling, boundary values, error paths |
+| **Earliest detection** | Pre-commit - through null-safe type systems and static analysis in the IDE |
+| **Traditional detection** | Mutation testing, branch coverage thresholds, property-based testing |
+| **AI-assisted detection** | Analyze code paths and generate tests for untested boundaries, null paths, and error conditions the developer did not consider. Triage surviving mutants by risk. |
+| **Systemic fix** | Require a test for every bug fix. Adopt property-based testing for logic with many input permutations. Boundary value analysis as a standard practice. Enforce null-safe type systems. |
+
+### Unintended side effects
+
+| | |
+|---|---|
+| **Example defects** | Change to module A breaks module B, unexpected feature interactions |
+| **Earliest detection** | At commit time - when CI runs the full test suite |
+| **Traditional detection** | Mutation testing, change impact analysis, feature flag interaction matrix |
+| **AI-assisted detection** | Reason about semantic change impact beyond syntactic dependencies. Map a diff to affected modules and flag untested downstream paths before the commit reaches CI. |
+| **Systemic fix** | Small focused commits. Trunk-based development (integrate daily so side effects surface immediately). Feature flags with controlled rollout. Modular design with clear boundaries. |
+
+### Accumulated complexity
+
+| | |
+|---|---|
+| **Example defects** | Defects cluster in the most complex, most-changed files |
+| **Earliest detection** | Continuously - through static analysis in the IDE and CI |
+| **Traditional detection** | Complexity trends, duplication scoring, dependency cycle detection |
+| **AI-assisted detection** | Identify architectural drift, abstraction decay, and calcified workarounds that static analysis misses. Cross-reference change frequency with defect history to prioritize refactoring. |
+| **Systemic fix** | Refactoring as part of every story, not deferred to a "tech debt sprint." Dedicated complexity budget. Treat rising complexity as a leading indicator. |
+
+### Process and deployment
+
+| | |
+|---|---|
+| **Example defects** | Long-lived branches causing merge conflicts, manual pipeline steps introducing human error, excessive batching increasing blast radius, weak rollback causing extended outages |
+| **Earliest detection** | Pre-commit for branch age; CI for pipeline and batching issues |
+| **Traditional detection** | Branch age alerts, merge conflict frequency, pipeline audit for manual gates, changes-per-deploy metrics, rollback testing |
+| **AI-assisted detection** | Automated risk scoring from change diffs and deployment history. Blast radius analysis. Auto-approve low-risk changes and flag high-risk with evidence, replacing manual change advisory boards. |
+| **Systemic fix** | Trunk-based development. Automate every step from commit to production. Single-piece flow with feature flags. Blue/green or canary as default deployment strategy. |
+
+### Data and state
+
+| | |
+|---|---|
+| **Example defects** | Null pointer exceptions, schema migration failures, cache invalidation errors, concurrency issues |
+| **Earliest detection** | Pre-commit for null safety; CI for schema compatibility |
+| **Traditional detection** | Null safety static analysis, schema compatibility checks, migration dry-runs, thread sanitizers |
+| **AI-assisted detection** | Predict downstream impact of schema changes by understanding how consumers actually use data. Flag code where optional fields are used without null checks, even in non-strict languages. |
+| **Systemic fix** | Enforce null-safe types. Expand-then-contract for all schema changes. Design for idempotency. Short TTLs over complex cache invalidation. |
+
+For the complete catalog covering all defect categories - including product and discovery,
+dependency and infrastructure, testing and observability gaps, and more - see the
+[CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/).
 
 ### Build a defect feedback loop
 
@@ -533,7 +618,7 @@ As your test architecture matures, add techniques that find defects humans overl
 | **Static analysis and linting** | Null safety violations, type errors, security vulnerabilities, dead code | From day one - these are cheap and fast |
 
 For more examples of mapping defect origins to detection methods and systemic corrections, see
-the [CD Defect Detection and Remediation Patterns](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/).
+the [CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/).
 
 ## Measuring Success
 
