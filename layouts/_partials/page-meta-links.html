@@ -25,6 +25,8 @@
   <a href="{{ $viewURL }}" class="td-page-meta--view td-page-meta__view" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines fa-fw"></i> {{ T "post_view_this" }}</a>
   <a href="{{ $issueChooseURL }}" class="td-page-meta--issue td-page-meta__issue" target="_blank" rel="noopener"><i class="fa-solid fa-bug fa-fw"></i> Report defect</a>
   <a href="{{ $issueChooseURL }}" class="td-page-meta--project td-page-meta__project-issue" target="_blank" rel="noopener"><i class="fa-solid fa-lightbulb fa-fw"></i> Suggest improvement</a>
+  {{ $symptomURL := printf "%s/issues/new?template=dysfunction-symptom.md" $gh_repo -}}
+  <a href="{{ $symptomURL }}" class="td-page-meta--symptom td-page-meta__symptom-issue" target="_blank" rel="noopener"><i class="fa-solid fa-stethoscope fa-fw"></i> Add Dysfunction Symptom</a>
 
 {{ end -}}
 {{ with .CurrentSection.AlternativeOutputFormats.Get "print" -}}
