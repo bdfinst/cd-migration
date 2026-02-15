@@ -46,4 +46,4 @@ For detailed guidance on defining what "deployable" means for your organization,
 
 - [Dave Farley: Real Example of a Deployment Pipeline in the Fintech Industry](https://www.youtube.com/watch?v=bHKHdp4H-8w)
 - [Continuous Delivery: The Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)
-- [Accelerate](https://itrevolution.com/articles/accelerate-book/) - Nicole Forsgren, Jez Humble, Gene Kim
+- [Accelerate](https://itrevolution.com/product/accelerate/) - Nicole Forsgren, Jez Humble, Gene Kim

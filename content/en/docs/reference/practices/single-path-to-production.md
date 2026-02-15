@@ -37,5 +37,5 @@ For detailed guidance on establishing a single path to production, see:
 ## Additional Resources
 
 - [Continuous Delivery: The Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)
-- [Accelerate](https://itrevolution.com/articles/accelerate-book/) - Nicole Forsgren, Jez Humble, Gene Kim
+- [Accelerate](https://itrevolution.com/product/accelerate/) - Nicole Forsgren, Jez Humble, Gene Kim
 - [Site Reliability Engineering: Release Engineering](https://sre.google/sre-book/release-engineering/)

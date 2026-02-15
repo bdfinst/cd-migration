@@ -82,7 +82,7 @@ For detailed guidance on adopting CI practices during your CD migration, see:
 ## Additional Resources
 
 - [Continuous Integration on Martin Fowler's site](https://martinfowler.com/articles/continuousIntegration.html)
-- [Accelerate](https://itrevolution.com/articles/accelerate-book/) - Nicole Forsgren, Jez Humble, Gene Kim
+- [Accelerate](https://itrevolution.com/product/accelerate/) - Nicole Forsgren, Jez Humble, Gene Kim
 - [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html) - Martin Fowler
 - [Branch By Abstraction](https://www.branchbyabstraction.com/)
 - [Feature Toggles](https://martinfowler.com/articles/feature-toggles.html) - Martin Fowler
