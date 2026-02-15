@@ -1,3 +1,219 @@
+// ---------------------------------------------------------------------------
+// Tables - polished reference styling
+// ---------------------------------------------------------------------------
+
+.td-content {
+  overflow-x: visible;
+
+  // Override Docsy's 80% max-width cap on tables
+  table {
+    width: 100%;
+    max-width: none !important;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    td, th {
+      padding: 0.5rem 0.7rem;
+      vertical-align: top;
+      border-bottom: 1px solid #e2e6ea;
+    }
+
+    // Dark header bar
+    thead th {
+      background: #224968;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid #1a3a54;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    // Clean alternating rows (override Bootstrap striped)
+    tbody tr {
+      background: #fff;
+      transition: background 0.1s;
+
+      &:nth-child(even) {
+        background: #f7f9fb;
+      }
+
+      &:hover {
+        background: #edf2f7;
+      }
+    }
+
+    // Issue column (first) - anchor the eye
+    tbody td:first-child {
+      font-weight: 600;
+      color: #1a2a3a;
+    }
+
+    // Detection column (second) - micro-label style
+    tbody td:nth-child(2) {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #4a6a8a;
+      white-space: nowrap;
+    }
+  }
+}
+
+// On large screens, expand tables beyond the content column
+@media (min-width: 1200px) {
+  .td-content table {
+    width: 140%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .td-content table {
+    width: 155%;
+  }
+}
+
+// Override Docsy's 80% max-width cap so content fills the column
+.td-content {
+  .footnotes,
+  > .alert,
+  > .highlight,
+  > .katex-display,
+  > .lead,
+  > .td-table,
+  > blockquote,
+  > dl dd,
+  > h1,
+  > h2,
+  > ol,
+  > p,
+  > pre,
+  > ul {
+    max-width: 100%;
+  }
+}
+
+// Right padding on the main column to prevent content colliding with TOC sidebar
+@media (min-width: 1200px) {
+  .td-main main {
+    padding-right: 2rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// AI shift-left indicators
+// ---------------------------------------------------------------------------
+
+// High-value: green accent triangle with tinted cell
+.ai-high {
+  color: #0d7a32;
+  font-weight: 700;
+  font-size: 0.7em;
+  margin-right: 0.25em;
+  vertical-align: 0.05em;
+  filter: drop-shadow(0 0 2px rgba(13, 122, 50, 0.35));
+}
+
+// Cells containing .ai-high get a green left border and faint tint
+td:has(.ai-high) {
+  border-left: 3px solid #0d7a32;
+  background: rgba(13, 122, 50, 0.04) !important;
+}
+
+// Blocked: diagonal hatch pattern for "not applicable"
+.ai-blocked {
+  display: block;
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      #1a1a2e,
+      #1a1a2e 4px,
+      #22223a 4px,
+      #22223a 8px
+    );
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0.5rem 0.7rem;
+  margin: -0.5rem -0.7rem;
+}
+
+// Detection sequence - compact cost-gradient pipeline
+.detection-sequence {
+  margin: 1.5rem 0 2rem;
+  text-align: center;
+
+  &__track {
+    display: flex;
+    align-items: stretch;
+    background: linear-gradient(90deg, #0d7a32 0%, #224968 40%, #a67830 70%, #a63123 100%);
+    border-radius: 4px;
+    padding: 2px;
+    gap: 2px;
+  }
+
+  &__caption {
+    margin-top: 0.45rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8a96a3;
+  }
+}
+
+.detection-stage {
+  flex: 1 1 0;
+  padding: 0.45rem 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+  white-space: nowrap;
+  background: #fff;
+
+  // first and last get rounded inner corners
+  &:first-child { border-radius: 3px 0 0 3px; }
+  &:last-child  { border-radius: 0 3px 3px 0; }
+
+  // Cost-graded text color
+  &[data-cost="1"] { color: #0d6a28; }
+  &[data-cost="2"] { color: #0e5c52; }
+  &[data-cost="3"] { color: #1a5080; }
+  &[data-cost="4"] { color: #224968; }
+  &[data-cost="5"] { color: #4a3568; }
+  &[data-cost="6"] { color: #7a5a18; }
+  &[data-cost="7"] { color: #8a3a18; }
+  &[data-cost="8"] { color: #a63123; }
+}
+
+@media (max-width: 768px) {
+  .detection-sequence__track {
+    flex-direction: column;
+    background: linear-gradient(180deg, #0d7a32 0%, #224968 40%, #a67830 70%, #a63123 100%);
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .detection-stage {
+    padding: 0.35rem 0.5rem;
+
+    &:first-child { border-radius: 3px 3px 0 0; }
+    &:last-child  { border-radius: 0 0 3px 3px; }
+  }
+}
+
 // Risk indicator badges for anti-pattern pages
 .risk-indicator {
   display: inline-block;

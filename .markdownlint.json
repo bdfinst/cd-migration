@@ -3,7 +3,7 @@
   "MD010": { "code_blocks": false },
   "MD013": false,
   "MD024": false,
-  "MD033": { "allowed_elements": ["div", "h6", "br", "details", "summary", "strong"] },
+  "MD033": { "allowed_elements": ["div", "h6", "br", "details", "summary", "strong", "span"] },
   "MD036": false,
   "MD040": false,
   "MD060": false
