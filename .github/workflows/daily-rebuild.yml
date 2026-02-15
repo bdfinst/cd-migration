@@ -1,0 +1,19 @@
+name: Daily Rebuild
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: daily-rebuild
+      cancel-in-progress: true
+    steps:
+      - name: Trigger Netlify build
+        run: curl -X POST -d '{}' "$NETLIFY_BUILD_HOOK"
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}

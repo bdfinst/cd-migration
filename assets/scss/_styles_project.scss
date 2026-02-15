@@ -289,6 +289,20 @@ td:has(.ai-high) {
     }
   }
 
+  .td-navbar__issue-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4em;
+    padding: 0.1em 0.45em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+
   .td-navbar__divider {
     display: block;
     width: 1px;
