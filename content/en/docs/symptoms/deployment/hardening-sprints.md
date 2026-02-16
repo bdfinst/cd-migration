@@ -14,7 +14,7 @@ tags:
 
 ## What you are seeing
 
-After the team finishes building features, nothing is ready to ship. A "hardening sprint" is
+After the team finishes building features, nothing is ready to ship. A "[hardening sprint](../../../glossary/#hardening-sprint)" is
 scheduled: one or more sprints dedicated to bug fixing, stabilization, and integration testing. No
 new features are built during this period. The team knows from experience that the code is not
 production-ready when development ends.
@@ -98,4 +98,4 @@ less effective, more expensive, and blocks the release.
 - [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/) - Manual testing phases that drive hardening cycles
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Automated testing that builds quality in continuously
 - [Deployable Definition](../../migrate-to-cd/migration-path/pipeline/deployable-definition/) - Making every commit production-ready by definition
-- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track whether quality improves without hardening
+- [Change Fail Rate](../../metrics/change-fail-rate/) - Track whether quality improves without hardening

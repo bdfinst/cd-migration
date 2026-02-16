@@ -206,8 +206,8 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 | Metric | What to look for |
 |--------|-----------------|
 | Percentage of stories pre-assigned at sprint start | Should drop to near zero |
-| [Work in progress](../../../reference/metrics/work-in-progress/) | Should decrease as team focuses on finishing |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as swarming increases |
+| [Work in progress](../../../metrics/work-in-progress/) | Should decrease as team focuses on finishing |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as swarming increases |
 | Stories completed per sprint | Should stabilize or increase despite less "busyness" |
 | Rework rate | Stories returned for rework or reopened after completion - should decrease |
 | Knowledge distribution | Track who works on which parts of the system - should broaden over time |
@@ -217,4 +217,3 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 - [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Pull-based work and WIP limits are complementary practices
 - [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Pull works best when items are small and well-defined
 - [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The team's agreement to pull, not push, should be explicit
-- [Common Blockers](../../../reference/common-blockers/) - Push-based assignment contributes to several listed blockers

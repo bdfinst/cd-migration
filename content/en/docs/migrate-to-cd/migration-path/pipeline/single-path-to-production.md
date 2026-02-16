@@ -70,7 +70,7 @@ path is broken. This includes:
 ### Integration branches and multi-branch deployment paths
 
 Using separate branches (such as `develop`, `release`, `hotfix`) that each have their own
-deployment workflow creates multiple paths. GitFlow is a common source of this anti-pattern.
+deployment workflow creates multiple paths. [GitFlow](../../../glossary/#gitflow) is a common source of this anti-pattern.
 When a hotfix branch deploys through a different pipeline than the `develop` branch, you
 cannot be confident that the hotfix has undergone the same validation.
 
@@ -353,4 +353,4 @@ pipeline meaningful.
 - [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - the anti-pattern that a single path to production eliminates
 - [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern of having no automated delivery path at all
 - [Deterministic Pipeline](../deterministic-pipeline/) - the Pipeline practice that makes the single path reliable and trustworthy
-- [Lead Time](../../../reference/metrics/lead-time/) - a key metric that improves when all changes follow one automated path
+- [Lead Time](../../../metrics/lead-time/) - a key metric that improves when all changes follow one automated path

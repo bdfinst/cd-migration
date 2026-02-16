@@ -202,4 +202,4 @@ previous known-good artifact.
 - [Application Configuration](../application-config/) - the Pipeline practice that enables immutability by externalizing environment-specific values
 - [Deterministic Pipeline](../deterministic-pipeline/) - the Pipeline practice that ensures the build process itself is repeatable
 - [Rollback](../rollback/) - the Pipeline practice that relies on stored immutable artifacts for fast recovery
-- [Change Fail Rate](../../../reference/metrics/change-fail-rate/) - a metric that improves when validated artifacts are deployed without modification
+- [Change Fail Rate](../../../metrics/change-fail-rate/) - a metric that improves when validated artifacts are deployed without modification

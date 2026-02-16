@@ -230,9 +230,9 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 | Metric | What to look for |
 |--------|-----------------|
 | Unexpected cross-module test failures | Should decrease as boundaries are enforced |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as blast radius shrinks |
-| [Build duration](../../../reference/metrics/build-duration/) | Should decrease as testing can be scoped to affected modules |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as developers spend less time tracing dependencies |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as blast radius shrinks |
+| [Build duration](../../../metrics/build-duration/) | Should decrease as testing can be scoped to affected modules |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as developers spend less time tracing dependencies |
 | Cross-team coordination requests per sprint | Should decrease as module ownership becomes clearer |
 | Files changed per commit | Should decrease as changes become more localized |
 

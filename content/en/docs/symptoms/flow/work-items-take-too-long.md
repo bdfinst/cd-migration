@@ -72,4 +72,4 @@ integrate daily.
 - [Merging Is Painful and Time-Consuming](../painful-merges/) - Long-lived work creates merge pain that further slows delivery
 - [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/) - Stories too large to finish quickly
 - [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Breaking work into small, deliverable slices
-- [Development Cycle Time](../../reference/metrics/development-cycle-time/) - Measure time from first commit to deployable
+- [Development Cycle Time](../../metrics/development-cycle-time/) - Measure time from first commit to deployable

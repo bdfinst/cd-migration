@@ -222,8 +222,8 @@ loss and no human intervention:
 | Environment provisioning time | Should decrease from hours/days to minutes |
 | Configuration differences between environments | Should reach zero accidental differences |
 | "Works in staging but not production" incidents | Should drop to near zero |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as environment parity improves |
-| [Mean time to repair](../../../reference/metrics/mean-time-to-repair/) | Should decrease as environments become reproducible |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as environment parity improves |
+| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as environments become reproducible |
 | Time spent debugging environment issues | Track informally - should approach zero |
 
 ## Related Content

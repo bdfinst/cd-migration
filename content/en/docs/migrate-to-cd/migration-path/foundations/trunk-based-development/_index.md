@@ -232,7 +232,7 @@ Tighten the window from 2 days to 1 day.
 
 - Every developer merges to trunk at least once per day, every day they write code
 - If work is not complete, use a feature flag or other technique to merge safely
-- Track [integration frequency](../../../../reference/metrics/integration-frequency/) as your primary metric
+- Track [integration frequency](../../../../metrics/integration-frequency/) as your primary metric
 
 ### Step 3: Ensure Trunk Stays Green (Week 2-3)
 
@@ -282,9 +282,9 @@ Track these metrics to verify your TBD adoption:
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Integration frequency](../../../../reference/metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
+| [Integration frequency](../../../../metrics/integration-frequency/) | At least 1 per developer per day | Confirms daily integration is happening |
 | Branch age | < 24 hours | Catches long-lived branches |
-| [Build duration](../../../../reference/metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
+| [Build duration](../../../../metrics/build-duration/) | < 10 minutes | Enables frequent integration without frustration |
 | Merge conflict frequency | Decreasing over time | Confirms small changes reduce conflicts |
 
 ## Further Reading
@@ -292,7 +292,7 @@ Track these metrics to verify your TBD adoption:
 This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios:
 
 - [TBD Migration Guide](tbd-migration/) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
-- [Trunk-Based Development](../../../../reference/practices/trunk-based-development/) - Practice definition and minimum criteria
+- [Trunk-Based Development](../../../../practices/trunk-based-development/) - Practice definition and minimum criteria
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
 
 ## Next Step
@@ -306,4 +306,4 @@ Once your team is integrating to trunk daily, build the test suite that makes th
 - [No Fast Feedback](../../../../symptoms/flow/no-fast-feedback/) - Symptom that daily integration and CI address directly
 - [Long-Lived Feature Branches](../../../../anti-patterns/branching-integration/long-lived-feature-branches/) - Anti-pattern that TBD replaces
 - [Integration Deferred](../../../../anti-patterns/branching-integration/integration-deferred/) - Anti-pattern where integration is postponed until late in development
-- [Integration Frequency](../../../../reference/metrics/integration-frequency/) - Key metric for tracking TBD adoption
+- [Integration Frequency](../../../../metrics/integration-frequency/) - Key metric for tracking TBD adoption

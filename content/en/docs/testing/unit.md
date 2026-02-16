@@ -17,13 +17,13 @@ meaningful action or decision your code makes -- and verifies that the observabl
 correct. The "unit" is not a function, method, or class. It is a behavior: given these inputs,
 the system produces this result. A single behavior may involve one function or several
 collaborating objects. What matters is that the test treats the code as a
-[black box](../../reference/glossary/#black-box-testing) and asserts only on what it produces,
+[black box](../../glossary/#black-box-testing) and asserts only on what it produces,
 not on how it produces it.
 
 All external dependencies are replaced with [test doubles](../test-doubles/) so the test runs
 quickly and produces the same result every time.
 
-[White box testing](../../reference/glossary/#white-box-testing) -- asserting on internal method
+[White box testing](../../glossary/#white-box-testing) -- asserting on internal method
 calls, call order, or private state -- creates change-detector tests that break during routine
 refactoring without catching real defects. Prefer testing through the public interface (methods,
 APIs, exported functions) and asserting on return values, state changes visible to consumers,
@@ -104,7 +104,7 @@ public void shouldReturnUserDetails() {
 
 ## Anti-Patterns
 
-- **[White box testing](../../reference/glossary/#white-box-testing)** -- asserting on internal
+- **[White box testing](../../glossary/#white-box-testing)** -- asserting on internal
   state, call order, or private method behavior rather than observable output. These
   change-detector tests break during refactoring without catching real defects. Test through
   the public interface instead.
@@ -135,7 +135,7 @@ Unit tests occupy the base of the test pyramid. They run in the earliest stages 
 
 Because unit tests are fast and deterministic, they should always break the build on failure.
 A healthy CD pipeline depends on a large, reliable suite of
-[black box](../../reference/glossary/#black-box-testing) unit tests that verify behavior
+[black box](../../glossary/#black-box-testing) unit tests that verify behavior
 rather than implementation, giving developers the confidence to refactor freely and ship
 small changes frequently.
 

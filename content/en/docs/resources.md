@@ -1,7 +1,7 @@
 ---
 title: "Resources"
 linkTitle: "Resources"
-weight: 5
+weight: 15
 description: >
   Books, videos, and further reading on continuous delivery and deployment.
 ---
@@ -25,7 +25,7 @@ relevant to.
 : A practical, focused guide to building CD pipelines. Farley covers pipeline design, testing
   strategies, and deployment patterns in a direct, implementation-oriented style. Start here
   if you want a concise guide to the pipeline practices in Phase 2.
-: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
+: *Most relevant to: [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/)*
 
 **Continuous Delivery** by Jez Humble and Dave Farley
 : The foundational text on CD. Published in 2010, it remains the most comprehensive treatment
@@ -39,7 +39,7 @@ relevant to.
   performance. Covers the four key metrics (deployment frequency, lead time, change failure
   rate, MTTR) and the capabilities that predict high performance. Essential reading for anyone
   who needs to make the business case for a CD migration.
-: *Most relevant to: [Phase 0 -- Assess](../../migrate-to-cd/migration-path/assess/) and [Phase 3 -- Metrics-Driven Improvement](../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)*
+: *Most relevant to: [Phase 0 -- Assess](../migrate-to-cd/migration-path/assess/) and [Phase 3 -- Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)*
 
 **Engineering the Digital Transformation** by Gary Gruver
 : Addresses the organizational and leadership challenges of large-scale delivery
@@ -53,7 +53,7 @@ relevant to.
   include stability patterns (circuit breakers, bulkheads, timeouts), deployment patterns, and
   the operational realities of running software at scale. Essential reading before entering
   Phase 4, where the team has the capability to deploy any change on demand.
-: *Most relevant to: [Phase 4 -- Deliver on Demand](../../migrate-to-cd/migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/)*
+: *Most relevant to: [Phase 4 -- Deliver on Demand](../migrate-to-cd/migration-path/continuous-deployment/) and [Phase 2 -- Rollback](../migrate-to-cd/migration-path/pipeline/rollback/)*
 
 **The DevOps Handbook** by Gene Kim, Jez Humble, Patrick Debois, and John Willis
 : A practical companion to *The Phoenix Project*. Covers the Three Ways (flow, feedback, and
@@ -65,7 +65,7 @@ relevant to.
 : A novel that illustrates DevOps principles through the story of a fictional IT organization
   in crisis. Useful for building organizational understanding of why delivery improvement
   matters, especially for stakeholders who will not read a technical book.
-: *Most relevant to: Building organizational buy-in during [Phase 0](../../migrate-to-cd/migration-path/assess/)*
+: *Most relevant to: Building organizational buy-in during [Phase 0](../migrate-to-cd/migration-path/assess/)*
 
 ### Testing
 
@@ -73,32 +73,32 @@ relevant to.
 : The definitive guide to test-driven development in practice. Goes beyond unit testing to
   cover acceptance testing, test doubles, and how TDD drives design. Essential reading for
   Phase 1 testing fundamentals.
-: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
+: *Most relevant to: [Phase 1 -- Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
 
 **Working Effectively with Legacy Code** by Michael Feathers
 : Practical techniques for adding tests to untested code, breaking dependencies, and
   incrementally improving code that was not designed for testability. Indispensable if your
   migration starts with a codebase that has little or no automated testing.
-: *Most relevant to: [Phase 1 -- Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
+: *Most relevant to: [Phase 1 -- Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)*
 
 ### Work Decomposition and Flow
 
 **User Story Mapping** by Jeff Patton
 : A practical guide to breaking features into deliverable increments using story maps. Patton's
   approach directly supports the vertical slicing discipline required for small batch delivery.
-: *Most relevant to: [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/)*
+: *Most relevant to: [Phase 1 -- Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)*
 
 **The Principles of Product Development Flow** by Donald Reinertsen
 : A rigorous treatment of flow economics in product development. Covers queue theory, batch
   size economics, WIP limits, and the cost of delay. Dense but transformative. Reading this
   book will change how you think about every aspect of your delivery process.
-: *Most relevant to: [Phase 3 -- Optimize](../../migrate-to-cd/migration-path/optimize/)*
+: *Most relevant to: [Phase 3 -- Optimize](../migrate-to-cd/migration-path/optimize/)*
 
 **Making Work Visible** by Dominica DeGrandis
 : Focuses on identifying and eliminating the "time thieves" that steal productivity: too much
   WIP, unknown dependencies, unplanned work, conflicting priorities, and neglected work. A
   practical companion to the WIP limiting practices in Phase 3.
-: *Most relevant to: [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/)*
+: *Most relevant to: [Phase 3 -- Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wip/)*
 
 ### Databases
 
@@ -106,14 +106,14 @@ relevant to.
 : The definitive guide to managing database schema changes incrementally. Covers expand-contract
   migrations, backward-compatible schema changes, and techniques for evolving databases without
   downtime. Essential reading for teams whose deployment pipeline includes database changes.
-: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/) and [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)*
+: *Most relevant to: [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/) and [Phase 3 -- Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/)*
 
 ### Architecture
 
 **Building Microservices** by Sam Newman
 : Covers the architectural patterns that enable independent deployment, including service
   boundaries, API design, data management, and testing strategies for distributed systems.
-: *Most relevant to: [Phase 3 -- Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/)*
+: *Most relevant to: [Phase 3 -- Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/)*
 
 **Team Topologies** by Matthew Skelton and Manuel Pais
 : Addresses the relationship between team structure and software architecture (Conway's Law in
@@ -162,34 +162,34 @@ relevant to.
 : Jez Humble's conference presentations cover the principles and research behind CD. His talk
   "Why Continuous Delivery?" is an excellent introduction for teams and stakeholders who are
   new to the concept.
-: *Most relevant to: Building understanding during [Phase 0](../../migrate-to-cd/migration-path/assess/)*
+: *Most relevant to: Building understanding during [Phase 0](../migrate-to-cd/migration-path/assess/)*
 
 **"Refactoring" and "TDD" talks by Martin Fowler and Kent Beck**
 : Foundational talks on the development practices that support CD. Understanding TDD and
   refactoring is essential for Phase 1 testing fundamentals.
-: *Most relevant to: [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/)*
+: *Most relevant to: [Phase 1 -- Foundations](../migrate-to-cd/migration-path/foundations/)*
 
 **"The Smallest Thing That Could Possibly Work" by Bryan Finster**
 : Covers the work decomposition and small batch delivery practices that are central to this
   migration guide. Focuses on practical techniques for breaking work into vertical slices.
-: *Most relevant to: [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) and [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)*
+: *Most relevant to: [Phase 1 -- Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) and [Phase 3 -- Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/)*
 
 **["Real Example of a Deployment Pipeline in the Fintech Industry" by Dave Farley](https://youtu.be/bHKHdp4H-8w)**
 : A concrete walkthrough of a production deployment pipeline in a regulated financial services
   environment. Demonstrates that CD practices are compatible with compliance requirements.
-: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
+: *Most relevant to: [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/)*
 
 ## Blog Posts and Articles
 
 **[Continuous Integration Certification](https://martinfowler.com/bliki/ContinuousIntegrationCertification.html)** by Martin Fowler
 : A short, practical test for whether your team is actually practicing continuous integration.
   Useful as a self-assessment during Phase 1.
-: *Most relevant to: [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/)*
+: *Most relevant to: [Phase 1 -- Foundations](../migrate-to-cd/migration-path/foundations/)*
 
 **[Continuous Delivery: Anatomy of the Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)** by Dave Farley
 : An article-length overview of deployment pipeline structure, covering commit stage, acceptance
   testing, and release stages. A good companion to the pipeline phase of this guide.
-: *Most relevant to: [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)*
+: *Most relevant to: [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/)*
 
 ## Recommended Reading Order
 

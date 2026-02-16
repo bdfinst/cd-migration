@@ -178,7 +178,7 @@ null safety, branch age), AI adds cost without benefit. Look for the <span class
 
 - [AI Adoption Roadmap](ai-adoption-roadmap/) - Safely incorporate AI into your delivery process
 - [Assess Phase](migrate-to-cd/migration-path/assess/) - Current-state assessment where defect source analysis begins
-- [Testing](reference/testing/) - Testing types, patterns, and best practices
+- [Testing](testing/) - Testing types, patterns, and best practices
 - [Anti-Patterns](anti-patterns/) - Patterns that undermine delivery performance
 - [Testing Symptoms](symptoms/testing/) - Symptoms caused by testing gaps
 - [Deployment Symptoms](symptoms/deployment/) - Symptoms caused by deployment process problems

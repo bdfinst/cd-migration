@@ -224,9 +224,9 @@ changes that actually benefit from human review rather than rubber-stamping rout
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as CAB delay is removed for standard changes |
-| [Release frequency](../../../reference/metrics/release-frequency/) | Should increase as deployment is no longer gated on weekly meetings |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should remain stable or decrease - proving auto-approval is safe |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as CAB delay is removed for standard changes |
+| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment is no longer gated on weekly meetings |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should remain stable or decrease - proving auto-approval is safe |
 | Percentage of changes auto-approved | Should climb toward 80-90% |
 | CAB meeting frequency | Should decrease from weekly to as-needed |
 | Time from "ready to deploy" to "deployed" | Should drop from days to hours or minutes |

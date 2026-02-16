@@ -28,7 +28,7 @@ Most organizations employ both static and short-lived environments and utilize t
 
 For detailed guidance on implementing production-like environments, see:
 
-- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Phase 2 pipeline practice with environment parity, ephemeral environments, and getting started steps
+- [Production-Like Environments](../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Phase 2 pipeline practice with environment parity, ephemeral environments, and getting started steps
 
 ## Additional Resources
 

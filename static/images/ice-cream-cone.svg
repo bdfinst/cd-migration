@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 420" font-family="system-ui, -apple-system, sans-serif" font-size="14">
+  <defs>
+    <linearGradient id="manual" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#dc3545"/>
+      <stop offset="100%" stop-color="#c82333"/>
+    </linearGradient>
+    <linearGradient id="e2e" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8694a"/>
+      <stop offset="100%" stop-color="#d9534f"/>
+    </linearGradient>
+    <linearGradient id="integration" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0ad4e"/>
+      <stop offset="100%" stop-color="#ec971f"/>
+    </linearGradient>
+    <linearGradient id="unit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5cb85c"/>
+      <stop offset="100%" stop-color="#449d44"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="240" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">The Ice Cream Cone Anti-Pattern</text>
+
+  <!-- Manual Testing - widest at top -->
+  <rect x="65" y="48" width="350" height="72" rx="6" fill="url(#manual)"/>
+  <text x="240" y="80" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Manual Testing</text>
+  <text x="240" y="100" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Most testing happens here</text>
+
+  <!-- E2E Tests -->
+  <rect x="105" y="128" width="270" height="72" rx="6" fill="url(#e2e)"/>
+  <text x="240" y="160" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">End-to-End Tests</text>
+  <text x="240" y="180" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Slow, flaky, expensive</text>
+
+  <!-- Integration Tests -->
+  <rect x="155" y="208" width="170" height="72" rx="6" fill="url(#integration)"/>
+  <text x="240" y="240" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Integration Tests</text>
+  <text x="240" y="260" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Some, but not enough</text>
+
+  <!-- Unit Tests - narrowest at bottom -->
+  <rect x="190" y="288" width="100" height="72" rx="6" fill="url(#unit)"/>
+  <text x="240" y="320" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Unit Tests</text>
+  <text x="240" y="340" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Too few</text>
+
+  <!-- Arrows and labels on the right -->
+  <line x1="425" y1="84" x2="425" y2="324" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="425,84 420,94 430,94" fill="#666"/>
+  <polygon points="425,324 420,314 430,314" fill="#666"/>
+  <text x="432" y="148" fill="#666" font-size="11">Slow</text>
+  <text x="432" y="164" fill="#666" font-size="11">Expensive</text>
+  <text x="432" y="180" fill="#666" font-size="11">Flaky</text>
+
+  <text x="432" y="248" fill="#666" font-size="11">Fast</text>
+  <text x="432" y="264" fill="#666" font-size="11">Cheap</text>
+  <text x="432" y="280" fill="#666" font-size="11">Reliable</text>
+
+  <!-- Caption -->
+  <text x="240" y="400" text-anchor="middle" fill="#666" font-size="13" font-style="italic">Inverted distribution: most effort in the slowest, least reliable tests</text>
+</svg>

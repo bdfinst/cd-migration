@@ -179,7 +179,7 @@ These affect the environment in which teams operate:
 - Job satisfaction
 - Transformational leadership
 
-For a detailed breakdown, see the [DORA Capabilities reference](../../../reference/dora-capabilities/).
+For a detailed breakdown, see the [DORA Capabilities reference](../../../dora-capabilities/).
 
 ## The Improvement Kata
 
@@ -402,9 +402,9 @@ Metrics tell you what to improve. [Retrospectives](../retrospectives/) provide t
 
 ## Related Content
 
-- [Deployment Frequency](../../../reference/metrics/release-frequency/) - one of the four key DORA metrics
-- [Lead Time](../../../reference/metrics/lead-time/) - one of the four key DORA metrics
-- [Change Fail Rate](../../../reference/metrics/change-fail-rate/) - one of the four key DORA metrics
-- [Mean Time to Repair](../../../reference/metrics/mean-time-to-repair/) - one of the four key DORA metrics
-- [DORA Capabilities](../../../reference/dora-capabilities/) - the 24 capabilities that drive delivery performance
+- [Deployment Frequency](../../../metrics/release-frequency/) - one of the four key DORA metrics
+- [Lead Time](../../../metrics/lead-time/) - one of the four key DORA metrics
+- [Change Fail Rate](../../../metrics/change-fail-rate/) - one of the four key DORA metrics
+- [Mean Time to Repair](../../../metrics/mean-time-to-repair/) - one of the four key DORA metrics
+- [DORA Capabilities](../../../dora-capabilities/) - the 24 capabilities that drive delivery performance
 - [Retrospectives](../retrospectives/) - the team forum for acting on what metrics reveal

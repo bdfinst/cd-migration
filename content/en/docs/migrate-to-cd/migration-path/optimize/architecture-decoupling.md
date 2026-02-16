@@ -169,7 +169,7 @@ API versioning allows consumers and producers to evolve independently.
 - **Never make a breaking change without a new version.** Adding fields is non-breaking. Removing fields is breaking. Changing field types is breaking.
 - **Support at least two versions simultaneously.** This gives consumers time to migrate.
 - **Deprecate old versions with a timeline.** "Version 1 will be removed on date X."
-- **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing](../../../reference/testing/contract/).
+- **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing](../../../testing/contract/).
 
 ### Strategy 3: Prefer Asynchronous Communication
 
@@ -239,7 +239,7 @@ You cannot afford not to. Every week spent doing coordinated releases is a week 
 |--------|--------|----------------|
 | Teams that can deploy independently | Increasing | The primary measure of decoupling |
 | Coordinated releases per quarter | Decreasing toward zero | Confirms coupling is being eliminated |
-| [Deployment frequency](../../../reference/metrics/release-frequency/) per team | Increasing independently | Confirms teams are not blocked by each other |
+| [Deployment frequency](../../../metrics/release-frequency/) per team | Increasing independently | Confirms teams are not blocked by each other |
 | Cross-team dependencies per feature | Decreasing | Confirms architecture supports independent work |
 
 ## Next Step
@@ -254,5 +254,5 @@ With optimized flow, small batches, metrics-driven improvement, and a decoupled 
 - [Tightly Coupled Monolith](../../../anti-patterns/architecture/tightly-coupled-monolith/) - the anti-pattern of a monolith with no internal boundaries
 - [Distributed Monolith](../../../anti-patterns/architecture/distributed-monolith/) - the anti-pattern of microservices that still require coordinated releases
 - [Premature Microservices](../../../anti-patterns/architecture/premature-microservices/) - splitting into services before domain boundaries are clear
-- [Contract Testing](../../../reference/testing/contract/) - the testing approach that enables independent deployment of services
+- [Contract Testing](../../../testing/contract/) - the testing approach that enables independent deployment of services
 - [Progressive Rollout](../../continuous-deployment/progressive-rollout/) - the deployment strategy enabled by a decoupled architecture

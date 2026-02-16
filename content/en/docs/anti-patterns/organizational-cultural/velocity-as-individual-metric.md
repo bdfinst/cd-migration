@@ -17,7 +17,7 @@ tags:
 
 ## What This Looks Like
 
-During sprint review, a manager pulls up a report showing how many story points each developer
+During sprint review, a manager pulls up a report showing how many [story points](../../../glossary/#story-points) each developer
 completed. Sarah finished 21 points. Marcus finished 13. The manager asks Marcus what happened.
 Marcus starts padding his estimates next sprint. Sarah starts splitting her work into more tickets
 so the numbers stay high. The team learns that the scoreboard matters more than the outcome.

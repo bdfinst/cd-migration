@@ -19,7 +19,7 @@ is not as simple as "collapse all the branches." CD is a quality process, not ju
 Trunk-based development is the first step in establishing that quality process and in uncovering the problems in the
 current process.
 
-GitFlow, and other branching models that use long-lived branches, optimize for isolation to protect working code from
+[GitFlow](../../../../glossary/#gitflow), and other branching models that use long-lived branches, optimize for isolation to protect working code from
 untested or poorly tested code. They create the illusion of safety while silently increasing risk through long feedback delays. The result is predictable: painful merges, stale assumptions, and feedback that arrives too late
 to matter.
 

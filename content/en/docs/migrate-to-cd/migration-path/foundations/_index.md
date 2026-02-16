@@ -45,7 +45,7 @@ You're ready for [Phase 2: Pipeline](../pipeline/) when:
 
 - [Phase 0: Assess](../assess/) - The assessment phase that precedes Foundations
 - [Phase 2: Pipeline](../pipeline/) - The next phase after establishing foundations
-- [DORA Capabilities](../../../reference/dora-capabilities/) - Research-backed capabilities that drive delivery performance
+- [DORA Capabilities](../../../dora-capabilities/) - Research-backed capabilities that drive delivery performance
 - [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - Symptom that foundational practices address
 - [Works on My Machine](../../../symptoms/visibility/works-on-my-machine/) - Symptom eliminated by build automation and testing foundations
-- [Deployment Frequency](../../../reference/metrics/release-frequency/) - Key metric that improves as foundations mature
+- [Deployment Frequency](../../../metrics/release-frequency/) - Key metric that improves as foundations mature

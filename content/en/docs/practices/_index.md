@@ -1,7 +1,8 @@
 ---
 title: "CD Practices"
 linkTitle: "Practices"
-weight: 3
+weight: 9
+sidebar_divider_above: true
 description: >
   Concise definitions of the core continuous delivery practices from MinimumCD.
 ---

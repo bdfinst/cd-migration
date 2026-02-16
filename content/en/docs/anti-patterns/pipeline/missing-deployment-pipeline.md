@@ -228,10 +228,10 @@ grows, drop the manual verification.
 |--------|-----------------|
 | Manual steps in the deployment process | Should decrease to zero |
 | Deployment duration | Should decrease and stabilize as manual steps are automated |
-| [Release frequency](../../../reference/metrics/release-frequency/) | Should increase as deployment cost drops |
+| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment cost drops |
 | Deployment failure rate | Should decrease as human error is removed |
 | People who can deploy to production | Should increase from one or two to the entire team |
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as the manual deployment bottleneck is eliminated |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as the manual deployment bottleneck is eliminated |
 
 ## Related Content
 

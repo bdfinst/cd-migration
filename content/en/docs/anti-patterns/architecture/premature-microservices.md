@@ -181,8 +181,8 @@ If any answer is unsatisfactory, keep it as a module.
 | Services that are always deployed together | Should be merged into a single deployable unit |
 | Time spent on service infrastructure versus features | Should shift toward features as services are consolidated |
 | Pipeline maintenance overhead | Should decrease as the number of pipelines decreases |
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as operational overhead shrinks |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as distributed-system failure modes are eliminated |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as operational overhead shrinks |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as distributed-system failure modes are eliminated |
 
 ## Related Content
 

@@ -37,8 +37,8 @@ Release branches are an intermediate step that some choose on their path to cont
 
 For detailed guidance on adopting TBD during your CD migration, see:
 
-- [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Phase 1 foundation with two migration paths
-- [TBD Migration Guide](../../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/) - Detailed tactical guide for moving from GitFlow to TBD
+- [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Phase 1 foundation with two migration paths
+- [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/) - Detailed tactical guide for moving from [GitFlow](../glossary/#gitflow) to TBD
 
 ## Additional Resources
 

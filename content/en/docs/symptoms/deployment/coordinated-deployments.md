@@ -100,4 +100,4 @@ independent changes into a single release event.
 - [Distributed Monolith](../../anti-patterns/architecture/distributed-monolith/) - Services that cannot deploy independently
 - [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/) - Architectural coupling that forces coordination
 - [Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Breaking dependencies between services
-- [Lead Time](../../reference/metrics/lead-time/) - Measure the cost of coordination in delivery speed
+- [Lead Time](../../metrics/lead-time/) - Measure the cost of coordination in delivery speed

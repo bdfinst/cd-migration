@@ -409,4 +409,4 @@ its validation results are real.
 - [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - often worsened by re-runs of non-deterministic failures
 - [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - an anti-pattern that introduces environmental variance into the pipeline
 - [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that depends on deterministic builds to be trustworthy
-- [Build Duration](../../../reference/metrics/build-duration/) - a metric directly affected by pipeline determinism and re-run rates
+- [Build Duration](../../../metrics/build-duration/) - a metric directly affected by pipeline determinism and re-run rates

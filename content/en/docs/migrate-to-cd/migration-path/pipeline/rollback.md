@@ -387,5 +387,5 @@ See [Application Configuration](../application-config/) for how to achieve this.
 - [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a symptom driven by deployment risk that rollback mitigates
 - [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - an anti-pattern incompatible with fast, automated rollback
 - [Immutable Artifacts](../immutable-artifacts/) - the Pipeline practice that makes rollback reliable by preserving previous artifacts
-- [Mean Time to Repair](../../../reference/metrics/mean-time-to-repair/) - a key metric that rollback capability directly improves
+- [Mean Time to Repair](../../../metrics/mean-time-to-repair/) - a key metric that rollback capability directly improves
 - [Feature Flags](../../optimize/feature-flags/) - an Optimize practice that provides an alternative rollback mechanism at the feature level

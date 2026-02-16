@@ -224,8 +224,8 @@ enter the sprint.
 | Percentage of work items that are independently deployable | Should increase toward 100% |
 | Time from feature start to first production deploy | Should decrease as the first vertical slice ships early |
 | Cross-team deployment dependencies per feature | Should decrease toward zero |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as items no longer wait for other layers or teams |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase as deployable slices are completed and merged daily |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as items no longer wait for other layers or teams |
+| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as deployable slices are completed and merged daily |
 
 ## Related Content
 

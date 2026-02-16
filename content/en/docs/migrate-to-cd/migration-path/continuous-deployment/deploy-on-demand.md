@@ -193,11 +193,11 @@ Partial continuous deployment creates a split experience: application changes fl
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Deployment frequency](../../../reference/metrics/release-frequency/) | Multiple per day | Confirms the pipeline is deploying every change |
-| [Lead time](../../../reference/metrics/lead-time/) | < 1 hour from commit to production | Confirms no manual gates are adding delay |
+| [Deployment frequency](../../../metrics/release-frequency/) | Multiple per day | Confirms the pipeline is deploying every change |
+| [Lead time](../../../metrics/lead-time/) | < 1 hour from commit to production | Confirms no manual gates are adding delay |
 | Manual interventions per deploy | Zero | Confirms the process is fully automated |
-| [Change failure rate](../../../reference/metrics/change-fail-rate/) | Stable or improving | Confirms automation is not introducing new failures |
-| [MTTR](../../../reference/metrics/mean-time-to-repair/) | < 15 minutes | Confirms automated rollback is working |
+| [Change failure rate](../../../metrics/change-fail-rate/) | Stable or improving | Confirms automation is not introducing new failures |
+| [MTTR](../../../metrics/mean-time-to-repair/) | < 15 minutes | Confirms automated rollback is working |
 
 ## Next Step
 
@@ -212,4 +212,4 @@ Continuous deployment deploys every change, but not every change needs to go to 
 - [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a cultural symptom that fades as automated deployments become routine
 - [CAB Gates](../../../anti-patterns/organizational-cultural/cab-gates/) - an organizational anti-pattern that this guide addresses through standard change classification
 - [Manual Deployments](../../../anti-patterns/pipeline/manual-deployments/) - the pipeline anti-pattern that deploy on demand eliminates
-- [Deployment Frequency](../../../reference/metrics/release-frequency/) - the key metric for measuring deploy-on-demand adoption
+- [Deployment Frequency](../../../metrics/release-frequency/) - the key metric for measuring deploy-on-demand adoption

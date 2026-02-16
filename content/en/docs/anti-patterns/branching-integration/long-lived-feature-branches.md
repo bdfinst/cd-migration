@@ -235,10 +235,10 @@ a non-event.
 |--------|-----------------|
 | Average branch lifetime | Should decrease to under one day |
 | Maximum branch lifetime | No branch should exceed two days |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase toward at least daily per developer |
+| [Integration frequency](../../../metrics/integration-frequency/) | Should increase toward at least daily per developer |
 | Merge conflict frequency | Should decrease as branches get shorter |
 | Merge duration | Should decrease from hours to minutes |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as integration overhead drops |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as integration overhead drops |
 | Lines changed per merge | Should decrease as changes get smaller |
 
 ## Related Content

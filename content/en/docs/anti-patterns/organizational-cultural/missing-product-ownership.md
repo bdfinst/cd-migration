@@ -137,7 +137,7 @@ having one.
 | Time tech lead spends on product decisions | Should decrease toward zero as a dedicated owner takes over |
 | Blocks waiting for requirements or priority decisions | Should decrease as a single backlog owner provides clear direction |
 | Mid-sprint requirements changes | Should decrease as the backlog owner shields the team from churn |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as the team stops waiting for decisions |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as the team stops waiting for decisions |
 
 ## Related Content
 

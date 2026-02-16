@@ -7,7 +7,7 @@ description: >
 ---
 
 This architecture suits a team of up to 8-10 people owning a
-[modular monolith](../../reference/glossary/#modular-monolith) - a single deployable
+[modular monolith](../../glossary/#modular-monolith) - a single deployable
 application with well-defined internal module boundaries. The codebase is organized by
 domain, not by technical layer. Each module encapsulates its own data, logic, and
 interfaces, communicating with other modules through explicit internal APIs. The
@@ -81,5 +81,5 @@ independently deployable services with their
 
 - [Quality Gates](../) - the full gate sequence this pipeline applies
 - [Multiple Teams, Single Deployable](../multi-team/) - the next pattern when one team is not enough
-- [Modular Monolith](../../reference/glossary/#modular-monolith) - glossary definition
+- [Modular Monolith](../../glossary/#modular-monolith) - glossary definition
 - [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - how to evolve pipeline architecture from entangled to loosely coupled

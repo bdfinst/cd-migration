@@ -43,59 +43,21 @@ foundation work.
 
 ## Beyond the Test Pyramid
 
-The test pyramid - many unit tests at the base, fewer integration tests in the middle, a handful
-of end-to-end tests at the top - has been the dominant mental model for test strategy since Mike
-Cohn introduced it. The core insight is sound: **push testing as low as possible.** Lower-level
-tests are faster, more deterministic, and cheaper to maintain. Higher-level tests are slower,
-more brittle, and more expensive.
+The test pyramid's core insight is sound: **push testing as low as possible.** But for CD, the
+question is not "do we have the right pyramid shape?" The question is: **can our pipeline
+determine that a change is safe to deploy without depending on any system we do not control?**
 
-But as a prescriptive model, the pyramid is overly simplistic. Teams that treat it as a rigid
-ratio end up in unproductive debates about whether they have "too many" integration tests or "not
-enough" unit tests. The shape of your test distribution matters far less than whether your tests,
-taken together, give you the confidence to deploy.
-
-### What actually matters
-
-The pyramid's principle - **write tests with different granularity** - remains correct. But for
-CD, the question is not "do we have the right pyramid shape?" The question is:
-
-> **Can our pipeline determine that a change is safe to deploy without depending on any system we
-> do not control?**
-
-This reframes the testing conversation. Instead of counting tests by type and trying to match a
-diagram, you design a test architecture where:
-
-1. **Fast, deterministic tests** catch the vast majority of defects and run on every commit.
-   These tests use [test doubles](../../../reference/testing/test-doubles/) for anything outside
-   the team's control. They give you a reliable go/no-go signal in minutes.
-
-2. **Contract tests** verify that your test doubles still match reality. They run asynchronously
-   and catch drift between your assumptions and the real world - without blocking your pipeline.
-
-3. **A small number of non-deterministic tests** validate that the fully integrated system works.
-   These run post-deployment and provide monitoring, not gating.
-
-This structure means your pipeline can confidently say "yes, deploy this" even if a downstream
-API is having an outage, a third-party service is slow, or a partner team hasn't deployed their
-latest changes yet. Your ability to deliver is decoupled from the reliability of systems you do
-not own.
+Teams that answer "yes" design a test architecture where fast, deterministic tests catch the vast
+majority of defects, contract tests verify that test doubles match reality, and a small number of
+non-deterministic tests run post-deployment as monitoring. For the full breakdown of this
+architecture, see the [Testing section](../../../testing/).
 
 ### The anti-pattern: the ice cream cone
 
 Most teams that struggle with CD have an inverted test distribution - too many slow, expensive
 end-to-end tests and too few fast, focused tests.
 
-```
-        ┌─────────────────────────┐
-        │    Manual Testing       │  ← Most testing happens here
-        ├─────────────────────────┤
-        │   End-to-End Tests      │  ← Slow, flaky, expensive
-        ├─────────────────────────┤
-        │  Integration Tests      │  ← Some, but not enough
-        ├───────────┤
-        │Unit Tests │              ← Too few
-        └───────────┘
-```
+{{< figure src="/images/ice-cream-cone.svg" alt="The ice cream cone anti-pattern: an inverted test distribution where most testing effort goes to manual and end-to-end tests at the top, with too few fast unit tests at the bottom" >}}
 
 The ice cream cone makes CD impossible. Manual testing gates block every release. End-to-end tests
 take hours, fail randomly, and depend on external systems being healthy. The pipeline cannot give
@@ -120,7 +82,7 @@ get that specific user back. You test that you receive and understand the proper
 that your code can parse the response structure and make correct decisions based on it. This
 distinction matters because it keeps your tests deterministic and focused on what you control.
 
-Use contract mocks, [virtual services](../../../reference/glossary/#virtual-service), or any
+Use contract mocks, [virtual services](../../../glossary/#virtual-service), or any
 test double that faithfully represents the interface contract. The test validates your side of
 the conversation, not theirs.
 
@@ -164,157 +126,15 @@ more deterministic, and more focused on the code your team actually ships.
 ## Test Architecture for the CD Pipeline
 
 A test architecture is the deliberate structure of how different test types work together across
-your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
-reinforce each other.
+your pipeline to give you deployment confidence. The [Testing section](../../../testing/)
+provides the full architecture reference, including five layers of tests (unit, integration,
+functional, contract, and end-to-end), how they map to pipeline stages, pre-merge vs post-merge
+strategies, a decision matrix for choosing test types, and best practices.
 
-### Layer 1: Unit tests - verify behavior in isolation
-
-Unit tests exercise a unit of behavior - a single meaningful action or decision your code
-makes - with all external dependencies replaced by
-[test doubles](../../../reference/testing/test-doubles/). They use a
-[black box](../../../reference/glossary/#black-box-testing) approach: assert on what the code
-produces, not on how it works internally. They are the fastest and most deterministic tests you
-have.
-
-**Role in CD:** Catch logic errors, regressions, and edge cases instantly. Provide the tightest
-feedback loop - developers should see results in seconds while coding. Because they test
-behavior rather than implementation, they survive refactoring without breaking.
-
-**What they cannot do:** Verify that components work together, that your code correctly calls
-external services, or that the system behaves correctly as a whole.
-
-See [Unit Tests](../../../reference/testing/unit/) for detailed guidance.
-
-#### Sociable vs solitary unit tests
-
-Unit tests fall into two styles. **Solitary** unit tests replace every collaborator with a test
-double so the class under test runs completely alone. **Sociable** unit tests allow the code to
-use its real collaborators, only substituting test doubles for external dependencies (databases,
-network calls, file systems).
-
-Prefer sociable unit tests as your default. Solitary tests can over-specify internal structure,
-tying your tests to implementation details that break during refactoring. Sociable tests exercise
-the real interactions between objects, catching integration issues earlier without sacrificing
-speed. Reserve solitary tests for cases where a collaborator is expensive, non-deterministic, or
-not yet built.
-
-### Layer 2: Integration tests - verify boundaries
-
-Integration tests verify that components interact correctly at their boundaries: database queries
-return the expected data, HTTP clients serialize requests correctly, message producers format
-messages as expected. External systems are replaced with test doubles, but internal collaborators
-are real.
-
-**Role in CD:** Catch the bugs that unit tests miss - mismatched interfaces, serialization errors,
-query bugs. These tests are fast enough to run on every commit but realistic enough to catch
-real integration failures.
-
-**What they cannot do:** Verify that the system works end-to-end from a user's perspective, or
-that your assumptions about external services are still correct.
-
-The line between unit tests and integration tests is often debated. As Ham Vocke writes in
-[The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html):
-the naming matters less than the discipline. The key question is whether the test is fast,
-deterministic, and tests something your unit tests cannot. If yes, it belongs here.
-
-See [Integration Tests](../../../reference/testing/integration/) for detailed guidance.
-
-### Layer 3: Functional tests - verify your system works in isolation
-
-Functional tests (also called component tests) exercise your entire sub-system - your service,
-your application - from the outside, as a user or consumer would interact with it. All external
-dependencies are replaced with test doubles. The test boots your application, sends real HTTP
-requests or simulates real user interactions, and verifies the responses.
-
-**Role in CD:** This is the layer that proves your system works as a complete unit, independent
-of everything else. Functional tests answer: "if we deploy this service right now, will it
-behave correctly for every interaction that is within our control?" Because all external
-dependencies are stubbed, these tests are deterministic and fast. They can run on every commit.
-
-**Why this layer is critical for CD:** Functional tests are what allow you to deploy with
-confidence even when dependencies outside your control are unavailable. Your test doubles
-simulate the expected behavior of those dependencies. As long as your doubles are accurate (which
-is what contract tests verify), your functional tests prove your system handles those interactions
-correctly.
-
-See [Functional Tests](../../../reference/testing/functional/) for detailed guidance.
-
-### Layer 4: Contract tests - verify your assumptions about others
-
-Contract tests validate that the test doubles you use in layers 1-3 still accurately represent
-the real external systems. They run against live dependencies and check contract format - response
-structures, field names, types, and status codes - not specific data values.
-
-**Role in CD:** Contract tests are the bridge between your fast, deterministic test suite and the
-real world. Without them, your test doubles can silently drift from reality, and your functional
-tests provide false confidence. With them, you know that the assumptions baked into your test
-doubles are still correct.
-
-**Consumer-driven contracts** take this further: the consumer of an API publishes expectations
-(using tools like [Pact](https://pact.io/)), and the provider runs those expectations as part of
-their build. Both teams know immediately when a change would break the contract.
-
-Contract tests are **non-deterministic** because they hit live systems. They should not block
-your pipeline. Instead, failures trigger a review: has the contract changed, or was it a transient
-network issue? If the contract has changed, update your test doubles and re-verify.
-
-See [Contract Tests](../../../reference/testing/contract/) for detailed guidance.
-
-### Layer 5: End-to-end tests - verify the integrated system post-deployment
-
-End-to-end tests validate complete user journeys through the fully integrated system with no
-test doubles. They run against real services, real databases, and real third-party integrations.
-
-**Role in CD:** E2E tests are monitoring, not gating. They run after deployment to verify that
-the integrated system works. A small suite of smoke tests can run immediately post-deployment
-to catch gross integration failures. Broader E2E suites run on a schedule.
-
-**Why E2E tests should not gate your pipeline:** E2E tests are non-deterministic. They fail for
-reasons unrelated to your change - network blips, third-party outages, shared environment
-instability. If your pipeline depends on E2E tests passing before you can deploy, your deployment
-frequency is limited by the reliability of every system in the chain. This is the opposite of the
-independence CD requires.
-
-See [End-to-End Tests](../../../reference/testing/e2e/) for detailed guidance.
-
-### How the layers work together
-
-```
-Pipeline stage    Test layer              Deterministic?   Blocks deploy?
-─────────────────────────────────────────────────────────────────────────
-On every commit   Unit tests              Yes              Yes
-                  Integration tests       Yes              Yes
-                  Functional tests        Yes              Yes
-
-Asynchronous      Contract tests          No               No (triggers review)
-
-Post-deployment   E2E smoke tests         No               Triggers rollback if critical
-                  Synthetic monitoring    No               Triggers alerts
-```
-
-The critical insight: **everything that blocks deployment is deterministic and under your
-control.** Everything that involves external systems runs asynchronously or post-deployment. This
-is what gives you the independence to deploy any time, regardless of the state of the world
+The key principle: **everything that blocks deployment must be deterministic and under your
+control.** Everything that involves external systems runs asynchronously or post-deployment.
+This gives you the independence to deploy any time, regardless of the state of the world
 around you.
-
-### Pre-merge vs post-merge
-
-The table above maps to two distinct phases of your pipeline, each with different goals and
-constraints.
-
-**Pre-merge** (before code lands on trunk): Run unit, integration, and functional tests. These
-must all be deterministic and fast. Target: under 10 minutes total. This is the quality gate that
-every change must pass. If pre-merge tests are slow, developers batch up changes or skip local
-runs, both of which undermine continuous integration.
-
-**Post-merge** (after code lands on trunk, before or after deployment): Re-run the full
-deterministic suite against the integrated trunk to catch merge-order interactions. Run contract
-tests, E2E smoke tests, and synthetic monitoring. Target: under 30 minutes for the full
-post-merge cycle.
-
-Why re-run pre-merge tests post-merge? Two changes can each pass pre-merge independently but
-conflict when combined on trunk. The post-merge run catches these integration effects. If a
-post-merge failure occurs, the team fixes it immediately - trunk must always be releasable.
 
 ## Starting Without Full Coverage
 
@@ -476,59 +296,6 @@ If your team is new to TDD, start small:
 
 Do not try to retroactively TDD your entire codebase. Apply TDD to new code and to any code you
 modify.
-
-## Testing Matrix
-
-Use this reference to decide what type of test to write and where it runs in your pipeline.
-
-| What You Need to Verify | Test Type | Speed | Deterministic? | Blocks Deploy? | See Also |
-|--------------------------|-----------|-------|----------------|----------------|----------|
-| A function or method behaves correctly | [Unit](../../../reference/testing/unit/) | Milliseconds | Yes | Yes | |
-| Components interact correctly at a boundary | [Integration](../../../reference/testing/integration/) | Milliseconds to seconds | Yes | Yes | |
-| Your whole service works in isolation | [Functional](../../../reference/testing/functional/) | Seconds | Yes | Yes | |
-| Your test doubles match reality | [Contract](../../../reference/testing/contract/) | Seconds | No | No | |
-| A critical user journey works end-to-end | [E2E](../../../reference/testing/e2e/) | Minutes | No | No | |
-| Code quality, security, and style compliance | [Static Analysis](../../../reference/testing/static/) | Seconds | Yes | Yes | |
-
-## Best Practices Summary
-
-### Do
-
-- **Run tests on every commit.** If tests do not run automatically, they will be skipped.
-- **Keep the deterministic suite under 10 minutes.** If it is slower, developers will stop
-  running it locally.
-- **Fix broken tests immediately.** A broken test is equivalent to a broken build.
-- **Delete tests that do not provide value.** A test that never fails and tests trivial behavior
-  is maintenance cost with no benefit.
-- **Test behavior, not implementation.** Use a
-  [black box](../../../reference/glossary/#black-box-testing) approach - verify what the code
-  does, not how it does it. As Ham Vocke advises: "if I enter values `x` and `y`, will the
-  result be `z`?" - not the sequence of internal calls that produce `z`. Avoid
-  [white box testing](../../../reference/glossary/#white-box-testing) that asserts on internals.
-- **Use test doubles for external dependencies.** Your deterministic tests should run without
-  network access to external systems.
-- **Validate test doubles with contract tests.** Test doubles that drift from reality give false
-  confidence.
-- **Treat test code as production code.** Give it the same care, review, and refactoring
-  attention.
-
-### Do Not
-
-- **Do not tolerate flaky tests.** Quarantine or delete them immediately.
-- **Do not gate your pipeline on non-deterministic tests.** E2E and contract test failures
-  should trigger review or alerts, not block deployment.
-- **Do not couple your deployment to external system availability.** If a third-party API being
-  down prevents you from deploying, your test architecture has a critical gap.
-- **Do not write tests after the fact as a checkbox exercise.** Tests written without
-  understanding the behavior they verify add noise, not value.
-- **Do not test private methods directly.** Test the public interface; private methods are tested
-  indirectly.
-- **Do not share mutable state between tests.** Each test should set up and tear down its own
-  state.
-- **Do not use sleep/wait for timing-dependent tests.** Use explicit waits, polling, or
-  event-driven assertions.
-- **Do not require a running database or external service for unit tests.** That makes them
-  integration tests - which is fine, but categorize them correctly.
 
 ## Using Tests to Find and Eliminate Defect Sources
 

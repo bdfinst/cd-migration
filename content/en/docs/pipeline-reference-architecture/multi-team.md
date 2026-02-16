@@ -7,7 +7,7 @@ description: >
 ---
 
 This architecture suits organizations where multiple teams contribute to a single
-deployable [modular monolith](../../reference/glossary/#modular-monolith) - a common
+deployable [modular monolith](../../glossary/#modular-monolith) - a common
 pattern for large applications, mobile apps, or platforms where the final artifact must
 be assembled from team contributions.
 
@@ -136,5 +136,5 @@ Signs you are ready to decompose:
 - [Quality Gates](../) - the full gate sequence this pipeline applies
 - [Single Team, Single Deployable](../single-team/) - the simpler pattern for one team
 - [Independent Teams, Independent Deployables](../independent-teams/) - the target pattern when modules become independent services
-- [Modular Monolith](../../reference/glossary/#modular-monolith) - glossary definition
+- [Modular Monolith](../../glossary/#modular-monolith) - glossary definition
 - [Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - how to move toward independent deployment

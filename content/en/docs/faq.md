@@ -260,7 +260,7 @@ The solution is incremental, not wholesale:
    -- should complete in under 10 minutes. If it takes longer, that is a constraint to address.
 
 See [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and the
-[Testing reference section](../reference/testing/) for detailed guidance.
+[Testing reference section](../testing/) for detailed guidance.
 
 ### Where do I start if I am not sure which phase applies to us?
 

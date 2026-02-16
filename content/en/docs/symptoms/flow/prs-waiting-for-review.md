@@ -73,4 +73,4 @@ incentive structure deprioritizes collaboration.
 - [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/) - Branches that outlive their review window
 - [Code Review](../../migrate-to-cd/migration-path/foundations/code-review/) - Making review fast and continuous
 - [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Short-lived branches that are reviewed same-day
-- [Development Cycle Time](../../reference/metrics/development-cycle-time/) - Track review wait time as part of cycle time
+- [Development Cycle Time](../../metrics/development-cycle-time/) - Track review wait time as part of cycle time

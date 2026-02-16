@@ -15,7 +15,7 @@ tags:
 
 The team is always behind. Sprint commitments are missed or met only through overtime. Developers
 work evenings and weekends to hit deadlines, then start the next sprint already tired. There is no
-buffer for unplanned work, so every production incident or stakeholder escalation blows up the
+buffer for [unplanned work](../../../glossary/#unplanned-work), so every production incident or stakeholder escalation blows up the
 plan.
 
 Nobody has time for learning, experimentation, or process improvement. Suggestions like "let's
@@ -91,4 +91,4 @@ produce points.
 - [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/) - Teams spread across too many responsibilities
 - [Working Agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/) - Explicit team norms that protect sustainable pace
 - [Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Reducing overload by constraining work in progress
-- [Work in Progress](../../reference/metrics/work-in-progress/) - Track WIP as a leading indicator of team health
+- [Work in Progress](../../metrics/work-in-progress/) - Track WIP as a leading indicator of team health

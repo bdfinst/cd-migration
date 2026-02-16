@@ -190,9 +190,9 @@ coverage - they need to ensure that coverage only goes up.
 |--------|-----------------|
 | Test count | Should increase every sprint |
 | Code coverage of actively changed files | More meaningful than overall coverage - focus on files changed in the last 30 days |
-| [Build duration](../../../reference/metrics/build-duration/) | Should increase slightly as tests are added, but stay under 10 minutes |
+| [Build duration](../../../metrics/build-duration/) | Should increase slightly as tests are added, but stay under 10 minutes |
 | Defects found in production vs. in tests | Ratio should shift toward tests over time |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as test coverage catches regressions before deployment |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as test coverage catches regressions before deployment |
 | Manual testing effort per release | Should decrease as automated tests replace manual verification |
 
 ## Related Content

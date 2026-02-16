@@ -236,7 +236,7 @@ The target is under 10 minutes for the feedback loop that developers use on ever
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Build duration](../../../reference/metrics/build-duration/) | < 10 minutes | Enables fast feedback and frequent integration |
+| [Build duration](../../../metrics/build-duration/) | < 10 minutes | Enables fast feedback and frequent integration |
 | Build success rate | > 95% | Indicates reliable, reproducible builds |
 | Time from commit to build result | < 15 minutes (including queue time) | Measures the full feedback loop |
 | Developer ability to build locally | 100% of team | Confirms the build is portable and documented |
@@ -259,4 +259,4 @@ With build automation in place, you can build, test, and package your applicatio
 - [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - Anti-pattern where no automated path from commit to production exists
 - [Snowflake Environments](../../../anti-patterns/pipeline/snowflake-environments/) - Anti-pattern caused by environment-specific builds
 - [Everything as Code](../everything-as-code/) - Companion guide for versioning build scripts, pipelines, and infrastructure
-- [Build Duration](../../../reference/metrics/build-duration/) - Metric for tracking build speed improvements
+- [Build Duration](../../../metrics/build-duration/) - Metric for tracking build speed improvements

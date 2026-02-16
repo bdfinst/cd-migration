@@ -77,4 +77,4 @@ freeze merges to prevent the target from moving while they deploy.
 - [Releases Are Infrequent and Painful](../infrequent-releases/) - Freezes are a symptom of high-risk release processes
 - [Integration Deferred](../../anti-patterns/branching-integration/integration-deferred/) - Batching integration creates the instability that freezes try to control
 - [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Continuous integration eliminates the need for freezes
-- [Integration Frequency](../../reference/metrics/integration-frequency/) - Track how often the team integrates to trunk
+- [Integration Frequency](../../metrics/integration-frequency/) - Track how often the team integrates to trunk

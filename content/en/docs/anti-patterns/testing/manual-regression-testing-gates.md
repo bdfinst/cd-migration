@@ -235,8 +235,8 @@ The goal is to eliminate the dedicated testing phase entirely:
 | Manual test case count | Should decrease steadily as cases are automated or retired |
 | Manual testing phase duration | Should shrink toward zero |
 | Automated test count in pipeline | Should grow as manual cases are converted |
-| [Release frequency](../../../reference/metrics/release-frequency/) | Should increase as the manual gate shrinks |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as the testing phase is eliminated |
+| [Release frequency](../../../metrics/release-frequency/) | Should increase as the manual gate shrinks |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as the testing phase is eliminated |
 | Time from code complete to release | Should converge toward pipeline duration, not testing phase duration |
 
 ## Related Content

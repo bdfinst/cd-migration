@@ -207,9 +207,9 @@ confidence because it can verify health automatically.
 | Metric | What to look for |
 |--------|-----------------|
 | Mean time to detect (MTTD) | Time from problem occurring to team being aware - should drop from hours to minutes |
-| [Mean time to repair](../../../reference/metrics/mean-time-to-repair/) | Should decrease as diagnosis becomes faster |
+| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as diagnosis becomes faster |
 | Manual verification time per deployment | Should drop to zero as automated checks replace manual click-throughs |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as deployment verification catches problems before they reach users |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as deployment verification catches problems before they reach users |
 | Alert noise ratio | Percentage of alerts that are actionable - should be above 80% |
 | Incidents discovered by customers vs. by the team | Ratio should shift toward team detection |
 

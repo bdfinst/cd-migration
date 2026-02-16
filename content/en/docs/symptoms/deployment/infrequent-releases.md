@@ -98,4 +98,4 @@ because the test suite is manual and grows with every feature.
 - [Merge Freezes Before Deployments](../merge-freeze/) - Stabilization overhead that accompanies large releases
 - [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/) - No automated path from commit to production
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - Reducing release size to reduce risk
-- [Release Frequency](../../reference/metrics/release-frequency/) - Measure how often the team ships to production
+- [Release Frequency](../../metrics/release-frequency/) - Measure how often the team ships to production

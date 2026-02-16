@@ -147,7 +147,7 @@ commitments should be more reliable. Use this data to make the case for continui
 | Shortcuts taken per sprint | Should decrease toward zero as quality becomes non-negotiable |
 | Rework percentage | Should decrease as shortcuts stop creating future debt |
 | Sprint commitment reliability | Should increase as commitments become realistic |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as quality stops being sacrificed for deadlines |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as quality stops being sacrificed for deadlines |
 | Unplanned work percentage | Should decrease as accumulated debt is paid down |
 
 ## Related Content

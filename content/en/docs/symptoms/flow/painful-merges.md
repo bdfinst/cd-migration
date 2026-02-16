@@ -79,4 +79,4 @@ merges.
 - [Feedback Takes Hours Instead of Minutes](../no-fast-feedback/) - Merge pain discourages frequent integration
 - [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/) - The primary cause of merge conflicts
 - [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Integrating at least daily to prevent divergence
-- [Integration Frequency](../../reference/metrics/integration-frequency/) - Measure how often developers integrate to trunk
+- [Integration Frequency](../../metrics/integration-frequency/) - Measure how often developers integrate to trunk

@@ -75,9 +75,9 @@ CI requires a shift in testing approach:
 
 For detailed guidance on adopting CI practices during your CD migration, see:
 
-- [Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Phase 1 foundation
-- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Phase 1 testing architecture
-- [Working Agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/) - Phase 1 team commitments
+- [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Phase 1 foundation
+- [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Phase 1 testing architecture
+- [Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/) - Phase 1 team commitments
 
 ## Additional Resources
 

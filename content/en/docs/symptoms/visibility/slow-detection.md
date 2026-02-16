@@ -77,4 +77,4 @@ actually healthy is a separate question that may or may not get answered.
 - [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - The root cause when no automated detection exists
 - [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Embedding health checks into the deployment process
 - [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Automated rollback on health check failure
-- [Mean Time to Repair](../../reference/metrics/mean-time-to-repair/) - Track detection and recovery speed
+- [Mean Time to Repair](../../metrics/mean-time-to-repair/) - Track detection and recovery speed

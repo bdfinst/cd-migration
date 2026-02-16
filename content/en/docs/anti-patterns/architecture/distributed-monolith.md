@@ -182,8 +182,8 @@ access when all consumers have migrated.
 | Services that must deploy together | Should decrease as boundaries are corrected |
 | Synchronous call chain depth | Should decrease as chains are broken with async events |
 | Shared database tables | Should decrease toward zero as each service owns its data |
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as coordinated releases are replaced by independent deployments |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as cascading failures are eliminated |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as coordinated releases are replaced by independent deployments |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as cascading failures are eliminated |
 | Deployment coordination events per month | Should decrease toward zero |
 
 ## Related Content

@@ -202,10 +202,10 @@ raise it with engineering leadership.
 | Metric | What to look for |
 |--------|-----------------|
 | Test coverage trend | Should stop declining and begin climbing |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as coverage recovers |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as coverage recovers |
 | Production incidents from untested code | Track root causes - "no test coverage" should become less frequent |
 | Stories completed without tests | Should drop to zero |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should stabilize as manual verification decreases |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should stabilize as manual verification decreases |
 | Sprint capacity spent on incident response | Should decrease as fewer untested changes reach production |
 
 ## Related Content

@@ -34,4 +34,3 @@ current state and identify the constraints holding you back.
 - [Baseline Metrics](assess/baseline-metrics/) - Measure where you are before making changes
 - [For Managers](../../symptoms/for-managers/) - How delivery problems appear from a management perspective
 - [FAQ](../../faq/) - Frequently asked questions about continuous delivery
-- [Common Blockers](../../reference/common-blockers/) - Frequently encountered obstacles and how to address them

@@ -82,5 +82,5 @@ result.
 - [Refactoring Breaks Tests](../refactoring-breaks-tests/) - Another sign that tests verify implementation instead of behavior
 - [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - When coverage targets incentivize the wrong testing behavior
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building tests that catch real defects
-- [Unit Tests](../../reference/testing/unit/) - Writing fast, behavior-focused tests
-- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Measure defect escape rate instead of coverage percentage
+- [Unit Tests](../../testing/unit/) - Writing fast, behavior-focused tests
+- [Change Fail Rate](../../metrics/change-fail-rate/) - Measure defect escape rate instead of coverage percentage

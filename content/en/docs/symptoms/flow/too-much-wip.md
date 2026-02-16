@@ -71,4 +71,4 @@ busy by starting things rather than finishing them.
 - [Pull Requests Sit for Days Waiting for Review](../prs-waiting-for-review/) - Review queues are a common source of excess WIP
 - [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/) - No limits on work in progress
 - [Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Setting and enforcing WIP limits
-- [Work in Progress](../../reference/metrics/work-in-progress/) - Measuring and tracking WIP over time
+- [Work in Progress](../../metrics/work-in-progress/) - Measuring and tracking WIP over time

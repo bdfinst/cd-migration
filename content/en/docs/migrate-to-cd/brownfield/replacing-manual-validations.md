@@ -143,7 +143,7 @@ manual cases. The manual suite shrinks with each cycle:
 Each cycle also gets faster because the team builds skill and the test infrastructure matures.
 For more on structuring automated tests effectively, see
 [Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) and
-[Functional Testing](../../reference/testing/functional/).
+[Functional Testing](../../testing/functional/).
 
 ## When Refactoring Is a Prerequisite
 
@@ -239,5 +239,4 @@ prioritization and focus on the validations that are actually blocking faster de
 - [Small Batches](../../migration-path/optimize/small-batches/) - The principle behind incremental replacement
 - [Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/) - Refactoring strategies for testability
 - [Deterministic Pipeline](../../migration-path/pipeline/deterministic-pipeline/) - Where automated validations live
-- [Common Blockers](../../reference/common-blockers/) - Frequently encountered obstacles during migration
-- [Functional Testing](../../reference/testing/functional/) - Structuring automated functional tests
+- [Functional Testing](../../testing/functional/) - Structuring automated functional tests

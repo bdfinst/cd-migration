@@ -28,7 +28,7 @@ request to production. For each step, you capture:
 - **Wait time** - the time the work sits idle between steps (in a queue, awaiting approval, blocked on an environment)
 - **Percent Complete and Accurate (%C/A)** - the percentage of work arriving at this step that is usable without rework
 
-The ratio of process time to total time (process time + wait time) is your **flow efficiency**.
+The ratio of process time to total time (process time + wait time) is your **[flow efficiency](../../../glossary/#flow-efficiency)**.
 Most teams are shocked to discover that their flow efficiency is below 15%, meaning that for
 every hour of actual work, there are nearly six hours of waiting.
 
@@ -247,5 +247,5 @@ quantify your current delivery performance.
 - [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - a symptom frequently revealed by long wait times on the map
 - [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a deployment symptom visible as cross-team handoffs in the value stream
 - [Hardening Sprints](../../../symptoms/deployment/hardening-sprints/) - a symptom that appears as a large testing phase on the map
-- [Development Cycle Time](../../../reference/metrics/development-cycle-time/) - a metric that value stream mapping helps you measure
+- [Development Cycle Time](../../../metrics/development-cycle-time/) - a metric that value stream mapping helps you measure
 - [Identify Constraints](../identify-constraints/) - the next step that uses your value stream map to find the biggest bottleneck

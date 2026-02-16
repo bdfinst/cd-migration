@@ -246,10 +246,10 @@ The team should be able to deploy without watching. The monitoring watches for t
 |--------|-----------------|
 | Manual steps per deployment | Should reach zero |
 | Deployment duration (human time) | Should drop from hours to zero - the pipeline does the work |
-| [Release frequency](../../../reference/metrics/release-frequency/) | Should increase as deployment friction drops |
-| [Change fail rate](../../../reference/metrics/change-fail-rate/) | Should decrease as manual process defects are eliminated |
-| [Mean time to repair](../../../reference/metrics/mean-time-to-repair/) | Should decrease as rollback becomes automated |
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as the deployment bottleneck is removed |
+| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment friction drops |
+| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as manual process defects are eliminated |
+| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as rollback becomes automated |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as the deployment bottleneck is removed |
 
 ## Related Content
 

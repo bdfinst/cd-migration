@@ -90,4 +90,4 @@ automated prefix.
 - [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - Too many slow tests at the wrong level
 - [Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/) - Pipeline design for speed
 - [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Optimizing pipeline structure
-- [Build Duration](../../reference/metrics/build-duration/) - Track pipeline speed as a first-class metric
+- [Build Duration](../../metrics/build-duration/) - Track pipeline speed as a first-class metric

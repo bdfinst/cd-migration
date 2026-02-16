@@ -42,7 +42,7 @@ If these symptoms sound familiar, these resources can help you build a case for 
 find a starting point:
 
 - **[Phase 0: Assess](../migrate-to-cd/migration-path/assess/)** - Map your value stream, take baseline measurements, and identify your top constraints.
-- **[DORA Capabilities](../reference/dora-capabilities/)** - The research-backed capabilities that predict delivery performance. Use this to connect symptoms to organizational capabilities.
-- **[Metrics Reference](../reference/metrics/)** - Definitions for the metrics used throughout this guide, including the four DORA metrics.
+- **[DORA Capabilities](../dora-capabilities/)** - The research-backed capabilities that predict delivery performance. Use this to connect symptoms to organizational capabilities.
+- **[Metrics Reference](../metrics/)** - Definitions for the metrics used throughout this guide, including the four DORA metrics.
 - **[FAQ: How long does the migration take?](../faq/#how-long-does-the-migration-take)** - Rough timelines for each phase of the migration.
 - **[FAQ: What if our organization requires CAB?](../faq/#what-if-our-organization-requires-manual-change-approval-cab)** - How to move from manual change approval to automated evidence.

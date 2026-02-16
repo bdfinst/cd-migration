@@ -101,4 +101,4 @@ Automated testing in the pipeline replaces this queue with instant feedback.
 - [Integration Deferred](../../anti-patterns/branching-integration/integration-deferred/) - Delayed integration delays feedback
 - [Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/) - Automated builds that give feedback in minutes
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Fast tests as the foundation of fast feedback
-- [Build Duration](../../reference/metrics/build-duration/) - Track the speed of your feedback loop
+- [Build Duration](../../metrics/build-duration/) - Track the speed of your feedback loop

@@ -22,7 +22,7 @@ This is not a replacement for testing. It is an addition. Your automated tests s
 
 ### Strategy 1: Canary Deployment
 
-A canary deployment routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
+A [canary deployment](../../../glossary/#canary-deployment) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
 
 ```
                         ┌─────────────────┐
@@ -283,4 +283,4 @@ With deploy on demand and progressive rollout, your technical deployment infrast
 - [Staging Passes, Production Fails](../../../symptoms/deployment/staging-passes-production-fails/) - a symptom that progressive rollout mitigates by catching production-specific issues early
 - [Feature Flags](../../optimize/feature-flags/) - the foundation for percentage-based rollout strategies
 - [Blind Operations](../../../anti-patterns/monitoring-observability/blind-operations/) - an anti-pattern that must be resolved before automated rollback can work
-- [Change Failure Rate](../../../reference/metrics/change-fail-rate/) - the metric that progressive rollout helps keep low by catching issues before full exposure
+- [Change Failure Rate](../../../metrics/change-fail-rate/) - the metric that progressive rollout helps keep low by catching issues before full exposure

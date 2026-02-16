@@ -151,8 +151,8 @@ Per-person WIP limits miss the point. The goal is to limit team WIP so that team
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
-| [Work in progress](../../../reference/metrics/work-in-progress/) | At or below team limit | Confirms the limit is being respected |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Decreasing | Confirms that less WIP leads to faster delivery |
+| [Work in progress](../../../metrics/work-in-progress/) | At or below team limit | Confirms the limit is being respected |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Decreasing | Confirms that less WIP leads to faster delivery |
 | Items completed per week | Stable or increasing | Confirms that finishing more, starting less works |
 | Time items spend blocked | Decreasing | Confirms bottlenecks are being addressed |
 
@@ -174,4 +174,4 @@ WIP limits expose problems. [Metrics-Driven Improvement](../metrics-driven-impro
 - [PRs Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/) - a bottleneck that WIP limits expose
 - [Unbounded WIP](../../../anti-patterns/team-workflow/unbounded-wip/) - the anti-pattern of having no limits on work in progress
 - [Push-Based Work Assignment](../../../anti-patterns/team-workflow/push-based-work-assignment/) - the anti-pattern of assigning work rather than letting teams pull it
-- [Work in Progress metric](../../../reference/metrics/work-in-progress/) - how to measure and track WIP over time
+- [Work in Progress metric](../../../metrics/work-in-progress/) - how to measure and track WIP over time

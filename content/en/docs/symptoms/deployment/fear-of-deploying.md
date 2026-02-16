@@ -104,4 +104,4 @@ deployments reduce risk per deployment rather than accumulating it.
 - [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/) - Manual steps make deployments unpredictable
 - [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Automated pipelines that make deployment routine
 - [Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/) - Fast rollback reduces deployment risk
-- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track deployment reliability over time
+- [Change Fail Rate](../../metrics/change-fail-rate/) - Track deployment reliability over time

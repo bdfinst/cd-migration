@@ -273,5 +273,5 @@ the pipeline to improving its speed and reliability.
 - [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a symptom of tightly coupled pipeline architecture
 - [No Fast Feedback](../../../symptoms/flow/no-fast-feedback/) - a symptom that pipeline architecture improvements resolve through stage ordering and parallelization
 - [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern that pipeline architecture replaces
-- [Release Frequency](../../../reference/metrics/release-frequency/) - a key metric that improves as pipeline architecture matures toward loose coupling
+- [Release Frequency](../../../metrics/release-frequency/) - a key metric that improves as pipeline architecture matures toward loose coupling
 - [Phase 3: Optimize](../../optimize/) - the next phase, which builds on mature pipeline architecture

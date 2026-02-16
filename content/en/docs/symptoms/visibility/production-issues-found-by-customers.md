@@ -72,4 +72,4 @@ usually skipped under time pressure.
 - [Staging Passes but Production Fails](../../symptoms/deployment/staging-passes-production-fails/) - Staging does not catch what monitoring would
 - [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - No monitoring, no alerting, no visibility
 - [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Canary deployments that detect problems before full rollout
-- [Mean Time to Repair](../../reference/metrics/mean-time-to-repair/) - Measure how quickly the team detects and resolves incidents
+- [Mean Time to Repair](../../metrics/mean-time-to-repair/) - Measure how quickly the team detects and resolves incidents

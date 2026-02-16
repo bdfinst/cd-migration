@@ -110,7 +110,7 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests](reference/testing/) at service boundaries. AI-generated code is
+- Add [contract tests](testing/) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in minutes, not hours. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.
@@ -196,7 +196,6 @@ start the AI adoption roadmap, but the roadmap leads there.
 - [Systemic Defect Fixes](defect-sources/) - Catalog of defect causes that AI can help detect (Step 2)
 - [Agentic CD](migrate-to-cd/migration-path/continuous-deployment/agentic-cd/) - The destination for teams completing this roadmap
 - [Anti-Patterns](anti-patterns/) - Problems that Steps 3 and 4 are designed to eliminate
-- [Common Blockers](reference/common-blockers/) - Obstacles you will encounter along the way
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "CD Dependency Tree"
-linkTitle: "CD Dependency Tree"
-weight: 2
+linkTitle: "Dependency Tree"
+weight: 13
 description: >
   Visual guide showing how CD practices depend on and build upon each other.
 ---
@@ -86,10 +86,10 @@ The dependency tree directly informs the sequencing of migration phases:
 
 | Dependency Layer | Migration Phase | Why This Order |
 |-----------------|-----------------|----------------|
-| Development practices (TBD, BDD, trunk-based development) | [Phase 1 - Foundations](../../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
-| Build and test infrastructure (build automation, automated testing, test environments) | [Phase 1](../../migrate-to-cd/migration-path/foundations/) and [Phase 2](../../migrate-to-cd/migration-path/pipeline/) | You need reliable build and test infrastructure before you can build a reliable pipeline |
-| Pipeline practices (application pipeline, immutable artifacts, configuration management, rollback) | [Phase 2 - Pipeline](../../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
-| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 - Optimize](../../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
+| Development practices (TBD, BDD, trunk-based development) | [Phase 1 - Foundations](../migrate-to-cd/migration-path/foundations/) | These are prerequisites for CI, which is a prerequisite for everything else |
+| Build and test infrastructure (build automation, automated testing, test environments) | [Phase 1](../migrate-to-cd/migration-path/foundations/) and [Phase 2](../migrate-to-cd/migration-path/pipeline/) | You need reliable build and test infrastructure before you can build a reliable pipeline |
+| Pipeline practices (application pipeline, immutable artifacts, configuration management, rollback) | [Phase 2 - Pipeline](../migrate-to-cd/migration-path/pipeline/) | The pipeline depends on solid CI and development practices |
+| Flow optimization (small batches, feature flags, WIP limits, metrics) | [Phase 3 - Optimize](../migrate-to-cd/migration-path/optimize/) | Optimization requires a working pipeline to optimize |
 | Organizational practices (cross-functional teams, component ownership, developer-driven support) | All phases | These cross-cutting practices support every phase. Team structure should be addressed early because it constrains architecture and work decomposition |
 
 ## Using the Tree to Diagnose Problems

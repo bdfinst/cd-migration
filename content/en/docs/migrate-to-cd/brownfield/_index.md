@@ -74,7 +74,7 @@ Use your value stream map and metrics to identify which blocker is the current c
 that one thing. Then find the next constraint and fix that. Do not try to fix everything at once.
 
 See [Identify Constraints](../migration-path/assess/identify-constraints/) and the
-[CD Dependency Tree](../../reference/cd-dependency-tree/).
+[CD Dependency Tree](../../cd-dependency-tree/).
 
 ### Make progress visible
 
@@ -123,4 +123,3 @@ not a project with a deadline.
 
 - [Anti-Patterns](../../anti-patterns/) - Start with the problem you feel most
 - [Phase 0 - Assess](../migration-path/assess/) - Understand your current state
-- [Common Blockers](../../reference/common-blockers/) - Frequently encountered obstacles

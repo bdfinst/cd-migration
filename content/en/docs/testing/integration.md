@@ -84,7 +84,7 @@ describe("retrieving Hygieia data", () => {
 ### Subcategories
 
 **Service integration tests** -- Validate how the system under test responds to information
-from an external service. Use virtual services or static mocks; pair with
+from an external service. Use [virtual services](../../glossary/#virtual-service) or static mocks; pair with
 [contract tests](../contract/) to keep the doubles current.
 
 **Database integration tests** -- Validate query logic against a controlled data store. Prefer

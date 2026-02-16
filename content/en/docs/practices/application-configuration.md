@@ -36,7 +36,7 @@ Application configuration should be:
 
 For detailed guidance on managing application configuration, see:
 
-- [Application Configuration](../../migrate-to-cd/migration-path/pipeline/application-config/) - Phase 2 pipeline practice with static vs dynamic feature flag patterns and getting started steps
+- [Application Configuration](../migrate-to-cd/migration-path/pipeline/application-config/) - Phase 2 pipeline practice with static vs dynamic feature flag patterns and getting started steps
 
 ## Additional Resources
 

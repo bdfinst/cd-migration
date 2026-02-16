@@ -40,7 +40,7 @@ Your definition of deployable should include automated checks for:
 
 For detailed guidance on defining what "deployable" means for your organization, see:
 
-- [Deployable Definition](../../migrate-to-cd/migration-path/pipeline/deployable-definition/) - Phase 2 pipeline practice with progressive quality gates, context-specific definitions, and getting started steps
+- [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/) - Phase 2 pipeline practice with progressive quality gates, context-specific definitions, and getting started steps
 
 ## Additional Resources
 

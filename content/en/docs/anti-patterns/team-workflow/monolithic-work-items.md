@@ -135,9 +135,9 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 | Metric | What to look for |
 |--------|-----------------|
 | Item cycle time | Should be two days or less from start to trunk |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as items get smaller |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as items get smaller |
 | Items completed per week | Should increase |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | Should increase as developers integrate daily |
+| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as developers integrate daily |
 
 ## Related Content
 

@@ -1,7 +1,7 @@
 ---
 title: "DORA Capabilities"
 linkTitle: "DORA Capabilities"
-weight: 4
+weight: 12
 description: >
   The capabilities that drive software delivery performance, as identified by DORA research.
 ---
@@ -39,26 +39,26 @@ before beginning the migration.
 Developers integrate their work to trunk at least daily. Each integration triggers an
 automated build and test process. Broken builds are fixed within minutes.
 
-**Migration relevance:** [Phase 1 -- Foundations](../../migrate-to-cd/migration-path/foundations/). CI is the gateway
+**Migration relevance:** [Phase 1 -- Foundations](../migrate-to-cd/migration-path/foundations/). CI is the gateway
 capability. Without it, none of the pipeline practices in Phase 2 can function. See
-[Build Automation](../../migrate-to-cd/migration-path/foundations/build-automation/) and
-[Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/).
+[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/) and
+[Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 ### Deployment Automation
 
 Deployments are fully automated and can be triggered by anyone on the team. No manual steps
 are required between a green pipeline and production.
 
-**Migration relevance:** [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/). Specifically,
-[Single Path to Production](../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) and
-[Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/).
+**Migration relevance:** [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/). Specifically,
+[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/) and
+[Rollback](../migrate-to-cd/migration-path/pipeline/rollback/).
 
 ### Trunk-Based Development
 
 Developers work in small batches and merge to trunk at least daily. Branches, if used, are
 short-lived (less than one day). There are no long-lived feature branches.
 
-**Migration relevance:** [Phase 1 -- Trunk-Based Development](../../migrate-to-cd/migration-path/foundations/trunk-based-development/).
+**Migration relevance:** [Phase 1 -- Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 This is one of the first capabilities to establish because it enables CI.
 
 ### Test Automation
@@ -66,7 +66,7 @@ This is one of the first capabilities to establish because it enables CI.
 A comprehensive suite of automated tests provides confidence that the software is deployable.
 Tests are reliable, fast, and maintained as carefully as production code.
 
-**Migration relevance:** [Phase 1 -- Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/).
+**Migration relevance:** [Phase 1 -- Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/).
 Also see the [Testing reference section](../testing/) for guidance on specific test types.
 
 ### Test Data Management
@@ -74,7 +74,7 @@ Also see the [Testing reference section](../testing/) for guidance on specific t
 Test data is managed in a way that allows automated tests to run independently, repeatably,
 and without relying on shared mutable state. Tests can create and clean up their own data.
 
-**Migration relevance:** Becomes critical during [Phase 2](../../migrate-to-cd/migration-path/pipeline/) when you need
+**Migration relevance:** Becomes critical during [Phase 2](../migrate-to-cd/migration-path/pipeline/) when you need
 production-like environments and deterministic pipeline results.
 
 ### Shift Left on Security
@@ -83,7 +83,7 @@ Security is integrated into the development process rather than added as a gate 
 Automated security checks run in the pipeline. Security requirements are part of the
 definition of deployable.
 
-**Migration relevance:** Integrated during [Phase 2 -- Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
+**Migration relevance:** Integrated during [Phase 2 -- Pipeline Architecture](../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
 as automated quality gates rather than manual review steps.
 
 ## Architecture Capabilities
@@ -96,7 +96,7 @@ independent, frequent deployment.
 Teams can deploy their services independently without coordinating with other teams. Changes
 to one service do not require changes to other services. APIs have well-defined contracts.
 
-**Migration relevance:** [Phase 3 -- Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
+**Migration relevance:** [Phase 3 -- Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
 This capability becomes critical when optimizing for deployment frequency and small batch
 sizes.
 
@@ -118,7 +118,7 @@ These capabilities address how work is planned, prioritized, and delivered.
 Product decisions are informed by direct feedback from customers. Teams can observe how
 features are used in production and adjust accordingly.
 
-**Migration relevance:** Becomes fully enabled in [Phase 4 -- Deliver on Demand](../../migrate-to-cd/migration-path/continuous-deployment/)
+**Migration relevance:** Becomes fully enabled in [Phase 4 -- Deliver on Demand](../migrate-to-cd/migration-path/continuous-deployment/)
 when every change reaches production quickly enough for real customer feedback to inform
 the next change.
 
@@ -127,7 +127,7 @@ the next change.
 The team has a clear view of the entire delivery process from request to production, including
 wait times, handoffs, and rework loops.
 
-**Migration relevance:** [Phase 0 -- Value Stream Mapping](../../migrate-to-cd/migration-path/assess/value-stream-mapping/).
+**Migration relevance:** [Phase 0 -- Value Stream Mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/).
 This is the first activity in the migration because it informs every decision that follows.
 
 ### Working in Small Batches
@@ -135,8 +135,8 @@ This is the first activity in the migration because it informs every decision th
 Work is broken down into small increments that can be completed, tested, and deployed
 independently. Each increment delivers measurable value or validated learning.
 
-**Migration relevance:** Begins in [Phase 1 -- Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/)
-and is optimized in [Phase 3 -- Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/).
+**Migration relevance:** Begins in [Phase 1 -- Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
+and is optimized in [Phase 3 -- Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/).
 
 ### Team Experimentation
 
@@ -156,7 +156,7 @@ These capabilities address how work is managed, measured, and improved.
 Teams have explicit WIP limits that constrain the number of items in any stage of the delivery
 process. WIP limits are enforced and respected.
 
-**Migration relevance:** [Phase 3 -- Limiting WIP](../../migrate-to-cd/migration-path/optimize/limiting-wip/). Reducing WIP
+**Migration relevance:** [Phase 3 -- Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wip/). Reducing WIP
 is one of the most effective ways to improve lead time and delivery predictability.
 
 ### Visual Management
@@ -172,7 +172,7 @@ constraints in Phase 0 and the enforcement of WIP limits in Phase 3.
 Teams have access to production metrics, logs, and traces that allow them to understand system
 behavior, detect issues, and diagnose problems quickly.
 
-**Migration relevance:** Critical for [Phase 4 -- Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/)
+**Migration relevance:** Critical for [Phase 4 -- Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/)
 where automated health checks determine whether a deployment proceeds or rolls back. Also
 supports fast [mean time to restore](../metrics/mean-time-to-repair/).
 
@@ -212,7 +212,7 @@ and space to learn new practices, make mistakes, and improve.
 Development, operations, security, and product teams work together rather than in silos.
 Handoffs are minimized. Shared responsibility replaces blame.
 
-**Migration relevance:** All phases, but especially [Phase 2 -- Pipeline](../../migrate-to-cd/migration-path/pipeline/)
+**Migration relevance:** All phases, but especially [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/)
 where the pipeline must encode the quality criteria from all disciplines (security, testing,
 operations) into automated gates.
 
@@ -222,7 +222,7 @@ Team members find their work meaningful and have the autonomy and resources to d
 High job satisfaction predicts high delivery performance (the relationship is bidirectional).
 
 **Migration relevance:** The migration itself should improve job satisfaction by reducing
-toil, eliminating painful manual processes, and giving teams faster feedback on their work.
+[toil](glossary/#toil), eliminating painful manual processes, and giving teams faster feedback on their work.
 If the migration is experienced as a burden rather than an improvement, something is wrong
 with the approach.
 

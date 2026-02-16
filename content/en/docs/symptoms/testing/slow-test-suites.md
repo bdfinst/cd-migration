@@ -78,4 +78,4 @@ code provides no lower-level testing seams.
 - [Feedback Takes Hours Instead of Minutes](../../symptoms/flow/no-fast-feedback/) - Slow suites force developers into long feedback loops
 - [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - Too many slow tests at the wrong level
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Rebalancing the test pyramid for speed
-- [Build Duration](../../reference/metrics/build-duration/) - Track pipeline speed as a first-class metric
+- [Build Duration](../../metrics/build-duration/) - Track pipeline speed as a first-class metric

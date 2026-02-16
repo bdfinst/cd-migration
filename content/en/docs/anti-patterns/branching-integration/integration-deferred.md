@@ -181,7 +181,7 @@ Set the expectation:
 - Every developer integrates their work to trunk at least once per day.
 - If a developer has been working on a branch for more than a day without integrating, that is a
   problem to discuss at standup.
-- Track [integration frequency](../../../reference/metrics/integration-frequency/) per developer
+- Track [integration frequency](../../../metrics/integration-frequency/) per developer
   per day. Make it visible alongside the build dashboard.
 
 This will expose problems. Some developers will say their work is not ready to integrate. That is a
@@ -235,10 +235,10 @@ the team works.
 |--------|-----------------|
 | Build pass rate | Percentage of builds that pass on first run - should be above 95% |
 | Time to fix a broken build | Should be under 15 minutes, with revert as the fallback |
-| [Integration frequency](../../../reference/metrics/integration-frequency/) | At least one integration per developer per day |
-| [Build duration](../../../reference/metrics/build-duration/) | Should be under 10 minutes for the primary feedback loop |
+| [Integration frequency](../../../metrics/integration-frequency/) | At least one integration per developer per day |
+| [Build duration](../../../metrics/build-duration/) | Should be under 10 minutes for the primary feedback loop |
 | Longest period with a red build | Should be measured in minutes, not hours or days |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as integration overhead drops and stabilization periods disappear |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as integration overhead drops and stabilization periods disappear |
 
 ## Related Content
 

@@ -138,8 +138,8 @@ Each step that is automated eliminates a hidden queue and brings "developer done
 |--------|-----------------:|
 | Gap between "developer done" and "in production" | Should decrease toward zero |
 | Stories in hidden queues (validation, deployment) | Should decrease as queues are eliminated or automated |
-| [Lead time](../../../reference/metrics/lead-time/) | Should decrease as the full path from commit to production shortens |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should become more accurate as it measures the real end-to-end time |
+| [Lead time](../../../metrics/lead-time/) | Should decrease as the full path from commit to production shortens |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should become more accurate as it measures the real end-to-end time |
 
 ## Related Content
 

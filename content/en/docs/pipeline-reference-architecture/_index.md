@@ -127,7 +127,7 @@ and deployment topologies. Most organizations start with Pattern 1 and evolve to
 Pattern 3 as team count and deployment independence requirements grow.
 
 1. **[Single Team, Single Deployable](single-team/)** - one team owns one
-   [modular monolith](../reference/glossary/#modular-monolith) with a linear pipeline
+   [modular monolith](../glossary/#modular-monolith) with a linear pipeline
 2. **[Multiple Teams, Single Deployable](multi-team/)** - multiple teams own
    sub-domain modules within a shared modular monolith, each with its own sub-pipeline
    feeding a thin integration pipeline
@@ -160,8 +160,8 @@ architecture patterns in detail.
 
 - [Systemic Defect Fixes](../defect-sources/) - the defect source catalog that informs gate selection
 - [Pipeline Architecture](../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - how to evolve pipeline architecture from entangled to loosely coupled
-- [Deterministic Pipeline](../reference/practices/deterministic-pipeline/) - ensuring the pipeline produces consistent results
-- [Single Path to Production](../reference/practices/single-path-to-production/) - why all changes must flow through one pipeline
-- [Immutable Artifacts](../reference/practices/immutable-artifacts/) - build once, deploy everywhere
+- [Deterministic Pipeline](../practices/deterministic-pipeline/) - ensuring the pipeline produces consistent results
+- [Single Path to Production](../practices/single-path-to-production/) - why all changes must flow through one pipeline
+- [Immutable Artifacts](../practices/immutable-artifacts/) - build once, deploy everywhere
 - [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/) - the migration phase that establishes the pipeline
 - [Slow Pipelines](../symptoms/flow/slow-pipelines/) - what happens when pipeline architecture is not optimized

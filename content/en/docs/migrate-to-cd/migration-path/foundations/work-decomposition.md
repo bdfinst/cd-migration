@@ -117,7 +117,7 @@ Each slice is independently deployable, testable, and completable within 2 days.
 
 ## BDD as a Decomposition Tool
 
-Behavior-Driven Development (BDD) is not just a testing practice - it is a powerful tool for decomposing work into small, clear increments.
+[Behavior-Driven Development (BDD)](../../../glossary/#bdd-behavior-driven-development) is not just a testing practice - it is a powerful tool for decomposing work into small, clear increments.
 
 ### Three Amigos
 
@@ -237,9 +237,9 @@ Each task results in a commit to trunk. The story is completed through a series 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
 | Story cycle time | < 2 days from start to trunk | Confirms stories are small enough |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Decreasing | Shows improved flow from smaller work |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Decreasing | Shows improved flow from smaller work |
 | Stories completed per week | Increasing (with same team size) | Indicates better decomposition and less rework |
-| [Work in progress](../../../reference/metrics/work-in-progress/) | Decreasing | Fewer large stories blocking the pipeline |
+| [Work in progress](../../../metrics/work-in-progress/) | Decreasing | Fewer large stories blocking the pipeline |
 
 ## Next Step
 
@@ -258,5 +258,5 @@ Small, well-decomposed work flows through the system quickly - but only if code 
 - [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - Symptom that smaller decomposition directly addresses
 - [Monolithic Work Items](../../../anti-patterns/team-workflow/monolithic-work-items/) - Anti-pattern where stories are too large to integrate daily
 - [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) - Anti-pattern where work is split by layer instead of by user value
-- [Development Cycle Time](../../../reference/metrics/development-cycle-time/) - Metric that improves with smaller work items
-- [Work in Progress](../../../reference/metrics/work-in-progress/) - Metric for tracking WIP limits and flow
+- [Development Cycle Time](../../../metrics/development-cycle-time/) - Metric that improves with smaller work items
+- [Work in Progress](../../../metrics/work-in-progress/) - Metric for tracking WIP limits and flow

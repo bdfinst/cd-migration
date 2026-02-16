@@ -31,7 +31,10 @@ path to solving it.
 - **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
 - **[AI Adoption Roadmap](ai-adoption-roadmap/)** - A prescriptive sequence for incorporating AI into delivery safely.
 - **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
-- **[Reference](reference/)** - Glossary, metrics definitions, testing guides, and DORA capabilities.
+- **[Practices](practices/)** - Core CD practice definitions from MinimumCD.
+- **[Metrics](metrics/)** - Delivery metrics definitions.
+- **[Testing](testing/)** - Testing types, patterns, and best practices.
+- **[Glossary](glossary/)** - Key terms and definitions.
 
 ## Content Sources
 

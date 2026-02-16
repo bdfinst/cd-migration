@@ -79,4 +79,4 @@ becomes a source of variance between environments.
 - [Tests Pass in One Environment but Fail in Another](../../symptoms/testing/environment-dependent-failures/) - Environment-dependent behavior is the common root
 - [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Unique environments that diverge from production
 - [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making staging match production
-- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track deployment failures that staging should have caught
+- [Change Fail Rate](../../metrics/change-fail-rate/) - Track deployment failures that staging should have caught

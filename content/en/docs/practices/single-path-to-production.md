@@ -32,7 +32,7 @@ The deployment pipeline is the single, standardized path for all changes to reac
 
 For detailed guidance on establishing a single path to production, see:
 
-- [Single Path to Production](../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Phase 2 pipeline practice with anti-patterns, code examples, and getting started steps
+- [Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Phase 2 pipeline practice with anti-patterns, code examples, and getting started steps
 
 ## Additional Resources
 

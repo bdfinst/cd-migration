@@ -146,7 +146,7 @@ different toolchain.
 | Products per developer | Should decrease toward two or fewer active products per person |
 | Context switches per day | Should decrease as developers focus on fewer products |
 | Single-point-of-failure count | Should decrease as shared knowledge grows within the reduced scope |
-| [Development cycle time](../../../reference/metrics/development-cycle-time/) | Should decrease as sustained focus replaces fragmented attention |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as sustained focus replaces fragmented attention |
 
 ## Related Content
 

@@ -81,4 +81,4 @@ architectural coupling, not a testing problem.
 - [Test Suite Is Too Slow to Run](../slow-test-suites/) - Flaky tests compound slow feedback loops
 - [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - The most common structural cause of flaky tests
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building a fast, reliable test suite
-- [Change Fail Rate](../../reference/metrics/change-fail-rate/) - Track whether test reliability improvements reduce production failures
+- [Change Fail Rate](../../metrics/change-fail-rate/) - Track whether test reliability improvements reduce production failures
