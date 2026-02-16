@@ -4,7 +4,7 @@ aliases:
 title: "Pipelines Take Too Long"
 linkTitle: "Slow pipelines"
 description: >
-  CI/CD pipelines take 30 minutes or more. Developers stop waiting and lose the feedback loop.
+  Pipelines take 30 minutes or more. Developers stop waiting and lose the feedback loop.
 tags:
   - test-strategy
   - deployment-automation

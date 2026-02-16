@@ -922,7 +922,7 @@ Even if the feature isn't complete, integrate what you have:
 - Status check enforcement
 - Signed commits for authenticity
 
-**CI/CD Platforms:**
+**Pipeline Platforms:**
 
 - Deployment approval gates
 - Audit trails of every deployment
@@ -969,7 +969,7 @@ Developer addresses feedback, pushes update.
 Code owner approves. All automated checks pass. Developer merges to trunk.
 
 **Monday 4:05 PM:**
-CI/CD pipeline deploys to staging automatically. Automated smoke tests pass.
+Pipeline deploys to staging automatically. Automated smoke tests pass.
 
 **Monday 4:30 PM:**
 Deployment gate requires manual approval for production. Tech lead approves based on risk assessment.
@@ -1013,7 +1013,7 @@ Long-lived branches often have messy commit history, force pushes, and unclear a
 - Automated compliance checks for data access patterns
 - Required security review for any PHI-touching code
 - Audit logs of deployments
-- Environment isolation enforced by CI/CD
+- Environment isolation enforced by the pipeline
 
 **Government (FedRAMP, FISMA):**
 

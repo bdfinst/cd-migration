@@ -73,9 +73,9 @@ This migration guide takes you through continuous delivery (Phases 0-3) and then
 deployment (Phase 4). Continuous delivery is the prerequisite. You cannot safely automate
 deployment decisions until your pipeline reliably determines what is deployable.
 
-### Is continuous delivery the same as having a CI/CD pipeline?
+### Is continuous delivery the same as having a CD pipeline?
 
-No. Many teams have a CI/CD pipeline tool (Jenkins, GitHub Actions, GitLab CI, etc.) but are
+No. Many teams have a CD pipeline tool (Jenkins, GitHub Actions, GitLab CI, etc.) but are
 not practicing continuous delivery. A pipeline tool is necessary but not sufficient.
 
 Continuous delivery requires:

@@ -37,7 +37,7 @@ If the answer is no, your build is not fully automated.
 | **Speed** | Automated builds can be optimized, cached, and parallelized |
 | **Confidence** | If the build passes, the artifact is trustworthy |
 | **Developer experience** | Developers run the same build locally that CI runs, eliminating "works on my machine" |
-| **Pipeline foundation** | The CI/CD pipeline is just the build running automatically on every commit |
+| **Pipeline foundation** | The CD pipeline is just the build running automatically on every commit |
 
 Without build automation, every other practice in this guide breaks down. You cannot have continuous integration if the build requires manual intervention. You cannot have a deterministic pipeline if the build produces different results depending on who runs it.
 
@@ -51,7 +51,7 @@ Your build configuration lives in the same repository as your code. It is versio
 
 - Build scripts (Makefile, build.gradle, package.json scripts, Dockerfile)
 - Dependency manifests (requirements.txt, go.mod, pom.xml, package-lock.json)
-- CI/CD pipeline definitions (.github/workflows, .gitlab-ci.yml, Jenkinsfile)
+- Pipeline definitions (.github/workflows, .gitlab-ci.yml, Jenkinsfile)
 - Environment setup scripts (docker-compose.yml for local development)
 
 **What does not belong in version control:**

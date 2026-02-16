@@ -42,7 +42,7 @@ Every input to the pipeline must be version controlled:
 
 - **Application source code** - the obvious one
 - **Infrastructure as Code** - the environment definitions themselves
-- **Pipeline definitions** - the CI/CD configuration files
+- **Pipeline definitions** - the pipeline configuration files
 - **Test data and fixtures** - the data used by automated tests
 - **Dependency lockfiles** - exact versions of every dependency (e.g., `package-lock.json`, `Pipfile.lock`, `go.sum`)
 - **Tool versions** - the versions of compilers, runtimes, linters, and build tools

@@ -97,7 +97,7 @@ maintainable?).
 **Product and operational guardrails:**
 
 - Automated test suites with meaningful coverage of critical paths
-- Deterministic CI/CD pipelines that run on every commit
+- Deterministic CD pipelines that run on every commit
 - Deployment validation (smoke tests, health checks, canary analysis)
 
 **Development guardrails:**

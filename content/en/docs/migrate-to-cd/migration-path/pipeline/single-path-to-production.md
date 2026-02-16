@@ -208,7 +208,7 @@ function newCheckoutFlow() {
 ### Step 1: Map your current deployment paths
 
 Document every way that changes currently reach production. Include manual processes,
-scripts, CI/CD pipelines, direct deployments, and any emergency procedures. You will
+scripts, pipelines, direct deployments, and any emergency procedures. You will
 likely find more paths than you expected.
 
 ### Step 2: Identify the primary path

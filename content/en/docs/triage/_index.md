@@ -120,7 +120,7 @@ When integration is deferred, branches diverge and merging becomes painful.
 Slow feedback loops mean developers context-switch away and problems grow before they are caught.
 
 - **[Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/)** - Developers wait hours or days to learn if a change works
-- **[Pipelines Take Too Long](../symptoms/flow/slow-pipelines/)** - The CI/CD pipeline itself is the bottleneck
+- **[Pipelines Take Too Long](../symptoms/flow/slow-pipelines/)** - The pipeline itself is the bottleneck
 
 </details>
 

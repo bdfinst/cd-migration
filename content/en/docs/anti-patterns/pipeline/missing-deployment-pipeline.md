@@ -220,7 +220,7 @@ grows, drop the manual verification.
 | "We don't have time to build a pipeline" | You are already spending time on every manual deployment. A pipeline is an investment that pays back on the second deployment and every deployment after. |
 | "Only Dave knows how to deploy" | That is the problem, not a reason to keep the status quo. Building the pipeline captures Dave's knowledge in code. Dave should lead the pipeline effort because he knows the procedure best. |
 | "What if the pipeline deploys something broken?" | The pipeline includes automated tests and can include approval gates. A broken deployment from a pipeline is no worse than a broken deployment from a human - and the pipeline can roll back automatically. |
-| "Our infrastructure doesn't support modern CI/CD tools" | Start with a shell script triggered by a cron job or a webhook. A pipeline does not require Kubernetes or cloud-native infrastructure. It requires automation of the steps you already perform manually. |
+| "Our infrastructure doesn't support modern pipeline tools" | Start with a shell script triggered by a cron job or a webhook. A pipeline does not require Kubernetes or cloud-native infrastructure. It requires automation of the steps you already perform manually. |
 
 ## Measuring Progress
 

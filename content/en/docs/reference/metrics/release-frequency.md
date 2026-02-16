@@ -43,7 +43,7 @@ Data sources:
 
 - **CD platforms** -- Argo CD, Spinnaker, Flux, Octopus Deploy, or similar tools
   track every deployment.
-- **CI/CD pipeline logs** -- GitHub Actions, GitLab CI, Jenkins, and CircleCI
+- **Pipeline logs** -- GitHub Actions, GitLab CI, Jenkins, and CircleCI
   record deployment job executions.
 - **Cloud provider logs** -- AWS CodeDeploy, Azure DevOps, GCP Cloud Deploy, and
   Kubernetes audit logs.

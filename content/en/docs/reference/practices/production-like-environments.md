@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-It is crucial to leverage pre-production environments in your CI/CD to run all of your tests (unit, integration, UAT, manual QA, E2E) early and often. Test environments increase interaction with new features and exposure to bugs - both of which are important prerequisites for reliable software.
+It is crucial to leverage pre-production environments in your CD pipeline to run all of your tests (unit, integration, UAT, manual QA, E2E) early and often. Test environments increase interaction with new features and exposure to bugs - both of which are important prerequisites for reliable software.
 
 ## Types of Pre-Production Environments
 

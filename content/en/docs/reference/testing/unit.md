@@ -126,7 +126,7 @@ public void shouldReturnUserDetails() {
 ## Connection to CD Pipeline
 
 Unit tests occupy the base of the test pyramid. They run in the earliest stages of the
-[CI/CD pipeline]({{< relref "/docs/migrate-to-cd/migration-path/pipeline" >}}) and provide the fastest feedback loop:
+[CD pipeline]({{< relref "/docs/migrate-to-cd/migration-path/pipeline" >}}) and provide the fastest feedback loop:
 
 1. **Local development** -- watch mode reruns tests on every save.
 2. **Pre-commit** -- hooks run the suite before code reaches version control.

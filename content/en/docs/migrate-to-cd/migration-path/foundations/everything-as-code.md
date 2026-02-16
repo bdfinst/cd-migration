@@ -74,7 +74,7 @@ recovery is measured in hours or days instead of minutes.
 
 ### Pipeline definitions
 
-Your CI/CD pipeline configuration belongs in the same repository as the code it builds and
+Your pipeline configuration belongs in the same repository as the code it builds and
 deploys. The pipeline is code, not a configuration applied through a UI.
 
 **What this looks like:**

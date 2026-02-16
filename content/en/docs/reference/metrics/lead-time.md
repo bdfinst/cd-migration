@@ -47,7 +47,7 @@ coding phase before the first commit.
 Data sources:
 
 - **Source control** -- commit or merge timestamps from Git, GitHub, GitLab, etc.
-- **CI/CD platform** -- pipeline completion times from Jenkins, GitHub Actions,
+- **Pipeline platform** -- pipeline completion times from Jenkins, GitHub Actions,
   GitLab CI, etc.
 - **Deployment tooling** -- production deployment timestamps from Argo CD, Spinnaker,
   Flux, or custom scripts.

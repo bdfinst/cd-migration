@@ -37,7 +37,7 @@ fifty.
 
 Common variations:
 
-- **The button-click deploy.** The CI/CD tool has a "deploy to production" button, but a human must
+- **The button-click deploy.** The pipeline tool has a "deploy to production" button, but a human must
   click it and then monitor the result. The automation exists but is not trusted to run
   unattended. Someone watches every deployment from start to finish.
 - **The runbook deploy.** A document describes the deployment steps in order. The deployer follows
@@ -177,7 +177,7 @@ is to make the deployment reproducible by any team member, not to make it perfec
 
 ### Step 2: Run the script from the pipeline (Week 2)
 
-Connect the deployment script to the CI/CD pipeline so it runs automatically after the build and
+Connect the deployment script to the pipeline so it runs automatically after the build and
 tests pass. Start with a non-production environment:
 
 1. Add a deployment stage to the pipeline that targets a staging or test environment.

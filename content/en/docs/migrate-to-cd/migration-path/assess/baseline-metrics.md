@@ -43,7 +43,7 @@ baseline first.
 **What it measures:** How often your team deploys to production.
 
 **How to capture it:** Count the number of production deployments in the last 30 days. Check your
-deployment logs, CI/CD system, or change management records. If deployments are rare enough that
+deployment logs, pipeline system, or change management records. If deployments are rare enough that
 you remember each one, count from memory.
 
 **What it tells you:**
@@ -125,7 +125,7 @@ is excellent or your deployment frequency is so low that you have insufficient d
 
 You do not need specialized tooling to capture these four numbers. Here is a practical approach:
 
-1. **Check your CI/CD system.** Most CI/CD tools (Jenkins, GitHub Actions, GitLab CI, Azure
+1. **Check your pipeline system.** Most pipeline tools (Jenkins, GitHub Actions, GitLab CI, Azure
    DevOps) have deployment history. Export the last 30-90 days of deployment records.
 2. **Check your incident tracker.** Pull incidents from the last 3-6 months and filter for
    deployment-caused issues.
@@ -138,7 +138,7 @@ Record these numbers somewhere the whole team can see them. A wiki page, a white
 document - the format does not matter. What matters is that they are written down and dated.
 
 {{% alert title="What About Automation?" %}}
-If you already have a CI/CD system that tracks deployments, you can extract most of these numbers
+If you already have a pipeline system that tracks deployments, you can extract most of these numbers
 programmatically. But do not let the pursuit of automation delay your baseline. A spreadsheet
 with manually gathered numbers is perfectly adequate for Phase 0. You will build more
 sophisticated measurement into your pipeline in [Phase 2](../../pipeline/).
