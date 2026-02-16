@@ -2,7 +2,6 @@
 title: "Single Team, Single Deployable"
 linkTitle: "Single Team"
 weight: 1
-draft: true
 description: >
   A linear pipeline pattern for a single team owning a modular monolith.
 ---

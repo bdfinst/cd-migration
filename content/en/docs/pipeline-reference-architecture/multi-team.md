@@ -2,7 +2,6 @@
 title: "Multiple Teams, Single Deployable"
 linkTitle: "Multiple Teams"
 weight: 2
-draft: true
 description: >
   A sub-pipeline pattern for multiple teams contributing domain modules to a shared modular monolith.
 ---

@@ -2,7 +2,6 @@
 title: "Independent Teams, Independent Deployables"
 linkTitle: "Independent Teams"
 weight: 3
-draft: true
 description: >
   A fully independent pipeline pattern for teams deploying their own services in any order, with API contract verification replacing integration testing.
 ---

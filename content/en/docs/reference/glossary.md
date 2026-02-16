@@ -204,12 +204,12 @@ is the recommended starting architecture for most teams because it provides the 
 separation needed for independent team ownership without the operational overhead of
 distributed services. When a module's boundaries are stable and contract-tested, it can be
 extracted into an independent service if deployment independence is needed. See
-[Pipeline Reference Architecture](../../under-construction/) <!-- target: pipeline-reference-architecture --> for pipeline patterns that build on
+[Pipeline Reference Architecture](../../pipeline-reference-architecture/) for pipeline patterns that build on
 modular monolith structure, and
 [Premature Microservices](../../anti-patterns/architecture/premature-microservices/) for
 the risks of skipping this step.
 
-Referenced in: [Pipeline Reference Architecture](../../under-construction/) <!-- target: pipeline-reference-architecture -->,
+Referenced in: [Pipeline Reference Architecture](../../pipeline-reference-architecture/),
 [Premature Microservices](../../anti-patterns/architecture/premature-microservices/)
 
 ## P

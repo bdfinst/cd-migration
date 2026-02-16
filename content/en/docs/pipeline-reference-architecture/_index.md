@@ -2,7 +2,6 @@
 title: "Pipeline Reference Architecture"
 linkTitle: "Pipeline Reference Architecture"
 weight: 5
-draft: true
 sidebar_divider_above: true
 description: >
   Pipeline reference architectures for single-team, multi-team, and distributed service delivery, with quality gates sequenced by defect detection priority.
