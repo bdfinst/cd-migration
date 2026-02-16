@@ -192,6 +192,26 @@ of the four DORA metrics. Teams practicing CD have short MTTR because deployment
 rollback is automated, and the cause of failure is easy to identify. See
 [Metrics -- Mean Time to Repair](../metrics/mean-time-to-repair/).
 
+### Modular Monolith
+
+A single deployable application whose codebase is organized into well-defined modules with
+explicit boundaries. Each module encapsulates a bounded domain - its own data, business
+logic, and internal APIs - and communicates with other modules through defined interfaces,
+not by reaching into shared database tables or calling internal methods directly. The
+application deploys as one unit, but its internal structure allows teams to reason about,
+test, and change one module without understanding the entire codebase. A modular monolith
+is the recommended starting architecture for most teams because it provides the domain
+separation needed for independent team ownership without the operational overhead of
+distributed services. When a module's boundaries are stable and contract-tested, it can be
+extracted into an independent service if deployment independence is needed. See
+[Pipeline Reference Architecture](../../under-construction/) <!-- target: pipeline-reference-architecture --> for pipeline patterns that build on
+modular monolith structure, and
+[Premature Microservices](../../anti-patterns/architecture/premature-microservices/) for
+the risks of skipping this step.
+
+Referenced in: [Pipeline Reference Architecture](../../under-construction/) <!-- target: pipeline-reference-architecture -->,
+[Premature Microservices](../../anti-patterns/architecture/premature-microservices/)
+
 ## P
 
 ### Pipeline

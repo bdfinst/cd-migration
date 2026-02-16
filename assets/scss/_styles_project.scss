@@ -214,6 +214,122 @@ td:has(.ai-high) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Reference architecture - Pre-Feature gate badges and row highlighting
+// ---------------------------------------------------------------------------
+
+.gate-required {
+  display: inline-block;
+  padding: 0.15em 0.55em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: #0d7a32;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+// Rows containing a .gate-required badge get a green left border and tint
+td:has(.gate-required) {
+  background: rgba(13, 122, 50, 0.06) !important;
+}
+
+tr:has(.gate-required) {
+  border-left: 3px solid #0d7a32;
+}
+
+// Stage time badges inline with headings
+.stage-time {
+  display: inline-block;
+  padding: 0.15em 0.6em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: $primary;
+  background: rgba(34, 73, 104, 0.08);
+  border: 1px solid rgba(34, 73, 104, 0.2);
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  position: relative;
+  top: -0.1em;
+}
+
+// ---------------------------------------------------------------------------
+// Mermaid diagram containers
+// ---------------------------------------------------------------------------
+
+pre.mermaid {
+  background: #f8fafb;
+  border: 1px solid #e2e6ea;
+  border-radius: 6px;
+  padding: 1.5rem 1rem;
+  margin: 1.5rem 0;
+  text-align: center;
+
+  // Rounded corners on all Mermaid node rectangles
+  .node rect,
+  .node polygon {
+    rx: 6px;
+    ry: 6px;
+  }
+
+  // Rounded corners on subgraph containers
+  .cluster rect {
+    rx: 8px;
+    ry: 8px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Pipeline diagram color legend
+// ---------------------------------------------------------------------------
+
+.pipeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+  padding: 0;
+
+  &__item {
+    display: inline-block;
+    padding: 0.2em 0.65em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #fff;
+    border-radius: 3px;
+
+    &--prefeature { background: #0d7a32; }
+    &--ci         { background: #224968; }
+    &--parallel   { background: #30648e; }
+    &--accept     { background: #6c757d; }
+    &--prod       { background: #a63123; }
+    &--api        { background: #6c757d; }
+  }
+}
+
+@media (max-width: 768px) {
+  .pipeline-legend {
+    justify-content: center;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sidebar section divider
+// ---------------------------------------------------------------------------
+
+.td-sidebar-nav__divider {
+  list-style: none;
+  margin: 0.75rem 0.5rem;
+  padding: 0;
+  border-top: 2px solid #c9cfd6;
+}
+
 // Risk indicator badges for anti-pattern pages
 .risk-indicator {
   display: inline-block;

@@ -1,7 +1,7 @@
 ---
 title: "Dysfunction Symptoms"
 linkTitle: "Dysfunction Symptoms"
-weight: 1
+weight: 3
 description: >
   Start from what you observe. Find the anti-patterns causing it.
 ---
@@ -13,7 +13,7 @@ want to explore.
 
 Answer a few questions to narrow down which symptoms match your situation.
 
-**[Start the triage questions](triage/)**
+**[Start the triage questions](../triage/)**
 
 ## Browse by category
 

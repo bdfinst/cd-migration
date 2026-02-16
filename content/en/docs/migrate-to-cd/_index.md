@@ -1,7 +1,7 @@
 ---
 title: "Migrate to CD"
 linkTitle: "Migrate to CD"
-weight: 3
+weight: 4
 description: >
   Guides for adopting continuous delivery - whether you are starting fresh or migrating an existing system.
 ---

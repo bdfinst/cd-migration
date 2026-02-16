@@ -19,7 +19,7 @@ path to solving it.
 
 ## Where to Start
 
-- **[Not sure what is wrong? Find your symptom.](symptoms/triage/)** Answer a few questions to find the symptoms and anti-patterns that match your situation.
+- **[Not sure what is wrong? Find your symptom.](triage/)** Answer a few questions to find the symptoms and anti-patterns that match your situation.
 - **[For Developers](symptoms/for-developers/)** - Symptoms you hit while writing, testing, and shipping code.
 - **[For Managers](symptoms/for-managers/)** - Symptoms that show up as unpredictable delivery, quality gaps, and team health.
 
