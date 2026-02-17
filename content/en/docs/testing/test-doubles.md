@@ -13,7 +13,7 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 ## Definition
 
 Test doubles are stand-in objects that replace real production dependencies during testing.
-The term comes from the film industry's "stunt double" -- just as a stunt double replaces an
+The term comes from the film industry's "stunt double." Just as a stunt double replaces an
 actor for dangerous scenes, a test double replaces a costly or non-deterministic dependency
 to make tests fast, isolated, and reliable.
 
@@ -49,11 +49,11 @@ Test doubles allow you to:
 
 Test doubles are used in every layer of deterministic testing:
 
-- **[Unit tests](../unit/)** -- nearly all dependencies are replaced with test doubles to
+- **[Unit tests](../unit/)**: nearly all dependencies are replaced with test doubles to
   achieve full isolation.
-- **[Integration tests](../integration/)** -- external sub-systems (APIs, databases, message
+- **[Integration tests](../integration/)**: external sub-systems (APIs, databases, message
   queues) are replaced, but internal collaborators remain real.
-- **[Functional tests](../functional/)** -- dependencies that cross the sub-system boundary
+- **[Functional tests](../functional/)**: dependencies that cross the sub-system boundary
   are replaced to maintain determinism.
 
 Test doubles should be used **less** in later pipeline stages.
@@ -110,18 +110,18 @@ class FakeUserRepository {
 
 ## Anti-Patterns
 
-- **Mocking what you do not own** -- wrapping a third-party API in a thin adapter and mocking
+- **Mocking what you do not own**: wrapping a third-party API in a thin adapter and mocking
   the adapter is safer than mocking the third-party API directly. Direct mocks couple your
   tests to the library's implementation.
-- **Over-mocking** -- replacing every collaborator with a mock turns the test into a mirror of
+- **Over-mocking**: replacing every collaborator with a mock turns the test into a mirror of
   the implementation. Tests become brittle and break on every refactor. Only mock what is
   necessary to maintain determinism.
-- **Not validating test doubles** -- if the real dependency changes its contract, your test
+- **Not validating test doubles**: if the real dependency changes its contract, your test
   doubles silently drift. Use [contract tests](../contract/) to keep doubles honest.
-- **Complex mock setup** -- if setting up mocks requires dozens of lines, the system under test
+- **Complex mock setup**: if setting up mocks requires dozens of lines, the system under test
   may have too many dependencies. Consider refactoring the production code rather than adding
   more mocks.
-- **Using mocks to test implementation details** -- asserting on the exact sequence and count
+- **Using mocks to test implementation details**: asserting on the exact sequence and count
   of internal method calls creates change-detector tests. Prefer asserting on observable
   output.
 

@@ -3,7 +3,7 @@ title: "Development Cycle Time"
 linkTitle: "Development Cycle Time"
 weight: 3
 description: >
-  Average time from when work starts until it is running in production -- a key flow metric for identifying delivery bottlenecks.
+  Average time from when work starts until it is running in production. A key flow metric for identifying delivery bottlenecks.
 ---
 
 {{% pageinfo %}}
@@ -45,10 +45,10 @@ any time between starting work and the first commit.
 
 Sources for this data include:
 
-- **Issue trackers** (Jira, GitHub Issues, Azure Boards) -- status transition
+- **Issue trackers** (Jira, GitHub Issues, Azure Boards): status transition
   timestamps.
-- **Source control** -- first commit timestamp associated with a story.
-- **Deployment logs** -- timestamp of production deployments linked to stories.
+- **Source control:** first commit timestamp associated with a story.
+- **Deployment logs:** timestamp of production deployments linked to stories.
 
 Linking stories to deployments is essential. Use commit message conventions (e.g.,
 story IDs in commit messages) or deployment metadata to create this connection.
@@ -58,8 +58,8 @@ story IDs in commit messages) or deployment metadata to create this connection.
 | Level  | Development Cycle Time |
 |--------|------------------------|
 | Low    | More than 2 weeks      |
-| Medium | 1 -- 2 weeks           |
-| High   | 2 -- 7 days            |
+| Medium | 1 to 2 weeks           |
+| High   | 2 to 7 days            |
 | Elite  | Less than 2 days       |
 
 Elite teams deliver completed work to production within one to two days of starting
@@ -89,7 +89,7 @@ pipeline is fast, and deployment is automated.
 Development Cycle Time is the most comprehensive measure of delivery flow and sits
 at the heart of Continuous Delivery:
 
-- **Exposes bottlenecks.** A long cycle time reveals where work gets stuck --
+- **Exposes bottlenecks.** A long cycle time reveals where work gets stuck:
   waiting for code review, queued for testing, blocked by a manual approval, or
   delayed by a slow pipeline. Each bottleneck is a target for improvement.
 - **Drives smaller batches.** The only way to achieve a cycle time under two days

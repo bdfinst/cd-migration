@@ -3,7 +3,7 @@ title: "Lead Time"
 linkTitle: "Lead Time"
 weight: 4
 description: >
-  Total time from when a change is committed until it is running in production -- a DORA key metric for delivery throughput.
+  Total time from when a change is committed until it is running in production. A DORA key metric for delivery throughput.
 ---
 
 {{% pageinfo %}}
@@ -46,10 +46,10 @@ coding phase before the first commit.
 
 Data sources:
 
-- **Source control** -- commit or merge timestamps from Git, GitHub, GitLab, etc.
-- **Pipeline platform** -- pipeline completion times from Jenkins, GitHub Actions,
+- **Source control:** commit or merge timestamps from Git, GitHub, GitLab, etc.
+- **Pipeline platform:** pipeline completion times from Jenkins, GitHub Actions,
   GitLab CI, etc.
-- **Deployment tooling** -- production deployment timestamps from Argo CD, Spinnaker,
+- **Deployment tooling:** production deployment timestamps from Argo CD, Spinnaker,
   Flux, or custom scripts.
 
 For teams practicing continuous deployment, lead time may be nearly identical to
@@ -61,8 +61,8 @@ lead time will be significantly longer.
 | Level  | Lead Time for Changes    |
 |--------|--------------------------|
 | Low    | More than 6 months       |
-| Medium | 1 -- 6 months            |
-| High   | 1 day -- 1 week          |
+| Medium | 1 to 6 months            |
+| High   | 1 day to 1 week          |
 | Elite  | Less than 1 hour         |
 
 These levels are drawn from the DORA *State of DevOps* research. Elite performers
@@ -106,7 +106,7 @@ pipeline's end-to-end efficiency:
   measured in days. The metric makes the cost of batching visible.
 - **Connects speed and stability.** The DORA research shows that elite performers
   achieve both low lead time and low [Change Fail Rate](../change-fail-rate/).
-  Speed and quality are not trade-offs -- they reinforce each other when the
+  Speed and quality are not trade-offs. They reinforce each other when the
   delivery system is well-designed.
 
 To improve Lead Time:

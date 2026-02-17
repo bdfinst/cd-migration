@@ -25,8 +25,8 @@ sub-systems. That is an [end-to-end test](../e2e/).
 
 Integration tests provide the best balance of speed, confidence, and cost. Use them when:
 
-- You need to verify that **multiple units collaborate correctly** -- for example, a service
-  calling a repository that calls a data mapper.
+- You need to verify that **multiple units collaborate correctly** (for example, a service
+  calling a repository that calls a data mapper).
 - You need to validate **the interface layer** to an external system (HTTP client, message
   producer, database query) while keeping the external system replaced by a test double.
 - You want to confirm that a **refactoring** did not break behavior. Integration tests that
@@ -83,31 +83,31 @@ describe("retrieving Hygieia data", () => {
 
 ### Subcategories
 
-**Service integration tests** -- Validate how the system under test responds to information
+**Service integration tests** validate how the system under test responds to information
 from an external service. Use [virtual services](../../glossary/#virtual-service) or static mocks; pair with
 [contract tests](../contract/) to keep the doubles current.
 
-**Database integration tests** -- Validate query logic against a controlled data store. Prefer
+**Database integration tests** validate query logic against a controlled data store. Prefer
 in-memory databases, isolated DB instances, or personalized datasets over shared live data.
 
-**Front-end integration tests** -- Render the component tree and interact with it the way a
+**Front-end integration tests** render the component tree and interact with it the way a
 user would. Follow the accessibility order of operations for element selection: visible text
 and labels first, ARIA roles second, test IDs only as a last resort.
 
 ## Anti-Patterns
 
-- **Peeking behind the curtain** -- using tools that expose component internals (e.g.,
+- **Peeking behind the curtain**: using tools that expose component internals (e.g.,
   Enzyme's `instance()` or `state()`) instead of testing from the user's perspective.
-- **Mocking too aggressively** -- replacing every collaborator turns an integration test into a
+- **Mocking too aggressively**: replacing every collaborator turns an integration test into a
   unit test and removes the value of testing real interactions. Only mock what is necessary to
   maintain determinism.
-- **Testing implementation details** -- asserting on internal state, private methods, or call
+- **Testing implementation details**: asserting on internal state, private methods, or call
   counts rather than observable output.
-- **Introducing a test user** -- creating an artificial actor that would never exist in
+- **Introducing a test user**: creating an artificial actor that would never exist in
   production. Write tests from the perspective of a real end-user or API consumer.
-- **Tolerating flaky tests** -- non-deterministic integration tests erode trust. Fix or remove
+- **Tolerating flaky tests**: non-deterministic integration tests erode trust. Fix or remove
   them immediately.
-- **Duplicating E2E scope** -- if the test integrates multiple deployed sub-systems with live
+- **Duplicating E2E scope**: if the test integrates multiple deployed sub-systems with live
   network calls, it belongs in the E2E category, not here.
 
 ## Connection to CD Pipeline
@@ -115,9 +115,9 @@ and labels first, ARIA roles second, test IDs only as a last resort.
 Integration tests form the largest portion of a healthy test suite (the "trophy" or the
 middle of the pyramid). They run alongside unit tests in the earliest CI stages:
 
-1. **Local development** -- run in watch mode or before committing.
-2. **PR verification** -- CI executes the full suite; failures block merge.
-3. **Trunk verification** -- CI reruns on the merged HEAD.
+1. **Local development**: run in watch mode or before committing.
+2. **PR verification**: CI executes the full suite; failures block merge.
+3. **Trunk verification**: CI reruns on the merged HEAD.
 
 Because they are deterministic and fast, integration tests **should always break the build**.
 A team whose refactors break many tests likely has too few integration tests and too many

@@ -3,7 +3,7 @@ title: "Build Duration"
 linkTitle: "Build Duration"
 weight: 2
 description: >
-  Time from code commit to a deployable artifact -- a critical constraint on feedback speed and mean time to repair.
+  Time from code commit to a deployable artifact. A critical constraint on feedback speed and mean time to repair.
 ---
 
 {{% pageinfo %}}
@@ -42,10 +42,10 @@ The book *Accelerate* references it as part of "hard lead time."
 
 Most CI platforms expose build duration natively:
 
-- **GitHub Actions** -- `createdAt` and `updatedAt` on workflow runs.
-- **GitLab CI** -- pipeline `created_at` and `finished_at`.
-- **Jenkins** -- build start time and duration fields.
-- **CircleCI** -- workflow duration in the Insights dashboard.
+- **GitHub Actions:** `createdAt` and `updatedAt` on workflow runs.
+- **GitLab CI:** pipeline `created_at` and `finished_at`.
+- **Jenkins:** build start time and duration fields.
+- **CircleCI:** workflow duration in the Insights dashboard.
 
 Set up alerts when builds exceed your target threshold so the team can investigate
 regressions immediately.
@@ -55,8 +55,8 @@ regressions immediately.
 | Level  | Build Duration     |
 |--------|--------------------|
 | Low    | More than 30 minutes |
-| Medium | 10 -- 30 minutes   |
-| High   | 5 -- 10 minutes    |
+| Medium | 10 to 30 minutes   |
+| High   | 5 to 10 minutes    |
 | Elite  | Less than 5 minutes |
 
 The ten-minute threshold is a widely recognized guideline. Builds longer than ten

@@ -20,14 +20,14 @@ code that interfaces with it. Because they depend on live services, contract tes
 review to determine whether the contract has changed and the test doubles need updating.
 
 A contract test validates **contract format, not specific data**. It verifies that response
-structures, field names, types, and status codes match expectations -- not that particular
+structures, field names, types, and status codes match expectations, not that particular
 values are returned.
 
 Contract tests have two perspectives:
 
-- **Provider** -- the team that owns the API verifies that all changes are backwards compatible
+- **Provider**: the team that owns the API verifies that all changes are backwards compatible
   (unless a new API version is introduced). Every build should validate the provider contract.
-- **Consumer** -- the team that depends on the API verifies that they can still consume the
+- **Consumer**: the team that depends on the API verifies that they can still consume the
   properties they need, following
   [Postel's Law](https://en.wikipedia.org/wiki/Robustness_principle): "Be conservative in
   what you do, be liberal in what you accept from others."
@@ -51,9 +51,9 @@ Contract tests have two perspectives:
 | **Determinism** | Non-deterministic (hits live services)             |
 | **Scope**       | Interface boundary between two systems             |
 | **Dependencies**| Live external sub-system                           |
-| **Network**     | Yes -- calls the real dependency                   |
+| **Network**     | Yes (calls the real dependency)                    |
 | **Database**    | Depends on the provider                            |
-| **Breaks build**| No -- failures trigger review, not build failure   |
+| **Breaks build**| No (failures trigger review, not build failure)    |
 
 ## Examples
 
@@ -105,30 +105,30 @@ describe("Order Service - Inventory Provider Contract", () => {
 
 ## Anti-Patterns
 
-- **Using contract tests to validate business logic** -- contract tests verify structure and
+- **Using contract tests to validate business logic**: contract tests verify structure and
   format, not behavior. Business logic belongs in [functional tests](../functional/).
-- **Breaking the build on contract test failure** -- because these tests hit live systems,
+- **Breaking the build on contract test failure**: because these tests hit live systems,
   failures may be caused by network issues or temporary outages, not actual contract changes.
   Treat failures as signals to investigate.
-- **Neglecting to update test doubles** -- when a contract test fails because the upstream API
+- **Neglecting to update test doubles**: when a contract test fails because the upstream API
   changed, the test doubles in your integration tests must be updated to match. Ignoring
   failures defeats the purpose.
-- **Running contract tests too infrequently** -- the frequency should be proportional to the
+- **Running contract tests too infrequently**: the frequency should be proportional to the
   volatility of the interface. Highly active APIs need more frequent contract validation.
-- **Testing specific data values** -- asserting that `name` equals `"Alice"` makes the test
+- **Testing specific data values**: asserting that `name` equals `"Alice"` makes the test
   brittle. Assert on types, required fields, and response codes instead.
 
 ## Connection to CD Pipeline
 
 Contract tests run **asynchronously** from the main CI build, typically on a schedule:
 
-1. **Provider side** -- provider contract tests (schema validation, response code checks) are
+1. **Provider side**: provider contract tests (schema validation, response code checks) are
    often implemented as deterministic unit tests and run on every commit as part of the
    provider's CI pipeline.
-2. **Consumer side** -- consumer contract tests run on a schedule (e.g., hourly or daily)
+2. **Consumer side**: consumer contract tests run on a schedule (e.g., hourly or daily)
    against the live provider. Failures are reviewed and may trigger updates to test doubles
    or conversations between teams.
-3. **Consumer-driven contracts** -- when using tools like Pact, the consumer publishes
+3. **Consumer-driven contracts**: when using tools like Pact, the consumer publishes
    contract expectations and the provider runs them continuously. Both teams communicate when
    contracts break.
 

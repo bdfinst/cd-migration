@@ -3,7 +3,7 @@ title: "Mean Time to Repair"
 linkTitle: "Mean Time to Repair"
 weight: 6
 description: >
-  Average time from when a production incident is detected until service is restored -- a DORA key metric for recovery capability.
+  Average time from when a production incident is detected until service is restored. A DORA key metric for recovery capability.
 ---
 
 {{% pageinfo %}}
@@ -22,7 +22,7 @@ mttr = sum(resolvedTimestamp - detectedTimestamp) / incidentCount
 
 MTTR reflects an organization's ability to recover from failure. It encompasses
 detection, diagnosis, fix development, build, deployment, and verification. A
-short MTTR depends on the entire delivery system working well -- fast builds,
+short MTTR depends on the entire delivery system working well: fast builds,
 automated deployments, good observability, and practiced incident response.
 
 The *Accelerate* research identifies MTTR as one of the four key DORA metrics and
@@ -32,7 +32,7 @@ frequency, and MTTR." It is the stability counterpart to the throughput metrics.
 ## How to Measure
 
 1. **Record the detection timestamp.** This is when the team first becomes aware of
-   the incident -- typically when an alert fires, a customer reports an issue, or
+   the incident, typically when an alert fires, a customer reports an issue, or
    monitoring detects an anomaly.
 2. **Record the resolution timestamp.** This is when the incident is resolved and
    service is confirmed to be operating normally. Resolution means the customer
@@ -42,11 +42,11 @@ frequency, and MTTR." It is the stability counterpart to the throughput metrics.
 
 Data sources:
 
-- **Incident management platforms** -- PagerDuty, Opsgenie, ServiceNow, or
+- **Incident management platforms:** PagerDuty, Opsgenie, ServiceNow, or
   Statuspage provide incident lifecycle timestamps.
-- **Monitoring and alerting** -- alert trigger times from Datadog, Prometheus
+- **Monitoring and alerting:** alert trigger times from Datadog, Prometheus
   Alertmanager, CloudWatch, or equivalent.
-- **Deployment logs** -- timestamps of rollbacks or hotfix deployments.
+- **Deployment logs:** timestamps of rollbacks or hotfix deployments.
 
 Report both the mean and the median. The mean can be skewed by a single long
 outage, so the median gives a better sense of typical recovery time. Also track
@@ -57,7 +57,7 @@ the maximum MTTR per period to highlight worst-case incidents.
 | Level  | Mean Time to Repair |
 |--------|---------------------|
 | Low    | More than 1 week    |
-| Medium | 1 day -- 1 week     |
+| Medium | 1 day to 1 week     |
 | High   | Less than 1 day     |
 | Elite  | Less than 1 hour    |
 
@@ -78,7 +78,7 @@ incident response processes.
   as a separate quality signal.
 - **Conflating MTTR with MTTD.** Mean Time to Detect (MTTD) and Mean Time to
   Repair overlap but are distinct. If you only measure from alert to resolution,
-  you miss the detection gap -- the time between when the problem starts and when
+  you miss the detection gap, the time between when the problem starts and when
   it is detected. Both matter.
 - **Optimizing MTTR without addressing root causes.** Getting faster at fixing
   recurring problems is good, but preventing those problems in the first place is
@@ -117,7 +117,7 @@ To improve MTTR:
 - Reduce [Build Duration](../build-duration/) to enable faster roll-forward.
 - Implement feature flags for large changes so they can be disabled without
   redeployment.
-- Invest in observability -- structured logging, distributed tracing, and
+- Invest in observability: structured logging, distributed tracing, and
   meaningful alerting.
 - Practice incident response regularly, including deploying rollbacks and hotfixes.
 - Conduct blameless post-incident reviews and feed learnings back into the pipeline

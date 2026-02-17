@@ -3,7 +3,7 @@ title: "Work in Progress"
 linkTitle: "Work in Progress"
 weight: 8
 description: >
-  Number of work items started but not yet completed -- a leading indicator of flow problems, context switching, and delivery delays.
+  Number of work items started but not yet completed. A leading indicator of flow problems, context switching, and delivery delays.
 ---
 
 {{% pageinfo %}}
@@ -49,11 +49,11 @@ faster is to reduce WIP.
 
 Data sources:
 
-- **Kanban boards** -- Jira, Azure Boards, Trello, GitHub Projects, or physical
+- **Kanban boards:** Jira, Azure Boards, Trello, GitHub Projects, or physical
   boards. Count cards in any column between the backlog and done.
-- **Issue trackers** -- Query for items with an "In Progress," "In Review,"
+- **Issue trackers:** Query for items with an "In Progress," "In Review,"
   "In QA," or equivalent active status.
-- **Manual count** -- At standup, ask: "How many things are we actively working on
+- **Manual count:** At standup, ask: "How many things are we actively working on
   right now?"
 
 The simplest and most effective approach is to make WIP visible by keeping the team

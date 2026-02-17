@@ -23,18 +23,18 @@ Static analysis serves several key purposes:
 - **Warns of excessive complexity** that degrades the ability to change code safely.
 - **Identifies security vulnerabilities** and coding patterns that provide attack vectors.
 - **Enforces coding standards** by removing subjective style debates from code reviews.
-- **Alerts to dependency issues** -- outdated packages, known CVEs, license incompatibilities,
-  or supply-chain compromises.
+- **Alerts to dependency issues** such as outdated packages, known CVEs, license
+  incompatibilities, or supply-chain compromises.
 
 ## When to Use
 
 Static analysis should run **continuously**, at every stage where feedback is possible:
 
-- **In the IDE** -- real-time feedback as developers type, via editor plugins and language
+- **In the IDE**: real-time feedback as developers type, via editor plugins and language
   server integrations.
-- **On save** -- format-on-save and lint-on-save catch issues immediately.
-- **Pre-commit** -- hooks prevent problematic code from entering version control.
-- **In CI** -- the full suite of static checks runs on every PR and on the trunk after merge,
+- **On save**: format-on-save and lint-on-save catch issues immediately.
+- **Pre-commit**: hooks prevent problematic code from entering version control.
+- **In CI**: the full suite of static checks runs on every PR and on the trunk after merge,
   verifying that earlier local checks were not bypassed.
 
 Static analysis is always applicable. Every project, regardless of language or platform,
@@ -110,28 +110,28 @@ found 2 vulnerabilities (1 moderate, 1 high)
 
 ## Anti-Patterns
 
-- **Disabling rules instead of fixing code** -- suppressing linter warnings or ignoring
+- **Disabling rules instead of fixing code**: suppressing linter warnings or ignoring
   security findings erodes the value of static analysis over time.
-- **Not customizing rules** -- default rulesets are a starting point. Write custom rules for
+- **Not customizing rules**: default rulesets are a starting point. Write custom rules for
   patterns that come up repeatedly in code reviews.
-- **Running static analysis only in CI** -- by the time CI reports a formatting error, the
+- **Running static analysis only in CI**: by the time CI reports a formatting error, the
   developer has context-switched. IDE plugins and pre-commit hooks provide immediate feedback.
-- **Ignoring dependency vulnerabilities** -- known CVEs in dependencies are a direct attack
+- **Ignoring dependency vulnerabilities**: known CVEs in dependencies are a direct attack
   vector. Treat high-severity findings as build-breaking.
-- **Treating static analysis as optional** -- static checks should be mandatory and enforced.
+- **Treating static analysis as optional**: static checks should be mandatory and enforced.
   If developers can bypass them, they will.
 
 ## Connection to CD Pipeline
 
 Static analysis is the **first gate** in the CD pipeline, providing the fastest feedback:
 
-1. **IDE / local development** -- plugins run in real time as code is written.
-2. **Pre-commit** -- hooks run linters and formatters, blocking commits that violate rules.
-3. **PR verification** -- CI runs the full static analysis suite (linting, type checking,
+1. **IDE / local development**: plugins run in real time as code is written.
+2. **Pre-commit**: hooks run linters and formatters, blocking commits that violate rules.
+3. **PR verification**: CI runs the full static analysis suite (linting, type checking,
    security scanning, dependency auditing) and blocks merge on failure.
-4. **Trunk verification** -- the same checks re-run on the merged HEAD to catch anything
+4. **Trunk verification**: the same checks re-run on the merged HEAD to catch anything
    missed.
-5. **Scheduled scans** -- dependency and security scanners run on a schedule to catch newly
+5. **Scheduled scans**: dependency and security scanners run on a schedule to catch newly
    disclosed vulnerabilities in existing dependencies.
 
 Because static analysis requires no running code, no test environment, and no external

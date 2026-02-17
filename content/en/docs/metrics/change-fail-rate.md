@@ -3,7 +3,7 @@ title: "Change Fail Rate"
 linkTitle: "Change Fail Rate"
 weight: 5
 description: >
-  Percentage of production deployments that cause a failure or require remediation -- a DORA key metric for delivery stability.
+  Percentage of production deployments that cause a failure or require remediation. A DORA key metric for delivery stability.
 ---
 
 {{% pageinfo %}}
@@ -39,12 +39,12 @@ delivery performance, complementing the throughput metrics of
 
 Data sources:
 
-- **Deployment logs** -- total deployment count from your CD platform.
-- **Incident management** -- incidents linked to specific deployments (PagerDuty,
+- **Deployment logs:** total deployment count from your CD platform.
+- **Incident management:** incidents linked to specific deployments (PagerDuty,
   Opsgenie, ServiceNow).
-- **Rollback records** -- deployments that were reverted, either manually or by
+- **Rollback records:** deployments that were reverted, either manually or by
   automated rollback.
-- **Hotfix tracking** -- deployments tagged as hotfixes or emergency changes.
+- **Hotfix tracking:** deployments tagged as hotfixes or emergency changes.
 
 Automate the classification where possible. For example, if a deployment is
 followed by another deployment of the same service within a defined window (e.g.,
@@ -54,10 +54,10 @@ one hour), flag the original as a potential failure for review.
 
 | Level  | Change Fail Rate |
 |--------|------------------|
-| Low    | 46 -- 60%        |
-| Medium | 16 -- 45%        |
-| High   | 0 -- 15%         |
-| Elite  | 0 -- 5%          |
+| Low    | 46 to 60%        |
+| Medium | 16 to 45%        |
+| High   | 0 to 15%         |
+| Elite  | 0 to 5%          |
 
 These levels are drawn from the DORA *State of DevOps* research. Elite performers
 maintain a change fail rate below 5%, meaning fewer than 1 in 20 deployments causes

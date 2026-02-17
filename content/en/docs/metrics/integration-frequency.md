@@ -3,7 +3,7 @@ title: "Integration Frequency"
 linkTitle: "Integration Frequency"
 weight: 1
 description: >
-  How often developers integrate code changes to the trunk -- a leading indicator of CI maturity and small batch delivery.
+  How often developers integrate code changes to the trunk. A leading indicator of CI maturity and small batch delivery.
 ---
 
 {{% pageinfo %}}
@@ -15,7 +15,7 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 Integration Frequency measures the average number of production-ready pull requests
 a team merges to trunk per day, normalized by team size. On a team of five
 developers, healthy continuous integration practice produces at least five
-integrations per day -- roughly one per developer.
+integrations per day, roughly one per developer.
 
 This metric is a direct indicator of how well a team practices
 [Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html).
@@ -40,9 +40,9 @@ decomposed into small, independently deliverable increments.
 
 Most source control platforms expose this data through their APIs:
 
-- **GitHub** -- list merged pull requests via the REST or GraphQL API.
-- **GitLab** -- query merged merge requests per project.
-- **Bitbucket** -- use the pull request activity endpoint.
+- **GitHub:** list merged pull requests via the REST or GraphQL API.
+- **GitLab:** query merged merge requests per project.
+- **Bitbucket:** use the pull request activity endpoint.
 
 Alternatively, count commits to the default branch if pull requests are not used.
 

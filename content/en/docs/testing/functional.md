@@ -13,8 +13,8 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 ## Definition
 
 A functional test is a deterministic test that verifies all modules of a sub-system are
-working together. It introduces an actor -- typically a user interacting with the UI or a
-consumer calling an API -- and validates the ingress and egress of that actor within the
+working together. It introduces an actor (typically a user interacting with the UI or a
+consumer calling an API) and validates the ingress and egress of that actor within the
 system boundary. External sub-systems are replaced with [test doubles](../test-doubles/) to
 keep the test deterministic.
 
@@ -31,8 +31,8 @@ Functional tests are sometimes called **component tests**.
   deployable unit (e.g., a service or a front-end application).
 - You want to test how the **UI, business logic, and data layers** interact without depending
   on live external services.
-- You need to simulate realistic user workflows -- filling in forms, navigating pages,
-  submitting API requests -- while keeping the test fast and repeatable.
+- You need to simulate realistic user workflows (filling in forms, navigating pages,
+  submitting API requests) while keeping the test fast and repeatable.
 - You are validating **acceptance criteria** for a user story and want a test that maps
   directly to the specified behavior.
 
@@ -108,16 +108,16 @@ describe("Login page", () => {
 
 ## Anti-Patterns
 
-- **Using live external services** -- this makes the test non-deterministic and slow. Use test
+- **Using live external services**: this makes the test non-deterministic and slow. Use test
   doubles for anything outside the sub-system boundary.
-- **Testing through the database** -- sharing a live database between tests introduces ordering
+- **Testing through the database**: sharing a live database between tests introduces ordering
   dependencies and flakiness. Use in-memory databases or mocked data layers.
-- **Ignoring the actor's perspective** -- functional tests should interact with the system the
+- **Ignoring the actor's perspective**: functional tests should interact with the system the
   way a user or consumer would. Reaching into internal APIs or bypassing the UI defeats the
   purpose.
-- **Duplicating unit test coverage** -- functional tests should focus on feature-level behavior
+- **Duplicating unit test coverage**: functional tests should focus on feature-level behavior
   and happy/critical paths, not every edge case. Leave permutation testing to unit tests.
-- **Slow test setup** -- if spinning up the sub-system takes too long, invest in faster
+- **Slow test setup**: if spinning up the sub-system takes too long, invest in faster
   bootstrapping (in-memory stores, lazy initialization) rather than skipping functional tests.
 
 ## Connection to CD Pipeline
@@ -125,10 +125,10 @@ describe("Login page", () => {
 Functional tests run after unit and integration tests in the pipeline, typically as part of
 the same CI stage:
 
-1. **PR verification** -- functional tests run against the sub-system in isolation, giving
+1. **PR verification**: functional tests run against the sub-system in isolation, giving
    confidence that the feature works before merge.
-2. **Trunk verification** -- the same tests run on the merged HEAD to catch conflicts.
-3. **Pre-deployment gate** -- functional tests can serve as the final deterministic gate before
+2. **Trunk verification**: the same tests run on the merged HEAD to catch conflicts.
+3. **Pre-deployment gate**: functional tests can serve as the final deterministic gate before
    a build artifact is promoted to a staging environment.
 
 Because functional tests are deterministic, they **should break the build** on failure.

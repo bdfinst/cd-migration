@@ -3,7 +3,7 @@ title: "Release Frequency"
 linkTitle: "Release Frequency"
 weight: 7
 description: >
-  How often changes are deployed to production -- a DORA key metric for delivery throughput and team capability.
+  How often changes are deployed to production. A DORA key metric for delivery throughput and team capability.
 ---
 
 {{% pageinfo %}}
@@ -21,7 +21,7 @@ releaseFrequency = productionDeployments / timePeriod
 ```
 
 This is one of the four DORA key metrics. It measures the throughput side of
-delivery performance -- how rapidly the team can get completed work into the hands
+delivery performance, measuring how rapidly the team can get completed work into the hands
 of users. Higher release frequency enables faster feedback, smaller batch sizes,
 and reduced deployment risk.
 
@@ -41,13 +41,13 @@ or deploying empty changes does not count.
 
 Data sources:
 
-- **CD platforms** -- Argo CD, Spinnaker, Flux, Octopus Deploy, or similar tools
+- **CD platforms:** Argo CD, Spinnaker, Flux, Octopus Deploy, or similar tools
   track every deployment.
-- **Pipeline logs** -- GitHub Actions, GitLab CI, Jenkins, and CircleCI
+- **Pipeline logs:** GitHub Actions, GitLab CI, Jenkins, and CircleCI
   record deployment job executions.
-- **Cloud provider logs** -- AWS CodeDeploy, Azure DevOps, GCP Cloud Deploy, and
+- **Cloud provider logs:** AWS CodeDeploy, Azure DevOps, GCP Cloud Deploy, and
   Kubernetes audit logs.
-- **Custom deployment scripts** -- Add a logging line that records the timestamp,
+- **Custom deployment scripts:** Add a logging line that records the timestamp,
   service name, and version to a central log or metrics system.
 
 ## Targets

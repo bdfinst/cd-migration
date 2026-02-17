@@ -15,7 +15,7 @@ Adapted from [Dojo Consortium](https://dojoconsortium.org)
 End-to-end (E2E) tests validate the entire software system, including its integration with
 external interfaces. They exercise complete production-like scenarios using real (or
 production-like) data and environments to simulate real-time settings. No test doubles are
-used -- the test hits live services, databases, and third-party integrations just as a real
+used. The test hits live services, databases, and third-party integrations just as a real
 user would.
 
 Because they depend on external systems, E2E tests are typically **non-deterministic**: they
@@ -32,7 +32,7 @@ maintenance. Use them for:
 - **Smoke testing** a deployed environment to verify that key integrations are functioning.
 - **Cross-team workflows** that span multiple sub-systems and cannot be tested any other way.
 
-Do **not** use E2E tests to cover edge cases, error handling, or input validation -- those
+Do **not** use E2E tests to cover edge cases, error handling, or input validation. Those
 scenarios belong in [unit](../unit/), [integration](../integration/), or
 [functional](../functional/) tests.
 
@@ -98,17 +98,17 @@ test("user can add an item to cart and check out", async ({ page }) => {
 
 ## Anti-Patterns
 
-- **Using E2E tests as the primary safety net** -- this is the "ice cream cone" anti-pattern.
+- **Using E2E tests as the primary safety net**: this is the "ice cream cone" anti-pattern.
   E2E tests are slow and fragile; the majority of your confidence should come from unit and
   integration tests.
-- **Blocking the pipeline with horizontal E2E tests** -- these tests span too many teams and
+- **Blocking the pipeline with horizontal E2E tests**: these tests span too many teams and
   failure surfaces. Run them asynchronously and review failures out of band.
-- **Ignoring flaky failures** -- E2E tests often fail for environmental reasons. Track the
+- **Ignoring flaky failures**: E2E tests often fail for environmental reasons. Track the
   frequency and root cause of failures. If a test is not providing signal, fix it or remove
   it.
-- **Testing edge cases in E2E** -- exhaustive input validation and error-path testing should
+- **Testing edge cases in E2E**: exhaustive input validation and error-path testing should
   happen in cheaper, faster test types.
-- **Not capturing failure context** -- E2E failures are expensive to debug. Capture
+- **Not capturing failure context**: E2E failures are expensive to debug. Capture
   screenshots, network logs, and video recordings automatically on failure.
 
 ## Connection to CD Pipeline
@@ -117,11 +117,11 @@ E2E tests run in the **later stages** of the delivery pipeline, after the build 
 passed all deterministic tests and has been deployed to a staging or pre-production
 environment:
 
-1. **Post-deployment smoke tests** -- a small, fast suite of vertical E2E tests verifies that
+1. **Post-deployment smoke tests**: a small, fast suite of vertical E2E tests verifies that
    the deployment succeeded and critical paths work.
-2. **Scheduled regression suites** -- broader E2E suites (including horizontal tests) run on a
+2. **Scheduled regression suites**: broader E2E suites (including horizontal tests) run on a
    schedule rather than on every commit.
-3. **Production monitoring** -- customer experience alarms (synthetic monitoring) are a form of
+3. **Production monitoring**: customer experience alarms (synthetic monitoring) are a form of
    continuous E2E testing that runs in production.
 
 Because E2E tests are non-deterministic, they should **not break the build** in most cases. A
