@@ -224,31 +224,13 @@ Referenced in:
 
 ### GitFlow
 
-A branching model created by Vincent Driessen in 2010 that uses multiple long-lived branches:
-`main`, `develop`, `release/*`, `hotfix/*`, and `feature/*`. Each branch type has specific
-merge rules and directions, creating a complex graph of code promotion paths.
-
-GitFlow was designed for projects with infrequent, scheduled releases - a model that is
-fundamentally incompatible with continuous delivery. The problems it creates:
-
-- **Deferred integration.** Developers work on `feature/*` branches for days or weeks before
-  merging to `develop`. By the time code integrates, conflicts are large and risky. This is
-  the opposite of the daily integration that CD requires.
-- **Multiple paths to production.** Hotfixes go through `hotfix/*` to `main` and back-merge
-  to `develop`. Regular changes go through `feature/*` to `develop` to `release/*` to `main`.
-  These different paths mean different code gets different testing, violating
-  [single path to production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/).
-- **Release branches as a crutch.** The `release/*` branch exists to stabilize code before
-  release - an explicit admission that `develop` is not kept in a releasable state. In CD,
-  trunk is always releasable; a stabilization branch is unnecessary.
-- **Merge complexity.** The model requires merges in multiple directions (feature to develop,
-  develop to release, release to main, main back to develop, hotfix to main and develop). Each
-  merge is a point where defects can be introduced and where work stalls waiting for resolution.
-
-Teams practicing CD use [trunk-based development](../migrate-to-cd/migration-path/foundations/trunk-based-development/)
-instead: a single shared branch with short-lived feature branches (under a day) and no release
-or hotfix branches. For a step-by-step migration path from GitFlow, see the
-[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/).
+A branching model created by Vincent Driessen in 2010 that uses multiple long-lived branches
+(`main`, `develop`, `release/*`, `hotfix/*`, `feature/*`) with specific merge rules and
+directions. GitFlow was designed for infrequent, scheduled releases and is fundamentally
+incompatible with continuous delivery because it defers integration, creates multiple paths
+to production, and adds merge complexity. See the
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
+for a step-by-step path from GitFlow to trunk-based development.
 
 Referenced in:
 [TBD Migration](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
@@ -328,19 +310,12 @@ Referenced in:
 ### Modular Monolith
 
 A single deployable application whose codebase is organized into well-defined modules with
-explicit boundaries. Each module encapsulates a bounded domain - its own data, business
-logic, and internal APIs - and communicates with other modules through defined interfaces,
-not by reaching into shared database tables or calling internal methods directly. The
-application deploys as one unit, but its internal structure allows teams to reason about,
-test, and change one module without understanding the entire codebase. A modular monolith
-is the recommended starting architecture for most teams because it provides the domain
-separation needed for independent team ownership without the operational overhead of
-distributed services. When a module's boundaries are stable and contract-tested, it can be
-extracted into an independent service if deployment independence is needed. See
-[Pipeline Reference Architecture](../pipeline-reference-architecture/) for pipeline patterns that build on
-modular monolith structure, and
-[Premature Microservices](../anti-patterns/architecture/premature-microservices/) for
-the risks of skipping this step.
+explicit boundaries. Each module encapsulates a bounded domain and communicates with other
+modules through defined interfaces, not by reaching into shared database tables or calling
+internal methods directly. The application deploys as one unit, but its internal structure
+allows teams to reason about, test, and change one module independently. See
+[Pipeline Reference Architecture](../pipeline-reference-architecture/) and
+[Premature Microservices](../anti-patterns/architecture/premature-microservices/).
 
 Referenced in:
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
@@ -523,8 +498,3 @@ deployed. Working agreements create shared expectations and reduce friction. See
 Referenced in:
 [Continuous Integration (Practice)](../practices/continuous-integration/),
 [Integration Deferred](../anti-patterns/branching-integration/integration-deferred/)
-
----
-
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

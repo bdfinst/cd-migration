@@ -16,8 +16,8 @@ landscape is full of tools, frameworks, and advice, but there is no clear, seque
 
 It is built on the [MinimumCD](https://minimumcd.org) definition of continuous delivery and
 draws on practices from the [Dojo Consortium](https://dojoconsortium.org) and the
-[DORA research](https://dora.dev). The content is organized as a migration -- a phased journey
-from your current state to continuous delivery -- rather than as a description of what CD looks
+[DORA research](https://dora.dev). The content is organized as a phased migration journey
+from your current state to continuous delivery rather than as a description of what CD looks
 like when you are already there.
 
 ### Who is this guide for?
@@ -28,15 +28,15 @@ infrequently (monthly, quarterly, or less) and want to reach a state where any c
 deployed to production at any time.
 
 You do not need to be starting from zero. If your team already has CI in place, you can begin
-with [Phase 2 -- Pipeline](../migrate-to-cd/migration-path/pipeline/). If you have a pipeline but deploy infrequently, start
-with [Phase 3 -- Optimize](../migrate-to-cd/migration-path/optimize/). Use the [Phase 0 assessment](../migrate-to-cd/migration-path/assess/) to find your
+with [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/). If you have a pipeline but deploy infrequently, start
+with [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/). Use the [Phase 0 assessment](../migrate-to-cd/migration-path/assess/) to find your
 starting point.
 
 ### Should we adopt this guide as an organization or as a team?
 
 Start with a single team. CD adoption works best when a team can experiment, learn, and iterate
-without waiting for organizational consensus. Once one team demonstrates results -- shorter lead
-times, lower change failure rate, more frequent deployments -- other teams will have a concrete
+without waiting for organizational consensus. Once one team demonstrates results (shorter lead
+times, lower change failure rate, more frequent deployments), other teams will have a concrete
 example to follow.
 
 Organizational adoption comes after team adoption, not before. The role of organizational
@@ -46,7 +46,7 @@ corners on quality.
 
 ### How do we use this guide for improvement?
 
-Start with [Phase 0 -- Assess](../migrate-to-cd/migration-path/assess/). Map your value stream, measure your current
+Start with [Phase 0: Assess](../migrate-to-cd/migration-path/assess/). Map your value stream, measure your current
 performance, and identify your top constraints. Then work through the phases in order, focusing
 on one constraint at a time.
 
@@ -77,15 +77,8 @@ deployment decisions until your pipeline reliably determines what is deployable.
 
 No. Many teams have a CD pipeline tool (Jenkins, GitHub Actions, GitLab CI, etc.) but are
 not practicing continuous delivery. A pipeline tool is necessary but not sufficient.
-
-Continuous delivery requires:
-
-- **Trunk-based development** -- all developers integrating to trunk at least daily
-- **Comprehensive test automation** -- fast, reliable tests that catch real defects
-- **A single path to production** -- every change goes through the same automated pipeline
-- **Immutable artifacts** -- build once, deploy the same artifact everywhere
-- **The ability to deploy any green build** -- not just special "release" builds
-
+Continuous delivery also requires trunk-based development, comprehensive test automation, a
+single path to production, immutable artifacts, and the ability to deploy any green build.
 If your team has a pipeline but uses long-lived feature branches, deploys only at the end of a
 sprint, or requires manual testing before a release, you have a pipeline tool but you are not
 practicing continuous delivery. The [current-state checklist](../migrate-to-cd/migration-path/assess/current-state-checklist/)
@@ -111,7 +104,7 @@ Application configuration refers to values that change between environments but 
 the application code: database connection strings, API endpoints, feature flag states, logging
 levels, and similar settings.
 
-In a CD pipeline, configuration is externalized -- it lives outside the artifact and is injected
+In a CD pipeline, configuration is externalized. It lives outside the artifact and is injected
 at deployment time. This is what makes [immutable artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/)
 possible. You build the artifact once and deploy it to any environment by providing the
 appropriate configuration.
@@ -195,7 +188,7 @@ practice is adopted incrementally: you do not stop the world to rewrite your tes
 redesign your pipeline.
 
 For example, in Phase 1 you adopt trunk-based development by reducing branch lifetimes
-gradually -- from two weeks to one week to two days to same-day. You add automated tests
+gradually: from two weeks to one week to two days to same-day. You add automated tests
 incrementally, starting with the highest-risk code paths. You decompose work into smaller
 stories one sprint at a time.
 
@@ -207,24 +200,12 @@ before, not slower.
 
 Many organizations have Change Advisory Board (CAB) processes that require manual approval
 before production deployments. This is one of the most common organizational blockers for CD.
-
-The path forward is to replace the manual approval with automated evidence. A CAB exists
-because the organization lacks confidence that changes are safe. Your CD pipeline, when mature,
-provides stronger evidence of safety than a committee meeting:
-
-- Every change has passed comprehensive automated tests
-- The exact artifact that was tested is the one being deployed
-- Rollback is automated and takes minutes
-- Deployment is a routine event that happens many times per week
-
-Use your DORA metrics to demonstrate that automated pipelines produce lower change failure
-rates than manual approval processes. Most CAB processes were designed for a world of monthly
-releases with hundreds of changes per batch. When you deploy daily with one or two changes per
-deployment, the risk profile is fundamentally different.
-
-This is a gradual conversation, not a one-time negotiation. Start by inviting CAB
-representatives to observe your pipeline. Show them the test results, the deployment logs,
-the rollback capability. Build trust through evidence.
+The path forward is to replace the manual approval with automated evidence: a mature CD
+pipeline provides stronger safety guarantees than a committee meeting, and your DORA metrics
+can demonstrate this. Most CAB processes were designed for monthly releases with hundreds of
+changes per batch; when you deploy daily with one or two changes, the risk profile is
+fundamentally different. See [CAB Gates](../anti-patterns/organizational-cultural/cab-gates/)
+for a detailed approach to this transition.
 
 ### What if we have a monolithic architecture?
 
@@ -245,26 +226,15 @@ any particular architectural style.
 
 This is one of the most common starting conditions. A slow or flaky test suite undermines
 every CD practice: developers stop trusting the tests, broken builds are ignored, and the
-pipeline becomes a bottleneck rather than an enabler.
-
-The solution is incremental, not wholesale:
-
-1. **Delete or quarantine flaky tests.** A test that sometimes passes and sometimes fails
-   provides no signal. Remove it from the pipeline and fix it or replace it.
-2. **Parallelize what you can.** Many test suites are slow because they run sequentially.
-   Parallelization is often the fastest way to reduce pipeline duration.
-3. **Rebalance the test pyramid.** If most of your automated tests are end-to-end or UI
-   tests, they will be slow and brittle. Invest in unit and integration tests that run in
-   milliseconds and reserve end-to-end tests for critical paths only.
-4. **Set a time budget.** Your full pipeline -- build, test, deploy to a staging environment
-   -- should complete in under 10 minutes. If it takes longer, that is a constraint to address.
-
-See [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and the
+pipeline becomes a bottleneck rather than an enabler. The fix is incremental: quarantine
+flaky tests, parallelize execution, rebalance toward fast unit tests, and set a pipeline
+time budget (under 10 minutes). See
+[Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and the
 [Testing reference section](../testing/) for detailed guidance.
 
 ### Where do I start if I am not sure which phase applies to us?
 
-Start with [Phase 0 -- Assess](../migrate-to-cd/migration-path/assess/). Complete the
+Start with [Phase 0: Assess](../migrate-to-cd/migration-path/assess/). Complete the
 [value stream mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/) exercise, take
 [baseline metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/), and fill out the
 [current-state checklist](../migrate-to-cd/migration-path/assess/current-state-checklist/). These activities will tell you
