@@ -103,6 +103,44 @@ found 2 vulnerabilities (1 moderate, 1 high)
 | **Type checking**       | Prevents type-related bugs, replacing some unit tests        |
 | **Security scanning**   | Detects known vulnerabilities and dangerous coding patterns  |
 | **Dependency scanning** | Checks for outdated, hijacked, or insecurely licensed deps   |
+| **Accessibility linting**| Detects missing alt text, ARIA violations, contrast failures, semantic HTML issues |
+
+### Accessibility Linting
+
+Accessibility linting catches deterministic WCAG violations the same way a security scanner
+catches known vulnerability patterns. Automated checks cover structural issues (missing alt
+text, invalid ARIA attributes, insufficient contrast ratios, broken heading hierarchy) while
+manual review covers subjective aspects like whether alt text is actually meaningful.
+
+A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
+
+```json
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 10000,
+    "wait": 1000
+  },
+  "urls": [
+    "http://localhost:1313/docs/",
+    "http://localhost:1313/docs/testing/"
+  ]
+}
+```
+
+An axe-core unit test asserting that a rendered component has no accessibility violations:
+
+```javascript
+import { axe, toHaveNoViolations } from "jest-axe";
+
+expect.extend(toHaveNoViolations);
+
+it("should have no accessibility violations", async () => {
+  const { container } = render(<LoginForm />);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
 
 ## Anti-Patterns
 
@@ -122,9 +160,11 @@ found 2 vulnerabilities (1 moderate, 1 high)
 Static analysis is the **first gate** in the CD pipeline, providing the fastest feedback:
 
 1. **IDE / local development**: plugins run in real time as code is written.
-2. **Pre-commit**: hooks run linters and formatters, blocking commits that violate rules.
+2. **Pre-commit**: hooks run linters, formatters, and accessibility checks on changed
+   components, blocking commits that violate rules.
 3. **PR verification**: CI runs the full static analysis suite (linting, type checking,
-   security scanning, dependency auditing) and blocks merge on failure.
+   security scanning, dependency auditing, accessibility linting) and blocks merge on
+   failure.
 4. **Trunk verification**: the same checks re-run on the merged HEAD to catch anything
    missed.
 5. **Scheduled scans**: dependency and security scanners run on a schedule to catch newly

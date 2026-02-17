@@ -1,0 +1,11 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 10000,
+    "wait": 500,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox"]
+    },
+    "hideElements": ".mermaid foreignobject"
+  }
+}

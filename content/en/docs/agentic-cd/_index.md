@@ -10,6 +10,8 @@ description: >
 Agentic CD defines the additional constraints and artifacts needed when AI agents contribute to the delivery pipeline. The pipeline must handle agent-generated work with the same rigor applied to human-generated work, and in some cases, more rigor. These constraints assume the team already practices continuous delivery. Without that foundation, the agentic extensions have nothing to extend.
 {{% /pageinfo %}}
 
+{{< figure src="/images/CI_before_AI.png" alt="Don't put the AI cart before the CI horse - Integrating AI is software engineering. To be great at this, you need to be great at DevOps and CI." >}}
+
 ## What Is Agentic CD?
 
 **An agent-generated change must meet or exceed the same quality bar as a human-generated change.** The pipeline does not care who wrote the code. It cares whether the code is correct, tested, and safe to deploy.
@@ -120,4 +122,4 @@ See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full
 
 ---
 
-Content contributed by {{% contributor-credit "michael-kuesters" %}} and {{% contributor-credit "bryan-finster" %}}.
+Content contributed by {{% contributor-credit "michael-kuesters" %}} and {{% contributor-credit "bryan-finster" %}}. Image contributed by {{% contributor-credit "scott-prugh" %}}.

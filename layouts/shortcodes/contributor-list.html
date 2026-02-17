@@ -1,0 +1,3 @@
+{{- range $key, $contributor := .Site.Data.contributors }}
+- [{{ $contributor.name }}]({{ $contributor.contact }})
+{{- end }}

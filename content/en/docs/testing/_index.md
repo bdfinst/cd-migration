@@ -130,6 +130,7 @@ Use this reference to decide what type of test to write and where it runs in you
 | Your test doubles match reality | [Contract](contract/) | Seconds | No | No |
 | A critical user journey works end-to-end | [E2E](e2e/) | Minutes | No | No |
 | Code quality, security, and style compliance | [Static Analysis](static/) | Seconds | Yes | Yes |
+| UI meets WCAG accessibility standards | [Static Analysis](static/) + [Functional](functional/) | Seconds | Yes | Yes |
 
 ## Best Practices
 
@@ -152,6 +153,10 @@ Use this reference to decide what type of test to write and where it runs in you
   confidence.
 - **Treat test code as production code.** Give it the same care, review, and refactoring
   attention.
+- **Run automated accessibility checks on every commit.** WCAG compliance scans are fast,
+  deterministic, and catch violations that are invisible to sighted developers. Treat them
+  like security scans: automate the detectable rules and reserve manual review for
+  subjective judgment.
 
 ### Do Not
 

@@ -13,6 +13,7 @@
 
   <form class="td-sidebar__search d-flex align-items-center">
     {{ partial "search-input.html" . }}
+    <button type="submit" class="visually-hidden">Search</button>
     <button class="btn btn-link td-sidebar__toggle" type="button" {{/**/ -}}
       data-bs-toggle="collapse" data-bs-target="#td-section-nav" {{/**/ -}}
       aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
@@ -24,6 +25,7 @@
   <div id="content-mobile">
   <form class="td-sidebar__search d-flex align-items-center">
     {{ partial "search-input.html" . }}
+    <button type="submit" class="visually-hidden">Search</button>
     <button class="btn btn-link td-sidebar__toggle" type="button" {{/**/ -}}
       data-bs-toggle="collapse" data-bs-target="#td-section-nav" {{/**/ -}}
       aria-controls="td-section-nav" aria-expanded="false" aria-label="Toggle section navigation">
@@ -127,7 +129,7 @@
       id="{{ $mid }}-li" {{- /**/ -}}
     >
     {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
-    <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
+    <input type="checkbox" id="{{ $mid }}-check" aria-label="Toggle {{ $s.LinkTitle }}"{{ if $activePath}} checked{{ end }}/>
     <label for="{{ $mid }}-check">{{/**/ -}}
       <a href="{{ $manualLink }}"
         {{- if ne $s.LinkTitle $manualLinkTitle }} {{/**/ -}}

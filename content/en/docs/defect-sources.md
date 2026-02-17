@@ -63,6 +63,7 @@ fix because they compound through every downstream phase.
 | Meets spec but misses user intent | Requirements | Session replay tools, rage-click and error-loop detection | <span class="ai-high">&#9650;</span> Review acceptance criteria against user behavior data to flag misalignment | Acceptance criteria focused on user outcomes, not checklists |
 | Over-engineering beyond need | Design | Static analysis for dead code and unused abstractions | <span class="ai-high">&#9650;</span> Flag unnecessary abstraction layers and premature optimization in code review | YAGNI principle; justify every abstraction layer |
 | Prioritizing wrong work | Discovery | DORA metrics versus business outcomes, WSJF scoring | Synthesize roadmap, customer data, and market signals to surface opportunity costs | WSJF prioritization with outcome data |
+| Inaccessible UI excludes users | Pre-commit | axe-core, pa11y, Lighthouse accessibility audits | <span class="ai-blocked">Current tooling sufficient</span> | WCAG compliance as acceptance criteria; automated accessibility checks in pipeline |
 
 ## Integration & Boundaries
 

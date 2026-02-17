@@ -113,12 +113,12 @@
 
 // High-value: green accent triangle with tinted cell
 .ai-high {
-  color: #0d7a32;
+  color: #026f27; // was #0d7a32 (3.9:1), now 4.67:1
   font-weight: 700;
   font-size: 0.7em;
   margin-right: 0.25em;
   vertical-align: 0.05em;
-  filter: drop-shadow(0 0 2px rgba(13, 122, 50, 0.35));
+  filter: drop-shadow(0 0 2px rgba(2, 111, 39, 0.35));
 }
 
 // Cells containing .ai-high get a green left border and faint tint
@@ -168,7 +168,7 @@ td:has(.ai-high) {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #8a96a3;
+    color: #6c7885; // was #8a96a3 (3.01:1), now 4.5:1
   }
 }
 
@@ -347,7 +347,7 @@ pre.mermaid {
 }
 
 .risk-high {
-  background-color: #fd7e14;
+  background-color: #c15800; // was #fd7e14 (2.57:1 on #fff text), now 4.52:1
 }
 
 .risk-medium {
@@ -357,6 +357,46 @@ pre.mermaid {
 
 .risk-low {
   background-color: #6c757d;
+}
+
+// ---------------------------------------------------------------------------
+// Prism syntax highlighting - WCAG 2.1 AA contrast overrides (4.5:1 on #fff)
+// Uses !important because prism.css loads after this stylesheet.
+// ---------------------------------------------------------------------------
+
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: #647484 !important; // was #708090 (3.82:1), now 4.58:1
+}
+
+.token.punctuation {
+  color: #727272 !important; // was #999 (2.68:1), now 4.53:1
+}
+
+.token.string,
+.token.builtin,
+.token.char,
+.token.inserted,
+.token.selector,
+.token.attr-value,
+.token.template-punctuation {
+  color: #547e00 !important; // was #690 (3.23:1), now 4.62:1
+}
+
+.token.function,
+.token.class-name,
+.token.title.important {
+  color: #b93a56 !important; // was #dd4a68 (3.76:1), now 4.69:1
+}
+
+.token.regex,
+.token.regex-delimiter,
+.token.regex-flags,
+.token.regex-source,
+.token.variable,
+.token.important:not(.title) {
+  color: #9f6600 !important; // was #e90 (2.15:1), now 4.51:1
 }
 
 // Navbar - primary color background to match MinimumCD

@@ -31,6 +31,9 @@ Functional tests are sometimes called **component tests**.
   submitting API requests) while keeping the test fast and repeatable.
 - You are validating **acceptance criteria** for a user story and want a test that maps
   directly to the specified behavior.
+- You need to verify **keyboard navigation, focus management, and screen reader
+  announcements** as part of feature verification. Accessibility behavior is user-facing
+  behavior and belongs in functional tests.
 
 If the test needs to reach a live external dependency, it is an [E2E test](../e2e/). If it
 tests a single unit in isolation, it is a [unit test](../unit/).
@@ -102,6 +105,45 @@ describe("Login page", () => {
 });
 ```
 
+### Accessibility Verification
+
+Functional tests already exercise the UI from the actor's perspective, making them the
+natural place to verify that interactions work for all users. Accessibility assertions
+fit alongside existing functional assertions rather than in a separate test suite.
+
+A functional test verifying keyboard-only interaction and running axe-core assertions
+against the rendered page:
+
+```javascript
+import { axe, toHaveNoViolations } from "jest-axe";
+
+expect.extend(toHaveNoViolations);
+
+describe("Checkout flow", () => {
+  it("should be completable using only the keyboard", async () => {
+    render(<CheckoutPage />);
+
+    // Navigate to the first form field using Tab
+    await userEvent.tab();
+    expect(screen.getByLabelText("Card number")).toHaveFocus();
+
+    // Fill in the form using keyboard only
+    await userEvent.type(screen.getByLabelText("Card number"), "4111111111111111");
+    await userEvent.tab();
+    await userEvent.type(screen.getByLabelText("Expiry"), "12/27");
+    await userEvent.tab();
+
+    // Submit with Enter
+    await userEvent.keyboard("{Enter}");
+    expect(await screen.findByText("Order confirmed")).toBeInTheDocument();
+
+    // Verify no accessibility violations in the final state
+    const results = await axe(document.body);
+    expect(results).toHaveNoViolations();
+  });
+});
+```
+
 ## Anti-Patterns
 
 - **Using live external services**: this makes the test non-deterministic and slow. Use test
@@ -115,6 +157,9 @@ describe("Login page", () => {
   and happy/critical paths, not every edge case. Leave permutation testing to unit tests.
 - **Slow test setup**: if spinning up the sub-system takes too long, invest in faster
   bootstrapping (in-memory stores, lazy initialization) rather than skipping functional tests.
+- **Deferring accessibility testing to a manual audit phase**: accessibility defects caught
+  in a quarterly audit are weeks or months old. Automated WCAG checks in functional tests
+  catch violations on every commit, just like any other regression.
 
 ## Connection to CD Pipeline
 

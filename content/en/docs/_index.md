@@ -38,3 +38,4 @@ Each adapted page includes attribution to its source material.
 - **[Glossary](glossary/)** - Key terms and definitions.
 - **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
 - **[Resources](resources/)** - Books, talks, and further reading.
+- **[Credits](credits/)** - Contributors who have helped shape this guide.

@@ -31,14 +31,17 @@
     "lint:fix": "markdownlint -f ./content/**/*.md",
     "prepare": "husky",
     "start": "rm -rf public && hugo serve",
+    "a11y": "bash scripts/a11y.sh",
     "test": "npm run lint && npm run link-check:local",
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.22",
+    "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "linkinator": "^7.5.0",
     "markdownlint-cli": "^0.47.0",
+    "pa11y-ci": "^4.0.1",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "prettier": "^3.6.2",

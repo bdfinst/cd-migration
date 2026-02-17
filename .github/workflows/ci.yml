@@ -1,4 +1,4 @@
-name: Link Check
+name: CI
 
 on:
   push:
@@ -35,3 +35,32 @@ jobs:
 
       - name: Check links
         run: npx linkinator --recurse public/ --config ./linkinator.config.json
+
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: "1.25.3"
+
+      - name: Install Hugo
+        run: |
+          wget -q https://github.com/gohugoio/hugo/releases/download/v0.152.2/hugo_extended_0.152.2_linux-amd64.deb
+          sudo dpkg -i hugo_extended_0.152.2_linux-amd64.deb
+
+      - run: npm ci
+
+      - name: Install Chrome for pa11y
+        run: npx puppeteer browsers install chrome
+
+      - name: Build site and run accessibility checks
+        run: npm run a11y

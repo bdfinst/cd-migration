@@ -35,6 +35,7 @@ sub-second to sub-minute feedback.
 | **Secret scanning** | Secrets committed to source control | [Security & Compliance](../defect-sources/#security--compliance) | <span class="gate-required">Required</span> |
 | **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance](../defect-sources/#security--compliance) | <span class="gate-required">Required</span> |
 | **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries](../defect-sources/#integration--boundaries) | |
+| **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery](../defect-sources/#product--discovery) | |
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience](../defect-sources/#performance--resilience) | |
 
 ### CI Stage 1: Build and Fast Tests <span class="stage-time">< 5 min</span>
@@ -72,6 +73,7 @@ These run in parallel where possible.
 | **Security integration tests** | Authentication and authorization gaps | [Security & Compliance](../defect-sources/#security--compliance) | |
 | **Compliance-as-code policy checks** | Regulatory requirement gaps, missing audit trails | [Security & Compliance](../defect-sources/#security--compliance) | |
 | **SBOM generation** | License compliance, dependency transparency | [Security & Compliance](../defect-sources/#security--compliance) | |
+| **Automated WCAG compliance scan** | Full-page rendered accessibility checks with browser automation | [Product & Discovery](../defect-sources/#product--discovery) | |
 
 ### Acceptance Tests <span class="stage-time">< 20 min</span>
 

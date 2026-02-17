@@ -4,6 +4,8 @@ CheckExternal: false
 CheckMailto: false
 CheckFavicons: false
 CheckDoctype: false
+CheckImages: true
+CheckAlt: true
 IgnoreDirs:
   - "node_modules"
   - "_print"
