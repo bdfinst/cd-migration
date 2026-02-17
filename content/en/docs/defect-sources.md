@@ -1,7 +1,7 @@
 ---
 title: "Systemic Defect Fixes"
 linkTitle: "Systemic Defect Fixes"
-weight: 7
+weight: 8
 description: >
   A catalog of defect sources across the delivery value stream with earliest detection points, AI shift-left opportunities, and systemic prevention strategies.
 ---
@@ -189,7 +189,7 @@ null safety, branch age), AI adds cost without benefit. Look for the <span class
 
 ## Related Content
 
-- [Agentic CD](agentic-cd/) - Extend continuous delivery with constraints for AI agent-generated changes
+- [ACD](agentic-cd/) - Extend continuous delivery with constraints for AI agent-generated changes
 - [AI Adoption Roadmap](agentic-cd/adoption-roadmap/) - Safely incorporate AI into your delivery process
 - [Assess Phase](migrate-to-cd/migration-path/assess/) - Current-state assessment where defect source analysis begins
 - [Testing](testing/) - Testing types, patterns, and best practices

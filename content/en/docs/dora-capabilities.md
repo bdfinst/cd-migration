@@ -1,7 +1,7 @@
 ---
 title: "DORA Capabilities"
 linkTitle: "DORA Capabilities"
-weight: 12
+weight: 13
 description: >
   The capabilities that drive software delivery performance, as identified by DORA research.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "CD Dependency Tree"
 linkTitle: "Dependency Tree"
-weight: 13
+weight: 14
 description: >
   Visual guide showing how CD practices depend on and build upon each other.
 ---

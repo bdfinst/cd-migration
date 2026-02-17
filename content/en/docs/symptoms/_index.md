@@ -1,7 +1,7 @@
 ---
 title: "Dysfunction Symptoms"
 linkTitle: "Dysfunction Symptoms"
-weight: 3
+weight: 4
 description: >
   Start from what you observe. Find the anti-patterns causing it.
 ---

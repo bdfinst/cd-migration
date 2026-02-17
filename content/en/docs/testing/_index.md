@@ -1,7 +1,7 @@
 ---
 title: "Testing"
 linkTitle: "Testing"
-weight: 11
+weight: 12
 description: >
   Test architecture, types, and best practices for building confidence in your delivery pipeline.
 ---
@@ -191,7 +191,7 @@ Use this reference to decide what type of test to write and where it runs in you
 
 ## Related Content
 
-- [Agentic CD](../agentic-cd/) - How the executable truth artifact makes testing the constraint that governs agent-generated code
+- [ACD](../agentic-cd/) - How the executable truth artifact makes testing the constraint that governs agent-generated code
 - [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Establishing testing practices as part of CD migration
 - [High Coverage but Ineffective Tests](../symptoms/testing/high-coverage-ineffective-tests/) - When tests pass but do not catch real defects
 

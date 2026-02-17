@@ -115,7 +115,7 @@ maintainable?).
 **What this enables:** A safety net that catches mistakes regardless of who (or what) made them.
 The pipeline becomes the authority on code quality, not human reviewers. See
 [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) for how these guardrails
-extend to agentic CD.
+extend to ACD.
 
 ## Reduce Delivery Friction
 
@@ -163,7 +163,7 @@ problem. The missing specifications and validation are.
 **What to do:**
 
 - Use AI for code generation with the specification-first workflow described in
-  [the agentic CD workflow](../). Define test scenarios first, let AI generate
+  [the ACD workflow](../). Define test scenarios first, let AI generate
   the test code (validated for behavior focus and spec fidelity), then let AI generate
   the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
@@ -191,7 +191,7 @@ to measure progress.
 - [Brownfield CD Overview](../migrate-to-cd/brownfield/) - the phased migration approach this roadmap parallels
 - [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Reduce Delivery Friction
 - [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect during Clarify Work
-- [Agentic CD](../) - the destination for teams completing this roadmap
+- [ACD](../) - the destination for teams completing this roadmap
 - [Anti-Patterns](../anti-patterns/) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction

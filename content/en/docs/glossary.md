@@ -1,7 +1,7 @@
 ---
 title: "Glossary"
 linkTitle: "Glossary"
-weight: 14
+weight: 15
 description: >
   Key terms and definitions used throughout this guide.
 ---
@@ -10,6 +10,20 @@ This glossary defines the terms used across every phase of the CD migration guid
 has a specific meaning within a migration phase, the relevant phase is noted.
 
 ## A
+
+### ACD (Agentic Continuous Delivery)
+
+The application of continuous delivery in environments where software changes are proposed by
+AI agents. ACD extends CD with additional constraints, first-class artifacts, and pipeline
+enforcement to reliably constrain agent autonomy without slowing delivery. ACD assumes the
+team already practices continuous delivery. Without that foundation, the agentic extensions
+have nothing to extend. See [Agentic Continuous Delivery](../agentic-cd/).
+
+Referenced in:
+[Start Here](../start-here/),
+[AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Artifact
 

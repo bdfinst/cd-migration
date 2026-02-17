@@ -3,18 +3,18 @@ title: "Pipeline Enforcement and Expert Agents"
 linkTitle: "Pipeline Enforcement"
 weight: 4
 description: >
-  How quality gates enforce agentic CD constraints and how expert validation agents extend the pipeline beyond standard tooling.
+  How quality gates enforce ACD constraints and how expert validation agents extend the pipeline beyond standard tooling.
 ---
 
 {{% pageinfo %}}
-The pipeline is the enforcement mechanism for agentic CD. Standard quality gates handle mechanical checks. Expert validation agents handle the judgment calls that standard tools cannot make.
+The pipeline is the enforcement mechanism for agentic continuous delivery (ACD). Standard quality gates handle mechanical checks. Expert validation agents handle the judgment calls that standard tools cannot make.
 
-For the framework overview, see [Agentic CD](../). For the artifacts the pipeline enforces, see [The Six First-Class Artifacts](../first-class-artifacts/).
+For the framework overview, see [ACD](../). For the artifacts the pipeline enforces, see [The Six First-Class Artifacts](../first-class-artifacts/).
 {{% /pageinfo %}}
 
-## How Quality Gates Enforce Agentic CD
+## How Quality Gates Enforce ACD
 
-The Pipeline Verification and Deployment stages of the [agentic CD workflow](../) are where the [Pipeline Reference Architecture](../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific agentic CD constraint:
+The Pipeline Verification and Deployment stages of the [ACD workflow](../) are where the [Pipeline Reference Architecture](../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific ACD constraint:
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
 - **CI Stage 1** (build + unit tests) validates the executable truth artifact. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
@@ -25,7 +25,7 @@ The Pipeline Verification and Deployment stages of the [agentic CD workflow](../
 
 ### The Pre-Feature Baseline
 
-The [pre-feature baseline](../../pipeline-reference-architecture/#pre-feature-baseline) lists nine gates that must be active before any feature work begins. These are a prerequisite for agentic CD. Without them passing on every commit, agent-generated changes bypass the minimum safety net.
+The [pre-feature baseline](../../pipeline-reference-architecture/#pre-feature-baseline) lists nine gates that must be active before any feature work begins. These are a prerequisite for ACD. Without them passing on every commit, agent-generated changes bypass the minimum safety net.
 
 See the pipeline patterns for concrete architectures that implement these gates:
 
@@ -35,7 +35,7 @@ See the pipeline patterns for concrete architectures that implement these gates:
 
 ## Expert Validation Agents
 
-Standard quality gates cover what conventional tooling can verify: linting, type checking, test execution, vulnerability scanning. But agentic CD introduces validation needs that standard tools cannot address. No conventional tool can verify that test code faithfully implements a human-defined test specification. No conventional tool can verify that an agent-generated implementation matches the architectural intent in a feature description.
+Standard quality gates cover what conventional tooling can verify: linting, type checking, test execution, vulnerability scanning. But ACD introduces validation needs that standard tools cannot address. No conventional tool can verify that test code faithfully implements a human-defined test specification. No conventional tool can verify that an agent-generated implementation matches the architectural intent in a feature description.
 
 Expert validation agents fill this gap. These are AI agents dedicated to a specific validation concern, running as pipeline gates alongside standard tools:
 
@@ -64,7 +64,7 @@ With the pipeline and expert agents in place, the next question is what goes wro
 
 ## Related Content
 
-- [Agentic CD](../) - the framework overview, eight constraints, and workflow
+- [ACD](../) - the framework overview, eight constraints, and workflow
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts the pipeline enforces
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the full quality gate sequence
 - [Replacing Manual Validations](../../migrate-to-cd/brownfield/replacing-manual-validations/) - the replacement cycle for adopting automated checks

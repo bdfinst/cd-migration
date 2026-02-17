@@ -3,11 +3,11 @@ title: "Pitfalls and Metrics"
 linkTitle: "Pitfalls and Metrics"
 weight: 5
 description: >
-  Common failure modes when adopting agentic CD and the metrics that tell you whether it is working.
+  Common failure modes when adopting ACD and the metrics that tell you whether it is working.
 ---
 
 {{% pageinfo %}}
-These pitfalls come from teams that adopted agentic CD without fully implementing the [six first-class artifacts](../first-class-artifacts/) or the [pipeline enforcement](../pipeline-enforcement/) that makes them effective.
+These pitfalls come from teams that adopted agentic continuous delivery (ACD) without fully implementing the [six first-class artifacts](../first-class-artifacts/) or the [pipeline enforcement](../pipeline-enforcement/) that makes them effective.
 {{% /pageinfo %}}
 
 ## Key Pitfalls
@@ -18,7 +18,7 @@ These pitfalls come from teams that adopted agentic CD without fully implementin
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
 
-**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way agentic CD fails.
+**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way ACD fails.
 
 **What to do:** Define test specifications (BDD scenarios and acceptance criteria) before any code generation. Use a [test fidelity agent](../pipeline-enforcement/) to validate that generated test code matches the specification. Review agent-generated test code for implementation coupling before approving it.
 
@@ -42,7 +42,7 @@ Without provenance tracking, you cannot learn from agent-generated failures, aud
 
 ### 5. Skipped the prerequisite delivery practices
 
-Teams jump to agentic CD without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
+Teams jump to ACD without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
 
 **What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
@@ -57,10 +57,10 @@ Teams jump to agentic CD without the delivery foundations: no deterministic pipe
 
 ## Related Content
 
-- [Agentic CD](../) - the framework overview, eight constraints, and workflow
+- [ACD](../) - the framework overview, eight constraints, and workflow
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that prevent these pitfalls
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - the automated checks that catch failures
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
 - [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
-- [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that agentic CD counters by making test-first workflow mandatory
+- [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that ACD counters by making test-first workflow mandatory
 - [High Coverage but Ineffective Tests](../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on

@@ -479,7 +479,7 @@ pre.mermaid {
 
   // Compact hero
   .td-cover-block {
-    padding: 2rem 0 1.5rem;
+    padding: 1rem 0 0.75rem;
     min-height: auto !important;
 
     .container {
@@ -580,7 +580,7 @@ pre.mermaid {
     border: 1px solid #dee2e6;
     border-top: 3px solid $primary;
     border-radius: 6px;
-    padding: 1rem 1.2rem;
+    padding: 0.6rem 1rem;
     transition: box-shadow 0.15s, border-color 0.15s;
     text-align: center;
 
@@ -593,23 +593,23 @@ pre.mermaid {
     }
 
     .entry-icon {
-      font-size: 1.5rem;
-      color: $primary;
-      margin-bottom: 0.4rem;
+      font-size: 1.2rem;
+      color: $secondary;
+      margin-bottom: 0.2rem;
     }
 
     .entry-title {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: $primary;
-      margin-bottom: 0.25rem;
+      color: #1a2a3a;
+      margin-bottom: 0.15rem;
     }
 
     .entry-desc {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #6c757d;
       margin: 0;
-      line-height: 1.4;
+      line-height: 1.3;
     }
   }
 
@@ -696,9 +696,32 @@ pre.mermaid {
     }
   }
 
+  // CTA button - high-contrast green, distinct from $primary navy
+  .btn-cta {
+    background-color: #0d7a32;
+    border-color: #0b6a2b;
+    color: #fff;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+      background-color: #0b6a2b;
+      border-color: #095c25;
+      color: #fff;
+      box-shadow: 0 0 0 0.2rem rgba(13, 122, 50, 0.35);
+    }
+
+    &:active {
+      background-color: #095c25;
+      border-color: #07501f;
+      color: #fff;
+    }
+  }
+
   // Compact section spacing
   .landing-section {
     padding: 1.5rem 0;
+    text-align: center;
 
     &:first-of-type {
       padding-top: 1rem;

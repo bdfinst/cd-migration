@@ -20,6 +20,7 @@ Each adapted page includes attribution to its source material.
 
 ## Diagnose
 
+- **[Start Here](start-here/)** - CD and ACD become diagnostic tools when you take the offsetting questions seriously.
 - **[Triage](triage/)** - Answer a few questions to find the symptoms and anti-patterns that match your situation.
 - **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
 - **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
@@ -28,7 +29,7 @@ Each adapted page includes attribution to its source material.
 
 - **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
 - **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
-- **[Agentic CD](agentic-cd/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
+- **[ACD](agentic-cd/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
 
 ## Reference
 

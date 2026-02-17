@@ -1,7 +1,7 @@
 ---
 title: "Resources"
 linkTitle: "Resources"
-weight: 16
+weight: 17
 description: >
   Books, videos, and further reading on continuous delivery and deployment.
 ---

@@ -3,13 +3,13 @@ title: "The Six First-Class Artifacts"
 linkTitle: "First-Class Artifacts"
 weight: 3
 description: >
-  Detailed definitions and examples for the six artifacts that agents and humans must maintain in an agentic CD pipeline.
+  Detailed definitions and examples for the six artifacts that agents and humans must maintain in an ACD pipeline.
 ---
 
 {{% pageinfo %}}
 Each artifact has a defined authority. When an agent detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
 
-For the framework overview and the eight constraints, see [Agentic CD](../).
+For the framework overview and the eight constraints, see [ACD](../).
 {{% /pageinfo %}}
 
 ## 1. Intent Description
@@ -168,7 +168,7 @@ describe("Rate Limiting", () => {
 
 ## 5. Implementation
 
-**What it is:** The actual code that implements the feature. In agentic CD, this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
+**What it is:** The actual code that implements the feature. In ACD, this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
 
 The implementation is the artifact most likely to be agent-generated. It must satisfy the executable truth (tests), conform to the feature description (architecture), and achieve the intent description (purpose).
 
@@ -249,13 +249,13 @@ system_constraints:
 
 Without them, an agent that detects a conflict between what the tests expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
-These artifacts are valuable in any project. In agentic CD, they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
+These artifacts are valuable in any project. In ACD, they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
 
 With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/).
 
 ## Related Content
 
-- [Agentic CD](../) - the framework overview, eight constraints, and workflow
+- [ACD](../) - the framework overview, eight constraints, and workflow
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces artifact consistency
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failure modes when artifacts are incomplete
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence before adopting artifact-driven workflows

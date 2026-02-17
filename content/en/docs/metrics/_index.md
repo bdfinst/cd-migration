@@ -1,7 +1,7 @@
 ---
 title: "Metrics"
 linkTitle: "Metrics"
-weight: 10
+weight: 11
 description: >
   Detailed definitions for key delivery metrics. Understand what to measure and why.
 ---

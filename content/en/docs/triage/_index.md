@@ -1,7 +1,7 @@
 ---
 title: "Find Your Symptom"
 linkTitle: "Find Your Symptom"
-weight: 2
+weight: 3
 description: >
   Answer a few questions to narrow down which dysfunction symptoms match your situation.
 ---

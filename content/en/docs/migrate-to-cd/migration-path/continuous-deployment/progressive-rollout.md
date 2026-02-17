@@ -272,7 +272,7 @@ A rollout that takes a week negates the benefits of continuous deployment. If yo
 
 ## Next Step
 
-With deploy on demand and progressive rollout, your technical deployment infrastructure is complete. [Agentic CD](../../../../agentic-cd/) explores how AI-assisted patterns can extend these practices further.
+With deploy on demand and progressive rollout, your technical deployment infrastructure is complete. [ACD](../../../../agentic-cd/) explores how AI-assisted patterns can extend these practices further.
 
 ---
 

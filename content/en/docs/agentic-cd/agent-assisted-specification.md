@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-The specification stages of the [agentic CD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how agents accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how agents accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## This Is Not Big Upfront Design
@@ -126,6 +126,6 @@ This is not the agent doing specification for you. It is the agent making your s
 
 ## Related Content
 
-- [The Agentic CD Workflow](../) - the full workflow these tips support
+- [The ACD Workflow](../) - the full workflow these tips support
 - [The Six First-Class Artifacts](../first-class-artifacts/) - detailed definitions of each artifact
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment

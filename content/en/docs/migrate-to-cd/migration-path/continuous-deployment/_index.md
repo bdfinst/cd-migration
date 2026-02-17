@@ -19,7 +19,7 @@ matters, not the trigger.
 
 1. **[Deploy on demand](deploy-on-demand/)** - Remove the last manual gates so any green build can reach production
 2. **[Use progressive rollout](progressive-rollout/)** - Canary, blue-green, and percentage-based deployments
-3. **[Explore agentic CD](../../../agentic-cd/)** - AI-assisted continuous delivery patterns
+3. **[Explore ACD](../../../agentic-cd/)** - AI-assisted continuous delivery patterns
 4. **[Learn from experience reports](experience-reports/)** - How other teams made the journey
 
 ## Continuous Delivery vs. Continuous Deployment
