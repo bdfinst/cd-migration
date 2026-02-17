@@ -1,6 +1,6 @@
 ---
 title: "Agentic Continuous Delivery (ACD)"
-linkTitle: "ACD"
+linkTitle: "Agentic CD"
 weight: 9
 description: >
   Extend continuous delivery with constraints, first-class artifacts, and practices for AI agent-generated changes.

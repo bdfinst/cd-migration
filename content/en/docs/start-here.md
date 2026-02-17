@@ -76,4 +76,4 @@ For the full argument, see
 - **[Dysfunction Symptoms](symptoms/)** - Browse observable problems by category.
 - **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from assessment
   through continuous deployment.
-- **[ACD](agentic-cd/)** - Constraints and practices for AI agent-generated changes.
+- **[Agentic CD](agentic-cd/)** - Constraints and practices for AI agent-generated changes.
