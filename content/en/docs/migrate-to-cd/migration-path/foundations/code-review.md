@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations**
 
 Code review is essential for quality, but it is also the most common bottleneck in teams adopting trunk-based development. If reviews take days, daily integration is impossible. This page covers review techniques that maintain quality while enabling the flow that CD requires.
 {{% /pageinfo %}}
@@ -204,8 +204,7 @@ Code review practices need to be codified in team agreements alongside other sha
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

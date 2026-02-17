@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations**
 
 Build automation is the mechanism that turns trunk-based development and testing into a continuous integration loop. If you cannot build, test, and package your application with a single command, you cannot automate your pipeline. This page covers the practices that make your build reproducible, fast, and trustworthy.
 {{% /pageinfo %}}
@@ -247,8 +247,7 @@ With build automation in place, you can build, test, and package your applicatio
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

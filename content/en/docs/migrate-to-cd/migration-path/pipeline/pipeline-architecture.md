@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 2 - Pipeline**
 {{% /pageinfo %}}
 
 ## Definition
@@ -264,8 +264,7 @@ the pipeline to improving its speed and reliability.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Related Content
 

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 3 - Optimize**
 
 Work in progress (WIP) is inventory. Like physical inventory, it loses value the longer it sits unfinished. Limiting WIP is the most counterintuitive and most impactful practice in this entire migration: doing less work at once makes you deliver more.
 {{% /pageinfo %}}
@@ -162,8 +162,7 @@ WIP limits expose problems. [Metrics-Driven Improvement](../metrics-driven-impro
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

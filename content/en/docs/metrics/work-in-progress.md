@@ -6,10 +6,6 @@ description: >
   Number of work items started but not yet completed. A leading indicator of flow problems, context switching, and delivery delays.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Work in Progress (WIP) is the total count of work items that have been started but
@@ -131,5 +127,4 @@ To reduce WIP:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

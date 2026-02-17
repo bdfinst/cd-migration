@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations**
 
 The practices in Phase 1 - trunk-based development, testing, small work, and fast review - only work when the whole team commits to them. Working agreements make that commitment explicit. This page covers the key agreements a team needs before moving to pipeline automation in Phase 2.
 {{% /pageinfo %}}
@@ -271,8 +271,7 @@ You are ready to move to [Phase 2: Pipeline](../../pipeline/), where you will bu
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

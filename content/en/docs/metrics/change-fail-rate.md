@@ -6,10 +6,6 @@ description: >
   Percentage of production deployments that cause a failure or require remediation. A DORA key metric for delivery stability.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Change Fail Rate measures the percentage of deployments to production that result
@@ -117,5 +113,4 @@ To improve Change Fail Rate:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

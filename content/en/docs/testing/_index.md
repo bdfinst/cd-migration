@@ -6,10 +6,6 @@ description: >
   Test architecture, types, and best practices for building confidence in your delivery pipeline.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 A reliable test suite is essential for continuous delivery. This page describes the test
 architecture that gives your pipeline the confidence to deploy any change - even when
 dependencies outside your control are unavailable. The child pages cover each test type
@@ -196,9 +192,4 @@ Use this reference to decide what type of test to write and where it runs in you
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts
-> drawn from Ham Vocke,
-> [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html),
-> and Toby Clemson,
-> [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).

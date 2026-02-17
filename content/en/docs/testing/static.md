@@ -6,10 +6,6 @@ description: >
   Code analysis tools that evaluate non-running code for security vulnerabilities, complexity, and best practice violations.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Static analysis (also called static testing) evaluates **non-running code** against rules for
@@ -140,5 +136,4 @@ pipeline treats static analysis failures the same as test failures: they break t
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

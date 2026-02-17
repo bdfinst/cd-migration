@@ -6,10 +6,6 @@ description: >
   Fast, deterministic tests that verify a unit of behavior through its public interface, asserting on what the code does rather than how it works.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 A unit test is a deterministic test that exercises a **unit of behavior** (a single
@@ -141,5 +137,4 @@ small changes frequently.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

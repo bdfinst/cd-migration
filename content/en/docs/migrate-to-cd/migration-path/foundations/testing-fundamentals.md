@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations**
 
 Before you can trust your pipeline, you need a test suite that is fast, deterministic, and catches
 real defects. But a collection of tests is not enough. You need a **test architecture** - a
@@ -478,12 +478,7 @@ packaging happens with a single command. Continue to [Build Automation](../build
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts
-> drawn from Ham Vocke,
-> [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html),
-> and Toby Clemson,
-> [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
 
 ---
 

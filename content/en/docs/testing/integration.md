@@ -6,10 +6,6 @@ description: >
   Deterministic tests that verify how units interact together or with external system boundaries using test doubles for non-deterministic dependencies.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 An integration test is a deterministic test that verifies how the unit under test interacts
@@ -126,5 +122,4 @@ integration."
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

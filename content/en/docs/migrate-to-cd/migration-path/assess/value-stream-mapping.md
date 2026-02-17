@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 - Assess** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 0 - Assess**
 {{% /pageinfo %}}
 
 Before you change anything about how your team delivers software, you need to see how it works
@@ -236,8 +236,7 @@ quantify your current delivery performance.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

@@ -6,10 +6,6 @@ description: >
   Deterministic tests that verify all modules of a sub-system work together from the actor's perspective, using test doubles for external dependencies.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 A functional test is a deterministic test that verifies all modules of a sub-system are
@@ -137,5 +133,4 @@ happy-path and critical-path scenarios while keeping the total count manageable.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

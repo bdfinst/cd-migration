@@ -6,10 +6,6 @@ description: >
   Patterns for isolating dependencies in tests: stubs, mocks, fakes, spies, and dummies.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Test doubles are stand-in objects that replace real production dependencies during testing.
@@ -144,5 +140,4 @@ deterministic.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

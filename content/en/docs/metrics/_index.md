@@ -6,10 +6,6 @@ description: >
   Detailed definitions for key delivery metrics. Understand what to measure and why.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 These metrics help you assess your current delivery performance and track improvement
 over time. Start with the metrics most relevant to your current phase.
 
@@ -28,5 +24,4 @@ over time. Start with the metrics most relevant to your current phase.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

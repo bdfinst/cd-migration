@@ -7,8 +7,6 @@ description: >
 ---
 
 {{% pageinfo %}}
-Contributed by {{% contributor-credit "bryan-finster" %}}.
-
 AI adoption stress-tests your organization. It does not create new problems - it reveals
 existing ones. Teams that try to accelerate with AI before fixing their delivery process get the
 same result as putting a bigger engine in a car with no brakes. This page provides the
@@ -198,3 +196,7 @@ to measure progress.
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
+
+---
+
+Content contributed by {{% contributor-credit "bryan-finster" %}}.

@@ -6,10 +6,6 @@ description: >
   Key terms and definitions used throughout this guide.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 This glossary defines the terms used across every phase of the CD migration guide. Where a term
 has a specific meaning within a migration phase, the relevant phase is noted.
 
@@ -498,3 +494,7 @@ deployed. Working agreements create shared expectations and reduce friction. See
 Referenced in:
 [Continuous Integration (Practice)](../practices/continuous-integration/),
 [Integration Deferred](../anti-patterns/branching-integration/integration-deferred/)
+
+---
+
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

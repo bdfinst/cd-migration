@@ -7,8 +7,6 @@ description: >
 ---
 
 {{% pageinfo %}}
-Agentic CD framework contributed by {{% contributor-credit "michael-kuesters" %}}. Implementation guide contributed by {{% contributor-credit "bryan-finster" %}}.
-
 Agentic CD defines the additional constraints and artifacts needed when AI agents contribute to the delivery pipeline. The pipeline must handle agent-generated work with the same rigor applied to human-generated work, and in some cases, more rigor. These constraints assume the team already practices continuous delivery. Without that foundation, the agentic extensions have nothing to extend.
 {{% /pageinfo %}}
 
@@ -119,3 +117,7 @@ See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full
 - [Code Coverage Mandates](../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
 - [Pressure to Skip Testing](../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that agentic CD counters by making test-first workflow mandatory
 - [High Coverage but Ineffective Tests](../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on
+
+---
+
+Content contributed by {{% contributor-credit "michael-kuesters" %}} and {{% contributor-credit "bryan-finster" %}}.

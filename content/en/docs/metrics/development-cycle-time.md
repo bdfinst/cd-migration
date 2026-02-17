@@ -6,10 +6,6 @@ description: >
   Average time from when work starts until it is running in production. A key flow metric for identifying delivery bottlenecks.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Development Cycle Time measures the elapsed time from when a developer begins work
@@ -118,5 +114,4 @@ To improve Development Cycle Time:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

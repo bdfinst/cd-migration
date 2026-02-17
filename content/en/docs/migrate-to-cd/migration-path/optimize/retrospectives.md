@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 3 - Optimize**
 
 A retrospective is the team's primary mechanism for turning observations into improvements. Without effective retrospectives, WIP limits expose problems that nobody addresses, metrics trend in the wrong direction with no response, and the CD migration stalls.
 {{% /pageinfo %}}
@@ -217,8 +217,7 @@ With metrics-driven improvement and effective retrospectives, you have the engin
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 

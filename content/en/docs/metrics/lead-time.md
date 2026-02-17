@@ -6,10 +6,6 @@ description: >
   Total time from when a change is committed until it is running in production. A DORA key metric for delivery throughput.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Lead Time measures the total elapsed time from when a code change is committed to
@@ -121,5 +117,4 @@ To improve Lead Time:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

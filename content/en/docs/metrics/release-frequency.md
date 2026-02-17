@@ -6,10 +6,6 @@ description: >
   How often changes are deployed to production. A DORA key metric for delivery throughput and team capability.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Release Frequency (also called Deployment Frequency) measures how often a team
@@ -118,5 +114,4 @@ To improve Release Frequency:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

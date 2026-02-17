@@ -6,10 +6,6 @@ description: >
   Time from code commit to a deployable artifact. A critical constraint on feedback speed and mean time to repair.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Build Duration measures the elapsed time from when a developer pushes a commit
@@ -111,5 +107,4 @@ To improve Build Duration:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

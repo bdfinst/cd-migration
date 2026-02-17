@@ -6,10 +6,6 @@ description: >
   How often developers integrate code changes to the trunk. A leading indicator of CI maturity and small batch delivery.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Integration Frequency measures the average number of production-ready pull requests
@@ -101,5 +97,4 @@ To improve Integration Frequency:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

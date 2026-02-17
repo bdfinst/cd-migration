@@ -20,9 +20,20 @@ When removing `draft: true` from a page:
 
 ## Contributor Attribution
 
+- Place attribution at the bottom of the page as a footnote, not in the `pageinfo` banner.
+- Use the format: `Content contributed by {{% contributor-credit "contributor-id" %}}`
 - When a content page includes work contributed by a named individual listed in `data/contributors.yml`, use the `contributor-credit` shortcode to credit them.
-- Place credit in the `pageinfo` banner at the top of the page.
 - Content moved between cd-manifesto and cd-migration is internal reorganization. Use "contributed by" not "adapted from MinimumCD.org".
+
+## Redirects
+
+- When a page is moved or renamed, create a Hugo alias so the old URL redirects to the new location. Add an `aliases` list to the destination page's front matter:
+  ```yaml
+  aliases:
+    - /docs/old-section/old-page/
+  ```
+- When a section `_index.md` is moved, add aliases for both the section path and any known child page paths that changed.
+- Run `npm test` after adding aliases to verify no broken links remain.
 
 ## SEO and LLM Discoverability
 

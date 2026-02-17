@@ -6,10 +6,6 @@ description: >
   Average time from when a production incident is detected until service is restored. A DORA key metric for recovery capability.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 Mean Time to Repair (MTTR) measures the average elapsed time between when a
@@ -125,5 +121,4 @@ To improve MTTR:
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

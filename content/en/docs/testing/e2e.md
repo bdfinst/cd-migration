@@ -6,10 +6,6 @@ description: >
   Non-deterministic tests that validate the entire software system along with its integration with external interfaces and production-like scenarios.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 ## Definition
 
 End-to-end (E2E) tests validate the entire software system, including its integration with
@@ -132,5 +128,4 @@ fragile E2E gates.
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

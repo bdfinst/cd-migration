@@ -6,10 +6,6 @@ description: >
   The capabilities that drive software delivery performance, as identified by DORA research.
 ---
 
-{{% pageinfo %}}
-Adapted from [Dojo Consortium](https://dojoconsortium.org)
-{{% /pageinfo %}}
-
 The DevOps Research and Assessment (DORA) research program has identified capabilities that
 predict high software delivery performance. These capabilities are not tools or technologies.
 They are practices and cultural conditions that enable teams to deliver software quickly,
@@ -236,3 +232,7 @@ burden, something is wrong with the approach.
 **Transformational Leadership.** Leaders support the migration with vision, resources, and
 organizational air cover. Without leadership support, the migration will stall when it
 encounters the first organizational blocker.
+
+---
+
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

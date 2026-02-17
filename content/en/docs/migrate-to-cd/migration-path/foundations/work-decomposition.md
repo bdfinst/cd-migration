@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations** | Adapted from [Dojo Consortium](https://dojoconsortium.org)
+**Phase 1 - Foundations**
 
 Trunk-based development requires daily integration, and daily integration requires small work. If a feature takes two weeks to build, you cannot integrate it daily without decomposing it first. This page covers the techniques for breaking work into small, deliverable increments that flow through your pipeline continuously.
 {{% /pageinfo %}}
@@ -247,8 +247,7 @@ Small, well-decomposed work flows through the system quickly - but only if code 
 
 ---
 
-> This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),
-> licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 
