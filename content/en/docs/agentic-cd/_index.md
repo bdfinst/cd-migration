@@ -1,7 +1,7 @@
 ---
 title: "Agentic CD"
 linkTitle: "Agentic CD"
-weight: 7
+weight: 8
 description: >
   Extend continuous delivery with constraints, first-class artifacts, and practices for AI agent-generated changes.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Systemic Defect Fixes"
 linkTitle: "Systemic Defect Fixes"
-weight: 6
+weight: 7
 description: >
   A catalog of defect sources across the delivery value stream with earliest detection points, AI shift-left opportunities, and systemic prevention strategies.
 ---
