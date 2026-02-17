@@ -8,39 +8,33 @@ description: >
 ---
 
 {{% pageinfo %}}
-This guide is a learning path built on years of helping teams across industries remove
-friction, improve delivery outcomes, and raise team morale through continuous delivery.
-It expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and the
-production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org),
-grounded in hands-on application of one driving question: "Why can't I deliver today's
-work to production today?" Start with the problem your team feels most, then follow the
-path to solving it.
+**Start with your problem, not the guide.**
+[Not sure what is wrong? Answer a few questions.](triage/) |
+[Developer symptoms](symptoms/for-developers/) |
+[Manager symptoms](symptoms/for-managers/)
+
+This guide expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and
+the production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org).
+Each adapted page includes attribution to its source material.
 {{% /pageinfo %}}
 
-## Where to Start
+## Diagnose
 
-- **[Not sure what is wrong? Find your symptom.](triage/)** Answer a few questions to find the symptoms and anti-patterns that match your situation.
-- **[For Developers](symptoms/for-developers/)** - Symptoms you hit while writing, testing, and shipping code.
-- **[For Managers](symptoms/for-managers/)** - Symptoms that show up as unpredictable delivery, quality gaps, and team health.
-
-## Explore
-
+- **[Triage](triage/)** - Answer a few questions to find the symptoms and anti-patterns that match your situation.
 - **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
 - **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
+
+## Migrate
+
 - **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
 - **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
 - **[Agentic CD](agentic-cd/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
-- **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
+
+## Reference
+
 - **[Practices](practices/)** - Core CD practice definitions from MinimumCD.
 - **[Metrics](metrics/)** - Delivery metrics definitions.
 - **[Testing](testing/)** - Testing types, patterns, and best practices.
 - **[Glossary](glossary/)** - Key terms and definitions.
-
-## Content Sources
-
-This guide adapts content from two CC BY 4.0 licensed sources:
-
-- **[MinimumCD.org](https://minimumcd.org)** - The minimum practices for continuous delivery
-- **[Dojo Consortium](https://dojoconsortium.org)** - Production-tested playbooks for delivering software better
-
-Each adapted page includes attribution to its source material.
+- **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
+- **[Resources](resources/)** - Books, talks, and further reading.
