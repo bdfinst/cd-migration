@@ -1,7 +1,7 @@
 ---
 title: "The Six First-Class Artifacts"
 linkTitle: "First-Class Artifacts"
-weight: 2
+weight: 3
 description: >
   Detailed definitions and examples for the six artifacts that agents and humans must maintain in an agentic CD pipeline.
 ---

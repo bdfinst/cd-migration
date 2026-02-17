@@ -179,4 +179,4 @@ informational rather than a gate.
 - [Inverted Test Pyramid](../inverted-test-pyramid/) - When most tests are at the wrong level
 - [Pressure to Skip Testing](../../organizational-cultural/pressure-to-skip-testing/) - When teams face pressure that undermines test quality
 - [Unit Tests](../../../testing/unit/) - Writing fast, deterministic tests for logic
-- [Agentic CD](../../../ai-adoption-roadmap/) - Why coverage mandates are especially dangerous when agents optimize for coverage rather than intent
+- [Agentic CD](../../../agentic-cd/) - Why coverage mandates are especially dangerous when agents optimize for coverage rather than intent

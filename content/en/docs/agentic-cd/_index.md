@@ -32,9 +32,10 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 ## What You'll Find in This Section
 
 1. **[AI Adoption Roadmap](adoption-roadmap/)** - the prerequisite sequence before adopting agentic workflows
-2. **[The Six First-Class Artifacts](first-class-artifacts/)** - detailed definitions with examples for each artifact that agents and humans must maintain
-3. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce agentic CD constraints automatically
-4. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether agentic CD is working
+2. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft BDD scenarios, and surface gaps in the specification stages
+3. **[The Six First-Class Artifacts](first-class-artifacts/)** - detailed definitions with examples for each artifact that agents and humans must maintain
+4. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce agentic CD constraints automatically
+5. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether agentic CD is working
 
 ## Agentic Extensions to MinimumCD
 
@@ -68,44 +69,44 @@ These artifacts are intentionally **overlapping in content** but **non-overlappi
 
 When an AI agent contributes to a CD pipeline, the workflow extends the standard pipeline:
 
-| Step | Actor | Activity |
-|------|-------|----------|
-| 1 | HUMAN | Define Intent Description (why the change exists) |
-| 2 | HUMAN | Define User-Facing Behavior (BDD scenarios, the functional tests) |
-| 3 | HUMAN | Define Feature Description (architecture, constraints, performance budgets) |
-| 4 | HUMAN | Define acceptance criteria for non-functional tests (latency thresholds, security requirements, resource limits) |
-| 5 | AGENT | Generate test code from Steps 2-4 |
-| 6 | HUMAN → AGENT | Validate test code is decoupled from implementation and faithful to specs |
-| 7 | AGENT | Generate implementation |
-| 8 | PIPELINE | Validate implementation against executable truth (automated tests) |
-| 9 | HUMAN → AGENT | Review implementation (code review) |
-| 10 | PIPELINE | Deploy (same pipeline as any other change) |
+| Stage | Actor | Activity |
+|-------|-------|----------|
+| Intent Definition | HUMAN | Define Intent Description (why the change exists) |
+| Behavior Specification | HUMAN | Define User-Facing Behavior (BDD scenarios, the functional tests) |
+| Architecture Specification | HUMAN | Define Feature Description (architecture, constraints, performance budgets) |
+| Acceptance Criteria | HUMAN | Define acceptance criteria for non-functional tests (latency thresholds, security requirements, resource limits) |
+| Test Generation | AGENT | Generate test code from Behavior Specification, Architecture Specification, and Acceptance Criteria |
+| Test Validation | HUMAN → AGENT | Validate test code is decoupled from implementation and faithful to specs |
+| Implementation | AGENT | Generate implementation |
+| Pipeline Verification | PIPELINE | Validate implementation against executable truth (automated tests) |
+| Code Review | HUMAN → AGENT | Review implementation (code review) |
+| Deployment | PIPELINE | Deploy (same pipeline as any other change) |
 
-Steps 2-4 together define the complete Executable Truth specification. Step 2 covers what the user experiences (BDD scenarios become the functional tests). Steps 3-4 cover what the system must satisfy beyond user-visible behavior: performance budgets, security constraints, architectural boundaries, and operational requirements.
+Behavior Specification, Architecture Specification, and Acceptance Criteria together define the complete Executable Truth specification. Behavior Specification covers what the user experiences (BDD scenarios become the functional tests). Architecture Specification and Acceptance Criteria cover what the system must satisfy beyond user-visible behavior: performance budgets, security constraints, architectural boundaries, and operational requirements.
 
 **Key differences from standard CD:**
 
-- Steps 1-4 happen before any code generation. Specification-first should already be standard practice without agents. Every downstream step - test generation, implementation, review, and deployment - depends on the quality of these specifications. With agents, that dependency becomes absolute: an agent cannot compensate for missing or ambiguous specifications the way a human sometimes can.
-- Steps 5-6 separate test definition from test code. Teams often conflate the two because they happen at the same time, but they are distinct activities. Defining tests means deciding what scenarios, edge cases, and acceptance criteria to verify. Test code is the machine-runnable implementation of those decisions. Humans define the tests before development begins. Agents generate the test code, which must be validated for behavior focus and spec fidelity before implementation starts.
-- System constraints are checked automatically in the pipeline (Step 8). This is standard CD practice. The difference is that agents require these constraints to be stated explicitly as artifacts rather than carried as team knowledge.
+- The four specification stages (Intent Definition through Acceptance Criteria) happen before any code generation. Specification-first should already be standard practice without agents. Every downstream stage - Test Generation, Implementation, Code Review, and Deployment - depends on the quality of these specifications. With agents, that dependency becomes absolute: an agent cannot compensate for missing or ambiguous specifications the way a human sometimes can. This is not big upfront design. You specify the next small step, not the entire feature set. See [Agent-Assisted Specification](agent-assisted-specification/) for how agents make this work fast.
+- Test Generation and Test Validation separate test definition from test code. Teams often conflate the two because they happen at the same time, but they are distinct activities. Defining tests means deciding what scenarios, edge cases, and acceptance criteria to verify. Test code is the machine-runnable implementation of those decisions. Humans define the tests before development begins. Agents generate the test code, which must be validated for behavior focus and spec fidelity before implementation starts.
+- System constraints are checked automatically in the pipeline during Pipeline Verification. This is standard CD practice. The difference is that agents require these constraints to be stated explicitly as artifacts rather than carried as team knowledge.
 
-### Migrating Steps 6 and 9 to expert agents
+### Migrating Test Validation and Code Review to expert agents
 
-Manual review at Steps 6 and 9 is a deliberate interim state, not the design. Every manual validation creates a [batching point](../migrate-to-cd/migration-path/optimize/small-batches/) - failures become harder to trace, feedback loops extend, and unvalidated changes accumulate. When agents generate changes faster than humans review them, wait time dominates the delivery cycle.
+Manual review at Test Validation and Code Review is a deliberate interim state, not the design. Every manual validation creates a [batching point](../migrate-to-cd/migration-path/optimize/small-batches/) - failures become harder to trace, feedback loops extend, and unvalidated changes accumulate. When agents generate changes faster than humans review them, wait time dominates the delivery cycle.
 
 The target state replaces manual review with [expert validation agents](pipeline-enforcement/) using the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration:
 
-| Step | Starting State | Target State |
-|------|---------------|-------------|
-| 6 | HUMAN validates test code | **Expert agent** validates test code is decoupled from implementation and faithful to specs; human reviews exceptions |
-| 9 | HUMAN reviews implementation | **Expert agent** validates architectural conformance and intent alignment; human reviews agent-flagged concerns |
+| Stage | Starting State | Target State |
+|-------|---------------|-------------|
+| Test Validation | HUMAN validates test code | **Expert agent** validates test code is decoupled from implementation and faithful to specs; human reviews exceptions |
+| Code Review | HUMAN reviews implementation | **Expert agent** validates architectural conformance and intent alignment; human reviews agent-flagged concerns |
 
 1. Start with human validation only (the workflow as shown above)
 2. Deploy an expert agent that runs in parallel with the human reviewer
 3. Compare results until you are confident the agent matches or exceeds human judgment
 4. Shift the human role from "review everything" to "review what the agent flags and spot-check according to risk"
 
-**What does not migrate:** Steps 1-4 remain human responsibilities. Defining intent, specifying behavior, documenting architecture, and setting acceptance criteria require judgment about what matters to the business and the user. Agents validate whether specifications are met. Humans decide what the specifications should be.
+**What does not migrate:** The four specification stages (Intent Definition through Acceptance Criteria) remain human responsibilities. Defining intent, specifying behavior, documenting architecture, and setting acceptance criteria require judgment about what matters to the business and the user. Agents validate whether specifications are met. Humans decide what the specifications should be.
 
 See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full set of expert agents and how to adopt them.
 

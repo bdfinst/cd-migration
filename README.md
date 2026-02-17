@@ -66,7 +66,7 @@ cd-migration/
       migrate-to-cd/        Migration phases and guides
       reference/            Glossary, metrics, testing guides
       defect-sources.md     Defect detection catalog
-      ai-adoption-roadmap.md
+      agentic-cd.md
       faq.md
     _index.html             Home page
   layouts/                  Hugo template overrides and custom shortcodes

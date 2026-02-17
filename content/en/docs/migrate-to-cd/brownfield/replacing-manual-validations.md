@@ -240,4 +240,4 @@ prioritization and focus on the validations that are actually blocking faster de
 - [Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/) - Refactoring strategies for testability
 - [Deterministic Pipeline](../../migration-path/pipeline/deterministic-pipeline/) - Where automated validations live
 - [Functional Testing](../../testing/functional/) - Structuring automated functional tests
-- [Pipeline Enforcement and Expert Agents](../../../ai-adoption-roadmap/pipeline-enforcement/) - Applying the replacement cycle to AI expert validation agents
+- [Pipeline Enforcement and Expert Agents](../../../agentic-cd/pipeline-enforcement/) - Applying the replacement cycle to AI expert validation agents

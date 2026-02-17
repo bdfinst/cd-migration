@@ -1,7 +1,7 @@
 ---
 title: "Pitfalls and Metrics"
 linkTitle: "Pitfalls and Metrics"
-weight: 4
+weight: 5
 description: >
   Common failure modes when adopting agentic CD and the metrics that tell you whether it is working.
 ---
@@ -44,7 +44,7 @@ Without provenance tracking, you cannot learn from agent-generated failures, aud
 
 Teams jump to agentic CD without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
 
-**What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. Steps 1-4 (quality tools, clear requirements, hardened guardrails, reduced friction) are prerequisites, not optional steps. Do not expand AI to code generation until the pipeline is deterministic and fast.
+**What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
 ## Measuring Success
 

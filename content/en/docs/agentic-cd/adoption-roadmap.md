@@ -29,10 +29,10 @@ and it makes them worse faster.
 
 ```mermaid
 graph LR
-    A["1. Quality Tools"] --> B["2. Clarify Work"]
-    B --> C["3. Harden Guardrails"]
-    C --> D["4. Remove Friction"]
-    D --> E["5. Accelerate with AI"]
+    A["Quality Tools"] --> B["Clarify Work"]
+    B --> C["Harden Guardrails"]
+    C --> D["Reduce Delivery Friction"]
+    D --> E["Accelerate with AI"]
 
     style A fill:#e8f4fd,stroke:#1a73e8
     style B fill:#e8f4fd,stroke:#1a73e8
@@ -43,7 +43,7 @@ graph LR
 
 Quality Tools, Clarify Work, Harden Guardrails, Remove Friction, then Accelerate with AI. Skipping steps means AI amplifies your weaknesses instead of your strengths.
 
-## Step 1: Start with Quality Tools
+## Quality Tools
 
 **Brownfield phase:** Assess
 
@@ -63,7 +63,7 @@ more work than it saves.
 **What this enables:** AI tooling that generates correct output more often than not. Subsequent
 steps build on working code rather than compensating for broken code.
 
-## Step 2: Clarify Work Before Coding
+## Clarify Work
 
 **Brownfield phase:** Assess / Foundations
 
@@ -85,7 +85,7 @@ manual review.
 start with clear, testable specifications rather than ambiguous descriptions that produce
 ambiguous code.
 
-## Step 3: Harden Guardrails
+## Harden Guardrails
 
 **Brownfield phase:** Foundations / Pipeline
 
@@ -119,7 +119,7 @@ The pipeline becomes the authority on code quality, not human reviewers. See
 [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) for how these guardrails
 extend to agentic CD.
 
-## Step 4: Reduce Delivery Friction
+## Reduce Delivery Friction
 
 **Brownfield phase:** Pipeline / Optimize
 
@@ -141,7 +141,7 @@ accelerates the code generation phase.
 production" is measured in minutes, not days. AI-generated code flows through the same pipeline
 as human-generated code with the same safety guarantees.
 
-## Step 5: Accelerate with AI Coding
+## Accelerate with AI
 
 **Brownfield phase:** Optimize / Continuous Deployment
 
@@ -150,8 +150,8 @@ The guardrails are in place. The pipeline is fast. Requirements are clear. The o
 change is deterministic regardless of whether a human or an AI wrote it.
 
 {{% alert title="Do not skip to 'let AI define the tests'" color="warning" %}}
-Teams commonly jump straight to AI-generated tests without the infrastructure from Steps 1-4
-underneath.
+Teams commonly jump straight to AI-generated tests without the infrastructure from the first four
+stages underneath.
 
 The distinction matters: humans must define what to test (scenarios, edge cases, acceptance
 criteria). An agent can generate the test code from those specifications, but only if it is
@@ -180,21 +180,21 @@ to measure progress.
 
 ## Mapping to Brownfield Phases
 
-| AI Adoption Step | Brownfield Phase | Key Connection |
-|-----------------|-----------------|----------------|
-| 1. Quality Tools | Assess | Use the [current-state assessment](../migrate-to-cd/migration-path/assess/) to evaluate AI tooling alongside delivery process gaps |
-| 2. Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) |
-| 3. Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
-| 4. Remove Friction | Pipeline / Optimize | [Replacing manual validations](../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
-| 5. Accelerate with AI | Optimize / CD | The [six first-class artifacts](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
+| AI Adoption Stage | Brownfield Phase | Key Connection |
+|-------------------|-----------------|----------------|
+| Quality Tools | Assess | Use the [current-state assessment](../migrate-to-cd/migration-path/assess/) to evaluate AI tooling alongside delivery process gaps |
+| Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) |
+| Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
+| Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations](../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
+| Accelerate with AI | Optimize / CD | The [six first-class artifacts](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
 
 ## Related Content
 
 - [Brownfield CD Overview](../migrate-to-cd/brownfield/) - the phased migration approach this roadmap parallels
-- [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Step 4
-- [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect (Step 2)
+- [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Reduce Delivery Friction
+- [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect during Clarify Work
 - [Agentic CD](../) - the destination for teams completing this roadmap
-- [Anti-Patterns](../anti-patterns/) - problems that Steps 3 and 4 are designed to eliminate
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Step 5's specification-first workflow requires
-- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Steps 3 and 4
+- [Anti-Patterns](../anti-patterns/) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
+- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
+- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress

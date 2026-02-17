@@ -1,7 +1,7 @@
 ---
 title: "Pipeline Enforcement and Expert Agents"
 linkTitle: "Pipeline Enforcement"
-weight: 3
+weight: 4
 description: >
   How quality gates enforce agentic CD constraints and how expert validation agents extend the pipeline beyond standard tooling.
 ---
@@ -14,13 +14,13 @@ For the framework overview, see [Agentic CD](../). For the artifacts the pipelin
 
 ## How Quality Gates Enforce Agentic CD
 
-Steps 8 and 10 of the [agentic CD workflow](../) are where the [Pipeline Reference Architecture](../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific agentic CD constraint:
+The Pipeline Verification and Deployment stages of the [agentic CD workflow](../) are where the [Pipeline Reference Architecture](../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific agentic CD constraint:
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
 - **CI Stage 1** (build + unit tests) validates the executable truth artifact. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
 - **CI Stage 2** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
 - **CI Stage 3** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
-- **Acceptance tests** validate the user-facing behavior artifact in a production-like environment. This is where the BDD scenarios from the workflow's Step 2 become automated verification.
+- **Acceptance tests** validate the user-facing behavior artifact in a production-like environment. This is where the BDD scenarios from Behavior Specification become automated verification.
 - **Production verification** (canary deployment, health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
 
 ### The Pre-Feature Baseline
@@ -53,7 +53,7 @@ Expert validation agents are new automated checks. Adopt them using the same [re
 
 1. **Identify** a manual validation currently performed by a human reviewer. For example, checking whether test code actually tests what the specification requires.
 2. **Automate** the check by deploying an expert agent as a pipeline gate. The agent runs on every change and produces a pass/fail result with reasoning.
-3. **Validate** by running the expert agent in parallel with the existing human review. Compare results across at least 20 review cycles. If the agent matches human decisions on 90%+ of cases and catches at least one issue the human missed, proceed to Step 4.
+3. **Validate** by running the expert agent in parallel with the existing human review. Compare results across at least 20 review cycles. If the agent matches human decisions on 90%+ of cases and catches at least one issue the human missed, proceed to the removal step.
 4. **Remove** the manual check once the expert agent has proven at least as effective as the human review it replaces.
 
 **Do not skip the parallel run.** Expert validation agents need calibration. An agent that flags too many false positives trains the team to ignore it. An agent that misses real issues creates false confidence. The parallel run is where you tune the agent's prompts, context, and thresholds until its judgment matches or exceeds human review.
@@ -69,4 +69,4 @@ With the pipeline and expert agents in place, the next question is what goes wro
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the full quality gate sequence
 - [Replacing Manual Validations](../../migrate-to-cd/brownfield/replacing-manual-validations/) - the replacement cycle for adopting automated checks
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - what goes wrong and how to measure progress
-- [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence, especially Steps 3 and 4
+- [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence, especially Harden Guardrails and Reduce Delivery Friction
