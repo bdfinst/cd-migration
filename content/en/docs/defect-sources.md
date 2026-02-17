@@ -18,6 +18,24 @@ The goal is systems thinking: detect issues as early as possible in the value st
 - No marker = AI assists at the current detection point but does not shift it earlier
 {{% /pageinfo %}}
 
+## How to Use This Catalog
+
+1. **Pick your pain point.** Find the category where your team loses the most time to defects or rework. Start there, not at the top.
+2. **Focus on the Systemic Prevention column.** Automated detection catches defects faster, but systemic prevention eliminates entire categories. Prioritize the prevention fix for each issue you selected.
+3. **Measure before and after.** Track defect escape rate by category and time-to-detection. If the systemic fix is working, both metrics improve within weeks.
+
+**Categories:**
+[Product & Discovery](#product--discovery) |
+[Integration & Boundaries](#integration--boundaries) |
+[Knowledge & Communication](#knowledge--communication) |
+[Change & Complexity](#change--complexity) |
+[Testing & Observability Gaps](#testing--observability-gaps) |
+[Process & Deployment](#process--deployment) |
+[Data & State](#data--state) |
+[Dependency & Infrastructure](#dependency--infrastructure) |
+[Security & Compliance](#security--compliance) |
+[Performance & Resilience](#performance--resilience)
+
 <div class="detection-sequence" role="img" aria-label="Detection stages from earliest to latest: Discovery, Requirements, Design, Coding, Pre-commit, CI, Acceptance Tests, Production">
   <div class="detection-sequence__track">
     <span class="detection-stage" data-cost="1">Discovery</span>
@@ -160,12 +178,6 @@ budgets, and automated enforcement - not periodic manual testing.
 | Missing timeout and deadline enforcement | Pre-commit | Static analysis for unbounded calls, integration test timeout verification | <span class="ai-high">&#9650;</span> Identify call chains with missing or inconsistent timeout propagation | Default timeouts on all external calls; deadline propagation across service boundaries |
 | Slow user-facing response times | CI | Real user monitoring, synthetic transaction baselines, web vitals tracking | Correlate frontend and backend telemetry to pinpoint latency sources | Response time SLOs per user-facing path; performance budgets for page weight and API latency |
 | Missing graceful degradation | Design | Chaos engineering platforms, failure injection, circuit breaker verification | <span class="ai-high">&#9650;</span> Review architectures for single points of failure and missing fallback paths | Design for partial failure; circuit breakers and fallbacks as defaults; game day exercises |
-
-## How to Use This Catalog
-
-1. **Pick your pain point.** Find the category where your team loses the most time to defects or rework. Start there, not at the top.
-2. **Focus on the Systemic Prevention column.** Automated detection catches defects faster, but systemic prevention eliminates entire categories. Prioritize the prevention fix for each issue you selected.
-3. **Measure before and after.** Track defect escape rate by category and time-to-detection. If the systemic fix is working, both metrics improve within weeks.
 
 {{% alert title="Where AI helps - and where it does not" %}}
 AI adds the most value where detection requires reasoning across multiple signals that existing
