@@ -29,7 +29,7 @@ path to solving it.
 - **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
 - **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
 - **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
-- **[AI Adoption Roadmap](ai-adoption-roadmap/)** - A prescriptive sequence for incorporating AI into delivery safely.
+- **[Agentic CD](ai-adoption-roadmap/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
 - **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
 - **[Practices](practices/)** - Core CD practice definitions from MinimumCD.
 - **[Metrics](metrics/)** - Delivery metrics definitions.

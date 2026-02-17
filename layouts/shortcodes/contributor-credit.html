@@ -1,0 +1,7 @@
+{{- $key := .Get 0 -}}
+{{- $contributor := index .Site.Data.contributors $key -}}
+{{- if $contributor -}}
+<a href="{{ $contributor.contact }}">{{ $contributor.name }}</a>
+{{- else -}}
+{{ $key }}
+{{- end -}}

@@ -165,3 +165,4 @@ architecture patterns in detail.
 - [Immutable Artifacts](../practices/immutable-artifacts/) - build once, deploy everywhere
 - [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/) - the migration phase that establishes the pipeline
 - [Slow Pipelines](../symptoms/flow/slow-pipelines/) - what happens when pipeline architecture is not optimized
+- [Agentic CD](../ai-adoption-roadmap/) - additional pipeline constraints when AI agents contribute changes

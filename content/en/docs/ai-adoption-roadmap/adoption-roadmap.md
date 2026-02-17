@@ -1,19 +1,19 @@
 ---
 title: "AI Adoption Roadmap"
 linkTitle: "AI Adoption Roadmap"
-weight: 7
+weight: 1
 description: >
   A prescriptive guide for incorporating AI into your delivery process safely - remove friction and add safety before accelerating with AI coding.
 ---
 
 {{% pageinfo %}}
-Adapted from [Incorporating AI Without Crashing](https://bryanfinster.substack.com/p/incorporating-ai-without-crashing)
+Contributed by {{% contributor-credit "bryan-finster" %}}.
 
-AI adoption is chaos testing for your organization. It does not create new problems - it reveals
+AI adoption stress-tests your organization. It does not create new problems - it reveals
 existing ones. Teams that try to accelerate with AI before fixing their delivery process get the
-same result as putting a bigger engine in a car with no way to steer or stop: you go faster,
-briefly, and then something expensive happens. This page provides the prescriptive sequence for
-incorporating AI safely, mirroring the [brownfield migration phases](migrate-to-cd/brownfield/).
+same result as putting a bigger engine in a car with no brakes. This page provides the
+prescriptive sequence for incorporating AI safely, mirroring the
+[brownfield migration phases](../migrate-to-cd/brownfield/).
 {{% /pageinfo %}}
 
 ## The Key Insight
@@ -41,8 +41,7 @@ graph LR
     style E fill:#e6f4ea,stroke:#137333
 ```
 
-Each step builds on the previous one. Skipping steps means AI amplifies your weaknesses
-instead of your strengths.
+Quality Tools, Clarify Work, Harden Guardrails, Remove Friction, then Accelerate with AI. Skipping steps means AI amplifies your weaknesses instead of your strengths.
 
 ## Step 1: Start with Quality Tools
 
@@ -61,8 +60,8 @@ more work than it saves.
 - Establish a baseline: measure how much rework AI-generated code requires before and after
   changing tools. If rework exceeds 20% of generated output, the tool is a net negative.
 
-**What this enables:** A foundation of AI tooling that generates correct output more often than
-not, so subsequent steps build on working code rather than compensating for broken code.
+**What this enables:** AI tooling that generates correct output more often than not. Subsequent
+steps build on working code rather than compensating for broken code.
 
 ## Step 2: Clarify Work Before Coding
 
@@ -70,7 +69,7 @@ not, so subsequent steps build on working code rather than compensating for brok
 
 Use AI to improve requirements before code is written, not to write code from vague requirements.
 Ambiguous requirements are the single largest source of defects
-(see [Systemic Defect Fixes](defect-sources/)), and AI can detect ambiguity faster than
+(see [Systemic Defect Fixes](../defect-sources/)), and AI can detect ambiguity faster than
 manual review.
 
 **What to do:**
@@ -110,13 +109,15 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests](testing/) at service boundaries. AI-generated code is
+- Add [contract tests](../testing/) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in minutes, not hours. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.
 
 **What this enables:** A safety net that catches mistakes regardless of who (or what) made them.
-The pipeline becomes the authority on code quality, not human reviewers.
+The pipeline becomes the authority on code quality, not human reviewers. See
+[Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) for how these guardrails
+extend to agentic CD.
 
 ## Step 4: Reduce Delivery Friction
 
@@ -129,7 +130,7 @@ accelerates the code generation phase.
 **What to do:**
 
 - Remove manual approval gates that add wait time without adding safety
-  (see [Replacing Manual Validations](migrate-to-cd/brownfield/replacing-manual-validations/)).
+  (see [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/)).
 - Fix fragile test and staging environments that cause intermittent failures.
 - Shorten branch lifetimes. If branches live longer than a day, integration pain will increase
   as AI accelerates code generation.
@@ -137,8 +138,8 @@ accelerates the code generation phase.
   that will be exposed when code moves faster.
 
 **What this enables:** A delivery pipeline where the time from "code complete" to "running in
-production" is measured in minutes, not days. When this path is fast and reliable, AI-generated
-code flows through the same pipeline as human-generated code with the same safety guarantees.
+production" is measured in minutes, not days. AI-generated code flows through the same pipeline
+as human-generated code with the same safety guarantees.
 
 ## Step 5: Accelerate with AI Coding
 
@@ -148,20 +149,25 @@ Now - and only now - expand AI use to code generation, refactoring, and autonomo
 The guardrails are in place. The pipeline is fast. Requirements are clear. The outcome of every
 change is deterministic regardless of whether a human or an AI wrote it.
 
-{{% alert title="Do not skip to 'let AI write the tests'" color="warning" %}}
+{{% alert title="Do not skip to 'let AI define the tests'" color="warning" %}}
 Teams commonly jump straight to AI-generated tests without the infrastructure from Steps 1-4
-underneath. When you have proper skill installation - developers who understand testing
-principles, agent orchestration that enforces workflow constraints, and pipelines that validate
-every change - the testing principles do not change much. AI just applies them faster. But teams
-without that foundation get tests that look right and verify nothing. The AI is not the problem.
-The missing infrastructure is.
+underneath.
+
+The distinction matters: humans must define what to test (scenarios, edge cases, acceptance
+criteria). An agent can generate the test code from those specifications, but only if it is
+validated for behavior focus and spec fidelity. See
+[Executable Truth](../first-class-artifacts/#4-executable-truth) for the validation properties.
+
+Without that foundation, teams get tests that look right and verify nothing. The AI is not the
+problem. The missing specifications and validation are.
 {{% /alert %}}
 
 **What to do:**
 
-- Use AI for code generation with the test-first workflow described in
-  [Agentic CD](migrate-to-cd/migration-path/continuous-deployment/agentic-cd/). Write tests first, then let
-  AI generate the implementation.
+- Use AI for code generation with the specification-first workflow described in
+  [the agentic CD workflow](../). Define test scenarios first, let AI generate
+  the test code (validated for behavior focus and spec fidelity), then let AI generate
+  the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
   These are high-value, low-risk tasks where AI excels.
 - Use AI to analyze incidents and suggest fixes, with the same pipeline validation applied to
@@ -169,36 +175,26 @@ The missing infrastructure is.
 
 **What this enables:** AI-accelerated development where the speed increase translates to faster
 delivery, not faster defect generation. The pipeline enforces the same quality bar regardless of
-the author.
+the author. See [Pitfalls and Metrics](../pitfalls-and-metrics/) for what to watch for and how
+to measure progress.
 
 ## Mapping to Brownfield Phases
 
 | AI Adoption Step | Brownfield Phase | Key Connection |
 |-----------------|-----------------|----------------|
-| 1. Quality Tools | Assess | Evaluate tooling as part of current-state assessment |
-| 2. Clarify Work | Assess / Foundations | Better requirements feed better work decomposition |
-| 3. Harden Guardrails | Foundations / Pipeline | Same testing and pipeline work, with AI-readiness as additional motivation |
-| 4. Remove Friction | Pipeline / Optimize | Same automation and flow optimization, unblocking AI-speed delivery |
-| 5. Accelerate with AI | Optimize / CD | AI coding becomes safe when the pipeline is deterministic and fast |
-
-{{% alert title="The Destination: Agentic CD" %}}
-The end state of this roadmap is a delivery pipeline where AI agents can contribute code with the
-same safety guarantees as human developers. This is
-[Agentic CD](migrate-to-cd/migration-path/continuous-deployment/agentic-cd/) - the extension of
-continuous deployment to handle agent-generated changes. You do not need to be at CD maturity to
-start the AI adoption roadmap, but the roadmap leads there.
-{{% /alert %}}
+| 1. Quality Tools | Assess | Use the [current-state assessment](../migrate-to-cd/migration-path/assess/) to evaluate AI tooling alongside delivery process gaps |
+| 2. Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) |
+| 3. Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
+| 4. Remove Friction | Pipeline / Optimize | [Replacing manual validations](../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
+| 5. Accelerate with AI | Optimize / CD | The [six first-class artifacts](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
 
 ## Related Content
 
-- [Brownfield CD Overview](migrate-to-cd/brownfield/) - The phased migration approach this roadmap parallels
-- [Replacing Manual Validations](migrate-to-cd/brownfield/replacing-manual-validations/) - The core mechanical cycle for Step 4
-- [Systemic Defect Fixes](defect-sources/) - Catalog of defect causes that AI can help detect (Step 2)
-- [Agentic CD](migrate-to-cd/migration-path/continuous-deployment/agentic-cd/) - The destination for teams completing this roadmap
-- [Anti-Patterns](anti-patterns/) - Problems that Steps 3 and 4 are designed to eliminate
-
----
-
-> This content is adapted from
-> [Incorporating AI Without Crashing](https://bryanfinster.substack.com/p/incorporating-ai-without-crashing)
-> by Bryan Finster.
+- [Brownfield CD Overview](../migrate-to-cd/brownfield/) - the phased migration approach this roadmap parallels
+- [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Step 4
+- [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect (Step 2)
+- [Agentic CD](../) - the destination for teams completing this roadmap
+- [Anti-Patterns](../anti-patterns/) - problems that Steps 3 and 4 are designed to eliminate
+- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Step 5's specification-first workflow requires
+- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Steps 3 and 4
+- [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress

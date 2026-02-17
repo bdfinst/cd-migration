@@ -188,6 +188,12 @@ Use this reference to decide what type of test to write and where it runs in you
 | [Test Doubles](test-doubles/) | Patterns for isolating dependencies in tests |
 | [Feedback Speed](feedback-speed/) | Why test suite speed matters and the cognitive science behind the targets |
 
+## Related Content
+
+- [Agentic CD](../ai-adoption-roadmap/) - How the executable truth artifact makes testing the constraint that governs agent-generated code
+- [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Establishing testing practices as part of CD migration
+- [High Coverage but Ineffective Tests](../symptoms/testing/high-coverage-ineffective-tests/) - When tests pass but do not catch real defects
+
 ---
 
 > This content is adapted from the [Dojo Consortium](https://dojoconsortium.org),

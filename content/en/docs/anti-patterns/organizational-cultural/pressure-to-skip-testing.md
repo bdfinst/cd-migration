@@ -215,3 +215,4 @@ raise it with engineering leadership.
 - [Manual Testing Only](../../testing/manual-testing-only/) - Where this anti-pattern ends up if left unchecked
 - [Flaky Tests](../../../symptoms/testing/flaky-tests/) - Another way trust in the test suite erodes
 - [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using data to make the case for quality practices
+- [Agentic CD](../../../ai-adoption-roadmap/) - How agentic CD counters this anti-pattern by making test-first workflow mandatory

@@ -2,6 +2,7 @@
 
 ## Content Style
 
+- **CD means continuous delivery.** Only expand as "continuous deployment" when specifically discussing the practice of auto-deploying every commit. In all other contexts, "CD" = "continuous delivery."
 - **No endashes or emdashes.** Use a plain hyphen (`-`) or rewrite the sentence. Never use `–` (endash) or `—` (emdash) in any content file.
 - **No emojis.** Never use emoji characters in any content file.
 - **Validate on every page.** Before finishing work on any content file, scan it for endash (`–`), emdash (`—`), and emoji characters. Fix any violations before considering the work complete.
@@ -16,6 +17,12 @@ When removing `draft: true` from a page:
 2. Replace the `under-construction` link with the original target path
 3. Run `npm test` to verify no broken links remain
 4. If the newly activated page itself links to other draft pages, replace those with under-construction links using the same comment pattern
+
+## Contributor Attribution
+
+- When a content page includes work contributed by a named individual listed in `data/contributors.yml`, use the `contributor-credit` shortcode to credit them.
+- Place credit in the `pageinfo` banner at the top of the page.
+- Content moved between cd-manifesto and cd-migration is internal reorganization. Use "contributed by" not "adapted from MinimumCD.org".
 
 ## SEO and LLM Discoverability
 
