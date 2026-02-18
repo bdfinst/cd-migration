@@ -293,3 +293,4 @@ Small batches often require deploying incomplete features to production. [Featur
 - [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern of splitting work by layer instead of by value
 - [Work Decomposition](../../foundations/work-decomposition/) - the foundational practice for breaking work into small deliverable pieces
 - [Feature Flags](../feature-flags/) - the mechanism that makes deploying incomplete small batches safe
+- [Small-Batch Agent Sessions](../../../../agentic-cd/small-batch-sessions/) - applying the same one-scenario-one-commit discipline to agent-generated work

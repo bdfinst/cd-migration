@@ -37,6 +37,7 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 4. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
 5. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether ACD is working
 6. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary token consumption without sacrificing quality
+7. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions so context stays manageable and commits stay small
 
 ## ACD Extensions to MinimumCD
 
