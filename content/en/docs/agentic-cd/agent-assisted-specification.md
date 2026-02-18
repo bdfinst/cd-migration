@@ -28,7 +28,7 @@ The intent description does not need to be perfect on the first draft. Write a r
 
 **Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated constraint.
 
-Example prompt:
+Example [prompt](../../glossary/#prompt):
 
 ```
 Here is the intent description for my next change. Identify any

@@ -17,14 +17,14 @@ A token is roughly three-quarters of a word in English. Billing, latency, and co
 Three factors determine your token costs:
 
 - **Input vs. output pricing** - Output tokens cost 2-5x more than input tokens because generating tokens is computationally more expensive than reading them. Instructions to "be concise" yield higher returns than most other optimizations because they directly reduce the expensive side of the equation.
-- **Context window size** - Large context windows (150,000+ tokens) create false confidence. Extended contexts increase latency, increase costs, and can degrade model performance when relevant information is buried mid-context.
+- **[Context window](../../glossary/#context-window) size** - Large context windows (150,000+ tokens) create false confidence. Extended contexts increase latency, increase costs, and can degrade model performance when relevant information is buried mid-context.
 - **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-leverage cost decisions.
 
 ## How Agentic Systems Multiply Token Costs
 
 Single-turn interactions have predictable, bounded token usage. Agentic systems do not.
 
-Context grows across orchestrator steps. Sub-agents receive oversized context bundles containing everything the orchestrator knows, not just what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
+Context grows across [orchestrator](../../glossary/#orchestrator) steps. [Sub-agents](../../glossary/#sub-agent) receive oversized context bundles containing everything the orchestrator knows, not just what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
 
 **Every agent boundary is a token budget boundary.** What passes between components represents a cost decision. Designing agent interfaces means deciding what information transfers and what gets left behind.
 
@@ -35,7 +35,7 @@ Context grows across orchestrator steps. Sub-agents receive oversized context bu
 Strip context that does not change agent behavior. Common sources of dead weight:
 
 - Verbose examples that could be summarized
-- Repeated instructions across system prompt and user turns
+- Repeated instructions across [system prompt](../../glossary/#system-prompt) and user turns
 - Full conversation history when only recent turns are relevant
 - Raw data dumps when a structured summary would serve
 
@@ -59,7 +59,7 @@ This applies directly to the [six first-class artifacts](../first-class-artifact
 
 ### 4. Strategic Prompt Caching
 
-Prompt caching stores stable prompt sections server-side, reducing input costs on repeated requests. To maximize cache effectiveness:
+[Prompt caching](../../glossary/#prompt-caching) stores stable [prompt](../../glossary/#prompt) sections server-side, reducing input costs on repeated requests. To maximize cache effectiveness:
 
 - Place system prompts, tool definitions, and static instructions at the top of the context
 - Group stable content together so cache hits cover the maximum token span
