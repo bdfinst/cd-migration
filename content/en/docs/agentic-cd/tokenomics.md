@@ -113,7 +113,7 @@ Agentic CD (ACD) creates predictable token cost patterns because the workflow is
 
 **Implementation:** The implementation agent receives the test specification and feature description. It does not need the intent description (that informed the specification). Pass what the agent needs for this step only.
 
-**Expert validation agents:** Validation agents running in parallel as pipeline gates should receive the artifact being validated plus the specification it must conform to - not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history.
+**Expert validation agents:** Validation agents running in parallel as pipeline gates should receive the artifact being validated plus the specification it must conform to - not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history. For a concrete application of model routing, structured outputs, prompt caching, and per-session measurement to a specific agent configuration, see [Agent Configuration](../agent-configuration/).
 
 **Review queues:** Agent-generated change volume can inflate review-time token costs when reviewers use AI-assisted review tools. WIP limits on the agent's change queue ([see Pitfalls](../pitfalls-and-metrics/#2-review-queue-backs-up-from-agent-generated-volume)) also function as a cost control on downstream AI review consumption.
 
@@ -135,6 +135,7 @@ Ignoring tokenomics produces the same class of problems as ignoring latency: sys
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - expert agents that run as pipeline gates and whose own token costs should be managed
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including review queue backup that compound token costs
 - [AI Adoption Roadmap](../adoption-roadmap/) - the sequence of prerequisites before optimizing agentic workflows
+- [Agent Configuration](../agent-configuration/) - a concrete application of model routing, structured outputs, prompt caching, and per-session measurement
 
 ---
 

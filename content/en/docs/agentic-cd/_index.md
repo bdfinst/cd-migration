@@ -73,16 +73,16 @@ When an AI agent contributes to a CD pipeline, the workflow extends the standard
 
 | Stage | Actor | Activity |
 |-------|-------|----------|
-| Intent Definition | HUMAN | Define Intent Description (why the change exists) |
-| Behavior Specification | HUMAN | Define User-Facing Behavior (BDD scenarios, the functional tests) |
-| Architecture Specification | HUMAN | Define Feature Description (architecture, constraints, performance budgets) |
-| Acceptance Criteria | HUMAN | Define acceptance criteria for non-functional tests (latency thresholds, security requirements, resource limits) |
-| Test Generation | AGENT | Generate test code from Behavior Specification, Architecture Specification, and Acceptance Criteria |
-| Test Validation | HUMAN → AGENT | Validate test code is decoupled from implementation and faithful to specs |
-| Implementation | AGENT | Generate implementation |
-| Pipeline Verification | PIPELINE | Validate implementation against executable truth (automated tests) |
-| Code Review | HUMAN → AGENT | Review implementation (code review) |
-| Deployment | PIPELINE | Deploy (same pipeline as any other change) |
+| Intent Definition | Human | Define Intent Description (why the change exists) |
+| Behavior Specification | Human | Define User-Facing Behavior (BDD scenarios, the functional tests) |
+| Architecture Specification | Human | Define Feature Description (architecture, constraints, performance budgets) |
+| Acceptance Criteria | Human | Define acceptance criteria for non-functional tests (latency thresholds, security requirements, resource limits) |
+| Test Generation | Agent | Generate test code from Behavior Specification, Architecture Specification, and Acceptance Criteria |
+| Test Validation | Human → Agent | Validate test code is decoupled from implementation and faithful to specs |
+| Implementation | Agent | Generate implementation |
+| Pipeline Verification | Pipeline | Validate implementation against executable truth (automated tests) |
+| Code Review | Human → Agent | Review implementation (code review) |
+| Deployment | Pipeline | Deploy (same pipeline as any other change) |
 
 Behavior Specification, Architecture Specification, and Acceptance Criteria together define the complete Executable Truth specification. Behavior Specification covers what the user experiences (BDD scenarios become the functional tests). Architecture Specification and Acceptance Criteria cover what the system must satisfy beyond user-visible behavior: performance budgets, security constraints, architectural boundaries, and operational requirements.
 
@@ -100,8 +100,8 @@ The target state replaces manual review with [expert validation agents](pipeline
 
 | Stage | Starting State | Target State |
 |-------|---------------|-------------|
-| Test Validation | HUMAN validates test code | **Expert agent** validates test code is decoupled from implementation and faithful to specs; human reviews exceptions |
-| Code Review | HUMAN reviews implementation | **Expert agent** validates architectural conformance and intent alignment; human reviews agent-flagged concerns |
+| Test Validation | Human validates test code | **Expert agent** validates test code is decoupled from implementation and faithful to specs; human reviews exceptions |
+| Code Review | Human reviews implementation | **Expert agent** validates architectural conformance and intent alignment; human reviews agent-flagged concerns |
 
 1. Start with human validation only (the workflow as shown above)
 2. Deploy an expert agent that runs in parallel with the human reviewer

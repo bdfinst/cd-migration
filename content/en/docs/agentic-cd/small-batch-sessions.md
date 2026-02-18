@@ -12,7 +12,7 @@ One BDD scenario. One agent session. One commit. This is the same discipline CI 
 
 ## The Parallel with CI
 
-In continuous integration, the commit is the unit of integration. A developer does not write an entire feature and commit at the end. They write one test, make it pass, commit, then repeat. The commit creates a checkpoint: the pipeline is green, the change is reviewable, and the next unit can start cleanly.
+In continuous integration, the commit is the unit of integration. A developer does not write an entire feature and commit at the end. They write one small piece of tested functionality that can be deployed, commit to the trunk, then repeat. The commit creates a checkpoint: the pipeline is green, the change is reviewable, and the next unit can start cleanly.
 
 Agent sessions follow the same discipline. The session is the unit of context. An agent does not implement an entire feature in one session - context accumulates, performance degrades, and the scope of any failure grows. Each session implements one behavior, ends with a commit, and resets context before the next session begins.
 
