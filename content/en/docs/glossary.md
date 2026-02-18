@@ -25,6 +25,19 @@ Referenced in:
 [Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
+### Agent (AI)
+
+An AI system that uses tool calls in a loop to complete multi-step tasks autonomously. Unlike a
+single LLM call that returns a response, an agent can invoke tools, observe results, and decide
+what to do next until a goal is met or a stopping condition is reached. An agent's behavior is
+shaped by its prompt - the complete set of instructions, context, and constraints it receives at
+the start of a session. See [Agentic CD](../agentic-cd/).
+
+Referenced in:
+[ACD](../agentic-cd/),
+[Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
+[Tokenomics](../agentic-cd/tokenomics/)
+
 ### Artifact
 
 A packaged, versioned output of a build process (e.g., a container image, JAR file, or binary).
@@ -155,6 +168,30 @@ During a CD migration, your job is to find and fix constraints in order of impac
 
 Referenced in:
 [Value Stream Mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/)
+
+### Context (LLM)
+
+The complete assembled input provided to an LLM for a single inference call. Context includes
+the system prompt, tool definitions, any reference material or documents, conversation history,
+and the current user request. "Context" and "prompt" are often used interchangeably; the
+distinction is that "context" emphasizes what information is present, while "prompt" emphasizes
+the structured input as a whole. Context is measured in [tokens](#token). As context grows, costs
+and latency increase and performance can degrade when relevant information is buried far from
+the end of the context. See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/)
+
+### Context Window
+
+The maximum number of tokens an LLM can process in a single call, spanning both input and
+output. The context window is a hard limit; exceeding it requires truncation or a redesigned
+approach. Large context windows (150,000+ tokens) create false confidence - more available
+space does not mean better performance, and filling the window increases both latency and cost.
+See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/)
 
 ### Continuous Deployment
 
@@ -333,6 +370,20 @@ Referenced in:
 [Multi-Team Pipeline](../pipeline-reference-architecture/multi-team/),
 [Premature Microservices](../anti-patterns/architecture/premature-microservices/)
 
+## O
+
+### Orchestrator
+
+An agent that coordinates the work of other agents. The orchestrator receives a high-level goal,
+breaks it into sub-tasks, delegates those sub-tasks to specialized [sub-agents](#sub-agent), and
+assembles the results. Because orchestrators accumulate context across multiple steps, context
+hygiene at agent boundaries is especially important - what the orchestrator passes to each
+sub-agent is a cost and quality decision. See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[ACD](../agentic-cd/),
+[Tokenomics](../agentic-cd/tokenomics/)
+
 ## P
 
 ### Pipeline
@@ -353,6 +404,33 @@ of deployment failures. See [Production-Like Environments](../practices/producti
 Referenced in:
 [Staging Passes, Production Fails](../symptoms/deployment/staging-passes-production-fails/),
 [Environment-Dependent Failures](../symptoms/testing/environment-dependent-failures/)
+
+### Prompt
+
+The complete structured input provided to an LLM for a single inference call. A prompt is not
+a one- or two-sentence question. In production agentic systems, a prompt is a composed document
+that typically includes: a system instruction block (role definition, constraints, output format
+requirements), tool definitions, relevant context (documents, code, conversation history), and
+the user's request or task description. The system instruction block and tool definitions alone
+can consume thousands of tokens before any user content is included. Understanding what a prompt
+actually contains is a prerequisite for effective tokenomics. See
+[Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/),
+[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/)
+
+### Prompt Caching
+
+A server-side optimization where stable portions of a prompt are stored and reused across
+repeated calls instead of being processed as new input each time. Effective caching requires
+placing static content (system instructions, tool definitions, reference documents) at the
+beginning of the prompt so cache hits cover the maximum token span. Dynamic content (user
+request, current state) goes at the end where it does not invalidate the cached prefix.
+See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/)
 
 ## R
 
@@ -388,6 +466,30 @@ Referenced in:
 [Velocity as Individual Metric](../anti-patterns/organizational-cultural/velocity-as-individual-metric/),
 [Team Burnout](../symptoms/visibility/team-burnout/)
 
+### Sub-agent
+
+A specialized agent invoked by an [orchestrator](#orchestrator) to perform a specific,
+well-defined task. Sub-agents should receive only the context relevant to their task - not
+the orchestrator's full accumulated context. Passing oversized context bundles to sub-agents
+is a common source of unnecessary token consumption and can degrade performance by burying
+relevant information. See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[ACD](../agentic-cd/),
+[Tokenomics](../agentic-cd/tokenomics/)
+
+### System Prompt
+
+The static, stable instruction block placed at the start of a [prompt](#prompt) that establishes
+the model's role, constraints, output format requirements, and tool definitions. Unlike the
+user-provided portion of the prompt, system prompts change rarely between calls and are the
+primary candidates for [prompt caching](#prompt-caching). Keeping the system prompt concise and
+placing it first maximizes cache effectiveness and reduces per-call input costs.
+See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/)
+
 ## T
 
 ### TBD (Trunk-Based Development)
@@ -410,6 +512,18 @@ required in Phase 1.
 
 Referenced in:
 [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
+
+### Token
+
+The billing and capacity unit for LLMs. A token is roughly three-quarters of an English word.
+All LLM costs, latency, and context limits are measured in tokens, not words, sentences, or
+API calls. Input and output tokens are priced and counted separately. Output tokens typically
+cost 2-5x more than input tokens because generating tokens is computationally more expensive
+than reading them. Frontier models cost 10-20x more per token than smaller alternatives.
+See [Tokenomics](../agentic-cd/tokenomics/).
+
+Referenced in:
+[Tokenomics](../agentic-cd/tokenomics/)
 
 ### Toil
 

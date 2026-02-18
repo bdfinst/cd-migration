@@ -36,6 +36,7 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 3. **[The Six First-Class Artifacts](first-class-artifacts/)** - detailed definitions with examples for each artifact that agents and humans must maintain
 4. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
 5. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether ACD is working
+6. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary token consumption without sacrificing quality
 
 ## ACD Extensions to MinimumCD
 
