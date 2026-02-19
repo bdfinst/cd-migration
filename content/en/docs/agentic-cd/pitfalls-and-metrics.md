@@ -14,7 +14,7 @@ These pitfalls come from teams that adopted [agentic continuous delivery](../../
 
 ### 1. Agent defines its own test scenarios
 
-**The failure is not the [agent](../glossary/#agent-ai) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
+**The failure is not the [agent](../../glossary/#agent-ai) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
 
@@ -96,7 +96,7 @@ Agents generate code faster than humans refactor it. Without deliberate maintena
 
 ### Keep skills and prompts under version control
 
-The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class [artifacts](../../glossary/#artifact). They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
+The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class artifacts. They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
 
 Review your agent configuration on the same cadence you review the pipeline. When an agent produces unexpected output, check the configuration before assuming the model changed.
 

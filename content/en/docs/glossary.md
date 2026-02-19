@@ -479,8 +479,9 @@ The ability to revert a production deployment to a previous known-good state. CD
 automated rollback that takes minutes, not hours. See [Rollback](../migrate-to-cd/migration-path/pipeline/rollback/).
 
 Referenced in:
-[Rollback (Practice)](../practices/rollback/),
-[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/)
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Rollback (Practice)](../practices/rollback/)
 
 ## S
 
