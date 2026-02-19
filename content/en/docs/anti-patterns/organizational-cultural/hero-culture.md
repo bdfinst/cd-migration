@@ -78,6 +78,8 @@ Identify where single-person dependencies exist before attempting to fix them.
 4. Ask the hero to log their interruptions for one week: every time someone asks them something, record the question and time spent.
 5. Calculate the hero's maintenance and incident time as a percentage of their total working hours.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "The hero is fine with the workload." | The hero's experience of the work is not the only risk. A team that cannot function without one person cannot grow, cannot rotate the hero off the team, and cannot survive the hero leaving. |
@@ -90,6 +92,8 @@ Identify where single-person dependencies exist before attempting to fix them.
 3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero for two weeks, then take primary ownership with the hero as backup.
 4. Add a "could someone else do this?" criterion to the definition of done. If a feature or operational change requires the hero to deploy or maintain it, it is not done.
 5. Schedule explicit knowledge transfer sessions - not all-hands training, but targeted 30-minute sessions where the hero explains one specific thing to two or three team members.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|
@@ -104,6 +108,8 @@ Identify where single-person dependencies exist before attempting to fix them.
 4. Remove the hero from informal escalation paths. When the hero gets a direct message asking about a system they are no longer the owner of, they respond with "ask the deputy owner" rather than answering.
 5. Measure and celebrate knowledge distribution: track how many team members have independently resolved incidents in each system over the quarter.
 6. Change recognition practices to reward documentation, runbook writing, and teaching - not just firefighting.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

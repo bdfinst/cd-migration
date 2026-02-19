@@ -229,6 +229,8 @@ Distribute deployment authority explicitly.
 2. The team agrees on the automated criteria that constitute approval.
 3. No individual holds veto power over a passing pipeline.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Automated tests can't replace human judgment" | Correct. But most of what the manual gate tests is not judgment - it is regression verification. Narrow the manual review scope to the cases that genuinely require judgment. For everything else, automated tests are more thorough and more consistent than a manual check. |

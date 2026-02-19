@@ -79,6 +79,8 @@ Most manual approval processes are not required by the regulation they claim to 
 4. Request a meeting with your compliance officer or external auditor to review your findings. Many compliance officers are receptive to automated controls because automated evidence is more reliable for audit purposes.
 5. Document the specific regulatory language and the compliance team's interpretation as the baseline for redesigning your controls.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Our auditors said we need a CAB." | Ask your auditors to cite the specific requirement. Most will describe the evidence they need, not the mechanism. Automated pipeline controls with immutable audit logs satisfy most regulatory evidence requirements. |
@@ -92,6 +94,8 @@ Most manual approval processes are not required by the regulation they claim to 
 4. Generate deployment records automatically from the pipeline: who approved the pull request, what tests ran, what artifact was deployed, to which environment, at what time. This is the audit evidence.
 5. Create a risk-tiering system: low-risk changes (non-production-data services, documentation, internal tools) go through the standard pipeline; high-risk changes (schema migrations, authentication changes, PII-handling code) require additional automated checks and a second human review.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Automated evidence might not satisfy auditors." | Engage your auditors in the design process. Show them what the pipeline audit log captures. Most auditors prefer machine-generated evidence to manually assembled spreadsheets because it is harder to falsify. |
@@ -104,6 +108,8 @@ Most manual approval processes are not required by the regulation they claim to 
 3. Define the metrics that demonstrate control effectiveness: change fail rate, security finding rate, rollback frequency. Report these to the compliance team and auditors as evidence that the controls are working.
 4. Archive the CAB meeting minutes alongside the automated audit logs to maintain continuity of audit evidence during the transition.
 5. Run the automated controls in parallel with the CAB process for one quarter before fully transitioning, so the compliance team can verify that the automated evidence is equivalent or better.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

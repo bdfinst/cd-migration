@@ -77,6 +77,8 @@ Before making structural changes, quantify the cost of the current model to buil
 4. Map which test types are currently automated versus manual and estimate the manual test time per sprint.
 5. Share these numbers with both development and QA leadership as the baseline for improvement.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to leverage their expertise better, not eliminate it. |
@@ -91,6 +93,8 @@ Before making structural changes, quantify the cost of the current model to buil
 5. Redirect QA engineer effort from manual verification to test strategy, automation framework maintenance, and exploratory testing of new features.
 6. Remove the separate QA queue from the board and replace it with a "verified done" column that requires automated test passage.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Developers can't write good tests." | Most cannot yet, because they were never expected to. Start with one pair this sprint - a QA engineer and a developer writing tests together for a single story. Track defect rates on that story versus unpairing stories. The data will make the case for expanding. |
@@ -103,6 +107,8 @@ Before making structural changes, quantify the cost of the current model to buil
 3. Create a test results dashboard visible to the whole team, showing coverage trends and failure rates over time.
 4. Establish a policy that no story can be demonstrated in a sprint review unless its automated tests pass in the pipeline.
 5. Schedule a monthly retrospective specifically on test coverage gaps - what categories of defects are still reaching production and what tests would have caught them.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

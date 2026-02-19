@@ -77,6 +77,8 @@ The cultural shift matters as much as the technical one. Security must be a shar
 4. Identify your highest-risk code surfaces: authentication, authorization, data validation, cryptography, external API calls. These are where automated scanning generates the most value.
 5. Survey the development team on security awareness: do developers know what OWASP Top 10 is? Could they recognize a common injection vulnerability in code review?
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "We already do security reviews. This isn't a problem." | The question is not whether you do security reviews but when. Pull the last six months of security findings and check how many were discovered after development was complete. That number is your baseline cost. |
@@ -91,6 +93,8 @@ The cultural shift matters as much as the technical one. Security must be a shar
 5. Make scan results visible in the pull request review interface so developers see findings in context, not as a separate report.
 6. Create a triage process for existing findings in legacy code: tag them as accepted risk with justification, assign them to a remediation backlog, or fix them immediately based on severity.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Automated scanners have too many false positives." | Tune the scanner to your codebase. Start by suppressing known false positives and focus on finding categories with high true-positive rates. An imperfect scanner that runs on every commit is more effective than a perfect scanner that runs once a year. |
@@ -103,6 +107,8 @@ The cultural shift matters as much as the technical one. Security must be a shar
 3. Add security criteria to the definition of done: no high or critical findings in the pipeline scan, no new vulnerable dependencies added, secrets management handled through the approved secrets store.
 4. Embed security engineers in sprint ceremonies - not as reviewers, but as resources. A security engineer available during design and development catches architectural problems before they become code-level vulnerabilities.
 5. Conduct threat modeling for new features that involve authentication, authorization, or sensitive data handling. A 30-minute threat modeling session during feature planning prevents far more vulnerabilities than a post-development review.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

@@ -79,6 +79,8 @@ Most SoD frameworks in regulated industries - SOX ITGC, PCI DSS, HIPAA Security 
 4. Research how other regulated organizations in your industry have implemented SoD in automated pipelines. Many published case studies describe how financial services, healthcare, and government organizations satisfy SoD with pipeline controls.
 5. Prepare a one-page summary of findings for the compliance conversation: what the regulation requires, what the current implementation provides, and what the automated alternative would provide.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Our auditors specifically require a separate team." | Ask the auditors to cite the requirement. Auditors often have flexibility in how they accept controls; they want to see the control objective met. Present the automated alternative with a regulatory mapping. |
@@ -91,6 +93,8 @@ Most SoD frameworks in regulated industries - SOX ITGC, PCI DSS, HIPAA Security 
 3. Configure the pipeline to capture the identity of the reviewer and the reviewer's explicit approval as part of the immutable deployment record. The record must be write-once and include timestamps.
 4. Add automated gates that the reviewer cannot bypass: tests must pass, security scans must clear, required reviewers must approve. The reviewer is verifying that the gates passed, not making independent technical judgment about code they may not fully understand.
 5. Implement deployment authorization in the pipeline: the deployment step is only available after all gates pass and the required approvals are recorded. No manual intervention is needed.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|
@@ -105,6 +109,8 @@ Most SoD frameworks in regulated industries - SOX ITGC, PCI DSS, HIPAA Security 
 4. Redirect the deployment team's effort toward platform engineering, reliability work, and developer experience - activities that add more value than running deployment runbooks.
 5. Update your compliance documentation to describe the automated controls as the SoD mechanism, including the specific tooling, the approval record format, and the audit log retention policy.
 6. Conduct a walkthrough with your auditors showing the audit trail for a sample deployment. Walk them through each field: who reviewed, what approved, what deployed, when, and where the record is stored.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

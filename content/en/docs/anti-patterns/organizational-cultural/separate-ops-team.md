@@ -77,6 +77,8 @@ Identify every point in your current process where a change waits for another te
 4. Document the current runbook steps that could be automated with existing tooling.
 5. Identify one low-risk deployment type (internal tool, non-customer-facing service) that could serve as a pilot for developer-owned deployment.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Developers can't be trusted with production access." | Start with a lower-risk environment. Define what "trusted" looks like and create a path to earn it. Pick one non-customer-facing service this sprint and give developers deploy access with automated rollback as the safety net. |
@@ -91,6 +93,8 @@ Identify every point in your current process where a change waits for another te
 4. Build rollback automation so that the cost of a bad deployment is measured in minutes, not hours.
 5. Run the automated deployment alongside the manual process for one sprint to build confidence before switching.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Automation breaks in edge cases humans handle." | Edge cases should trigger alerts, not silent human intervention. Start by automating the five most common steps in the runbook and alert on anything that falls outside them - you will handle far fewer edge cases than you expect. |
@@ -104,6 +108,8 @@ Identify every point in your current process where a change waits for another te
 4. Define a service ownership model where the team that builds a service is also responsible for its production health.
 5. Establish a weekly sync between development and operations focused on reducing toil rather than managing tickets.
 6. Set a six-month goal for the percentage of deployments that are fully developer-initiated through the automated pipeline.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

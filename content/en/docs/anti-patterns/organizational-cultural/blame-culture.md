@@ -76,6 +76,8 @@ The improvement work that makes CD better over time - the retrospective that ide
 4. Add a "retrospective quality check" to post-mortem reviews: if the root cause analysis concludes with a person rather than a systemic condition, the analysis is not complete.
 5. Identify a senior engineer or manager who will serve as the post-mortem facilitator, responsible for redirecting blame-focused questions toward systemic analysis.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Blameless doesn't mean consequence-free. People need to be accountable." | Accountability means owning the action items to improve the system, not absorbing personal consequences for operating within a system that made the failure possible. |
@@ -89,6 +91,8 @@ The improvement work that makes CD better over time - the retrospective that ide
 4. Ask leadership to visibly praise the next engineer who surfaces a near-miss or self-discloses a problem early. The public signal that transparency is rewarded, not punished, matters more than any policy document.
 5. Review the last 10 post-mortems and rewrite the root cause sections using the new systemic framing as an exercise in applying the new standard.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Leadership wants to know who is responsible." | Leadership should want to know what will prevent the next incident. Frame your post-mortem in terms of what leadership can change - process, tooling, resourcing - not what an individual should do differently. |
@@ -100,6 +104,8 @@ The improvement work that makes CD better over time - the retrospective that ide
 3. Add to the onboarding process: walk every new engineer through a representative blameless post-mortem before they encounter their first incident.
 4. Establish a policy that post-mortem action items are scheduled and prioritized in the same backlog as feature work. Systemic improvements that are never resourced signal that blameless culture is theater.
 5. Revisit the on-call and alerting structure to ensure that incident response is a team activity, not a solo performance by the engineer who happened to be on call.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

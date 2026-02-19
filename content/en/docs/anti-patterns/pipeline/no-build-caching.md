@@ -218,6 +218,8 @@ minutes is a common target - and treat any build that exceeds it as a defect to 
 2. Assign ownership when a new dependency or test causes the pipeline to exceed the budget.
 3. Review the budget quarterly and tighten it as optimization improves the baseline.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "Caching is risky - we might use stale dependencies" | Cache keys solve this. When the dependency manifest changes, the cache key changes and the cache is invalidated. The cache is only reused when nothing in the dependency specification has changed. |

@@ -79,6 +79,8 @@ Management will not protect improvement time without evidence that the current a
 4. Calculate your deployment lead time and change fail rate. Poor performance on these metrics is a consequence of deferred improvement; use them to make the cost visible to management.
 5. Present the findings as a business case: "We are spending X hours per sprint on symptoms of deferred debt. Addressing the top three items would cost Y hours over Z sprints. The payback period is W sprints."
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "We don't have time to measure this." | You already spend the time on the symptoms. The measurement is about making that cost visible so it can be managed. Block 4 hours for one sprint to capture the data. |
@@ -91,6 +93,8 @@ Management will not protect improvement time without evidence that the current a
 3. Define "improvement" broadly: test automation, pipeline speed, dependency updates, refactoring, runbook creation, monitoring improvements, and process changes all qualify. Do not restrict it to infrastructure.
 4. Establish a rule: improvement items are not displaced by feature work within the sprint. If a feature takes longer than estimated, the feature scope is reduced, not the improvement allocation.
 5. Track the improvement allocation as a sprint metric alongside velocity and report it to stakeholders with the same regularity as feature delivery.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|
@@ -105,6 +109,8 @@ Management will not protect improvement time without evidence that the current a
 4. Include improvement capacity as a non-negotiable in project scoping conversations. When a new initiative is estimated, the improvement allocation is part of the team's effective capacity, not an overhead to be cut.
 5. Conduct a quarterly improvement retrospective: what did we address this quarter, what was the measured impact, and what are the highest-priority items for next quarter?
 6. Make the improvement backlog visible to leadership: a ranked list with estimated cost and projected benefit for each item provides the transparency that builds trust in the prioritization.
+
+Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|

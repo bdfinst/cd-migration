@@ -217,6 +217,8 @@ Establish a team target for deployment frequency and track it:
 - Celebrate increases in frequency as improvements in delivery capability, not as increased
   risk.
 
+Expect pushback and address it directly:
+
 | Objection | Response |
 |-----------|----------|
 | "The release train gives our operations team predictability" | What does the operations team need predictability for? If it is staffing for a manual process, automating the process eliminates the need for scheduled staffing. If it is communication to users, that is a user notification problem, not a deployment scheduling problem. |
