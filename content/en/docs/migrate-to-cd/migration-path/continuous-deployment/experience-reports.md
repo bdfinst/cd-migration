@@ -176,10 +176,6 @@ Flickr's 2009 presentation "10+ Deploys Per Day: Dev and Ops Cooperation" is cre
 2. **Tooling should reduce friction.** Flickr's deployment tools were designed to make deploying as easy as possible. The easier it is to deploy, the more often people deploy, and the smaller each deployment becomes.
 3. **Transparency builds trust.** Logging every deployment in a shared channel let everyone see what was deploying, who deployed it, and whether it caused problems. This transparency built organizational trust in frequent deployment.
 
-Below is your content translated into a **MinimumCD-style experience report format**, followed by a **short narrative version (2 paragraphs)** that can sit below it on the page.
-
----
-
 # VXS: "CD: Superhuman Efforts are the New Normal"
 
 ### Context
