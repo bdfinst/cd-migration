@@ -19,12 +19,16 @@ business logic flowing through the full sub-system. They differ from
 [end-to-end tests](../e2e/) in that side effects are mocked and never cross boundaries
 outside the system's control.
 
-Functional tests are sometimes called **component tests**.
+Functional tests are sometimes called **component tests**. Martin Fowler calls them
+[sociable unit tests](https://martinfowler.com/articles/practical-test-pyramid.html#SociableAndSolitary)
+to distinguish them from solitary unit tests that stub all collaborators: a sociable test
+allows real collaborators within the sub-system boundary while still replacing external
+dependencies with test doubles.
 
 ## When to Use
 
 - You need to verify a **complete user-facing feature** from input to output within a single
-  deployable unit (e.g., a service or a front-end application).
+  [deployable](../glossary/#deployable) unit (e.g., a service or a front-end application).
 - You want to test how the **UI, business logic, and data layers** interact without depending
   on live external services.
 - You need to simulate realistic user workflows (filling in forms, navigating pages,
@@ -49,6 +53,7 @@ tests a single unit in isolation, it is a [unit test](../unit/).
 | **Network**     | Localhost only                                     |
 | **Database**    | Localhost / in-memory only                         |
 | **Breaks build**| Yes                                                |
+| **When to run** | Pre-commit and [CI](../glossary/#ci-continuous-integration)                                  |
 
 ## Examples
 
@@ -163,14 +168,17 @@ describe("Checkout flow", () => {
 
 ## Connection to CD Pipeline
 
-Functional tests run after unit and integration tests in the pipeline, typically as part of
+Functional tests run after unit and integration tests in the [pipeline](../glossary/#pipeline), typically as part of
 the same CI stage:
 
-1. **PR verification**: functional tests run against the sub-system in isolation, giving
-   confidence that the feature works before merge.
-2. **Trunk verification**: the same tests run on the merged HEAD to catch conflicts.
-3. **Pre-deployment gate**: functional tests can serve as the final deterministic gate before
-   a build artifact is promoted to a staging environment.
+1. **Pre-commit**: functional tests run locally before every commit. Because they are
+   deterministic and scoped to the sub-system, they are fast enough to give immediate
+   feedback without slowing the development loop.
+2. **PR verification**: functional tests run in CI against the sub-system in isolation,
+   giving confidence that the feature works before merge.
+3. **Trunk verification**: the same tests run on the merged HEAD to catch conflicts.
+4. **Pre-deployment gate**: functional tests can serve as the final deterministic gate before
+   a build [artifact](../glossary/#artifact) is promoted to a staging environment.
 
 Because functional tests are deterministic, they **should break the build** on failure.
 They are more expensive than unit and integration tests, so teams should focus on
