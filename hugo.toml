@@ -132,7 +132,7 @@ enableGitInfo = false
     [[params.links.developer]]
       desc = "Support the project"
       icon = "fas fa-mug-hot"
-      name = "Contribute"
+      name = "Support this project"
       url  = "https://ko-fi.com/bryanfinster"
 
 [module]

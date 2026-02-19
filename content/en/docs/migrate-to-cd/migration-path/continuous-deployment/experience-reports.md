@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 **Phase 4 - Deliver on Demand**
 
-Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted continuous deployment at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that CD is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
+Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted [continuous deployment](../../../../glossary/#continuous-deployment) at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that [CD](../../../../glossary/#cd-continuous-delivery) is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
 {{% /pageinfo %}}
 
 ## Why Experience Reports Matter
@@ -33,7 +33,7 @@ Walmart operates one of the world's largest e-commerce platforms alongside its m
 
 ### What They Did
 
-- Invested in a centralized deployment platform (OneOps, later Concord) that standardized the deployment pipeline across all teams
+- Invested in a centralized deployment platform (OneOps, later Concord) that standardized the deployment [pipeline](../../../../glossary/#pipeline) across all teams
 - Broke the monolithic release into independent service deployments
 - Implemented automated canary analysis for every deployment
 - Moved from weekly release trains to on-demand deployment per team
@@ -59,11 +59,11 @@ Microsoft's Azure DevOps (formerly Visual Studio Team Services) team made a wide
 
 ### What They Did
 
-- Broke the product into independently deployable services (ring-based deployment)
+- Broke the product into independently [deployable](../../../../glossary/#deployable) services (ring-based deployment)
 - Implemented a ring-based rollout: Ring 0 (team), Ring 1 (internal Microsoft users), Ring 2 (select external users), Ring 3 (all users)
 - Invested heavily in automated testing, achieving thousands of tests running in minutes
-- Moved from a fixed release cadence to continuous deployment with feature flags controlling release
-- Used telemetry to detect issues in real-time and automated rollback when metrics degraded
+- Moved from a fixed release cadence to continuous deployment with [feature flags](../../../../glossary/#feature-flag) controlling release
+- Used telemetry to detect issues in real-time and automated [rollback](../../../../glossary/#rollback) when metrics degraded
 
 ### Key Lessons
 
@@ -113,7 +113,7 @@ Amazon's transformation to service-oriented architecture and team ownership is o
 
 ### What They Did
 
-- Decomposed the system into independently deployable services, each owned by a small team
+- Decomposed the system into independently [deployable](../../../../glossary/#deployable) services, each owned by a small team
 - Gave teams full ownership: build, test, deploy, operate, and support
 - Built internal deployment tooling (Apollo) that automates canary analysis, rollback, and one-click deployment
 - Established the practice of deploying every commit that passes the pipeline, with automated rollback on metric degradation
@@ -122,13 +122,13 @@ Amazon's transformation to service-oriented architecture and team ownership is o
 
 1. **Ownership drives quality.** When the team that writes the code also operates it in production, they write better code and build better monitoring.
 2. **Small teams move faster.** Two-pizza teams (6-10 people) can make decisions without bureaucratic overhead.
-3. **Automation eliminates toil.** Amazon's internal deployment tooling means that deploying is not a skilled activity - any team member can deploy (and the pipeline usually deploys automatically).
+3. **Automation eliminates [toil](../../../../glossary/#toil).** Amazon's internal deployment tooling means that deploying is not a skilled activity - any team member can deploy (and the pipeline usually deploys automatically).
 
 ## HP: CD in Hardware-Adjacent Software
 
 ### Context
 
-HP's LaserJet firmware team demonstrated that continuous delivery principles apply even to embedded software, a domain often considered incompatible with frequent deployment.
+HP's LaserJet firmware team demonstrated that [continuous delivery](../../../../glossary/#cd-continuous-delivery) principles apply even to embedded software, a domain often considered incompatible with frequent deployment.
 
 ### The Challenge
 
@@ -142,12 +142,12 @@ HP's LaserJet firmware team demonstrated that continuous delivery principles app
 - Invested in automated testing infrastructure for firmware
 - Reduced build times from days to under an hour
 - Moved from annual releases to frequent incremental updates
-- Implemented continuous integration with automated test suites running on simulator and hardware
+- Implemented [continuous integration](../../../../glossary/#ci-continuous-integration) with automated test suites running on simulator and hardware
 
 ### Key Lessons
 
 1. **CD principles are universal.** Even embedded firmware can benefit from small batches, automated testing, and continuous integration.
-2. **Build time is a critical constraint.** Reducing build time from days to under an hour unlocked the ability to test frequently, which enabled frequent integration, which enabled frequent delivery.
+2. **Build time is a critical [constraint](../../../../glossary/#constraint).** Reducing build time from days to under an hour unlocked the ability to test frequently, which enabled frequent integration, which enabled frequent delivery.
 3. **Results were dramatic:** Development costs reduced by approximately 40%, programs delivered on schedule increased by roughly 140%.
 
 ## Flickr: "10+ Deploys Per Day"
@@ -194,8 +194,8 @@ This led to the discovery of the framework of principles and patterns now formul
 ### What They Did
 
 - Experimented with LLM for code generation
-- Applied rigorous CD practices to the work with AI agents
-- Mandated additional first-class artifacts in the repo
+- Applied rigorous CD practices to the work with [AI agents](../../../../glossary/#agent-ai)
+- Mandated additional first-class [artifacts](../../../../glossary/#artifact) in the repo
 - Standardized the approach of working with AI agents
 - Crunched Agentic CD pipeline cycles to deliver entire features in hours
 
@@ -214,7 +214,7 @@ Additional practices required for LLM-assisted development:
 2. **Delta & overlap analysis.** Agents can compare new features against the existing system, detect redundancy, conflict, structural drift. The most interesting question becomes: “How does this relate to what we currently do?”
 3. **Structured documentation layers.** User guides, feature descriptions, architectural decision records (ADRs) and system structure documentation become the glue of your system.
 4. **Human In the Loop.** Key artifacts can be generated by Agents, but HITL is necessary to capture drift. Intent and decisions are human territory, behaviour and design must be actively guided by humans.
-5. **The docs are for the machine, not for humans.** Documentation artifacts must be structured to guide Agents in implementation with minimal context windows, not to “read nicely” for humans.
+5. **The docs are for the machine, not for humans.** Documentation artifacts must be structured to guide Agents in implementation with minimal [context windows](../../../../glossary/#context-window), not to “read nicely” for humans.
    - ASCII art beats photos, illustrations or doodles.
    - Short paragraphs, no filler words. Consistent language.
    - Optimize documentation to reference paragraphs to the Agents quickly and effectively.
@@ -268,8 +268,8 @@ Every organization in these reports uses feature flags to decouple deployment fr
 
 Regardless of industry, size, or starting point, organizations that adopt continuous deployment consistently report:
 
-- **Higher deployment frequency** (daily or more)
-- **Lower change failure rate** (small changes fail less)
+- **Higher [deployment frequency](../../../../glossary/#deployment-frequency)** (daily or more)
+- **Lower [change failure rate](../../../../glossary/#change-failure-rate-cfr)** (small changes fail less)
 - **Faster recovery** (automated rollback, small blast radius)
 - **Higher developer satisfaction** (less toil, more impact)
 - **Better business outcomes** (faster time to market, reduced costs)
@@ -282,7 +282,7 @@ You do not need to be Google-sized to benefit from these patterns. Extract what 
 2. **Adopt incrementally.** Move from monthly to weekly to daily. Do not try to jump to 10 deploys per day on day one.
 3. **Give teams ownership.** Let teams deploy their own services.
 4. **Use feature flags.** Decouple deployment from release.
-5. **Measure and improve.** Track DORA metrics. Run experiments. Use retrospectives.
+5. **Measure and improve.** Track [DORA metrics](../../../../glossary/#dora-metrics). Run experiments. Use retrospectives.
 
 These are the practices covered throughout this migration guide. The experience reports confirm that they work - not in theory, but in production, at scale, in the real world.
 

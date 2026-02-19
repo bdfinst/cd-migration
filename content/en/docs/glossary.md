@@ -34,11 +34,9 @@ shaped by its prompt - the complete set of instructions, context, and constraint
 the start of a session. See [Agentic CD](../agentic-cd/).
 
 Referenced in:
-[ACD](../agentic-cd/),
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
-[Tokenomics](../agentic-cd/tokenomics/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Artifact
 
@@ -47,9 +45,8 @@ In a CD pipeline, artifacts are built once and promoted through environments wit
 modification. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 Referenced in:
-[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
-[Pipeline Phase](../migrate-to-cd/migration-path/pipeline/),
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Functional Tests](../testing/functional/)
 
 ## B
 
@@ -83,6 +80,7 @@ debugging, and shorten feedback loops. Reducing batch size is a core focus of
 
 Referenced in:
 [CD Dependency Tree](../cd-dependency-tree/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### BDD (Behavior-Driven Development)
@@ -94,9 +92,11 @@ specifications that serve as both documentation and automated tests. BDD support
 story actually means before development begins.
 
 Referenced in:
-[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
-[CD Dependency Tree](../cd-dependency-tree/)
+[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Blue-Green Deployment
 
@@ -128,7 +128,8 @@ before full rollout. If the canary shows no issues, the deployment proceeds to 1
 
 Referenced in:
 [Blind Operations](../anti-patterns/monitoring-observability/blind-operations/),
-[Defect Sources](../defect-sources/)
+[Defect Sources](../defect-sources/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/)
 
 ### CD (Continuous Delivery)
 
@@ -139,8 +140,11 @@ every change *could be* deployed automatically. This is the primary goal of this
 guide.
 
 Referenced in:
-[Migration Overview](../migrate-to-cd/),
-[For Managers](../symptoms/for-managers/)
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Change Failure Rate (CFR)
 
@@ -149,8 +153,7 @@ remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. Se
 [Metrics - Change Fail Rate](../metrics/change-fail-rate/).
 
 Referenced in:
-[Baseline Metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/),
-[CAB Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### CI (Continuous Integration)
@@ -161,8 +164,9 @@ a synonym. A team that runs automated builds on feature branches but merges week
 CI. See [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/).
 
 Referenced in:
-[Continuous Integration (Practice)](../practices/continuous-integration/),
-[TBD Migration](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Functional Tests](../testing/functional/),
+[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)
 
 ### Constraint
 
@@ -171,7 +175,7 @@ During a CD migration, your job is to find and fix constraints in order of impac
 [Identify Constraints](../migrate-to-cd/migration-path/assess/identify-constraints/).
 
 Referenced in:
-[Value Stream Mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
 
 ### Context (LLM)
 
@@ -196,6 +200,7 @@ space does not mean better performance, and filling the window increases both la
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Tokenomics](../agentic-cd/tokenomics/)
 
 ### Continuous Deployment
@@ -206,6 +211,7 @@ deployed to production without manual intervention. Continuous delivery ensures 
 [Phase 4 - Deliver on Demand](../migrate-to-cd/migration-path/continuous-deployment/).
 
 Referenced in:
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
 [Deploy on Demand](../migrate-to-cd/migration-path/continuous-deployment/deploy-on-demand/)
 
@@ -218,8 +224,8 @@ production deployment. The definition of deployable is codified in the pipeline,
 by a person at deployment time. See [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/).
 
 Referenced in:
-[Definition of Deployable (Practice)](../practices/definition-of-deployable/),
-[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Functional Tests](../testing/functional/)
 
 ### Deployment Frequency
 
@@ -227,8 +233,7 @@ How often an organization successfully deploys to production. One of the four DO
 See [Metrics - Release Frequency](../metrics/release-frequency/).
 
 Referenced in:
-[Baseline Metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/),
-[For Managers](../symptoms/for-managers/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
 
 ### Development Cycle Time
 
@@ -246,9 +251,9 @@ as predictive of software delivery performance: deployment frequency, lead time 
 change failure rate, and mean time to restore service. See [DORA Capabilities](../dora-capabilities/).
 
 Referenced in:
-[For Managers](../symptoms/for-managers/),
-[Baseline Metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/),
-[Resources](../resources/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ## F
 
@@ -277,9 +282,10 @@ then selectively enabled for specific users, percentages of traffic, or environm
 flags decouple deployment from release. See [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/).
 
 Referenced in:
-[Application Configuration (Practice)](../practices/application-configuration/),
-[FAQ](../faq/),
-[Brownfield Migration](../migrate-to-cd/brownfield/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Flow Efficiency
 
@@ -288,7 +294,8 @@ The ratio of active work time to total elapsed time in a delivery process. A flo
 mapping reveals your flow efficiency. See [Value Stream Mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/).
 
 Referenced in:
-[Assess Phase](../migrate-to-cd/migration-path/assess/)
+[Assess Phase](../migrate-to-cd/migration-path/assess/),
+[Value Stream Mapping](../migrate-to-cd/migration-path/assess/value-stream-mapping/)
 
 ### Full-Stack Product Team
 
@@ -429,6 +436,8 @@ on its way to production. See [Phase 2 - Pipeline](../migrate-to-cd/migration-pa
 
 Referenced in:
 [Deterministic Pipeline (Practice)](../practices/deterministic-pipeline/),
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Functional Tests](../testing/functional/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
@@ -479,9 +488,8 @@ The ability to revert a production deployment to a previous known-good state. CD
 automated rollback that takes minutes, not hours. See [Rollback](../migrate-to-cd/migration-path/pipeline/rollback/).
 
 Referenced in:
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
-[Rollback (Practice)](../practices/rollback/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ## S
 
@@ -542,6 +550,7 @@ placing it first maximizes cache effectiveness and reduces per-call input costs.
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Tokenomics](../agentic-cd/tokenomics/)
 
 ## T
@@ -554,8 +563,9 @@ Long-lived feature branches are not. TBD is a prerequisite for CI, which is in t
 prerequisite for CD. See [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 Referenced in:
+[TBD Migration](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Trunk-Based Development (Practice)](../practices/trunk-based-development/),
-[TBD Migration](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### TDD (Test-Driven Development)
 
@@ -565,6 +575,7 @@ a fast, reliable test suite. TDD feeds into the [testing fundamentals](../migrat
 required in Phase 1.
 
 Referenced in:
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
 
 ### Token
@@ -639,7 +650,9 @@ Vertical slices are independently deployable and testable, which is essential fo
 slicing is a core technique in [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/).
 
 Referenced in:
-[CD Dependency Tree](../cd-dependency-tree/)
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[CD Dependency Tree](../cd-dependency-tree/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/)
 
 ## W
 
@@ -650,6 +663,8 @@ time, reduces focus, and increases context-switching overhead. Limiting WIP is a
 in [Phase 3 - Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wip/).
 
 Referenced in:
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Too Much WIP](../symptoms/flow/too-much-wip/),
 [Work in Progress (Metric)](../metrics/work-in-progress/)
 
