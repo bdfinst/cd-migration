@@ -14,7 +14,7 @@ Trunk-based development requires daily integration, and daily integration requir
 
 ## Why Small Work Matters for CD
 
-Continuous delivery depends on a simple equation: **small changes, integrated frequently, are safer than large changes integrated rarely.**
+[Continuous delivery](../../../glossary/#cd-continuous-delivery) depends on a simple equation: **small changes, integrated frequently, are safer than large changes integrated rarely.**
 
 Every practice in Phase 1 reinforces this:
 
@@ -22,7 +22,7 @@ Every practice in Phase 1 reinforces this:
 - [Testing fundamentals](../testing-fundamentals/) work best when each change is small enough to test thoroughly.
 - [Code review](../code-review/) is fast when the change is small. A 50-line change can be reviewed in minutes. A 2,000-line change takes hours - if it gets reviewed at all.
 
-The data supports this. The DORA research consistently shows that smaller batch sizes correlate with higher delivery performance. Small changes have:
+The data supports this. The [DORA](../../../glossary/#dora-metrics) research consistently shows that smaller batch sizes correlate with higher delivery performance. Small changes have:
 
 - **Lower risk:** If a small change breaks something, the blast radius is limited, and the cause is obvious.
 - **Faster feedback:** A small change gets through the pipeline quickly. You learn whether it works today, not next week.
@@ -33,7 +33,7 @@ The data supports this. The DORA research consistently shows that smaller batch 
 
 **If a work item takes longer than 2 days to complete, it is too big.**
 
-This is not arbitrary. Two days gives you at least one integration to trunk per day (the minimum for TBD) and allows for the natural rhythm of development: plan, implement, test, integrate, move on.
+This is not arbitrary. Two days gives you at least one integration to trunk per day (the minimum for [TBD](../../../glossary/#tbd-trunk-based-development)) and allows for the natural rhythm of development: plan, implement, test, integrate, move on.
 
 When a developer says "this will take a week," the answer is not "go faster." The answer is "break it into smaller pieces."
 
@@ -46,7 +46,7 @@ A work item is complete when it is:
 - The change is deployable (even if the feature is not yet user-visible)
 - It meets the [Definition of Done](../working-agreements/)
 
-If a story requires a feature flag to hide incomplete user-facing behavior, that is fine. The code is still integrated, tested, and deployable.
+If a story requires a [feature flag](../../../glossary/#feature-flag) to hide incomplete user-facing behavior, that is fine. The code is still integrated, tested, and deployable.
 
 ## Story Slicing Techniques
 
@@ -82,6 +82,39 @@ The most important slicing technique for CD is **vertical slicing**: cutting thr
 > "Build the login form UI."
 >
 > Each horizontal slice is incomplete on its own. None is deployable. None is testable end-to-end. They create dependencies between work items and block flow.
+
+### Vertical slicing in distributed systems
+
+The example above assumes a team that owns every layer from the UI to the database. In large distributed systems, most teams own a subdomain. They are full-stack within that subdomain but may not own any user-facing surface.
+
+The principle does not change. A vertical slice still cuts through all layers end-to-end. "End-to-end" means different things in each context.
+
+**Full-stack product team** - owns everything from UI to database; their consumer is a human:
+
+```mermaid
+graph TD
+    User([Human User]) --> UI["UI Layer\n(your team)"]
+    UI --> API["API Layer\n(your team)"]
+    API --> DB[("Database\n(your team)")]
+```
+
+A vertical slice: one behavior delivered through the UI, the API, and the database in a single deployable change.
+
+**Subdomain product team** - full-stack within their service; their consumer is another service or team:
+
+```mermaid
+graph TD
+    User([Human User]) --> FE["Frontend Service\n(other team)"]
+    FE --> API["Your Service API\n(your team)"]
+    API --> DB[("Your Database\n(your team)")]
+    API --> DS["Downstream Service\n(other team)"]
+```
+
+A vertical slice: one behavior delivered through the service boundary (the API contract), the business logic, and the data store. The team does not own or coordinate with any consumer - whether a UI or another service - except through the API contract. They define a stable contract and deploy behind it independently.
+
+The real difference between these two contexts is whether the public interface is designed for humans or machines. A [full-stack product team](../../../glossary/#full-stack-product-team) owns a human-facing surface: the slice is done when a user can observe the behavior through that interface. A [subdomain product team](../../../glossary/#subdomain-product-team) owns a machine-facing surface: the slice is done when the API contract satisfies the agreed behavior for its service consumers. In both cases, the question is the same - does this change deliver complete, observable behavior through the interface your team owns? If it only touches one layer beneath that interface, it is a horizontal slice regardless of how you label it.
+
+When teams in a distributed system split work by layer - schema changes in one story, business logic in another, contract changes in a third - nothing is deployable until all layers converge. Slicing vertically within the domain means each story is independently deployable behind a stable contract. See [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) for the full treatment of this failure mode in distributed systems.
 
 ### Slicing Strategies
 

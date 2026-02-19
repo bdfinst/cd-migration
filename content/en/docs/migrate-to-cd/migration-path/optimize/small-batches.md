@@ -16,7 +16,7 @@ Batch size is the single biggest lever for improving delivery performance. This 
 
 Large batches create large risks. When you deploy 50 changes at once, any failure could be caused by any of those 50 changes. When you deploy 1 change, the cause of any failure is obvious.
 
-This is not a theory. The DORA research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes this possible.
+This is not a theory. The [DORA](../../../glossary/#dora-metrics) research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes this possible.
 
 > "If it hurts, do it more often, and bring the pain forward."
 >
@@ -24,7 +24,7 @@ This is not a theory. The DORA research consistently shows that elite teams depl
 
 ## Three Levels of Batch Size
 
-Batch size is not just about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
+[Batch size](../../../glossary/#batch-size) is not just about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
 
 ### Level 1: Deploy Frequency
 
@@ -42,7 +42,7 @@ How often you push changes to production.
 **Common objections to deploying more often:**
 
 - **"Incomplete features have no value."** Value is not limited to end-user features. Every deployment provides value to other stakeholders: operations verifies that the change is safe, QA confirms quality gates pass, and the team reduces inventory waste by keeping unintegrated work near zero. A partially built feature deployed behind a flag validates the deployment pipeline and reduces the risk of the final release.
-- **"Our customers don't want changes that frequently."** CD is not about shipping user-visible changes every hour. It is about maintaining the ability to deploy at any time. That ability is what lets you ship an emergency fix in minutes instead of days, roll out a security patch without a war room, and support production without heroics.
+- **"Our customers don't want changes that frequently."** [CD](../../../glossary/#cd-continuous-delivery) is not about shipping user-visible changes every hour. It is about maintaining the ability to deploy at any time. That ability is what lets you ship an emergency fix in minutes instead of days, roll out a security patch without a war room, and support production without heroics.
 
 ### Level 2: Commit Size
 
@@ -56,7 +56,7 @@ How much code changes in each commit to trunk.
 | Merge conflicts | Frequent | Rare |
 | Description length | Paragraph needed | One sentence suffices |
 
-**How to reduce:** Practice TDD (write one test, make it pass, commit). Use feature flags to merge incomplete work. Pair program so review happens in real time.
+**How to reduce:** Practice [TDD](../../../glossary/#tdd-test-driven-development) (write one test, make it pass, commit). Use [feature flags](../../../glossary/#feature-flag) to merge incomplete work. Pair program so review happens in real time.
 
 ### Level 3: Story Size
 
@@ -74,7 +74,7 @@ This target is not aspirational. Teams that adopt hyper-sprints - iterations as 
 
 ## Behavior-Driven Development for Decomposition
 
-BDD provides a concrete technique for breaking stories into small, testable increments. The Given-When-Then format forces clarity about scope.
+[BDD](../../../glossary/#bdd-behavior-driven-development) provides a concrete technique for breaking stories into small, testable increments. The Given-When-Then format forces clarity about scope.
 
 ### The Given-When-Then Pattern
 
@@ -209,6 +209,16 @@ Ask these questions about each proposed story:
 3. **Does it require all other slices to be useful?** If yes, find a thinner first slice.
 4. **Can it be deployed independently?** If not, check whether feature flags could help.
 
+### Vertical slicing in distributed systems
+
+The examples above assume a team that owns the full stack - UI, API, and database. In large distributed systems, most teams own a subdomain and may not be directly user-facing.
+
+The principle is the same. A [subdomain product team](../../../glossary/#subdomain-product-team)'s vertical slice cuts through all layers they control: the service API, the business logic, and the data store. "End-to-end" means end-to-end within your domain, not end-to-end across the entire system. The team deploys independently behind a stable contract, without coordinating with other teams.
+
+The key difference is whether the public interface is designed for humans or machines. A [full-stack product team](../../../glossary/#full-stack-product-team) owns a human-facing surface - the slice is done when a user can observe the behavior through that interface. A subdomain product team owns a machine-facing surface - the slice is done when the API contract satisfies the agreed behavior for its service consumers.
+
+See [Work Decomposition](../../foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for diagrams of both contexts, and [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) for the failure mode that emerges when distributed teams split work by layer instead of by behavior.
+
 ### Story Slicing Anti-Patterns
 
 These are common ways teams slice stories that undermine the benefits of small batches:
@@ -270,7 +280,7 @@ Almost anything can be decomposed further. Database migrations can be done in ba
 
 ### 3. "We tried small stories but our throughput dropped"
 
-This usually means the team is still working sequentially. Small stories require limiting WIP and swarming - see [Limiting WIP](../limiting-wip/). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
+This usually means the team is still working sequentially. Small stories require limiting [WIP](../../../glossary/#wip-work-in-progress) and swarming - see [Limiting WIP](../limiting-wip/). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
 
 ## Measuring Success
 

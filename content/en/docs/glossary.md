@@ -35,6 +35,8 @@ the start of a session. See [Agentic CD](../agentic-cd/).
 
 Referenced in:
 [ACD](../agentic-cd/),
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
 [Tokenomics](../agentic-cd/tokenomics/)
 
@@ -46,7 +48,8 @@ modification. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline
 
 Referenced in:
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
-[Pipeline Phase](../migrate-to-cd/migration-path/pipeline/)
+[Pipeline Phase](../migrate-to-cd/migration-path/pipeline/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ## B
 
@@ -147,7 +150,8 @@ remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. Se
 
 Referenced in:
 [Baseline Metrics](../migrate-to-cd/migration-path/assess/baseline-metrics/),
-[CAB Gates](../anti-patterns/organizational-cultural/cab-gates/)
+[CAB Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### CI (Continuous Integration)
 
@@ -180,6 +184,7 @@ and latency increase and performance can degrade when relevant information is bu
 the end of the context. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Tokenomics](../agentic-cd/tokenomics/)
 
 ### Context Window
@@ -247,6 +252,24 @@ Referenced in:
 
 ## F
 
+### Feature Team
+
+A team organized around user-facing features or customer journeys rather than owned product
+subdomains. A feature team is cross-functional - it contains the skills to deliver a feature
+end-to-end - but it does not own a stable domain of code. Multiple feature teams may modify
+the same components, with no single team accountable for quality or consistency within them.
+
+In practice: feature teams must re-orient on code they do not continuously maintain each time
+a feature requires it; quality agreements cannot be enforced within the team because other
+teams also modify the same code; and while feature teams appear to minimize inter-team
+dependencies, they produce the opposite - everyone who can change a component is effectively
+on the same large, loosely communicating team. Feature teams are structurally equivalent to
+long-lived project teams.
+
+Contrast with [full-stack product team](#full-stack-product-team) and
+[subdomain product team](#subdomain-product-team), which achieve cross-functional delivery
+through stable domain ownership rather than feature-by-feature assembly.
+
 ### Feature Flag
 
 A mechanism that allows code to be deployed to production with new functionality disabled,
@@ -266,6 +289,19 @@ mapping reveals your flow efficiency. See [Value Stream Mapping](../migrate-to-c
 
 Referenced in:
 [Assess Phase](../migrate-to-cd/migration-path/assess/)
+
+### Full-Stack Product Team
+
+A team that owns every layer of a user-facing capability - UI, API, and data store - and whose
+public interface is designed for human users. A vertical slice for a full-stack product team
+delivers one observable behavior from the user interface through to the database. The slice is
+done when a user can observe the behavior through that interface. Contrast with
+[subdomain product team](#subdomain-product-team).
+
+Referenced in:
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/#vertical-slicing-in-distributed-systems),
+[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)
 
 ## G
 
@@ -392,8 +428,9 @@ The automated sequence of build, test, and deployment stages that every change p
 on its way to production. See [Phase 2 - Pipeline](../migrate-to-cd/migration-path/pipeline/).
 
 Referenced in:
+[Deterministic Pipeline (Practice)](../practices/deterministic-pipeline/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
-[Deterministic Pipeline (Practice)](../practices/deterministic-pipeline/)
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Production-Like Environment
 
@@ -417,8 +454,10 @@ actually contains is a prerequisite for effective tokenomics. See
 [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Tokenomics](../agentic-cd/tokenomics/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/)
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Tokenomics](../agentic-cd/tokenomics/)
 
 ### Prompt Caching
 
@@ -477,6 +516,20 @@ relevant information. See [Tokenomics](../agentic-cd/tokenomics/).
 Referenced in:
 [ACD](../agentic-cd/),
 [Tokenomics](../agentic-cd/tokenomics/)
+
+### Subdomain Product Team
+
+A team that owns a bounded subdomain within a larger distributed system - full-stack within
+their service (API, business logic, data store) but not directly user-facing. Their public
+interface is designed for machines: other services or teams consume it through a defined API
+contract. A vertical slice for a subdomain product team delivers one observable behavior
+through that contract. The slice is done when the API satisfies the agreed behavior for its
+service consumers. Contrast with [full-stack product team](#full-stack-product-team).
+
+Referenced in:
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/#vertical-slicing-in-distributed-systems),
+[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)
 
 ### System Prompt
 

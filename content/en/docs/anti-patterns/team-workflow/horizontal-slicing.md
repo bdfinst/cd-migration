@@ -69,7 +69,7 @@ integration. The longer the layers are built separately, the more assumptions ac
 more likely they are to conflict. Integration becomes the riskiest phase, the phase where all the
 hidden mismatches surface at once.
 
-With vertical slicing, integration happens with every item. The first slice forces the developer to
+With [vertical slicing](../../../glossary/#vertical-sliced-story), integration happens with every item. The first slice forces the developer to
 verify the contracts between services immediately. Assumptions are tested on day one, not month
 three.
 
@@ -113,7 +113,7 @@ schedule) handle the integration.
 
 ### Impact on continuous delivery
 
-CD requires a steady flow of small, independently deployable changes. Horizontal slicing produces
+[CD](../../../glossary/#cd-continuous-delivery) requires a steady flow of small, independently deployable changes. Horizontal slicing produces
 the opposite: batches of interdependent layer changes that can only be deployed together after a
 separate integration phase.
 
@@ -186,7 +186,7 @@ from other services. Apply the same principles:
   horizontal slice.
 
 When the UI is loosely coupled to backend services through stable contracts, UI teams and backend
-teams can deploy on their own schedules. Feature flags in the UI control when new behavior is
+teams can deploy on their own schedules. [Feature flags](../../../glossary/#feature-flag) in the UI control when new behavior is
 visible to users, independent of when the backend capability was deployed.
 
 ### Step 5: Use contract tests to enable independent delivery (Week 3+)

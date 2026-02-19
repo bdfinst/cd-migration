@@ -7,14 +7,14 @@ description: >
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how agents accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## This Is Not Big Upfront Design
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
-**You specify the next small step forward in the product roadmap.** A single user story. One thin vertical slice of functionality. The scope stays small because continuous delivery requires it: every change must be small enough to deploy safely and frequently.
+**You specify the next single unit of work.** One thin [vertical slice](../../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently.
 
 There is a deeper reason the scope must stay small. Every feature built but not tested in production increases the risk that you are building the wrong thing, even if you build it the right way. A detailed specification for three months of work does not reduce this risk. It amplifies it. You invest more in the plan, which makes it harder to change direction when production feedback tells you the plan was wrong.
 
@@ -47,7 +47,7 @@ The human still owns the intent. The agent is a sounding board that catches gaps
 
 ## How Agents Help with Behavior Specification
 
-Writing BDD scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
+Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
 
 **Generate initial scenarios from the intent.** Give the agent your intent description and ask it to produce Gherkin scenarios covering the expected behavior.
 
@@ -123,6 +123,31 @@ Every use of the agent in the specification stages follows the same pattern:
 4. **Agent refines** - generate an updated version incorporating your decisions
 
 This is not the agent doing specification for you. It is the agent making your specification more thorough than it would be without help, in less time than it would take without help.
+
+## Validating the Complete Specification Set
+
+The four specification stages produce four artifacts: intent description, BDD scenarios, feature description, and acceptance criteria. Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
+
+**Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
+
+Example prompt:
+
+```
+Review these four specification artifacts for internal consistency
+before implementation begins. Check:
+- Clarity: is the intent unambiguous? Could it be read differently by two developers?
+- Testability: does every BDD scenario have clear, observable outcomes?
+- Scope: does the feature description constrain the implementation to what the intent requires, without over-engineering?
+- Terminology: are the same concepts named consistently across all four artifacts?
+- Completeness: are there behaviors implied by the intent that have no corresponding BDD scenario?
+- Conflict: does anything in one artifact contradict anything in another?
+
+[paste all four artifacts]
+```
+
+**The human gates on this review before implementation begins.** If the review agent identifies issues, resolve them before generating any test code or implementation. A conflict caught in specification costs minutes. The same conflict caught during implementation costs a session.
+
+This review is not a bureaucratic checkpoint. It is the last moment where the cost of a change is near zero. After this gate, every issue becomes more expensive to fix.
 
 ## Related Content
 

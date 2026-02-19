@@ -7,8 +7,10 @@ description: >
 ---
 
 {{% pageinfo %}}
-One BDD scenario. One agent session. One commit. This is the same discipline CI demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
+One [BDD](../../glossary/#bdd-behavior-driven-development) scenario. One agent session. One commit. This is the same discipline [CI](../../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
+
+The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction. Stop optimizing your prompts. Start optimizing your decomposition.
 
 ## The Parallel with CI
 
@@ -23,14 +25,21 @@ The mechanics differ. The principle is identical: small batches, frequent integr
 Before any implementation session begins, establish the complete understanding of the feature:
 
 1. **Intent description** - why the change exists and what problem it solves
-2. **All BDD scenarios** - every behavior to implement, in the order you plan to implement them
+2. **All BDD scenarios** - every behavior to implement, validated by the [specification review](../agent-assisted-specification/#validating-the-complete-specification-set) before any code is written
 3. **Feature description** - architectural constraints, performance budgets, integration boundaries
+4. **Scenario order** - the sequence in which you will implement the scenarios
 
-This is the only moment where you reason about the whole feature. The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, and identify architectural gaps before any code is written.
+The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four artifacts before any code is written.
+
+**Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your complete scenario list and ask it to suggest an implementation order that minimizes the rework cost of each step.
+
+This ordering step also has a human gate. Review the proposed slice sequence before any implementation begins. The ordering determines the shape of every session that follows.
 
 The broad understanding is not in the implementation agent's context. Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
 
-**This is not big upfront design.** The feature scope is a small batch: one story, one thin vertical slice, completable in a day or two. You are not designing a system. You are enumerating the scenarios for the next small step in the product roadmap before implementing any of them.
+**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing), completable in a day or two. You are not designing a system. You are enumerating the scenarios for the next small step in the product roadmap before implementing any of them.
+
+A vertical slice means different things depending on your team structure. A [full-stack product team](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) owns a human-facing surface - the slice is done when a user can observe the behavior through that interface. A [subdomain product team](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) owns a machine-facing surface - the slice is done when the API contract satisfies the agreed behavior for its service consumers. The difference is whether the public interface is designed for humans or machines. The same decomposition principle applies in both cases. The rate limiting example below illustrates the subdomain case: the slice delivers one behavior through a middleware contract, with no UI involved.
 
 ## Session Structure
 
@@ -263,6 +272,8 @@ If the pipeline fails in a later session (a prior scenario breaks), the agent mu
 - [ACD Workflow](../) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how to establish the broad understanding before sessions begin
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - the same discipline applied to human-authored work
+- [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
+- [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
 - [Tokenomics](../tokenomics/) - why context size matters and how to control it
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that anchor each session's context
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent
