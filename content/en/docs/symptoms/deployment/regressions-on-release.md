@@ -61,16 +61,16 @@ in previously working functionality.
 
 ### Fixes Applied to the Release Branch but Not to Trunk
 
-When a regression is found after release, the team applies a hotfix directly to the release
-branch to restore production quickly. If that fix is never merged back to trunk, the next
-release re-introduces the same regression. Trunk never had the fix, so it is not part of
-the next deployment.
+When a defect is found in a released version, the team branches from the release tag and
+applies a fix to that branch to ship a patch quickly. If the fix is never ported back to
+trunk, the next release from trunk still contains the defect. The patch branch and trunk have
+diverged: the patch has the fix, trunk does not.
 
 The correct sequence is to fix trunk first, then cherry-pick the fix to the release branch.
-This guarantees trunk always contains the fix and subsequent releases cannot regress on the
-same issue.
+This guarantees trunk always contains the fix and subsequent releases from trunk are not
+affected.
 
-{{< figure src="/images/hotfix-flow.svg" alt="Two diagrams comparing hotfix approaches. Anti-pattern: fix applied to release branch only, never reaches trunk, regression re-appears in next release. Correct: fix applied to trunk first, then cherry-picked to release branch, trunk stays clean." >}}
+{{< figure src="/images/hotfix-flow.svg" alt="Two diagrams comparing hotfix approaches. Anti-pattern: release branch branched from v1.0, fix applied to release branch only, fix never reaches trunk, defect persists in future trunk releases. Correct: fix applied to trunk first, then cherry-picked to the release branch, all future releases from trunk include the fix." >}}
 
 **Read more:** [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/)
 

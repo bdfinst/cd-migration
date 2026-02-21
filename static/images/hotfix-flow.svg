@@ -2,7 +2,7 @@
 
   <!-- === ANTI-PATTERN SECTION === -->
   <rect x="10" y="10" width="740" height="188" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
-  <text x="26" y="34" font-size="12" font-weight="700" fill="#DC2626">Anti-pattern: fix applied to release branch only</text>
+  <text x="26" y="34" font-size="12" font-weight="700" fill="#DC2626">Anti-pattern: fix applied to release branch only, never ported to trunk</text>
 
   <!-- Trunk line (anti-pattern) -->
   <line x1="70" y1="95" x2="710" y2="95" stroke="#1D4ED8" stroke-width="3"/>
@@ -13,37 +13,35 @@
   <circle cx="110" cy="95" r="5" fill="#1D4ED8"/>
   <circle cx="190" cy="95" r="5" fill="#1D4ED8"/>
 
-  <!-- Regression commit on trunk -->
-  <circle cx="270" cy="95" r="7" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
-  <text x="270" y="79" font-size="10" fill="#DC2626" text-anchor="middle">regression</text>
-  <text x="270" y="68" font-size="10" fill="#DC2626" text-anchor="middle">introduced</text>
+  <!-- Branch point on trunk - neutral -->
+  <circle cx="270" cy="95" r="6" fill="#1D4ED8" stroke="#1E40AF" stroke-width="2"/>
 
   <!-- Trunk continues unchanged (no fix) -->
   <circle cx="390" cy="95" r="5" fill="#1D4ED8"/>
   <circle cx="510" cy="95" r="5" fill="#1D4ED8"/>
   <circle cx="630" cy="95" r="5" fill="#1D4ED8"/>
 
-  <!-- Warning: regression persists in trunk -->
-  <text x="660" y="79" font-size="10" fill="#DC2626" text-anchor="middle">regression</text>
-  <text x="660" y="68" font-size="10" fill="#DC2626" text-anchor="middle">re-appears</text>
+  <!-- Warning: defect still in trunk -->
+  <text x="660" y="79" font-size="10" fill="#DC2626" text-anchor="middle">defect still</text>
+  <text x="660" y="68" font-size="10" fill="#DC2626" text-anchor="middle">in trunk</text>
 
   <!-- Release branch (anti-pattern) -->
   <line x1="270" y1="95" x2="310" y2="155" stroke="#7C3AED" stroke-width="2"/>
   <line x1="310" y1="155" x2="620" y2="155" stroke="#7C3AED" stroke-width="2"/>
-  <text x="298" y="178" font-size="10" fill="#7C3AED" text-anchor="middle">v1.0</text>
+  <text x="272" y="178" font-size="10" fill="#7C3AED" text-anchor="middle">v1.0</text>
 
-  <!-- Hotfix on release branch only -->
+  <!-- Fix on release branch only -->
   <circle cx="440" cy="155" r="7" fill="#16A34A" stroke="#15803D" stroke-width="2"/>
-  <text x="440" y="176" font-size="10" fill="#16A34A" text-anchor="middle">hotfix</text>
+  <text x="440" y="176" font-size="10" fill="#16A34A" text-anchor="middle">fix</text>
 
   <!-- v1.0.1 end -->
   <circle cx="600" cy="155" r="5" fill="#7C3AED"/>
   <text x="600" y="176" font-size="10" fill="#7C3AED" text-anchor="middle">v1.0.1</text>
 
-  <!-- Red dashed "never merged" indicator -->
+  <!-- Red dashed "fix never reaches trunk" indicator -->
   <line x1="440" y1="148" x2="440" y2="103" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="458" y="124" font-size="10" fill="#DC2626">fix never</text>
-  <text x="458" y="136" font-size="10" fill="#DC2626">reaches trunk</text>
+  <text x="458" y="122" font-size="10" fill="#DC2626">fix never</text>
+  <text x="458" y="134" font-size="10" fill="#DC2626">reaches trunk</text>
   <!-- X at top of dashed line -->
   <line x1="434" y1="103" x2="446" y2="95" stroke="#DC2626" stroke-width="2"/>
   <line x1="446" y1="103" x2="434" y2="95" stroke="#DC2626" stroke-width="2"/>
@@ -62,10 +60,8 @@
   <circle cx="110" cy="297" r="5" fill="#1D4ED8"/>
   <circle cx="190" cy="297" r="5" fill="#1D4ED8"/>
 
-  <!-- Regression commit on trunk -->
-  <circle cx="270" cy="297" r="7" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
-  <text x="270" y="281" font-size="10" fill="#DC2626" text-anchor="middle">regression</text>
-  <text x="270" y="270" font-size="10" fill="#DC2626" text-anchor="middle">introduced</text>
+  <!-- Branch point on trunk - neutral -->
+  <circle cx="270" cy="297" r="6" fill="#1D4ED8" stroke="#1E40AF" stroke-width="2"/>
 
   <!-- Fix applied to trunk FIRST -->
   <circle cx="370" cy="297" r="7" fill="#16A34A" stroke="#15803D" stroke-width="2"/>
@@ -75,13 +71,14 @@
   <!-- Trunk continues clean -->
   <circle cx="490" cy="297" r="5" fill="#1D4ED8"/>
   <circle cx="610" cy="297" r="5" fill="#1D4ED8"/>
-  <text x="660" y="281" font-size="10" fill="#15803D" text-anchor="middle">no regression</text>
-  <text x="660" y="270" font-size="10" fill="#15803D" text-anchor="middle">in next release</text>
+  <text x="660" y="281" font-size="10" fill="#15803D" text-anchor="middle">defect fixed</text>
+  <text x="660" y="270" font-size="10" fill="#15803D" text-anchor="middle">in all future</text>
+  <text x="660" y="259" font-size="10" fill="#15803D" text-anchor="middle">releases</text>
 
   <!-- Release branch (correct) -->
   <line x1="270" y1="297" x2="310" y2="357" stroke="#7C3AED" stroke-width="2"/>
   <line x1="310" y1="357" x2="620" y2="357" stroke="#7C3AED" stroke-width="2"/>
-  <text x="298" y="380" font-size="10" fill="#7C3AED" text-anchor="middle">v1.0</text>
+  <text x="272" y="380" font-size="10" fill="#7C3AED" text-anchor="middle">v1.0</text>
 
   <!-- Cherry-pick arrow from trunk fix to release branch -->
   <line x1="370" y1="304" x2="440" y2="349" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="5,3"/>
@@ -97,16 +94,16 @@
 
 
   <!-- === LEGEND === -->
-  <circle cx="30" cy="412" r="5" fill="#DC2626"/>
-  <text x="42" y="416" font-size="10" fill="#4B5563">regression</text>
-  <circle cx="120" cy="412" r="5" fill="#16A34A"/>
-  <text x="132" y="416" font-size="10" fill="#4B5563">fix commit</text>
-  <line x1="206" y1="412" x2="236" y2="412" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <polygon points="236,412 229,408 229,416" fill="#16A34A"/>
-  <text x="244" y="416" font-size="10" fill="#4B5563">cherry-pick</text>
-  <line x1="324" y1="412" x2="354" y2="412" stroke="#1D4ED8" stroke-width="3"/>
-  <text x="362" y="416" font-size="10" fill="#4B5563">trunk</text>
-  <line x1="408" y1="412" x2="438" y2="412" stroke="#7C3AED" stroke-width="2"/>
-  <text x="446" y="416" font-size="10" fill="#4B5563">release branch</text>
+  <circle cx="30" cy="412" r="5" fill="#1D4ED8"/>
+  <text x="42" y="416" font-size="10" fill="#4B5563">branch point</text>
+  <circle cx="130" cy="412" r="5" fill="#16A34A"/>
+  <text x="142" y="416" font-size="10" fill="#4B5563">fix commit</text>
+  <line x1="216" y1="412" x2="246" y2="412" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="246,412 239,408 239,416" fill="#16A34A"/>
+  <text x="254" y="416" font-size="10" fill="#4B5563">cherry-pick</text>
+  <line x1="334" y1="412" x2="364" y2="412" stroke="#1D4ED8" stroke-width="3"/>
+  <text x="372" y="416" font-size="10" fill="#4B5563">trunk</text>
+  <line x1="418" y1="412" x2="448" y2="412" stroke="#7C3AED" stroke-width="2"/>
+  <text x="456" y="416" font-size="10" fill="#4B5563">release branch</text>
 
 </svg>
