@@ -70,7 +70,7 @@ The correct sequence is to fix trunk first, then cherry-pick the fix to the rele
 This guarantees trunk always contains the fix and subsequent releases from trunk are not
 affected.
 
-{{< figure src="/images/hotfix-flow.svg" alt="Two diagrams comparing hotfix approaches. Anti-pattern: release branch branched from v1.0, fix applied to release branch only, fix never reaches trunk, defect persists in future trunk releases. Correct: fix applied to trunk first, then cherry-picked to the release branch, all future releases from trunk include the fix." >}}
+{{< figure src="/images/hotfix-flow.svg" alt="Two diagrams comparing hotfix approaches. Anti-pattern: release branch branched from v1.0, fix applied to release branch only, porting back to trunk is extra work easily forgotten after the emergency, defect persists in future trunk releases. Correct: fix applied to trunk first, then cherry-picked to the release branch, all future releases from trunk include the fix." >}}
 
 **Read more:** [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/)
 

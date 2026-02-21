@@ -40,8 +40,8 @@
 
   <!-- Red dashed "fix never reaches trunk" indicator -->
   <line x1="440" y1="148" x2="440" y2="103" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="458" y="122" font-size="10" fill="#DC2626">fix never</text>
-  <text x="458" y="134" font-size="10" fill="#DC2626">reaches trunk</text>
+  <text x="458" y="122" font-size="10" fill="#DC2626">easy to forget</text>
+  <text x="458" y="134" font-size="10" fill="#DC2626">after emergency</text>
   <!-- X at top of dashed line -->
   <line x1="434" y1="103" x2="446" y2="95" stroke="#DC2626" stroke-width="2"/>
   <line x1="446" y1="103" x2="434" y2="95" stroke="#DC2626" stroke-width="2"/>
