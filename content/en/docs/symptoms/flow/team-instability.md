@@ -13,7 +13,7 @@ tags:
 
 The team roster changes every quarter. Engineers are pulled to other projects because they have relevant expertise, or they move to new teams as part of organizational restructuring. New members join but onboarding is informal - there is no written record of how the team works, what decisions were made and why, or what the technical context is.
 
-The CD migration effort restarts with every significant roster change. New members bring different mental models and prior experiences. Practices the team adopted with care - trunk-based development, WIP limits, short-lived branches - get questioned by each new cohort who did not experience the problems those practices were designed to solve. The team keeps relitigating settled decisions instead of making progress.
+The [CD](../../glossary/#cd-continuous-delivery) migration effort restarts with every significant roster change. New members bring different mental models and prior experiences. Practices the team adopted with care - [trunk-based development](../../glossary/#tbd-trunk-based-development), [WIP](../../glossary/#wip-work-in-progress) limits, short-lived branches - get questioned by each new cohort who did not experience the problems those practices were designed to solve. The team keeps relitigating settled decisions instead of making progress.
 
 The organizational pattern treats individual contributors as interchangeable resources. An engineer with payment domain expertise can be moved to the infrastructure team because the headcount numbers work out. The cost of that move - lost context, restarted relationships, degraded team performance for months - is invisible to the planning process that made the decision.
 
@@ -43,8 +43,15 @@ Teams with focused, overlapping responsibilities can absorb turnover because mul
 
 **Read more:** [Thin-spread teams](../../anti-patterns/organizational-cultural/thin-spread-teams/)
 
+### Push-Based Work Assignment
+
+When work is assigned by specialty - "you're the database person, so you take the database stories" - knowledge concentrates in individuals rather than spreading across the team. The same person always works the same area, so only they understand it deeply. When that person is reassigned or leaves, no one else can continue their work without starting over. Push-based assignment continuously deepens the knowledge silos that make every roster change more disruptive.
+
+**Read more:** [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/)
+
 ## How to narrow it down
 
 1. **Is critical system knowledge documented or does it live in specific individuals?** If departures create knowledge gaps, the team has knowledge silos regardless of who leaves. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 2. **Does the team appear to have capacity because members are spread across many items?** High WIP makes team members look available for reassignment. Start with [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
 3. **Is each team member the sole owner of a distinct area of the team's work?** If so, any departure leaves an unmanned responsibility. Start with [Thin-spread teams](../../anti-patterns/organizational-cultural/thin-spread-teams/).
+4. **Is work assigned by specialty so the same person always works the same area?** If departures leave knowledge gaps in specific parts of the system, assignment by specialty is reinforcing the silos. Start with [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).

@@ -48,16 +48,27 @@ the next deadline even harder to meet. The cycle accelerates until the team coll
 
 ### Unbounded WIP
 
-When there is no limit on work in progress, the team starts many things and finishes few. Every
+When there is no limit on [work in progress](../../../glossary/#wip-work-in-progress), the team starts many things and finishes few. Every
 developer juggles multiple items, each getting fragmented attention. The sensation of being
 constantly busy but never finishing anything is a direct contributor to burnout. The team is
 working hard on everything and completing nothing.
 
 **Read more:** [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/)
 
+### Push-Based Work Assignment
+
+When work is assigned to individuals, asking for help carries a cost: it pulls a teammate away
+from their own assigned stories. So developers struggle alone rather than swarming. Workloads are
+also uneven because managers cannot precisely predict how long work will take at assignment time.
+Some people finish early and wait for reassignment; others are chronically overloaded. The
+overloaded developers cannot refuse new assignments without appearing unproductive, so the pace
+becomes unsustainable for the people carrying the heaviest loads.
+
+**Read more:** [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/)
+
 ### Velocity as Individual Metric
 
-When individual story points are tracked, developers cannot afford to help each other, take time
+When individual [story points](../../../glossary/#story-points) are tracked, developers cannot afford to help each other, take time
 to learn, or invest in quality. Every hour must produce measurable output. The pressure to perform
 individually eliminates the slack that teams need to stay healthy. Helping a teammate, mentoring
 a junior developer, or improving a build script all become career risks because they do not
@@ -81,6 +92,10 @@ produce points.
    maximize personal output at the expense of collaboration and sustainability, the measurement
    system is contributing to burnout. Start with
    [Velocity as Individual Metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/).
+5. **Are workloads distributed unevenly, with some people chronically overloaded while others
+   wait for new assignments?** If the team cannot self-balance because work is assigned rather
+   than pulled, the assignment model is driving the unsustainable pace. Start with
+   [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 
 ---
 

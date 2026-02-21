@@ -92,9 +92,9 @@ who knows one subsystem, every developer is the only person who knows multiple e
 
 ### Impact on continuous delivery
 
-CD requires a team that can deliver any of their products at any time. Thin-spread teams cannot
+[CD](../../glossary/#cd-continuous-delivery) requires a team that can deliver any of their products at any time. Thin-spread teams cannot
 do this because delivery capacity for each product is tied to a single person's availability. If
-that person is busy with another product, the first product's pipeline is effectively blocked.
+that person is busy with another product, the first product's [pipeline](../../glossary/#pipeline) is effectively blocked.
 
 CD also requires investment in automation, testing, and pipeline infrastructure. A team spread
 across fifteen products cannot invest in improving the delivery practices for any one of them
@@ -123,7 +123,7 @@ Until the product scope is fully reduced, protect focus by allocating capacity e
 specific developers to specific products for the full sprint rather than letting them split across
 products daily. Rotate assignments between sprints to build shared knowledge.
 
-Reserve a percentage of capacity (20 to 30 percent) for unplanned work and production support so
+Reserve a percentage of capacity (20 to 30 percent) for [unplanned work](../../glossary/#unplanned-work) and production support so
 that interrupts do not derail the sprint plan entirely.
 
 ### Step 4: Standardize tooling across products (Week 4+)
@@ -150,6 +150,11 @@ different toolchain.
 
 ## Related Content
 
+- [Rotation Ramp-Up Drag](../../../symptoms/flow/rotation-ramp-up-drag/) - Delivery slowdown that repeats with every team rotation
+- [Repeated Domain Mistakes](../../../symptoms/flow/repeated-domain-mistakes/) - Institutional memory lost with each rotation, same errors recur
+- [Domain Model Erosion](../../../symptoms/flow/domain-model-erosion/) - Codebase degraded by successive teams without domain continuity
+- [Slow Defect Resolution](../../../symptoms/flow/slow-defect-resolution/) - Bugs take disproportionately long when debuggers don't know the domain
+- [Team Membership Changes Constantly](../../../symptoms/flow/team-instability/) - Roster instability driven by treating engineers as interchangeable capacity
 - [Knowledge Silos](../../team-workflow/knowledge-silos/) - Thin-spread teams create silos at the product level, not just the subsystem level
 - [Unbounded WIP](../../team-workflow/unbounded-wip/) - Too many products is WIP at the team level
 - [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - Agreements on product scope and capacity allocation

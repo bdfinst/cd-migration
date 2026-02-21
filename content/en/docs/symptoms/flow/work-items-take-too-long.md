@@ -27,7 +27,7 @@ that only surface mid-implementation.
 
 When work is split by technical layer rather than by user-visible behavior, each item spans an
 entire layer and takes days to complete. "Build the database schema," "build the API," "build the
-UI" are each multi-day items. Nothing is deployable until all layers are done. Vertical slicing
+UI" are each multi-day items. Nothing is [deployable](../../glossary/#deployable) until all layers are done. Vertical slicing
 (cutting thin slices through all layers to deliver complete functionality) produces items that
 can be finished in one to two days.
 
@@ -47,10 +47,20 @@ to flow.
 
 When developers work on branches for days or weeks, the branch and the work item are the same
 size: large. The branching model reinforces large items because there is no integration pressure
-to finish quickly. Trunk-based development creates natural pressure to keep items small enough to
+to finish quickly. [Trunk-based development](../../glossary/#tbd-trunk-based-development) creates natural pressure to keep items small enough to
 integrate daily.
 
 **Read more:** [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/)
+
+### Push-Based Work Assignment
+
+When work is assigned to individuals, swarming is not possible. If the assigned developer hits a
+blocker - a dependency, an unclear requirement, a missing skill - they work around it alone rather
+than asking for help. Asking for help means pulling a teammate away from their own assigned work,
+so developers hesitate. Items sit idle while the assigned person waits or context-switches rather
+than the team collectively resolving the blocker.
+
+**Read more:** [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/)
 
 ## How to narrow it down
 
@@ -63,6 +73,10 @@ integrate daily.
 3. **Do developers work on branches for more than a day?** If yes, the branching model allows
    and encourages large items. Start with
    [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/).
+4. **Do blocked items sit idle rather than getting picked up by another team member?** If work
+   stalls because it "belongs to" the assigned person and nobody else touches it, the assignment
+   model is preventing swarming. Start with
+   [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 
 ---
 

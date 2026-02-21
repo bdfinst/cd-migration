@@ -43,7 +43,7 @@ team size.
 
 ## Why This Is a Problem
 
-Knowledge silos turn individual availability into a team constraint. The team's throughput is
+Knowledge silos turn individual availability into a team [constraint](../../glossary/#constraint). The team's throughput is
 limited not by how many people are available but by whether the right person is available.
 
 ### It reduces quality
@@ -76,7 +76,7 @@ team capacity.
 
 ### Impact on continuous delivery
 
-CD requires that the team can deliver at any time, regardless of who is available. Knowledge
+[CD](../../glossary/#cd-continuous-delivery) requires that the team can deliver at any time, regardless of who is available. Knowledge
 silos make delivery dependent on specific individuals. If the person who knows the deployment
 process is out, the team cannot deploy. If the person who can review a critical change is in a
 meeting, the change waits.
@@ -124,6 +124,11 @@ investment in long-term team capacity.
 
 ## Related Content
 
+- [Slow Defect Resolution](../../../symptoms/flow/slow-defect-resolution/) - Bugs take disproportionately long when only one person understands the domain
+- [Blocked Work Sits Idle](../../../symptoms/flow/blocked-work-sits-idle/) - Blocked items that cannot be picked up because knowledge is too concentrated
+- [Domain Model Erosion](../../../symptoms/flow/domain-model-erosion/) - Codebase drift when domain understanding lives in too few people
+- [Repeated Domain Mistakes](../../../symptoms/flow/repeated-domain-mistakes/) - Same errors recur when knowledge leaves with the people who held it
+- [Team Membership Changes Constantly](../../../symptoms/flow/team-instability/) - Roster changes that drain knowledge the team never externalized
 - [Code Review](../../../migrate-to-cd/migration-path/foundations/code-review/) - Review practices that spread knowledge
 - [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - Team norms for review rotation and pairing
 - [Push-Based Work Assignment](../push-based-work-assignment/) - Push assignment reinforces silos by always sending the same work to the same person

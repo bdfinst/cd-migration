@@ -59,11 +59,11 @@ fix because they compound through every downstream phase.
 |-------|-------------------|-------------------|-------------------|-----|
 | Building the wrong thing | Discovery | Product analytics platforms, usage trend alerts | <span class="ai-high">&#9650;</span> Synthesize user feedback, support tickets, and usage data to surface misalignment earlier than production metrics | Validated user research before backlog entry; dual-track agile |
 | Solving a problem nobody has | Discovery | Support ticket clustering tools, feature adoption tracking | <span class="ai-high">&#9650;</span> Semantic analysis of interview transcripts, forums, and support tickets to identify real vs. assumed pain | Problem validation as a stage gate; publish problem brief before solution |
-| Correct problem, wrong solution | Discovery | A/B testing frameworks, feature flag cohort comparison | Evaluate prototypes against problem definitions; generate alternative approaches | Prototype multiple approaches; measurable success criteria first |
+| Correct problem, wrong solution | Discovery | A/B testing frameworks, [feature flag](../glossary/#feature-flag) cohort comparison | Evaluate prototypes against problem definitions; generate alternative approaches | Prototype multiple approaches; measurable success criteria first |
 | Meets spec but misses user intent | Requirements | Session replay tools, rage-click and error-loop detection | <span class="ai-high">&#9650;</span> Review acceptance criteria against user behavior data to flag misalignment | Acceptance criteria focused on user outcomes, not checklists |
 | Over-engineering beyond need | Design | Static analysis for dead code and unused abstractions | <span class="ai-high">&#9650;</span> Flag unnecessary abstraction layers and premature optimization in code review | YAGNI principle; justify every abstraction layer |
-| Prioritizing wrong work | Discovery | DORA metrics versus business outcomes, WSJF scoring | Synthesize roadmap, customer data, and market signals to surface opportunity costs | WSJF prioritization with outcome data |
-| Inaccessible UI excludes users | Pre-commit | axe-core, pa11y, Lighthouse accessibility audits | <span class="ai-blocked">Current tooling sufficient</span> | WCAG compliance as acceptance criteria; automated accessibility checks in pipeline |
+| Prioritizing wrong work | Discovery | [DORA metrics](../glossary/#dora-metrics) versus business outcomes, WSJF scoring | Synthesize roadmap, customer data, and market signals to surface opportunity costs | WSJF prioritization with outcome data |
+| Inaccessible UI excludes users | Pre-commit | axe-core, pa11y, Lighthouse accessibility audits | <span class="ai-blocked">Current tooling sufficient</span> | WCAG compliance as acceptance criteria; automated accessibility checks in [pipeline](../glossary/#pipeline) |
 
 ## Integration & Boundaries
 
@@ -72,7 +72,7 @@ Contract testing and deliberate boundary design are the primary defenses.
 
 | Issue | Earliest Detection<br>(Automation) | Automated<br>Detection | Earlier Detection<br>with AI | Systemic<br>Prevention |
 |-------|-------------------|-------------------|-------------------|-----|
-| Interface mismatches | CI | Consumer-driven contract tests, API schema validators | Predict which consumers break from API changes based on usage patterns | Mandatory contract tests per boundary; API-first with generated clients |
+| Interface mismatches | [CI](../glossary/#ci-continuous-integration) | Consumer-driven contract tests, API schema validators | Predict which consumers break from API changes based on usage patterns | Mandatory contract tests per boundary; API-first with generated clients |
 | Wrong assumptions about upstream/downstream | Design | Chaos engineering platforms, synthetic transactions, fault injection | <span class="ai-high">&#9650;</span> Review code and docs to identify undocumented behavioral assumptions | Document behavioral contracts; defensive coding at boundaries |
 | Race conditions | Pre-commit | Thread sanitizers, race detectors, formal verification tools, fuzz testing | Flag concurrency anti-patterns but cannot replace formal detection tools | Idempotent design; queues over shared mutable state |
 
@@ -84,7 +84,7 @@ They are the hardest to detect with automated tools and the easiest to prevent w
 | Issue | Earliest Detection<br>(Automation) | Automated<br>Detection | Earlier Detection<br>with AI | Systemic<br>Prevention |
 |-------|-------------------|-------------------|-------------------|-----|
 | Implicit domain knowledge not in code | Coding | Magic number detection, code ownership analytics | <span class="ai-high">&#9650;</span> Identify undocumented business rules and knowledge gaps from code and test analysis | Domain-Driven Design with ubiquitous language; embed rules in code |
-| Ambiguous requirements | Requirements | Flag stories without acceptance criteria, BDD spec coverage tracking | <span class="ai-high">&#9650;</span> Review requirements for ambiguity, missing edge cases, and contradictions; generate test scenarios | Three Amigos before work; example mapping; executable specs |
+| Ambiguous requirements | Requirements | Flag stories without acceptance criteria, [BDD](../glossary/#bdd-behavior-driven-development) spec coverage tracking | <span class="ai-high">&#9650;</span> Review requirements for ambiguity, missing edge cases, and contradictions; generate test scenarios | Three Amigos before work; example mapping; executable specs |
 | Tribal knowledge loss | Coding | Bus factor analysis from commit history, single-author concentration alerts | <span class="ai-high">&#9650;</span> Generate documentation from code and tests; flag documentation drift from implementation | Pair/mob programming as default; rotate on-call; living docs |
 | Divergent mental models across teams | Design | Divergent naming detection, contract test failures | <span class="ai-high">&#9650;</span> Compare terminology and domain models across codebases to detect semantic mismatches | Shared domain models; explicit bounded contexts |
 
@@ -95,9 +95,9 @@ longer it lives outside trunk, the higher the risk.
 
 | Issue | Earliest Detection<br>(Automation) | Automated<br>Detection | Earlier Detection<br>with AI | Systemic<br>Prevention |
 |-------|-------------------|-------------------|-------------------|-----|
-| Unintended side effects | CI | Automated test suites, mutation testing frameworks, change impact analysis | <span class="ai-high">&#9650;</span> Reason about semantic change impact beyond syntactic dependencies; automated blast radius analysis | Small focused commits; trunk-based development; feature flags |
+| Unintended side effects | CI | Automated test suites, mutation testing frameworks, change impact analysis | <span class="ai-high">&#9650;</span> Reason about semantic change impact beyond syntactic dependencies; automated blast radius analysis | Small focused commits; [trunk-based development](../glossary/#tbd-trunk-based-development); feature flags |
 | Accumulated technical debt | CI | Complexity trends, duplication scoring, dependency cycle detection, quality gates | <span class="ai-high">&#9650;</span> Identify architectural drift, abstraction decay, and calcified workarounds | Refactoring as part of every story; dedicated debt budget |
-| Unanticipated feature interactions | Acceptance Tests | Combinatorial and pairwise testing, feature flag interaction matrix | Reason about feature interactions semantically; flag conflicts testing matrices miss | Feature flags with controlled rollout; modular design; canary deployments |
+| Unanticipated feature interactions | Acceptance Tests | Combinatorial and pairwise testing, feature flag interaction matrix | Reason about feature interactions semantically; flag conflicts testing matrices miss | Feature flags with controlled rollout; modular design; [canary deployments](../glossary/#canary-deployment) |
 | Configuration drift | CI | Infrastructure-as-code drift detection, environment diffing | <span class="ai-blocked">Current tooling sufficient</span> | Infrastructure as code; immutable infrastructure; GitOps |
 
 ## Testing & Observability Gaps
@@ -121,10 +121,11 @@ slow feedback loops create the conditions for failure.
 |-------|-------------------|-------------------|-------------------|-----|
 | Long-lived branches | Pre-commit | Branch age alerts, merge conflict frequency, CI dashboard for branch count | <span class="ai-blocked">Process change, not AI</span> | Trunk-based development; merge at least daily |
 | Manual pipeline steps | CI | Pipeline audit for manual gates, deployment lead time analysis | <span class="ai-blocked">Automation, not AI</span> | Automate every step commit-to-production |
-| Batching too many changes per release | CI | Changes-per-deploy metrics, deployment frequency tracking | <span class="ai-blocked">CD practice, not AI</span> | Every commit is a release candidate; single-piece flow |
-| Inadequate rollback capability | CI | Automated rollback testing in CI, mean time to rollback measurement | <span class="ai-blocked">Deployment patterns, not AI</span> | Blue/green or canary deployments; auto-rollback on health failure |
+| Batching too many changes per release | CI | Changes-per-deploy metrics, [deployment frequency](../glossary/#deployment-frequency) tracking | <span class="ai-blocked">[CD](../glossary/#cd-continuous-delivery) practice, not AI</span> | Every commit is a release candidate; single-piece flow |
+| Inadequate [rollback](../glossary/#rollback) capability | CI | Automated rollback testing in CI, mean time to rollback measurement | <span class="ai-blocked">Deployment patterns, not AI</span> | [Blue/green](../glossary/#blue-green-deployment) or canary deployments; auto-rollback on health failure |
 | Reliance on human review to catch preventable defects | Coding | Linters, static analysis security testing, type systems, complexity scoring | <span class="ai-high">&#9650;</span> Semantic code review for logic errors and missing edge cases that automated rules cannot express | Reserve human review for knowledge transfer and design decisions |
 | Manual review of risks and compliance (CAB) | Design | Change lead time analysis, CAB effectiveness metrics | <span class="ai-high">&#9650;</span> Automated change risk scoring from change diff and deployment history; blast radius analysis | Replace CAB with automated progressive delivery |
+| Work stacking on individuals; [everything started, nothing finished](../symptoms/flow/too-much-wip/); [PRs waiting days for review](../symptoms/flow/prs-waiting-for-review/); [uneven workloads](../symptoms/flow/uneven-workloads/); [blocked work sits idle](../symptoms/flow/blocked-work-sits-idle/); [completed work misses the intent](../symptoms/flow/completed-work-misses-intent/) | CI | Issue tracker reports where individuals have multiple items assigned simultaneously | <span class="ai-blocked">Process change, not AI</span> | [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/) anti-pattern |
 
 ## Data & State
 
