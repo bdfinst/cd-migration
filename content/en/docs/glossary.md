@@ -79,9 +79,8 @@ debugging, and shorten feedback loops. Reducing batch size is a core focus of
 [Phase 3 - Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/).
 
 Referenced in:
-[CD Dependency Tree](../cd-dependency-tree/),
-[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
-[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
+[New Releases Introduce Regressions in Previously Working Functionality](../symptoms/deployment/regressions-on-release/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/)
 
 ### BDD (Behavior-Driven Development)
 
@@ -93,6 +92,7 @@ story actually means before development begins.
 
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Systemic Defect Fixes](../defect-sources/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
@@ -106,7 +106,8 @@ to the inactive environment, verified, and then traffic is switched. See
 
 Referenced in:
 [Rollback (Practice)](../practices/rollback/),
-[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/)
+[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/),
+[Systemic Defect Fixes](../defect-sources/)
 
 ### Branch Lifetime
 
@@ -127,9 +128,8 @@ before full rollout. If the canary shows no issues, the deployment proceeds to 1
 [Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/).
 
 Referenced in:
-[Blind Operations](../anti-patterns/monitoring-observability/blind-operations/),
-[Defect Sources](../defect-sources/),
-[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/)
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Systemic Defect Fixes](../defect-sources/)
 
 ### CD (Continuous Delivery)
 
@@ -143,7 +143,10 @@ Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Systemic Defect Fixes](../defect-sources/),
+[Team Membership Changes Constantly](../symptoms/flow/team-instability/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Change Failure Rate (CFR)
@@ -164,6 +167,7 @@ a synonym. A team that runs automated builds on feature branches but merges week
 CI. See [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/).
 
 Referenced in:
+[Systemic Defect Fixes](../defect-sources/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)
@@ -175,7 +179,8 @@ During a CD migration, your job is to find and fix constraints in order of impac
 [Identify Constraints](../migrate-to-cd/migration-path/assess/identify-constraints/).
 
 Referenced in:
-[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/)
 
 ### Context (LLM)
 
@@ -225,7 +230,8 @@ by a person at deployment time. See [Deployable Definition](../migrate-to-cd/mig
 
 Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
-[Functional Tests](../testing/functional/)
+[Functional Tests](../testing/functional/),
+[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/)
 
 ### Deployment Frequency
 
@@ -233,7 +239,8 @@ How often an organization successfully deploys to production. One of the four DO
 See [Metrics - Release Frequency](../metrics/release-frequency/).
 
 Referenced in:
-[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Systemic Defect Fixes](../defect-sources/)
 
 ### Development Cycle Time
 
@@ -251,6 +258,7 @@ as predictive of software delivery performance: deployment frequency, lead time 
 change failure rate, and mean time to restore service. See [DORA Capabilities](../dora-capabilities/).
 
 Referenced in:
+[Systemic Defect Fixes](../defect-sources/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
@@ -282,6 +290,7 @@ then selectively enabled for specific users, percentages of traffic, or environm
 flags decouple deployment from release. See [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/).
 
 Referenced in:
+[Systemic Defect Fixes](../defect-sources/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
@@ -382,7 +391,7 @@ One of the four DORA metrics. See [Metrics - Lead Time](../metrics/lead-time/).
 
 Referenced in:
 [For Managers](../symptoms/for-managers/),
-[Defect Sources](../defect-sources/)
+[Systemic Defect Fixes](../defect-sources/)
 
 ## M
 
@@ -435,11 +444,13 @@ The automated sequence of build, test, and deployment stages that every change p
 on its way to production. See [Phase 2 - Pipeline](../migrate-to-cd/migration-path/pipeline/).
 
 Referenced in:
-[Deterministic Pipeline (Practice)](../practices/deterministic-pipeline/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
-[Pipeline Reference Architecture](../pipeline-reference-architecture/),
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
+[Systemic Defect Fixes](../defect-sources/),
+[Thin-Spread Teams](../anti-patterns/organizational-cultural/thin-spread-teams/),
+[Work Requires Sign-Off from Teams Not Involved in Delivery](../symptoms/deployment/waiting-for-cross-team-approval/)
 
 ### Production-Like Environment
 
@@ -489,7 +500,8 @@ automated rollback that takes minutes, not hours. See [Rollback](../migrate-to-c
 
 Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Systemic Defect Fixes](../defect-sources/)
 
 ## S
 
@@ -563,9 +575,12 @@ Long-lived feature branches are not. TBD is a prerequisite for CI, which is in t
 prerequisite for CD. See [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 Referenced in:
+[Systemic Defect Fixes](../defect-sources/),
 [TBD Migration](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
+[Team Membership Changes Constantly](../symptoms/flow/team-instability/),
 [Trunk-Based Development (Practice)](../practices/trunk-based-development/),
-[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
+[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/)
 
 ### TDD (Test-Driven Development)
 
@@ -664,9 +679,10 @@ in [Phase 3 - Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wi
 
 Referenced in:
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
-[Too Much WIP](../symptoms/flow/too-much-wip/),
-[Work in Progress (Metric)](../metrics/work-in-progress/)
+[Team Burnout and Unsustainable Pace](../symptoms/visibility/team-burnout/),
+[Team Membership Changes Constantly](../symptoms/flow/team-instability/)
 
 ### White Box Testing
 
