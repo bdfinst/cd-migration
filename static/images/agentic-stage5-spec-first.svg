@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" width="760" height="290" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="290" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 5: Spec-First Agentic Development</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Human writes spec -->
+  <rect x="10" y="64" width="148" height="80" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="84" y="84" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Human</text>
+  <text x="84" y="100" font-size="10" fill="#374151" text-anchor="middle">writes spec:</text>
+  <text x="84" y="113" font-size="10" fill="#374151" text-anchor="middle">intent + BDD scenarios</text>
+  <text x="84" y="126" font-size="10" fill="#374151" text-anchor="middle">+ constraints</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="104" x2="200" y2="104" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="200,104 193,100 193,108" fill="#9CA3AF"/>
+
+  <!-- Box 2: Agent generates tests -->
+  <rect x="202" y="64" width="160" height="80" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="282" y="84" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">Agent</text>
+  <text x="282" y="100" font-size="10" fill="#374151" text-anchor="middle">generates test code</text>
+  <text x="282" y="113" font-size="10" fill="#374151" text-anchor="middle">from spec</text>
+  <text x="282" y="126" font-size="10" fill="#374151" text-anchor="middle">(tests first)</text>
+
+  <!-- Arrow 2 -->
+  <line x1="364" y1="104" x2="404" y2="104" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="404,104 397,100 397,108" fill="#9CA3AF"/>
+
+  <!-- Box 3: Agent generates impl -->
+  <rect x="406" y="64" width="160" height="80" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="486" y="84" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">Agent</text>
+  <text x="486" y="100" font-size="10" fill="#374151" text-anchor="middle">generates</text>
+  <text x="486" y="113" font-size="10" fill="#374151" text-anchor="middle">implementation</text>
+  <text x="486" y="126" font-size="10" fill="#374151" text-anchor="middle">(makes tests pass)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="568" y1="104" x2="608" y2="104" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="608,104 601,100 601,108" fill="#9CA3AF"/>
+
+  <!-- Box 4: Pipeline -->
+  <rect x="610" y="64" width="140" height="80" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="680" y="84" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Pipeline</text>
+  <text x="680" y="100" font-size="10" fill="#374151" text-anchor="middle">enforces spec via</text>
+  <text x="680" y="113" font-size="10" fill="#374151" text-anchor="middle">automated tests;</text>
+  <text x="680" y="126" font-size="10" fill="#374151" text-anchor="middle">pass = done</text>
+
+  <!-- Human review bottleneck -->
+  <!-- Arrow from Agent output down to Human reviewer -->
+  <line x1="486" y1="146" x2="486" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="282" y1="146" x2="282" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="282" y1="165" x2="634" y2="165" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <polygon points="634,165 627,161 627,169" fill="#DC2626"/>
+
+  <!-- Human review box (below) -->
+  <rect x="440" y="166" width="200" height="52" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="540" y="186" font-size="11" font-weight="700" fill="#DC2626" text-anchor="middle">Human Review</text>
+  <text x="540" y="203" font-size="10" fill="#374151" text-anchor="middle">must validate all output</text>
+  <text x="540" y="216" font-size="10" fill="#374151" text-anchor="middle">before promotion</text>
+
+  <!-- Bottleneck label on the arrow -->
+  <text x="294" y="161" font-size="9" fill="#DC2626" font-weight="600">everything routes to human review</text>
+
+  <!-- Bottleneck section -->
+  <rect x="10" y="230" width="740" height="48" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="20" y="249" font-size="9" font-weight="700" fill="#DC2626" letter-spacing="1">BOTTLENECK</text>
+  <text x="20" y="266" font-size="11" fill="#374151">A fast agent with clear specs generates changes faster than a human reviewer can validate them. The review queue</text>
+  <text x="20" y="278" font-size="11" fill="#374151">backs up. Human review throughput, not code generation quality, now limits delivery speed.</text>
+
+</svg>

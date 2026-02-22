@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 230" width="760" height="230" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="230" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 2: Prompted Function Generation</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Developer describes -->
+  <rect x="10" y="64" width="148" height="56" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="84" y="86" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Developer</text>
+  <text x="84" y="102" font-size="10" fill="#374151" text-anchor="middle">describes a function</text>
+  <text x="84" y="115" font-size="10" fill="#374151" text-anchor="middle">in plain language</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="92" x2="200" y2="92" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="200,92 193,88 193,96" fill="#9CA3AF"/>
+
+  <!-- Box 2: LLM -->
+  <rect x="202" y="64" width="148" height="56" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="276" y="86" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">LLM</text>
+  <text x="276" y="102" font-size="10" fill="#374151" text-anchor="middle">generates the function</text>
+  <text x="276" y="115" font-size="10" fill="#374151" text-anchor="middle">in one response</text>
+
+  <!-- Arrow 2 -->
+  <line x1="352" y1="92" x2="392" y2="92" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="392,92 385,88 385,96" fill="#9CA3AF"/>
+
+  <!-- Box 3: Manual integration -->
+  <rect x="394" y="64" width="164" height="56" rx="6" fill="#FFF7ED" stroke="#D97706" stroke-width="1.5"/>
+  <text x="476" y="83" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">Manual Integration</text>
+  <text x="476" y="99" font-size="10" fill="#374151" text-anchor="middle">developer copies, adjusts</text>
+  <text x="476" y="112" font-size="10" fill="#374151" text-anchor="middle">imports, names, patterns</text>
+
+  <!-- Arrow 3 -->
+  <line x1="560" y1="92" x2="600" y2="92" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="600,92 593,88 593,96" fill="#9CA3AF"/>
+
+  <!-- Box 4: Code -->
+  <rect x="602" y="64" width="148" height="56" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="676" y="86" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Code</text>
+  <text x="676" y="102" font-size="10" fill="#374151" text-anchor="middle">merged into codebase</text>
+  <text x="676" y="115" font-size="10" fill="#374151" text-anchor="middle">by hand</text>
+
+  <!-- Bottleneck section -->
+  <rect x="10" y="140" width="740" height="78" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="20" y="159" font-size="9" font-weight="700" fill="#DC2626" letter-spacing="1">BOTTLENECK</text>
+  <text x="20" y="176" font-size="11" fill="#374151">Scope ceiling: as the task grows beyond one function, integration errors multiply. The model fills in missing</text>
+  <text x="20" y="192" font-size="11" fill="#374151">context with plausible assumptions. Output does not match surrounding code patterns, imports, or naming</text>
+  <text x="20" y="208" font-size="11" fill="#374151">conventions. The developer rewrites enough of the output that the time savings disappear.</text>
+
+</svg>

@@ -1,0 +1,9 @@
+{
+  "ltex.disabledRules": {
+    "en-US": [
+      "EN_COMPOUNDS",
+      "NOUN_VERB_CONFUSION"
+    ]
+  },
+  "cSpell.import": ["./cspell.json"]
+}

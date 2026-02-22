@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" width="760" height="320" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="320" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 6: Multi-Agent Architecture</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Human writes spec -->
+  <rect x="10" y="64" width="120" height="80" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="70" y="84" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Human</text>
+  <text x="70" y="100" font-size="10" fill="#374151" text-anchor="middle">defines spec:</text>
+  <text x="70" y="113" font-size="10" fill="#374151" text-anchor="middle">intent, behaviors,</text>
+  <text x="70" y="126" font-size="10" fill="#374151" text-anchor="middle">constraints</text>
+
+  <!-- Arrow to Orchestrator -->
+  <line x1="132" y1="104" x2="168" y2="104" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="168,104 161,100 161,108" fill="#9CA3AF"/>
+
+  <!-- Box 2: Orchestrator -->
+  <rect x="170" y="64" width="130" height="80" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="235" y="84" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Orchestrator</text>
+  <text x="235" y="100" font-size="10" fill="#374151" text-anchor="middle">routes work, manages</text>
+  <text x="235" y="113" font-size="10" fill="#374151" text-anchor="middle">context boundaries,</text>
+  <text x="235" y="126" font-size="10" fill="#374151" text-anchor="middle">tracks sessions</text>
+
+  <!-- Arrow to Coding Agent -->
+  <line x1="302" y1="104" x2="338" y2="104" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="338,104 331,100 331,108" fill="#9CA3AF"/>
+
+  <!-- Box 3: Coding Agent -->
+  <rect x="340" y="64" width="140" height="80" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="410" y="84" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">Coding Agent</text>
+  <text x="410" y="100" font-size="10" fill="#374151" text-anchor="middle">generates tests then</text>
+  <text x="410" y="113" font-size="10" fill="#374151" text-anchor="middle">implementation per</text>
+  <text x="410" y="126" font-size="10" fill="#374151" text-anchor="middle">spec</text>
+
+  <!-- Lines from coding agent down to reviewer agents -->
+  <line x1="410" y1="146" x2="410" y2="163" stroke="#16A34A" stroke-width="1.5"/>
+  <!-- Fan out to 3 reviewer agents -->
+  <line x1="410" y1="163" x2="200" y2="163" stroke="#16A34A" stroke-width="1.5"/>
+  <line x1="410" y1="163" x2="620" y2="163" stroke="#16A34A" stroke-width="1.5"/>
+
+  <!-- Reviewer 1: Test fidelity -->
+  <line x1="200" y1="163" x2="200" y2="175" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="130" y="175" width="140" height="50" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="200" y="194" font-size="10" font-weight="700" fill="#D97706" text-anchor="middle">Reviewer: Test Fidelity</text>
+  <text x="200" y="210" font-size="9" fill="#374151" text-anchor="middle">tests match spec?</text>
+
+  <!-- Reviewer 2: Architecture -->
+  <line x1="410" y1="163" x2="410" y2="175" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="340" y="175" width="140" height="50" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="410" y="194" font-size="10" font-weight="700" fill="#D97706" text-anchor="middle">Reviewer: Architecture</text>
+  <text x="410" y="210" font-size="9" fill="#374151" text-anchor="middle">boundaries respected?</text>
+
+  <!-- Reviewer 3: Intent alignment -->
+  <line x1="620" y1="163" x2="620" y2="175" stroke="#16A34A" stroke-width="1.5"/>
+  <rect x="550" y="175" width="140" height="50" rx="6" fill="#FFFBEB" stroke="#D97706" stroke-width="1.5"/>
+  <text x="620" y="194" font-size="10" font-weight="700" fill="#D97706" text-anchor="middle">Reviewer: Intent</text>
+  <text x="620" y="210" font-size="9" fill="#374151" text-anchor="middle">impl matches intent?</text>
+
+  <!-- Reviewer agents fan in to pipeline -->
+  <line x1="200" y1="227" x2="200" y2="245" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="410" y1="227" x2="410" y2="245" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="620" y1="227" x2="620" y2="245" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="200" y1="245" x2="620" y2="245" stroke="#9CA3AF" stroke-width="1.5"/>
+  <line x1="480" y1="245" x2="480" y2="256" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="480,256 476,249 484,249" fill="#9CA3AF"/>
+
+  <!-- Box 5: Pipeline -->
+  <rect x="420" y="256" width="120" height="42" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="480" y="274" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Pipeline</text>
+  <text x="480" y="288" font-size="10" fill="#374151" text-anchor="middle">gates enforced</text>
+
+  <!-- Arrow from pipeline to Human exceptions -->
+  <line x1="542" y1="277" x2="622" y2="277" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="622,277 615,273 615,281" fill="#9CA3AF"/>
+
+  <!-- Box 6: Human exceptions only -->
+  <rect x="624" y="256" width="128" height="42" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="688" y="274" font-size="10" font-weight="700" fill="#1D4ED8" text-anchor="middle">Human: exceptions</text>
+  <text x="688" y="288" font-size="9" fill="#374151" text-anchor="middle">reviews flagged items only</text>
+
+  <!-- Target state label -->
+  <rect x="10" y="256" width="402" height="52" rx="6" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.5"/>
+  <text x="20" y="271" font-size="9" font-weight="700" fill="#15803D" letter-spacing="1">TARGET STATE</text>
+  <text x="20" y="284" font-size="11" fill="#374151">Reviewer agents run at pipeline speed.</text>
+  <text x="20" y="297" font-size="11" fill="#374151">Humans define specs and review exceptions.</text>
+
+</svg>

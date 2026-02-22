@@ -1,7 +1,7 @@
 ---
 title: "Recommended Agent Configuration for Coding and Review"
 linkTitle: "Agent Configuration"
-weight: 8
+weight: 7
 description: >
   A recommended orchestrator, agent, and sub-agent configuration for coding and pre-commit review, with rules, skills, and hooks mapped to the defect sources catalog.
 ---

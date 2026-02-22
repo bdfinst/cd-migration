@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 270" width="760" height="270" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="270" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 4: Agentic Task Completion</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Developer (vague task) -->
+  <rect x="10" y="64" width="148" height="70" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="84" y="85" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Developer</text>
+  <text x="84" y="101" font-size="10" fill="#374151" text-anchor="middle">describes task</text>
+  <text x="84" y="114" font-size="10" fill="#D97706" text-anchor="middle">(requirements vague)</text>
+
+  <!-- Arrow 1 -->
+  <line x1="160" y1="99" x2="200" y2="99" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="200,99 193,95 193,103" fill="#9CA3AF"/>
+
+  <!-- Box 2: Agent -->
+  <rect x="202" y="64" width="164" height="70" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="284" y="85" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">Agent</text>
+  <text x="284" y="101" font-size="10" fill="#374151" text-anchor="middle">reads files, edits files,</text>
+  <text x="284" y="114" font-size="10" fill="#374151" text-anchor="middle">runs commands</text>
+
+  <!-- Agent connects down to files -->
+  <line x1="284" y1="136" x2="284" y2="158" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Files box (below agent) -->
+  <rect x="202" y="158" width="164" height="50" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1"/>
+  <text x="284" y="177" font-size="10" fill="#16A34A" text-anchor="middle" font-weight="600">Multiple files changed</text>
+  <text x="284" y="192" font-size="10" fill="#374151" text-anchor="middle">diff spans many modules</text>
+
+  <!-- Arrow 2: Agent to Diff -->
+  <line x1="368" y1="99" x2="408" y2="99" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="408,99 401,95 401,103" fill="#9CA3AF"/>
+
+  <!-- Box 3: Diff -->
+  <rect x="410" y="64" width="148" height="70" rx="6" fill="#FFF7ED" stroke="#D97706" stroke-width="1.5"/>
+  <text x="484" y="85" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">Diff</text>
+  <text x="484" y="101" font-size="10" fill="#374151" text-anchor="middle">large, cross-cutting;</text>
+  <text x="484" y="114" font-size="10" fill="#374151" text-anchor="middle">intent not stated</text>
+
+  <!-- Arrow 3: Diff to Manual review -->
+  <line x1="560" y1="99" x2="600" y2="99" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="600,99 593,95 593,103" fill="#9CA3AF"/>
+
+  <!-- Box 4: Manual review -->
+  <rect x="602" y="64" width="148" height="70" rx="6" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="676" y="85" font-size="11" font-weight="700" fill="#DC2626" text-anchor="middle">Manual Review</text>
+  <text x="676" y="101" font-size="10" fill="#374151" text-anchor="middle">reviewer reconstructs</text>
+  <text x="676" y="114" font-size="10" fill="#374151" text-anchor="middle">intent from code</text>
+
+  <!-- Bottleneck section -->
+  <rect x="10" y="222" width="740" height="36" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="20" y="241" font-size="9" font-weight="700" fill="#DC2626" letter-spacing="1">BOTTLENECK</text>
+  <text x="110" y="241" font-size="11" fill="#374151">Vague requirements cause drift. Agent makes reasonable-but-wrong decisions across many files. Reviewer spends more time understanding what the agent did than it would have taken to write the code.</text>
+
+</svg>

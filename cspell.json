@@ -1,0 +1,31 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "agentic",
+    "brownfield",
+    "bryan",
+    "bryan-finster",
+    "bryanfinster",
+    "cSpell",
+    "devops",
+    "docsy",
+    "gherkin",
+    "hugo",
+    "kanban",
+    "mermaid",
+    "michael-kuesters",
+    "orchestrator",
+    "pageinfo",
+    "sast",
+    "scott-prugh",
+    "tbd",
+    "tokenomics"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "public",
+    "resources",
+    ".hugo_build.lock"
+  ]
+}

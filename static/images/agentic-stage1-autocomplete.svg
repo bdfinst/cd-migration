@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="760" height="220" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="220" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 1: Autocomplete</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Developer types -->
+  <rect x="16" y="64" width="136" height="56" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="84" y="87" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Developer</text>
+  <text x="84" y="103" font-size="10" fill="#374151" text-anchor="middle">types code in editor</text>
+
+  <!-- Arrow 1 -->
+  <line x1="154" y1="92" x2="210" y2="92" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="210,92 203,88 203,96" fill="#9CA3AF"/>
+
+  <!-- Box 2: AI Suggestion -->
+  <rect x="212" y="64" width="220" height="56" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="322" y="84" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">AI Inline Suggestion</text>
+  <text x="322" y="100" font-size="10" fill="#374151" text-anchor="middle">next line or block appears</text>
+  <text x="322" y="113" font-size="10" fill="#374151" text-anchor="middle">as ghost text in editor</text>
+
+  <!-- Arrow 2 -->
+  <line x1="434" y1="92" x2="490" y2="92" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="490,92 483,88 483,96" fill="#9CA3AF"/>
+  <text x="462" y="83" font-size="9" fill="#6B7280" text-anchor="middle">accept</text>
+  <text x="462" y="95" font-size="9" fill="#6B7280" text-anchor="middle">or reject</text>
+
+  <!-- Box 3: Code -->
+  <rect x="492" y="64" width="252" height="56" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="618" y="87" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Code committed</text>
+  <text x="618" y="103" font-size="10" fill="#374151" text-anchor="middle">developer may not remember</text>
+  <text x="618" y="116" font-size="10" fill="#374151" text-anchor="middle">exactly what the AI wrote</text>
+
+  <!-- Bottleneck section -->
+  <rect x="10" y="140" width="740" height="68" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="20" y="159" font-size="9" font-weight="700" fill="#DC2626" letter-spacing="1">BOTTLENECK</text>
+  <text x="20" y="176" font-size="11" fill="#374151">The model infers your intent from surrounding code, not from what you actually mean. For boilerplate and</text>
+  <text x="20" y="192" font-size="11" fill="#374151">common patterns, this works. For non-trivial logic, suggestions are confidently wrong. Teams that stop</text>
+  <text x="20" y="208" font-size="11" fill="#374151">scrutinizing suggestions accumulate defects they cannot later attribute to AI.</text>
+
+</svg>

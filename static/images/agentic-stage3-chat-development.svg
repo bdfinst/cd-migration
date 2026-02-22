@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" width="760" height="250" font-family="system-ui, -apple-system, sans-serif">
+
+  <!-- Background -->
+  <rect width="760" height="250" fill="#F8FAFC" rx="6" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="760" height="34" rx="6" fill="#1E3A5F"/>
+  <rect x="0" y="24" width="760" height="10" fill="#1E3A5F"/>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="white">Stage 3: Chat-Driven Development</text>
+
+  <!-- Section label -->
+  <text x="16" y="56" font-size="9" font-weight="700" fill="#6B7280" letter-spacing="1">WORKFLOW</text>
+
+  <!-- Box 1: Developer -->
+  <rect x="10" y="64" width="140" height="80" rx="6" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+  <text x="80" y="90" font-size="11" font-weight="700" fill="#1D4ED8" text-anchor="middle">Developer</text>
+  <text x="80" y="107" font-size="10" fill="#374151" text-anchor="middle">pastes code, asks</text>
+  <text x="80" y="120" font-size="10" fill="#374151" text-anchor="middle">questions, iterates</text>
+  <text x="80" y="133" font-size="10" fill="#374151" text-anchor="middle">across many turns</text>
+
+  <!-- Bidirectional arrows between Developer and Chat -->
+  <line x1="152" y1="90" x2="204" y2="90" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="204,90 197,86 197,94" fill="#9CA3AF"/>
+  <line x1="204" y1="108" x2="152" y2="108" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="152,108 159,104 159,112" fill="#9CA3AF"/>
+  <text x="178" y="84" font-size="9" fill="#6B7280" text-anchor="middle">prompt</text>
+  <text x="178" y="120" font-size="9" fill="#6B7280" text-anchor="middle">response</text>
+
+  <!-- Box 2: Chat / LLM with context fill bar -->
+  <rect x="206" y="64" width="220" height="80" rx="6" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.5"/>
+  <text x="316" y="83" font-size="11" font-weight="700" fill="#16A34A" text-anchor="middle">Chat + LLM</text>
+  <!-- Context bar -->
+  <rect x="218" y="91" width="196" height="10" rx="3" fill="#E5E7EB" stroke="#D1D5DB" stroke-width="1"/>
+  <rect x="218" y="91" width="156" height="10" rx="3" fill="#D97706"/>
+  <text x="316" y="101" font-size="8" fill="white" text-anchor="middle" font-weight="600">context filling up</text>
+  <text x="316" y="117" font-size="10" fill="#374151" text-anchor="middle">turns 1-2: coherent</text>
+  <text x="316" y="130" font-size="10" fill="#D97706" text-anchor="middle">turns 10+: contradictions</text>
+
+  <!-- Arrow 3: Chat to Manual copy -->
+  <line x1="428" y1="100" x2="478" y2="100" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="478,100 471,96 471,104" fill="#9CA3AF"/>
+  <text x="452" y="91" font-size="9" fill="#6B7280" text-anchor="middle">copy</text>
+  <text x="452" y="102" font-size="9" fill="#6B7280" text-anchor="middle">output</text>
+
+  <!-- Box 3: Manual copy / paste -->
+  <rect x="480" y="64" width="148" height="80" rx="6" fill="#FFF7ED" stroke="#D97706" stroke-width="1.5"/>
+  <text x="554" y="86" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">Manual paste</text>
+  <text x="554" y="102" font-size="10" fill="#374151" text-anchor="middle">into editor; transcription</text>
+  <text x="554" y="116" font-size="10" fill="#374151" text-anchor="middle">errors introduced;</text>
+  <text x="554" y="130" font-size="10" fill="#374151" text-anchor="middle">no version control</text>
+
+  <!-- Arrow 4 -->
+  <line x1="630" y1="100" x2="670" y2="100" stroke="#9CA3AF" stroke-width="1.5"/>
+  <polygon points="670,100 663,96 663,104" fill="#9CA3AF"/>
+
+  <!-- Box 4: Editor / Code -->
+  <rect x="672" y="64" width="78" height="80" rx="6" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="711" y="90" font-size="11" font-weight="700" fill="#7C3AED" text-anchor="middle">Code</text>
+  <text x="711" y="107" font-size="10" fill="#374151" text-anchor="middle">merged</text>
+  <text x="711" y="120" font-size="10" fill="#374151" text-anchor="middle">by hand</text>
+
+  <!-- Bottleneck section -->
+  <rect x="10" y="158" width="740" height="80" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+  <text x="20" y="177" font-size="9" font-weight="700" fill="#DC2626" letter-spacing="1">BOTTLENECK</text>
+  <text x="20" y="194" font-size="11" fill="#374151">Context accumulates across turns. As conversations grow, the model loses constraints stated early. Developers</text>
+  <text x="20" y="210" font-size="11" fill="#374151">see contradictions between earlier turns and later output. Integration is still manual - copy/paste introduces</text>
+  <text x="20" y="226" font-size="11" fill="#374151">errors, and the history of what changed and why lives in a chat window, not in version control.</text>
+
+</svg>

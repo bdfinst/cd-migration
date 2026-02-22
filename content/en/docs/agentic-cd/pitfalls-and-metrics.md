@@ -1,7 +1,7 @@
 ---
 title: "Pitfalls and Metrics"
 linkTitle: "Pitfalls and Metrics"
-weight: 5
+weight: 9
 description: >
   Common failure modes when adopting ACD and the metrics that tell you whether it is working.
 ---

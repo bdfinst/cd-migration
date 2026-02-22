@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-Agentic continuous delivery (ACD) defines the additional constraints and artifacts needed when AI agents contribute to the delivery pipeline. The pipeline must handle agent-generated work with the same rigor applied to human-generated work, and in some cases, more rigor. These constraints assume the team already practices continuous delivery. Without that foundation, the agentic extensions have nothing to extend.
+Agentic continuous delivery ([ACD](../glossary/#acd-agentic-continuous-delivery)) defines the additional constraints and [artifacts](../glossary/#artifact) needed when AI [agents](../glossary/#agent-ai) contribute to the delivery [pipeline](../glossary/#pipeline). The pipeline must handle agent-generated work with the same rigor applied to human-generated work, and in some cases, more rigor. These constraints assume the team already practices [continuous delivery](../glossary/#cd-continuous-delivery). Without that foundation, the agentic extensions have nothing to extend.
 {{% /pageinfo %}}
 
 {{< figure src="/images/CI_before_AI.png" alt="Don't put the AI cart before the CI horse - Integrating AI is software engineering. To be great at this, you need to be great at DevOps and CI." >}}
@@ -18,7 +18,7 @@ Agentic continuous delivery (ACD) defines the additional constraints and artifac
 
 ACD is the application of continuous delivery in environments where software changes are proposed by agents. It exists to reliably constrain agent autonomy without slowing delivery.
 
-Without additional artifacts beyond what human-driven CD requires, agent-generated code accumulates drift, quality issues, and technical debt faster than teams can detect it. By the time test coverage gaps or architectural drift surface in production incidents, the accumulated debt is too large to address incrementally. Six first-class artifacts and eight constraints address this.
+Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift, quality issues, and technical debt faster than teams can detect it. By the time test coverage gaps or architectural drift surface in production incidents, the accumulated debt is too large to address incrementally. Six first-class artifacts and eight constraints address this.
 
 Agents introduce unique challenges that require these additional constraints:
 
@@ -27,17 +27,19 @@ Agents introduce unique challenges that require these additional constraints:
 - Agents cannot exercise judgment about risk in the same way humans can
 - Agents may introduce subtle correctness issues that pass automated tests but violate intent
 
-Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding.
+Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding. The [Learning Curve](learning-curve/) describes how developers naturally progress from autocomplete to a multi-agent architecture and what drives each transition.
 
 ## What You'll Find in This Section
 
-1. **[AI Adoption Roadmap](adoption-roadmap/)** - the prerequisite sequence before adopting agentic workflows
-2. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft BDD scenarios, and surface gaps in the specification stages
-3. **[The Six First-Class Artifacts](first-class-artifacts/)** - detailed definitions with examples for each artifact that agents and humans must maintain
-4. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
-5. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether ACD is working
-6. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary token consumption without sacrificing quality
-7. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions so context stays manageable and commits stay small
+1. **[The Agentic Development Learning Curve](learning-curve/)** - how teams progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
+2. **[AI Adoption Roadmap](adoption-roadmap/)** - organizational prerequisites before adopting agentic workflows
+3. **[The Six First-Class Artifacts](first-class-artifacts/)** - the core vocabulary: six artifacts that anchor the entire ACD workflow
+4. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
+5. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions so [context](../glossary/#context-llm) stays manageable and commits stay small
+6. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
+7. **[Agent Configuration](agent-configuration/)** - a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer configuration applying pipeline enforcement in practice
+8. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
+9. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether ACD is working
 
 ## ACD Extensions to MinimumCD
 

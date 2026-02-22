@@ -20,9 +20,8 @@ team already practices continuous delivery. Without that foundation, the agentic
 have nothing to extend. See [Agentic Continuous Delivery](../agentic-cd/).
 
 Referenced in:
-[Start Here](../start-here/),
-[AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
-[Pipeline Enforcement](../agentic-cd/pipeline-enforcement/),
+[ACD](../agentic-cd/),
+[Learning Curve](../agentic-cd/learning-curve/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Agent (AI)
@@ -34,8 +33,10 @@ shaped by its prompt - the complete set of instructions, context, and constraint
 the start of a session. See [Agentic CD](../agentic-cd/).
 
 Referenced in:
+[ACD](../agentic-cd/),
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Learning Curve](../agentic-cd/learning-curve/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Artifact
@@ -45,8 +46,10 @@ In a CD pipeline, artifacts are built once and promoted through environments wit
 modification. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 Referenced in:
+[ACD](../agentic-cd/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
-[Functional Tests](../testing/functional/)
+[Functional Tests](../testing/functional/),
+[Learning Curve](../agentic-cd/learning-curve/)
 
 ## B
 
@@ -180,6 +183,8 @@ During a CD migration, your job is to find and fix constraints in order of impac
 
 Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Knowledge Silos](../anti-patterns/team-workflow/knowledge-silos/),
+[Learning Curve](../agentic-cd/learning-curve/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/)
 
 ### Context (LLM)
@@ -193,8 +198,8 @@ and latency increase and performance can degrade when relevant information is bu
 the end of the context. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Tokenomics](../agentic-cd/tokenomics/)
+[Learning Curve](../agentic-cd/learning-curve/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
 ### Context Window
 
@@ -433,7 +438,7 @@ hygiene at agent boundaries is especially important - what the orchestrator pass
 sub-agent is a cost and quality decision. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[ACD](../agentic-cd/),
+[Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics](../agentic-cd/tokenomics/)
 
 ## P
@@ -444,11 +449,14 @@ The automated sequence of build, test, and deployment stages that every change p
 on its way to production. See [Phase 2 - Pipeline](../migrate-to-cd/migration-path/pipeline/).
 
 Referenced in:
+[ACD](../agentic-cd/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
+[Learning Curve](../agentic-cd/learning-curve/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Systemic Defect Fixes](../defect-sources/),
+[Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
 [Thin-Spread Teams](../anti-patterns/organizational-cultural/thin-spread-teams/),
 [Work Requires Sign-Off from Teams Not Involved in Delivery](../symptoms/deployment/waiting-for-cross-team-approval/)
 
@@ -603,7 +611,7 @@ than reading them. Frontier models cost 10-20x more per token than smaller alter
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Tokenomics](../agentic-cd/tokenomics/)
+[Learning Curve](../agentic-cd/learning-curve/)
 
 ### Toil
 

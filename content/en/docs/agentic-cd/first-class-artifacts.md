@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-Each artifact has a defined authority. When an agent detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
+Each [artifact](../glossary/#artifact) has a defined authority. When an [agent](../glossary/#agent-ai) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
 
 For the framework overview and the eight constraints, see [ACD](../).
 {{% /pageinfo %}}
@@ -16,7 +16,7 @@ For the framework overview and the eight constraints, see [ACD](../).
 
 **What it is:** A human-readable description of the desired change, written by a human.
 
-The intent description is the agent's "prompt" in the broadest sense. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed.
+The intent description is the agent's "[prompt](../glossary/#prompt)" in the broadest sense. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed.
 
 **Example:**
 
@@ -36,7 +36,7 @@ the limit should receive a 429 response with a Retry-After header.
 
 **What it is:** A description of how the system should behave from the user's perspective, expressed as observable outcomes.
 
-Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. BDD scenarios work well here:
+Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../glossary/#bdd-behavior-driven-development) scenarios work well here:
 
 ```gherkin
 Scenario: Client exceeds rate limit
@@ -164,11 +164,11 @@ describe("Rate Limiting", () => {
 });
 ```
 
-**Key property:** The pipeline enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
+**Key property:** The [pipeline](../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
 ## 5. Implementation
 
-**What it is:** The actual code that implements the feature. In ACD, this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
+**What it is:** The actual code that implements the feature. In [ACD](../glossary/#acd-agentic-continuous-delivery), this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
 
 The implementation is the artifact most likely to be agent-generated. It must satisfy the executable truth (tests), conform to the feature description (architecture), and achieve the intent description (purpose).
 
@@ -249,7 +249,7 @@ system_constraints:
 
 Without them, an agent that detects a conflict between what the tests expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
-These artifacts are valuable in any project. In ACD, they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
+These artifacts are valuable in any project. In [ACD](../glossary/#acd-agentic-continuous-delivery), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
 
 With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/).
 
