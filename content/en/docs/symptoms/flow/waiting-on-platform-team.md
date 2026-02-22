@@ -55,6 +55,8 @@ accept the ticket queue because there is no alternative.
    has no path to self-service. Start with
    [No On-Call or Operational Ownership](../../anti-patterns/organizational-cultural/no-operational-ownership/).
 
+**Ready to fix this?** The most common cause is [Separate Ops/Release Team](../../anti-patterns/organizational-cultural/separate-ops-team/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/separate-ops-team/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

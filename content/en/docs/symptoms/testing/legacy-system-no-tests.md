@@ -49,3 +49,5 @@ Reversing this requires organizational commitment to treat test coverage as a de
 1. **Can any single function in the codebase be tested without instantiating the entire application?** If not, the architecture does not have the seams needed for unit tests. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 2. **Has the team ever had a sustained period of writing tests as part of normal development?** If not, the practice was never established. Start with [Manual testing only](../../anti-patterns/testing/manual-testing-only/).
 3. **Did historical management decisions consistently deprioritize testing?** If test debt accumulated from external pressure, the organizational habit needs to change before the technical situation can improve. Start with [Pressure to skip testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+
+**Ready to fix this?** The most common cause is [Manual testing only](../../anti-patterns/testing/manual-testing-only/). Start with its [How to Fix It](../../anti-patterns/testing/manual-testing-only/#how-to-fix-it) section for week-by-week steps.

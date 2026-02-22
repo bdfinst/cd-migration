@@ -7,12 +7,14 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Key question:** "How far are we from CD?"
+**Key question:** "How far are we from [CD](../../../glossary/#cd-continuous-delivery)?"
 
 Before changing anything, you need to understand your current state. This phase helps you
-create a clear picture of your delivery process, establish baseline metrics, and identify
-the constraints that will guide your improvement roadmap.
+create a clear picture of your delivery process, establish [baseline metrics](../../../glossary/#baseline-metrics), and identify
+the [constraints](../../../glossary/#constraint) that will guide your improvement roadmap.
 {{% /pageinfo %}}
+
+**Team activity:** The pages in this phase work as a facilitated team exercise. Run [Current State Checklist](current-state-checklist/) as a retrospective to align on where your delivery process stands today before measuring baselines.
 
 ## What You'll Do
 
@@ -31,10 +33,12 @@ Understanding your constraints ensures you invest effort where it will have the 
 
 You're ready for [Phase 1: Foundations](../foundations/) when you can answer:
 
-- What does our value stream look like end-to-end?
-- What are our current lead time, deployment frequency, and change failure rate?
+- What does our [value stream](../../../glossary/#value-stream-map) look like end-to-end?
+- What are our current [lead time](../../../glossary/#lead-time-for-changes), [deployment frequency](../../../glossary/#deployment-frequency), and [change failure rate](../../../glossary/#change-failure-rate-cfr)?
 - What are the top 3 constraints limiting our delivery flow?
 - Which MinimumCD practices are we missing?
+
+**Next:** [Phase 1 - Foundations](../foundations/) - establish the technical and team practices that make CD possible.
 
 ---
 
@@ -46,3 +50,4 @@ You're ready for [Phase 1: Foundations](../foundations/) when you can answer:
 - [Deployment Frequency](../../../metrics/release-frequency/) - one of the key metrics you will baseline in this phase
 - [Lead Time for Changes](../../../metrics/lead-time/) - the metric that reveals how long changes spend in the system
 - [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a common symptom that assessment helps quantify
+- [Systemic Defect Sources](../../../defect-sources/) - understand where defects originate before you start measuring them.

@@ -14,7 +14,7 @@ tags:
 ## What you are seeing
 
 Open the team's board on any given day. Count the items in progress. Count the team members. If
-the first number is significantly higher than the second, the team has a WIP problem. Every
+the first number is significantly higher than the second, the team has a [WIP](../../glossary/#wip-work-in-progress) problem. Every
 developer is working on a different story. Eight items in progress, zero done. Nothing gets the
 focused attention needed to finish.
 
@@ -36,7 +36,7 @@ items because everyone is busy with "their" assigned work.
 ### Horizontal Slicing
 
 When work is split by technical layer ("build the database schema," "build the API," "build the
-UI"), each layer must be completed before anything is deployable. Multiple developers work on
+UI"), each layer must be completed before anything is [deployable](../../glossary/#deployable). Multiple developers work on
 different layers of the same feature simultaneously, all "in progress," none independently done.
 WIP is high because the decomposition prevents any single item from reaching completion quickly.
 
@@ -64,6 +64,8 @@ busy by starting things rather than finishing them.
    [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/). Start with its [How to Fix It](../../anti-patterns/team-workflow/push-based-work-assignment/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

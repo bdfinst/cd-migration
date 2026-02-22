@@ -32,7 +32,7 @@ Teams that treat documentation as part of the definition of done - the change is
 
 Systems deployed manually have deployment procedures that are highly contextual, learned by doing, and resistant to documentation. The deployment is a craft practice: the person executing it knows which steps to skip in which situations, which warnings to ignore, and which undocumented behaviors to watch for. Documenting this craft knowledge is difficult because it is tacit.
 
-Automating the deployment process forces documentation into code. The pipeline definition is the authoritative deployment procedure. When the deployment changes, the pipeline definition changes. The code is always current because the code is the process.
+Automating the deployment process forces documentation into code. The [pipeline](../../glossary/#pipeline) definition is the authoritative deployment procedure. When the deployment changes, the pipeline definition changes. The code is always current because the code is the process.
 
 **Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
 
@@ -47,3 +47,5 @@ When environments evolve by hand, the gap between documented architecture and th
 1. **Can the on-call engineer follow the runbook for a critical service without help from someone who knows the service?** If not, the runbook is out of date. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 2. **Is the deployment procedure defined as pipeline code or as written documentation?** Written documentation drifts; pipeline code is the process itself. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
 3. **Does the architecture documentation match the current production system?** If the diagram and the reality diverge, the environments were changed without corresponding documentation. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
+
+**Ready to fix this?** The most common cause is [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.

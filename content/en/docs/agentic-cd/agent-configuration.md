@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-Standard pre-commit tooling catches mechanical defects. The agent configuration described here
+Standard pre-commit tooling catches mechanical defects. The [agent](../glossary/#agent-ai) configuration described here
 covers what standard tooling cannot: semantic logic errors, subtle security patterns, missing
 timeout propagation, and concurrency anti-patterns. Both layers are required. Neither replaces
 the other.
@@ -20,8 +20,8 @@ For the defect sources each gate addresses, see the
 
 ## System Architecture
 
-The coding agent system has two levels. The orchestrator manages sessions and routes work.
-Specialized agents execute within a session's boundaries. Review sub-agents run in parallel
+The coding agent system has two tiers. The [orchestrator](../glossary/#orchestrator) manages sessions and routes work.
+Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
 ```mermaid
@@ -47,14 +47,16 @@ graph TD
 **Separation principle:** The orchestrator does not write code. The implementation agent
 does not review code. Review agents do not modify code. Each agent has one responsibility.
 This is the same separation of concerns that [pipeline enforcement](../pipeline-enforcement/)
-applies at the CI level - brought to the pre-commit level.
+applies at the [CI](../glossary/#ci-continuous-integration) level - brought to the pre-commit level.
 
-**Every agent boundary is a token budget boundary.** What the orchestrator passes to the
+**Every agent boundary is a [token](../glossary/#token) budget boundary.** What the orchestrator passes to the
 implementation agent, what it passes to the review orchestrator, and what each sub-agent
 receives and returns are all token cost decisions. The configuration below applies the
 [tokenomics strategies](../tokenomics/) concretely: model routing by task complexity,
-structured outputs between agents, prompt caching through stable system prompts placed
-first in each context, and minimum-necessary-context rules at every boundary.
+structured outputs between agents, [prompt caching](../glossary/#prompt-caching) through stable [system prompts](../glossary/#system-prompt) placed
+first in each [context](../glossary/#context-llm), and minimum-necessary-context rules at every boundary.
+
+This page defines the configuration for each component in order: [Orchestrator](#the-orchestrator), [Implementation Agent](#the-implementation-agent), [Review Orchestrator](#the-review-orchestrator), and four [Review Sub-Agents](#review-sub-agents). The [Skills](#skills) section defines the session procedures each component uses. The [Hooks](#hooks) section defines the pre-commit gate sequence. The [Token Budget](#token-budget) section applies the tokenomics strategies to this configuration.
 
 ---
 
@@ -74,7 +76,7 @@ on a task that does not require frontier reasoning.
 - Delegate implementation to the implementation agent
 - Trigger the review orchestrator when the implementation agent reports completion
 - Write the session summary on commit and reset context for the next session
-- Enforce the pipeline-red rule ([ACD constraint 8](../)):  if the pipeline is failing,
+- Enforce the pipeline-red rule ([ACD constraint 8](../)):  if the [pipeline](../glossary/#pipeline) is failing,
   route only to pipeline-restore mode; block new feature work
 
 **Rules injected into the orchestrator system prompt:**
@@ -127,7 +129,7 @@ On commit:
 
 ## The Implementation Agent
 
-The implementation agent generates test code and production code for the current BDD scenario.
+The implementation agent generates test code and production code for the current [BDD](../glossary/#bdd-behavior-driven-development) scenario.
 It operates within the context the orchestrator provides and does not reach outside that context.
 
 **Recommended model tier:** Mid to frontier. Code generation and test-first implementation
@@ -254,7 +256,7 @@ Return this JSON and nothing else:
 
 Each sub-agent covers exactly one defect concern from the
 [Systemic Defect Fixes](../../defect-sources/) catalog. They receive only the diff and the
-artifacts relevant to their specific check - not the full session context.
+[artifacts](../glossary/#artifact) relevant to their specific check - not the full session context.
 
 ### Semantic Review Agent
 
@@ -265,11 +267,11 @@ implementation against stated intent.
 **Defect sources addressed:**
 
 - Reliance on human review to catch preventable defects
-  ([Process & Deployment](../../defect-sources/#process--deployment))
+  ([Process & Deployment](../../defect-sources/process-and-deployment/))
 - Implicit domain knowledge not in code
-  ([Knowledge & Communication](../../defect-sources/#knowledge--communication))
+  ([Knowledge & Communication](../../defect-sources/knowledge-and-communication/))
 - Untested edge cases and error paths
-  ([Testing & Observability Gaps](../../defect-sources/#testing--observability-gaps))
+  ([Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/))
 
 **What it checks:**
 
@@ -321,11 +323,11 @@ not just pattern matching. A smaller model will miss the cases that matter most.
 **Defect sources addressed:**
 
 - Injection vulnerabilities (subtle patterns beyond basic SAST)
-  ([Security & Compliance](../../defect-sources/#security--compliance))
+  ([Security & Compliance](../../defect-sources/security-and-compliance/))
 - Authentication and authorization gaps
-  ([Security & Compliance](../../defect-sources/#security--compliance))
+  ([Security & Compliance](../../defect-sources/security-and-compliance/))
 - Missing audit trails
-  ([Security & Compliance](../../defect-sources/#security--compliance))
+  ([Security & Compliance](../../defect-sources/security-and-compliance/))
 
 **What it checks:**
 
@@ -384,11 +386,11 @@ cheaply enough to be invoked on every commit without concern.
 **Defect sources addressed:**
 
 - Missing timeout and deadline enforcement
-  ([Performance & Resilience](../../defect-sources/#performance--resilience))
+  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
 - Resource leaks
-  ([Performance & Resilience](../../defect-sources/#performance--resilience))
+  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
 - Missing graceful degradation
-  ([Performance & Resilience](../../defect-sources/#performance--resilience))
+  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
 
 **What it checks:**
 
@@ -444,9 +446,9 @@ semantics. A mid-tier model balances reasoning depth and cost here.
 **Defect sources addressed:**
 
 - Race conditions (anti-patterns beyond thread sanitizer detection)
-  ([Integration & Boundaries](../../defect-sources/#integration--boundaries))
+  ([Integration & Boundaries](../../defect-sources/integration-and-boundaries/))
 - Concurrency and ordering issues
-  ([Data & State](../../defect-sources/#data--state))
+  ([Data & State](../../defect-sources/data-and-state/))
 
 **What it checks:**
 
@@ -494,7 +496,7 @@ Return this JSON and nothing else:
 
 Skills are reusable session procedures invoked by name. They encode the session discipline
 from [Small-Batch Sessions](../small-batch-sessions/) so the orchestrator does not have to
-re-derive it each time.
+re-derive it each time. A normal session runs `/start-session`, then `/review`, then `/end-session`. Use `/fix` only when the pipeline fails mid-session.
 
 ### `/start-session`
 
@@ -651,6 +653,8 @@ the baseline mechanical checks.
 
 ## Token Budget
 
+**A rising per-session cost with a stable block rate means context is growing unnecessarily. A rising block rate without rising cost means the review agents are finding real issues without accumulating noise.** Track these two signals and the cause of any cost increase becomes immediately clear.
+
 The [tokenomics strategies](../tokenomics/) apply directly to this configuration. Three
 decisions have the most impact on cost per session.
 
@@ -701,9 +705,7 @@ Metrics to track per session:
 - Review block rate (how often the session cannot commit on first pass)
 - Tokens per retry (cost of each implementation-review-fix cycle)
 
-A rising per-session cost with a stable block rate means context is growing unnecessarily.
-A rising block rate without rising cost means the review agents are finding real issues
-without accumulating noise. See [Tokenomics](../tokenomics/) for the full measurement framework.
+See [Tokenomics](../tokenomics/) for the full measurement framework.
 
 ---
 
@@ -713,23 +715,23 @@ This table maps each pre-commit defect source to the mechanism that covers it.
 
 | Defect Source | Catalog Section | Covered By |
 |---------------|-----------------|------------|
-| Code style violations | [Process & Deployment](../../defect-sources/#process--deployment) | Lint hook |
-| Null/missing data assumptions | [Data & State](../../defect-sources/#data--state) | Type-check hook |
-| Secrets in source control | [Security & Compliance](../../defect-sources/#security--compliance) | Secret-scan hook |
-| Injection (pattern-matching) | [Security & Compliance](../../defect-sources/#security--compliance) | SAST hook |
-| Accessibility (structural) | [Product & Discovery](../../defect-sources/#product--discovery) | Accessibility-lint hook |
-| Race conditions (detectable) | [Integration & Boundaries](../../defect-sources/#integration--boundaries) | Thread sanitizer (language-specific) |
-| Logic errors, edge cases | [Process & Deployment](../../defect-sources/#process--deployment) | Semantic review agent |
-| Implicit domain knowledge | [Knowledge & Communication](../../defect-sources/#knowledge--communication) | Semantic review agent |
-| Untested paths | [Testing & Observability Gaps](../../defect-sources/#testing--observability-gaps) | Semantic review agent |
-| Injection (semantic/second-order) | [Security & Compliance](../../defect-sources/#security--compliance) | Security review agent |
-| Auth/authz gaps | [Security & Compliance](../../defect-sources/#security--compliance) | Security review agent |
-| Missing audit trails | [Security & Compliance](../../defect-sources/#security--compliance) | Security review agent |
-| Missing timeouts | [Performance & Resilience](../../defect-sources/#performance--resilience) | Performance review agent |
-| Resource leaks | [Performance & Resilience](../../defect-sources/#performance--resilience) | Performance review agent |
-| Missing graceful degradation | [Performance & Resilience](../../defect-sources/#performance--resilience) | Performance review agent |
-| Race condition anti-patterns | [Integration & Boundaries](../../defect-sources/#integration--boundaries) | Concurrency review agent |
-| Non-idempotent consumers | [Data & State](../../defect-sources/#data--state) | Concurrency review agent |
+| Code style violations | [Process & Deployment](../../defect-sources/process-and-deployment/) | Lint hook |
+| Null/missing data assumptions | [Data & State](../../defect-sources/data-and-state/) | Type-check hook |
+| Secrets in source control | [Security & Compliance](../../defect-sources/security-and-compliance/) | Secret-scan hook |
+| Injection (pattern-matching) | [Security & Compliance](../../defect-sources/security-and-compliance/) | SAST hook |
+| Accessibility (structural) | [Product & Discovery](../../defect-sources/product-and-discovery/) | Accessibility-lint hook |
+| Race conditions (detectable) | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) | Thread sanitizer (language-specific) |
+| Logic errors, edge cases | [Process & Deployment](../../defect-sources/process-and-deployment/) | Semantic review agent |
+| Implicit domain knowledge | [Knowledge & Communication](../../defect-sources/knowledge-and-communication/) | Semantic review agent |
+| Untested paths | [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) | Semantic review agent |
+| Injection (semantic/second-order) | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
+| Auth/authz gaps | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
+| Missing audit trails | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
+| Missing timeouts | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Resource leaks | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Missing graceful degradation | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Race condition anti-patterns | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) | Concurrency review agent |
+| Non-idempotent consumers | [Data & State](../../defect-sources/data-and-state/) | Concurrency review agent |
 
 Defect sources not in this table are addressed at CI or acceptance test stages, not at
 pre-commit. See the [Pipeline Reference Architecture](../../pipeline-reference-architecture/)
@@ -739,6 +741,8 @@ for the full gate sequence.
 
 ## Related Content
 
+- [Recommended Patterns for Agentic Architecture](../agentic-architecture/) - how to
+  structure skills, agents, commands, and hooks for multi-agent systems
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the same
   review agents operate as CI pipeline gates, not just pre-commit
 - [Small-Batch Sessions](../small-batch-sessions/) - the session discipline the

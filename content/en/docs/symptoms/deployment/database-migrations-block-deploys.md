@@ -22,9 +22,9 @@ Feature development is constrained by when migrations can safely run. The team a
 
 ### Manual deployments
 
-When deployments are manual, migration execution is manual too. There is no standardized approach to handling migration failures, rollback, or state verification. Each migration is a custom operation executed by whoever is available that day, following a procedure remembered from the last time rather than codified in an automated step.
+When deployments are manual, migration execution is manual too. There is no standardized approach to handling migration failures, [rollback](../../glossary/#rollback), or state verification. Each migration is a custom operation executed by whoever is available that day, following a procedure remembered from the last time rather than codified in an automated step.
 
-Automated pipelines that run migrations as a defined step - with pre-migration backups, health checks after migration, and defined rollback procedures - replace the maintenance window ritual with a repeatable process. Failures trigger automated alerts rather than requiring someone to sit at the console. When migrations run the same way every time, the team stops batching them to minimize deployment events because each one is no longer a high-stakes manual operation.
+Automated [pipelines](../../glossary/#pipeline) that run migrations as a defined step - with pre-migration backups, health checks after migration, and defined rollback procedures - replace the maintenance window ritual with a repeatable process. Failures trigger automated alerts rather than requiring someone to sit at the console. When migrations run the same way every time, the team stops batching them to minimize deployment events because each one is no longer a high-stakes manual operation.
 
 **Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
 
@@ -58,3 +58,5 @@ Decomposed services with separate databases can migrate their own schema indepen
 2. **Do migrations behave differently in staging versus production?** Environment differences - data volume, configuration, existing data - are the likely cause. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
 3. **Does the deployment pipeline handle migration ordering and validation?** If migrations run outside the pipeline, they lack the pipeline's safety checks. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 4. **Do schema changes require coordination across multiple teams or modules?** If one migration touches code owned by many teams, the coupling is the root issue. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

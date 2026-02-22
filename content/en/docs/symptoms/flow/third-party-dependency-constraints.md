@@ -14,7 +14,7 @@ tags:
 
 The team is ready to deploy. But the upstream payment provider releases their API once a quarter and the new version the team depends on is not live yet. Or the downstream enterprise consumer the team integrates with requires 30 days advance notice before any API change goes live. The team's own deployment readiness is irrelevant - external constraints set the schedule.
 
-The team adapts by aligning their release cadence with their most constraining external dependency. If one vendor deploys quarterly, the team deploys quarterly. Every advance the team makes in internal deployment speed is nullified by the external constraint. The most sophisticated internal pipeline in the world still produces a team that ships four times per year.
+The team adapts by aligning their release cadence with their most constraining external dependency. If one vendor deploys quarterly, the team deploys quarterly. Every advance the team makes in internal deployment speed is nullified by the external constraint. The most sophisticated internal [pipeline](../../glossary/#pipeline) in the world still produces a team that ships four times per year.
 
 Some external constraints are genuinely fixed. A payment network's settlement schedule, regulatory reporting requirements, hardware firmware update cycles - these cannot be accelerated. But many "external" constraints turn out to be negotiable, workaroundable through abstraction, or simply assumed to be fixed without ever being tested.
 
@@ -40,7 +40,7 @@ Services that expose stable interfaces and handle both old and new protocol vers
 
 Without a pipeline, there is no mechanism for gradual migrations - running old and new integration paths simultaneously during a transition period. Switching to a new vendor API requires deploying new code that breaks old behavior unless both paths are maintained in parallel.
 
-A pipeline with feature flag support can activate the new vendor integration for a subset of traffic, validate it against real load, and then complete the migration when confidence is established. This decouples the team's deployment from the vendor's release schedule.
+A pipeline with [feature flag](../../glossary/#feature-flag) support can activate the new vendor integration for a subset of traffic, validate it against real load, and then complete the migration when confidence is established. This decouples the team's deployment from the vendor's release schedule.
 
 **Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
 
@@ -49,3 +49,5 @@ A pipeline with feature flag support can activate the new vendor integration for
 1. **Is the team's code tightly bound to specific vendor API versions?** If the integration cannot handle multiple vendor versions simultaneously, every vendor change requires a coordinated deployment. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 2. **Must the team coordinate deployment timing with external parties?** If yes, the interfaces between systems do not support independent deployment. Start with [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/).
 3. **Can the team run old and new integration paths simultaneously?** If switching to a new vendor version is a hard cutover, the pipeline does not support gradual migration. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+
+**Ready to fix this?** The most common cause is [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/tightly-coupled-monolith/#how-to-fix-it) section for week-by-week steps.

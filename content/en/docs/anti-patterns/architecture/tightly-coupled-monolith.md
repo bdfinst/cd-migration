@@ -43,7 +43,7 @@ Common variations:
   versioning or API stability guarantees. Updating the library for one consumer breaks another.
   Teams stop updating shared libraries because the risk is too high.
 - **Everything deploys together.** The application is a single deployable unit. Even if modules
-  are logically separated in the source code, they compile and ship as one artifact. A one-line
+  are logically separated in the source code, they compile and ship as one [artifact](../../glossary/#artifact). A one-line
   change to the login page requires deploying the entire system.
 
 The telltale sign: developers regularly say "I don't know what this change will affect" and
@@ -122,24 +122,24 @@ infrequent and explicit.
 
 ### Impact on continuous delivery
 
-Continuous delivery requires that any change can flow from commit to production safely and
+[Continuous delivery](../../glossary/#cd-continuous-delivery) requires that any change can flow from commit to production safely and
 quickly. Tight coupling breaks this in multiple ways:
 
 - **Blast radius prevents small, safe changes.** If a one-line change can break unrelated
   features, no change is small from a risk perspective. The team compensates by batching changes
   and testing extensively, which is the opposite of continuous.
 - **Testing scope is unbounded.** Without module boundaries, there is no way to scope testing to
-  the changed area. Every change requires running the full suite, which slows the pipeline and
-  reduces deployment frequency.
+  the changed area. Every change requires running the full suite, which slows the [pipeline](../../glossary/#pipeline) and
+  reduces [deployment frequency](../../glossary/#deployment-frequency).
 - **Independent deployment is impossible.** If everything must deploy together, deployment
   coordination is required. Teams queue up behind each other. Deployment frequency is limited by
   the slowest team.
-- **Rollback is risky.** Rolling back one change might break something else if other changes
+- **[Rollback](../../glossary/#rollback) is risky.** Rolling back one change might break something else if other changes
   were deployed simultaneously. The tangle works in both directions.
 
 A team with a tightly coupled monolith can still practice CD, but they must invest in decoupling
 first. Without boundaries, the feedback loops are too slow and the blast radius is too large for
-continuous deployment to be safe.
+[continuous deployment](../../glossary/#continuous-deployment) to be safe.
 
 ## How to Fix It
 
@@ -236,6 +236,14 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 | Cross-team coordination requests per sprint | Should decrease as module ownership becomes clearer |
 | Files changed per commit | Should decrease as changes become more localized |
 
+## Team Discussion
+
+Use these questions in a retrospective to explore how this anti-pattern affects your team:
+
+- Which services or modules can we not change without coordinating with another team?
+- What was the last time a change in one area broke something unrelated? How long did it take to find the connection?
+- If we were to draw the dependency graph of our system today, where would we see the most coupling?
+
 ## Related Content
 
 - [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Strategies for creating module boundaries
@@ -243,3 +251,4 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 - [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Scoping tests to module boundaries
 - [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - Finding the coupling that hurts most
 - [Value Stream Mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/) - Making coordination overhead visible
+- [Change & Complexity Defects](../../defect-sources/change-and-complexity/) - how tight coupling generates unintended side effects and feature interaction defects.

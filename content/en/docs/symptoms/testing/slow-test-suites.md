@@ -14,13 +14,13 @@ tags:
 ## What you are seeing
 
 The full test suite takes 30 minutes, an hour, or longer. Developers do not run it locally because
-they cannot afford to wait. Instead, they push their changes and let CI run the tests. Feedback
+they cannot afford to wait. Instead, they push their changes and let [CI](../../glossary/#ci-continuous-integration) run the tests. Feedback
 arrives long after the developer has moved on. If a test fails, the developer must context-switch
 back, recall what they were doing, and debug the failure.
 
 Some developers run only a subset of tests locally (the ones for their module) and skip the rest.
 This catches some issues but misses integration problems between modules. Others skip local testing
-entirely and treat the CI pipeline as their test runner, which overloads the shared pipeline and
+entirely and treat the CI [pipeline](../../glossary/#pipeline) as their test runner, which overloads the shared pipeline and
 increases wait times for everyone.
 
 The team has discussed parallelizing the tests, splitting the suite, or adding more CI capacity.
@@ -71,6 +71,8 @@ code provides no lower-level testing seams.
    [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

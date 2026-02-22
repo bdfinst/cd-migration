@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-The CI build takes 45 minutes for every commit because the pipeline rebuilds every application and runs every test regardless of what changed. The team chose a monorepo for good reasons - code sharing is simpler, cross-cutting changes are atomic, and dependency management is more coherent - but the pipeline has no awareness of what actually changed. Changing a comment in Service A triggers a full rebuild of Services B, C, D, and E.
+The [CI](../../glossary/#ci-continuous-integration) build takes 45 minutes for every commit because the [pipeline](../../glossary/#pipeline) rebuilds every application and runs every test regardless of what changed. The team chose a monorepo for good reasons - code sharing is simpler, cross-cutting changes are atomic, and dependency management is more coherent - but the pipeline has no awareness of what actually changed. Changing a comment in Service A triggers a full rebuild of Services B, C, D, and E.
 
 Developers have adapted by batching changes to reduce the number of CI runs they wait through. One CI run per hour instead of one per commit. The batching reintroduces the integration problems the monorepo was supposed to solve: multiple changes combined in a single commit lose the ability to bisect failures to any individual change.
 
@@ -41,3 +41,5 @@ Automated deployment pipelines with change detection deploy exactly the services
 1. **Does the pipeline build and test only the services affected by a change?** If every commit triggers a full rebuild, change detection is not implemented. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 2. **How long does a typical CI run take?** If it takes more than 10 minutes regardless of what changed, the pipeline is not leveraging the monorepo's dependency information. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Can the team deploy a single service from the monorepo without triggering deployments of all services?** If not, deployment automation does not understand the monorepo structure. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+**Ready to fix this?** The most common cause is [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/). Start with its [How to Fix It](../../anti-patterns/pipeline/missing-deployment-pipeline/#how-to-fix-it) section for week-by-week steps.

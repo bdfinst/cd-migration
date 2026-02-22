@@ -78,6 +78,8 @@ than the team collectively resolving the blocker.
    model is preventing swarming. Start with
    [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 
+**Ready to fix this?** The most common cause is [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/). Start with its [How to Fix It](../../anti-patterns/team-workflow/monolithic-work-items/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

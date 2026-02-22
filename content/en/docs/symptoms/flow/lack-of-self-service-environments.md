@@ -30,7 +30,7 @@ When environments can be created in minutes from code, they stop being scarce. A
 
 ### Missing deployment pipeline
 
-Pipelines that include environment provisioning steps can spin up, run tests against, and tear down ephemeral environments as part of every run. The environment is created fresh for each test run and destroyed when the run completes. Without this capability, environments are managed manually outside the pipeline and must be shared.
+[Pipelines](../../glossary/#pipeline) that include environment provisioning steps can spin up, run tests against, and tear down ephemeral environments as part of every run. The environment is created fresh for each test run and destroyed when the run completes. Without this capability, environments are managed manually outside the pipeline and must be shared.
 
 A pipeline with environment provisioning gives every commit its own isolated environment. There is no ticket to file, no queue to wait in, no contention with other teams - the environment exists for the duration of the run and is gone when the run completes.
 
@@ -49,3 +49,5 @@ Externalizing environment provisioning knowledge into code - reproducible, runna
 1. **Can a developer create a new isolated test environment without filing a ticket?** If not, environment creation is not self-service. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
 2. **Do multiple teams share a single staging environment?** Shared environments create contention and interference. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Is environment provisioning knowledge documented as runnable code?** If provisioning requires knowing undocumented manual steps, the knowledge is siloed. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
+
+**Ready to fix this?** The most common cause is [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.

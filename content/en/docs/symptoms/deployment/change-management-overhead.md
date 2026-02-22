@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-The team has a change management process. Every production change requires a change ticket, an impact assessment, a rollback plan document, a peer review, and final approval from a change board. The process was designed with major infrastructure changes in mind. It is now applied uniformly to every change, including renaming a log message.
+The team has a change management process. Every production change requires a change ticket, an impact assessment, a [rollback](../../glossary/#rollback) plan document, a peer review, and final approval from a change board. The process was designed with major infrastructure changes in mind. It is now applied uniformly to every change, including renaming a log message.
 
 The change board meets once a week. If a change misses the cutoff, it waits until next week. Urgent changes require emergency approval, which means tracking down the right people and interrupting them at unpredictable hours. The overhead for a critical security patch is the same as for a feature release. The team has learned to batch changes together to amortize the approval cost, which makes each deployment larger and riskier.
 
@@ -22,9 +22,9 @@ The intent of change management - reducing the risk of production changes - is a
 
 ### CAB gates
 
-Change advisory boards apply manual approval uniformly to all changes. The board reviews documentation rather than evidence from automated testing and deployment pipelines. This adds calendar time proportional to the board's meeting cadence, not proportional to the risk of the change. A one-line fix and a major architectural change wait in the same queue.
+Change advisory boards apply manual approval uniformly to all changes. The board reviews documentation rather than evidence from automated testing and deployment [pipelines](../../glossary/#pipeline). This adds calendar time proportional to the board's meeting cadence, not proportional to the risk of the change. A one-line fix and a major architectural change wait in the same queue.
 
-Automated deployment systems with pipeline-generated evidence - test results, code coverage, artifact provenance - can satisfy the intent of change management without the calendar overhead. Low-risk changes pass automatically; high-risk changes get human review based on objective criteria rather than because everything gets reviewed.
+Automated deployment systems with pipeline-generated evidence - test results, code coverage, [artifact](../../glossary/#artifact) provenance - can satisfy the intent of change management without the calendar overhead. Low-risk changes pass automatically; high-risk changes get human review based on objective criteria rather than because everything gets reviewed.
 
 **Read more:** [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/)
 
@@ -49,3 +49,5 @@ Without a pipeline, teams substitute documentation for evidence. The change tick
 1. **Does a committee approve individual production changes?** Manual approval boards add calendar-driven delays independent of change risk. Start with [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/).
 2. **Is the deployment process automated with pipeline-generated audit logs?** If deployment requires manual documentation because there is no automated record, the pipeline is the missing foundation. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Do small, low-risk changes go through the same process as major changes?** If the process is uniform regardless of risk, the classification mechanism - not just the process - needs to change. Start with [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/).
+
+**Ready to fix this?** The most common cause is [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/cab-gates/#how-to-fix-it) section for week-by-week steps.

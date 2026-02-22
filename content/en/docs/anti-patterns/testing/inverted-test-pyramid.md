@@ -58,7 +58,7 @@ feedback during development. A suite that runs in minutes gives feedback before 
 moves on. A suite that runs in 30 or more minutes gives feedback after the developer has started
 something else entirely.
 
-When the suite takes 40 minutes, developers do not run it locally. They push to CI and context-
+When the suite takes 40 minutes, developers do not run it locally. They push to [CI](../../glossary/#ci-continuous-integration) and context-
 switch to a different task. When the result comes back, they have lost the mental model of the
 code they changed. Investigating a failure takes longer because they have to re-read their own
 code. Fixing the failure takes longer because they are now juggling two streams of work.
@@ -107,11 +107,11 @@ logic changes, a handful of focused tests need updating - not thirty browser flo
 
 When most of your tests are end-to-end or integration tests that hit real services, your ability
 to deploy depends on every system in the chain being available and healthy. If the payment
-provider's sandbox is down, your pipeline fails. If the shared staging database is slow, your
+provider's sandbox is down, your [pipeline](../../glossary/#pipeline) fails. If the shared staging database is slow, your
 tests time out. If another team deployed a breaking change to a shared service, your tests fail
 even though your code is correct.
 
-This is the opposite of what CD requires. Continuous delivery demands that your team can deploy
+This is the opposite of what [CD](../../glossary/#cd-continuous-delivery) requires. Continuous delivery demands that your team can deploy
 independently, at any time, regardless of the state of external systems. A test architecture
 built on E2E tests makes your deployment hostage to every dependency in your ecosystem.
 
@@ -191,7 +191,7 @@ replacement makes the suite faster and more reliable.
 
 While building out functional tests, identify the high-complexity logic within each component -
 discount calculations, eligibility rules, parsing, validation. Write unit tests for these using
-TDD: failing test first, implementation, then refactor.
+[TDD](../../glossary/#tdd-test-driven-development): failing test first, implementation, then refactor.
 
 Test public APIs, not private methods. If a refactoring that preserves behavior breaks your unit
 tests, the tests are coupled to implementation details. Move that coverage up to a functional
@@ -246,6 +246,14 @@ the expense of clarity.
 | Developers running tests locally | Should increase as the suite gets faster |
 | External dependencies in gating tests | Should reach zero (localhost only) |
 
+## Team Discussion
+
+Use these questions in a retrospective to explore how this anti-pattern affects your team:
+
+- When a new regression is caught in production, what type of test would have caught it earlier - unit, integration, or end-to-end?
+- How long does our end-to-end test suite take to run? Would we be able to run it on every commit?
+- If we could only write one new test today, what is the riskiest untested behavior we would cover?
+
 ## Related Content
 
 - [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
@@ -254,3 +262,4 @@ the expense of clarity.
 - [Contract Tests](../../../testing/contract/) - Verifying that test doubles match reality
 - [Test Doubles](../../../testing/test-doubles/) - Techniques for replacing external dependencies in tests
 - [End-to-End Tests](../../../testing/e2e/) - When and how to use E2E tests appropriately
+- [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) - the defect categories this anti-pattern fails to catch.

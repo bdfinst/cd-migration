@@ -97,6 +97,8 @@ produce points.
    than pulled, the assignment model is driving the unsustainable pace. Start with
    [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 
+**Ready to fix this?** The most common cause is [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/thin-spread-teams/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

@@ -69,7 +69,7 @@ may solve the same problem differently, introduce duplicate abstractions, or mak
 assumptions about shared code. These conflicts are invisible until merge time, when they surface as
 bugs rather than design discussions.
 
-With short-lived branches or trunk-based development, changes are small enough for genuine review.
+With short-lived branches or [trunk-based development](../../glossary/#tbd-trunk-based-development), changes are small enough for genuine review.
 A 50-line change gets careful attention. Design disagreements surface within hours, not weeks. The
 team maintains a shared understanding of how the codebase is evolving because they see every change
 as it happens.
@@ -109,7 +109,7 @@ Project managers learn they cannot trust estimates. "The feature is code-complet
 it is done - it means the merge has not started yet. Stakeholders lose confidence in the team's
 ability to deliver on time because "done" and "deployed" are separated by an unpredictable gap.
 
-With continuous integration, there is no merge queue. Each developer integrates small changes
+With [continuous integration](../../glossary/#ci-continuous-integration), there is no merge queue. Each developer integrates small changes
 throughout the day. The time from "code-complete" to "integrated and tested" is minutes, not days.
 Delivery dates become predictable because the integration cost is near zero.
 
@@ -131,14 +131,14 @@ distributed evenly across the development cycle instead of concentrated at the e
 
 ### Impact on continuous delivery
 
-Continuous delivery requires that trunk is always in a deployable state and that any commit can be
+[Continuous delivery](../../glossary/#cd-continuous-delivery) requires that trunk is always in a [deployable](../../glossary/#deployable) state and that any commit can be
 released at any time. Long-lived feature branches make both impossible. Trunk cannot be deployable
 if large, poorly validated merges land periodically and destabilize it. You cannot release any commit
 if the latest commit is a 2,000-line merge that has not been fully tested.
 
 Long-lived branches also prevent continuous integration - the practice of integrating every
 developer's work into trunk at least once per day. Without continuous integration, there is no
-continuous delivery. The pipeline cannot provide fast feedback on changes that exist only on
+continuous delivery. The [pipeline](../../glossary/#pipeline) cannot provide fast feedback on changes that exist only on
 private branches. The team cannot practice deploying small changes because there are no small
 changes - only large merges separated by days or weeks of silence.
 
@@ -162,7 +162,7 @@ Set a target: no branch older than one day. This will feel aggressive. That is t
 
 ### Step 2: Set a branch lifetime limit and make it visible (Week 2)
 
-Agree as a team on a maximum branch lifetime. Start with two days if one day feels too aggressive.
+Agree as a team on a maximum [branch lifetime](../../glossary/#branch-lifetime). Start with two days if one day feels too aggressive.
 The important thing is to pick a number and enforce it.
 
 Make the limit visible:
@@ -181,11 +181,11 @@ feature is designed as a monolithic unit. The fix is decomposition:
 
 - **Branch by abstraction.** Introduce a new code path alongside the old one. Merge the new code
   path in small increments. Switch over when ready.
-- **Feature flags.** Hide incomplete work behind a toggle so it can be merged to trunk without
+- **[Feature flags](../../glossary/#feature-flag).** Hide incomplete work behind a toggle so it can be merged to trunk without
   being visible to users.
 - **Keystone interface pattern.** Build all the back-end work first, merge it incrementally, and
   add the UI entry point last. The feature is invisible until the keystone is placed.
-- **Vertical slices.** Deliver the feature as a series of thin, user-visible increments instead of
+- **[Vertical slices](../../glossary/#vertical-sliced-story).** Deliver the feature as a series of thin, user-visible increments instead of
   building all layers at once.
 
 Each technique lets developers merge daily without exposing incomplete functionality. The feature
@@ -241,6 +241,14 @@ a non-event.
 | [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as integration overhead drops |
 | Lines changed per merge | Should decrease as changes get smaller |
 
+## Team Discussion
+
+Use these questions in a retrospective to explore how this anti-pattern affects your team:
+
+- What is the average age of open branches in our repository right now?
+- When was our last painful merge? What made it painful - time, conflicts, or broken tests?
+- If every branch had to merge within two days, what would we need to change about how we slice work?
+
 ## Related Content
 
 - [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - The branching model that eliminates long-lived branches
@@ -248,3 +256,4 @@ a non-event.
 - [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - The principle behind breaking large features into daily integrations
 - [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Techniques for breaking features into small, mergeable increments
 - [PRs Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/) - Slow reviews are a common reason branches live too long
+- [Process & Deployment Defects](../../defect-sources/process-and-deployment/) - how large batches and long-lived branches generate defects at merge time.

@@ -13,6 +13,8 @@ description: >
 [Developer symptoms](symptoms/for-developers/) |
 [Manager symptoms](symptoms/for-managers/)
 
+Not sure where to start? See [Learning Paths](learning-paths/) for curated reading sequences by role and goal.
+
 This guide expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and
 the production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org).
 Each adapted page includes attribution to its source material.
@@ -20,14 +22,14 @@ Each adapted page includes attribution to its source material.
 
 ## Diagnose
 
-- **[Start Here](start-here/)** - CD and ACD become diagnostic tools when you take the offsetting questions seriously.
+- **[Start Here](start-here/)** - [CD](glossary/#cd-continuous-delivery) and [ACD](glossary/#acd-agentic-continuous-delivery) become diagnostic tools when you take the offsetting questions seriously.
 - **[Triage](triage/)** - Answer a few questions to find the symptoms and anti-patterns that match your situation.
 - **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
 - **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
 
 ## Migrate
 
-- **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment.
+- **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, [Pipeline](glossary/#pipeline), Optimize, and [Continuous Deployment](glossary/#continuous-deployment).
 - **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
 - **[ACD](agentic-cd/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
 

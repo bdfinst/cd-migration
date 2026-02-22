@@ -16,7 +16,7 @@ Code passes tests, QA signs off, staging looks fine. Then the release
 hits production and something breaks: a feature behaves differently, a dependent service times
 out, or data that never appeared in staging triggers an unhandled edge case.
 
-The team scrambles to roll back or hotfix. Confidence in the pipeline drops. People start adding
+The team scrambles to roll back or hotfix. Confidence in the [pipeline](../../glossary/#pipeline) drops. People start adding
 more manual verification steps, which slows delivery without actually preventing the next
 surprise.
 
@@ -70,6 +70,8 @@ becomes a source of variance between environments.
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 4. **Is the deployment process identical and automated across all environments?** If not, start
    with [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+**Ready to fix this?** The most common cause is [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.
 
 ---
 

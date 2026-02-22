@@ -58,7 +58,7 @@ story is "done." The hardening sprint is where all that undone work gets finishe
 
 When features are built as large, indivisible units, integration risk accumulates silently. Each
 large feature is developed in relative isolation for weeks. The hardening sprint is the first time
-all the pieces come together, and the integration pain is proportional to the batch size.
+all the pieces come together, and the integration pain is proportional to the [batch size](../../glossary/#batch-size).
 
 **Read more:** [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/)
 
@@ -90,6 +90,8 @@ less effective, more expensive, and blocks the release.
    [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/). Start with its [How to Fix It](../../anti-patterns/testing/manual-testing-only/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

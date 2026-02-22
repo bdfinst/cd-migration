@@ -16,7 +16,7 @@ For the framework overview and the eight constraints, see [ACD](../).
 
 **What it is:** A human-readable description of the desired change, written by a human.
 
-The intent description is the agent's "[prompt](../glossary/#prompt)" in the broadest sense. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed.
+The intent description is the agent's [prompt](../glossary/#prompt) in the broadest sense. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed.
 
 **Example:**
 
@@ -217,7 +217,7 @@ function rateLimitMiddleware(redisClient, config) {
 
 **What it is:** Non-functional requirements, security policies, performance budgets, and organizational rules that apply to all changes.
 
-Human developers internalize system constraints through experience and team norms. Agents need these constraints stated explicitly.
+Agents need system constraints stated explicitly.
 
 **Example:**
 
@@ -243,9 +243,23 @@ system_constraints:
 
 **Key property:** System constraints apply globally. Unlike other artifacts that are per-change, these rules apply to every change in the system.
 
-## These Artifacts Are Not Documentation
+## Artifact Authority Hierarchy
 
-**These artifacts are machine-readable inputs that the pipeline and agents consume.** They are not outputs for humans to read after the fact.
+When an agent detects a conflict between artifacts, it must know which one wins. The hierarchy below defines precedence. A lower-numbered artifact overrides a higher-numbered one:
+
+| Priority | Artifact | Authority |
+|----------|----------|-----------|
+| 1 (highest) | Intent Description | Defines the why; all other artifacts conform to it |
+| 2 | Feature Description | Defines architectural constraints; implementation must conform |
+| 3 | Executable Truth | Pipeline-enforced; implementation must pass |
+| 4 | System Constraints | Global; applies to every change in the system |
+| 5 (lowest) | Implementation | Must satisfy all other artifacts |
+
+User-Facing Behavior feeds into Executable Truth. It does not hold separate authority.
+
+## These Artifacts Are Pipeline Inputs, Not Reference Documents
+
+**The pipeline and agents consume these artifacts as inputs. They are not outputs for humans to read after the fact.**
 
 Without them, an agent that detects a conflict between what the tests expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
@@ -259,4 +273,5 @@ With the six artifacts defined, the next question is how the pipeline enforces c
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces artifact consistency
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failure modes when artifacts are incomplete
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence before adopting artifact-driven workflows
+- [Agent-Assisted Specification](../agent-assisted-specification/) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
 - [Testing](../../testing/) - testing strategies that inform the executable truth artifact

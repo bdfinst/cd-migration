@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-Your test suite is technically running, but the results are a coin flip. A test that passed yesterday fails today because another test ran first and left dirty data in the shared database. You spend thirty minutes debugging a failure only to find the root cause was a record inserted by an unrelated test two hours ago. When you rerun the suite in isolation, everything passes. When you run it in CI with the full suite, it fails at random.
+Your test suite is technically running, but the results are a coin flip. A test that passed yesterday fails today because another test ran first and left dirty data in the shared database. You spend thirty minutes debugging a failure only to find the root cause was a record inserted by an unrelated test two hours ago. When you rerun the suite in isolation, everything passes. When you run it in [CI](../../glossary/#ci-continuous-integration) with the full suite, it fails at random.
 
 Shared database state is the source of the chaos. The database schema and seed data were set up once, years ago, by someone who has since left. Nobody is sure what state the database is supposed to be in before any given test. Some tests clean up after themselves; most do not. Some tests depend on records created by other tests. The execution order matters, but nobody explicitly controls it - so the suite is fragile by construction.
 
@@ -49,3 +49,5 @@ Reproducible environments - created from code on demand and destroyed after use 
 1. **Do tests pass when run individually but fail when run together?** Mutual interference from shared mutable state is the most likely cause. Start with [Inverted test pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
 2. **Does the test suite pass on one machine but fail in CI?** The test environment differs from the developer's local database. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
 3. **Is there no documented strategy for setting up and tearing down test data?** The team never established a data strategy. Start with [Manual testing only](../../anti-patterns/testing/manual-testing-only/).
+
+**Ready to fix this?** The most common cause is [Inverted test pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.

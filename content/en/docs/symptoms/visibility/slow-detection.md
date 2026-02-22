@@ -50,7 +50,7 @@ analysis are not part of the workflow because the workflow ends before productio
 ### Manual Deployments
 
 When deployments are manual, there is no automated post-deploy verification step. An automated
-pipeline can include health checks, smoke tests, and rollback triggers as part of the deployment
+[pipeline](../../glossary/#pipeline) can include health checks, smoke tests, and [rollback](../../glossary/#rollback) triggers as part of the deployment
 sequence. A manual deployment ends when the human finishes the runbook. Whether the deployment is
 actually healthy is a separate question that may or may not get answered.
 
@@ -67,6 +67,8 @@ actually healthy is a separate question that may or may not get answered.
 3. **Does the deployment process include automated health checks?** If deployments end when the
    human finishes the script, there is no automated verification. Start with
    [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+**Ready to fix this?** The most common cause is [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
 
 ---
 

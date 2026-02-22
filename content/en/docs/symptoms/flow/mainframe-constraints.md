@@ -11,11 +11,11 @@ tags:
 
 ## What you are seeing
 
-The deployment target is a z/OS mainframe, an AS/400, an embedded device firmware platform, or a proprietary industrial control system. The standard CI/CD tools the rest of the organization uses do not support this target. The vendor's deployment tooling is command-line based, requires a licensed runtime, and was designed around a workflow that predates modern software delivery practices.
+The deployment target is a z/OS mainframe, an AS/400, an embedded device firmware platform, or a proprietary industrial control system. The standard [CI](../../glossary/#ci-continuous-integration)/[CD](../../glossary/#cd-continuous-delivery) tools the rest of the organization uses do not support this target. The vendor's deployment tooling is command-line based, requires a licensed runtime, and was designed around a workflow that predates modern software delivery practices.
 
-The team's modern application code lives in a standard git repository with a standard pipeline for the web tier. But the batch processing layer, the financial calculation engine, or the device firmware is deployed through a completely separate process involving FTP, JCL job cards, and a deployment checklist that exists as a Word document on a shared drive.
+The team's modern application code lives in a standard git repository with a standard [pipeline](../../glossary/#pipeline) for the web tier. But the batch processing layer, the financial calculation engine, or the device firmware is deployed through a completely separate process involving FTP, JCL job cards, and a deployment checklist that exists as a Word document on a shared drive.
 
-The organization's CD practices stop at the boundary of the modern stack. The legacy platform exists in a different operational world with different tooling, different skills, different deployment cadence, and different risk models. Bridging the two worlds requires custom integration work that is unglamorous, expensive, and consistently deprioritized.
+The organization's [CD](../../glossary/#cd-continuous-delivery) practices stop at the boundary of the modern stack. The legacy platform exists in a different operational world with different tooling, different skills, different deployment cadence, and different risk models. Bridging the two worlds requires custom integration work that is unglamorous, expensive, and consistently deprioritized.
 
 ## Common causes
 
@@ -48,3 +48,5 @@ Deliberately distributing platform knowledge - pair deployments, written procedu
 1. **Is there anyone on the team other than one or two people who can deploy to the legacy platform?** If not, knowledge concentration is the immediate risk. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 2. **Is the legacy platform deployment automated in any way?** If completely manual, automation of even one step is a starting point. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
 3. **Is the legacy platform deployment included in the same pipeline as modern services?** If it is managed outside the pipeline, it lacks all the pipeline's safety properties. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

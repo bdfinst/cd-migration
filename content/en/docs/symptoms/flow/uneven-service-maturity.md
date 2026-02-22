@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-Some services have full pipelines, comprehensive test coverage, automated deployment, and monitoring dashboards. Others have no tests, no pipeline, and are deployed by copying files onto a server. Both sit in the same team's portfolio. The team's CD practices apply to the modern ones. The legacy ones exist outside them.
+Some services have full [pipelines](../../glossary/#pipeline), comprehensive test coverage, automated deployment, and monitoring dashboards. Others have no tests, no pipeline, and are deployed by copying files onto a server. Both sit in the same team's portfolio. The team's [CD](../../glossary/#cd-continuous-delivery) practices apply to the modern ones. The legacy ones exist outside them.
 
 Improving the legacy services feels impossible to prioritize. They are not blocking any immediate feature work. The incidents they cause are infrequent enough to accept. Adding tests, setting up a pipeline, and improving the deployment process are multi-week investments with no immediate visible output. They compete for sprint capacity against features that have product owners and deadlines.
 
@@ -41,3 +41,5 @@ Teams with appropriate scope relative to capacity can allocate improvement time 
 1. **Does every service in the team's portfolio have an automated deployment pipeline?** If not, identify which services lack pipelines and why. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 2. **Does the team have time to improve services that are not actively producing incidents?** If improvement work is always displaced by feature or incident work, the team is spread too thin. Start with [Thin-spread teams](../../anti-patterns/organizational-cultural/thin-spread-teams/).
 3. **Are there services the team owns but is afraid to touch?** Fear of touching a service is a strong indicator that the service lacks the safety nets (tests, pipeline, documentation) needed for safe modification.
+
+**Ready to fix this?** The most common cause is [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/). Start with its [How to Fix It](../../anti-patterns/pipeline/missing-deployment-pipeline/#how-to-fix-it) section for week-by-week steps.

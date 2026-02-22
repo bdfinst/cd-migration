@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-These pitfalls come from teams that adopted [agentic continuous delivery](../../glossary/#acd-agentic-continuous-delivery) (ACD) without fully implementing the [six first-class artifacts](../first-class-artifacts/) or the [pipeline enforcement](../pipeline-enforcement/) that makes them effective.
+Each pitfall below has a root cause in the same two gaps: skipped [first-class artifacts](../first-class-artifacts/) and absent [pipeline enforcement](../pipeline-enforcement/). Fix those two things and most of these failures become impossible.
 {{% /pageinfo %}}
 
 ## Key Pitfalls
@@ -44,7 +44,7 @@ Without provenance tracking, you cannot learn from agent-generated failures, aud
 
 Agents trained to write good code will opportunistically refactor, rename, or improve things they encounter while implementing a scenario. The intent is not wrong. The scope is.
 
-A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule ("leave the code better than you found it") is sound engineering, but it conflicts with the small-batch discipline that makes agent-generated work reviewable.
+A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but it conflicts with the small-batch discipline that makes agent-generated work reviewable.
 
 **What to do:** Define scope boundaries explicitly in the [system prompt](../../glossary/#system-prompt) and context. Cleanup is valid work - but as a separate, explicitly scoped session with its own intent description and commit.
 
@@ -74,29 +74,27 @@ This is a reliability trap. Agent state is not durable in the way a commit is du
 
 ### 7. Review agent precision is miscalibrated
 
-Expert validation agents make review scalable, but only if developers trust the results. Miscalibration breaks in both directions.
+**Miscalibration is not visible until an incident reveals it.** The team does not know the review agent is generating false positives until developers stop reading its output. They do not know it is missing issues until a production failure traces back to something the agent approved. Miscalibration breaks in both directions:
 
 **Too many false positives:** the review agent flags issues that are not real problems. Developers learn to dismiss the agent's output without reading it. Real issues get dismissed alongside noise. The agent becomes a checkbox rather than a check.
 
 **Too few flags:** the review agent misses issues that human reviewers would catch. The team gains confidence in the agent and reduces human review depth. Issues that should have been caught are not caught.
 
-Neither failure mode is obvious. The team does not know the review agent is miscalibrated until an incident reveals it.
-
 **What to do:** During the [replacement cycle](../../migrate-to-cd/brownfield/replacing-manual-validations/) for review agents, track disagreements between the agent and human reviewers, not just agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
 
 ### 8. Skipped the prerequisite delivery practices
 
-Teams jump to ACD without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
+Teams jump to [ACD](../../glossary/#acd-agentic-continuous-delivery) without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
 
 **What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
-## Agentic Maintenance
+## After Adoption: Sustaining Quality Over Time
 
 Agents generate code faster than humans refactor it. Without deliberate maintenance practice, the codebase drifts toward entropy faster than it would with human-paced development.
 
 ### Keep skills and prompts under version control
 
-The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class artifacts. They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
+The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class [artifacts](../../glossary/#artifact). They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
 
 Review your agent configuration on the same cadence you review the pipeline. When an agent produces unexpected output, check the configuration before assuming the model changed.
 

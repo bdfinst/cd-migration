@@ -62,9 +62,11 @@ incentive structure deprioritizes collaboration.
 3. **Do developers treat review as lower priority than their own coding work?** If yes, the
    team's norms do not treat review as a first-class activity. Start with
    [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/) and
-   establish a team working agreement that reviews happen before starting new work.
+   establish a team [working agreement](../../glossary/#working-agreement) that reviews happen before starting new work.
 
 ---
+
+**Ready to fix this?** The most common cause is [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/). Start with its [How to Fix It](../../anti-patterns/branching-integration/long-lived-feature-branches/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

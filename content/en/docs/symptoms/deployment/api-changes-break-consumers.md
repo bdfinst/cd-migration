@@ -49,3 +49,5 @@ Maintaining a service catalog, using contract testing, or even an informal regis
 1. **Does the team know every consumer of their APIs?** If consumer inventory is incomplete or unknown, any API change carries unknown risk. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 2. **Must consuming services be deployed at the same time as the providing service?** If coordinated deployment is required, the services are not truly independent. Start with [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/).
 3. **Do internal implementation changes frequently affect the public API surface?** If internal refactoring breaks consumers, the interface boundary is not stable. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+
+**Ready to fix this?** The most common cause is [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/distributed-monolith/#how-to-fix-it) section for week-by-week steps.

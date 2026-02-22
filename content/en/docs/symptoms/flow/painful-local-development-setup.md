@@ -49,3 +49,5 @@ Decomposed services with stable interfaces can be developed in isolation. A deve
 1. **Can a new team member set up a working development environment without help?** If not, the setup process is not self-contained. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
 2. **Does setup require tribal knowledge that is not captured in the documented procedure?** If team members need to "fill in the gaps" from memory, that knowledge needs to be externalized. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 3. **Does running a single service require running the entire application?** If so, local development is inherently complex. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+
+**Ready to fix this?** The most common cause is [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.

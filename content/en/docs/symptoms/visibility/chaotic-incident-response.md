@@ -47,3 +47,5 @@ Systems deployed manually often have complex, undocumented operational character
 1. **Does every service have a runbook that an on-call engineer unfamiliar with the service could follow?** If not, incident response requires specific people. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 2. **Can the on-call engineer determine the likely cause of an incident from dashboards alone?** If diagnosing incidents requires deep system knowledge, observability is insufficient. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
 3. **Is there a single person whose absence would make incident response significantly harder for multiple services?** That person is a single point of failure. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
+
+**Ready to fix this?** The most common cause is [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.

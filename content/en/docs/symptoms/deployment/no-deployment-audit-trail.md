@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-An auditor asks a simple question: what version of the payment service is currently running in production, when was it deployed, who authorized it, and what tests did it pass? The team opens a spreadsheet, checks Slack history, and pieces together an answer from memory and partial records. The spreadsheet was last updated two months ago. The Slack message that mentioned the deployment contains a commit hash but not a build number. The CI system shows jobs that ran, but the logs have been pruned.
+An auditor asks a simple question: what version of the payment service is currently running in production, when was it deployed, who authorized it, and what tests did it pass? The team opens a spreadsheet, checks Slack history, and pieces together an answer from memory and partial records. The spreadsheet was last updated two months ago. The Slack message that mentioned the deployment contains a commit hash but not a build number. The [CI](../../glossary/#ci-continuous-integration) system shows jobs that ran, but the logs have been pruned.
 
-Each deployment was treated as a one-time event. Records were not kept because nobody expected to need them. The process that makes deployments auditable is the same process that makes them reliable: a pipeline that creates a versioned artifact, records its provenance, and logs each promotion through environments.
+Each deployment was treated as a one-time event. Records were not kept because nobody expected to need them. The process that makes deployments auditable is the same process that makes them reliable: a [pipeline](../../glossary/#pipeline) that creates a versioned [artifact](../../glossary/#artifact), records its provenance, and logs each promotion through environments.
 
 Outside of formal audit requirements, the same problem shows up as operational confusion. The team is not sure what is running in production because deployments happen at different times by different people without a centralized record. Debugging a production issue requires determining which version introduced the behavior, which requires reconstructing the deployment history from whatever partial records exist.
 
@@ -49,3 +49,5 @@ Environments defined as code have their state recorded in version control. The c
 1. **Can the team identify the exact artifact version currently in production?** If not, there is no artifact tracking. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 2. **Is there a complete log of who deployed what and when?** If deployment records depend on engineers remembering to write Slack messages, the record will have gaps. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
 3. **Could the environment have been modified since the last deployment?** If production servers can be changed outside the deployment process, the deployment log does not represent the current state. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

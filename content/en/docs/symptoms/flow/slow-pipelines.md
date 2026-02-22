@@ -13,7 +13,7 @@ tags:
 
 ## What you are seeing
 
-A developer pushes a commit and waits. Thirty minutes pass. An hour. The pipeline is still
+A developer pushes a commit and waits. Thirty minutes pass. An hour. The [pipeline](../../glossary/#pipeline) is still
 running. The developer context-switches to another task, and by the time the pipeline finishes
 (or fails), they have moved on mentally. If the build fails, they must reload context, figure out
 what went wrong, fix it, push again, and wait another 30 minutes.
@@ -82,6 +82,8 @@ automated prefix.
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

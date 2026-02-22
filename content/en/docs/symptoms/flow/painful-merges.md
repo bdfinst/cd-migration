@@ -42,7 +42,7 @@ conflicts. A branch that is two weeks old may have dozens.
 
 ### Integration Deferred
 
-When the team does not practice continuous integration (integrating to main at least daily), each
+When the team does not practice [continuous integration](../../glossary/#ci-continuous-integration) (integrating to main at least daily), each
 developer's work diverges independently. The build may be green on each branch but broken when
 branches combine. CI means integrating continuously, not running a build server. Without frequent
 integration, merge pain is inevitable.
@@ -61,7 +61,7 @@ merges.
 ## How to narrow it down
 
 1. **How long do branches typically live before merging?** If branches live longer than two days,
-   the branch lifetime is the primary driver of merge pain. Start with
+   the [branch lifetime](../../glossary/#branch-lifetime) is the primary driver of merge pain. Start with
    [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/).
 2. **Does the team integrate to main at least once per day?** If developers work in isolation for
    days before integrating, they are not practicing continuous integration regardless of whether a
@@ -72,6 +72,8 @@ merges.
    [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/). Start with its [How to Fix It](../../anti-patterns/branching-integration/long-lived-feature-branches/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

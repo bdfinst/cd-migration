@@ -42,7 +42,7 @@ do not actually verify behavior. They exist to satisfy a gate, not to catch defe
 
 ### Code Coverage Mandates
 
-When the organization gates the pipeline on a coverage target, teams optimize for the number
+When the organization gates the [pipeline](../../glossary/#pipeline) on a coverage target, teams optimize for the number
 rather than for defect detection. Developers write assertion-free tests, cover trivial code, or
 add single integration tests that execute hundreds of lines without validating any of them. The
 coverage metric rises while the tests remain unable to catch meaningful defects.
@@ -74,6 +74,8 @@ result.
    written after the code to satisfy a coverage gate rather than to verify design decisions,
    start with
    [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+
+**Ready to fix this?** The most common cause is [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/). Start with its [How to Fix It](../../anti-patterns/testing/code-coverage-mandates/#how-to-fix-it) section for week-by-week steps.
 
 ---
 

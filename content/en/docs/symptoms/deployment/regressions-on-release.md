@@ -92,6 +92,8 @@ affected.
    to trunk. Start with
    [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/).
 
+**Ready to fix this?** The most common cause is [Testing Only at the End](../../anti-patterns/testing/testing-only-at-the-end/). Start with its [How to Fix It](../../anti-patterns/testing/testing-only-at-the-end/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

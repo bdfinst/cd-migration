@@ -9,8 +9,8 @@ description: >
 {{% pageinfo %}}
 **Key question:** "Can we integrate safely every day?"
 
-This phase establishes the development practices that make continuous delivery possible.
-Without these foundations, pipeline automation just speeds up a broken process.
+This phase establishes the development practices that make [continuous delivery](../../../glossary/#cd-continuous-delivery) possible.
+Without these foundations, [pipeline](../../../glossary/#pipeline) automation just speeds up a broken process.
 {{% /pageinfo %}}
 
 ## What You'll Do
@@ -25,7 +25,7 @@ Without these foundations, pipeline automation just speeds up a broken process.
 
 ## Why This Phase Matters
 
-These practices are the prerequisites for everything that follows. Trunk-based development
+These practices are the prerequisites for everything that follows. [Trunk-based development](../../../glossary/#tbd-trunk-based-development)
 eliminates merge hell. Testing fundamentals give you the confidence to deploy frequently.
 Small work decomposition reduces risk per change. Together, they create the feedback loops
 that drive continuous improvement.
@@ -38,6 +38,8 @@ You're ready for [Phase 2: Pipeline](../pipeline/) when:
 - Your test suite catches real defects and runs in under 10 minutes
 - You can build and package your application with a single command
 - Most work items are completable within 2 days
+
+**Next:** [Phase 2 - Pipeline](../pipeline/) - build a single automated path from commit to production.
 
 ---
 

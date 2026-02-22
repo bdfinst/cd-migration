@@ -40,3 +40,5 @@ When logs are aggregated into a centralized, searchable system, the knowledge of
 1. **Can the team search logs across all services from a single interface?** If debugging requires SSH access to individual servers, logs are not aggregated. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
 2. **Can the team trace a single request across multiple services using a shared correlation ID?** If not, distributed debugging is manual assembly work. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
 3. **Can new team members debug production issues independently, without help from senior engineers?** If debugging requires knowing the informal map of log locations and formats, the knowledge is siloed. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
+
+**Ready to fix this?** The most common cause is [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.

@@ -49,6 +49,8 @@ the knowledge needed to continue the work lives in one person.
    knowledge is too concentrated to allow handoff, silos are compounding the problem. Start with
    [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/).
 
+**Ready to fix this?** The most common cause is [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/). Start with its [How to Fix It](../../anti-patterns/team-workflow/push-based-work-assignment/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

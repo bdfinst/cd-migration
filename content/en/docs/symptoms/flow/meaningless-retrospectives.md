@@ -21,7 +21,7 @@ The dysfunction runs deeper than meeting format. There is no capacity allocated 
 
 ### Unbounded WIP
 
-When the team has more work in progress than capacity, every sprint has no slack. Action items from retrospectives require slack to complete. Without slack, improvement work is always displaced by feature work. The team is too busy to get less busy.
+When the team has more [work in progress](../../glossary/#wip-work-in-progress) than capacity, every sprint has no slack. Action items from retrospectives require slack to complete. Without slack, improvement work is always displaced by feature work. The team is too busy to get less busy.
 
 Creating and protecting capacity for improvement work is the prerequisite for retrospectives to produce change. Teams that allocate a fixed percentage of each sprint to improvement work - and defend it against feature pressure - actually complete their retrospective action items.
 
@@ -46,3 +46,5 @@ When management drives to fixed deadlines, all available capacity goes toward me
 1. **Are retrospective action items ever completed?** If not, capacity is the first issue to examine. Start with [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
 2. **Does the team control how their sprint capacity is allocated?** If improvement work must compete against externally assigned feature work, the team lacks the authority to act on retrospective outcomes. Start with [Push-based work assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
 3. **Is the team under sustained deadline pressure with no slack?** If the team is always in crunch, improvement work has no room regardless of capacity or authority. Start with [Deadline-driven development](../../anti-patterns/organizational-cultural/deadline-driven-development/).
+
+**Ready to fix this?** The most common cause is [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/). Start with its [How to Fix It](../../anti-patterns/team-workflow/unbounded-wip/#how-to-fix-it) section for week-by-week steps.

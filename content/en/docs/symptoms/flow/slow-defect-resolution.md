@@ -53,6 +53,8 @@ not accurately reflect the original intent.
    the full set of constraints they are working within. Start with
    [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/).
 
+**Ready to fix this?** The most common cause is [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

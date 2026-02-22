@@ -57,6 +57,8 @@ every internal change ripples across the test suite.
    of changes in another?** If yes, the problem is missing boundaries between components. Start
    with [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

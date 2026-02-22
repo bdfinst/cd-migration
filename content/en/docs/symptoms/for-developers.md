@@ -13,7 +13,7 @@ familiar, follow the link to find what is causing it and how to fix it.
 
 ## Pushing code and getting feedback
 
-- **[Pipelines Take Too Long](flow/slow-pipelines/)** - You push a change, then wait 30 minutes or more to find out if it passed. Pipeline duration limits how often the team can integrate.
+- **[Pipelines Take Too Long](flow/slow-pipelines/)** - You push a change, then wait 30 minutes or more to find out if it passed. [Pipeline](../glossary/#pipeline) duration limits how often the team can integrate.
 - **[Feedback Takes Hours Instead of Minutes](flow/no-fast-feedback/)** - You do not learn whether a change works until long after you wrote it. Developers batch changes to avoid the wait.
 - **[Pull Requests Sit for Days Waiting for Review](flow/prs-waiting-for-review/)** - Your PR is ready, but no one reviews it for days. You start another branch. Now you have two things in flight and neither is done.
 
@@ -21,7 +21,7 @@ familiar, follow the link to find what is causing it and how to fix it.
 
 - **[Tests Randomly Pass or Fail](testing/flaky-tests/)** - You click rerun without investigating because flaky failures are so common. The team ignores failures by default, which masks real regressions.
 - **[Refactoring Breaks Tests](testing/refactoring-breaks-tests/)** - You rename a method or restructure a class and 15 tests fail, even though the behavior is correct. Technical debt accumulates because cleanup is too expensive.
-- **[Test Suite Is Too Slow to Run](testing/slow-test-suites/)** - Running tests locally is so slow that you skip it and push to CI instead, trading fast feedback for a longer loop.
+- **[Test Suite Is Too Slow to Run](testing/slow-test-suites/)** - Running tests locally is so slow that you skip it and push to [CI](../glossary/#ci-continuous-integration) instead, trading fast feedback for a longer loop.
 - **[High Coverage but Tests Miss Defects](testing/high-coverage-ineffective-tests/)** - Coverage is above 80% but bugs still make it to production. The tests check that code runs, not that it works correctly.
 
 ## Integrating and merging
@@ -33,7 +33,7 @@ familiar, follow the link to find what is causing it and how to fix it.
 ## Deploying and releasing
 
 - **[The Team Is Afraid to Deploy](deployment/fear-of-deploying/)** - Deployments are treated as high-risk events requiring full-team attention. The team deploys less often, which makes each deployment larger and riskier.
-- **[Releases Are Infrequent and Painful](deployment/infrequent-releases/)** - Releases happen monthly or quarterly and require significant coordination, manual testing, and rollback plans.
+- **[Releases Are Infrequent and Painful](deployment/infrequent-releases/)** - Releases happen monthly or quarterly and require significant coordination, manual testing, and [rollback](../glossary/#rollback) plans.
 - **[Merge Freezes Before Deployments](deployment/merge-freeze/)** - The team stops merging to stabilize before each release, creating artificial bottlenecks and deferred work.
 - **[Hardening Sprints Are Needed Before Every Release](deployment/hardening-sprints/)** - A dedicated stabilization period is needed before every release because the normal process does not produce releasable code.
 - **[Multiple Services Must Be Deployed Together](deployment/coordinated-deployments/)** - Services are coupled so that deploying one requires deploying others at the same time.
@@ -45,3 +45,5 @@ familiar, follow the link to find what is causing it and how to fix it.
 - **[Staging Passes but Production Fails](deployment/staging-passes-production-fails/)** - The staging environment gives false confidence. Problems that staging should catch reach production.
 - **[Production Issues Discovered by Customers](visibility/production-issues-found-by-customers/)** - The team learns about production problems from customer reports instead of monitoring.
 - **[Production Problems Are Discovered Hours or Days Late](visibility/slow-detection/)** - Incidents are not detected until the impact has already accumulated.
+
+See [Learning Paths](../learning-paths/) for a structured reading sequence if you want a guided path through diagnosis and fixes.

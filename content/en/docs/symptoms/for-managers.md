@@ -33,8 +33,10 @@ manifest as missed commitments, quality problems, and retention risk.
 
 - **[Team Burnout and Unsustainable Pace](visibility/team-burnout/)** - Process friction, on-call burden, and deployment stress are wearing the team down. Attrition risk is high.
 - **[Merging Is Painful and Time-Consuming](flow/painful-merges/)** - Developers spend significant time resolving merge conflicts instead of building features. This is invisible overhead that slows delivery.
-- **[Pull Requests Sit for Days Waiting for Review](flow/prs-waiting-for-review/)** - Developers are blocked waiting for reviews. This creates frustration and drives up work-in-progress as they start new things while waiting.
+- **[Pull Requests Sit for Days Waiting for Review](flow/prs-waiting-for-review/)** - Developers are blocked waiting for reviews. This creates frustration and drives up [work-in-progress](../glossary/#wip-work-in-progress) as they start new things while waiting.
 - **[It Works on My Machine](visibility/works-on-my-machine/)** - Environment inconsistency means developers waste time debugging problems that only appear in certain environments. This is preventable friction.
+
+See [Learning Paths](../learning-paths/) for a structured path from diagnosis to building a case for change.
 
 ## What to do next
 

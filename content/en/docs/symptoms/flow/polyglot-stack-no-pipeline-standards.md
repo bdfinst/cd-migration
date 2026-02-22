@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-The Java service has a Jenkins pipeline set up four years ago. The Python service has a GitHub Actions workflow written by a consultant. The Go service has a Makefile. The Node.js service deploys from a developer's laptop. The Ruby service has no deployment automation at all. Each service is a different discipline, maintained by whoever last touched it.
+The Java service has a Jenkins [pipeline](../../glossary/#pipeline) set up four years ago. The Python service has a GitHub Actions workflow written by a consultant. The Go service has a Makefile. The Node.js service deploys from a developer's laptop. The Ruby service has no deployment automation at all. Each service is a different discipline, maintained by whoever last touched it.
 
 Onboarding a new engineer requires learning five different deployment systems. Fixing a security vulnerability in the dependency scanning step requires five separate changes across five pipeline definitions, each with different syntax. A compliance requirement that all services log deployment events requires five separate implementations, each time reinventing the pattern.
 
@@ -45,3 +45,5 @@ Services that start with manual deployment accumulate automation piecemeal, in w
 1. **Does the team have a standard pipeline pattern that all services follow?** If each service has a unique pipeline structure, start with establishing the standard. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 2. **Can any engineer on the team deploy any service?** If deploying a specific service requires the person who set it up, the pipeline knowledge is siloed. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
 3. **Are there services with no deployment automation at all?** Start with those services. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
+
+**Ready to fix this?** The most common cause is [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/). Start with its [How to Fix It](../../anti-patterns/pipeline/missing-deployment-pipeline/#how-to-fix-it) section for week-by-week steps.

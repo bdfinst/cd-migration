@@ -56,7 +56,7 @@ business functionality.
 
 When work for a feature is decomposed by service ("Team A builds the API, Team B updates the UI,
 Team C modifies the processor"), each team's change is incomplete on its own. Nothing is
-deployable until all teams finish their part. The decomposition created the coordination
+[deployable](../../glossary/#deployable) until all teams finish their part. The decomposition created the coordination
 requirement. Vertical slicing within each team's domain, with stable contracts between services,
 allows each team to deploy when their slice is ready.
 
@@ -88,9 +88,11 @@ independent changes into a single release event.
    [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
 4. **Could each service technically be deployed on its own, but process or policy prevents it?**
    If the coupling is in the release process (shared release window, cross-team sign-off, manual
-   integration test gate) rather than in the code, the constraint is organizational. Start with
+   integration test gate) rather than in the code, the [constraint](../../glossary/#constraint) is organizational. Start with
    [Undone Work](../../anti-patterns/team-workflow/undone-work/) and examine whether the definition
    of done requires unnecessary coordination.
+
+**Ready to fix this?** The most common cause is [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/tightly-coupled-monolith/#how-to-fix-it) section for week-by-week steps.
 
 ---
 

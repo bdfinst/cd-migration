@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-Everyone still has long-lived feature branches. The team agreed to try trunk-based development, but three sprints later "merge to trunk when the feature is done" is the informal rule. Branches live for days or weeks. When developers finally merge, there are conflicts. The conflicts take hours to resolve. Everyone agrees this is a problem but nobody knows how to break the cycle.
+Everyone still has long-lived feature branches. The team agreed to try [trunk-based development](../../glossary/#tbd-trunk-based-development), but three sprints later "merge to trunk when the feature is done" is the informal rule. Branches live for days or weeks. When developers finally merge, there are conflicts. The conflicts take hours to resolve. Everyone agrees this is a problem but nobody knows how to break the cycle.
 
-The core objection is safety: "I'm not going to push half-finished code to main." This is a reasonable concern in the current environment. The main branch has no automated test suite that would catch regressions quickly. There is no feature flag infrastructure to let partially-built features live in production in a dormant state. Trunk-based development feels reckless because the prerequisites for it are not in place.
+The core objection is safety: "I'm not going to push half-finished code to main." This is a reasonable concern in the current environment. The main branch has no automated test suite that would catch regressions quickly. There is no [feature flag](../../glossary/#feature-flag) infrastructure to let partially-built features live in production in a dormant state. Trunk-based development feels reckless because the prerequisites for it are not in place.
 
 The team is not wrong to feel unsafe. They are wrong to believe long-lived branches are safer. The longer a branch lives, the larger the eventual merge, the more conflicts, and the more risk concentrated into the merge event. The fear of merging to trunk is rational, but the response makes the underlying problem worse.
 
@@ -38,7 +38,7 @@ When trunk is the thing that gates production, a broken trunk is a fire drill - 
 
 Feature branch habits are self-reinforcing. Teams with ingrained feature branch practices have calibrated their workflows, tools, and feedback loops to the batching model. Switching to trunk-based development requires changing all of those workflows simultaneously, which is disorienting.
 
-The habits that make long-lived branches feel safe - waiting to merge until the feature is complete, doing final testing on the branch, getting full review before touching trunk - are the same habits that keep the resistance alive. Small, deliberate workflow changes - reviewing smaller units, integrating while work is in progress, getting feedback from the pipeline rather than a gated review - reduce the resistance step by step rather than requiring an all-at-once mindset shift.
+The habits that make long-lived branches feel safe - waiting to merge until the feature is complete, doing final testing on the branch, getting full review before touching trunk - are the same habits that keep the resistance alive. Small, deliberate workflow changes - reviewing smaller units, integrating while work is in progress, getting feedback from the [pipeline](../../glossary/#pipeline) rather than a gated review - reduce the resistance step by step rather than requiring an all-at-once mindset shift.
 
 **Read more:** [Long-lived feature branches](../../anti-patterns/branching-integration/long-lived-feature-branches/)
 
@@ -55,3 +55,5 @@ Decomposing work into smaller items that can be integrated to trunk in a day or 
 1. **Does the team have an automated test suite that runs in under 10 minutes?** If not, the feedback loop needed to make frequent trunk commits safe does not exist. Start with [Manual testing only](../../anti-patterns/testing/manual-testing-only/).
 2. **Is trunk always releasable?** If releases require a manual QA phase regardless of trunk state, there is no incentive to keep trunk releasable. Start with [Manual regression testing gates](../../anti-patterns/testing/manual-regression-testing-gates/).
 3. **Do work items typically take more than two days to complete?** If items take longer than two days, integrating to trunk daily requires techniques for hiding in-progress work. Start with [Monolithic work items](../../anti-patterns/team-workflow/monolithic-work-items/).
+
+**Ready to fix this?** The most common cause is [Long-lived feature branches](../../anti-patterns/branching-integration/long-lived-feature-branches/). Start with its [How to Fix It](../../anti-patterns/branching-integration/long-lived-feature-branches/#how-to-fix-it) section for week-by-week steps.

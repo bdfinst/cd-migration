@@ -19,7 +19,7 @@ tags:
 ## What This Looks Like
 
 Before any change can reach production, it must be submitted to the Change Advisory Board. The
-developer fills out a change request form: description of the change, impact assessment, rollback
+developer fills out a change request form: description of the change, impact assessment, [rollback](../../../glossary/#rollback)
 plan, testing evidence, and approval signatures. The form goes into a queue. The CAB meets once
 a week - sometimes every two weeks - to review the queue. Each change gets a few minutes of
 discussion. The board approves, rejects, or requests more information.
@@ -74,7 +74,7 @@ Meanwhile, the delay the CAB introduces actively harms quality. A bug fix that i
 but cannot deploy until Thursday means users experience the bug for three extra days. A security
 patch that waits for weekly approval is a vulnerability window measured in days.
 
-Teams without CAB gates deploy quality checks into the pipeline itself: automated tests, security
+Teams without CAB gates deploy quality checks into the [pipeline](../../../glossary/#pipeline) itself: automated tests, security
 scans, peer review, and deployment verification. These checks are faster, more thorough, and
 more reliable than a weekly committee meeting.
 
@@ -130,11 +130,11 @@ that actually reduce deployment risk.
 
 ### Impact on continuous delivery
 
-Continuous delivery requires that any change can reach production quickly through an automated
-pipeline. A weekly approval meeting is fundamentally incompatible with continuous deployment.
+[Continuous delivery](../../../glossary/#cd-continuous-delivery) requires that any change can reach production quickly through an automated
+pipeline. A weekly approval meeting is fundamentally incompatible with [continuous deployment](../../../glossary/#continuous-deployment).
 
 The math is simple. If the CAB meets weekly and reviews 20 changes per meeting, the maximum
-deployment frequency is 20 per week. A team practicing CD might deploy 20 times per day. The
+[deployment frequency](../../../glossary/#deployment-frequency) is 20 per week. A team practicing CD might deploy 20 times per day. The
 CAB process reduces deployment frequency by two orders of magnitude.
 
 More importantly, the CAB process assumes that human review of change requests is a meaningful
@@ -156,7 +156,7 @@ Not all changes carry the same risk. Introduce a risk classification:
 | Risk level | Criteria | Example | Approval process |
 |-----------|---------|---------|-----------------|
 | Standard | Small, well-tested, automated rollback | Config change, minor bug fix, dependency update | Peer review + passing pipeline = auto-approved |
-| Normal | Medium scope, well-tested | New feature behind a feature flag, API endpoint addition | Peer review + passing pipeline + team lead sign-off |
+| Normal | Medium scope, well-tested | New feature behind a [feature flag](../../../glossary/#feature-flag), API endpoint addition | Peer review + passing pipeline + team lead sign-off |
 | High | Large scope, architectural, or compliance-sensitive | Database migration, authentication change, PCI-scoped change | Peer review + passing pipeline + architecture review |
 
 The goal is to route 80-90% of changes through the standard process, which requires no CAB
@@ -187,7 +187,7 @@ entirely if they meet the automated criteria:
 3. Change classified as standard risk.
 4. Deployment includes automated health checks and rollback capability.
 
-Track the results: deployment frequency, change fail rate, and incident count. Compare with the
+Track the results: deployment frequency, [change fail rate](../../../glossary/#change-failure-rate-cfr), and incident count. Compare with the
 CAB-gated process.
 
 ### Step 4: Present the data and expand (Weeks 4-8)
@@ -231,6 +231,14 @@ changes that actually benefit from human review rather than rubber-stamping rout
 | CAB meeting frequency | Should decrease from weekly to as-needed |
 | Time from "ready to deploy" to "deployed" | Should drop from days to hours or minutes |
 
+## Team Discussion
+
+Use these questions in a retrospective to explore how this anti-pattern affects your team:
+
+- How long does the average change wait in our approval process? What proportion of that time is active review vs. waiting?
+- Have we ever had a change approved by CAB that still caused a production incident? What did the CAB review actually catch?
+- What would we need to trust a pipeline gate as much as we trust a CAB reviewer?
+
 ## Related Content
 
 - [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - The pipeline replaces manual gates
@@ -238,3 +246,4 @@ changes that actually benefit from human review rather than rubber-stamping rout
 - [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Automated rollback replaces manual rollback plans in change requests
 - [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using data to prove that automated controls work
 - [Deploy on Demand](../../../migrate-to-cd/migration-path/continuous-deployment/deploy-on-demand/) - The end state where any change can deploy when ready
+- [Process & Deployment Defects](../../defect-sources/process-and-deployment/) - how slow, batch-based approval processes introduce the defects they aim to prevent.

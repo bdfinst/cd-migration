@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-The team is divided. Developers want to ship often and trust that fast feedback will catch problems. Operations and on-call engineers want stability and fewer changes to reason about during incidents. Both positions are defensible. The conflict is real and recurs in every conversation about deployment frequency, change windows, and testing requirements.
+The team is divided. Developers want to ship often and trust that fast feedback will catch problems. Operations and on-call engineers want stability and fewer changes to reason about during incidents. Both positions are defensible. The conflict is real and recurs in every conversation about [deployment frequency](../../glossary/#deployment-frequency), change windows, and testing requirements.
 
 The team has reached an uncomfortable equilibrium. Developers batch changes to deploy less often, which partially satisfies the stability concern but creates larger, riskier releases. Operations accepts the change window constraints, which gives them predictability but means the team cannot respond quickly to urgent fixes. Nobody is getting what they actually want.
 
@@ -30,7 +30,7 @@ Automated deployments that execute the same steps identically every time elimina
 
 ### Missing deployment pipeline
 
-Without a pipeline with automated tests, health checks, and rollback capability, the stability concern is valid. Each deployment is a manual, unverified process that could go wrong in novel ways. A pipeline that enforces quality gates before production and detects problems immediately after deployment changes the risk profile of frequent deployments fundamentally.
+Without a [pipeline](../../glossary/#pipeline) with automated tests, health checks, and [rollback](../../glossary/#rollback) capability, the stability concern is valid. Each deployment is a manual, unverified process that could go wrong in novel ways. A pipeline that enforces quality gates before production and detects problems immediately after deployment changes the risk profile of frequent deployments fundamentally.
 
 When the team can deploy with high confidence and roll back automatically if something goes wrong, the frequency of deployments stops being a risk factor. The risk per deployment is low when each deployment is small, tested, and reversible.
 
@@ -53,3 +53,5 @@ When velocity is measured by features shipped to a deadline, every hour spent on
 1. **Is the deployment process automated and consistent?** If deployments are manual and variable, the stability concern is about process risk, not just code risk. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
 2. **Does the team have automated testing and fast rollback?** Without these, deploying frequently is genuinely riskier than deploying infrequently. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Does management pressure the team to ship faster by cutting testing?** If yes, the tension is being created from above rather than within the team. Start with [Pressure to skip testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

@@ -40,7 +40,7 @@ Services that are genuinely independent can be changed, tested, and deployed wit
 
 When teams are organized by technical layer - front end, back end, database - every user-facing feature requires coordination across all teams. The frontend team needs the API before they can build the UI. The API team needs the database schema before they can write the queries. No team can deliver a complete feature independently.
 
-Organizing teams around vertical slices of capability - a team that owns the full stack for a specific domain - eliminates most cross-team dependencies. The team that owns the feature can deliver it without waiting on other teams.
+Organizing teams around [vertical slices](../../glossary/#vertical-sliced-story) of capability - a team that owns the full stack for a specific domain - eliminates most cross-team dependencies. The team that owns the feature can deliver it without waiting on other teams.
 
 **Read more:** [Horizontal slicing](../../anti-patterns/team-workflow/horizontal-slicing/)
 
@@ -55,6 +55,8 @@ Decomposing large items into smaller, more self-contained pieces reduces the sur
 ## How to narrow it down
 
 1. **Does changing one team's service require changing another team's service?** If interface changes cascade across teams, the services are coupled. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
-2. **Must multiple services deploy simultaneously to deliver a feature?** If services cannot be deployed independently, the architecture is the constraint. Start with [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/).
+2. **Must multiple services deploy simultaneously to deliver a feature?** If services cannot be deployed independently, the architecture is the [constraint](../../glossary/#constraint). Start with [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/).
 3. **Does each team own only one technical layer?** If no team can deliver end-to-end functionality, the organizational structure creates dependencies. Start with [Horizontal slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
 4. **Are work items frequently blocked waiting on another team's deliverable?** If items spend more time blocked than in progress, decompose items to reduce cross-team surface area. Start with [Monolithic work items](../../anti-patterns/team-workflow/monolithic-work-items/).
+
+**Ready to fix this?** The most common cause is [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/tightly-coupled-monolith/#how-to-fix-it) section for week-by-week steps.

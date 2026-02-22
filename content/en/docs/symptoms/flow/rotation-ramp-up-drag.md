@@ -50,6 +50,8 @@ reconstruction from scratch.
    learn by asking colleagues rather than reading documentation, the knowledge is not externalized.
    Start with [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/).
 
+**Ready to fix this?** The most common cause is [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/thin-spread-teams/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

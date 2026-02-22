@@ -57,6 +57,8 @@ that do not express the user's goal leave room for implementations that miss the
    [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) and
    look at how stories are written and refined.
 
+**Ready to fix this?** The most common cause is [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/). Start with its [How to Fix It](../../anti-patterns/team-workflow/push-based-work-assignment/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

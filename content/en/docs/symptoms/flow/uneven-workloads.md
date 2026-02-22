@@ -56,6 +56,8 @@ flowing to whoever has capacity.
    [Thin-Spread Teams](../../anti-patterns/organizational-cultural/thin-spread-teams/) and
    [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/).
 
+**Ready to fix this?** The most common cause is [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/). Start with its [How to Fix It](../../anti-patterns/team-workflow/push-based-work-assignment/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

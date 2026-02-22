@@ -14,7 +14,7 @@ tags:
 
 Deployments stop when one person is unavailable. The team has a release manager - or someone who has informally become one - who holds the institutional knowledge of how deployments work. They know which config values need to be updated, which services need to restart in which order, which monitoring dashboards to watch, and what warning signs of a bad deploy look like. When they go on vacation, the team either waits for them to return or attempts a deployment with noticeably less confidence.
 
-The release manager's calendar becomes a constraint on when the team can ship. Releases are scheduled around their availability. On-call engineers will not deploy without them present because the process is too opaque to navigate alone. When a production incident requires a hotfix, the first step is "find that person" rather than "follow the rollback procedure."
+The release manager's calendar becomes a [constraint](../../glossary/#constraint) on when the team can ship. Releases are scheduled around their availability. On-call engineers will not deploy without them present because the process is too opaque to navigate alone. When a production incident requires a hotfix, the first step is "find that person" rather than "follow the [rollback](../../glossary/#rollback) procedure."
 
 The bottleneck is rarely a single person's fault. It reflects a deployment process that was never made systematic or automated. Knowledge accumulated in one person because the process was never documented in a way that made it executable without that person. The team worked around the complexity rather than removing it.
 
@@ -24,7 +24,7 @@ The bottleneck is rarely a single person's fault. It reflects a deployment proce
 
 Manual deployments require human expertise. When the steps are not automated, a deployment is only as reliable as the person executing it. Over time, the most experienced person becomes the de-facto release manager by default - not because anyone decided this, but because they have done it the most times and accumulated the most context.
 
-Automated deployments remove the dependency on individual skill. The pipeline executes the same steps identically every time, regardless of who triggers it. Any team member can initiate a deployment by running the pipeline; the expertise is encoded in the automation rather than in a person.
+Automated deployments remove the dependency on individual skill. The [pipeline](../../glossary/#pipeline) executes the same steps identically every time, regardless of who triggers it. Any team member can initiate a deployment by running the pipeline; the expertise is encoded in the automation rather than in a person.
 
 **Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
 
@@ -58,3 +58,5 @@ Without a pipeline, the knowledge of how to deploy stays in the people who have 
 2. **Is the deployment process automated end to end?** If a human runs deployment steps manually, expertise concentrates by default. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
 3. **Do environments have undocumented configuration differences?** If different environments require different steps known only to certain people, the environments are the knowledge trap. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
 4. **Does a written pipeline definition exist in version control?** If not, the team has no shared, authoritative record of the deployment process. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

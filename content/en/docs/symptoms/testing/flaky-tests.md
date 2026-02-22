@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-A developer pushes a change. The pipeline fails on a test they did not touch, in a module they
+A developer pushes a change. The [pipeline](../../glossary/#pipeline) fails on a test they did not touch, in a module they
 did not change. They click rerun. It passes. They merge. This happens multiple times a day across
 the team. Nobody investigates failures on the first occurrence because the odds favor flakiness
 over a real problem.
@@ -38,7 +38,7 @@ controls all its inputs.
 
 ### Snowflake Environments
 
-When the CI environment is configured differently from other environments - or drifts over time -
+When the [CI](../../glossary/#ci-continuous-integration) environment is configured differently from other environments - or drifts over time -
 tests pass locally but fail in CI, or pass in CI on Tuesday but fail on Wednesday. The
 inconsistency is not in the test or the code but in the environment the test runs in.
 
@@ -74,6 +74,8 @@ architectural coupling, not a testing problem.
    architectural root cause, and isolate test data as an immediate fix.
 
 ---
+
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

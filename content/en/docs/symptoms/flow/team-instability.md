@@ -55,3 +55,5 @@ When work is assigned by specialty - "you're the database person, so you take th
 2. **Does the team appear to have capacity because members are spread across many items?** High WIP makes team members look available for reassignment. Start with [Unbounded WIP](../../anti-patterns/team-workflow/unbounded-wip/).
 3. **Is each team member the sole owner of a distinct area of the team's work?** If so, any departure leaves an unmanned responsibility. Start with [Thin-spread teams](../../anti-patterns/organizational-cultural/thin-spread-teams/).
 4. **Is work assigned by specialty so the same person always works the same area?** If departures leave knowledge gaps in specific parts of the system, assignment by specialty is reinforcing the silos. Start with [Push-Based Work Assignment](../../anti-patterns/team-workflow/push-based-work-assignment/).
+
+**Ready to fix this?** The most common cause is [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.

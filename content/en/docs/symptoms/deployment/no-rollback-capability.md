@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-When something breaks in production, the only option is a forward fix. Rolling back has never been practiced and there is no defined procedure for it. The previous version artifacts may not exist. Nobody is sure of the exact steps. The unspoken understanding is that deployments only go forward.
+When something breaks in production, the only option is a forward fix. [Rolling back](../../glossary/#rollback) has never been practiced and there is no defined procedure for it. The previous version [artifacts](../../glossary/#artifact) may not exist. Nobody is sure of the exact steps. The unspoken understanding is that deployments only go forward.
 
-There is no defined reversal procedure. Database migrations run during deployment but rollback migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Even if someone wanted to roll back, they would need to reconstruct the previous state from memory - and that assumes the database is in a compatible state, which it often is not.
+There is no defined reversal procedure. Database migrations run during deployment but [rollback](../../glossary/#rollback) migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Even if someone wanted to roll back, they would need to reconstruct the previous state from memory - and that assumes the database is in a compatible state, which it often is not.
 
 The team compensates by delaying deployments, adding more manual verification before each one, and keeping deployments large so there are fewer of them. Each of these adaptations makes deployments larger and riskier - exactly the opposite of what reduces the risk.
 
@@ -30,7 +30,7 @@ With automated deployments, rollback is the same procedure as a deployment - jus
 
 ### Missing deployment pipeline
 
-A pipeline creates a versioned artifact from a specific commit and promotes it through environments. That artifact can be redeployed to roll back. Without a pipeline, there is no defined artifact to restore, no promotion history to reverse, and no guarantee that a previous build can be reproduced.
+A [pipeline](../../glossary/#pipeline) creates a versioned artifact from a specific commit and promotes it through environments. That artifact can be redeployed to roll back. Without a pipeline, there is no defined artifact to restore, no promotion history to reverse, and no guarantee that a previous build can be reproduced.
 
 When the pipeline exists, every previous artifact is stored and addressable. Rolling back means redeploying a known artifact through the same automated process used to deploy new versions. The team no longer faces the situation of needing to reconstruct a previous state from memory under pressure.
 
@@ -58,3 +58,5 @@ Environments defined as code have a previous state by definition: the previous c
 2. **Does the team have an artifact registry retaining previous versions?** If not, even attempting rollback requires reconstructing a previous build. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **How quickly does the team detect deployment problems?** If detection takes more than 30 minutes, rollback is often impractical by the time it is considered. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
 4. **Can the team recreate a previous environment state from code?** If environments are hand-configured, there is no defined previous state to return to. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
+
+**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.

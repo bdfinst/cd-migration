@@ -18,13 +18,13 @@ Agentic continuous delivery ([ACD](../glossary/#acd-agentic-continuous-delivery)
 
 ACD is the application of continuous delivery in environments where software changes are proposed by agents. It exists to reliably constrain agent autonomy without slowing delivery.
 
-Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift, quality issues, and technical debt faster than teams can detect it. By the time test coverage gaps or architectural drift surface in production incidents, the accumulated debt is too large to address incrementally. Six first-class artifacts and eight constraints address this.
+Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. These first-class artifacts and constraints address this.
 
 Agents introduce unique challenges that require these additional constraints:
 
 - Agents can generate changes faster than humans can review them
 - Agents may lack context about organizational norms, business rules, or unstated constraints
-- Agents cannot exercise judgment about risk in the same way humans can
+- Agents cannot read unstated context: business rules, organizational norms, and long-term architectural intent that human developers carry implicitly
 - Agents may introduce subtle correctness issues that pass automated tests but violate intent
 
 Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding. The [Learning Curve](learning-curve/) describes how developers naturally progress from autocomplete to a multi-agent architecture and what drives each transition.
@@ -32,14 +32,15 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 ## What You'll Find in This Section
 
 1. **[The Agentic Development Learning Curve](learning-curve/)** - how teams progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
-2. **[AI Adoption Roadmap](adoption-roadmap/)** - organizational prerequisites before adopting agentic workflows
-3. **[The Six First-Class Artifacts](first-class-artifacts/)** - the core vocabulary: six artifacts that anchor the entire ACD workflow
-4. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
-5. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions so [context](../glossary/#context-llm) stays manageable and commits stay small
-6. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
-7. **[Agent Configuration](agent-configuration/)** - a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer configuration applying pipeline enforcement in practice
-8. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
-9. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - common failure modes and how to measure whether ACD is working
+2. **[AI Adoption Roadmap](adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
+3. **[The Six First-Class Artifacts](first-class-artifacts/)** - defines the six artifacts that anchor the ACD workflow and their authority hierarchy
+4. **[Recommended Patterns for Agentic Architecture](agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
+5. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
+6. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions so [context](../glossary/#context-llm) stays manageable and commits stay small
+7. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
+8. **[Agent Configuration](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
+9. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
+10. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - covers common failure modes and how to measure whether ACD is working
 
 ## ACD Extensions to MinimumCD
 
@@ -86,33 +87,7 @@ When an AI agent contributes to a CD pipeline, the workflow extends the standard
 | Code Review | Human → Agent | Review implementation (code review) |
 | Deployment | Pipeline | Deploy (same pipeline as any other change) |
 
-Behavior Specification, Architecture Specification, and Acceptance Criteria together define the complete Executable Truth specification. Behavior Specification covers what the user experiences (BDD scenarios become the functional tests). Architecture Specification and Acceptance Criteria cover what the system must satisfy beyond user-visible behavior: performance budgets, security constraints, architectural boundaries, and operational requirements.
-
-**Key differences from standard CD:**
-
-- The four specification stages (Intent Definition through Acceptance Criteria) happen before any code generation. Specification-first should already be standard practice without agents. Every downstream stage - Test Generation, Implementation, Code Review, and Deployment - depends on the quality of these specifications. With agents, that dependency becomes absolute: an agent cannot compensate for missing or ambiguous specifications the way a human sometimes can. This is not big upfront design. You specify the next small step, not the entire feature set. See [Agent-Assisted Specification](agent-assisted-specification/) for how agents make this work fast.
-- Test Generation and Test Validation separate test definition from test code. Teams often conflate the two because they happen at the same time, but they are distinct activities. Defining tests means deciding what scenarios, edge cases, and acceptance criteria to verify. Test code is the machine-runnable implementation of those decisions. Humans define the tests before development begins. Agents generate the test code, which must be validated for behavior focus and spec fidelity before implementation starts.
-- System constraints are checked automatically in the pipeline during Pipeline Verification. This is standard CD practice. The difference is that agents require these constraints to be stated explicitly as artifacts rather than carried as team knowledge.
-
-### Migrating Test Validation and Code Review to expert agents
-
-Manual review at Test Validation and Code Review is a deliberate interim state, not the design. Every manual validation creates a [batching point](../migrate-to-cd/migration-path/optimize/small-batches/) - failures become harder to trace, feedback loops extend, and unvalidated changes accumulate. When agents generate changes faster than humans review them, wait time dominates the delivery cycle.
-
-The target state replaces manual review with [expert validation agents](pipeline-enforcement/) using the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration:
-
-| Stage | Starting State | Target State |
-|-------|---------------|-------------|
-| Test Validation | Human validates test code | **Expert agent** validates test code is decoupled from implementation and faithful to specs; human reviews exceptions |
-| Code Review | Human reviews implementation | **Expert agent** validates architectural conformance and intent alignment; human reviews agent-flagged concerns |
-
-1. Start with human validation only (the workflow as shown above)
-2. Deploy an expert agent that runs in parallel with the human reviewer
-3. Compare results until you are confident the agent matches or exceeds human judgment
-4. Shift the human role from "review everything" to "review what the agent flags and spot-check according to risk"
-
-**What does not migrate:** The four specification stages (Intent Definition through Acceptance Criteria) remain human responsibilities. Defining intent, specifying behavior, documenting architecture, and setting acceptance criteria require judgment about what matters to the business and the user. Agents validate whether specifications are met. Humans decide what the specifications should be.
-
-See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full set of expert agents and how to adopt them.
+Manual review at Test Validation and Code Review is an interim state. Replace it using [expert validation agents](pipeline-enforcement/) and the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration. See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full set of expert agents and how to adopt them.
 
 ## Related Content
 

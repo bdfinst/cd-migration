@@ -54,6 +54,8 @@ disruptive to release schedules.
    any production release, the gate creates batch testing and late defect discovery. Start with
    [QA Signoff as a Release Gate](../../anti-patterns/testing/qa-signoff-gate/).
 
+**Ready to fix this?** The most common cause is [Siloed QA Team](../../anti-patterns/organizational-cultural/siloed-qa-team/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/siloed-qa-team/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

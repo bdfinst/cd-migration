@@ -12,19 +12,19 @@ tags:
 
 ## What you are seeing
 
-Pipeline improvement work loses to feature delivery every sprint. The team wants to invest in deployment automation, test infrastructure, and pipeline improvements. The engineering manager supports this in principle. But every sprint, when capacity is allocated, the product backlog wins. There are features to ship, commitments to keep, a roadmap to deliver against. Pipeline improvements are real work - weeks of investment - but they do not appear on any roadmap and do not map to revenue-generating features.
+[Pipeline](../../glossary/#pipeline) improvement work loses to feature delivery every sprint. The team wants to invest in deployment automation, test infrastructure, and pipeline improvements. The engineering manager supports this in principle. But every sprint, when capacity is allocated, the product backlog wins. There are features to ship, commitments to keep, a roadmap to deliver against. Pipeline improvements are real work - weeks of investment - but they do not appear on any roadmap and do not map to revenue-generating features.
 
 When the team escalates to leadership, the response is supportive but non-committal: "Yes, we need to do that. Find a way to fit it in." The team tries to fit it in - at the margins, in slack time, adjacent to feature work. The improvement work is slow, fragmented, and regularly displaced. Three years in, the pipeline is incrementally better, but the fundamental problems remain.
 
-What is missing is organizational priority. CD adoption requires sustained investment - not a one-time sprint but ongoing capacity allocated to improving the delivery system. Without a sponsor who can protect that capacity from feature demand, improvement work will always lose to delivery pressure.
+What is missing is organizational priority. [CD](../../glossary/#cd-continuous-delivery) adoption requires sustained investment - not a one-time sprint but ongoing capacity allocated to improving the delivery system. Without a sponsor who can protect that capacity from feature demand, improvement work will always lose to delivery pressure.
 
 ## Common causes
 
 ### Velocity as individual metric
 
-When management measures progress by story points or feature delivery rate, investment in pipeline infrastructure looks like a reduction in output. A sprint where half the team works on deployment automation produces fewer feature story points than a sprint where everyone delivers features. Leaders optimizing for short-term throughput will consistently deprioritize it.
+When management measures progress by [story points](../../glossary/#story-points) or feature delivery rate, investment in pipeline infrastructure looks like a reduction in output. A sprint where half the team works on deployment automation produces fewer feature story points than a sprint where everyone delivers features. Leaders optimizing for short-term throughput will consistently deprioritize it.
 
-When lead time and deployment frequency are tracked alongside feature delivery, pipeline investment has a visible ROI. Leadership can see the case for it in the same dashboard they use for feature delivery - and pipeline work stops competing invisibly against features that do show up on a scoreboard.
+When [lead time](../../glossary/#lead-time-for-changes) and [deployment frequency](../../glossary/#deployment-frequency) are tracked alongside feature delivery, pipeline investment has a visible ROI. Leadership can see the case for it in the same dashboard they use for feature delivery - and pipeline work stops competing invisibly against features that do show up on a scoreboard.
 
 **Read more:** [Velocity as individual metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/)
 
@@ -45,3 +45,5 @@ When the organization is organized around fixed delivery dates, any work that do
 1. **Does management measure and track delivery lead time, deployment frequency, and change fail rate?** If not, the measurement system does not reward CD investment. Start with [Velocity as individual metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/).
 2. **Is there an organizational sponsor who advocates for delivery capability improvements in planning?** If improvement work has no sponsor, it will always lose to features with sponsors. Start with [Missing product ownership](../../anti-patterns/organizational-cultural/missing-product-ownership/).
 3. **Is delivery organized around fixed commitment dates?** If yes, anything not tied to the date is implicitly deprioritized. Start with [Deadline-driven development](../../anti-patterns/organizational-cultural/deadline-driven-development/).
+
+**Ready to fix this?** The most common cause is [Velocity as individual metric](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/velocity-as-individual-metric/#how-to-fix-it) section for week-by-week steps.

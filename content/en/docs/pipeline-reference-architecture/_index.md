@@ -8,7 +8,7 @@ description: >
 
 {{% pageinfo %}}
 This section defines quality gates sequenced by defect detection priority and three
-pipeline patterns that apply them. Quality gates are derived from the
+[pipeline](../glossary/#pipeline) patterns that apply them. Quality gates are derived from the
 [Systemic Defect Fixes](../defect-sources/) catalog and sequenced so the cheapest, fastest
 checks run first.
 
@@ -30,13 +30,13 @@ sub-second to sub-minute feedback.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Linting and formatting** | Code style consistency, preventable review noise | [Process & Deployment](../defect-sources/#process--deployment) | <span class="gate-required">Required</span> |
-| **Static type checking** | Null/missing data assumptions, type mismatches | [Data & State](../defect-sources/#data--state) | <span class="gate-required">Required</span> |
-| **Secret scanning** | Secrets committed to source control | [Security & Compliance](../defect-sources/#security--compliance) | <span class="gate-required">Required</span> |
-| **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance](../defect-sources/#security--compliance) | <span class="gate-required">Required</span> |
-| **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries](../defect-sources/#integration--boundaries) | |
-| **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery](../defect-sources/#product--discovery) | |
-| **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience](../defect-sources/#performance--resilience) | |
+| **Linting and formatting** | Code style consistency, preventable review noise | [Process & Deployment](../defect-sources/process-and-deployment/) | <span class="gate-required">Required</span> |
+| **Static type checking** | Null/missing data assumptions, type mismatches | [Data & State](../defect-sources/data-and-state/) | <span class="gate-required">Required</span> |
+| **Secret scanning** | Secrets committed to source control | [Security & Compliance](../defect-sources/security-and-compliance/) | <span class="gate-required">Required</span> |
+| **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance](../defect-sources/security-and-compliance/) | <span class="gate-required">Required</span> |
+| **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries](../defect-sources/integration-and-boundaries/) | |
+| **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery](../defect-sources/product-and-discovery/) | |
+| **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
 
 ### CI Stage 1: Build and Fast Tests <span class="stage-time">< 5 min</span>
 
@@ -44,11 +44,11 @@ These run on every commit to trunk.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Compilation / build** | Build reproducibility, dependency resolution | [Dependency & Infrastructure](../defect-sources/#dependency--infrastructure) | <span class="gate-required">Required</span> |
-| **Unit tests** | Logic errors, unintended side effects, edge cases | [Change & Complexity](../defect-sources/#change--complexity) | <span class="gate-required">Required</span> |
-| **Dependency vulnerability scan (SCA)** | Known vulnerabilities in dependencies | [Security & Compliance](../defect-sources/#security--compliance) | <span class="gate-required">Required</span> |
-| **License compliance scan** | License compliance violations | [Security & Compliance](../defect-sources/#security--compliance) | |
-| **Code complexity and duplication scoring** | Accumulated technical debt | [Change & Complexity](../defect-sources/#change--complexity) | |
+| **Compilation / build** | Build reproducibility, dependency resolution | [Dependency & Infrastructure](../defect-sources/dependency-and-infrastructure/) | <span class="gate-required">Required</span> |
+| **Unit tests** | Logic errors, unintended side effects, edge cases | [Change & Complexity](../defect-sources/change-and-complexity/) | <span class="gate-required">Required</span> |
+| **Dependency vulnerability scan (SCA)** | Known vulnerabilities in dependencies | [Security & Compliance](../defect-sources/security-and-compliance/) | <span class="gate-required">Required</span> |
+| **License compliance scan** | License compliance violations | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| **Code complexity and duplication scoring** | Accumulated technical debt | [Change & Complexity](../defect-sources/change-and-complexity/) | |
 
 ### CI Stage 2: Integration and Contract Tests <span class="stage-time">< 10 min</span>
 
@@ -56,10 +56,10 @@ These validate boundaries between components.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Contract tests** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries](../defect-sources/#integration--boundaries) | <span class="gate-required">Required</span> |
-| **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State](../defect-sources/#data--state) | <span class="gate-required">Required</span> |
-| **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure](../defect-sources/#dependency--infrastructure) | |
-| **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps](../defect-sources/#testing--observability-gaps) | |
+| **Contract tests** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries](../defect-sources/integration-and-boundaries/) | <span class="gate-required">Required</span> |
+| **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State](../defect-sources/data-and-state/) | <span class="gate-required">Required</span> |
+| **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure](../defect-sources/dependency-and-infrastructure/) | |
+| **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps](../defect-sources/testing-and-observability-gaps/) | |
 
 ### CI Stage 3: Broader Automated Verification <span class="stage-time">< 15 min</span>
 
@@ -67,25 +67,25 @@ These run in parallel where possible.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Mutation testing** | Untested edge cases and error paths, weak assertions | [Testing & Observability Gaps](../defect-sources/#testing--observability-gaps) | |
-| **Performance benchmarks** | Performance regressions | [Performance & Resilience](../defect-sources/#performance--resilience) | |
-| **Resource leak detection** | Resource leaks (memory, connections) | [Performance & Resilience](../defect-sources/#performance--resilience) | |
-| **Security integration tests** | Authentication and authorization gaps | [Security & Compliance](../defect-sources/#security--compliance) | |
-| **Compliance-as-code policy checks** | Regulatory requirement gaps, missing audit trails | [Security & Compliance](../defect-sources/#security--compliance) | |
-| **SBOM generation** | License compliance, dependency transparency | [Security & Compliance](../defect-sources/#security--compliance) | |
-| **Automated WCAG compliance scan** | Full-page rendered accessibility checks with browser automation | [Product & Discovery](../defect-sources/#product--discovery) | |
+| **Mutation testing** | Untested edge cases and error paths, weak assertions | [Testing & Observability Gaps](../defect-sources/testing-and-observability-gaps/) | |
+| **Performance benchmarks** | Performance regressions | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| **Resource leak detection** | Resource leaks (memory, connections) | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| **Security integration tests** | Authentication and authorization gaps | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| **Compliance-as-code policy checks** | Regulatory requirement gaps, missing audit trails | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| **SBOM generation** | License compliance, dependency transparency | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| **Automated WCAG compliance scan** | Full-page rendered accessibility checks with browser automation | [Product & Discovery](../defect-sources/product-and-discovery/) | |
 
 ### Acceptance Tests <span class="stage-time">< 20 min</span>
 
-These validate user-facing behavior in a production-like environment.
+These validate user-facing behavior in a [production-like environment](../glossary/#production-like-environment).
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Functional acceptance tests** | Building the wrong thing, meets spec but misses intent | [Product & Discovery](../defect-sources/#product--discovery) | |
-| **Load and capacity tests** | Unknown capacity limits, slow response times | [Performance & Resilience](../defect-sources/#performance--resilience) | |
-| **Chaos and resilience tests** | Network partition handling, missing graceful degradation | [Performance & Resilience](../defect-sources/#performance--resilience) | |
-| **Cache invalidation verification** | Cache invalidation errors | [Data & State](../defect-sources/#data--state) | |
-| **Feature interaction tests** | Unanticipated feature interactions | [Change & Complexity](../defect-sources/#change--complexity) | |
+| **Functional acceptance tests** | Building the wrong thing, meets spec but misses intent | [Product & Discovery](../defect-sources/product-and-discovery/) | |
+| **Load and capacity tests** | Unknown capacity limits, slow response times | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| **Chaos and resilience tests** | Network partition handling, missing graceful degradation | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| **Cache invalidation verification** | Cache invalidation errors | [Data & State](../defect-sources/data-and-state/) | |
+| **Feature interaction tests** | Unanticipated feature interactions | [Change & Complexity](../defect-sources/change-and-complexity/) | |
 
 ### Production Verification
 
@@ -93,10 +93,10 @@ These run during and after deployment. They are not optional - they close the fe
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Health checks with auto-rollback** | Inadequate rollback capability | [Process & Deployment](../defect-sources/#process--deployment) | |
-| **Canary or progressive deployment** | Batching too many changes per release | [Process & Deployment](../defect-sources/#process--deployment) | |
-| **Real user monitoring and SLO checks** | Slow user-facing response times, product-market misalignment | [Performance & Resilience](../defect-sources/#performance--resilience) | |
-| **Structured audit logging verification** | Missing audit trails | [Security & Compliance](../defect-sources/#security--compliance) | |
+| **Health checks with auto-rollback** | Inadequate [rollback](../glossary/#rollback) capability | [Process & Deployment](../defect-sources/process-and-deployment/) | |
+| **Canary or progressive deployment** | Batching too many changes per release | [Process & Deployment](../defect-sources/process-and-deployment/) | |
+| **Real user monitoring and SLO checks** | Slow user-facing response times, product-market misalignment | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| **Structured audit logging verification** | Missing audit trails | [Security & Compliance](../defect-sources/security-and-compliance/) | |
 
 ---
 

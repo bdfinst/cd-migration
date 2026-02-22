@@ -35,7 +35,7 @@ wait for someone to experience it and report it.
 
 When deployments involve human steps (running scripts by hand, clicking through a console),
 there is no automated verification step. The deployment process ends when the human finishes the
-steps, not when the system confirms it is healthy. Without an automated pipeline that checks
+steps, not when the system confirms it is healthy. Without an automated [pipeline](../../glossary/#pipeline) that checks
 health metrics after deploying, verification falls to manual spot-checking or waiting for
 complaints.
 
@@ -65,6 +65,8 @@ usually skipped under time pressure.
    automated verification.
 
 ---
+
+**Ready to fix this?** The most common cause is [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

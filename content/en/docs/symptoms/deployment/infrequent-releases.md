@@ -41,7 +41,7 @@ grows, the risk grows, and the release becomes an event rather than a routine.
 ### Missing Deployment Pipeline
 
 When there is no automated path from commit to production, every release requires manual
-coordination of builds, tests, and deployments. Without a pipeline, the team cannot deploy on
+coordination of builds, tests, and deployments. Without a [pipeline](../../glossary/#pipeline), the team cannot deploy on
 demand because the process itself does not exist in a repeatable form.
 
 **Read more:** [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
@@ -57,7 +57,7 @@ allows, regardless of technical capability.
 
 ### Monolithic Work Items
 
-When work is not decomposed into small, independently deployable increments, each "feature" is a
+When work is not decomposed into small, independently [deployable](../../glossary/#deployable) increments, each "feature" is a
 large batch of changes that takes weeks to complete. The team cannot release until the feature is
 done, and the feature is never done quickly because it was scoped too large. Small batches enable
 frequent releases. Large batches force infrequent ones.
@@ -81,16 +81,18 @@ because the test suite is manual and grows with every feature.
    release on demand because the infrastructure does not exist. Start with
    [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Does a committee or approval board gate production changes?** If releases wait for scheduled
-   approval meetings, the approval cadence is the constraint. Start with
+   approval meetings, the approval cadence is the [constraint](../../glossary/#constraint). Start with
    [CAB Gates](../../anti-patterns/organizational-cultural/cab-gates/).
 4. **How large is the typical work item?** If features take weeks and are delivered as single
-   units, the batch size is the constraint. Start with
+   units, the [batch size](../../glossary/#batch-size) is the constraint. Start with
    [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
 5. **Does a manual test pass gate every release?** If QA takes days per release, the testing
    process is the constraint. Start with
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

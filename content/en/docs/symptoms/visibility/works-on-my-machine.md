@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-A developer runs the application locally and everything works. They push to CI and the build
+A developer runs the application locally and everything works. They push to [CI](../../glossary/#ci-continuous-integration) and the build
 fails. Or a teammate pulls the same branch and gets a different result. Or a bug report comes in
 that nobody can reproduce locally.
 
@@ -71,6 +71,8 @@ where those dependencies happen to exist.
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

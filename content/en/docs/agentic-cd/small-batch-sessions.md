@@ -7,18 +7,10 @@ description: >
 ---
 
 {{% pageinfo %}}
-One [BDD](../../glossary/#bdd-behavior-driven-development) scenario. One agent session. One commit. This is the same discipline [CI](../../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
+One [BDD](../../glossary/#bdd-behavior-driven-development) scenario. One [agent](../../glossary/#agent-ai) session. One commit. This is the same discipline [CI](../../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
 
-The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction. Stop optimizing your prompts. Start optimizing your decomposition.
-
-## The Parallel with CI
-
-In continuous integration, the commit is the unit of integration. A developer does not write an entire feature and commit at the end. They write one small piece of tested functionality that can be deployed, commit to the trunk, then repeat. The commit creates a checkpoint: the pipeline is green, the change is reviewable, and the next unit can start cleanly.
-
-Agent sessions follow the same discipline. The session is the unit of context. An agent does not implement an entire feature in one session - context accumulates, performance degrades, and the scope of any failure grows. Each session implements one behavior, ends with a commit, and resets context before the next session begins.
-
-The mechanics differ. The principle is identical: small batches, frequent integration, green pipeline as the definition of done.
+**Stop optimizing your [prompts](../../glossary/#prompt). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
 
 ## Establish the Broad Understanding First
 
@@ -29,17 +21,15 @@ Before any implementation session begins, establish the complete understanding o
 3. **Feature description** - architectural constraints, performance budgets, integration boundaries
 4. **Scenario order** - the sequence in which you will implement the scenarios
 
-The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four artifacts before any code is written.
+The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts](../../glossary/#artifact) before any code is written.
 
 **Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your complete scenario list and ask it to suggest an implementation order that minimizes the rework cost of each step.
 
 This ordering step also has a human gate. Review the proposed slice sequence before any implementation begins. The ordering determines the shape of every session that follows.
 
-The broad understanding is not in the implementation agent's context. Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
+The broad understanding is not in the implementation agent's [context](../../glossary/#context-llm). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
 
-**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing), completable in a day or two. You are not designing a system. You are enumerating the scenarios for the next small step in the product roadmap before implementing any of them.
-
-A vertical slice means different things depending on your team structure. A [full-stack product team](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) owns a human-facing surface - the slice is done when a user can observe the behavior through that interface. A [subdomain product team](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) owns a machine-facing surface - the slice is done when the API contract satisfies the agreed behavior for its service consumers. The difference is whether the public interface is designed for humans or machines. The same decomposition principle applies in both cases. The rate limiting example below illustrates the subdomain case: the slice delivers one behavior through a middleware contract, with no UI involved.
+**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../../glossary/#vertical-sliced-story), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for full-stack versus subdomain teams.
 
 ## Session Structure
 
@@ -49,7 +39,7 @@ Each session follows the same structure:
 |------|-------------|
 | **Context load** | Assemble the session context: intent summary, feature description, the one scenario for this session, the relevant existing code, and a brief summary of completed sessions |
 | **Implementation** | Agent generates test code and production code to satisfy the scenario |
-| **Validation** | Pipeline runs - all scenarios implemented so far must pass |
+| **Validation** | [Pipeline](../../glossary/#pipeline) runs - all scenarios implemented so far must pass |
 | **Commit** | Change committed; commit message references the scenario |
 | **Context summary** | Write a one-paragraph summary of what this session built, for use in the next session |
 
@@ -91,6 +81,14 @@ All pipeline checks pass.
 ```
 
 This summary is the complete handoff from one session to the next. The next agent starts with this summary plus its own scenario - not with the full conversation that produced the code.
+
+## The Parallel with CI
+
+In continuous integration, the commit is the unit of integration. A developer does not write an entire feature and commit at the end. They write one small piece of tested functionality that can be deployed, commit to the trunk, then repeat. The commit creates a checkpoint: the pipeline is green, the change is reviewable, and the next unit can start cleanly.
+
+Agent sessions follow the same discipline. The session is the unit of context. An agent does not implement an entire feature in one session - context accumulates, performance degrades, and the scope of any failure grows. Each session implements one behavior, ends with a commit, and resets context before the next session begins.
+
+The mechanics differ. The principle is identical: small batches, frequent integration, green pipeline as the definition of done.
 
 ## Worked Example: Rate Limiting
 

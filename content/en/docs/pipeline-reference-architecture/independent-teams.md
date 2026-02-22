@@ -6,8 +6,8 @@ description: >
   A fully independent pipeline pattern for teams deploying their own services in any order, with API contract verification replacing integration testing.
 ---
 
-This is the target architecture for continuous delivery at scale. Each team owns an
-independently deployable service with its own pipeline, its own release cadence, and
+This is the target architecture for [continuous delivery](../glossary/#cd-continuous-delivery) at scale. Each team owns an
+independently deployable service with its own [pipeline](../glossary/#pipeline), its own release cadence, and
 its own path to production. No team waits for another team to deploy. No integration
 pipeline serializes their work. The only shared infrastructure is the API contract
 layer that defines how services communicate.
@@ -86,7 +86,7 @@ graph TD
 - **Fully independent deployment**: Each team deploys on its own schedule. Team A can
   deploy ten times a day while Team C deploys once a week. No coordination is required.
 - **No shared integration pipeline**: There is no fan-in step. Each pipeline goes
-  straight from artifact creation to production. This eliminates the integration bottleneck
+  straight from [artifact](../glossary/#artifact) creation to production. This eliminates the integration bottleneck
   entirely.
 - **Contract tests replace integration tests**: Instead of testing all services together,
   each team verifies its API contracts independently. The level of contract verification
@@ -160,12 +160,12 @@ a breaking change, the pipeline fails.
 
 | Gate | Defect Sources Addressed | Catalog Section |
 |------|--------------------------|-----------------|
-| **Provider schema backward compatibility** | Interface mismatches from provider changes | [Integration & Boundaries](../../defect-sources/#integration--boundaries) |
-| **Consumer-driven contract verification** (where feasible) | Wrong assumptions about upstream/downstream | [Integration & Boundaries](../../defect-sources/#integration--boundaries) |
-| **API schema backward compatibility check** | Schema migration and backward compatibility failures | [Data & State](../../defect-sources/#data--state) |
-| **Cross-service timeout propagation check** | Missing timeout and deadline enforcement across boundaries | [Performance & Resilience](../../defect-sources/#performance--resilience) |
-| **Circuit breaker and fallback verification** | Network partitions and partial failures handled wrong | [Dependency & Infrastructure](../../defect-sources/#dependency--infrastructure) |
-| **Distributed tracing validation** | Missing observability across service boundaries | [Testing & Observability Gaps](../../defect-sources/#testing--observability-gaps) |
+| **Provider schema backward compatibility** | Interface mismatches from provider changes | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) |
+| **Consumer-driven contract verification** (where feasible) | Wrong assumptions about upstream/downstream | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) |
+| **API schema backward compatibility check** | Schema migration and backward compatibility failures | [Data & State](../../defect-sources/data-and-state/) |
+| **Cross-service timeout propagation check** | Missing timeout and deadline enforcement across boundaries | [Performance & Resilience](../../defect-sources/performance-and-resilience/) |
+| **Circuit breaker and fallback verification** | Network partitions and partial failures handled wrong | [Dependency & Infrastructure](../../defect-sources/dependency-and-infrastructure/) |
+| **Distributed tracing validation** | Missing observability across service boundaries | [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) |
 
 ## When This Architecture Works
 

@@ -10,17 +10,24 @@ description: >
 The specification stages of the [ACD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
+## The Pattern
+
+Every use of an agent in the specification stages follows the same four-step cycle:
+
+1. **Human drafts** - write the first version based on your understanding
+2. **Agent critiques** - ask the agent to find gaps, ambiguity, or inconsistency
+3. **Human decides** - accept, reject, or modify the agent's suggestions
+4. **Agent refines** - generate an updated version incorporating your decisions
+
+This is not the agent doing specification for you. It is the agent making your specification more thorough than it would be without help, in less time than it would take without help. The sections below show how this cycle applies at each specification stage.
+
 ## This Is Not Big Upfront Design
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
-**You specify the next single unit of work.** One thin [vertical slice](../../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently.
+**You specify the next single unit of work.** One thin [vertical slice](../../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
 
-There is a deeper reason the scope must stay small. Every feature built but not tested in production increases the risk that you are building the wrong thing, even if you build it the right way. A detailed specification for three months of work does not reduce this risk. It amplifies it. You invest more in the plan, which makes it harder to change direction when production feedback tells you the plan was wrong.
-
-Big upfront design fails because it front-loads decisions and defers feedback. Small-scope specification succeeds because it front-loads clarity on *one* change and gets production feedback before specifying the next.
-
-If your specification effort for a single change takes more than a short conversation, the change is too large. Split it.
+If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
 ## How Agents Help with Intent Definition
 
@@ -113,24 +120,13 @@ explain why it matters for this specific change.
 
 The human makes the architectural decisions and sets the thresholds. The agent makes sure you did not leave anything out.
 
-## The Pattern
-
-Every use of the agent in the specification stages follows the same pattern:
-
-1. **Human drafts** - write the first version based on your understanding
-2. **Agent critiques** - ask the agent to find gaps, ambiguity, or inconsistency
-3. **Human decides** - accept, reject, or modify the agent's suggestions
-4. **Agent refines** - generate an updated version incorporating your decisions
-
-This is not the agent doing specification for you. It is the agent making your specification more thorough than it would be without help, in less time than it would take without help.
-
 ## Validating the Complete Specification Set
 
 The four specification stages produce four artifacts: intent description, BDD scenarios, feature description, and acceptance criteria. Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
 
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
-Example prompt:
+{{% alert title="Specification consistency prompt" color="info" %}}
 
 ```
 Review these four specification artifacts for internal consistency
@@ -144,6 +140,8 @@ before implementation begins. Check:
 
 [paste all four artifacts]
 ```
+
+{{% /alert %}}
 
 **The human gates on this review before implementation begins.** If the review agent identifies issues, resolve them before generating any test code or implementation. A conflict caught in specification costs minutes. The same conflict caught during implementation costs a session.
 

@@ -43,8 +43,8 @@ process-level risk.
 ### Missing Deployment Pipeline
 
 When there is no automated path from commit to production, the team has no confidence that the
-deployed artifact has been properly built and tested. Did someone run the tests? Are we deploying
-the right version? Is this the same artifact that was tested in staging? Without a pipeline that
+deployed [artifact](../../glossary/#artifact) has been properly built and tested. Did someone run the tests? Are we deploying
+the right version? Is this the same artifact that was tested in staging? Without a [pipeline](../../glossary/#pipeline) that
 enforces these checks, every deployment requires the team to manually verify the prerequisites.
 
 **Read more:** [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
@@ -96,6 +96,8 @@ deployments reduce risk per deployment rather than accumulating it.
    [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

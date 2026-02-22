@@ -57,6 +57,8 @@ rather than focusing on changes that actually warrant scrutiny.
    the control should be automated. Start with
    [Compliance Interpreted as Manual Approval](../../anti-patterns/organizational-cultural/compliance-manual-approval/).
 
+**Ready to fix this?** The most common cause is [Compliance Interpreted as Manual Approval](../../anti-patterns/organizational-cultural/compliance-manual-approval/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/compliance-manual-approval/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

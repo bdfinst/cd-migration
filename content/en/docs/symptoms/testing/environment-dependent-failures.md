@@ -13,8 +13,8 @@ tags:
 
 ## What you are seeing
 
-A developer runs the tests locally and they pass. They push to CI and the same tests fail. Or the
-CI pipeline is green but the tests fail in the staging environment. The failures are not caused by
+A developer runs the tests locally and they pass. They push to [CI](../../glossary/#ci-continuous-integration) and the same tests fail. Or the
+CI [pipeline](../../glossary/#pipeline) is green but the tests fail in the staging environment. The failures are not caused by
 a code defect. They are caused by differences between environments: a different OS version, a
 different database version, a different timezone setting, a missing environment variable, or a
 service that is available locally but not in CI.
@@ -73,6 +73,8 @@ fragile.
    [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
 
 ---
+
+**Ready to fix this?** The most common cause is [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.
 
 ## Related Content
 

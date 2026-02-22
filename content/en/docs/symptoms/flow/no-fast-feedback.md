@@ -13,8 +13,8 @@ tags:
 
 ## What you are seeing
 
-A developer makes a change and wants to know if it works. They push to CI and wait 45 minutes for
-the pipeline. Or they open a PR and wait two days for a review. Or they deploy to staging and wait
+A developer makes a change and wants to know if it works. They push to [CI](../../glossary/#ci-continuous-integration) and wait 45 minutes for
+the [pipeline](../../glossary/#pipeline). Or they open a PR and wait two days for a review. Or they deploy to staging and wait
 for a manual QA pass that happens next week. By the time feedback arrives, the developer has moved
 on to something else.
 
@@ -41,9 +41,9 @@ tests cannot get feedback faster than those tests can run.
 ### Integration Deferred
 
 When the team does not integrate frequently (at least daily), the feedback loop for integration
-problems is as long as the branch lifetime. A developer working on a two-week branch does not
+problems is as long as the [branch lifetime](../../glossary/#branch-lifetime). A developer working on a two-week branch does not
 discover integration conflicts until they merge. Daily integration catches conflicts within hours.
-Continuous integration catches them within minutes.
+[Continuous integration](../../glossary/#ci-continuous-integration) catches them within minutes.
 
 **Read more:** [Integration Deferred](../../anti-patterns/branching-integration/integration-deferred/)
 
@@ -91,6 +91,8 @@ Automated testing in the pipeline replaces this queue with instant feedback.
 5. **Is there a manual QA gate in the pipeline?** If changes wait in a QA queue, the manual gate
    is the bottleneck. Start with
    [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/).
+
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
 
 ---
 

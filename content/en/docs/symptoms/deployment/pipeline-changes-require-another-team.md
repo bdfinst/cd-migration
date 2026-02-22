@@ -69,6 +69,8 @@ team for every modification.
    If infrastructure is managed manually by another team, self-service is not possible. Start
    with [No Infrastructure as Code](../../anti-patterns/pipeline/no-infrastructure-as-code/).
 
+**Ready to fix this?** The most common cause is [Separate Ops/Release Team](../../anti-patterns/organizational-cultural/separate-ops-team/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/separate-ops-team/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

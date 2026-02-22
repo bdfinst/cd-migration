@@ -54,6 +54,8 @@ with each change made without them.
    shared or externalized. Start with
    [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/).
 
+**Ready to fix this?** The most common cause is [Knowledge Silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.
+
 ---
 
 ## Related Content

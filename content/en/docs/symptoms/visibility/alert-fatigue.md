@@ -29,9 +29,9 @@ Good alerting requires deliberate design: alerts should be tied to user-visible 
 
 ### Missing deployment pipeline
 
-A pipeline provides a natural checkpoint for validating monitoring configuration as part of each deployment. Without a pipeline, monitoring is configured manually at deployment time and never revisited in a structured way. Alert thresholds set at initial deployment are never recalibrated as traffic patterns change.
+A [pipeline](../../glossary/#pipeline) provides a natural checkpoint for validating monitoring configuration as part of each deployment. Without a pipeline, monitoring is configured manually at deployment time and never revisited in a structured way. Alert thresholds set at initial deployment are never recalibrated as traffic patterns change.
 
-A pipeline that includes monitoring configuration as code - alert thresholds defined alongside the service code they monitor - makes alert configuration a versioned, reviewable artifact rather than a manual configuration that drifts.
+A pipeline that includes monitoring configuration as code - alert thresholds defined alongside the service code they monitor - makes alert configuration a versioned, reviewable [artifact](../../glossary/#artifact) rather than a manual configuration that drifts.
 
 **Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
 
@@ -40,3 +40,5 @@ A pipeline that includes monitoring configuration as code - alert thresholds def
 1. **What percentage of pages this week required action?** If less than half required action, the alert signal-to-noise ratio is too low. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
 2. **Are alert thresholds defined as code or set manually in a UI?** Manual threshold configuration drifts and is never revisited. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
 3. **Do alerts fire at the symptom level (user-visible problems) or the metric level (internal system measurements)?** Metric-level alerts create alert storms when one root cause affects many metrics. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
+
+**Ready to fix this?** The most common cause is [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.

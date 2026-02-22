@@ -24,7 +24,7 @@ When stakeholder feedback arrives months after decisions, course corrections are
 
 Large work items are not demonstrable until they are complete. A feature that takes six weeks cannot be shown incrementally because it is not useful in partial form. Stakeholders see nothing for six weeks and then see everything at once.
 
-Small vertical slices can be demonstrated as soon as they are done - sometimes multiple times per week. Each slice is a unit of working, demonstrable software that stakeholders can evaluate and respond to while the team is still in the context of that work.
+Small [vertical slices](../../glossary/#vertical-sliced-story) can be demonstrated as soon as they are done - sometimes multiple times per week. Each slice is a unit of working, demonstrable software that stakeholders can evaluate and respond to while the team is still in the context of that work.
 
 **Read more:** [Monolithic work items](../../anti-patterns/team-workflow/monolithic-work-items/)
 
@@ -40,7 +40,7 @@ Vertical slices deliver thin but complete functionality that stakeholders can ac
 
 When the definition of "done" does not include deployed and available for stakeholder review, work piles up as "done but not shown." The sprint review demonstrates a batch of completed work rather than continuously integrated increments. The delay between completion and review is the source of the feedback lag.
 
-When done means deployed - and the team can demonstrate software in a production-like environment at any sprint review - the feedback loop tightens to the sprint cadence rather than the release cadence.
+When done means deployed - and the team can demonstrate software in a [production-like environment](../../glossary/#production-like-environment) at any sprint review - the feedback loop tightens to the sprint cadence rather than the release cadence.
 
 **Read more:** [Undone work](../../anti-patterns/team-workflow/undone-work/)
 
@@ -55,3 +55,5 @@ When delivery is organized around fixed dates rather than continuous value deliv
 1. **Can the team demonstrate working software every sprint, not just at release?** If demos require a release, work is batched too long. Start with [Undone work](../../anti-patterns/team-workflow/undone-work/).
 2. **Do stories regularly take more than one sprint to complete?** If features are too large to show incrementally, start with [Monolithic work items](../../anti-patterns/team-workflow/monolithic-work-items/).
 3. **Are stories organized by technical layer?** If the UI team and the API team must both finish before anything can be demonstrated, start with [Horizontal slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
+
+**Ready to fix this?** The most common cause is [Monolithic work items](../../anti-patterns/team-workflow/monolithic-work-items/). Start with its [How to Fix It](../../anti-patterns/team-workflow/monolithic-work-items/#how-to-fix-it) section for week-by-week steps.

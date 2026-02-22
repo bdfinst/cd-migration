@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 **Key question:** "Can we deploy any commit automatically?"
 
-This phase creates the delivery pipeline - the automated path that takes every commit
+This phase creates the delivery [pipeline](../../../glossary/#pipeline) - the automated path that takes every commit
 through build, test, and deployment stages. When done right, the pipeline is the only
 way changes reach production.
 {{% /pageinfo %}}
@@ -27,7 +27,7 @@ way changes reach production.
 
 ## Why This Phase Matters
 
-The pipeline is the backbone of continuous delivery. It replaces manual handoffs with
+The pipeline is the backbone of [continuous delivery](../../../glossary/#cd-continuous-delivery). It replaces manual handoffs with
 automated quality gates, ensures every change goes through the same validation process,
 and makes deployment a routine, low-risk event.
 
@@ -38,7 +38,9 @@ You're ready for [Phase 3: Optimize](../optimize/) when:
 - Every change reaches production through the same automated pipeline
 - The pipeline produces the same result for the same inputs
 - You can deploy any green build to production with confidence
-- Rollback takes minutes, not hours
+- [Rollback](../../../glossary/#rollback) takes minutes, not hours
+
+**Next:** [Phase 3 - Optimize](../optimize/) - reduce [batch size](../../../glossary/#batch-size), improve flow, and make deployment routine.
 
 ---
 
@@ -50,3 +52,4 @@ You're ready for [Phase 3: Optimize](../optimize/) when:
 - [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a cultural symptom that reliable rollback and automated pipelines help resolve
 - [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern this entire phase eliminates
 - [DORA Capabilities](../../../dora-capabilities/) - industry-recognized capabilities that pipeline practices support
+- [Pipeline Reference Architecture](../../../pipeline-reference-architecture/) - concrete quality gate patterns organized by defect detection priority.
