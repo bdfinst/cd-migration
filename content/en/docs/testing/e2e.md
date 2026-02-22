@@ -62,8 +62,7 @@ surface area, they are **not suitable for blocking release [pipelines](../glossa
 
 A vertical E2E test verifying user lookup through a live web interface:
 
-{{% code-collapse title="Vertical E2E test - user lookup via live web interface" %}}
-```java
+{{% code-collapse title="Vertical E2E test - user lookup via live web interface" lang="java" %}}
 @Test
 public void verifyValidUserLookup() throws Exception {
     // Act -- interact with the live application
@@ -75,13 +74,11 @@ public void verifyValidUserLookup() throws Exception {
     assertEquals("Engineering", homePage.getOrgName());
     assertEquals("Grace Hopper", homePage.getManagerName());
 }
-```
 {{% /code-collapse %}}
 
 A browser-based E2E test using a tool like Playwright:
 
-{{% code-collapse title="Browser-based E2E test - add to cart and checkout with Playwright" %}}
-```javascript
+{{% code-collapse title="Browser-based E2E test - add to cart and checkout with Playwright" lang="javascript" %}}
 test("user can add an item to cart and check out", async ({ page }) => {
   await page.goto("https://staging.example.com");
   await page.getByRole("link", { name: "Running Shoes" }).click();
@@ -93,7 +90,6 @@ test("user can add an item to cart and check out", async ({ page }) => {
   await page.getByRole("button", { name: "Checkout" }).click();
   await expect(page.getByText("Order confirmed")).toBeVisible();
 });
-```
 {{% /code-collapse %}}
 
 ## Anti-Patterns

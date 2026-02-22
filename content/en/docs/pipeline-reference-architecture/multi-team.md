@@ -29,9 +29,7 @@ yet structured as a modular monolith, restructure it before adopting this archit
 
 - otherwise the sub-pipelines will constantly interfere with each other.
 
-
-{{% code-collapse title="Multiple teams, single deployable pipeline diagram" %}}
-```mermaid
+{{% code-collapse title="Multiple teams, single deployable pipeline diagram" lang="mermaid" %}}
 graph TD
     classDef prefeature fill:#0d7a32,stroke:#0a6128,color:#fff
     classDef team fill:#224968,stroke:#1a3a54,color:#fff
@@ -76,7 +74,6 @@ graph TD
 
     I4 --> D1["Deploy Canary / Progressive"]:::prod
     D1 --> D2["Health Checks + SLO Monitors<br/>Auto-Rollback"]:::prod
-```
 {{% /code-collapse %}}
 
 ## Key Characteristics

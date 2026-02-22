@@ -43,8 +43,8 @@ Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
@@ -57,6 +57,8 @@ In a CD pipeline, artifacts are built once and promoted through environments wit
 modification. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 Referenced in:
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
@@ -65,14 +67,13 @@ Referenced in:
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
-[High Coverage but Tests Miss Defects](../symptoms/testing/high-coverage-ineffective-tests/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [No Evidence of What Was Deployed or When](../symptoms/deployment/no-deployment-audit-trail/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
@@ -132,7 +133,7 @@ Referenced in:
 [Knowledge & Communication Defects](../defect-sources/knowledge-and-communication/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
@@ -259,8 +260,8 @@ Referenced in:
 [Performance & Resilience Defects](../defect-sources/performance-and-resilience/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Security & Compliance Defects](../defect-sources/security-and-compliance/),
 [Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/),
 [Services Reach Production with No Health Checks or Alerting](../symptoms/deployment/services-without-health-checks/),
@@ -304,8 +305,8 @@ the end of the context. See [Tokenomics](../agentic-cd/tokenomics/).
 Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
@@ -320,7 +321,7 @@ See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Continuous Deployment
@@ -565,8 +566,8 @@ sub-agent is a cost and quality decision. See [Tokenomics](../agentic-cd/tokenom
 
 Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
@@ -616,8 +617,8 @@ Referenced in:
 [Production Issues Discovered by Customers](../symptoms/visibility/production-issues-found-by-customers/),
 [Production Problems Are Discovered Hours or Days Late](../symptoms/visibility/slow-detection/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Recommended Patterns for Agentic Workflow Architecture](../agentic-cd/workflow-architecture/),
 [Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/),
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
@@ -672,7 +673,7 @@ actually contains is a prerequisite for effective tokenomics. See
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
@@ -687,8 +688,8 @@ request, current state) goes at the end where it does not invalidate the cached 
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ## R
@@ -749,8 +750,8 @@ is a common source of unnecessary token consumption and can degrade performance 
 relevant information. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Subdomain Product Team
@@ -777,8 +778,8 @@ See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ## T
@@ -823,8 +824,8 @@ See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
-[Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
-[Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 

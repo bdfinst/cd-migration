@@ -55,8 +55,7 @@ Contract tests have two perspectives:
 
 A provider contract test verifying that an API response matches the expected schema:
 
-{{% code-collapse title="Provider contract test - schema validation" %}}
-```javascript
+{{% code-collapse title="Provider contract test - schema validation" lang="javascript" %}}
 describe("GET /users/:id contract", () => {
   it("should return a response matching the user schema", async () => {
     const response = await fetch("https://api.partner.com/users/1");
@@ -72,13 +71,11 @@ describe("GET /users/:id contract", () => {
     expect(typeof body.email).toBe("string");
   });
 });
-```
 {{% /code-collapse %}}
 
 A consumer-driven contract test using Pact:
 
-{{% code-collapse title="Consumer-driven contract test with Pact" %}}
-```javascript
+{{% code-collapse title="Consumer-driven contract test with Pact" lang="javascript" %}}
 describe("Order Service - Inventory Provider Contract", () => {
   it("should receive stock availability in the expected format", async () => {
     // Define the expected interaction
@@ -100,7 +97,6 @@ describe("Order Service - Inventory Provider Contract", () => {
     expect(result.available).toBe(true);
   });
 });
-```
 {{% /code-collapse %}}
 
 ## Anti-Patterns

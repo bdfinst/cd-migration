@@ -191,8 +191,7 @@ expectations of the provider.
 
 In JavaScript using Pact:
 
-{{% code-collapse title="Consumer contract test for InventoryService using Pact (JavaScript)" %}}
-```javascript
+{{% code-collapse title="Consumer contract test for InventoryService using Pact (JavaScript)" lang="javascript" %}}
 const { Pact } = require('@pact-foundation/pact');
 
 const provider = new Pact({
@@ -217,7 +216,6 @@ describe('Inventory Service contract', () => {
     // assert consumer code handles the response correctly
   });
 });
-```
 {{% /code-collapse %}}
 
 The test documents what the consumer expects and verifies the consumer handles that response
@@ -230,8 +228,7 @@ their service.
 
 In Java with Pact:
 
-{{% code-collapse title="Provider contract verification test for InventoryService using Pact (Java)" %}}
-```java
+{{% code-collapse title="Provider contract verification test for InventoryService using Pact (Java)" lang="java" %}}
 @Provider("InventoryService")
 @PactBroker(url = "http://pact-broker.internal")
 public class InventoryServiceContractTest {
@@ -244,7 +241,6 @@ public class InventoryServiceContractTest {
         // seed test data
     }
 }
-```
 {{% /code-collapse %}}
 
 When the provider's pipeline runs this test, it fetches the consumer's contract file, sets up

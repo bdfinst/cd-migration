@@ -23,9 +23,7 @@ is linear with parallel stages where dependencies allow.
   <span class="pipeline-legend__item pipeline-legend__item--prod">Production</span>
 </div>
 
-
-{{% code-collapse title="Single team, single deployable pipeline diagram" %}}
-```mermaid
+{{% code-collapse title="Single team, single deployable pipeline diagram" lang="mermaid" %}}
 graph TD
     classDef prefeature fill:#0d7a32,stroke:#0a6128,color:#fff
     classDef ci fill:#224968,stroke:#1a3a54,color:#fff
@@ -51,7 +49,6 @@ graph TD
     F --> G
     G --> H
     H --> I
-```
 {{% /code-collapse %}}
 
 ## Key Characteristics

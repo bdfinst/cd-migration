@@ -24,9 +24,7 @@ This is not a replacement for testing. It is an addition. Your automated tests s
 
 A [canary deployment](../../../glossary/#canary-deployment) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
 
-
-{{% code-collapse title="Canary deployment traffic split diagram" %}}
-```
+{{% code-collapse title="Canary deployment traffic split diagram" lang="text" %}}
                         ┌─────────────────┐
                    5%   │  New Version     │  ← Canary
                 ┌──────►│  (v2)            │
@@ -36,9 +34,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
                 └──────►│  Old Version     │  ← Stable
                   95%   │  (v1)            │
                         └─────────────────┘
-```
 {{% /code-collapse %}}
-
 
 **How it works:**
 
@@ -73,9 +69,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
 
 [Blue-green deployment](../../../glossary/#blue-green-deployment) maintains two identical production environments. At any time, one (blue) serves live traffic and the other (green) is idle or staging.
 
-
-{{% code-collapse title="Blue-green deployment traffic switch diagram" %}}
-```
+{{% code-collapse title="Blue-green deployment traffic switch diagram" lang="text" %}}
   BEFORE:
     Traffic ──────► [Blue - v1] (ACTIVE)
                     [Green]     (IDLE)
@@ -87,9 +81,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
   SWITCH:
     Traffic ──────► [Green - v2] (ACTIVE)
                     [Blue - v1]  (STANDBY / ROLLBACK TARGET)
-```
 {{% /code-collapse %}}
-
 
 **How it works:**
 
@@ -117,17 +109,13 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
 
 Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based - a specific user always sees the same version during the rollout period.
 
-
-{{% code-collapse title="Percentage-based rollout schedule" %}}
-```
+{{% code-collapse title="Percentage-based rollout schedule" lang="text" %}}
   Hour 0:   1% of users  → v2,  99% → v1
   Hour 2:   5% of users  → v2,  95% → v1
   Hour 8:  25% of users  → v2,  75% → v1
   Day 2:   50% of users  → v2,  50% → v1
   Day 3:  100% of users  → v2
-```
 {{% /code-collapse %}}
-
 
 **How it works:**
 
@@ -184,9 +172,7 @@ Define automated rollback triggers before deploying. Common triggers:
 
 ### Automated Rollback Flow
 
-
-{{% code-collapse title="Automated rollback flow diagram" %}}
-```
+{{% code-collapse title="Automated rollback flow diagram" lang="text" %}}
 Deploy new version
        │
        ▼
@@ -205,9 +191,7 @@ Monitor for 15 minutes
        │                                └── Metrics degraded ─────► ROLLBACK
        │
        └── Metrics degraded ─────► ROLLBACK
-```
 {{% /code-collapse %}}
-
 
 ### Implementation Tools
 

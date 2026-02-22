@@ -1,7 +1,7 @@
 ---
 title: "Pipeline Enforcement and Expert Agents"
 linkTitle: "Pipeline Enforcement"
-weight: 6
+weight: 7
 description: >
   How quality gates enforce ACD constraints and how expert validation agents extend the pipeline beyond standard tooling.
 ---
@@ -64,7 +64,7 @@ With the pipeline and expert agents in place, the next question is what goes wro
 
 ## Related Content
 
-- [Recommended Patterns for Agentic Architecture](../agentic-architecture/) - multi-agent pipeline patterns and hook design for enforcement workflows
+- [Agentic Architecture Patterns](../agentic-architecture/) - multi-agent pipeline patterns and hook design for enforcement workflows
 - [ACD](../) - the framework overview, eight constraints, and workflow
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts the pipeline enforces
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the full quality gate sequence

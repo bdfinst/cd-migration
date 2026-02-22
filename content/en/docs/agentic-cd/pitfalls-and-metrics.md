@@ -51,14 +51,12 @@ A session implementing Scenario 2 that also cleans up the module from Scenario 1
 Example scope constraint to include in every implementation session:
 
 {{% code-collapse title="Scope constraint: restrict agent to current scenario only" %}}
-```
 Implement the behavior described in this scenario and only that behavior.
 
 If you encounter code that could be improved, note it in your summary
 but do not change it. Any refactoring, renaming, or cleanup must happen
 in a separate session with its own commit. The only code that may change
 in this session is the code required to make the acceptance test pass.
-```
 {{% /code-collapse %}}
 
 When cleanup is warranted, schedule it explicitly: create a session scoped
@@ -109,7 +107,6 @@ A practical pattern: after every three to five feature sessions, schedule a main
 Example maintenance session prompt:
 
 {{% code-collapse title="Maintenance session prompt: refactor with no behavior changes" %}}
-```
 Refactor the files listed below. The goal is to improve readability and
 reduce duplication introduced during the last four feature sessions.
 
@@ -122,7 +119,6 @@ Constraints:
 
 Files in scope:
 [list files]
-```
 {{% /code-collapse %}}
 
 ### Track skill effectiveness over time

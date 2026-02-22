@@ -60,8 +60,7 @@ an [integration test](../integration/) or a [functional test](../functional/) in
 
 A JavaScript unit test verifying a pure utility function:
 
-{{% code-collapse title="JavaScript unit test for castArray utility" %}}
-```javascript
+{{% code-collapse title="JavaScript unit test for castArray utility" lang="javascript" %}}
 // castArray.test.js
 describe("castArray", () => {
   it("should wrap non-array items in an array", () => {
@@ -79,13 +78,11 @@ describe("castArray", () => {
     expect(castArray()).toEqual([]);
   });
 });
-```
 {{% /code-collapse %}}
 
 A Java unit test using Mockito to isolate the system under test:
 
-{{% code-collapse title="Java unit test with Mockito stub isolating the controller" %}}
-```java
+{{% code-collapse title="Java unit test with Mockito stub isolating the controller" lang="java" %}}
 @Test
 public void shouldReturnUserDetails() {
     // Arrange
@@ -99,7 +96,6 @@ public void shouldReturnUserDetails() {
     assertEquals("Ada", result.getName());
     assertEquals("Engineering", result.getDepartment());
 }
-```
 {{% /code-collapse %}}
 
 ## Anti-Patterns

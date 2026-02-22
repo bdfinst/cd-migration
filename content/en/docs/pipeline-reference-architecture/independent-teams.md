@@ -15,9 +15,7 @@ layer that defines how services communicate.
 This architecture demands disciplined API management. Without it, independent deployment
 is an illusion - teams deploy whenever they want, but they break each other constantly.
 
-
-{{% code-collapse title="Independent teams pipeline diagram" %}}
-```mermaid
+{{% code-collapse title="Independent teams pipeline diagram" lang="mermaid" %}}
 graph TD
     classDef prefeature fill:#0d7a32,stroke:#0a6128,color:#fff
     classDef team fill:#224968,stroke:#1a3a54,color:#fff
@@ -74,7 +72,6 @@ graph TD
 
     C6 --> C7["Deploy + Canary"]:::prod
     C7 --> C8["Health + SLOs"]:::prod
-```
 {{% /code-collapse %}}
 
 <div class="pipeline-legend">

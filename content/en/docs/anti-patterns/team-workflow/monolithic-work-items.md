@@ -104,8 +104,7 @@ Build decomposition into the refinement process:
 
 Each acceptance criterion or small group of criteria is a natural decomposition boundary:
 
-{{% code-collapse title="Acceptance criteria as Gherkin scenarios for independent delivery" %}}
-```gherkin
+{{% code-collapse title="Acceptance criteria as Gherkin scenarios for independent delivery" lang="gherkin" %}}
 Scenario: Apply percentage discount
   Given a cart with items totaling $100
   When I apply a 10% discount code
@@ -115,7 +114,6 @@ Scenario: Reject expired discount code
   Given a cart with items totaling $100
   When I apply an expired discount code
   Then the cart total should remain $100
-```
 {{% /code-collapse %}}
 
 Each scenario can be implemented, integrated, and deployed independently.

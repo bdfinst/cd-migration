@@ -13,10 +13,8 @@ on a story or task until that work is deployed to production and available to us
 It captures the full construction phase of delivery: coding, code review, testing,
 integration, and deployment.
 
-{{% code-collapse title="Development Cycle Time formula" %}}
-```text
+{{% code-collapse title="Development Cycle Time formula" lang="text" %}}
 developmentCycleTime = productionDeployTimestamp - workStartedTimestamp
-```
 {{% /code-collapse %}}
 
 This is distinct from [Lead Time](../lead-time/), which includes the time a request

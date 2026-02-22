@@ -76,10 +76,8 @@ cannot be confident that the hotfix has undergone the same validation.
 
 **Integration Branch:**
 
-{{% code-collapse title="Integration branch: parallel merge structure alongside trunk" %}}
-```text
+{{% code-collapse title="Integration branch: parallel merge structure alongside trunk" lang="text" %}}
 trunk -> integration <- features
-```
 {{% /code-collapse %}}
 
 This creates two merge structures instead of one. When trunk changes, you merge to the
@@ -91,8 +89,7 @@ that stay unfinished forever.
 
 **GitFlow (multiple long-lived branches):**
 
-{{% code-collapse title="GitFlow: multiple long-lived branches with different merge paths per change type" %}}
-```text
+{{% code-collapse title="GitFlow: multiple long-lived branches with different merge paths per change type" lang="text" %}}
 master (production)
   |
 develop (integration)
@@ -102,7 +99,6 @@ feature branches -> develop
 release branches -> master
   |
 hotfix branches -> master -> develop
-```
 {{% /code-collapse %}}
 
 GitFlow creates multiple merge patterns depending on change type:
@@ -119,12 +115,10 @@ merge conflicts multiply across integration points.
 **The correct approach** is direct trunk integration - all work integrates directly to
 trunk using the same process:
 
-{{% code-collapse title="Direct trunk integration: all changes follow the same path" %}}
-```text
+{{% code-collapse title="Direct trunk integration: all changes follow the same path" lang="text" %}}
 trunk <- features
 trunk <- bugfixes
 trunk <- hotfixes
-```
 {{% /code-collapse %}}
 
 ### Environment-specific pipelines
@@ -154,15 +148,12 @@ Use [feature flags](../../../glossary/#feature-flag) to decouple deployment from
 through the pipeline while the feature remains hidden behind a flag. This eliminates the
 need for long-lived branches and separate deployment paths for "not-ready" features.
 
-
-{{% code-collapse title="Feature flag: deploy code to trunk while hiding it from users" %}}
-```javascript
+{{% code-collapse title="Feature flag: deploy code to trunk while hiding it from users" lang="javascript" %}}
 // Feature code lives in trunk, controlled by flags
 if (featureFlags.newCheckout) {
   return renderNewCheckout()
 }
 return renderOldCheckout()
-```
 {{% /code-collapse %}}
 
 ### Branch by abstraction
@@ -172,16 +163,13 @@ incremental changes that can be deployed through the standard pipeline at every 
 Create an abstraction layer, build the new implementation behind it, switch over
 incrementally, and remove the old implementation - all through the same pipeline.
 
-
-{{% code-collapse title="Branch by abstraction: replace implementation behind a stable interface" %}}
-```javascript
+{{% code-collapse title="Branch by abstraction: replace implementation behind a stable interface" lang="javascript" %}}
 // Old behavior behind abstraction
 class PaymentProcessor {
   process() {
     // Gradually replace implementation while maintaining interface
   }
 }
-```
 {{% /code-collapse %}}
 
 ### Dark launching
@@ -190,14 +178,11 @@ Deploy new functionality to production without exposing it to users. The code ru
 production, processes real data, and generates real metrics - but its output is not shown
 to users. This validates the change under production conditions while managing risk.
 
-
-{{% code-collapse title="Dark launching: deploy new API route without exposing it to users" %}}
-```javascript
+{{% code-collapse title="Dark launching: deploy new API route without exposing it to users" lang="javascript" %}}
 // New API route exists but isn't exposed to users
 router.post('/api/v2/checkout', newCheckoutHandler)
 
 // Final commit: update client to use new route
-```
 {{% /code-collapse %}}
 
 ### Connect tests last
@@ -207,9 +192,7 @@ live dependency. Validate the deployment, the configuration, and the basic behav
 Connect to the real dependency as the final step. This keeps the change deployable through
 the pipeline at every stage of development.
 
-
-{{% code-collapse title="Connect tests last: build and validate before wiring to UI" %}}
-```javascript
+{{% code-collapse title="Connect tests last: build and validate before wiring to UI" lang="javascript" %}}
 // Build new feature code, integrate to trunk
 // Connect to UI/API only in final commit
 function newCheckoutFlow() {
@@ -218,7 +201,6 @@ function newCheckoutFlow() {
 
 // Final commit: wire it up
 <button onClick={newCheckoutFlow}>Checkout</button>
-```
 {{% /code-collapse %}}
 
 ## How to Get Started
@@ -256,9 +238,7 @@ only way.
 
 ### Single Pipeline for Everything
 
-
-{{% code-collapse title="Single pipeline for everything: GitHub Actions workflow from validate to production" %}}
-```yaml
+{{% code-collapse title="Single pipeline for everything: GitHub Actions workflow from validate to production" lang="yaml" %}}
 # .github/workflows/deploy.yml
 name: Deployment Pipeline
 
@@ -304,7 +284,6 @@ jobs:
     steps:
       - run: kubectl set image deployment/app app=app:${{ github.sha }}
       - run: kubectl rollout status deployment/app
-```
 {{% /code-collapse %}}
 
 Every deployment - normal, hotfix, or [rollback](../../../glossary/#rollback) - uses this pipeline. Consistent, validated,

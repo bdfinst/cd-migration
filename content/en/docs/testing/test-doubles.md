@@ -59,8 +59,7 @@ Test doubles should be used **less** in later [pipeline](../glossary/#pipeline) 
 
 A JavaScript stub providing a canned response:
 
-{{% code-collapse title="JavaScript stub returning a fixed user" %}}
-```javascript
+{{% code-collapse title="JavaScript stub returning a fixed user" lang="javascript" %}}
 // Stub: return a fixed user regardless of input
 const userRepository = {
   findById: jest.fn().mockResolvedValue({
@@ -72,13 +71,11 @@ const userRepository = {
 
 const user = await userService.getUser("u1");
 expect(user.name).toBe("Ada Lovelace");
-```
 {{% /code-collapse %}}
 
 A Java spy verifying interaction:
 
-{{% code-collapse title="Java spy verifying call count with Mockito" %}}
-```java
+{{% code-collapse title="Java spy verifying call count with Mockito" lang="java" %}}
 @Test
 public void shouldCallUserServiceExactlyOnce() {
     UserService spyService = Mockito.spy(userService);
@@ -89,13 +86,11 @@ public void shouldCallUserServiceExactlyOnce() {
     verify(spyService, times(1)).getUserInfo("u123");
     assertEquals("Ada", result.getName());
 }
-```
 {{% /code-collapse %}}
 
 A fake in-memory repository:
 
-{{% code-collapse title="JavaScript fake in-memory repository" %}}
-```javascript
+{{% code-collapse title="JavaScript fake in-memory repository" lang="javascript" %}}
 class FakeUserRepository {
   constructor() {
     this.users = new Map();
@@ -107,7 +102,6 @@ class FakeUserRepository {
     return this.users.get(id) || null;
   }
 }
-```
 {{% /code-collapse %}}
 
 ## Anti-Patterns

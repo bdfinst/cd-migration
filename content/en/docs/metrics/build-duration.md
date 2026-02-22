@@ -18,10 +18,8 @@ change and having that change ready for production. It sets a hard floor on
 [Lead Time](../lead-time/) and directly constrains how quickly a team can
 respond to production incidents.
 
-{{% code-collapse title="Build Duration formula" %}}
-```text
+{{% code-collapse title="Build Duration formula" lang="text" %}}
 buildDuration = artifactReadyTimestamp - commitPushTimestamp
-```
 {{% /code-collapse %}}
 
 This metric is sometimes referred to as "pipeline cycle time" or "CI cycle time."

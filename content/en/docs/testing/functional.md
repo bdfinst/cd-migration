@@ -59,8 +59,7 @@ tests a single unit in isolation, it is a [unit test](../unit/).
 
 A functional test for a REST API using an in-process server and mocked downstream services:
 
-{{% code-collapse title="REST API functional test - order creation with mocked inventory service" %}}
-```javascript
+{{% code-collapse title="REST API functional test - order creation with mocked inventory service" lang="javascript" %}}
 describe("POST /orders", () => {
   it("should create an order and return 201", async () => {
     // Arrange: mock the inventory service response
@@ -92,13 +91,11 @@ describe("POST /orders", () => {
     expect(response.body.error).toMatch(/insufficient/i);
   });
 });
-```
 {{% /code-collapse %}}
 
 A front-end functional test exercising a login flow with a mocked auth service:
 
-{{% code-collapse title="Front-end functional test - login flow with mocked auth service" %}}
-```javascript
+{{% code-collapse title="Front-end functional test - login flow with mocked auth service" lang="javascript" %}}
 describe("Login page", () => {
   it("should redirect to the dashboard after successful login", async () => {
     mockAuthService.login.mockResolvedValue({ token: "abc123" });
@@ -111,7 +108,6 @@ describe("Login page", () => {
     expect(await screen.findByText("Dashboard")).toBeInTheDocument();
   });
 });
-```
 {{% /code-collapse %}}
 
 ### Accessibility Verification
@@ -123,8 +119,7 @@ fit alongside existing functional assertions rather than in a separate test suit
 A functional test verifying keyboard-only interaction and running axe-core assertions
 against the rendered page:
 
-{{% code-collapse title="Accessibility functional test - keyboard navigation and axe-core WCAG assertions" %}}
-```javascript
+{{% code-collapse title="Accessibility functional test - keyboard navigation and axe-core WCAG assertions" lang="javascript" %}}
 import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);
@@ -152,7 +147,6 @@ describe("Checkout flow", () => {
     expect(results).toHaveNoViolations();
   });
 });
-```
 {{% /code-collapse %}}
 
 ## Anti-Patterns

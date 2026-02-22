@@ -13,10 +13,8 @@ the version control system until that change is successfully running in producti
 This is one of the four key metrics identified by the [DORA](../glossary/#dora-metrics) (DevOps Research and
 Assessment) team as a predictor of software delivery performance.
 
-{{% code-collapse title="Lead Time formula" %}}
-```text
+{{% code-collapse title="Lead Time formula" lang="text" %}}
 leadTime = productionDeployTimestamp - commitTimestamp
-```
 {{% /code-collapse %}}
 
 In the broader value stream, "lead time" can also refer to the time from a customer

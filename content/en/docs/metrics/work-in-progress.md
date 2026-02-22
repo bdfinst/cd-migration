@@ -13,10 +13,8 @@ not yet completed and delivered to production. This includes all types of work:
 stories, defects, tasks, spikes, and any other items that a team member has begun
 but not finished.
 
-{{% code-collapse title="Work in Progress formula" %}}
-```text
+{{% code-collapse title="Work in Progress formula" lang="text" %}}
 wip = countOf(items where status is between "started" and "done")
-```
 {{% /code-collapse %}}
 
 WIP is a leading indicator from Lean manufacturing. Unlike trailing metrics such as
@@ -27,10 +25,8 @@ quality.
 
 Little's Law provides the mathematical relationship:
 
-{{% code-collapse title="Little's Law: cycle time as a function of WIP" %}}
-```text
+{{% code-collapse title="Little's Law: cycle time as a function of WIP" lang="text" %}}
 cycleTime = wip / throughput
-```
 {{% /code-collapse %}}
 
 If throughput (the rate at which items are completed) stays constant, increasing WIP

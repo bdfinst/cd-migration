@@ -54,8 +54,7 @@ benefits from linting, formatting, and dependency scanning.
 
 A `.eslintrc.json` configuration enforcing test quality rules:
 
-{{% code-collapse title="ESLint configuration for test quality rules" %}}
-```json
+{{% code-collapse title="ESLint configuration for test quality rules" lang="json" %}}
 {
   "rules": {
     "jest/no-disabled-tests": "warn",
@@ -66,7 +65,6 @@ A `.eslintrc.json` configuration enforcing test quality rules:
     "no-console": "warn"
   }
 }
-```
 {{% /code-collapse %}}
 
 ### Type Checking

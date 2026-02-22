@@ -12,10 +12,8 @@ Release Frequency (also called [Deployment Frequency](../glossary/#deployment-fr
 successfully deploys changes to production. It is expressed as deployments per day,
 per week, or per month, depending on the team's current cadence.
 
-{{% code-collapse title="Release Frequency formula" %}}
-```text
+{{% code-collapse title="Release Frequency formula" lang="text" %}}
 releaseFrequency = productionDeployments / timePeriod
-```
 {{% /code-collapse %}}
 
 This is one of the four [DORA](../glossary/#dora-metrics) key metrics. It measures the throughput side of

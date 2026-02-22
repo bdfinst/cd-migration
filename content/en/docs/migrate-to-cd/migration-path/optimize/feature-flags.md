@@ -27,9 +27,7 @@ Not every change requires a feature flag. Flags add complexity, and unnecessary 
 
 ### Decision Tree
 
-
-{{% code-collapse title="Decision tree: when to use a feature flag" %}}
-```mermaid
+{{% code-collapse title="Decision tree: when to use a feature flag" lang="mermaid" %}}
 graph TD
     Start[New Code Change] --> Q1{Is this a large or<br/>high-risk change?}
 
@@ -75,7 +73,6 @@ graph TD
     style NoFF_Abstraction fill:#FFB6C6
     style NoFF_API fill:#FFB6C6
     style Start fill:#87CEEB
-```
 {{% /code-collapse %}}
 
 ### Alternatives to Feature Flags
@@ -96,9 +93,7 @@ Feature flags can be implemented at different levels of sophistication. Start si
 
 The simplest approach: a boolean constant or configuration value checked in code.
 
-
-{{% code-collapse title="Level 1: Static boolean flag in code" %}}
-```python
+{{% code-collapse title="Level 1: Static boolean flag in code" lang="python" %}}
 # config.py
 FEATURE_NEW_CHECKOUT = False
 
@@ -110,7 +105,6 @@ def process_checkout(cart, user):
         return new_checkout_flow(cart, user)
     else:
         return legacy_checkout_flow(cart, user)
-```
 {{% /code-collapse %}}
 
 **Pros:** Zero infrastructure. Easy to understand. Works everywhere.
@@ -123,9 +117,7 @@ def process_checkout(cart, user):
 
 Flags stored in a configuration file, database, or environment variable that can be changed at runtime without redeploying.
 
-
-{{% code-collapse title="Level 2: Dynamic in-process flag service with percentage rollout" %}}
-```python
+{{% code-collapse title="Level 2: Dynamic in-process flag service with percentage rollout" lang="python" %}}
 # flag_service.py
 import json
 
@@ -145,18 +137,15 @@ class FeatureFlags:
             return (hash(context["user_id"]) % 100) < flag["percentage"]
 
         return True
-```
 {{% /code-collapse %}}
 
-{{% code-collapse title="Level 2: Flag configuration file with percentage rollout" %}}
-```json
+{{% code-collapse title="Level 2: Flag configuration file with percentage rollout" lang="json" %}}
 {
   "new-checkout": {
     "enabled": true,
     "percentage": 10
   }
 }
-```
 {{% /code-collapse %}}
 
 **Pros:** No redeployment needed. Supports percentage rollout. Simple to implement.
@@ -171,9 +160,7 @@ A dedicated service (self-hosted or SaaS) that manages all flags, provides a das
 
 **Examples:** LaunchDarkly, Unleash, Flagsmith, Split, or a custom internal service.
 
-
-{{% code-collapse title="Level 3: Centralized flag service with user-context targeting" %}}
-```python
+{{% code-collapse title="Level 3: Centralized flag service with user-context targeting" lang="python" %}}
 from feature_flag_client import FlagClient
 
 client = FlagClient(api_key="...")
@@ -183,7 +170,6 @@ def process_checkout(cart, user):
         return new_checkout_flow(cart, user)
     else:
         return legacy_checkout_flow(cart, user)
-```
 {{% /code-collapse %}}
 
 **Pros:** Centralized management. Rich targeting (by user, plan, region, etc.). Audit trail. Real-time changes.
@@ -196,9 +182,7 @@ def process_checkout(cart, user):
 
 Instead of checking flags in application code, route traffic at the infrastructure level (load balancer, service mesh, API gateway).
 
-
-{{% code-collapse title="Level 4: Istio VirtualService for infrastructure-level traffic routing" %}}
-```yaml
+{{% code-collapse title="Level 4: Istio VirtualService for infrastructure-level traffic routing" lang="yaml" %}}
 # Istio VirtualService example
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -218,7 +202,6 @@ spec:
     - route:
         - destination:
             host: checkout-v1
-```
 {{% /code-collapse %}}
 
 **Pros:** No application code changes. Clean separation of routing from logic. Works across services.
@@ -233,16 +216,13 @@ Every feature flag has a lifecycle. Flags that are not actively managed become t
 
 ### The Six Stages
 
-
 {{% code-collapse title="Feature flag lifecycle: six stages from create to remove" %}}
-```
 1. CREATE       → Define the flag, document its purpose and owner
 2. DEPLOY OFF   → Code ships to production with the flag disabled
 3. BUILD        → Incrementally add functionality behind the flag
 4. DARK LAUNCH  → Enable for internal users or a small test group
 5. ROLLOUT      → Gradually increase the percentage of users
 6. REMOVE       → Delete the flag and the old code path
-```
 {{% /code-collapse %}}
 
 #### Stage 1: Create
@@ -266,15 +246,12 @@ The first deployment includes the flag check but the flag is disabled. This veri
 
 Continue building the feature behind the flag over multiple deploys. Each deploy adds more functionality, but the flag remains off for users. Test both paths in your automated suite:
 
-
-{{% code-collapse title="Testing both flag states: parametrize over enabled and disabled" %}}
-```python
+{{% code-collapse title="Testing both flag states: parametrize over enabled and disabled" lang="python" %}}
 @pytest.mark.parametrize("flag_enabled", [True, False])
 def test_checkout_with_flag(flag_enabled, monkeypatch):
     monkeypatch.setattr(flags, "is_enabled", lambda name, ctx=None: flag_enabled)
     result = process_checkout(cart, user)
     assert result.status == "success"
-```
 {{% /code-collapse %}}
 
 #### Stage 4: Dark Launch
@@ -341,16 +318,13 @@ Not all flags are temporary. Some flags are intentionally permanent and should b
 
 **Management:** Treat as system configuration, not as a release mechanism.
 
-
-{{% code-collapse title="Operational kill switch: disable expensive features during incidents" %}}
-```python
+{{% code-collapse title="Operational kill switch: disable expensive features during incidents" lang="python" %}}
 # PERMANENT FLAG - System operational control
 # Used to disable expensive features during incidents
 if flags.is_enabled("enable-recommendations"):
     recommendations = compute_recommendations(user)
 else:
     recommendations = []  # Graceful degradation under load
-```
 {{% /code-collapse %}}
 
 ### Customer-Specific Toggles
@@ -361,14 +335,11 @@ else:
 
 **Management:** Part of the customer entitlement system, not the feature flag system.
 
-
-{{% code-collapse title="Customer entitlement toggle: gate features by subscription level" %}}
-```python
+{{% code-collapse title="Customer entitlement toggle: gate features by subscription level" lang="python" %}}
 # PERMANENT FLAG - Customer entitlement
 # Controlled by customer subscription level
 if customer.subscription.includes("analytics"):
     show_advanced_analytics(customer)
-```
 {{% /code-collapse %}}
 
 ### Experimentation Flags
@@ -379,9 +350,7 @@ if customer.subscription.includes("analytics"):
 
 **Management:** Each experiment has its own expiration date and success criteria. The experimentation platform itself persists.
 
-
-{{% code-collapse title="Experimentation flag: route users to A/B test variants" %}}
-```python
+{{% code-collapse title="Experimentation flag: route users to A/B test variants" lang="python" %}}
 # PERMANENT FLAG - Experimentation platform
 # Individual experiments expire, platform remains
 variant = experiments.get("checkout-optimization")
@@ -389,7 +358,6 @@ if variant == "streamlined":
     return streamlined_checkout(cart, user)
 else:
     return standard_checkout(cart, user)
-```
 {{% /code-collapse %}}
 
 ### Managing Long-Lived Flags

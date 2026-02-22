@@ -38,16 +38,12 @@ The intent description does not need to be perfect on the first draft. Write a r
 Example [prompt](../../glossary/#prompt):
 
 {{% code-collapse title="Prompt: identify ambiguity in intent description" %}}
-
-```
 Here is the intent description for my next change. Identify any
 ambiguity, unstated assumptions, or missing context that could
 lead to an implementation that technically satisfies this description
 but does not match what I actually want.
 
 [paste intent description]
-```
-
 {{% /code-collapse %}}
 
 **Ask the agent to suggest edge cases.** Agents are good at generating boundary conditions you might not think of, because they can quickly reason through combinations.
@@ -65,15 +61,11 @@ Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from sc
 Example prompt:
 
 {{% code-collapse title="Prompt: generate BDD scenarios from intent description" %}}
-
-```
 Based on this intent description, generate BDD scenarios in Gherkin
 format. Cover the primary success path, key error paths, and edge
 cases. For each scenario, explain why it matters.
 
 [paste intent description]
-```
-
 {{% /code-collapse %}}
 
 **Review for completeness, not perfection.** The agent's first draft will cover the obvious paths. Your job is to read through them and ask: "What is missing?" The agent handles volume. You handle judgment.
@@ -83,15 +75,11 @@ cases. For each scenario, explain why it matters.
 Example prompt:
 
 {{% code-collapse title="Prompt: identify missing BDD scenarios" %}}
-
-```
 Here are the BDD scenarios for this feature. What scenarios are
 missing? Consider boundary conditions, concurrent access, failure
 modes, and interactions with existing behavior.
 
 [paste scenarios]
-```
-
 {{% /code-collapse %}}
 
 **Ask the agent to challenge weak scenarios.** Some scenarios may be too vague to constrain an implementation. Ask the agent to identify any scenario where two different implementations could both pass while producing different user-visible behavior.
@@ -107,16 +95,12 @@ The Architecture Specification and Acceptance Criteria stages define the technic
 Example prompt:
 
 {{% code-collapse title="Prompt: identify architectural considerations before implementation" %}}
-
-```
 Given this intent and these BDD scenarios, what architectural
 decisions should I document before implementation begins? Consider
 where this change fits in the existing system, what components it
 touches, and what constraints an implementer needs to know.
 
 Current system context: [brief architecture description]
-```
-
 {{% /code-collapse %}}
 
 **Ask the agent to draft non-functional acceptance criteria.** Agents can suggest performance thresholds, security requirements, and resource limits based on the type of change and its context.
@@ -124,16 +108,12 @@ Current system context: [brief architecture description]
 Example prompt:
 
 {{% code-collapse title="Prompt: draft non-functional acceptance criteria" %}}
-
-```
 Based on this feature description, suggest non-functional acceptance
 criteria I should define. Consider latency, throughput, security,
 resource usage, and operational requirements. For each criterion,
 explain why it matters for this specific change.
 
 [paste feature description]
-```
-
 {{% /code-collapse %}}
 
 **Ask the agent to check consistency.** Once you have the intent, BDD scenarios, feature description, and acceptance criteria, ask the agent to identify any contradictions or gaps between them.
@@ -149,8 +129,6 @@ The four specification stages produce four [artifacts](../glossary/#artifact): i
 {{% alert title="Specification consistency prompt" color="info" %}}
 
 {{% code-collapse title="Prompt: validate specification set for internal consistency" %}}
-
-```
 Review these four specification artifacts for internal consistency
 before implementation begins. Check:
 - Clarity: is the intent unambiguous? Could it be read differently by two developers?
@@ -161,8 +139,6 @@ before implementation begins. Check:
 - Conflict: does anything in one artifact contradict anything in another?
 
 [paste all four artifacts]
-```
-
 {{% /code-collapse %}}
 
 {{% /alert %}}

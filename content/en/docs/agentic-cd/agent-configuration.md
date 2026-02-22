@@ -1,7 +1,7 @@
 ---
-title: "Recommended Agent Configuration for Coding and Review"
-linkTitle: "Agent Configuration"
-weight: 7
+title: "Coding and Review Agent Configuration"
+linkTitle: "Coding Agent Configuration"
+weight: 5
 description: >
   A recommended orchestrator, agent, and sub-agent configuration for coding and pre-commit review, with rules, skills, and hooks mapped to the defect sources catalog.
 ---
@@ -24,8 +24,7 @@ The coding agent system has two tiers. The [orchestrator](../glossary/#orchestra
 Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
-{{% code-collapse title="Agent system architecture diagram" %}}
-```mermaid
+{{% code-collapse title="Agent system architecture diagram" lang="mermaid" %}}
 graph TD
     classDef orchestrator fill:#224968,stroke:#1a3a54,color:#fff
     classDef agent fill:#0d7a32,stroke:#0a6128,color:#fff
@@ -43,7 +42,6 @@ graph TD
     ORC -->|"implement"| IMPL
     ORC -->|"review staged changes"| REV
     REV --> SEM & SEC & PERF & CONC
-```
 {{% /code-collapse %}}
 
 **Separation principle:** The orchestrator does not write code. The implementation agent
@@ -83,8 +81,7 @@ on a task that does not require frontier reasoning.
 
 **Rules injected into the orchestrator system prompt:**
 
-{{% code-collapse title="Orchestrator system prompt rules" %}}
-```markdown
+{{% code-collapse title="Orchestrator system prompt rules" lang="markdown" %}}
 ## Orchestrator Rules
 
 You manage session context and routing. You do not write implementation code.
@@ -126,7 +123,6 @@ On commit:
   Status: all [N] scenarios pass
 - This summary replaces the full session conversation for future sessions
 - Reset context after writing the summary; do not carry conversation history forward
-```
 {{% /code-collapse %}}
 
 ---
@@ -151,8 +147,7 @@ only, not explanations or rationale, unless the orchestrator requests them.
 
 **Rules injected into the implementation agent system prompt:**
 
-{{% code-collapse title="Implementation agent system prompt rules" %}}
-```markdown
+{{% code-collapse title="Implementation agent system prompt rules" lang="markdown" %}}
 ## Implementation Rules
 
 You implement exactly one BDD scenario per session. No more.
@@ -175,7 +170,6 @@ Implementation:
 
 Done when: the acceptance test for this scenario passes, all prior acceptance tests
 still pass, and you have staged the changes.
-```
 {{% /code-collapse %}}
 
 ---
@@ -200,8 +194,7 @@ coordination cheaply.
 step. Structured output here eliminates ambiguity and reduces the token cost of the
 aggregation step.
 
-{{% code-collapse title="Review orchestrator JSON output schema" %}}
-```json
+{{% code-collapse title="Review orchestrator JSON output schema" lang="json" %}}
 {
   "decision": "pass | block",
   "findings": [
@@ -214,7 +207,6 @@ aggregation step.
     }
   ]
 }
-```
 {{% /code-collapse %}}
 
 An empty `findings` array with `"decision": "pass"` means all sub-agents passed. A
@@ -222,8 +214,7 @@ non-empty `findings` array always accompanies `"decision": "block"`.
 
 **Rules injected into the review orchestrator system prompt:**
 
-{{% code-collapse title="Review orchestrator system prompt rules" %}}
-```markdown
+{{% code-collapse title="Review orchestrator system prompt rules" lang="markdown" %}}
 ## Review Orchestrator Rules
 
 You coordinate parallel review sub-agents. You do not review code yourself.
@@ -257,7 +248,6 @@ Return this JSON and nothing else:
     }
   ]
 }
-```
 {{% /code-collapse %}}
 
 ---
@@ -295,8 +285,7 @@ implementation against stated intent.
 
 **System prompt rules:**
 
-{{% code-collapse title="Semantic review agent system prompt rules" %}}
-```markdown
+{{% code-collapse title="Semantic review agent system prompt rules" lang="markdown" %}}
 ## Semantic Review Agent Rules
 
 You review code for logical correctness and edge case coverage.
@@ -323,7 +312,6 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-```
 {{% /code-collapse %}}
 
 ### Security Review Agent
@@ -355,8 +343,7 @@ not just pattern matching. A smaller model will miss the cases that matter most.
 
 **System prompt rules:**
 
-{{% code-collapse title="Security review agent system prompt rules" %}}
-```markdown
+{{% code-collapse title="Security review agent system prompt rules" lang="markdown" %}}
 ## Security Review Agent Rules
 
 You review code for security defects that SAST tools do not catch.
@@ -387,7 +374,6 @@ Return this JSON and nothing else:
      "why": "<one sentence>", "cwe": "<CWE-NNN or OWASP category>"}
   ]
 }
-```
 {{% /code-collapse %}}
 
 ### Performance Review Agent
@@ -421,8 +407,7 @@ cheaply enough to be invoked on every commit without concern.
 
 **System prompt rules:**
 
-{{% code-collapse title="Performance review agent system prompt rules" %}}
-```markdown
+{{% code-collapse title="Performance review agent system prompt rules" lang="markdown" %}}
 ## Performance Review Agent Rules
 
 You review code for timeout, resource, and resilience defects.
@@ -450,7 +435,6 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-```
 {{% /code-collapse %}}
 
 ### Concurrency Review Agent
@@ -757,7 +741,7 @@ for the full gate sequence.
 
 ## Related Content
 
-- [Recommended Patterns for Agentic Architecture](../agentic-architecture/) - how to
+- [Agentic Architecture Patterns](../agentic-architecture/) - how to
   structure skills, agents, commands, and hooks for multi-agent systems
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the same
   review agents operate as CI pipeline gates, not just pre-commit

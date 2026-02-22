@@ -18,10 +18,8 @@ This metric is a direct indicator of how well a team practices
 Teams that integrate frequently work in small batches, receive fast feedback, and
 reduce the risk associated with large, infrequent merges.
 
-{{% code-collapse title="Integration Frequency formula" %}}
-```text
+{{% code-collapse title="Integration Frequency formula" lang="text" %}}
 integrationFrequency = mergedPullRequests / day / numberOfDevelopers
-```
 {{% /code-collapse %}}
 
 A value of 1.0 or higher per developer per day indicates that work is being

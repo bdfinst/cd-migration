@@ -1,7 +1,13 @@
 {{- $title := .Get "title" | default "Show code" -}}
-<details class="code-collapse">
+{{- $lang := .Get "lang" | default "" -}}
+{{- $open := eq (.Get "open") "true" -}}
+<details class="code-collapse"{{ if $open }} open{{ end }}>
   <summary class="code-collapse__summary">{{ $title }}</summary>
   <div class="code-collapse__content">
-    {{ .Inner }}
+    {{ if $lang }}
+      {{ highlight (trim .Inner "\n") $lang "" }}
+    {{ else }}
+      {{ .Inner }}
+    {{ end }}
   </div>
 </details>

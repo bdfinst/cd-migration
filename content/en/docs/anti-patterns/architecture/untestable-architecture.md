@@ -147,8 +147,7 @@ changing behavior.
 
 In Java:
 
-{{% code-collapse title="OrderService before and after dependency injection (Java)" %}}
-```java
+{{% code-collapse title="OrderService before and after dependency injection (Java)" lang="java" %}}
 // Before: untestable - constructs dependency internally
 public class OrderService {
     public void processOrder(Order order) {
@@ -168,13 +167,11 @@ public class OrderService {
         this.paymentGateway = paymentGateway;
     }
 }
-```
 {{% /code-collapse %}}
 
 In JavaScript:
 
-{{% code-collapse title="processOrder before and after dependency injection (JavaScript)" %}}
-```javascript
+{{% code-collapse title="processOrder before and after dependency injection (JavaScript)" lang="javascript" %}}
 // Before: untestable
 function processOrder(order) {
   const db = new DatabaseConnection();
@@ -186,7 +183,6 @@ function processOrder(order) {
 function processOrder(order, { repository, paymentGateway }) {
   // business logic using injected dependencies
 }
-```
 {{% /code-collapse %}}
 
 The interface or abstraction is the key. Production code passes real implementations. Tests pass
@@ -213,8 +209,7 @@ including tests.
 
 A serverless handler that does everything:
 
-{{% code-collapse title="Extracting business logic from a serverless handler (JavaScript)" %}}
-```javascript
+{{% code-collapse title="Extracting business logic from a serverless handler (JavaScript)" lang="javascript" %}}
 // Before: untestable
 exports.handler = async (event) => {
   const db = new Database();
@@ -235,7 +230,6 @@ exports.handler = async (event, { db } = { db: new Database() }) => {
   await db.updateOrder({ ...order, discount });
   return { statusCode: 200 };
 };
-```
 {{% /code-collapse %}}
 
 The `calculateDiscount` function is now testable in complete isolation. The handler is thin and can

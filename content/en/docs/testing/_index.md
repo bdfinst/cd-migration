@@ -81,9 +81,7 @@ layers 1-3 to isolate external dependencies.
 
 ### How the layers work together
 
-
-{{% code-collapse title="Test layers by pipeline stage" %}}
-```
+{{% code-collapse title="Test layers by pipeline stage" lang="text" %}}
 Pipeline stage    Test layer              Deterministic?   Blocks deploy?
 ─────────────────────────────────────────────────────────────────────────
 On every commit   Unit tests              Yes              Yes
@@ -94,7 +92,6 @@ Asynchronous      Contract tests          No               No (triggers review)
 
 Post-deployment   E2E smoke tests         No               Triggers rollback if critical
                   Synthetic monitoring    No               Triggers alerts
-```
 {{% /code-collapse %}}
 
 The critical insight: **everything that blocks deployment is deterministic and under your

@@ -163,9 +163,7 @@ This approach is called **Behavior-Driven Development (BDD)**, a collaborative p
 
 **Example:**
 
-
-{{% code-collapse title="BDD scenarios for password reset" %}}
-```gherkin
+{{% code-collapse title="BDD scenarios for password reset" lang="gherkin" %}}
 Feature: User password reset
 
 Scenario: Valid reset request
@@ -185,9 +183,7 @@ Scenario: Expired link
   When they click the link
   Then they see "This reset link has expired"
   And they are prompted to request a new one
-```
 {{% /code-collapse %}}
-
 
 These scenarios become your automated acceptance tests *before* you write any implementation code.
 
@@ -195,9 +191,7 @@ These scenarios become your automated acceptance tests *before* you write any im
 
 Turn those scenarios into executable tests in your framework of choice:
 
-
-{{% code-collapse title="Acceptance tests for password reset scenarios" %}}
-```javascript
+{{% code-collapse title="Acceptance tests for password reset scenarios" lang="javascript" %}}
 // Example using Jest and Supertest
 describe('Password Reset', () => {
   it('sends reset email for valid user', async () => {
@@ -222,9 +216,7 @@ describe('Password Reset', () => {
     expect(emailService.sentEmails).toHaveLength(0);
   });
 });
-```
 {{% /code-collapse %}}
-
 
 Now you can write the minimum code to make these tests pass. This drives smaller, more focused changes.
 
@@ -294,9 +286,7 @@ You don't need a sophisticated feature flag system to start. Begin with environm
 
 **Simple boolean flag example:**
 
-
-{{% code-collapse title="Simple boolean feature flags via environment variables" %}}
-```javascript
+{{% code-collapse title="Simple boolean feature flags via environment variables" lang="javascript" %}}
 // config/features.js
 module.exports = {
   newCheckoutFlow: process.env.FEATURE_NEW_CHECKOUT === 'true',
@@ -312,9 +302,7 @@ app.get('/checkout', (req, res) => {
   }
   return renderOldCheckout(req, res);
 });
-```
 {{% /code-collapse %}}
-
 
 This is enough for most TBD use cases.
 
@@ -322,9 +310,7 @@ This is enough for most TBD use cases.
 
 Critical: You must test **both** code paths, flag on and flag off.
 
-
-{{% code-collapse title="Testing both flag states - enabled and disabled" %}}
-```javascript
+{{% code-collapse title="Testing both flag states - enabled and disabled" lang="javascript" %}}
 describe('Checkout flow', () => {
   describe('with new checkout flow enabled', () => {
     beforeEach(() => {
@@ -346,9 +332,7 @@ describe('Checkout flow', () => {
     });
   });
 });
-```
 {{% /code-collapse %}}
-
 
 If you only test with the flag on, you'll break production when the flag is off.
 
@@ -390,9 +374,7 @@ Every temporary release flag should have:
 
 **Track your flags:**
 
-
-{{% code-collapse title="Tracking flag metadata for lifecycle management" %}}
-```javascript
+{{% code-collapse title="Tracking flag metadata for lifecycle management" lang="javascript" %}}
 // flags.config.js
 module.exports = {
   flags: [
@@ -406,9 +388,7 @@ module.exports = {
     }
   ]
 };
-```
 {{% /code-collapse %}}
-
 
 **Set reminders to remove flags.** Permanent flags multiply complexity and slow you down.
 
@@ -654,9 +634,7 @@ Define the contract you need from the upstream service and codify it in tests th
 
 **Example using Pact:**
 
-
-{{% code-collapse title="Consumer-driven contract test using Pact" %}}
-```javascript
+{{% code-collapse title="Consumer-driven contract test using Pact" lang="javascript" %}}
 // Your consumer test
 const { pact } = require('@pact-foundation/pact');
 
@@ -683,9 +661,7 @@ describe('User Service Contract', () => {
     expect(user.name).toBe('Jane Doe');
   });
 });
-```
 {{% /code-collapse %}}
-
 
 This test runs against your expectations of the API, not the actual service. When the upstream team changes their API, your contract test fails *before* you integrate their changes.
 
@@ -699,9 +675,7 @@ This test runs against your expectations of the API, not the actual service. Whe
 
 If you control the shared service:
 
-
-{{% code-collapse title="API versioning for backwards-compatible multi-team integration" %}}
-```javascript
+{{% code-collapse title="API versioning for backwards-compatible multi-team integration" lang="javascript" %}}
 // Support both old and new API versions
 app.get('/api/v1/users/:id', handleV1Users);
 app.get('/api/v2/users/:id', handleV2Users);
@@ -714,9 +688,7 @@ app.get('/api/users/:id', (req, res) => {
   }
   return handleV1Users(req, res);
 });
-```
 {{% /code-collapse %}}
-
 
 **Migration path:**
 
@@ -733,9 +705,7 @@ When you depend on a team that won't change:
 2. Define your ideal interface in the adapter
 3. Let the adapter handle their messy API
 
-
-{{% code-collapse title="Strangler fig adapter to isolate a legacy dependency" %}}
-```javascript
+{{% code-collapse title="Strangler fig adapter to isolate a legacy dependency" lang="javascript" %}}
 // Your ideal interface
 class UserRepository {
   async getUser(id) {
@@ -757,9 +727,7 @@ class LegacyUserServiceAdapter extends UserRepository {
     };
   }
 }
-```
 {{% /code-collapse %}}
-
 
 Now your code depends on *your* interface, not theirs. When they change, you only update the adapter.
 
@@ -847,16 +815,12 @@ This approach satisfies both regulatory requirements and continuous integration 
 
 Every commit references the change ticket:
 
-
-{{% code-collapse title="Commit message referencing compliance ticket" %}}
-```bash
+{{% code-collapse title="Commit message referencing compliance ticket" lang="bash" %}}
 git commit -m "JIRA-1234: Add validation for SSN input
 
 Implements requirement REQ-445 from Q4 compliance review.
 Changes limited to user input validation layer."
-```
 {{% /code-collapse %}}
-
 
 Modern Git hosting platforms (GitHub, GitLab, Bitbucket) automatically track:
 
