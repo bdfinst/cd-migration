@@ -16,7 +16,7 @@ Trunk-based development is the first foundation to establish. Without daily inte
 
 Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch - the trunk - at least once per day. The trunk is always kept in a releasable state.
 
-This is a **non-negotiable prerequisite for continuous delivery**. If your team is not integrating to trunk daily, you are not doing CI, and you cannot do CD. There is no workaround.
+This is a **non-negotiable prerequisite for [continuous delivery](../../../../glossary/#cd-continuous-delivery)**. If your team is not integrating to trunk daily, you are not doing [CI](../../../../glossary/#ci-continuous-integration), and you cannot do CD. There is no workaround.
 
 > "If it hurts, do it more often, and bring the pain forward."
 >
@@ -104,8 +104,10 @@ Trunk-based development does not work in isolation. These supporting practices m
 
 ### Feature Flags
 
-When you integrate to trunk daily, incomplete features will exist on trunk. Feature flags let you merge code that is not yet ready for users.
+When you integrate to trunk daily, incomplete features will exist on trunk. [Feature flags](../../../../glossary/#feature-flag) let you merge code that is not yet ready for users.
 
+
+{{% code-collapse title="Simple feature flag example" %}}
 ```python
 # Simple feature flag example
 if feature_flags.is_enabled("new-checkout-flow", user):
@@ -113,6 +115,8 @@ if feature_flags.is_enabled("new-checkout-flow", user):
 else:
     return legacy_checkout(cart)
 ```
+{{% /code-collapse %}}
+
 
 **Rules for feature flags in TBD:**
 
@@ -139,6 +143,8 @@ The ability to make code changes that are not complete features and integrate th
 
 Branch by abstraction lets you gradually replace existing behavior while continuously integrating to trunk. It works in four steps:
 
+
+{{% code-collapse title="Branch by abstraction - four-step pattern" %}}
 ```javascript
 // Step 1: Create abstraction (integrate to trunk)
 class PaymentProcessor {
@@ -161,6 +167,8 @@ const processor = useNewStripe
 
 // Step 4: Remove old implementation (integrate to trunk)
 ```
+{{% /code-collapse %}}
+
 
 Each step is a separate commit that keeps trunk working. The old behavior runs until you explicitly switch, and you can remove the abstraction layer once the migration is complete.
 
@@ -168,6 +176,8 @@ Each step is a separate commit that keeps trunk working. The old behavior runs u
 
 Connect Last means you build all the components of a feature, each individually tested and integrated to trunk, and wire them into the user-visible path only in the final commit.
 
+
+{{% code-collapse title="Connect Last pattern - build components then wire to UI" %}}
 ```javascript
 // Commits 1-10: Build new checkout components (all tested, all integrated)
 function CheckoutStep1() { /* tested, working */ }
@@ -177,6 +187,8 @@ function CheckoutStep3() { /* tested, working */ }
 // Commit 11: Wire up to UI (final integration)
 <Route path="/checkout" component={CheckoutStep1} />
 ```
+{{% /code-collapse %}}
+
 
 Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.
 
@@ -203,7 +215,7 @@ Each commit should be a small, coherent change that leaves trunk in a working st
 
 ### Test-Driven Development (TDD) and ATDD
 
-TDD provides the safety net that makes frequent integration sustainable. When every change is accompanied by tests, you can integrate confidently.
+[TDD](../../../../glossary/#tdd-test-driven-development) provides the safety net that makes frequent integration sustainable. When every change is accompanied by tests, you can integrate confidently.
 
 - **TDD:** Write the test before the code. Red, green, refactor.
 - **ATDD (Acceptance Test-Driven Development):** Write acceptance criteria as executable tests before implementation.
@@ -242,7 +254,7 @@ Daily integration is only useful if trunk remains in a releasable state.
 
 - Run your test suite on every merge to trunk
 - If the build breaks, fixing it becomes the team's top priority
-- Establish a working agreement: "broken build = stop the line" (see [Working Agreements](../working-agreements/))
+- Establish a [working agreement](../../../../glossary/#working-agreement): "broken build = stop the line" (see [Working Agreements](../working-agreements/))
 
 ### Step 4: Remove the Safety Net of Long Branches (Week 4+)
 

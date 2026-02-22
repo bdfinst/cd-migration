@@ -10,11 +10,13 @@ description: >
 
 Change Fail Rate measures the percentage of deployments to production that result
 in degraded service, negative customer impact, or require immediate remediation
-such as a rollback, hotfix, or patch.
+such as a [rollback](../glossary/#rollback), hotfix, or patch.
 
+{{% code-collapse title="Change Fail Rate formula" %}}
 ```text
 changeFailRate = failedChangeCount / totalChangeCount * 100
 ```
+{{% /code-collapse %}}
 
 A "failed change" includes any deployment that:
 
@@ -23,7 +25,7 @@ A "failed change" includes any deployment that:
 - Triggers a production incident attributed to the change.
 - Requires manual intervention to restore service.
 
-This is one of the four DORA key metrics. It measures the stability side of
+This is one of the four [DORA](../glossary/#dora-metrics) key metrics. It measures the stability side of
 delivery performance, complementing the throughput metrics of
 [Lead Time](../lead-time/) and [Release Frequency](../release-frequency/).
 
@@ -35,7 +37,7 @@ delivery performance, complementing the throughput metrics of
 
 Data sources:
 
-- **Deployment logs:** total deployment count from your CD platform.
+- **Deployment logs:** total deployment count from your [CD](../glossary/#cd-continuous-delivery) platform.
 - **Incident management:** incidents linked to specific deployments (PagerDuty,
   Opsgenie, ServiceNow).
 - **Rollback records:** deployments that were reverted, either manually or by
@@ -78,7 +80,7 @@ a problem.
 
 ## Connection to CD
 
-Change Fail Rate is the primary quality signal in a Continuous Delivery pipeline:
+Change Fail Rate is the primary quality signal in a Continuous Delivery [pipeline](../glossary/#pipeline):
 
 - **Validates pipeline quality gates.** A rising change fail rate indicates that
   the automated tests, security scans, and quality checks in the pipeline are not
@@ -106,7 +108,7 @@ To improve Change Fail Rate:
   recurrence.
 - Strengthen the test suite, particularly integration and contract tests that
   validate interactions between services.
-- Implement progressive delivery (canary releases, feature flags) to limit the
+- Implement progressive delivery (canary releases, [feature flags](../glossary/#feature-flag)) to limit the
   impact of defective changes before they reach all users.
 - Conduct blameless post-incident reviews and feed learnings back into the
   delivery pipeline.

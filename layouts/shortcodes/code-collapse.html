@@ -1,0 +1,7 @@
+{{- $title := .Get "title" | default "Show code" -}}
+<details class="code-collapse">
+  <summary class="code-collapse__summary">{{ $title }}</summary>
+  <div class="code-collapse__content">
+    {{ .Inner }}
+  </div>
+</details>

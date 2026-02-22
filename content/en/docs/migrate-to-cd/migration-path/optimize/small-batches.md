@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 **Phase 3 - Optimize**
 
-Batch size is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
+[Batch size](../../../glossary/#batch-size) is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
 {{% /pageinfo %}}
 
 ## Why Batch Size Matters
@@ -37,7 +37,7 @@ How often you push changes to production.
 | Optimizing | Daily | Deploys are unremarkable |
 | Elite | Multiple times per day | Deploys are invisible |
 
-**How to reduce:** Remove manual gates, automate approval workflows, build confidence through progressive rollout. If your pipeline is reliable (Phase 2), the only thing preventing more frequent deploys is organizational habit.
+**How to reduce:** Remove manual gates, automate approval workflows, build confidence through progressive rollout. If your [pipeline](../../../glossary/#pipeline) is reliable (Phase 2), the only thing preventing more frequent deploys is organizational habit.
 
 **Common objections to deploying more often:**
 
@@ -78,6 +78,8 @@ This target is not aspirational. Teams that adopt hyper-sprints - iterations as 
 
 ### The Given-When-Then Pattern
 
+
+{{% code-collapse title="BDD scenarios for shopping cart discount feature" %}}
 ```gherkin
 Feature: Shopping cart discount
 
@@ -97,6 +99,7 @@ Feature: Shopping cart discount
     When I apply a 10% discount code
     Then the cart total should be $95
 ```
+{{% /code-collapse %}}
 
 Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. This is how you turn a "discount feature" (large batch) into three independent, deployable changes (small batches).
 
@@ -141,34 +144,40 @@ ATDD works at the API and service level, not just at the UI level. Here is an ex
 
 **Day 1 - Return an empty list for a customer with no orders:**
 
+{{% code-collapse title="Day 1 scenario: empty order history endpoint" %}}
 ```gherkin
 Scenario: Customer with no order history
   Given a customer with no previous orders
   When I request their order history
   Then I receive an empty list with a 200 status
 ```
+{{% /code-collapse %}}
 
 Commit: Implement the endpoint, return an empty JSON array. Acceptance test passes.
 
 **Day 2 - Return a single order with basic fields:**
 
+{{% code-collapse title="Day 2 scenario: return a single order with basic fields" %}}
 ```gherkin
 Scenario: Customer with one completed order
   Given a customer with one completed order for $49.99
   When I request their order history
   Then I receive a list with one order showing the total and status
 ```
+{{% /code-collapse %}}
 
 Commit: Query the orders table, serialize basic fields. Previous test still passes.
 
 **Day 3 - Return multiple orders sorted by date:**
 
+{{% code-collapse title="Day 3 scenario: return orders sorted by date" %}}
 ```gherkin
 Scenario: Orders returned in reverse chronological order
   Given a customer with orders placed on Jan 1, Feb 1, and Mar 1
   When I request their order history
   Then the orders are returned with the Mar 1 order first
 ```
+{{% /code-collapse %}}
 
 Commit: Add sorting logic and pagination. All three tests pass.
 
@@ -182,21 +191,25 @@ A vertical slice cuts through all layers of the system to deliver a thin piece o
 
 **Horizontal (avoid):**
 
+{{% code-collapse title="Horizontal slicing: stories split by architectural layer" %}}
 ```
 Story 1: Build the database schema for discounts
 Story 2: Build the API endpoints for discounts
 Story 3: Build the UI for applying discounts
 ```
+{{% /code-collapse %}}
 
 Problems: Story 1 and 2 deliver no user value. You cannot test end-to-end until story 3 is done. Integration risk accumulates.
 
 **Vertical (prefer):**
 
+{{% code-collapse title="Vertical slicing: stories split by user-observable behavior" %}}
 ```
 Story 1: Apply a simple percentage discount (DB + API + UI for one scenario)
 Story 2: Reject expired discount codes (DB + API + UI for one scenario)
 Story 3: Apply discounts only to eligible items (DB + API + UI for one scenario)
 ```
+{{% /code-collapse %}}
 
 Benefits: Every story delivers testable, deployable functionality. Integration happens with each story, not at the end. You can ship story 1 and get feedback before building story 2.
 

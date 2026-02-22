@@ -44,7 +44,7 @@ scenarios belong in [unit](../unit/), [integration](../integration/), or
 - Navigating from the homepage through search, item detail, cart, and checkout.
 
 Horizontal tests are significantly more complex and fragile. Due to their large failure
-surface area, they are **not suitable for blocking release pipelines**.
+surface area, they are **not suitable for blocking release [pipelines](../glossary/#pipeline)**.
 
 ## Characteristics
 
@@ -62,6 +62,7 @@ surface area, they are **not suitable for blocking release pipelines**.
 
 A vertical E2E test verifying user lookup through a live web interface:
 
+{{% code-collapse title="Vertical E2E test - user lookup via live web interface" %}}
 ```java
 @Test
 public void verifyValidUserLookup() throws Exception {
@@ -75,9 +76,11 @@ public void verifyValidUserLookup() throws Exception {
     assertEquals("Grace Hopper", homePage.getManagerName());
 }
 ```
+{{% /code-collapse %}}
 
 A browser-based E2E test using a tool like Playwright:
 
+{{% code-collapse title="Browser-based E2E test - add to cart and checkout with Playwright" %}}
 ```javascript
 test("user can add an item to cart and check out", async ({ page }) => {
   await page.goto("https://staging.example.com");
@@ -91,6 +94,7 @@ test("user can add an item to cart and check out", async ({ page }) => {
   await expect(page.getByText("Order confirmed")).toBeVisible();
 });
 ```
+{{% /code-collapse %}}
 
 ## Anti-Patterns
 
@@ -109,7 +113,7 @@ test("user can add an item to cart and check out", async ({ page }) => {
 
 ## Connection to CD Pipeline
 
-E2E tests run in the **later stages** of the delivery pipeline, after the build artifact has
+E2E tests run in the **later stages** of the delivery pipeline, after the build [artifact](../glossary/#artifact) has
 passed all deterministic tests and has been deployed to a staging or pre-production
 environment:
 
@@ -122,7 +126,7 @@ environment:
 
 Because E2E tests are non-deterministic, they should **not break the build** in most cases. A
 team may choose to gate on a small set of highly reliable vertical E2E tests, but must invest
-in reducing false positives to make this valuable. CD pipelines should be optimized for rapid
+in reducing false positives to make this valuable. [CD](../glossary/#cd-continuous-delivery) pipelines should be optimized for rapid
 recovery of production issues rather than attempting to prevent all defects with slow,
 fragile E2E gates.
 

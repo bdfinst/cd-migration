@@ -30,7 +30,7 @@ Static analysis should run **continuously**, at every stage where feedback is po
   server integrations.
 - **On save**: format-on-save and lint-on-save catch issues immediately.
 - **Pre-commit**: hooks prevent problematic code from entering version control.
-- **In CI**: the full suite of static checks runs on every PR and on the trunk after merge,
+- **In [CI](../glossary/#ci-continuous-integration)**: the full suite of static checks runs on every PR and on the trunk after merge,
   verifying that earlier local checks were not bypassed.
 
 Static analysis is always applicable. Every project, regardless of language or platform,
@@ -54,6 +54,7 @@ benefits from linting, formatting, and dependency scanning.
 
 A `.eslintrc.json` configuration enforcing test quality rules:
 
+{{% code-collapse title="ESLint configuration for test quality rules" %}}
 ```json
 {
   "rules": {
@@ -66,6 +67,7 @@ A `.eslintrc.json` configuration enforcing test quality rules:
   }
 }
 ```
+{{% /code-collapse %}}
 
 ### Type Checking
 
@@ -157,7 +159,7 @@ it("should have no accessibility violations", async () => {
 
 ## Connection to CD Pipeline
 
-Static analysis is the **first gate** in the CD pipeline, providing the fastest feedback:
+Static analysis is the **first gate** in the [CD](../glossary/#cd-continuous-delivery) [pipeline](../glossary/#pipeline), providing the fastest feedback:
 
 1. **IDE / local development**: plugins run in real time as code is written.
 2. **Pre-commit**: hooks run linters, formatters, and accessibility checks on changed

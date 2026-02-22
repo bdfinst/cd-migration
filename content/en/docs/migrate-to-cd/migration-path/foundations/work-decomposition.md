@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations**
 
-Trunk-based development requires daily integration, and daily integration requires small work. If a feature takes two weeks to build, you cannot integrate it daily without decomposing it first. This page covers the techniques for breaking work into small, deliverable increments that flow through your pipeline continuously.
+[Trunk-based development](../../../glossary/#tbd-trunk-based-development) requires daily integration, and daily integration requires small work. If a feature takes two weeks to build, you cannot integrate it daily without decomposing it first. This page covers the techniques for breaking work into small, deliverable increments that flow through your [pipeline](../../../glossary/#pipeline) continuously.
 {{% /pageinfo %}}
 
 ## Why Small Work Matters for CD
@@ -22,11 +22,11 @@ Every practice in Phase 1 reinforces this:
 - [Testing fundamentals](../testing-fundamentals/) work best when each change is small enough to test thoroughly.
 - [Code review](../code-review/) is fast when the change is small. A 50-line change can be reviewed in minutes. A 2,000-line change takes hours - if it gets reviewed at all.
 
-The data supports this. The [DORA](../../../glossary/#dora-metrics) research consistently shows that smaller batch sizes correlate with higher delivery performance. Small changes have:
+The data supports this. The [DORA](../../../glossary/#dora-metrics) research consistently shows that smaller [batch sizes](../../../glossary/#batch-size) correlate with higher delivery performance. Small changes have:
 
 - **Lower risk:** If a small change breaks something, the blast radius is limited, and the cause is obvious.
 - **Faster feedback:** A small change gets through the pipeline quickly. You learn whether it works today, not next week.
-- **Easier rollback:** Rolling back a 50-line change is straightforward. Rolling back a 2,000-line change often requires a new deployment.
+- **Easier [rollback](../../../glossary/#rollback):** Rolling back a 50-line change is straightforward. Rolling back a 2,000-line change often requires a new deployment.
 - **Better flow:** Small work items move through the system predictably. Large work items block queues and create bottlenecks.
 
 ## The 2-Day Rule
@@ -43,7 +43,7 @@ A work item is complete when it is:
 
 - Integrated to trunk
 - All tests pass
-- The change is deployable (even if the feature is not yet user-visible)
+- The change is [deployable](../../../glossary/#deployable) (even if the feature is not yet user-visible)
 - It meets the [Definition of Done](../working-agreements/)
 
 If a story requires a [feature flag](../../../glossary/#feature-flag) to hide incomplete user-facing behavior, that is fine. The code is still integrated, tested, and deployable.
@@ -89,19 +89,22 @@ The example above assumes a team that owns every layer from the UI to the databa
 
 The principle does not change. A vertical slice still cuts through all layers end-to-end. "End-to-end" means different things in each context.
 
-**Full-stack product team** - owns everything from UI to database; their consumer is a human:
+**[Full-stack product team](../../../glossary/#full-stack-product-team)** - owns everything from UI to database; their consumer is a human:
 
+{{% code-collapse title="Full-stack product team: vertical slice through all layers" %}}
 ```mermaid
 graph TD
     User([Human User]) --> UI["UI Layer\n(your team)"]
     UI --> API["API Layer\n(your team)"]
     API --> DB[("Database\n(your team)")]
 ```
+{{% /code-collapse %}}
 
 A vertical slice: one behavior delivered through the UI, the API, and the database in a single deployable change.
 
-**Subdomain product team** - full-stack within their service; their consumer is another service or team:
+**[Subdomain product team](../../../glossary/#subdomain-product-team)** - full-stack within their service; their consumer is another service or team:
 
+{{% code-collapse title="Subdomain product team: vertical slice through service boundary" %}}
 ```mermaid
 graph TD
     User([Human User]) --> FE["Frontend Service\n(other team)"]
@@ -109,6 +112,7 @@ graph TD
     API --> DB[("Your Database\n(your team)")]
     API --> DS["Downstream Service\n(other team)"]
 ```
+{{% /code-collapse %}}
 
 A vertical slice: one behavior delivered through the service boundary (the API contract), the business logic, and the data store. The team does not own or coordinate with any consumer - whether a UI or another service - except through the API contract. They define a stable contract and deploy behind it independently.
 
@@ -185,6 +189,8 @@ Each concrete example can become its own story or task. The scope is clear, the 
 
 Structure acceptance criteria in Given-When-Then format to make them executable:
 
+
+{{% code-collapse title="Given-When-Then: user login scenarios" %}}
 ```gherkin
 Feature: User login
 
@@ -199,6 +205,7 @@ Feature: User login
     Then they see the message "Invalid email or password"
     And they remain on the login page
 ```
+{{% /code-collapse %}}
 
 Each scenario is a natural unit of work. Implement one scenario at a time, integrate to trunk after each one.
 

@@ -18,7 +18,7 @@ Each pitfall below has a root cause in the same two gaps: skipped [first-class a
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
 
-**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way ACD fails.
+**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way [ACD](../glossary/#acd-agentic-continuous-delivery) fails.
 
 **What to do:** Define test specifications ([BDD](../../glossary/#bdd-behavior-driven-development) scenarios and acceptance criteria) before any code generation. Use a [test fidelity agent](../pipeline-enforcement/) to validate that generated test code matches the specification. Review agent-generated test code for implementation coupling before approving it.
 
@@ -50,6 +50,7 @@ A session implementing Scenario 2 that also cleans up the module from Scenario 1
 
 Example scope constraint to include in every implementation session:
 
+{{% code-collapse title="Scope constraint: restrict agent to current scenario only" %}}
 ```
 Implement the behavior described in this scenario and only that behavior.
 
@@ -58,6 +59,7 @@ but do not change it. Any refactoring, renaming, or cleanup must happen
 in a separate session with its own commit. The only code that may change
 in this session is the code required to make the acceptance test pass.
 ```
+{{% /code-collapse %}}
 
 When cleanup is warranted, schedule it explicitly: create a session scoped
 to that specific cleanup, commit it separately, and include the cleanup
@@ -106,6 +108,7 @@ A practical pattern: after every three to five feature sessions, schedule a main
 
 Example maintenance session prompt:
 
+{{% code-collapse title="Maintenance session prompt: refactor with no behavior changes" %}}
 ```
 Refactor the files listed below. The goal is to improve readability and
 reduce duplication introduced during the last four feature sessions.
@@ -120,6 +123,7 @@ Constraints:
 Files in scope:
 [list files]
 ```
+{{% /code-collapse %}}
 
 ### Track skill effectiveness over time
 

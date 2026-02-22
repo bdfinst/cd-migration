@@ -10,17 +10,19 @@ description: >
 
 Lead Time measures the total elapsed time from when a code change is committed to
 the version control system until that change is successfully running in production.
-This is one of the four key metrics identified by the DORA (DevOps Research and
+This is one of the four key metrics identified by the [DORA](../glossary/#dora-metrics) (DevOps Research and
 Assessment) team as a predictor of software delivery performance.
 
+{{% code-collapse title="Lead Time formula" %}}
 ```text
 leadTime = productionDeployTimestamp - commitTimestamp
 ```
+{{% /code-collapse %}}
 
 In the broader value stream, "lead time" can also refer to the time from a customer
 request to delivery. The DORA definition focuses specifically on the segment from
-commit to production, which the *Accelerate* research calls "lead time for changes."
-This narrower definition captures the efficiency of your delivery pipeline and
+commit to production, which the *Accelerate* research calls "[lead time for changes](../glossary/#lead-time-for-changes)."
+This narrower definition captures the efficiency of your delivery [pipeline](../glossary/#pipeline) and
 deployment process.
 
 Lead Time includes [Build Duration](../build-duration/) plus any additional time
@@ -48,7 +50,7 @@ Data sources:
 - **Deployment tooling:** production deployment timestamps from Argo CD, Spinnaker,
   Flux, or custom scripts.
 
-For teams practicing continuous deployment, lead time may be nearly identical to
+For teams practicing [continuous deployment](../glossary/#continuous-deployment), lead time may be nearly identical to
 build duration. For teams with manual approval gates or scheduled release windows,
 lead time will be significantly longer.
 
@@ -68,7 +70,7 @@ automated pipelines and continuous deployment.
 ## Common Pitfalls
 
 - **Measuring only build time.** Lead time includes everything after the commit,
-  not just the CI pipeline. Manual approval gates, scheduled deployment windows,
+  not just the [CI](../glossary/#ci-continuous-integration) pipeline. Manual approval gates, scheduled deployment windows,
   and environment provisioning delays must all be included.
 - **Ignoring waiting time.** A change may sit in a queue waiting for a release
   train, a change advisory board (CAB) review, or a deployment window. This wait

@@ -1052,3 +1052,58 @@ pre.mermaid {
   from { transform: scaleY(0); }
   to   { transform: scaleY(1); }
 }
+
+// Code collapse shortcode
+.code-collapse {
+  margin: 1rem 0;
+  border: 1px solid $secondary;
+  border-radius: 4px;
+
+  .code-collapse__summary {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $primary;
+    background-color: lighten($primary, 62%);
+    border-radius: 4px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+
+    &::before {
+      content: "▶";
+      font-size: 0.65rem;
+      transition: transform 0.15s ease;
+      display: inline-block;
+    }
+
+    &:hover {
+      background-color: lighten($primary, 57%);
+    }
+  }
+
+  &[open] .code-collapse__summary {
+    border-bottom: 1px solid $secondary;
+    border-radius: 4px 4px 0 0;
+
+    &::before {
+      transform: rotate(90deg);
+    }
+  }
+
+  .code-collapse__content {
+    > div.highlight,
+    > pre {
+      margin: 0;
+      border-radius: 0 0 4px 4px;
+
+      pre {
+        margin: 0;
+        border-radius: 0 0 4px 4px;
+      }
+    }
+  }
+}

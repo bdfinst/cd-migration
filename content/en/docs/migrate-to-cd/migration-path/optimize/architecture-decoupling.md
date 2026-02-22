@@ -9,12 +9,12 @@ description: >
 {{% pageinfo %}}
 **Phase 3 - Optimize** | Original content based on Dojo Consortium delivery journey patterns
 
-You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to continuous deployment and provides practical strategies for moving from entangled to loosely coupled.
+You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to [continuous deployment](../../../glossary/#continuous-deployment) and provides practical strategies for moving from entangled to loosely coupled.
 {{% /pageinfo %}}
 
 ## Why Architecture Matters for CD
 
-Every practice in this guide - small batches, feature flags, WIP limits - assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
+Every practice in this guide - small batches, [feature flags](../../../glossary/#feature-flag), [WIP](../../../glossary/#wip-work-in-progress) limits - assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
 
 Architecture is either an enabler or a blocker for continuous deployment. There is no neutral.
 
@@ -39,10 +39,10 @@ In an entangled architecture, everything is connected to everything. Changes in 
 
 | Metric | Typical State |
 |--------|--------------|
-| Deployment frequency | Monthly or quarterly (because coordinating releases is hard) |
-| Lead time | Weeks to months (because changes wait for the next release train) |
-| Change failure rate | High (because big releases mean big risk) |
-| MTTR | Long (because failures cascade across boundaries) |
+| [Deployment frequency](../../../glossary/#deployment-frequency) | Monthly or quarterly (because coordinating releases is hard) |
+| [Lead time](../../../glossary/#lead-time-for-changes) | Weeks to months (because changes wait for the next release train) |
+| [Change failure rate](../../../glossary/#change-failure-rate-cfr) | High (because big releases mean big risk) |
+| [MTTR](../../../glossary/#mean-time-to-restore-mttr) | Long (because failures cascade across boundaries) |
 
 **How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. It is not a failure - it is a stage that almost every system passes through.
 
@@ -106,6 +106,8 @@ Look for places where the system already has natural boundaries, even if they ar
 
 Instead of rewriting the system, incrementally extract components from the monolith.
 
+
+{{% code-collapse title="Strangler Fig Pattern: incremental extraction steps" %}}
 ```
 Step 1: Route all traffic through a facade/proxy
 Step 2: Build the new component alongside the old
@@ -114,6 +116,7 @@ Step 4: Validate correctness and performance
 Step 5: Route all traffic to the new component
 Step 6: Remove the old code
 ```
+{{% /code-collapse %}}
 
 **Key rule:** The strangler fig pattern must be done incrementally. If you try to extract everything at once, you are doing a rewrite, not a strangler fig.
 
@@ -144,6 +147,8 @@ If two services share a database, one of three things needs to happen:
 2. **The data is duplicated.** Each service maintains its own copy, synchronized via events.
 3. **The shared data becomes a dedicated data service.** Both services consume from a service that owns the data.
 
+
+{{% code-collapse title="Eliminating shared databases: before and after patterns" %}}
 ```
 BEFORE (shared database):
   Service A → [Shared DB] ← Service B
@@ -159,6 +164,7 @@ AFTER (option 3 - data service):
   Service A → Data Service → [DB]
   Service B → Data Service → [DB]
 ```
+{{% /code-collapse %}}
 
 ### Strategy 2: Version Your APIs
 
@@ -227,7 +233,7 @@ Microservices add operational complexity (more services to deploy, monitor, and 
 
 ### 3. "Teams keep adding new dependencies that recouple the system"
 
-Architecture decoupling requires governance. Establish architectural principles (e.g., "no shared databases") and enforce them through automated checks (e.g., dependency analysis in CI) and architecture reviews for cross-boundary changes.
+Architecture decoupling requires governance. Establish architectural principles (e.g., "no shared databases") and enforce them through automated checks (e.g., dependency analysis in [CI](../../../glossary/#ci-continuous-integration)) and architecture reviews for cross-boundary changes.
 
 ### 4. "We can't afford the time to decouple"
 

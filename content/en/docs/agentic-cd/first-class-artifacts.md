@@ -20,6 +20,7 @@ The intent description is the agent's [prompt](../glossary/#prompt) in the broad
 
 **Example:**
 
+{{% code-collapse title="Intent description: add rate limiting to /api/search" %}}
 ```markdown
 ## Intent: Add rate limiting to the /api/search endpoint
 
@@ -29,6 +30,7 @@ requests per minute. We need to limit each authenticated client to 100
 requests per minute on the /api/search endpoint. Requests that exceed
 the limit should receive a 429 response with a Retry-After header.
 ```
+{{% /code-collapse %}}
 
 **Key property:** The intent description is authored and owned by a human. The agent does not write or modify it.
 
@@ -38,6 +40,7 @@ the limit should receive a 429 response with a Retry-After header.
 
 Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../glossary/#bdd-behavior-driven-development) scenarios work well here:
 
+{{% code-collapse title="BDD scenarios: rate limit user-facing behavior" %}}
 ```gherkin
 Scenario: Client exceeds rate limit
   Given an authenticated client
@@ -54,6 +57,7 @@ Scenario: Client within rate limit
   Then the request should be processed normally
   And the response should include rate limit headers showing remaining quota
 ```
+{{% /code-collapse %}}
 
 **Key property:** Humans define the scenarios. The agent generates code to satisfy them but does not decide what scenarios to include.
 
@@ -65,6 +69,7 @@ Agents need explicit architectural context that human developers often carry in 
 
 **Example:**
 
+{{% code-collapse title="Feature description: rate limiting architecture and constraints" %}}
 ```markdown
 ## Feature: Rate Limiting for Search API
 
@@ -82,6 +87,7 @@ Agents need explicit architectural context that human developers often carry in 
 - Must work correctly with our horizontal scaling (3-12 instances)
 - Must be configurable per-endpoint (other endpoints may have different limits later)
 ```
+{{% /code-collapse %}}
 
 **Key property:** Engineering owns the architectural decisions. The agent implements within these constraints but does not change them.
 
@@ -104,6 +110,7 @@ Human review of agent-generated test code focuses on these two properties. The h
 
 **Example** - these tests verify rate limiting behavior through observable HTTP responses, not through internal method calls:
 
+{{% code-collapse title="Executable truth: rate limiting tests verifying observable behavior" %}}
 ```javascript
 describe("Rate Limiting", () => {
   it("allows requests within limit", async () => {
@@ -163,6 +170,7 @@ describe("Rate Limiting", () => {
   });
 });
 ```
+{{% /code-collapse %}}
 
 **Key property:** The [pipeline](../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
@@ -174,6 +182,7 @@ The implementation is the artifact most likely to be agent-generated. It must sa
 
 **Example** - agent-generated rate limiting middleware that satisfies the executable truth above:
 
+{{% code-collapse title="Implementation: agent-generated rate limiting middleware" %}}
 ```javascript
 function rateLimitMiddleware(redisClient, config) {
   return async function (req, res, next) {
@@ -203,6 +212,7 @@ function rateLimitMiddleware(redisClient, config) {
   };
 }
 ```
+{{% /code-collapse %}}
 
 **Review requirements:** Agent-generated implementation must be reviewed by a human before merging to trunk. The review focuses on:
 
@@ -221,6 +231,7 @@ Agents need system constraints stated explicitly.
 
 **Example:**
 
+{{% code-collapse title="System constraints: global non-functional requirements" %}}
 ```yaml
 system_constraints:
   security:
@@ -240,6 +251,7 @@ system_constraints:
     - Log structured data, not strings
     - Feature flags required for user-visible changes
 ```
+{{% /code-collapse %}}
 
 **Key property:** System constraints apply globally. Unlike other artifacts that are per-change, these rules apply to every change in the system.
 

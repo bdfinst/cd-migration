@@ -9,16 +9,16 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations**
 
-The practices in Phase 1 - trunk-based development, testing, small work, and fast review - only work when the whole team commits to them. Working agreements make that commitment explicit. This page covers the key agreements a team needs before moving to pipeline automation in Phase 2.
+The practices in Phase 1 - [trunk-based development](../../../glossary/#tbd-trunk-based-development), testing, small work, and fast review - only work when the whole team commits to them. [Working agreements](../../../glossary/#working-agreement) make that commitment explicit. This page covers the key agreements a team needs before moving to [pipeline](../../../glossary/#pipeline) automation in Phase 2.
 {{% /pageinfo %}}
 
 ## Why Working Agreements Matter
 
 A working agreement is a shared commitment that the team creates, owns, and enforces together. It is not a policy imposed from outside. It is the team's own answer to the question: "How do we work together?"
 
-Without working agreements, CD practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD - they are practicing individual preferences.
+Without working agreements, [CD](../../../glossary/#cd-continuous-delivery) practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD - they are practicing individual preferences.
 
-Working agreements prevent this drift by making expectations explicit. When everyone agrees on what "done" means, what "ready" means, and how CI works, the team can hold each other accountable without conflict.
+Working agreements prevent this drift by making expectations explicit. When everyone agrees on what "done" means, what "ready" means, and how [CI](../../../glossary/#ci-continuous-integration) works, the team can hold each other accountable without conflict.
 
 ## Definition of Done
 
@@ -31,10 +31,10 @@ A work item is **done** when all of the following are true:
 - [ ] Code is integrated to trunk
 - [ ] All automated tests pass
 - [ ] Code has been reviewed (via pairing, mob, or pull request)
-- [ ] The change is deployable to production
+- [ ] The change is [deployable](../../../glossary/#deployable) to production
 - [ ] No known defects are introduced
 - [ ] Relevant documentation is updated (API docs, runbooks, etc.)
-- [ ] Feature flags are in place for incomplete user-facing features
+- [ ] [Feature flags](../../../glossary/#feature-flag) are in place for incomplete user-facing features
 
 ### Why "Deployed to Production" Matters
 
@@ -51,7 +51,7 @@ As your CD maturity grows, extend the DoD:
 | Phase | Addition to DoD |
 |-------|-----------------|
 | Phase 1 (Foundations) | Code integrated to trunk, tests pass, reviewed, deployable |
-| Phase 2 (Pipeline) | Artifact built and validated by the pipeline |
+| Phase 2 (Pipeline) | [Artifact](../../../glossary/#artifact) built and validated by the pipeline |
 | Phase 3 (Optimize) | Change deployed to production behind a feature flag |
 | Phase 4 (Deliver on Demand) | Change deployed to production and monitored |
 
@@ -103,7 +103,7 @@ The team agrees to the following practices:
 - [ ] If the fix will take more than 10 minutes, revert the change and fix it offline
 - [ ] No one commits to a broken trunk (except to fix the break)
 
-**Work in progress:**
+**[Work in progress](../../../glossary/#wip-work-in-progress):**
 
 - [ ] Finishing existing work takes priority over starting new work
 - [ ] The team limits work in progress to maintain flow
@@ -173,10 +173,10 @@ Teams adopting stop-the-line discipline encounter predictable pushback. These re
 | Objection | Response |
 |-----------|----------|
 | "We can't afford to stop - we have a deadline." | You cannot afford not to stop. Every minute the build is red, you accumulate changes that are untested against the real baseline. Stopping for 20 minutes now prevents losing half a day later. The fastest path to your deadline runs through a green build. |
-| "Stopping kills our velocity." | Velocity that includes work built on a broken trunk is an illusion. Those story points will come back as rework, failed deployments, or production incidents. Real velocity requires a releasable trunk. |
+| "Stopping kills our velocity." | Velocity that includes work built on a broken trunk is an illusion. Those [story points](../../../glossary/#story-points) will come back as rework, failed deployments, or production incidents. Real velocity requires a releasable trunk. |
 | "We already stop all the time - it's not working." | Frequent stops indicate a different problem: the team is merging changes that break the build too often. Address that root cause with better pre-merge testing, smaller commits, and pair programming on risky changes. Stop-the-line is the safety net, not the solution for chronic build instability. |
 | "It's a known flaky test - we can ignore it." | A flaky test you ignore trains the team to ignore all red builds. Fix the flaky test or remove it. There is no middle ground. A red build must always mean "something is wrong" or the signal loses all value. |
-| "Management won't support stopping feature work." | Frame it in terms management cares about: lead time and rework cost. Show the two-timeline comparison above. Teams that stop immediately have shorter cycle times and less unplanned rework. This is not about being cautious - it is about being fast. |
+| "Management won't support stopping feature work." | Frame it in terms management cares about: [lead time](../../../glossary/#lead-time-for-changes) and rework cost. Show the two-timeline comparison above. Teams that stop immediately have shorter cycle times and less unplanned rework. This is not about being cautious - it is about being fast. |
 
 ## How Working Agreements Support the CD Migration
 
@@ -198,6 +198,8 @@ Use this template as a starting point. Customize it for your team's context. The
 
 ### Team Working Agreement Template
 
+
+{{% code-collapse title="Team Working Agreement Template" %}}
 ```markdown
 # [Team Name] Working Agreement
 Date: [Date]
@@ -244,6 +246,7 @@ This agreement is reviewed and updated [monthly / quarterly].
 Any team member can propose changes at any time.
 All changes require team consensus.
 ```
+{{% /code-collapse %}}
 
 ### Tips for Creating Working Agreements
 
@@ -260,12 +263,12 @@ All changes require team consensus.
 |--------|--------|----------------|
 | Agreement adherence | Team self-reports > 80% adherence | Indicates agreements are realistic and followed |
 | Agreement review frequency | Monthly | Ensures agreements stay relevant |
-| Integration frequency | Meets CI agreement target | Validates the CI working agreement |
+| [Integration frequency](../../../glossary/#integration-frequency) | Meets CI agreement target | Validates the CI working agreement |
 | Broken build fix time | Meets CI agreement target | Validates the broken build response agreement |
 
 ## Next Step
 
-With working agreements in place, your team has established the foundations for continuous delivery: daily integration, reliable testing, automated builds, small work, fast review, and shared commitments.
+With working agreements in place, your team has established the foundations for [continuous delivery](../../../glossary/#cd-continuous-delivery): daily integration, reliable testing, automated builds, small work, fast review, and shared commitments.
 
 You are ready to move to [Phase 2: Pipeline](../../pipeline/), where you will build the automated path from commit to production.
 

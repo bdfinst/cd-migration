@@ -105,19 +105,19 @@ to the hidden coupling in the code.
 
 ### Impact on continuous delivery
 
-Continuous delivery depends on a fast, reliable automated test suite. Without that suite, the
-pipeline cannot provide the safety signal that makes frequent deployment safe. If tests cannot run
+[Continuous delivery](../../glossary/#cd-continuous-delivery) depends on a fast, reliable automated test suite. Without that suite, the
+[pipeline](../../glossary/#pipeline) cannot provide the safety signal that makes frequent deployment safe. If tests cannot run
 in isolation, the pipeline either skips them (dangerous) or depends on heavyweight infrastructure
 (slow and fragile). Either outcome makes continuous delivery impractical.
 
 CD pipelines are designed to provide feedback in minutes, not hours. A test suite that requires a
 live database, external APIs, and environmental setup to run is incompatible with that requirement.
-The pipeline becomes the bottleneck that limits deployment frequency, rather than the automation
+The pipeline becomes the bottleneck that limits [deployment frequency](../../glossary/#deployment-frequency), rather than the automation
 that enables it. Teams cannot confidently deploy multiple times per day when every test run requires
 30 minutes and a set of live external services.
 
 Untestable architecture is often the root cause when teams say "we can't go faster - we need more
-QA time." The real constraint is not QA capacity. It is the absence of a test suite that can verify
+QA time." The real [constraint](../../glossary/#constraint) is not QA capacity. It is the absence of a test suite that can verify
 changes quickly and automatically.
 
 ## How to Fix It
@@ -147,6 +147,7 @@ changing behavior.
 
 In Java:
 
+{{% code-collapse title="OrderService before and after dependency injection (Java)" %}}
 ```java
 // Before: untestable - constructs dependency internally
 public class OrderService {
@@ -168,9 +169,11 @@ public class OrderService {
     }
 }
 ```
+{{% /code-collapse %}}
 
 In JavaScript:
 
+{{% code-collapse title="processOrder before and after dependency injection (JavaScript)" %}}
 ```javascript
 // Before: untestable
 function processOrder(order) {
@@ -184,6 +187,7 @@ function processOrder(order, { repository, paymentGateway }) {
   // business logic using injected dependencies
 }
 ```
+{{% /code-collapse %}}
 
 The interface or abstraction is the key. Production code passes real implementations. Tests pass
 fast, in-memory doubles that return predictable results.
@@ -209,6 +213,7 @@ including tests.
 
 A serverless handler that does everything:
 
+{{% code-collapse title="Extracting business logic from a serverless handler (JavaScript)" %}}
 ```javascript
 // Before: untestable
 exports.handler = async (event) => {
@@ -231,6 +236,7 @@ exports.handler = async (event, { db } = { db: new Database() }) => {
   return { statusCode: 200 };
 };
 ```
+{{% /code-collapse %}}
 
 The `calculateDiscount` function is now testable in complete isolation. The handler is thin and can
 be tested with a mock database.

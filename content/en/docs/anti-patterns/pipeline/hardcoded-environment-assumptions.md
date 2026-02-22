@@ -19,7 +19,7 @@ tags:
 
 Search the codebase for the string "production" and dozens of matches come back from inside
 application logic. Some are safety guards: `if (environment != 'production') { runSlowMigration(); }`.
-Some are feature flags implemented by hand: `if (environment == 'staging') { showDebugPanel(); }`.
+Some are [feature flags](../../glossary/#feature-flag) implemented by hand: `if (environment == 'staging') { showDebugPanel(); }`.
 Some are notification suppressors: `if (env !== 'prod') { return; }` at the top of an alerting
 function. The production environment is not just a deployment target - it is a concept woven
 into the source code.
@@ -71,7 +71,7 @@ running in a different environment.
 
 Production code paths gated behind `if (env == 'production')` are never executed by the
 test suite. They run for the first time in front of real users. The fundamental premise of
-a testing pipeline is that code validated in earlier stages is the same code that reaches
+a testing [pipeline](../../glossary/#pipeline) is that code validated in earlier stages is the same code that reaches
 production. Environment-specific branches break this premise.
 
 This creates an entire category of latent defects: bugs that exist only in the code paths
@@ -89,13 +89,13 @@ the team has genuine confidence that production will behave the same way.
 ### It increases rework
 
 A developer who needs to modify a code path that is only active in production cannot run
-that path locally or in the CI pipeline. They must deploy to production and observe, or
+that path locally or in the [CI](../../glossary/#ci-continuous-integration) pipeline. They must deploy to production and observe, or
 construct a special environment that mimics the production condition. Neither option is
 efficient, and both slow the development cycle for every change that touches a production-only
 path.
 
 When production-specific bugs are found, they can only be reproduced in production (or in
-a production-like environment that requires special setup). Debugging in production is slow
+a [production-like environment](../../glossary/#production-like-environment) that requires special setup). Debugging in production is slow
 and carries risk. Every reproduction attempt requires a deployment. The development cycle for
 production-only bugs is days, not hours.
 
@@ -125,7 +125,7 @@ calculation). These bugs have the longest time-to-discovery and the most complex
 
 ### Impact on continuous delivery
 
-Continuous delivery depends on the ability to validate software in staging with high confidence
+[Continuous delivery](../../glossary/#cd-continuous-delivery) depends on the ability to validate software in staging with high confidence
 that it will behave the same way in production. Environment-specific code undermines this
 confidence at its foundation. If the code literally runs different logic in production than
 in staging, then staging validation is incomplete by design.
@@ -156,6 +156,7 @@ Find every location where environment-specific logic is embedded in code:
 
 Start with hardcoded URLs and connection strings - they are the easiest environment assumptions to eliminate:
 
+{{% code-collapse title="Externalizing a hardcoded URL to configuration (Java)" %}}
 ```java
 // Before - hard-coded environment assumption
 String apiUrl;
@@ -168,6 +169,7 @@ if (environment.equals("production")) {
 // After - externalized to configuration
 String apiUrl = config.getRequired("payments.api.url");
 ```
+{{% /code-collapse %}}
 
 The URL is now injected at deployment time from environment-specific configuration files or
 a configuration management system. The code is identical in every environment. Adding a new
@@ -178,6 +180,7 @@ environment requires no code changes, only a new configuration entry.
 Introduce a proper feature flag mechanism wherever environment-name checks are implementing
 feature toggles:
 
+{{% code-collapse title="Replacing an environment-name feature toggle with a proper flag (JavaScript)" %}}
 ```javascript
 // Before - environment name as feature flag
 if (process.env.NODE_ENV === 'staging') {
@@ -189,6 +192,7 @@ if (featureFlags.isEnabled('new-checkout')) {
   enableNewCheckout();
 }
 ```
+{{% /code-collapse %}}
 
 Feature flag state is now configuration rather than code. The flag can be enabled in staging
 and disabled in production (or vice versa) without changing code. The code path that new-checkout
@@ -208,6 +212,7 @@ firing with proper test doubles:
 3. Inject a real implementation in production configuration and a test implementation in
    non-production configuration.
 
+{{% code-collapse title="Replacing environment-gated email sending with dependency injection (Java)" %}}
 ```java
 // Before - production check suppresses email sending in test
 public void notifyUser(User user) {
@@ -220,6 +225,7 @@ public void notifyUser(User user, EmailService emailService) {
     emailService.send(user.email(), ...);
 }
 ```
+{{% /code-collapse %}}
 
 The production code now runs in every environment. Tests use a recording double that captures
 what emails would have been sent, allowing tests to verify the notification logic. The

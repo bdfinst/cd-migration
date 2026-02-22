@@ -12,7 +12,7 @@ application with well-defined internal module boundaries. The codebase is organi
 domain, not by technical layer. Each module encapsulates its own data, logic, and
 interfaces, communicating with other modules through explicit internal APIs. The
 application deploys as one unit, but its internal structure makes it possible to reason
-about, test, and change one module without understanding the entire codebase. The pipeline
+about, test, and change one module without understanding the entire codebase. The [pipeline](../glossary/#pipeline)
 is linear with parallel stages where dependencies allow.
 
 <div class="pipeline-legend">
@@ -23,6 +23,8 @@ is linear with parallel stages where dependencies allow.
   <span class="pipeline-legend__item pipeline-legend__item--prod">Production</span>
 </div>
 
+
+{{% code-collapse title="Single team, single deployable pipeline diagram" %}}
 ```mermaid
 graph TD
     classDef prefeature fill:#0d7a32,stroke:#0a6128,color:#fff
@@ -50,16 +52,17 @@ graph TD
     G --> H
     H --> I
 ```
+{{% /code-collapse %}}
 
 ## Key Characteristics
 
 - **One pipeline, one artifact**: The entire application builds and deploys as a single
-  immutable artifact. There is no fan-out or fan-in.
+  [immutable artifact](../glossary/#immutable-artifact). There is no fan-out or fan-in.
 - **Linear with parallel branches**: Security scans and performance benchmarks run in
   parallel because neither depends on the other. Everything else is sequential.
-- **Trunk-based development**: All developers commit to trunk at least daily. The pipeline
+- **[Trunk-based development](../glossary/#tbd-trunk-based-development)**: All developers commit to trunk at least daily. The pipeline
   runs on every commit.
-- **Total target time**: Under 15 minutes from commit to production-ready artifact.
+- **Total target time**: Under 15 minutes from commit to production-ready [artifact](../glossary/#artifact).
   Acceptance tests may extend this to 20 minutes for complex applications.
 - **Ownership**: The team owns the pipeline definition, which lives in the same repository
   as the application code.

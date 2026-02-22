@@ -17,7 +17,7 @@ tags:
 
 ## What This Looks Like
 
-The deployment completes. The pipeline shows green. The release engineer posts in Slack: "Deploy
+The deployment completes. The [pipeline](../../glossary/#pipeline) shows green. The release engineer posts in Slack: "Deploy
 done, watching for issues." For the next fifteen minutes, someone is refreshing the monitoring
 dashboard, clicking through the application manually, and checking error logs by eye. If nothing
 obviously explodes, they declare success and move on. If something does explode, they are already
@@ -55,7 +55,7 @@ Common variations:
   before the watcher moves on.
 
 The telltale sign: the person who deployed cannot describe specifically what would need to happen
-in the monitoring system for them to declare the deployment failed and trigger a rollback.
+in the monitoring system for them to declare the deployment failed and trigger a [rollback](../../glossary/#rollback).
 
 ## Why This Is a Problem
 
@@ -119,7 +119,7 @@ than alert engineers would.
 
 ### Impact on continuous delivery
 
-Continuous delivery means any commit that passes the pipeline can be released to production
+[Continuous delivery](../../glossary/#cd-continuous-delivery) means any commit that passes the pipeline can be released to production
 with confidence. The confidence comes from automated validation, not human belief that things
 probably look fine. Without automated health checks, the "with confidence" qualifier is hollow.
 The team is not confident - they are hopeful.
@@ -144,7 +144,7 @@ Agree on the criteria for a healthy deployment before writing any checks:
 
 1. List the key behaviors of the service: which endpoints must return success, which user
    flows must complete, which background jobs must run.
-2. Identify the baseline metrics for the service: typical error rate, typical P95 latency,
+2. Identify the [baseline metrics](../../glossary/#baseline-metrics) for the service: typical error rate, typical P95 latency,
    typical throughput. These become the comparison baselines for post-deployment checks.
 3. Define the threshold for rollback: for example, error rate more than 2x baseline for more
    than two minutes, or P95 latency above 2000ms, or health endpoint returning non-200.
@@ -161,6 +161,7 @@ If the service does not already have health endpoints, add them:
   checks critical dependencies: can the service connect to the database, can it reach its
   downstream services?
 
+{{% code-collapse title="Readiness endpoint checking database and cache (Spring Boot)" %}}
 ```java
 // Example readiness endpoint (Spring Boot)
 @GetMapping("/actuator/health/readiness")
@@ -173,6 +174,7 @@ public ResponseEntity<Map<String, String>> readiness() {
     return ResponseEntity.status(503).body(Map.of("status", "DOWN"));
 }
 ```
+{{% /code-collapse %}}
 
 The pipeline uses the readiness endpoint to confirm that the new version is accepting traffic
 before declaring the deployment complete.
@@ -227,9 +229,9 @@ triggered it included in the notification.
 Once automated health checks and rollback are established, consider progressive delivery to
 further reduce deployment risk:
 
-- Canary deployments: route a small percentage of traffic to the new version first. Apply
+- [Canary deployments](../../glossary/#canary-deployment): route a small percentage of traffic to the new version first. Apply
   health checks to the canary traffic. Only expand to full traffic if the canary is healthy.
-- Blue-green deployments: deploy the new version in parallel with the old. Switch traffic
+- [Blue-green deployments](../../glossary/#blue-green-deployment): deploy the new version in parallel with the old. Switch traffic
   after health checks pass. Rollback is instantaneous - switch traffic back.
 
 Progressive delivery reduces blast radius for bad deployments. Health checks still determine

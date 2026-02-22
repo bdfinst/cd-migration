@@ -76,9 +76,9 @@ weeks.
 
 ### Impact on continuous delivery
 
-CD requires small, frequent changes flowing through the pipeline. Large work items produce the
+[CD](../../glossary/#cd-continuous-delivery) requires small, frequent changes flowing through the [pipeline](../../glossary/#pipeline). Large work items produce the
 opposite: infrequent, high-risk changes that batch up in branches and land as large merges. A
-team working on five large items has zero deployable changes for days at a time.
+team working on five large items has zero [deployable](../../glossary/#deployable) changes for days at a time.
 
 Work decomposition is the practice that creates the small units of work that CD needs to flow.
 
@@ -104,6 +104,7 @@ Build decomposition into the refinement process:
 
 Each acceptance criterion or small group of criteria is a natural decomposition boundary:
 
+{{% code-collapse title="Acceptance criteria as Gherkin scenarios for independent delivery" %}}
 ```gherkin
 Scenario: Apply percentage discount
   Given a cart with items totaling $100
@@ -115,19 +116,20 @@ Scenario: Reject expired discount code
   When I apply an expired discount code
   Then the cart total should remain $100
 ```
+{{% /code-collapse %}}
 
 Each scenario can be implemented, integrated, and deployed independently.
 
 ### Step 4: Combine with vertical slicing (Week 3+)
 
-Decomposition and vertical slicing work together. Decomposition breaks features into small
+Decomposition and [vertical slicing](../../glossary/#vertical-sliced-story) work together. Decomposition breaks features into small
 pieces. Vertical slicing ensures each piece cuts through all technical layers to deliver complete
 functionality. A decomposed, vertically sliced item is independently deployable and testable.
 
 | Objection | Response |
 |-----------|----------|
 | "Splitting creates too many items" | Small items are easier to manage. They have clear scope, predictable timelines, and simple reviews. |
-| "Some things can't be done in two days" | Almost anything can be decomposed further. Database migrations can be backward-compatible steps. UI changes can hide behind feature flags. |
+| "Some things can't be done in two days" | Almost anything can be decomposed further. Database migrations can be backward-compatible steps. UI changes can hide behind [feature flags](../../glossary/#feature-flag). |
 | "Product doesn't want partial features" | Feature flags let you deploy incomplete features without exposing them. The code is integrated continuously, but the feature is toggled on when all slices are done. |
 
 ## Measuring Progress

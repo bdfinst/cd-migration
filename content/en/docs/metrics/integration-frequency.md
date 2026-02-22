@@ -10,7 +10,7 @@ description: >
 
 Integration Frequency measures the average number of production-ready pull requests
 a team merges to trunk per day, normalized by team size. On a team of five
-developers, healthy continuous integration practice produces at least five
+developers, healthy [continuous integration](../glossary/#ci-continuous-integration) practice produces at least five
 integrations per day, roughly one per developer.
 
 This metric is a direct indicator of how well a team practices
@@ -18,9 +18,11 @@ This metric is a direct indicator of how well a team practices
 Teams that integrate frequently work in small batches, receive fast feedback, and
 reduce the risk associated with large, infrequent merges.
 
+{{% code-collapse title="Integration Frequency formula" %}}
 ```text
 integrationFrequency = mergedPullRequests / day / numberOfDevelopers
 ```
+{{% /code-collapse %}}
 
 A value of 1.0 or higher per developer per day indicates that work is being
 decomposed into small, independently deliverable increments.
@@ -51,7 +53,7 @@ Alternatively, count commits to the default branch if pull requests are not used
 | High   | Once per day                                  |
 | Elite  | Multiple times per day                        |
 
-The elite target aligns with trunk-based development, where developers push small
+The elite target aligns with [trunk-based development](../glossary/#tbd-trunk-based-development), where developers push small
 changes to the trunk multiple times daily and rely on automated testing and feature
 flags to manage risk.
 
@@ -63,14 +65,14 @@ flags to manage risk.
   red build and slows the entire team. Always pair Integration Frequency with build
   success rate and [Change Fail Rate](../change-fail-rate/).
 - **Counting the wrong thing.** Merges to long-lived feature branches do not count.
-  Only merges to the trunk or main integration branch reflect true CI practice.
+  Only merges to the trunk or main integration branch reflect true [CI](../glossary/#ci-continuous-integration) practice.
 - **Ignoring quality.** If [defect rates](../change-fail-rate/) rise as integration
   frequency increases, the team is skipping quality steps. Use defect rate as a
   guardrail metric.
 
 ## Connection to CD
 
-Integration Frequency is the foundational metric for Continuous Delivery. Without
+Integration Frequency is the foundational metric for [Continuous Delivery](../glossary/#cd-continuous-delivery). Without
 frequent integration, every downstream metric suffers:
 
 - **Smaller batches reduce risk.** Each integration carries less change, making
@@ -82,7 +84,7 @@ frequent integration, every downstream metric suffers:
   direct trunk commits.
 - **Reduces merge conflicts.** The longer code stays on a branch, the more likely
   it diverges from trunk. Frequent integration keeps the delta small.
-- **Prerequisite for deployment frequency.** You cannot deploy more often than you
+- **Prerequisite for [deployment frequency](../glossary/#deployment-frequency).** You cannot deploy more often than you
   integrate. Improving this metric directly unblocks improvements to
   [Release Frequency](../release-frequency/).
 
@@ -90,8 +92,8 @@ To improve Integration Frequency:
 
 - Decompose stories into smaller increments using
   [Behavior-Driven Development](/docs/migrate-to-cd/migration-path/foundations/work-decomposition/).
-- Use Test-Driven Development to produce modular, independently testable code.
-- Adopt feature flags or branch by abstraction to decouple integration from release.
+- Use [Test-Driven Development](../glossary/#tdd-test-driven-development) to produce modular, independently testable code.
+- Adopt [feature flags](../glossary/#feature-flag) or branch by abstraction to decouple integration from release.
 - Practice [Trunk-Based Development](https://trunkbaseddevelopment.com/) with
   short-lived branches lasting less than one day.
 

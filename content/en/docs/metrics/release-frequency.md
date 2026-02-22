@@ -8,17 +8,19 @@ description: >
 
 ## Definition
 
-Release Frequency (also called Deployment Frequency) measures how often a team
+Release Frequency (also called [Deployment Frequency](../glossary/#deployment-frequency)) measures how often a team
 successfully deploys changes to production. It is expressed as deployments per day,
 per week, or per month, depending on the team's current cadence.
 
+{{% code-collapse title="Release Frequency formula" %}}
 ```text
 releaseFrequency = productionDeployments / timePeriod
 ```
+{{% /code-collapse %}}
 
-This is one of the four DORA key metrics. It measures the throughput side of
+This is one of the four [DORA](../glossary/#dora-metrics) key metrics. It measures the throughput side of
 delivery performance, measuring how rapidly the team can get completed work into the hands
-of users. Higher release frequency enables faster feedback, smaller batch sizes,
+of users. Higher release frequency enables faster feedback, smaller [batch sizes](../glossary/#batch-size),
 and reduced deployment risk.
 
 Each deployment should deliver a meaningful change. Re-deploying the same artifact
@@ -37,9 +39,9 @@ or deploying empty changes does not count.
 
 Data sources:
 
-- **CD platforms:** Argo CD, Spinnaker, Flux, Octopus Deploy, or similar tools
+- **[CD](../glossary/#cd-continuous-delivery) platforms:** Argo CD, Spinnaker, Flux, Octopus Deploy, or similar tools
   track every deployment.
-- **Pipeline logs:** GitHub Actions, GitLab CI, Jenkins, and CircleCI
+- **[Pipeline](../glossary/#pipeline) logs:** GitHub Actions, GitLab CI, Jenkins, and CircleCI
   record deployment job executions.
 - **Cloud provider logs:** AWS CodeDeploy, Azure DevOps, GCP Cloud Deploy, and
   Kubernetes audit logs.
@@ -85,7 +87,7 @@ Release Frequency is the ultimate output metric of a Continuous Delivery pipelin
   when the pipeline is fast, tests are reliable, deployment is automated, and the
   team has confidence in the process. It is the end-to-end proof that CD is working.
 - **Reduces deployment risk.** Each deployment carries less change when deployments
-  are frequent. Less change means less risk, easier rollback, and simpler
+  are frequent. Less change means less risk, easier [rollback](../glossary/#rollback), and simpler
   debugging when something goes wrong.
 - **Enables rapid feedback.** Frequent releases get features and fixes in front of
   users sooner. This shortens the feedback loop and allows the team to course-correct

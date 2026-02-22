@@ -9,17 +9,17 @@ description: >
 {{% pageinfo %}}
 **Phase 3 - Optimize**
 
-Feature flags are the mechanism that makes trunk-based development and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant rollback of features without redeploying.
+[Feature flags](../../../glossary/#feature-flag) are the mechanism that makes [trunk-based development](../../../glossary/#tbd-trunk-based-development) and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant [rollback](../../../glossary/#rollback) of features without redeploying.
 {{% /pageinfo %}}
 
 ## Why Feature Flags?
 
-In continuous delivery, deployment and release are two separate events:
+In [continuous delivery](../../../glossary/#cd-continuous-delivery), deployment and release are two separate events:
 
 - **Deployment** is pushing code to production.
 - **Release** is making a feature available to users.
 
-Feature flags are the bridge between these two events. They let you deploy frequently (even multiple times a day) without worrying about exposing incomplete or untested features. This separation is what makes continuous deployment possible for teams that ship real products to real users.
+Feature flags are the bridge between these two events. They let you deploy frequently (even multiple times a day) without worrying about exposing incomplete or untested features. This separation is what makes [continuous deployment](../../../glossary/#continuous-deployment) possible for teams that ship real products to real users.
 
 ## When You Need Feature Flags (and When You Don't)
 
@@ -27,6 +27,8 @@ Not every change requires a feature flag. Flags add complexity, and unnecessary 
 
 ### Decision Tree
 
+
+{{% code-collapse title="Decision tree: when to use a feature flag" %}}
 ```mermaid
 graph TD
     Start[New Code Change] --> Q1{Is this a large or<br/>high-risk change?}
@@ -74,6 +76,7 @@ graph TD
     style NoFF_API fill:#FFB6C6
     style Start fill:#87CEEB
 ```
+{{% /code-collapse %}}
 
 ### Alternatives to Feature Flags
 
@@ -93,6 +96,8 @@ Feature flags can be implemented at different levels of sophistication. Start si
 
 The simplest approach: a boolean constant or configuration value checked in code.
 
+
+{{% code-collapse title="Level 1: Static boolean flag in code" %}}
 ```python
 # config.py
 FEATURE_NEW_CHECKOUT = False
@@ -106,6 +111,7 @@ def process_checkout(cart, user):
     else:
         return legacy_checkout_flow(cart, user)
 ```
+{{% /code-collapse %}}
 
 **Pros:** Zero infrastructure. Easy to understand. Works everywhere.
 
@@ -117,6 +123,8 @@ def process_checkout(cart, user):
 
 Flags stored in a configuration file, database, or environment variable that can be changed at runtime without redeploying.
 
+
+{{% code-collapse title="Level 2: Dynamic in-process flag service with percentage rollout" %}}
 ```python
 # flag_service.py
 import json
@@ -138,7 +146,9 @@ class FeatureFlags:
 
         return True
 ```
+{{% /code-collapse %}}
 
+{{% code-collapse title="Level 2: Flag configuration file with percentage rollout" %}}
 ```json
 {
   "new-checkout": {
@@ -147,6 +157,7 @@ class FeatureFlags:
   }
 }
 ```
+{{% /code-collapse %}}
 
 **Pros:** No redeployment needed. Supports percentage rollout. Simple to implement.
 
@@ -160,6 +171,8 @@ A dedicated service (self-hosted or SaaS) that manages all flags, provides a das
 
 **Examples:** LaunchDarkly, Unleash, Flagsmith, Split, or a custom internal service.
 
+
+{{% code-collapse title="Level 3: Centralized flag service with user-context targeting" %}}
 ```python
 from feature_flag_client import FlagClient
 
@@ -171,6 +184,7 @@ def process_checkout(cart, user):
     else:
         return legacy_checkout_flow(cart, user)
 ```
+{{% /code-collapse %}}
 
 **Pros:** Centralized management. Rich targeting (by user, plan, region, etc.). Audit trail. Real-time changes.
 
@@ -182,6 +196,8 @@ def process_checkout(cart, user):
 
 Instead of checking flags in application code, route traffic at the infrastructure level (load balancer, service mesh, API gateway).
 
+
+{{% code-collapse title="Level 4: Istio VirtualService for infrastructure-level traffic routing" %}}
 ```yaml
 # Istio VirtualService example
 apiVersion: networking.istio.io/v1alpha3
@@ -203,6 +219,7 @@ spec:
         - destination:
             host: checkout-v1
 ```
+{{% /code-collapse %}}
 
 **Pros:** No application code changes. Clean separation of routing from logic. Works across services.
 
@@ -216,6 +233,8 @@ Every feature flag has a lifecycle. Flags that are not actively managed become t
 
 ### The Six Stages
 
+
+{{% code-collapse title="Feature flag lifecycle: six stages from create to remove" %}}
 ```
 1. CREATE       → Define the flag, document its purpose and owner
 2. DEPLOY OFF   → Code ships to production with the flag disabled
@@ -224,6 +243,7 @@ Every feature flag has a lifecycle. Flags that are not actively managed become t
 5. ROLLOUT      → Gradually increase the percentage of users
 6. REMOVE       → Delete the flag and the old code path
 ```
+{{% /code-collapse %}}
 
 #### Stage 1: Create
 
@@ -246,6 +266,8 @@ The first deployment includes the flag check but the flag is disabled. This veri
 
 Continue building the feature behind the flag over multiple deploys. Each deploy adds more functionality, but the flag remains off for users. Test both paths in your automated suite:
 
+
+{{% code-collapse title="Testing both flag states: parametrize over enabled and disabled" %}}
 ```python
 @pytest.mark.parametrize("flag_enabled", [True, False])
 def test_checkout_with_flag(flag_enabled, monkeypatch):
@@ -253,6 +275,7 @@ def test_checkout_with_flag(flag_enabled, monkeypatch):
     result = process_checkout(cart, user)
     assert result.status == "success"
 ```
+{{% /code-collapse %}}
 
 #### Stage 4: Dark Launch
 
@@ -318,6 +341,8 @@ Not all flags are temporary. Some flags are intentionally permanent and should b
 
 **Management:** Treat as system configuration, not as a release mechanism.
 
+
+{{% code-collapse title="Operational kill switch: disable expensive features during incidents" %}}
 ```python
 # PERMANENT FLAG - System operational control
 # Used to disable expensive features during incidents
@@ -326,6 +351,7 @@ if flags.is_enabled("enable-recommendations"):
 else:
     recommendations = []  # Graceful degradation under load
 ```
+{{% /code-collapse %}}
 
 ### Customer-Specific Toggles
 
@@ -335,12 +361,15 @@ else:
 
 **Management:** Part of the customer entitlement system, not the feature flag system.
 
+
+{{% code-collapse title="Customer entitlement toggle: gate features by subscription level" %}}
 ```python
 # PERMANENT FLAG - Customer entitlement
 # Controlled by customer subscription level
 if customer.subscription.includes("analytics"):
     show_advanced_analytics(customer)
 ```
+{{% /code-collapse %}}
 
 ### Experimentation Flags
 
@@ -350,6 +379,8 @@ if customer.subscription.includes("analytics"):
 
 **Management:** Each experiment has its own expiration date and success criteria. The experimentation platform itself persists.
 
+
+{{% code-collapse title="Experimentation flag: route users to A/B test variants" %}}
 ```python
 # PERMANENT FLAG - Experimentation platform
 # Individual experiments expire, platform remains
@@ -359,6 +390,7 @@ if variant == "streamlined":
 else:
     return standard_checkout(cart, user)
 ```
+{{% /code-collapse %}}
 
 ### Managing Long-Lived Flags
 
@@ -422,7 +454,7 @@ These specific patterns are the most common ways teams fail at flag cleanup.
 
 ## Next Step
 
-Small batches and feature flags let you deploy more frequently, but deploying more means more work in progress. [Limiting WIP](../limiting-wip/) ensures that increased deploy frequency does not create chaos.
+Small batches and feature flags let you deploy more frequently, but deploying more means more [work in progress](../../../glossary/#wip-work-in-progress). [Limiting WIP](../limiting-wip/) ensures that increased deploy frequency does not create chaos.
 
 ## Related Content
 

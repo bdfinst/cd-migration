@@ -13,16 +13,18 @@ on a story or task until that work is deployed to production and available to us
 It captures the full construction phase of delivery: coding, code review, testing,
 integration, and deployment.
 
+{{% code-collapse title="Development Cycle Time formula" %}}
 ```text
 developmentCycleTime = productionDeployTimestamp - workStartedTimestamp
 ```
+{{% /code-collapse %}}
 
 This is distinct from [Lead Time](../lead-time/), which includes the time a request
 spends waiting in the backlog before work begins. Development Cycle Time focuses
 exclusively on the active delivery phase.
 
-The *Accelerate* research uses "lead time for changes" (measured from commit to
-production) as a key DORA metric. Development Cycle Time extends this slightly
+The *Accelerate* research uses "[lead time for changes](../glossary/#lead-time-for-changes)" (measured from commit to
+production) as a key [DORA](../glossary/#dora-metrics) metric. Development Cycle Time extends this slightly
 further back to when work starts, capturing the full development process including
 any time between starting work and the first commit.
 
@@ -60,7 +62,7 @@ story IDs in commit messages) or deployment metadata to create this connection.
 
 Elite teams deliver completed work to production within one to two days of starting
 it. This is achievable only when work is decomposed into small increments, the
-pipeline is fast, and deployment is automated.
+[pipeline](../glossary/#pipeline) is fast, and deployment is automated.
 
 ## Common Pitfalls
 
@@ -83,7 +85,7 @@ pipeline is fast, and deployment is automated.
 ## Connection to CD
 
 Development Cycle Time is the most comprehensive measure of delivery flow and sits
-at the heart of Continuous Delivery:
+at the heart of [Continuous Delivery](../glossary/#cd-continuous-delivery):
 
 - **Exposes bottlenecks.** A long cycle time reveals where work gets stuck:
   waiting for code review, queued for testing, blocked by a manual approval, or
@@ -91,7 +93,7 @@ at the heart of Continuous Delivery:
 - **Drives smaller batches.** The only way to achieve a cycle time under two days
   is to decompose work into very small increments. This naturally leads to smaller
   changes, less risk, and faster feedback.
-- **Reduces waste from changing priorities.** Long cycle times mean work in progress
+- **Reduces waste from changing priorities.** Long cycle times mean [work in progress](../glossary/#wip-work-in-progress)
   is exposed to priority changes, context switches, and scope creep. Shorter cycles
   reduce the window of vulnerability.
 - **Improves feedback quality.** The sooner a change reaches production, the sooner

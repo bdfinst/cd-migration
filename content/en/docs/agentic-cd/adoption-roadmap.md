@@ -20,6 +20,7 @@ prescriptive sequence for incorporating AI safely, mirroring the
 
 ## The Progression
 
+{{% code-collapse title="AI adoption progression diagram" %}}
 ```mermaid
 graph LR
     A["Quality Tools"] --> B["Clarify Work"]
@@ -33,6 +34,7 @@ graph LR
     style D fill:#fce8e6,stroke:#d93025
     style E fill:#e6f4ea,stroke:#137333
 ```
+{{% /code-collapse %}}
 
 Quality Tools, Clarify Work, Harden Guardrails, Remove Friction, then Accelerate with AI.
 

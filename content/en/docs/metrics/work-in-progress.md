@@ -8,14 +8,16 @@ description: >
 
 ## Definition
 
-Work in Progress (WIP) is the total count of work items that have been started but
+[Work in Progress](../glossary/#wip-work-in-progress) (WIP) is the total count of work items that have been started but
 not yet completed and delivered to production. This includes all types of work:
 stories, defects, tasks, spikes, and any other items that a team member has begun
 but not finished.
 
+{{% code-collapse title="Work in Progress formula" %}}
 ```text
 wip = countOf(items where status is between "started" and "done")
 ```
+{{% /code-collapse %}}
 
 WIP is a leading indicator from Lean manufacturing. Unlike trailing metrics such as
 [Development Cycle Time](../development-cycle-time/) or
@@ -25,9 +27,11 @@ quality.
 
 Little's Law provides the mathematical relationship:
 
+{{% code-collapse title="Little's Law: cycle time as a function of WIP" %}}
 ```text
 cycleTime = wip / throughput
 ```
+{{% /code-collapse %}}
 
 If throughput (the rate at which items are completed) stays constant, increasing WIP
 directly increases cycle time. The only way to reduce cycle time without working
@@ -80,7 +84,7 @@ in pairs, bringing WIP to roughly half the team size.
   (development, testing, code review, deployment) and tracking each separately
   inflates the item count without changing the actual work. Measure WIP at the
   story or feature level.
-- **Ignoring unplanned work.** Production support, urgent requests, and
+- **Ignoring [unplanned work](../glossary/#unplanned-work).** Production support, urgent requests, and
   interruptions consume capacity but are often not tracked on the board. If the
   team is spending time on it, it is WIP and should be visible.
 - **Setting WIP limits but not enforcing them.** WIP limits only work if the team
@@ -90,7 +94,7 @@ in pairs, bringing WIP to roughly half the team size.
 ## Connection to CD
 
 WIP is the most actionable flow metric and directly impacts every aspect of
-Continuous Delivery:
+[Continuous Delivery](../glossary/#cd-continuous-delivery):
 
 - **Predicts cycle time.** Per Little's Law, WIP and cycle time are directly
   proportional. Reducing WIP is the fastest way to reduce
@@ -104,12 +108,12 @@ Continuous Delivery:
   team cannot simply start something new. They must resolve the blocker first. This
   forces the team to address systemic problems rather than working around them.
 - **Enables continuous flow.** CD depends on a steady flow of small changes moving
-  through the pipeline. High WIP creates irregular, bursty delivery. Low WIP
+  through the [pipeline](../glossary/#pipeline). High WIP creates irregular, bursty delivery. Low WIP
   creates smooth, predictable flow.
 - **Improves quality.** When teams focus on fewer items, each item gets more
   attention. Code reviews happen faster, testing is more thorough, and defects are
   caught sooner. This naturally reduces [Change Fail Rate](../change-fail-rate/).
-- **Supports trunk-based development.** High WIP often correlates with many
+- **Supports [trunk-based development](../glossary/#tbd-trunk-based-development).** High WIP often correlates with many
   long-lived branches. Reducing WIP encourages developers to complete and integrate
   work before starting something new, which aligns with
   [Integration Frequency](../integration-frequency/) goals.

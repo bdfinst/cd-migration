@@ -6,8 +6,8 @@ description: >
   Test architecture, types, and best practices for building confidence in your delivery pipeline.
 ---
 
-A reliable test suite is essential for continuous delivery. This page describes the test
-architecture that gives your pipeline the confidence to deploy any change - even when
+A reliable test suite is essential for [continuous delivery](../glossary/#cd-continuous-delivery). This page describes the test
+architecture that gives your [pipeline](../glossary/#pipeline) the confidence to deploy any change - even when
 dependencies outside your control are unavailable. The child pages cover each test type
 in detail.
 
@@ -81,6 +81,8 @@ layers 1-3 to isolate external dependencies.
 
 ### How the layers work together
 
+
+{{% code-collapse title="Test layers by pipeline stage" %}}
 ```
 Pipeline stage    Test layer              Deterministic?   Blocks deploy?
 ─────────────────────────────────────────────────────────────────────────
@@ -93,6 +95,7 @@ Asynchronous      Contract tests          No               No (triggers review)
 Post-deployment   E2E smoke tests         No               Triggers rollback if critical
                   Synthetic monitoring    No               Triggers alerts
 ```
+{{% /code-collapse %}}
 
 The critical insight: **everything that blocks deployment is deterministic and under your
 control.** Everything that involves external systems runs asynchronously or post-deployment. This
@@ -107,7 +110,7 @@ constraints.
 **Pre-merge** (before code lands on trunk): Run unit, integration, and functional tests. These
 must all be deterministic and fast. Target: under 10 minutes total. This is the quality gate that
 every change must pass. If pre-merge tests are slow, developers batch up changes or skip local
-runs, both of which undermine continuous integration.
+runs, both of which undermine [continuous integration](../glossary/#ci-continuous-integration).
 
 **Post-merge** (after code lands on trunk, before or after deployment): Re-run the full
 deterministic suite against the integrated trunk to catch merge-order interactions. Run contract

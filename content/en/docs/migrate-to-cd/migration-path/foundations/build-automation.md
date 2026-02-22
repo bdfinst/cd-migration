@@ -9,12 +9,12 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations**
 
-Build automation is the mechanism that turns trunk-based development and testing into a continuous integration loop. If you cannot build, test, and package your application with a single command, you cannot automate your pipeline. This page covers the practices that make your build reproducible, fast, and trustworthy.
+Build automation is the mechanism that turns [trunk-based development](../../../glossary/#tbd-trunk-based-development) and testing into a [continuous integration](../../../glossary/#ci-continuous-integration) loop. If you cannot build, test, and package your application with a single command, you cannot automate your [pipeline](../../../glossary/#pipeline). This page covers the practices that make your build reproducible, fast, and trustworthy.
 {{% /pageinfo %}}
 
 ## What Build Automation Means
 
-Build automation is the practice of scripting every step required to go from source code to a deployable artifact. A single command - or a single CI trigger - should execute the entire sequence:
+Build automation is the practice of scripting every step required to go from source code to a deployable [artifact](../../../glossary/#artifact). A single command - or a single CI trigger - should execute the entire sequence:
 
 1. **Compile** the source code (if applicable)
 2. **Run** all automated tests
@@ -31,7 +31,7 @@ If the answer is no, your build is not fully automated.
 
 ## Why Build Automation Matters for CD
 
-| CD Requirement | How Build Automation Supports It |
+| [CD](../../../glossary/#cd-continuous-delivery) Requirement | How Build Automation Supports It |
 |----------------|----------------------------------|
 | **Reproducibility** | The same commit always produces the same artifact, on any machine |
 | **Speed** | Automated builds can be optimized, cached, and parallelized |
@@ -96,6 +96,8 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 
 Developers, CI, and CD should all use the same entry point.
 
+
+{{% code-collapse title="Makefile as single build entry point" %}}
 ```makefile
 # Example: Makefile as the single entry point
 
@@ -116,6 +118,8 @@ clean:
 	./gradlew clean
 	docker rmi myapp:$(GIT_SHA) || true
 ```
+{{% /code-collapse %}}
+
 
 The CI server runs `make all`. A developer runs `make all`. The result is the same. There is no separate "CI build script" that diverges from what developers run locally.
 
@@ -129,7 +133,7 @@ Every build artifact must be traceable to the exact commit that produced it.
 - Store build metadata (commit, branch, timestamp, builder) in the artifact or alongside it
 - Never overwrite an existing artifact - if the version exists, the artifact is immutable
 
-This becomes critical in [Phase 2](../../pipeline/immutable-artifacts/) when you establish immutable artifact practices.
+This becomes critical in [Phase 2](../../pipeline/immutable-artifacts/) when you establish [immutable artifact](../../../glossary/#immutable-artifact) practices.
 
 ## CI Server Setup Basics
 
@@ -146,6 +150,8 @@ The CI server is the mechanism that runs your build automatically. In Phase 1, t
 
 Regardless of which CI tool you use (GitHub Actions, GitLab CI, Jenkins, CircleCI), the configuration follows the same pattern:
 
+
+{{% code-collapse title="Conceptual minimum CI configuration" %}}
 ```yaml
 # Conceptual CI configuration (adapt to your tool)
 trigger:
@@ -159,6 +165,8 @@ steps:
   - run: package
   - report: test results and build status
 ```
+{{% /code-collapse %}}
+
 
 ### CI Principles for Phase 1
 
@@ -169,7 +177,7 @@ steps:
 
 ## Build Time Targets
 
-Build speed directly affects developer productivity and integration frequency. If the build takes 30 minutes, developers will not integrate multiple times per day.
+Build speed directly affects developer productivity and [integration frequency](../../../glossary/#integration-frequency). If the build takes 30 minutes, developers will not integrate multiple times per day.
 
 | Build Phase | Target | Rationale |
 |-------------|--------|-----------|
@@ -180,7 +188,7 @@ Build speed directly affects developer productivity and integration frequency. I
 
 ### If Your Build Is Too Slow
 
-Slow builds are a common constraint that blocks CD adoption. Address them systematically:
+Slow builds are a common [constraint](../../../glossary/#constraint) that blocks CD adoption. Address them systematically:
 
 1. **Profile the build.** Identify which steps take the most time. Optimize the bottleneck, not everything.
 2. **Parallelize tests.** Most test frameworks support parallel execution. Run independent test suites concurrently.

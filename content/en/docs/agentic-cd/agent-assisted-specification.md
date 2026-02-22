@@ -33,9 +33,11 @@ If your specification effort for a single change takes more than 15 minutes, the
 
 The intent description does not need to be perfect on the first draft. Write a rough version and use an agent to sharpen it.
 
-**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated constraint.
+**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated [constraint](../glossary/#constraint).
 
 Example [prompt](../../glossary/#prompt):
+
+{{% code-collapse title="Prompt: identify ambiguity in intent description" %}}
 
 ```
 Here is the intent description for my next change. Identify any
@@ -45,6 +47,8 @@ but does not match what I actually want.
 
 [paste intent description]
 ```
+
+{{% /code-collapse %}}
 
 **Ask the agent to suggest edge cases.** Agents are good at generating boundary conditions you might not think of, because they can quickly reason through combinations.
 
@@ -60,6 +64,8 @@ Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from sc
 
 Example prompt:
 
+{{% code-collapse title="Prompt: generate BDD scenarios from intent description" %}}
+
 ```
 Based on this intent description, generate BDD scenarios in Gherkin
 format. Cover the primary success path, key error paths, and edge
@@ -68,11 +74,15 @@ cases. For each scenario, explain why it matters.
 [paste intent description]
 ```
 
+{{% /code-collapse %}}
+
 **Review for completeness, not perfection.** The agent's first draft will cover the obvious paths. Your job is to read through them and ask: "What is missing?" The agent handles volume. You handle judgment.
 
 **Ask the agent to find gaps.** After reviewing the initial scenarios, ask the agent explicitly what scenarios are missing.
 
 Example prompt:
+
+{{% code-collapse title="Prompt: identify missing BDD scenarios" %}}
 
 ```
 Here are the BDD scenarios for this feature. What scenarios are
@@ -81,6 +91,8 @@ modes, and interactions with existing behavior.
 
 [paste scenarios]
 ```
+
+{{% /code-collapse %}}
 
 **Ask the agent to challenge weak scenarios.** Some scenarios may be too vague to constrain an implementation. Ask the agent to identify any scenario where two different implementations could both pass while producing different user-visible behavior.
 
@@ -94,6 +106,8 @@ The Architecture Specification and Acceptance Criteria stages define the technic
 
 Example prompt:
 
+{{% code-collapse title="Prompt: identify architectural considerations before implementation" %}}
+
 ```
 Given this intent and these BDD scenarios, what architectural
 decisions should I document before implementation begins? Consider
@@ -103,9 +117,13 @@ touches, and what constraints an implementer needs to know.
 Current system context: [brief architecture description]
 ```
 
+{{% /code-collapse %}}
+
 **Ask the agent to draft non-functional acceptance criteria.** Agents can suggest performance thresholds, security requirements, and resource limits based on the type of change and its context.
 
 Example prompt:
+
+{{% code-collapse title="Prompt: draft non-functional acceptance criteria" %}}
 
 ```
 Based on this feature description, suggest non-functional acceptance
@@ -116,17 +134,21 @@ explain why it matters for this specific change.
 [paste feature description]
 ```
 
+{{% /code-collapse %}}
+
 **Ask the agent to check consistency.** Once you have the intent, BDD scenarios, feature description, and acceptance criteria, ask the agent to identify any contradictions or gaps between them.
 
 The human makes the architectural decisions and sets the thresholds. The agent makes sure you did not leave anything out.
 
 ## Validating the Complete Specification Set
 
-The four specification stages produce four artifacts: intent description, BDD scenarios, feature description, and acceptance criteria. Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
+The four specification stages produce four [artifacts](../glossary/#artifact): intent description, BDD scenarios, feature description, and acceptance criteria. Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
 
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
 {{% alert title="Specification consistency prompt" color="info" %}}
+
+{{% code-collapse title="Prompt: validate specification set for internal consistency" %}}
 
 ```
 Review these four specification artifacts for internal consistency
@@ -140,6 +162,8 @@ before implementation begins. Check:
 
 [paste all four artifacts]
 ```
+
+{{% /code-collapse %}}
 
 {{% /alert %}}
 

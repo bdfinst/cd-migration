@@ -55,6 +55,7 @@ Contract tests have two perspectives:
 
 A provider contract test verifying that an API response matches the expected schema:
 
+{{% code-collapse title="Provider contract test - schema validation" %}}
 ```javascript
 describe("GET /users/:id contract", () => {
   it("should return a response matching the user schema", async () => {
@@ -72,9 +73,11 @@ describe("GET /users/:id contract", () => {
   });
 });
 ```
+{{% /code-collapse %}}
 
 A consumer-driven contract test using Pact:
 
+{{% code-collapse title="Consumer-driven contract test with Pact" %}}
 ```javascript
 describe("Order Service - Inventory Provider Contract", () => {
   it("should receive stock availability in the expected format", async () => {
@@ -98,6 +101,7 @@ describe("Order Service - Inventory Provider Contract", () => {
   });
 });
 ```
+{{% /code-collapse %}}
 
 ## Anti-Patterns
 
@@ -116,11 +120,11 @@ describe("Order Service - Inventory Provider Contract", () => {
 
 ## Connection to CD Pipeline
 
-Contract tests run **asynchronously** from the main CI build, typically on a schedule:
+Contract tests run **asynchronously** from the main [CI](../glossary/#ci-continuous-integration) build, typically on a schedule:
 
 1. **Provider side**: provider contract tests (schema validation, response code checks) are
    often implemented as deterministic unit tests and run on every commit as part of the
-   provider's CI pipeline.
+   provider's CI [pipeline](../glossary/#pipeline).
 2. **Consumer side**: consumer contract tests run on a schedule (e.g., hourly or daily)
    against the live provider. Failures are reviewed and may trigger updates to test doubles
    or conversations between teams.

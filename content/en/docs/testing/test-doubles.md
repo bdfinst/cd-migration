@@ -52,13 +52,14 @@ Test doubles are used in every layer of deterministic testing:
 - **[Functional tests](../functional/)**: dependencies that cross the sub-system boundary
   are replaced to maintain determinism.
 
-Test doubles should be used **less** in later pipeline stages.
+Test doubles should be used **less** in later [pipeline](../glossary/#pipeline) stages.
 [End-to-end tests](../e2e/) use no test doubles by design.
 
 ## Examples
 
 A JavaScript stub providing a canned response:
 
+{{% code-collapse title="JavaScript stub returning a fixed user" %}}
 ```javascript
 // Stub: return a fixed user regardless of input
 const userRepository = {
@@ -72,9 +73,11 @@ const userRepository = {
 const user = await userService.getUser("u1");
 expect(user.name).toBe("Ada Lovelace");
 ```
+{{% /code-collapse %}}
 
 A Java spy verifying interaction:
 
+{{% code-collapse title="Java spy verifying call count with Mockito" %}}
 ```java
 @Test
 public void shouldCallUserServiceExactlyOnce() {
@@ -87,9 +90,11 @@ public void shouldCallUserServiceExactlyOnce() {
     assertEquals("Ada", result.getName());
 }
 ```
+{{% /code-collapse %}}
 
 A fake in-memory repository:
 
+{{% code-collapse title="JavaScript fake in-memory repository" %}}
 ```javascript
 class FakeUserRepository {
   constructor() {
@@ -103,6 +108,7 @@ class FakeUserRepository {
   }
 }
 ```
+{{% /code-collapse %}}
 
 ## Anti-Patterns
 
@@ -124,7 +130,7 @@ class FakeUserRepository {
 ## Connection to CD Pipeline
 
 Test doubles are a foundational technique that enables the fast, deterministic tests required
-for continuous delivery:
+for [continuous delivery](../glossary/#cd-continuous-delivery):
 
 - **Early pipeline stages** (static analysis, unit tests, integration tests) rely heavily on
   test doubles to stay fast and deterministic. This is where the majority of defects are

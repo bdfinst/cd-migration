@@ -12,16 +12,18 @@ Mean Time to Repair (MTTR) measures the average elapsed time between when a
 production incident is detected and when it is fully resolved and service is
 restored to normal operation.
 
+{{% code-collapse title="Mean Time to Repair formula" %}}
 ```text
 mttr = sum(resolvedTimestamp - detectedTimestamp) / incidentCount
 ```
+{{% /code-collapse %}}
 
 MTTR reflects an organization's ability to recover from failure. It encompasses
 detection, diagnosis, fix development, build, deployment, and verification. A
 short MTTR depends on the entire delivery system working well: fast builds,
 automated deployments, good observability, and practiced incident response.
 
-The *Accelerate* research identifies MTTR as one of the four key DORA metrics and
+The *Accelerate* research identifies MTTR as one of the four key [DORA metrics](../glossary/#dora-metrics) and
 notes that "software delivery performance is a combination of lead time, release
 frequency, and MTTR." It is the stability counterpart to the throughput metrics.
 
@@ -42,7 +44,7 @@ Data sources:
   Statuspage provide incident lifecycle timestamps.
 - **Monitoring and alerting:** alert trigger times from Datadog, Prometheus
   Alertmanager, CloudWatch, or equivalent.
-- **Deployment logs:** timestamps of rollbacks or hotfix deployments.
+- **Deployment logs:** timestamps of [rollbacks](../glossary/#rollback) or hotfix deployments.
 
 Report both the mean and the median. The mean can be skewed by a single long
 outage, so the median gives a better sense of typical recovery time. Also track
@@ -83,17 +85,17 @@ incident response processes.
 
 ## Connection to CD
 
-MTTR is a direct measure of how well the entire Continuous Delivery system supports
+MTTR is a direct measure of how well the entire [Continuous Delivery](../glossary/#cd-continuous-delivery) system supports
 recovery:
 
-- **Pipeline speed is the floor.** The minimum possible MTTR for a roll-forward
+- **[Pipeline](../glossary/#pipeline) speed is the floor.** The minimum possible MTTR for a roll-forward
   fix is the [Build Duration](../build-duration/) plus deployment time. A 30-minute
   build means you cannot restore service via a code fix in less than 30 minutes.
   Reducing build duration directly reduces MTTR.
 - **Automated deployment enables fast recovery.** Teams that can deploy with one
   click or automatically can roll back or roll forward in minutes. Manual
   deployment processes add significant time to every incident.
-- **Feature flags accelerate mitigation.** If a failing change is behind a feature
+- **[Feature flags](../glossary/#feature-flag) accelerate mitigation.** If a failing change is behind a feature
   flag, the team can disable it in seconds without deploying new code. This can
   reduce MTTR from minutes to seconds for flag-protected changes.
 - **Observability shortens detection and diagnosis.** Good logging, metrics, and

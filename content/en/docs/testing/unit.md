@@ -34,10 +34,10 @@ The purpose of unit tests is to:
 ## When to Use
 
 - **During development**: run the relevant subset of unit tests continuously while writing
-  code. TDD (Red-Green-Refactor) is the most effective workflow.
+  code. [TDD](../glossary/#tdd-test-driven-development) (Red-Green-Refactor) is the most effective workflow.
 - **On every commit**: use pre-commit hooks or watch-mode test runners so broken tests never
   reach the remote repository.
-- **In CI**: execute the full unit test suite on every pull request and on the trunk after
+- **In [CI](../glossary/#ci-continuous-integration)**: execute the full unit test suite on every pull request and on the trunk after
   merge to verify nothing was missed locally.
 
 Unit tests are the right choice when the behavior under test can be exercised without network
@@ -60,6 +60,7 @@ an [integration test](../integration/) or a [functional test](../functional/) in
 
 A JavaScript unit test verifying a pure utility function:
 
+{{% code-collapse title="JavaScript unit test for castArray utility" %}}
 ```javascript
 // castArray.test.js
 describe("castArray", () => {
@@ -79,9 +80,11 @@ describe("castArray", () => {
   });
 });
 ```
+{{% /code-collapse %}}
 
 A Java unit test using Mockito to isolate the system under test:
 
+{{% code-collapse title="Java unit test with Mockito stub isolating the controller" %}}
 ```java
 @Test
 public void shouldReturnUserDetails() {
@@ -97,6 +100,7 @@ public void shouldReturnUserDetails() {
     assertEquals("Engineering", result.getDepartment());
 }
 ```
+{{% /code-collapse %}}
 
 ## Anti-Patterns
 
@@ -130,7 +134,7 @@ Unit tests occupy the base of the test pyramid. They run in the earliest stages 
 4. **Trunk verification**: CI reruns tests on the merged HEAD to catch integration issues.
 
 Because unit tests are fast and deterministic, they should always break the build on failure.
-A healthy CD pipeline depends on a large, reliable suite of
+A healthy [CD](../glossary/#cd-continuous-delivery) pipeline depends on a large, reliable suite of
 [black box](../../glossary/#black-box-testing) unit tests that verify behavior
 rather than implementation, giving developers the confidence to refactor freely and ship
 small changes frequently.

@@ -12,9 +12,9 @@ description: >
 
 ## Definition
 
-A deterministic pipeline produces consistent, repeatable results. Given the same commit,
+A deterministic [pipeline](../../../glossary/#pipeline) produces consistent, repeatable results. Given the same commit,
 the same environment definition, and the same configuration, the pipeline will build the
-same artifact, run the same tests, and produce the same outcome - every time. There is no
+same [artifact](../../../glossary/#artifact), run the same tests, and produce the same outcome - every time. There is no
 variance introduced by uncontrolled dependencies, environmental drift, manual
 intervention, or non-deterministic test behavior.
 
@@ -29,7 +29,7 @@ organizations. When builds fail randomly, teams learn to ignore failures. When t
 commit passes on retry, teams stop investigating root causes. When different environments
 produce different results, teams lose confidence in pre-production validation.
 
-During a CD migration, teams are building trust in automation. Every flaky test, every
+During a [CD](../../../glossary/#cd-continuous-delivery) migration, teams are building trust in automation. Every flaky test, every
 "works on my machine" failure, and every environment-specific inconsistency erodes that
 trust. A deterministic pipeline is what earns the team's confidence that automation can
 replace manual verification.
@@ -64,7 +64,7 @@ builds.
 
 The pipeline should run in a controlled, reproducible environment. Containerize build
 steps so that the build environment is defined in code and does not drift over time. Use
-the same base images in CI as in production. Pin tool versions explicitly rather than
+the same base images in [CI](../../../glossary/#ci-continuous-integration) as in production. Pin tool versions explicitly rather than
 relying on whatever is installed on the build agent.
 
 ### Remove human intervention
@@ -97,6 +97,8 @@ Seeing anti-patterns and good patterns side by side makes the difference concret
 
 ### Anti-Pattern: Non-Deterministic Pipeline
 
+
+{{% code-collapse title="Anti-pattern: non-deterministic pipeline with floating versions and manual steps" %}}
 ```yaml
 # Bad: Uses floating versions
 dependencies:
@@ -118,12 +120,15 @@ deploy:
   - echo "Manually verify staging before approving"
   - wait_for_approval
 ```
+{{% /code-collapse %}}
 
 Results vary based on when the pipeline runs, what is in production, which dependency
 versions are "latest," and human availability.
 
 ### Good Pattern: Deterministic Pipeline
 
+
+{{% code-collapse title="Good pattern: deterministic pipeline with pinned versions and automated verification" %}}
 ```yaml
 # Good: Pinned versions
 dependencies:
@@ -150,6 +155,7 @@ deploy:
   - if: smoke_tests_pass
     deploy_to_production
 ```
+{{% /code-collapse %}}
 
 Same inputs always produce same outputs. Pipeline results are trustworthy and
 reproducible.
@@ -225,6 +231,8 @@ pipeline runs.
 
 Define your build environment as a versioned container image with every dependency pinned:
 
+
+{{% code-collapse title="Immutable build container: Dockerfile with pinned base image and tools" %}}
 ```dockerfile
 # Dockerfile.build - version controlled
 FROM node:18.17.1-alpine3.18
@@ -237,6 +245,7 @@ WORKDIR /app
 COPY package-lock.json .
 RUN npm ci --frozen-lockfile
 ```
+{{% /code-collapse %}}
 
 Every build runs inside a fresh instance of this image. No drift, no accumulated state.
 
@@ -244,6 +253,8 @@ Every build runs inside a fresh instance of this image. No drift, no accumulated
 
 Always use dependency lockfiles. This is essential for deterministic builds:
 
+
+{{% code-collapse title="Dependency lockfile: package-lock.json with pinned exact versions" %}}
 ```json
 // package-lock.json (ALWAYS commit to version control)
 {
@@ -256,6 +267,7 @@ Always use dependency lockfiles. This is essential for deterministic builds:
   }
 }
 ```
+{{% /code-collapse %}}
 
 Rules for lockfiles:
 
@@ -269,6 +281,8 @@ Rules for lockfiles:
 When a flaky test is detected, move it to quarantine immediately. Do not leave it in the
 main suite where it erodes trust in the pipeline:
 
+
+{{% code-collapse title="Quarantine pattern: skip and annotate flaky tests with tracking info" %}}
 ```javascript
 // tests/quarantine/flaky-test.spec.js
 describe.skip('Quarantined: Flaky integration test', () => {
@@ -280,6 +294,7 @@ describe.skip('Quarantined: Flaky integration test', () => {
   })
 })
 ```
+{{% /code-collapse %}}
 
 Quarantine is not a permanent home. Every quarantined test must have:
 
@@ -293,6 +308,8 @@ If a quarantined test cannot be fixed by the deadline, delete it and write a bet
 
 Give each pipeline run a fresh, isolated environment with no shared state:
 
+
+{{% code-collapse title="Hermetic test environment: GitHub Actions with fresh isolated database per run" %}}
 ```yaml
 # GitHub Actions example
 jobs:
@@ -310,6 +327,7 @@ jobs:
       - run: npm test
       # Each workflow run gets a fresh database
 ```
+{{% /code-collapse %}}
 
 ## How to Get Started
 
@@ -359,12 +377,15 @@ failure, not succeeding. Fix the flakiness instead of retrying.
 
 Seed your random number generators with a fixed seed in tests:
 
+
+{{% code-collapse title="Deterministic randomness: fixed seed for predictable test results" %}}
 ```javascript
 // Deterministic randomness
 const rng = new Random(12345) // Fixed seed
 const result = shuffle(array, rng)
 expect(result).toEqual([3, 1, 4, 2]) // Predictable
 ```
+{{% /code-collapse %}}
 
 ### What if our deployment requires manual verification?
 

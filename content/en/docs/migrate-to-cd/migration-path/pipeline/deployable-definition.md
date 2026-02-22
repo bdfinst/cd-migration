@@ -12,8 +12,8 @@ description: >
 
 ## Definition
 
-A deployable definition is the set of automated quality criteria that every artifact must
-satisfy before it is considered ready for production. It is the pipeline's answer to the
+A [deployable](../../../glossary/#deployable) definition is the set of automated quality criteria that every [artifact](../../../glossary/#artifact) must
+satisfy before it is considered ready for production. It is the [pipeline](../../../glossary/#pipeline)'s answer to the
 question: "How do we know this is safe to deploy?"
 
 This is not a checklist that a human reviews. It is a set of automated gates - executable
@@ -26,11 +26,11 @@ ambiguity, no judgment call, and no "looks good enough."
 Without a clear, automated deployable definition, teams rely on human judgment to decide
 when something is ready to ship. This creates bottlenecks (waiting for approval), variance
 (different people apply different standards), and fear (nobody is confident the change is
-safe). All three are enemies of continuous delivery.
+safe). All three are enemies of [continuous delivery](../../../glossary/#cd-continuous-delivery).
 
 During a CD migration, the deployable definition replaces manual approval processes with
 automated confidence. It is what allows a team to say "any green build can go to
-production" - which is the prerequisite for continuous deployment.
+production" - which is the prerequisite for [continuous deployment](../../../glossary/#continuous-deployment).
 
 ## Key Principles
 
@@ -77,7 +77,7 @@ production readiness:
 
 - **Health check validation** - verify that the application starts up correctly and responds to health checks
 - **Graceful degradation tests** - verify that the system behaves acceptably when dependencies fail
-- **Rollback verification** - verify that the deployment can be rolled back (see [Rollback](../rollback/))
+- **[Rollback](../../../glossary/#rollback) verification** - verify that the deployment can be rolled back (see [Rollback](../rollback/))
 
 #### Code Quality
 
@@ -154,6 +154,8 @@ Structure the pipeline to fail fast on quick checks, then run progressively more
 validations. This gives developers the fastest possible feedback while still running
 comprehensive checks:
 
+
+{{% code-collapse title="Progressive quality gates: three pipeline stages by speed" %}}
 ```text
 Stage 1: Fast Feedback (< 5 min)
   - Linting
@@ -170,6 +172,7 @@ Stage 3: Comprehensive (< 30 min)
   - Performance tests
   - Compliance checks
 ```
+{{% /code-collapse %}}
 
 Each stage acts as a gate. If Stage 1 fails, the pipeline stops immediately rather than
 wasting time on slower checks that will not matter.
@@ -180,6 +183,8 @@ While the categories of validation should be consistent across the organization,
 specific checks may vary by deployment target. Define a base set of checks that always
 apply, then layer additional checks for higher-risk environments:
 
+
+{{% code-collapse title="Context-specific deployable definitions: base, production, and feature branch" %}}
 ```yaml
 # Base definition (always required)
 base_deployable:
@@ -198,6 +203,7 @@ feature_deployable:
   - unit_tests: pass
   - security_scan: no_critical
 ```
+{{% /code-collapse %}}
 
 This approach lets teams move fast during development while maintaining rigorous
 standards for production deployments.
@@ -208,12 +214,15 @@ Use error budgets to connect the deployable definition to production reliability
 the service is within its error budget, the pipeline allows normal deployment. When the
 error budget is exhausted, the pipeline shifts focus to reliability work:
 
+
+{{% code-collapse title="Error budget approach: deployment criteria tied to reliability" %}}
 ```yaml
 definition_of_deployable:
   error_budget_remaining: > 0
   slo_compliance: >= 99.9%
   recent_incidents: < 2 per week
 ```
+{{% /code-collapse %}}
 
 This creates a self-correcting system. Teams that ship changes causing incidents consume
 their error budget, which automatically tightens the deployment criteria until reliability

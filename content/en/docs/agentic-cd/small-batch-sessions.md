@@ -66,6 +66,7 @@ Exclude:
 
 At the end of each session, write a summary that future sessions can use. The summary replaces the session's full conversation history in subsequent contexts. Keep it factual and brief:
 
+{{% code-collapse title="Context summary template: factual session handoff" %}}
 ```
 Session 1 implemented Scenario 1 (client exceeds rate limit returns 429).
 
@@ -79,6 +80,7 @@ Tests added:
 
 All pipeline checks pass.
 ```
+{{% /code-collapse %}}
 
 This summary is the complete handoff from one session to the next. The next agent starts with this summary plus its own scenario - not with the full conversation that produced the code.
 
@@ -102,6 +104,7 @@ The [first-class artifacts](../first-class-artifacts/) page establishes an inten
 
 **All BDD scenarios, in implementation order:**
 
+{{% code-collapse title="BDD scenarios: rate limiting in implementation order" %}}
 ```gherkin
 Scenario 1: Client within rate limit
   Given an authenticated client with 50 requests in the current minute
@@ -125,6 +128,7 @@ Scenario 4: Unauthenticated requests bypass rate limiting
   When the request is made regardless of recent request volume
   Then the request is processed normally without rate limit checks
 ```
+{{% /code-collapse %}}
 
 **Feature description (excerpt):**
 
@@ -151,6 +155,7 @@ Scenario 4: Unauthenticated requests bypass rate limiting
 
 **Context summary written:**
 
+{{% code-collapse title="Session 1 context summary: quota headers for requests within limit" %}}
 ```
 Session 1 implemented Scenario 1 (client within rate limit).
 
@@ -164,6 +169,7 @@ Tests added:
 
 Pipeline is green.
 ```
+{{% /code-collapse %}}
 
 ---
 
@@ -187,6 +193,7 @@ Pipeline is green.
 
 **Context summary written:**
 
+{{% code-collapse title="Sessions 1-2 context summary: rate limit enforcement with 429 response" %}}
 ```
 Sessions 1-2 implemented Scenarios 1 and 2.
 
@@ -201,6 +208,7 @@ Tests:
 
 Pipeline is green.
 ```
+{{% /code-collapse %}}
 
 ---
 

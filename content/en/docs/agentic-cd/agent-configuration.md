@@ -24,6 +24,7 @@ The coding agent system has two tiers. The [orchestrator](../glossary/#orchestra
 Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
+{{% code-collapse title="Agent system architecture diagram" %}}
 ```mermaid
 graph TD
     classDef orchestrator fill:#224968,stroke:#1a3a54,color:#fff
@@ -43,6 +44,7 @@ graph TD
     ORC -->|"review staged changes"| REV
     REV --> SEM & SEC & PERF & CONC
 ```
+{{% /code-collapse %}}
 
 **Separation principle:** The orchestrator does not write code. The implementation agent
 does not review code. Review agents do not modify code. Each agent has one responsibility.
@@ -81,6 +83,7 @@ on a task that does not require frontier reasoning.
 
 **Rules injected into the orchestrator system prompt:**
 
+{{% code-collapse title="Orchestrator system prompt rules" %}}
 ```markdown
 ## Orchestrator Rules
 
@@ -124,6 +127,7 @@ On commit:
 - This summary replaces the full session conversation for future sessions
 - Reset context after writing the summary; do not carry conversation history forward
 ```
+{{% /code-collapse %}}
 
 ---
 
@@ -147,6 +151,7 @@ only, not explanations or rationale, unless the orchestrator requests them.
 
 **Rules injected into the implementation agent system prompt:**
 
+{{% code-collapse title="Implementation agent system prompt rules" %}}
 ```markdown
 ## Implementation Rules
 
@@ -171,6 +176,7 @@ Implementation:
 Done when: the acceptance test for this scenario passes, all prior acceptance tests
 still pass, and you have staged the changes.
 ```
+{{% /code-collapse %}}
 
 ---
 
@@ -194,6 +200,7 @@ coordination cheaply.
 step. Structured output here eliminates ambiguity and reduces the token cost of the
 aggregation step.
 
+{{% code-collapse title="Review orchestrator JSON output schema" %}}
 ```json
 {
   "decision": "pass | block",
@@ -208,12 +215,14 @@ aggregation step.
   ]
 }
 ```
+{{% /code-collapse %}}
 
 An empty `findings` array with `"decision": "pass"` means all sub-agents passed. A
 non-empty `findings` array always accompanies `"decision": "block"`.
 
 **Rules injected into the review orchestrator system prompt:**
 
+{{% code-collapse title="Review orchestrator system prompt rules" %}}
 ```markdown
 ## Review Orchestrator Rules
 
@@ -249,6 +258,7 @@ Return this JSON and nothing else:
   ]
 }
 ```
+{{% /code-collapse %}}
 
 ---
 
@@ -285,6 +295,7 @@ implementation against stated intent.
 
 **System prompt rules:**
 
+{{% code-collapse title="Semantic review agent system prompt rules" %}}
 ```markdown
 ## Semantic Review Agent Rules
 
@@ -313,6 +324,7 @@ Return this JSON and nothing else:
   ]
 }
 ```
+{{% /code-collapse %}}
 
 ### Security Review Agent
 
@@ -343,6 +355,7 @@ not just pattern matching. A smaller model will miss the cases that matter most.
 
 **System prompt rules:**
 
+{{% code-collapse title="Security review agent system prompt rules" %}}
 ```markdown
 ## Security Review Agent Rules
 
@@ -375,6 +388,7 @@ Return this JSON and nothing else:
   ]
 }
 ```
+{{% /code-collapse %}}
 
 ### Performance Review Agent
 
@@ -407,6 +421,7 @@ cheaply enough to be invoked on every commit without concern.
 
 **System prompt rules:**
 
+{{% code-collapse title="Performance review agent system prompt rules" %}}
 ```markdown
 ## Performance Review Agent Rules
 
@@ -436,6 +451,7 @@ Return this JSON and nothing else:
   ]
 }
 ```
+{{% /code-collapse %}}
 
 ### Concurrency Review Agent
 

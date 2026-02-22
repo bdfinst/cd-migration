@@ -13,7 +13,7 @@ description: >
 ## Definition
 
 Rollback is the ability to quickly and safely revert a production deployment to a previous
-known-good state. It is the safety net that makes continuous delivery possible: because you
+known-good state. It is the safety net that makes [continuous delivery](../../../glossary/#cd-continuous-delivery) possible: because you
 can always undo a deployment, deploying becomes a low-risk, routine operation.
 
 Rollback is not a backup plan for when things go catastrophically wrong. It is a standard
@@ -39,7 +39,7 @@ system improves.
 
 Rollback must complete in minutes, not hours. A rollback that takes an hour to execute
 is not a rollback - it is a prolonged outage with a recovery plan. Target rollback times
-of 5 minutes or less for the deployment mechanism itself. If the previous artifact is
+of 5 minutes or less for the deployment mechanism itself. If the previous [artifact](../../../glossary/#artifact) is
 already in the artifact repository and the deployment mechanism is automated, there is
 no reason rollback should take longer than a fresh deployment.
 
@@ -83,6 +83,8 @@ Maintain two identical production environments - blue and green. At any time, on
 (serving traffic) and the other is idle. To deploy, deploy to the idle environment, verify
 it, and switch traffic. To roll back, switch traffic back to the previous environment.
 
+
+{{% code-collapse title="Blue-green rollback: traffic switch to previous environment" %}}
 ```text
 Blue (current): v1.2.3
 Green (idle):   v1.2.2
@@ -93,6 +95,7 @@ Switch traffic to Green (v1.2.2)
   |
 Instant rollback (< 30 seconds)
 ```
+{{% /code-collapse %}}
 
 **Advantages:**
 
@@ -113,6 +116,8 @@ route a percentage of traffic to it. Monitor the canary for errors, latency, and
 metrics. If the canary is healthy, gradually increase traffic. If problems appear, route
 all traffic back to the previous version.
 
+
+{{% code-collapse title="Canary rollback: stop routing traffic to the canary on issue detection" %}}
 ```text
 Deploy v1.2.3 to 10% of servers
   |
@@ -122,6 +127,7 @@ Automatically roll back 10% to v1.2.2
   |
 Issue contained, minimal user impact
 ```
+{{% /code-collapse %}}
 
 **Advantages:**
 
@@ -137,10 +143,12 @@ Issue contained, minimal user impact
 
 ### Feature Flag Rollback
 
-When a deployment introduces new behavior behind a feature flag, rollback can be as
+When a deployment introduces new behavior behind a [feature flag](../../../glossary/#feature-flag), rollback can be as
 simple as turning off the flag. The code remains deployed, but the new behavior is
 disabled. This is the fastest possible rollback - it requires no deployment at all.
 
+
+{{% code-collapse title="Feature flag rollback: disable new behavior without redeploying" %}}
 ```javascript
 // Feature flag controls new behavior
 if (featureFlags.isEnabled('new-checkout')) {
@@ -151,6 +159,7 @@ return renderOldCheckout()
 // Rollback: Toggle flag off via configuration
 // No deployment needed, instant effect
 ```
+{{% /code-collapse %}}
 
 **Advantages:**
 
@@ -182,6 +191,8 @@ The expand-contract pattern (also called parallel change) solves this:
 At every step, the previous application version remains compatible with the current
 database schema. Rollback is always safe.
 
+
+{{% code-collapse title="Expand-contract pattern: safe additive schema changes vs. unsafe destructive changes" %}}
 ```sql
 -- Safe: Additive change (expand)
 ALTER TABLE users ADD COLUMN phone VARCHAR(20);
@@ -194,6 +205,7 @@ ALTER TABLE users DROP COLUMN email;
 -- Old code breaks because email column is gone
 -- Rollback requires schema rollback (risky)
 ```
+{{% /code-collapse %}}
 
 **Anti-pattern:** Destructive schema changes (dropping columns, renaming tables,
 changing types) deployed simultaneously with the application code change that requires
@@ -299,7 +311,7 @@ trust deployment.
 
 ## Connection to the Pipeline Phase
 
-Rollback is the capstone of the Pipeline phase. It is what makes the rest of the phase
+Rollback is the capstone of the [Pipeline](../../../glossary/#pipeline) phase. It is what makes the rest of the phase
 safe:
 
 - The [single path to production](../single-path-to-production/) is how rollback is

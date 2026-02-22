@@ -25,7 +25,6 @@ Referenced in:
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
@@ -48,7 +47,6 @@ Referenced in:
 [Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
@@ -62,6 +60,8 @@ Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
+[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
+[Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
@@ -77,7 +77,6 @@ Referenced in:
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
-[The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
@@ -189,7 +188,9 @@ Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
+[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/),
@@ -208,9 +209,11 @@ Referenced in:
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Team Membership Changes Constantly](../symptoms/flow/team-instability/),
+[Test Doubles](../testing/test-doubles/),
 [The Deployment Target Does Not Support Modern CI/CD Tooling](../symptoms/flow/mainframe-constraints/),
 [Thin-Spread Teams](../anti-patterns/organizational-cultural/thin-spread-teams/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
+[Unit Tests](../testing/unit/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Change Failure Rate (CFR)
@@ -220,6 +223,7 @@ remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. Se
 [Metrics - Change Fail Rate](../metrics/change-fail-rate/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
@@ -233,10 +237,13 @@ a synonym. A team that runs automated builds on feature branches but merges week
 CI. See [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Data & State Defects](../defect-sources/data-and-state/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Dependency & Infrastructure Defects](../defect-sources/dependency-and-infrastructure/),
+[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
+[Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/),
 [Functional Tests](../testing/functional/),
@@ -263,7 +270,8 @@ Referenced in:
 [Testing & Observability Gap Defects](../defect-sources/testing-and-observability-gaps/),
 [Tests Pass in One Environment but Fail in Another](../symptoms/testing/environment-dependent-failures/),
 [Tests Randomly Pass or Fail](../symptoms/testing/flaky-tests/),
-[The Development Workflow Has Friction at Every Step](../symptoms/flow/inadequate-tooling/)
+[The Development Workflow Has Friction at Every Step](../symptoms/flow/inadequate-tooling/),
+[Unit Tests](../testing/unit/)
 
 ### Constraint
 
@@ -324,8 +332,10 @@ deployed to production without manual intervention. Continuous delivery ensures 
 
 Referenced in:
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
 
 ## D
@@ -349,6 +359,7 @@ How often an organization successfully deploys to production. One of the four DO
 See [Metrics - Release Frequency](../metrics/release-frequency/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
@@ -403,6 +414,7 @@ then selectively enabled for specific users, percentages of traffic, or environm
 flags decouple deployment from release. See [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
@@ -410,6 +422,7 @@ Referenced in:
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Every Deployment Is Immediately Visible to All Users](../symptoms/deployment/deploy-release-coupled/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
@@ -507,6 +520,7 @@ The elapsed time from when a commit is made to when it is successfully running i
 One of the four DORA metrics. See [Metrics - Lead Time](../metrics/lead-time/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
@@ -520,6 +534,9 @@ The elapsed time from when a production incident is detected to when service is 
 of the four DORA metrics. Teams practicing CD have short MTTR because deployments are small,
 rollback is automated, and the cause of failure is easy to identify. See
 [Metrics - Mean Time to Repair](../metrics/mean-time-to-repair/).
+
+Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/)
 
 ### Modular Monolith
 
@@ -568,11 +585,16 @@ Referenced in:
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
 [Deploying Stateful Services Causes Outages](../symptoms/deployment/stateful-service-deployment-outages/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
+[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
+[Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
+[Each Language Has Its Own Ad Hoc Pipeline](../symptoms/flow/polyglot-stack-no-pipeline-standards/),
+[Every Change Rebuilds the Entire Repository](../symptoms/flow/monorepo-without-tooling/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Every Deployment Is Immediately Visible to All Users](../symptoms/deployment/deploy-release-coupled/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/),
 [Functional Tests](../testing/functional/),
+[Getting a Test Environment Requires Filing a Ticket](../symptoms/flow/lack-of-self-service-environments/),
 [High Coverage but Tests Miss Defects](../symptoms/testing/high-coverage-ineffective-tests/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/),
@@ -592,22 +614,28 @@ Referenced in:
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
 [Production Issues Discovered by Customers](../symptoms/visibility/production-issues-found-by-customers/),
+[Production Problems Are Discovered Hours or Days Late](../symptoms/visibility/slow-detection/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Recommended Agent Configuration for Coding and Review](../agentic-cd/agent-configuration/),
 [Recommended Patterns for Agentic Architecture](../agentic-cd/agentic-architecture/),
+[Recommended Patterns for Agentic Workflow Architecture](../agentic-cd/workflow-architecture/),
 [Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/),
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
 [Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/),
+[Services in the Same Portfolio Have Wildly Different Maturity Levels](../symptoms/flow/uneven-service-maturity/),
 [Services Reach Production with No Health Checks or Alerting](../symptoms/deployment/services-without-health-checks/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [Staging Passes but Production Fails](../symptoms/deployment/staging-passes-production-fails/),
 [Symptoms for Developers](../symptoms/for-developers/),
 [Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
+[Test Doubles](../testing/test-doubles/),
 [Test Suite Is Too Slow to Run](../symptoms/testing/slow-test-suites/),
 [Tests Pass in One Environment but Fail in Another](../symptoms/testing/environment-dependent-failures/),
 [Tests Randomly Pass or Fail](../symptoms/testing/flaky-tests/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
+[The Deployment Target Does Not Support Modern CI/CD Tooling](../symptoms/flow/mainframe-constraints/),
+[The Development Workflow Has Friction at Every Step](../symptoms/flow/inadequate-tooling/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
@@ -677,11 +705,13 @@ Referenced in:
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
+[Production Problems Are Discovered Hours or Days Late](../symptoms/visibility/slow-detection/),
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
 [Symptoms for Developers](../symptoms/for-developers/),
 [Systemic Defect Fixes](../defect-sources/),
@@ -762,6 +792,7 @@ prerequisite for CD. See [Trunk-Based Development](../migrate-to-cd/migration-pa
 
 Referenced in:
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
@@ -778,7 +809,8 @@ a fast, reliable test suite. TDD feeds into the [testing fundamentals](../migrat
 required in Phase 1.
 
 Referenced in:
-[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/)
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Unit Tests](../testing/unit/)
 
 ### Token
 
@@ -869,7 +901,9 @@ time, reduces focus, and increases context-switching overhead. Limiting WIP is a
 in [Phase 3 - Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wip/).
 
 Referenced in:
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),

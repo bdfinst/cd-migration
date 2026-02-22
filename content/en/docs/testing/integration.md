@@ -49,6 +49,7 @@ If the test requires a live network call to a system outside localhost, it is ei
 
 A JavaScript integration test verifying that a connector returns structured data:
 
+{{% code-collapse title="Integration test - connector returning structured data" %}}
 ```javascript
 describe("retrieving Hygieia data", () => {
   it("should return counts of merged pull requests per day", async () => {
@@ -76,6 +77,7 @@ describe("retrieving Hygieia data", () => {
   });
 });
 ```
+{{% /code-collapse %}}
 
 ### Subcategories
 
@@ -109,7 +111,7 @@ and labels first, ARIA roles second, test IDs only as a last resort.
 ## Connection to CD Pipeline
 
 Integration tests form the largest portion of a healthy test suite (the "trophy" or the
-middle of the pyramid). They run alongside unit tests in the earliest CI stages:
+middle of the pyramid). They run alongside unit tests in the earliest [CI](../glossary/#ci-continuous-integration) stages:
 
 1. **Local development**: run in watch mode or before committing.
 2. **PR verification**: CI executes the full suite; failures block merge.

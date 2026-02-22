@@ -9,7 +9,7 @@ description: >
 ## Definition
 
 Build Duration measures the elapsed time from when a developer pushes a commit
-until the CI pipeline produces a deployable artifact and all automated quality
+until the [CI](../glossary/#ci-continuous-integration) [pipeline](../glossary/#pipeline) produces a deployable [artifact](../glossary/#artifact) and all automated quality
 gates have passed. This includes compilation, unit tests, integration tests, static
 analysis, security scans, and artifact packaging.
 
@@ -18,9 +18,11 @@ change and having that change ready for production. It sets a hard floor on
 [Lead Time](../lead-time/) and directly constrains how quickly a team can
 respond to production incidents.
 
+{{% code-collapse title="Build Duration formula" %}}
 ```text
 buildDuration = artifactReadyTimestamp - commitPushTimestamp
 ```
+{{% /code-collapse %}}
 
 This metric is sometimes referred to as "pipeline cycle time" or "CI cycle time."
 The book *Accelerate* references it as part of "hard lead time."
@@ -75,7 +77,7 @@ cost of fixing failures.
 
 ## Connection to CD
 
-Build Duration is a critical bottleneck in the Continuous Delivery pipeline:
+Build Duration is a critical bottleneck in the [Continuous Delivery](../glossary/#cd-continuous-delivery) pipeline:
 
 - **Constrains Mean Time to Repair.** When production is down, the build pipeline
   is the minimum time to get a fix deployed. A 30-minute build means at least 30
@@ -87,7 +89,7 @@ Build Duration is a critical bottleneck in the Continuous Delivery pipeline:
 - **Shortens feedback loops.** The sooner a developer learns that a change broke
   something, the less context they have lost and the cheaper the fix. Builds under
   ten minutes keep developers in flow.
-- **Supports continuous deployment.** Automated deployment pipelines cannot deliver
+- **Supports [continuous deployment](../glossary/#continuous-deployment).** Automated deployment pipelines cannot deliver
   changes rapidly if the build stage is slow. Build duration is often the largest
   component of [Lead Time](../lead-time/).
 

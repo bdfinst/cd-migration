@@ -9,12 +9,12 @@ description: >
 {{% pageinfo %}}
 **Phase 4 - Deliver on Demand** | Original content
 
-Progressive rollout strategies let you deploy to production without deploying to all users simultaneously. By exposing changes to a small group first and expanding gradually, you catch problems before they affect your entire user base. This page covers the three major strategies, when to use each, and how to implement automated rollback.
+Progressive rollout strategies let you deploy to production without deploying to all users simultaneously. By exposing changes to a small group first and expanding gradually, you catch problems before they affect your entire user base. This page covers the three major strategies, when to use each, and how to implement automated [rollback](../../../glossary/#rollback).
 {{% /pageinfo %}}
 
 ## Why Progressive Rollout?
 
-Even with comprehensive tests, production-like environments, and small batch sizes, some issues only surface under real production traffic. Progressive rollout is the final safety layer: it limits the blast radius of any deployment by exposing the change to a small audience first.
+Even with comprehensive tests, [production-like environments](../../../glossary/#production-like-environment), and small [batch sizes](../../../glossary/#batch-size), some issues only surface under real production traffic. Progressive rollout is the final safety layer: it limits the blast radius of any deployment by exposing the change to a small audience first.
 
 This is not a replacement for testing. It is an addition. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest - the issues that depend on real user behavior, real data volumes, or real infrastructure conditions that cannot be fully replicated in test environments.
 
@@ -24,6 +24,8 @@ This is not a replacement for testing. It is an addition. Your automated tests s
 
 A [canary deployment](../../../glossary/#canary-deployment) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
 
+
+{{% code-collapse title="Canary deployment traffic split diagram" %}}
 ```
                         ┌─────────────────┐
                    5%   │  New Version     │  ← Canary
@@ -35,6 +37,8 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
                   95%   │  (v1)            │
                         └─────────────────┘
 ```
+{{% /code-collapse %}}
+
 
 **How it works:**
 
@@ -63,12 +67,14 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
 | Kubernetes + service mesh (Istio, Linkerd) | Weighted routing rules in VirtualService |
 | Load balancer (ALB, NGINX) | Weighted target groups |
 | CDN (CloudFront, Fastly) | Origin routing rules |
-| Application-level | Feature flag with percentage rollout |
+| Application-level | [Feature flag](../../../glossary/#feature-flag) with percentage rollout |
 
 ### Strategy 2: Blue-Green Deployment
 
-Blue-green deployment maintains two identical production environments. At any time, one (blue) serves live traffic and the other (green) is idle or staging.
+[Blue-green deployment](../../../glossary/#blue-green-deployment) maintains two identical production environments. At any time, one (blue) serves live traffic and the other (green) is idle or staging.
 
+
+{{% code-collapse title="Blue-green deployment traffic switch diagram" %}}
 ```
   BEFORE:
     Traffic ──────► [Blue - v1] (ACTIVE)
@@ -82,6 +88,8 @@ Blue-green deployment maintains two identical production environments. At any ti
     Traffic ──────► [Green - v2] (ACTIVE)
                     [Blue - v1]  (STANDBY / ROLLBACK TARGET)
 ```
+{{% /code-collapse %}}
+
 
 **How it works:**
 
@@ -109,6 +117,8 @@ Blue-green deployment maintains two identical production environments. At any ti
 
 Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based - a specific user always sees the same version during the rollout period.
 
+
+{{% code-collapse title="Percentage-based rollout schedule" %}}
 ```
   Hour 0:   1% of users  → v2,  99% → v1
   Hour 2:   5% of users  → v2,  95% → v1
@@ -116,6 +126,8 @@ Percentage-based rollout gradually increases the number of users who see the new
   Day 2:   50% of users  → v2,  50% → v1
   Day 3:  100% of users  → v2
 ```
+{{% /code-collapse %}}
+
 
 **How it works:**
 
@@ -172,6 +184,8 @@ Define automated rollback triggers before deploying. Common triggers:
 
 ### Automated Rollback Flow
 
+
+{{% code-collapse title="Automated rollback flow diagram" %}}
 ```
 Deploy new version
        │
@@ -192,6 +206,8 @@ Monitor for 15 minutes
        │
        └── Metrics degraded ─────► ROLLBACK
 ```
+{{% /code-collapse %}}
+
 
 ### Implementation Tools
 
@@ -259,7 +275,7 @@ Progressive rollout is the last line of defense, not the first. If you are regul
 
 ### 4. "Our rollout takes days because we're too cautious"
 
-A rollout that takes a week negates the benefits of continuous deployment. If your confidence in the pipeline is low enough to require a week-long rollout, the issue is pipeline quality, not rollout speed. Address the root cause through better testing and more production-like environments.
+A rollout that takes a week negates the benefits of [continuous deployment](../../../glossary/#continuous-deployment). If your confidence in the [pipeline](../../../glossary/#pipeline) is low enough to require a week-long rollout, the issue is pipeline quality, not rollout speed. Address the root cause through better testing and more production-like environments.
 
 ## Measuring Success
 

@@ -8,7 +8,7 @@ description: >
 
 This architecture suits organizations where multiple teams contribute to a single
 deployable [modular monolith](../../glossary/#modular-monolith) - a common
-pattern for large applications, mobile apps, or platforms where the final artifact must
+pattern for large applications, mobile apps, or platforms where the final [artifact](../../glossary/#artifact) must
 be assembled from team contributions.
 
 The modular monolith structure is what makes multi-team ownership possible. Each team
@@ -16,7 +16,7 @@ owns a specific module representing a bounded sub-domain of the application. Tea
 might own checkout and payments, Team B owns inventory and fulfillment, Team C owns
 user accounts and authentication. Modules communicate through explicit internal APIs,
 not by reaching into each other's database tables or calling private methods. Each
-team's sub-pipeline validates only their module. A shared integration pipeline assembles
+team's sub-pipeline validates only their module. A shared integration [pipeline](../../glossary/#pipeline) assembles
 and verifies the combined result.
 
 This ownership model is critical. Without clear module boundaries, teams step on each
@@ -29,6 +29,8 @@ yet structured as a modular monolith, restructure it before adopting this archit
 
 - otherwise the sub-pipelines will constantly interfere with each other.
 
+
+{{% code-collapse title="Multiple teams, single deployable pipeline diagram" %}}
 ```mermaid
 graph TD
     classDef prefeature fill:#0d7a32,stroke:#0a6128,color:#fff
@@ -75,6 +77,7 @@ graph TD
     I4 --> D1["Deploy Canary / Progressive"]:::prod
     D1 --> D2["Health Checks + SLO Monitors<br/>Auto-Rollback"]:::prod
 ```
+{{% /code-collapse %}}
 
 ## Key Characteristics
 
@@ -95,7 +98,7 @@ graph TD
 - **Integration pipeline target time**: Under 15 minutes. If it grows beyond this, the
   integration test suite needs decomposition or the application needs architectural changes
   to enable independent deployment.
-- **Trunk-based development with path filters**: All teams commit to the same trunk.
+- **[Trunk-based development](../../glossary/#tbd-trunk-based-development) with path filters**: All teams commit to the same trunk.
   Sub-pipelines trigger based on path filters aligned to module boundaries, so a
   change to the payments module does not trigger the inventory sub-pipeline.
 
