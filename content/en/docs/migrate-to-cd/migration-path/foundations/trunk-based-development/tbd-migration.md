@@ -1275,53 +1275,53 @@ Create a `feature/notifications` branch. Work for three weeks. Submit a massive 
 
 **TBD approach:**
 
-**Week 1:**
+**Week 1 - Day 1:** Define notification interface, commit to trunk
 
-- Day 1: Define notification interface, commit to trunk
+{{% code-collapse title="Day 1: NotificationService contract" lang="javascript" %}}
+// notifications/NotificationService.js
+// Contract: all implementations must provide send(userId, message)
+// message shape: { title, body, priority } where priority is 'low', 'normal', or 'high'
 
-  ```typescript
-  // notifications/NotificationService.ts
-  interface NotificationService {
-    send(userId: string, message: NotificationMessage): Promise<void>;
+class NotificationService {
+  async send(userId, message) {
+    throw new Error('Not implemented');
+  }
+}
+{{% /code-collapse %}}
+
+This compiles but doesn't do anything yet. That's fine.
+
+**Week 1 - Day 2:** Add in-memory implementation for testing
+
+{{% code-collapse title="Day 2: InMemoryNotificationService" lang="javascript" %}}
+class InMemoryNotificationService extends NotificationService {
+  constructor() {
+    super();
+    this.notifications = [];
   }
 
-  interface NotificationMessage {
-    title: string;
-    body: string;
-    priority: 'low' | 'normal' | 'high';
+  async send(userId, message) {
+    this.notifications.push(message);
   }
-  ```
+}
+{{% /code-collapse %}}
 
-  This compiles but doesn't do anything yet. That's fine.
+Now other teams can use the interface in their code and tests.
 
-- Day 2: Add in-memory implementation for testing
+**Week 1 - Days 3-5:** Implement email notifications behind a feature flag
 
-  ```typescript
-  class InMemoryNotificationService implements NotificationService {
-    private notifications: NotificationMessage[] = [];
-
-    async send(userId: string, message: NotificationMessage) {
-      this.notifications.push(message);
+{{% code-collapse title="Days 3-5: EmailNotificationService behind a flag" lang="javascript" %}}
+class EmailNotificationService extends NotificationService {
+  async send(userId, message) {
+    if (!features.emailNotifications) {
+      return; // No-op when disabled
     }
+    // Real email sending implementation
   }
-  ```
+}
+{{% /code-collapse %}}
 
-  Now other teams can use the interface in their code and tests.
-
-- Day 3-5: Implement email notifications behind a feature flag
-
-  ```typescript
-  class EmailNotificationService implements NotificationService {
-    async send(userId: string, message: NotificationMessage) {
-      if (!features.emailNotifications) {
-        return; // No-op when disabled
-      }
-      // Real implementation
-    }
-  }
-  ```
-
-  Commit daily. Deploy. Flag is off in production.
+Commit daily. Deploy. Flag is off in production.
 
 **Week 2:**
 
@@ -1350,17 +1350,17 @@ Update schema, update all code, deploy everything at once. Hope nothing breaks.
 **Step 1: Expand (Day 1)**
 Add new columns without removing the old one:
 
-```sql
+{{% code-collapse title="Step 1: add new columns alongside the old one" lang="sql" %}}
 ALTER TABLE users ADD COLUMN first_name VARCHAR(255);
 ALTER TABLE users ADD COLUMN last_name VARCHAR(255);
-```
+{{% /code-collapse %}}
 
 Commit and deploy. Application still uses `name` column. No breaking change.
 
 **Step 2: Dual writes (Day 2-3)**
 Update write path to populate both old and new columns:
 
-```javascript
+{{% code-collapse title="Step 2: write to both old and new columns" lang="javascript" %}}
 async function createUser(name) {
   const [firstName, lastName] = name.split(' ');
   await db.query(
@@ -1368,14 +1368,14 @@ async function createUser(name) {
     [name, firstName, lastName]
   );
 }
-```
+{{% /code-collapse %}}
 
 Commit and deploy. Now new data populates both formats.
 
 **Step 3: Backfill (Day 4)**
 Migrate existing data in the background:
 
-```javascript
+{{% code-collapse title="Step 3: backfill existing rows" lang="javascript" %}}
 async function backfillNames() {
   const users = await db.query('SELECT id, name FROM users WHERE first_name IS NULL');
   for (const user of users) {
@@ -1386,14 +1386,14 @@ async function backfillNames() {
     );
   }
 }
-```
+{{% /code-collapse %}}
 
 Run this as a background job. Commit and deploy.
 
 **Step 4: Read from new columns (Day 5)**
 Update read path behind a feature flag:
 
-```javascript
+{{% code-collapse title="Step 4: read from new columns behind a flag" lang="javascript" %}}
 async function getUser(id) {
   const user = await db.query('SELECT * FROM users WHERE id = ?', [id]);
   if (features.useNewNameColumns) {
@@ -1404,16 +1404,16 @@ async function getUser(id) {
   }
   return { name: user.name };
 }
-```
+{{% /code-collapse %}}
 
 Deploy and gradually enable the flag.
 
 **Step 5: Contract (Week 2)**
 Once all reads use new columns and flag is removed:
 
-```sql
+{{% code-collapse title="Step 5: drop the old column" lang="sql" %}}
 ALTER TABLE users DROP COLUMN name;
-```
+{{% /code-collapse %}}
 
 **Result:** Five deployments instead of one big-bang change. Each step was reversible. Zero downtime.
 
@@ -1427,7 +1427,7 @@ Your authentication code is a mess. You want to refactor it without breaking pro
 **Day 1: Characterization tests**
 Write tests that capture current behavior (warts and all):
 
-```javascript
+{{% code-collapse title="Day 1: characterization tests for existing auth behavior" lang="javascript" %}}
 describe('Current auth behavior', () => {
   it('accepts password with special characters', () => {
     // Document what currently happens
@@ -1437,14 +1437,14 @@ describe('Current auth behavior', () => {
     // Capture edge case behavior
   });
 });
-```
+{{% /code-collapse %}}
 
 These tests document how the system *actually* works. Commit.
 
 **Day 2-3: Strangler fig pattern**
 Create new implementation alongside old one:
 
-```javascript
+{{% code-collapse title="Days 2-3: strangler fig - new implementation alongside old" lang="javascript" %}}
 class LegacyAuthService {
   // Existing messy code (don't touch it)
 }
@@ -1454,7 +1454,10 @@ class ModernAuthService {
 }
 
 class AuthServiceRouter {
-  constructor(private legacy: LegacyAuthService, private modern: ModernAuthService) {}
+  constructor(legacy, modern) {
+    this.legacy = legacy;
+    this.modern = modern;
+  }
 
   async authenticate(credentials) {
     if (features.modernAuth) {
@@ -1463,31 +1466,31 @@ class AuthServiceRouter {
     return this.legacy.authenticate(credentials);
   }
 }
-```
+{{% /code-collapse %}}
 
 Commit with flag off. Old behavior unchanged.
 
 **Day 4-7: Migrate piece by piece**
 Enable modern auth for one endpoint at a time:
 
-```javascript
+{{% code-collapse title="Days 4-7: enable modern auth per endpoint" lang="javascript" %}}
 if (features.modernAuth && endpoint === '/api/users') {
   return modernAuth.authenticate(credentials);
 }
-```
+{{% /code-collapse %}}
 
 Commit daily. Monitor each endpoint.
 
 **Week 2: Remove old code**
 Once all endpoints use modern auth and it's been stable for a week:
 
-```javascript
+{{% code-collapse title="Week 2: remove the legacy implementation" lang="javascript" %}}
 class AuthService {
   async authenticate(credentials) {
     // Just the modern implementation
   }
 }
-```
+{{% /code-collapse %}}
 
 Delete the legacy code entirely.
 
@@ -1503,7 +1506,7 @@ A third-party API you depend on is changing their response format next month.
 **Week 1: Adapter pattern**
 Create an adapter that normalizes both old and new formats:
 
-```javascript
+{{% code-collapse title="Week 1: adapter handling both old and new API formats" lang="javascript" %}}
 class PaymentAPIAdapter {
   async getPaymentStatus(orderId) {
     const response = await fetch(`https://api.payments.com/orders/${orderId}`);
@@ -1525,7 +1528,7 @@ class PaymentAPIAdapter {
     }
   }
 }
-```
+{{% /code-collapse %}}
 
 Commit. Your code now works with both formats.
 
@@ -1535,7 +1538,7 @@ Wait for the third-party API to migrate. Your code keeps working.
 **Week 4 (after API migration):**
 Simplify adapter to only handle new format:
 
-```javascript
+{{% code-collapse title="Week 4: simplified adapter for new format only" lang="javascript" %}}
 async getPaymentStatus(orderId) {
   const response = await fetch(`https://api.payments.com/orders/${orderId}`);
   const data = await response.json();
@@ -1544,7 +1547,7 @@ async getPaymentStatus(orderId) {
     amount: data.amounts.total,
   };
 }
-```
+{{% /code-collapse %}}
 
 **Result:** No coupling between your deployment schedule and the external API migration. Zero downtime.
 
