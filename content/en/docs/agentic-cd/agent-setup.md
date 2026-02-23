@@ -1,13 +1,13 @@
 ---
 title: "Getting Started: Where to Put What"
 linkTitle: "Configuration Quick Start"
-weight: 5
+weight: 6
 description: >
   How to structure agent configuration across CLAUDE.md, rules, skills, and hooks - mapped to their purpose and time horizon for effective context management.
 ---
 
 {{% pageinfo %}}
-The four configuration mechanisms serve four different purposes. Placing information in the right mechanism controls context cost: it determines what every agent pays on every invocation, and what must be loaded only when needed.
+The four configuration mechanisms serve four different purposes. Placing information in the right mechanism controls [context](../glossary/#context-llm) cost: it determines what every [agent](../glossary/#agent-ai) pays on every invocation, and what must be loaded only when needed.
 {{% /pageinfo %}}
 
 ## The Four Mechanisms
@@ -15,7 +15,7 @@ The four configuration mechanisms serve four different purposes. Placing informa
 | Mechanism | Purpose | When loaded |
 |-----------|---------|-------------|
 | `CLAUDE.md` | Project facts every agent always needs | Every session |
-| Rules (system prompts) | Per-agent behavior constraints | Every agent invocation |
+| Rules ([system prompts](../glossary/#system-prompt)) | Per-agent behavior constraints | Every agent invocation |
 | Skills | Named session procedures | On explicit invocation |
 | Hooks | Automated, deterministic actions | On trigger event - no agent involved |
 
@@ -41,7 +41,7 @@ The four configuration mechanisms serve four different purposes. Placing informa
 - Context specific to one agent - that goes in that agent's rules
 - Anything an agent only needs occasionally - load it when needed, not always
 
-Because `CLAUDE.md` loads on every session, every line is a token cost on every invocation. Keep it to stable facts, not procedures. A bloated `CLAUDE.md` is an invisible per-session tax.
+Because `CLAUDE.md` loads on every session, every line is a [token](../glossary/#token) cost on every invocation. Keep it to stable facts, not procedures. A bloated `CLAUDE.md` is an invisible per-session tax.
 
 ---
 
@@ -60,7 +60,7 @@ Rules define how a specific agent behaves. Each agent has its own rules document
 **Do not put in rules:**
 
 - Project facts - those go in `CLAUDE.md`
-- Session-specific information - that is loaded dynamically by the orchestrator
+- Session-specific information - that is loaded dynamically by the [orchestrator](../glossary/#orchestrator)
 - Multi-step procedures - those go in skills
 
 Rules are placed first in every agent's context. This placement is a caching decision, not just convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics](../tokenomics/) for how caching interacts with context order.
@@ -74,7 +74,7 @@ A skill is a named session procedure - a markdown document describing a multi-st
 **Put in skills:**
 
 - Session lifecycle procedures: how to start a session, how to run the pre-commit review gate, how to close a session and write the summary
-- Pipeline-restore procedures for when the pipeline fails mid-session
+- Pipeline-restore procedures for when the [pipeline](../glossary/#pipeline) fails mid-session
 - Any multi-step workflow the agent should execute consistently and reproducibly
 
 **Do not put in skills:**
@@ -130,7 +130,7 @@ Within each agent invocation, load context in this order:
 1. Agent rules (stable - cached across every invocation)
 2. `CLAUDE.md` project context (stable - cached across every invocation)
 3. Feature description (stable within a feature - often cached)
-4. BDD scenario for this session (changes per session)
+4. [BDD](../glossary/#bdd-behavior-driven-development) scenario for this session (changes per session)
 5. Relevant existing files (changes per session)
 6. Prior session summary (changes per session)
 7. Staged diff or current task context (changes per invocation)
@@ -141,9 +141,11 @@ Stable content at the top. Volatile content at the bottom. Rules and `CLAUDE.md`
 
 ## File Layout
 
-A Claude Code project configured for ACD has this structure:
+The examples below use Claude Code and Gemini CLI conventions. The four-mechanism pattern
+(project context, rules, skills, hooks) applies to any tooling - the file names and
+locations differ, the purpose of each mechanism does not.
 
-{{< code-collapse title="Claude Code ACD project layout" lang="text" >}}
+{{< code-collapse title="Claude Code layout" lang="text" >}}
 .claude/
   skills/
     start-session.md    # session initialization - assembles context for the implementation agent
@@ -154,7 +156,21 @@ A Claude Code project configured for ACD has this structure:
 CLAUDE.md               # project facts for all agents
 {{< /code-collapse >}}
 
-The skill documents contain the procedure text in markdown. The hooks configuration lives in `.claude/settings.json`. The agent rules (system prompts) are stored in your agent framework or injected programmatically at session start.
+{{< code-collapse title="Gemini CLI layout" lang="text" >}}
+.gemini/
+  skills/
+    start-session.md    # same procedure documents - Gemini reads markdown instructions
+    review.md
+    end-session.md
+    fix.md
+  settings.json         # hooks and Gemini CLI configuration
+GEMINI.md               # project facts for all agents (equivalent to CLAUDE.md)
+{{< /code-collapse >}}
+
+The skill documents are plain markdown in both cases - the same procedure text works
+across models because skills are specifications, not code. The hooks configuration
+format follows each tool's convention. The agent rules (system prompts) are stored in
+your agent framework or injected programmatically at session start.
 
 ---
 

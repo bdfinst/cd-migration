@@ -1,7 +1,7 @@
 ---
 title: "Coding and Review Agent Configuration"
 linkTitle: "Coding Agent Configuration"
-weight: 6
+weight: 7
 description: >
   A recommended orchestrator, agent, and sub-agent configuration for coding and pre-commit review, with rules, skills, and hooks mapped to the defect sources catalog.
 ---
@@ -67,7 +67,7 @@ It does not generate implementation code. Its job is routing and context hygiene
 
 **Recommended model tier:** Small to mid. The orchestrator routes, assembles context, and
 writes session summaries. It does not reason about code. A frontier model here wastes tokens
-on a task that does not require frontier reasoning.
+on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash.
 
 **Responsibilities:**
 
@@ -135,7 +135,8 @@ It operates within the context the orchestrator provides and does not reach outs
 **Recommended model tier:** Mid to frontier. Code generation and test-first implementation
 require strong reasoning. This is the highest-value task in the session - invest model
 capability here. Output verbosity should be controlled explicitly: the agent returns code
-only, not explanations or rationale, unless the orchestrator requests them.
+only, not explanations or rationale, unless the orchestrator requests them. Claude: Sonnet
+or Opus. Gemini: Pro.
 
 **Receives from the orchestrator:**
 
@@ -182,7 +183,7 @@ returns a single structured decision.
 
 **Recommended model tier:** Small. The review orchestrator does no reasoning itself - it
 invokes sub-agents and aggregates their structured output. A small model handles this
-coordination cheaply.
+coordination cheaply. Claude: Haiku. Gemini: Flash.
 
 **Receives:**
 
@@ -262,7 +263,7 @@ Each sub-agent covers exactly one defect concern from the
 
 **Recommended model tier:** Mid to frontier. Logic correctness and intent alignment require
 genuine reasoning - a model that can follow execution paths, infer edge cases, and compare
-implementation against stated intent.
+implementation against stated intent. Claude: Sonnet or Opus. Gemini: Pro.
 
 **Defect sources addressed:**
 
@@ -318,7 +319,8 @@ Return this JSON and nothing else:
 
 **Recommended model tier:** Mid to frontier. Identifying second-order injection, subtle
 authorization gaps, and missing audit events requires understanding data flow semantics,
-not just pattern matching. A smaller model will miss the cases that matter most.
+not just pattern matching. A smaller model will miss the cases that matter most. Claude:
+Sonnet or Opus. Gemini: Pro.
 
 **Defect sources addressed:**
 
@@ -381,7 +383,8 @@ Return this JSON and nothing else:
 **Recommended model tier:** Small to mid. Timeout and resource leak detection is primarily
 structural pattern recognition: find external calls, check for timeout configuration, trace
 resource allocations to their cleanup paths. A small to mid model handles this well and runs
-cheaply enough to be invoked on every commit without concern.
+cheaply enough to be invoked on every commit without concern. Claude: Haiku or Sonnet.
+Gemini: Flash.
 
 **Defect sources addressed:**
 
@@ -441,7 +444,8 @@ Return this JSON and nothing else:
 
 **Recommended model tier:** Mid. Concurrency defects require reasoning about execution
 ordering and shared state - more than pattern matching but less open-ended than security
-semantics. A mid-tier model balances reasoning depth and cost here.
+semantics. A mid-tier model balances reasoning depth and cost here. Claude: Sonnet.
+Gemini: Pro.
 
 **Defect sources addressed:**
 
@@ -663,15 +667,15 @@ decisions have the most impact on cost per session.
 Matching model tier to task complexity is the highest-leverage cost decision. Applied to
 this configuration:
 
-| Agent | Recommended Tier | Why |
-|-------|-----------------|-----|
-| Orchestrator | Small to mid | Routing and context assembly; no code reasoning required |
-| Implementation Agent | Mid to frontier | Core code generation; the task that justifies frontier capability |
-| Review Orchestrator | Small | Coordination only; returns structured output from sub-agents |
-| Semantic Review | Mid to frontier | Logic and intent reasoning; requires genuine inference |
-| Security Review | Mid to frontier | Security semantics; pattern-matching is insufficient |
-| Performance Review | Small to mid | Structural pattern recognition; timeout and resource signatures |
-| Concurrency Review | Mid | Concurrent execution semantics; more than patterns, less than security |
+| Agent | Recommended Tier | Claude | Gemini | Why |
+|-------|-----------------|--------|--------|-----|
+| Orchestrator | Small to mid | Haiku | Flash | Routing and context assembly; no code reasoning required |
+| Implementation Agent | Mid to frontier | Sonnet or Opus | Pro | Core code generation; the task that justifies frontier capability |
+| Review Orchestrator | Small | Haiku | Flash | Coordination only; returns structured output from sub-agents |
+| Semantic Review | Mid to frontier | Sonnet or Opus | Pro | Logic and intent reasoning; requires genuine inference |
+| Security Review | Mid to frontier | Sonnet or Opus | Pro | Security semantics; pattern-matching is insufficient |
+| Performance Review | Small to mid | Haiku or Sonnet | Flash | Structural pattern recognition; timeout and resource signatures |
+| Concurrency Review | Mid | Sonnet | Pro | Concurrent execution semantics; more than patterns, less than security |
 
 Running the implementation agent on a frontier model and routing the review orchestrator
 and performance review agent to smaller models cuts the token cost of a full session

@@ -1,7 +1,7 @@
 ---
 title: "Pipeline Enforcement and Expert Agents"
 linkTitle: "Pipeline Enforcement"
-weight: 8
+weight: 9
 description: >
   How quality gates enforce ACD constraints and how expert validation agents extend the pipeline beyond standard tooling.
 ---

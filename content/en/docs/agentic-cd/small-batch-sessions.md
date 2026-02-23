@@ -1,7 +1,7 @@
 ---
 title: "Small-Batch Agent Sessions"
 linkTitle: "Small-Batch Sessions"
-weight: 7
+weight: 8
 description: >
   How to structure agent sessions so context stays manageable, commits stay small, and the pipeline stays green.
 ---
