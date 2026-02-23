@@ -22,11 +22,13 @@ have nothing to extend. See [Agentic Continuous Delivery](../agentic-cd/).
 Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
-[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
+[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
+[Your Migration Journey](../)
 
 ### Agent (AI)
 
@@ -38,13 +40,15 @@ the start of a session. See [Agentic CD](../agentic-cd/).
 
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
+[Learning Paths](../learning-paths/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
-[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
@@ -130,12 +134,14 @@ story actually means before development begins.
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [Knowledge & Communication Defects](../defect-sources/knowledge-and-communication/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
@@ -304,10 +310,11 @@ and latency increase and performance can degrade when relevant information is bu
 the end of the context. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Agentic Continuous Delivery (ACD)](../agentic-cd/),
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
+[Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
@@ -567,9 +574,10 @@ hygiene at agent boundaries is especially important - what the orchestrator pass
 sub-agent is a cost and quality decision. See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
-[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
@@ -598,6 +606,7 @@ Referenced in:
 [Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/),
 [Functional Tests](../testing/functional/),
 [Getting a Test Environment Requires Filing a Ticket](../symptoms/flow/lack-of-self-service-environments/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [High Coverage but Tests Miss Defects](../symptoms/testing/high-coverage-ineffective-tests/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/),
@@ -785,9 +794,10 @@ placing it first maximizes cache effectiveness and reduces per-call input costs.
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ## T
@@ -831,9 +841,10 @@ than reading them. Frontier models cost 10-20x more per token than smaller alter
 See [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
+[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
-[Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
+[Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
