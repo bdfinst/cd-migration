@@ -122,7 +122,7 @@ Move toward:
 
 ### 2. Integrate Every Few Days, Then Every Day
 
-Set an explicit working agreement:
+Set an explicit [working agreement](../../../../glossary/#working-agreement):
 
 > "Nothing lives longer than 48 hours."
 
@@ -143,7 +143,7 @@ Bring product, QA, and developers together *before coding*:
 
 You'll discover misunderstandings upfront instead of after a week of coding.
 
-This approach is called **Behavior-Driven Development (BDD)**, a collaborative practice where teams define expected behavior in plain language before writing code. BDD bridges the gap between business requirements and technical implementation by using concrete examples that become executable tests.
+This approach is called **[Behavior-Driven Development (BDD)](../../../../glossary/#bdd-behavior-driven-development)**, a collaborative practice where teams define expected behavior in plain language before writing code. BDD bridges the gap between business requirements and technical implementation by using concrete examples that become executable tests.
 
 **Key BDD resources:**
 
@@ -232,7 +232,7 @@ This lets teams integrate frequently without surprises.
 ## Path 2: Committing Directly to the Trunk
 
 This is the cleanest and most powerful version of TBD.
-It requires discipline, but it produces the most stable delivery pipeline and the least drama.
+It requires discipline, but it produces the most stable delivery [pipeline](../../../../glossary/#pipeline) and the least drama.
 
 If the idea of committing straight to `main` makes people panic, that's a signal about your current testing process, not a problem with TBD.
 
@@ -267,7 +267,7 @@ These practices apply to **both paths**, whether you're using short-lived branch
 
 ### Use Feature Flags the Right Way
 
-Feature flags are one of several **evolutionary coding practices** that allow you to integrate incomplete work safely. Other methods include branch by abstraction and connect-last patterns.
+[Feature flags](../../../../glossary/#feature-flag) are one of several **evolutionary coding practices** that allow you to integrate incomplete work safely. Other methods include branch by abstraction and connect-last patterns.
 
 Feature flags are not a testing strategy.
 They are a **release** strategy.
@@ -344,7 +344,7 @@ Feature flags serve two fundamentally different purposes:
 
 - Control rollout of new features
 - Enable gradual deployment
-- Allow quick rollback of changes
+- Allow quick [rollback](../../../../glossary/#rollback) of changes
 - Test in production before full release
 - **Lifecycle**: Created for a release, removed once stable (typically 1-4 weeks)
 
@@ -455,7 +455,7 @@ The initial phase sets the tone. Focus on establishing new habits, not perfectio
 ### Step 1: Team Agreement and Baseline
 
 - Hold a team meeting to discuss the migration
-- Agree on initial branch lifetime limit (start with 48 hours if unsure)
+- Agree on initial [branch lifetime](../../../../glossary/#branch-lifetime) limit (start with 48 hours if unsure)
 - Document current baseline metrics (branch age, merge frequency, build time)
 - Identify your slowest-running tests
 - Create a list of known integration pain points
@@ -851,7 +851,7 @@ This provides stronger separation of duties than long-lived branches because:
 
 Branch protection rules enforce your process:
 
-```yaml
+{{% code-collapse title="Example GitHub branch protection rules for trunk" lang="yaml" %}}
 # Example GitHub branch protection for trunk
 required_reviews: 1
 required_checks:
@@ -860,7 +860,7 @@ required_checks:
   - compliance-validation
 dismiss_stale_reviews: true
 require_code_owner_review: true
-```
+{{% /code-collapse %}}
 
 This ensures:
 
@@ -873,7 +873,7 @@ This ensures:
 
 Pull request templates enforce documentation:
 
-```markdown
+{{% code-collapse title="Pull request template for compliance documentation" lang="markdown" %}}
 ## Change Description
 [Link to Jira ticket]
 
@@ -890,7 +890,7 @@ Pull request templates enforce documentation:
 
 ## Rollback Plan
 [How to rollback if this causes issues in production]
-```
+{{% /code-collapse %}}
 
 ### What "Short-Lived" Means in Practice
 
@@ -1135,7 +1135,7 @@ Start with volunteers. Run experiments. Share results. Let success create pull, 
 Trying to do TBD while still working on features that take weeks to complete.
 
 **Why it fails:**
-If your work naturally takes weeks, you can't integrate daily. You'll create work-in-progress commits that don't add value.
+If your work naturally takes weeks, you can't integrate daily. You'll create [work-in-progress](../../../../glossary/#wip-work-in-progress) commits that don't add value.
 
 **What to do instead:**
 Learn to decompose work into smaller, independently valuable increments. This is a skill that must be developed.
@@ -1143,7 +1143,7 @@ Learn to decompose work into smaller, independently valuable increments. This is
 ### Pitfall 8: No Clear Definition of "Done"
 
 **The mistake:**
-Integrating code that "works on my machine" without validating it in a production-like environment.
+Integrating code that "works on my machine" without validating it in a [production-like environment](../../../../glossary/#production-like-environment).
 
 **Why it fails:**
 Integration bugs don't surface until deployment. By then, you've integrated many other changes, making root cause analysis harder.
@@ -1568,7 +1568,7 @@ async getPaymentStatus(orderId) {
 - "The Cucumber Book" by Matt Wynne and Aslak Hellesoy - Practical BDD guide
 - [Three Amigos sessions](https://www.agilealliance.org/glossary/three-amigos/) - Collaborative requirements discovery
 
-**Test-Driven Development:**
+**[Test-Driven Development](../../../../glossary/#tdd-test-driven-development):**
 
 - "Test-Driven Development: By Example" by Kent Beck - TDD fundamentals
 - "Growing Object-Oriented Software, Guided by Tests" by Steve Freeman and Nat Pryce - TDD at scale

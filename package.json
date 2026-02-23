@@ -32,10 +32,12 @@
     "prepare": "husky",
     "start": "rm -rf public && hugo serve",
     "a11y": "bash scripts/a11y.sh",
+    "layout-check": "bash scripts/layout-check.sh",
     "test": "npm run lint && npm run link-check:local",
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "autoprefixer": "^10.4.22",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",

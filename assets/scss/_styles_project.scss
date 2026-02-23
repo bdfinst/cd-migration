@@ -1053,6 +1053,13 @@ pre.mermaid {
   to   { transform: scaleY(1); }
 }
 
+// Ensure all pre elements inside content handle wide lines with a scrollbar
+// rather than overflowing and breaking the page layout. This covers pre elements
+// nested inside list items (which are not direct children of .td-content).
+.td-content pre {
+  overflow-x: auto;
+}
+
 // Code collapse shortcode
 .code-collapse {
   margin: 1rem 0;

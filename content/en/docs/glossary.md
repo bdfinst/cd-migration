@@ -159,7 +159,8 @@ Referenced in:
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
 [Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
-[Merging Is Painful and Time-Consuming](../symptoms/flow/painful-merges/)
+[Merging Is Painful and Time-Consuming](../symptoms/flow/painful-merges/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
 
 ## C
 
@@ -656,8 +657,12 @@ data characteristics. Testing in environments that differ from production is a c
 of deployment failures. See [Production-Like Environments](../practices/production-like-environments/).
 
 Referenced in:
+[Hard-Coded Environment Assumptions](../anti-patterns/pipeline/hardcoded-environment-assumptions/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
-[Pipeline Reference Architecture](../pipeline-reference-architecture/)
+[Pipeline Reference Architecture](../pipeline-reference-architecture/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Stakeholders See Working Software Only at Release Time](../symptoms/flow/delayed-stakeholder-feedback/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
 
 ### Prompt
 
@@ -903,6 +908,7 @@ in [Phase 3 - Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wi
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[Development Cycle Time](../metrics/development-cycle-time/),
 [Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
@@ -911,10 +917,13 @@ Referenced in:
 [Retrospectives Produce No Real Change](../symptoms/flow/meaningless-retrospectives/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Symptoms for Managers](../symptoms/for-managers/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Team Burnout and Unsustainable Pace](../symptoms/visibility/team-burnout/),
 [Team Membership Changes Constantly](../symptoms/flow/team-instability/),
 [The Team Has No Shared Agreements About How to Work](../symptoms/flow/no-shared-workflow-expectations/),
-[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
+[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
+[Work in Progress](../metrics/work-in-progress/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ### White Box Testing
 

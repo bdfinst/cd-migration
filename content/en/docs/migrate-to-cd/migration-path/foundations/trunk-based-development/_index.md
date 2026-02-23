@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations**
 
-Trunk-based development is the first foundation to establish. Without daily integration to a shared trunk, the rest of the CD migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
+[Trunk-based development](../../../../glossary/#tbd-trunk-based-development) is the first foundation to establish. Without daily integration to a shared trunk, the rest of the [CD](../../../../glossary/#cd-continuous-delivery) migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
 {{% /pageinfo %}}
 
 ## What Is Trunk-Based Development?
@@ -37,7 +37,7 @@ This is a **non-negotiable prerequisite for [continuous delivery](../../../../gl
 | Long-lived branches diverge from reality | The trunk always reflects the current state of the codebase |
 | "Works on my branch" syndrome | Everyone shares the same integration point |
 | Slow feedback | CI runs on every integration, giving immediate signal |
-| Large batch deployments | Small changes are individually deployable |
+| Large batch deployments | Small changes are individually [deployable](../../../../glossary/#deployable) |
 | Fear of deployment | Each change is small enough to reason about |
 
 ## Two Migration Paths
@@ -106,12 +106,13 @@ Trunk-based development does not work in isolation. These supporting practices m
 
 When you integrate to trunk daily, incomplete features will exist on trunk. [Feature flags](../../../../glossary/#feature-flag) let you merge code that is not yet ready for users.
 
-{{% code-collapse title="Simple feature flag example" lang="python" %}}
-# Simple feature flag example
-if feature_flags.is_enabled("new-checkout-flow", user):
-    return new_checkout(cart)
-else:
-    return legacy_checkout(cart)
+{{% code-collapse title="Simple feature flag example" lang="javascript" %}}
+// Simple feature flag example
+if (featureFlags.isEnabled('new-checkout-flow', user)) {
+  return newCheckout(cart);
+} else {
+  return legacyCheckout(cart);
+}
 {{% /code-collapse %}}
 
 **Rules for feature flags in TBD:**
@@ -262,7 +263,7 @@ If you are merging to trunk daily but also maintaining a long-lived feature bran
 
 ### 2. "Our builds are too slow for frequent integration"
 
-If your CI pipeline takes 30 minutes, integrating multiple times a day feels impractical. This is a real constraint - address it by investing in [build automation](../build-automation/) and parallelizing your test suite. Target a build time under 10 minutes.
+If your CI [pipeline](../../../../glossary/#pipeline) takes 30 minutes, integrating multiple times a day feels impractical. This is a real constraint - address it by investing in [build automation](../build-automation/) and parallelizing your test suite. Target a build time under 10 minutes.
 
 ### 3. "We can't integrate incomplete features to trunk"
 
