@@ -7,12 +7,12 @@ description: >
 ---
 
 {{% pageinfo %}}
-Most developers using AI coding tools today are at Stage 1 or Stage 2. Many conclude from that experience that AI is only useful for boilerplate, or that it cannot handle real work. That conclusion is not wrong given their experience - it is wrong about the ceiling. The ceiling they hit is the ceiling of that stage, not of AI-assisted development. Every stage above has a higher ceiling, but the path up is not obvious without exposure to better practices.
+Many developers using AI coding tools today are at Stage 1 or Stage 2. Many conclude from that experience that AI is only useful for boilerplate, or that it cannot handle real work. That conclusion is not wrong given their experience - it is wrong about the ceiling. The ceiling they hit is the ceiling of that stage, not of AI-assisted development. Every stage above has a higher ceiling, but the path up is not obvious without exposure to better practices.
 {{% /pageinfo %}}
 
 The progression below describes six distinct stages developers move through when learning AI-assisted development. At each stage, a specific bottleneck limits how much value AI actually delivers. Solving that [constraint](../glossary/#constraint) opens the next stage. Ignoring it means productivity gains plateau - or reverse - and developers conclude AI is not worth the effort.
 
-Progress through these stages does not happen naturally or automatically. It requires intentional practice changes and, most importantly, exposure to what the next stage looks like. Most developers never see Stages 4 through 6 demonstrated. They optimize within the stage they are at and assume that is the limit of the technology.
+Progress through these stages does not happen naturally or automatically. It requires intentional practice changes and, most importantly, exposure to what the next stage looks like. Many developers never see Stages 4 through 6 demonstrated. They optimize within the stage they are at and assume that is the limit of the technology.
 
 ## Stage 1: Autocomplete
 
@@ -99,7 +99,7 @@ This is the [ACD](../glossary/#acd-agentic-continuous-delivery) destination. The
 
 ## Why Progress Stalls
 
-Most developers do not advance past Stage 2 because the path forward is not visible from within Stage 1 or 2. The information gap is the dominant constraint, not motivation or skill.
+Many developers do not advance past Stage 2 because the path forward is not visible from within Stage 1 or 2. The information gap is the dominant constraint, not motivation or skill.
 
 **The problem at Stage 1:** Autocomplete delivers real, immediate value. There is no pressing failure, no visible ceiling, no obvious reason to change the workflow. Developers optimize their Stage 1 usage - learning which suggestions to trust, which to skip - and reach a stable equilibrium. That equilibrium is far below what is possible.
 
@@ -107,7 +107,7 @@ Most developers do not advance past Stage 2 because the path forward is not visi
 
 **The problem at Stages 3-4:** Developers who push past Stage 2 often hit Stage 3 or 4 and run into context degradation or vague-requirements drift. Without spec-first discipline, agentic task completion produces hard-to-review diffs and subtle correctness errors. The failure mode looks like "AI makes more work than it saves" - which is true for that approach. Many developers loop back to Stage 2 and conclude they are not missing much.
 
-**What breaks the pattern:** Seeing a demonstration of Stage 5 or Stage 6 in practice. Watching someone write a specification, have an agent generate tests from it, implement against those tests, and commit a clean diff is a qualitatively different experience from struggling with a chat window. Most developers have not seen this. Most resources on "how to use AI for coding" describe Stage 2 or Stage 3 workflows.
+**What breaks the pattern:** Seeing a demonstration of Stage 5 or Stage 6 in practice. Watching someone write a specification, have an agent generate tests from it, implement against those tests, and commit a clean diff is a qualitatively different experience from struggling with a chat window. Many developers have not seen this. Most resources on "how to use AI for coding" describe Stage 2 or Stage 3 workflows.
 
 This guide exists to close that gap.
 
@@ -132,7 +132,7 @@ Three questions locate you on the curve:
 2. **Does every agent task start from a written specification?** If not, you are at Stage 4 or below regardless of what tools you use.
 3. **Who reviews agent-generated changes?** If the answer is always a human reading every diff, you have not yet addressed the Stage 5 throughput ceiling.
 
-Most developers using AI coding tools are at Stage 1 or 2. Many concluded from an early Stage 2 failure that the ceiling is low and moved on. If you are at Stage 1 or 2 and feel like AI is only useful for simple work, the problem is almost certainly the workflow, not the technology.
+Many developers using AI coding tools are at Stage 1 or 2. Many concluded from an early Stage 2 failure that the ceiling is low and moved on. If you are at Stage 1 or 2 and feel like AI is only useful for simple work, the problem is almost certainly the workflow, not the technology.
 
 **If you are at Stage 1 or 2:** The highest-leverage move is hands-on exposure to an agentic tool at Stage 4. Give the agent access to your codebase - let it read files, run tests, and produce a diff for a small task. The experience of watching an agent navigate a codebase is qualitatively different from receiving function output in a chat window. See [Small-Batch Sessions](../small-batch-sessions/) for how to structure small, low-risk tasks that demonstrate what is possible without exposing the full codebase to an unguided agent.
 
