@@ -1108,9 +1108,10 @@ pre.mermaid {
   .code-collapse__content {
     position: relative;
     // Ensure any prose elements (p, li, etc.) rendered inside the dark container
-    // are readable - applies when code-collapse is nested inside a {{% %}} shortcode
-    // that processes inner HTML through markdown.
+    // are readable. Directly target p and li so Bootstrap/Docsy rules that explicitly
+    // set color on these elements don't win over an inherited value.
     color: #c9d1d9;
+    p, li { color: #c9d1d9; }
 
     // Prism's CSS sets code[class*="language-"] { color: #000 } which would
     // override the inherited foreground from Chroma's dark inline style.
