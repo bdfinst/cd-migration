@@ -10,7 +10,7 @@ description: >
 Most developers using AI coding tools today are at Stage 1 or Stage 2. Many conclude from that experience that AI is only useful for boilerplate, or that it cannot handle real work. That conclusion is not wrong given their experience - it is wrong about the ceiling. The ceiling they hit is the ceiling of that stage, not of AI-assisted development. Every stage above has a higher ceiling, but the path up is not obvious without exposure to better practices.
 {{% /pageinfo %}}
 
-The progression below describes six distinct stages developers move through when learning AI-assisted development. At each stage, a specific bottleneck limits how much value AI actually delivers. Solving that constraint opens the next stage. Ignoring it means productivity gains plateau - or reverse - and developers conclude AI is not worth the effort.
+The progression below describes six distinct stages developers move through when learning AI-assisted development. At each stage, a specific bottleneck limits how much value AI actually delivers. Solving that [constraint](../glossary/#constraint) opens the next stage. Ignoring it means productivity gains plateau - or reverse - and developers conclude AI is not worth the effort.
 
 Progress through these stages does not happen naturally or automatically. It requires intentional practice changes and, most importantly, exposure to what the next stage looks like. Most developers never see Stages 4 through 6 demonstrated. They optimize within the stage they are at and assume that is the limit of the technology.
 
@@ -38,7 +38,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What works:** Bounded, well-scoped tasks with clear inputs and outputs. Writing a parser, formatting utility, or data transformation that can be fully described in a few sentences. The developer reviews a self-contained unit of work.
 
-**Why developers abandon here:** Stage 2 is where many developers decide AI "cannot write real code." They try a larger task, receive confidently wrong output, spend an hour correcting it, and conclude the tool is not worth the effort for anything non-trivial. That conclusion is accurate at Stage 2. The problem is not the technology - it is the workflow. A single-turn prompt with no context, no surrounding code, and no specified constraints will produce plausible-looking guesses for anything beyond simple functions. Developers who abandon here never discover that the same model, given different inputs through a different workflow, produces dramatically better output.
+**Why developers abandon here:** Stage 2 is where many developers decide AI "cannot write real code." They try a larger task, receive confidently wrong output, spend an hour correcting it, and conclude the tool is not worth the effort for anything non-trivial. That conclusion is accurate at Stage 2. The problem is not the technology - it is the workflow. A single-turn [prompt](../glossary/#prompt) with no context, no surrounding code, and no specified constraints will produce plausible-looking guesses for anything beyond simple functions. Developers who abandon here never discover that the same model, given different inputs through a different workflow, produces dramatically better output.
 
 **What drives the move forward:** Frustration that AI is only useful for small tasks, combined with exposure to someone using it for larger ones. The realization that giving the AI more context - the surrounding files, the calling code, the data structures - would produce better output.
 

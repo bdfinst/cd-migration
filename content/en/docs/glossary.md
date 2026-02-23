@@ -288,16 +288,20 @@ During a CD migration, your job is to find and fix constraints in order of impac
 [Identify Constraints](../migrate-to-cd/migration-path/assess/identify-constraints/).
 
 Referenced in:
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Knowledge Silos](../anti-patterns/team-workflow/knowledge-silos/),
 [Learning Paths](../learning-paths/),
+[Multiple Services Must Be Deployed Together](../symptoms/deployment/coordinated-deployments/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/),
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
 [Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/),
-[Services Reach Production with No Health Checks or Alerting](../symptoms/deployment/services-without-health-checks/),
-[The Agentic Development Learning Curve](../agentic-cd/learning-curve/)
+[Sprint Planning Is Dominated by Dependency Negotiation](../symptoms/flow/dependency-heavy-planning/),
+[The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
+[Untestable Architecture](../anti-patterns/architecture/untestable-architecture/)
 
 ### Context (LLM)
 
