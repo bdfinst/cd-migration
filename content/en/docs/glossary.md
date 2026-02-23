@@ -431,6 +431,7 @@ Referenced in:
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
 [The Team Resists Merging to the Main Branch](../symptoms/flow/resistance-to-trunk-based-development/),
 [Vendor Release Cycles Constrain the Team's Deployment Frequency](../symptoms/flow/third-party-dependency-constraints/),
@@ -629,6 +630,7 @@ Referenced in:
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [Staging Passes but Production Fails](../symptoms/deployment/staging-passes-production-fails/),
 [Symptoms for Developers](../symptoms/for-developers/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
 [Test Doubles](../testing/test-doubles/),
 [Test Suite Is Too Slow to Run](../symptoms/testing/slow-test-suites/),
@@ -721,6 +723,7 @@ Referenced in:
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
 [Symptoms for Developers](../symptoms/for-developers/),
 [Systemic Defect Fixes](../defect-sources/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [The Team Is Caught Between Shipping Fast and Not Breaking Things](../symptoms/flow/speed-vs-stability-tension/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
 
