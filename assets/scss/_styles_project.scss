@@ -381,6 +381,7 @@ pre.mermaid {
 .token.char,
 .token.inserted,
 .token.selector,
+.token.attr-name,
 .token.attr-value,
 .token.template-punctuation {
   color: #547e00 !important; // was #690 (3.23:1), now 4.62:1
@@ -808,7 +809,7 @@ pre.mermaid {
       font-weight: 700;
       background: #fff;
       border: 2.5px solid #b8c8d8;
-      color: #7a90a6;
+      color: #63798f; // was #7a90a6 (3.3:1), now 4.5:1 on #fff
       transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
       animation: lp-phase-activate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
@@ -977,7 +978,7 @@ pre.mermaid {
 
   .lp-ref-dot {
     margin: 0 0.75rem;
-    color: #b0bec9;
+    color: #6a7883; // was #b0bec9 (1.9:1), now 4.5:1 on #fff
   }
 
   // ---- Responsive ----------------------------------------------------------
@@ -1060,20 +1061,21 @@ pre.mermaid {
   overflow-x: auto;
 }
 
-// Code collapse shortcode
+// Code collapse shortcode - dark IDE theme
 .code-collapse {
   margin: 1rem 0;
-  border: 1px solid $secondary;
-  border-radius: 4px;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: #0d1117;
 
   .code-collapse__summary {
     padding: 0.5rem 1rem;
     cursor: pointer;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 500;
-    color: $primary;
-    background-color: lighten($primary, 62%);
-    border-radius: 4px;
+    color: #c9d1d9; // github-dark foreground - 9.36:1 on #161b22
+    background-color: #161b22;
+    border-radius: 6px;
     list-style: none;
     display: flex;
     align-items: center;
@@ -1085,16 +1087,18 @@ pre.mermaid {
       font-size: 0.65rem;
       transition: transform 0.15s ease;
       display: inline-block;
+      color: #8b949e; // 6.49:1 on #161b22
     }
 
     &:hover {
-      background-color: lighten($primary, 57%);
+      background-color: #1c2128;
+      color: #e6edf3; // slightly brighter on hover
     }
   }
 
   &[open] .code-collapse__summary {
-    border-bottom: 1px solid $secondary;
-    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid #30363d;
+    border-radius: 6px 6px 0 0;
 
     &::before {
       transform: rotate(90deg);
@@ -1102,15 +1106,79 @@ pre.mermaid {
   }
 
   .code-collapse__content {
+    position: relative;
+    // Ensure any prose elements (p, li, etc.) rendered inside the dark container
+    // are readable - applies when code-collapse is nested inside a {{% %}} shortcode
+    // that processes inner HTML through markdown.
+    color: #c9d1d9;
+
+    // Prism's CSS sets code[class*="language-"] { color: #000 } which would
+    // override the inherited foreground from Chroma's dark inline style.
+    // Force the github-dark foreground so text is readable on the dark background.
+    // Also ensure dark background for languages Chroma doesn't recognize (e.g. mermaid)
+    // where the Chroma <pre> has no inline background-color.
+    pre {
+      background-color: #0d1117;
+      color: #e6edf3;
+    }
+
+    code[class*="language-"] {
+      color: #e6edf3 !important;
+    }
+
     > div.highlight,
     > pre {
       margin: 0;
-      border-radius: 0 0 4px 4px;
+      border-radius: 0 0 6px 6px;
 
       pre {
         margin: 0;
-        border-radius: 0 0 4px 4px;
+        border-radius: 0 0 6px 6px;
       }
+    }
+
+    // Plain (no-lang) code blocks
+    .code-collapse__plain {
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 1rem;
+      margin: 0;
+      border-radius: 0 0 6px 6px;
+      font-size: 0.875rem;
+      overflow-x: auto;
+    }
+  }
+
+  .code-collapse__copy {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 10;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #c9d1d9; // 9.36:1 on #21262d
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    cursor: pointer;
+    line-height: 1.5;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+    &:hover {
+      background: #30363d;
+      border-color: #8b949e;
+      color: #e6edf3;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #388bfd;
+      outline-offset: 2px;
+    }
+
+    &.copied {
+      color: #3fb950; // green success - 5.1:1 on #21262d
+      border-color: #238636;
     }
   }
 }
