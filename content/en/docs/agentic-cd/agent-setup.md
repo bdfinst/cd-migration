@@ -3,7 +3,7 @@ title: "Getting Started: Where to Put What"
 linkTitle: "Configuration Quick Start"
 weight: 6
 description: >
-  How to structure agent configuration across CLAUDE.md, rules, skills, and hooks - mapped to their purpose and time horizon for effective context management.
+  How to structure agent configuration across the project context file, rules, skills, and hooks - mapped to their purpose and time horizon for effective context management.
 ---
 
 {{% pageinfo %}}
@@ -14,18 +14,18 @@ The four configuration mechanisms serve four different purposes. Placing informa
 
 | Mechanism | Purpose | When loaded |
 |-----------|---------|-------------|
-| `CLAUDE.md` | Project facts every agent always needs | Every session |
+| Project context file | Project facts every agent always needs | Every session |
 | Rules ([system prompts](../glossary/#system-prompt)) | Per-agent behavior constraints | Every agent invocation |
 | Skills | Named session procedures | On explicit invocation |
 | Hooks | Automated, deterministic actions | On trigger event - no agent involved |
 
 ---
 
-## `CLAUDE.md`
+## Project Context File
 
-`CLAUDE.md` is the project context document. Every agent reads it at the start of every session. Put here anything that every agent always needs to know about the project.
+The project context file is a markdown document that every agent reads at the start of every session. Put here anything that every agent always needs to know about the project. Claude Code calls this file `CLAUDE.md`; Gemini CLI uses `GEMINI.md`. The name differs; the purpose does not.
 
-**Put in `CLAUDE.md`:**
+**Put in the project context file:**
 
 - Language, framework, and toolchain versions
 - Repository structure - key directories and what lives where
@@ -34,14 +34,14 @@ The four configuration mechanisms serve four different purposes. Placing informa
 - Where tests live and naming conventions for test files
 - Non-obvious business rules that govern all changes
 
-**Do not put in `CLAUDE.md`:**
+**Do not put in the project context file:**
 
 - Task instructions - those go in rules or skills
 - File contents - load those dynamically per session
 - Context specific to one agent - that goes in that agent's rules
 - Anything an agent only needs occasionally - load it when needed, not always
 
-Because `CLAUDE.md` loads on every session, every line is a [token](../glossary/#token) cost on every invocation. Keep it to stable facts, not procedures. A bloated `CLAUDE.md` is an invisible per-session tax.
+Because the project context file loads on every session, every line is a [token](../glossary/#token) cost on every invocation. Keep it to stable facts, not procedures. A bloated project context file is an invisible per-session tax.
 
 ---
 
@@ -59,7 +59,7 @@ Rules define how a specific agent behaves. Each agent has its own rules document
 
 **Do not put in rules:**
 
-- Project facts - those go in `CLAUDE.md`
+- Project facts - those go in the project context file
 - Session-specific information - that is loaded dynamically by the [orchestrator](../glossary/#orchestrator)
 - Multi-step procedures - those go in skills
 
@@ -69,7 +69,7 @@ Rules are placed first in every agent's context. This placement is a caching dec
 
 ## Skills
 
-A skill is a named session procedure - a markdown document describing a multi-step workflow that an agent invokes by name. Skills live in `.claude/skills/`. The agent reads the skill document, follows its instructions, and returns a result. A skill has no runtime; it is pure specification in text.
+A skill is a named session procedure - a markdown document describing a multi-step workflow that an agent invokes by name. The agent reads the skill document, follows its instructions, and returns a result. A skill has no runtime; it is pure specification in text. Claude Code stores skills in `.claude/skills/`; Gemini CLI uses `.gemini/skills/`.
 
 **Put in skills:**
 
@@ -81,7 +81,7 @@ A skill is a named session procedure - a markdown document describing a multi-st
 
 - One-time instructions - write those inline
 - Anything that should run automatically without agent involvement - that belongs in a hook
-- Project facts - those go in `CLAUDE.md`
+- Project facts - those go in the project context file
 - Per-agent behavior constraints - those go in rules
 
 Each skill should do one thing. A skill named `review-and-commit` is doing two things. Split it. When a procedure fails mid-execution, a single-responsibility skill makes it obvious which step failed and where to look.
@@ -116,7 +116,7 @@ Hooks run before the review agent. If the linter fails, there is no reason to in
 
 For any piece of information or procedure, apply this sequence:
 
-1. Does every agent always need this? - `CLAUDE.md`
+1. Does every agent always need this? - Project context file
 2. Does this constrain how one specific agent behaves? - That agent's rules
 3. Is this a multi-step procedure invoked by name? - A skill
 4. Should this run automatically without any agent decision? - A hook
@@ -128,14 +128,14 @@ For any piece of information or procedure, apply this sequence:
 Within each agent invocation, load context in this order:
 
 1. Agent rules (stable - cached across every invocation)
-2. `CLAUDE.md` project context (stable - cached across every invocation)
+2. Project context file (stable - cached across every invocation)
 3. Feature description (stable within a feature - often cached)
 4. [BDD](../glossary/#bdd-behavior-driven-development) scenario for this session (changes per session)
 5. Relevant existing files (changes per session)
 6. Prior session summary (changes per session)
 7. Staged diff or current task context (changes per invocation)
 
-Stable content at the top. Volatile content at the bottom. Rules and `CLAUDE.md` belong at the top because they are constant across invocations and benefit from server-side caching. Staged diffs and current files change on every call and provide no caching benefit regardless of where they appear.
+Stable content at the top. Volatile content at the bottom. Rules and the project context file belong at the top because they are constant across invocations and benefit from server-side caching. Staged diffs and current files change on every call and provide no caching benefit regardless of where they appear.
 
 ---
 
@@ -153,7 +153,7 @@ locations differ, the purpose of each mechanism does not.
     end-session.md      # session close - writes summary and commits
     fix.md              # pipeline-restore mode - minimum context, one failing test
   settings.json         # hooks and Claude Code configuration
-CLAUDE.md               # project facts for all agents
+CLAUDE.md               # project context file - facts for all agents
 {{< /code-collapse >}}
 
 {{< code-collapse title="Gemini CLI layout" lang="text" >}}
@@ -164,7 +164,7 @@ CLAUDE.md               # project facts for all agents
     end-session.md
     fix.md
   settings.json         # hooks and Gemini CLI configuration
-GEMINI.md               # project facts for all agents (equivalent to CLAUDE.md)
+GEMINI.md               # project context file - facts for all agents
 {{< /code-collapse >}}
 
 The skill documents are plain markdown in both cases - the same procedure text works
