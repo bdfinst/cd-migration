@@ -460,7 +460,7 @@ semantics. A mid-tier model balances reasoning depth and cost here.
 
 **System prompt rules:**
 
-```markdown
+{{% code-collapse title="Concurrency review agent system prompt" lang="markdown" %}}
 ## Concurrency Review Agent Rules
 
 You review code for concurrency defects that static tools cannot detect.
@@ -488,7 +488,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-```
+{{% /code-collapse %}}
 
 ---
 
@@ -502,7 +502,7 @@ re-derive it each time. A normal session runs `/start-session`, then `/review`, 
 
 Loads the session context and prepares the implementation agent.
 
-```markdown
+{{% code-collapse title="/start-session skill definition" lang="markdown" %}}
 ## /start-session
 
 Assemble the implementation agent's context in this order. Order matters: stable
@@ -520,13 +520,13 @@ item: would omitting it change what the agent produces? If no, omit it.
 
 Present the assembled context to the user for confirmation, then invoke the
 implementation agent.
-```
+{{% /code-collapse %}}
 
 ### `/review`
 
 Invokes the review orchestrator against all staged changes.
 
-```markdown
+{{% code-collapse title="/review skill definition" lang="markdown" %}}
 ## /review
 
 Run the pre-commit review gate:
@@ -543,13 +543,13 @@ Run the pre-commit review gate:
 5. If "decision" is "block", pass the findings array to the implementation
    agent for resolution. Include only the findings, not the full review context.
 6. Do not proceed to commit until /review returns {"decision": "pass"}.
-```
+{{% /code-collapse %}}
 
 ### `/end-session`
 
 Closes the session, validates all gates, writes the summary, and commits.
 
-```markdown
+{{% code-collapse title="/end-session skill definition" lang="markdown" %}}
 ## /end-session
 
 Complete the session:
@@ -572,13 +572,13 @@ Complete the session:
 5. Commit with a message referencing the scenario name
 6. Reset context. The session summary is the only artifact that carries forward.
    The full conversation, implementation details, and review findings do not.
-```
+{{% /code-collapse %}}
 
 ### `/fix`
 
 Enters pipeline-restore mode when the pipeline is red.
 
-```markdown
+{{% code-collapse title="/fix skill definition" lang="markdown" %}}
 ## /fix
 
 Enter pipeline-restore mode. Load minimum context only.
@@ -597,7 +597,7 @@ Enter pipeline-restore mode. Load minimum context only.
    - Flag with CONCERN: if the fix requires touching files not in context
 4. Run /review on the fix. Pass only the fix diff, not the restore session history.
 5. Confirm the pipeline is green. Exit restore mode and return to normal session flow.
-```
+{{% /code-collapse %}}
 
 ---
 
@@ -609,7 +609,7 @@ The review orchestrator only runs if the hooks pass.
 
 **Pre-commit hook sequence:**
 
-```yaml
+{{% code-collapse title="Pre-commit hook sequence configuration" lang="yaml" %}}
 pre-commit:
   steps:
     - name: lint-and-format
@@ -642,7 +642,7 @@ pre-commit:
       depends-on: [lint-and-format, type-check, secret-scan, sast]
       on-fail: block-commit
       maps-to: "Semantic, security (beyond SAST), performance, concurrency"
-```
+{{% /code-collapse %}}
 
 **Why the hook sequence matters:** Standard tooling runs first because it is faster and
 cheaper than AI review. If the linter fails, there is no reason to invoke the review

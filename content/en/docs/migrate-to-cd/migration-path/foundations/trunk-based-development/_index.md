@@ -176,7 +176,7 @@ function CheckoutStep2() { /* tested, working */ }
 function CheckoutStep3() { /* tested, working */ }
 
 // Commit 11: Wire up to UI (final integration)
-<Route path="/checkout" component={CheckoutStep1} />
+router.get('/checkout', CheckoutStep1);
 {{% /code-collapse %}}
 
 Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.

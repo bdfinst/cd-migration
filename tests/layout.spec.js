@@ -7,6 +7,8 @@ const PAGES_TO_CHECK = [
   '/docs/migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/',
   '/docs/agentic-cd/adoption-roadmap/',
   '/docs/agentic-cd/agent-assisted-specification/',
+  '/docs/agentic-cd/agent-configuration/',
+  '/docs/testing/static/',
 ];
 
 test.describe('Code block layout', () => {

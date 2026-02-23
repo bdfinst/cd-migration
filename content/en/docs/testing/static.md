@@ -69,29 +69,28 @@ A `.eslintrc.json` configuration enforcing test quality rules:
 
 ### Type Checking
 
-TypeScript catches type mismatches at compile time, eliminating entire classes of runtime
-errors:
+Statically typed languages catch type mismatches at compile time, eliminating entire classes
+of runtime errors. Java, for example, rejects incompatible argument types before the code runs:
 
-```typescript
-function calculateTotal(price: number, quantity: number): number {
-  return price * quantity;
+{{% code-collapse title="Java type checking example" lang="java" %}}
+public static double calculateTotal(double price, int quantity) {
+    return price * quantity;
 }
 
-// Static analysis error: Argument of type 'string' is not assignable
-// to parameter of type 'number'.
+// Compiler error: incompatible types: String cannot be converted to double
 calculateTotal("19.99", 3);
-```
+{{% /code-collapse %}}
 
 ### Dependency Scanning
 
 Tools like `npm audit`, Snyk, or Dependabot scan for known vulnerabilities:
 
-```bash
+{{% code-collapse title="npm audit output example" lang="bash" %}}
 $ npm audit
 found 2 vulnerabilities (1 moderate, 1 high)
   moderate: Prototype Pollution in lodash < 4.17.21
   high:     Remote Code Execution in log4j < 2.17.1
-```
+{{% /code-collapse %}}
 
 ### Types of Static Analysis
 
@@ -114,7 +113,7 @@ manual review covers subjective aspects like whether alt text is actually meanin
 
 A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
 
-```json
+{{% code-collapse title="pa11y-ci configuration for WCAG 2.1 AA checks" lang="json" %}}
 {
   "defaults": {
     "standard": "WCAG2AA",
@@ -126,11 +125,11 @@ A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
     "http://localhost:1313/docs/testing/"
   ]
 }
-```
+{{% /code-collapse %}}
 
 An axe-core unit test asserting that a rendered component has no accessibility violations:
 
-```javascript
+{{% code-collapse title="axe-core accessibility test with jest-axe" lang="javascript" %}}
 import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);
@@ -140,7 +139,7 @@ it("should have no accessibility violations", async () => {
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
-```
+{{% /code-collapse %}}
 
 ## Anti-Patterns
 
