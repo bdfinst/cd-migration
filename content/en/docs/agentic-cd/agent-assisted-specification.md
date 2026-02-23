@@ -126,8 +126,7 @@ The four specification stages produce four [artifacts](../glossary/#artifact): i
 
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
-{{% alert title="Specification consistency prompt" color="info" %}}
-
+{{< alert title="Specification consistency prompt" color="info" >}}
 {{< code-collapse title="Prompt: validate specification set for internal consistency" >}}
 Review these four specification artifacts for internal consistency
 before implementation begins. Check:
@@ -140,8 +139,7 @@ before implementation begins. Check:
 
 [paste all four artifacts]
 {{< /code-collapse >}}
-
-{{% /alert %}}
+{{< /alert >}}
 
 **The human gates on this review before implementation begins.** If the review agent identifies issues, resolve them before generating any test code or implementation. A conflict caught in specification costs minutes. The same conflict caught during implementation costs a session.
 
