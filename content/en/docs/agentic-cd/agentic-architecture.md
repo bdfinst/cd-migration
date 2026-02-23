@@ -1,7 +1,7 @@
 ---
 title: "Agentic Architecture Patterns"
 linkTitle: "Agentic Architecture"
-weight: 5
+weight: 6
 description: >
   How to structure skills, agents, commands, and hooks when building multi-agent systems - with concrete examples using Claude and Gemini.
 aliases:

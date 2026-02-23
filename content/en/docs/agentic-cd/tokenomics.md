@@ -1,7 +1,7 @@
 ---
 title: "Tokenomics: Optimizing Token Usage in Agent Architecture"
 linkTitle: "Tokenomics"
-weight: 10
+weight: 11
 description: >
   How to architect agents and code to minimize unnecessary token consumption without sacrificing quality or capability.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "The Agentic Development Learning Curve"
 linkTitle: "Learning Curve"
-weight: 1
+weight: 2
 description: >
   The six stages developers move through as they learn to work with AI - why most stay stuck at Stage 1 or 2, and what information is needed to progress.
 ---

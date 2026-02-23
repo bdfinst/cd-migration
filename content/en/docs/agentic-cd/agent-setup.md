@@ -1,7 +1,7 @@
 ---
 title: "Getting Started: Where to Put What"
 linkTitle: "Configuration Quick Start"
-weight: 6
+weight: 1
 description: >
   How to structure agent configuration across the project context file, rules, skills, and hooks - mapped to their purpose and time horizon for effective context management.
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Agent-Assisted Specification"
 linkTitle: "Agent-Assisted Specification"
-weight: 4
+weight: 5
 description: >
   How to use agents as collaborators during specification and why small-scope specification is not big upfront design.
 ---
