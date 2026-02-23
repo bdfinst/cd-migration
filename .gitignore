@@ -5,4 +5,5 @@ node_modules/
 .hugo_build.lock
 _vendor/
 tmp/
+test-results/
 .claude/settings.local.json
