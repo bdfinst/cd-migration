@@ -35,12 +35,13 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 2. **[AI Adoption Roadmap](adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
 3. **[The Six First-Class Artifacts](first-class-artifacts/)** - defines the six artifacts that anchor the ACD workflow and their authority hierarchy
 4. **[Agentic Architecture Patterns](agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
-5. **[Coding Agent Configuration](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
-6. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
-7. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions, so [context](../glossary/#context-llm) stays manageable and commits stay small
-8. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
-9. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
-10. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - covers common failure modes and how to measure whether ACD is working
+5. **[Configuration Quick Start](agent-setup/)** - where to put what: CLAUDE.md, rules, skills, and hooks mapped to their purpose and time horizon
+6. **[Coding Agent Configuration](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
+7. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
+8. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions, so [context](../glossary/#context-llm) stays manageable and commits stay small
+9. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
+10. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
+11. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - covers common failure modes and how to measure whether ACD is working
 
 ## ACD Extensions to MinimumCD
 
