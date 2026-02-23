@@ -49,7 +49,7 @@ If the test requires a live network call to a system outside localhost, it is ei
 
 A JavaScript integration test verifying that a connector returns structured data:
 
-{{% code-collapse title="Integration test - connector returning structured data" lang="javascript" %}}
+{{< code-collapse title="Integration test - connector returning structured data" lang="javascript" >}}
 describe("retrieving Hygieia data", () => {
   it("should return counts of merged pull requests per day", async () => {
     const result = await hygieiaConnector.getResultsByDay(
@@ -75,7 +75,7 @@ describe("retrieving Hygieia data", () => {
     expect(result.data).toEqual([]);
   });
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### Subcategories
 

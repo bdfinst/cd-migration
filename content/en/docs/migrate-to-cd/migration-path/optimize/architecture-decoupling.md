@@ -106,14 +106,14 @@ Look for places where the system already has natural boundaries, even if they ar
 
 Instead of rewriting the system, incrementally extract components from the monolith.
 
-{{% code-collapse title="Strangler Fig Pattern: incremental extraction steps" %}}
+{{< code-collapse title="Strangler Fig Pattern: incremental extraction steps" >}}
 Step 1: Route all traffic through a facade/proxy
 Step 2: Build the new component alongside the old
 Step 3: Route a small percentage of traffic to the new component
 Step 4: Validate correctness and performance
 Step 5: Route all traffic to the new component
 Step 6: Remove the old code
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Key rule:** The strangler fig pattern must be done incrementally. If you try to extract everything at once, you are doing a rewrite, not a strangler fig.
 
@@ -144,7 +144,7 @@ If two services share a database, one of three things needs to happen:
 2. **The data is duplicated.** Each service maintains its own copy, synchronized via events.
 3. **The shared data becomes a dedicated data service.** Both services consume from a service that owns the data.
 
-{{% code-collapse title="Eliminating shared databases: before and after patterns" lang="text" %}}
+{{< code-collapse title="Eliminating shared databases: before and after patterns" lang="text" >}}
 BEFORE (shared database):
   Service A → [Shared DB] ← Service B
 
@@ -158,7 +158,7 @@ AFTER (option 2 - event-driven duplication):
 AFTER (option 3 - data service):
   Service A → Data Service → [DB]
   Service B → Data Service → [DB]
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### Strategy 2: Version Your APIs
 

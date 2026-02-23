@@ -96,7 +96,7 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 
 Developers, CI, and CD should all use the same entry point.
 
-{{% code-collapse title="Makefile as single build entry point" lang="makefile" %}}
+{{< code-collapse title="Makefile as single build entry point" lang="makefile" >}}
 # Example: Makefile as the single entry point
 
 .PHONY: build test package all
@@ -115,7 +115,7 @@ package:
 clean:
 	./gradlew clean
 	docker rmi myapp:$(GIT_SHA) || true
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 The CI server runs `make all`. A developer runs `make all`. The result is the same. There is no separate "CI build script" that diverges from what developers run locally.
 
@@ -146,7 +146,7 @@ The CI server is the mechanism that runs your build automatically. In Phase 1, t
 
 Regardless of which CI tool you use (GitHub Actions, GitLab CI, Jenkins, CircleCI), the configuration follows the same pattern:
 
-{{% code-collapse title="Conceptual minimum CI configuration" lang="yaml" %}}
+{{< code-collapse title="Conceptual minimum CI configuration" lang="yaml" >}}
 # Conceptual CI configuration (adapt to your tool)
 trigger:
   branch: main  # Run on every commit to trunk
@@ -158,7 +158,7 @@ steps:
   - run: tests
   - run: package
   - report: test results and build status
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### CI Principles for Phase 1
 

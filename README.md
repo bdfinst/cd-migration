@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/bdfinst/cd-migration/actions/workflows/ci.yml/badge.svg)](https://github.com/bdfinst/cd-migration/actions/workflows/ci.yml)
 
-[![NetlifyStatus](https://api.netlify.com/api/v1/badges/99655174-d314-47e9-9d1c-ee14ec7993b5/deploy-status)](https://app.netlify.com/projects/cd-migration/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/99655174-d314-47e9-9d1c-ee14ec7993b5/deploy-status)](https://app.netlify.com/projects/cd-migration/deploys)
 
 Practices, patterns, and solutions to deploy every change with confidence. Built on years of helping teams across industries remove friction, improve delivery outcomes, and raise team morale through continuous delivery.
 

@@ -163,7 +163,7 @@ This approach is called **[Behavior-Driven Development (BDD)](../../../../glossa
 
 **Example:**
 
-{{% code-collapse title="BDD scenarios for password reset" lang="gherkin" %}}
+{{< code-collapse title="BDD scenarios for password reset" lang="gherkin" >}}
 Feature: User password reset
 
 Scenario: Valid reset request
@@ -183,7 +183,7 @@ Scenario: Expired link
   When they click the link
   Then they see "This reset link has expired"
   And they are prompted to request a new one
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 These scenarios become your automated acceptance tests *before* you write any implementation code.
 
@@ -191,7 +191,7 @@ These scenarios become your automated acceptance tests *before* you write any im
 
 Turn those scenarios into executable tests in your framework of choice:
 
-{{% code-collapse title="Acceptance tests for password reset scenarios" lang="javascript" %}}
+{{< code-collapse title="Acceptance tests for password reset scenarios" lang="javascript" >}}
 // Example using Jest and Supertest
 describe('Password Reset', () => {
   it('sends reset email for valid user', async () => {
@@ -216,7 +216,7 @@ describe('Password Reset', () => {
     expect(emailService.sentEmails).toHaveLength(0);
   });
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Now you can write the minimum code to make these tests pass. This drives smaller, more focused changes.
 
@@ -286,7 +286,7 @@ You don't need a sophisticated feature flag system to start. Begin with environm
 
 **Simple boolean flag example:**
 
-{{% code-collapse title="Simple boolean feature flags via environment variables" lang="javascript" %}}
+{{< code-collapse title="Simple boolean feature flags via environment variables" lang="javascript" >}}
 // config/features.js
 module.exports = {
   newCheckoutFlow: process.env.FEATURE_NEW_CHECKOUT === 'true',
@@ -302,7 +302,7 @@ app.get('/checkout', (req, res) => {
   }
   return renderOldCheckout(req, res);
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This is enough for most TBD use cases.
 
@@ -310,7 +310,7 @@ This is enough for most TBD use cases.
 
 Critical: You must test **both** code paths, flag on and flag off.
 
-{{% code-collapse title="Testing both flag states - enabled and disabled" lang="javascript" %}}
+{{< code-collapse title="Testing both flag states - enabled and disabled" lang="javascript" >}}
 describe('Checkout flow', () => {
   describe('with new checkout flow enabled', () => {
     beforeEach(() => {
@@ -332,7 +332,7 @@ describe('Checkout flow', () => {
     });
   });
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 If you only test with the flag on, you'll break production when the flag is off.
 
@@ -374,7 +374,7 @@ Every temporary release flag should have:
 
 **Track your flags:**
 
-{{% code-collapse title="Tracking flag metadata for lifecycle management" lang="javascript" %}}
+{{< code-collapse title="Tracking flag metadata for lifecycle management" lang="javascript" >}}
 // flags.config.js
 module.exports = {
   flags: [
@@ -388,7 +388,7 @@ module.exports = {
     }
   ]
 };
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Set reminders to remove flags.** Permanent flags multiply complexity and slow you down.
 
@@ -634,7 +634,7 @@ Define the contract you need from the upstream service and codify it in tests th
 
 **Example using Pact:**
 
-{{% code-collapse title="Consumer-driven contract test using Pact" lang="javascript" %}}
+{{< code-collapse title="Consumer-driven contract test using Pact" lang="javascript" >}}
 // Your consumer test
 const { pact } = require('@pact-foundation/pact');
 
@@ -661,7 +661,7 @@ describe('User Service Contract', () => {
     expect(user.name).toBe('Jane Doe');
   });
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This test runs against your expectations of the API, not the actual service. When the upstream team changes their API, your contract test fails *before* you integrate their changes.
 
@@ -675,7 +675,7 @@ This test runs against your expectations of the API, not the actual service. Whe
 
 If you control the shared service:
 
-{{% code-collapse title="API versioning for backwards-compatible multi-team integration" lang="javascript" %}}
+{{< code-collapse title="API versioning for backwards-compatible multi-team integration" lang="javascript" >}}
 // Support both old and new API versions
 app.get('/api/v1/users/:id', handleV1Users);
 app.get('/api/v2/users/:id', handleV2Users);
@@ -688,7 +688,7 @@ app.get('/api/users/:id', (req, res) => {
   }
   return handleV1Users(req, res);
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Migration path:**
 
@@ -705,7 +705,7 @@ When you depend on a team that won't change:
 2. Define your ideal interface in the adapter
 3. Let the adapter handle their messy API
 
-{{% code-collapse title="Strangler fig adapter to isolate a legacy dependency" lang="javascript" %}}
+{{< code-collapse title="Strangler fig adapter to isolate a legacy dependency" lang="javascript" >}}
 // Your ideal interface
 class UserRepository {
   async getUser(id) {
@@ -727,7 +727,7 @@ class LegacyUserServiceAdapter extends UserRepository {
     };
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Now your code depends on *your* interface, not theirs. When they change, you only update the adapter.
 
@@ -815,12 +815,12 @@ This approach satisfies both regulatory requirements and continuous integration 
 
 Every commit references the change ticket:
 
-{{% code-collapse title="Commit message referencing compliance ticket" lang="bash" %}}
+{{< code-collapse title="Commit message referencing compliance ticket" lang="bash" >}}
 git commit -m "JIRA-1234: Add validation for SSN input
 
 Implements requirement REQ-445 from Q4 compliance review.
 Changes limited to user input validation layer."
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Modern Git hosting platforms (GitHub, GitLab, Bitbucket) automatically track:
 
@@ -851,7 +851,7 @@ This provides stronger separation of duties than long-lived branches because:
 
 Branch protection rules enforce your process:
 
-{{% code-collapse title="Example GitHub branch protection rules for trunk" lang="yaml" %}}
+{{< code-collapse title="Example GitHub branch protection rules for trunk" lang="yaml" >}}
 # Example GitHub branch protection for trunk
 required_reviews: 1
 required_checks:
@@ -860,7 +860,7 @@ required_checks:
   - compliance-validation
 dismiss_stale_reviews: true
 require_code_owner_review: true
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This ensures:
 
@@ -873,7 +873,7 @@ This ensures:
 
 Pull request templates enforce documentation:
 
-{{% code-collapse title="Pull request template for compliance documentation" lang="markdown" %}}
+{{< code-collapse title="Pull request template for compliance documentation" lang="markdown" >}}
 ## Change Description
 [Link to Jira ticket]
 
@@ -890,7 +890,7 @@ Pull request templates enforce documentation:
 
 ## Rollback Plan
 [How to rollback if this causes issues in production]
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### What "Short-Lived" Means in Practice
 
@@ -1277,7 +1277,7 @@ Create a `feature/notifications` branch. Work for three weeks. Submit a massive 
 
 **Week 1 - Day 1:** Define notification interface, commit to trunk
 
-{{% code-collapse title="Day 1: NotificationService contract" lang="javascript" %}}
+{{< code-collapse title="Day 1: NotificationService contract" lang="javascript" >}}
 // notifications/NotificationService.js
 // Contract: all implementations must provide send(userId, message)
 // message shape: { title, body, priority } where priority is 'low', 'normal', or 'high'
@@ -1287,13 +1287,13 @@ class NotificationService {
     throw new Error('Not implemented');
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This compiles but doesn't do anything yet. That's fine.
 
 **Week 1 - Day 2:** Add in-memory implementation for testing
 
-{{% code-collapse title="Day 2: InMemoryNotificationService" lang="javascript" %}}
+{{< code-collapse title="Day 2: InMemoryNotificationService" lang="javascript" >}}
 class InMemoryNotificationService extends NotificationService {
   constructor() {
     super();
@@ -1304,13 +1304,13 @@ class InMemoryNotificationService extends NotificationService {
     this.notifications.push(message);
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Now other teams can use the interface in their code and tests.
 
 **Week 1 - Days 3-5:** Implement email notifications behind a feature flag
 
-{{% code-collapse title="Days 3-5: EmailNotificationService behind a flag" lang="javascript" %}}
+{{< code-collapse title="Days 3-5: EmailNotificationService behind a flag" lang="javascript" >}}
 class EmailNotificationService extends NotificationService {
   async send(userId, message) {
     if (!features.emailNotifications) {
@@ -1319,7 +1319,7 @@ class EmailNotificationService extends NotificationService {
     // Real email sending implementation
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit daily. Deploy. Flag is off in production.
 
@@ -1350,17 +1350,17 @@ Update schema, update all code, deploy everything at once. Hope nothing breaks.
 **Step 1: Expand (Day 1)**
 Add new columns without removing the old one:
 
-{{% code-collapse title="Step 1: add new columns alongside the old one" lang="sql" %}}
+{{< code-collapse title="Step 1: add new columns alongside the old one" lang="sql" >}}
 ALTER TABLE users ADD COLUMN first_name VARCHAR(255);
 ALTER TABLE users ADD COLUMN last_name VARCHAR(255);
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit and deploy. Application still uses `name` column. No breaking change.
 
 **Step 2: Dual writes (Day 2-3)**
 Update write path to populate both old and new columns:
 
-{{% code-collapse title="Step 2: write to both old and new columns" lang="javascript" %}}
+{{< code-collapse title="Step 2: write to both old and new columns" lang="javascript" >}}
 async function createUser(name) {
   const [firstName, lastName] = name.split(' ');
   await db.query(
@@ -1368,14 +1368,14 @@ async function createUser(name) {
     [name, firstName, lastName]
   );
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit and deploy. Now new data populates both formats.
 
 **Step 3: Backfill (Day 4)**
 Migrate existing data in the background:
 
-{{% code-collapse title="Step 3: backfill existing rows" lang="javascript" %}}
+{{< code-collapse title="Step 3: backfill existing rows" lang="javascript" >}}
 async function backfillNames() {
   const users = await db.query('SELECT id, name FROM users WHERE first_name IS NULL');
   for (const user of users) {
@@ -1386,14 +1386,14 @@ async function backfillNames() {
     );
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Run this as a background job. Commit and deploy.
 
 **Step 4: Read from new columns (Day 5)**
 Update read path behind a feature flag:
 
-{{% code-collapse title="Step 4: read from new columns behind a flag" lang="javascript" %}}
+{{< code-collapse title="Step 4: read from new columns behind a flag" lang="javascript" >}}
 async function getUser(id) {
   const user = await db.query('SELECT * FROM users WHERE id = ?', [id]);
   if (features.useNewNameColumns) {
@@ -1404,16 +1404,16 @@ async function getUser(id) {
   }
   return { name: user.name };
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Deploy and gradually enable the flag.
 
 **Step 5: Contract (Week 2)**
 Once all reads use new columns and flag is removed:
 
-{{% code-collapse title="Step 5: drop the old column" lang="sql" %}}
+{{< code-collapse title="Step 5: drop the old column" lang="sql" >}}
 ALTER TABLE users DROP COLUMN name;
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Result:** Five deployments instead of one big-bang change. Each step was reversible. Zero downtime.
 
@@ -1427,7 +1427,7 @@ Your authentication code is a mess. You want to refactor it without breaking pro
 **Day 1: Characterization tests**
 Write tests that capture current behavior (warts and all):
 
-{{% code-collapse title="Day 1: characterization tests for existing auth behavior" lang="javascript" %}}
+{{< code-collapse title="Day 1: characterization tests for existing auth behavior" lang="javascript" >}}
 describe('Current auth behavior', () => {
   it('accepts password with special characters', () => {
     // Document what currently happens
@@ -1437,14 +1437,14 @@ describe('Current auth behavior', () => {
     // Capture edge case behavior
   });
 });
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 These tests document how the system *actually* works. Commit.
 
 **Day 2-3: Strangler fig pattern**
 Create new implementation alongside old one:
 
-{{% code-collapse title="Days 2-3: strangler fig - new implementation alongside old" lang="javascript" %}}
+{{< code-collapse title="Days 2-3: strangler fig - new implementation alongside old" lang="javascript" >}}
 class LegacyAuthService {
   // Existing messy code (don't touch it)
 }
@@ -1466,31 +1466,31 @@ class AuthServiceRouter {
     return this.legacy.authenticate(credentials);
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit with flag off. Old behavior unchanged.
 
 **Day 4-7: Migrate piece by piece**
 Enable modern auth for one endpoint at a time:
 
-{{% code-collapse title="Days 4-7: enable modern auth per endpoint" lang="javascript" %}}
+{{< code-collapse title="Days 4-7: enable modern auth per endpoint" lang="javascript" >}}
 if (features.modernAuth && endpoint === '/api/users') {
   return modernAuth.authenticate(credentials);
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit daily. Monitor each endpoint.
 
 **Week 2: Remove old code**
 Once all endpoints use modern auth and it's been stable for a week:
 
-{{% code-collapse title="Week 2: remove the legacy implementation" lang="javascript" %}}
+{{< code-collapse title="Week 2: remove the legacy implementation" lang="javascript" >}}
 class AuthService {
   async authenticate(credentials) {
     // Just the modern implementation
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Delete the legacy code entirely.
 
@@ -1506,7 +1506,7 @@ A third-party API you depend on is changing their response format next month.
 **Week 1: Adapter pattern**
 Create an adapter that normalizes both old and new formats:
 
-{{% code-collapse title="Week 1: adapter handling both old and new API formats" lang="javascript" %}}
+{{< code-collapse title="Week 1: adapter handling both old and new API formats" lang="javascript" >}}
 class PaymentAPIAdapter {
   async getPaymentStatus(orderId) {
     const response = await fetch(`https://api.payments.com/orders/${orderId}`);
@@ -1528,7 +1528,7 @@ class PaymentAPIAdapter {
     }
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Commit. Your code now works with both formats.
 
@@ -1538,7 +1538,7 @@ Wait for the third-party API to migrate. Your code keeps working.
 **Week 4 (after API migration):**
 Simplify adapter to only handle new format:
 
-{{% code-collapse title="Week 4: simplified adapter for new format only" lang="javascript" %}}
+{{< code-collapse title="Week 4: simplified adapter for new format only" lang="javascript" >}}
 async getPaymentStatus(orderId) {
   const response = await fetch(`https://api.payments.com/orders/${orderId}`);
   const data = await response.json();
@@ -1547,7 +1547,7 @@ async getPaymentStatus(orderId) {
     amount: data.amounts.total,
   };
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Result:** No coupling between your deployment schedule and the external API migration. Zero downtime.
 

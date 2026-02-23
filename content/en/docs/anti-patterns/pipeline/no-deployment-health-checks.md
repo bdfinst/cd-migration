@@ -161,7 +161,7 @@ If the service does not already have health endpoints, add them:
   checks critical dependencies: can the service connect to the database, can it reach its
   downstream services?
 
-{{% code-collapse title="Readiness endpoint checking database and cache (Spring Boot)" lang="java" %}}
+{{< code-collapse title="Readiness endpoint checking database and cache (Spring Boot)" lang="java" >}}
 // Example readiness endpoint (Spring Boot)
 @GetMapping("/actuator/health/readiness")
 public ResponseEntity<Map<String, String>> readiness() {
@@ -172,7 +172,7 @@ public ResponseEntity<Map<String, String>> readiness() {
     }
     return ResponseEntity.status(503).body(Map.of("status", "DOWN"));
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 The pipeline uses the readiness endpoint to confirm that the new version is accepting traffic
 before declaring the deployment complete.

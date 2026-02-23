@@ -12,9 +12,9 @@ Mean Time to Repair (MTTR) measures the average elapsed time between when a
 production incident is detected and when it is fully resolved and service is
 restored to normal operation.
 
-{{% code-collapse title="Mean Time to Repair formula" lang="text" %}}
+{{< code-collapse title="Mean Time to Repair formula" lang="text" >}}
 mttr = sum(resolvedTimestamp - detectedTimestamp) / incidentCount
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 MTTR reflects an organization's ability to recover from failure. It encompasses
 detection, diagnosis, fix development, build, deployment, and verification. A

@@ -1,6 +1,8 @@
 {{- $title := .Get "title" | default "Show code" -}}
 {{- $lang := .Get "lang" | default "" -}}
-{{- $open := eq (.Get "open") "true" -}}
+{{- $lineCount := len (split (trim .Inner "\n") "\n") -}}
+{{- $threshold := site.Params.codeCollapseAutoOpenLines | default 10 -}}
+{{- $open := or (eq (.Get "open") "true") (lt $lineCount $threshold) -}}
 <details class="code-collapse"{{ if $open }} open{{ end }}>
   <summary class="code-collapse__summary">{{ $title }}</summary>
   <div class="code-collapse__content">

@@ -91,24 +91,24 @@ The principle does not change. A vertical slice still cuts through all layers en
 
 **[Full-stack product team](../../../glossary/#full-stack-product-team)** - owns everything from UI to database; their consumer is a human:
 
-{{% code-collapse title="Full-stack product team: vertical slice through all layers" lang="mermaid" %}}
+{{< code-collapse title="Full-stack product team: vertical slice through all layers" lang="mermaid" >}}
 graph TD
     User([Human User]) --> UI["UI Layer\n(your team)"]
     UI --> API["API Layer\n(your team)"]
     API --> DB[("Database\n(your team)")]
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 A vertical slice: one behavior delivered through the UI, the API, and the database in a single deployable change.
 
 **[Subdomain product team](../../../glossary/#subdomain-product-team)** - full-stack within their service; their consumer is another service or team:
 
-{{% code-collapse title="Subdomain product team: vertical slice through service boundary" lang="mermaid" %}}
+{{< code-collapse title="Subdomain product team: vertical slice through service boundary" lang="mermaid" >}}
 graph TD
     User([Human User]) --> FE["Frontend Service\n(other team)"]
     FE --> API["Your Service API\n(your team)"]
     API --> DB[("Your Database\n(your team)")]
     API --> DS["Downstream Service\n(other team)"]
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 A vertical slice: one behavior delivered through the service boundary (the API contract), the business logic, and the data store. The team does not own or coordinate with any consumer - whether a UI or another service - except through the API contract. They define a stable contract and deploy behind it independently.
 
@@ -185,7 +185,7 @@ Each concrete example can become its own story or task. The scope is clear, the 
 
 Structure acceptance criteria in Given-When-Then format to make them executable:
 
-{{% code-collapse title="Given-When-Then: user login scenarios" lang="gherkin" %}}
+{{< code-collapse title="Given-When-Then: user login scenarios" lang="gherkin" >}}
 Feature: User login
 
   Scenario: Successful login with valid credentials
@@ -198,7 +198,7 @@ Feature: User login
     When they enter an incorrect password and click "Log in"
     Then they see the message "Invalid email or password"
     And they remain on the login page
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Each scenario is a natural unit of work. Implement one scenario at a time, integrate to trunk after each one.
 

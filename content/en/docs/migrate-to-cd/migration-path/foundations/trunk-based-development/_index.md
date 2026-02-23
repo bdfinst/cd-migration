@@ -106,14 +106,14 @@ Trunk-based development does not work in isolation. These supporting practices m
 
 When you integrate to trunk daily, incomplete features will exist on trunk. [Feature flags](../../../../glossary/#feature-flag) let you merge code that is not yet ready for users.
 
-{{% code-collapse title="Simple feature flag example" lang="javascript" %}}
+{{< code-collapse title="Simple feature flag example" lang="javascript" >}}
 // Simple feature flag example
 if (featureFlags.isEnabled('new-checkout-flow', user)) {
   return newCheckout(cart);
 } else {
   return legacyCheckout(cart);
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Rules for feature flags in TBD:**
 
@@ -140,7 +140,7 @@ The ability to make code changes that are not complete features and integrate th
 
 Branch by abstraction lets you gradually replace existing behavior while continuously integrating to trunk. It works in four steps:
 
-{{% code-collapse title="Branch by abstraction - four-step pattern" lang="javascript" %}}
+{{< code-collapse title="Branch by abstraction - four-step pattern" lang="javascript" >}}
 // Step 1: Create abstraction (integrate to trunk)
 class PaymentProcessor {
   process(payment) {
@@ -161,7 +161,7 @@ const processor = useNewStripe
   : new LegacyProcessor()
 
 // Step 4: Remove old implementation (integrate to trunk)
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Each step is a separate commit that keeps trunk working. The old behavior runs until you explicitly switch, and you can remove the abstraction layer once the migration is complete.
 
@@ -169,7 +169,7 @@ Each step is a separate commit that keeps trunk working. The old behavior runs u
 
 Connect Last means you build all the components of a feature, each individually tested and integrated to trunk, and wire them into the user-visible path only in the final commit.
 
-{{% code-collapse title="Connect Last pattern - build components then wire to UI" lang="javascript" %}}
+{{< code-collapse title="Connect Last pattern - build components then wire to UI" lang="javascript" >}}
 // Commits 1-10: Build new checkout components (all tested, all integrated)
 function CheckoutStep1() { /* tested, working */ }
 function CheckoutStep2() { /* tested, working */ }
@@ -177,7 +177,7 @@ function CheckoutStep3() { /* tested, working */ }
 
 // Commit 11: Wire up to UI (final integration)
 router.get('/checkout', CheckoutStep1);
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.
 

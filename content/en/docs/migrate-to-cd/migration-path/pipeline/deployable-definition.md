@@ -154,7 +154,7 @@ Structure the pipeline to fail fast on quick checks, then run progressively more
 validations. This gives developers the fastest possible feedback while still running
 comprehensive checks:
 
-{{% code-collapse title="Progressive quality gates: three pipeline stages by speed" lang="text" %}}
+{{< code-collapse title="Progressive quality gates: three pipeline stages by speed" lang="text" >}}
 Stage 1: Fast Feedback (< 5 min)
   - Linting
   - Unit tests
@@ -169,7 +169,7 @@ Stage 3: Comprehensive (< 30 min)
   - E2E tests
   - Performance tests
   - Compliance checks
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Each stage acts as a gate. If Stage 1 fails, the pipeline stops immediately rather than
 wasting time on slower checks that will not matter.
@@ -180,7 +180,7 @@ While the categories of validation should be consistent across the organization,
 specific checks may vary by deployment target. Define a base set of checks that always
 apply, then layer additional checks for higher-risk environments:
 
-{{% code-collapse title="Context-specific deployable definitions: base, production, and feature branch" lang="yaml" %}}
+{{< code-collapse title="Context-specific deployable definitions: base, production, and feature branch" lang="yaml" >}}
 # Base definition (always required)
 base_deployable:
   - unit_tests: pass
@@ -197,7 +197,7 @@ production_deployable:
 feature_deployable:
   - unit_tests: pass
   - security_scan: no_critical
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This approach lets teams move fast during development while maintaining rigorous
 standards for production deployments.
@@ -208,12 +208,12 @@ Use error budgets to connect the deployable definition to production reliability
 the service is within its error budget, the pipeline allows normal deployment. When the
 error budget is exhausted, the pipeline shifts focus to reliability work:
 
-{{% code-collapse title="Error budget approach: deployment criteria tied to reliability" lang="yaml" %}}
+{{< code-collapse title="Error budget approach: deployment criteria tied to reliability" lang="yaml" >}}
 definition_of_deployable:
   error_budget_remaining: > 0
   slo_compliance: >= 99.9%
   recent_incidents: < 2 per week
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 This creates a self-correcting system. Teams that ship changes causing incidents consume
 their error budget, which automatically tightens the deployment criteria until reliability

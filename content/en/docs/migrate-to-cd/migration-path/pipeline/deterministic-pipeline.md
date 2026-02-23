@@ -97,7 +97,7 @@ Seeing anti-patterns and good patterns side by side makes the difference concret
 
 ### Anti-Pattern: Non-Deterministic Pipeline
 
-{{% code-collapse title="Anti-pattern: non-deterministic pipeline with floating versions and manual steps" lang="yaml" %}}
+{{< code-collapse title="Anti-pattern: non-deterministic pipeline with floating versions and manual steps" lang="yaml" >}}
 # Bad: Uses floating versions
 dependencies:
   nodejs: "latest"
@@ -117,14 +117,14 @@ test('shows current date', () => {
 deploy:
   - echo "Manually verify staging before approving"
   - wait_for_approval
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Results vary based on when the pipeline runs, what is in production, which dependency
 versions are "latest," and human availability.
 
 ### Good Pattern: Deterministic Pipeline
 
-{{% code-collapse title="Good pattern: deterministic pipeline with pinned versions and automated verification" lang="yaml" %}}
+{{< code-collapse title="Good pattern: deterministic pipeline with pinned versions and automated verification" lang="yaml" >}}
 # Good: Pinned versions
 dependencies:
   nodejs: "18.17.1"
@@ -149,7 +149,7 @@ deploy:
   - run_smoke_tests
   - if: smoke_tests_pass
     deploy_to_production
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Same inputs always produce same outputs. Pipeline results are trustworthy and
 reproducible.
@@ -225,7 +225,7 @@ pipeline runs.
 
 Define your build environment as a versioned container image with every dependency pinned:
 
-{{% code-collapse title="Immutable build container: Dockerfile with pinned base image and tools" lang="dockerfile" %}}
+{{< code-collapse title="Immutable build container: Dockerfile with pinned base image and tools" lang="dockerfile" >}}
 # Dockerfile.build - version controlled
 FROM node:18.17.1-alpine3.18
 
@@ -236,7 +236,7 @@ RUN apk add --no-cache \
 WORKDIR /app
 COPY package-lock.json .
 RUN npm ci --frozen-lockfile
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Every build runs inside a fresh instance of this image. No drift, no accumulated state.
 
@@ -244,7 +244,7 @@ Every build runs inside a fresh instance of this image. No drift, no accumulated
 
 Always use dependency lockfiles. This is essential for deterministic builds:
 
-{{% code-collapse title="Dependency lockfile: package-lock.json with pinned exact versions" lang="json" %}}
+{{< code-collapse title="Dependency lockfile: package-lock.json with pinned exact versions" lang="json" >}}
 // package-lock.json (ALWAYS commit to version control)
 {
   "dependencies": {
@@ -255,7 +255,7 @@ Always use dependency lockfiles. This is essential for deterministic builds:
     }
   }
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Rules for lockfiles:
 
@@ -269,7 +269,7 @@ Rules for lockfiles:
 When a flaky test is detected, move it to quarantine immediately. Do not leave it in the
 main suite where it erodes trust in the pipeline:
 
-{{% code-collapse title="Quarantine pattern: skip and annotate flaky tests with tracking info" lang="javascript" %}}
+{{< code-collapse title="Quarantine pattern: skip and annotate flaky tests with tracking info" lang="javascript" >}}
 // tests/quarantine/flaky-test.spec.js
 describe.skip('Quarantined: Flaky integration test', () => {
   // Quarantined due to intermittent timeout
@@ -279,7 +279,7 @@ describe.skip('Quarantined: Flaky integration test', () => {
     // Test code
   })
 })
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 Quarantine is not a permanent home. Every quarantined test must have:
 
@@ -293,7 +293,7 @@ If a quarantined test cannot be fixed by the deadline, delete it and write a bet
 
 Give each pipeline run a fresh, isolated environment with no shared state:
 
-{{% code-collapse title="Hermetic test environment: GitHub Actions with fresh isolated database per run" lang="yaml" %}}
+{{< code-collapse title="Hermetic test environment: GitHub Actions with fresh isolated database per run" lang="yaml" >}}
 # GitHub Actions example
 jobs:
   test:
@@ -309,7 +309,7 @@ jobs:
       - run: npm ci
       - run: npm test
       # Each workflow run gets a fresh database
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ## How to Get Started
 
@@ -359,12 +359,12 @@ failure, not succeeding. Fix the flakiness instead of retrying.
 
 Seed your random number generators with a fixed seed in tests:
 
-{{% code-collapse title="Deterministic randomness: fixed seed for predictable test results" lang="javascript" %}}
+{{< code-collapse title="Deterministic randomness: fixed seed for predictable test results" lang="javascript" >}}
 // Deterministic randomness
 const rng = new Random(12345) // Fixed seed
 const result = shuffle(array, rng)
 expect(result).toEqual([3, 1, 4, 2]) // Predictable
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### What if our deployment requires manual verification?
 

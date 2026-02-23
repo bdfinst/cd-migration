@@ -24,7 +24,7 @@ The coding agent system has two tiers. The [orchestrator](../glossary/#orchestra
 Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
-{{% code-collapse title="Agent system architecture diagram" lang="mermaid" %}}
+{{< code-collapse title="Agent system architecture diagram" lang="mermaid" >}}
 graph TD
     classDef orchestrator fill:#224968,stroke:#1a3a54,color:#fff
     classDef agent fill:#0d7a32,stroke:#0a6128,color:#fff
@@ -42,7 +42,7 @@ graph TD
     ORC -->|"implement"| IMPL
     ORC -->|"review staged changes"| REV
     REV --> SEM & SEC & PERF & CONC
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Separation principle:** The orchestrator does not write code. The implementation agent
 does not review code. Review agents do not modify code. Each agent has one responsibility.
@@ -81,7 +81,7 @@ on a task that does not require frontier reasoning.
 
 **Rules injected into the orchestrator system prompt:**
 
-{{% code-collapse title="Orchestrator system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Orchestrator system prompt rules" lang="markdown" >}}
 ## Orchestrator Rules
 
 You manage session context and routing. You do not write implementation code.
@@ -123,7 +123,7 @@ On commit:
   Status: all [N] scenarios pass
 - This summary replaces the full session conversation for future sessions
 - Reset context after writing the summary; do not carry conversation history forward
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ---
 
@@ -147,7 +147,7 @@ only, not explanations or rationale, unless the orchestrator requests them.
 
 **Rules injected into the implementation agent system prompt:**
 
-{{% code-collapse title="Implementation agent system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Implementation agent system prompt rules" lang="markdown" >}}
 ## Implementation Rules
 
 You implement exactly one BDD scenario per session. No more.
@@ -170,7 +170,7 @@ Implementation:
 
 Done when: the acceptance test for this scenario passes, all prior acceptance tests
 still pass, and you have staged the changes.
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ---
 
@@ -194,7 +194,7 @@ coordination cheaply.
 step. Structured output here eliminates ambiguity and reduces the token cost of the
 aggregation step.
 
-{{% code-collapse title="Review orchestrator JSON output schema" lang="json" %}}
+{{< code-collapse title="Review orchestrator JSON output schema" lang="json" >}}
 {
   "decision": "pass | block",
   "findings": [
@@ -207,14 +207,14 @@ aggregation step.
     }
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 An empty `findings` array with `"decision": "pass"` means all sub-agents passed. A
 non-empty `findings` array always accompanies `"decision": "block"`.
 
 **Rules injected into the review orchestrator system prompt:**
 
-{{% code-collapse title="Review orchestrator system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Review orchestrator system prompt rules" lang="markdown" >}}
 ## Review Orchestrator Rules
 
 You coordinate parallel review sub-agents. You do not review code yourself.
@@ -248,7 +248,7 @@ Return this JSON and nothing else:
     }
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ---
 
@@ -285,7 +285,7 @@ implementation against stated intent.
 
 **System prompt rules:**
 
-{{% code-collapse title="Semantic review agent system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Semantic review agent system prompt rules" lang="markdown" >}}
 ## Semantic Review Agent Rules
 
 You review code for logical correctness and edge case coverage.
@@ -312,7 +312,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### Security Review Agent
 
@@ -343,7 +343,7 @@ not just pattern matching. A smaller model will miss the cases that matter most.
 
 **System prompt rules:**
 
-{{% code-collapse title="Security review agent system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Security review agent system prompt rules" lang="markdown" >}}
 ## Security Review Agent Rules
 
 You review code for security defects that SAST tools do not catch.
@@ -374,7 +374,7 @@ Return this JSON and nothing else:
      "why": "<one sentence>", "cwe": "<CWE-NNN or OWASP category>"}
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### Performance Review Agent
 
@@ -407,7 +407,7 @@ cheaply enough to be invoked on every commit without concern.
 
 **System prompt rules:**
 
-{{% code-collapse title="Performance review agent system prompt rules" lang="markdown" %}}
+{{< code-collapse title="Performance review agent system prompt rules" lang="markdown" >}}
 ## Performance Review Agent Rules
 
 You review code for timeout, resource, and resilience defects.
@@ -435,7 +435,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### Concurrency Review Agent
 
@@ -460,7 +460,7 @@ semantics. A mid-tier model balances reasoning depth and cost here.
 
 **System prompt rules:**
 
-{{% code-collapse title="Concurrency review agent system prompt" lang="markdown" %}}
+{{< code-collapse title="Concurrency review agent system prompt" lang="markdown" >}}
 ## Concurrency Review Agent Rules
 
 You review code for concurrency defects that static tools cannot detect.
@@ -488,7 +488,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ---
 
@@ -502,7 +502,7 @@ re-derive it each time. A normal session runs `/start-session`, then `/review`, 
 
 Loads the session context and prepares the implementation agent.
 
-{{% code-collapse title="/start-session skill definition" lang="markdown" %}}
+{{< code-collapse title="/start-session skill definition" lang="markdown" >}}
 ## /start-session
 
 Assemble the implementation agent's context in this order. Order matters: stable
@@ -520,13 +520,13 @@ item: would omitting it change what the agent produces? If no, omit it.
 
 Present the assembled context to the user for confirmation, then invoke the
 implementation agent.
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### `/review`
 
 Invokes the review orchestrator against all staged changes.
 
-{{% code-collapse title="/review skill definition" lang="markdown" %}}
+{{< code-collapse title="/review skill definition" lang="markdown" >}}
 ## /review
 
 Run the pre-commit review gate:
@@ -543,13 +543,13 @@ Run the pre-commit review gate:
 5. If "decision" is "block", pass the findings array to the implementation
    agent for resolution. Include only the findings, not the full review context.
 6. Do not proceed to commit until /review returns {"decision": "pass"}.
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### `/end-session`
 
 Closes the session, validates all gates, writes the summary, and commits.
 
-{{% code-collapse title="/end-session skill definition" lang="markdown" %}}
+{{< code-collapse title="/end-session skill definition" lang="markdown" >}}
 ## /end-session
 
 Complete the session:
@@ -572,13 +572,13 @@ Complete the session:
 5. Commit with a message referencing the scenario name
 6. Reset context. The session summary is the only artifact that carries forward.
    The full conversation, implementation details, and review findings do not.
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ### `/fix`
 
 Enters pipeline-restore mode when the pipeline is red.
 
-{{% code-collapse title="/fix skill definition" lang="markdown" %}}
+{{< code-collapse title="/fix skill definition" lang="markdown" >}}
 ## /fix
 
 Enter pipeline-restore mode. Load minimum context only.
@@ -597,7 +597,7 @@ Enter pipeline-restore mode. Load minimum context only.
    - Flag with CONCERN: if the fix requires touching files not in context
 4. Run /review on the fix. Pass only the fix diff, not the restore session history.
 5. Confirm the pipeline is green. Exit restore mode and return to normal session flow.
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 ---
 
@@ -609,7 +609,7 @@ The review orchestrator only runs if the hooks pass.
 
 **Pre-commit hook sequence:**
 
-{{% code-collapse title="Pre-commit hook sequence configuration" lang="yaml" %}}
+{{< code-collapse title="Pre-commit hook sequence configuration" lang="yaml" >}}
 pre-commit:
   steps:
     - name: lint-and-format
@@ -642,7 +642,7 @@ pre-commit:
       depends-on: [lint-and-format, type-check, secret-scan, sast]
       on-fail: block-commit
       maps-to: "Semantic, security (beyond SAST), performance, concurrency"
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Why the hook sequence matters:** Standard tooling runs first because it is faster and
 cheaper than AI review. If the linter fails, there is no reason to invoke the review

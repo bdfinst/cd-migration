@@ -83,7 +83,7 @@ Maintain two identical production environments - blue and green. At any time, on
 (serving traffic) and the other is idle. To deploy, deploy to the idle environment, verify
 it, and switch traffic. To roll back, switch traffic back to the previous environment.
 
-{{% code-collapse title="Blue-green rollback: traffic switch to previous environment" lang="text" %}}
+{{< code-collapse title="Blue-green rollback: traffic switch to previous environment" lang="text" >}}
 Blue (current): v1.2.3
 Green (idle):   v1.2.2
 
@@ -92,7 +92,7 @@ Issue detected in Blue
 Switch traffic to Green (v1.2.2)
   |
 Instant rollback (< 30 seconds)
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Advantages:**
 
@@ -113,7 +113,7 @@ route a percentage of traffic to it. Monitor the canary for errors, latency, and
 metrics. If the canary is healthy, gradually increase traffic. If problems appear, route
 all traffic back to the previous version.
 
-{{% code-collapse title="Canary rollback: stop routing traffic to the canary on issue detection" lang="text" %}}
+{{< code-collapse title="Canary rollback: stop routing traffic to the canary on issue detection" lang="text" >}}
 Deploy v1.2.3 to 10% of servers
   |
 Issue detected in monitoring
@@ -121,7 +121,7 @@ Issue detected in monitoring
 Automatically roll back 10% to v1.2.2
   |
 Issue contained, minimal user impact
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Advantages:**
 
@@ -141,7 +141,7 @@ When a deployment introduces new behavior behind a [feature flag](../../../gloss
 simple as turning off the flag. The code remains deployed, but the new behavior is
 disabled. This is the fastest possible rollback - it requires no deployment at all.
 
-{{% code-collapse title="Feature flag rollback: disable new behavior without redeploying" lang="javascript" %}}
+{{< code-collapse title="Feature flag rollback: disable new behavior without redeploying" lang="javascript" >}}
 // Feature flag controls new behavior
 if (featureFlags.isEnabled('new-checkout')) {
   return renderNewCheckout()
@@ -150,7 +150,7 @@ return renderOldCheckout()
 
 // Rollback: Toggle flag off via configuration
 // No deployment needed, instant effect
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Advantages:**
 
@@ -182,7 +182,7 @@ The expand-contract pattern (also called parallel change) solves this:
 At every step, the previous application version remains compatible with the current
 database schema. Rollback is always safe.
 
-{{% code-collapse title="Expand-contract pattern: safe additive schema changes vs. unsafe destructive changes" lang="sql" %}}
+{{< code-collapse title="Expand-contract pattern: safe additive schema changes vs. unsafe destructive changes" lang="sql" >}}
 -- Safe: Additive change (expand)
 ALTER TABLE users ADD COLUMN phone VARCHAR(20);
 -- Old code ignores the new column
@@ -193,7 +193,7 @@ ALTER TABLE users ADD COLUMN phone VARCHAR(20);
 ALTER TABLE users DROP COLUMN email;
 -- Old code breaks because email column is gone
 -- Rollback requires schema rollback (risky)
-{{% /code-collapse %}}
+{{< /code-collapse >}}
 
 **Anti-pattern:** Destructive schema changes (dropping columns, renaming tables,
 changing types) deployed simultaneously with the application code change that requires
