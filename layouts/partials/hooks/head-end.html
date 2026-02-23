@@ -1,3 +1,7 @@
+{{/* Prevent Prism from auto-highlighting; we trigger it manually in body-end to
+     exclude code-collapse blocks (which are already highlighted by Chroma). */}}
+<script>window.Prism = window.Prism || {}; Prism.manual = true;</script>
+
 {{/* Canonical URL */}}
 {{ with .Params.canonical -}}
   <link rel="canonical" href="{{ . }}">

@@ -6,4 +6,49 @@ document.querySelectorAll('li > input[type="checkbox"][disabled]').forEach(funct
     if (text) cb.setAttribute('aria-label', text);
   }
 });
+
+// Trigger Prism only on code blocks that are NOT inside code-collapse
+// (code-collapse blocks are already highlighted by Chroma with a dark theme)
+if (window.Prism) {
+  document.querySelectorAll('pre code[class*="language-"]').forEach(function(el) {
+    if (!el.closest('.code-collapse__content')) {
+      Prism.highlightElement(el);
+    }
+  });
+}
+
+// Copy-to-clipboard for code-collapse blocks
+document.querySelectorAll('.code-collapse__copy').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var content = btn.closest('.code-collapse__content');
+    var pre = content.querySelector('pre');
+    if (!pre) return;
+    var text = pre.textContent || '';
+    navigator.clipboard.writeText(text).then(function() {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(function() {
+      // fallback for older browsers
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+});
 </script>
