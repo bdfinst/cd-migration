@@ -475,38 +475,38 @@ of each mechanism does not.
     review.md           # sub-agent definition: system prompt + model for review coordination
   commands/
     start-session.md    # skill + command: /start-session - session initialization
-    review.md           # skill + command: /review       - pre-commit gate
-    end-session.md      # skill + command: /end-session  - writes summary and commits
-    fix.md              # skill + command: /fix          - pipeline-restore mode
+    review.md           # skill + command: /review - pre-commit gate
+    end-session.md      # skill + command: /end-session - writes summary and commits
+    fix.md              # skill + command: /fix - pipeline-restore mode
   settings.json         # hooks - tool-use event triggers (Stop, PreToolUse, etc.)
 CLAUDE.md               # project context file - facts for all agents
 {{< /tab >}}
 {{< tab header="Gemini CLI" >}}
 .gemini/
   skills/
-    start-session.md    # skill document - invoked as /start-session
-    review.md           # skill document - invoked as /review
-    end-session.md      # skill document - invoked as /end-session
-    fix.md              # skill document - invoked as /fix
-  settings.json         # hooks - afterResponse and other event triggers
-GEMINI.md               # project context file - facts for all agents
-                        # agent configurations injected programmatically at session start
+    start-session.md   # skill document - invoked as /start-session
+    review.md          # skill document - invoked as /review
+    end-session.md     # skill document - invoked as /end-session
+    fix.md             # skill document - invoked as /fix
+  settings.json        # hooks - afterResponse and other event triggers
+GEMINI.md              # project context file - facts for all agents
+                       # agent configurations injected programmatically at session start
 {{< /tab >}}
 {{< tab header="OpenAI Codex" >}}
-AGENTS.md               # project context file and named task definitions
-                        # skills and commands defined as ## Task: name sections
-                        # agent configurations injected programmatically at session start
-                        # git hooks handle pre-commit checks (.pre-commit-config.yaml)
+AGENTS.md   # project context file and named task definitions
+            # skills and commands defined as ## Task: name sections
+            # agent configurations injected programmatically at session start
+            # git hooks handle pre-commit checks (.pre-commit-config.yaml)
 {{< /tab >}}
 {{< tab header="GitHub Copilot" >}}
 .github/
-  copilot-instructions.md  # project context file - facts for all agents
-  start-session.md         # skill document - referenced by name in the session
-  review.md                # skill document - referenced by name in the session
-  end-session.md           # skill document - referenced by name in the session
-  fix.md                   # skill document - referenced by name in the session
-                           # agent configurations injected via VS Code extension settings
-                           # git hooks handle pre-commit checks (.pre-commit-config.yaml)
+  copilot-instructions.md   # project context file - facts for all agents
+  start-session.md           # skill document - referenced by name in the session
+  review.md                  # skill document - referenced by name in the session
+  end-session.md             # skill document - referenced by name in the session
+  fix.md                     # skill document - referenced by name in the session
+                             # agent configurations injected via VS Code extension settings
+                             # git hooks handle pre-commit checks (.pre-commit-config.yaml)
 {{< /tab >}}
 {{< /tabpane >}}
 
@@ -532,41 +532,41 @@ relevant, which reduces per-session token cost for agents working in unrelated a
 
 {{< tabpane lang="text" >}}
 {{< tab header="Claude Code" >}}
-CLAUDE.md                           # repo-wide: language, toolchain, top-level architecture
+CLAUDE.md       # repo-wide: language, toolchain, top-level architecture
 src/
   payments/
-    CLAUDE.md                       # payments context: domain rules, payment processor contracts
+    CLAUDE.md   # payments context: domain rules, payment processor contracts
   inventory/
-    CLAUDE.md                       # inventory context: stock rules, warehouse integrations
+    CLAUDE.md   # inventory context: stock rules, warehouse integrations
   api/
-    CLAUDE.md                       # API layer: auth patterns, rate limiting conventions
+    CLAUDE.md   # API layer: auth patterns, rate limiting conventions
 {{< /tab >}}
 {{< tab header="Gemini CLI" >}}
-GEMINI.md                           # repo-wide: language, toolchain, top-level architecture
+GEMINI.md       # repo-wide: language, toolchain, top-level architecture
 src/
   payments/
-    GEMINI.md                       # payments context: domain rules, payment processor contracts
+    GEMINI.md   # payments context: domain rules, payment processor contracts
   inventory/
-    GEMINI.md                       # inventory context: stock rules, warehouse integrations
+    GEMINI.md   # inventory context: stock rules, warehouse integrations
   api/
-    GEMINI.md                       # API layer: auth patterns, rate limiting conventions
+    GEMINI.md   # API layer: auth patterns, rate limiting conventions
 {{< /tab >}}
 {{< tab header="OpenAI Codex" >}}
-AGENTS.md                           # repo-wide: language, toolchain, top-level architecture
+AGENTS.md       # repo-wide: language, toolchain, top-level architecture
 src/
   payments/
-    AGENTS.md                       # payments context: domain rules, payment processor contracts
+    AGENTS.md   # payments context: domain rules, payment processor contracts
   inventory/
-    AGENTS.md                       # inventory context: stock rules, warehouse integrations
+    AGENTS.md   # inventory context: stock rules, warehouse integrations
   api/
-    AGENTS.md                       # API layer: auth patterns, rate limiting conventions
+    AGENTS.md   # API layer: auth patterns, rate limiting conventions
 {{< /tab >}}
 {{< tab header="GitHub Copilot" >}}
 # GitHub Copilot uses a single .github/copilot-instructions.md
 # Decompose by area using sections within that file
 
 .github/
-  copilot-instructions.md           # repo-wide facts at the top; area sections below
+  copilot-instructions.md   # repo-wide facts at the top; area sections below
 
 # Inside copilot-instructions.md:
 #
