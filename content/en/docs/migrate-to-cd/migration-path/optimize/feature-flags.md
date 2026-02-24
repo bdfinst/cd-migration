@@ -27,7 +27,7 @@ Not every change requires a feature flag. Flags add complexity, and unnecessary 
 
 ### Decision Tree
 
-{{< code-collapse title="Decision tree: when to use a feature flag" lang="mermaid" >}}
+```mermaid
 graph TD
     Start[New Code Change] --> Q1{Is this a large or<br/>high-risk change?}
 
@@ -73,7 +73,7 @@ graph TD
     style NoFF_Abstraction fill:#FFB6C6
     style NoFF_API fill:#FFB6C6
     style Start fill:#87CEEB
-{{< /code-collapse >}}
+```
 
 ### Alternatives to Feature Flags
 

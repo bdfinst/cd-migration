@@ -6,7 +6,7 @@ description: >
   The practices that drive software delivery performance, as identified by DORA research.
 ---
 
-The DevOps Research and Assessment (DORA) research program has identified practices that
+The DevOps Research and Assessment ([DORA](glossary/#dora-metrics)) research program has identified practices that
 predict high software delivery performance. These practices are not tools or technologies.
 They are cultural conditions and behaviors that enable teams to deliver software quickly,
 reliably, and sustainably.
@@ -28,9 +28,9 @@ still be relevant.
 | Practice | Phase 0 | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
 |----------|---------|---------|---------|---------|---------|
 | Version control | Prerequisite | | | | |
-| Continuous integration | | Primary | | | |
+| [Continuous integration](glossary/#ci-continuous-integration) | | Primary | | | |
 | Deployment automation | | | Primary | | |
-| Trunk-based development | | Primary | | | |
+| [Trunk-based development](glossary/#tbd-trunk-based-development) | | Primary | | | |
 | Test automation | | Primary | Expanded | | |
 | Test data management | | | Primary | | |
 | Shift left on security | | | Primary | | |
@@ -40,7 +40,7 @@ still be relevant.
 | Value stream visibility | Primary | | | Revisited | |
 | Working in small batches | | Started | | Primary | |
 | Team experimentation | Ongoing | Ongoing | Ongoing | Ongoing | Ongoing |
-| Limit WIP | | | | Primary | |
+| Limit [WIP](glossary/#wip-work-in-progress) | | | | Primary | |
 | Visual management | Started | Ongoing | Ongoing | Ongoing | Ongoing |
 | Monitoring and observability | | | Started | Expanded | Primary |
 | Proactive notification | | | | | Primary |
@@ -57,7 +57,7 @@ They are the primary focus of Phases 1 and 2 of the migration.
 
 ### Version Control
 
-All production artifacts (application code, test code, infrastructure configuration,
+All production [artifacts](glossary/#artifact) (application code, test code, infrastructure configuration,
 deployment scripts, and database schemas) are stored in version control and can be
 reproduced from a single source of truth.
 
@@ -71,7 +71,7 @@ Developers integrate their work to trunk at least daily. Each integration trigge
 automated build and test process. Broken builds are fixed within minutes.
 
 **Migration relevance:** [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/). CI is the gateway
-practice. Without it, none of the pipeline practices in Phase 2 can function. See
+practice. Without it, none of the [pipeline](glossary/#pipeline) practices in Phase 2 can function. See
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/) and
 [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
@@ -94,7 +94,7 @@ This is one of the first practices to establish because it enables CI.
 
 ### Test Automation
 
-A comprehensive suite of automated tests provides confidence that the software is deployable.
+A comprehensive suite of automated tests provides confidence that the software is [deployable](glossary/#deployable).
 Tests are reliable, fast, and maintained as carefully as production code.
 
 **Migration relevance:** [Phase 1: Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/).
@@ -106,7 +106,7 @@ Test data is managed in a way that allows automated tests to run independently, 
 and without relying on shared mutable state. Tests can create and clean up their own data.
 
 **Migration relevance:** Becomes critical during [Phase 2](../migrate-to-cd/migration-path/pipeline/) when you need
-production-like environments and deterministic pipeline results.
+[production-like environments](glossary/#production-like-environment) and deterministic pipeline results.
 
 ### Shift Left on Security
 
@@ -128,8 +128,7 @@ Teams can deploy their services independently without coordinating with other te
 to one service do not require changes to other services. APIs have well-defined contracts.
 
 **Migration relevance:** [Phase 3: Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
-This practice becomes critical when optimizing for deployment frequency and small batch
-sizes.
+This practice becomes critical when optimizing for [deployment frequency](glossary/#deployment-frequency) and small [batch sizes](glossary/#batch-size).
 
 ## Product and Process Practices
 
@@ -174,7 +173,7 @@ The state of all work is visible to the entire team through dashboards, boards, 
 visual tools. Anyone can see what is in progress, what is blocked, and what has been deployed.
 
 **Migration relevance:** All phases. Visual management supports the identification of
-constraints in Phase 0 and the enforcement of WIP limits in Phase 3.
+[constraints](glossary/#constraint) in Phase 0 and the enforcement of WIP limits in Phase 3.
 
 ### Monitoring and Observability
 
@@ -191,7 +190,7 @@ Teams are alerted to problems before customers are affected. Monitoring threshol
 anomaly detection trigger notifications that enable rapid response.
 
 **Migration relevance:** Becomes critical in Phase 4 when deployments are continuous and
-automated. Proactive notification is what makes continuous deployment safe.
+automated. Proactive notification is what makes [continuous deployment](glossary/#continuous-deployment) safe.
 
 ### Collaboration Among Teams
 
@@ -221,7 +220,7 @@ bureaucratic cultures will struggle with every phase because practices like TBD 
 trust and psychological safety.
 
 **Learning Culture.** The organization invests in learning. Teams have time for experimentation,
-training, and knowledge sharing. The CD migration is a learning journey that requires time and
+training, and knowledge sharing. The [CD](glossary/#cd-continuous-delivery) migration is a learning journey that requires time and
 space to learn new practices, make mistakes, and improve.
 
 **Job Satisfaction.** Team members find their work meaningful and have the autonomy and resources

@@ -24,7 +24,7 @@ The coding agent system has two tiers. The [orchestrator](../glossary/#orchestra
 Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
-{{< code-collapse title="Agent system architecture diagram" lang="mermaid" >}}
+```mermaid
 graph TD
     classDef orchestrator fill:#224968,stroke:#1a3a54,color:#fff
     classDef agent fill:#0d7a32,stroke:#0a6128,color:#fff
@@ -42,7 +42,7 @@ graph TD
     ORC -->|"implement"| IMPL
     ORC -->|"review staged changes"| REV
     REV --> SEM & SEC & PERF & CONC
-{{< /code-collapse >}}
+```
 
 **Separation principle:** The orchestrator does not write code. The implementation agent
 does not review code. Review agents do not modify code. Each agent has one responsibility.

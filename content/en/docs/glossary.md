@@ -68,6 +68,7 @@ Referenced in:
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
 [Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
@@ -116,6 +117,7 @@ debugging, and shorten feedback loops. Reducing batch size is a core focus of
 [Phase 3 - Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/).
 
 Referenced in:
+[DORA Recommended Practices](../dora-capabilities/),
 [Hardening Sprints Are Needed Before Every Release](../symptoms/deployment/hardening-sprints/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [New Releases Introduce Regressions in Previously Working Functionality](../symptoms/deployment/regressions-on-release/),
@@ -197,6 +199,7 @@ Referenced in:
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
@@ -290,6 +293,7 @@ During a CD migration, your job is to find and fix constraints in order of impac
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Knowledge Silos](../anti-patterns/team-workflow/knowledge-silos/),
 [Learning Paths](../learning-paths/),
@@ -347,6 +351,7 @@ Referenced in:
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
@@ -360,6 +365,7 @@ production deployment. The definition of deployable is codified in the pipeline,
 by a person at deployment time. See [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/).
 
 Referenced in:
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
@@ -374,6 +380,7 @@ See [Metrics - Release Frequency](../metrics/release-frequency/).
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
@@ -395,6 +402,7 @@ as predictive of software delivery performance: deployment frequency, lead time 
 change failure rate, and mean time to restore service. See [DORA Recommended Practices](../dora-capabilities/).
 
 Referenced in:
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
@@ -602,6 +610,7 @@ Referenced in:
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
 [Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Each Language Has Its Own Ad Hoc Pipeline](../symptoms/flow/polyglot-stack-no-pipeline-standards/),
 [Every Change Rebuilds the Entire Repository](../symptoms/flow/monorepo-without-tooling/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
@@ -672,6 +681,7 @@ data characteristics. Testing in environments that differ from production is a c
 of deployment failures. See [Production-Like Environments](../practices/production-like-environments/).
 
 Referenced in:
+[DORA Recommended Practices](../dora-capabilities/),
 [Hard-Coded Environment Assumptions](../anti-patterns/pipeline/hardcoded-environment-assumptions/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
