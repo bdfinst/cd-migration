@@ -7,10 +7,10 @@ description: >
 ---
 
 {{% pageinfo %}}
-The four configuration mechanisms serve four different purposes. Placing information in the right mechanism controls [context](../glossary/#context-llm) cost: it determines what every [agent](../glossary/#agent-ai) pays on every invocation, and what must be loaded only when needed.
+Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context](../glossary/#context-llm) cost: it determines what every [agent](../glossary/#agent-ai) pays on every invocation, and what must be loaded only when needed.
 {{% /pageinfo %}}
 
-## The Four Mechanisms
+## Configuration Mechanisms
 
 | Mechanism | Purpose | When loaded |
 |-----------|---------|-------------|
@@ -462,7 +462,7 @@ Stable content at the top. Volatile content at the bottom. Rules and the project
 
 ## File Layout
 
-The examples below show how the five-mechanism pattern maps to Claude Code, Gemini CLI,
+The examples below show how the configuration mechanisms map to Claude Code, Gemini CLI,
 OpenAI Codex CLI, and GitHub Copilot. The file names and locations differ; the purpose
 of each mechanism does not.
 
