@@ -220,11 +220,11 @@ for a worked example of this pattern when teams share a [modular monolith](../..
 
 ## Measuring Success
 
-| Metric | What to Watch For | Why It Matters |
-|--------|-------------------|----------------|
-| [Deployment frequency](../../../metrics/release-frequency/) per team | Each team's deployment frequency rising independently | Confirms teams can deploy without waiting for others |
+| Metric | Target | Why It Matters |
+|--------|--------|----------------|
+| [Deployment frequency](../../../metrics/release-frequency/) per team | Increasing per team | Confirms teams can deploy without waiting for others |
 | Cross-team dependencies per feature | Decreasing toward zero | Confirms domain boundaries are holding |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Decreasing as coordination overhead drops | Teams that own their domain wait on fewer external dependencies |
+| [Development cycle time](../../../metrics/development-cycle-time/) | Decreasing | Teams that own their domain wait on fewer external dependencies |
 | Production incidents attributed to another team's change | Decreasing | Confirms ownership boundaries match deployment boundaries |
 | Teams blocked on a release window they did not control | Decreasing toward zero | The primary organizational symptom of misalignment |
 

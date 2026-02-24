@@ -98,7 +98,7 @@ Feature: Shopping cart discount
     Then the cart total should be $95
 {{< /code-collapse >}}
 
-Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. This is how you turn a "discount feature" (large batch) into three independent, deployable changes (small batches).
+Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. This is how you turn a "discount feature" (large batch) into three independent, [deployable](../../../glossary/#deployable) changes (small batches).
 
 ### Decomposing Stories Using Scenarios
 
@@ -176,7 +176,7 @@ Each day produces a deployable change. The endpoint is usable (though minimal) a
 
 ## Vertical Slicing
 
-A vertical slice cuts through all layers of the system to deliver a thin piece of end-to-end functionality. This is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
+A [vertical slice](../../../glossary/#vertical-sliced-story) cuts through all layers of the system to deliver a thin piece of end-to-end functionality. This is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
 
 ### Horizontal vs. Vertical Slicing
 

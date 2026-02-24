@@ -64,6 +64,7 @@ Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
@@ -196,6 +197,7 @@ Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
@@ -235,6 +237,7 @@ remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. Se
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
@@ -249,6 +252,7 @@ CI. See [Build Automation](../migrate-to-cd/migration-path/foundations/build-aut
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Data & State Defects](../defect-sources/data-and-state/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
@@ -365,6 +369,7 @@ production deployment. The definition of deployable is codified in the pipeline,
 by a person at deployment time. See [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/).
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/),
 [Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
@@ -391,6 +396,7 @@ See [Metrics - Release Frequency](../metrics/release-frequency/).
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
@@ -414,6 +420,7 @@ as predictive of software delivery performance: deployment frequency, lead time 
 change failure rate, and mean time to restore service. See [DORA Recommended Practices](../dora-capabilities/).
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
@@ -451,6 +458,7 @@ flags decouple deployment from release. See [Feature Flags](../migrate-to-cd/mig
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
@@ -562,10 +570,14 @@ One of the four DORA metrics. See [Metrics - Lead Time](../metrics/lead-time/).
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
+[Development Cycle Time](../metrics/development-cycle-time/),
+[Lead Time](../metrics/lead-time/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
-[Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/)
+[Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ## M
 
@@ -577,7 +589,8 @@ rollback is automated, and the cause of failure is easy to identify. See
 [Metrics - Mean Time to Repair](../metrics/mean-time-to-repair/).
 
 Referenced in:
-[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/)
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/)
 
 ### Modular Monolith
 
@@ -623,6 +636,7 @@ on its way to production. See [Phase 2 - Pipeline](../migrate-to-cd/migration-pa
 Referenced in:
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
@@ -703,6 +717,7 @@ data characteristics. Testing in environments that differ from production is a c
 of deployment failures. See [Production-Like Environments](../practices/production-like-environments/).
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Hard-Coded Environment Assumptions](../anti-patterns/pipeline/hardcoded-environment-assumptions/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
@@ -752,6 +767,7 @@ The ability to revert a production deployment to a previous known-good state. CD
 automated rollback that takes minutes, not hours. See [Rollback](../migrate-to-cd/migration-path/pipeline/rollback/).
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Change Fail Rate](../metrics/change-fail-rate/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
@@ -856,6 +872,7 @@ Long-lived feature branches are not. TBD is a prerequisite for CI, which is in t
 prerequisite for CD. See [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
@@ -874,6 +891,7 @@ a fast, reliable test suite. TDD feeds into the [testing fundamentals](../migrat
 required in Phase 1.
 
 Referenced in:
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Unit Tests](../testing/unit/)
 
@@ -964,6 +982,7 @@ slicing is a core technique in [Work Decomposition](../migrate-to-cd/migration-p
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [CD Dependency Tree](../cd-dependency-tree/),
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)

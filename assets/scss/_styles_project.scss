@@ -57,8 +57,10 @@
       color: #1a2a3a;
     }
 
-    // Detection column (second) - micro-label style
-    tbody td:nth-child(2) {
+    // Label column (second, only in 3+ column tables) - micro-label style
+    // 2-column tables (e.g. objection/response) use prose in all columns;
+    // :not(:last-child) excludes column 2 when it is the final column.
+    tbody td:nth-child(2):not(:last-child) {
       font-size: 0.78rem;
       font-weight: 600;
       text-transform: uppercase;
