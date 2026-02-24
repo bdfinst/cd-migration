@@ -307,5 +307,5 @@ For additional case studies, see:
 - [Metrics-Driven Improvement](../../optimize/metrics-driven-improvement/) - the approach every experience report team used to guide their CD adoption
 - [Feature Flags](../../optimize/feature-flags/) - a universal pattern across all experience reports for decoupling deployment from release
 - [Progressive Rollout](../progressive-rollout/) - the rollout strategies (canary, ring-based, percentage) described in the Microsoft and Google reports
-- [DORA Capabilities](../../../dora-capabilities/) - the research-backed capabilities that these experience reports validate in practice
+- [DORA Recommended Practices](../../../dora-capabilities/) - the research-backed capabilities that these experience reports validate in practice
 - [Coordinated Deployments](../../../symptoms/deployment/coordinated-deployments/) - a symptom every organization in these reports eliminated through independent service deployment

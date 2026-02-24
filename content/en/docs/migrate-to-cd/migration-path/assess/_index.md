@@ -46,7 +46,7 @@ You're ready for [Phase 1: Foundations](../foundations/) when you can answer:
 
 - [For Managers](../../../symptoms/for-managers/) - how to recognize delivery problems from a leadership perspective
 - [Phase 1: Foundations](../foundations/) - the next phase after assessment is complete
-- [DORA Capabilities](../../../dora-capabilities/) - industry-recognized capabilities that underpin delivery performance
+- [DORA Recommended Practices](../../../dora-capabilities/) - industry-recognized capabilities that underpin delivery performance
 - [Deployment Frequency](../../../metrics/release-frequency/) - one of the key metrics you will baseline in this phase
 - [Lead Time for Changes](../../../metrics/lead-time/) - the metric that reveals how long changes spend in the system
 - [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a common symptom that assessment helps quantify

@@ -51,5 +51,5 @@ You're ready for [Phase 3: Optimize](../optimize/) when:
 - [Slow Pipelines](../../../symptoms/flow/slow-pipelines/) - a common symptom that pipeline architecture improvements address
 - [Fear of Deploying](../../../symptoms/deployment/fear-of-deploying/) - a cultural symptom that reliable rollback and automated pipelines help resolve
 - [Missing Deployment Pipeline](../../../anti-patterns/pipeline/missing-deployment-pipeline/) - the anti-pattern this entire phase eliminates
-- [DORA Capabilities](../../../dora-capabilities/) - industry-recognized capabilities that pipeline practices support
+- [DORA Recommended Practices](../../../dora-capabilities/) - industry-recognized capabilities that pipeline practices support
 - [Pipeline Reference Architecture](../../../pipeline-reference-architecture/) - concrete quality gate patterns organized by defect detection priority.

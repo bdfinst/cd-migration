@@ -392,7 +392,7 @@ See [Metrics - Development Cycle Time](../metrics/development-cycle-time/).
 
 The four key metrics identified by the DORA (DevOps Research and Assessment) research program
 as predictive of software delivery performance: deployment frequency, lead time for changes,
-change failure rate, and mean time to restore service. See [DORA Capabilities](../dora-capabilities/).
+change failure rate, and mean time to restore service. See [DORA Recommended Practices](../dora-capabilities/).
 
 Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
@@ -860,7 +860,7 @@ manual environment provisioning, and manual test execution. Eliminating toil is 
 benefit of building a CD pipeline.
 
 Referenced in:
-[DORA Capabilities](../dora-capabilities/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
 
 ## U

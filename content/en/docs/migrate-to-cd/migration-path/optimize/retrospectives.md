@@ -228,4 +228,4 @@ Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed u
 - [Velocity as Individual Metric](../../../anti-patterns/organizational-cultural/velocity-as-individual-metric/) - an anti-pattern that undermines the psychological safety retrospectives require
 - [Metrics-Driven Improvement](../metrics-driven-improvement/) - provides the data that retrospectives use to drive decisions
 - [Limiting WIP](../limiting-wip/) - WIP limits expose problems that retrospectives turn into action items
-- [DORA Capabilities](../../../dora-capabilities/) - the capability framework that informs improvement priorities
+- [DORA Recommended Practices](../../../dora-capabilities/) - the capability framework that informs improvement priorities

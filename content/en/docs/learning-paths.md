@@ -44,7 +44,7 @@ research-backed capabilities and a concrete starting step.
 2. [Infrequent Releases](symptoms/deployment/infrequent-releases/) - quantify the cost
 3. [Missing Deployment Pipeline](anti-patterns/pipeline/missing-deployment-pipeline/) - name the root cause
 4. [CAB Approval Gates](anti-patterns/organizational-cultural/cab-gates/) - address the process gap
-5. [DORA Capabilities](dora-capabilities/) - the research backing
+5. [DORA Recommended Practices](dora-capabilities/) - the research backing
 6. [Phase 0 - Assess](migrate-to-cd/migration-path/assess/) - start here with your team
 7. [Baseline Metrics](migrate-to-cd/migration-path/assess/baseline-metrics/) - measure before you change
 

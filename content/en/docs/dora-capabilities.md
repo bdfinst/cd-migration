@@ -1,32 +1,32 @@
 ---
-title: "DORA Capabilities"
-linkTitle: "DORA Capabilities"
+title: "DORA Recommended Practices"
+linkTitle: "DORA Recommended Practices"
 weight: 13
 description: >
-  The capabilities that drive software delivery performance, as identified by DORA research.
+  The practices that drive software delivery performance, as identified by DORA research.
 ---
 
-The DevOps Research and Assessment (DORA) research program has identified capabilities that
-predict high software delivery performance. These capabilities are not tools or technologies.
+The DevOps Research and Assessment (DORA) research program has identified practices that
+predict high software delivery performance. These practices are not tools or technologies.
 They are practices and cultural conditions that enable teams to deliver software quickly,
 reliably, and sustainably.
 
-This page organizes the DORA capabilities by their relevance to each migration phase. Use it
-as a reference to understand which capabilities you are building at each stage of your journey
+This page organizes the DORA recommended practices by their relevance to each migration phase. Use it
+as a reference to understand which practices you are building at each stage of your journey
 and which ones to focus on next.
 
 {{% alert title="Using This Table" %}}
-"Primary" means the phase where the capability is the main focus of improvement work.
-"Ongoing" means the capability is relevant in every phase and should be continuously
-nurtured. "Started" or "Expanded" means the capability is introduced or deepened in that
-phase. No entry means the capability is not a primary concern in that phase, though it may
+"Primary" means the phase where the practice is the main focus of improvement work.
+"Ongoing" means the practice is relevant in every phase and should be continuously
+nurtured. "Started" or "Expanded" means the practice is introduced or deepened in that
+phase. No entry means the practice is not a primary concern in that phase, though it may
 still be relevant.
 {{% /alert %}}
 
-## Capability Maturity by Phase
+## Practice Maturity by Phase
 
-| Capability | Phase 0 | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
-|------------|---------|---------|---------|---------|---------|
+| Practice | Phase 0 | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
+|----------|---------|---------|---------|---------|---------|
 | Version control | Prerequisite | | | | |
 | Continuous integration | | Primary | | | |
 | Deployment automation | | | Primary | | |
@@ -50,9 +50,9 @@ still be relevant.
 | Job satisfaction | Ongoing | Ongoing | Ongoing | Ongoing | Ongoing |
 | Transformational leadership | Ongoing | Ongoing | Ongoing | Ongoing | Ongoing |
 
-## Continuous Delivery Capabilities
+## Continuous Delivery Practices
 
-These capabilities directly support the mechanics of getting software from commit to production.
+These practices directly support the mechanics of getting software from commit to production.
 They are the primary focus of Phases 1 and 2 of the migration.
 
 ### Version Control
@@ -90,7 +90,7 @@ Developers work in small batches and merge to trunk at least daily. Branches, if
 short-lived (less than one day). There are no long-lived feature branches.
 
 **Migration relevance:** [Phase 1: Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
-This is one of the first capabilities to establish because it enables CI.
+This is one of the first practices to establish because it enables CI.
 
 ### Test Automation
 
@@ -117,9 +117,9 @@ definition of deployable.
 **Migration relevance:** Integrated during [Phase 2: Pipeline Architecture](../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
 as automated quality gates rather than manual review steps.
 
-## Architecture Capabilities
+## Architecture Practices
 
-These capabilities address the structural characteristics of your system that enable or prevent
+These practices address the structural characteristics of your system that enable or prevent
 independent, frequent deployment.
 
 ### Loosely Coupled Architecture
@@ -131,9 +131,9 @@ to one service do not require changes to other services. APIs have well-defined 
 This capability becomes critical when optimizing for deployment frequency and small batch
 sizes.
 
-## Product and Process Capabilities
+## Product and Process Practices
 
-These capabilities address how work is planned, prioritized, and delivered.
+These practices address how work is planned, prioritized, and delivered.
 
 ### Customer Feedback
 
@@ -202,9 +202,9 @@ Handoffs are minimized. Shared responsibility replaces blame.
 where the pipeline must encode the quality criteria from all disciplines (security, testing,
 operations) into automated gates.
 
-## Capabilities Relevant in Every Phase
+## Practices Relevant in Every Phase
 
-The following capabilities are not tied to a specific migration phase. They are conditions
+The following practices are not tied to a specific migration phase. They are conditions
 that support every phase and should be cultivated continuously throughout the migration.
 
 **Empowered Teams.** Teams choose their own tools, technologies, and approaches within

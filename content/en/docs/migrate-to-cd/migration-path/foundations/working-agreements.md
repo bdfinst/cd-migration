@@ -282,4 +282,4 @@ Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed u
 - [Undone Work](../../../anti-patterns/team-workflow/undone-work/) - Anti-pattern prevented by a strong Definition of Done
 - [Deadline-Driven Development](../../../anti-patterns/organizational-cultural/deadline-driven-development/) - Anti-pattern where pressure overrides team agreements
 - [Velocity as Individual Metric](../../../anti-patterns/organizational-cultural/velocity-as-individual-metric/) - Anti-pattern that undermines collaborative working agreements
-- [DORA Capabilities](../../../dora-capabilities/) - Research-backed capabilities that working agreements support
+- [DORA Recommended Practices](../../../dora-capabilities/) - Research-backed capabilities that working agreements support

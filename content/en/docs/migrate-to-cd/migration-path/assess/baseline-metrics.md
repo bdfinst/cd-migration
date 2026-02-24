@@ -190,5 +190,5 @@ Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed u
 - [Lead Time for Changes](../../../metrics/lead-time/) - how to measure the time from commit to production
 - [Change Failure Rate](../../../metrics/change-fail-rate/) - measuring the percentage of deployments that cause failures
 - [Mean Time to Restore](../../../metrics/mean-time-to-repair/) - measuring recovery speed after production incidents
-- [DORA Capabilities](../../../dora-capabilities/) - the research-backed capabilities these metrics reflect
+- [DORA Recommended Practices](../../../dora-capabilities/) - the research-backed capabilities these metrics reflect
 - [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a symptom that low deployment frequency baselines often reveal

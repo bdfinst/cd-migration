@@ -21,4 +21,4 @@ the phased roadmap both approaches follow.
 - [For Managers](../symptoms/for-managers/) - How delivery problems appear from a management perspective
 - [Migration Path](migration-path/) - The phased roadmap from your current state to continuous deployment
 - [FAQ](../faq/) - Frequently asked questions about continuous delivery
-- [DORA Capabilities](../dora-capabilities/) - The research-backed capabilities that drive delivery performance
+- [DORA Recommended Practices](../dora-capabilities/) - The research-backed capabilities that drive delivery performance

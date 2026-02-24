@@ -49,5 +49,5 @@ You're ready for [Phase 4: Deliver on Demand](../continuous-deployment/) when:
 - [Phase 4: Deliver on Demand](../continuous-deployment/) - the next phase after flow is optimized
 - [Infrequent Releases](../../../symptoms/deployment/infrequent-releases/) - a key symptom that the Optimize phase addresses
 - [Too Much WIP](../../../symptoms/flow/too-much-wip/) - a flow symptom targeted by WIP limits and small batches
-- [DORA Capabilities](../../../dora-capabilities/) - the research-backed capabilities that drive delivery performance
+- [DORA Recommended Practices](../../../dora-capabilities/) - the research-backed capabilities that drive delivery performance
 - [Deployment Frequency](../../../metrics/release-frequency/) - the primary metric that improves as optimization takes hold

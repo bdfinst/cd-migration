@@ -125,11 +125,11 @@ Track these alongside DORA metrics to catch issues before they compound.
 
 **If the number is high:** The team may not be treating broken builds as a stop-the-line event. Establish a team agreement: when the build breaks, fixing it takes priority over all other work. If builds break frequently and take long to fix, reduce change size so failures are easier to diagnose.
 
-## The DORA Capabilities
+## The DORA Recommended Practices
 
-Behind these four metrics are 24 capabilities that the DORA research has shown to drive performance. They organize into five categories. Use this as a diagnostic tool: when a metric is lagging, look at the related capabilities to identify what to improve.
+Behind these four metrics are 24 practices that the DORA research has shown to drive performance. They organize into five categories. Use this as a diagnostic tool: when a metric is lagging, look at the related practices to identify what to improve.
 
-### Continuous Delivery Capabilities
+### Continuous Delivery Practices
 
 These directly affect your pipeline and deployment practices:
 
@@ -142,7 +142,7 @@ These directly affect your pipeline and deployment practices:
 - Shift-left security
 - Continuous delivery (the ability to deploy at any time)
 
-### Architecture Capabilities
+### Architecture Practices
 
 These affect how easily your system can be changed and deployed:
 
@@ -150,7 +150,7 @@ These affect how easily your system can be changed and deployed:
 - Empowered teams that can choose their own tools
 - Teams that can test, deploy, and release independently
 
-### Product and Process Capabilities
+### Product and Process Practices
 
 These affect how work flows through the team:
 
@@ -159,7 +159,7 @@ These affect how work flows through the team:
 - Working in small batches
 - Team experimentation
 
-### Lean Management Capabilities
+### Lean Management Practices
 
 These affect how the organization supports delivery:
 
@@ -169,7 +169,7 @@ These affect how the organization supports delivery:
 - WIP limits
 - Visual management of workflow
 
-### Cultural Capabilities
+### Cultural Practices
 
 These affect the environment in which teams operate:
 
@@ -179,7 +179,7 @@ These affect the environment in which teams operate:
 - Job satisfaction
 - Transformational leadership
 
-For a detailed breakdown, see the [DORA Capabilities reference](../../../dora-capabilities/).
+For a detailed breakdown, see the [DORA Recommended Practices reference](../../../dora-capabilities/).
 
 ## The Improvement Kata
 
@@ -200,7 +200,7 @@ Measure your current DORA metrics. Be honest - the point is to understand realit
 1. Collect two weeks of data for all four DORA metrics
 2. Plot the data - do not just calculate averages. Look at the distribution.
 3. Identify which metric is furthest from your target
-4. Investigate the related capabilities to understand why
+4. Investigate the related practices to understand why
 
 **Example current condition:**
 
@@ -406,5 +406,5 @@ Metrics tell you what to improve. [Retrospectives](../retrospectives/) provide t
 - [Lead Time](../../../metrics/lead-time/) - one of the four key DORA metrics
 - [Change Fail Rate](../../../metrics/change-fail-rate/) - one of the four key DORA metrics
 - [Mean Time to Repair](../../../metrics/mean-time-to-repair/) - one of the four key DORA metrics
-- [DORA Capabilities](../../../dora-capabilities/) - the 24 capabilities that drive delivery performance
+- [DORA Recommended Practices](../../../dora-capabilities/) - the 24 practices that drive delivery performance
 - [Retrospectives](../retrospectives/) - the team forum for acting on what metrics reveal
