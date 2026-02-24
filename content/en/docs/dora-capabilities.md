@@ -8,7 +8,7 @@ description: >
 
 The DevOps Research and Assessment (DORA) research program has identified practices that
 predict high software delivery performance. These practices are not tools or technologies.
-They are practices and cultural conditions that enable teams to deliver software quickly,
+They are cultural conditions and behaviors that enable teams to deliver software quickly,
 reliably, and sustainably.
 
 This page organizes the DORA recommended practices by their relevance to each migration phase. Use it
@@ -71,7 +71,7 @@ Developers integrate their work to trunk at least daily. Each integration trigge
 automated build and test process. Broken builds are fixed within minutes.
 
 **Migration relevance:** [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/). CI is the gateway
-capability. Without it, none of the pipeline practices in Phase 2 can function. See
+practice. Without it, none of the pipeline practices in Phase 2 can function. See
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/) and
 [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
@@ -128,7 +128,7 @@ Teams can deploy their services independently without coordinating with other te
 to one service do not require changes to other services. APIs have well-defined contracts.
 
 **Migration relevance:** [Phase 3: Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
-This capability becomes critical when optimizing for deployment frequency and small batch
+This practice becomes critical when optimizing for deployment frequency and small batch
 sizes.
 
 ## Product and Process Practices
