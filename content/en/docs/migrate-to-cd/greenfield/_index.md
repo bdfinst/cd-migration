@@ -135,7 +135,7 @@ See [Work Decomposition](../migration-path/foundations/work-decomposition/) for 
 
 Use this checklist to verify your new project is set up for CD from the start.
 
-### Week 1
+### Pipeline Basics
 
 - [ ] CI pipeline runs on every push to trunk
 - [ ] Build, test, and package happen with a single command
@@ -143,7 +143,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] All work integrates to trunk at least daily
 - [ ] Deployment to at least one environment is automated
 
-### Month 1
+### Quality Gates
 
 - [ ] Test architecture established (unit, integration, functional layers)
 - [ ] External dependencies use test doubles in the deterministic test suite
@@ -153,7 +153,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] Application configuration is externalized
 - [ ] Artifacts are immutable (build once, deploy everywhere)
 
-### Month 3
+### Production Readiness
 
 - [ ] Pipeline deploys to production
 - [ ] Every commit that passes the pipeline is a deployment candidate

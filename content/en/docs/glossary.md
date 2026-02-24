@@ -366,11 +366,23 @@ by a person at deployment time. See [Deployable Definition](../migrate-to-cd/mig
 
 Referenced in:
 [DORA Recommended Practices](../dora-capabilities/),
+[Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/),
+[Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
+[Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
+[Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/),
+[Multiple Services Must Be Deployed Together](../symptoms/deployment/coordinated-deployments/),
+[Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/),
-[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/)
+[Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/),
+[Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
+[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ### Deployment Frequency
 
@@ -428,6 +440,9 @@ Contrast with [full-stack product team](#full-stack-product-team) and
 [subdomain product team](#subdomain-product-team), which achieve cross-functional delivery
 through stable domain ownership rather than feature-by-feature assembly.
 
+Referenced in:
+[Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/)
+
 ### Feature Flag
 
 A mechanism that allows code to be deployed to production with new functionality disabled,
@@ -475,6 +490,7 @@ done when a user can observe the behavior through that interface. Contrast with
 [subdomain product team](#subdomain-product-team).
 
 Referenced in:
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/#vertical-slicing-in-distributed-systems),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems)
 
@@ -504,6 +520,9 @@ include things like waiting for another team's API, a shared database migration,
 infrastructure provisioning request. Hard dependencies create queues and increase lead time.
 Eliminating hard dependencies is a focus of
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/).
+
+Referenced in:
+[Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/)
 
 ### Hardening Sprint
 
@@ -573,7 +592,8 @@ allows teams to reason about, test, and change one module independently. See
 Referenced in:
 [Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
-[Single Team, Single Deployable](../pipeline-reference-architecture/single-team/)
+[Single Team, Single Deployable](../pipeline-reference-architecture/single-team/),
+[Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/)
 
 ## O
 
@@ -621,6 +641,7 @@ Referenced in:
 [Getting a Test Environment Requires Filing a Ticket](../symptoms/flow/lack-of-self-service-environments/),
 [Getting Started: Where to Put What](../agentic-cd/agent-setup/),
 [High Coverage but Tests Miss Defects](../symptoms/testing/high-coverage-ineffective-tests/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Inverted Test Pyramid](../anti-patterns/testing/inverted-test-pyramid/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
@@ -653,6 +674,7 @@ Referenced in:
 [Staging Passes but Production Fails](../symptoms/deployment/staging-passes-production-fails/),
 [Symptoms for Developers](../symptoms/for-developers/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
+[Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/),
 [Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
 [Test Doubles](../testing/test-doubles/),
 [Test Suite Is Too Slow to Run](../symptoms/testing/slow-test-suites/),
@@ -731,24 +753,33 @@ automated rollback that takes minutes, not hours. See [Rollback](../migrate-to-c
 
 Referenced in:
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[Change Fail Rate](../metrics/change-fail-rate/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
+[Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Mean Time to Repair](../metrics/mean-time-to-repair/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
+[No Deployment Health Checks](../anti-patterns/pipeline/no-deployment-health-checks/),
 [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/),
 [Pipeline Reference Architecture](../pipeline-reference-architecture/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
 [Production Problems Are Discovered Hours or Days Late](../symptoms/visibility/slow-detection/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Release Frequency](../metrics/release-frequency/),
 [Releases Depend on One Person](../symptoms/deployment/release-manager-bottleneck/),
+[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/),
 [Symptoms for Developers](../symptoms/for-developers/),
 [Systemic Defect Fixes](../defect-sources/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [The Team Is Caught Between Shipping Fast and Not Breaking Things](../symptoms/flow/speed-vs-stability-tension/),
-[Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
+[Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ## S
 
@@ -795,6 +826,7 @@ through that contract. The slice is done when the API satisfies the agreed behav
 service consumers. Contrast with [full-stack product team](#full-stack-product-team).
 
 Referenced in:
+[Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/#vertical-slicing-in-distributed-systems),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems)
 
@@ -870,8 +902,18 @@ manual environment provisioning, and manual test execution. Eliminating toil is 
 benefit of building a CD pipeline.
 
 Referenced in:
+[AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
+[Build Duration](../metrics/build-duration/),
+[Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/),
 [DORA Recommended Practices](../dora-capabilities/),
-[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/)
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
+[Lead Time](../metrics/lead-time/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
+[Your Migration Journey](../)
 
 ## U
 
@@ -937,7 +979,9 @@ in [Phase 3 - Limiting WIP](../migrate-to-cd/migration-path/optimize/limiting-wi
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
 [Development Cycle Time](../metrics/development-cycle-time/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
+[Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
@@ -950,6 +994,7 @@ Referenced in:
 [Team Membership Changes Constantly](../symptoms/flow/team-instability/),
 [The Team Has No Shared Agreements About How to Work](../symptoms/flow/no-shared-workflow-expectations/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
+[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
 [Work in Progress](../metrics/work-in-progress/),
 [Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 

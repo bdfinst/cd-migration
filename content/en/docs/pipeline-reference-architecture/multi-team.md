@@ -7,7 +7,7 @@ description: >
 ---
 
 This architecture suits organizations where multiple teams contribute to a single
-deployable [modular monolith](../../glossary/#modular-monolith) - a common
+[deployable](../../glossary/#deployable) [modular monolith](../../glossary/#modular-monolith) - a common
 pattern for large applications, mobile apps, or platforms where the final [artifact](../../glossary/#artifact) must
 be assembled from team contributions.
 
@@ -138,3 +138,4 @@ Signs you are ready to decompose:
 - [Independent Teams, Independent Deployables](../independent-teams/) - the target pattern when modules become independent services
 - [Modular Monolith](../../glossary/#modular-monolith) - glossary definition
 - [Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - how to move toward independent deployment
+- [Team Alignment to Code](../../migrate-to-cd/migration-path/optimize/team-alignment/) - how to structure teams around domain boundaries so this pipeline pattern works

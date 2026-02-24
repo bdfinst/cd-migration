@@ -96,14 +96,14 @@ finishes their layer. Team B is blocked on Team C's schema change. Nobody knows 
 date because it depends on the slowest team in the chain.
 
 Vertical slicing within a team's domain eliminates cross-team delivery dependencies. Each team
-decomposes work so that their changes are independently deployable. The team ships when their slice
+decomposes work so that their changes are independently [deployable](../../../glossary/#deployable). The team ships when their slice
 is ready, not when every other team's slice is ready.
 
 ### It creates coordination overhead that scales poorly
 
 When features require a coordinated release across teams, the coordination effort grows with the
 number of teams involved. Someone has to schedule the release window. Someone has to sequence the
-deployments. Someone has to manage the rollback plan when one team's deployment fails. This
+deployments. Someone has to manage the [rollback](../../../glossary/#rollback) plan when one team's deployment fails. This
 coordination tax is paid on every feature, and it grows as the system grows.
 
 Teams that slice vertically within their domains can deploy independently. They define stable
@@ -124,7 +124,7 @@ and the risk grows with it.
 
 Vertical slicing is what makes independent deployment possible. Each slice delivers complete
 behavior within the team's domain, exercises real contracts with other services, and can move
-through the pipeline on its own.
+through the [pipeline](../../../glossary/#pipeline) on its own.
 
 ## How to Fix It
 
@@ -144,6 +144,12 @@ count them. Most teams discover that a majority of their backlog is horizontally
 In a distributed system, the team does not own the entire feature. They own a domain. Identify
 what services, data stores, and interfaces the team controls. The team's vertical slices cut
 through the layers within their domain, not through the entire system.
+
+How "end-to-end" is defined depends on what your team owns. A [full-stack product team](../../../glossary/#full-stack-product-team) owns the
+entire user-facing surface from UI to database; their slice is done when a user can observe the
+behavior. A [subdomain product team](../../../glossary/#subdomain-product-team) owns a service boundary; their slice is done when the API
+contract satisfies the agreed behavior for consumers. The [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) guide covers both
+contexts with diagrams.
 
 For each service the team owns, identify the contracts other services depend on. These contracts
 are the boundaries that enable independent deployment. If the contracts are not explicit (no
@@ -229,8 +235,9 @@ enter the sprint.
 
 ## Related Content
 
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice guide for vertical slicing techniques
+- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice guide for vertical slicing techniques, including how the approach differs for full-stack product teams versus subdomain product teams in distributed systems
 - [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Vertical slicing is how you achieve small batch size at the story level
 - [Work Items Take Too Long](../../../symptoms/flow/work-items-take-too-long/) - Horizontal slices are often large because they span an entire layer
 - [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - Vertical slices enable daily integration because each is independently complete
 - [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Loose coupling between services enables independent vertical slicing
+- [Team Alignment to Code](../../../migrate-to-cd/migration-path/optimize/team-alignment/) - Organizing teams around domain boundaries rather than layers removes the structural cause of horizontal slicing

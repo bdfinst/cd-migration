@@ -22,6 +22,7 @@ delivery frequency.
 4. **[Drive improvement with metrics](metrics-driven-improvement/)** - Use [DORA metrics](../../../glossary/#dora-metrics) and improvement kata
 5. **[Run effective retrospectives](retrospectives/)** - Continuously improve the delivery process
 6. **[Decouple architecture](architecture-decoupling/)** - Enable independent deployment of components
+7. **[Align teams to code](team-alignment/)** - Match team ownership to code boundaries for independent deployment
 
 ## Why This Phase Matters
 

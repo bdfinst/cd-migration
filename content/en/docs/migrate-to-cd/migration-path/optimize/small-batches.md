@@ -241,7 +241,7 @@ These are common ways teams slice stories that undermine the benefits of small b
 
 ## Practical Steps for Reducing Batch Size
 
-### Week 1-2: Measure Current State
+### Step 1: Measure Current State
 
 Before changing anything, measure where you are:
 
@@ -250,13 +250,13 @@ Before changing anything, measure where you are:
 - **Deploy frequency** (how often changes reach production)
 - **Average changes per deploy** (how many commits per deployment)
 
-### Week 3-4: Introduce Story Decomposition
+### Step 2: Introduce Story Decomposition
 
 - Start writing BDD scenarios before implementation
 - Split any story estimated at more than 2 days
 - Track the number of stories completed per week (expect this to increase as stories get smaller)
 
-### Week 5-8: Tighten Commit Size
+### Step 3: Tighten Commit Size
 
 - Adopt the discipline of "one logical change per commit"
 - Use TDD to create a natural commit rhythm: write test, make it pass, commit

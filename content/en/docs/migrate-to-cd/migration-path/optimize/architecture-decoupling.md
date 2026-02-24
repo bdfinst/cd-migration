@@ -194,7 +194,7 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 
 ## Practical Steps for Architecture Decoupling
 
-### Month 1: Map Dependencies
+### Step 1: Map Dependencies
 
 Before changing anything, understand what you have:
 
@@ -202,7 +202,7 @@ Before changing anything, understand what you have:
 2. **Identify deployment coupling.** Which components must be deployed together? Why?
 3. **Identify the highest-impact coupling.** Which coupling most frequently blocks independent deployment?
 
-### Month 2-3: Establish the First Boundary
+### Step 2: Establish the First Boundary
 
 Pick one component to decouple. Choose the one with the highest impact and lowest risk:
 
@@ -211,7 +211,7 @@ Pick one component to decouple. Choose the one with the highest impact and lowes
 3. Move its data to its own data store
 4. Deploy it independently
 
-### Month 4+: Repeat
+### Step 3: Repeat
 
 Take the next highest-impact coupling and address it. Each decoupling makes the next one easier because the team learns the patterns and the remaining system is simpler.
 
@@ -256,3 +256,4 @@ With optimized flow, small batches, metrics-driven improvement, and a decoupled 
 - [Premature Microservices](../../../anti-patterns/architecture/premature-microservices/) - splitting into services before domain boundaries are clear
 - [Contract Testing](../../../testing/contract/) - the testing approach that enables independent deployment of services
 - [Progressive Rollout](../../continuous-deployment/progressive-rollout/) - the deployment strategy enabled by a decoupled architecture
+- [Team Alignment to Code](team-alignment/) - the organizational counterpart: matching team boundaries to the code boundaries that decoupling creates
