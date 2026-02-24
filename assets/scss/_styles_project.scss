@@ -1109,19 +1109,31 @@ pre.mermaid {
     margin-bottom: 1rem;
 
     > .tab-pane {
-      // Code and highlight blocks fill the panel cleanly
+      padding: 0;
+
+      // Code and highlight blocks fill the panel with no gaps
       > .highlight,
       > pre {
+        width: 100%;
+        max-width: none;
         margin: 0;
         border-radius: 0 0 3px 3px;
 
-        pre {
+        > pre {
+          width: 100%;
+          max-width: none;
           margin: 0;
           border-radius: 0 0 3px 3px;
         }
       }
     }
   }
+}
+
+// Override Docsy's td-max-width-on-larger-screens applied to .tab-pane,
+// which constrains panes to 80% width on lg+ screens.
+.td-content > .tab-content .tab-pane {
+  max-width: 100%;
 }
 
 // Code collapse shortcode - dark IDE theme

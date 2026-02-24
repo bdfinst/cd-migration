@@ -365,7 +365,7 @@ Hooks run before the review agent. If the linter fails, there is no reason to in
 
 Git pre-commit hooks are independent of the AI tool - they run via git regardless of which model you use. Claude Code and Gemini CLI additionally support tool-use hooks in their `settings.json`, which trigger shell commands in response to agent events (for example, running linters automatically when the agent stops). OpenAI Codex and GitHub Copilot do not have an equivalent built-in hook system; use git hooks directly with those tools.
 
-{{< tabpane >}}
+{{< tabpane persist="disabled" >}}
 {{< tab header="Git hooks (all tools)" lang="yaml" >}}
 # .pre-commit-config.yaml - runs on git commit, before AI review
 repos:
