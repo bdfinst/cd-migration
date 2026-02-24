@@ -1,6 +1,6 @@
 ---
-title: "Coding and Review Agent Configuration"
-linkTitle: "Coding Agent Configuration"
+title: "Coding & Review Setup"
+linkTitle: "Coding & Review Setup"
 weight: 8
 description: >
   A recommended orchestrator, agent, and sub-agent configuration for coding and pre-commit review, with rules, skills, and hooks mapped to the defect sources catalog.

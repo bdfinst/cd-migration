@@ -1061,6 +1061,69 @@ pre.mermaid {
   overflow-x: auto;
 }
 
+// ---------------------------------------------------------------------------
+// Tabpane - visually obvious tabs matching site palette
+// ---------------------------------------------------------------------------
+
+.td-content {
+  .nav-tabs {
+    background: #f0f5fa;
+    border: 1px solid #b8cad8;
+    border-bottom: 2px solid #224968;
+    border-radius: 4px 4px 0 0;
+    padding: 0.4rem 0.5rem 0;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #4a6a8a;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 3px 3px 0 0;
+      padding: 0.35rem 0.85rem;
+      margin-bottom: -2px;
+      transition: background 0.12s, color 0.12s;
+
+      &:hover:not(.active) {
+        color: #224968;
+        background: rgba(34, 73, 104, 0.09);
+        border-color: #c8d8e8 #c8d8e8 transparent;
+      }
+
+      &.active {
+        color: #224968;
+        font-weight: 700;
+        background: #fff;
+        border-color: #b8cad8 #b8cad8 #fff;
+        border-bottom: 2px solid #fff;
+      }
+    }
+  }
+
+  .tab-content {
+    border: 1px solid #b8cad8;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    margin-bottom: 1rem;
+
+    > .tab-pane {
+      // Code and highlight blocks fill the panel cleanly
+      > .highlight,
+      > pre {
+        margin: 0;
+        border-radius: 0 0 3px 3px;
+
+        pre {
+          margin: 0;
+          border-radius: 0 0 3px 3px;
+        }
+      }
+    }
+  }
+}
+
 // Code collapse shortcode - dark IDE theme
 .code-collapse {
   margin: 1rem 0;
