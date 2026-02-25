@@ -495,19 +495,48 @@ pre.mermaid {
       width: 36rem;
       max-width: 90vw;
       margin-top: 0.35rem;
-      padding: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      gap: 0 !important;
+    }
+
+    .pagefind-ui__results-area {
+      margin-top: 0 !important;
+    }
+
+    .pagefind-ui__results {
+      padding: 0 !important;
     }
 
     .pagefind-ui__result {
-      padding: 0.75rem;
+      padding: 0.5rem 0.5rem !important;
 
       &:last-child {
         border-bottom: none;
       }
     }
 
+    .pagefind-ui__result-inner {
+      margin-top: 0 !important;
+    }
+
+    .pagefind-ui__result-title {
+      font-size: calc(16px * var(--pagefind-ui-scale)) !important;
+      margin-bottom: 0 !important;
+    }
+
+    .pagefind-ui__result-excerpt {
+      font-size: calc(14px * var(--pagefind-ui-scale)) !important;
+      margin-top: 0.1rem !important;
+    }
+
+    .pagefind-ui__result-nested {
+      padding-top: 0.1rem !important;
+    }
+
     .pagefind-ui__message {
-      padding: 0.5rem;
+      padding: 0.35rem 0.5rem !important;
+      height: auto !important;
+      font-size: calc(14px * var(--pagefind-ui-scale));
     }
   }
 
