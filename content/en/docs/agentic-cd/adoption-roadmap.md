@@ -3,14 +3,14 @@ title: "AI Adoption Roadmap"
 linkTitle: "AI Adoption Roadmap"
 weight: 3
 description: >
-  A prescriptive guide for incorporating AI into your delivery process safely - remove friction and add safety before accelerating with AI coding.
+  A guide for incorporating AI into your delivery process safely - remove friction and add safety before accelerating with AI coding.
 ---
 
 {{% pageinfo %}}
 AI adoption stress-tests your organization. AI does not create new problems. It reveals
 existing ones faster. Teams that try to accelerate with AI before fixing their delivery process get the
 same result as putting a bigger engine in a car with no brakes. This page provides the
-prescriptive sequence for incorporating AI safely, mirroring the
+recommended sequence for incorporating AI safely, mirroring the
 [brownfield migration phases](../migrate-to-cd/brownfield/).
 {{% /pageinfo %}}
 
