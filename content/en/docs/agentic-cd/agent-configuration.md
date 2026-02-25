@@ -429,7 +429,7 @@ Check:
   path that could exceed it
 
 Do not flag performance characteristics that require benchmarks to measure;
-those are handled at CI Stage 3.
+those are handled at CD Stage 2.
 
 Return this JSON and nothing else:
 {

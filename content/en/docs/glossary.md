@@ -64,22 +64,30 @@ Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
+[Build Duration](../metrics/build-duration/),
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Data Pipelines and ML Models Have No Deployment Automation](../symptoms/flow/ml-pipeline-deployment-gaps/),
+[Deployable Definition](../migrate-to-cd/migration-path/pipeline/deployable-definition/),
 [Deployments Are One-Way Doors](../symptoms/deployment/no-rollback-capability/),
 [Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/),
 [Developers Cannot Run the Pipeline Locally](../symptoms/flow/no-local-pipeline-execution/),
 [DORA Recommended Practices](../dora-capabilities/),
+[End-to-End Tests](../testing/e2e/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Functional Tests](../testing/functional/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
+[Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
+[No Contract Testing Between Services](../anti-patterns/testing/no-contract-testing/),
 [No Evidence of What Was Deployed or When](../symptoms/deployment/no-deployment-audit-trail/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Rollback](../migrate-to-cd/migration-path/pipeline/rollback/),
+[Single Team, Single Deployable](../pipeline-reference-architecture/single-team/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
@@ -87,21 +95,14 @@ Referenced in:
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
-[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
+[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ## B
 
 ### Black Box Testing
 
-A testing approach where the test exercises code through its public interface and asserts
-only on observable outputs - return values, state changes visible to consumers, or side
-effects such as messages sent. The test has no knowledge of internal implementation details.
-Black box tests are resilient to refactoring because they verify **what** the code does, not
-**how** it does it. Contrast with [white box testing](#white-box-testing).
-
-Referenced in:
-[Testing](../testing/),
-[Unit Tests](../testing/unit/)
+See [Testing Glossary](../testing/glossary/#black-box-testing).
 
 ### Baseline Metrics
 
@@ -218,6 +219,7 @@ Referenced in:
 [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
+[Pipeline Reference Architecture](../pipeline-reference-architecture/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
@@ -273,6 +275,7 @@ Referenced in:
 [No Evidence of What Was Deployed or When](../symptoms/deployment/no-deployment-audit-trail/),
 [Performance & Resilience Defects](../defect-sources/performance-and-resilience/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
+[Pipeline Reference Architecture](../pipeline-reference-architecture/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
 [Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
@@ -383,6 +386,7 @@ Referenced in:
 [Multiple Services Must Be Deployed Together](../symptoms/deployment/coordinated-deployments/),
 [Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Team Alignment to Code](../migrate-to-cd/migration-path/optimize/team-alignment/),
 [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
@@ -400,12 +404,18 @@ Referenced in:
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Integration Frequency](../metrics/integration-frequency/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
+[No Contract Testing Between Services](../anti-patterns/testing/no-contract-testing/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
+[Release Frequency](../metrics/release-frequency/),
+[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [The Team Is Caught Between Shipping Fast and Not Breaking Things](../symptoms/flow/speed-vs-stability-tension/),
-[Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/)
+[Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
+[Untestable Architecture](../anti-patterns/architecture/untestable-architecture/)
 
 ### Development Cycle Time
 
@@ -421,9 +431,15 @@ change failure rate, and mean time to restore service. See [DORA Recommended Pra
 
 Referenced in:
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
+[Change Fail Rate](../metrics/change-fail-rate/),
+[Development Cycle Time](../metrics/development-cycle-time/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Lead Time](../metrics/lead-time/),
+[Mean Time to Repair](../metrics/mean-time-to-repair/),
+[Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
+[Release Frequency](../metrics/release-frequency/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
@@ -461,24 +477,34 @@ Referenced in:
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
+[Change Fail Rate](../metrics/change-fail-rate/),
 [Database Migrations Block or Break Deployments](../symptoms/deployment/database-migrations-block-deploys/),
 [Deploying Stateful Services Causes Outages](../symptoms/deployment/stateful-service-deployment-outages/),
 [Every Change Requires a Ticket and Approval Chain](../symptoms/deployment/change-management-overhead/),
 [Every Deployment Is Immediately Visible to All Users](../symptoms/deployment/deploy-release-coupled/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
+[Hard-Coded Environment Assumptions](../anti-patterns/pipeline/hardcoded-environment-assumptions/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
+[Integration Frequency](../metrics/integration-frequency/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
+[Mean Time to Repair](../metrics/mean-time-to-repair/),
+[Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
+[Progressive Rollout](../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
+[Rollback](../migrate-to-cd/migration-path/pipeline/rollback/),
+[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Teams Cannot Change Their Own Pipeline Without Another Team](../symptoms/deployment/pipeline-changes-require-another-team/),
 [The Team Resists Merging to the Main Branch](../symptoms/flow/resistance-to-trunk-based-development/),
+[Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/),
 [Vendor Release Cycles Constrain the Team's Deployment Frequency](../symptoms/flow/third-party-dependency-constraints/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
-[Work Requires Sign-Off from Teams Not Involved in Delivery](../symptoms/deployment/waiting-for-cross-team-approval/)
+[Work Requires Sign-Off from Teams Not Involved in Delivery](../symptoms/deployment/waiting-for-cross-team-approval/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ### Flow Efficiency
 
@@ -501,6 +527,10 @@ Referenced in:
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/#vertical-slicing-in-distributed-systems),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems)
+
+### Functional Acceptance Tests
+
+See [Testing Glossary](../testing/glossary/#functional-acceptance-tests).
 
 ## G
 
@@ -872,28 +902,29 @@ Long-lived feature branches are not. TBD is a prerequisite for CI, which is in t
 prerequisite for CD. See [Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/).
 
 Referenced in:
+[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change & Complexity Defects](../defect-sources/change-and-complexity/),
+[DORA Recommended Practices](../dora-capabilities/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
+[Integration Frequency](../metrics/integration-frequency/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
+[Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
+[Single Team, Single Deployable](../pipeline-reference-architecture/single-team/),
+[TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
 [Team Membership Changes Constantly](../symptoms/flow/team-instability/),
 [The Team Resists Merging to the Main Branch](../symptoms/flow/resistance-to-trunk-based-development/),
+[Trunk-Based Development](../migrate-to-cd/migration-path/foundations/trunk-based-development/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/),
-[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/)
+[Work in Progress](../metrics/work-in-progress/),
+[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/),
+[Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
 
 ### TDD (Test-Driven Development)
 
-A development practice where tests are written before the production code that makes them
-pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
-a fast, reliable test suite. TDD feeds into the [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
-required in Phase 1.
-
-Referenced in:
-[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
-[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
-[Unit Tests](../testing/unit/)
+See [Testing Glossary](../testing/glossary/#tdd-test-driven-development).
 
 ### Token
 
@@ -951,17 +982,7 @@ Referenced in:
 
 ### Virtual Service
 
-A test double that simulates a real external service over the network, responding to HTTP
-requests with pre-configured or recorded responses. Unlike in-process stubs or mocks, a
-virtual service runs as a standalone process and is accessed via real network calls, making
-it suitable for functional testing and integration testing where your application needs to
-make actual HTTP requests against a dependency. Tools such as WireMock, Mountebank, and
-Hoverfly can create virtual services from recorded traffic or API specifications. See
-[Test Doubles](../testing/test-doubles/).
-
-Referenced in:
-[Integration Tests](../testing/integration/),
-[Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
+See [Testing Glossary](../testing/glossary/#virtual-service).
 
 ### Value Stream Map
 
@@ -985,7 +1006,11 @@ Referenced in:
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
-[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/)
+[Monolithic Work Items](../anti-patterns/team-workflow/monolithic-work-items/),
+[Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
+[Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
+[Sprint Planning Is Dominated by Dependency Negotiation](../symptoms/flow/dependency-heavy-planning/),
+[Stakeholders See Working Software Only at Release Time](../symptoms/flow/delayed-stakeholder-feedback/)
 
 ## W
 
@@ -1019,16 +1044,7 @@ Referenced in:
 
 ### White Box Testing
 
-A testing approach where the test has knowledge of and asserts on internal implementation
-details - specific methods called, call order, internal state, or code paths taken. White
-box tests verify **how** the code works, not **what** it produces. These tests are fragile
-because any refactoring of internals breaks them, even when behavior is unchanged. Avoid
-white box testing in unit tests; prefer [black box testing](#black-box-testing) that asserts
-on observable outcomes.
-
-Referenced in:
-[Testing](../testing/),
-[Unit Tests](../testing/unit/)
+See [Testing Glossary](../testing/glossary/#white-box-testing).
 
 ### Working Agreement
 

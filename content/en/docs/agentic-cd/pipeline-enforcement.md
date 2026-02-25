@@ -18,8 +18,8 @@ The Pipeline Verification and Deployment stages of the [ACD workflow](../) are w
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
 - **[CI](../glossary/#ci-continuous-integration) Stage 1** (build + unit tests) validates the executable truth artifact. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
-- **CI Stage 2** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
-- **CI Stage 3** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
+- **CD Stage 1** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
+- **CD Stage 2** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
 - **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment](../glossary/#production-like-environment). This is where the [BDD](../glossary/#bdd-behavior-driven-development) scenarios from Behavior Specification become automated verification.
 - **Production verification** ([canary deployment](../glossary/#canary-deployment), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
 

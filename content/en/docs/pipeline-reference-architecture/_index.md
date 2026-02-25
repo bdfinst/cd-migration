@@ -15,6 +15,10 @@ checks run first.
 Gates marked with **[Pre-Feature]** must be in place and passing before any new feature
 work begins. They form the baseline safety net that every commit runs through. Adding
 features without these gates means defects accumulate faster than the team can detect them.
+
+Gates marked with <span class="ai-high">&#9650;</span> are enhanced by AI - the AI shifts
+detection earlier or catches issues that rule-based tools miss. See the
+[Systemic Defect Fixes](../defect-sources/) catalog for details.
 {{% /pageinfo %}}
 
 ## Quality Gates in Priority Sequence
@@ -36,7 +40,9 @@ sub-second to sub-minute feedback.
 | **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance](../defect-sources/security-and-compliance/) | <span class="gate-required">Required</span> |
 | **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries](../defect-sources/integration-and-boundaries/) | |
 | **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery](../defect-sources/product-and-discovery/) | |
+| **Unit tests** | Logic errors, unintended side effects, edge cases | [Change & Complexity](../defect-sources/change-and-complexity/) | <span class="gate-required">Required</span> |
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| <span class="ai-high">&#9650;</span> **AI semantic code review** | Logic errors, missing edge cases, subtle injection vectors beyond pattern matching | [Process & Deployment](../defect-sources/process-and-deployment/), [Security & Compliance](../defect-sources/security-and-compliance/) | |
 
 ### CI Stage 1: Build and Fast Tests <span class="stage-time">< 5 min</span>
 
@@ -44,13 +50,16 @@ These run on every commit to trunk.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
+| **All pre-commit gates** | Re-run in [CI](../glossary/#ci-continuous-integration) to catch anything bypassed locally | See [Pre-commit Gates](#pre-commit-gates) | <span class="gate-required">Required</span> |
 | **Compilation / build** | Build reproducibility, dependency resolution | [Dependency & Infrastructure](../defect-sources/dependency-and-infrastructure/) | <span class="gate-required">Required</span> |
-| **Unit tests** | Logic errors, unintended side effects, edge cases | [Change & Complexity](../defect-sources/change-and-complexity/) | <span class="gate-required">Required</span> |
 | **Dependency vulnerability scan (SCA)** | Known vulnerabilities in dependencies | [Security & Compliance](../defect-sources/security-and-compliance/) | <span class="gate-required">Required</span> |
 | **License compliance scan** | License compliance violations | [Security & Compliance](../defect-sources/security-and-compliance/) | |
 | **Code complexity and duplication scoring** | Accumulated technical debt | [Change & Complexity](../defect-sources/change-and-complexity/) | |
+| <span class="ai-high">&#9650;</span> **AI change impact analysis** | Semantic blast radius of changes; unintended side effects beyond syntactic dependencies | [Change & Complexity](../defect-sources/change-and-complexity/) | |
+| <span class="ai-high">&#9650;</span> **AI vulnerability reachability analysis** | Correlate CVEs with actual code usage paths to prioritize exploitable risks over theoretical ones | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| **Stage duration warning** | Warn if Stage 1 exceeds 10 minutes; slow fast-feedback loops mask defects and delay trunk integration | [Process & Deployment](../defect-sources/process-and-deployment/) | |
 
-### CI Stage 2: Integration and Contract Tests <span class="stage-time">< 10 min</span>
+### CD Stage 1: Integration and Contract Tests <span class="stage-time">< 10 min</span>
 
 These validate boundaries between components.
 
@@ -60,8 +69,10 @@ These validate boundaries between components.
 | **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State](../defect-sources/data-and-state/) | <span class="gate-required">Required</span> |
 | **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure](../defect-sources/dependency-and-infrastructure/) | |
 | **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps](../defect-sources/testing-and-observability-gaps/) | |
+| <span class="ai-high">&#9650;</span> **AI boundary coverage analysis** | Integration boundaries missing contract tests; semantic service relationship mapping | [Testing & Observability Gaps](../defect-sources/testing-and-observability-gaps/) | |
+| <span class="ai-high">&#9650;</span> **AI behavioral assumption detection** | Undocumented assumptions at service boundaries that contract tests don't cover | [Integration & Boundaries](../defect-sources/integration-and-boundaries/) | |
 
-### CI Stage 3: Broader Automated Verification <span class="stage-time">< 15 min</span>
+### CD Stage 2: Broader Automated Verification <span class="stage-time">< 15 min</span>
 
 These run in parallel where possible.
 
@@ -74,6 +85,10 @@ These run in parallel where possible.
 | **Compliance-as-code policy checks** | Regulatory requirement gaps, missing audit trails | [Security & Compliance](../defect-sources/security-and-compliance/) | |
 | **SBOM generation** | License compliance, dependency transparency | [Security & Compliance](../defect-sources/security-and-compliance/) | |
 | **Automated WCAG compliance scan** | Full-page rendered accessibility checks with browser automation | [Product & Discovery](../defect-sources/product-and-discovery/) | |
+| <span class="ai-high">&#9650;</span> **AI edge case test generation** | Untested boundaries and error conditions identified from code path analysis | [Testing & Observability Gaps](../defect-sources/testing-and-observability-gaps/) | |
+| <span class="ai-high">&#9650;</span> **AI authorization path analysis** | Missing authorization checks and privilege escalation patterns in code paths | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| <span class="ai-high">&#9650;</span> **AI resilience review** | Single points of failure and missing fallback paths in architecture | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
+| <span class="ai-high">&#9650;</span> **AI regulatory mapping** | Map regulatory requirements to implementation artifacts; flag uncovered controls | [Security & Compliance](../defect-sources/security-and-compliance/) | |
 
 ### Acceptance Tests <span class="stage-time">< 20 min</span>
 
@@ -81,11 +96,12 @@ These validate user-facing behavior in a [production-like environment](../glossa
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Functional acceptance tests** | Building the wrong thing, meets spec but misses intent | [Product & Discovery](../defect-sources/product-and-discovery/) | |
+| **[Functional acceptance tests](../glossary/#functional-acceptance-tests)** | Implementation does not match acceptance criteria | [Product & Discovery](../defect-sources/product-and-discovery/) | |
 | **Load and capacity tests** | Unknown capacity limits, slow response times | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
 | **Chaos and resilience tests** | Network partition handling, missing graceful degradation | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
 | **Cache invalidation verification** | Cache invalidation errors | [Data & State](../defect-sources/data-and-state/) | |
 | **Feature interaction tests** | Unanticipated feature interactions | [Change & Complexity](../defect-sources/change-and-complexity/) | |
+| <span class="ai-high">&#9650;</span> **AI intent alignment review** | Acceptance criteria vs. user behavior data misalignment; specs that meet the letter but miss the intent | [Product & Discovery](../defect-sources/product-and-discovery/) | |
 
 ### Production Verification
 
@@ -97,6 +113,7 @@ These run during and after deployment. They are not optional - they close the fe
 | **Canary or progressive deployment** | Batching too many changes per release | [Process & Deployment](../defect-sources/process-and-deployment/) | |
 | **Real user monitoring and SLO checks** | Slow user-facing response times, product-market misalignment | [Performance & Resilience](../defect-sources/performance-and-resilience/) | |
 | **Structured audit logging verification** | Missing audit trails | [Security & Compliance](../defect-sources/security-and-compliance/) | |
+| <span class="ai-high">&#9650;</span> **AI change risk scoring** | Automated risk assessment from change diff, deployment history, and blast radius analysis | [Process & Deployment](../defect-sources/process-and-deployment/) | |
 
 ---
 
@@ -133,7 +150,7 @@ Pattern 3 as team count and deployment independence requirements grow.
    sub-domain modules within a shared modular monolith, each with its own sub-pipeline
    feeding a thin integration pipeline
 3. **[Independent Teams, Independent Deployables](independent-teams/)** - each team
-   owns an independently deployable service with its own full pipeline and API contract
+   owns an independently [deployable](../glossary/#deployable) service with its own full pipeline and API contract
    verification
 
 ---
@@ -145,6 +162,11 @@ catalog. The catalog organizes defects by origin - product and discovery, integr
 knowledge, change and complexity, testing gaps, process, data, dependencies, security, and
 performance. The pipeline gates are the automated enforcement points for the systemic
 prevention strategies described in the catalog.
+
+Gates marked with <span class="ai-high">&#9650;</span> correspond to catalog entries where AI
+shifts detection earlier than current rule-based automation. For expert agent patterns that
+implement these gates in an agentic [CD](../glossary/#cd-continuous-delivery) context, see
+[ACD Pipeline Enforcement](../agentic-cd/pipeline-enforcement/).
 
 When adding or removing gates, consult the catalog to ensure that no defect category loses
 its detection point. A gate that seems redundant may be the only automated check for a
