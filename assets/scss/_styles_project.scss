@@ -422,24 +422,102 @@ pre.mermaid {
     }
   }
 
-  // Search - light treatment on dark navbar
-  .td-search {
-    color: rgba(255, 255, 255, 0.55);
-  }
+  // Pagefind search - compact widget in the dark navbar
+  .td-search--pagefind {
+    position: relative;
 
-  .td-search__input {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff;
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.55);
+    .pagefind-ui {
+      // Reset Pagefind defaults for navbar embedding
+      --pagefind-ui-scale: 0.8;
+      --pagefind-ui-primary: #fff;
+      --pagefind-ui-text: #fff;
+      --pagefind-ui-background: rgba(255, 255, 255, 0.12);
+      --pagefind-ui-border: rgba(255, 255, 255, 0.25);
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 4px;
+      --pagefind-ui-font: inherit;
     }
 
-    &:focus {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.45);
+    .pagefind-ui__search-input {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
+      height: auto;
+      padding: 0.35rem 0.75rem 0.35rem 2rem;
+      width: 12rem;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #fff;
+        outline: none;
+        width: 18rem;
+      }
+    }
+
+    // Hide the default Pagefind search button (magnifying glass)
+    .pagefind-ui__search-clear {
+      color: rgba(255, 255, 255, 0.7);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    // Results dropdown - position absolutely over page content
+    .pagefind-ui__results-area {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 1050;
+      background: #fff;
+      border: 1px solid #dce4ed;
+      border-radius: 6px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      max-height: 70vh;
+      overflow-y: auto;
+      width: 36rem;
+      max-width: 90vw;
+      margin-top: 0.35rem;
+      padding: 0.5rem;
+    }
+
+    // Reset text colors inside the results dropdown (which has a white background)
+    .pagefind-ui__result {
+      padding: 0.75rem;
+      border-bottom: 1px solid #edf2f7;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .pagefind-ui__result-link {
+      color: $primary;
+      font-weight: 600;
+
+      &:hover {
+        color: darken($primary, 10%);
+      }
+    }
+
+    .pagefind-ui__result-excerpt {
+      color: #4a5568;
+      font-size: 0.85rem;
+    }
+
+    .pagefind-ui__message {
+      color: #4a5568;
+      padding: 0.5rem;
+    }
+
+    // Hide the form wrapper's default button
+    .pagefind-ui__form::before {
+      background-color: rgba(255, 255, 255, 0.55);
     }
   }
 

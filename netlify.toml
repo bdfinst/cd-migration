@@ -1,5 +1,5 @@
 [build]
-command = "hugo"
+command = "npm run build"
 publish = "public"
 
 [build.environment]
