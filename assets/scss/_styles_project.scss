@@ -427,7 +427,7 @@ pre.mermaid {
     position: relative;
 
     .pagefind-ui {
-      // Reset Pagefind defaults for navbar embedding
+      // White-on-dark variables for the search input in the navbar
       --pagefind-ui-scale: 0.8;
       --pagefind-ui-primary: #fff;
       --pagefind-ui-text: #fff;
@@ -459,7 +459,6 @@ pre.mermaid {
       }
     }
 
-    // Hide the default Pagefind search button (magnifying glass)
     .pagefind-ui__search-clear {
       color: rgba(255, 255, 255, 0.7);
 
@@ -468,8 +467,15 @@ pre.mermaid {
       }
     }
 
-    // Results dropdown - position absolutely over page content
-    .pagefind-ui__results-area {
+    // Magnifying glass icon in the input
+    .pagefind-ui__form::before {
+      background-color: rgba(255, 255, 255, 0.55);
+    }
+
+    // Results dropdown - positioned over page content with dark-on-light colors.
+    // Reset CSS variables here so Pagefind's Svelte-scoped selectors (which use
+    // var(--pagefind-ui-text) etc.) pick up readable dark values.
+    .pagefind-ui__drawer {
       position: absolute;
       top: 100%;
       right: 0;
@@ -484,40 +490,25 @@ pre.mermaid {
       max-width: 90vw;
       margin-top: 0.35rem;
       padding: 0.5rem;
+
+      // Override CSS variables for the light dropdown
+      --pagefind-ui-primary: #{$primary};
+      --pagefind-ui-text: #1a2a3a;
+      --pagefind-ui-background: #fff;
+      --pagefind-ui-border: #edf2f7;
     }
 
-    // Reset text colors inside the results dropdown (which has a white background)
     .pagefind-ui__result {
       padding: 0.75rem;
-      border-bottom: 1px solid #edf2f7;
 
       &:last-child {
         border-bottom: none;
       }
     }
 
-    .pagefind-ui__result-link {
-      color: $primary;
-      font-weight: 600;
-
-      &:hover {
-        color: darken($primary, 10%);
-      }
-    }
-
-    .pagefind-ui__result-excerpt {
-      color: #4a5568;
-      font-size: 0.85rem;
-    }
-
     .pagefind-ui__message {
       color: #4a5568;
       padding: 0.5rem;
-    }
-
-    // Hide the form wrapper's default button
-    .pagefind-ui__form::before {
-      background-color: rgba(255, 255, 255, 0.55);
     }
   }
 
