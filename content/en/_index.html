@@ -1,26 +1,34 @@
 +++
-title = "CD Migration Guide"
-linkTitle = "CD Migration Guide"
+title = "MinimumCD Practice Guide"
+linkTitle = "MinimumCD Practice Guide"
 +++
 
 {{< blocks/cover title="" image_anchor="top" height="min" color="primary" >}}
 <div class="lp-hero-inner">
-  <div class="lp-hero-label">Continuous Delivery Migration Guide</div>
-  <h1 class="lp-hero-headline">Why can't you ship<br>today's work today?</h1>
-  <p class="lp-hero-sub">Practices, patterns, and solutions for every team migrating to continuous delivery. Grounded in <a class="lp-hero-link" href="https://minimumcd.org">MinimumCD.org</a> and the <a class="lp-hero-link" href="https://dojoconsortium.org">Dojo Consortium</a> playbooks.</p>
+  <h1 class="lp-hero-headline">Why can't you ship<br />today's work today?</h1>
+  <p class="lp-hero-sub">
+    Practices, patterns, and solutions for every team migrating to continuous
+    delivery. Grounded in
+    <a class="lp-hero-link" href="https://minimumcd.org">MinimumCD.org</a> and
+    the
+    <a class="lp-hero-link" href="https://dojoconsortium.org"
+      >Dojo Consortium</a
+    >
+    playbooks.
+  </p>
   <div class="lp-hero-actions">
     <a href="/docs/start-here/" class="btn lp-btn-primary">Start Here</a>
     <a href="/docs/triage/" class="btn lp-btn-secondary">Diagnose Your Team</a>
   </div>
 </div>
-{{< /blocks/cover >}}
-
-{{< blocks/section color="white" type="section" >}}
+{{< /blocks/cover >}} {{< blocks/section color="white" type="section" >}}
 
 <div class="lp-triage-bar">
   <a href="/docs/triage/" class="lp-triage-link">
-    <span class="lp-triage-q">Not sure what is wrong?</span>
-    <span class="lp-triage-action">Answer a few questions to find the symptoms and anti-patterns that match your situation <span class="lp-triage-arr">&#8594;</span></span>
+    <span class="lp-triage-q">Not sure where to start?</span>
+    <span class="lp-triage-action"
+      >Answer a few questions to find the symptoms<br>and anti-patterns that match your situation <span class="lp-triage-arr">&#8594;</span></span
+    >
   </a>
 </div>
 
@@ -28,39 +36,60 @@ linkTitle = "CD Migration Guide"
   <a href="/docs/symptoms/for-developers/" class="lp-audience-card">
     <span class="lp-audience-icon"><i class="fas fa-code"></i></span>
     <span class="lp-audience-role">For Developers</span>
-    <span class="lp-audience-desc">Flaky tests, painful merges, broken builds, and slow feedback cycles.</span>
+    <span class="lp-audience-desc"
+      >Flaky tests, painful merges, broken builds, and slow feedback
+      cycles.</span
+    >
   </a>
   <a href="/docs/symptoms/for-managers/" class="lp-audience-card">
     <span class="lp-audience-icon"><i class="fas fa-chart-line"></i></span>
     <span class="lp-audience-role">For Managers</span>
-    <span class="lp-audience-desc">Unpredictable delivery, quality gaps, missed dates, and team health issues.</span>
+    <span class="lp-audience-desc"
+      >Unpredictable delivery, quality gaps, missed dates, and team health
+      issues.</span
+    >
   </a>
 </div>
 
 <div class="lp-pipeline-section">
   <div class="lp-section-label">Migration Path</div>
   <div class="lp-pipeline">
-    <a href="/docs/migrate-to-cd/migration-path/assess/" class="lp-phase lp-phase-0">
+    <a
+      href="/docs/migrate-to-cd/migration-path/assess/"
+      class="lp-phase lp-phase-0"
+    >
       <span class="lp-phase-num">0</span>
       <span class="lp-phase-name">Assess</span>
     </a>
     <div class="lp-track lp-track-1"></div>
-    <a href="/docs/migrate-to-cd/migration-path/foundations/" class="lp-phase lp-phase-1">
+    <a
+      href="/docs/migrate-to-cd/migration-path/foundations/"
+      class="lp-phase lp-phase-1"
+    >
       <span class="lp-phase-num">1</span>
       <span class="lp-phase-name">Foundations</span>
     </a>
     <div class="lp-track lp-track-2"></div>
-    <a href="/docs/migrate-to-cd/migration-path/pipeline/" class="lp-phase lp-phase-2">
+    <a
+      href="/docs/migrate-to-cd/migration-path/pipeline/"
+      class="lp-phase lp-phase-2"
+    >
       <span class="lp-phase-num">2</span>
       <span class="lp-phase-name">Pipeline</span>
     </a>
     <div class="lp-track lp-track-3"></div>
-    <a href="/docs/migrate-to-cd/migration-path/optimize/" class="lp-phase lp-phase-3">
+    <a
+      href="/docs/migrate-to-cd/migration-path/optimize/"
+      class="lp-phase lp-phase-3"
+    >
       <span class="lp-phase-num">3</span>
       <span class="lp-phase-name">Optimize</span>
     </a>
     <div class="lp-track lp-track-4"></div>
-    <a href="/docs/migrate-to-cd/migration-path/continuous-deployment/" class="lp-phase lp-phase-4 lp-phase-final">
+    <a
+      href="/docs/migrate-to-cd/migration-path/continuous-deployment/"
+      class="lp-phase lp-phase-4 lp-phase-final"
+    >
       <span class="lp-phase-num">4</span>
       <span class="lp-phase-name">Deliver on Demand</span>
     </a>
@@ -71,24 +100,38 @@ linkTitle = "CD Migration Guide"
   <div class="lp-section-label">Explore</div>
   <div class="lp-explore-grid">
     <a href="/docs/anti-patterns/" class="lp-explore-card">
-      <span class="lp-explore-icon"><i class="fas fa-triangle-exclamation"></i></span>
+      <span class="lp-explore-icon"
+        ><i class="fas fa-triangle-exclamation"></i
+      ></span>
       <span class="lp-explore-title">Anti-Patterns</span>
-      <span class="lp-explore-desc">Common practices that harm delivery, with concrete steps to fix each one.</span>
+      <span class="lp-explore-desc"
+        >Common practices that harm delivery, with concrete steps to fix each
+        one.</span
+      >
     </a>
     <a href="/docs/defect-sources/" class="lp-explore-card">
       <span class="lp-explore-icon"><i class="fas fa-bug"></i></span>
       <span class="lp-explore-title">Systemic Defect Fixes</span>
-      <span class="lp-explore-desc">Detect defects earlier and prevent them from recurring.</span>
+      <span class="lp-explore-desc"
+        >Detect defects earlier and prevent them from recurring.</span
+      >
     </a>
     <a href="/docs/agentic-cd/" class="lp-explore-card">
       <span class="lp-explore-icon"><i class="fas fa-robot"></i></span>
       <span class="lp-explore-title">Agentic CD</span>
-      <span class="lp-explore-desc">Constraints and practices for AI agent-generated changes.</span>
+      <span class="lp-explore-desc"
+        >Constraints and practices for AI agent-generated changes.</span
+      >
     </a>
     <a href="/docs/pipeline-reference-architecture/" class="lp-explore-card">
-      <span class="lp-explore-icon"><i class="fas fa-diagram-project"></i></span>
+      <span class="lp-explore-icon"
+        ><i class="fas fa-diagram-project"></i
+      ></span>
       <span class="lp-explore-title">Pipeline Reference Architecture</span>
-      <span class="lp-explore-desc">Quality gate patterns organized by defect detection priority, for single teams through independent services.</span>
+      <span class="lp-explore-desc"
+        >Quality gate patterns organized by defect detection priority, for
+        single teams through independent services.</span
+      >
     </a>
   </div>
 </div>

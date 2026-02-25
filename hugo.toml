@@ -1,6 +1,6 @@
 baseURL     = "https://migration.minimumcd.org/"
-description = "A phased migration guide from quarterly releases to continuous deployment"
-title       = "CD Migration Guide"
+description = "MinimumCD Practice Guide - a phased migration from quarterly releases to continuous delivery"
+title       = "MinimumCD Practice Guide"
 
 enableGitInfo = false
 
@@ -71,14 +71,14 @@ enableGitInfo = false
   languageName = "English"
 
   [languages.en.params]
-    description = "A phased migration guide from quarterly releases to continuous deployment"
-    title       = "CD Migration Guide"
+    description = "MinimumCD Practice Guide - a phased migration from quarterly releases to continuous delivery"
+    title       = "MinimumCD Practice Guide"
 
 [params]
   github_branch = "main"
   github_repo = "https://github.com/bdfinst/cd-migration"
   images = [
-    "/images/cd-migration-logo.png"
+    "/images/minimumCD-Tagline.png"
   ]
 
   offlineSearch = true
@@ -112,6 +112,7 @@ enableGitInfo = false
 
   [params.ui]
     breadcrumb_disable                    = false
+    navbar_logo                           = true
     navbar_translucent_over_cover_disable = true
     show_nav_title                        = true
     sidebar_cache_limit                   = 10

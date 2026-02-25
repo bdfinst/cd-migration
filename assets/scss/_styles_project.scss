@@ -408,11 +408,37 @@ pre.mermaid {
   --td-navbar-bg-color: #{$primary};
   border-bottom: none;
 
+  // Site title next to logo
+  .navbar-brand__name {
+    color: #fff;
+  }
+
   .nav-link {
     color: rgba(255, 255, 255, 0.85);
 
     &:hover,
     &.active {
+      color: #fff;
+    }
+  }
+
+  // Search - light treatment on dark navbar
+  .td-search {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .td-search__input {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    &:focus {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.45);
       color: #fff;
     }
   }
@@ -580,7 +606,7 @@ pre.mermaid {
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.55); // was 0.4 (3.5:1), now ~5.0:1 on #0c1829
     margin-bottom: 1.75rem;
     display: block;
   }
@@ -662,60 +688,58 @@ pre.mermaid {
   // ---- Section label -------------------------------------------------------
   .lp-section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
+    font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $primary;
+    color: #3a6d94; // was $primary at opacity 0.7 (4.3:1), now 4.54:1 on #fff
     text-align: center;
     margin-bottom: 1.5rem;
-    opacity: 0.7;
   }
 
   // ---- Triage bar ----------------------------------------------------------
   .lp-triage-bar {
-    border-left: 4px solid $primary;
-    background: #f0f5fa;
-    border-radius: 0 4px 4px 0;
-    max-width: 900px;
+    background: $primary;
+    border-radius: 4px;
+    display: table;
     margin: 2rem auto 2rem;
   }
 
   .lp-triage-link {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1.25rem;
     padding: 1rem 1.5rem;
     text-decoration: none;
-    color: inherit;
+    color: rgba(255, 255, 255, 0.9);
     transition: background 0.15s;
 
     &:hover {
-      background: #e4eef7;
+      background: rgba(255, 255, 255, 0.08);
       text-decoration: none;
-      color: inherit;
+      color: #fff;
     }
   }
 
   .lp-triage-q {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: $primary;
+    color: #fff;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
   .lp-triage-action {
     font-size: 0.9rem;
-    color: #2c3e50;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.4;
   }
 
   .lp-triage-arr {
-    color: $primary;
+    color: rgba(255, 255, 255, 0.7);
     margin-left: 0.25rem;
   }
 
