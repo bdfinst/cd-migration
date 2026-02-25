@@ -28,7 +28,7 @@ Three failure patterns appear consistently in poorly structured agentic systems:
 
 **Brittle workflows from model-coupled instructions.** Skills and commands written for one model's specific instruction style often degrade when run on a different model. Workflows that hard-code model-specific behaviors - Claude's particular handling of XML tags, Gemini's response to certain role descriptions - cannot be handed off or used in multi-model configurations without manual rewriting.
 
-Getting architecture right addresses all three. The sections below give prescriptive patterns for each component type: skills, agents, commands, hooks, and the cross-cutting concerns that tie them together.
+Getting architecture right addresses all three. The sections below give patterns for each component type: skills, agents, commands, hooks, and the cross-cutting concerns that tie them together.
 
 **Key takeaways:**
 

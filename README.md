@@ -16,7 +16,7 @@ This guide expands on the practices defined at [MinimumCD.org](https://minimumcd
 - **Anti-Patterns** - Common practices that undermine delivery performance, with concrete steps to fix each one
 - **Migration Phases** - A phased path from Assess through Foundations, Pipeline, Optimize, and Continuous Deployment
 - **Systemic Defect Fixes** - A catalog of defect sources with earliest detection points, AI shift-left opportunities, and systemic fixes
-- **AI Adoption Roadmap** - A prescriptive sequence for incorporating AI into delivery safely
+- **AI Adoption Roadmap** - A recommended sequence for incorporating AI into delivery safely
 - **Reference** - Glossary, metrics definitions, testing guides, DORA capabilities, and additional resources
 
 ## Prerequisites

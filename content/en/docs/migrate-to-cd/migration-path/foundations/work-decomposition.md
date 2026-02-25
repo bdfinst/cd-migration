@@ -104,10 +104,10 @@ A vertical slice: one behavior delivered through the UI, the API, and the databa
 
 ```mermaid
 graph TD
-    User([Human User]) --> FE["Frontend Service\n(other team)"]
-    FE --> API["Your Service API\n(your team)"]
-    API --> DB[("Your Database\n(your team)")]
-    API --> DS["Downstream Service\n(other team)"]
+    User2([Human User]) --> FE["Frontend Service\n(other team)"]
+    FE --> API2["Your Service API\n(your team)"]
+    API2 --> DB2[("Your Database\n(your team)")]
+    API2 --> DS["Downstream Service\n(other team)"]
 ```
 
 A vertical slice: one behavior delivered through the service boundary (the API contract), the business logic, and the data store. The team does not own or coordinate with any consumer - whether a UI or another service - except through the API contract. They define a stable contract and deploy behind it independently.

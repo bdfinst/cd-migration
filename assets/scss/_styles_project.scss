@@ -422,24 +422,121 @@ pre.mermaid {
     }
   }
 
-  // Search - light treatment on dark navbar
-  .td-search {
-    color: rgba(255, 255, 255, 0.55);
+  // Pull search away from the right edge
+  .td-navbar__search {
+    margin-right: 0.75rem;
   }
 
-  .td-search__input {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff;
+  // Pagefind search - compact widget in the dark navbar.
+  // Keep CSS variables at their dark defaults so the results dropdown is
+  // readable (dark text on white). Style the input bar with direct properties.
+  .td-search--pagefind {
+    position: relative;
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.55);
+    .pagefind-ui {
+      --pagefind-ui-scale: 0.8;
+      --pagefind-ui-primary: #{$primary};
+      --pagefind-ui-text: #1a2a3a;
+      --pagefind-ui-background: #fff;
+      --pagefind-ui-border: #edf2f7;
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 4px;
+      --pagefind-ui-font: inherit;
     }
 
-    &:focus {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.45);
-      color: #fff;
+    // Input - high-contrast white-on-dark for the navbar
+    .pagefind-ui__search-input {
+      background: rgba(255, 255, 255, 0.18) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+      color: #fff !important;
+      height: auto;
+      padding: 0.35rem 0.75rem 0.35rem 2rem;
+      width: 12rem;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.25) !important;
+        border-color: rgba(255, 255, 255, 0.65) !important;
+        color: #fff !important;
+        outline: none;
+        width: 18rem;
+      }
+    }
+
+    .pagefind-ui__search-clear {
+      color: rgba(255, 255, 255, 0.8) !important;
+      background: transparent !important;
+
+      &:hover {
+        color: #fff !important;
+      }
+    }
+
+    // Magnifying glass icon
+    .pagefind-ui__form::before {
+      background-color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    // Results dropdown - positioned over page content
+    .pagefind-ui__drawer {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      z-index: 1050;
+      background: #fff;
+      border: 1px solid #dce4ed;
+      border-radius: 6px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      max-height: 70vh;
+      overflow-y: auto;
+      width: 36rem;
+      max-width: 90vw;
+      margin-top: 0.35rem;
+      padding: 0.25rem 0.5rem;
+      gap: 0 !important;
+    }
+
+    .pagefind-ui__results-area {
+      margin-top: 0 !important;
+    }
+
+    .pagefind-ui__results {
+      padding: 0 !important;
+    }
+
+    .pagefind-ui__result {
+      padding: 0.5rem 0.5rem !important;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .pagefind-ui__result-inner {
+      margin-top: 0 !important;
+    }
+
+    .pagefind-ui__result-title {
+      font-size: calc(16px * var(--pagefind-ui-scale)) !important;
+      margin-bottom: 0 !important;
+    }
+
+    .pagefind-ui__result-excerpt {
+      font-size: calc(14px * var(--pagefind-ui-scale)) !important;
+      margin-top: 0.1rem !important;
+    }
+
+    .pagefind-ui__result-nested {
+      padding-top: 0.1rem !important;
+    }
+
+    .pagefind-ui__message {
+      padding: 0.35rem 0.5rem !important;
+      height: auto !important;
+      font-size: calc(14px * var(--pagefind-ui-scale));
     }
   }
 

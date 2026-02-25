@@ -81,7 +81,7 @@ enableGitInfo = false
     "/images/minimumCD-Tagline.png"
   ]
 
-  offlineSearch = true
+  offlineSearch = false
 
   # Code blocks with fewer lines than this threshold open by default; longer ones are collapsed.
   codeCollapseAutoOpenLines = 10
