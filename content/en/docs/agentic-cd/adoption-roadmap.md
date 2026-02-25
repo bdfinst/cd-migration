@@ -14,6 +14,25 @@ prescriptive sequence for incorporating AI safely, mirroring the
 [brownfield migration phases](../migrate-to-cd/brownfield/).
 {{% /pageinfo %}}
 
+## Before You Add AI: A Decision Framework
+
+Not every problem warrants an AI-based solution. The decision tree below is a gate, not a funnel. Work through each question in order. If you can resolve the need at an earlier step, stop there.
+
+```mermaid
+graph TD
+    A["New capability or automation need"] --> B{"Is the process as simple as possible?"}
+    B -->|No| C["Optimize the process first"]
+    B -->|Yes| D{"Can existing system capabilities do it?"}
+    D -->|Yes| E["Use them"]
+    D -->|No| F{"Can a deterministic component do it?"}
+    F -->|Yes| G["Build it"]
+    F -->|No| H{"Does the benefit of AI exceed its risk and cost?"}
+    H -->|Yes| I["Try an AI-based solution"]
+    H -->|No| J["Do not automate this yet"]
+```
+
+If steps 1-3 were skipped, step 4 is not available. An AI solution applied to a process that could be simplified, handled by existing capabilities, or replaced by a deterministic component is complexity in place of clarity.
+
 ## The Key Insight
 
 **The sequence matters:** remove friction and add safety before you accelerate. AI amplifies whatever system it is applied to - strong process gets faster, broken process gets more broken, faster.
