@@ -41,16 +41,16 @@ If steps 1-3 were skipped, step 4 is not available. An AI solution applied to a 
 
 ```mermaid
 graph LR
-    A["Quality Tools"] --> B["Clarify Work"]
-    B --> C["Harden Guardrails"]
-    C --> D["Reduce Delivery Friction"]
-    D --> E["Accelerate with AI"]
+    P1["Quality Tools"] --> P2["Clarify Work"]
+    P2 --> P3["Harden Guardrails"]
+    P3 --> P4["Reduce Delivery Friction"]
+    P4 --> P5["Accelerate with AI"]
 
-    style A fill:#e8f4fd,stroke:#1a73e8
-    style B fill:#e8f4fd,stroke:#1a73e8
-    style C fill:#fce8e6,stroke:#d93025
-    style D fill:#fce8e6,stroke:#d93025
-    style E fill:#e6f4ea,stroke:#137333
+    style P1 fill:#e8f4fd,stroke:#1a73e8
+    style P2 fill:#e8f4fd,stroke:#1a73e8
+    style P3 fill:#fce8e6,stroke:#d93025
+    style P4 fill:#fce8e6,stroke:#d93025
+    style P5 fill:#e6f4ea,stroke:#137333
 ```
 
 Quality Tools, Clarify Work, Harden Guardrails, Remove Friction, then Accelerate with AI.
