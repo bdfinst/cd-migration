@@ -628,6 +628,26 @@ pre.mermaid {
     margin: 0 0.5rem;
     background: rgba(255, 255, 255, 0.18);
   }
+
+  // GitHub icon link next to search bar
+  .td-navbar__github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    transition: color 0.15s;
+
+    i {
+      font-size: 1.35rem;
+    }
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
 }
 
 // On-scroll state
