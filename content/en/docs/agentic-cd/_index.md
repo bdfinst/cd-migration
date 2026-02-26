@@ -29,6 +29,21 @@ Agents introduce unique challenges that require these additional constraints:
 
 Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding. The [Learning Curve](learning-curve/) describes how developers naturally progress from autocomplete to a multi-agent architecture and what drives each transition.
 
+### Prerequisites
+
+ACD extends continuous delivery. These practices must be working before agents can safely contribute:
+
+- **[Continuous Integration](../practices/continuous-integration/)** - all work integrates to trunk at least daily with automated build and test
+- **[Testing Fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/)** - a test architecture that properly stress tests every change to ensure it's deliverable on demand.
+- **[Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/)** - a single command builds, tests, and packages the application
+- **[Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)** - features broken into increments deliverable in two days or less
+- **[Code Review](../migrate-to-cd/migration-path/foundations/code-review/)** - fast feedback without blocking flow
+- **[Everything as Code](../migrate-to-cd/migration-path/foundations/everything-as-code/)** - infrastructure, pipelines, configuration, and schemas in version control
+- **[Single Path to Production](../migrate-to-cd/migration-path/pipeline/single-path-to-production/)** - all changes reach production through the same automated pipeline
+- **[Deterministic Pipeline](../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/)** - same inputs always produce the same outputs
+
+Without these foundations, adding agents amplifies existing problems rather than accelerating delivery.
+
 ## What You'll Find in This Section
 
 1. **[Configuration Quick Start](agent-setup/)** - where to put what: project context file, rules, skills, and hooks mapped to their purpose and time horizon
