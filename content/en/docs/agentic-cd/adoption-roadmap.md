@@ -171,7 +171,9 @@ Humans define what to test. [Agents](../glossary/#agent-ai) generate the test co
   the test code (validated for behavior focus and spec fidelity), then let AI generate
   the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
-  These are high-value, low-risk tasks where AI excels.
+  These are high-value, low-risk tasks where AI excels. Well-structured, well-named code
+  also reduces the token cost of every subsequent AI interaction - see
+  [Tokenomics: Code Quality as a Token Cost Driver](../tokenomics/#8-code-quality-as-a-token-cost-driver).
 - Use AI to analyze incidents and suggest fixes, with the same pipeline validation applied to
   any change.
 
@@ -200,6 +202,7 @@ to measure progress.
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
+- [Tokenomics](../tokenomics/) - how code quality drives token cost, and how to architect agents and workflows to minimize unnecessary consumption
 
 ---
 

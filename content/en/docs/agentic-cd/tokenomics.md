@@ -112,6 +112,70 @@ Workflow-level metrics expose:
 
 Track cost per workflow execution the same way you track latency and error rates. Set budgets and alert when executions exceed them. A workflow that occasionally costs 10x the average is a design problem, not a billing detail.
 
+### 8. Code Quality as a Token Cost Driver
+
+Poorly structured or poorly named code is expensive in both token cost and output quality. When code does not express intent, agents must infer it from surrounding code, comments, and call sites - all of which consume context budget. The worse the naming and structure, the more context must load before the agent can do useful work.
+
+**Naming as context compression:**
+
+- A function named `processData` requires surrounding code, comments, and call sites before an agent can understand its purpose. A function named `calculateOrderTax` is self-documenting - intent is resolved by the name, not from the context budget.
+- Generic names (`temp`, `result`, `data`) and single-letter variables shift the cost of understanding from the identifier to the surrounding code. That surrounding code must load into every prompt that touches the function.
+- Inconsistent terminology across a codebase - the same concept called `user`, `account`, `member`, or `customer` in different files - forces agents to spend tokens reconciling vocabulary before applying logic.
+
+**Structure as context scope:**
+
+- Large functions that do many things cannot be understood in isolation. The agent must load more of the file, and often more files, to reason about a single change.
+- Deep nesting and high cyclomatic complexity require agents to track multiple branches simultaneously, consuming context budget that would otherwise go toward the actual task.
+- Tight coupling between modules means a change to one file requires loading several others to understand impact. A loosely coupled module can be provided as complete, self-contained context.
+- Duplicate logic scattered across the codebase forces agents to either load redundant context or miss instances when making changes.
+
+**The correction loop multiplier:**
+
+A correction loop where the agent's first output is wrong, reviewed, and re-prompted uses roughly three times the tokens of a successful first attempt. Poor code quality increases agent error rates, multiplying both the per-request token cost and the number of iterations required.
+
+**Refactoring for token efficiency:**
+
+Refactoring for human readability and refactoring for token efficiency are the same work. The changes that help a human understand code at a glance help an agent understand it with minimal context.
+
+- Use domain language in identifiers. Names should match the language of the business domain. `calculateMonthlyPremium` is better than `calcPrem` or `compute`.
+- Establish a ubiquitous language - a consistent glossary of terms used uniformly across code, tests, tickets, and documentation. Agents generalize more accurately when terminology is consistent.
+- Extract functions until each has a single, nameable purpose. A function that can be described in one sentence can usually be understood without loading its callers.
+- Apply responsibility separation at the module level. A module that owns one concept can be passed to an agent as complete, self-contained context.
+- Define explicit interfaces at module boundaries. An agent working inside a module needs only the interface contract for its dependencies, not the implementation.
+- Consolidate duplicate logic into one authoritative location. One definition is one context load; ten copies are ten opportunities for inconsistency.
+
+Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest leverage.
+
+**Enforcing these improvements through the pipeline:**
+
+Structural and naming improvements degrade without enforcement. Two pipeline mechanisms
+keep them from slipping back:
+
+- The [architectural conformance agent](../pipeline-enforcement/#expert-validation-agents)
+  catches code that crosses module boundaries or introduces prohibited dependencies.
+  Running it as a pipeline gate means architecture decisions made during refactoring
+  are protected on every subsequent change, not just until the next deadline.
+- Pre-commit linting and style enforcement (part of the
+  [pre-feature baseline](../../pipeline-reference-architecture/#pre-feature-baseline))
+  catches naming violations before they reach review. Rules can encode domain language
+  standards - rejecting generic names, enforcing consistent terminology - so that the
+  ubiquitous language is maintained automatically rather than by convention.
+
+Without pipeline enforcement, naming and structure improvements are temporary. With it,
+the token cost reductions they deliver compound over the lifetime of the codebase.
+
+**Self-correction through gate feedback:**
+
+When an [agent](../../glossary/#agent-ai) generates code, gate failures from the
+architectural conformance agent or linting checks become structured feedback the agent
+can act on directly. Rather than routing violations to a human reviewer, the pipeline
+returns the failure reason to the agent, which corrects the violation and resubmits.
+This self-correction cycle keeps naming and structure improvements in place without
+human intervention on each change - the pipeline teaches the agent what the codebase
+standards require, one correction at a time. Over repeated cycles, the correction
+rate drops as the agent internalizes the constraints, reducing both rework tokens and
+review burden.
+
 ## Applying Tokenomics to ACD Architecture
 
 Agentic CD ([ACD](../../glossary/#acd-agentic-continuous-delivery)) creates predictable token cost patterns because the workflow is structured. Apply optimization at each stage:
