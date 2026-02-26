@@ -84,7 +84,7 @@ enableGitInfo = false
   offlineSearch = false
 
   # Code blocks with fewer lines than this threshold open by default; longer ones are collapsed.
-  codeCollapseAutoOpenLines = 10
+  codeCollapseAutoOpenLines = 50
 
   prism_syntax_highlighting = true
   pygmentsCodeFences        = true
