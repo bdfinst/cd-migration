@@ -7,10 +7,10 @@ description: >
 ---
 
 {{% pageinfo %}}
-One [BDD](../../glossary/#bdd-behavior-driven-development) scenario. One [agent](../../glossary/#agent-ai) session. One commit. This is the same discipline [CI](../../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
+One [BDD](../glossary/#bdd-behavior-driven-development) scenario. One [agent](../glossary/#agent-ai) session. One commit. This is the same discipline [CI](../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
 
-**Stop optimizing your [prompts](../../glossary/#prompt). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
+**Stop optimizing your [prompts](../glossary/#prompt). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
 
 ## Establish the Broad Understanding First
 
@@ -21,15 +21,15 @@ Before any implementation session begins, establish the complete understanding o
 3. **Feature description** - architectural constraints, performance budgets, integration boundaries
 4. **Scenario order** - the sequence in which you will implement the scenarios
 
-The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts](../../glossary/#artifact) before any code is written.
+The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts](../glossary/#artifact) before any code is written.
 
 **Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your complete scenario list and ask it to suggest an implementation order that minimizes the rework cost of each step.
 
 This ordering step also has a human gate. Review the proposed slice sequence before any implementation begins. The ordering determines the shape of every session that follows.
 
-The broad understanding is not in the implementation agent's [context](../../glossary/#context-llm). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
+The broad understanding is not in the implementation agent's [context](../glossary/#context-llm). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
 
-**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../../glossary/#vertical-sliced-story), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for full-stack versus subdomain teams.
+**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../glossary/#vertical-sliced-story), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for full-stack versus subdomain teams.
 
 ## Session Structure
 
@@ -39,7 +39,7 @@ Each session follows the same structure:
 |------|-------------|
 | **Context load** | Assemble the session context: intent summary, feature description, the one scenario for this session, the relevant existing code, and a brief summary of completed sessions |
 | **Implementation** | Agent generates test code and production code to satisfy the scenario |
-| **Validation** | [Pipeline](../../glossary/#pipeline) runs - all scenarios implemented so far must pass |
+| **Validation** | [Pipeline](../glossary/#pipeline) runs - all scenarios implemented so far must pass |
 | **Commit** | Change committed; commit message references the scenario |
 | **Context summary** | Write a one-paragraph summary of what this session built, for use in the next session |
 
@@ -47,13 +47,9 @@ The session ends at the commit. The next session starts fresh.
 
 ### What to include in the context load
 
-Include only what the agent needs to implement this specific scenario:
+Include only what the agent needs to implement this specific scenario. Load context in the order defined in [Configuration Quick Start: Context Loading Order](../agent-setup/#context-loading-order) - stable content first to maximize prompt cache hits, volatile content last.
 
-- **Intent description summary** - one or two sentences on the why. Not the full artifact, not the conversation that produced it.
-- **Feature description** - the constraints and architectural boundaries that apply to this session's work
-- **The scenario being implemented** - just this one, not all scenarios
-- **Relevant existing code** - the files the agent will read or modify. Not the entire codebase.
-- **Session summary** - a brief factual summary of what previous sessions built: what files exist, what they do, what tests cover them
+For each item, apply the context hygiene test: would omitting it change what the agent produces? If not, omit it.
 
 Exclude:
 
@@ -274,5 +270,5 @@ If the pipeline fails in a later session (a prior scenario breaks), the agent mu
 - [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
 - [The Four Prompting Disciplines](../prompting-disciplines/) - context engineering and specification engineering applied to session design
 - [Tokenomics](../tokenomics/) - why context size matters and how to control it
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that anchor each session's context
+- [First-Class Artifacts](../first-class-artifacts/) - the artifacts that anchor each session's context
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent

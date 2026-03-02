@@ -9,7 +9,7 @@ description: >
 {{% pageinfo %}}
 The [pipeline](../glossary/#pipeline) is the enforcement mechanism for [agentic continuous delivery](../glossary/#acd-agentic-continuous-delivery) (ACD). Standard quality gates handle mechanical checks. Expert validation [agents](../glossary/#agent-ai) handle the judgment calls that standard tools cannot make.
 
-For the framework overview, see [ACD](../). For the [artifacts](../glossary/#artifact) the pipeline enforces, see [The Six First-Class Artifacts](../first-class-artifacts/).
+For the framework overview, see [ACD](../). For the [artifacts](../glossary/#artifact) the pipeline enforces, see [First-Class Artifacts](../first-class-artifacts/).
 {{% /pageinfo %}}
 
 ## How Quality Gates Enforce ACD
@@ -66,7 +66,7 @@ With the pipeline and expert agents in place, the next question is what goes wro
 
 - [Agentic Architecture Patterns](../agentic-architecture/) - multi-agent pipeline patterns and hook design for enforcement workflows
 - [ACD](../) - the framework overview, eight constraints, and workflow
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts the pipeline enforces
+- [First-Class Artifacts](../first-class-artifacts/) - the artifacts the pipeline enforces
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the full quality gate sequence
 - [Replacing Manual Validations](../../migrate-to-cd/brownfield/replacing-manual-validations/) - the replacement cycle for adopting automated checks
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - what goes wrong and how to measure progress

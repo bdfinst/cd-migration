@@ -223,62 +223,16 @@ A skill is a named session procedure - a markdown document describing a multi-st
 
 Each skill should do one thing. A skill named `review-and-commit` is doing two things. Split it. When a procedure fails mid-execution, a single-responsibility skill makes it obvious which step failed and where to look.
 
-{{< tabpane lang="markdown" >}}
-{{< tab header="Claude Code (.claude/commands/)" >}}
-## /start-session
+A normal session runs three skills in sequence: `/start-session` (assembles context and prepares the implementation agent), `/review` (invokes the pre-commit review gate), and `/end-session` (validates all gates, writes the session summary, and commits). Add `/fix` for pipeline-restore mode. See [Coding & Review Setup](../agent-configuration/#skills) for the complete definition of each skill.
 
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
+The skill text is identical across tools. Where the file lives differs:
 
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="Gemini CLI (.gemini/skills/)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="OpenAI Codex (AGENTS.md section)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="GitHub Copilot (.github/)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< /tabpane >}}
-
-A normal session runs three skills in sequence: `/start-session` (assembles context and prepares the implementation agent), `/review` (invokes the pre-commit review gate), and `/end-session` (validates all gates, writes the session summary, and commits). Add `/fix` for pipeline-restore mode. See [Coding Agent Configuration](../agent-configuration/#skills) for the complete definition of each skill.
+| Tool | Skill location |
+|------|---------------|
+| Claude Code | `.claude/commands/start-session.md` |
+| Gemini CLI | `.gemini/skills/start-session.md` |
+| OpenAI Codex | Named `## Task:` section in `AGENTS.md` |
+| GitHub Copilot | `.github/start-session.md` |
 
 ---
 
@@ -591,6 +545,6 @@ already in the root file.
 ## Related Content
 
 - [Agentic Architecture Patterns](../agentic-architecture/) - the design principles behind skills, agents, hooks, and multi-agent composition
-- [Coding Agent Configuration](../agent-configuration/) - the complete rules, skills, and hooks for a coding and pre-commit review configuration
+- [Coding & Review Setup](../agent-configuration/) - the complete rules, skills, and hooks for a coding and pre-commit review configuration
 - [Small-Batch Sessions](../small-batch-sessions/) - how session discipline and context hygiene work together
 - [Tokenomics](../tokenomics/) - the full optimization framework including prompt caching strategy and context order

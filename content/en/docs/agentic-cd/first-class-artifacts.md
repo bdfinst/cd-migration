@@ -1,7 +1,7 @@
 ---
-title: "The Six First-Class Artifacts"
+title: "First-Class Artifacts"
 linkTitle: "First-Class Artifacts"
-weight: 4
+weight: 5
 description: >
   Detailed definitions and examples for the six artifacts that agents and humans must maintain in an ACD pipeline.
 ---
@@ -219,12 +219,13 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 | Priority | Artifact | Authority |
 |----------|----------|-----------|
 | 1 (highest) | Intent Description | Defines the why; all other artifacts conform to it |
-| 2 | Feature Description (Constraint Architecture) | Defines architectural constraints; implementation must conform |
-| 3 | Acceptance Criteria | Pipeline-enforced; implementation must pass |
-| 4 | System Constraints | Global; applies to every change in the system |
-| 5 (lowest) | Implementation | Must satisfy all other artifacts |
+| 2 | User-Facing Behavior | Defines observable outcomes from the user's perspective; feeds into Acceptance Criteria |
+| 3 | Feature Description (Constraint Architecture) | Defines architectural constraints; implementation must conform |
+| 4 | Acceptance Criteria | Pipeline-enforced; implementation must pass. Derived from User-Facing Behavior (functional) and Feature Description (non-functional requirements stated as architectural constraints) |
+| 5 | System Constraints | Global; applies to every change in the system |
+| 6 (lowest) | Implementation | Must satisfy all other artifacts |
 
-**User-Facing Behavior feeds into Acceptance Criteria.** It does not hold separate authority in the hierarchy.
+**Acceptance Criteria are derived from two sources.** User-Facing Behavior defines the functional expectations (BDD scenarios). Non-functional requirements (latency budgets, resilience, security) must be stated explicitly as architectural constraints in the Feature Description. Both feed into Acceptance Criteria, which the pipeline enforces.
 
 ## These Artifacts Are Pipeline Inputs, Not Reference Documents
 

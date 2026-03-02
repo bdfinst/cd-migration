@@ -14,19 +14,19 @@ Each pitfall below has a root cause in the same two gaps: skipped [first-class a
 
 ### 1. Agent defines its own test scenarios
 
-**The failure is not the [agent](../../glossary/#agent-ai) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
+**The failure is not the [agent](../glossary/#agent-ai) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
 
 **Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way [ACD](../glossary/#acd-agentic-continuous-delivery) fails.
 
-**What to do:** Define test specifications ([BDD](../../glossary/#bdd-behavior-driven-development) scenarios and acceptance criteria) before any code generation. Use a [test fidelity agent](../pipeline-enforcement/) to validate that generated test code matches the specification. Review agent-generated test code for implementation coupling before approving it.
+**What to do:** Define test specifications ([BDD](../glossary/#bdd-behavior-driven-development) scenarios and acceptance criteria) before any code generation. Use a [test fidelity agent](../pipeline-enforcement/) to validate that generated test code matches the specification. Review agent-generated test code for implementation coupling before approving it.
 
 ### 2. Review queue backs up from agent-generated volume
 
 Agent speed should not pressure humans to review faster. If unreviewed changes accumulate, the temptation is to rubber-stamp reviews or merge without looking.
 
-**What to do:** Apply [WIP](../../glossary/#wip-work-in-progress) limits to the agent's change queue. If three changes are awaiting review, the agent stops generating new changes until the queue drains. Treat agent-generated review queue depth as a [pipeline](../../glossary/#pipeline) metric. Consider adopting [expert validation agents](../pipeline-enforcement/) to handle mechanical review checks, reserving human review for judgment calls.
+**What to do:** Apply [WIP](../glossary/#wip-work-in-progress) limits to the agent's change queue. If three changes are awaiting review, the agent stops generating new changes until the queue drains. Treat agent-generated review queue depth as a [pipeline](../glossary/#pipeline) metric. Consider adopting [expert validation agents](../pipeline-enforcement/) to handle mechanical review checks, reserving human review for judgment calls.
 
 ### 3. Tests pass so the change must be correct
 
@@ -36,17 +36,17 @@ Passing tests is necessary but not sufficient. Tests cannot verify intent, archi
 
 ### 4. No provenance tracking for agent-generated changes
 
-Without provenance tracking, you cannot learn from agent-generated failures, audit agent behavior, or improve the agent's constraints over time. When a production incident involves agent-generated code, you need to know which agent, which [prompt](../../glossary/#prompt), and which intent description produced it.
+Without provenance tracking, you cannot learn from agent-generated failures, audit agent behavior, or improve the agent's constraints over time. When a production incident involves agent-generated code, you need to know which agent, which [prompt](../glossary/#prompt), and which intent description produced it.
 
-**What to do:** Tag every agent-generated commit with the agent identity, the intent description, and the prompt or [context](../../glossary/#context-llm) used. Include provenance metadata in your deployment records. Review agent provenance data during incident retrospectives.
+**What to do:** Tag every agent-generated commit with the agent identity, the intent description, and the prompt or [context](../glossary/#context-llm) used. Include provenance metadata in your deployment records. Review agent provenance data during incident retrospectives.
 
 ### 5. Agent improves code outside the session scope
 
 Agents trained to write good code will opportunistically refactor, rename, or improve things they encounter while implementing a scenario. The intent is not wrong. The scope is.
 
-A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but it conflicts with the small-batch discipline that makes agent-generated work reviewable.
+A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but applying it within a feature session conflicts with the small-batch discipline that makes agent-generated work reviewable.
 
-**What to do:** Define scope boundaries explicitly in the [system prompt](../../glossary/#system-prompt) and context. Cleanup is valid work - but as a separate, explicitly scoped session with its own intent description and commit.
+**What to do:** Define scope boundaries explicitly in the [system prompt](../glossary/#system-prompt) and context. Cleanup is valid work - but as a separate, explicitly scoped session with its own intent description and commit.
 
 Example scope constraint to include in every implementation session:
 
@@ -84,7 +84,7 @@ This is a reliability trap. Agent state is not durable in the way a commit is du
 
 ### 8. Skipped the prerequisite delivery practices
 
-Teams jump to [ACD](../../glossary/#acd-agentic-continuous-delivery) without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
+Teams jump to [ACD](../glossary/#acd-agentic-continuous-delivery) without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
 
 **What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
@@ -94,7 +94,7 @@ Agents generate code faster than humans refactor it. Without deliberate maintena
 
 ### Keep skills and prompts under version control
 
-The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class [artifacts](../../glossary/#artifact). They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
+The system prompt, session templates, agent configuration, and any skills used in your pipeline are first-class [artifacts](../glossary/#artifact). They belong in version control alongside the code they produce. An agent operating from an outdated skill file or an untracked system prompt is an unreviewed change to your delivery process.
 
 Review your agent configuration on the same cadence you review the pipeline. When an agent produces unexpected output, check the configuration before assuming the model changed.
 
@@ -137,7 +137,7 @@ Review the context documents for each active workstream quarterly. Archive or de
 
 | Metric | Target | How to Measure |
 |--------|--------|----------------|
-| Agent-generated [change failure rate](../../glossary/#change-failure-rate-cfr) | Equal to or lower than human-generated | Tag agent-generated deployments in your deployment tracker. Compare [rollback](../../glossary/#rollback) and incident rates between agent and human changes over rolling 30-day windows. |
+| Agent-generated [change failure rate](../glossary/#change-failure-rate-cfr) | Equal to or lower than human-generated | Tag agent-generated deployments in your deployment tracker. Compare [rollback](../glossary/#rollback) and incident rates between agent and human changes over rolling 30-day windows. |
 | Review time for agent-generated changes | Comparable to human-generated changes | Measure time from "change ready for review" to "review complete" for both agent and human changes. If agent reviews are significantly faster, reviewers may be rubber-stamping. |
 | Test coverage for agent-generated code | Higher than baseline | Run coverage reports filtered by agent-generated files. Compare against team baseline. If agent code coverage is lower, the test generation step is not working. |
 | Agent-generated changes with complete artifacts | 100% | Audit a sample of recent agent-generated changes monthly. Check whether each has an intent description, test specification, feature description, and provenance metadata. |
@@ -145,7 +145,7 @@ Review the context documents for each active workstream quarterly. Archive or de
 ## Related Content
 
 - [ACD](../) - the framework overview, eight constraints, and workflow
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that prevent these pitfalls
+- [First-Class Artifacts](../first-class-artifacts/) - the artifacts that prevent these pitfalls
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - the automated checks that catch failures
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
 - [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent

@@ -79,7 +79,7 @@ on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash
 - Enforce the pipeline-red rule ([ACD constraint 8](../)):  if the [pipeline](../glossary/#pipeline) is failing,
   route only to pipeline-restore mode; block new feature work
 
-**Rules injected into the orchestrator system prompt:**
+**Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order](../agent-setup/#context-loading-order), applied to this specific agent configuration:
 
 {{< code-collapse title="Orchestrator system prompt rules" lang="markdown" >}}
 ## Orchestrator Rules
@@ -115,12 +115,7 @@ On pipeline failure:
 - Block new feature implementation until the pipeline is green
 
 On commit:
-- Write the session summary in this format before resetting context:
-  Session [N]: [scenario name]
-  Scenario: [one sentence]
-  Files: [filename - one phrase per file]
-  Tests: [filename - one phrase per test]
-  Status: all [N] scenarios pass
+- Write a context summary using the format defined in Small-Batch Sessions
 - This summary replaces the full session conversation for future sessions
 - Reset context after writing the summary; do not carry conversation history forward
 {{< /code-collapse >}}
@@ -560,19 +555,9 @@ Complete the session:
 1. Confirm the pre-commit hook passed (lint, type-check, secret-scan, SAST)
 2. Confirm /review returned {"decision": "pass"}
 3. Confirm the pipeline is green (all prior acceptance tests pass)
-4. Write the session summary in this compact structured format.
+4. Write the context summary using the format from Small-Batch Sessions.
    This summary replaces the full session conversation in future contexts;
    keep it under 150 words.
-
-   Session [N]: [scenario name]
-   Scenario: [one sentence describing the behavior implemented]
-   Files:
-     [filename]: [one phrase - what it does]
-     [filename]: [one phrase - what it does]
-   Tests:
-     [filename]: [one phrase - what scenario it covers]
-   Status: all [N] scenarios pass
-
 5. Commit with a message referencing the scenario name
 6. Reset context. The session summary is the only artifact that carries forward.
    The full conversation, implementation details, and review findings do not.
@@ -753,7 +738,7 @@ for the full gate sequence.
   orchestrator and skills enforce
 - [Tokenomics](../tokenomics/) - the full optimization framework: model routing, context
   hygiene, structured outputs, prompt caching, and workflow-level measurement
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts the
+- [First-Class Artifacts](../first-class-artifacts/) - the artifacts the
   implementation agent receives and the review agents verify against
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the
   full gate sequence from pre-commit through production verification

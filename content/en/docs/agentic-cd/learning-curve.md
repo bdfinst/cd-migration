@@ -95,7 +95,7 @@ Progress through these stages does not happen naturally or automatically. It req
 - A pipeline that can run multiple agents in parallel and collect results before promotion
 - Human ownership of specifications - the stages that require judgment about what matters to the business
 
-This is the [ACD](../glossary/#acd-agentic-continuous-delivery) destination. The [ACD workflow](../) defines the complete sequence. The [six first-class artifacts](../first-class-artifacts/) are the structured documents the workflow runs on. [Tokenomics](../tokenomics/) covers how to architect agents to keep costs in proportion to value. [Agent Configuration](../agent-configuration/) shows a recommended orchestrator, coder, and reviewer configuration.
+This is the [ACD](../glossary/#acd-agentic-continuous-delivery) destination. The [ACD workflow](../) defines the complete sequence. The [first-class artifacts](../first-class-artifacts/) are the structured documents the workflow runs on. [Tokenomics](../tokenomics/) covers how to architect agents to keep costs in proportion to value. [Coding & Review Setup](../agent-configuration/) shows a recommended orchestrator, coder, and reviewer configuration.
 
 ## Why Progress Stalls
 
@@ -148,9 +148,9 @@ The [AI Adoption Roadmap](../adoption-roadmap/) covers the organizational prereq
 - [AI Adoption Roadmap](../adoption-roadmap/) - organizational prerequisites for the later stages
 - [ACD](../) - the full workflow, constraints, and first-class artifacts
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how to write specs fast enough that they do not slow down Stage 5
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the documents the multi-agent workflow depends on
+- [First-Class Artifacts](../first-class-artifacts/) - the documents the multi-agent workflow depends on
 - [Tokenomics](../tokenomics/) - how to architect Stage 6 so token costs scale with value
-- [Agent Configuration](../agent-configuration/) - a concrete Stage 6 configuration
+- [Coding & Review Setup](../agent-configuration/) - a concrete Stage 6 configuration
 - [Small-Batch Sessions](../small-batch-sessions/) - how to keep agent context small at every stage
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how review agents replace manual validation at Stage 6
 

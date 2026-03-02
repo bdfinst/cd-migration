@@ -1,13 +1,13 @@
 ---
 title: "Agent-Assisted Specification"
 linkTitle: "Agent-Assisted Specification"
-weight: 5
+weight: 6
 description: >
   How to use agents as collaborators during specification and why small-scope specification is not big upfront design.
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow](../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The Pattern
@@ -25,7 +25,7 @@ This is not the agent doing specification for you. It is the agent making your s
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
-**You specify the next single unit of work.** One thin [vertical slice](../../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
+**You specify the next single unit of work.** One thin [vertical slice](../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
 
 If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
@@ -35,7 +35,7 @@ The intent description does not need to be perfect on the first draft. Write a r
 
 **Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated [constraint](../glossary/#constraint).
 
-Example [prompt](../../glossary/#prompt):
+Example [prompt](../glossary/#prompt):
 
 {{< code-collapse title="Prompt: identify ambiguity in intent description" >}}
 Here is the intent description for my next change. Identify any
@@ -54,7 +54,7 @@ The human still owns the intent. The agent is a sounding board that catches gaps
 
 ## How Agents Help with User-Facing Behavior
 
-Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
+Writing [BDD](../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
 
 **Generate initial scenarios from the intent.** Give the agent your intent description and ask it to produce Gherkin scenarios covering the expected behavior.
 
@@ -182,13 +182,14 @@ Once the agent has enough context, ask it to synthesize the conversation into a 
 
 {{< code-collapse title="Prompt: synthesize into specification" >}}
 Based on our discussion, generate the first draft of the specification
-document. Structure it as: Self-Contained Problem Statement, Constraint
-Architecture, Task Decomposition, Acceptance Criteria, and Evaluation
-Design. Ensure the Task Decomposition follows a planner-worker pattern
-where tasks are broken into sub-two-hour chunks.
+document. Structure it as: Intent Description, User-Facing Behavior
+(BDD scenarios), Feature Description (architectural constraints),
+Task Decomposition, and Acceptance Criteria (including evaluation
+design with test cases). Ensure the Task Decomposition follows a
+planner-worker pattern where tasks are broken into sub-two-hour chunks.
 {{< /code-collapse >}}
 
-The five sections map directly to the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
+The sections map to the [first-class artifacts](../first-class-artifacts/) and the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
 
 ### Phase 4: Stress-Test Review
 
@@ -214,7 +215,7 @@ This is the same validation step as the [specification consistency check](#valid
 The discovery loop front-loads the work where it is cheapest: in conversation, before any code exists.
 
 {{% alert title="Tip: the running context log" color="info" %}}
-During long discovery conversations, ask the agent to maintain a running context log of key decisions. This prevents core decisions from getting lost in the middle of the [context window](../../glossary/#context-window) as the conversation grows. The context log becomes the raw material for Phase 3.
+During long discovery conversations, ask the agent to maintain a running context log of key decisions. This prevents core decisions from getting lost in the middle of the [context window](../glossary/#context-window) as the conversation grows. The context log becomes the raw material for Phase 3.
 {{% /alert %}}
 
 The [complete specification example](#complete-specification-example) below shows the output this workflow produces.
@@ -229,7 +230,7 @@ Notice what makes this specification agent-executable: every section is self-con
 {{< code-collapse title="Complete specification example: VSM-Automator" lang="markdown" >}}
 # Specification: VSM-Automator (Alpha)
 
-## 1. Self-Contained Problem Statement
+## 1. Intent Description
 
 The goal is to build a web-based tool that visualizes the flow of software
 delivery from "Commit" to "Production." The application must consume a
@@ -237,7 +238,7 @@ standardized JSON export of DORA metrics and Git events to render a horizontal
 chevron-style map. It must calculate Lead Time, Cycle Time, and Process
 Efficiency without manual data entry for the calculations.
 
-## 2. Constraint Architecture
+## 2. Feature Description
 
 **Musts:**
 
@@ -260,7 +261,7 @@ Efficiency without manual data entry for the calculations.
 - If the provided JSON schema is missing "Deployment Frequency" data, stop and
   ask the user for a fallback mapping strategy
 
-## 3. Task Decomposition (The Blueprint)
+## 3. Task Decomposition
 
 This project is decomposed into four independent executable modules:
 
@@ -291,7 +292,7 @@ This project is decomposed into four independent executable modules:
 - Input: Rendered SVG
 - Output: Downloadable PNG or PDF report
 
-## 4. Acceptance Criteria (The "Done" Definition)
+## 4. Acceptance Criteria
 
 1. The user can drag and drop a sample_data.json file, and a map renders in
    under 500ms
@@ -300,7 +301,7 @@ This project is decomposed into four independent executable modules:
 3. Clicking a "Stage" chevron displays a modal showing the specific Git SHAs
    or Jira IDs associated with that bottleneck
 
-## 5. Evaluation Design (Test Cases)
+## 5. Evaluation Design
 
 **Test Case 1 (The Happy Path):** Upload a 5-stage pipeline with linear
 timestamps. Result: Map renders correctly with 20% Process Efficiency.
@@ -317,13 +318,13 @@ displays a graceful "No Data Found" state rather than crashing.
 **What to notice:**
 
 - **Self-contained:** An agent receiving only this document can implement without asking clarifying questions. That is the [self-containment test](../prompting-disciplines/#the-self-containment-test).
-- **Decomposed with boundaries:** Each module has explicit inputs and outputs. An [orchestrator](../../glossary/#orchestrator) can route each module to a separate agent session (see [Small-Batch Sessions](../small-batch-sessions/)).
-- **Acceptance criteria are observable:** Each criterion describes a user-visible outcome, not an internal implementation detail. These map directly to [[acceptance criteria](../glossary/#acceptance-criteria)](../first-class-artifacts/#4-acceptance-criteria).
+- **Decomposed with boundaries:** Each module has explicit inputs and outputs. An [orchestrator](../glossary/#orchestrator) can route each module to a separate agent session (see [Small-Batch Sessions](../small-batch-sessions/)).
+- **Acceptance criteria are observable:** Each criterion describes a user-visible outcome, not an internal implementation detail. These map directly to [Acceptance Criteria](../first-class-artifacts/#4-acceptance-criteria).
 - **Test cases include expected outputs:** The evaluation design gives the agent known-good results to verify against, which is the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill of evaluation design.
 
 ## Related Content
 
 - [The ACD Workflow](../) - the full workflow these tips support
-- [The Six First-Class Artifacts](../first-class-artifacts/) - detailed definitions of each artifact
+- [First-Class Artifacts](../first-class-artifacts/) - detailed definitions of each artifact
 - [The Four Prompting Disciplines](../prompting-disciplines/) - the skill framework that produces specifications like the example above
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment

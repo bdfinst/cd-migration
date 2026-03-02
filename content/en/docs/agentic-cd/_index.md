@@ -23,7 +23,6 @@ Without additional artifacts beyond what human-driven [CD](../glossary/#cd-conti
 Agents introduce unique challenges that require these additional constraints:
 
 - Agents can generate changes faster than humans can review them
-- Agents may lack context about organizational norms, business rules, or unstated constraints
 - Agents cannot read unstated context: business rules, organizational norms, and long-term architectural intent that human developers carry implicitly
 - Agents may introduce subtle correctness issues that pass automated tests but violate intent
 
@@ -50,10 +49,10 @@ Without these foundations, adding agents amplifies existing problems rather than
 2. **[The Agentic Development Learning Curve](learning-curve/)** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
 3. **[The Four Prompting Disciplines](prompting-disciplines/)** - the four layers of skill developers must master as AI moves from chat partner to long-running worker
 4. **[AI Adoption Roadmap](adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
-5. **[The Six First-Class Artifacts](first-class-artifacts/)** - defines the six artifacts that anchor the ACD workflow and their authority hierarchy
+5. **[First-Class Artifacts](first-class-artifacts/)** - defines the artifacts that anchor the ACD workflow and their authority hierarchy
 6. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
 7. **[Agentic Architecture Patterns](agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
-8. **[Coding Agent Configuration](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
+8. **[Coding & Review Setup](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
 9. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions, so [context](../glossary/#context-llm) stays manageable and commits stay small
 10. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
 11. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
@@ -74,37 +73,17 @@ ACD *extends* MinimumCD by the following constraints:
 
 These constraints are **not mandatory practices.** They describe the *minimum conditions required to sustain delivery pace once agents are making changes* to the system.
 
-## The Six First-Class Artifacts
+## First-Class Artifacts
 
-Every first-class artifact is part of the delivery contract, not a convenience. Agents may read any or all artifacts. Agents may generate some artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
+Every ACD change is anchored by [first-class artifacts](first-class-artifacts/) - structured documents that define intent, behavior, constraints, acceptance criteria, and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
 
-1. **[Intent Description](first-class-artifacts/#1-intent-description)** - why the change exists (human-owned)
-2. **[User-Facing Behavior](first-class-artifacts/#2-user-facing-behavior)** - what users experience (externally observable)
-3. **[Feature Description (Constraint Architecture)](first-class-artifacts/#3-feature-description-constraint-architecture)** - architectural trade-offs and constraints (engineering-owned)
-4. **[Acceptance Criteria](first-class-artifacts/#4-acceptance-criteria)** - automated tests that make acceptance criteria executable (pipeline-enforced)
-5. **[Implementation](first-class-artifacts/#5-implementation)** - the code (fully constrained by other artifacts)
-6. **[System Constraints](first-class-artifacts/#6-system-constraints)** - global invariants (system-level rules)
-
-These artifacts are intentionally **overlapping in content** but **non-overlapping in authority**. When an agent detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. See [The Six First-Class Artifacts](first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
+See [First-Class Artifacts](first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
 
 ## The ACD Workflow
 
-When an AI agent contributes to a CD pipeline, the workflow extends the standard pipeline:
+Humans define specifications. Agents generate tests and implementation. The pipeline enforces correctness. Human review at Test Validation and Code Review is an interim state that [expert validation agents](pipeline-enforcement/) progressively replace using the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration.
 
-| Stage | Actor | Activity |
-|-------|-------|----------|
-| Intent Description | Human | Define the self-contained problem statement (why the change exists) |
-| User-Facing Behavior | Human | Define BDD scenarios (the functional tests) |
-| Feature Description | Human | Define constraint architecture (musts, must nots, preferences, escalation triggers) |
-| Acceptance Criteria | Human | Define acceptance criteria and evaluation design (observable outcomes, test cases with known-good outputs) |
-| Test Generation | Agent | Generate test code from User-Facing Behavior, Feature Description, and Acceptance Criteria |
-| Test Validation | Human → Agent | Validate test code is decoupled from implementation and faithful to specs |
-| Implementation | Agent | Generate implementation |
-| Pipeline Verification | Pipeline | Validate implementation against acceptance criteria (automated tests) |
-| Code Review | Human → Agent | Review implementation (code review) |
-| Deployment | Pipeline | Deploy (same pipeline as any other change) |
-
-Manual review at Test Validation and Code Review is an interim state. Replace it using [expert validation agents](pipeline-enforcement/) and the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration. See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full set of expert agents and how to adopt them.
+The workflow stages, actor responsibilities, and session structure are detailed in [Small-Batch Sessions](small-batch-sessions/) and [Pipeline Enforcement](pipeline-enforcement/).
 
 ## Related Content
 

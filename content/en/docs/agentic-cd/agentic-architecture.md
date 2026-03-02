@@ -1,7 +1,7 @@
 ---
 title: "Agentic Architecture Patterns"
 linkTitle: "Agentic Architecture"
-weight: 6
+weight: 7
 description: >
   How to structure skills, agents, commands, and hooks when building multi-agent systems - with concrete examples using Claude and Gemini.
 aliases:
@@ -14,7 +14,7 @@ aliases:
 Agentic workflow architecture is a software design problem. The same principles that prevent spaghetti code in application software - single responsibility, well-defined interfaces, separation of concerns - prevent spaghetti [agent](../glossary/#agent-ai) systems. The cost of getting it wrong is measured in [token](../glossary/#token) waste, cascading failures, and workflows that break when you swap one model for another.
 {{% /pageinfo %}}
 
-This page assumes familiarity with [The Six First-Class Artifacts](../first-class-artifacts/). After reading this page, see [Agent Configuration](../agent-configuration/) for a concrete implementation of these patterns applied to coding and pre-commit review.
+This page assumes familiarity with [First-Class Artifacts](../first-class-artifacts/). After reading this page, see [Coding & Review Setup](../agent-configuration/) for a concrete implementation of these patterns applied to coding and pre-commit review.
 
 ## Overview
 
@@ -332,7 +332,7 @@ Output (JSON only, no other text):
 
 In this configuration, Claude handles orchestration because routing and context assembly do not require long-context capability. Gemini handles changelog review because a full changelog for a major release can be large enough to crowd out other context in a smaller window. Neither assignment is mandatory - the point is that the structured interface (JSON input, JSON output with a defined schema) makes the sub-agent swappable. Replacing the Gemini changelog agent with a Claude one requires changing only the invocation target, not the orchestration logic.
 
-For a concrete application of this pattern to coding and pre-commit review - including full system prompt rules for each agent - see [Agent Configuration](../agent-configuration/).
+For a concrete application of this pattern to coding and pre-commit review - including full system prompt rules for each agent - see [Coding & Review Setup](../agent-configuration/).
 
 **Key takeaways:**
 
@@ -807,9 +807,9 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ## Related Content
 
-- [Agent Configuration](../agent-configuration/) - a concrete orchestrator and sub-agent configuration applying these patterns
+- [Coding & Review Setup](../agent-configuration/) - a concrete orchestrator and sub-agent configuration applying these patterns
 - [Tokenomics](../tokenomics/) - the full optimization framework for token cost management
 - [Small-Batch Sessions](../small-batch-sessions/) - how session discipline maps to the skill and hook patterns here
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the same agent patterns operate as CI pipeline gates
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the structured artifacts that flow between agents as defined interfaces
+- [First-Class Artifacts](../first-class-artifacts/) - the structured artifacts that flow between agents as defined interfaces
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes and measurement for agentic workflows
