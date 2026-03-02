@@ -3,7 +3,7 @@ title: "Agentic Continuous Delivery (ACD)"
 linkTitle: "Agentic CD"
 weight: 9
 description: >
-  Extend continuous delivery with constraints, first-class artifacts, and practices for AI agent-generated changes.
+  Extend continuous delivery with constraints, delivery artifacts, and practices for AI agent-generated changes.
 ---
 
 {{% pageinfo %}}
@@ -18,7 +18,7 @@ Agentic continuous delivery ([ACD](../glossary/#acd-agentic-continuous-delivery)
 
 ACD is the application of continuous delivery in environments where software changes are proposed by agents. It exists to reliably constrain agent autonomy without slowing delivery.
 
-Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. These first-class artifacts and constraints address this.
+Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. The delivery artifacts and constraints in the [agent delivery contract](first-class-artifacts/) address this.
 
 Agents introduce unique challenges that require these additional constraints:
 
@@ -49,7 +49,7 @@ Without these foundations, adding agents amplifies existing problems rather than
 2. **[The Agentic Development Learning Curve](learning-curve/)** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
 3. **[The Four Prompting Disciplines](prompting-disciplines/)** - the four layers of skill developers must master as AI moves from chat partner to long-running worker
 4. **[AI Adoption Roadmap](adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
-5. **[First-Class Artifacts](first-class-artifacts/)** - defines the artifacts that anchor the ACD workflow and their authority hierarchy
+5. **[Agent Delivery Contract](first-class-artifacts/)** - defines the artifacts that anchor the ACD workflow and their authority hierarchy
 6. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
 7. **[Agentic Architecture Patterns](agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
 8. **[Coding & Review Setup](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
@@ -63,8 +63,8 @@ Without these foundations, adding agents amplifies existing problems rather than
 ACD *extends* MinimumCD by the following constraints:
 
 1. Explicit, human-owned intent exists for every change
-2. Intent and architecture are represented as first-class artifacts
-3. All first-class artifacts are versioned and delivered together with the change
+2. Intent and architecture are represented as delivery artifacts
+3. All delivery artifacts are versioned and delivered together with the change
 4. Intended behavior is represented independently of implementation
 5. Consistency between intent, tests, implementation, and architecture is enforced
 6. Agent-generated changes must comply with all documented constraints
@@ -73,11 +73,11 @@ ACD *extends* MinimumCD by the following constraints:
 
 These constraints are **not mandatory practices.** They describe the *minimum conditions required to sustain delivery pace once agents are making changes* to the system.
 
-## First-Class Artifacts
+## Agent Delivery Contract
 
-Every ACD change is anchored by [first-class artifacts](first-class-artifacts/) - structured documents that define intent, behavior, constraints, acceptance criteria, and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
+Every ACD change is anchored by [agent delivery contract](first-class-artifacts/) - structured documents that define intent, behavior, constraints, acceptance criteria, and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
 
-See [First-Class Artifacts](first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
+See [Agent Delivery Contract](first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
 
 ## The ACD Workflow
 

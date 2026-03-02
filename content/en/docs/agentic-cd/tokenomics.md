@@ -64,7 +64,7 @@ querying the database, which could allow unauthorized access."
 
 The JSON version conveys the same information in a fraction of the tokens and requires no natural language parsing step. When one agent's output becomes another agent's input, define a schema for that interface the same way you would define an API contract.
 
-This applies directly to the [first-class artifacts](../first-class-artifacts/): intent descriptions, feature descriptions, test specifications, and other artifacts passed between agents should be structured documents with defined fields, not open-ended prose.
+This applies directly to the [agent delivery contract](../first-class-artifacts/): intent descriptions, feature descriptions, test specifications, and other artifacts passed between agents should be structured documents with defined fields, not open-ended prose.
 
 ### 4. Strategic Prompt Caching
 
@@ -205,7 +205,7 @@ Agentic CD ([ACD](../glossary/#acd-agentic-continuous-delivery)) creates predict
 
 - [Agentic Architecture Patterns](../agentic-architecture/) - cross-cutting concerns including idempotency, model-agnostic abstraction, and structured inter-agent communication
 - [ACD](../) - the framework overview, constraints, and workflow
-- [First-Class Artifacts](../first-class-artifacts/) - the structured artifacts that token-efficient inter-agent communication depends on
+- [Agent Delivery Contract](../first-class-artifacts/) - the structured artifacts that token-efficient inter-agent communication depends on
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - expert agents that run as pipeline gates and whose own token costs should be managed
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including review queue backup that compound token costs
 - [AI Adoption Roadmap](../adoption-roadmap/) - the sequence of prerequisites before optimizing agentic workflows

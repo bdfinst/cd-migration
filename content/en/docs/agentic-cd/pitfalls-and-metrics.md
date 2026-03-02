@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-Each pitfall below has a root cause in the same two gaps: skipped [first-class artifacts](../first-class-artifacts/) and absent [pipeline enforcement](../pipeline-enforcement/). Fix those two things and most of these failures become impossible.
+Each pitfall below has a root cause in the same two gaps: skipped [agent delivery contract](../first-class-artifacts/) and absent [pipeline enforcement](../pipeline-enforcement/). Fix those two things and most of these failures become impossible.
 {{% /pageinfo %}}
 
 ## Key Pitfalls
@@ -145,7 +145,7 @@ Review the context documents for each active workstream quarterly. Archive or de
 ## Related Content
 
 - [ACD](../) - the framework overview, eight constraints, and workflow
-- [First-Class Artifacts](../first-class-artifacts/) - the artifacts that prevent these pitfalls
+- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts that prevent these pitfalls
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - the automated checks that catch failures
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
 - [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent

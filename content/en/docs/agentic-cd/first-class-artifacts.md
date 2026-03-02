@@ -1,6 +1,6 @@
 ---
-title: "First-Class Artifacts"
-linkTitle: "First-Class Artifacts"
+title: "Agent Delivery Contract"
+linkTitle: "Agent Delivery Contract"
 weight: 5
 description: >
   Detailed definitions and examples for the six artifacts that agents and humans must maintain in an ACD pipeline.

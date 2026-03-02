@@ -88,7 +88,7 @@ The mechanics differ. The principle is identical: small batches, frequent integr
 
 ## Worked Example: Rate Limiting
 
-The [first-class artifacts](../first-class-artifacts/) page establishes an intent description and two BDD scenarios for rate limiting the `/api/search` endpoint. Here is what the full session sequence looks like.
+The [agent delivery contract](../first-class-artifacts/) page establishes an intent description and two BDD scenarios for rate limiting the `/api/search` endpoint. Here is what the full session sequence looks like.
 
 ### Broad understanding (established before any session)
 
@@ -270,5 +270,5 @@ If the pipeline fails in a later session (a prior scenario breaks), the agent mu
 - [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
 - [The Four Prompting Disciplines](../prompting-disciplines/) - context engineering and specification engineering applied to session design
 - [Tokenomics](../tokenomics/) - why context size matters and how to control it
-- [First-Class Artifacts](../first-class-artifacts/) - the artifacts that anchor each session's context
+- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts that anchor each session's context
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent

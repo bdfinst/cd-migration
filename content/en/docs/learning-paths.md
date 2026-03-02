@@ -80,7 +80,7 @@ model and workflow architecture, and then covers the concrete setup, session dis
 quality gates needed to keep agent output safe to ship.
 
 1. [Agentic CD Overview](agentic-cd/) - what changes with AI agents
-2. [First-Class Artifacts](agentic-cd/first-class-artifacts/) - the constraint model
+2. [Agent Delivery Contract](agentic-cd/first-class-artifacts/) - the constraint model
 3. [Agentic Architecture](agentic-cd/agentic-architecture/) - skills, agents, hooks
 4. [Agent Configuration](agentic-cd/agent-configuration/) - concrete setup
 5. [Small-Batch Sessions](agentic-cd/small-batch-sessions/) - discipline for agent work

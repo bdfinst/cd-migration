@@ -14,7 +14,7 @@ aliases:
 Agentic workflow architecture is a software design problem. The same principles that prevent spaghetti code in application software - single responsibility, well-defined interfaces, separation of concerns - prevent spaghetti [agent](../glossary/#agent-ai) systems. The cost of getting it wrong is measured in [token](../glossary/#token) waste, cascading failures, and workflows that break when you swap one model for another.
 {{% /pageinfo %}}
 
-This page assumes familiarity with [First-Class Artifacts](../first-class-artifacts/). After reading this page, see [Coding & Review Setup](../agent-configuration/) for a concrete implementation of these patterns applied to coding and pre-commit review.
+This page assumes familiarity with [Agent Delivery Contract](../first-class-artifacts/). After reading this page, see [Coding & Review Setup](../agent-configuration/) for a concrete implementation of these patterns applied to coding and pre-commit review.
 
 ## Overview
 
@@ -811,5 +811,5 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 - [Tokenomics](../tokenomics/) - the full optimization framework for token cost management
 - [Small-Batch Sessions](../small-batch-sessions/) - how session discipline maps to the skill and hook patterns here
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the same agent patterns operate as CI pipeline gates
-- [First-Class Artifacts](../first-class-artifacts/) - the structured artifacts that flow between agents as defined interfaces
+- [Agent Delivery Contract](../first-class-artifacts/) - the structured artifacts that flow between agents as defined interfaces
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes and measurement for agentic workflows

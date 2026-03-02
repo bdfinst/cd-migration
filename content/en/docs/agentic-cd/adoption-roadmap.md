@@ -191,7 +191,7 @@ to measure progress.
 | Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) |
 | Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
 | Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations](../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
-| Accelerate with AI | Optimize / CD | The [first-class artifacts](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
+| Accelerate with AI | Optimize / CD | The [agent delivery contract](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
 
 ## Related Content
 
@@ -200,7 +200,7 @@ to measure progress.
 - [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect during Clarify Work
 - [ACD](../) - the destination for teams completing this roadmap
 - [Anti-Patterns](../anti-patterns/) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
-- [First-Class Artifacts](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
+- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
 - [Tokenomics](../tokenomics/) - how code quality drives token cost, and how to architect agents and workflows to minimize unnecessary consumption

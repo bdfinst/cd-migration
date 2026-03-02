@@ -72,7 +72,7 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 
 **Where it maps on the learning curve:** [Stage 5-6](../learning-curve/#stage-5-spec-first-agentic-development). Specification engineering is what makes spec-first agentic development and multi-agent architecture possible.
 
-**Where it shows up in ACD:** The [first-class artifacts](../first-class-artifacts/) are the output of specification engineering. The [agent-assisted specification](../agent-assisted-specification/) workflow is how agents help produce them. The [discovery loop](../agent-assisted-specification/#the-discovery-loop-from-conversation-to-specification) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example](../agent-assisted-specification/#complete-specification-example) shows what the finished output looks like.
+**Where it shows up in ACD:** The [agent delivery contract](../first-class-artifacts/) are the output of specification engineering. The [agent-assisted specification](../agent-assisted-specification/) workflow is how agents help produce them. The [discovery loop](../agent-assisted-specification/#the-discovery-loop-from-conversation-to-specification) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example](../agent-assisted-specification/#complete-specification-example) shows what the finished output looks like.
 
 ## From Synchronous to Autonomous
 
@@ -113,7 +113,7 @@ Practicing specification engineering has effects beyond agent workflows:
 
 - [The Agentic Development Learning Curve](../learning-curve/) - the six stages these disciplines map to
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how agents help produce specifications, including a [complete example](../agent-assisted-specification/#complete-specification-example)
-- [First-Class Artifacts](../first-class-artifacts/) - the structured output of specification engineering
+- [Agent Delivery Contract](../first-class-artifacts/) - the structured output of specification engineering
 - [Small-Batch Sessions](../small-batch-sessions/) - context engineering applied to session structure
 - [Coding & Review Setup](../agent-configuration/) - where context engineering and intent engineering appear in agent configuration
 - [Tokenomics](../tokenomics/) - why context engineering decisions are also cost decisions

@@ -32,7 +32,7 @@ Standardized artifact and workflow stage names across the Agentic CD section so 
 
 Reduced duplication and inconsistency across the Agentic CD section. Content that was restated in multiple pages now has a single authoritative source with cross-references:
 
-- **Renamed "The Six First-Class Artifacts" to "First-Class Artifacts."** Dropped the enumeration from the page title, section headings, and all cross-references. The count is a detail, not the concept.
+- **Renamed "The Six First-Class Artifacts" to "[Agent Delivery Contract](../agentic-cd/first-class-artifacts/)."** Dropped the enumeration and replaced the jargon term with a name that signals what the page delivers: the contract that governs how agents participate in the delivery pipeline.
 - **Added User-Facing Behavior to the artifact authority hierarchy.** Previously omitted from the hierarchy table with a footnote. Now a top-level row (priority 2) that feeds into Acceptance Criteria alongside non-functional requirements stated as architectural constraints in the Feature Description.
 - **Consolidated context loading order.** The canonical definition lives in [Configuration Quick Start](../agentic-cd/agent-setup/#context-loading-order). Other pages reference it instead of restating it.
 - **Consolidated session summary format.** The canonical template lives in [Small-Batch Sessions](../agentic-cd/small-batch-sessions/#the-context-summary). The orchestrator rules and `/end-session` skill reference it instead of duplicating it.

@@ -189,7 +189,7 @@ design with test cases). Ensure the Task Decomposition follows a
 planner-worker pattern where tasks are broken into sub-two-hour chunks.
 {{< /code-collapse >}}
 
-The sections map to the [first-class artifacts](../first-class-artifacts/) and the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
+The sections map to the [agent delivery contract](../first-class-artifacts/) and the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
 
 ### Phase 4: Stress-Test Review
 
@@ -325,6 +325,6 @@ displays a graceful "No Data Found" state rather than crashing.
 ## Related Content
 
 - [The ACD Workflow](../) - the full workflow these tips support
-- [First-Class Artifacts](../first-class-artifacts/) - detailed definitions of each artifact
+- [Agent Delivery Contract](../first-class-artifacts/) - detailed definitions of each artifact
 - [The Four Prompting Disciplines](../prompting-disciplines/) - the skill framework that produces specifications like the example above
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment

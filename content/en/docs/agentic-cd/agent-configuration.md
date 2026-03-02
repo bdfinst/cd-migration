@@ -738,7 +738,7 @@ for the full gate sequence.
   orchestrator and skills enforce
 - [Tokenomics](../tokenomics/) - the full optimization framework: model routing, context
   hygiene, structured outputs, prompt caching, and workflow-level measurement
-- [First-Class Artifacts](../first-class-artifacts/) - the artifacts the
+- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts the
   implementation agent receives and the review agents verify against
 - [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the
   full gate sequence from pre-commit through production verification
