@@ -4,6 +4,8 @@ linkTitle: "AI Adoption Roadmap"
 weight: 4
 description: >
   A guide for incorporating AI into your delivery process safely - remove friction and add safety before accelerating with AI coding.
+aliases:
+  - /docs/agentic-cd/adoption-roadmap/
 ---
 
 {{% pageinfo %}}
@@ -11,7 +13,7 @@ AI adoption stress-tests your organization. AI does not create new problems. It 
 existing ones faster. Teams that try to accelerate with AI before fixing their delivery process get the
 same result as putting a bigger engine in a car with no brakes. This page provides the
 recommended sequence for incorporating AI safely, mirroring the
-[brownfield migration phases](../migrate-to-cd/brownfield/).
+[brownfield migration phases](../../migrate-to-cd/brownfield/).
 {{% /pageinfo %}}
 
 ## Before You Add AI: A Decision Framework
@@ -80,7 +82,7 @@ steps build on working code rather than compensating for broken code.
 
 Use AI to improve requirements before code is written, not to write code from vague requirements.
 Ambiguous requirements are the single largest source of defects
-(see [Systemic Defect Fixes](../defect-sources/)), and AI can detect ambiguity faster than
+(see [Systemic Defect Fixes](../../defect-sources/)), and AI can detect ambiguity faster than
 manual review.
 
 **What to do:**
@@ -99,7 +101,7 @@ progression that makes this work at scale.
 
 ## Harden Guardrails
 
-**Brownfield phase:** Foundations / [Pipeline](../glossary/#pipeline)
+**Brownfield phase:** Foundations / [Pipeline](../../glossary/#pipeline)
 
 Before accelerating code generation, strengthen the safety net that catches mistakes. This means
 both product guardrails (does the code work?) and development guardrails (is the code
@@ -108,7 +110,7 @@ maintainable?).
 **Product and operational guardrails:**
 
 - Automated test suites with meaningful coverage of critical paths
-- Deterministic [CD](../glossary/#cd-continuous-delivery) pipelines that run on every commit
+- Deterministic [CD](../../glossary/#cd-continuous-delivery) pipelines that run on every commit
 - Deployment validation (smoke tests, health checks, canary analysis)
 
 **Development guardrails:**
@@ -121,15 +123,15 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests](../testing/) at service boundaries. AI-generated code is
+- Add [contract tests](../../testing/) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in under ten minutes. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.
 
 **What this enables:** A safety net that catches mistakes regardless of who (or what) made them.
 The pipeline becomes the authority on code quality, not human reviewers. See
-[Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) for how these guardrails
-extend to [ACD](../glossary/#acd-agentic-continuous-delivery).
+[Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) for how these guardrails
+extend to [ACD](../../glossary/#acd-agentic-continuous-delivery).
 
 ## Reduce Delivery Friction
 
@@ -142,9 +144,9 @@ accelerates the code generation phase.
 **What to do:**
 
 - Remove manual approval gates that add wait time without adding safety
-  (see [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/)).
+  (see [Replacing Manual Validations](../../migrate-to-cd/brownfield/replacing-manual-validations/)).
 - Fix fragile test and staging environments that cause intermittent failures.
-- Shorten [branch lifetimes](../glossary/#branch-lifetime). If branches live longer than a day, integration pain will increase
+- Shorten [branch lifetimes](../../glossary/#branch-lifetime). If branches live longer than a day, integration pain will increase
   as AI accelerates code generation.
 - Automate deployment. If deploying requires a runbook or a specific person, it is a bottleneck
   that will be exposed when code moves faster.
@@ -155,55 +157,55 @@ as human-generated code with the same safety guarantees.
 
 ## Accelerate with AI
 
-**Brownfield phase:** Optimize / [Continuous Deployment](../glossary/#continuous-deployment)
+**Brownfield phase:** Optimize / [Continuous Deployment](../../glossary/#continuous-deployment)
 
 Now - and only now - expand AI use to code generation, refactoring, and autonomous contributions.
 The guardrails are in place. The pipeline is fast. Requirements are clear. The outcome of every
 change is deterministic regardless of whether a human or an AI wrote it.
 
 {{% alert title="Do not let AI define the test scenarios" color="warning" %}}
-Humans define what to test. [Agents](../glossary/#agent-ai) generate the test code from those specifications. See [Acceptance Criteria](../first-class-artifacts/#4-acceptance-criteria) for the validation properties required before implementation begins.
+Humans define what to test. [Agents](../../glossary/#agent-ai) generate the test code from those specifications. See [Acceptance Criteria](../../specification/first-class-artifacts/#4-acceptance-criteria) for the validation properties required before implementation begins.
 {{% /alert %}}
 
 **What to do:**
 
 - Use AI for code generation with the specification-first workflow described in
-  [the ACD workflow](../). Define test scenarios first, let AI generate
+  [the ACD workflow](../../). Define test scenarios first, let AI generate
   the test code (validated for behavior focus and spec fidelity), then let AI generate
   the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
   These are high-value, low-risk tasks where AI excels. Well-structured, well-named code
   also reduces the token cost of every subsequent AI interaction - see
-  [Tokenomics: Code Quality as a Token Cost Driver](../tokenomics/#8-code-quality-as-a-token-cost-driver).
+  [Tokenomics: Code Quality as a Token Cost Driver](../../operations/tokenomics/#8-code-quality-as-a-token-cost-driver).
 - Use AI to analyze incidents and suggest fixes, with the same pipeline validation applied to
   any change.
 
 **What this enables:** AI-accelerated development where the speed increase translates to faster
 delivery, not faster defect generation. The pipeline enforces the same quality bar regardless of
-the author. See [Pitfalls and Metrics](../pitfalls-and-metrics/) for what to watch for and how
+the author. See [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) for what to watch for and how
 to measure progress.
 
 ## Mapping to Brownfield Phases
 
 | AI Adoption Stage | Brownfield Phase | Key Connection |
 |-------------------|-----------------|----------------|
-| Quality Tools | Assess | Use the [current-state assessment](../migrate-to-cd/migration-path/assess/) to evaluate AI tooling alongside delivery process gaps |
-| Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/) |
-| Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
-| Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations](../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
-| Accelerate with AI | Optimize / CD | The [agent delivery contract](../first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
+| Quality Tools | Assess | Use the [current-state assessment](../../migrate-to-cd/migration-path/assess/) to evaluate AI tooling alongside delivery process gaps |
+| Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/) |
+| Harden Guardrails | Foundations / Pipeline | The [testing fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) and pipeline gates are the same work, with AI-readiness as additional motivation |
+| Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations](../../migrate-to-cd/brownfield/replacing-manual-validations/) unblocks AI-speed delivery |
+| Accelerate with AI | Optimize / CD | The [agent delivery contract](../../specification/first-class-artifacts/) become the delivery contract once the pipeline is deterministic and fast |
 
 ## Related Content
 
-- [Brownfield CD Overview](../migrate-to-cd/brownfield/) - the phased migration approach this roadmap parallels
-- [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Reduce Delivery Friction
-- [Systemic Defect Fixes](../defect-sources/) - catalog of defect causes that AI can help detect during Clarify Work
-- [ACD](../) - the destination for teams completing this roadmap
-- [Anti-Patterns](../anti-patterns/) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
-- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
-- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
-- [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
-- [Tokenomics](../tokenomics/) - how code quality drives token cost, and how to architect agents and workflows to minimize unnecessary consumption
+- [Brownfield CD Overview](../../migrate-to-cd/brownfield/) - the phased migration approach this roadmap parallels
+- [Replacing Manual Validations](../../migrate-to-cd/brownfield/replacing-manual-validations/) - the core mechanical cycle for Reduce Delivery Friction
+- [Systemic Defect Fixes](../../defect-sources/) - catalog of defect causes that AI can help detect during Clarify Work
+- [ACD](../../) - the destination for teams completing this roadmap
+- [Anti-Patterns](../../anti-patterns/) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the artifacts that Accelerate with AI's specification-first workflow requires
+- [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
+- [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
+- [Tokenomics](../../operations/tokenomics/) - how code quality drives token cost, and how to architect agents and workflows to minimize unnecessary consumption
 - [The Four Prompting Disciplines](../prompting-disciplines/) - the skill layers developers need as they progress through the adoption roadmap
 
 ---

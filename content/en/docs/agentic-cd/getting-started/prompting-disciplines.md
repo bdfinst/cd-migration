@@ -4,6 +4,8 @@ linkTitle: "Prompting Disciplines"
 weight: 3
 description: >
   Four layers of skill that developers must master as AI moves from a chat partner to a long-running worker - and what changes when agents run autonomously.
+aliases:
+  - /docs/agentic-cd/prompting-disciplines/
 ---
 
 {{% pageinfo %}}
@@ -14,7 +16,7 @@ Most guidance on "prompting" describes Discipline 1: writing clear instructions 
 
 Synchronous, session-based instructions used in a chat window.
 
-Prompt craft is now considered table stakes, the equivalent of fluent typing. It does not differentiate. Every developer using AI tools will reach baseline proficiency here. The skill is necessary but insufficient for [agentic workflows](../).
+Prompt craft is now considered table stakes, the equivalent of fluent typing. It does not differentiate. Every developer using AI tools will reach baseline proficiency here. The skill is necessary but insufficient for [agentic workflows](../../).
 
 **Key skills:**
 
@@ -27,19 +29,19 @@ Prompt craft is now considered table stakes, the equivalent of fluent typing. It
 
 ## 2. Context Engineering
 
-Curating the entire information environment (the [tokens](../glossary/#token)) the [agent](../glossary/#agent-ai) operates within.
+Curating the entire information environment (the [tokens](../../glossary/#token)) the [agent](../../glossary/#agent-ai) operates within.
 
-Context engineering is the difference between a developer who writes better [prompts](../glossary/#prompt) and a developer who builds better scaffolding so the agent starts with everything it needs. The 10x performers are not writing cleverer instructions. They are assembling better [context](../glossary/#context-llm).
+Context engineering is the difference between a developer who writes better [prompts](../../glossary/#prompt) and a developer who builds better scaffolding so the agent starts with everything it needs. The 10x performers are not writing cleverer instructions. They are assembling better [context](../../glossary/#context-llm).
 
 **Key skills:**
 
-- Providing project files, conventions, and [constraints](../glossary/#constraint) at the start of the session
-- Managing context infrastructure: [system prompts](../glossary/#system-prompt), retrieval pipelines, and memory systems
-- Deciding what to include and, more importantly, what to exclude (see [Small-Batch Sessions: context load](../small-batch-sessions/#what-to-include-in-the-context-load))
+- Providing project files, conventions, and [constraints](../../glossary/#constraint) at the start of the session
+- Managing context infrastructure: [system prompts](../../glossary/#system-prompt), retrieval pipelines, and memory systems
+- Deciding what to include and, more importantly, what to exclude (see [Small-Batch Sessions: context load](../../architecture/small-batch-sessions/#what-to-include-in-the-context-load))
 
 **Where it maps on the learning curve:** [Stage 3-4](../learning-curve/#stage-3-chat-driven-development). The transition from chat-driven development to agentic task completion is driven by context engineering. The agent that navigates the codebase with the right context outperforms the agent that receives pasted excerpts in a chat window.
 
-**Where it shows up in ACD:** The [orchestrator](../glossary/#orchestrator) assembles context for each session ([Coding & Review Setup](../agent-configuration/#the-orchestrator)). The `/start-session` skill encodes context assembly order. [Prompt caching](../glossary/#prompt-caching) depends on placing stable context before dynamic content ([Tokenomics](../tokenomics/)).
+**Where it shows up in ACD:** The [orchestrator](../../glossary/#orchestrator) assembles context for each session ([Coding & Review Setup](../../architecture/agent-configuration/#the-orchestrator)). The `/start-session` skill encodes context assembly order. [Prompt caching](../../glossary/#prompt-caching) depends on placing stable context before dynamic content ([Tokenomics](../../operations/tokenomics/)).
 
 ## 3. Intent Engineering
 
@@ -55,7 +57,7 @@ Intent engineering tells the agent what to want, not just what to know. An agent
 
 **Where it maps on the learning curve:** The transition from [Stage 4](../learning-curve/#stage-4-agentic-task-completion) to [Stage 5](../learning-curve/#stage-5-spec-first-agentic-development). At Stage 4, vague requirements cause drift because the agent fills in intent from its own assumptions. Intent engineering makes those assumptions explicit.
 
-**Where it shows up in ACD:** The [Intent Description](../first-class-artifacts/#1-intent-description) artifact is the formalized version of intent engineering. It sits at the top of the [artifact authority hierarchy](../first-class-artifacts/#artifact-authority-hierarchy) because intent governs every downstream decision.
+**Where it shows up in ACD:** The [Intent Description](../../specification/first-class-artifacts/#1-intent-description) artifact is the formalized version of intent engineering. It sits at the top of the [artifact authority hierarchy](../../specification/first-class-artifacts/#artifact-authority-hierarchy) because intent governs every downstream decision.
 
 ## 4. Specification Engineering (The New Ceiling)
 
@@ -67,12 +69,12 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 
 - **Self-contained problem statements:** Can the task be solved without the agent fetching additional information?
 - **Acceptance criteria:** Writing three sentences that an independent observer could use to verify "done"
-- **Decomposition:** Breaking a multi-day project into small subtasks with clear boundaries (see [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/))
+- **Decomposition:** Breaking a multi-day project into small subtasks with clear boundaries (see [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/))
 - **Evaluation design:** Creating test cases with known-good outputs to catch model regressions
 
 **Where it maps on the learning curve:** [Stage 5-6](../learning-curve/#stage-5-spec-first-agentic-development). Specification engineering is what makes spec-first agentic development and multi-agent architecture possible.
 
-**Where it shows up in ACD:** The [agent delivery contract](../first-class-artifacts/) are the output of specification engineering. The [agent-assisted specification](../agent-assisted-specification/) workflow is how agents help produce them. The [discovery loop](../agent-assisted-specification/#the-discovery-loop-from-conversation-to-specification) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example](../agent-assisted-specification/#complete-specification-example) shows what the finished output looks like.
+**Where it shows up in ACD:** The [agent delivery contract](../../specification/first-class-artifacts/) are the output of specification engineering. The [agent-assisted specification](../../specification/agent-assisted-specification/) workflow is how agents help produce them. The [discovery loop](../../specification/agent-assisted-specification/#the-discovery-loop-from-conversation-to-specification) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example](../../specification/agent-assisted-specification/#complete-specification-example) shows what the finished output looks like.
 
 ## From Synchronous to Autonomous
 
@@ -95,11 +97,11 @@ To practice the shift, take a request like "Update the dashboard" and rewrite it
 2. Does not know your company's internal acronyms
 3. Has zero access to information outside that specific text
 
-If the rewritten request still makes sense and can be acted on, it is ready for an autonomous agent. If it cannot, the missing information is the gap between your current prompt and a specification. This is the same test [agent-assisted specification](../agent-assisted-specification/) applies: can the agent implement this without asking a clarifying question?
+If the rewritten request still makes sense and can be acted on, it is ready for an autonomous agent. If it cannot, the missing information is the gap between your current prompt and a specification. This is the same test [agent-assisted specification](../../specification/agent-assisted-specification/) applies: can the agent implement this without asking a clarifying question?
 
 ### The Planner-Worker Architecture
 
-Modern agents use a planner model to decompose your specification into a task log, and worker models to execute each task. Your job is to provide the decomposition logic - the rules for how to split work - so the planner can function reliably. This is the [orchestrator pattern](../agent-configuration/#the-orchestrator) at its core: the orchestrator routes work to specialized agents, but it can only route well when the specification is structured enough to decompose.
+Modern agents use a planner model to decompose your specification into a task log, and worker models to execute each task. Your job is to provide the decomposition logic - the rules for how to split work - so the planner can function reliably. This is the [orchestrator pattern](../../architecture/agent-configuration/#the-orchestrator) at its core: the orchestrator routes work to specialized agents, but it can only route well when the specification is structured enough to decompose.
 
 ### Organizational Impact
 
@@ -112,9 +114,9 @@ Practicing specification engineering has effects beyond agent workflows:
 ## Related Content
 
 - [The Agentic Development Learning Curve](../learning-curve/) - the six stages these disciplines map to
-- [Agent-Assisted Specification](../agent-assisted-specification/) - how agents help produce specifications, including a [complete example](../agent-assisted-specification/#complete-specification-example)
-- [Agent Delivery Contract](../first-class-artifacts/) - the structured output of specification engineering
-- [Small-Batch Sessions](../small-batch-sessions/) - context engineering applied to session structure
-- [Coding & Review Setup](../agent-configuration/) - where context engineering and intent engineering appear in agent configuration
-- [Tokenomics](../tokenomics/) - why context engineering decisions are also cost decisions
+- [Agent-Assisted Specification](../../specification/agent-assisted-specification/) - how agents help produce specifications, including a [complete example](../../specification/agent-assisted-specification/#complete-specification-example)
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the structured output of specification engineering
+- [Small-Batch Sessions](../../architecture/small-batch-sessions/) - context engineering applied to session structure
+- [Coding & Review Setup](../../architecture/agent-configuration/) - where context engineering and intent engineering appear in agent configuration
+- [Tokenomics](../../operations/tokenomics/) - why context engineering decisions are also cost decisions
 - [AI Adoption Roadmap](../adoption-roadmap/) - the organizational prerequisites before these disciplines can be applied at scale

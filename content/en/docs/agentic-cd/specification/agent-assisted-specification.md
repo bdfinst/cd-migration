@@ -1,13 +1,15 @@
 ---
 title: "Agent-Assisted Specification"
 linkTitle: "Agent-Assisted Specification"
-weight: 6
+weight: 2
 description: >
   How to use agents as collaborators during specification and why small-scope specification is not big upfront design.
+aliases:
+  - /docs/agentic-cd/agent-assisted-specification/
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow](../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../glossary/#agent-ai) accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The Pattern
@@ -25,7 +27,7 @@ This is not the agent doing specification for you. It is the agent making your s
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
-**You specify the next single unit of work.** One thin [vertical slice](../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
+**You specify the next single unit of work.** One thin [vertical slice](../../glossary/#vertical-sliced-story) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery](../../glossary/#cd-continuous-delivery) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
 
 If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
@@ -33,9 +35,9 @@ If your specification effort for a single change takes more than 15 minutes, the
 
 The intent description does not need to be perfect on the first draft. Write a rough version and use an agent to sharpen it.
 
-**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated [constraint](../glossary/#constraint).
+**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated [constraint](../../glossary/#constraint).
 
-Example [prompt](../glossary/#prompt):
+Example [prompt](../../glossary/#prompt):
 
 {{< code-collapse title="Prompt: identify ambiguity in intent description" >}}
 Here is the intent description for my next change. Identify any
@@ -54,7 +56,7 @@ The human still owns the intent. The agent is a sounding board that catches gaps
 
 ## How Agents Help with User-Facing Behavior
 
-Writing [BDD](../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
+Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
 
 **Generate initial scenarios from the intent.** Give the agent your intent description and ask it to produce Gherkin scenarios covering the expected behavior.
 
@@ -122,7 +124,7 @@ The human makes the architectural decisions and sets the thresholds. The agent m
 
 ## Validating the Complete Specification Set
 
-The four specification stages produce four [artifacts](../glossary/#artifact): intent description, user-facing behavior (BDD scenarios), feature description (constraint architecture), and [acceptance criteria](../glossary/#acceptance-criteria). Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
+The four specification stages produce four [artifacts](../../glossary/#artifact): intent description, user-facing behavior (BDD scenarios), feature description (constraint architecture), and [acceptance criteria](../../glossary/#acceptance-criteria). Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
 
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
@@ -174,7 +176,7 @@ Let the agent ask three to five high-signal questions at a time. The goal is to 
 
 **Your role:** Answer with as much raw context as possible. Do not worry about formatting. Get the "why" and "how" out. The agent will structure it later.
 
-This is [context engineering](../prompting-disciplines/#2-context-engineering) in practice: you are building the information environment the specification will formalize.
+This is [context engineering](../../getting-started/prompting-disciplines/#2-context-engineering) in practice: you are building the information environment the specification will formalize.
 
 ### Phase 3: Drafting (Specification)
 
@@ -189,7 +191,7 @@ design with test cases). Ensure the Task Decomposition follows a
 planner-worker pattern where tasks are broken into sub-two-hour chunks.
 {{< /code-collapse >}}
 
-The sections map to the [agent delivery contract](../first-class-artifacts/) and the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
+The sections map to the [agent delivery contract](../first-class-artifacts/) and the [specification engineering](../../getting-started/prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
 
 ### Phase 4: Stress-Test Review
 
@@ -215,14 +217,14 @@ This is the same validation step as the [specification consistency check](#valid
 The discovery loop front-loads the work where it is cheapest: in conversation, before any code exists.
 
 {{% alert title="Tip: the running context log" color="info" %}}
-During long discovery conversations, ask the agent to maintain a running context log of key decisions. This prevents core decisions from getting lost in the middle of the [context window](../glossary/#context-window) as the conversation grows. The context log becomes the raw material for Phase 3.
+During long discovery conversations, ask the agent to maintain a running context log of key decisions. This prevents core decisions from getting lost in the middle of the [context window](../../glossary/#context-window) as the conversation grows. The context log becomes the raw material for Phase 3.
 {{% /alert %}}
 
 The [complete specification example](#complete-specification-example) below shows the output this workflow produces.
 
 ## Complete Specification Example
 
-The four specification stages produce concise, structured documents. The example below shows what a complete specification looks like when all four disciplines from [The Four Prompting Disciplines](../prompting-disciplines/) are applied. This is a real-scale example, not a simplified illustration.
+The four specification stages produce concise, structured documents. The example below shows what a complete specification looks like when all four disciplines from [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) are applied. This is a real-scale example, not a simplified illustration.
 
 Notice what makes this specification agent-executable: every section is self-contained, acceptance criteria are verifiable by an independent observer, the decomposition defines clear module boundaries, and test cases include known-good outputs.
 
@@ -317,14 +319,14 @@ displays a graceful "No Data Found" state rather than crashing.
 
 **What to notice:**
 
-- **Self-contained:** An agent receiving only this document can implement without asking clarifying questions. That is the [self-containment test](../prompting-disciplines/#the-self-containment-test).
-- **Decomposed with boundaries:** Each module has explicit inputs and outputs. An [orchestrator](../glossary/#orchestrator) can route each module to a separate agent session (see [Small-Batch Sessions](../small-batch-sessions/)).
+- **Self-contained:** An agent receiving only this document can implement without asking clarifying questions. That is the [self-containment test](../../getting-started/prompting-disciplines/#the-self-containment-test).
+- **Decomposed with boundaries:** Each module has explicit inputs and outputs. An [orchestrator](../../glossary/#orchestrator) can route each module to a separate agent session (see [Small-Batch Sessions](../../architecture/small-batch-sessions/)).
 - **Acceptance criteria are observable:** Each criterion describes a user-visible outcome, not an internal implementation detail. These map directly to [Acceptance Criteria](../first-class-artifacts/#4-acceptance-criteria).
-- **Test cases include expected outputs:** The evaluation design gives the agent known-good results to verify against, which is the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill of evaluation design.
+- **Test cases include expected outputs:** The evaluation design gives the agent known-good results to verify against, which is the [specification engineering](../../getting-started/prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill of evaluation design.
 
 ## Related Content
 
-- [The ACD Workflow](../) - the full workflow these tips support
+- [The ACD Workflow](../../) - the full workflow these tips support
 - [Agent Delivery Contract](../first-class-artifacts/) - detailed definitions of each artifact
-- [The Four Prompting Disciplines](../prompting-disciplines/) - the skill framework that produces specifications like the example above
-- [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment
+- [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - the skill framework that produces specifications like the example above
+- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment

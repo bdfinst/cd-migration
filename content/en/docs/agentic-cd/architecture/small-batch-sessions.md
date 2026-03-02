@@ -1,35 +1,37 @@
 ---
 title: "Small-Batch Agent Sessions"
 linkTitle: "Small-Batch Sessions"
-weight: 9
+weight: 3
 description: >
   How to structure agent sessions so context stays manageable, commits stay small, and the pipeline stays green.
+aliases:
+  - /docs/agentic-cd/small-batch-sessions/
 ---
 
 {{% pageinfo %}}
-One [BDD](../glossary/#bdd-behavior-driven-development) scenario. One [agent](../glossary/#agent-ai) session. One commit. This is the same discipline [CI](../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
+One [BDD](../../glossary/#bdd-behavior-driven-development) scenario. One [agent](../../glossary/#agent-ai) session. One commit. This is the same discipline [CI](../../glossary/#ci-continuous-integration) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
 
-**Stop optimizing your [prompts](../glossary/#prompt). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
+**Stop optimizing your [prompts](../../glossary/#prompt). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
 
 ## Establish the Broad Understanding First
 
 Before any implementation session begins, establish the complete understanding of the feature:
 
 1. **Intent description** - why the change exists and what problem it solves
-2. **All BDD scenarios** - every behavior to implement, validated by the [specification review](../agent-assisted-specification/#validating-the-complete-specification-set) before any code is written
+2. **All BDD scenarios** - every behavior to implement, validated by the [specification review](../../specification/agent-assisted-specification/#validating-the-complete-specification-set) before any code is written
 3. **Feature description** - architectural constraints, performance budgets, integration boundaries
 4. **Scenario order** - the sequence in which you will implement the scenarios
 
-The [agent-assisted specification](../agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts](../glossary/#artifact) before any code is written.
+The [agent-assisted specification](../../specification/agent-assisted-specification/) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts](../../glossary/#artifact) before any code is written.
 
 **Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your complete scenario list and ask it to suggest an implementation order that minimizes the rework cost of each step.
 
 This ordering step also has a human gate. Review the proposed slice sequence before any implementation begins. The ordering determines the shape of every session that follows.
 
-The broad understanding is not in the implementation agent's [context](../glossary/#context-llm). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
+The broad understanding is not in the implementation agent's [context](../../glossary/#context-llm). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
 
-**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../glossary/#vertical-sliced-story), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for full-stack versus subdomain teams.
+**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice](../../glossary/#vertical-sliced-story), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) for full-stack versus subdomain teams.
 
 ## Session Structure
 
@@ -39,7 +41,7 @@ Each session follows the same structure:
 |------|-------------|
 | **Context load** | Assemble the session context: intent summary, feature description, the one scenario for this session, the relevant existing code, and a brief summary of completed sessions |
 | **Implementation** | Agent generates test code and production code to satisfy the scenario |
-| **Validation** | [Pipeline](../glossary/#pipeline) runs - all scenarios implemented so far must pass |
+| **Validation** | [Pipeline](../../glossary/#pipeline) runs - all scenarios implemented so far must pass |
 | **Commit** | Change committed; commit message references the scenario |
 | **Context summary** | Write a one-paragraph summary of what this session built, for use in the next session |
 
@@ -47,7 +49,7 @@ The session ends at the commit. The next session starts fresh.
 
 ### What to include in the context load
 
-Include only what the agent needs to implement this specific scenario. Load context in the order defined in [Configuration Quick Start: Context Loading Order](../agent-setup/#context-loading-order) - stable content first to maximize prompt cache hits, volatile content last.
+Include only what the agent needs to implement this specific scenario. Load context in the order defined in [Configuration Quick Start: Context Loading Order](../../getting-started/agent-setup/#context-loading-order) - stable content first to maximize prompt cache hits, volatile content last.
 
 For each item, apply the context hygiene test: would omitting it change what the agent produces? If not, omit it.
 
@@ -88,7 +90,7 @@ The mechanics differ. The principle is identical: small batches, frequent integr
 
 ## Worked Example: Rate Limiting
 
-The [agent delivery contract](../first-class-artifacts/) page establishes an intent description and two BDD scenarios for rate limiting the `/api/search` endpoint. Here is what the full session sequence looks like.
+The [agent delivery contract](../../specification/first-class-artifacts/) page establishes an intent description and two BDD scenarios for rate limiting the `/api/search` endpoint. Here is what the full session sequence looks like.
 
 ### Broad understanding (established before any session)
 
@@ -259,16 +261,16 @@ This has a practical implication: **do not let an agent session span a commit bo
 
 If the pipeline fails mid-session, the session is not done. Do not summarize completed work and do not start a new session. The agent's job in this session is to get the pipeline green.
 
-If the pipeline fails in a later session (a prior scenario breaks), the agent must restore the passing state before implementing the new scenario. This is the same discipline as the CI rule: while the pipeline is red, the only valid work is restoring green. See [ACD constraint 8](../).
+If the pipeline fails in a later session (a prior scenario breaks), the agent must restore the passing state before implementing the new scenario. This is the same discipline as the CI rule: while the pipeline is red, the only valid work is restoring green. See [ACD constraint 8](../../).
 
 ## Related Content
 
-- [ACD Workflow](../) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
-- [Agent-Assisted Specification](../agent-assisted-specification/) - how to establish the broad understanding before sessions begin
-- [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - the same discipline applied to human-authored work
-- [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
-- [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
-- [The Four Prompting Disciplines](../prompting-disciplines/) - context engineering and specification engineering applied to session design
-- [Tokenomics](../tokenomics/) - why context size matters and how to control it
-- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts that anchor each session's context
-- [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent
+- [ACD Workflow](../../) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
+- [Agent-Assisted Specification](../../specification/agent-assisted-specification/) - how to establish the broad understanding before sessions begin
+- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - the same discipline applied to human-authored work
+- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
+- [Horizontal Slicing](../../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
+- [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - context engineering and specification engineering applied to session design
+- [Tokenomics](../../operations/tokenomics/) - why context size matters and how to control it
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the artifacts that anchor each session's context
+- [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent

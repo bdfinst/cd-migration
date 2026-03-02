@@ -1,0 +1,25 @@
+# Netlify redirect rules
+# Belt-and-suspenders for Hugo aliases after the agentic-cd section
+# reorganization into sub-sections (architecture/, getting-started/,
+# operations/, specification/).
+
+# Architecture
+/docs/agentic-cd/agentic-architecture/       /docs/agentic-cd/architecture/agentic-architecture/       301
+/docs/agentic-cd/workflow-architecture/       /docs/agentic-cd/architecture/agentic-architecture/       301
+/docs/agentic-cd/agent-configuration/         /docs/agentic-cd/architecture/agent-configuration/         301
+/docs/agentic-cd/small-batch-sessions/        /docs/agentic-cd/architecture/small-batch-sessions/        301
+
+# Getting Started
+/docs/agentic-cd/adoption-roadmap/            /docs/agentic-cd/getting-started/adoption-roadmap/         301
+/docs/agentic-cd/agent-setup/                 /docs/agentic-cd/getting-started/agent-setup/              301
+/docs/agentic-cd/learning-curve/              /docs/agentic-cd/getting-started/learning-curve/           301
+/docs/agentic-cd/prompting-disciplines/       /docs/agentic-cd/getting-started/prompting-disciplines/    301
+
+# Operations
+/docs/agentic-cd/pipeline-enforcement/        /docs/agentic-cd/operations/pipeline-enforcement/          301
+/docs/agentic-cd/pitfalls-and-metrics/        /docs/agentic-cd/operations/pitfalls-and-metrics/          301
+/docs/agentic-cd/tokenomics/                  /docs/agentic-cd/operations/tokenomics/                    301
+
+# Specification
+/docs/agentic-cd/agent-assisted-specification/ /docs/agentic-cd/specification/agent-assisted-specification/ 301
+/docs/agentic-cd/first-class-artifacts/       /docs/agentic-cd/specification/first-class-artifacts/      301

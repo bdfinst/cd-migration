@@ -1,22 +1,24 @@
 ---
 title: "Agent Delivery Contract"
 linkTitle: "Agent Delivery Contract"
-weight: 5
+weight: 1
 description: >
   Detailed definitions and examples for the six artifacts that agents and humans must maintain in an ACD pipeline.
+aliases:
+  - /docs/agentic-cd/first-class-artifacts/
 ---
 
 {{% pageinfo %}}
-Each [artifact](../glossary/#artifact) has a defined authority. When an [agent](../glossary/#agent-ai) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
+Each [artifact](../../glossary/#artifact) has a defined authority. When an [agent](../../glossary/#agent-ai) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
 
-For the framework overview and the eight constraints, see [ACD](../).
+For the framework overview and the eight constraints, see [ACD](../../).
 {{% /pageinfo %}}
 
 ## 1. Intent Description
 
 **What it is:** A self-contained problem statement, written by a human, that defines what the change should accomplish and why.
 
-An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test](../prompting-disciplines/#the-self-containment-test) for how to verify completeness.
+An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test](../../getting-started/prompting-disciplines/#the-self-containment-test) for how to verify completeness.
 
 **Example:**
 
@@ -36,7 +38,7 @@ the limit should receive a 429 response with a Retry-After header.
 
 **What it is:** A description of how the system should behave from the user's perspective, expressed as observable outcomes.
 
-Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../glossary/#bdd-behavior-driven-development) scenarios work well here:
+Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../../glossary/#bdd-behavior-driven-development) scenarios work well here:
 
 {{< code-collapse title="BDD scenarios: rate limit user-facing behavior" lang="gherkin" >}}
 Scenario: Client exceeds rate limit
@@ -92,7 +94,7 @@ Agents need explicit architectural context that human developers often carry in 
 
 ## 4. Acceptance Criteria
 
-**What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents](../glossary/#agent-ai). These are the authoritative source of truth for what the code should do.
+**What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents](../../glossary/#agent-ai). These are the authoritative source of truth for what the code should do.
 
 This artifact has two parts: the **done definition** (observable outcomes an independent observer could verify) and the **evaluation design** (test cases with known-good outputs that catch regressions). Together they **constrain** the agent. If the criteria are comprehensive, the agent cannot generate incorrect code that passes. If the criteria are shallow, the agent can generate code that passes tests but does not satisfy the intent.
 
@@ -114,7 +116,7 @@ Write acceptance criteria as observable outcomes, not internal implementation de
 
 ### Evaluation design
 
-Define test cases with known-good outputs so the agent (and the [pipeline](../glossary/#pipeline)) can verify correctness mechanically:
+Define test cases with known-good outputs so the agent (and the [pipeline](../../glossary/#pipeline)) can verify correctness mechanically:
 
 {{< code-collapse title="Evaluation design: rate limiting test cases" lang="markdown" >}}
 **Test Case 1 (Happy Path):** Client sends 50 requests in one minute.
@@ -133,13 +135,13 @@ a request. Result: Client B receives 200.
 Result: Middleware adds less than 5ms.
 {{< /code-collapse >}}
 
-Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents](../pipeline-enforcement/) enforce these two properties at pipeline speed.
+Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents](../../operations/pipeline-enforcement/) enforce these two properties at pipeline speed.
 
-**Key property:** The [pipeline](../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
+**Key property:** The [pipeline](../../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
 ## 5. Implementation
 
-**What it is:** The actual code that implements the feature. In [ACD](../glossary/#acd-agentic-continuous-delivery), this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
+**What it is:** The actual code that implements the feature. In [ACD](../../glossary/#acd-agentic-continuous-delivery), this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
 
 The implementation is the artifact most likely to be agent-generated. It must satisfy the acceptance criteria (tests), conform to the feature description (architecture), and achieve the intent description (purpose).
 
@@ -233,16 +235,16 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 
 Without them, an agent that detects a conflict between what the acceptance criteria expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
-These artifacts are valuable in any project. In [ACD](../glossary/#acd-agentic-continuous-delivery), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
+These artifacts are valuable in any project. In [ACD](../../glossary/#acd-agentic-continuous-delivery), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
 
-With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/).
+With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/).
 
 ## Related Content
 
-- [ACD](../) - the framework overview, eight constraints, and workflow
-- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces artifact consistency
-- [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failure modes when artifacts are incomplete
-- [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence before adopting artifact-driven workflows
+- [ACD](../../) - the framework overview, eight constraints, and workflow
+- [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) - how the pipeline enforces artifact consistency
+- [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) - common failure modes when artifacts are incomplete
+- [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) - the prerequisite sequence before adopting artifact-driven workflows
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
-- [The Four Prompting Disciplines](../prompting-disciplines/) - the skills that produce these artifacts
-- [Testing](../../testing/) - testing strategies that inform acceptance criteria
+- [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - the skills that produce these artifacts
+- [Testing](../../../testing/) - testing strategies that inform acceptance criteria

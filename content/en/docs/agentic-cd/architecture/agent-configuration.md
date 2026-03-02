@@ -1,27 +1,29 @@
 ---
 title: "Coding & Review Setup"
 linkTitle: "Coding & Review Setup"
-weight: 8
+weight: 2
 description: >
   A recommended orchestrator, agent, and sub-agent configuration for coding and pre-commit review, with rules, skills, and hooks mapped to the defect sources catalog.
+aliases:
+  - /docs/agentic-cd/agent-configuration/
 ---
 
 {{% pageinfo %}}
-Standard pre-commit tooling catches mechanical defects. The [agent](../glossary/#agent-ai) configuration described here
+Standard pre-commit tooling catches mechanical defects. The [agent](../../glossary/#agent-ai) configuration described here
 covers what standard tooling cannot: semantic logic errors, subtle security patterns, missing
 timeout propagation, and concurrency anti-patterns. Both layers are required. Neither replaces
 the other.
 
 For the pre-commit gate sequence this configuration enforces, see the
-[Pipeline Reference Architecture](../../pipeline-reference-architecture/).
+[Pipeline Reference Architecture](../../../pipeline-reference-architecture/).
 For the defect sources each gate addresses, see the
-[Systemic Defect Fixes](../../defect-sources/) catalog.
+[Systemic Defect Fixes](../../../defect-sources/) catalog.
 {{% /pageinfo %}}
 
 ## System Architecture
 
-The coding agent system has two tiers. The [orchestrator](../glossary/#orchestrator) manages sessions and routes work.
-Specialized agents execute within a session's boundaries. Review [sub-agents](../glossary/#sub-agent) run in parallel
+The coding agent system has two tiers. The [orchestrator](../../glossary/#orchestrator) manages sessions and routes work.
+Specialized agents execute within a session's boundaries. Review [sub-agents](../../glossary/#sub-agent) run in parallel
 as a pre-commit gate, each responsible for exactly one defect concern.
 
 ```mermaid
@@ -46,15 +48,15 @@ graph TD
 
 **Separation principle:** The orchestrator does not write code. The implementation agent
 does not review code. Review agents do not modify code. Each agent has one responsibility.
-This is the same separation of concerns that [pipeline enforcement](../pipeline-enforcement/)
-applies at the [CI](../glossary/#ci-continuous-integration) level - brought to the pre-commit level.
+This is the same separation of concerns that [pipeline enforcement](../../operations/pipeline-enforcement/)
+applies at the [CI](../../glossary/#ci-continuous-integration) level - brought to the pre-commit level.
 
-**Every agent boundary is a [token](../glossary/#token) budget boundary.** What the orchestrator passes to the
+**Every agent boundary is a [token](../../glossary/#token) budget boundary.** What the orchestrator passes to the
 implementation agent, what it passes to the review orchestrator, and what each sub-agent
 receives and returns are all token cost decisions. The configuration below applies the
-[tokenomics strategies](../tokenomics/) concretely: model routing by task complexity,
-structured outputs between agents, [prompt caching](../glossary/#prompt-caching) through stable [system prompts](../glossary/#system-prompt) placed
-first in each [context](../glossary/#context-llm), and minimum-necessary-context rules at every boundary.
+[tokenomics strategies](../../operations/tokenomics/) concretely: model routing by task complexity,
+structured outputs between agents, [prompt caching](../../glossary/#prompt-caching) through stable [system prompts](../../glossary/#system-prompt) placed
+first in each [context](../../glossary/#context-llm), and minimum-necessary-context rules at every boundary.
 
 This page defines the configuration for each component in order: [Orchestrator](#the-orchestrator), [Implementation Agent](#the-implementation-agent), [Review Orchestrator](#the-review-orchestrator), and four [Review Sub-Agents](#review-sub-agents). The [Skills](#skills) section defines the session procedures each component uses. The [Hooks](#hooks) section defines the pre-commit gate sequence. The [Token Budget](#token-budget) section applies the tokenomics strategies to this configuration.
 
@@ -76,10 +78,10 @@ on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash
 - Delegate implementation to the implementation agent
 - Trigger the review orchestrator when the implementation agent reports completion
 - Write the session summary on commit and reset context for the next session
-- Enforce the pipeline-red rule ([ACD constraint 8](../)):  if the [pipeline](../glossary/#pipeline) is failing,
+- Enforce the pipeline-red rule ([ACD constraint 8](../../)):  if the [pipeline](../../glossary/#pipeline) is failing,
   route only to pipeline-restore mode; block new feature work
 
-**Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order](../agent-setup/#context-loading-order), applied to this specific agent configuration:
+**Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order](../../getting-started/agent-setup/#context-loading-order), applied to this specific agent configuration:
 
 {{< code-collapse title="Orchestrator system prompt rules" lang="markdown" >}}
 ## Orchestrator Rules
@@ -124,7 +126,7 @@ On commit:
 
 ## The Implementation Agent
 
-The implementation agent generates test code and production code for the current [BDD](../glossary/#bdd-behavior-driven-development) scenario.
+The implementation agent generates test code and production code for the current [BDD](../../glossary/#bdd-behavior-driven-development) scenario.
 It operates within the context the orchestrator provides and does not reach outside that context.
 
 **Recommended model tier:** Mid to frontier. Code generation and test-first implementation
@@ -251,8 +253,8 @@ Return this JSON and nothing else:
 ## Review Sub-Agents
 
 Each sub-agent covers exactly one defect concern from the
-[Systemic Defect Fixes](../../defect-sources/) catalog. They receive only the diff and the
-[artifacts](../glossary/#artifact) relevant to their specific check - not the full session context.
+[Systemic Defect Fixes](../../../defect-sources/) catalog. They receive only the diff and the
+[artifacts](../../glossary/#artifact) relevant to their specific check - not the full session context.
 
 ### Semantic Review Agent
 
@@ -263,11 +265,11 @@ implementation against stated intent. Claude: Sonnet or Opus. Gemini: Pro.
 **Defect sources addressed:**
 
 - Reliance on human review to catch preventable defects
-  ([Process & Deployment](../../defect-sources/process-and-deployment/))
+  ([Process & Deployment](../../../defect-sources/process-and-deployment/))
 - Implicit domain knowledge not in code
-  ([Knowledge & Communication](../../defect-sources/knowledge-and-communication/))
+  ([Knowledge & Communication](../../../defect-sources/knowledge-and-communication/))
 - Untested edge cases and error paths
-  ([Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/))
+  ([Testing & Observability Gaps](../../../defect-sources/testing-and-observability-gaps/))
 
 **What it checks:**
 
@@ -277,7 +279,7 @@ implementation against stated intent. Claude: Sonnet or Opus. Gemini: Pro.
 - Intent alignment: does the implementation address the problem stated in the intent
   summary, or does it technically satisfy the test while missing the point?
 - Test coupling: does the test verify observable behavior, or does it assert on
-  implementation internals? (See [Implementation Coupling Agent](../pipeline-enforcement/))
+  implementation internals? (See [Implementation Coupling Agent](../../operations/pipeline-enforcement/))
 
 **System prompt rules:**
 
@@ -320,11 +322,11 @@ Sonnet or Opus. Gemini: Pro.
 **Defect sources addressed:**
 
 - Injection vulnerabilities (subtle patterns beyond basic SAST)
-  ([Security & Compliance](../../defect-sources/security-and-compliance/))
+  ([Security & Compliance](../../../defect-sources/security-and-compliance/))
 - Authentication and authorization gaps
-  ([Security & Compliance](../../defect-sources/security-and-compliance/))
+  ([Security & Compliance](../../../defect-sources/security-and-compliance/))
 - Missing audit trails
-  ([Security & Compliance](../../defect-sources/security-and-compliance/))
+  ([Security & Compliance](../../../defect-sources/security-and-compliance/))
 
 **What it checks:**
 
@@ -384,11 +386,11 @@ Gemini: Flash.
 **Defect sources addressed:**
 
 - Missing timeout and deadline enforcement
-  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
+  ([Performance & Resilience](../../../defect-sources/performance-and-resilience/))
 - Resource leaks
-  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
+  ([Performance & Resilience](../../../defect-sources/performance-and-resilience/))
 - Missing graceful degradation
-  ([Performance & Resilience](../../defect-sources/performance-and-resilience/))
+  ([Performance & Resilience](../../../defect-sources/performance-and-resilience/))
 
 **What it checks:**
 
@@ -445,9 +447,9 @@ Gemini: Pro.
 **Defect sources addressed:**
 
 - Race conditions (anti-patterns beyond thread sanitizer detection)
-  ([Integration & Boundaries](../../defect-sources/integration-and-boundaries/))
+  ([Integration & Boundaries](../../../defect-sources/integration-and-boundaries/))
 - Concurrency and ordering issues
-  ([Data & State](../../defect-sources/data-and-state/))
+  ([Data & State](../../../defect-sources/data-and-state/))
 
 **What it checks:**
 
@@ -644,7 +646,7 @@ the baseline mechanical checks.
 
 **A rising per-session cost with a stable block rate means context is growing unnecessarily. A rising block rate without rising cost means the review agents are finding real issues without accumulating noise.** Track these two signals and the cause of any cost increase becomes immediately clear.
 
-The [tokenomics strategies](../tokenomics/) apply directly to this configuration. Three
+The [tokenomics strategies](../../operations/tokenomics/) apply directly to this configuration. Three
 decisions have the most impact on cost per session.
 
 ### Model routing
@@ -694,7 +696,7 @@ Metrics to track per session:
 - Review block rate (how often the session cannot commit on first pass)
 - Tokens per retry (cost of each implementation-review-fix cycle)
 
-See [Tokenomics](../tokenomics/) for the full measurement framework.
+See [Tokenomics](../../operations/tokenomics/) for the full measurement framework.
 
 ---
 
@@ -704,26 +706,26 @@ This table maps each pre-commit defect source to the mechanism that covers it.
 
 | Defect Source | Catalog Section | Covered By |
 |---------------|-----------------|------------|
-| Code style violations | [Process & Deployment](../../defect-sources/process-and-deployment/) | Lint hook |
-| Null/missing data assumptions | [Data & State](../../defect-sources/data-and-state/) | Type-check hook |
-| Secrets in source control | [Security & Compliance](../../defect-sources/security-and-compliance/) | Secret-scan hook |
-| Injection (pattern-matching) | [Security & Compliance](../../defect-sources/security-and-compliance/) | SAST hook |
-| Accessibility (structural) | [Product & Discovery](../../defect-sources/product-and-discovery/) | Accessibility-lint hook |
-| Race conditions (detectable) | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) | Thread sanitizer (language-specific) |
-| Logic errors, edge cases | [Process & Deployment](../../defect-sources/process-and-deployment/) | Semantic review agent |
-| Implicit domain knowledge | [Knowledge & Communication](../../defect-sources/knowledge-and-communication/) | Semantic review agent |
-| Untested paths | [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) | Semantic review agent |
-| Injection (semantic/second-order) | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
-| Auth/authz gaps | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
-| Missing audit trails | [Security & Compliance](../../defect-sources/security-and-compliance/) | Security review agent |
-| Missing timeouts | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
-| Resource leaks | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
-| Missing graceful degradation | [Performance & Resilience](../../defect-sources/performance-and-resilience/) | Performance review agent |
-| Race condition anti-patterns | [Integration & Boundaries](../../defect-sources/integration-and-boundaries/) | Concurrency review agent |
-| Non-idempotent consumers | [Data & State](../../defect-sources/data-and-state/) | Concurrency review agent |
+| Code style violations | [Process & Deployment](../../../defect-sources/process-and-deployment/) | Lint hook |
+| Null/missing data assumptions | [Data & State](../../../defect-sources/data-and-state/) | Type-check hook |
+| Secrets in source control | [Security & Compliance](../../../defect-sources/security-and-compliance/) | Secret-scan hook |
+| Injection (pattern-matching) | [Security & Compliance](../../../defect-sources/security-and-compliance/) | SAST hook |
+| Accessibility (structural) | [Product & Discovery](../../../defect-sources/product-and-discovery/) | Accessibility-lint hook |
+| Race conditions (detectable) | [Integration & Boundaries](../../../defect-sources/integration-and-boundaries/) | Thread sanitizer (language-specific) |
+| Logic errors, edge cases | [Process & Deployment](../../../defect-sources/process-and-deployment/) | Semantic review agent |
+| Implicit domain knowledge | [Knowledge & Communication](../../../defect-sources/knowledge-and-communication/) | Semantic review agent |
+| Untested paths | [Testing & Observability Gaps](../../../defect-sources/testing-and-observability-gaps/) | Semantic review agent |
+| Injection (semantic/second-order) | [Security & Compliance](../../../defect-sources/security-and-compliance/) | Security review agent |
+| Auth/authz gaps | [Security & Compliance](../../../defect-sources/security-and-compliance/) | Security review agent |
+| Missing audit trails | [Security & Compliance](../../../defect-sources/security-and-compliance/) | Security review agent |
+| Missing timeouts | [Performance & Resilience](../../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Resource leaks | [Performance & Resilience](../../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Missing graceful degradation | [Performance & Resilience](../../../defect-sources/performance-and-resilience/) | Performance review agent |
+| Race condition anti-patterns | [Integration & Boundaries](../../../defect-sources/integration-and-boundaries/) | Concurrency review agent |
+| Non-idempotent consumers | [Data & State](../../../defect-sources/data-and-state/) | Concurrency review agent |
 
 Defect sources not in this table are addressed at CI or acceptance test stages, not at
-pre-commit. See the [Pipeline Reference Architecture](../../pipeline-reference-architecture/)
+pre-commit. See the [Pipeline Reference Architecture](../../../pipeline-reference-architecture/)
 for the full gate sequence.
 
 ---
@@ -732,15 +734,15 @@ for the full gate sequence.
 
 - [Agentic Architecture Patterns](../agentic-architecture/) - how to
   structure skills, agents, commands, and hooks for multi-agent systems
-- [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the same
+- [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) - how the same
   review agents operate as CI pipeline gates, not just pre-commit
 - [Small-Batch Sessions](../small-batch-sessions/) - the session discipline the
   orchestrator and skills enforce
-- [Tokenomics](../tokenomics/) - the full optimization framework: model routing, context
+- [Tokenomics](../../operations/tokenomics/) - the full optimization framework: model routing, context
   hygiene, structured outputs, prompt caching, and workflow-level measurement
-- [Agent Delivery Contract](../first-class-artifacts/) - the artifacts the
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the artifacts the
   implementation agent receives and the review agents verify against
-- [Pipeline Reference Architecture](../../pipeline-reference-architecture/) - the
+- [Pipeline Reference Architecture](../../../pipeline-reference-architecture/) - the
   full gate sequence from pre-commit through production verification
-- [Systemic Defect Fixes](../../defect-sources/) - the defect source catalog that
+- [Systemic Defect Fixes](../../../defect-sources/) - the defect source catalog that
   defines what each review agent is responsible for catching

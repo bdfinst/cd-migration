@@ -19,7 +19,7 @@ functions - executed as deterministic tests or evaluated by review [agents](#age
 "done" looks like from an observer's perspective) and an evaluation design (test cases with
 known-good outputs). They constrain the agent: comprehensive criteria prevent incorrect code
 from passing, while shallow criteria allow code that passes tests but violates intent. See
-[Acceptance Criteria](../agentic-cd/first-class-artifacts/#4-acceptance-criteria).
+[Acceptance Criteria](../agentic-cd/specification/first-class-artifacts/#4-acceptance-criteria).
 
 Referenced in:
 [Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
