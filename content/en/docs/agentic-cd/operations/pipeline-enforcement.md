@@ -39,9 +39,9 @@ See the pipeline patterns for concrete architectures that implement these gates:
 
 Standard quality gates cover what conventional tooling can verify: linting, type checking, test execution, vulnerability scanning. But ACD introduces validation needs that standard tools cannot address. No conventional tool can verify that test code faithfully implements a human-defined test specification. No conventional tool can verify that an agent-generated implementation matches the architectural intent in a feature description.
 
-Expert validation agents fill this gap. These are AI agents dedicated to a specific validation concern, running as pipeline gates alongside standard tools:
+Expert validation agents fill this gap. These are AI agents dedicated to a specific validation concern, running as pipeline gates alongside standard tools. The following are examples, not an exhaustive list - teams should create expert agents for whatever validation concerns their pipeline requires:
 
-| Expert Agent | What It Validates | Catches | Artifact It Enforces |
+| Example Agent | What It Validates | Catches | Artifact It Enforces |
 |-------------|-------------------|---------|---------------------|
 | **Test fidelity agent** | Test code exercises the scenarios, edge cases, and assertions defined in the test specification | Agent-generated tests that omit edge cases or weaken assertions | Acceptance Criteria |
 | **Implementation coupling agent** | Test code verifies observable behavior, not internal implementation details | Tests that break when implementation is refactored without any behavior change | Acceptance Criteria |
