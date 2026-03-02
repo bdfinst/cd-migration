@@ -11,6 +11,26 @@ has a specific meaning within a migration phase, the relevant phase is noted.
 
 ## A
 
+### Acceptance Criteria
+
+Concrete expectations for a change, expressed as observable outcomes that can be used as fitness
+functions - executed as deterministic tests or evaluated by review [agents](#agent-ai). In
+[ACD](#acd-agentic-continuous-delivery), acceptance criteria include a done definition (what
+"done" looks like from an observer's perspective) and an evaluation design (test cases with
+known-good outputs). They constrain the agent: comprehensive criteria prevent incorrect code
+from passing, while shallow criteria allow code that passes tests but violates intent. See
+[Acceptance Criteria](../agentic-cd/first-class-artifacts/#4-acceptance-criteria).
+
+Referenced in:
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
+
 ### ACD (Agentic Continuous Delivery)
 
 The application of continuous delivery in environments where software changes are proposed by

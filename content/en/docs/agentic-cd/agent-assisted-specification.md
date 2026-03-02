@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow](../) (Intent Definition, Behavior Specification, Architecture Specification, and Acceptance Criteria) ask humans to define intent, behavior, architecture, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The Pattern
@@ -29,7 +29,7 @@ The specification stages look heavy if you imagine writing them for an entire fe
 
 If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
-## How Agents Help with Intent Definition
+## How Agents Help with the Intent Description
 
 The intent description does not need to be perfect on the first draft. Write a rough version and use an agent to sharpen it.
 
@@ -52,7 +52,7 @@ but does not match what I actually want.
 
 The human still owns the intent. The agent is a sounding board that catches gaps before they become defects.
 
-## How Agents Help with Behavior Specification
+## How Agents Help with User-Facing Behavior
 
 Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
 
@@ -86,9 +86,9 @@ modes, and interactions with existing behavior.
 
 The human decides which scenarios to keep. The agent ensures you considered more scenarios than you would have on your own.
 
-## How Agents Help with Architecture Specification and Acceptance Criteria
+## How Agents Help with the Feature Description and Acceptance Criteria
 
-The Architecture Specification and Acceptance Criteria stages define the technical boundaries: where the change fits in the system, what constraints apply, and what non-functional requirements must be met.
+The Feature Description and Acceptance Criteria stages define the technical boundaries: where the change fits in the system, what constraints apply, and what non-functional requirements must be met.
 
 **Ask the agent to suggest architectural considerations.** Give it the intent, the BDD scenarios, and a description of the current system architecture. Ask what integration points, dependencies, or constraints you should document.
 
@@ -122,7 +122,7 @@ The human makes the architectural decisions and sets the thresholds. The agent m
 
 ## Validating the Complete Specification Set
 
-The four specification stages produce four [artifacts](../glossary/#artifact): intent description, BDD scenarios, feature description, and acceptance criteria. Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
+The four specification stages produce four [artifacts](../glossary/#artifact): intent description, user-facing behavior (BDD scenarios), feature description (constraint architecture), and [acceptance criteria](../glossary/#acceptance-criteria). Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
 
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
@@ -145,8 +145,185 @@ before implementation begins. Check:
 
 This review is not a bureaucratic checkpoint. It is the last moment where the cost of a change is near zero. After this gate, every issue becomes more expensive to fix.
 
+## The Discovery Loop: From Conversation to Specification
+
+The prompts above work well when you already know what to specify. When you do not, you need a different starting point. Instead of writing a draft and asking the agent to critique it, treat the agent as a principal architect who interviews you to extract context you did not know was missing.
+
+This is the shift from "order taker" to "architectural interview." The sections above describe what to do at each specification stage. The discovery loop describes how to get there through conversation when you are starting from a vague idea.
+
+### Phase 1: Initial Framing (Intent)
+
+Describe the outcome, not the application. Set the agent's role and the goal of the conversation explicitly.
+
+{{< code-collapse title="Prompt: start the discovery loop" >}}
+I want to build a Software Value Stream Mapping application. Before we
+write a single line of code, I want you to act as a Principal Architect.
+Your goal is to help me write a self-contained specification that an
+autonomous agent can execute. Do not start writing the spec yet. First,
+interview me to uncover the technical implementation details, edge cases,
+and trade-offs I have not considered.
+{{< /code-collapse >}}
+
+This prompt does three things: it states intent, it assigns a role that produces the right kind of questions, and it prevents the agent from jumping to implementation.
+
+### Phase 2: Deep-Dive Interview (Context)
+
+Let the agent ask three to five high-signal questions at a time. The goal is to surface the implicit knowledge in your head: domain definitions, data schemas, failure modes, and trade-off preferences.
+
+**What the agent should ask:** "How are we defining Lead Time versus Cycle Time for this specific organization? What is the schema of the incoming JSON? How should the system handle missing data points?"
+
+**Your role:** Answer with as much raw context as possible. Do not worry about formatting. Get the "why" and "how" out. The agent will structure it later.
+
+This is [context engineering](../prompting-disciplines/#2-context-engineering) in practice: you are building the information environment the specification will formalize.
+
+### Phase 3: Drafting (Specification)
+
+Once the agent has enough context, ask it to synthesize the conversation into a structured specification.
+
+{{< code-collapse title="Prompt: synthesize into specification" >}}
+Based on our discussion, generate the first draft of the specification
+document. Structure it as: Self-Contained Problem Statement, Constraint
+Architecture, Task Decomposition, Acceptance Criteria, and Evaluation
+Design. Ensure the Task Decomposition follows a planner-worker pattern
+where tasks are broken into sub-two-hour chunks.
+{{< /code-collapse >}}
+
+The five sections map directly to the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
+
+### Phase 4: Stress-Test Review
+
+Before finalizing, ask the agent to find gaps in its own output.
+
+{{< code-collapse title="Prompt: stress-test the specification" >}}
+Critique this specification. Where would a junior developer or an
+autonomous agent get confused? What constraints are still too vague?
+What edge cases are missing from the evaluation design?
+{{< /code-collapse >}}
+
+This is the same validation step as the [specification consistency check](#validating-the-complete-specification-set), applied to the discovery loop's output.
+
+### How This Differs from Turn-by-Turn Prompting
+
+| Step | Turn-by-turn prompting | Discovery loop |
+|------|----------------------|----------------|
+| Beginning | Write a long prompt and hope for the best | State a high-level goal and ask to be interviewed |
+| Development | Fix the agent's code mistakes turn by turn | Fix the specification until it is agent-proof |
+| Quality | Eyeball the result | Define evaluation design (test cases) up front |
+| Hand-off | Copy-paste code into the editor | Hand the specification to a long-running worker |
+
+The discovery loop front-loads the work where it is cheapest: in conversation, before any code exists.
+
+{{% alert title="Tip: the running context log" color="info" %}}
+During long discovery conversations, ask the agent to maintain a running context log of key decisions. This prevents core decisions from getting lost in the middle of the [context window](../../glossary/#context-window) as the conversation grows. The context log becomes the raw material for Phase 3.
+{{% /alert %}}
+
+The [complete specification example](#complete-specification-example) below shows the output this workflow produces.
+
+## Complete Specification Example
+
+The four specification stages produce concise, structured documents. The example below shows what a complete specification looks like when all four disciplines from [The Four Prompting Disciplines](../prompting-disciplines/) are applied. This is a real-scale example, not a simplified illustration.
+
+Notice what makes this specification agent-executable: every section is self-contained, acceptance criteria are verifiable by an independent observer, the decomposition defines clear module boundaries, and test cases include known-good outputs.
+
+{{< alert title="Full specification: VSM-Automator (Alpha)" color="info" >}}
+{{< code-collapse title="Complete specification example: VSM-Automator" lang="markdown" >}}
+# Specification: VSM-Automator (Alpha)
+
+## 1. Self-Contained Problem Statement
+
+The goal is to build a web-based tool that visualizes the flow of software
+delivery from "Commit" to "Production." The application must consume a
+standardized JSON export of DORA metrics and Git events to render a horizontal
+chevron-style map. It must calculate Lead Time, Cycle Time, and Process
+Efficiency without manual data entry for the calculations.
+
+## 2. Constraint Architecture
+
+**Musts:**
+
+- Use TypeScript and React for the frontend to ensure type safety
+- Implement D3.js or Mermaid.js for the flow visualization
+- Data must stay in the local browser session (no external database for Alpha)
+
+**Must Nots:**
+
+- Do not use proprietary UI libraries (keep it to Tailwind CSS)
+- Do not allow data uploads exceeding 10MB
+
+**Preferences:**
+
+- Prefer functional programming patterns over class-based components
+- Prioritize dark mode as the default UI
+
+**Escalation Triggers:**
+
+- If the provided JSON schema is missing "Deployment Frequency" data, stop and
+  ask the user for a fallback mapping strategy
+
+## 3. Task Decomposition (The Blueprint)
+
+This project is decomposed into four independent executable modules:
+
+**Module A: Data Parsing and Normalization**
+
+- Input: Raw JSON blob
+- Output: A normalized ValueStream object containing an array of Stage objects
+- Requirement: Handle date-string conversion to Unix timestamps for math
+  operations
+
+**Module B: Calculation Engine**
+
+- Input: ValueStream object
+- Logic:
+  - Lead Time = Deployment Timestamp - First Commit Timestamp
+  - Process Efficiency = (Active Work Time / Total Lead Time) x 100
+- Output: Summary statistics object
+
+**Module C: Visualization Layer**
+
+- Input: Summary statistics and normalized stages
+- Requirement: Render a responsive SVG where the width of each chevron is
+  proportional to the time spent in that stage (logarithmic scale preferred
+  if outliers exist)
+
+**Module D: Export/Reporting**
+
+- Input: Rendered SVG
+- Output: Downloadable PNG or PDF report
+
+## 4. Acceptance Criteria (The "Done" Definition)
+
+1. The user can drag and drop a sample_data.json file, and a map renders in
+   under 500ms
+2. The calculated "Lead Time" on the screen matches the manual calculation of
+   (TotalTime / NumberOfItems) within a 1% margin of error
+3. Clicking a "Stage" chevron displays a modal showing the specific Git SHAs
+   or Jira IDs associated with that bottleneck
+
+## 5. Evaluation Design (Test Cases)
+
+**Test Case 1 (The Happy Path):** Upload a 5-stage pipeline with linear
+timestamps. Result: Map renders correctly with 20% Process Efficiency.
+
+**Test Case 2 (The Bottleneck):** Upload data where "Testing" takes 90% of
+the total time. Result: The "Testing" chevron visually dominates the UI and
+is highlighted in red.
+
+**Test Case 3 (The Null Set):** Upload an empty JSON array. Result: System
+displays a graceful "No Data Found" state rather than crashing.
+{{< /code-collapse >}}
+{{< /alert >}}
+
+**What to notice:**
+
+- **Self-contained:** An agent receiving only this document can implement without asking clarifying questions. That is the [self-containment test](../prompting-disciplines/#the-self-containment-test).
+- **Decomposed with boundaries:** Each module has explicit inputs and outputs. An [orchestrator](../../glossary/#orchestrator) can route each module to a separate agent session (see [Small-Batch Sessions](../small-batch-sessions/)).
+- **Acceptance criteria are observable:** Each criterion describes a user-visible outcome, not an internal implementation detail. These map directly to [[acceptance criteria](../glossary/#acceptance-criteria)](../first-class-artifacts/#4-acceptance-criteria).
+- **Test cases include expected outputs:** The evaluation design gives the agent known-good results to verify against, which is the [specification engineering](../prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill of evaluation design.
+
 ## Related Content
 
 - [The ACD Workflow](../) - the full workflow these tips support
 - [The Six First-Class Artifacts](../first-class-artifacts/) - detailed definitions of each artifact
+- [The Four Prompting Disciplines](../prompting-disciplines/) - the skill framework that produces specifications like the example above
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment

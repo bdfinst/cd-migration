@@ -180,9 +180,9 @@ review burden.
 
 Agentic CD ([ACD](../../glossary/#acd-agentic-continuous-delivery)) creates predictable token cost patterns because the workflow is structured. Apply optimization at each stage:
 
-**Specification stages (Intent Definition through Acceptance Criteria):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
+**Specification stages (Intent Description through Acceptance Criteria):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
 
-**Test Generation:** The agent receives the behavior specification, feature description, and acceptance criteria. Pass only these three [artifacts](../../glossary/#artifact), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
+**Test Generation:** The agent receives the user-facing behavior, feature description, and acceptance criteria. Pass only these three [artifacts](../../glossary/#artifact), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
 
 **Implementation:** The implementation agent receives the test specification and feature description. It does not need the intent description (that informed the specification). Pass what the agent needs for this step only.
 

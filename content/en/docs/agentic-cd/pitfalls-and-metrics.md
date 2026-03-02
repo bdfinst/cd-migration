@@ -150,4 +150,4 @@ Review the context documents for each active workstream quarterly. Archive or de
 - [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
 - [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
 - [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that ACD counters by making test-first workflow mandatory
-- [High Coverage but Ineffective Tests](../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on
+- [High Coverage but Ineffective Tests](../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the acceptance criteria agents depend on

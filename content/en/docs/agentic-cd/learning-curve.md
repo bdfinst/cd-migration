@@ -40,7 +40,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **Why developers abandon here:** Stage 2 is where many developers decide AI "cannot write real code." They try a larger task, receive confidently wrong output, spend an hour correcting it, and conclude the tool is not worth the effort for anything non-trivial. That conclusion is accurate at Stage 2. The problem is not the technology - it is the workflow. A single-turn [prompt](../glossary/#prompt) with no context, no surrounding code, and no specified constraints will produce plausible-looking guesses for anything beyond simple functions. Developers who abandon here never discover that the same model, given different inputs through a different workflow, produces dramatically better output.
 
-**What drives the move forward:** Frustration that AI is only useful for small tasks, combined with exposure to someone using it for larger ones. The realization that giving the AI more context - the surrounding files, the calling code, the data structures - would produce better output.
+**What drives the move forward:** Frustration that AI is only useful for small tasks, combined with exposure to someone using it for larger ones. The realization that giving the AI more context - the surrounding files, the calling code, the data structures - would produce better output. This realization is the entry point to [context engineering](../prompting-disciplines/#2-context-engineering).
 
 ## Stage 3: Chat-Driven Development
 
@@ -109,7 +109,7 @@ Many developers do not advance past Stage 2 because the path forward is not visi
 
 **What breaks the pattern:** Seeing a demonstration of Stage 5 or Stage 6 in practice. Watching someone write a specification, have an agent generate tests from it, implement against those tests, and commit a clean diff is a qualitatively different experience from struggling with a chat window. Many developers have not seen this. Most resources on "how to use AI for coding" describe Stage 2 or Stage 3 workflows.
 
-This guide exists to close that gap.
+This guide exists to close that gap. The [four prompting disciplines](../prompting-disciplines/) describe the skill layers that correspond to these stages and what shifts when agents run autonomously.
 
 ## How the Bottleneck Shifts Across Stages
 
@@ -144,6 +144,7 @@ The [AI Adoption Roadmap](../adoption-roadmap/) covers the organizational prereq
 
 ## Related Content
 
+- [The Four Prompting Disciplines](../prompting-disciplines/) - the skill layers that map to each stage of the learning curve
 - [AI Adoption Roadmap](../adoption-roadmap/) - organizational prerequisites for the later stages
 - [ACD](../) - the full workflow, constraints, and first-class artifacts
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how to write specs fast enough that they do not slow down Stage 5

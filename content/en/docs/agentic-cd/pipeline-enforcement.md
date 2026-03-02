@@ -17,10 +17,10 @@ For the framework overview, see [ACD](../). For the [artifacts](../glossary/#art
 The Pipeline Verification and Deployment stages of the [ACD workflow](../) are where the [Pipeline Reference Architecture](../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific [ACD](../glossary/#acd-agentic-continuous-delivery) constraint:
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
-- **[CI](../glossary/#ci-continuous-integration) Stage 1** (build + unit tests) validates the executable truth artifact. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
+- **[CI](../glossary/#ci-continuous-integration) Stage 1** (build + unit tests) validates the acceptance criteria. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
 - **CD Stage 1** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
 - **CD Stage 2** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
-- **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment](../glossary/#production-like-environment). This is where the [BDD](../glossary/#bdd-behavior-driven-development) scenarios from Behavior Specification become automated verification.
+- **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment](../glossary/#production-like-environment). This is where the [BDD](../glossary/#bdd-behavior-driven-development) scenarios become automated verification.
 - **Production verification** ([canary deployment](../glossary/#canary-deployment), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
 
 ### The Pre-Feature Baseline
@@ -41,8 +41,8 @@ Expert validation agents fill this gap. These are AI agents dedicated to a speci
 
 | Expert Agent | What It Validates | Catches | Artifact It Enforces |
 |-------------|-------------------|---------|---------------------|
-| **Test fidelity agent** | Test code exercises the scenarios, edge cases, and assertions defined in the test specification | Agent-generated tests that omit edge cases or weaken assertions | Executable Truth |
-| **Implementation coupling agent** | Test code verifies observable behavior, not internal implementation details | Tests that break when implementation is refactored without any behavior change | Executable Truth |
+| **Test fidelity agent** | Test code exercises the scenarios, edge cases, and assertions defined in the test specification | Agent-generated tests that omit edge cases or weaken assertions | Acceptance Criteria |
+| **Implementation coupling agent** | Test code verifies observable behavior, not internal implementation details | Tests that break when implementation is refactored without any behavior change | Acceptance Criteria |
 | **Architectural conformance agent** | Implementation follows the constraints in the feature description | Code that crosses a module boundary or uses a prohibited dependency | Feature Description |
 | **Intent alignment agent** | The combined change addresses the problem stated in the intent description | Implementations that are technically correct but solve the wrong problem | Intent Description |
 | **Constraint compliance agent** | Code respects system constraints that static analysis cannot check | Violations of logging standards, [feature flag](../glossary/#feature-flag) requirements, or audit rules | System Constraints |

@@ -272,6 +272,7 @@ If the pipeline fails in a later session (a prior scenario breaks), the agent mu
 - [Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/) - the same discipline applied to human-authored work
 - [Work Decomposition](../../migrate-to-cd/migration-path/foundations/work-decomposition/#vertical-slicing-in-distributed-systems) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
 - [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
+- [The Four Prompting Disciplines](../prompting-disciplines/) - context engineering and specification engineering applied to session design
 - [Tokenomics](../tokenomics/) - why context size matters and how to control it
 - [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that anchor each session's context
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including the review queue backup that small sessions prevent

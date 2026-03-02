@@ -94,7 +94,8 @@ manual review.
 
 **What this enables:** Higher-quality inputs to the development process. Developers (human or AI)
 start with clear, testable specifications rather than ambiguous descriptions that produce
-ambiguous code.
+ambiguous code. The [four prompting disciplines](../prompting-disciplines/) describe the skill
+progression that makes this work at scale.
 
 ## Harden Guardrails
 
@@ -161,7 +162,7 @@ The guardrails are in place. The pipeline is fast. Requirements are clear. The o
 change is deterministic regardless of whether a human or an AI wrote it.
 
 {{% alert title="Do not let AI define the test scenarios" color="warning" %}}
-Humans define what to test. [Agents](../glossary/#agent-ai) generate the test code from those specifications. See [Executable Truth](../first-class-artifacts/#4-executable-truth) for the validation properties required before implementation begins.
+Humans define what to test. [Agents](../glossary/#agent-ai) generate the test code from those specifications. See [Acceptance Criteria](../first-class-artifacts/#4-acceptance-criteria) for the validation properties required before implementation begins.
 {{% /alert %}}
 
 **What to do:**
@@ -203,6 +204,7 @@ to measure progress.
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - common failures when steps are skipped, and how to measure progress
 - [Tokenomics](../tokenomics/) - how code quality drives token cost, and how to architect agents and workflows to minimize unnecessary consumption
+- [The Four Prompting Disciplines](../prompting-disciplines/) - the skill layers developers need as they progress through the adoption roadmap
 
 ---
 
