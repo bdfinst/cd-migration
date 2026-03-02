@@ -1,9 +1,11 @@
 ---
 title: "Tokenomics: Optimizing Token Usage in Agent Architecture"
 linkTitle: "Tokenomics"
-weight: 11
+weight: 2
 description: >
   How to architect agents and code to minimize unnecessary token consumption without sacrificing quality or capability.
+aliases:
+  - /docs/agentic-cd/tokenomics/
 ---
 
 {{% pageinfo %}}
@@ -64,7 +66,7 @@ querying the database, which could allow unauthorized access."
 
 The JSON version conveys the same information in a fraction of the tokens and requires no natural language parsing step. When one agent's output becomes another agent's input, define a schema for that interface the same way you would define an API contract.
 
-This applies directly to the [six first-class artifacts](../first-class-artifacts/): intent descriptions, feature descriptions, and test specifications passed between agents should be structured documents with defined fields, not open-ended prose.
+This applies directly to the [agent delivery contract](../../specification/first-class-artifacts/): intent descriptions, feature descriptions, test specifications, and other artifacts passed between agents should be structured documents with defined fields, not open-ended prose.
 
 ### 4. Strategic Prompt Caching
 
@@ -156,7 +158,7 @@ keep them from slipping back:
   Running it as a pipeline gate means architecture decisions made during refactoring
   are protected on every subsequent change, not just until the next deadline.
 - Pre-commit linting and style enforcement (part of the
-  [pre-feature baseline](../../pipeline-reference-architecture/#pre-feature-baseline))
+  [pre-feature baseline](../../../pipeline-reference-architecture/#pre-feature-baseline))
   catches naming violations before they reach review. Rules can encode domain language
   standards - rejecting generic names, enforcing consistent terminology - so that the
   ubiquitous language is maintained automatically rather than by convention.
@@ -180,13 +182,13 @@ review burden.
 
 Agentic CD ([ACD](../../glossary/#acd-agentic-continuous-delivery)) creates predictable token cost patterns because the workflow is structured. Apply optimization at each stage:
 
-**Specification stages (Intent Definition through Acceptance Criteria):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
+**Specification stages (Intent Description through Acceptance Criteria):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
 
-**Test Generation:** The agent receives the behavior specification, feature description, and acceptance criteria. Pass only these three [artifacts](../../glossary/#artifact), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
+**Test Generation:** The agent receives the user-facing behavior, feature description, and acceptance criteria. Pass only these three [artifacts](../../glossary/#artifact), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
 
 **Implementation:** The implementation agent receives the test specification and feature description. It does not need the intent description (that informed the specification). Pass what the agent needs for this step only.
 
-**Expert validation agents:** Validation agents running in parallel as [pipeline](../../glossary/#pipeline) gates should receive the artifact being validated plus the specification it must conform to - not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history. For a concrete application of model routing, structured outputs, prompt caching, and per-session measurement to a specific agent configuration, see [Agent Configuration](../agent-configuration/).
+**Expert validation agents:** Validation agents running in parallel as [pipeline](../../glossary/#pipeline) gates should receive the artifact being validated plus the specification it must conform to - not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history. For a concrete application of model routing, structured outputs, prompt caching, and per-session measurement to a specific agent configuration, see [Coding & Review Setup](../../architecture/agent-configuration/).
 
 **Review queues:** Agent-generated change volume can inflate review-time token costs when reviewers use AI-assisted review tools. [WIP](../../glossary/#wip-work-in-progress) limits on the agent's change queue ([see Pitfalls](../pitfalls-and-metrics/#2-review-queue-backs-up-from-agent-generated-volume)) also function as a cost control on downstream AI review consumption.
 
@@ -203,13 +205,13 @@ Agentic CD ([ACD](../../glossary/#acd-agentic-continuous-delivery)) creates pred
 
 ## Related Content
 
-- [Agentic Architecture Patterns](../agentic-architecture/) - cross-cutting concerns including idempotency, model-agnostic abstraction, and structured inter-agent communication
-- [ACD](../) - the framework overview, constraints, and workflow
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the structured artifacts that token-efficient inter-agent communication depends on
+- [Agentic Architecture Patterns](../../architecture/agentic-architecture/) - cross-cutting concerns including idempotency, model-agnostic abstraction, and structured inter-agent communication
+- [ACD](../../) - the framework overview, constraints, and workflow
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the structured artifacts that token-efficient inter-agent communication depends on
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - expert agents that run as pipeline gates and whose own token costs should be managed
 - [Pitfalls and Metrics](../pitfalls-and-metrics/) - failure modes including review queue backup that compound token costs
-- [AI Adoption Roadmap](../adoption-roadmap/) - the sequence of prerequisites before optimizing agentic workflows
-- [Agent Configuration](../agent-configuration/) - a concrete application of model routing, structured outputs, prompt caching, and per-session measurement
+- [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) - the sequence of prerequisites before optimizing agentic workflows
+- [Coding & Review Setup](../../architecture/agent-configuration/) - a concrete application of model routing, structured outputs, prompt caching, and per-session measurement
 
 ---
 

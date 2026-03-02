@@ -11,10 +11,30 @@ has a specific meaning within a migration phase, the relevant phase is noted.
 
 ## A
 
+### Acceptance Criteria
+
+Concrete expectations for a change, expressed as observable outcomes that can be used as fitness
+functions - executed as deterministic tests or evaluated by review [agents](#agent-ai). In
+[ACD](#acd-agentic-continuous-delivery), acceptance criteria include a done definition (what
+"done" looks like from an observer's perspective) and an evaluation design (test cases with
+known-good outputs). They constrain the agent: comprehensive criteria prevent incorrect code
+from passing, while shallow criteria allow code that passes tests but violates intent. See
+[Acceptance Criteria](../agentic-cd/specification/first-class-artifacts/#4-acceptance-criteria).
+
+Referenced in:
+[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agentic Continuous Delivery (ACD)](../agentic-cd/),
+[AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
+[Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
+[Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
+[Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
+
 ### ACD (Agentic Continuous Delivery)
 
 The application of continuous delivery in environments where software changes are proposed by
-AI agents. ACD extends CD with additional constraints, first-class artifacts, and pipeline
+AI agents. ACD extends CD with additional constraints, delivery artifacts, and pipeline
 enforcement to reliably constrain agent autonomy without slowing delivery. ACD assumes the
 team already practices continuous delivery. Without that foundation, the agentic extensions
 have nothing to extend. See [Agentic Continuous Delivery](../agentic-cd/).
@@ -26,7 +46,7 @@ Referenced in:
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
 [Your Migration Journey](../)
 
@@ -51,7 +71,7 @@ Referenced in:
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Artifact
@@ -91,7 +111,7 @@ Referenced in:
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
@@ -146,7 +166,7 @@ Referenced in:
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Blue-Green Deployment
@@ -728,7 +748,7 @@ Referenced in:
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Deployment Target Does Not Support Modern CI/CD Tooling](../symptoms/flow/mainframe-constraints/),
 [The Development Workflow Has Friction at Every Step](../symptoms/flow/inadequate-tooling/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [The Team Is Caught Between Shipping Fast and Not Breaking Things](../symptoms/flow/speed-vs-stability-tension/),
@@ -772,7 +792,7 @@ Referenced in:
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
-[The Six First-Class Artifacts](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Prompt Caching

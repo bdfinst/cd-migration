@@ -3,7 +3,7 @@ title: "Agentic Continuous Delivery (ACD)"
 linkTitle: "Agentic CD"
 weight: 9
 description: >
-  Extend continuous delivery with constraints, first-class artifacts, and practices for AI agent-generated changes.
+  Extend continuous delivery with constraints, delivery artifacts, and practices for AI agent-generated changes.
 ---
 
 {{% pageinfo %}}
@@ -18,16 +18,15 @@ Agentic continuous delivery ([ACD](../glossary/#acd-agentic-continuous-delivery)
 
 ACD is the application of continuous delivery in environments where software changes are proposed by agents. It exists to reliably constrain agent autonomy without slowing delivery.
 
-Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. These first-class artifacts and constraints address this.
+Without additional artifacts beyond what human-driven [CD](../glossary/#cd-continuous-delivery) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. The delivery artifacts and constraints in the [agent delivery contract](specification/first-class-artifacts/) address this.
 
 Agents introduce unique challenges that require these additional constraints:
 
 - Agents can generate changes faster than humans can review them
-- Agents may lack context about organizational norms, business rules, or unstated constraints
 - Agents cannot read unstated context: business rules, organizational norms, and long-term architectural intent that human developers carry implicitly
 - Agents may introduce subtle correctness issues that pass automated tests but violate intent
 
-Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding. The [Learning Curve](learning-curve/) describes how developers naturally progress from autocomplete to a multi-agent architecture and what drives each transition.
+Before jumping into agentic workflows, ensure your team has the prerequisite delivery practices in place. The [AI Adoption Roadmap](getting-started/adoption-roadmap/) provides a step-by-step sequence: quality tools, clear requirements, hardened guardrails, and reduced delivery friction, all before accelerating with AI coding. The [Learning Curve](getting-started/learning-curve/) describes how developers naturally progress from autocomplete to a multi-agent architecture and what drives each transition.
 
 ### Prerequisites
 
@@ -46,25 +45,37 @@ Without these foundations, adding agents amplifies existing problems rather than
 
 ## What You'll Find in This Section
 
-1. **[Configuration Quick Start](agent-setup/)** - where to put what: project context file, rules, skills, and hooks mapped to their purpose and time horizon
-2. **[The Agentic Development Learning Curve](learning-curve/)** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
-3. **[AI Adoption Roadmap](adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
-4. **[The Six First-Class Artifacts](first-class-artifacts/)** - defines the six artifacts that anchor the ACD workflow and their authority hierarchy
-5. **[Agent-Assisted Specification](agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
-6. **[Agentic Architecture Patterns](agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
-7. **[Coding Agent Configuration](agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
-8. **[Small-Batch Sessions](small-batch-sessions/)** - how to structure agent sessions, so [context](../glossary/#context-llm) stays manageable and commits stay small
-9. **[Pipeline Enforcement and Expert Agents](pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
-10. **[Tokenomics](tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
-11. **[Pitfalls and Metrics](pitfalls-and-metrics/)** - covers common failure modes and how to measure whether ACD is working
+### [Getting Started](getting-started/)
+
+- **[Configuration Quick Start](getting-started/agent-setup/)** - where to put what: project context file, rules, skills, and hooks mapped to their purpose and time horizon
+- **[The Agentic Development Learning Curve](getting-started/learning-curve/)** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
+- **[The Four Prompting Disciplines](getting-started/prompting-disciplines/)** - the four layers of skill developers must master as AI moves from chat partner to long-running worker
+- **[AI Adoption Roadmap](getting-started/adoption-roadmap/)** - covers organizational prerequisites before adopting agentic workflows
+
+### [Specification & Contracts](specification/)
+
+- **[Agent Delivery Contract](specification/first-class-artifacts/)** - defines the artifacts that anchor the ACD workflow and their authority hierarchy
+- **[Agent-Assisted Specification](specification/agent-assisted-specification/)** - how agents help sharpen intent, draft [BDD](../glossary/#bdd-behavior-driven-development) scenarios, and surface gaps before any code is written
+
+### [Agent Architecture](architecture/)
+
+- **[Agentic Architecture Patterns](architecture/agentic-architecture/)** - how to structure skills, agents, commands, and hooks in multi-agent systems
+- **[Coding & Review Setup](architecture/agent-configuration/)** - provides a concrete [orchestrator](../glossary/#orchestrator), coder, and reviewer agent configuration
+- **[Small-Batch Sessions](architecture/small-batch-sessions/)** - how to structure agent sessions so [context](../glossary/#context-llm) stays manageable and commits stay small
+
+### [Operations & Governance](operations/)
+
+- **[Pipeline Enforcement and Expert Agents](operations/pipeline-enforcement/)** - how quality gates and expert validation agents enforce ACD constraints automatically
+- **[Tokenomics](operations/tokenomics/)** - how to architect agents and code to minimize unnecessary [token](../glossary/#token) consumption without sacrificing quality
+- **[Pitfalls and Metrics](operations/pitfalls-and-metrics/)** - covers common failure modes and how to measure whether ACD is working
 
 ## ACD Extensions to MinimumCD
 
 ACD *extends* MinimumCD by the following constraints:
 
 1. Explicit, human-owned intent exists for every change
-2. Intent and architecture are represented as first-class artifacts
-3. All first-class artifacts are versioned and delivered together with the change
+2. Intent and architecture are represented as delivery artifacts
+3. All delivery artifacts are versioned and delivered together with the change
 4. Intended behavior is represented independently of implementation
 5. Consistency between intent, tests, implementation, and architecture is enforced
 6. Agent-generated changes must comply with all documented constraints
@@ -73,47 +84,27 @@ ACD *extends* MinimumCD by the following constraints:
 
 These constraints are **not mandatory practices.** They describe the *minimum conditions required to sustain delivery pace once agents are making changes* to the system.
 
-## The Six First-Class Artifacts
+## Agent Delivery Contract
 
-Every first-class artifact is part of the delivery contract, not a convenience. Agents may read any or all artifacts. Agents may generate some artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
+Every ACD change is anchored by [agent delivery contract](specification/first-class-artifacts/) - structured documents that define intent, behavior, constraints, acceptance criteria, and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
 
-1. **[Intent Description](first-class-artifacts/#1-intent-description)** - why the change exists (human-owned)
-2. **[User-Facing Behavior](first-class-artifacts/#2-user-facing-behavior)** - what users experience (externally observable)
-3. **[Feature Description](first-class-artifacts/#3-feature-description)** - architectural trade-offs and constraints (engineering-owned)
-4. **[Executable Truth](first-class-artifacts/#4-executable-truth)** - automated tests that make intent falsifiable (pipeline-enforced)
-5. **[Implementation](first-class-artifacts/#5-implementation)** - the code (fully constrained by other artifacts)
-6. **[System Constraints](first-class-artifacts/#6-system-constraints)** - global invariants (system-level rules)
-
-These artifacts are intentionally **overlapping in content** but **non-overlapping in authority**. When an agent detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. See [The Six First-Class Artifacts](first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
+See [Agent Delivery Contract](specification/first-class-artifacts/) for the authority hierarchy, detailed definitions, and examples.
 
 ## The ACD Workflow
 
-When an AI agent contributes to a CD pipeline, the workflow extends the standard pipeline:
+Humans define specifications. Agents generate tests and implementation. The pipeline enforces correctness. Human review at Test Validation and Code Review is an interim state that [expert validation agents](operations/pipeline-enforcement/) progressively replace using the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration.
 
-| Stage | Actor | Activity |
-|-------|-------|----------|
-| Intent Definition | Human | Define Intent Description (why the change exists) |
-| Behavior Specification | Human | Define User-Facing Behavior (BDD scenarios, the functional tests) |
-| Architecture Specification | Human | Define Feature Description (architecture, constraints, performance budgets) |
-| Acceptance Criteria | Human | Define acceptance criteria for non-functional tests (latency thresholds, security requirements, resource limits) |
-| Test Generation | Agent | Generate test code from Behavior Specification, Architecture Specification, and Acceptance Criteria |
-| Test Validation | Human → Agent | Validate test code is decoupled from implementation and faithful to specs |
-| Implementation | Agent | Generate implementation |
-| Pipeline Verification | Pipeline | Validate implementation against executable truth (automated tests) |
-| Code Review | Human → Agent | Review implementation (code review) |
-| Deployment | Pipeline | Deploy (same pipeline as any other change) |
-
-Manual review at Test Validation and Code Review is an interim state. Replace it using [expert validation agents](pipeline-enforcement/) and the same [replacement cycle](../migrate-to-cd/brownfield/replacing-manual-validations/) used throughout the CD migration. See [Pipeline Enforcement and Expert Agents](pipeline-enforcement/) for the full set of expert agents and how to adopt them.
+The workflow stages, actor responsibilities, and session structure are detailed in [Small-Batch Sessions](architecture/small-batch-sessions/) and [Pipeline Enforcement](operations/pipeline-enforcement/).
 
 ## Related Content
 
 - [Pipeline Reference Architecture](../pipeline-reference-architecture/) - quality gates sequenced by defect detection priority
 - [Replacing Manual Validations](../migrate-to-cd/brownfield/replacing-manual-validations/) - the replacement cycle for adopting expert validation agents
-- [Defect Sources](../defect-sources/) - where defects originate, informing executable truth and system constraints
+- [Defect Sources](../defect-sources/) - where defects originate, informing acceptance criteria and system constraints
 - [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/) - limiting change size, with extra rigor for agent-generated changes
 - [Code Coverage Mandates](../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
 - [Pressure to Skip Testing](../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that ACD counters by making test-first workflow mandatory
-- [High Coverage but Ineffective Tests](../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on
+- [High Coverage but Ineffective Tests](../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the acceptance criteria agents depend on
 
 ---
 

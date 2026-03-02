@@ -1,13 +1,15 @@
 ---
 title: "Pitfalls and Metrics"
 linkTitle: "Pitfalls and Metrics"
-weight: 12
+weight: 3
 description: >
   Common failure modes when adopting ACD and the metrics that tell you whether it is working.
+aliases:
+  - /docs/agentic-cd/pitfalls-and-metrics/
 ---
 
 {{% pageinfo %}}
-Each pitfall below has a root cause in the same two gaps: skipped [first-class artifacts](../first-class-artifacts/) and absent [pipeline enforcement](../pipeline-enforcement/). Fix those two things and most of these failures become impossible.
+Each pitfall below has a root cause in the same two gaps: skipped [agent delivery contract](../../specification/first-class-artifacts/) and absent [pipeline enforcement](../pipeline-enforcement/). Fix those two things and most of these failures become impossible.
 {{% /pageinfo %}}
 
 ## Key Pitfalls
@@ -18,7 +20,7 @@ Each pitfall below has a root cause in the same two gaps: skipped [first-class a
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
 
-**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way [ACD](../glossary/#acd-agentic-continuous-delivery) fails.
+**Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way [ACD](../../glossary/#acd-agentic-continuous-delivery) fails.
 
 **What to do:** Define test specifications ([BDD](../../glossary/#bdd-behavior-driven-development) scenarios and acceptance criteria) before any code generation. Use a [test fidelity agent](../pipeline-enforcement/) to validate that generated test code matches the specification. Review agent-generated test code for implementation coupling before approving it.
 
@@ -44,7 +46,7 @@ Without provenance tracking, you cannot learn from agent-generated failures, aud
 
 Agents trained to write good code will opportunistically refactor, rename, or improve things they encounter while implementing a scenario. The intent is not wrong. The scope is.
 
-A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but it conflicts with the small-batch discipline that makes agent-generated work reviewable.
+A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but applying it within a feature session conflicts with the small-batch discipline that makes agent-generated work reviewable.
 
 **What to do:** Define scope boundaries explicitly in the [system prompt](../../glossary/#system-prompt) and context. Cleanup is valid work - but as a separate, explicitly scoped session with its own intent description and commit.
 
@@ -70,7 +72,7 @@ When a session is interrupted - by a pipeline failure, a context limit, or an ag
 
 This is a reliability trap. Agent state is not durable in the way a commit is durable. A session that continues past an interruption carries implicit assumptions about what was completed that may not match the actual committed state. The next session should always start from the committed state, not from the memory of a previous session.
 
-**What to do:** Treat any interruption as a session boundary. Before the next session begins, write the [context summary](../small-batch-sessions/#the-context-summary) based on what is actually committed, not what the agent believed it completed. If nothing was committed, the session produced nothing - start fresh from the last green state.
+**What to do:** Treat any interruption as a session boundary. Before the next session begins, write the [context summary](../../architecture/small-batch-sessions/#the-context-summary) based on what is actually committed, not what the agent believed it completed. If nothing was committed, the session produced nothing - start fresh from the last green state.
 
 ### 7. Review agent precision is miscalibrated
 
@@ -80,13 +82,13 @@ This is a reliability trap. Agent state is not durable in the way a commit is du
 
 **Too few flags:** the review agent misses issues that human reviewers would catch. The team gains confidence in the agent and reduces human review depth. Issues that should have been caught are not caught.
 
-**What to do:** During the [replacement cycle](../../migrate-to-cd/brownfield/replacing-manual-validations/) for review agents, track disagreements between the agent and human reviewers, not just agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
+**What to do:** During the [replacement cycle](../../../migrate-to-cd/brownfield/replacing-manual-validations/) for review agents, track disagreements between the agent and human reviewers, not just agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
 
 ### 8. Skipped the prerequisite delivery practices
 
 Teams jump to [ACD](../../glossary/#acd-agentic-continuous-delivery) without the delivery foundations: no deterministic pipeline, no automated tests, no fast feedback loops. AI amplifies whatever system it is applied to. Without guardrails, agents generate defects at machine speed.
 
-**What to do:** Follow the [AI Adoption Roadmap](../adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
+**What to do:** Follow the [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
 ## After Adoption: Sustaining Quality Over Time
 
@@ -144,10 +146,10 @@ Review the context documents for each active workstream quarterly. Archive or de
 
 ## Related Content
 
-- [ACD](../) - the framework overview, eight constraints, and workflow
-- [The Six First-Class Artifacts](../first-class-artifacts/) - the artifacts that prevent these pitfalls
+- [ACD](../../) - the framework overview, eight constraints, and workflow
+- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the artifacts that prevent these pitfalls
 - [Pipeline Enforcement and Expert Agents](../pipeline-enforcement/) - the automated checks that catch failures
-- [AI Adoption Roadmap](../adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
-- [Code Coverage Mandates](../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
-- [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that ACD counters by making test-first workflow mandatory
-- [High Coverage but Ineffective Tests](../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the executable truth agents depend on
+- [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) - the prerequisite sequence that prevents most of these pitfalls
+- [Code Coverage Mandates](../../../anti-patterns/testing/code-coverage-mandates/) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
+- [Pressure to Skip Testing](../../../anti-patterns/organizational-cultural/pressure-to-skip-testing/) - an anti-pattern that ACD counters by making test-first workflow mandatory
+- [High Coverage but Ineffective Tests](../../../symptoms/testing/high-coverage-ineffective-tests/) - a testing symptom that undermines the acceptance criteria agents depend on

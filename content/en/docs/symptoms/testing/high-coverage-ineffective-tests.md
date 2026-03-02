@@ -86,4 +86,4 @@ result.
 - [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building tests that catch real defects
 - [Unit Tests](../../testing/unit/) - Writing fast, behavior-focused tests
 - [Change Fail Rate](../../metrics/change-fail-rate/) - Measure defect escape rate instead of coverage percentage
-- [ACD](../../agentic-cd/) - How ineffective tests undermine the executable truth that agents depend on
+- [ACD](../../agentic-cd/) - How ineffective tests undermine the acceptance criteria that agents depend on
