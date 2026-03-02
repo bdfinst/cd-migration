@@ -177,12 +177,12 @@ Instead of mandating a coverage number, set a floor (as described above) and foc
 attention on test quality: mutation testing scores, defect escape rates, and whether developers
 actually trust the suite enough to deploy on green.
 
-## Week 1 Action Plan
+## Quick-Start Action Plan
 
 If your test suite is not yet ready to support CD, use this focused action plan to make immediate
 progress.
 
-### Day 1-2: Audit your current test suite
+### Audit your current test suite
 
 Assess where you stand before making changes.
 
@@ -198,7 +198,7 @@ Assess where you stand before making changes.
 
 **Output:** A clear picture of your test distribution and the specific problems to address.
 
-### Day 2-3: Fix or remove flaky tests
+### Fix or remove flaky tests
 
 Flaky tests are worse than no tests. They train developers to ignore failures, which means real
 failures also get ignored.
@@ -211,9 +211,9 @@ failures also get ignored.
   it does not).
 - Common causes of flakiness: timing dependencies, shared mutable state, reliance on external
   services, test order dependencies.
-- Target: zero flaky tests in your main test suite by end of week.
+- Target: zero flaky tests in your main test suite.
 
-### Day 3-4: Decouple your pipeline from external dependencies
+### Decouple your pipeline from external dependencies
 
 This is the highest-leverage change for CD. Identify every test that calls a real external service
 and replace that dependency with a test double.
@@ -233,7 +233,7 @@ and replace that dependency with a test double.
 **Output:** A test suite where everything that blocks the build is deterministic and runs without
 network access to external systems.
 
-### Day 4-5: Add functional tests for critical paths
+### Add functional tests for critical paths
 
 If you don't have functional tests (component tests) that exercise your whole service in
 isolation, start with the most critical paths.
@@ -247,7 +247,7 @@ isolation, start with the most critical paths.
   dependencies behave as expected (which your test doubles encode).
 - Run these in CI on every commit.
 
-### Day 5: Set up contract tests for your most important dependency
+### Set up contract tests for your most important dependency
 
 Pick the external dependency that changes most frequently or has caused the most production
 issues. Set up a contract test for it.

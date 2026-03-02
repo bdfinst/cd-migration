@@ -129,7 +129,7 @@ where CD improvement efforts go to die.
 
 ## How to Fix It
 
-### Step 1: Map the current handoffs and their costs (Week 1)
+### Step 1: Map the current handoffs and their costs
 
 Draw the current flow from development complete to production deployed. For each handoff, record
 the average wait time (time in queue) and the average active processing time. Calculate what

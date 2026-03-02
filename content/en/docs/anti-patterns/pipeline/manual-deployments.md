@@ -163,7 +163,7 @@ is irrelevant if every journey ends with a slow, bumpy last mile.
 
 ## How to Fix It
 
-### Step 1: Script the current manual process (Week 1)
+### Step 1: Script the current manual process
 
 Take the runbook, the checklist, or the knowledge in the deployer's head and turn it into a
 script. Do not redesign the process yet - just encode what the team already does.
@@ -175,7 +175,7 @@ script. Do not redesign the process yet - just encode what the team already does
 The script will be rough. It will have hardcoded values and assumptions. That is fine. The goal
 is to make the deployment reproducible by any team member, not to make it perfect.
 
-### Step 2: Run the script from the pipeline (Week 2)
+### Step 2: Run the script from the pipeline
 
 Connect the deployment script to the pipeline so it runs automatically after the build and
 tests pass. Start with a non-production environment:

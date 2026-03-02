@@ -106,14 +106,14 @@ Trunk-based development does not work in isolation. These supporting practices m
 
 When you integrate to trunk daily, incomplete features will exist on trunk. [Feature flags](../../../../glossary/#feature-flag) let you merge code that is not yet ready for users.
 
-{{< code-collapse title="Simple feature flag example" lang="javascript" >}}
+{{< card code=true header="**Simple feature flag example**" lang="javascript" >}}
 // Simple feature flag example
 if (featureFlags.isEnabled('new-checkout-flow', user)) {
   return newCheckout(cart);
 } else {
   return legacyCheckout(cart);
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Rules for feature flags in TBD:**
 
@@ -140,7 +140,7 @@ The ability to make code changes that are not complete features and integrate th
 
 Branch by abstraction lets you gradually replace existing behavior while continuously integrating to trunk. It works in four steps:
 
-{{< code-collapse title="Branch by abstraction - four-step pattern" lang="javascript" >}}
+{{< card code=true header="**Branch by abstraction - four-step pattern**" lang="javascript" >}}
 // Step 1: Create abstraction (integrate to trunk)
 class PaymentProcessor {
   process(payment) {
@@ -161,7 +161,7 @@ const processor = useNewStripe
   : new LegacyProcessor()
 
 // Step 4: Remove old implementation (integrate to trunk)
-{{< /code-collapse >}}
+{{< /card >}}
 
 Each step is a separate commit that keeps trunk working. The old behavior runs until you explicitly switch, and you can remove the abstraction layer once the migration is complete.
 
@@ -169,7 +169,7 @@ Each step is a separate commit that keeps trunk working. The old behavior runs u
 
 Connect Last means you build all the components of a feature, each individually tested and integrated to trunk, and wire them into the user-visible path only in the final commit.
 
-{{< code-collapse title="Connect Last pattern - build components then wire to UI" lang="javascript" >}}
+{{< card code=true header="**Connect Last pattern - build components then wire to UI**" lang="javascript" >}}
 // Commits 1-10: Build new checkout components (all tested, all integrated)
 function CheckoutStep1() { /* tested, working */ }
 function CheckoutStep2() { /* tested, working */ }
@@ -177,7 +177,7 @@ function CheckoutStep3() { /* tested, working */ }
 
 // Commit 11: Wire up to UI (final integration)
 router.get('/checkout', CheckoutStep1);
-{{< /code-collapse >}}
+{{< /card >}}
 
 Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.
 
@@ -213,7 +213,7 @@ Both practices ensure that your test suite grows with your code and that trunk r
 
 ## Getting Started: A Tactical Guide
 
-### Step 1: Shorten Your Branches (Week 1)
+### Step 1: Shorten Your Branches
 
 If your team currently uses long-lived feature branches, start by shortening their lifespan.
 
@@ -225,7 +225,7 @@ If your team currently uses long-lived feature branches, start by shortening the
 
 **Action:** Set a team agreement that no branch lives longer than 2 days. Track branch age as a metric.
 
-### Step 2: Integrate Daily (Week 2-3)
+### Step 2: Integrate Daily
 
 Tighten the window from 2 days to 1 day.
 
@@ -235,7 +235,7 @@ Tighten the window from 2 days to 1 day.
 - If work is not complete, use a feature flag or other technique to merge safely
 - Track [integration frequency](../../../../metrics/integration-frequency/) as your primary metric
 
-### Step 3: Ensure Trunk Stays Green (Week 2-3)
+### Step 3: Ensure Trunk Stays Green
 
 Daily integration is only useful if trunk remains in a releasable state.
 
@@ -245,7 +245,7 @@ Daily integration is only useful if trunk remains in a releasable state.
 - If the build breaks, fixing it becomes the team's top priority
 - Establish a [working agreement](../../../../glossary/#working-agreement): "broken build = stop the line" (see [Working Agreements](../working-agreements/))
 
-### Step 4: Remove the Safety Net of Long Branches (Week 4+)
+### Step 4: Remove the Safety Net of Long Branches
 
 Once the team is integrating daily with a green trunk, eliminate the option of long-lived branches.
 

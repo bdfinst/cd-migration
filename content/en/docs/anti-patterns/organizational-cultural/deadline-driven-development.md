@@ -105,13 +105,13 @@ protected time that deadline-driven organizations never provide.
 
 ## How to Fix It
 
-### Step 1: Make the cost visible (Week 1)
+### Step 1: Make the cost visible
 
 Track two things: the shortcuts taken to meet each deadline (skipped tests, deferred refactoring,
 known defects shipped) and the time spent in subsequent sprints on rework from those shortcuts.
 Present this data as the "deadline tax" that the organization is paying.
 
-### Step 2: Establish the iron triangle explicitly (Week 2)
+### Step 2: Establish the iron triangle explicitly
 
 When a deadline arrives, make the tradeoff explicit: scope, quality, and timeline form a triangle.
 The team can adjust scope or timeline. Quality is not negotiable. Document this as a team working
@@ -121,7 +121,7 @@ Present options: "We can deliver the full scope by date X, or we can deliver thi
 by your requested date. Which do you prefer?" Force the decision rather than absorbing the
 impossible commitment silently.
 
-### Step 3: Reserve capacity for sustainability (Week 3+)
+### Step 3: Reserve capacity for sustainability
 
 Allocate 20 percent of each sprint to non-deadline work: tech debt reduction, test improvements,
 pipeline enhancements, and operational stability. Protect this allocation from stakeholder

@@ -147,7 +147,7 @@ Decoupling a monolith is a long-term effort. The goal is not to rewrite the syst
 microservices on day one. The goal is to create boundaries that limit blast radius and enable
 independent change. Start where the pain is greatest.
 
-### Step 1: Map the dependency hotspots (Week 1)
+### Step 1: Map the dependency hotspots
 
 Identify the areas of the codebase where coupling causes the most pain:
 
@@ -162,7 +162,7 @@ Identify the areas of the codebase where coupling causes the most pain:
 Rank the hotspots by pain: which coupling causes the most unexpected breakage, the most
 coordination overhead, or the most test failures?
 
-### Step 2: Define module boundaries on paper (Week 2)
+### Step 2: Define module boundaries on paper
 
 Before changing any code, define where boundaries should be:
 
@@ -191,7 +191,7 @@ This is the hardest step because it requires changing existing call sites. Use t
 approach: create the new interface alongside the old coupling, migrate callers one at a time, and
 remove the old path when all callers have migrated.
 
-### Step 4: Scope testing to module boundaries (Week 4+)
+### Step 4: Scope testing to module boundaries
 
 Once a boundary exists, use it to scope testing:
 

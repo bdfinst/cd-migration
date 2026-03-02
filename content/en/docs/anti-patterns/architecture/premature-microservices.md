@@ -119,7 +119,7 @@ match.
 
 ## How to Fix It
 
-### Step 1: Assess whether microservices are solving a real problem (Week 1)
+### Step 1: Assess whether microservices are solving a real problem
 
 Answer these questions honestly:
 

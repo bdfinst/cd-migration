@@ -83,7 +83,7 @@ on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash
 
 **Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order](../../getting-started/agent-setup/#context-loading-order), applied to this specific agent configuration:
 
-{{< code-collapse title="Orchestrator system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Orchestrator system prompt rules**" lang="markdown" >}}
 ## Orchestrator Rules
 
 You manage session context and routing. You do not write implementation code.
@@ -120,7 +120,7 @@ On commit:
 - Write a context summary using the format defined in Small-Batch Sessions
 - This summary replaces the full session conversation for future sessions
 - Reset context after writing the summary; do not carry conversation history forward
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -145,7 +145,7 @@ or Opus. Gemini: Pro.
 
 **Rules injected into the implementation agent system prompt:**
 
-{{< code-collapse title="Implementation agent system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Implementation agent system prompt rules**" lang="markdown" >}}
 ## Implementation Rules
 
 You implement exactly one BDD scenario per session. No more.
@@ -168,7 +168,7 @@ Implementation:
 
 Done when: the acceptance test for this scenario passes, all prior acceptance tests
 still pass, and you have staged the changes.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -192,7 +192,7 @@ coordination cheaply. Claude: Haiku. Gemini: Flash.
 step. Structured output here eliminates ambiguity and reduces the token cost of the
 aggregation step.
 
-{{< code-collapse title="Review orchestrator JSON output schema" lang="json" >}}
+{{< card code=true header="**Review orchestrator JSON output schema**" lang="json" >}}
 {
   "decision": "pass | block",
   "findings": [
@@ -205,14 +205,14 @@ aggregation step.
     }
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 An empty `findings` array with `"decision": "pass"` means all sub-agents passed. A
 non-empty `findings` array always accompanies `"decision": "block"`.
 
 **Rules injected into the review orchestrator system prompt:**
 
-{{< code-collapse title="Review orchestrator system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Review orchestrator system prompt rules**" lang="markdown" >}}
 ## Review Orchestrator Rules
 
 You coordinate parallel review sub-agents. You do not review code yourself.
@@ -246,7 +246,7 @@ Return this JSON and nothing else:
     }
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -283,7 +283,7 @@ implementation against stated intent. Claude: Sonnet or Opus. Gemini: Pro.
 
 **System prompt rules:**
 
-{{< code-collapse title="Semantic review agent system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Semantic review agent system prompt rules**" lang="markdown" >}}
 ## Semantic Review Agent Rules
 
 You review code for logical correctness and edge case coverage.
@@ -310,7 +310,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Security Review Agent
 
@@ -342,7 +342,7 @@ Sonnet or Opus. Gemini: Pro.
 
 **System prompt rules:**
 
-{{< code-collapse title="Security review agent system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Security review agent system prompt rules**" lang="markdown" >}}
 ## Security Review Agent Rules
 
 You review code for security defects that SAST tools do not catch.
@@ -373,7 +373,7 @@ Return this JSON and nothing else:
      "why": "<one sentence>", "cwe": "<CWE-NNN or OWASP category>"}
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Performance Review Agent
 
@@ -407,7 +407,7 @@ Gemini: Flash.
 
 **System prompt rules:**
 
-{{< code-collapse title="Performance review agent system prompt rules" lang="markdown" >}}
+{{< card code=true header="**Performance review agent system prompt rules**" lang="markdown" >}}
 ## Performance Review Agent Rules
 
 You review code for timeout, resource, and resilience defects.
@@ -435,7 +435,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Concurrency Review Agent
 
@@ -461,7 +461,7 @@ Gemini: Pro.
 
 **System prompt rules:**
 
-{{< code-collapse title="Concurrency review agent system prompt" lang="markdown" >}}
+{{< card code=true header="**Concurrency review agent system prompt**" lang="markdown" >}}
 ## Concurrency Review Agent Rules
 
 You review code for concurrency defects that static tools cannot detect.
@@ -489,7 +489,7 @@ Return this JSON and nothing else:
     {"file": "<path>", "line": <n>, "issue": "<one sentence>", "why": "<one sentence>"}
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -503,7 +503,7 @@ re-derive it each time. A normal session runs `/start-session`, then `/review`, 
 
 Loads the session context and prepares the implementation agent.
 
-{{< code-collapse title="/start-session skill definition" lang="markdown" >}}
+{{< card code=true header="**/start-session skill definition**" lang="markdown" >}}
 ## /start-session
 
 Assemble the implementation agent's context in this order. Order matters: stable
@@ -521,13 +521,13 @@ item: would omitting it change what the agent produces? If no, omit it.
 
 Present the assembled context to the user for confirmation, then invoke the
 implementation agent.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### `/review`
 
 Invokes the review orchestrator against all staged changes.
 
-{{< code-collapse title="/review skill definition" lang="markdown" >}}
+{{< card code=true header="**/review skill definition**" lang="markdown" >}}
 ## /review
 
 Run the pre-commit review gate:
@@ -544,13 +544,13 @@ Run the pre-commit review gate:
 5. If "decision" is "block", pass the findings array to the implementation
    agent for resolution. Include only the findings, not the full review context.
 6. Do not proceed to commit until /review returns {"decision": "pass"}.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### `/end-session`
 
 Closes the session, validates all gates, writes the summary, and commits.
 
-{{< code-collapse title="/end-session skill definition" lang="markdown" >}}
+{{< card code=true header="**/end-session skill definition**" lang="markdown" >}}
 ## /end-session
 
 Complete the session:
@@ -563,13 +563,13 @@ Complete the session:
 5. Commit with a message referencing the scenario name
 6. Reset context. The session summary is the only artifact that carries forward.
    The full conversation, implementation details, and review findings do not.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### `/fix`
 
 Enters pipeline-restore mode when the pipeline is red.
 
-{{< code-collapse title="/fix skill definition" lang="markdown" >}}
+{{< card code=true header="**/fix skill definition**" lang="markdown" >}}
 ## /fix
 
 Enter pipeline-restore mode. Load minimum context only.
@@ -588,7 +588,7 @@ Enter pipeline-restore mode. Load minimum context only.
    - Flag with CONCERN: if the fix requires touching files not in context
 4. Run /review on the fix. Pass only the fix diff, not the restore session history.
 5. Confirm the pipeline is green. Exit restore mode and return to normal session flow.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -600,7 +600,7 @@ The review orchestrator only runs if the hooks pass.
 
 **Pre-commit hook sequence:**
 
-{{< code-collapse title="Pre-commit hook sequence configuration" lang="yaml" >}}
+{{< card code=true header="**Pre-commit hook sequence configuration**" lang="yaml" >}}
 pre-commit:
   steps:
     - name: lint-and-format
@@ -633,7 +633,7 @@ pre-commit:
       depends-on: [lint-and-format, type-check, secret-scan, sast]
       on-fail: block-commit
       maps-to: "Semantic, security (beyond SAST), performance, concurrency"
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Why the hook sequence matters:** Standard tooling runs first because it is faster and
 cheaper than AI review. If the linter fails, there is no reason to invoke the review

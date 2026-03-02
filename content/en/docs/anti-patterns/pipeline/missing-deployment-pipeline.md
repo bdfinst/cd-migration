@@ -148,7 +148,7 @@ strategies, progressive rollouts, fast rollback - depends on it existing.
 
 ## How to Fix It
 
-### Step 1: Document the current manual process exactly (Week 1)
+### Step 1: Document the current manual process exactly
 
 Before automating, capture what the team actually does today. Have the person who deploys most
 often write down every step in order:
@@ -162,7 +162,7 @@ often write down every step in order:
 This document is not the solution - it is the specification for the first version of the pipeline.
 Every manual step will become an automated step.
 
-### Step 2: Automate the build (Week 2)
+### Step 2: Automate the build
 
 Start with the simplest piece: turning source code into a deployable artifact without manual
 intervention.
@@ -175,7 +175,7 @@ intervention.
 At this point, the team has an automated build but still deploys manually. That is fine. The
 pipeline will grow incrementally.
 
-### Step 3: Add automated tests to the build (Week 3)
+### Step 3: Add automated tests to the build
 
 If the team has any automated tests, add them to the pipeline so they run after the build
 succeeds. If the team has no automated tests, add one. A single test that verifies the application

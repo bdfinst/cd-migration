@@ -119,7 +119,7 @@ whether starting was possible.
 
 ## How to Fix It
 
-### Step 1: Audit the objections for specificity (Week 1)
+### Step 1: Audit the objections for specificity
 
 List every reason currently cited for why CD is not applicable. For each reason, find the specific
 constraint: cite the regulation by name, identify the specific part of the legacy system that
@@ -131,7 +131,7 @@ For those that survive, determine whether the constraint applies to all practice
 A compliance requirement that mandates separation of duties does not prevent automated testing.
 A legacy monolith that cannot be broken up this year can still have its deployment automated.
 
-### Step 2: Find one team and one practice where the objections do not apply (Week 2)
+### Step 2: Find one team and one practice where the objections do not apply
 
 Even in highly constrained organizations, some team or some part of the system is less constrained
 than the general case. Identify the team with the cleanest codebase, the fewest dependencies, the

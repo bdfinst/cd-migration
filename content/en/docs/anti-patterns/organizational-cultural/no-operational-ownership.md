@@ -128,7 +128,7 @@ utilization. Add health endpoints that reflect the service's actual operational 
 development team needs to see what the service is doing in production before they can be
 meaningfully accountable for it.
 
-### Step 2: Give the development team read access to production telemetry (Week 2)
+### Step 2: Give the development team read access to production telemetry
 
 The development team should be able to query production logs and metrics without filing a request
 or involving operations. This is the minimum viable feedback loop: the team can see what is

@@ -1,5 +1,0 @@
-{{- $title := .Get "title" | default "Show code" -}}
-{{- $lang := .Get "lang" | default "" -}}
-{{- $lineCount := len (split (trim .Inner "\n") "\n") -}}
-{{- $threshold := site.Params.codeCollapseAutoOpenLines | default 10 -}}
-{{- $open := or (eq (.Get "open") "true") (lt $lineCount $threshold) -}}<details class="code-collapse"{{ if $open }} open{{ end }}><summary class="code-collapse__summary">{{ $title }}</summary><div class="code-collapse__content"><button class="code-collapse__copy" aria-label="Copy {{ $title }} to clipboard" title="Copy to clipboard">Copy</button>{{ if $lang -}}{{ highlight (trim .Inner "\n") $lang "style=github-dark" }}{{- else -}}<pre class="code-collapse__plain">{{ trim .Inner "\n" }}</pre>{{- end }}</div></details>

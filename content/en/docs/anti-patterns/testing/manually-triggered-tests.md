@@ -66,11 +66,11 @@ The feedback loop that CD depends on - commit, verify, fix, repeat - collapses w
 
 ## How to Fix It
 
-### Step 1: Audit what tests exist and where they live (Week 1)
+### Step 1: Audit what tests exist and where they live
 
 Before automating, understand what you have. List every test suite - unit, integration, end-to-end, contract - and document how each one is currently triggered. Note which ones are already in a CI pipeline versus which require manual steps. This inventory becomes the prioritized list for automation.
 
-### Step 2: Wire the fastest tests to every commit (Week 2)
+### Step 2: Wire the fastest tests to every commit
 
 Start with the tests that run in under two minutes - typically unit tests and fast integration tests. Configure your CI system to run these automatically on every push to every branch. The goal is to get the shortest meaningful feedback loop running without any human involvement. Flaky tests that would slow this down should be quarantined and fixed rather than ignored.
 
@@ -78,11 +78,11 @@ Start with the tests that run in under two minutes - typically unit tests and fa
 
 After the fast gate is stable, add the slower test suites as subsequent stages in the pipeline. These may run in parallel to keep total pipeline duration reasonable. Make these stages required - a pipeline run that skips them should not be allowed to proceed to deployment.
 
-### Step 4: Remove or deprecate manual triggers (Week 5)
+### Step 4: Remove or deprecate manual triggers
 
 Once the automated pipeline covers what the manual process covered, remove the manual trigger options or mark them clearly as deprecated. The goal is to make "run tests manually" unnecessary, not to maintain it as a parallel path. If stakeholders are accustomed to requesting manual test runs, communicate the change and the new process for reviewing test results.
 
-### Step 5: Enforce the pipeline as the deployment gate (Week 6)
+### Step 5: Enforce the pipeline as the deployment gate
 
 Configure your deployment tooling to require a passing pipeline run before any deployment proceeds. In GitHub-based workflows this is a branch protection rule. In other systems it is a pipeline dependency. The pipeline must be the only path to production - not a recommendation but a hard gate.
 

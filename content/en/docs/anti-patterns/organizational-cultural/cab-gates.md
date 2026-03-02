@@ -149,7 +149,7 @@ Eliminating the CAB outright is rarely possible because it exists to satisfy reg
 organizational governance requirements. The path forward is to replace the manual ceremony with
 automated controls that satisfy the same requirements faster and more reliably.
 
-### Step 1: Classify changes by risk (Week 1)
+### Step 1: Classify changes by risk
 
 Not all changes carry the same risk. Introduce a risk classification:
 
@@ -177,7 +177,7 @@ For each concern the CAB currently addresses, implement an automated alternative
 Document these controls. They become the evidence that satisfies auditors in place of the CAB
 meeting minutes.
 
-### Step 3: Pilot auto-approval for standard changes (Week 3)
+### Step 3: Pilot auto-approval for standard changes
 
 Pick one team or one service as a pilot. Standard-risk changes from that team bypass the CAB
 entirely if they meet the automated criteria:
@@ -203,7 +203,7 @@ If the data shows that auto-approved changes are as safe or safer than CAB-revie
 (which is the typical outcome), expand the auto-approval process to more teams and more change
 types.
 
-### Step 5: Reduce the CAB to high-risk changes only (Week 8+)
+### Step 5: Reduce the CAB to high-risk changes only
 
 With most changes flowing through automated approval, the CAB's scope shrinks to genuinely
 high-risk changes: major architectural shifts, compliance-sensitive changes, and cross-team

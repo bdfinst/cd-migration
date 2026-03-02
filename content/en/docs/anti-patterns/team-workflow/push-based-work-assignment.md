@@ -132,7 +132,7 @@ individually scoped.
 
 ## How to Fix It
 
-### Step 1: Order the backlog by priority (Week 1)
+### Step 1: Order the backlog by priority
 
 Before switching to a pull model, the backlog must have a clear priority order. Without it,
 developers will not know what to pull next.
@@ -143,7 +143,7 @@ developers will not know what to pull next.
   is no ambiguity.
 - Agree as a team: when you need work, you pull from the top.
 
-### Step 2: Stop pre-assigning work in sprint planning (Week 2)
+### Step 2: Stop pre-assigning work in sprint planning
 
 Change the sprint planning conversation. Instead of "who takes this story," the team:
 
@@ -154,7 +154,7 @@ Change the sprint planning conversation. Instead of "who takes this story," the 
 The sprint begins with a list of prioritized work and no assignments. This will feel uncomfortable
 for the first sprint.
 
-### Step 3: Pull work daily (Week 2+)
+### Step 3: Pull work daily
 
 At the daily standup (or anytime during the day), a developer who needs work:
 
@@ -178,7 +178,7 @@ Expect these objections and plan for them:
 | "Some developers are faster - I need to assign strategically" | Pull systems self-balance. Faster developers pull more items. Slower developers finish fewer but are never overloaded. The team throughput optimizes naturally. |
 | "Management expects me to know who's working on what" | The board shows who is working on what in real time. Pull systems provide more visibility than pre-assignment because assignments are always current, not a stale plan from sprint planning. |
 
-### Step 5: Combine with WIP limits (Week 4+)
+### Step 5: Combine with WIP limits
 
 Pull-based work and WIP limits reinforce each other:
 

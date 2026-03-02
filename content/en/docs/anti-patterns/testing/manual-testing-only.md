@@ -114,7 +114,7 @@ Starting test automation on an untested codebase feels overwhelming. The key is 
 establish the habit, and expand coverage incrementally. You do not need to test everything before
 you get value - you need to test something and keep going.
 
-### Step 1: Set up the test infrastructure (Week 1)
+### Step 1: Set up the test infrastructure
 
 Before writing a single test, make it trivially easy to run tests:
 
@@ -129,7 +129,7 @@ Before writing a single test, make it trivially easy to run tests:
 The goal for week one is not coverage. It is infrastructure: a working test runner in the pipeline
 that the team can build on.
 
-### Step 2: Write tests for every new change (Week 2+)
+### Step 2: Write tests for every new change
 
 Establish a team rule: every new change must include at least one automated test. Not "every new
 feature" - every change. Bug fixes get a regression test that fails without the fix and passes
@@ -165,7 +165,7 @@ If the codebase resists testing, introduce seams one at a time:
 You do not need to refactor the entire codebase. Each time you touch a file, leave it slightly
 more testable than you found it.
 
-### Step 5: Set a coverage floor and ratchet it up (Week 6+)
+### Step 5: Set a coverage floor and ratchet it up
 
 Once you have meaningful coverage in actively changed code, set a coverage threshold in the
 pipeline:

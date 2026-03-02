@@ -83,13 +83,13 @@ meeting, the change waits.
 
 ## How to Fix It
 
-### Step 1: Map the knowledge distribution (Week 1)
+### Step 1: Map the knowledge distribution
 
 Create a simple matrix: subsystems on one axis, team members on the other. For each cell, mark
 whether the person can work in that area independently, with guidance, or not at all. The gaps
 become visible immediately.
 
-### Step 2: Rotate reviewers deliberately (Week 2)
+### Step 2: Rotate reviewers deliberately
 
 Stop routing PRs to the original author or designated expert. Configure auto-assignment to
 distribute reviews across the team. When a developer reviews unfamiliar code, they learn. The

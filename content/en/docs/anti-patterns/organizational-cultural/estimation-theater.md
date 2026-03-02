@@ -121,7 +121,7 @@ costly - is exactly the opposite of the fast feedback that CD requires.
 
 ## How to Fix It
 
-### Step 1: Measure estimation accuracy for one sprint (Week 1)
+### Step 1: Measure estimation accuracy for one sprint
 
 Collect data before changing anything. For every story in the current sprint, record the estimate
 in points and the actual time in days or hours. At the end of the sprint, calculate the average
@@ -129,7 +129,7 @@ error. Present the results without judgment. In most teams, estimates are off by
 or more on a per-story basis even when the sprint "hits velocity." This data creates the opening
 for a different approach.
 
-### Step 2: Experiment with #NoEstimates for one sprint (Week 2)
+### Step 2: Experiment with #NoEstimates for one sprint
 
 Commit to completing stories without estimating in points. Apply a strict rule: no story enters
 the sprint unless it can be completed in one to three days. This forces the decomposition and

@@ -68,7 +68,7 @@ The improvement work that makes CD better over time - the retrospective that ide
 
 ## How to Fix It
 
-### Step 1: Establish the blameless post-mortem as the standard (Week 1)
+### Step 1: Establish the blameless post-mortem as the standard
 
 1. Read or distribute "How Complex Systems Fail" by Richard Cook and discuss as a team - it provides the conceptual foundation for why individual blame is not a useful explanation for system failures.
 2. Draft a post-mortem template that explicitly prohibits naming individuals as causes. The template should ask: what conditions allowed this failure to occur, and what changes to those conditions would prevent it?

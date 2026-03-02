@@ -143,7 +143,7 @@ release happens at a defined moment.
 
 ## How to Fix It
 
-### Step 1: Distinguish delivery from release (Week 1)
+### Step 1: Distinguish delivery from release
 
 Separate the concept of deployment from the concept of release. The most common objection
 to incremental delivery is "we cannot ship a half-finished feature to users" - but this
@@ -160,7 +160,7 @@ complete, the flag is enabled. The release happens without a deployment. This re
 Run a working session with the team and product stakeholders to explain this distinction.
 Agree that "delivering incrementally" does not mean "exposing incomplete features to users."
 
-### Step 2: Practice decomposing a current feature into vertical slices (Week 1-2)
+### Step 2: Practice decomposing a current feature into vertical slices
 
 Take a feature currently in planning and decompose it into the smallest possible deliverable
 slices:
@@ -176,7 +176,7 @@ A vertical slice cuts through all layers of the stack: it includes backend, API,
 for one small piece of end-to-end functionality. It is the opposite of "first we build all
 the backend, then all the frontend." Each slice is deployable independently.
 
-### Step 3: Implement a feature flag for the current feature (Week 2-3)
+### Step 3: Implement a feature flag for the current feature
 
 For the feature being piloted, add a feature flag:
 
@@ -189,7 +189,7 @@ For the feature being piloted, add a feature flag:
 This allows the team to merge small, reviewable changes to main continuously while maintaining
 the product constraint that the feature is not user-visible until complete.
 
-### Step 4: Set a maximum story size (Week 2-3)
+### Step 4: Set a maximum story size
 
 Define a maximum size for individual work items that the team will carry at any one time:
 
@@ -202,7 +202,7 @@ Define a maximum size for individual work items that the team will carry at any 
 The team will initially find it uncomfortable to decompose work to this granularity. Run
 decomposition workshops using the feature in Step 2 as practice material.
 
-### Step 5: Change the definition of "done" for a story (Week 3-4)
+### Step 5: Change the definition of "done" for a story
 
 Redefine "done" to require deployment, not just code completion. A story is done when:
 
@@ -214,7 +214,7 @@ Redefine "done" to require deployment, not just code completion. A story is done
 not done. This definition forces small batches because a story that cannot be merged to main
 is not done, and a story that cannot be merged to main is probably too large.
 
-### Step 6: Retrospect on the first feature delivered incrementally (Week 4-6)
+### Step 6: Retrospect on the first feature delivered incrementally
 
 After completing the pilot feature using incremental delivery, hold a focused retrospective:
 

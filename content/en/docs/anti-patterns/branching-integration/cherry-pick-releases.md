@@ -135,7 +135,7 @@ Eliminating cherry-pick releases requires making trunk trustworthy. The practice
 feature flags, comprehensive automated testing, small batches, trunk-based development - are the
 same practices that underpin continuous delivery.
 
-### Step 1: Understand why commits are currently being held back (Week 1)
+### Step 1: Understand why commits are currently being held back
 
 Do not start by changing the branching workflow. Start by understanding the reasons commits are
 excluded from releases.
@@ -180,7 +180,7 @@ signal that the automated test suite is not providing sufficient confidence.
 The goal is a suite that makes the team confident enough in every green build to deploy it.
 That confidence is what makes trunk deployable.
 
-### Step 4: Move stakeholder approval before merge (Week 3)
+### Step 4: Move stakeholder approval before merge
 
 If commits are held back because product managers have not signed off, the approval gate is in
 the wrong place. Move it to before trunk integration.
@@ -206,7 +206,7 @@ an experiment: deploy trunk directly without a cherry-pick step.
 Each deployment that succeeds without cherry-picking builds confidence. Each issue is a specific
 thing to fix, not a reason to revert to cherry-picking.
 
-### Step 6: Retire the cherry-pick process (Week 6+)
+### Step 6: Retire the cherry-pick process
 
 Once trunk deployments have been reliable for several cycles, formalize the change. Remove the
 cherry-pick step from the deployment runbook. Make "deploy trunk" the documented and expected

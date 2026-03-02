@@ -70,7 +70,7 @@ The CD goal of continuous, low-batch deployment requires that each team be able 
 
 ## How to Fix It
 
-### Step 1: Map the current usage and contention patterns (Week 1)
+### Step 1: Map the current usage and contention patterns
 
 Before changing anything, understand how the shared environment is currently being used. How many teams use it? How often does each team deploy? What is the average wait time for a staging slot? How frequently do test runs fail due to environment contention rather than application bugs? This data establishes the cost of the current state and provides a baseline for measuring improvement.
 
@@ -86,7 +86,7 @@ Configure the CI/CD pipeline to create a fresh, isolated environment at the star
 
 Tests that rely on a pre-seeded shared database need to be refactored to set up and tear down their own data. This is often the most labor-intensive part of the transition. Start with the test suites that most frequently fail due to data contamination. Add setup steps that create required data at test start and teardown steps that remove it at test end, or use a database that is seeded fresh for each pipeline run from a version-controlled seed script.
 
-### Step 5: Decommission the shared staging environment (Week 10)
+### Step 5: Decommission the shared staging environment
 
 Schedule and announce the decommission of the shared staging environment once each team has pipeline-managed isolated environments. Communicate the timeline to all teams, and remove it. The existence of the shared environment creates temptation to fall back to it, so removing it closes that path.
 

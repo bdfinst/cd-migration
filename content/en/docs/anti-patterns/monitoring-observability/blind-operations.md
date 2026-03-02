@@ -127,7 +127,7 @@ the team can manually verify.
 
 ## How to Fix It
 
-### Step 1: Add structured logging (Week 1)
+### Step 1: Add structured logging
 
 Structured logging is the foundation of observability. Without it, logs are unreadable at scale.
 
@@ -141,7 +141,7 @@ Structured logging is the foundation of observability. Without it, logs are unre
 Focus on the most critical code paths first: request handling, error paths, and external service
 calls. You do not need to instrument everything in week one.
 
-### Step 2: Add application-level metrics (Week 2)
+### Step 2: Add application-level metrics
 
 Infrastructure metrics (CPU, memory, disk) tell you the servers are running. Application metrics
 tell you the software is working. Add the four golden signals:
@@ -156,7 +156,7 @@ tell you the software is working. Add the four golden signals:
 Expose these metrics through your application (using Prometheus client libraries, StatsD, or
 your platform's metric SDK) and visualize them on a dashboard.
 
-### Step 3: Create a deployment health dashboard (Week 3)
+### Step 3: Create a deployment health dashboard
 
 Build a single dashboard that answers: "Is the system healthy right now?"
 
@@ -169,7 +169,7 @@ Build a single dashboard that answers: "Is the system healthy right now?"
 This dashboard becomes the first thing the team checks after every deployment. It replaces the
 manual click-through verification.
 
-### Step 4: Add automated alerts for deployment verification (Week 4)
+### Step 4: Add automated alerts for deployment verification
 
 Move from "someone checks the dashboard" to "the system tells us when something is wrong":
 
@@ -182,7 +182,7 @@ Move from "someone checks the dashboard" to "the system tells us when something 
 Start with a small number of high-confidence alerts. Three alerts that fire reliably are worth
 more than thirty that the team ignores.
 
-### Step 5: Integrate observability into the deployment pipeline (Week 5+)
+### Step 5: Integrate observability into the deployment pipeline
 
 Close the loop between deployment and verification:
 

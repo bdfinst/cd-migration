@@ -68,7 +68,7 @@ Infrastructure as code is a prerequisite for the production-like environments th
 
 ## How to Fix It
 
-### Step 1: Document what exists (Week 1)
+### Step 1: Document what exists
 
 Before writing any code, inventory the environments you have and what is in each one. For each environment, record the OS, the installed software and versions, the network configuration, and any environment-specific variables. This inventory is both the starting point for writing infrastructure code and a record of the configuration drift you need to close.
 
@@ -80,7 +80,7 @@ Pick an infrastructure-as-code tool that fits your stack - Terraform for cloud r
 
 Use the same codebase to describe all environments, with environment-specific values (region, instance size, external endpoints) as parameters or variable files. Environments should be instances of the same template, not separate scripts. Run the code against each environment and reconcile any differences you find - each difference is a configuration drift that needs to be either codified or corrected.
 
-### Step 4: Commit infrastructure changes to source control with review (Week 6)
+### Step 4: Commit infrastructure changes to source control with review
 
 Establish a policy that all infrastructure changes go through a pull request process. No engineer makes manual changes to any environment without a corresponding code change merged first. For emergency changes made under incident pressure, require a follow-up PR within 24 hours that captures what was changed and why. This closes the feedback loop that allows drift to accumulate.
 
@@ -88,7 +88,7 @@ Establish a policy that all infrastructure changes go through a pull request pro
 
 Wire the infrastructure code into your deployment pipeline so that environment creation and configuration are pipeline steps rather than manual preconditions. Ephemeral test environments should be created at pipeline start and destroyed at pipeline end. Production deployments should apply the infrastructure code as a step before deploying the application, ensuring the environment is always in the expected state.
 
-### Step 6: Validate by destroying and recreating a non-production environment (Week 8)
+### Step 6: Validate by destroying and recreating a non-production environment
 
 Delete an environment entirely and recreate it from source control alone, with no manual steps. Confirm it behaves identically. Do this in a non-production environment before you need to do it under pressure in production.
 

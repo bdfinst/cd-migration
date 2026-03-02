@@ -135,7 +135,7 @@ the one that yields the most immediate improvement when addressed.
 
 ## How to Fix It
 
-### Step 1: Measure current build times by stage (Week 1)
+### Step 1: Measure current build times by stage
 
 Measure before optimizing. Understand where the time goes:
 
@@ -150,7 +150,7 @@ This baseline makes it possible to measure improvement. It also reveals whether 
 is dependency download (fixable with caching), compilation (fixable with incremental builds),
 or tests (a different problem requiring test optimization).
 
-### Step 2: Add dependency caching to the pipeline (Week 1-2)
+### Step 2: Add dependency caching to the pipeline
 
 Enable dependency caching. Most CI/CD platforms have built-in support:
 

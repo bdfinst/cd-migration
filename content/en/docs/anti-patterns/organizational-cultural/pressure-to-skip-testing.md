@@ -130,7 +130,7 @@ infrastructure that makes frequent, safe deployment possible.
 
 ## How to Fix It
 
-### Step 1: Make the cost visible (Week 1)
+### Step 1: Make the cost visible
 
 The pressure to skip tests comes from a belief that testing is overhead rather than investment.
 Change that belief with data:
@@ -145,7 +145,7 @@ Present these numbers to the manager applying pressure. Frame it concretely: "We
 on incident response last quarter. Thirty of those incidents would have been caught by tests that
 we skipped."
 
-### Step 2: Include testing in every estimate (Week 2)
+### Step 2: Include testing in every estimate
 
 Stop treating tests as separate work items that can be deferred:
 
@@ -159,7 +159,7 @@ Stop treating tests as separate work items that can be deferred:
 When a manager asks "can we skip the tests to ship faster?" the answer is "the tests are part of
 shipping. Skipping them means the feature is not done."
 
-### Step 3: Set a coverage floor and enforce it (Week 3)
+### Step 3: Set a coverage floor and enforce it
 
 Prevent further erosion with an automated guardrail:
 

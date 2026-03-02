@@ -185,7 +185,7 @@ Each concrete example can become its own story or task. The scope is clear, the 
 
 Structure acceptance criteria in Given-When-Then format to make them executable:
 
-{{< code-collapse title="Given-When-Then: user login scenarios" lang="gherkin" >}}
+{{< card code=true header="**Given-When-Then: user login scenarios**" lang="gherkin" >}}
 Feature: User login
 
   Scenario: Successful login with valid credentials
@@ -198,7 +198,7 @@ Feature: User login
     When they enter an incorrect password and click "Log in"
     Then they see the message "Invalid email or password"
     And they remain on the login page
-{{< /code-collapse >}}
+{{< /card >}}
 
 Each scenario is a natural unit of work. Implement one scenario at a time, integrate to trunk after each one.
 

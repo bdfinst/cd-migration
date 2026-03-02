@@ -99,25 +99,25 @@ because the team spent the sprint chasing shifting requirements.
 
 ## How to Fix It
 
-### Step 1: Make the gap visible (Week 1)
+### Step 1: Make the gap visible
 
 Track how much time the tech lead spends on product decisions versus technical work. Track how
 often the team is blocked waiting for requirements clarification or priority decisions. Present
 this data to leadership as the cost of not having a dedicated product owner.
 
-### Step 2: Establish a single backlog with a single owner (Week 2)
+### Step 2: Establish a single backlog with a single owner
 
 Until a dedicated product owner is hired or assigned, designate one person as the interim backlog
 owner. This person has the authority to rank items and say no to new requests mid-sprint.
 Stakeholders submit requests to the backlog, not directly to developers.
 
-### Step 3: Shield the team from requirements churn (Week 2+)
+### Step 3: Shield the team from requirements churn
 
 Adopt a rule: requirements do not change for items already in the sprint. New information goes
 into the backlog for next sprint. If something is truly urgent, it displaces another item of
 equal or greater size. The team finishes what they started.
 
-### Step 4: Advocate for a dedicated product owner (Week 3+)
+### Step 4: Advocate for a dedicated product owner
 
 Use the data from Step 1 to make the case. Show the cost of the tech lead's split attention in
 terms of missed commitments, rework from requirements churn, and delivery delays from decision

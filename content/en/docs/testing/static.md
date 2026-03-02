@@ -54,7 +54,7 @@ benefits from linting, formatting, and dependency scanning.
 
 A `.eslintrc.json` configuration enforcing test quality rules:
 
-{{< code-collapse title="ESLint configuration for test quality rules" lang="json" >}}
+{{< card code=true header="**ESLint configuration for test quality rules**" lang="json" >}}
 {
   "rules": {
     "jest/no-disabled-tests": "warn",
@@ -65,32 +65,32 @@ A `.eslintrc.json` configuration enforcing test quality rules:
     "no-console": "warn"
   }
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Type Checking
 
 Statically typed languages catch type mismatches at compile time, eliminating entire classes
 of runtime errors. Java, for example, rejects incompatible argument types before the code runs:
 
-{{< code-collapse title="Java type checking example" lang="java" >}}
+{{< card code=true header="**Java type checking example**" lang="java" >}}
 public static double calculateTotal(double price, int quantity) {
     return price * quantity;
 }
 
 // Compiler error: incompatible types: String cannot be converted to double
 calculateTotal("19.99", 3);
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Dependency Scanning
 
 Tools like `npm audit`, Snyk, or Dependabot scan for known vulnerabilities:
 
-{{< code-collapse title="npm audit output example" lang="bash" >}}
+{{< card code=true header="**npm audit output example**" lang="bash" >}}
 $ npm audit
 found 2 vulnerabilities (1 moderate, 1 high)
   moderate: Prototype Pollution in lodash < 4.17.21
   high:     Remote Code Execution in log4j < 2.17.1
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Types of Static Analysis
 
@@ -113,7 +113,7 @@ manual review covers subjective aspects like whether alt text is actually meanin
 
 A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
 
-{{< code-collapse title="pa11y-ci configuration for WCAG 2.1 AA checks" lang="json" >}}
+{{< card code=true header="**pa11y-ci configuration for WCAG 2.1 AA checks**" lang="json" >}}
 {
   "defaults": {
     "standard": "WCAG2AA",
@@ -125,11 +125,11 @@ A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
     "http://localhost:1313/docs/testing/"
   ]
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 An axe-core unit test asserting that a rendered component has no accessibility violations:
 
-{{< code-collapse title="axe-core accessibility test with jest-axe" lang="javascript" >}}
+{{< card code=true header="**axe-core accessibility test with jest-axe**" lang="javascript" >}}
 import { axe, toHaveNoViolations } from "jest-axe";
 
 expect.extend(toHaveNoViolations);
@@ -139,7 +139,7 @@ it("should have no accessibility violations", async () => {
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });
-{{< /code-collapse >}}
+{{< /card >}}
 
 ## Anti-Patterns
 

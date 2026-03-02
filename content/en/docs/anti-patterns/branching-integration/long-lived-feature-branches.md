@@ -147,7 +147,7 @@ is undermined when the branching model prevents frequent integration.
 
 ## How to Fix It
 
-### Step 1: Measure your current branch lifetimes (Week 1)
+### Step 1: Measure your current branch lifetimes
 
 Before changing anything, understand the baseline. For every open branch:
 
@@ -160,7 +160,7 @@ two or three weeks old. Making the data visible creates urgency.
 
 Set a target: no branch older than one day. This will feel aggressive. That is the point.
 
-### Step 2: Set a branch lifetime limit and make it visible (Week 2)
+### Step 2: Set a branch lifetime limit and make it visible
 
 Agree as a team on a maximum [branch lifetime](../../glossary/#branch-lifetime). Start with two days if one day feels too aggressive.
 The important thing is to pick a number and enforce it.
@@ -218,7 +218,7 @@ enable short-lived branches. The two practices reinforce each other.
 | "We tried short-lived branches and it was chaos"               | Short-lived branches require supporting practices: feature flags, good decomposition, fast CI, and a culture of small changes. Without those supports, it will feel chaotic. The fix is to build the supports, not to retreat to long-lived branches. |
 | "Code review takes too long for daily merges"                  | Small changes take minutes to review, not hours. If reviews are slow, that is a review process problem, not a branching problem. See [PRs Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/).                                                |
 
-### Step 6: Continuously tighten the limit (Week 5+)
+### Step 6: Continuously tighten the limit
 
 Once the team is comfortable with two-day branches, reduce the limit to one day. Then push toward
 integrating multiple times per day. Each reduction surfaces new problems - features that are hard

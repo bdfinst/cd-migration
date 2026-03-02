@@ -67,11 +67,11 @@ Production-like environments are an explicit CD prerequisite. Without parity, th
 
 ## How to Fix It
 
-### Step 1: Document the differences between all environments (Week 1)
+### Step 1: Document the differences between all environments
 
 Create a side-by-side comparison of every environment. Include OS version, runtime versions, database versions, network topology, external service integration approach (mock versus real), hardware or instance sizes, and any environment-specific configuration parameters. This document is both a diagnosis of the current parity gap and the starting point for closing it.
 
-### Step 2: Prioritize differences by defect-hiding potential (Week 2)
+### Step 2: Prioritize differences by defect-hiding potential
 
 Not all differences matter equally. Rank the gaps from the audit by how likely each is to hide production bugs. Version differences in core runtime or database components rank highest. Topology differences rank high. Scale differences rank medium unless the application has known performance sensitivity. Tooling and monitoring differences rank low. Work down the prioritized list.
 
@@ -83,7 +83,7 @@ Close the highest-priority gaps first. For version differences, upgrade the lagg
 
 Where staging uses mocks for external services, evaluate whether a sandbox or test account for the real service is available. For services that do not offer sandboxes, invest in contract tests that verify the mock's behavior matches the real service. The goal is not to replace all mocks with live calls, but to ensure that the mock faithfully represents the latency, error rates, and API behavior of the real endpoint.
 
-### Step 5: Establish a parity enforcement process (Week 8 and ongoing)
+### Step 5: Establish a parity enforcement process
 
 Create a policy that any change applied to production must also be applied to staging before the next release cycle. Include environment parity checks as part of your release checklist. Automate what you can: tools like Terraform allow you to compare the planned state of staging and production against a common module, flagging differences. Review the side-by-side comparison document at the start of each sprint and update it after any infrastructure change.
 

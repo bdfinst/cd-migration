@@ -136,7 +136,7 @@ is neither continuous nor reliable.
 
 ## How to Fix It
 
-### Step 1: Document what exists today (Week 1)
+### Step 1: Document what exists today
 
 Before automating anything, capture the current state of each environment:
 
@@ -167,7 +167,7 @@ Verify the specification by destroying the staging environment and recreating it
 the recreated environment works, the specification is correct. If it does not, fix the
 specification until it does.
 
-### Step 3: Parameterize for environment differences (Week 3)
+### Step 3: Parameterize for environment differences
 
 Intentional differences between environments (instance sizes, database connection strings, API
 keys) become parameters, not separate specifications. One specification with environment-specific
@@ -183,7 +183,7 @@ variables:
 The structure is identical. Only the values change. This eliminates accidental drift because every
 environment is built from the same template.
 
-### Step 4: Provision environments through the pipeline (Week 4)
+### Step 4: Provision environments through the pipeline
 
 Add environment provisioning to the deployment pipeline:
 
@@ -196,7 +196,7 @@ This closes the loop. Environments cannot drift because they are recreated or re
 every deployment. Manual SSH sessions and hand edits have no lasting effect because the next
 pipeline run overwrites them.
 
-### Step 5: Make environments disposable (Week 5+)
+### Step 5: Make environments disposable
 
 The ultimate goal is that any environment can be destroyed and recreated in minutes with no data
 loss and no human intervention:

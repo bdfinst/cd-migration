@@ -144,7 +144,7 @@ Shifting testing earlier is as much a cultural and organizational change as a te
 The goal is shared ownership of quality between developers and testers, with testing happening
 continuously throughout the development process.
 
-### Step 1: Involve testers in story definition (Week 1)
+### Step 1: Involve testers in story definition
 
 The first shift is the earliest in the process: bring testers into the conversation before
 development begins.
@@ -183,7 +183,7 @@ not during development.
 3. The shared QA environment shifts from "where testing happens" to "where additional integration
    testing happens," not the first environment where the code is verified.
 
-### Step 4: Define a "definition of done" that includes tests (Week 3)
+### Step 4: Define a "definition of done" that includes tests
 
 If the team's definition of done allows a story to be marked complete without passing automated
 tests, the incentive to write tests is weak. Change the definition.

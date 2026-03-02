@@ -12,9 +12,9 @@ Change Fail Rate measures the percentage of deployments to production that resul
 in degraded service, negative customer impact, or require immediate remediation
 such as a [rollback](../glossary/#rollback), hotfix, or patch.
 
-{{< code-collapse title="Change Fail Rate formula" lang="text" >}}
+{{< card code=true header="**Change Fail Rate formula**" lang="text" >}}
 changeFailRate = failedChangeCount / totalChangeCount * 100
-{{< /code-collapse >}}
+{{< /card >}}
 
 A "failed change" includes any deployment that:
 

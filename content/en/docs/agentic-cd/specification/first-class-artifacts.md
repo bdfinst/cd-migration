@@ -22,7 +22,7 @@ An agent (or a new team member) receiving only this document should understand t
 
 **Example:**
 
-{{< code-collapse title="Intent description: add rate limiting to /api/search" lang="markdown" >}}
+{{< card code=true header="**Intent description: add rate limiting to /api/search**" lang="markdown" >}}
 ## Intent: Add rate limiting to the /api/search endpoint
 
 We are receiving complaints about slow response times during peak hours.
@@ -30,7 +30,7 @@ Analysis shows that a small number of clients are making thousands of
 requests per minute. We need to limit each authenticated client to 100
 requests per minute on the /api/search endpoint. Requests that exceed
 the limit should receive a 429 response with a Retry-After header.
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Key property:** The intent description is authored and owned by a human. The agent does not write or modify it.
 
@@ -40,7 +40,7 @@ the limit should receive a 429 response with a Retry-After header.
 
 Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../../glossary/#bdd-behavior-driven-development) scenarios work well here:
 
-{{< code-collapse title="BDD scenarios: rate limit user-facing behavior" lang="gherkin" >}}
+{{< card code=true header="**BDD scenarios: rate limit user-facing behavior**" lang="gherkin" >}}
 Scenario: Client exceeds rate limit
   Given an authenticated client
   And the client has made 100 requests in the current minute
@@ -55,7 +55,7 @@ Scenario: Client within rate limit
   When the client makes a request to /api/search
   Then the request should be processed normally
   And the response should include rate limit headers showing remaining quota
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Key property:** Humans define the scenarios. The agent generates code to satisfy them but does not decide what scenarios to include.
 
@@ -67,7 +67,7 @@ Agents need explicit architectural context that human developers often carry in 
 
 **Example:**
 
-{{< code-collapse title="Feature description: rate limiting constraint architecture" lang="markdown" >}}
+{{< card code=true header="**Feature description: rate limiting constraint architecture**" lang="markdown" >}}
 ## Feature: Rate Limiting for Search API
 
 ### Musts
@@ -88,7 +88,7 @@ Agents need explicit architectural context that human developers often carry in 
 ### Escalation Triggers
 - If Redis is unavailable, stop and ask whether to fail open (allow all requests) or fail closed (reject all requests)
 - If the existing auth middleware does not expose the client ID, stop and ask rather than modifying the auth layer
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Key property:** Engineering owns the architectural decisions. The agent implements within these constraints but does not change them. When the agent encounters a condition listed as an escalation trigger, it must stop and ask rather than deciding autonomously.
 
@@ -102,7 +102,7 @@ This artifact has two parts: the **done definition** (observable outcomes an ind
 
 Write acceptance criteria as observable outcomes, not internal implementation details. Each criterion should be verifiable by someone who has never seen the code:
 
-{{< code-collapse title="Acceptance criteria: rate limiting done definition" lang="markdown" >}}
+{{< card code=true header="**Acceptance criteria: rate limiting done definition**" lang="markdown" >}}
 1. An authenticated client making 100 requests in one minute receives normal
    responses with rate limit headers showing remaining quota
 2. An authenticated client making a 101st request in the same minute receives
@@ -112,13 +112,13 @@ Write acceptance criteria as observable outcomes, not internal implementation de
 4. A different authenticated client is unaffected by another client's rate
    limit status
 5. The rate limit middleware adds less than 5ms to p99 request latency
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Evaluation design
 
 Define test cases with known-good outputs so the agent (and the [pipeline](../../glossary/#pipeline)) can verify correctness mechanically:
 
-{{< code-collapse title="Evaluation design: rate limiting test cases" lang="markdown" >}}
+{{< card code=true header="**Evaluation design: rate limiting test cases**" lang="markdown" >}}
 **Test Case 1 (Happy Path):** Client sends 50 requests in one minute.
 Result: All return 200 with X-RateLimit-Remaining headers counting down.
 
@@ -133,7 +133,7 @@ a request. Result: Client B receives 200.
 
 **Test Case 5 (Latency Budget):** Single request with rate limit check.
 Result: Middleware adds less than 5ms.
-{{< /code-collapse >}}
+{{< /card >}}
 
 Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents](../../operations/pipeline-enforcement/) enforce these two properties at pipeline speed.
 
@@ -147,7 +147,7 @@ The implementation is the artifact most likely to be agent-generated. It must sa
 
 **Example** - agent-generated rate limiting middleware that satisfies the acceptance criteria above:
 
-{{< code-collapse title="Implementation: agent-generated rate limiting middleware" lang="javascript" >}}
+{{< card code=true header="**Implementation: agent-generated rate limiting middleware**" lang="javascript" >}}
 function rateLimitMiddleware(redisClient, config) {
   return async function (req, res, next) {
     if (!req.user) {
@@ -175,7 +175,7 @@ function rateLimitMiddleware(redisClient, config) {
     next();
   };
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Review requirements:** Agent-generated implementation must be reviewed by a human before merging to trunk. The review focuses on:
 
@@ -192,7 +192,7 @@ function rateLimitMiddleware(redisClient, config) {
 
 **Example:**
 
-{{< code-collapse title="System constraints: global non-functional requirements" lang="yaml" >}}
+{{< card code=true header="**System constraints: global non-functional requirements**" lang="yaml" >}}
 system_constraints:
   security:
     - No secrets in source code
@@ -210,7 +210,7 @@ system_constraints:
     - All new features must have monitoring dashboards
     - Log structured data, not strings
     - Feature flags required for user-visible changes
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Key property:** System constraints apply globally. Unlike other artifacts that are per-change, these rules apply to every change in the system.
 
