@@ -3,7 +3,7 @@ title: "The Agentic Development Learning Curve"
 linkTitle: "Learning Curve"
 weight: 2
 description: >
-  The six stages developers move through as they learn to work with AI - why many stay stuck at Stage 1 or 2, and what information is needed to progress.
+  The stages developers normall experience as they learn to work with AI - why many stay stuck at Stage 1 or 2, and what information is needed to progress.
 aliases:
   - /docs/agentic-cd/learning-curve/
 ---
@@ -12,7 +12,7 @@ aliases:
 Many developers using AI coding tools today are at Stage 1 or Stage 2. Many conclude from that experience that AI is only useful for boilerplate, or that it cannot handle real work. That conclusion is not wrong given their experience - it is wrong about the ceiling. The ceiling they hit is the ceiling of that stage, not of AI-assisted development. Every stage above has a higher ceiling, but the path up is not obvious without exposure to better practices.
 {{% /pageinfo %}}
 
-The progression below describes six distinct stages developers move through when learning AI-assisted development. At each stage, a specific bottleneck limits how much value AI actually delivers. Solving that [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) opens the next stage. Ignoring it means productivity gains plateau - or reverse - and developers conclude AI is not worth the effort.
+The progression below describes the stages developers generally experience when learning AI-assisted development. At each stage, a specific bottleneck limits how much value AI actually delivers. Solving that [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) opens the next stage. Ignoring it means productivity gains plateau - or reverse - and developers conclude AI is not worth the effort.
 
 Progress through these stages does not happen naturally or automatically. It requires intentional practice changes and, most importantly, exposure to what the next stage looks like. Many developers never see Stages 4 through 6 demonstrated. They optimize within the stage they are at and assume that is the limit of the technology.
 

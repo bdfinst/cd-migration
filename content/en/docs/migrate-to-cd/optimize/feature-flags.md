@@ -214,9 +214,9 @@ spec:
 
 Every feature flag has a lifecycle. Flags that are not actively managed become technical debt. Follow this lifecycle rigorously.
 
-### The Six Stages
+### The Stages
 
-{{< card code=true header="**Feature flag lifecycle: six stages from create to remove**" >}}
+{{< card code=true header="**Feature flag lifecycle: the stages from create to remove**" >}}
 1. CREATE       → Define the flag, document its purpose and owner
 2. DEPLOY OFF   → Code ships to production with the flag disabled
 3. BUILD        → Incrementally add functionality behind the flag

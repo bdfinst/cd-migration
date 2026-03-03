@@ -113,7 +113,7 @@ Practicing specification engineering has effects beyond agent workflows:
 
 ## Related Content
 
-- [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}) - the six stages these disciplines map to
+- [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}) - the stages these disciplines map to
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how agents help produce specifications, including a [complete example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the structured output of specification engineering
 - [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) - context engineering applied to session structure

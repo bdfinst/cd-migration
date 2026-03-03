@@ -3,7 +3,7 @@ title: "Agent Delivery Contract"
 linkTitle: "Agent Delivery Contract"
 weight: 1
 description: >
-  Detailed definitions and examples for the six artifacts that agents and humans must maintain in an ACD pipeline.
+  Detailed definitions and examples for the artifacts that agents and humans should maintain in an ACD pipeline.
 aliases:
   - /docs/agentic-cd/first-class-artifacts/
 ---
@@ -253,7 +253,7 @@ Without them, an agent that detects a conflict between what the acceptance crite
 
 These artifacts are valuable in any project. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
 
-With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+With the artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
 ## Related Content
 
