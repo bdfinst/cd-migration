@@ -78,7 +78,7 @@ on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash
 - Delegate implementation to the implementation agent
 - Trigger the review orchestrator when the implementation agent reports completion
 - Write the session summary on commit and reset context for the next session
-- Enforce the pipeline-red rule ([ACD constraint 8]({{< relref "/docs" >}})):  if the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is failing,
+- Enforce the pipeline-red rule ([ACD constraint 8]({{< relref "/docs/agentic-cd#acd-extensions-to-minimumcd" >}})):  if the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is failing,
   route only to pipeline-restore mode; block new feature work
 
 **Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order]({{< relref "/docs/agentic-cd/getting-started/agent-setup#context-loading-order" >}}), applied to this specific agent configuration:

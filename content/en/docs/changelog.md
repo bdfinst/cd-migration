@@ -7,6 +7,12 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-03 - AI Tech Debt: Layered Detection and Stage 5 Spec References
+
+- Updated [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}) to describe the two-layer approach for automated structural quality detection: deterministic tools (duplication detection, complexity limits, architecture rules) as the first layer and the semantic review agent with architectural constraints as the second layer.
+- Fixed Stage 5 in [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}) to reference [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) and [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) directly from the spec-first workflow description.
+- Fixed placeholder `{{< relref "/docs" >}}` links across all Agentic CD pages to point to the correct destinations.
+
 ## 2026-03-03 - New Triage Problems: AI Coding and Test Environment Reset
 
 Added four new triage problems with supporting content:

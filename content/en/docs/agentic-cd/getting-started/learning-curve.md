@@ -64,7 +64,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **Where it breaks down:** Vague requirements. An agent given a fuzzy description makes reasonable-but-wrong architectural decisions, names things inconsistently, misses edge cases it cannot infer from the existing code, and produces changes that look correct locally but break something upstream. Review becomes hard because the diff spans many files and the reviewer must reconstruct the intent from the code rather than from a stated specification. Hallucinated APIs, missing error handling, and subtle correctness errors compound because each small decision compounds on the next.
 
-**What works:** Larger-scoped tasks with clear intent. Refactoring a module to match a new interface, generating tests for existing code, migrating a dependency. The agent navigates the codebase rather than receiving pasted excerpts.
+**What works:** Larger-scoped tasks with clear intent. Refactoring a module to match a new interface, generating tests for existing code, migrating a [dependency]({{< relref "/docs/reference/glossary#dependency" >}}). The agent navigates the codebase rather than receiving pasted excerpts.
 
 **What drives the move forward:** Review burden. The developer spends more time validating the agent's output than they would have spent writing the code. The insight that emerges: the agent needs the same thing a new team member needs - explicit requirements, not vague descriptions.
 
@@ -72,7 +72,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 {{< figure src="/images/agentic-stage5-spec-first.svg" alt="Stage 5 workflow: Human writes spec, agent generates tests, agent generates implementation, pipeline enforces correctness. All output still routes to human review. Bottleneck: human review throughput cannot keep pace with generation rate." >}}
 
-**What it looks like:** The developer writes a specification before the agent writes any code. The specification includes intent (why), behavior scenarios (what users experience), and constraints (performance budgets, architectural boundaries, edge case handling). The agent generates test code from the specification first. Tests pass when the behavior is correct. Implementation follows.
+**What it looks like:** The developer writes a specification before the agent writes any code. The specification includes intent (why), behavior scenarios (what users experience), and constraints (performance budgets, architectural boundaries, edge case handling). The agent generates test code from the specification first. Tests pass when the behavior is correct. Implementation follows. The [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) defines the artifact structure. [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) describes how to produce specifications at a pace that does not bottleneck the development cycle.
 
 **Where it breaks down:** Review volume. A fast agent with a spec-first workflow generates changes faster than a human reviewer can validate them. The bottleneck shifts from code generation quality to human review throughput. The developer is now a reviewer of machine output, which is not where they deliver the most value.
 
@@ -97,7 +97,7 @@ Progress through these stages does not happen naturally or automatically. It req
 - A pipeline that can run multiple agents in parallel and collect results before promotion
 - Human ownership of specifications - the stages that require judgment about what matters to the business
 
-This is the [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) destination. The [ACD workflow]({{< relref "/docs" >}}) defines the complete sequence. The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the structured documents the workflow runs on. [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) covers how to architect agents to keep costs in proportion to value. [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) shows a recommended orchestrator, coder, and reviewer configuration.
+This is the [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) destination. The [ACD workflow]({{< relref "/docs/agentic-cd" >}}) defines the complete sequence. The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the structured documents the workflow runs on. [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) covers how to architect agents to keep costs in proportion to value. [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) shows a recommended orchestrator, coder, and reviewer configuration.
 
 ## Why Progress Stalls
 
@@ -148,7 +148,7 @@ The [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-
 
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skill layers that map to each stage of the learning curve
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - organizational prerequisites for the later stages
-- [ACD]({{< relref "/docs" >}}) - the full workflow, constraints, and delivery artifacts
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the full workflow, constraints, and delivery artifacts
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to write specs fast enough that they do not slow down Stage 5
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the documents the multi-agent workflow depends on
 - [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - how to architect Stage 6 so token costs scale with value
