@@ -2,8 +2,8 @@
 title: "AI-Generated Code Ships Without Developer Understanding"
 linkTitle: "AI code without understanding"
 description: >
-  Developers accept AI-generated code they cannot explain, and functional bugs and security
-  vulnerabilities reach production because nobody reviewed the logic critically.
+  Developers accept AI-generated code without verifying it against acceptance criteria, and
+  functional bugs and security vulnerabilities reach production unchallenged.
 tags:
   - test-strategy
   - team-dynamics
@@ -13,30 +13,31 @@ tags:
 
 A developer asks an AI assistant to implement a feature. The generated code looks plausible.
 The tests pass. The developer commits it. Two weeks later, a security review finds the code
-accepts unsanitized input in a path the developer did not realize existed. When asked about
-the logic, the developer says, "The AI wrote that part - I'm not sure exactly why it does it
-that way."
+accepts unsanitized input in a path nobody specified as an acceptance criterion. When asked
+what the change was supposed to do, the developer says, "It implements the feature." When
+asked how they validated it, they say, "The tests passed."
 
 This is not an occasional gap. It is a pattern. Developers use AI to produce code faster, but
-they do not trace the logic, challenge the approach, or verify that it handles edge cases they
-know about from the domain. The AI becomes a black box that happens to output code instead of
-predictions. The code compiles. The tests pass. Nobody understands it well enough to maintain it.
+they do not define what "correct" means before generating code, verify the output against
+specific [acceptance criteria](../../reference/glossary/#acceptance-criteria), or consider how they would detect a failure in production. The
+code compiles. The tests pass. Nobody validated it against the actual requirements.
 
 The symptoms compound over time. Defects appear in AI-generated code that the team cannot
-diagnose quickly because nobody understood the original implementation. Fixes are made by asking
-the AI to fix its own output, creating a second layer of code nobody understands. Security
-vulnerabilities - injection flaws, broken access controls, exposed credentials - ship because
-the developer trusted the AI's output the same way they would trust a well-tested library.
+diagnose quickly because nobody defined what the code was supposed to do beyond "implement
+the feature." Fixes are made by asking the AI to fix its own output without re-examining the
+original acceptance criteria. Security vulnerabilities - injection flaws, broken access
+controls, exposed credentials - ship because nobody asked "what are the security constraints
+for this change?" before or after generation.
 
 ## Common causes
 
 ### Rubber-Stamping AI-Generated Code
 
-When there is no expectation that developers understand and can explain every line of code they
-commit - regardless of who or what wrote it - AI output gets the same cursory glance as a
-trivial formatting change. The team treats "AI wrote it and the tests pass" as sufficient
-evidence of correctness. It is not. Passing tests prove the code satisfies the test cases.
-They do not prove the code is correct, secure, or maintainable.
+When there is no expectation that developers own what a change does and how they validated it -
+regardless of who or what wrote the code - AI output gets the same cursory glance as a trivial
+formatting change. The team treats "AI wrote it and the tests pass" as sufficient evidence of
+correctness. It is not. Passing tests prove the code satisfies the test cases. They do not
+prove the code meets the actual requirements or handles the constraints the team cares about.
 
 **Read more:** [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}})
 
@@ -61,10 +62,11 @@ diverges from the domain rules. Without it, "tests pass" is a weak signal.
 
 ## How to narrow it down
 
-1. **Can developers explain the logic of code they committed in the last week?** Pick three
-   recent AI-assisted commits at random and ask the committing developer to walk through the
-   logic. If they cannot explain why the code does what it does, the review process is not
-   catching unexamined code. Start with
+1. **Can developers explain what their recent changes do and how they validated them?** Pick
+   three recent AI-assisted commits at random and ask the committing developer: what does this
+   change accomplish, what acceptance criteria did you verify, and how would you detect if it
+   were wrong? If they cannot answer, the review process is not catching unexamined code.
+   Start with
    [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}).
 2. **Do your work items include specific, testable acceptance criteria before implementation
    starts?** If acceptance criteria are vague or added after the fact, neither the AI nor the

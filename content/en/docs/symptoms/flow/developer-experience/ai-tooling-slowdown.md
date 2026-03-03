@@ -12,33 +12,33 @@ tags:
 ## What you are seeing
 
 A developer opens an AI chat window to implement a function. They spend ten minutes writing a
-prompt that describes the requirements, the constraints, the existing patterns in the codebase,
-and the edge cases. The AI generates code. The developer reads through it, finds that it uses
-a different pattern than the rest of the codebase, misses a constraint they mentioned, and
-handles one edge case incorrectly. They refine the prompt. The AI produces a second version.
-It is better but still wrong in a subtle way. The developer fixes it by hand. Total time: forty
-minutes. Writing it themselves would have taken fifteen.
+[prompt](../../../reference/glossary/#prompt) that describes the requirements, the constraints, the existing patterns in the codebase,
+and the edge cases. The AI generates code. The developer reads through it line by line because
+they have no [acceptance criteria](../../../reference/glossary/#acceptance-criteria) to verify against. They spot that it uses a different pattern
+than the rest of the codebase and misses a constraint they mentioned. They refine the prompt.
+The AI produces a second version. It is better but still wrong in a subtle way. The developer
+fixes it by hand. Total time: forty minutes. Writing it themselves would have taken fifteen.
 
 This is not a one-time learning curve. It happens repeatedly, on different tasks, across the
 team. Developers report that AI tools help with boilerplate and unfamiliar syntax but actively
 slow them down on tasks that require domain knowledge, codebase-specific patterns, or
 non-obvious constraints. The promise of "10x productivity" collides with the reality that
-explaining context to an AI is itself work - and reviewing AI output is often harder than
-writing the code from scratch because the developer must verify someone else's approach rather
-than executing their own.
+without clear acceptance criteria, reviewing AI output means auditing the implementation
+detail by detail - which is often harder than writing the code from scratch.
 
 ## Common causes
 
 ### Poor Work Decomposition for AI
 
-AI assistants work best on small, well-defined tasks with clear inputs and outputs. When
+AI assistants work best on small, well-defined tasks with clear acceptance criteria. When
 developers hand the AI a large, underspecified task - "implement the billing reconciliation
-feature" - the AI produces a large, plausible-looking implementation that requires extensive
-review and correction. The time spent prompting, reviewing, and fixing exceeds the time to
-implement incrementally.
+feature" - the AI produces a large, plausible-looking implementation that has no clear
+criteria to verify against. The developer falls into reviewing implementation line by line
+because they have no checklist of expected behaviors to test. The time spent prompting,
+reviewing, and fixing exceeds the time to implement incrementally.
 
-The fix is not to stop using AI. It is to decompose work into pieces small enough that the AI
-can produce correct output and the developer can verify it quickly.
+The fix is not to stop using AI. It is to decompose work into pieces small enough that
+acceptance criteria are obvious and the developer can verify the output against them quickly.
 
 **Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
@@ -58,11 +58,12 @@ time.
 
 ### Knowledge Silos
 
-When domain knowledge is concentrated in a few people, those people can implement domain-heavy
-features faster than they can explain the domain to an AI. The AI lacks the implicit knowledge
-that an experienced developer carries. For developers who do not have the domain knowledge,
-using AI is equally slow because they cannot tell whether the AI's output is correct. Both
-situations produce slowdowns for different reasons.
+When domain knowledge is concentrated in a few people, the acceptance criteria for domain-heavy
+work exist only in those people's heads. They can implement the feature faster than they can
+articulate the criteria for an AI prompt. For developers who do not have the domain knowledge,
+using AI is equally slow because they lack the criteria to validate the output against. Both
+situations produce slowdowns for different reasons - and both trace back to domain knowledge
+that has not been made explicit.
 
 **Read more:** [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 

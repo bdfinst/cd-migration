@@ -57,10 +57,12 @@ Slow tests delay feedback and encourage developers to skip running them locally.
 <details>
 <summary>AI-generated code is causing quality or security problems</summary>
 
-When developers use AI to generate code without understanding the output, functional bugs and
-security vulnerabilities ship because review standards have not kept pace with new tooling.
+When developers use AI to generate code without verifying it against [acceptance criteria](../reference/glossary/#acceptance-criteria),
+functional bugs and security vulnerabilities ship. AI can also accumulate structural problems
+faster than the team can address them.
 
-- **[AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}})** - Developers commit AI output they cannot explain, and bugs hide in unexamined logic
+- **[AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}})** - Developers commit AI output without verifying it against acceptance criteria
+- **[AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}})** - The codebase accumulates duplication and inconsistent patterns from AI-generated code
 
 </details>
 
