@@ -33,7 +33,7 @@ enableGitInfo = false
   notAlternative = true
 
 [outputFormats.Markdown]
-  baseName       = "index"
+  baseName       = "index.html"
   isPlainText    = true
   mediaType      = "text/markdown"
   notAlternative = true
