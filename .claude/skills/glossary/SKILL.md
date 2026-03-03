@@ -6,7 +6,23 @@ user_invocable: true
 
 # Glossary Manager
 
+Role: implementation. This skill modifies the glossary file to keep
+entries and "Referenced in" links accurate.
+
 Maintain the glossary at `content/en/docs/glossary.md` and keep its "Referenced in" index links accurate.
+
+## Constraints
+
+1. **Minimal changes.** Only update "Referenced in" lines, add requested entries, and fix ordering. Do not rewrite existing definitions.
+2. **Be concise.** Output a summary of changes made. No preambles.
+3. **Validate after changes.** Run all validation checks in step 5 before considering the work complete.
+
+## Arguments
+
+Accept one of:
+- No argument: audit and update all "Referenced in" lines
+- `add [term]`: add a new glossary entry
+- File paths: update "Referenced in" for terms referenced in those files
 
 ## When to Run
 
@@ -63,6 +79,22 @@ When the user asks to add a new term:
 - No emojis.
 - All relative links resolve to existing files (spot-check at minimum).
 - Entries are in alphabetical order within their letter section.
+
+## Output Format
+
+After processing, report:
+
+```
+## Glossary Update Summary
+
+Updated N "Referenced in" lines:
+- [term]: added [page title], removed [page title]
+
+Added N new entries:
+- [term]
+
+No changes needed for N entries.
+```
 
 ## Glossary File Location
 

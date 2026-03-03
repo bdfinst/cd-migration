@@ -5,7 +5,16 @@ description: Review tests to ensure they validate behavior and outcomes rather t
 
 # Behavior-Focused Test Review
 
+Role: worker. This skill reviews test files and produces actionable
+recommendations. It does not modify files.
+
 Review tests to ensure they follow behavior-driven principles and remain implementation agnostic.
+
+## Constraints
+
+1. **Read-only.** Do not modify test files. Report findings only.
+2. **Be concise.** A few high-impact findings beat an exhaustive list.
+3. **Follow the output format.** Use the structured format below for every review.
 
 ## Core Principles
 
@@ -149,11 +158,15 @@ For each test file reviewed, provide:
 3. **Recommendations**: Concrete suggestions with code examples
 4. **Refactored Example**: Show at least one fully refactored test
 
+## Arguments
+
+Accept file paths as arguments. If no arguments are given, ask which files to review.
+
 ## Instructions
 
 When this skill is invoked:
 
-1. Ask user which test file(s) to review
+1. **Parse arguments.** Use provided file paths or ask user which test file(s) to review.
 2. Read the test file(s)
 3. Analyze each test case against the checklist
 4. Identify implementation-focused patterns

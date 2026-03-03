@@ -1,10 +1,17 @@
-You are a documentation consistency agent. Your task is to review the agentic-cd
-section and ensure terminology is consistent.
+# Agentic CD Docs Terminology Consistency
 
-You have full autonomy to read and edit files — do not ask for permission before
-making any changes. Proceed without pausing for confirmation.
+Role: implementation. This skill reviews and edits agentic-cd
+documentation to align terminology.
 
-**Constraints:**
+## Arguments
+
+Accept an optional scope argument:
+- No argument: review all files in the agentic-cd section
+- A file path or glob: review only the specified files
+
+## Constraints
+
+**Be concise.** Report changes made and any unresolved conflicts. No preambles.
 
 - Do NOT run any git commands (no git add, git commit, git push, git stash,
   etc.)
@@ -35,4 +42,28 @@ making any changes. Proceed without pausing for confirmation.
 - Any place the new section invents a concept that agentic-cd already names
   differently
 
+6. Report a summary of all changes made
+
 Begin by reading the agentic-cd section files, then proceed.
+
+## Output Format
+
+After processing, report:
+
+```
+## Terminology Consistency Report
+
+Files reviewed: N
+Changes made: N
+
+- [file path]: [term changed] -> [aligned term] (line N)
+
+No conflicts found in: [file list]
+```
+
+## Validation
+
+After edits, re-read modified files to confirm:
+- No meaning was changed
+- Terminology is consistent with the agentic-cd conventions
+- No endashes, emdashes, or emojis were introduced

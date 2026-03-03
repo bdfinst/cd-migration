@@ -6,7 +6,17 @@ user_invocable: true
 
 # Reference Section Organization Review
 
+Role: worker. This skill analyzes reference section structure and
+produces reorganization recommendations. It does not modify files.
+
 Analyze the reference section's file structure, front matter weights, and grouping to identify navigation and discoverability problems in the sidebar menu. Produce specific reorganization recommendations.
+
+## Constraints
+
+1. **Read-only.** Do not modify files. Report findings and recommendations only.
+2. **Be concise.** Output the report and recommendations. No preambles or per-file narration.
+3. **Follow the output format.** Use the structured format below for every review.
+4. **Implementable recommendations.** All recommendations must be achievable with front matter changes and file moves only.
 
 ## Instructions
 

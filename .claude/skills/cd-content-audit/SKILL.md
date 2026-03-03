@@ -6,7 +6,17 @@ user_invocable: true
 
 # CD Content Audit
 
+Role: worker. This skill validates content files and reports findings.
+It does not modify files.
+
 Validate content pages for structural compliance, front matter correctness, tone and voice, cross-references, and terminology consistency.
+
+## Constraints
+
+1. **Read-only.** Do not modify files. Report findings only.
+2. **Be concise.** Output the report and summary. No preambles or per-file narration.
+3. **Follow the output format.** Use the structured format below for every audit.
+4. **Delegate out-of-scope concerns.** Do not check writing quality (`tech-writing-review`) or glossary linking (`glossary-link`).
 
 ## Instructions
 
