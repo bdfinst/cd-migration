@@ -120,13 +120,13 @@ constraints, then lower again.
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Work in progress](../../../metrics/work-in-progress/) | Should stay at or below the team's limit |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as WIP drops |
+| [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should stay at or below the team's limit |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as WIP drops |
 | Items completed per week | Should stabilize or increase despite starting fewer |
 | Time items spend blocked | Should decrease as the team swarms on blockers |
 
 ## Related Content
 
-- [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) - The practice guide for implementing WIP limits
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Reducing batch size reinforces low WIP
-- [Push-Based Work Assignment](../push-based-work-assignment/) - Push assignment and missing WIP limits are mutually reinforcing
+- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - The practice guide for implementing WIP limits
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Reducing batch size reinforces low WIP
+- [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Push assignment and missing WIP limits are mutually reinforcing

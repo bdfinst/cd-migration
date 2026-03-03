@@ -7,5 +7,5 @@ description: >
 ---
 
 {{% pageinfo %}}
-Every [ACD](../../glossary/#acd-agentic-continuous-delivery) change is anchored by structured delivery [artifacts](../../glossary/#artifact). When each change is framed as a hypothesis - "We believe [this change] will produce [this outcome]" - the artifacts do double duty: they define what to build and how to validate whether building it achieved its purpose. These pages define the artifacts [agents](../../glossary/#agent-ai) must respect and explain how agents help sharpen specifications before any code is written.
+Every [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) change is anchored by structured delivery [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}). When each change is framed as a hypothesis - "We believe [this change] will produce [this outcome]" - the artifacts do double duty: they define what to build and how to validate whether building it achieved its purpose. These pages define the artifacts [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) must respect and explain how agents help sharpen specifications before any code is written.
 {{% /pageinfo %}}

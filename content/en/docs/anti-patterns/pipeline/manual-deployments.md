@@ -246,15 +246,15 @@ The team should be able to deploy without watching. The monitoring watches for t
 |--------|-----------------|
 | Manual steps per deployment | Should reach zero |
 | Deployment duration (human time) | Should drop from hours to zero - the pipeline does the work |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment friction drops |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as manual process defects are eliminated |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as rollback becomes automated |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as the deployment bottleneck is removed |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as deployment friction drops |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as manual process defects are eliminated |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as rollback becomes automated |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the deployment bottleneck is removed |
 
 ## Related Content
 
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline that includes deployment
-- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path through the same pipeline
-- [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Automated rollback depends on automated deployment
-- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Deployment scripts, configuration, and infrastructure belong in version control
-- [Missing Deployment Pipeline](missing-deployment-pipeline/) - If the build is also manual, start there first
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - How to structure a pipeline that includes deployment
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Every change follows the same automated path through the same pipeline
+- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback depends on automated deployment
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Deployment scripts, configuration, and infrastructure belong in version control
+- [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - If the build is also manual, start there first

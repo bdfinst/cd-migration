@@ -26,7 +26,7 @@ The team has relied on manual testing as the primary quality gate. Automated tes
 
 Making the transition requires making a deliberate commitment: new code is always written with tests, existing code gets tests when it is modified, and high-risk areas are prioritized for retrofitted coverage. Over months, the areas of the codebase where developers can no longer safely make changes shrink, and the cycle of deploying to discover breakage is replaced by a test suite that catches failures before production.
 
-**Read more:** [Manual testing only](../../anti-patterns/testing/manual-testing-only/)
+**Read more:** [Manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
 ### Tightly coupled monolith
 
@@ -34,7 +34,7 @@ Code without dependency injection, without interfaces, and without clear module 
 
 Introducing seams - interfaces, dependency injection, module boundaries - makes code testable. This work is not glamorous and its value is invisible until tests start getting written. But it is the prerequisite for meaningful test coverage in a tightly coupled system. Once the seams exist, functions can be tested in isolation rather than requiring a full application instantiation - and developers stop needing to deploy to find out if a change is safe.
 
-**Read more:** [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly coupled monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ### Pressure to skip testing
 
@@ -42,12 +42,12 @@ If management has historically prioritized features over tests, the codebase wil
 
 Reversing this requires organizational commitment to treat test coverage as a delivery requirement, not as optional work that gets squeezed out when time is short. Without that commitment, the same pressure that created the untested codebase will prevent escaping it - and developers will keep gambling on every deploy.
 
-**Read more:** [Pressure to skip testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/)
+**Read more:** [Pressure to skip testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
 
 ## How to narrow it down
 
-1. **Can any single function in the codebase be tested without instantiating the entire application?** If not, the architecture does not have the seams needed for unit tests. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
-2. **Has the team ever had a sustained period of writing tests as part of normal development?** If not, the practice was never established. Start with [Manual testing only](../../anti-patterns/testing/manual-testing-only/).
-3. **Did historical management decisions consistently deprioritize testing?** If test debt accumulated from external pressure, the organizational habit needs to change before the technical situation can improve. Start with [Pressure to skip testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+1. **Can any single function in the codebase be tested without instantiating the entire application?** If not, the architecture does not have the seams needed for unit tests. Start with [Tightly coupled monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
+2. **Has the team ever had a sustained period of writing tests as part of normal development?** If not, the practice was never established. Start with [Manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
+3. **Did historical management decisions consistently deprioritize testing?** If test debt accumulated from external pressure, the organizational habit needs to change before the technical situation can improve. Start with [Pressure to skip testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}).
 
-**Ready to fix this?** The most common cause is [Manual testing only](../../anti-patterns/testing/manual-testing-only/). Start with its [How to Fix It](../../anti-patterns/testing/manual-testing-only/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/manual-testing-only#how-to-fix-it" >}}) section for week-by-week steps.

@@ -101,16 +101,16 @@ Add a pipeline step that records the artifact checksum after the build and verif
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Build duration](../../../metrics/build-duration/) | Reduction as builds move from per-environment to single-artifact |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Fewer production failures caused by configuration-dependent behavior differences between tested and deployed artifacts |
-| [Lead time](../../../metrics/lead-time/) | Shorter path from commit to production as rebuild-per-environment cycles are eliminated |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Faster recovery from configuration-related incidents when a config change no longer requires a full rebuild |
-| [Release frequency](../../../metrics/release-frequency/) | Increased deployment frequency as the pipeline no longer multiplies build time across environments |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Reduction as builds move from per-environment to single-artifact |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Fewer production failures caused by configuration-dependent behavior differences between tested and deployed artifacts |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Shorter path from commit to production as rebuild-per-environment cycles are eliminated |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster recovery from configuration-related incidents when a config change no longer requires a full rebuild |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increased deployment frequency as the pipeline no longer multiplies build time across environments |
 
 ## Related Content
 
-- [Application configuration management](../../../migrate-to-cd/migration-path/pipeline/application-config/)
-- [Immutable artifacts](../../../migrate-to-cd/migration-path/pipeline/immutable-artifacts/)
-- [Production-like environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/)
-- [Everything as code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/)
-- [Single path to production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/)
+- [Application configuration management]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}})
+- [Immutable artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}})
+- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
+- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})

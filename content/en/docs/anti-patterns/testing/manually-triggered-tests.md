@@ -97,15 +97,15 @@ Configure your deployment tooling to require a passing pipeline run before any d
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Build duration](../../../metrics/build-duration/) | Decreasing as flaky or redundant tests are fixed and parallelized; stable execution time per commit |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Declining trend as automated tests catch regressions before they reach production |
-| [Lead time](../../../metrics/lead-time/) | Reduction in the time between commit and deployable state as manual test wait times are eliminated |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Shorter repair cycles because defects are caught earlier when the developer still has context |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Reduced waiting time between code complete and merge as manual QA handoff steps are eliminated |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Decreasing as flaky or redundant tests are fixed and parallelized; stable execution time per commit |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Declining trend as automated tests catch regressions before they reach production |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in the time between commit and deployable state as manual test wait times are eliminated |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Shorter repair cycles because defects are caught earlier when the developer still has context |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduced waiting time between code complete and merge as manual QA handoff steps are eliminated |
 
 ## Related Content
 
-- [Testing fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
-- [Deterministic pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/)
-- [Pipeline architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
-- [Metrics-driven improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)
+- [Testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}})
+- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
+- [Metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})

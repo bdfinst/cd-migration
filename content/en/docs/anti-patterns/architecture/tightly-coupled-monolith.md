@@ -43,7 +43,7 @@ Common variations:
   versioning or API stability guarantees. Updating the library for one consumer breaks another.
   Teams stop updating shared libraries because the risk is too high.
 - **Everything deploys together.** The application is a single deployable unit. Even if modules
-  are logically separated in the source code, they compile and ship as one [artifact](../../glossary/#artifact). A one-line
+  are logically separated in the source code, they compile and ship as one [artifact]({{< relref "/docs/reference/glossary#artifact" >}}). A one-line
   change to the login page requires deploying the entire system.
 
 The telltale sign: developers regularly say "I don't know what this change will affect" and
@@ -122,24 +122,24 @@ infrequent and explicit.
 
 ### Impact on continuous delivery
 
-[Continuous delivery](../../glossary/#cd-continuous-delivery) requires that any change can flow from commit to production safely and
+[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires that any change can flow from commit to production safely and
 quickly. Tight coupling breaks this in multiple ways:
 
 - **Blast radius prevents small, safe changes.** If a one-line change can break unrelated
   features, no change is small from a risk perspective. The team compensates by batching changes
   and testing extensively, which is the opposite of continuous.
 - **Testing scope is unbounded.** Without module boundaries, there is no way to scope testing to
-  the changed area. Every change requires running the full suite, which slows the [pipeline](../../glossary/#pipeline) and
-  reduces [deployment frequency](../../glossary/#deployment-frequency).
+  the changed area. Every change requires running the full suite, which slows the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) and
+  reduces [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}).
 - **Independent deployment is impossible.** If everything must deploy together, deployment
   coordination is required. Teams queue up behind each other. Deployment frequency is limited by
   the slowest team.
-- **[Rollback](../../glossary/#rollback) is risky.** Rolling back one change might break something else if other changes
+- **[Rollback]({{< relref "/docs/reference/glossary#rollback" >}}) is risky.** Rolling back one change might break something else if other changes
   were deployed simultaneously. The tangle works in both directions.
 
 A team with a tightly coupled monolith can still practice CD, but they must invest in decoupling
 first. Without boundaries, the feedback loops are too slow and the blast radius is too large for
-[continuous deployment](../../glossary/#continuous-deployment) to be safe.
+[continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) to be safe.
 
 ## How to Fix It
 
@@ -230,9 +230,9 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 | Metric | What to look for |
 |--------|-----------------|
 | Unexpected cross-module test failures | Should decrease as boundaries are enforced |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as blast radius shrinks |
-| [Build duration](../../../metrics/build-duration/) | Should decrease as testing can be scoped to affected modules |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as developers spend less time tracing dependencies |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as blast radius shrinks |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Should decrease as testing can be scoped to affected modules |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as developers spend less time tracing dependencies |
 | Cross-team coordination requests per sprint | Should decrease as module ownership becomes clearer |
 | Files changed per commit | Should decrease as changes become more localized |
 
@@ -246,9 +246,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Strategies for creating module boundaries
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Decoupling enables smaller, safer changes
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Scoping tests to module boundaries
-- [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - Finding the coupling that hurts most
-- [Value Stream Mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/) - Making coordination overhead visible
-- [Change & Complexity Defects](../../defect-sources/change-and-complexity/) - how tight coupling generates unintended side effects and feature interaction defects.
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Strategies for creating module boundaries
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Decoupling enables smaller, safer changes
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Scoping tests to module boundaries
+- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Finding the coupling that hurts most
+- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Making coordination overhead visible
+- [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) - how tight coupling generates unintended side effects and feature interaction defects.

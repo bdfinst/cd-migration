@@ -96,15 +96,15 @@ Establish a policy that pipeline definitions are changed only through the source
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Build duration](../../../metrics/build-duration/) | Stable and predictable pipeline duration once the pipeline definition is version-controlled and changes are reviewed |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Fewer pipeline-related failures as unreviewed configuration changes are eliminated |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Faster pipeline recovery when the pipeline can be recreated from source control rather than reconstructed from memory |
-| [Lead time](../../../metrics/lead-time/) | Reduction in pipeline downtime contribution to delivery lead time |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Stable and predictable pipeline duration once the pipeline definition is version-controlled and changes are reviewed |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Fewer pipeline-related failures as unreviewed configuration changes are eliminated |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster pipeline recovery when the pipeline can be recreated from source control rather than reconstructed from memory |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in pipeline downtime contribution to delivery lead time |
 
 ## Related Content
 
-- [Everything as code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/)
-- [Pipeline architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
-- [No infrastructure as code](../no-infrastructure-as-code/)
-- [Build automation](../../../migrate-to-cd/migration-path/foundations/build-automation/)
-- [Single path to production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/)
+- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
+- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
+- [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
+- [Build automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}})
+- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})

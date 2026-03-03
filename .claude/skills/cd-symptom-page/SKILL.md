@@ -134,12 +134,12 @@ Every `**Read more:**` link and every "How to narrow it down" link MUST point to
 - `monitoring-observability/blind-operations` - Blind Operations
 
 **Organizational & Cultural:**
-- `organizational-cultural/cab-gates` - CAB Gates
-- `organizational-cultural/deadline-driven-development` - Deadline-Driven Development
-- `organizational-cultural/missing-product-ownership` - Missing Product Ownership
-- `organizational-cultural/pressure-to-skip-testing` - Pressure to Skip Testing
-- `organizational-cultural/thin-spread-teams` - Thin-Spread Teams
-- `organizational-cultural/velocity-as-individual-metric` - Velocity as Individual Metric
+- `organizational-cultural/governance-process/cab-gates` - CAB Gates
+- `organizational-cultural/planning/deadline-driven-development` - Deadline-Driven Development
+- `organizational-cultural/team-dynamics/missing-product-ownership` - Missing Product Ownership
+- `organizational-cultural/team-dynamics/pressure-to-skip-testing` - Pressure to Skip Testing
+- `organizational-cultural/team-dynamics/thin-spread-teams` - Thin-Spread Teams
+- `organizational-cultural/planning/velocity-as-individual-metric` - Velocity as Individual Metric
 
 **Pipeline & Infrastructure:**
 - `pipeline/manual-deployments` - Manual Deployments

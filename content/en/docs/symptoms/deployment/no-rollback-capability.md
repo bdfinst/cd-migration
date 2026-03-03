@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-When something breaks in production, the only option is a forward fix. [Rolling back](../../glossary/#rollback) has never been practiced and there is no defined procedure for it. The previous version [artifacts](../../glossary/#artifact) may not exist. Nobody is sure of the exact steps. The unspoken understanding is that deployments only go forward.
+When something breaks in production, the only option is a forward fix. [Rolling back]({{< relref "/docs/reference/glossary#rollback" >}}) has never been practiced and there is no defined procedure for it. The previous version [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) may not exist. Nobody is sure of the exact steps. The unspoken understanding is that deployments only go forward.
 
-There is no defined reversal procedure. Database migrations run during deployment but [rollback](../../glossary/#rollback) migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Even if someone wanted to roll back, they would need to reconstruct the previous state from memory - and that assumes the database is in a compatible state, which it often is not.
+There is no defined reversal procedure. Database migrations run during deployment but [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Even if someone wanted to roll back, they would need to reconstruct the previous state from memory - and that assumes the database is in a compatible state, which it often is not.
 
 The team compensates by delaying deployments, adding more manual verification before each one, and keeping deployments large so there are fewer of them. Each of these adaptations makes deployments larger and riskier - exactly the opposite of what reduces the risk.
 
@@ -26,15 +26,15 @@ When deployment is a manual process, there is no corresponding automated rollbac
 
 With automated deployments, rollback is the same procedure as a deployment - just pointed at the previous artifact. The team practices rollback every time they deploy, so when they need it, the steps are known and the process works. There is no scramble to reconstruct what the previous state was.
 
-**Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Missing deployment pipeline
 
-A [pipeline](../../glossary/#pipeline) creates a versioned artifact from a specific commit and promotes it through environments. That artifact can be redeployed to roll back. Without a pipeline, there is no defined artifact to restore, no promotion history to reverse, and no guarantee that a previous build can be reproduced.
+A [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) creates a versioned artifact from a specific commit and promotes it through environments. That artifact can be redeployed to roll back. Without a pipeline, there is no defined artifact to restore, no promotion history to reverse, and no guarantee that a previous build can be reproduced.
 
 When the pipeline exists, every previous artifact is stored and addressable. Rolling back means redeploying a known artifact through the same automated process used to deploy new versions. The team no longer faces the situation of needing to reconstruct a previous state from memory under pressure.
 
-**Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ### Blind operations
 
@@ -42,7 +42,7 @@ If the team cannot detect a bad deployment within minutes, they face a choice: r
 
 Fast detection changes the math. When the team knows within five minutes that a deployment caused a spike in errors, rollback is still a viable option. The window for clean rollback is open. Monitoring and health checks that fire immediately after deployment keep that window open long enough to use.
 
-**Read more:** [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Snowflake environments
 
@@ -50,13 +50,13 @@ When production is a hand-configured environment, "previous state" is not a well
 
 Environments defined as code have a previous state by definition: the previous commit to the infrastructure repository. Rolling back the environment means checking out that commit and applying it. The team no longer faces the situation where "previous state" is something they would have to reconstruct from memory - it is in version control and can be restored.
 
-**Read more:** [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ## How to narrow it down
 
-1. **Is the deployment process automated?** If not, rollback requires the same manual execution under pressure - without practice. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
-2. **Does the team have an artifact registry retaining previous versions?** If not, even attempting rollback requires reconstructing a previous build. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
-3. **How quickly does the team detect deployment problems?** If detection takes more than 30 minutes, rollback is often impractical by the time it is considered. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
-4. **Can the team recreate a previous environment state from code?** If environments are hand-configured, there is no defined previous state to return to. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
+1. **Is the deployment process automated?** If not, rollback requires the same manual execution under pressure - without practice. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
+2. **Does the team have an artifact registry retaining previous versions?** If not, even attempting rollback requires reconstructing a previous build. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+3. **How quickly does the team detect deployment problems?** If detection takes more than 30 minutes, rollback is often impractical by the time it is considered. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
+4. **Can the team recreate a previous environment state from code?** If environments are hand-configured, there is no defined previous state to return to. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 
-**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.

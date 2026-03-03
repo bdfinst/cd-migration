@@ -233,16 +233,16 @@ rewards QA effort, not quality outcomes. Change what is measured.
 | Metric | What to look for |
 |--------|-----------------|
 | Bug discovery distribution | Should shift earlier - more bugs found in development and CI, fewer in QA and production |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as rework from late-discovered bugs is reduced |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as automated tests catch regressions before deployment |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as rework from late-discovered bugs is reduced |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as automated tests catch regressions before deployment |
 | Automated test count in CI | Should increase as tests are written alongside code |
 | Bug backlog size | Should decrease or stop growing as fewer bugs escape development |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as bugs are caught closer to when the code was written |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as bugs are caught closer to when the code was written |
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building the automated test suite that supports continuous testing
-- [QA Signoff as a Release Gate](../qa-signoff-gate/) - The downstream consequence of end-of-development testing
-- [Manual Testing Only](../manual-testing-only/) - The broader pattern of which this is a subset
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Smaller stories make continuous testing more practical
-- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using bug discovery distribution to guide improvement
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the automated test suite that supports continuous testing
+- [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}}) - The downstream consequence of end-of-development testing
+- [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}) - The broader pattern of which this is a subset
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Smaller stories make continuous testing more practical
+- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using bug discovery distribution to guide improvement

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-Starting with [CD](../../glossary/#cd-continuous-delivery) is dramatically easier than migrating to it. When there is no legacy process,
+Starting with [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is dramatically easier than migrating to it. When there is no legacy process,
 no existing test suite to fix, and no entrenched habits to change, you can build the right
 practices from the first commit. This section shows you how.
 {{% /pageinfo %}}
@@ -26,11 +26,11 @@ them into a mature codebase can be months of work. The earlier you start, the le
 
 ### Pipeline first
 
-Before writing application code, set up your delivery [pipeline](../../glossary/#pipeline). The pipeline is feature zero.
+Before writing application code, set up your delivery [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). The pipeline is feature zero.
 Your first commit should include:
 
 - A build script that compiles, tests, and packages the application
-- A [CI](../../glossary/#ci-continuous-integration) configuration that runs on every push to trunk
+- A [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) configuration that runs on every push to trunk
 - A deployment mechanism (even if the first "deployment" is to a local environment)
 - **Every validation you know you will need from the start**
 
@@ -84,7 +84,7 @@ Deploy "hello world" to production on day one, and you will discover:
 - Whether the infrastructure provisioning actually works
 - Whether the deployment mechanism handles a real production environment
 - Whether monitoring and health checks are wired up correctly
-- Whether [rollback](../../glossary/#rollback) works before you need it in an emergency
+- Whether [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) works before you need it in an emergency
 
 All of these are problems you want to find with a "hello world," not with a real feature under
 a deadline.
@@ -108,9 +108,9 @@ There is no reason to start with long-lived branches. From commit one:
 
 - All work happens on trunk (or short-lived branches that merge to trunk within a day)
 - The pipeline runs on every integration to trunk
-- Trunk is always in a [deployable](../../glossary/#deployable) state
+- Trunk is always in a [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) state
 
-See [Trunk-Based Development](../migration-path/foundations/trunk-based-development/) for the practices.
+See [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) for the practices.
 
 ### Test architecture from the start
 
@@ -122,14 +122,14 @@ Design your test architecture before you have tests to migrate. Establish:
 - Contract tests for every external dependency
 - A clear rule: everything that blocks deployment is deterministic
 
-See [Testing Fundamentals](../migration-path/foundations/testing-fundamentals/) for the full test architecture.
+See [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) for the full test architecture.
 
 ### Small, vertical slices from the start
 
 Decompose the first features into small, independently deployable increments. Establish the habit
-of delivering thin [vertical slices](../../glossary/#vertical-sliced-story) before the team has a chance to develop a batch mindset.
+of delivering thin [vertical slices]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) before the team has a chance to develop a batch mindset.
 
-See [Work Decomposition](../migration-path/foundations/work-decomposition/) for slicing techniques.
+See [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) for slicing techniques.
 
 ## Greenfield Checklist
 
@@ -148,33 +148,33 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] Test architecture established (unit, integration, functional layers)
 - [ ] External dependencies use test doubles in the deterministic test suite
 - [ ] Contract tests exist for at least one external dependency
-- [ ] Pipeline deploys to a [production-like environment](../../glossary/#production-like-environment)
+- [ ] Pipeline deploys to a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}})
 - [ ] Rollback is tested and works
 - [ ] Application configuration is externalized
-- [ ] [Artifacts](../../glossary/#artifact) are immutable (build once, deploy everywhere)
+- [ ] [Artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) are immutable (build once, deploy everywhere)
 
 ### Production Readiness
 
 - [ ] Pipeline deploys to production
 - [ ] Every commit that passes the pipeline is a deployment candidate
 - [ ] Deployment is a routine, low-risk event
-- [ ] [Feature flags](../../glossary/#feature-flag) decouple deployment from release
-- [ ] [DORA metrics](../../glossary/#dora-metrics) are tracked ([deployment frequency](../../glossary/#deployment-frequency), [lead time](../../glossary/#lead-time-for-changes), [change failure rate](../../glossary/#change-failure-rate-cfr), [MTTR](../../glossary/#mean-time-to-restore-mttr))
+- [ ] [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) decouple deployment from release
+- [ ] [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) are tracked ([deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), [change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}))
 
 ## Common Mistakes in Greenfield Projects
 
 | Mistake | Why it happens | What to do instead |
 |---------|---------------|-------------------|
-| "We'll add tests later" | Pressure to show progress on features | Write the first test before the first feature. [TDD](../../glossary/#tdd-test-driven-development) from day one. |
+| "We'll add tests later" | Pressure to show progress on features | Write the first test before the first feature. [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) from day one. |
 | "We'll set up the pipeline later" | Pipeline feels like overhead when there's little code | The pipeline is the first thing you build. Features flow through it. |
-| Starting with feature branches | Habit from previous projects | [Trunk-based development](../../glossary/#tbd-trunk-based-development) from commit one. No reason to start with branches. |
+| Starting with feature branches | Habit from previous projects | [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) from commit one. No reason to start with branches. |
 | Designing for scale before you have users | Over-engineering from the start | Build the simplest thing that works. Deploy frequently. Evolve the architecture based on real feedback. |
 | Skipping contract tests because "we own both services" | Feels redundant when one team owns everything | You will not own everything forever. Contract tests are cheap to add early and expensive to add later. |
 
 ## Related Content
 
-- [Testing Fundamentals](../migration-path/foundations/testing-fundamentals/) - Build the right test architecture from the start
-- [Trunk-Based Development](../migration-path/foundations/trunk-based-development/) - The branching model for CD
-- [Pipeline Architecture](../migration-path/pipeline/pipeline-architecture/) - Design your pipeline structure
-- [Work Decomposition](../migration-path/foundations/work-decomposition/) - Deliver in small, vertical slices
-- [Feature Flags](../migration-path/optimize/feature-flags/) - Decouple deployment from release
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Build the right test architecture from the start
+- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - The branching model for CD
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Design your pipeline structure
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Deliver in small, vertical slices
+- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - Decouple deployment from release

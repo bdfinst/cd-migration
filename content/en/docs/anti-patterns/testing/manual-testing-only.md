@@ -20,7 +20,7 @@ tags:
 
 The team deploys by manually verifying things work. Someone clicks through the application, checks
 a few screens, and declares it good. There is no test suite. No test runner configured. No test
-directory in the repository. The [CI](../../glossary/#ci-continuous-integration) server, if one exists, builds the code and stops there.
+directory in the repository. The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) server, if one exists, builds the code and stops there.
 
 When a developer asks "how do I know if my change broke something?" the answer is either "you
 don't" or "someone from QA will check it." Bugs discovered in production are treated as inevitable.
@@ -30,7 +30,7 @@ is no baseline to compare against.
 Common variations:
 
 - **Tests exist but are never run.** Someone wrote tests a year ago. The test suite is broken and
-  nobody has fixed it. The tests are checked into the repository but are not part of any [pipeline](../../glossary/#pipeline)
+  nobody has fixed it. The tests are checked into the repository but are not part of any [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})
   or workflow.
 - **Manual test scripts as the safety net.** A spreadsheet or wiki page lists hundreds of manual
   test cases. Before each release, someone walks through them by hand. The process takes days. It
@@ -92,7 +92,7 @@ verification. How long that verification takes depends on how many changes are i
 available the testers are, and how many defects they find. None of these variables are predictable.
 
 A change that a developer finishes on Monday might not be verified until Thursday. If defects are
-found, the cycle restarts. [Lead time](../../glossary/#lead-time-for-changes) from commit to production is measured in weeks, and the
+found, the cycle restarts. [Lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}) from commit to production is measured in weeks, and the
 variance is enormous. Some changes take three days, others take three weeks, and the team cannot
 predict which.
 
@@ -102,7 +102,7 @@ source of variance has been removed.
 
 ### Impact on continuous delivery
 
-Automated tests are the foundation of [continuous delivery](../../glossary/#cd-continuous-delivery). Without them, there is no automated
+Automated tests are the foundation of [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). Without them, there is no automated
 quality gate. Without an automated quality gate, there is no safe way to deploy frequently.
 Without frequent deployment, there is no fast feedback from production. Every CD practice assumes
 that the team can verify code quality automatically. A team with no test automation is not on a
@@ -190,9 +190,9 @@ coverage - they need to ensure that coverage only goes up.
 |--------|-----------------|
 | Test count | Should increase every sprint |
 | Code coverage of actively changed files | More meaningful than overall coverage - focus on files changed in the last 30 days |
-| [Build duration](../../../metrics/build-duration/) | Should increase slightly as tests are added, but stay under 10 minutes |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Should increase slightly as tests are added, but stay under 10 minutes |
 | Defects found in production vs. in tests | Ratio should shift toward tests over time |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as test coverage catches regressions before deployment |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as test coverage catches regressions before deployment |
 | Manual testing effort per release | Should decrease as automated tests replace manual verification |
 
 ## Team Discussion
@@ -205,9 +205,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - How to build a test strategy for CD
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - Tests need a pipeline to run in
-- [Inverted Test Pyramid](../inverted-test-pyramid/) - The next problem to solve once you have tests
-- [Manual Regression Testing Gates](../manual-regression-testing-gates/) - The manual testing this replaces
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Tests as automated quality gates
-- [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) - defect categories that survive without automated test coverage.
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - How to build a test strategy for CD
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Tests need a pipeline to run in
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - The next problem to solve once you have tests
+- [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - The manual testing this replaces
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Tests as automated quality gates
+- [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - defect categories that survive without automated test coverage.

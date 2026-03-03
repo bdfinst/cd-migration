@@ -19,7 +19,7 @@ tags:
 
 Search the codebase for the string "production" and dozens of matches come back from inside
 application logic. Some are safety guards: `if (environment != 'production') { runSlowMigration(); }`.
-Some are [feature flags](../../glossary/#feature-flag) implemented by hand: `if (environment == 'staging') { showDebugPanel(); }`.
+Some are [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) implemented by hand: `if (environment == 'staging') { showDebugPanel(); }`.
 Some are notification suppressors: `if (env !== 'prod') { return; }` at the top of an alerting
 function. The production environment is not just a deployment target - it is a concept woven
 into the source code.
@@ -71,7 +71,7 @@ running in a different environment.
 
 Production code paths gated behind `if (env == 'production')` are never executed by the
 test suite. They run for the first time in front of real users. The fundamental premise of
-a testing [pipeline](../../glossary/#pipeline) is that code validated in earlier stages is the same code that reaches
+a testing [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is that code validated in earlier stages is the same code that reaches
 production. Environment-specific branches break this premise.
 
 This creates an entire category of latent defects: bugs that exist only in the code paths
@@ -89,13 +89,13 @@ the team has genuine confidence that production will behave the same way.
 ### It increases rework
 
 A developer who needs to modify a code path that is only active in production cannot run
-that path locally or in the [CI](../../glossary/#ci-continuous-integration) pipeline. They must deploy to production and observe, or
+that path locally or in the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline. They must deploy to production and observe, or
 construct a special environment that mimics the production condition. Neither option is
 efficient, and both slow the development cycle for every change that touches a production-only
 path.
 
 When production-specific bugs are found, they can only be reproduced in production (or in
-a [production-like environment](../../glossary/#production-like-environment) that requires special setup). Debugging in production is slow
+a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) that requires special setup). Debugging in production is slow
 and carries risk. Every reproduction attempt requires a deployment. The development cycle for
 production-only bugs is days, not hours.
 
@@ -125,7 +125,7 @@ calculation). These bugs have the longest time-to-discovery and the most complex
 
 ### Impact on continuous delivery
 
-[Continuous delivery](../../glossary/#cd-continuous-delivery) depends on the ability to validate software in staging with high confidence
+[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) depends on the ability to validate software in staging with high confidence
 that it will behave the same way in production. Environment-specific code undermines this
 confidence at its foundation. If the code literally runs different logic in production than
 in staging, then staging validation is incomplete by design.
@@ -261,14 +261,14 @@ application logic (as opposed to configuration loading):
 | Environment-specific code checks (count) | Should reach zero in application logic (may remain in configuration loading) |
 | Code paths executed in staging but not production | Should approach zero |
 | Production incidents caused by production-only code paths | Should decrease as those paths become tested |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as staging validation becomes more reliable |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as production-only debugging cycles are eliminated |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as staging validation becomes more reliable |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as production-only debugging cycles are eliminated |
 | Time to reproduce production bugs locally | Should decrease as code paths become environment-agnostic |
 
 ## Related Content
 
-- [Application Configuration](../../../migrate-to-cd/migration-path/pipeline/application-config/) - The right way to vary behavior between environments is through configuration
-- [Production-Like Environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Environments should differ only in scale and configuration, not in behavior
-- [Feature Flags](../../../migrate-to-cd/migration-path/optimize/feature-flags/) - Proper feature flags replace environment-name feature toggles
-- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Configuration belongs in version control, not in conditional code
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - A deterministic pipeline requires the same code to run in every environment
+- [Application Configuration]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) - The right way to vary behavior between environments is through configuration
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Environments should differ only in scale and configuration, not in behavior
+- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - Proper feature flags replace environment-name feature toggles
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Configuration belongs in version control, not in conditional code
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - A deterministic pipeline requires the same code to run in every environment

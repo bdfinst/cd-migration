@@ -33,7 +33,7 @@ it does.
 Unit tests focused on behavior ("given this input, expect this output") survive refactoring.
 Tests coupled to implementation ("this method was called with these arguments") do not.
 
-**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
 ### Tightly Coupled Monolith
 
@@ -42,29 +42,29 @@ refactoring in module A breaks tests for module B - not because B's behavior cha
 because B's tests were calling A's internal methods directly. Without well-defined boundaries,
 every internal change ripples across the test suite.
 
-**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ## How to narrow it down
 
 1. **Do the broken tests assert on internal method calls, mock interactions, or DOM structure?**
    If yes, the tests are coupled to implementation rather than behavior. This is a test design
-   issue - start with [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) for guidance
+   issue - start with [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) for guidance
    on building a behavior-focused test suite.
 2. **Are the broken tests end-to-end or UI tests that fail because of layout or selector
    changes?** If yes, you have too many tests at the wrong level of the pyramid. Start with
-   [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
+   [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 3. **Do the broken tests span multiple modules - testing code in one area but breaking because
    of changes in another?** If yes, the problem is missing boundaries between components. Start
-   with [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+   with [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 
-**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.
 
 ---
 
 ## Related Content
 
-- [High Coverage but Tests Miss Defects](../high-coverage-ineffective-tests/) - Tests that verify implementation often create high coverage without catching bugs
-- [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - Over-reliance on integration and E2E tests amplifies this problem
-- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Test architecture that supports refactoring
-- [Unit Tests](../../testing/unit/) - Black box testing that survives internal changes
-- [Test Doubles](../../testing/test-doubles/) - Using test doubles without coupling to implementation
+- [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - Tests that verify implementation often create high coverage without catching bugs
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Over-reliance on integration and E2E tests amplifies this problem
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Test architecture that supports refactoring
+- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Black box testing that survives internal changes
+- [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Using test doubles without coupling to implementation

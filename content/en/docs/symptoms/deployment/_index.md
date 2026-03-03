@@ -17,9 +17,9 @@ you are seeing, identifies the most likely root causes (anti-patterns), and prov
 questions to narrow down which cause applies to your situation. Follow the anti-pattern link to
 find concrete fix steps.
 
-**Related anti-pattern categories:** [Pipeline Anti-Patterns](../../anti-patterns/pipeline/),
-[Architecture Anti-Patterns](../../anti-patterns/architecture/)
+**Related anti-pattern categories:** [Pipeline Anti-Patterns]({{< relref "/docs/anti-patterns/pipeline" >}}),
+[Architecture Anti-Patterns]({{< relref "/docs/anti-patterns/architecture" >}})
 
-**Related guides:** [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/),
-[Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/),
-[Small Batches](../../migrate-to-cd/migration-path/optimize/small-batches/)
+**Related guides:** [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}),
+[Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}),
+[Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}})

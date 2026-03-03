@@ -29,17 +29,17 @@ infrastructure may report that servers are running, but nobody can tell whether 
 is actually working correctly. Without instrumentation, the only way to discover a problem is to
 wait for someone to experience it and report it.
 
-**Read more:** [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Manual Deployments
 
 When deployments involve human steps (running scripts by hand, clicking through a console),
 there is no automated verification step. The deployment process ends when the human finishes the
-steps, not when the system confirms it is healthy. Without an automated [pipeline](../../glossary/#pipeline) that checks
+steps, not when the system confirms it is healthy. Without an automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that checks
 health metrics after deploying, verification falls to manual spot-checking or waiting for
 complaints.
 
-**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Missing Deployment Pipeline
 
@@ -48,30 +48,30 @@ automated health checks. A deployment pipeline can include post-deploy verificat
 compares metrics before and after. Without a pipeline, verification is entirely manual and
 usually skipped under time pressure.
 
-**Read more:** [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ## How to narrow it down
 
 1. **Does the team have application-level metrics and alerts?** If no, the team has no way to
    detect problems automatically. Start with
-   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/).
+   [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
 2. **Is the deployment process automated with health checks?** If deployments are manual or
    automated without post-deploy verification, problems go undetected until users report them.
-   Start with [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/) or
-   [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+   Start with [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) or
+   [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 3. **Does the team check a dashboard after every deployment?** If the answer is "sometimes" or
    "we click through the app manually," the verification step is unreliable. Start with
-   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) to build
+   [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) to build
    automated verification.
 
 ---
 
-**Ready to fix this?** The most common cause is [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Production Problems Are Discovered Hours or Days Late](../slow-detection/) - Both symptoms indicate missing observability
-- [Staging Passes but Production Fails](../../symptoms/deployment/staging-passes-production-fails/) - Staging does not catch what monitoring would
-- [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - No monitoring, no alerting, no visibility
-- [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Canary deployments that detect problems before full rollout
-- [Mean Time to Repair](../../metrics/mean-time-to-repair/) - Measure how quickly the team detects and resolves incidents
+- [Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}}) - Both symptoms indicate missing observability
+- [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Staging does not catch what monitoring would
+- [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - No monitoring, no alerting, no visibility
+- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Canary deployments that detect problems before full rollout
+- [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) - Measure how quickly the team detects and resolves incidents

@@ -36,7 +36,7 @@ The team cannot detect problems because they have no instruments to detect them 
 observability (metrics, structured logging, distributed tracing, alerting) gives the team eyes on
 production.
 
-**Read more:** [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Undone Work
 
@@ -45,38 +45,38 @@ responsible for confirming that the deployment is healthy. The story is "done" w
 merged or deployed, not when it is verified in production. Health checks, smoke tests, and canary
 analysis are not part of the workflow because the workflow ends before production.
 
-**Read more:** [Undone Work](../../anti-patterns/team-workflow/undone-work/)
+**Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})
 
 ### Manual Deployments
 
 When deployments are manual, there is no automated post-deploy verification step. An automated
-[pipeline](../../glossary/#pipeline) can include health checks, smoke tests, and [rollback](../../glossary/#rollback) triggers as part of the deployment
+[pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can include health checks, smoke tests, and [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) triggers as part of the deployment
 sequence. A manual deployment ends when the human finishes the runbook. Whether the deployment is
 actually healthy is a separate question that may or may not get answered.
 
-**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ## How to narrow it down
 
 1. **Does the team have production monitoring with alerting thresholds?** If not, the team cannot
    detect problems that users do not report. Start with
-   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/).
+   [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
 2. **Does the team's definition of done include post-deploy verification?** If stories are closed
    before production health is confirmed, nobody owns the detection step. Start with
-   [Undone Work](../../anti-patterns/team-workflow/undone-work/).
+   [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}).
 3. **Does the deployment process include automated health checks?** If deployments end when the
    human finishes the script, there is no automated verification. Start with
-   [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+   [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 
-**Ready to fix this?** The most common cause is [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations#how-to-fix-it" >}}) section for week-by-week steps.
 
 ---
 
 ## Related Content
 
-- [Production Issues Discovered by Customers](../production-issues-found-by-customers/) - The next stage of the same problem: customers become the monitoring
-- [The Team Is Afraid to Deploy](../../symptoms/deployment/fear-of-deploying/) - Slow detection makes deployments feel riskier
-- [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/) - The root cause when no automated detection exists
-- [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Embedding health checks into the deployment process
-- [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Automated rollback on health check failure
-- [Mean Time to Repair](../../metrics/mean-time-to-repair/) - Track detection and recovery speed
+- [Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}}) - The next stage of the same problem: customers become the monitoring
+- [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Slow detection makes deployments feel riskier
+- [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The root cause when no automated detection exists
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Embedding health checks into the deployment process
+- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Automated rollback on health check failure
+- [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) - Track detection and recovery speed

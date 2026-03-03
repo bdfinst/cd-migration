@@ -222,14 +222,14 @@ loss and no human intervention:
 | Environment provisioning time | Should decrease from hours/days to minutes |
 | Configuration differences between environments | Should reach zero accidental differences |
 | "Works in staging but not production" incidents | Should drop to near zero |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as environment parity improves |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as environments become reproducible |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as environment parity improves |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as environments become reproducible |
 | Time spent debugging environment issues | Track informally - should approach zero |
 
 ## Related Content
 
-- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Infrastructure, configuration, and environments defined in source control
-- [Production-Like Environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Ensuring test environments match production
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - How environments fit into the deployment pipeline
-- [Missing Deployment Pipeline](../missing-deployment-pipeline/) - Snowflake environments often coexist with manual deployment processes
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - A pipeline that gives the same answer every time requires identical environments
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Infrastructure, configuration, and environments defined in source control
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Ensuring test environments match production
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - How environments fit into the deployment pipeline
+- [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - Snowflake environments often coexist with manual deployment processes
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - A pipeline that gives the same answer every time requires identical environments

@@ -11,18 +11,18 @@ aliases:
 ---
 
 {{% pageinfo %}}
-Agentic workflow architecture is a software design problem. The same principles that prevent spaghetti code in application software - single responsibility, well-defined interfaces, separation of concerns - prevent spaghetti [agent](../../glossary/#agent-ai) systems. The cost of getting it wrong is measured in [token](../../glossary/#token) waste, cascading failures, and workflows that break when you swap one model for another.
+Agentic workflow architecture is a software design problem. The same principles that prevent spaghetti code in application software - single responsibility, well-defined interfaces, separation of concerns - prevent spaghetti [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) systems. The cost of getting it wrong is measured in [token]({{< relref "/docs/reference/glossary#token" >}}) waste, cascading failures, and workflows that break when you swap one model for another.
 {{% /pageinfo %}}
 
-This page assumes familiarity with [Agent Delivery Contract](../../specification/first-class-artifacts/). After reading this page, see [Coding & Review Setup](../agent-configuration/) for a concrete implementation of these patterns applied to coding and pre-commit review.
+This page assumes familiarity with [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}). After reading this page, see [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) for a concrete implementation of these patterns applied to coding and pre-commit review.
 
 ## Overview
 
-A multi-agent system that was not deliberately designed looks like a distributed monolith: everything depends on everything else, [context](../../glossary/#context-llm) passes unchecked through every boundary, and no component has clear ownership. Add token costs to the usual distributed systems failure modes and the problem compounds: a carelessly assembled context bundle that reaches a frontier model five times per workflow iteration is not a minor inefficiency, it is a recurring tax on every workflow run.
+A multi-agent system that was not deliberately designed looks like a distributed monolith: everything depends on everything else, [context]({{< relref "/docs/reference/glossary#context-llm" >}}) passes unchecked through every boundary, and no component has clear ownership. Add token costs to the usual distributed systems failure modes and the problem compounds: a carelessly assembled context bundle that reaches a frontier model five times per workflow iteration is not a minor inefficiency, it is a recurring tax on every workflow run.
 
 Three failure patterns appear consistently in poorly structured agentic systems:
 
-**Token waste from undisciplined context.** Without explicit rules about what passes between components, agents accumulate context until the window fills or costs spike. An [agent](../../glossary/#agent-ai) that receives a 50,000-token context when its actual task requires 5,000 tokens wastes 90% of its input budget on every invocation.
+**Token waste from undisciplined context.** Without explicit rules about what passes between components, agents accumulate context until the window fills or costs spike. An [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) that receives a 50,000-token context when its actual task requires 5,000 tokens wastes 90% of its input budget on every invocation.
 
 **Cascading failures from missing error boundaries.** When one agent's unstructured prose output becomes another agent's input, parsing ambiguity becomes a failure source. A model that produces a slightly different output format than expected on one run can silently corrupt downstream agent behavior without triggering any explicit error.
 
@@ -56,7 +56,7 @@ Signs a skill is doing too much:
 
 - The skill name contains "and"
 - The skill has conditional branches that activate completely different code paths depending on input
-- Different [sub-agents](../../glossary/#sub-agent) invoke the skill but only use half of it
+- Different [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) invoke the skill but only use half of it
 
 Signs a skill should be extracted:
 
@@ -66,7 +66,7 @@ Signs a skill should be extracted:
 
 ### When to Inline vs. Extract
 
-Inline instructions when a procedure is used exactly once, is tightly coupled to the specific agent's context, or is too short to justify its own file (under 5-6 lines of instruction). Extract to a skill file when a procedure is reused, when it will be maintained independently of the agent configuration, or when it is long enough that reading the agent's [system prompt](../../glossary/#system-prompt) requires scrolling past it.
+Inline instructions when a procedure is used exactly once, is tightly coupled to the specific agent's context, or is too short to justify its own file (under 5-6 lines of instruction). Extract to a skill file when a procedure is reused, when it will be maintained independently of the agent configuration, or when it is long enough that reading the agent's [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) requires scrolling past it.
 
 A useful test: if you replaced the inline instruction with a skill reference, would the agent system prompt read more clearly? If yes, extract it.
 
@@ -101,7 +101,7 @@ Skills written to exploit one model's specific behaviors create lock-in. The fol
 
 **State output format explicitly.** Do not assume a model will infer the desired output format from context. Specify it. "Return a JSON object with the schema shown below" is unambiguous. "Return the results" is not.
 
-**Avoid model-specific XML or [prompt](../../glossary/#prompt) syntax.** Claude responds to `<instructions>` tags; Gemini does not require them. Skills that depend on XML delimiters need adaptation when moved between models. Use plain markdown structure instead.
+**Avoid model-specific XML or [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) syntax.** Claude responds to `<instructions>` tags; Gemini does not require them. Skills that depend on XML delimiters need adaptation when moved between models. Use plain markdown structure instead.
 
 **State scope and early exit conditions.** Both models benefit from explicit scope limits ("analyze only the files in the staged diff") and early exit conditions ("if the diff contains only comments and whitespace, return an empty findings list immediately"). These reduce unnecessary processing and keep outputs predictable.
 
@@ -211,7 +211,7 @@ Responsibility and context are coupled. An agent with a narrow responsibility ne
 Use a single agent when:
 
 - The workflow has one clear task with a well-scoped context requirement
-- The work is short enough to complete within a single [context window](../../glossary/#context-window) without degradation
+- The work is short enough to complete within a single [context window]({{< relref "/docs/reference/glossary#context-window" >}}) without degradation
 - There is no meaningful parallelism available (each step depends on the previous step's output)
 - The cost of the inter-agent communication overhead exceeds the cost of doing the work in a single agent
 
@@ -221,7 +221,7 @@ Decomposing into multiple agents introduces latency, context assembly overhead, 
 
 Decompose when:
 
-- Parallel execution is possible and would meaningfully reduce latency (review [sub-agents](../../glossary/#sub-agent) running concurrently instead of sequentially)
+- Parallel execution is possible and would meaningfully reduce latency (review [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) running concurrently instead of sequentially)
 - Different tasks within a workflow have different model tier requirements (routing cheap coordination to a small model, expensive reasoning to a frontier model)
 - A task has grown too large to fit in a single well-scoped context without degrading output quality
 - Separation of concerns requires that one agent not be able to see or influence another agent's domain (the implementation agent must not perform its own review)
@@ -230,7 +230,7 @@ Decompose when:
 
 ![Agent context boundary: orchestrator passes only the relevant subset of context to each sub-agent as structured JSON](/images/agentic-cd/agent-context-boundary.svg)
 
-Context passed between agents must be explicitly scoped. The default should be "send only what this agent needs," not "send everything the [orchestrator](../../glossary/#orchestrator) has."
+Context passed between agents must be explicitly scoped. The default should be "send only what this agent needs," not "send everything the [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) has."
 
 Rules for inter-agent context:
 
@@ -253,7 +253,7 @@ Agent failures fall into three categories, each requiring a different response:
 
 ![Multi-agent pipeline: Claude orchestrator routes staged diff to three parallel sub-agents and aggregates their structured JSON results](/images/agentic-cd/multi-agent-pipeline.svg)
 
-The following example shows a release readiness [pipeline](../../glossary/#pipeline) with Claude as [orchestrator](../../glossary/#orchestrator) and Gemini as a specialized long-context sub-agent. A release candidate [artifact](../../glossary/#artifact) is routed to three parallel checks - changelog completeness, documentation coverage, and dependency audit - each receiving only what its specific check requires.
+The following example shows a release readiness [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) with Claude as [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) and Gemini as a specialized long-context sub-agent. A release candidate [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is routed to three parallel checks - changelog completeness, documentation coverage, and dependency audit - each receiving only what its specific check requires.
 
 This configuration makes sense when the changelog or dependency manifest is large enough that a single-agent approach risks context window degradation. Gemini handles the large-context changelog analysis; Claude handles routing and the two lighter checks.
 
@@ -332,7 +332,7 @@ Output (JSON only, no other text):
 
 In this configuration, Claude handles orchestration because routing and context assembly do not require long-context capability. Gemini handles changelog review because a full changelog for a major release can be large enough to crowd out other context in a smaller window. Neither assignment is mandatory - the point is that the structured interface (JSON input, JSON output with a defined schema) makes the sub-agent swappable. Replacing the Gemini changelog agent with a Claude one requires changing only the invocation target, not the orchestration logic.
 
-For a concrete application of this pattern to coding and pre-commit review - including full system prompt rules for each agent - see [Coding & Review Setup](../agent-configuration/).
+For a concrete application of this pattern to coding and pre-commit review - including full system prompt rules for each agent - see [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}).
 
 **Key takeaways:**
 
@@ -346,7 +346,7 @@ For a concrete application of this pattern to coding and pre-commit review - inc
 
 ### Designing Unambiguous Commands
 
-A command is an instruction that triggers a defined workflow. The distinction between a command and a general [prompt](../../glossary/#prompt) is that a command's behavior should be predictable and consistent across invocations with the same inputs.
+A command is an instruction that triggers a defined workflow. The distinction between a command and a general [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) is that a command's behavior should be predictable and consistent across invocations with the same inputs.
 
 An unambiguous command has:
 
@@ -623,7 +623,7 @@ Both Claude and Gemini expose token counts in their API responses. Claude expose
 
 ### Idempotency
 
-Agentic workflows will be retried - by developers manually, by [CI](../../glossary/#ci-continuous-integration) systems automatically, and by error recovery paths. A workflow that is not idempotent will produce inconsistent state when retried.
+Agentic workflows will be retried - by developers manually, by [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) systems automatically, and by error recovery paths. A workflow that is not idempotent will produce inconsistent state when retried.
 
 Rules for idempotent agent workflows:
 
@@ -720,8 +720,8 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 **Where Claude and Gemini differ at the API level:**
 
-- **[System prompt](../../glossary/#system-prompt) placement.** Claude separates system content via the `system` parameter. Gemini uses `systemInstruction`. Your abstraction layer must handle this mapping.
-- **[Prompt caching](../../glossary/#prompt-caching).** Claude's prompt caching uses cache-control annotations on specific message blocks. Gemini's implicit caching triggers automatically on long stable prefixes. Caching strategies differ and cannot be abstracted into a single identical interface - expose caching as an optional configuration, not a required behavior.
+- **[System prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) placement.** Claude separates system content via the `system` parameter. Gemini uses `systemInstruction`. Your abstraction layer must handle this mapping.
+- **[Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}).** Claude's prompt caching uses cache-control annotations on specific message blocks. Gemini's implicit caching triggers automatically on long stable prefixes. Caching strategies differ and cannot be abstracted into a single identical interface - expose caching as an optional configuration, not a required behavior.
 - **Structured output support.** Claude returns structured outputs through its response format parameter (JSON mode). Gemini supports structured output through `responseMimeType` and `responseSchema` in the generation config. If your workflows require structured output enforcement at the API level (beyond instructing the model in the prompt), handle this in the concrete client implementations, not in the abstraction layer.
 - **Token counting.** The field names differ (noted in the Logging section above). Normalize in the abstraction layer.
 
@@ -807,9 +807,9 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ## Related Content
 
-- [Coding & Review Setup](../agent-configuration/) - a concrete orchestrator and sub-agent configuration applying these patterns
-- [Tokenomics](../../operations/tokenomics/) - the full optimization framework for token cost management
-- [Small-Batch Sessions](../small-batch-sessions/) - how session discipline maps to the skill and hook patterns here
-- [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) - how the same agent patterns operate as CI pipeline gates
-- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the structured artifacts that flow between agents as defined interfaces
-- [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) - failure modes and measurement for agentic workflows
+- [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) - a concrete orchestrator and sub-agent configuration applying these patterns
+- [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - the full optimization framework for token cost management
+- [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) - how session discipline maps to the skill and hook patterns here
+- [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the same agent patterns operate as CI pipeline gates
+- [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the structured artifacts that flow between agents as defined interfaces
+- [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - failure modes and measurement for agentic workflows

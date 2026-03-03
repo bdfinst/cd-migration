@@ -23,7 +23,7 @@ reported it. Or a configuration value changed alongside the code change, and the
 behaved differently than either change alone.
 
 Regressions erode trust in the team's ability to release safely. The team responds by adding
-more manual checks before releases, which slows the release cycle, which increases [batch size](../../glossary/#batch-size),
+more manual checks before releases, which slows the release cycle, which increases [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}),
 which increases the surface area for the next regression.
 
 ## Common causes
@@ -37,7 +37,7 @@ together. Diagnosing which change caused the regression requires searching throu
 of candidates. Small, frequent releases make regressions rare because each release contains
 few changes, and when one does occur, the cause is obvious.
 
-**Read more:** [Infrequent, Painful Releases](../infrequent-releases/)
+**Read more:** [Infrequent, Painful Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}})
 
 ### Testing Only at the End
 
@@ -47,7 +47,7 @@ detected until the pre-release test cycle, by which time more code has been buil
 broken behavior. The longer the gap between when the regression was introduced and when it is
 found, the more expensive it is to fix.
 
-**Read more:** [Testing Only at the End](../../anti-patterns/testing/testing-only-at-the-end/)
+**Read more:** [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}})
 
 ### Long-Lived Feature Branches
 
@@ -57,7 +57,7 @@ When they merge, the combined code behaves differently than either branch alone.
 divergence, the more likely the merge produces unexpected behavior that manifests as a regression
 in previously working functionality.
 
-**Read more:** [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/)
+**Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
 ### Fixes Applied to the Release Branch but Not to Trunk
 
@@ -72,36 +72,36 @@ affected.
 
 {{< figure src="/images/hotfix-flow.svg" alt="Two diagrams comparing hotfix approaches. Anti-pattern: release branch branched from v1.0, fix applied to release branch only, porting back to trunk is extra work easily forgotten after the emergency, defect persists in future trunk releases. Correct: fix applied to trunk first, then cherry-picked to the release branch, all future releases from trunk include the fix." >}}
 
-**Read more:** [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/)
+**Read more:** [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}})
 
 ## How to narrow it down
 
 1. **How many changes does a typical release contain?** If a release contains more than a
    handful of commits, the batch size is a risk factor. Reducing release frequency reduces the
    chance of interactions and makes regressions easier to diagnose. Start with
-   [Infrequent, Painful Releases](../infrequent-releases/).
+   [Infrequent, Painful Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}).
 2. **Do tests run on every commit or only before a release?** If the team discovers regressions
    at release time, the feedback loop is too long. Tests should catch breakage within minutes of
    the change being pushed. Start with
-   [Testing Only at the End](../../anti-patterns/testing/testing-only-at-the-end/).
+   [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}).
 3. **Are developers working on branches that diverge from the main codebase for more than a
    day?** If yes, untested merge interactions are a likely source of regressions. Start with
-   [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/).
+   [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}).
 4. **Does the same regression appear in multiple releases?** If a bug that was fixed in a
    patch release keeps coming back, the fix was applied to the release branch but never merged
    to trunk. Start with
-   [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/).
+   [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}).
 
-**Ready to fix this?** The most common cause is [Testing Only at the End](../../anti-patterns/testing/testing-only-at-the-end/). Start with its [How to Fix It](../../anti-patterns/testing/testing-only-at-the-end/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end#how-to-fix-it" >}}) section for week-by-week steps.
 
 ---
 
 ## Related Content
 
-- [Fear of Deploying](../fear-of-deploying/) - Regressions are a primary driver of deployment anxiety
-- [Staging Passes but Production Fails](../staging-passes-production-fails/) - Related pattern where environment differences cause post-deploy failures
-- [High Coverage but Tests Miss Defects](../../symptoms/testing/high-coverage-ineffective-tests/) - Tests that do not catch regressions despite high coverage numbers
-- [Infrequent, Painful Releases](../infrequent-releases/) - Large batch releases that increase regression risk
-- [Testing Only at the End](../../anti-patterns/testing/testing-only-at-the-end/) - Delayed feedback that lets regressions accumulate
-- [Long-Lived Feature Branches](../../anti-patterns/branching-integration/long-lived-feature-branches/) - Branch divergence that creates untested merge interactions
-- [Release Branches with Extensive Backporting](../../anti-patterns/branching-integration/release-branches-backporting/) - Fixes that never make it back to trunk
+- [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Regressions are a primary driver of deployment anxiety
+- [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Related pattern where environment differences cause post-deploy failures
+- [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - Tests that do not catch regressions despite high coverage numbers
+- [Infrequent, Painful Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Large batch releases that increase regression risk
+- [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}) - Delayed feedback that lets regressions accumulate
+- [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - Branch divergence that creates untested merge interactions
+- [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}) - Fixes that never make it back to trunk

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-The [Brownfield CD overview](..) covers the migration phases, principles, and common challenges.
+The [Brownfield CD overview]({{< relref "/docs/migrate-to-cd" >}}) covers the migration phases, principles, and common challenges.
 This page covers the **core mechanical process** - the specific, repeating cycle of replacing
 manual validations with automation that drives every phase forward.
 {{% /pageinfo %}}
@@ -36,7 +36,7 @@ Two rules make this cycle work:
 ## Inventory Your Manual Validations
 
 Before you can replace manual validations, you need to know what they are. A
-[value stream map](../../migration-path/assess/value-stream-mapping/) is the fastest way to find them. Walk the
+[value stream map]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) is the fastest way to find them. Walk the
 path from commit to production and mark every point where a human has to inspect, approve, verify,
 or execute something before the change can move forward.
 
@@ -76,7 +76,7 @@ High-frequency, long-duration, error-prone validations cause the most friction.
 
 Start with high-friction, low-effort validations. These give you the fastest return and build
 momentum for harder automations later. This is the same constraint-based thinking described in
-[Identify Constraints](../../migration-path/assess/identify-constraints/) - fix the biggest bottleneck first.
+[Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - fix the biggest bottleneck first.
 
 | | Low Effort | High Effort |
 |---|-----------|-------------|
@@ -142,8 +142,8 @@ manual cases. The manual suite shrinks with each cycle:
 
 Each cycle also gets faster because the team builds skill and the test infrastructure matures.
 For more on structuring automated tests effectively, see
-[Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) and
-[Functional Testing](../../testing/functional/).
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and
+[Functional Testing]({{< relref "/docs/reference/testing/functional" >}}).
 
 ## When Refactoring Is a Prerequisite
 
@@ -163,7 +163,7 @@ automating. Do not expand the refactoring scope beyond what the current cycle re
 the refactoring small, low-risk, and tied to a concrete outcome.
 
 For more on decoupling strategies, see
-[Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/).
+[Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}).
 
 ## The Compounding Effect
 
@@ -184,7 +184,7 @@ the highest-friction, lowest-effort validation matters - it frees the most time 
 investment.
 
 The same compounding dynamic applies to
-[small batches](../../migration-path/optimize/small-batches/) - smaller changes are easier to validate, which
+[small batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - smaller changes are easier to validate, which
 makes each cycle faster, which enables even smaller changes.
 
 ## Small Steps in Everything
@@ -206,16 +206,16 @@ The risk of big-step migration:
   delivering value.
 
 This connects directly to the brownfield migration principle:
-[do not stop delivering features](..). The replacement cycle is designed to produce value at every
+[do not stop delivering features]({{< relref "/docs/migrate-to-cd" >}}). The replacement cycle is designed to produce value at every
 iteration, not only at the end.
 
 For more on decomposing work into small steps, see
-[Work Decomposition](../../migration-path/foundations/work-decomposition/).
+[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}).
 
 ## Measuring Progress
 
 Track these metrics to gauge migration progress. Start collecting them from
-[baseline](../../migration-path/assess/baseline-metrics/) before you begin replacing validations.
+[baseline]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) before you begin replacing validations.
 
 | Metric | What It Tells You | Target Direction |
 |--------|-------------------|-----------------|
@@ -231,13 +231,13 @@ prioritization and focus on the validations that are actually blocking faster de
 
 ## Related Content
 
-- [Value Stream Mapping](../../migration-path/assess/value-stream-mapping/) - Find your manual validations
-- [Identify Constraints](../../migration-path/assess/identify-constraints/) - Prioritize which validation to replace first
-- [Baseline Metrics](../../migration-path/assess/baseline-metrics/) - Measure your starting point
-- [Testing Fundamentals](../../migration-path/foundations/testing-fundamentals/) - Build automated tests that replace manual testing
-- [Work Decomposition](../../migration-path/foundations/work-decomposition/) - Break migration work into small steps
-- [Small Batches](../../migration-path/optimize/small-batches/) - The principle behind incremental replacement
-- [Architecture Decoupling](../../migration-path/optimize/architecture-decoupling/) - Refactoring strategies for testability
-- [Deterministic Pipeline](../../migration-path/pipeline/deterministic-pipeline/) - Where automated validations live
-- [Functional Testing](../../testing/functional/) - Structuring automated functional tests
-- [Pipeline Enforcement and Expert Agents](../../../agentic-cd/pipeline-enforcement/) - Applying the replacement cycle to AI expert validation agents
+- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Find your manual validations
+- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Prioritize which validation to replace first
+- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - Measure your starting point
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Build automated tests that replace manual testing
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Break migration work into small steps
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle behind incremental replacement
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Refactoring strategies for testability
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Where automated validations live
+- [Functional Testing]({{< relref "/docs/reference/testing/functional" >}}) - Structuring automated functional tests
+- [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - Applying the replacement cycle to AI expert validation agents

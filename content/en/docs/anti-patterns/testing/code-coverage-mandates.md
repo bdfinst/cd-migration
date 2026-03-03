@@ -168,15 +168,15 @@ informational rather than a gate.
 |--------|-----------------|
 | Escaped defect rate | Should decrease as test effectiveness improves |
 | Mutation score (high-risk modules) | Should increase as weak tests are replaced with behavior-focused ones |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as real defects are caught before production |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as real defects are caught before production |
 | Tests with meaningful assertions (sample audit) | Should increase over time |
 | Time spent writing retroactive coverage tests | Should decrease toward zero |
 | Pipeline rejections due to coverage gate | Should drop to zero once gate is replaced with floor |
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
-- [Inverted Test Pyramid](../inverted-test-pyramid/) - When most tests are at the wrong level
-- [Pressure to Skip Testing](../../organizational-cultural/pressure-to-skip-testing/) - When teams face pressure that undermines test quality
-- [Unit Tests](../../../testing/unit/) - Writing fast, deterministic tests for logic
-- [ACD](../../../agentic-cd/) - Why coverage mandates are especially dangerous when agents optimize for coverage rather than intent
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - When most tests are at the wrong level
+- [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - When teams face pressure that undermines test quality
+- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Writing fast, deterministic tests for logic
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - Why coverage mandates are especially dangerous when agents optimize for coverage rather than intent

@@ -207,16 +207,16 @@ confidence because it can verify health automatically.
 | Metric | What to look for |
 |--------|-----------------|
 | Mean time to detect (MTTD) | Time from problem occurring to team being aware - should drop from hours to minutes |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as diagnosis becomes faster |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as diagnosis becomes faster |
 | Manual verification time per deployment | Should drop to zero as automated checks replace manual click-throughs |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as deployment verification catches problems before they reach users |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as deployment verification catches problems before they reach users |
 | Alert noise ratio | Percentage of alerts that are actionable - should be above 80% |
 | Incidents discovered by customers vs. by the team | Ratio should shift toward team detection |
 
 ## Related Content
 
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Where deployment verification fits in the pipeline
-- [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Observability enables data-driven rollback decisions
-- [Progressive Rollout](../../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/) - Canary deployments require metric comparison
-- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using production data to guide improvement
-- [Baseline Metrics](../../../migrate-to-cd/migration-path/assess/baseline-metrics/) - Establishing the numbers you need before you can improve them
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Where deployment verification fits in the pipeline
+- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Observability enables data-driven rollback decisions
+- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Canary deployments require metric comparison
+- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using production data to guide improvement
+- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - Establishing the numbers you need before you can improve them

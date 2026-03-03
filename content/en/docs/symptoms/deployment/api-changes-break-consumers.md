@@ -26,7 +26,7 @@ When services that are nominally independent must be coordinated in practice, AP
 
 Services that are truly independent can manage API compatibility through versioning or parallel versions: the old endpoint stays available while consumers migrate to the new one at their own pace. Consumers stop breaking on deployment day because they were never forced to migrate simultaneously - they adopt the new interface on their own schedule.
 
-**Read more:** [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/)
+**Read more:** [Distributed monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}})
 
 ### Tightly coupled monolith
 
@@ -34,7 +34,7 @@ Tightly coupled services share data structures and schemas in ways that make cha
 
 Services with well-defined interface contracts - stable public APIs backed by flexible internal implementations - can evolve their internals without breaking consumers. The contract is the stable surface; everything behind it can change.
 
-**Read more:** [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly coupled monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ### Knowledge silos
 
@@ -42,12 +42,12 @@ When knowledge of who consumes which API lives in one person's head or in nobody
 
 Maintaining a service catalog, using contract testing, or even an informal registry of consumer relationships gives the team the ability to evaluate change impact before deploying. The half-dozen services that used to fail within minutes of a deployment now have owners who were notified and prepared in advance - because the team finally knew they existed.
 
-**Read more:** [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/)
+**Read more:** [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 
 ## How to narrow it down
 
-1. **Does the team know every consumer of their APIs?** If consumer inventory is incomplete or unknown, any API change carries unknown risk. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
-2. **Must consuming services be deployed at the same time as the providing service?** If coordinated deployment is required, the services are not truly independent. Start with [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/).
-3. **Do internal implementation changes frequently affect the public API surface?** If internal refactoring breaks consumers, the interface boundary is not stable. Start with [Tightly coupled monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+1. **Does the team know every consumer of their APIs?** If consumer inventory is incomplete or unknown, any API change carries unknown risk. Start with [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}).
+2. **Must consuming services be deployed at the same time as the providing service?** If coordinated deployment is required, the services are not truly independent. Start with [Distributed monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}).
+3. **Do internal implementation changes frequently affect the public API surface?** If internal refactoring breaks consumers, the interface boundary is not stable. Start with [Tightly coupled monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 
-**Ready to fix this?** The most common cause is [Distributed monolith](../../anti-patterns/architecture/distributed-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/distributed-monolith/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Distributed monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/architecture/distributed-monolith#how-to-fix-it" >}}) section for week-by-week steps.

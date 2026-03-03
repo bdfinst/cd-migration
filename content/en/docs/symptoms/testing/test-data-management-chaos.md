@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-Your test suite is technically running, but the results are a coin flip. A test that passed yesterday fails today because another test ran first and left dirty data in the shared database. You spend thirty minutes debugging a failure only to find the root cause was a record inserted by an unrelated test two hours ago. When you rerun the suite in isolation, everything passes. When you run it in [CI](../../glossary/#ci-continuous-integration) with the full suite, it fails at random.
+Your test suite is technically running, but the results are a coin flip. A test that passed yesterday fails today because another test ran first and left dirty data in the shared database. You spend thirty minutes debugging a failure only to find the root cause was a record inserted by an unrelated test two hours ago. When you rerun the suite in isolation, everything passes. When you run it in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) with the full suite, it fails at random.
 
 Shared database state is the source of the chaos. The database schema and seed data were set up once, years ago, by someone who has since left. Nobody is sure what state the database is supposed to be in before any given test. Some tests clean up after themselves; most do not. Some tests depend on records created by other tests. The execution order matters, but nobody explicitly controls it - so the suite is fragile by construction.
 
@@ -26,7 +26,7 @@ Teams that have relied on manual testing tend to reach for a shared database as 
 
 When teams shift to isolated test data - each test owns and tears down its own data - interference disappears. Tests become deterministic. A failing test means code is broken, not the environment.
 
-**Read more:** [Manual testing only](../../anti-patterns/testing/manual-testing-only/)
+**Read more:** [Manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
 ### Inverted test pyramid
 
@@ -34,7 +34,7 @@ When most automated tests are end-to-end or integration tests that exercise a re
 
 Shifting toward a pyramid with a large base of unit tests reduces database dependency dramatically. Unit tests run against in-memory structures and do not touch shared state. The integration and end-to-end tests that remain can be designed more carefully with isolated, purpose-built datasets. With fewer tests competing for shared database rows, the random CI failures that triggered "just rerun it" reflexes become rare, and a red build is a signal worth investigating.
 
-**Read more:** [Inverted test pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted test pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
 ### Snowflake environments
 
@@ -42,12 +42,12 @@ When test environments are hand-crafted and not reproducible from code, database
 
 Reproducible environments - created from code on demand and destroyed after use - eliminate drift. When the database is provisioned fresh from a migration script and a known seed set for each test run, the starting state is always predictable. Tests that produced different results on different machines or at different times start producing consistent results, and the team can stop dismissing CI failures as environment noise.
 
-**Read more:** [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ## How to narrow it down
 
-1. **Do tests pass when run individually but fail when run together?** Mutual interference from shared mutable state is the most likely cause. Start with [Inverted test pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
-2. **Does the test suite pass on one machine but fail in CI?** The test environment differs from the developer's local database. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
-3. **Is there no documented strategy for setting up and tearing down test data?** The team never established a data strategy. Start with [Manual testing only](../../anti-patterns/testing/manual-testing-only/).
+1. **Do tests pass when run individually but fail when run together?** Mutual interference from shared mutable state is the most likely cause. Start with [Inverted test pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
+2. **Does the test suite pass on one machine but fail in CI?** The test environment differs from the developer's local database. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
+3. **Is there no documented strategy for setting up and tearing down test data?** The team never established a data strategy. Start with [Manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
 
-**Ready to fix this?** The most common cause is [Inverted test pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Inverted test pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.

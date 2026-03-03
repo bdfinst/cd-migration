@@ -9,31 +9,31 @@ aliases:
 ---
 
 {{% pageinfo %}}
-The [pipeline](../../glossary/#pipeline) is the enforcement mechanism for [agentic continuous delivery](../../glossary/#acd-agentic-continuous-delivery) (ACD). Standard quality gates handle mechanical checks. Expert validation [agents](../../glossary/#agent-ai) handle the judgment calls that standard tools cannot make.
+The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is the enforcement mechanism for [agentic continuous delivery]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) (ACD). Standard quality gates handle mechanical checks. Expert validation [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) handle the judgment calls that standard tools cannot make.
 
-For the framework overview, see [ACD](../../). For the [artifacts](../../glossary/#artifact) the pipeline enforces, see [Agent Delivery Contract](../../specification/first-class-artifacts/).
+For the framework overview, see [ACD]({{< relref "/docs" >}}). For the [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) the pipeline enforces, see [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
 {{% /pageinfo %}}
 
 ## How Quality Gates Enforce ACD
 
-The Pipeline Verification and Deployment stages of the [ACD workflow](../../) are where the [Pipeline Reference Architecture](../../../pipeline-reference-architecture/) does the heavy lifting. Each pipeline stage enforces a specific [ACD](../../glossary/#acd-agentic-continuous-delivery) constraint:
+The Pipeline Verification and Deployment stages of the [ACD workflow]({{< relref "/docs" >}}) are where the [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) does the heavy lifting. Each pipeline stage enforces a specific [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) constraint:
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
-- **[CI](../../glossary/#ci-continuous-integration) Stage 1** (build + unit tests) validates the acceptance criteria. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
+- **[CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1** (build + unit tests) validates the acceptance criteria. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
 - **CD Stage 1** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
 - **CD Stage 2** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
-- **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment](../../glossary/#production-like-environment). This is where the [BDD](../../glossary/#bdd-behavior-driven-development) scenarios become automated verification.
-- **Production verification** ([canary deployment](../../glossary/#canary-deployment), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
+- **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}). This is where the [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios become automated verification.
+- **Production verification** ([canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
 
 ### The Pre-Feature Baseline
 
-The [pre-feature baseline](../../../pipeline-reference-architecture/#pre-feature-baseline) lists the required baseline gates that must be active before any feature work begins. These are a prerequisite for ACD. Without them passing on every commit, agent-generated changes bypass the minimum safety net.
+The [pre-feature baseline]({{< relref "/docs/reference/pipeline-reference-architecture#pre-feature-baseline" >}}) lists the required baseline gates that must be active before any feature work begins. These are a prerequisite for ACD. Without them passing on every commit, agent-generated changes bypass the minimum safety net.
 
 See the pipeline patterns for concrete architectures that implement these gates:
 
-- [Single-team pipeline](../../../pipeline-reference-architecture/single-team/)
-- [Multi-team pipeline](../../../pipeline-reference-architecture/multi-team/)
-- [Independent-team pipeline](../../../pipeline-reference-architecture/independent-teams/)
+- [Single-team pipeline]({{< relref "/docs/reference/pipeline-reference-architecture/single-team" >}})
+- [Multi-team pipeline]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}})
+- [Independent-team pipeline]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}})
 
 ## Expert Validation Agents
 
@@ -47,13 +47,13 @@ Expert validation agents fill this gap. These are AI agents dedicated to a speci
 | **Implementation coupling agent** | Test code verifies observable behavior, not internal implementation details | Tests that break when implementation is refactored without any behavior change | Acceptance Criteria |
 | **Architectural conformance agent** | Implementation follows the constraints in the feature description | Code that crosses a module boundary or uses a prohibited dependency | Feature Description |
 | **Intent alignment agent** | The combined change addresses the problem stated in the intent description | Implementations that are technically correct but solve the wrong problem | Intent Description |
-| **Constraint compliance agent** | Code respects system constraints that static analysis cannot check | Violations of logging standards, [feature flag](../../glossary/#feature-flag) requirements, or audit rules | System Constraints |
+| **Constraint compliance agent** | Code respects system constraints that static analysis cannot check | Violations of logging standards, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) requirements, or audit rules | System Constraints |
 
 ## Adopting Expert Agents: The Same Replacement Cycle
 
 **Do not deploy expert agents and immediately reduce human review.** Expert validation agents need calibration before they can replace human judgment. An agent that flags too many false positives trains the team to ignore it. An agent that misses real issues creates false confidence. Run expert agents in parallel with human review for at least 20 cycles before any reduction in human coverage.
 
-Expert validation agents are new automated checks. Adopt them using the same [replacement cycle](../../../migrate-to-cd/brownfield/replacing-manual-validations/) that drives every brownfield [CD](../../glossary/#cd-continuous-delivery) migration:
+Expert validation agents are new automated checks. Adopt them using the same [replacement cycle]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) that drives every brownfield [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration:
 
 1. **Identify** a manual validation currently performed by a human reviewer. For example, checking whether test code actually tests what the specification requires.
 2. **Automate** the check by deploying an expert agent as a pipeline gate. The agent runs on every change and produces a pass/fail result with reasoning.
@@ -62,14 +62,14 @@ Expert validation agents are new automated checks. Adopt them using the same [re
 
 Expert validation agents run on every change, immediately, eliminating the batching that manual review imposes. Humans steer; agents validate at pipeline speed.
 
-With the pipeline and expert agents in place, the next question is what goes wrong and how to measure progress. See [Pitfalls and Metrics](../pitfalls-and-metrics/).
+With the pipeline and expert agents in place, the next question is what goes wrong and how to measure progress. See [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}).
 
 ## Related Content
 
-- [Agentic Architecture Patterns](../../architecture/agentic-architecture/) - multi-agent pipeline patterns and hook design for enforcement workflows
-- [ACD](../../) - the framework overview, eight constraints, and workflow
-- [Agent Delivery Contract](../../specification/first-class-artifacts/) - the artifacts the pipeline enforces
-- [Pipeline Reference Architecture](../../../pipeline-reference-architecture/) - the full quality gate sequence
-- [Replacing Manual Validations](../../../migrate-to-cd/brownfield/replacing-manual-validations/) - the replacement cycle for adopting automated checks
-- [Pitfalls and Metrics](../pitfalls-and-metrics/) - what goes wrong and how to measure progress
-- [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) - the prerequisite sequence, especially Harden Guardrails and Reduce Delivery Friction
+- [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - multi-agent pipeline patterns and hook design for enforcement workflows
+- [ACD]({{< relref "/docs" >}}) - the framework overview, eight constraints, and workflow
+- [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts the pipeline enforces
+- [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - the full quality gate sequence
+- [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting automated checks
+- [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - what goes wrong and how to measure progress
+- [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence, especially Harden Guardrails and Reduce Delivery Friction

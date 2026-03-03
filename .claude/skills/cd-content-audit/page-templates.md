@@ -10,7 +10,7 @@ Determine page type from file path:
 |-------------|-----------|
 | `content/en/docs/anti-patterns/**/*.md` (not `_index.md`) | Anti-pattern |
 | `content/en/docs/symptoms/**/*.md` (not `_index.md`, `triage.md`, `for-*.md`) | Symptom |
-| `content/en/docs/migrate-to-cd/migration-path/**/*.md` (not `_index.md`) | Guide |
+| `content/en/docs/migrate-to-cd/**/*.md` (not `_index.md`) | Guide |
 
 ## Anti-Pattern Page Structure
 
@@ -192,12 +192,12 @@ Phase is determined by the guide page's directory:
 - `monitoring-observability/blind-operations`
 
 **Organizational & Cultural:**
-- `organizational-cultural/cab-gates`
-- `organizational-cultural/deadline-driven-development`
-- `organizational-cultural/missing-product-ownership`
-- `organizational-cultural/pressure-to-skip-testing`
-- `organizational-cultural/thin-spread-teams`
-- `organizational-cultural/velocity-as-individual-metric`
+- `organizational-cultural/governance-process/cab-gates`
+- `organizational-cultural/planning/deadline-driven-development`
+- `organizational-cultural/team-dynamics/missing-product-ownership`
+- `organizational-cultural/team-dynamics/pressure-to-skip-testing`
+- `organizational-cultural/team-dynamics/thin-spread-teams`
+- `organizational-cultural/planning/velocity-as-individual-metric`
 
 **Pipeline & Infrastructure:**
 - `pipeline/manual-deployments`
@@ -236,12 +236,12 @@ Phase is determined by the guide page's directory:
 - `deployment/staging-passes-production-fails`
 
 **Flow:**
-- `flow/too-much-wip`
-- `flow/work-items-take-too-long`
-- `flow/prs-waiting-for-review`
-- `flow/painful-merges`
-- `flow/no-fast-feedback`
-- `flow/slow-pipelines`
+- `flow/work-management/too-much-wip`
+- `flow/work-management/work-items-take-too-long`
+- `flow/integration/prs-waiting-for-review`
+- `flow/integration/painful-merges`
+- `flow/integration/no-fast-feedback`
+- `flow/integration/slow-pipelines`
 
 **Visibility:**
 - `visibility/production-issues-found-by-customers`

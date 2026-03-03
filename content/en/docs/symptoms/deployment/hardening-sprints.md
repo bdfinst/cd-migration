@@ -14,7 +14,7 @@ tags:
 
 ## What you are seeing
 
-After the team finishes building features, nothing is ready to ship. A "[hardening sprint](../../../glossary/#hardening-sprint)" is
+After the team finishes building features, nothing is ready to ship. A "[hardening sprint]({{< relref "/docs/reference/glossary#hardening-sprint" >}})" is
 scheduled: one or more sprints dedicated to bug fixing, stabilization, and integration testing. No
 new features are built during this period. The team knows from experience that the code is not
 production-ready when development ends.
@@ -36,7 +36,7 @@ hardening sprint is where manual testers find the defects that automated tests w
 during development. Without automated regression testing, every release requires a full manual
 pass to verify nothing is broken.
 
-**Read more:** [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/)
+**Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
 ### Inverted Test Pyramid
 
@@ -44,7 +44,7 @@ When most tests are slow end-to-end tests and few are unit tests, defects in bus
 undetected until integration testing. The E2E tests are too slow to run continuously, so they run
 at the end. The hardening sprint is when the team finally discovers what was broken all along.
 
-**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
 ### Undone Work
 
@@ -52,15 +52,15 @@ When the team's definition of done does not include deployment and verification,
 marked complete while hidden work remains. Testing, validation, and integration happen after the
 story is "done." The hardening sprint is where all that undone work gets finished.
 
-**Read more:** [Undone Work](../../anti-patterns/team-workflow/undone-work/)
+**Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})
 
 ### Monolithic Work Items
 
 When features are built as large, indivisible units, integration risk accumulates silently. Each
 large feature is developed in relative isolation for weeks. The hardening sprint is the first time
-all the pieces come together, and the integration pain is proportional to the [batch size](../../glossary/#batch-size).
+all the pieces come together, and the integration pain is proportional to the [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}).
 
-**Read more:** [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/)
+**Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
 ### Pressure to Skip Testing
 
@@ -68,36 +68,36 @@ When management pressures the team to maximize feature output, testing is deferr
 The hardening sprint is that "later." Testing was not skipped; it was moved to the end where it is
 less effective, more expensive, and blocks the release.
 
-**Read more:** [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/)
+**Read more:** [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
 
 ## How to narrow it down
 
 1. **Does the team have automated tests that run on every commit?** If not, the hardening sprint
    is compensating for the lack of continuous quality verification. Start with
-   [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/).
+   [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
 2. **Are most automated tests end-to-end or UI tests?** If the test suite is slow and top-heavy,
    defects are caught late because fast unit tests are missing. Start with
-   [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/).
+   [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 3. **Does the team's definition of done include deployment and verification?** If stories are
    "done" before they are tested and deployed, the hardening sprint finishes what "done" should
    have included. Start with
-   [Undone Work](../../anti-patterns/team-workflow/undone-work/).
+   [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}).
 4. **How large are the typical work items?** If features take weeks and integrate at the end, the
    batch size creates the integration risk. Start with
-   [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
+   [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}).
 5. **Is there pressure to prioritize features over testing?** If testing is consistently deferred
    to hit deadlines, the hardening sprint absorbs the cost. Start with
-   [Pressure to Skip Testing](../../anti-patterns/organizational-cultural/pressure-to-skip-testing/).
+   [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}).
 
 ---
 
-**Ready to fix this?** The most common cause is [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/). Start with its [How to Fix It](../../anti-patterns/testing/manual-testing-only/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/manual-testing-only#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Merge Freezes Before Deployments](../merge-freeze/) - Hardening and freezes are companion symptoms
-- [The Team Is Afraid to Deploy](../fear-of-deploying/) - Hardening sprints reinforce the belief that deployment is risky
-- [Manual Regression Testing Gates](../../anti-patterns/testing/manual-regression-testing-gates/) - Manual testing phases that drive hardening cycles
-- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Automated testing that builds quality in continuously
-- [Deployable Definition](../../migrate-to-cd/migration-path/pipeline/deployable-definition/) - Making every commit production-ready by definition
-- [Change Fail Rate](../../metrics/change-fail-rate/) - Track whether quality improves without hardening
+- [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Hardening and freezes are companion symptoms
+- [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Hardening sprints reinforce the belief that deployment is risky
+- [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Manual testing phases that drive hardening cycles
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Automated testing that builds quality in continuously
+- [Deployable Definition]({{< relref "/docs/migrate-to-cd/pipeline/deployable-definition" >}}) - Making every commit production-ready by definition
+- [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track whether quality improves without hardening

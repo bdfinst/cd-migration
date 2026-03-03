@@ -22,11 +22,11 @@ The security team does not scale with development velocity. As the organization 
 
 ### Missing deployment pipeline
 
-Security tools can be integrated directly into the [pipeline](../../glossary/#pipeline): dependency scanning, static analysis, secret detection, container image scanning. When these checks run automatically on every commit, they catch issues immediately - while the developer still has the code in mind and fixing is fast. The central security team can focus on policy and architecture rather than reviewing individual changes.
+Security tools can be integrated directly into the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}): dependency scanning, static analysis, secret detection, container image scanning. When these checks run automatically on every commit, they catch issues immediately - while the developer still has the code in mind and fixing is fast. The central security team can focus on policy and architecture rather than reviewing individual changes.
 
 A pipeline with automated security gates provides continuous, scalable security coverage. The coverage is consistent because it runs on every change, not just the ones that reach the security team's queue. Issues are caught in minutes rather than weeks.
 
-**Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ### CAB gates
 
@@ -34,20 +34,20 @@ The same dynamics that make change advisory boards a bottleneck for general chan
 
 Moving security left - into development tooling and pipeline gates rather than release gates - eliminates the end-of-process queue entirely. Security feedback during development is faster and cheaper than security review after development.
 
-**Read more:** [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/)
+**Read more:** [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}})
 
 ### Manual regression testing gates
 
-When security review is one of several manual gates a change must pass, the waits compound. A change waiting for regression testing cannot enter the security review queue. A change completing security review cannot go to production until the regression window opens. Each gate multiplies the total [lead time](../../glossary/#lead-time-for-changes) for a change.
+When security review is one of several manual gates a change must pass, the waits compound. A change waiting for regression testing cannot enter the security review queue. A change completing security review cannot go to production until the regression window opens. Each gate multiplies the total [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}) for a change.
 
 Automated testing eliminates the regression testing gate, which reduces how many changes are stacked up waiting for security review at any given time. A change that exits automated testing immediately enters the security queue rather than waiting for a regression window to open. Shrinking the queue makes each security review faster and more thorough - which is what was lost when backlog pressure turned reviews into cursory checks.
 
-**Read more:** [Manual regression testing gates](../../anti-patterns/testing/manual-regression-testing-gates/)
+**Read more:** [Manual regression testing gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
 
 ## How to narrow it down
 
-1. **Does the team have automated security scanning in the [CI](../../glossary/#ci-continuous-integration) pipeline?** If not, security coverage depends on the central security team's capacity, which does not scale. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
-2. **Is security review a manual approval gate before every production deployment?** If changes cannot deploy without explicit security approval, the gate is the [constraint](../../glossary/#constraint). Start with [CAB gates](../../anti-patterns/organizational-cultural/cab-gates/).
-3. **Do changes queue for multiple manual approvals in sequence?** If security review is one of several sequential gates, reducing other gates will also reduce security review pressure. Start with [Manual regression testing gates](../../anti-patterns/testing/manual-regression-testing-gates/).
+1. **Does the team have automated security scanning in the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline?** If not, security coverage depends on the central security team's capacity, which does not scale. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+2. **Is security review a manual approval gate before every production deployment?** If changes cannot deploy without explicit security approval, the gate is the [constraint]({{< relref "/docs/reference/glossary#constraint" >}}). Start with [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}).
+3. **Do changes queue for multiple manual approvals in sequence?** If security review is one of several sequential gates, reducing other gates will also reduce security review pressure. Start with [Manual regression testing gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}).
 
-**Ready to fix this?** The most common cause is [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/). Start with its [How to Fix It](../../anti-patterns/pipeline/missing-deployment-pipeline/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline#how-to-fix-it" >}}) section for week-by-week steps.

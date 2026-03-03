@@ -104,16 +104,16 @@ Configure the vault so that each application and each pipeline role can access o
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Change fail rate](../../../metrics/change-fail-rate/) | Reduction in deployment failures caused by credential misconfiguration or missing secrets |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Faster credential-related incident recovery when rotation is a vault operation rather than a multi-system manual process |
-| [Lead time](../../../metrics/lead-time/) | Elimination of manual credential setup steps from the deployment process |
-| [Release frequency](../../../metrics/release-frequency/) | Teams deploy more often when credential management is not a manual bottleneck on each deploy |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Reduction in time new environments take to become operational when credential injection is automated |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Reduction in deployment failures caused by credential misconfiguration or missing secrets |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster credential-related incident recovery when rotation is a vault operation rather than a multi-system manual process |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Elimination of manual credential setup steps from the deployment process |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often when credential management is not a manual bottleneck on each deploy |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time new environments take to become operational when credential injection is automated |
 
 ## Related Content
 
-- [Everything as code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/)
-- [Application configuration management](../../../migrate-to-cd/migration-path/pipeline/application-config/)
-- [No infrastructure as code](../no-infrastructure-as-code/)
-- [Pipeline definitions not in version control](../pipeline-not-versioned/)
-- [Single path to production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/)
+- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
+- [Application configuration management]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}})
+- [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
+- [Pipeline definitions not in version control]({{< relref "/docs/anti-patterns/pipeline/pipeline-not-versioned" >}})
+- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})

@@ -26,7 +26,7 @@ When system knowledge is not externalized into runbooks, architectural documenta
 
 Teams that treat runbook maintenance as part of incident response - updating documentation immediately after resolving an incident, while the context is fresh - gradually close the gap. The runbook improves with every incident rather than remaining stale between rare documentation efforts.
 
-**Read more:** [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/)
+**Read more:** [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 
 ### Blind operations
 
@@ -34,18 +34,18 @@ Without adequate observability, diagnosing the cause of an incident requires dee
 
 Good observability turns incident response from an expert-only activity into something any trained engineer can do from a dashboard. The runbook points at the right metrics; the metrics tell the story.
 
-**Read more:** [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Manual deployments
 
 Systems deployed manually often have complex, undocumented operational characteristics. The manual deployment knowledge and the incident response knowledge are often held by the same person - because the person who knows how to deploy a service also knows how it behaves and how to recover it. This concentration of knowledge is a single point of failure.
 
-**Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ## How to narrow it down
 
-1. **Does every service have a runbook that an on-call engineer unfamiliar with the service could follow?** If not, incident response requires specific people. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
-2. **Can the on-call engineer determine the likely cause of an incident from dashboards alone?** If diagnosing incidents requires deep system knowledge, observability is insufficient. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
-3. **Is there a single person whose absence would make incident response significantly harder for multiple services?** That person is a single point of failure. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
+1. **Does every service have a runbook that an on-call engineer unfamiliar with the service could follow?** If not, incident response requires specific people. Start with [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}).
+2. **Can the on-call engineer determine the likely cause of an incident from dashboards alone?** If diagnosing incidents requires deep system knowledge, observability is insufficient. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
+3. **Is there a single person whose absence would make incident response significantly harder for multiple services?** That person is a single point of failure. Start with [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}).
 
-**Ready to fix this?** The most common cause is [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/). Start with its [How to Fix It](../../anti-patterns/team-workflow/knowledge-silos/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos#how-to-fix-it" >}}) section for week-by-week steps.

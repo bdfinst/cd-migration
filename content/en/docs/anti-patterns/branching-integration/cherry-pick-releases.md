@@ -114,7 +114,7 @@ is a compensating control that addresses the symptom while the root cause persis
 
 The cherry-pick process grows more expensive as more code is held back from trunk. Eventually
 the team has a de-facto release branch strategy indistinguishable from the anti-patterns described
-in [Release Branches with Extensive Backporting](../release-branches-backporting/).
+in [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}).
 
 ### Impact on continuous delivery
 
@@ -224,16 +224,16 @@ process.
 | Metric | What to look for |
 |--------|-----------------|
 | Commits held back per release | Should decrease toward zero |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment becomes a lower-ceremony operation |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as deployment becomes a lower-ceremony operation |
 | Release branch divergence from trunk | Should decrease and eventually disappear |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as commits reach production without waiting for a curation cycle |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should remain stable or improve as trunk becomes reliably deployable |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as commits reach production without waiting for a curation cycle |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should remain stable or improve as trunk becomes reliably deployable |
 | Deployment process duration | Should decrease as manual cherry-pick steps are removed |
 
 ## Related Content
 
-- [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - The branching model that makes trunk deployable by default
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Breaking work into units small enough to merge complete
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Reducing batch size eliminates the need to hold back commits
-- [Release Branches with Extensive Backporting](../release-branches-backporting/) - The pattern that cherry-picking evolves into when not addressed
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building the test confidence that makes trunk trustworthy
+- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - The branching model that makes trunk deployable by default
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into units small enough to merge complete
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Reducing batch size eliminates the need to hold back commits
+- [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}) - The pattern that cherry-picking evolves into when not addressed
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the test confidence that makes trunk trustworthy

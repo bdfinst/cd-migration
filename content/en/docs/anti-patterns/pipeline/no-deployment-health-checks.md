@@ -17,7 +17,7 @@ tags:
 
 ## What This Looks Like
 
-The deployment completes. The [pipeline](../../glossary/#pipeline) shows green. The release engineer posts in Slack: "Deploy
+The deployment completes. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) shows green. The release engineer posts in Slack: "Deploy
 done, watching for issues." For the next fifteen minutes, someone is refreshing the monitoring
 dashboard, clicking through the application manually, and checking error logs by eye. If nothing
 obviously explodes, they declare success and move on. If something does explode, they are already
@@ -55,7 +55,7 @@ Common variations:
   before the watcher moves on.
 
 The telltale sign: the person who deployed cannot describe specifically what would need to happen
-in the monitoring system for them to declare the deployment failed and trigger a [rollback](../../glossary/#rollback).
+in the monitoring system for them to declare the deployment failed and trigger a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}).
 
 ## Why This Is a Problem
 
@@ -119,7 +119,7 @@ than alert engineers would.
 
 ### Impact on continuous delivery
 
-[Continuous delivery](../../glossary/#cd-continuous-delivery) means any commit that passes the pipeline can be released to production
+[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) means any commit that passes the pipeline can be released to production
 with confidence. The confidence comes from automated validation, not human belief that things
 probably look fine. Without automated health checks, the "with confidence" qualifier is hollow.
 The team is not confident - they are hopeful.
@@ -144,7 +144,7 @@ Agree on the criteria for a healthy deployment before writing any checks:
 
 1. List the key behaviors of the service: which endpoints must return success, which user
    flows must complete, which background jobs must run.
-2. Identify the [baseline metrics](../../glossary/#baseline-metrics) for the service: typical error rate, typical P95 latency,
+2. Identify the [baseline metrics]({{< relref "/docs/reference/glossary#baseline-metrics" >}}) for the service: typical error rate, typical P95 latency,
    typical throughput. These become the comparison baselines for post-deployment checks.
 3. Define the threshold for rollback: for example, error rate more than 2x baseline for more
    than two minutes, or P95 latency above 2000ms, or health endpoint returning non-200.
@@ -227,9 +227,9 @@ triggered it included in the notification.
 Once automated health checks and rollback are established, consider progressive delivery to
 further reduce deployment risk:
 
-- [Canary deployments](../../glossary/#canary-deployment): route a small percentage of traffic to the new version first. Apply
+- [Canary deployments]({{< relref "/docs/reference/glossary#canary-deployment" >}}): route a small percentage of traffic to the new version first. Apply
   health checks to the canary traffic. Only expand to full traffic if the canary is healthy.
-- [Blue-green deployments](../../glossary/#blue-green-deployment): deploy the new version in parallel with the old. Switch traffic
+- [Blue-green deployments]({{< relref "/docs/reference/glossary#blue-green-deployment" >}}): deploy the new version in parallel with the old. Switch traffic
   after health checks pass. Rollback is instantaneous - switch traffic back.
 
 Progressive delivery reduces blast radius for bad deployments. Health checks still determine
@@ -248,16 +248,16 @@ window.
 | Metric | What to look for |
 |--------|-----------------|
 | Time to detect post-deployment failures | Should drop from hours (user reports) to minutes (automated detection) |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as automated rollback replaces manual recovery |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as health-check-triggered rollbacks prevent bad deployments from affecting users for extended periods |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment confidence grows and the team deploys more often |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as automated rollback replaces manual recovery |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as health-check-triggered rollbacks prevent bad deployments from affecting users for extended periods |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as deployment confidence grows and the team deploys more often |
 | Rollback time | Should drop to under five minutes with automated rollback |
 | Post-deployment watching time (human hours) | Should reach zero as automated checks replace manual watching |
 
 ## Related Content
 
-- [Rollback](../../../migrate-to-cd/migration-path/pipeline/rollback/) - Automated rollback is the other half of automated health checks
-- [Production-Like Environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Health checks must run in environments that reflect production behavior
-- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Health checks belong at the end of the single automated path
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Smoke tests must be reliable to serve as health gates
-- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Use deployment health data to drive improvement decisions
+- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback is the other half of automated health checks
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Health checks must run in environments that reflect production behavior
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Health checks belong at the end of the single automated path
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Smoke tests must be reliable to serve as health gates
+- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Use deployment health data to drive improvement decisions

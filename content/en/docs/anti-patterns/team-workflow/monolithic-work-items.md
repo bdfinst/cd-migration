@@ -76,9 +76,9 @@ weeks.
 
 ### Impact on continuous delivery
 
-[CD](../../glossary/#cd-continuous-delivery) requires small, frequent changes flowing through the [pipeline](../../glossary/#pipeline). Large work items produce the
+[CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires small, frequent changes flowing through the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). Large work items produce the
 opposite: infrequent, high-risk changes that batch up in branches and land as large merges. A
-team working on five large items has zero [deployable](../../glossary/#deployable) changes for days at a time.
+team working on five large items has zero [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) changes for days at a time.
 
 Work decomposition is the practice that creates the small units of work that CD needs to flow.
 
@@ -120,14 +120,14 @@ Each scenario can be implemented, integrated, and deployed independently.
 
 ### Step 4: Combine with vertical slicing
 
-Decomposition and [vertical slicing](../../glossary/#vertical-sliced-story) work together. Decomposition breaks features into small
+Decomposition and [vertical slicing]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) work together. Decomposition breaks features into small
 pieces. Vertical slicing ensures each piece cuts through all technical layers to deliver complete
 functionality. A decomposed, vertically sliced item is independently deployable and testable.
 
 | Objection | Response |
 |-----------|----------|
 | "Splitting creates too many items" | Small items are easier to manage. They have clear scope, predictable timelines, and simple reviews. |
-| "Some things can't be done in two days" | Almost anything can be decomposed further. Database migrations can be backward-compatible steps. UI changes can hide behind [feature flags](../../glossary/#feature-flag). |
+| "Some things can't be done in two days" | Almost anything can be decomposed further. Database migrations can be backward-compatible steps. UI changes can hide behind [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}). |
 | "Product doesn't want partial features" | Feature flags let you deploy incomplete features without exposing them. The code is integrated continuously, but the feature is toggled on when all slices are done. |
 
 ## Measuring Progress
@@ -135,12 +135,12 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 | Metric | What to look for |
 |--------|-----------------|
 | Item cycle time | Should be two days or less from start to trunk |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as items get smaller |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as items get smaller |
 | Items completed per week | Should increase |
-| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as developers integrate daily |
+| [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as developers integrate daily |
 
 ## Related Content
 
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice guide for breaking work into small increments
-- [Horizontal Slicing](../horizontal-slicing/) - Decomposition without vertical slicing still produces items that cannot flow independently
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Batch size reduction at every level
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice guide for breaking work into small increments
+- [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - Decomposition without vertical slicing still produces items that cannot flow independently
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Batch size reduction at every level

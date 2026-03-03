@@ -103,16 +103,16 @@ Delete an environment entirely and recreate it from source control alone, with n
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Lead time](../../../metrics/lead-time/) | Reduction in environment creation time from days or weeks to minutes |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Fewer production failures caused by environment configuration differences |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Faster incident recovery when replacement environments can be created automatically |
-| [Release frequency](../../../metrics/release-frequency/) | Increased deployment frequency as environment availability stops being a blocking constraint |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Reduction in time developers spend waiting for environment provisioning tickets to be fulfilled |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in environment creation time from days or weeks to minutes |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Fewer production failures caused by environment configuration differences |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster incident recovery when replacement environments can be created automatically |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increased deployment frequency as environment availability stops being a blocking constraint |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time developers spend waiting for environment provisioning tickets to be fulfilled |
 
 ## Related Content
 
-- [Everything as code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/)
-- [Production-like environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/)
-- [Pipeline architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
-- [Identify constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/)
-- [Value stream mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/)
+- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
+- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
+- [Identify constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}})
+- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}})
