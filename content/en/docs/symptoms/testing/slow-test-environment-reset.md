@@ -95,8 +95,8 @@ services - do not need environment resets. They run in isolation with their own 
    and refactor tests to use isolated data fixtures.
 3. **Do most tests require live databases, running services, or network connections?** If the
    majority of tests need the fully assembled environment, the suite is testing at the wrong
-   layer. Functional tests with in-memory databases and virtual services for external
-   dependencies would eliminate the reset bottleneck for most assertions. Start with
+   layer. Functional tests with in-memory databases and virtual services for
+   [external dependencies](../../reference/glossary/#external-dependency) would eliminate the reset bottleneck for most assertions. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 4. **Does the full suite only run before releases, not on every change?** If the suite is a
    release gate rather than a pipeline stage, it was designed for a different feedback loop.

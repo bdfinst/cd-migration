@@ -1099,6 +1099,9 @@ Referenced in:
 
 See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#virtual-service" >}}).
 
+Referenced in:
+[Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}})
+
 ### Value Stream Map
 
 A visual representation of every step required to deliver a change from request to production,
