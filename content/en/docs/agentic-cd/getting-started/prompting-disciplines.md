@@ -16,7 +16,7 @@ Most guidance on "prompting" describes Discipline 1: writing clear instructions 
 
 Synchronous, session-based instructions used in a chat window.
 
-Prompt craft is now considered table stakes, the equivalent of fluent typing. It does not differentiate. Every developer using AI tools will reach baseline proficiency here. The skill is necessary but insufficient for [agentic workflows]({{< relref "/docs" >}}).
+Prompt craft is now considered table stakes, the equivalent of fluent typing. It does not differentiate. Every developer using AI tools will reach baseline proficiency here. The skill is necessary but insufficient for [agentic workflows]({{< relref "/docs/agentic-cd" >}}).
 
 **Key skills:**
 
@@ -41,7 +41,7 @@ Context engineering is the difference between a developer who writes better [pro
 
 **Where it maps on the learning curve:** [Stage 3-4]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-3-chat-driven-development" >}}). The transition from chat-driven development to agentic task completion is driven by context engineering. The agent that navigates the codebase with the right context outperforms the agent that receives pasted excerpts in a chat window.
 
-**Where it shows up in ACD:** The [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) assembles context for each session ([Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}})). The `/start-session` skill encodes context assembly order. [Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) depends on placing stable context before dynamic content ([Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})).
+**Where it shows up in [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}):** The [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) assembles context for each session ([Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}})). The `/start-session` skill encodes context assembly order. [Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) depends on placing stable context before dynamic content ([Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})).
 
 ## 3. Intent Engineering
 
@@ -57,7 +57,7 @@ Intent engineering tells the agent what to want, not just what to know. An agent
 
 **Where it maps on the learning curve:** The transition from [Stage 4]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-4-agentic-task-completion" >}}) to [Stage 5]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-5-spec-first-agentic-development" >}}). At Stage 4, vague requirements cause drift because the agent fills in intent from its own assumptions. Intent engineering makes those assumptions explicit.
 
-**Where it shows up in ACD:** The [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) artifact is the formalized version of intent engineering. It sits at the top of the [artifact authority hierarchy]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#artifact-authority-hierarchy" >}}) because intent governs every downstream decision.
+**Where it shows up in ACD:** The [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is the formalized version of intent engineering. It sits at the top of the [artifact authority hierarchy]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#artifact-authority-hierarchy" >}}) because intent governs every downstream decision.
 
 ## 4. Specification Engineering (The New Ceiling)
 
@@ -68,7 +68,7 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 **Key skills:**
 
 - **Self-contained problem statements:** Can the task be solved without the agent fetching additional information?
-- **Acceptance criteria:** Writing three sentences that an independent observer could use to verify "done"
+- **[Acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}):** Writing three sentences that an independent observer could use to verify "done"
 - **Decomposition:** Breaking a multi-day project into small subtasks with clear boundaries (see [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}))
 - **Evaluation design:** Creating test cases with known-good outputs to catch model regressions
 

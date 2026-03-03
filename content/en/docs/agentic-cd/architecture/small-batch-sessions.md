@@ -12,7 +12,7 @@ aliases:
 One [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario. One [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) session. One commit. This is the same discipline [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
 
-**Stop optimizing your [prompts]({{< relref "/docs/reference/glossary#prompt" >}}). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear acceptance criteria will outperform a better model given a vague, large-scope instruction.
+**Stop optimizing your [prompts]({{< relref "/docs/reference/glossary#prompt" >}}). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) will outperform a better model given a vague, large-scope instruction.
 
 ## Establish the Broad Understanding First
 
@@ -261,11 +261,11 @@ This has a practical implication: **do not let an agent session span a commit bo
 
 If the pipeline fails mid-session, the session is not done. Do not summarize completed work and do not start a new session. The agent's job in this session is to get the pipeline green.
 
-If the pipeline fails in a later session (a prior scenario breaks), the agent must restore the passing state before implementing the new scenario. This is the same discipline as the CI rule: while the pipeline is red, the only valid work is restoring green. See [ACD constraint 8]({{< relref "/docs" >}}).
+If the pipeline fails in a later session (a prior scenario breaks), the agent must restore the passing state before implementing the new scenario. This is the same discipline as the CI rule: while the pipeline is red, the only valid work is restoring green. See [ACD constraint 8]({{< relref "/docs/agentic-cd#acd-extensions-to-minimumcd" >}}).
 
 ## Related Content
 
-- [ACD Workflow]({{< relref "/docs" >}}) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
+- [ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to establish the broad understanding before sessions begin
 - [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - the same discipline applied to human-authored work
 - [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems

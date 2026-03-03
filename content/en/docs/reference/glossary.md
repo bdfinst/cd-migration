@@ -23,13 +23,21 @@ from passing, while shallow criteria allow code that passes tests but violates i
 
 Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}),
+[AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}),
+[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
+[Find Your Symptom]({{< relref "/docs/triage" >}}),
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}),
+[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}),
+[Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}})
 
 ### ACD (Agentic Continuous Delivery)
 
@@ -46,6 +54,7 @@ Referenced in:
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}),
 [Your Migration Journey]({{< relref "/docs" >}})
@@ -63,6 +72,7 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
@@ -160,6 +170,7 @@ story actually means before development begins.
 Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
+[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [Knowledge & Communication Defects]({{< relref "/docs/reference/defect-sources/knowledge-and-communication" >}}),
@@ -247,6 +258,7 @@ Referenced in:
 [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}),
 [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}),
 [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}),
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}),
 [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}),
@@ -328,6 +340,7 @@ During a CD migration, your job is to find and fix constraints in order of impac
 Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}),
 [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}),
 [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}),
 [Current State Checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}}),
@@ -337,6 +350,7 @@ Referenced in:
 [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}),
 [Learning Paths]({{< relref "/docs/learning-paths" >}}),
 [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}}),
+[Migrating Brownfield to CD]({{< relref "/docs/migrate-to-cd/brownfield" >}}),
 [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}),
 [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}),
 [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}),
@@ -421,6 +435,7 @@ Referenced in:
 [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}),
 [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}),
 [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}),
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}),
 [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
@@ -479,6 +494,9 @@ doubles for [external dependencies](#external-dependency) and runtime connection
 invocation is impractical or non-deterministic.
 
 See also: [Hard Dependency](#hard-dependency), [Soft Dependency](#soft-dependency).
+
+Referenced in:
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
 
 ### DORA Metrics
 
@@ -809,6 +827,7 @@ Referenced in:
 [Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}}),
 [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}),
 [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}),
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Recommended Patterns for Agentic Workflow Architecture]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
@@ -824,6 +843,7 @@ Referenced in:
 [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}),
 [Teams Cannot Change Their Own Pipeline Without Another Team]({{< relref "/docs/symptoms/deployment/pipeline-changes-require-another-team" >}}),
 [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}),
+[Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}}),
 [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}),
 [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}),
 [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
@@ -872,10 +892,11 @@ actually contains is a prerequisite for effective tokenomics. See
 
 Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
 ### Prompt Caching
@@ -1044,6 +1065,7 @@ See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
+[AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}),
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
@@ -1089,6 +1111,9 @@ Referenced in:
 ### Virtual Service
 
 See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#virtual-service" >}}).
+
+Referenced in:
+[Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}})
 
 ### Value Stream Map
 
@@ -1161,7 +1186,9 @@ deployed. Working agreements create shared expectations and reduce friction. See
 [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}).
 
 Referenced in:
+[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
 [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}),
+[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
 [The Team Has No Shared Agreements About How to Work]({{< relref "/docs/symptoms/flow/team-knowledge/no-shared-workflow-expectations" >}})
 
 ---
