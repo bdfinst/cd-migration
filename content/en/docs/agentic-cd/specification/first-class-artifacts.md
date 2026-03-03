@@ -20,6 +20,8 @@ For the framework overview and the eight constraints, see [ACD](../../).
 
 An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test](../../getting-started/prompting-disciplines/#the-self-containment-test) for how to verify completeness.
 
+**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) cycle.
+
 **Example:**
 
 {{< card code=true header="**Intent description: add rate limiting to /api/search**" lang="markdown" >}}
@@ -30,6 +32,10 @@ Analysis shows that a small number of clients are making thousands of
 requests per minute. We need to limit each authenticated client to 100
 requests per minute on the /api/search endpoint. Requests that exceed
 the limit should receive a 429 response with a Retry-After header.
+
+**Hypothesis:** We believe rate limiting will reduce p99 latency for
+well-behaved clients by 40% because abusive clients currently consume
+60% of search capacity.
 {{< /card >}}
 
 **Key property:** The intent description is authored and owned by a human. The agent does not write or modify it.
@@ -100,7 +106,7 @@ This artifact has two parts: the **done definition** (observable outcomes an ind
 
 ### Acceptance criteria
 
-Write acceptance criteria as observable outcomes, not internal implementation details. Each criterion should be verifiable by someone who has never seen the code:
+Write [acceptance criteria](../../glossary/#acceptance-criteria) as observable outcomes, not internal implementation details. Each criterion should be verifiable by someone who has never seen the code:
 
 {{< card code=true header="**Acceptance criteria: rate limiting done definition**" lang="markdown" >}}
 1. An authenticated client making 100 requests in one minute receives normal
@@ -136,6 +142,16 @@ Result: Middleware adds less than 5ms.
 {{< /card >}}
 
 Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents](../../operations/pipeline-enforcement/) enforce these two properties at pipeline speed.
+
+### Connecting acceptance criteria to hypothesis validation
+
+Acceptance criteria answer "does the code work?" The hypothesis in the intent description asks a broader question: "did the change achieve its purpose?" These are different checks that happen at different times.
+
+Acceptance criteria run in the pipeline on every commit. Hypothesis validation happens after deployment, using production data. In the rate-limiting example, the acceptance criteria verify that the 101st request returns a 429 status. The hypothesis - that p99 latency for well-behaved clients drops by 40% - is validated by observing production metrics after the change is live.
+
+This connection matters because a change can pass all acceptance criteria and still fail its hypothesis. Rate limiting might work perfectly and yet not reduce latency because the root cause was something else entirely. When that happens, the team has learned something valuable: the problem is not what they thought it was. That learning feeds back into the next intent description.
+
+The [metrics-driven improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
 
 **Key property:** The [pipeline](../../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
