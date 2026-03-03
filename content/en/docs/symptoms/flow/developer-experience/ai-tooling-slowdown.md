@@ -28,19 +28,30 @@ detail by detail - which is often harder than writing the code from scratch.
 
 ## Common causes
 
-### Poor Work Decomposition for AI
+### Skipping Specification and Prompting Directly
 
-AI assistants work best on small, well-defined tasks with clear acceptance criteria. When
-developers hand the AI a large, underspecified task - "implement the billing reconciliation
-feature" - the AI produces a large, plausible-looking implementation that has no clear
-criteria to verify against. The developer falls into reviewing implementation line by line
-because they have no checklist of expected behaviors to test. The time spent prompting,
-reviewing, and fixing exceeds the time to implement incrementally.
+The most common cause of AI slowdown is jumping straight to code generation without
+defining what the change should do. Instead of writing an intent description, [BDD](../../../reference/glossary/#bdd-behavior-driven-development) scenarios,
+and acceptance criteria first, the developer writes a long prompt that mixes requirements,
+constraints, and implementation hints into a single message. The AI guesses at the scope.
+The developer reviews line by line because they have no checklist of expected behaviors. The
+prompt-review-fix cycle repeats until the output is close enough.
 
-The fix is not to stop using AI. It is to decompose work into pieces small enough that
-acceptance criteria are obvious and the developer can verify the output against them quickly.
+The specification workflow from the
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) exists to
+prevent this. When the developer defines the intent (what the change should accomplish), the
+BDD scenarios (observable behaviors), and the acceptance criteria (how to verify correctness)
+before generating code, the AI has a constrained target and the developer has a checklist.
+If the specification for a single change takes more than fifteen minutes, the change is too
+large - split it.
 
-**Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
+[Agents](../../../reference/glossary/#agent-ai) can help with specification itself. The
+[agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
+workflow uses agents to find gaps in your intent, draft BDD scenarios, and surface edge cases -
+all before any code is generated. This front-loads the work where it is cheapest: in
+conversation, not in implementation review.
+
+**Read more:** [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
 
 ### Missing Working Agreements on AI Usage
 
@@ -69,12 +80,12 @@ that has not been made explicit.
 
 ## How to narrow it down
 
-1. **Are developers spending more time writing prompts and reviewing AI output than they would
-   spend writing the code?** If the prompting-reviewing-fixing cycle consistently takes longer
-   than direct implementation, the tasks being delegated to AI are too large or too
-   domain-specific. Start with
-   [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) and decompose
-   work into smaller pieces before involving AI.
+1. **Are developers jumping straight to code generation without defining intent, scenarios, and
+   acceptance criteria first?** If the prompting-reviewing-fixing cycle consistently takes
+   longer than direct implementation, the problem is usually skipped specification, not the AI
+   tool. Start with
+   [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
+   to define what the change should do before generating code.
 2. **Does the team have a shared understanding of which tasks are good AI targets?** If
    individual developers are discovering this through trial and error, the team needs [working
    agreements](../../../reference/glossary/#working-agreement). Start with the
@@ -87,12 +98,13 @@ that has not been made explicit.
 
 ---
 
-**Ready to fix this?** Start with the [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) to identify which tasks benefit from AI and which do not, then decompose work accordingly.
+**Ready to fix this?** Start with [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) to learn the specification workflow that front-loads clarity before code generation.
 
 ## Related Content
 
+- [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - Using agents to define intent, scenarios, and criteria before generating code
+- [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - The six artifacts that constrain AI-generated code
 - [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - Related symptom where AI speed comes at the cost of comprehension
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Common failure modes when teams adopt AI coding tools
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Staged approach to adopting AI tools safely
 - [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into pieces small enough for fast feedback
-- [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - The anti-pattern of large, underspecified tasks
