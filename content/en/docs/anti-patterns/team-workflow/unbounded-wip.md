@@ -85,19 +85,19 @@ to production, each fully attended to, each integrated before the next begins.
 
 ## How to Fix It
 
-### Step 1: Make WIP visible (Week 1)
+### Step 1: Make WIP visible
 
 Count every item currently in progress for the team, including hidden work like production bugs,
 support questions, and unofficial side projects. Write this number on the board. Update it daily.
 The goal is awareness, not action.
 
-### Step 2: Set an initial WIP limit (Week 2)
+### Step 2: Set an initial WIP limit
 
 Start with N+2, where N is the number of developers. For a team of five, set the limit at seven.
 Add the limit to the board as a column constraint. Agree as a team: when the limit is reached,
 nobody starts new work. Instead, they help finish something already in progress.
 
-### Step 3: Enforce with swarming (Week 3+)
+### Step 3: Enforce with swarming
 
 When the WIP limit is hit, developers who finish an item have two choices: pull the next
 highest-priority item if WIP is below the limit, or swarm on an existing item if WIP is at the

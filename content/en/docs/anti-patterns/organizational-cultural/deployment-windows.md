@@ -148,7 +148,7 @@ hour-scale. The learning that CD produces is delayed proportionally.
 
 ## How to Fix It
 
-### Step 1: Document the actual risk model for deployment windows (Week 1)
+### Step 1: Document the actual risk model for deployment windows
 
 Before making any changes, understand why the windows exist and whether the stated reasons
 are accurate:

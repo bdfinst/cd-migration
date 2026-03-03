@@ -116,7 +116,7 @@ against it.
 
 ## How to Fix It
 
-### Step 1: Audit current metrics and OKRs against delivery health (Week 1)
+### Step 1: Audit current metrics and OKRs against delivery health
 
 List all current team-level metrics, OKRs, and performance criteria. Mark each one: does it measure
 features/output, or does it measure delivery system health? In most organizations, the list will

@@ -140,7 +140,7 @@ of how carefully the train departure was scheduled.
 
 ## How to Fix It
 
-### Step 1: Make train departures more frequent (Week 1-2)
+### Step 1: Make train departures more frequent
 
 If the release train currently departs weekly, move to twice-weekly. If it departs bi-weekly,
 move to weekly. This is the easiest immediate improvement - it requires no new tooling and
@@ -150,7 +150,7 @@ Measure the change: track how many changes are in each release, the change fail 
 the incident rate per release. More frequent, smaller releases almost always show lower
 failure rates than less frequent, larger releases.
 
-### Step 2: Identify why the train schedule exists (Week 1-2)
+### Step 2: Identify why the train schedule exists
 
 Find the problem the train schedule was created to solve:
 

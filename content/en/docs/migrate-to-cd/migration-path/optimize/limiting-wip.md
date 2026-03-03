@@ -103,7 +103,7 @@ Each of these is a bottleneck that was previously invisible because the team cou
 
 ## Implementing WIP Limits
 
-### Step 1: Make WIP Visible (Week 1)
+### Step 1: Make WIP Visible
 
 Before setting limits, make current WIP visible:
 
@@ -111,13 +111,13 @@ Before setting limits, make current WIP visible:
 - Write this number on the board (physical or digital) every day
 - Most teams are shocked by how high it is. A team of 5 often has 15-20 items in progress.
 
-### Step 2: Set the Initial Limit (Week 2)
+### Step 2: Set the Initial Limit
 
 - Calculate N+2 for your team
 - Add the limit to your board (e.g., a column header that says "In Progress (limit: 7)")
 - Agree as a team that when the limit is reached, no new work starts
 
-### Step 3: Enforce the Limit (Week 3+)
+### Step 3: Enforce the Limit
 
 - When someone tries to pull new work and the limit is reached, the team helps them find an existing item to work on
 - Track violations: how often does the team exceed the limit? What causes it?

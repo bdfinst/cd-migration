@@ -67,7 +67,7 @@ The cultural dimension matters as much as the structural one. CD requires every 
 
 ## How to Fix It
 
-### Step 1: Measure the QA queue and its impact (Week 1)
+### Step 1: Measure the QA queue and its impact
 
 Before making structural changes, quantify the cost of the current model to build consensus for change.
 

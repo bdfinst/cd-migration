@@ -143,7 +143,7 @@ Replacing a manual release gate requires building the automated confidence to su
 the manual judgment. The gate is not removed on day one - it is replaced incrementally as
 automation earns trust.
 
-### Step 1: Audit what the gate is actually catching (Week 1)
+### Step 1: Audit what the gate is actually catching
 
 The goal of this step is to understand what value the manual gate provides so it can be
 replaced with something equivalent, not just removed.
@@ -172,7 +172,7 @@ The goal is to reach a point where a gate rejection would only happen for someth
 outside the automated suite's coverage. At that point, the gate is reviewing a much smaller
 and more focused scope.
 
-### Step 3: Formalize the automated approval criteria (Week 4)
+### Step 3: Formalize the automated approval criteria
 
 Define exactly what a pipeline must show before a deployment is considered approved. Write it
 down. Make it visible.
@@ -204,7 +204,7 @@ After four to eight weeks of parallel operation, the data either confirms that t
 is providing significant additional value (rare) or shows that it is confirming what the pipeline
 already knows (common). The data makes the decision about removing the gate defensible.
 
-### Step 5: Replace the gate with risk-scoped manual testing (Week 8+)
+### Step 5: Replace the gate with risk-scoped manual testing
 
 When parallel operation shows that automated criteria are sufficient for most releases, change
 the manual review scope.

@@ -24,7 +24,7 @@ This is not a replacement for testing. It is an addition. Your automated tests s
 
 A [canary deployment](../../../glossary/#canary-deployment) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
 
-{{< code-collapse title="Canary deployment traffic split diagram" lang="text" >}}
+{{< card code=true header="**Canary deployment traffic split diagram**" lang="text" >}}
                         ┌─────────────────┐
                    5%   │  New Version     │  ← Canary
                 ┌──────►│  (v2)            │
@@ -34,7 +34,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
                 └──────►│  Old Version     │  ← Stable
                   95%   │  (v1)            │
                         └─────────────────┘
-{{< /code-collapse >}}
+{{< /card >}}
 
 **How it works:**
 
@@ -69,7 +69,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
 
 [Blue-green deployment](../../../glossary/#blue-green-deployment) maintains two identical production environments. At any time, one (blue) serves live traffic and the other (green) is idle or staging.
 
-{{< code-collapse title="Blue-green deployment traffic switch diagram" lang="text" >}}
+{{< card code=true header="**Blue-green deployment traffic switch diagram**" lang="text" >}}
   BEFORE:
     Traffic ──────► [Blue - v1] (ACTIVE)
                     [Green]     (IDLE)
@@ -81,7 +81,7 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
   SWITCH:
     Traffic ──────► [Green - v2] (ACTIVE)
                     [Blue - v1]  (STANDBY / ROLLBACK TARGET)
-{{< /code-collapse >}}
+{{< /card >}}
 
 **How it works:**
 
@@ -109,13 +109,13 @@ A [canary deployment](../../../glossary/#canary-deployment) routes a small perce
 
 Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based - a specific user always sees the same version during the rollout period.
 
-{{< code-collapse title="Percentage-based rollout schedule" lang="text" >}}
+{{< card code=true header="**Percentage-based rollout schedule**" lang="text" >}}
   Hour 0:   1% of users  → v2,  99% → v1
   Hour 2:   5% of users  → v2,  95% → v1
   Hour 8:  25% of users  → v2,  75% → v1
   Day 2:   50% of users  → v2,  50% → v1
   Day 3:  100% of users  → v2
-{{< /code-collapse >}}
+{{< /card >}}
 
 **How it works:**
 
@@ -172,7 +172,7 @@ Define automated rollback triggers before deploying. Common triggers:
 
 ### Automated Rollback Flow
 
-{{< code-collapse title="Automated rollback flow diagram" lang="text" >}}
+{{< card code=true header="**Automated rollback flow diagram**" lang="text" >}}
 Deploy new version
        │
        ▼
@@ -191,7 +191,7 @@ Monitor for 15 minutes
        │                                └── Metrics degraded ─────► ROLLBACK
        │
        └── Metrics degraded ─────► ROLLBACK
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Implementation Tools
 
@@ -206,7 +206,7 @@ The specific tool matters less than the principle: define rollback criteria befo
 
 ## Implementing Progressive Rollout
 
-### Step 1: Choose Your First Strategy (Week 1)
+### Step 1: Choose Your First Strategy
 
 Pick the strategy that matches your infrastructure:
 
@@ -214,7 +214,7 @@ Pick the strategy that matches your infrastructure:
 - If you have Kubernetes with a service mesh: start with canary
 - If you have parallel environments: start with blue-green
 
-### Step 2: Define Rollback Criteria (Week 1)
+### Step 2: Define Rollback Criteria
 
 Before your first progressive deployment:
 
@@ -223,7 +223,7 @@ Before your first progressive deployment:
 3. Define the monitoring window (how long to wait before advancing)
 4. Document the rollback procedure (even if automated, document it for human understanding)
 
-### Step 3: Run a Manual Progressive Rollout (Week 2-3)
+### Step 3: Run a Manual Progressive Rollout
 
 Before automating, run the process manually:
 
@@ -234,7 +234,7 @@ Before automating, run the process manually:
 
 This manual practice builds understanding of what the automation will do.
 
-### Step 4: Automate the Rollout (Week 4+)
+### Step 4: Automate the Rollout
 
 Replace the manual monitoring with automated checks:
 

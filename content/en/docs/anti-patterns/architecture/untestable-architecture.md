@@ -126,7 +126,7 @@ Making an untestable codebase testable is an incremental process. The goal is no
 everything before writing the first test. The goal is to create seams - places where test doubles
 can be inserted - module by module, as code is touched.
 
-### Step 1: Identify the most-changed untestable code (Week 1)
+### Step 1: Identify the most-changed untestable code
 
 Do not try to fix the entire codebase. Start where the pain is highest.
 
@@ -147,7 +147,7 @@ changing behavior.
 
 In Java:
 
-{{< code-collapse title="OrderService before and after dependency injection (Java)" lang="java" >}}
+{{< card code=true header="**OrderService before and after dependency injection (Java)**" lang="java" >}}
 // Before: untestable - constructs dependency internally
 public class OrderService {
     public void processOrder(Order order) {
@@ -167,11 +167,11 @@ public class OrderService {
         this.paymentGateway = paymentGateway;
     }
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 In JavaScript:
 
-{{< code-collapse title="processOrder before and after dependency injection (JavaScript)" lang="javascript" >}}
+{{< card code=true header="**processOrder before and after dependency injection (JavaScript)**" lang="javascript" >}}
 // Before: untestable
 function processOrder(order) {
   const db = new DatabaseConnection();
@@ -183,7 +183,7 @@ function processOrder(order) {
 function processOrder(order, { repository, paymentGateway }) {
   // business logic using injected dependencies
 }
-{{< /code-collapse >}}
+{{< /card >}}
 
 The interface or abstraction is the key. Production code passes real implementations. Tests pass
 fast, in-memory doubles that return predictable results.
@@ -209,7 +209,7 @@ including tests.
 
 A serverless handler that does everything:
 
-{{< code-collapse title="Extracting business logic from a serverless handler (JavaScript)" lang="javascript" >}}
+{{< card code=true header="**Extracting business logic from a serverless handler (JavaScript)**" lang="javascript" >}}
 // Before: untestable
 exports.handler = async (event) => {
   const db = new Database();
@@ -230,12 +230,12 @@ exports.handler = async (event, { db } = { db: new Database() }) => {
   await db.updateOrder({ ...order, discount });
   return { statusCode: 200 };
 };
-{{< /code-collapse >}}
+{{< /card >}}
 
 The `calculateDiscount` function is now testable in complete isolation. The handler is thin and can
 be tested with a mock database.
 
-### Step 5: Add the linting and architectural rules that prevent backsliding (Week 4+)
+### Step 5: Add the linting and architectural rules that prevent backsliding
 
 Once a module is testable, add controls that prevent it from becoming untestable again.
 

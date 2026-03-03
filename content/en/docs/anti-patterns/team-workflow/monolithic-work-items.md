@@ -84,13 +84,13 @@ Work decomposition is the practice that creates the small units of work that CD 
 
 ## How to Fix It
 
-### Step 1: Establish the 2-day rule (Week 1)
+### Step 1: Establish the 2-day rule
 
 Agree as a team: no work item should take longer than two days from start to integrated on
 trunk. This is a constraint on item size, not a velocity target. When an item cannot be completed
 in two days, decompose it before pulling it into the sprint.
 
-### Step 2: Decompose during refinement (Week 2)
+### Step 2: Decompose during refinement
 
 Build decomposition into the refinement process:
 
@@ -100,11 +100,11 @@ Build decomposition into the refinement process:
 4. Each resulting item is estimated. Any item over two days is split again.
 5. Items enter the sprint already small enough to flow.
 
-### Step 3: Use acceptance criteria as splitting boundaries (Week 2+)
+### Step 3: Use acceptance criteria as splitting boundaries
 
 Each acceptance criterion or small group of criteria is a natural decomposition boundary:
 
-{{< code-collapse title="Acceptance criteria as Gherkin scenarios for independent delivery" lang="gherkin" >}}
+{{< card code=true header="**Acceptance criteria as Gherkin scenarios for independent delivery**" lang="gherkin" >}}
 Scenario: Apply percentage discount
   Given a cart with items totaling $100
   When I apply a 10% discount code
@@ -114,11 +114,11 @@ Scenario: Reject expired discount code
   Given a cart with items totaling $100
   When I apply an expired discount code
   Then the cart total should remain $100
-{{< /code-collapse >}}
+{{< /card >}}
 
 Each scenario can be implemented, integrated, and deployed independently.
 
-### Step 4: Combine with vertical slicing (Week 3+)
+### Step 4: Combine with vertical slicing
 
 Decomposition and [vertical slicing](../../glossary/#vertical-sliced-story) work together. Decomposition breaks features into small
 pieces. Vertical slicing ensures each piece cuts through all technical layers to deliver complete

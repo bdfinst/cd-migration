@@ -69,7 +69,7 @@ The cultural shift matters as much as the technical one. Security must be a shar
 
 ## How to Fix It
 
-### Step 1: Inventory your current security posture and tooling (Week 1)
+### Step 1: Inventory your current security posture and tooling
 
 1. List all the security checks currently performed and when in the process they occur.
 2. Identify the three most common finding types from your last 12 months of security reviews and look up automated tools that detect each type.

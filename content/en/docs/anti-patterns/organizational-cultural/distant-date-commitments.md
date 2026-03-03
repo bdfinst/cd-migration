@@ -111,14 +111,14 @@ a normal response to new information.
 
 ## How to Fix It
 
-### Step 1: Map current commitments and their basis (Week 1)
+### Step 1: Map current commitments and their basis
 
 List every active commitment with a date attached. For each one, note when the commitment was made,
 what information existed at the time, and how much has changed since. This makes visible how far
 the original estimate has drifted from current reality. Share the analysis with leadership - not as
 an indictment, but as a calibration conversation about how accurate distant commitments tend to be.
 
-### Step 2: Introduce a commitment horizon policy (Week 2)
+### Step 2: Introduce a commitment horizon policy
 
 Propose a tiered commitment structure:
 

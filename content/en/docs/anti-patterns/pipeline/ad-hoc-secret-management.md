@@ -69,11 +69,11 @@ Automated secret injection is a prerequisite for fully automated deployment. The
 
 ## How to Fix It
 
-### Step 1: Audit the current secret inventory (Week 1)
+### Step 1: Audit the current secret inventory
 
 Enumerate every credential used by every application and every pipeline. For each credential, record what it is, where it is currently stored, who has access to it, when it was last rotated, and what systems would break if it were revoked. This inventory is almost certainly incomplete on the first pass - plan to extend it as you discover additional credentials during subsequent steps.
 
-### Step 2: Remove secrets from source control immediately (Week 1-2)
+### Step 2: Remove secrets from source control immediately
 
 Scan all repositories for committed secrets using a tool such as `git-secrets`, `truffleHog`, or `detect-secrets`. For every credential found in git history, rotate it immediately - assume it is compromised. Removing the value from the repository does not protect it because git history is readable; only rotation makes the exposed credential useless. Add pre-commit hooks and CI checks to prevent new secrets from being committed.
 
@@ -89,7 +89,7 @@ Move secrets from their current locations into the vault. Update applications to
 
 Define a rotation schedule for each credential type: database passwords every 90 days, API keys every 30 days, certificates before expiry. Configure automated rotation where the vault or a scheduled pipeline job can rotate the credential and update all dependent systems. For credentials that cannot be automatically rotated, create a calendar-based reminder process and document the rotation procedure in the repository.
 
-### Step 6: Implement access controls and audit logging (Week 8 and ongoing)
+### Step 6: Implement access controls and audit logging
 
 Configure the vault so that each application and each pipeline role can access only the secrets it needs, nothing more. Enable audit logging on all secret access so that every read and write is attributable to a specific identity. Review access logs regularly to identify unused credentials (which should be revoked) and unexpected access patterns (which should be investigated).
 

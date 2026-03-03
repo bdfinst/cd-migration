@@ -145,7 +145,7 @@ requires that confidence to exist at all times.
 
 ## How to Fix It
 
-### Step 1: Fix the build and agree it stays green (Week 1)
+### Step 1: Fix the build and agree it stays green
 
 Before anything else, get trunk to green. This is the team's first and most important commitment.
 
@@ -160,7 +160,7 @@ Write this agreement down. Put it in the team's working agreements document. If 
 one, start one now. The agreement is simple: we do not commit on top of a red build, and we do not
 leave a red build for someone else to fix.
 
-### Step 2: Make the build visible (Week 1)
+### Step 2: Make the build visible
 
 The build status must be impossible to ignore:
 
@@ -173,7 +173,7 @@ Visibility creates accountability. When the whole team can see that the build br
 and who broke it, social pressure keeps people attentive. When failures are buried in email
 notifications, they are easily ignored.
 
-### Step 3: Require integration at least once per day (Week 2)
+### Step 3: Require integration at least once per day
 
 The "continuous" in continuous integration means at least daily, and ideally multiple times per day.
 Set the expectation:
@@ -214,7 +214,7 @@ and the feedback loop breaks.
 | "Fixing someone else's broken build is not my job" | It is the whole team's job. A red build blocks everyone. If the person who broke it is unavailable, someone else should revert or fix it. The team owns the build, not the individual. |
 | "We have CI - the build server runs on every push" | A build server is not CI. CI is the practice of integrating frequently and keeping the build green. If the build has been red for a week, you have a build server, not continuous integration. |
 
-### Step 6: Build the habit (Week 4+)
+### Step 6: Build the habit
 
 Continuous integration is a daily discipline, not a one-time setup. Reinforce the habit:
 

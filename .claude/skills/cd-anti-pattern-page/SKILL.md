@@ -78,11 +78,11 @@ delivery.]
 
 ## How to Fix It
 
-### Step 1: [Action verb] (Week 1)
+### Step 1: [Action verb]
 
-[Time-boxed, concrete first step. Include specific actions the team should take.]
+[Concrete first step. Include specific actions the team should take.]
 
-### Step 2: [Action verb] (Week N)
+### Step 2: [Action verb]
 
 [Continue with weekly steps. Each step should build on the previous one.]
 

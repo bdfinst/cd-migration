@@ -140,7 +140,7 @@ are handled. The technical changes are straightforward. The harder changes are o
 how the team handles customer upgrade requests, how compatibility is maintained, and how support
 commitments are scoped.
 
-### Step 1: Inventory all active release branches and their consumers (Week 1)
+### Step 1: Inventory all active release branches and their consumers
 
 Before retiring any branch, understand who depends on it.
 
@@ -153,7 +153,7 @@ This inventory usually reveals that some branches have no known active consumers
 retired immediately. Others have consumers who could upgrade but have not been prompted to.
 Only a small number typically have consumers with genuine constraints on upgrading.
 
-### Step 2: Define and communicate a version support policy (Week 2)
+### Step 2: Define and communicate a version support policy
 
 The underlying driver of branch proliferation is the absence of a clear policy on how long
 versions are supported. Without a policy, support obligations are open-ended.

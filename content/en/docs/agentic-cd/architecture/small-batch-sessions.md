@@ -64,7 +64,7 @@ Exclude:
 
 At the end of each session, write a summary that future sessions can use. The summary replaces the session's full conversation history in subsequent contexts. Keep it factual and brief:
 
-{{< code-collapse title="Context summary template: factual session handoff" >}}
+{{< card code=true header="**Context summary template: factual session handoff**" >}}
 Session 1 implemented Scenario 1 (client exceeds rate limit returns 429).
 
 Files created:
@@ -76,7 +76,7 @@ Tests added:
 - src/middleware/rate-limit.test.ts - covers Scenario 1
 
 All pipeline checks pass.
-{{< /code-collapse >}}
+{{< /card >}}
 
 This summary is the complete handoff from one session to the next. The next agent starts with this summary plus its own scenario - not with the full conversation that produced the code.
 
@@ -100,7 +100,7 @@ The [agent delivery contract](../../specification/first-class-artifacts/) page e
 
 **All BDD scenarios, in implementation order:**
 
-{{< code-collapse title="BDD scenarios: rate limiting in implementation order" lang="gherkin" >}}
+{{< card code=true header="**BDD scenarios: rate limiting in implementation order**" lang="gherkin" >}}
 Scenario 1: Client within rate limit
   Given an authenticated client with 50 requests in the current minute
   When the client makes a request to /api/search
@@ -122,7 +122,7 @@ Scenario 4: Unauthenticated requests bypass rate limiting
   Given an unauthenticated request to /api/search
   When the request is made regardless of recent request volume
   Then the request is processed normally without rate limit checks
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Feature description (excerpt):**
 
@@ -149,7 +149,7 @@ Scenario 4: Unauthenticated requests bypass rate limiting
 
 **Context summary written:**
 
-{{< code-collapse title="Session 1 context summary: quota headers for requests within limit" >}}
+{{< card code=true header="**Session 1 context summary: quota headers for requests within limit**" >}}
 Session 1 implemented Scenario 1 (client within rate limit).
 
 Files created:
@@ -161,7 +161,7 @@ Tests added:
 - src/middleware/rate-limit.test.ts - covers Scenario 1
 
 Pipeline is green.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 
@@ -185,7 +185,7 @@ Pipeline is green.
 
 **Context summary written:**
 
-{{< code-collapse title="Sessions 1-2 context summary: rate limit enforcement with 429 response" >}}
+{{< card code=true header="**Sessions 1-2 context summary: rate limit enforcement with 429 response**" >}}
 Sessions 1-2 implemented Scenarios 1 and 2.
 
 Files:
@@ -198,7 +198,7 @@ Tests:
 - src/middleware/rate-limit.test.ts - covers Scenarios 1 and 2
 
 Pipeline is green.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ---
 

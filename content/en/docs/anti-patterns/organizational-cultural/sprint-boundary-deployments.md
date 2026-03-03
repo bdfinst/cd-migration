@@ -142,7 +142,7 @@ cadence. It is no longer a deployment cadence.
 
 ## How to Fix It
 
-### Step 1: Separate the deployment conversation from the sprint conversation (Week 1)
+### Step 1: Separate the deployment conversation from the sprint conversation
 
 In the next sprint planning session, explicitly establish the distinction:
 
@@ -155,7 +155,7 @@ In the next sprint planning session, explicitly establish the distinction:
 Write this down and make it visible. The team needs to internalize that sprint end is not
 deployment day - deployment day is every day there is something ready.
 
-### Step 2: Deploy the first story that completes this sprint, immediately (Week 1-2)
+### Step 2: Deploy the first story that completes this sprint, immediately
 
 Make the change concrete by doing it:
 
@@ -168,7 +168,7 @@ This demonstration breaks the mental association between sprint end and deployme
 team has deployed mid-sprint and seen that it is safe and unremarkable, the sprint-boundary
 deployment habit weakens.
 
-### Step 3: Update the Definition of Done to include deployment (Week 2-3)
+### Step 3: Update the Definition of Done to include deployment
 
 Change the team's Definition of Done:
 
@@ -179,7 +179,7 @@ Change the team's Definition of Done:
 A story that is code-complete but not deployed is not done. This definition change forces
 the deployment question to be resolved per story rather than per sprint.
 
-### Step 4: Decouple the sprint demo from deployment (Week 2-4)
+### Step 4: Decouple the sprint demo from deployment
 
 If the sprint demo is the gate for deployment, remove the gate:
 

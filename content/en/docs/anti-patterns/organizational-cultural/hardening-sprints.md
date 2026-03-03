@@ -139,7 +139,7 @@ the foundation of a delivery process that can actually deliver continuously.
 
 ## How to Fix It
 
-### Step 1: Catalog what the hardening sprint actually fixes (Week 1)
+### Step 1: Catalog what the hardening sprint actually fixes
 
 Start with evidence. Before the next hardening sprint begins, define categories for the work
 it will do:
@@ -187,7 +187,7 @@ The team will resist this because it feels like slowing down the feature sprints
 total cycle time including hardening. The answer is almost always that moving quality earlier
 saves time overall.
 
-### Step 4: Fix the bug in the sprint it is found (Week 2+)
+### Step 4: Fix the bug in the sprint it is found
 
 Fix bugs the sprint you find them. Make this explicit in the team's Definition of Done - a
 deferred bug is an incomplete story. This requires:

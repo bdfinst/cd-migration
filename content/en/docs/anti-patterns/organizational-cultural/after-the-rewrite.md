@@ -112,7 +112,7 @@ new system. Deferring CD defers not just the benefits but the organizational lea
 
 ## How to Fix It
 
-### Step 1: Identify what can improve now, without the rewrite (Week 1)
+### Step 1: Identify what can improve now, without the rewrite
 
 List the specific practices the team is deferring to the rewrite. For each one, identify the
 specific technical barrier: "We can't add tests because class X has 12 dependencies that cannot

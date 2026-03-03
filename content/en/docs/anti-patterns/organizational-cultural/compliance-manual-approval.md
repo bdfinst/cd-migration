@@ -69,7 +69,7 @@ The path to CD in regulated environments requires reframing compliance with the 
 
 ## How to Fix It
 
-### Step 1: Read the actual regulatory requirements (Week 1)
+### Step 1: Read the actual regulatory requirements
 
 Most manual approval processes are not required by the regulation they claim to implement. Verify this before attempting to change anything.
 

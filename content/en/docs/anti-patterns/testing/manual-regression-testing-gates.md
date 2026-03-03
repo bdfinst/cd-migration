@@ -155,7 +155,7 @@ The gate must be automated before CD is possible.
 
 ## How to Fix It
 
-### Step 1: Catalog your manual test cases and categorize them (Week 1)
+### Step 1: Catalog your manual test cases and categorize them
 
 Before automating anything, understand what the manual test suite actually covers. For every test
 case in the regression suite:
@@ -183,7 +183,7 @@ Do not try to automate everything at once. Start with the cases that give the mo
 minute of execution time. The goal is to build a fast automated suite that covers the riskiest
 scenarios so the team no longer depends on manual execution for those paths.
 
-### Step 3: Run automated tests in the pipeline on every commit (Week 3)
+### Step 3: Run automated tests in the pipeline on every commit
 
 Move the new automated tests into the CI pipeline so they run on every push. This is the critical
 shift: testing moves from a phase at the end of development to a continuous activity that happens

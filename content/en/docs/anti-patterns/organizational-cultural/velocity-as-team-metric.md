@@ -83,7 +83,7 @@ CD metrics - deployment frequency, lead time, change fail rate, mean time to res
 
 ## How to Fix It
 
-### Step 1: Stop reporting velocity externally (Week 1)
+### Step 1: Stop reporting velocity externally
 
 Remove velocity from management dashboards and stakeholder reports. It is an internal planning tool, not an organizational KPI. If management needs visibility into delivery output, introduce [lead time](../../../metrics/lead-time/) and [release frequency](../../../metrics/release-frequency/) as replacements.
 
@@ -100,13 +100,13 @@ While stopping velocity reporting, start tracking:
 
 These metrics capture what management actually cares about: how fast does value reach users and how reliably?
 
-### Step 3: Decouple estimation from capacity planning (Week 3)
+### Step 3: Decouple estimation from capacity planning
 
 Teams that do not inflate estimates do not need velocity tracking to forecast. Use historical cycle time data to forecast completion dates. A story that is similar in size to past stories will take approximately as long as past stories took - measured in real time, not points.
 
 If the team still uses points for relative sizing, that is fine. Stop using the sum of points as a throughput metric.
 
-### Step 4: Redirect sprint planning toward flow (Week 4)
+### Step 4: Redirect sprint planning toward flow
 
 Change the sprint planning question from "how many points can we commit to?" to "what is the highest-priority work the team can finish this sprint?" Focus on finishing in-progress items before starting new ones. Use WIP limits rather than point targets.
 
@@ -117,7 +117,7 @@ Change the sprint planning question from "how many points can we commit to?" to 
 | "Teams need goals to work toward" | Set goals on delivery outcomes - "reduce lead time by 20%," "deploy daily" - rather than on effort metrics. Outcome goals align the team with what matters. |
 | "Velocity has been stable for years, why change?" | Stable velocity indicates the team has found a comfortable equilibrium, not that delivery is improving. If lead time and change fail rate are also good, there is no problem. If they are not, velocity is masking it. |
 
-### Step 5: Replace performance conversations with delivery conversations (Week 6+)
+### Step 5: Replace performance conversations with delivery conversations
 
 Remove velocity from any performance review or team health conversation. Replace with: are users getting value faster? Is quality improving or degrading? Is the team's delivery capability growing?
 

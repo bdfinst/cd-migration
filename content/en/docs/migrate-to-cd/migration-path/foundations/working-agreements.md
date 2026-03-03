@@ -198,7 +198,7 @@ Use this template as a starting point. Customize it for your team's context. The
 
 ### Team Working Agreement Template
 
-{{< code-collapse title="Team Working Agreement Template" lang="markdown" >}}
+{{< card code=true header="**Team Working Agreement Template**" lang="markdown" >}}
 # [Team Name] Working Agreement
 Date: [Date]
 Participants: [All team members]
@@ -243,7 +243,7 @@ A work item is ready when:
 This agreement is reviewed and updated [monthly / quarterly].
 Any team member can propose changes at any time.
 All changes require team consensus.
-{{< /code-collapse >}}
+{{< /card >}}
 
 ### Tips for Creating Working Agreements
 

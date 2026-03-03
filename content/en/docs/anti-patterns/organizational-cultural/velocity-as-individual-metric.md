@@ -98,7 +98,7 @@ unit delivering software together.
 
 ## How to Fix It
 
-### Step 1: Stop reporting individual velocity (Week 1)
+### Step 1: Stop reporting individual velocity
 
 Remove individual velocity from all dashboards, reports, and one-on-one discussions. Report only
 team velocity. This single change removes the incentive to game and restores velocity to its
@@ -107,19 +107,19 @@ intended purpose: helping the team plan.
 If management needs visibility into individual contribution, use peer feedback, code review
 participation, and qualitative assessment rather than story points.
 
-### Step 2: Clean up the board (Week 2)
+### Step 2: Clean up the board
 
 Remove defensive tickets. If it is not a deliverable work item, it does not belong on the board.
 Meetings, PR reviews, and administrative tasks are part of the job, not separate trackable units.
 Reduce the board to work that delivers value so the team can see what actually matters.
 
-### Step 3: Redefine what velocity measures (Week 2)
+### Step 3: Redefine what velocity measures
 
 Make it explicit in the team's working agreement: velocity is a team planning tool. It measures
 how much work the team can take into a sprint. It is not a performance metric, a productivity
 indicator, or a comparison tool. Write this down. Refer to it when old habits resurface.
 
-### Step 4: Measure outcomes instead of output (Week 3+)
+### Step 4: Measure outcomes instead of output
 
 Replace individual velocity tracking with outcome-oriented measures:
 

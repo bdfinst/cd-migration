@@ -116,7 +116,7 @@ architecture that was supposed to enable faster delivery actively prevents it.
 
 ## How to Fix It
 
-### Step 1: Map the actual dependencies (Week 1)
+### Step 1: Map the actual dependencies
 
 For each service, document:
 
@@ -127,7 +127,7 @@ For each service, document:
 Draw the dependency graph. Services that form a cluster of mutual dependencies are candidates for
 consolidation or boundary correction.
 
-### Step 2: Identify domain boundaries (Week 2)
+### Step 2: Identify domain boundaries
 
 Map business capabilities to services. For each business operation (place an order, process a
 payment, send a notification), trace which services are involved. If a single business operation

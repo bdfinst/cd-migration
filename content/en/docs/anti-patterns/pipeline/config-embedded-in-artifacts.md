@@ -66,11 +66,11 @@ Immutable artifacts are a foundational CD practice. Externalizing configuration 
 
 ## How to Fix It
 
-### Step 1: Identify all embedded configuration values (Week 1)
+### Step 1: Identify all embedded configuration values
 
 Audit the build process to find every place where an environment-specific value is introduced at build time. This includes configuration files read during compilation, environment variables consumed by build scripts, template substitution steps, and any build parameter that affects what ends up in the artifact. Document the full list before changing anything.
 
-### Step 2: Classify values by sensitivity and access pattern (Week 1)
+### Step 2: Classify values by sensitivity and access pattern
 
 Separate configuration values into categories: non-sensitive application configuration (URLs, feature flags, pool sizes), sensitive credentials (database passwords, API keys, certificates), and runtime-computed values (hostnames assigned at deploy time). Each category calls for a different externalization approach - application config files, a secrets vault, and deployment-time injection, respectively.
 
@@ -82,11 +82,11 @@ Move non-sensitive configuration values out of the build and into externally-man
 
 Credentials should never live in config files or be passed as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
 
-### Step 5: Modify the pipeline to build once (Week 5)
+### Step 5: Modify the pipeline to build once
 
 Refactor the pipeline so it produces a single artifact regardless of target environment. The artifact is built once, stored in an artifact registry, and then deployed to each environment in sequence by injecting the appropriate configuration at deploy time. Remove per-environment build parameters. The pipeline now has the shape: build, store, deploy-to-staging (inject staging config), test, deploy-to-production (inject production config).
 
-### Step 6: Verify artifact identity across environments (Week 6)
+### Step 6: Verify artifact identity across environments
 
 Add a pipeline step that records the artifact checksum after the build and verifies that the same checksum is present in every environment where the artifact is deployed. This is the mechanical guarantee that what was tested is what was deployed. Alert on any mismatch.
 

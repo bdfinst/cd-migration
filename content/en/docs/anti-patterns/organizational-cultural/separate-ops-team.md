@@ -67,7 +67,7 @@ More fundamentally, CD requires shared ownership of production outcomes. When de
 
 ## How to Fix It
 
-### Step 1: Map the handoff and quantify the wait (Week 1)
+### Step 1: Map the handoff and quantify the wait
 
 Identify every point in your current process where a change waits for another team. Measure how long changes sit in each queue over the last 90 days.
 

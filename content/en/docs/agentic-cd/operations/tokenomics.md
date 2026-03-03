@@ -55,14 +55,14 @@ A code generation agent that returns code plus explanation plus rationale plus a
 
 Natural language prose between agents is expensive and imprecise. JSON or other structured formats reduce token count and eliminate ambiguity in parsing. Compare the two representations of the same finding:
 
-{{< code-collapse title="Natural language vs. structured JSON for inter-agent communication" lang="text" >}}
+{{< card code=true header="**Natural language vs. structured JSON for inter-agent communication**" lang="text" >}}
 # Natural language (expensive, ambiguous)
 "The function on line 42 of auth.ts does not validate the user ID before
 querying the database, which could allow unauthorized access."
 
 # Structured JSON (efficient, parseable)
 {"file": "auth.ts", "line": 42, "issue": "missing user ID validation before DB query", "why": "unauthorized access"}
-{{< /code-collapse >}}
+{{< /card >}}
 
 The JSON version conveys the same information in a fraction of the tokens and requires no natural language parsing step. When one agent's output becomes another agent's input, define a schema for that interface the same way you would define an API contract.
 

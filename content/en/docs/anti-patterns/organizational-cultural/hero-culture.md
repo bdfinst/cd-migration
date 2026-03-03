@@ -68,7 +68,7 @@ More subtly, hero culture prevents the team from building the automation that ma
 
 ## How to Fix It
 
-### Step 1: Map knowledge concentration (Week 1)
+### Step 1: Map knowledge concentration
 
 Identify where single-person dependencies exist before attempting to fix them.
 

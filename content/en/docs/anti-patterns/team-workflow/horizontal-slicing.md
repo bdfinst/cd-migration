@@ -128,7 +128,7 @@ through the [pipeline](../../../glossary/#pipeline) on its own.
 
 ## How to Fix It
 
-### Step 1: Learn to recognize horizontal slices (Week 1)
+### Step 1: Learn to recognize horizontal slices
 
 Review the current sprint board and backlog. For each work item, ask:
 
@@ -139,7 +139,7 @@ Review the current sprint board and backlog. For each work item, ask:
 If the answer to any of these is no, the item is likely a horizontal slice. Tag these items and
 count them. Most teams discover that a majority of their backlog is horizontally sliced.
 
-### Step 2: Map your team's domain boundaries (Week 1)
+### Step 2: Map your team's domain boundaries
 
 In a distributed system, the team does not own the entire feature. They own a domain. Identify
 what services, data stores, and interfaces the team controls. The team's vertical slices cut
@@ -156,7 +156,7 @@ are the boundaries that enable independent deployment. If the contracts are not 
 schema, no versioning, no documentation), define them. You cannot slice independently if you do not
 know where your domain ends and another team's begins.
 
-### Step 3: Reslice one feature vertically within your domain (Week 2)
+### Step 3: Reslice one feature vertically within your domain
 
 Pick one upcoming feature and practice reslicing it:
 
@@ -178,7 +178,7 @@ Each slice is independently deployable within the team's domain. The UI service 
 order service's discount response as a contract. It can be built and deployed separately once the
 contract is defined, just like any other service integration.
 
-### Step 4: Treat the UI as a service (Week 2+)
+### Step 4: Treat the UI as a service
 
 The UI is not the "top layer" that assembles everything. It is a service that consumes contracts
 from other services. Apply the same principles:
@@ -195,7 +195,7 @@ When the UI is loosely coupled to backend services through stable contracts, UI 
 teams can deploy on their own schedules. [Feature flags](../../../glossary/#feature-flag) in the UI control when new behavior is
 visible to users, independent of when the backend capability was deployed.
 
-### Step 5: Use contract tests to enable independent delivery (Week 3+)
+### Step 5: Use contract tests to enable independent delivery
 
 In a distributed system, the alternative to coordinated releases is contract testing. Each team
 verifies that their service honors the contracts other services depend on:
@@ -207,7 +207,7 @@ When both sides test against the shared contract, each team can deploy independe
 confidence that integration will work. The contract (not the release schedule) guarantees
 compatibility.
 
-### Step 6: Make the deployability test a refinement habit (Week 3+)
+### Step 6: Make the deployability test a refinement habit
 
 For every proposed work item, ask: "Can the team deploy this item on its own, without waiting for
 another team or another item to be finished?"

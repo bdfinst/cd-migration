@@ -104,7 +104,7 @@ complexity that makes future changes slower and riskier.
 
 ## How to Fix It
 
-### Step 1: Audit what the coverage number actually represents (Week 1)
+### Step 1: Audit what the coverage number actually represents
 
 Pick 20 tests at random from the suite. For each one, answer:
 
@@ -115,7 +115,7 @@ Pick 20 tests at random from the suite. For each one, answer:
 If more than half fail these questions, the coverage number is misleading the organization.
 Present the findings to stakeholders alongside the production defect rate.
 
-### Step 2: Replace the coverage gate with a coverage floor (Week 2)
+### Step 2: Replace the coverage gate with a coverage floor
 
 A coverage gate rejects any change that drops coverage below the target. A coverage floor rejects
 any change that reduces coverage from where it is. The difference matters.

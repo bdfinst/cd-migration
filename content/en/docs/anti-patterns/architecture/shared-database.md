@@ -133,7 +133,7 @@ Eliminating a shared database is a long-term effort. The goal is data ownership:
 controls its own data and exposes it through explicit APIs. This does not happen overnight. The
 path is incremental, moving one domain at a time.
 
-### Step 1: Map what reads and writes what (Week 1)
+### Step 1: Map what reads and writes what
 
 Before changing anything, build a dependency map.
 
@@ -149,7 +149,7 @@ This map makes the coupling visible. Most teams are surprised by how many hidden
 The map also identifies the easiest starting points: tables with a single writer and one or two
 readers that can be migrated first.
 
-### Step 2: Identify the domain with the least shared read traffic (Week 2)
+### Step 2: Identify the domain with the least shared read traffic
 
 Pick the domain with the cleanest data ownership to pilot the migration. The criteria:
 
@@ -187,7 +187,7 @@ Switch consuming services from direct database queries to the new API, one servi
 
 At the end of this step, no service other than the owner is accessing the database tables directly.
 
-### Step 5: Remove direct access grants and enforce the boundary (Week 8+)
+### Step 5: Remove direct access grants and enforce the boundary
 
 Once all consumers have migrated:
 

@@ -39,14 +39,14 @@ The intent description does not need to be perfect on the first draft. Write a r
 
 Example [prompt](../../glossary/#prompt):
 
-{{< code-collapse title="Prompt: identify ambiguity in intent description" >}}
+{{< card code=true header="**Prompt: identify ambiguity in intent description**" >}}
 Here is the intent description for my next change. Identify any
 ambiguity, unstated assumptions, or missing context that could
 lead to an implementation that technically satisfies this description
 but does not match what I actually want.
 
 [paste intent description]
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Ask the agent to suggest edge cases.** Agents are good at generating boundary conditions you might not think of, because they can quickly reason through combinations.
 
@@ -62,13 +62,13 @@ Writing [BDD](../../glossary/#bdd-behavior-driven-development) scenarios from sc
 
 Example prompt:
 
-{{< code-collapse title="Prompt: generate BDD scenarios from intent description" >}}
+{{< card code=true header="**Prompt: generate BDD scenarios from intent description**" >}}
 Based on this intent description, generate BDD scenarios in Gherkin
 format. Cover the primary success path, key error paths, and edge
 cases. For each scenario, explain why it matters.
 
 [paste intent description]
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Review for completeness, not perfection.** The agent's first draft will cover the obvious paths. Your job is to read through them and ask: "What is missing?" The agent handles volume. You handle judgment.
 
@@ -76,13 +76,13 @@ cases. For each scenario, explain why it matters.
 
 Example prompt:
 
-{{< code-collapse title="Prompt: identify missing BDD scenarios" >}}
+{{< card code=true header="**Prompt: identify missing BDD scenarios**" >}}
 Here are the BDD scenarios for this feature. What scenarios are
 missing? Consider boundary conditions, concurrent access, failure
 modes, and interactions with existing behavior.
 
 [paste scenarios]
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Ask the agent to challenge weak scenarios.** Some scenarios may be too vague to constrain an implementation. Ask the agent to identify any scenario where two different implementations could both pass while producing different user-visible behavior.
 
@@ -96,27 +96,27 @@ The Feature Description and Acceptance Criteria stages define the technical boun
 
 Example prompt:
 
-{{< code-collapse title="Prompt: identify architectural considerations before implementation" >}}
+{{< card code=true header="**Prompt: identify architectural considerations before implementation**" >}}
 Given this intent and these BDD scenarios, what architectural
 decisions should I document before implementation begins? Consider
 where this change fits in the existing system, what components it
 touches, and what constraints an implementer needs to know.
 
 Current system context: [brief architecture description]
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Ask the agent to draft non-functional acceptance criteria.** Agents can suggest performance thresholds, security requirements, and resource limits based on the type of change and its context.
 
 Example prompt:
 
-{{< code-collapse title="Prompt: draft non-functional acceptance criteria" >}}
+{{< card code=true header="**Prompt: draft non-functional acceptance criteria**" >}}
 Based on this feature description, suggest non-functional acceptance
 criteria I should define. Consider latency, throughput, security,
 resource usage, and operational requirements. For each criterion,
 explain why it matters for this specific change.
 
 [paste feature description]
-{{< /code-collapse >}}
+{{< /card >}}
 
 **Ask the agent to check consistency.** Once you have the intent, BDD scenarios, feature description, and acceptance criteria, ask the agent to identify any contradictions or gaps between them.
 
@@ -129,7 +129,7 @@ The four specification stages produce four [artifacts](../../glossary/#artifact)
 **Use an agent as a specification reviewer.** Give it all four artifacts and ask it to check for internal consistency.
 
 {{< alert title="Specification consistency prompt" color="info" >}}
-{{< code-collapse title="Prompt: validate specification set for internal consistency" >}}
+{{< card code=true header="**Prompt: validate specification set for internal consistency**" >}}
 Review these four specification artifacts for internal consistency
 before implementation begins. Check:
 - Clarity: is the intent unambiguous? Could it be read differently by two developers?
@@ -140,7 +140,7 @@ before implementation begins. Check:
 - Conflict: does anything in one artifact contradict anything in another?
 
 [paste all four artifacts]
-{{< /code-collapse >}}
+{{< /card >}}
 {{< /alert >}}
 
 **The human gates on this review before implementation begins.** If the review agent identifies issues, resolve them before generating any test code or implementation. A conflict caught in specification costs minutes. The same conflict caught during implementation costs a session.
@@ -157,14 +157,14 @@ This is the shift from "order taker" to "architectural interview." The sections 
 
 Describe the outcome, not the application. Set the agent's role and the goal of the conversation explicitly.
 
-{{< code-collapse title="Prompt: start the discovery loop" >}}
+{{< card code=true header="**Prompt: start the discovery loop**" >}}
 I want to build a Software Value Stream Mapping application. Before we
 write a single line of code, I want you to act as a Principal Architect.
 Your goal is to help me write a self-contained specification that an
 autonomous agent can execute. Do not start writing the spec yet. First,
 interview me to uncover the technical implementation details, edge cases,
 and trade-offs I have not considered.
-{{< /code-collapse >}}
+{{< /card >}}
 
 This prompt does three things: it states intent, it assigns a role that produces the right kind of questions, and it prevents the agent from jumping to implementation.
 
@@ -182,14 +182,14 @@ This is [context engineering](../../getting-started/prompting-disciplines/#2-con
 
 Once the agent has enough context, ask it to synthesize the conversation into a structured specification.
 
-{{< code-collapse title="Prompt: synthesize into specification" >}}
+{{< card code=true header="**Prompt: synthesize into specification**" >}}
 Based on our discussion, generate the first draft of the specification
 document. Structure it as: Intent Description, User-Facing Behavior
 (BDD scenarios), Feature Description (architectural constraints),
 Task Decomposition, and Acceptance Criteria (including evaluation
 design with test cases). Ensure the Task Decomposition follows a
 planner-worker pattern where tasks are broken into sub-two-hour chunks.
-{{< /code-collapse >}}
+{{< /card >}}
 
 The sections map to the [agent delivery contract](../first-class-artifacts/) and the [specification engineering](../../getting-started/prompting-disciplines/#4-specification-engineering-the-new-ceiling) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
 
@@ -197,11 +197,11 @@ The sections map to the [agent delivery contract](../first-class-artifacts/) and
 
 Before finalizing, ask the agent to find gaps in its own output.
 
-{{< code-collapse title="Prompt: stress-test the specification" >}}
+{{< card code=true header="**Prompt: stress-test the specification**" >}}
 Critique this specification. Where would a junior developer or an
 autonomous agent get confused? What constraints are still too vague?
 What edge cases are missing from the evaluation design?
-{{< /code-collapse >}}
+{{< /card >}}
 
 This is the same validation step as the [specification consistency check](#validating-the-complete-specification-set), applied to the discovery loop's output.
 
@@ -229,7 +229,7 @@ The four specification stages produce concise, structured documents. The example
 Notice what makes this specification agent-executable: every section is self-contained, acceptance criteria are verifiable by an independent observer, the decomposition defines clear module boundaries, and test cases include known-good outputs.
 
 {{< alert title="Full specification: VSM-Automator (Alpha)" color="info" >}}
-{{< code-collapse title="Complete specification example: VSM-Automator" lang="markdown" >}}
+{{< card code=true header="**Complete specification example: VSM-Automator**" lang="markdown" >}}
 # Specification: VSM-Automator (Alpha)
 
 ## 1. Intent Description
@@ -314,7 +314,7 @@ is highlighted in red.
 
 **Test Case 3 (The Null Set):** Upload an empty JSON array. Result: System
 displays a graceful "No Data Found" state rather than crashing.
-{{< /code-collapse >}}
+{{< /card >}}
 {{< /alert >}}
 
 **What to notice:**

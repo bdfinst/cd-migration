@@ -65,7 +65,7 @@ Infrastructure-as-code principles apply to the pipeline as much as to the applic
 
 ## How to Fix It
 
-### Step 1: Export and document the current pipeline configuration (Week 1)
+### Step 1: Export and document the current pipeline configuration
 
 Capture the current pipeline state before making any changes. Most CI tools have an export or configuration-as-code option. For Jenkins, the Job DSL or Configuration as Code plugin can export job definitions. For other systems, document the pipeline stages, parameters, environment variables, and credentials references manually. This export becomes the starting point for the source-controlled version.
 
@@ -73,7 +73,7 @@ Capture the current pipeline state before making any changes. Most CI tools have
 
 Translate the exported configuration into a pipeline-as-code format appropriate for your CI system. Jenkins uses Jenkinsfiles with declarative or scripted pipeline syntax. GitHub Actions uses YAML workflow files in `.github/workflows/`. GitLab CI uses `.gitlab-ci.yml`. The goal is a file in the repository that completely describes the pipeline behavior, such that the CI system can execute it with no additional UI configuration required.
 
-### Step 3: Validate that the code-defined pipeline matches the UI pipeline (Week 3)
+### Step 3: Validate that the code-defined pipeline matches the UI pipeline
 
 Run both pipelines on the same commit and compare outputs. The code-defined pipeline should produce the same artifacts, run the same tests, and execute the same deployment steps as the UI-defined pipeline. Investigate and reconcile any differences. This validation step is important - subtle behavioral differences between the old and new pipelines can introduce regressions.
 
@@ -81,7 +81,7 @@ Run both pipelines on the same commit and compare outputs. The code-defined pipe
 
 Beyond the pipeline definition itself, the CI system has configuration: installed plugins, credential stores, agent definitions, and folder structures. Where the CI system supports it, bring this configuration under infrastructure-as-code management as well. Jenkins Configuration as Code (JCasC), Terraform providers for CI systems, or the CI system's own CLI can automate configuration management. Document what cannot be automated as explicit setup steps in a runbook committed to the repository.
 
-### Step 5: Require pipeline changes to go through pull requests (Week 5 and ongoing)
+### Step 5: Require pipeline changes to go through pull requests
 
 Establish a policy that pipeline definitions are changed only through the source-controlled files, never through direct UI edits. Configure branch protection to require review on changes to pipeline files. If the CI system allows UI overrides, disable or restrict that access. The pipeline file should be the authoritative source of truth - the UI is a read-only view of what the file defines.
 

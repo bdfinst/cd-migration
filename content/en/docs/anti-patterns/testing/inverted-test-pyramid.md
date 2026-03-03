@@ -157,7 +157,7 @@ with boundary conditions. Do not write unit tests for trivial code just to incre
 E2E tests exist only for the small number of critical paths that genuinely require a fully
 integrated environment to validate. A typical application needs fewer than a dozen.
 
-### Step 1: Audit and stabilize (Week 1)
+### Step 1: Audit and stabilize
 
 Map your current test distribution. Count tests by type, measure total duration, and identify
 every test that requires a real external service or produces intermittent failures.

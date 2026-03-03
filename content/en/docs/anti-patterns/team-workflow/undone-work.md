@@ -93,20 +93,20 @@ delivery.
 
 ## How to Fix It
 
-### Step 1: Define done to include production (Week 1)
+### Step 1: Define done to include production
 
 Write a definition of done that ends with the change running in production and verified. Include
 every step: code review, all testing (automated and any required manual verification),
 deployment, and post-deploy health check. If a step is not complete, the story is not done.
 
-### Step 2: Make the hidden queues visible (Week 1)
+### Step 2: Make the hidden queues visible
 
 Add columns to the board for every step between "developer done" and "in production." If there
 is an external validation queue, it gets a column. If there is a deployment wait, it gets a
 column. Make the work-in-progress in these hidden stages visible so the team can see where work
 is actually stuck.
 
-### Step 3: Pull validation into the team (Week 2-4)
+### Step 3: Pull validation into the team
 
 If external validation is a bottleneck, bring the validators onto the team or teach the team to
 do the validation themselves. The goal is to eliminate the handoff. When the developer who wrote
@@ -117,7 +117,7 @@ If the external team cannot be embedded, negotiate a service-level agreement for
 turnaround and add the expected wait time to the team's planning. Do not mark stories done until
 validation is complete.
 
-### Step 4: Automate the remaining steps (Week 3+)
+### Step 4: Automate the remaining steps
 
 Every manual step between "code merged" and "in production" is a candidate for automation.
 Automated testing in the pipeline replaces manual QA sign-off. Automated deployment replaces

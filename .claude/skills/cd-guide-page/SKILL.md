@@ -85,9 +85,9 @@ guide pages. Optional - include when dependencies are important.]
 [Time-boxed weekly steps for adopting the practice. Similar to "How to Fix It"
 in anti-pattern pages but framed positively as adoption rather than correction.]
 
-### Step 1: [Action] (Week 1)
-### Step 2: [Action] (Week 2-3)
-### Step 3: [Action] (Week 4+)
+### Step 1: [Action]
+### Step 2: [Action]
+### Step 3: [Action]
 
 ## Key Pitfalls
 

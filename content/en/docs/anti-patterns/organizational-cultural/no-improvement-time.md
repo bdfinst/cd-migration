@@ -69,7 +69,7 @@ Teams that allocate zero time to improvement typically never begin the CD journe
 
 ## How to Fix It
 
-### Step 1: Quantify the cost of not improving (Week 1)
+### Step 1: Quantify the cost of not improving
 
 Management will not protect improvement time without evidence that the current approach is expensive. Build the business case.
 

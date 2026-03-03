@@ -71,7 +71,7 @@ Most SoD frameworks in regulated industries - SOX ITGC, PCI DSS, HIPAA Security 
 
 ## How to Fix It
 
-### Step 1: Clarify the actual SoD requirement (Week 1)
+### Step 1: Clarify the actual SoD requirement
 
 1. Obtain the specific SoD requirement from your compliance framework and read it exactly as written - not as interpreted by the organization.
 2. Identify what the requirement actually mandates: peer review, second authorization, audit trail, or something else. Most SoD requirements can be satisfied by peer review in source control plus an immutable audit log.
