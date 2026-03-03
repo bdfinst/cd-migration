@@ -80,12 +80,12 @@ model and workflow architecture, and then covers the concrete setup, session dis
 quality gates needed to keep agent output safe to ship.
 
 1. [Agentic CD Overview](agentic-cd/) - what changes with AI agents
-2. [First-Class Artifacts](agentic-cd/first-class-artifacts/) - the constraint model
-3. [Agentic Architecture](agentic-cd/agentic-architecture/) - skills, agents, hooks
-4. [Agent Configuration](agentic-cd/agent-configuration/) - concrete setup
-5. [Small-Batch Sessions](agentic-cd/small-batch-sessions/) - discipline for agent work
-6. [Pipeline Enforcement](agentic-cd/pipeline-enforcement/) - quality gates for agent output
-7. [Pitfalls and Metrics](agentic-cd/pitfalls-and-metrics/) - what goes wrong and how to measure
+2. [Agent Delivery Contract](agentic-cd/specification/first-class-artifacts/) - the constraint model
+3. [Agentic Architecture](agentic-cd/architecture/agentic-architecture/) - skills, agents, hooks
+4. [Agent Configuration](agentic-cd/architecture/agent-configuration/) - concrete setup
+5. [Small-Batch Sessions](agentic-cd/architecture/small-batch-sessions/) - discipline for agent work
+6. [Pipeline Enforcement](agentic-cd/operations/pipeline-enforcement/) - quality gates for agent output
+7. [Pitfalls and Metrics](agentic-cd/operations/pitfalls-and-metrics/) - what goes wrong and how to measure
 
 ---
 

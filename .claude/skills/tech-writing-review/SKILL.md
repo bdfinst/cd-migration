@@ -6,7 +6,10 @@ user_invocable: true
 
 # Technical Writing Review
 
-Review content pages as an experienced technical writer. Identify concrete improvements to clarity, scannability, information density, and reader experience. This skill reads content and produces actionable recommendations. It does not modify files.
+Role: worker. This skill reads content files and produces actionable
+writing-quality recommendations. It does not modify files.
+
+Review content pages as an experienced technical writer. Identify concrete improvements to clarity, scannability, information density, and reader experience.
 
 ## Persona
 
@@ -35,12 +38,12 @@ This skill reviews any content file in the site, not just specific page types. I
 - Anti-pattern pages, symptom pages
 - Any `.md` file under `content/en/`
 
-## What This Skill Does NOT Do
+## Constraints
 
-- It does not check structural compliance (use `cd-content-audit` for that)
-- It does not check cross-linking or navigation (use `cd-discoverability` for that)
-- It does not check grammar or prohibited punctuation (use `grammar-check` for that)
-- It does not modify files
+1. **Read-only.** Do not modify files. Report findings only.
+2. **Be concise.** Findings must be specific and actionable, not narrative. A few high-impact findings beat an exhaustive list.
+3. **Follow the output format.** Use the structured format below for every review.
+4. **Delegate out-of-scope concerns.** Do not check structural compliance (`cd-content-audit`), cross-linking (`cd-discoverability`), or prohibited punctuation (`grammar-check`).
 
 ## Output Format
 
@@ -87,7 +90,6 @@ These indicate systemic habits worth addressing.]
 
 ## Notes
 
-- This skill is read-only. It does not modify files.
 - When suggesting rewrites, respect the site's content style rules: no endashes, no emdashes, no emojis. Do not expand "CD" to "continuous deployment" unless the passage specifically discusses continuous deployment (the practice of auto-deploying every commit). The default expansion is "continuous delivery."
 - Focus on changes that improve the reader's experience, not on enforcing a style guide. A technically "wrong" construction that reads clearly is better than a technically "correct" construction that reads stiffly.
 - When reviewing tables, check whether the table format actually helps the reader or whether prose or a list would be clearer.

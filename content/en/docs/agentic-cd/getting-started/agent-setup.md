@@ -4,10 +4,12 @@ linkTitle: "Configuration Quick Start"
 weight: 1
 description: >
   How to structure agent configuration across the project context file, rules, skills, and hooks - mapped to their purpose and time horizon for effective context management.
+aliases:
+  - /docs/agentic-cd/agent-setup/
 ---
 
 {{% pageinfo %}}
-Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context](../glossary/#context-llm) cost: it determines what every [agent](../glossary/#agent-ai) pays on every invocation, and what must be loaded only when needed.
+Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context](../../glossary/#context-llm) cost: it determines what every [agent](../../glossary/#agent-ai) pays on every invocation, and what must be loaded only when needed.
 {{% /pageinfo %}}
 
 ## Configuration Mechanisms
@@ -15,7 +17,7 @@ Each configuration mechanism serves a different purpose. Placing information in 
 | Mechanism | Purpose | When loaded |
 |-----------|---------|-------------|
 | Project context file | Project facts every agent always needs | Every session |
-| Rules ([system prompts](../glossary/#system-prompt)) | Per-agent behavior constraints | Every agent invocation |
+| Rules ([system prompts](../../glossary/#system-prompt)) | Per-agent behavior constraints | Every agent invocation |
 | Skills | Named session procedures - the specification | On explicit invocation |
 | Commands | Named invocations - trigger a skill or a direct action | On user or agent call |
 | Hooks | Automated, deterministic actions | On trigger event - no agent involved |
@@ -42,7 +44,7 @@ The project context file is a markdown document that every agent reads at the st
 - Context specific to one agent - that goes in that agent's rules
 - Anything an agent only needs occasionally - load it when needed, not always
 
-Because the project context file loads on every session, every line is a [token](../glossary/#token) cost on every invocation. Keep it to stable facts, not procedures. A bloated project context file is an invisible per-session tax.
+Because the project context file loads on every session, every line is a [token](../../glossary/#token) cost on every invocation. Keep it to stable facts, not procedures. A bloated project context file is an invisible per-session tax.
 
 {{< tabpane lang="markdown" >}}
 {{< tab header="Claude Code (CLAUDE.md)" >}}
@@ -136,10 +138,10 @@ Rules define how a specific agent behaves. Each agent has its own rules document
 **Do not put in rules:**
 
 - Project facts - those go in the project context file
-- Session-specific information - that is loaded dynamically by the [orchestrator](../glossary/#orchestrator)
+- Session-specific information - that is loaded dynamically by the [orchestrator](../../glossary/#orchestrator)
 - Multi-step procedures - those go in skills
 
-Rules are placed first in every agent's context. This placement is a caching decision, not just convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics](../tokenomics/) for how caching interacts with context order.
+Rules are placed first in every agent's context. This placement is a caching decision, not just convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics](../../operations/tokenomics/) for how caching interacts with context order.
 
 Rules are plain markdown, injected at session start. The content is the same regardless of tool; where it lives differs.
 
@@ -211,7 +213,7 @@ A skill is a named session procedure - a markdown document describing a multi-st
 **Put in skills:**
 
 - Session lifecycle procedures: how to start a session, how to run the pre-commit review gate, how to close a session and write the summary
-- Pipeline-restore procedures for when the [pipeline](../glossary/#pipeline) fails mid-session
+- Pipeline-restore procedures for when the [pipeline](../../glossary/#pipeline) fails mid-session
 - Any multi-step workflow the agent should execute consistently and reproducibly
 
 **Do not put in skills:**
@@ -223,62 +225,16 @@ A skill is a named session procedure - a markdown document describing a multi-st
 
 Each skill should do one thing. A skill named `review-and-commit` is doing two things. Split it. When a procedure fails mid-execution, a single-responsibility skill makes it obvious which step failed and where to look.
 
-{{< tabpane lang="markdown" >}}
-{{< tab header="Claude Code (.claude/commands/)" >}}
-## /start-session
+A normal session runs three skills in sequence: `/start-session` (assembles context and prepares the implementation agent), `/review` (invokes the pre-commit review gate), and `/end-session` (validates all gates, writes the session summary, and commits). Add `/fix` for pipeline-restore mode. See [Coding & Review Setup](../../architecture/agent-configuration/#skills) for the complete definition of each skill.
 
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
+The skill text is identical across tools. Where the file lives differs:
 
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="Gemini CLI (.gemini/skills/)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="OpenAI Codex (AGENTS.md section)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< tab header="GitHub Copilot (.github/)" >}}
-## /start-session
-
-Assemble context in this order (stable first - maximizes cache hits):
-1. Implementation agent rules [stable - cached across all sessions]
-2. Feature description [stable within a feature - often cached]
-3. BDD scenario for this session only [changes per session]
-4. Files the scenario will touch [changes per session]
-5. Prior session summary if one exists [changes per session]
-
-Omit any item where omitting it would not change what the agent produces.
-Present the assembled context to the user, then invoke the implementation agent.
-{{< /tab >}}
-{{< /tabpane >}}
-
-A normal session runs three skills in sequence: `/start-session` (assembles context and prepares the implementation agent), `/review` (invokes the pre-commit review gate), and `/end-session` (validates all gates, writes the session summary, and commits). Add `/fix` for pipeline-restore mode. See [Coding Agent Configuration](../agent-configuration/#skills) for the complete definition of each skill.
+| Tool | Skill location |
+|------|---------------|
+| Claude Code | `.claude/commands/start-session.md` |
+| Gemini CLI | `.gemini/skills/start-session.md` |
+| OpenAI Codex | Named `## Task:` section in `AGENTS.md` |
+| GitHub Copilot | `.github/start-session.md` |
 
 ---
 
@@ -451,7 +407,7 @@ Within each agent invocation, load context in this order:
 1. Agent rules (stable - cached across every invocation)
 2. Project context file (stable - cached across every invocation)
 3. Feature description (stable within a feature - often cached)
-4. [BDD](../glossary/#bdd-behavior-driven-development) scenario for this session (changes per session)
+4. [BDD](../../glossary/#bdd-behavior-driven-development) scenario for this session (changes per session)
 5. Relevant existing files (changes per session)
 6. Prior session summary (changes per session)
 7. Staged diff or current task context (changes per invocation)
@@ -514,10 +470,10 @@ The skill and command documents are plain markdown in all cases - the same proce
 text works across tools because skills are specifications, not code. In Claude Code,
 the commands directory unifies both: each file in `.claude/commands/` is a skill
 document and creates a slash command of the same name. The `.claude/agents/` directory
-is specific to Claude Code - it defines named [sub-agents](../glossary/#sub-agent) with their own system prompt
+is specific to Claude Code - it defines named [sub-agents](../../glossary/#sub-agent) with their own system prompt
 and model tier, invocable by the orchestrator. Other tools handle agent configuration
 programmatically rather than via files. For multi-agent architectures and advanced
-agent composition, see [Agentic Architecture Patterns](../agentic-architecture/).
+agent composition, see [Agentic Architecture Patterns](../../architecture/agentic-architecture/).
 
 ---
 
@@ -590,7 +546,7 @@ already in the root file.
 
 ## Related Content
 
-- [Agentic Architecture Patterns](../agentic-architecture/) - the design principles behind skills, agents, hooks, and multi-agent composition
-- [Coding Agent Configuration](../agent-configuration/) - the complete rules, skills, and hooks for a coding and pre-commit review configuration
-- [Small-Batch Sessions](../small-batch-sessions/) - how session discipline and context hygiene work together
-- [Tokenomics](../tokenomics/) - the full optimization framework including prompt caching strategy and context order
+- [Agentic Architecture Patterns](../../architecture/agentic-architecture/) - the design principles behind skills, agents, hooks, and multi-agent composition
+- [Coding & Review Setup](../../architecture/agent-configuration/) - the complete rules, skills, and hooks for a coding and pre-commit review configuration
+- [Small-Batch Sessions](../../architecture/small-batch-sessions/) - how session discipline and context hygiene work together
+- [Tokenomics](../../operations/tokenomics/) - the full optimization framework including prompt caching strategy and context order
