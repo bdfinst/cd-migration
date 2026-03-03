@@ -50,7 +50,7 @@ changes).
 
 The team's review process validates correctness (does it satisfy acceptance criteria?) and
 security (does it introduce vulnerabilities?) but not structural fitness (does it fit the
-existing codebase?). Standard review agents check for logic errors, security defects, and
+existing codebase?). Standard review [agents](../../../reference/glossary/#agent-ai) check for logic errors, security defects, and
 performance issues. None of them check whether the change duplicates existing code, introduces
 a third pattern where one already exists, or violates the team's architectural decisions.
 
