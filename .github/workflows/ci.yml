@@ -31,7 +31,7 @@ jobs:
       - run: npm ci
 
       - name: Build site
-        run: hugo --minify
+        run: npm run build
 
       - name: Check links
         run: npx linkinator --recurse public/ --config ./linkinator.config.json
