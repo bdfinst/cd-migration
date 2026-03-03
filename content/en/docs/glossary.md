@@ -100,6 +100,7 @@ Referenced in:
 [Functional Tests](../testing/functional/),
 [Independent Teams, Independent Deployables](../pipeline-reference-architecture/independent-teams/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [No Contract Testing Between Services](../anti-patterns/testing/no-contract-testing/),
@@ -141,6 +142,7 @@ debugging, and shorten feedback loops. Reducing batch size is a core focus of
 Referenced in:
 [DORA Recommended Practices](../dora-capabilities/),
 [Hardening Sprints Are Needed Before Every Release](../symptoms/deployment/hardening-sprints/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [New Releases Introduce Regressions in Previously Working Functionality](../symptoms/deployment/regressions-on-release/),
 [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/),
@@ -190,6 +192,7 @@ Referenced in:
 [Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Merging Is Painful and Time-Consuming](../symptoms/flow/painful-merges/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/)
 
 ## C
@@ -233,6 +236,7 @@ Referenced in:
 [Learning Paths](../learning-paths/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
 [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/),
@@ -262,6 +266,7 @@ Referenced in:
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Change Advisory Board Gates](../anti-patterns/organizational-cultural/cab-gates/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/)
 
@@ -291,6 +296,7 @@ Referenced in:
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
 [Merging Is Painful and Time-Consuming](../symptoms/flow/painful-merges/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [No Evidence of What Was Deployed or When](../symptoms/deployment/no-deployment-audit-trail/),
 [Performance & Resilience Defects](../defect-sources/performance-and-resilience/),
@@ -426,6 +432,7 @@ Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Integration Frequency](../metrics/integration-frequency/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [No Contract Testing Between Services](../anti-patterns/testing/no-contract-testing/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
@@ -457,6 +464,7 @@ Referenced in:
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Lead Time](../metrics/lead-time/),
 [Mean Time to Repair](../metrics/mean-time-to-repair/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Product & Discovery Defects](../defect-sources/product-and-discovery/),
 [Release Frequency](../metrics/release-frequency/),
@@ -600,12 +608,13 @@ specifying a change as a requirement to implement, the team states a hypothesis:
 validates whether the predicted outcome occurred. Changes that confirm the hypothesis build
 confidence. Changes that refute it produce learning that informs the next hypothesis. This
 creates a feedback loop where every deployed change generates a signal, whether it "succeeds"
-or not. See [Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/#1-intent-description)
-for how hypotheses integrate with specification artifacts and
-[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)
-for the post-deployment validation loop.
+or not. See [Hypothesis-Driven Development](../migrate-to-cd/migration-path/optimize/hypothesis-driven-development/)
+for the full lifecycle and
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/#1-intent-description)
+for how hypotheses integrate with specification artifacts.
 
 Referenced in:
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/)
 
@@ -642,6 +651,7 @@ Referenced in:
 [Lead Time](../metrics/lead-time/),
 [Leadership Sees CD as a Technical Nice-to-Have](../symptoms/visibility/no-leadership-buy-in/),
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Phase 0: Assess](../migrate-to-cd/migration-path/assess/),
 [Security Review Is a Gate, Not a Guardrail](../symptoms/deployment/security-review-bottleneck/),
 [Working Agreements](../migrate-to-cd/migration-path/foundations/working-agreements/)
@@ -657,7 +667,8 @@ rollback is automated, and the cause of failure is easy to identify. See
 
 Referenced in:
 [Architecture Decoupling](../migrate-to-cd/migration-path/optimize/architecture-decoupling/),
-[CD for Greenfield Projects](../migrate-to-cd/greenfield/)
+[CD for Greenfield Projects](../migrate-to-cd/greenfield/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)
 
 ### Modular Monolith
 
@@ -729,6 +740,7 @@ Referenced in:
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
 [Manual Testing Only](../anti-patterns/testing/manual-testing-only/),
 [Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [No Evidence of What Was Deployed or When](../symptoms/deployment/no-deployment-audit-trail/),
 [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/),
@@ -846,6 +858,7 @@ Referenced in:
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
 [Mean Time to Repair](../metrics/mean-time-to-repair/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Missing Deployment Pipeline](../anti-patterns/pipeline/missing-deployment-pipeline/),
 [No Deployment Health Checks](../anti-patterns/pipeline/no-deployment-health-checks/),
 [Phase 2: Pipeline](../migrate-to-cd/migration-path/pipeline/),
@@ -946,6 +959,7 @@ Referenced in:
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
 [Integration Frequency](../metrics/integration-frequency/),
 [Long-Lived Feature Branches](../anti-patterns/branching-integration/long-lived-feature-branches/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Multiple Teams, Single Deployable](../pipeline-reference-architecture/multi-team/),
 [Phase 1: Foundations](../migrate-to-cd/migration-path/foundations/),
 [Process & Deployment Defects](../defect-sources/process-and-deployment/),
@@ -1064,6 +1078,7 @@ Referenced in:
 [Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
 [Feature Flags](../migrate-to-cd/migration-path/optimize/feature-flags/),
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/),
 [Phase 3: Optimize](../migrate-to-cd/migration-path/optimize/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Push-Based Work Assignment](../anti-patterns/team-workflow/push-based-work-assignment/),

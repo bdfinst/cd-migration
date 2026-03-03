@@ -67,7 +67,7 @@ Scenario: Client within rate limit
 
 ## 3. Feature Description (Constraint Architecture)
 
-**What it is:** The architectural constraints, dependencies, and trade-off boundaries that govern the implementation.
+**What it is:** The architectural [constraints](../../glossary/#constraint), dependencies, and trade-off boundaries that govern the implementation.
 
 Agents need explicit architectural context that human developers often carry in their heads. The feature description tells the agent where the change fits in the system, what components it touches, and what constraints apply. It separates hard boundaries (musts, must nots) from soft preferences and escalation triggers so the agent knows which constraints are non-negotiable.
 
@@ -264,3 +264,4 @@ With the six artifacts defined, the next question is how the pipeline enforces c
 - [Agent-Assisted Specification](../agent-assisted-specification/) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
 - [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - the skills that produce these artifacts
 - [Testing](../../../testing/) - testing strategies that inform acceptance criteria
+- [Hypothesis-Driven Development](../../../migrate-to-cd/migration-path/optimize/hypothesis-driven-development/) - the foundational practice of treating every change as an experiment

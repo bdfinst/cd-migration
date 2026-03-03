@@ -348,3 +348,4 @@ displays a graceful "No Data Found" state rather than crashing.
 - [Agent Delivery Contract](../first-class-artifacts/) - detailed definitions of each artifact
 - [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - the skill framework that produces specifications like the example above
 - [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - why changes must stay small enough for frequent, safe deployment
+- [Hypothesis-Driven Development](../../../migrate-to-cd/migration-path/optimize/hypothesis-driven-development/) - the lifecycle for forming, testing, and validating hypotheses

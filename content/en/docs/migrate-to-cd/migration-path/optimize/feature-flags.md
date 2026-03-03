@@ -432,3 +432,4 @@ Small batches and feature flags let you deploy more frequently, but deploying mo
 - [Progressive Rollout](../../continuous-deployment/progressive-rollout/) - the deployment strategy that builds on feature flag capabilities
 - [Trunk-Based Development](../../foundations/trunk-based-development/) - the branching strategy that feature flags enable
 - [Limiting WIP](../limiting-wip/) - the next step after feature flags to manage increased deployment frequency
+- [Hypothesis-Driven Development](../hypothesis-driven-development/) - using feature flags to control experiment exposure

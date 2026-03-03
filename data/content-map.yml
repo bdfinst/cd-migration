@@ -1,0 +1,681 @@
+# Content Map - Auto-referenced by AI assistants for site navigation
+# Update this file when adding, removing, or moving pages
+# Last updated: 2026-03-03
+
+site:
+  name: "Minimum CD - Migration Guide"
+  url: "https://migration.minimumcd.org"
+  description: >
+    A learning path for migrating to continuous delivery, built on years of hands-on
+    experience helping teams remove friction and improve delivery outcomes.
+
+sections:
+  # ---- Diagnosis sections (weight 3-5) ----
+
+  - path: docs/triage/
+    title: "Find Your Symptom"
+    weight: 3
+    purpose: "Interactive triage guide that helps teams narrow down which dysfunction symptom matches their situation."
+    pages: []  # Section landing page only; no child pages
+
+  - path: docs/symptoms/
+    title: "Dysfunction Symptoms"
+    weight: 4
+    purpose: "Observable delivery problems organized by category so teams can start from what they see and trace back to root causes."
+    pages:
+      - file: for-developers.md
+        title: "Symptoms for Developers"
+      - file: for-managers.md
+        title: "Symptoms for Managers"
+    subsections:
+      - path: testing/
+        title: "Test Suite Problems"
+        page_count: 7
+        pages:
+          - file: environment-dependent-failures.md
+            title: "Tests Pass in One Environment but Fail in Another"
+          - file: flaky-tests.md
+            title: "Tests Randomly Pass or Fail"
+          - file: high-coverage-ineffective-tests.md
+            title: "High Coverage but Tests Miss Defects"
+          - file: legacy-system-no-tests.md
+            title: "A Large Codebase Has No Automated Tests"
+          - file: refactoring-breaks-tests.md
+            title: "Refactoring Breaks Tests"
+          - file: slow-test-suites.md
+            title: "Test Suite Is Too Slow to Run"
+          - file: test-data-management-chaos.md
+            title: "Tests Interfere with Each Other Through Shared Data"
+
+      - path: deployment/
+        title: "Deployment and Release Problems"
+        page_count: 21
+        pages:
+          - file: api-changes-break-consumers.md
+            title: "API Changes Break Consumers Without Warning"
+          - file: artifacts-rebuilt-per-environment.md
+            title: "The Build Runs Again for Every Environment"
+          - file: change-management-overhead.md
+            title: "Every Change Requires a Ticket and Approval Chain"
+          - file: coordinated-deployments.md
+            title: "Multiple Services Must Be Deployed Together"
+          - file: database-migrations-block-deploys.md
+            title: "Database Migrations Block or Break Deployments"
+          - file: deploy-release-coupled.md
+            title: "Every Deployment Is Immediately Visible to All Users"
+          - file: fear-of-deploying.md
+            title: "The Team Is Afraid to Deploy"
+          - file: hardening-sprints.md
+            title: "Hardening Sprints Are Needed Before Every Release"
+          - file: infrequent-releases.md
+            title: "Releases Are Infrequent and Painful"
+          - file: merge-freeze.md
+            title: "Merge Freezes Before Deployments"
+          - file: no-deployment-audit-trail.md
+            title: "No Evidence of What Was Deployed or When"
+          - file: no-rollback-capability.md
+            title: "Deployments Are One-Way Doors"
+          - file: pipeline-changes-require-another-team.md
+            title: "Teams Cannot Change Their Own Pipeline Without Another Team"
+          - file: regressions-on-release.md
+            title: "New Releases Introduce Regressions in Previously Working Functionality"
+          - file: release-manager-bottleneck.md
+            title: "Releases Depend on One Person"
+          - file: security-review-bottleneck.md
+            title: "Security Review Is a Gate, Not a Guardrail"
+          - file: services-without-health-checks.md
+            title: "Services Reach Production with No Health Checks or Alerting"
+          - file: staging-passes-production-fails.md
+            title: "Staging Passes but Production Fails"
+          - file: stateful-service-deployment-outages.md
+            title: "Deploying Stateful Services Causes Outages"
+          - file: waiting-for-cross-team-approval.md
+            title: "Work Requires Sign-Off from Teams Not Involved in Delivery"
+          - file: waiting-on-qa-team.md
+            title: "Features Must Wait for a Separate QA Team Before Shipping"
+
+      - path: flow/
+        title: "Integration and Feedback Problems"
+        page_count: 32
+        pages:
+          - file: blocked-work-sits-idle.md
+            title: "Blocked Work Sits Idle Instead of Being Picked Up"
+          - file: completed-work-misses-intent.md
+            title: "Completed Stories Don't Match What Was Needed"
+          - file: delayed-stakeholder-feedback.md
+            title: "Stakeholders See Working Software Only at Release Time"
+          - file: dependency-heavy-planning.md
+            title: "Sprint Planning Is Dominated by Dependency Negotiation"
+          - file: distributed-team-no-overlap.md
+            title: "The Team Has No Shared Working Hours Across Time Zones"
+          - file: domain-model-erosion.md
+            title: "The Codebase No Longer Reflects the Business Domain"
+          - file: inadequate-tooling.md
+            title: "The Development Workflow Has Friction at Every Step"
+          - file: lack-of-self-service-environments.md
+            title: "Getting a Test Environment Requires Filing a Ticket"
+          - file: mainframe-constraints.md
+            title: "The Deployment Target Does Not Support Modern CI/CD Tooling"
+          - file: meaningless-retrospectives.md
+            title: "Retrospectives Produce No Real Change"
+          - file: ml-pipeline-deployment-gaps.md
+            title: "Data Pipelines and ML Models Have No Deployment Automation"
+          - file: monorepo-without-tooling.md
+            title: "Every Change Rebuilds the Entire Repository"
+          - file: no-fast-feedback.md
+            title: "Feedback Takes Hours Instead of Minutes"
+          - file: no-local-pipeline-execution.md
+            title: "Developers Cannot Run the Pipeline Locally"
+          - file: no-shared-workflow-expectations.md
+            title: "The Team Has No Shared Agreements About How to Work"
+          - file: painful-local-development-setup.md
+            title: "Setting Up a Development Environment Takes Days"
+          - file: painful-merges.md
+            title: "Merging Is Painful and Time-Consuming"
+          - file: polyglot-stack-no-pipeline-standards.md
+            title: "Each Language Has Its Own Ad Hoc Pipeline"
+          - file: prs-waiting-for-review.md
+            title: "Pull Requests Sit for Days Waiting for Review"
+          - file: repeated-domain-mistakes.md
+            title: "The Same Mistakes Happen in the Same Domain Repeatedly"
+          - file: resistance-to-trunk-based-development.md
+            title: "The Team Resists Merging to the Main Branch"
+          - file: rotation-ramp-up-drag.md
+            title: "Delivery Slows Every Time the Team Rotates"
+          - file: slow-defect-resolution.md
+            title: "Bugs in Familiar Areas Take Disproportionately Long to Fix"
+          - file: slow-pipelines.md
+            title: "Pipelines Take Too Long"
+          - file: speed-vs-stability-tension.md
+            title: "The Team Is Caught Between Shipping Fast and Not Breaking Things"
+          - file: team-instability.md
+            title: "Team Membership Changes Constantly"
+          - file: third-party-dependency-constraints.md
+            title: "Vendor Release Cycles Constrain the Team's Deployment Frequency"
+          - file: too-much-wip.md
+            title: "Everything Started, Nothing Finished"
+          - file: uneven-service-maturity.md
+            title: "Services in the Same Portfolio Have Wildly Different Maturity Levels"
+          - file: uneven-workloads.md
+            title: "Some Developers Are Overloaded While Others Wait for Work"
+          - file: waiting-on-platform-team.md
+            title: "Work Stalls Waiting for the Platform or Infrastructure Team"
+          - file: work-items-take-too-long.md
+            title: "Work Items Take Days or Weeks to Complete"
+
+      - path: visibility/
+        title: "Production Visibility and Team Health"
+        page_count: 9
+        pages:
+          - file: alert-fatigue.md
+            title: "The Team Ignores Alerts Because There Are Too Many"
+          - file: chaotic-incident-response.md
+            title: "When Something Breaks, Nobody Knows What to Do"
+          - file: logs-without-insight.md
+            title: "Logs Exist but Cannot Be Searched or Correlated"
+          - file: no-leadership-buy-in.md
+            title: "Leadership Sees CD as a Technical Nice-to-Have"
+          - file: outdated-documentation.md
+            title: "Runbooks and Architecture Docs Are Years Out of Date"
+          - file: production-issues-found-by-customers.md
+            title: "Production Issues Discovered by Customers"
+          - file: slow-detection.md
+            title: "Production Problems Are Discovered Hours or Days Late"
+          - file: team-burnout.md
+            title: "Team Burnout and Unsustainable Pace"
+          - file: works-on-my-machine.md
+            title: "It Works on My Machine"
+
+  - path: docs/anti-patterns/
+    title: "Quality and Delivery Anti-Patterns"
+    weight: 5
+    purpose: "Catalog of harmful practices organized by domain, each with root causes, impacts, and remediation steps."
+    subsections:
+      - path: team-workflow/
+        title: "Team Workflow"
+        page_count: 7
+        pages:
+          - file: big-bang-feature-delivery.md
+            title: "Big-Bang Feature Delivery"
+          - file: horizontal-slicing.md
+            title: "Horizontal Slicing"
+          - file: knowledge-silos.md
+            title: "Knowledge Silos"
+          - file: monolithic-work-items.md
+            title: "Monolithic Work Items"
+          - file: push-based-work-assignment.md
+            title: "Push-Based Work Assignment"
+          - file: unbounded-wip.md
+            title: "Unbounded WIP"
+          - file: undone-work.md
+            title: "Undone Work"
+
+      - path: branching-integration/
+        title: "Branching and Integration"
+        page_count: 4
+        pages:
+          - file: cherry-pick-releases.md
+            title: "Cherry-Pick Releases"
+          - file: integration-deferred.md
+            title: "Integration Deferred"
+          - file: long-lived-feature-branches.md
+            title: "Long-Lived Feature Branches"
+          - file: release-branches-backporting.md
+            title: "Release Branches with Extensive Backporting"
+
+      - path: testing/
+        title: "Testing"
+        page_count: 8
+        pages:
+          - file: code-coverage-mandates.md
+            title: "Code Coverage Mandates"
+          - file: inverted-test-pyramid.md
+            title: "Inverted Test Pyramid"
+          - file: manual-regression-testing-gates.md
+            title: "Manual Regression Testing Gates"
+          - file: manual-testing-only.md
+            title: "Manual Testing Only"
+          - file: manually-triggered-tests.md
+            title: "Manually Triggered Tests"
+          - file: no-contract-testing.md
+            title: "No Contract Testing Between Services"
+          - file: qa-signoff-gate.md
+            title: "QA Signoff as a Release Gate"
+          - file: testing-only-at-the-end.md
+            title: "Testing Only at the End"
+
+      - path: pipeline/
+        title: "Pipeline and Infrastructure"
+        page_count: 12
+        pages:
+          - file: ad-hoc-secret-management.md
+            title: "Ad Hoc Secret Management"
+          - file: config-embedded-in-artifacts.md
+            title: "Configuration Embedded in Artifacts"
+          - file: hardcoded-environment-assumptions.md
+            title: "Hard-Coded Environment Assumptions"
+          - file: manual-deployments.md
+            title: "Manual Deployments"
+          - file: missing-deployment-pipeline.md
+            title: "Missing Deployment Pipeline"
+          - file: no-build-caching.md
+            title: "No Build Caching or Optimization"
+          - file: no-deployment-health-checks.md
+            title: "No Deployment Health Checks"
+          - file: no-environment-parity.md
+            title: "No Environment Parity"
+          - file: no-infrastructure-as-code.md
+            title: "No Infrastructure as Code"
+          - file: pipeline-not-versioned.md
+            title: "Pipeline Definitions Not in Version Control"
+          - file: shared-test-environments.md
+            title: "Shared Test Environments"
+          - file: snowflake-environments.md
+            title: "Snowflake Environments"
+
+      - path: organizational-cultural/
+        title: "Organizational and Cultural"
+        page_count: 26
+        pages:
+          - file: after-the-rewrite.md
+            title: "Deferring CD Until After the Rewrite"
+          - file: blame-culture.md
+            title: "Blame Culture After Incidents"
+          - file: cab-gates.md
+            title: "Change Advisory Board Gates"
+          - file: compliance-manual-approval.md
+            title: "Compliance Interpreted as Manual Approval"
+          - file: deadline-driven-development.md
+            title: "Deadline-Driven Development"
+          - file: deployment-windows.md
+            title: "Deployment Windows"
+          - file: distant-date-commitments.md
+            title: "Distant Date Commitments"
+          - file: estimation-theater.md
+            title: "Estimation Theater"
+          - file: hardening-sprints.md
+            title: "Hardening and Stabilization Sprints"
+          - file: hero-culture.md
+            title: "Hero Culture"
+          - file: misaligned-incentives.md
+            title: "Misaligned Incentives"
+          - file: missing-product-ownership.md
+            title: "Missing Product Ownership"
+          - file: no-improvement-time.md
+            title: "No Improvement Time Budgeted"
+          - file: no-operational-ownership.md
+            title: "No On-Call or Operational Ownership"
+          - file: outsourced-development-handoffs.md
+            title: "Outsourced Development with Handoffs"
+          - file: pressure-to-skip-testing.md
+            title: "Pressure to Skip Testing"
+          - file: release-trains.md
+            title: "Release Trains"
+          - file: security-not-in-pipeline.md
+            title: "Security Scanning Not in the Pipeline"
+          - file: separate-ops-team.md
+            title: "Separate Ops/Release Team"
+          - file: separation-of-duties-antipattern.md
+            title: "Separation of Duties as Separate Teams"
+          - file: siloed-qa-team.md
+            title: "Siloed QA Team"
+          - file: sprint-boundary-deployments.md
+            title: "Deploying Only at Sprint Boundaries"
+          - file: thin-spread-teams.md
+            title: "Thin-Spread Teams"
+          - file: velocity-as-individual-metric.md
+            title: "Velocity as Individual Metric"
+          - file: velocity-as-team-metric.md
+            title: "Velocity as a Team Productivity Metric"
+          - file: were-different-mindset.md
+            title: "The 'We're Different' Mindset"
+
+      - path: monitoring-observability/
+        title: "Monitoring and Observability"
+        page_count: 1
+        pages:
+          - file: blind-operations.md
+            title: "Blind Operations"
+
+      - path: architecture/
+        title: "Architecture"
+        page_count: 5
+        pages:
+          - file: distributed-monolith.md
+            title: "Distributed Monolith"
+          - file: premature-microservices.md
+            title: "Premature Microservices"
+          - file: shared-database.md
+            title: "Shared Database Across Services"
+          - file: tightly-coupled-monolith.md
+            title: "Tightly Coupled Monolith"
+          - file: untestable-architecture.md
+            title: "Untestable Architecture"
+
+  # ---- Migration guide sections (weight 6-7) ----
+
+  - path: docs/migrate-to-cd/
+    title: "Migrate to CD"
+    weight: 6
+    purpose: "Step-by-step guides for adopting continuous delivery, covering both greenfield and brownfield contexts with a phased migration path."
+    subsections:
+      - path: brownfield/
+        title: "Migrating Brownfield to CD"
+        page_count: 2
+        pages:
+          - file: document-current-process.md
+            title: "Document Your Current Process"
+          - file: replacing-manual-validations.md
+            title: "Replacing Manual Validations with Automation"
+
+      - path: greenfield/
+        title: "CD for Greenfield Projects"
+        page_count: 0
+        pages: []  # Section landing page only
+
+      - path: migration-path/
+        title: "Migration Path"
+        purpose: "The phased migration journey from assessment through continuous deployment."
+        subsections:
+          - path: assess/
+            title: "Phase 0: Assess"
+            page_count: 4
+            pages:
+              - file: baseline-metrics.md
+                title: "Baseline Metrics"
+              - file: current-state-checklist.md
+                title: "Current State Checklist"
+              - file: identify-constraints.md
+                title: "Identify Constraints"
+              - file: value-stream-mapping.md
+                title: "Value Stream Mapping"
+
+          - path: foundations/
+            title: "Phase 1: Foundations"
+            page_count: 7
+            pages:
+              - file: build-automation.md
+                title: "Build Automation"
+              - file: code-review.md
+                title: "Code Review"
+              - file: everything-as-code.md
+                title: "Everything as Code"
+              - file: testing-fundamentals.md
+                title: "Testing Fundamentals"
+              - file: work-decomposition.md
+                title: "Work Decomposition"
+              - file: working-agreements.md
+                title: "Working Agreements"
+            subsections:
+              - path: trunk-based-development/
+                title: "Trunk-Based Development"
+                page_count: 1
+                pages:
+                  - file: tbd-migration.md
+                    title: "TBD Migration Guide"
+
+          - path: pipeline/
+            title: "Phase 2: Pipeline"
+            page_count: 8
+            pages:
+              - file: application-config.md
+                title: "Application Configuration"
+              - file: deployable-definition.md
+                title: "Deployable Definition"
+              - file: deterministic-pipeline.md
+                title: "Deterministic Pipeline"
+              - file: immutable-artifacts.md
+                title: "Immutable Artifacts"
+              - file: pipeline-architecture.md
+                title: "Pipeline Architecture"
+              - file: production-like-environments.md
+                title: "Production-Like Environments"
+              - file: rollback.md
+                title: "Rollback"
+              - file: single-path-to-production.md
+                title: "Single Path to Production"
+
+          - path: optimize/
+            title: "Phase 3: Optimize"
+            page_count: 8
+            pages:
+              - file: architecture-decoupling.md
+                title: "Architecture Decoupling"
+              - file: feature-flags.md
+                title: "Feature Flags"
+              - file: hypothesis-driven-development.md
+                title: "Hypothesis-Driven Development"
+              - file: limiting-wip.md
+                title: "Limiting Work in Progress"
+              - file: metrics-driven-improvement.md
+                title: "Metrics-Driven Improvement"
+              - file: retrospectives.md
+                title: "Retrospectives"
+              - file: small-batches.md
+                title: "Small Batches"
+              - file: team-alignment.md
+                title: "Team Alignment to Code"
+              - file: hypothesis-driven-development.md
+                title: "Hypothesis-Driven Development"
+
+          - path: continuous-deployment/
+            title: "Phase 4: Deliver on Demand"
+            page_count: 3
+            pages:
+              - file: deploy-on-demand.md
+                title: "Deploy on Demand"
+              - file: experience-reports.md
+                title: "Experience Reports"
+              - file: progressive-rollout.md
+                title: "Progressive Rollout"
+
+  - path: docs/pipeline-reference-architecture/
+    title: "Pipeline Reference Architecture"
+    weight: 7
+    purpose: "Pipeline blueprints for single-team, multi-team, and distributed service delivery with quality gates sequenced by defect detection priority."
+    pages:
+      - file: single-team.md
+        title: "Single Team, Single Deployable"
+      - file: multi-team.md
+        title: "Multiple Teams, Single Deployable"
+      - file: independent-teams.md
+        title: "Independent Teams, Independent Deployables"
+
+  # ---- Specialized topic sections (weight 8-12) ----
+
+  - path: docs/defect-sources/
+    title: "Systemic Defect Fixes"
+    weight: 8
+    purpose: "Catalog of defect sources across the delivery value stream with earliest detection points, AI shift-left opportunities, and systemic prevention strategies."
+    pages:
+      - file: change-and-complexity.md
+        title: "Change & Complexity Defects"
+      - file: data-and-state.md
+        title: "Data & State Defects"
+      - file: dependency-and-infrastructure.md
+        title: "Dependency & Infrastructure Defects"
+      - file: integration-and-boundaries.md
+        title: "Integration & Boundaries Defects"
+      - file: knowledge-and-communication.md
+        title: "Knowledge & Communication Defects"
+      - file: performance-and-resilience.md
+        title: "Performance & Resilience Defects"
+      - file: process-and-deployment.md
+        title: "Process & Deployment Defects"
+      - file: product-and-discovery.md
+        title: "Product & Discovery Defects"
+      - file: security-and-compliance.md
+        title: "Security & Compliance Defects"
+      - file: testing-and-observability-gaps.md
+        title: "Testing & Observability Gap Defects"
+
+  - path: docs/agentic-cd/
+    title: "Agentic Continuous Delivery (ACD)"
+    weight: 9
+    purpose: "Constraints, delivery artifacts, and practices for safely incorporating AI agent-generated changes into a continuous delivery pipeline."
+    subsections:
+      - path: getting-started/
+        title: "Getting Started"
+        page_count: 4
+        pages:
+          - file: agent-setup.md
+            title: "Getting Started: Where to Put What"
+          - file: learning-curve.md
+            title: "The Agentic Development Learning Curve"
+          - file: prompting-disciplines.md
+            title: "The Four Prompting Disciplines"
+          - file: adoption-roadmap.md
+            title: "AI Adoption Roadmap"
+
+      - path: specification/
+        title: "Specification & Contracts"
+        page_count: 2
+        pages:
+          - file: first-class-artifacts.md
+            title: "Agent Delivery Contract"
+          - file: agent-assisted-specification.md
+            title: "Agent-Assisted Specification"
+
+      - path: architecture/
+        title: "Agent Architecture"
+        page_count: 3
+        pages:
+          - file: agentic-architecture.md
+            title: "Agentic Architecture Patterns"
+          - file: agent-configuration.md
+            title: "Coding & Review Setup"
+          - file: small-batch-sessions.md
+            title: "Small-Batch Agent Sessions"
+
+      - path: operations/
+        title: "Operations & Governance"
+        page_count: 3
+        pages:
+          - file: pipeline-enforcement.md
+            title: "Pipeline Enforcement and Expert Agents"
+          - file: tokenomics.md
+            title: "Tokenomics: Optimizing Token Usage in Agent Architecture"
+          - file: pitfalls-and-metrics.md
+            title: "Pitfalls and Metrics"
+
+  - path: docs/practices/
+    title: "CD Practices"
+    weight: 10
+    purpose: "Concise definitions of the core continuous delivery practices from MinimumCD - the 'what' that the migration guide teaches teams to implement."
+    pages:
+      - file: application-configuration.md
+        title: "Application Configuration"
+      - file: continuous-integration.md
+        title: "Continuous Integration"
+      - file: definition-of-deployable.md
+        title: "Definition of Deployable"
+      - file: deterministic-pipeline.md
+        title: "Deterministic Pipeline"
+      - file: immutable-artifacts.md
+        title: "Immutable Artifacts"
+      - file: production-like-environments.md
+        title: "Production-Like Environments"
+      - file: rollback.md
+        title: "Rollback"
+      - file: single-path-to-production.md
+        title: "Single Path to Production"
+      - file: trunk-based-development.md
+        title: "Trunk-Based Development"
+
+  - path: docs/metrics/
+    title: "Metrics"
+    weight: 11
+    purpose: "Detailed definitions for key delivery metrics covering what to measure, why it matters, and how to interpret results."
+    pages:
+      - file: build-duration.md
+        title: "Build Duration"
+      - file: change-fail-rate.md
+        title: "Change Fail Rate"
+      - file: development-cycle-time.md
+        title: "Development Cycle Time"
+      - file: integration-frequency.md
+        title: "Integration Frequency"
+      - file: lead-time.md
+        title: "Lead Time"
+      - file: mean-time-to-repair.md
+        title: "Mean Time to Repair"
+      - file: release-frequency.md
+        title: "Release Frequency"
+      - file: work-in-progress.md
+        title: "Work in Progress"
+
+  - path: docs/testing/
+    title: "Testing"
+    weight: 12
+    purpose: "Test architecture, types, and best practices for building confidence in the delivery pipeline."
+    pages:
+      - file: contract.md
+        title: "Contract Tests"
+      - file: e2e.md
+        title: "End-to-End Tests"
+      - file: feedback-speed.md
+        title: "Test Feedback Speed"
+      - file: functional.md
+        title: "Functional Tests"
+      - file: glossary.md
+        title: "Testing Glossary"
+      - file: integration.md
+        title: "Integration Tests"
+      - file: static.md
+        title: "Static Analysis"
+      - file: test-doubles.md
+        title: "Test Doubles"
+      - file: unit.md
+        title: "Unit Tests"
+
+standalone_pages:
+  - file: start-here.md
+    title: "Start Here"
+    purpose: "Entry point for new visitors that orients them to the site structure and suggests where to begin."
+
+  - file: cd-dependency-tree.md
+    title: "CD Dependency Tree"
+    purpose: "Visual dependency graph showing how CD practices relate to and depend on each other."
+
+  - file: dora-capabilities.md
+    title: "DORA Recommended Practices"
+    purpose: "Maps DORA capabilities to the site's practices and migration phases."
+
+  - file: glossary.md
+    title: "Glossary"
+    purpose: "400+ term definitions with cross-references used throughout the site."
+
+  - file: learning-paths.md
+    title: "Learning Paths"
+    purpose: "Curated reading sequences through the site content for different roles and goals."
+
+  - file: faq.md
+    title: "FAQ"
+    purpose: "Answers to common questions about continuous delivery and the migration approach."
+
+  - file: resources.md
+    title: "Resources"
+    purpose: "External books, talks, and articles referenced throughout the site."
+
+  - file: changelog.md
+    title: "Changelog"
+    purpose: "Chronological record of significant site content changes."
+
+  - file: credits.md
+    title: "Credits"
+    purpose: "Acknowledgments for contributors and sources."
+
+  - file: under-construction.md
+    title: "Under Construction"
+    purpose: "Placeholder target for links to pages still in draft mode."
+
+# Summary statistics
+totals:
+  top_level_sections: 10
+  subsections: 17
+  symptom_pages: 71  # 7 testing + 21 deployment + 32 flow + 9 visibility + 2 root-level
+  anti_pattern_pages: 63
+  migration_guide_pages: 32
+  agentic_cd_pages: 12
+  reference_pages: 39  # practices(9) + metrics(8) + testing(9) + pipeline-ref(3) + defect-sources(10)
+  standalone_pages: 10

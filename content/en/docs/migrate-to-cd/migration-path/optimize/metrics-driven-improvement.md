@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Original content combining DORA recommendations and improvement kata
+**Phase 3 - Optimize** | Original content combining [DORA](../../../glossary/#dora-metrics) recommendations and improvement kata
 
 Improvement without measurement is guesswork. This page combines the DORA four key metrics with the improvement kata pattern to create a systematic, repeatable approach to getting better at delivery.
 {{% /pageinfo %}}
@@ -20,7 +20,7 @@ Metrics-driven improvement replaces this with a disciplined cycle: measure where
 
 ## The Four DORA Metrics
 
-The DORA research program (now part of Google Cloud) has identified four key metrics that predict software delivery performance. These are the metrics you should track throughout your CD migration.
+The DORA research program (now part of Google Cloud) has identified four key metrics that predict software delivery performance. These are the metrics you should track throughout your [CD](../../../glossary/#cd-continuous-delivery) migration.
 
 ### 1. Deployment Frequency
 
@@ -33,9 +33,9 @@ How often your team deploys to production.
 | Medium | Between once per week and once per month |
 | Low | Between once per month and once every six months |
 
-**What it tells you:** How comfortable your team and pipeline are with deploying. Low frequency usually indicates manual gates, fear of deployment, or large batch sizes.
+**What it tells you:** How comfortable your team and [pipeline](../../../glossary/#pipeline) are with deploying. Low frequency usually indicates manual gates, fear of deployment, or large [batch sizes](../../../glossary/#batch-size).
 
-**How to measure:** Count the number of successful deployments to production per unit of time. Automated deploys count. Hotfixes count. Rollbacks do not.
+**How to measure:** Count the number of successful deployments to production per unit of time. Automated deploys count. Hotfixes count. [Rollbacks](../../../glossary/#rollback) do not.
 
 ### 2. Lead Time for Changes
 
@@ -48,13 +48,13 @@ The time from a commit being pushed to trunk to that commit running in productio
 | Medium | Between one week and one month |
 | Low | Between one month and six months |
 
-**What it tells you:** How efficient your pipeline is. Long lead times indicate slow builds, manual approval steps, or infrequent deployment windows.
+**What it tells you:** How efficient your pipeline is. Long [lead times](../../../glossary/#lead-time-for-changes) indicate slow builds, manual approval steps, or infrequent deployment windows.
 
 **How to measure:** Record the timestamp when a commit merges to trunk and the timestamp when that commit is running in production. The difference is lead time. Track the median, not the mean (outliers distort the mean).
 
 ### 3. Change Failure Rate
 
-The percentage of deployments that cause a failure in production requiring remediation (rollback, hotfix, or patch).
+The percentage of deployments that cause a failure in production requiring remediation ([rollback](../../../glossary/#rollback), hotfix, or patch).
 
 | Performance Level | Change Failure Rate |
 |-------------------|-------------------|
@@ -84,7 +84,7 @@ How long it takes to recover from a failure in production.
 
 ## CI Health Metrics
 
-DORA metrics are outcome metrics - they tell you how delivery is performing overall. CI health metrics are leading indicators that give you earlier feedback on the health of your integration practices. Problems in these metrics show up days or weeks before they surface in DORA numbers.
+DORA metrics are outcome metrics - they tell you how delivery is performing overall. [CI](../../../glossary/#ci-continuous-integration) health metrics are leading indicators that give you earlier feedback on the health of your integration practices. Problems in these metrics show up days or weeks before they surface in DORA numbers.
 
 Track these alongside DORA metrics to catch issues before they compound.
 
@@ -97,7 +97,7 @@ Track these alongside DORA metrics to catch issues before they compound.
 | **Good target** | 2 or more per developer per day |
 | **Why it matters** | Low commit frequency indicates large batch sizes, long-lived branches, or developers waiting to integrate. All of these increase merge risk and slow feedback. |
 
-**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate branch lifetimes and work decomposition.
+**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate [branch lifetimes](../../../glossary/#branch-lifetime) and work decomposition.
 
 **If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
 
@@ -133,10 +133,10 @@ Behind these four metrics are 24 practices that the DORA research has shown to d
 
 These directly affect your pipeline and deployment practices:
 
-- Version control for all production artifacts
+- Version control for all production [artifacts](../../../glossary/#artifact)
 - Automated deployment processes
 - Continuous integration
-- Trunk-based development
+- [Trunk-based development](../../../glossary/#tbd-trunk-based-development)
 - Test automation
 - Test data management
 - Shift-left security
@@ -166,7 +166,7 @@ These affect how the organization supports delivery:
 - Lightweight change approval processes
 - Monitoring and observability
 - Proactive notification
-- WIP limits
+- [WIP](../../../glossary/#wip-work-in-progress) limits
 - Visual management of workflow
 
 ### Cultural Practices
@@ -206,10 +206,10 @@ Measure your current DORA metrics. Be honest - the point is to understand realit
 
 | Metric | Current | Target | Gap |
 |--------|---------|--------|-----|
-| Deployment frequency | Weekly | Daily | 5x improvement needed |
+| [Deployment frequency](../../../glossary/#deployment-frequency) | Weekly | Daily | 5x improvement needed |
 | Lead time | 3 days | < 1 day | Pipeline is slow or has manual gates |
-| Change failure rate | 25% | < 15% | Test coverage or change size issue |
-| MTTR | 4 hours | < 1 hour | Rollback is manual |
+| [Change failure rate](../../../glossary/#change-failure-rate-cfr) | 25% | < 15% | Test coverage or change size issue |
+| [MTTR](../../../glossary/#mean-time-to-restore-mttr) | 4 hours | < 1 hour | Rollback is manual |
 
 ### Step 3: Establish the Next Target Condition
 
@@ -371,7 +371,7 @@ Organize your dashboard around three categories:
 
 ### 1. "We measure but don't act"
 
-Measurement without action is waste. If you collect metrics but never run experiments, you are creating overhead with no benefit. Every measurement should lead to a hypothesis. Every hypothesis should lead to an experiment.
+Measurement without action is waste. If you collect metrics but never run experiments, you are creating overhead with no benefit. Every measurement should lead to a hypothesis. Every hypothesis should lead to an experiment. See [Hypothesis-Driven Development](../hypothesis-driven-development/) for the full lifecycle.
 
 ### 2. "We use metrics to compare teams"
 
@@ -408,3 +408,4 @@ Metrics tell you what to improve. [Retrospectives](../retrospectives/) provide t
 - [Mean Time to Repair](../../../metrics/mean-time-to-repair/) - one of the four key DORA metrics
 - [DORA Recommended Practices](../../../dora-capabilities/) - the 24 practices that drive delivery performance
 - [Retrospectives](../retrospectives/) - the team forum for acting on what metrics reveal
+- [Hypothesis-Driven Development](../hypothesis-driven-development/) - the practice of treating every change as a testable experiment
