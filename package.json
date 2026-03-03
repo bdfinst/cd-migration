@@ -38,10 +38,10 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.58.2",
-    "autoprefixer": "^10.4.22",
+    "autoprefixer": "^10.4.27",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
-    "linkinator": "^7.5.0",
+    "linkinator": "^7.6.1",
     "markdownlint-cli": "^0.47.0",
     "pa11y-ci": "^4.0.1",
     "postcss": "^8.5.6",
