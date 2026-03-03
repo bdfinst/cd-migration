@@ -7,6 +7,17 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-03 - New Triage Problems: AI Coding and Test Environment Reset
+
+Added four new triage problems with supporting content:
+
+- [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - new symptom page for teams where AI output ships without critical review
+- [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}) - new anti-pattern with fix steps for establishing review standards for AI output
+- [AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}) - new symptom page for teams where AI tools add overhead instead of reducing it
+- [Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}}) - new symptom page for slow environment and database reset blocking regression testing
+
+Updated the [triage page]({{< relref "/docs/triage" >}}) with entries for all four problems, including a pointer to existing content for developer assignment to unfamiliar components.
+
 ## 2026-03-03 - Site-Wide Restructure for Navigation and Discoverability
 
 Major reorganization to reduce sidebar depth, group related content, and improve discoverability.
@@ -25,7 +36,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ### Reference Section
 
-- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, pipeline reference architecture, defect sources, glossary, FAQ, [DORA](reference/glossary/#dora-metrics) capabilities, dependency tree, and resources
+- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, [pipeline](reference/glossary/#pipeline) reference architecture, defect sources, glossary, FAQ, [DORA](reference/glossary/#dora-metrics) capabilities, dependency tree, and resources
 
 ### Infrastructure
 
@@ -38,7 +49,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ## 2026-03-02 - Agentic CD: Sidebar Reorganization
 
-Grouped the 12 flat Agentic CD pages into four subsections for easier navigation:
+Grouped the 12 flat Agentic [CD](reference/glossary/#cd-continuous-delivery) pages into four subsections for easier navigation:
 
 - **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, prompting disciplines, and adoption roadmap
 - **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent delivery contract and agent-assisted specification
@@ -55,13 +66,13 @@ All old URLs redirect to their new locations via Hugo aliases.
 
 - **[The Discovery Loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}})** - New section in Agent-Assisted Specification describing a four-phase conversational workflow for producing structured specifications: Initial Framing, Deep-Dive Interview, Drafting, and Stress-Test Review.
 
-- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, acceptance criteria, and evaluation design.
+- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, [acceptance criteria](reference/glossary/#acceptance-criteria), and evaluation design.
 
 - **[Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})** - New glossary entry defining acceptance criteria as concrete expectations usable as fitness functions, executed as deterministic tests or evaluated by review agents.
 
 ### Terminology alignment
 
-Standardized artifact and workflow stage names across the Agentic CD section so the same concepts use the same terms everywhere:
+Standardized [artifact](reference/glossary/#artifact) and workflow stage names across the Agentic CD section so the same concepts use the same terms everywhere:
 
 ### Structural cleanup
 

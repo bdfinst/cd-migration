@@ -49,7 +49,18 @@ causes test failures even when the behavior is correct.
 Slow tests delay feedback and encourage developers to skip running them locally.
 
 - **[Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}})** - Tests take so long that developers avoid running them
+- **[Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}})** - Environment and database reset time prevents running the full suite on every change
 - **[Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}})** - The overall pipeline is slow, not just tests
+
+</details>
+
+<details>
+<summary>AI-generated code is causing quality or security problems</summary>
+
+When developers use AI to generate code without understanding the output, functional bugs and
+security vulnerabilities ship because review standards have not kept pace with new tooling.
+
+- **[AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}})** - Developers commit AI output they cannot explain, and bugs hide in unexamined logic
 
 </details>
 
@@ -124,6 +135,16 @@ Slow feedback loops mean developers context-switch away and problems grow before
 
 </details>
 
+<details>
+<summary>AI tools are not making us faster</summary>
+
+AI coding assistants should reduce implementation time, but the overhead of prompting, reviewing,
+and correcting AI output sometimes exceeds the time to write the code directly.
+
+- **[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}})** - The prompt-review-fix cycle takes longer than coding it yourself
+
+</details>
+
 </details>
 
 <details>
@@ -191,6 +212,7 @@ When only certain people can deploy, debug, or explain the architecture, the tea
 
 - **[Releases Depend on One Person]({{< relref "/docs/symptoms/deployment/release-manager-bottleneck" >}})** - One person is the bottleneck for every release
 - **[Delivery Slows Every Time the Team Rotates]({{< relref "/docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag" >}})** - New team members take weeks to become productive
+- **[Bugs in Familiar Areas Take Disproportionately Long to Fix]({{< relref "/docs/symptoms/flow/developer-experience/slow-defect-resolution" >}})** - Developers assigned to unfamiliar components take too long to understand and change them correctly
 
 </details>
 
