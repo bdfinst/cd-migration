@@ -9,7 +9,7 @@ aliases:
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow](../../) (Intent Description, User-Facing Behavior, Feature Description, and Acceptance Criteria) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow](../../) (Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria](../../glossary/#acceptance-criteria)) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents](../../glossary/#agent-ai) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The Pattern
@@ -51,6 +51,21 @@ but does not match what I actually want.
 **Ask the agent to suggest edge cases.** Agents are good at generating boundary conditions you might not think of, because they can quickly reason through combinations.
 
 **Ask the agent to simplify.** If the intent covers too much ground, ask the agent to suggest how to split it into smaller, independently deliverable changes.
+
+**Ask the agent to sharpen the hypothesis.** If the intent includes a [hypothesis](../../glossary/#hypothesis-driven-development) ("We believe X will produce Y because Z"), the agent can pressure-test it before any code is written.
+
+Example prompt:
+
+{{< card code=true header="**Prompt: sharpen the hypothesis in the intent description**" >}}
+Review this hypothesis. Is the expected outcome measurable with data
+we currently collect? Is the causal reasoning plausible? What
+alternative explanations could produce the same outcome without this
+change being the cause?
+
+[paste intent description with hypothesis]
+{{< /card >}}
+
+A weak hypothesis - one with an unmeasurable outcome or implausible causal link - will not produce useful feedback after deployment. Catching that now costs a prompt. Catching it after implementation costs a cycle.
 
 The human still owns the intent. The agent is a sounding board that catches gaps before they become defects.
 
@@ -138,6 +153,7 @@ before implementation begins. Check:
 - Terminology: are the same concepts named consistently across all four artifacts?
 - Completeness: are there behaviors implied by the intent that have no corresponding BDD scenario?
 - Conflict: does anything in one artifact contradict anything in another?
+- Hypothesis: if the intent includes a hypothesis, is there a corresponding validation path? Can the predicted outcome be measured after deployment?
 
 [paste all four artifacts]
 {{< /card >}}
@@ -167,6 +183,8 @@ and trade-offs I have not considered.
 {{< /card >}}
 
 This prompt does three things: it states intent, it assigns a role that produces the right kind of questions, and it prevents the agent from jumping to implementation.
+
+Even at this early stage, include a rough hypothesis about what outcome you expect: "I believe this tool will reduce the time teams spend on manual value stream analysis by 80%." The hypothesis does not need to be precise yet - the discovery interview will sharpen it - but stating one early forces you to think about measurable outcomes from the start.
 
 ### Phase 2: Deep-Dive Interview (Context)
 

@@ -7,3 +7,5 @@ _vendor/
 tmp/
 test-results/
 .claude/settings.local.json
+UPDATE.md
+UPDATE_PLAN.md

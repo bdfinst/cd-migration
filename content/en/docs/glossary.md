@@ -22,13 +22,13 @@ from passing, while shallow criteria allow code that passes tests but violates i
 [Acceptance Criteria](../agentic-cd/specification/first-class-artifacts/#4-acceptance-criteria).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
 [Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### ACD (Agentic Continuous Delivery)
@@ -46,7 +46,7 @@ Referenced in:
 [Pipeline Enforcement and Expert Agents](../agentic-cd/pipeline-enforcement/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/),
 [Your Migration Journey](../)
 
@@ -59,7 +59,7 @@ shaped by its prompt - the complete set of instructions, context, and constraint
 the start of a session. See [Agentic CD](../agentic-cd/).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
@@ -71,7 +71,7 @@ Referenced in:
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Artifact
@@ -81,7 +81,7 @@ In a CD pipeline, artifacts are built once and promoted through environments wit
 modification. See [Immutable Artifacts](../migrate-to-cd/migration-path/pipeline/immutable-artifacts/).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
@@ -111,7 +111,7 @@ Referenced in:
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [The Agentic Development Learning Curve](../agentic-cd/learning-curve/),
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [Tightly Coupled Monolith](../anti-patterns/architecture/tightly-coupled-monolith/),
@@ -156,7 +156,7 @@ specifications that serve as both documentation and automated tests. BDD support
 story actually means before development begins.
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [Coding and Review Agent Configuration](../agentic-cd/agent-configuration/),
 [Getting Started: Where to Put What](../agentic-cd/agent-setup/),
@@ -166,7 +166,7 @@ Referenced in:
 [Small Batches](../migrate-to-cd/migration-path/optimize/small-batches/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
 [TBD Migration Guide](../migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/)
 
 ### Blue-Green Deployment
@@ -215,7 +215,7 @@ every change *could be* deployed automatically. This is the primary goal of this
 guide.
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [AI Adoption Roadmap](../agentic-cd/adoption-roadmap/),
 [Agentic Continuous Delivery (ACD)](../agentic-cd/),
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
@@ -318,7 +318,7 @@ During a CD migration, your job is to find and fix constraints in order of impac
 [Identify Constraints](../migrate-to-cd/migration-path/assess/identify-constraints/).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Build Automation](../migrate-to-cd/migration-path/foundations/build-automation/),
 [DORA Recommended Practices](../dora-capabilities/),
 [Experience Reports](../migrate-to-cd/migration-path/continuous-deployment/experience-reports/),
@@ -592,6 +592,23 @@ deployable. See [Testing Fundamentals](../migrate-to-cd/migration-path/foundatio
 Referenced in:
 [Hardening Sprints Are Needed Before Every Release](../symptoms/deployment/hardening-sprints/)
 
+### Hypothesis-Driven Development
+
+An approach that frames every change as an experiment with a predicted outcome. Instead of
+specifying a change as a requirement to implement, the team states a hypothesis: "We believe
+[this change] will produce [this outcome] because [this reason]." After deployment, the team
+validates whether the predicted outcome occurred. Changes that confirm the hypothesis build
+confidence. Changes that refute it produce learning that informs the next hypothesis. This
+creates a feedback loop where every deployed change generates a signal, whether it "succeeds"
+or not. See [Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/#1-intent-description)
+for how hypotheses integrate with specification artifacts and
+[Metrics-Driven Improvement](../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)
+for the post-deployment validation loop.
+
+Referenced in:
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/)
+
 ## I
 
 ### Immutable Artifact
@@ -748,7 +765,7 @@ Referenced in:
 [The Build Runs Again for Every Environment](../symptoms/deployment/artifacts-rebuilt-per-environment/),
 [The Deployment Target Does Not Support Modern CI/CD Tooling](../symptoms/flow/mainframe-constraints/),
 [The Development Workflow Has Friction at Every Step](../symptoms/flow/inadequate-tooling/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [The Team Ignores Alerts Because There Are Too Many](../symptoms/visibility/alert-fatigue/),
 [The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/),
 [The Team Is Caught Between Shipping Fast and Not Breaking Things](../symptoms/flow/speed-vs-stability-tension/),
@@ -788,11 +805,11 @@ actually contains is a prerequisite for effective tokenomics. See
 [Tokenomics](../agentic-cd/tokenomics/).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [Pitfalls and Metrics](../agentic-cd/pitfalls-and-metrics/),
 [Agentic Architecture Patterns](../agentic-cd/agentic-architecture/),
 [Small-Batch Agent Sessions](../agentic-cd/small-batch-sessions/),
-[Agent Delivery Contract](../agentic-cd/first-class-artifacts/),
+[Agent Delivery Contract](../agentic-cd/specification/first-class-artifacts/),
 [Tokenomics: Optimizing Token Usage in Agent Architecture](../agentic-cd/tokenomics/)
 
 ### Prompt Caching
@@ -1021,7 +1038,7 @@ Vertical slices are independently deployable and testable, which is essential fo
 slicing is a core technique in [Work Decomposition](../migrate-to-cd/migration-path/foundations/work-decomposition/).
 
 Referenced in:
-[Agent-Assisted Specification](../agentic-cd/agent-assisted-specification/),
+[Agent-Assisted Specification](../agentic-cd/specification/agent-assisted-specification/),
 [CD Dependency Tree](../cd-dependency-tree/),
 [CD for Greenfield Projects](../migrate-to-cd/greenfield/),
 [Horizontal Slicing](../anti-patterns/team-workflow/horizontal-slicing/),
