@@ -25,7 +25,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ### Reference Section
 
-- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, pipeline reference architecture, defect sources, glossary, FAQ, DORA capabilities, dependency tree, and resources
+- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, pipeline reference architecture, defect sources, glossary, FAQ, [DORA](reference/glossary/#dora-metrics) capabilities, dependency tree, and resources
 
 ### Infrastructure
 
@@ -34,7 +34,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 - Updated `content-map.yml` to reflect new structure
 - Added organizational/process category to the triage page
 - Simplified the docs landing page to minimal routing
-- Removed the a11y CI job (run on demand locally instead)
+- Removed the a11y [CI](reference/glossary/#ci-continuous-integration) job (run on demand locally instead)
 
 ## 2026-03-02 - Agentic CD: Sidebar Reorganization
 
