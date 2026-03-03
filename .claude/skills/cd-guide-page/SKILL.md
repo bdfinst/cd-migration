@@ -6,7 +6,16 @@ user_invocable: true
 
 # CD Guide Page Generator
 
+Role: implementation. This skill generates new content files following
+the guide page template.
+
 Generate a new guide page for the "Migrate to CD" section of the CD migration guide.
+
+## Constraints
+
+1. **Follow the template exactly.** Flexible H2 structure is allowed but all required elements must be present.
+2. **Be concise.** Generate the page and report validation results. No preambles.
+3. **Validate before finishing.** Run all validation checks in the instructions before considering the work complete.
 
 ## Instructions
 

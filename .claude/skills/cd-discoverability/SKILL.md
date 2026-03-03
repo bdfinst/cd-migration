@@ -6,7 +6,17 @@ user_invocable: true
 
 # CD Discoverability and Self-Guided Learning Audit
 
+Role: worker. This skill audits site discoverability and produces
+recommendations. It does not modify files.
+
 Analyze the CD migration site and recommend improvements that make it easier for developers and managers to find relevant content, follow a learning path, and use the site as educational material for their teams.
+
+## Constraints
+
+1. **Read-only.** Do not modify files. Report findings and recommendations only.
+2. **Be concise.** Focus on actionable findings. No preambles or restating what was checked.
+3. **Follow the output format.** Use the structured format below for every audit.
+4. **Delegate out-of-scope concerns.** Do not check structural compliance (`cd-content-audit`) or writing quality (`tech-writing-review`).
 
 ## Instructions
 

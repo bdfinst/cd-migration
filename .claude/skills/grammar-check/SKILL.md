@@ -6,7 +6,17 @@ user_invocable: true
 
 # Grammar and Punctuation Check
 
+Role: implementation. This skill modifies content files to fix
+prohibited dash punctuation.
+
 Scan content files for prohibited dash-like punctuation and rewrite sentences to use preferred grammar marks instead.
+
+## Constraints
+
+1. **Minimal changes.** Only rewrite sentences containing prohibited punctuation. Do not reformat or improve surrounding content.
+2. **Be concise.** Output the change summary. No preambles.
+3. **Preserve meaning.** Rewrites must preserve the original meaning of every sentence.
+4. **Validate after changes.** Re-scan the file after edits to confirm no violations remain.
 
 ## Prohibited Characters
 

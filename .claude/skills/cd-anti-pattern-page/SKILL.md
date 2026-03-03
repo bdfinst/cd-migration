@@ -6,7 +6,16 @@ user_invocable: true
 
 # CD Anti-Pattern Page Generator
 
+Role: implementation. This skill generates new content files following
+the anti-pattern page template.
+
 Generate a new anti-pattern page for the "Quality and Delivery Anti-Patterns" section of the CD migration guide.
+
+## Constraints
+
+1. **Follow the template exactly.** Do not invent new sections or skip required ones.
+2. **Be concise.** Generate the page and report validation results. No preambles.
+3. **Validate before finishing.** Run all validation checks in the instructions before considering the work complete.
 
 ## Instructions
 

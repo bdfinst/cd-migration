@@ -6,8 +6,17 @@ user_invocable: true
 
 # Glossary Link Review Agent
 
+Role: implementation. This skill modifies content files to add glossary
+links where terms appear unlinked.
+
 Scan content files for uses of defined glossary terms that are not yet linked to the glossary,
 and add links to the first occurrence of each term in each file.
+
+## Constraints
+
+1. **Minimal changes.** Only add links to first occurrences of glossary terms. Do not rewrite or reformat surrounding content.
+2. **Be concise.** Output the change report. No preambles or per-term narration.
+3. **Validate after changes.** Run all validation checks in step 6 before considering the work complete.
 
 ## Glossary File Location
 

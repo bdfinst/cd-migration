@@ -1,5 +1,11 @@
 # Project Rules
 
+## Response Style
+
+- Keep responses concise. Prefer short, direct answers over lengthy explanations.
+- When proposing changes, summarize what you will do in a sentence or two, then act.
+- Avoid restating the user's request back to them.
+
 ## Content Style
 
 - **CD means continuous delivery.** Only expand as "continuous deployment" when specifically discussing the practice of auto-deploying every commit. In all other contexts, "CD" = "continuous delivery."
