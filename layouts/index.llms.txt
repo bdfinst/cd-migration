@@ -6,7 +6,7 @@
 {{ if $pages }}
 ## {{ .Title }}
 {{ range $pages }}
-- [{{ .Title }}]({{ .Permalink }}): {{ partial "page-description.html" . }}
+- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "page-description.html" . }}
 {{- end }}
 {{ end -}}
 {{ end -}}
@@ -17,7 +17,7 @@
 {{ if $pages }}
 ## {{ .Title }}
 {{ range $pages }}
-- [{{ .Title }}]({{ .Permalink }}): {{ partial "page-description.html" . }}
+- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "page-description.html" . }}
 {{- end }}
 {{ end -}}
 {{ end -}}
