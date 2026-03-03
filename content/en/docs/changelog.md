@@ -7,6 +7,35 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-03 - Site-Wide Restructure for Navigation and Discoverability
+
+Major reorganization to reduce sidebar depth, group related content, and improve discoverability.
+
+### Migrate to CD
+
+- Flattened the migration path: removed the intermediate `migration-path/` directory so phases (assess, foundations, pipeline, optimize, continuous-deployment) are direct children of [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})
+
+### Symptoms
+
+- Split the 32-page [Flow Symptoms]({{< relref "/docs/symptoms/flow" >}}) section into four subcategories: Integration, Work Management, Developer Experience, and Team Knowledge
+
+### Anti-Patterns
+
+- Split the 26 [Organizational-Cultural]({{< relref "/docs/anti-patterns/organizational-cultural" >}}) anti-patterns into three subcategories: Governance & Process, Team Dynamics, and Planning
+
+### Reference Section
+
+- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, pipeline reference architecture, defect sources, glossary, FAQ, DORA capabilities, dependency tree, and resources
+
+### Infrastructure
+
+- Converted approximately 4,000 relative links to Hugo `relref` shortcodes
+- Added 100+ permanent redirects for all moved pages
+- Updated `content-map.yml` to reflect new structure
+- Added organizational/process category to the triage page
+- Simplified the docs landing page to minimal routing
+- Removed the a11y CI job (run on demand locally instead)
+
 ## 2026-03-02 - Agentic CD: Sidebar Reorganization
 
 Grouped the 12 flat Agentic CD pages into four subsections for easier navigation:

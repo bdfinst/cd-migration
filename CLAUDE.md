@@ -41,6 +41,14 @@ When removing `draft: true` from a page:
 - When a section `_index.md` is moved, add aliases for both the section path and any known child page paths that changed.
 - Run `npm test` after adding aliases to verify no broken links remain.
 
+## Changelog
+
+- Update `content/en/docs/changelog.md` whenever content is added, moved, removed, or significantly changed.
+- Each entry starts with `## YYYY-MM-DD - Short Title` using today's date.
+- New entries go at the top, just below the front matter.
+- Keep entries concise: a sentence or short bullet list describing what changed.
+- Use `relref` shortcodes for internal links (match the existing entry style).
+
 ## Content Map
 
 - `data/content-map.yml` is a structured index of every section and page on the site. Read it first to understand site structure.
