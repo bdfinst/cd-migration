@@ -463,6 +463,26 @@ The elapsed time from the first commit on a change to that change being deployab
 measures the efficiency of your development and pipeline process, excluding upstream wait times.
 See [Metrics - Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}).
 
+### Dependency
+
+Code, service, or resource whose behavior is not defined in the current module. Dependencies
+vary by location and ownership:
+
+- **Internal dependency** - code in another file or module within the same repository, or in
+  another repository your team controls. Internal dependencies share your release cycle and
+  your team can change them directly.
+- **[External dependency](#external-dependency)** - a third-party library, external API, or
+  managed service outside your team's direct control.
+
+The distinction matters for testing. Internal dependencies are part of your own codebase and
+should be exercised through real code paths in tests. Replacing them with
+[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) couples your tests to
+implementation details and causes rippling failures during routine refactoring. Reserve test
+doubles for [external dependencies](#external-dependency) and runtime connections where real
+invocation is impractical or non-deterministic.
+
+See also: [Hard Dependency](#hard-dependency), [Soft Dependency](#soft-dependency).
+
 ### DORA Metrics
 
 The four key metrics identified by the DORA (DevOps Research and Assessment) research program
@@ -484,6 +504,26 @@ Referenced in:
 [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}),
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
+
+## E
+
+### External Dependency
+
+A [dependency](#dependency) on code or services outside your team's direct control. External
+dependencies include third-party libraries, public APIs, managed cloud services, and any
+resource whose release cycle and availability your team cannot influence.
+
+External dependencies are the primary case where test doubles add value. A test double for an
+external API verifies your integration logic without relying on network availability or
+third-party rate limits. By contrast, mocking internal code - another class in the same
+repository or a module your team owns - creates fragile tests that break whenever the internal
+implementation changes, even when the behavior is correct.
+
+When evaluating whether to mock something, ask: "Can my team change this code and release it
+in our pipeline?" If yes, it is an internal dependency and should be tested through real code
+paths. If no, it is an external dependency and a test double is appropriate.
+
+See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
 
 ## F
 
