@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-A developer pushes a change. The [pipeline](../../glossary/#pipeline) fails on a test they did not touch, in a module they
+A developer pushes a change. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) fails on a test they did not touch, in a module they
 did not change. They click rerun. It passes. They merge. This happens multiple times a day across
 the team. Nobody investigates failures on the first occurrence because the odds favor flakiness
 over a real problem.
@@ -34,11 +34,11 @@ Replacing E2E tests with functional tests that use test doubles for external dep
 the suite deterministic by design. The test produces the same result every time because it
 controls all its inputs.
 
-**Read more:** [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/)
+**Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
 ### Snowflake Environments
 
-When the [CI](../../glossary/#ci-continuous-integration) environment is configured differently from other environments - or drifts over time -
+When the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) environment is configured differently from other environments - or drifts over time -
 tests pass locally but fail in CI, or pass in CI on Tuesday but fail on Wednesday. The
 inconsistency is not in the test or the code but in the environment the test runs in.
 
@@ -46,7 +46,7 @@ Tests that depend on specific environment configurations, installed packages, fi
 or network access are vulnerable to environment drift. Infrastructure-as-code eliminates this
 class of flakiness by ensuring environments are identical and reproducible.
 
-**Read more:** [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ### Tightly Coupled Monolith
 
@@ -58,29 +58,29 @@ but fail together, or pass in one order but fail in another.
 Without clear component boundaries, tests cannot be isolated. The flakiness is a symptom of
 architectural coupling, not a testing problem.
 
-**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ## How to narrow it down
 
 1. **Do the flaky tests hit real external services or shared environments?** If yes, the tests
    are non-deterministic by design. Start with
-   [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) and replace them with
+   [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) and replace them with
    functional tests using test doubles.
 2. **Do tests pass locally but fail in CI, or vice versa?** If yes, the environments differ.
-   Start with [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/).
+   Start with [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 3. **Do tests pass individually but fail when run together, or fail in a different order?** If
    yes, tests share mutable state. Start with
-   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/) for the
+   [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) for the
    architectural root cause, and isolate test data as an immediate fix.
 
 ---
 
-**Ready to fix this?** The most common cause is [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/). Start with its [How to Fix It](../../anti-patterns/testing/inverted-test-pyramid/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Tests Pass in One Environment but Fail in Another](../environment-dependent-failures/) - Environment differences cause similar non-determinism
-- [Test Suite Is Too Slow to Run](../slow-test-suites/) - Flaky tests compound slow feedback loops
-- [Inverted Test Pyramid](../../anti-patterns/testing/inverted-test-pyramid/) - The most common structural cause of flaky tests
-- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building a fast, reliable test suite
-- [Change Fail Rate](../../metrics/change-fail-rate/) - Track whether test reliability improvements reduce production failures
+- [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment differences cause similar non-determinism
+- [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Flaky tests compound slow feedback loops
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - The most common structural cause of flaky tests
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building a fast, reliable test suite
+- [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track whether test reliability improvements reduce production failures

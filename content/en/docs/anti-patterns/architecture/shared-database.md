@@ -168,7 +168,7 @@ Before removing any direct database access, add an API endpoint that provides th
    currently query for directly.
 2. Write contract tests: the owning service verifies the API response matches the contract, and
    consuming services verify their code works against the contract. See
-   [No Contract Testing](../testing/no-contract-testing/) for specifics.
+   [No Contract Testing]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) for specifics.
 3. Deploy the endpoint but do not switch consumers yet. Run it alongside the direct database access.
 
 This is the safest phase. If the API has a bug, consumers are still using the database directly.
@@ -223,14 +223,14 @@ and making others write through that service's API.
 | Tables with multiple-service write access | Should decrease toward zero as ownership is clarified |
 | Schema change lead time | Should decrease as changes become internal to the owning service |
 | Cross-team coordination events per deployment | Should decrease as services gain independent data ownership |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as coordination overhead per release drops |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as schema migrations stop blocking delivery |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as coordination overhead per release drops |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as schema migrations stop blocking delivery |
 | Failed deployments due to schema mismatch | Should decrease toward zero as direct cross-service database access is removed |
 
 ## Related Content
 
-- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - The broader strategy for reducing service coupling
-- [No Contract Testing](../testing/no-contract-testing/) - Verifying API boundaries between services
-- [Premature Microservices](../premature-microservices/) - When splitting services creates more coupling than it removes
-- [Distributed Monolith](../distributed-monolith/) - The shared database is the most common cause of the distributed monolith pattern
-- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Independent data ownership is a prerequisite for independent deployment paths
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - The broader strategy for reducing service coupling
+- [No Contract Testing]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) - Verifying API boundaries between services
+- [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - When splitting services creates more coupling than it removes
+- [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - The shared database is the most common cause of the distributed monolith pattern
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Independent data ownership is a prerequisite for independent deployment paths

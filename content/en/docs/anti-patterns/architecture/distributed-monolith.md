@@ -182,14 +182,14 @@ access when all consumers have migrated.
 | Services that must deploy together | Should decrease as boundaries are corrected |
 | Synchronous call chain depth | Should decrease as chains are broken with async events |
 | Shared database tables | Should decrease toward zero as each service owns its data |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as coordinated releases are replaced by independent deployments |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as cascading failures are eliminated |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as coordinated releases are replaced by independent deployments |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as cascading failures are eliminated |
 | Deployment coordination events per month | Should decrease toward zero |
 
 ## Related Content
 
-- [Tightly Coupled Monolith](../tightly-coupled-monolith/) - The same coupling problem in a single codebase
-- [Premature Microservices](../premature-microservices/) - When the problem is not wrong boundaries but unnecessary decomposition
-- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Strategies for creating real service boundaries
-- [Horizontal Slicing](../../team-workflow/horizontal-slicing/) - Technical-layer decomposition that produces distributed monoliths
-- [Multiple Services Must Be Deployed Together](../../../symptoms/deployment/coordinated-deployments/) - The primary symptom of a distributed monolith
+- [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - The same coupling problem in a single codebase
+- [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - When the problem is not wrong boundaries but unnecessary decomposition
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Strategies for creating real service boundaries
+- [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - Technical-layer decomposition that produces distributed monoliths
+- [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - The primary symptom of a distributed monolith

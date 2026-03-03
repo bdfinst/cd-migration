@@ -24,17 +24,17 @@ The underlying issue is that the deployment process does not account for the ser
 
 Stateful service deployments require precise sequencing: drain connections, allow in-flight requests to complete, terminate the old instance, start the new one, allow it to warm up before accepting traffic. Manual deployments rely on humans executing this sequence correctly under time pressure, from memory, without making mistakes.
 
-Automated deployment [pipelines](../../glossary/#pipeline) that include graceful shutdown hooks, configurable drain timeouts, and health check gates before traffic routing eliminate the human sequencing requirement. The procedure is defined once, tested in lower environments, and executed consistently in production. Deployments that previously caused dropped sessions or cold-start spikes complete without service interruption because the sequencing is never skipped.
+Automated deployment [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) that include graceful shutdown hooks, configurable drain timeouts, and health check gates before traffic routing eliminate the human sequencing requirement. The procedure is defined once, tested in lower environments, and executed consistently in production. Deployments that previously caused dropped sessions or cold-start spikes complete without service interruption because the sequencing is never skipped.
 
-**Read more:** [Manual deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Missing deployment pipeline
 
-A pipeline can enforce graceful shutdown logic, connection drain periods, and health check gates as part of every deployment. [Blue-green deployments](../../glossary/#blue-green-deployment) - starting the new instance alongside the old one, waiting for it to become healthy, then shifting traffic - eliminate the downtime window entirely for stateless services and reduce it dramatically for stateful ones.
+A pipeline can enforce graceful shutdown logic, connection drain periods, and health check gates as part of every deployment. [Blue-green deployments]({{< relref "/docs/reference/glossary#blue-green-deployment" >}}) - starting the new instance alongside the old one, waiting for it to become healthy, then shifting traffic - eliminate the downtime window entirely for stateless services and reduce it dramatically for stateful ones.
 
 Without a pipeline, each deployment is a custom procedure executed by the operator on duty. The procedure may exist in a runbook, but runbooks are not enforced - they are consulted selectively and executed inconsistently.
 
-**Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ### Snowflake environments
 
@@ -42,12 +42,12 @@ When staging environments do not replicate the stateful characteristics of produ
 
 Environments that match production in scale and configuration allow stateful deployment procedures to be validated with confidence. The drain timing is calibrated to real traffic patterns, so the procedure that completes cleanly in staging also completes cleanly in production - and deployments stop causing outages that only surface under real load.
 
-**Read more:** [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ## How to narrow it down
 
-1. **Is there an automated drain and graceful shutdown procedure for stateful services?** If drain is manual or undocumented, the deployment will cause interruptions whenever the procedure is not followed perfectly. Start with [Manual deployments](../../anti-patterns/pipeline/manual-deployments/).
-2. **Does the pipeline include health check gates before routing traffic to the new instance?** If traffic switches before the new instance is healthy, users hit the new instance while it is still warming up. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
-3. **Do staging environments match production in connection volume and load characteristics?** If not, drain timing and warm-up behavior validated in staging will not generalize. Start with [Snowflake environments](../../anti-patterns/pipeline/snowflake-environments/).
+1. **Is there an automated drain and graceful shutdown procedure for stateful services?** If drain is manual or undocumented, the deployment will cause interruptions whenever the procedure is not followed perfectly. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
+2. **Does the pipeline include health check gates before routing traffic to the new instance?** If traffic switches before the new instance is healthy, users hit the new instance while it is still warming up. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+3. **Do staging environments match production in connection volume and load characteristics?** If not, drain timing and warm-up behavior validated in staging will not generalize. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 
-**Ready to fix this?** The most common cause is [Manual deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.

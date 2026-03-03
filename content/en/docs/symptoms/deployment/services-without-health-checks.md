@@ -26,20 +26,20 @@ When observability is not a team-wide practice and value, it does not get built 
 
 Establishing observability as a first-class delivery requirement - part of the definition of done for any service - ensures that new services ship with production readiness built in rather than bolted on after the first incident. The situation where a service runs unmonitored in production for weeks stops occurring because no service can reach production without meeting the standard.
 
-**Read more:** [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Missing deployment pipeline
 
-A [pipeline](../../glossary/#pipeline) can enforce deployment standards as a condition of promotion to production. A pipeline stage that checks for a functioning health endpoint, at least one defined alert, and the service appearing in the runbook prevents services from bypassing the standard. When the check fails, the deployment fails, and the engineer must add the missing observability before proceeding.
+A [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can enforce deployment standards as a condition of promotion to production. A pipeline stage that checks for a functioning health endpoint, at least one defined alert, and the service appearing in the runbook prevents services from bypassing the standard. When the check fails, the deployment fails, and the engineer must add the missing observability before proceeding.
 
 Without this gate in the pipeline, observability requirements are advisory. Engineers who are under deadline pressure deploy without meeting them. The standard becomes aspirational rather than enforced.
 
-**Read more:** [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ## How to narrow it down
 
-1. **Does the deployment pipeline check for a functioning health endpoint before production deployment?** If not, services can ship without health checks and nobody will know until an incident. Start with [Missing deployment pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
-2. **Does the team have an explicit standard for what a service needs before it goes to production?** If the standard does not exist or is not enforced, services will reflect individual engineer habits rather than a team baseline. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
-3. **Are there services in production with no associated alerts?** If yes, those services will cause incidents that the team discovers from user reports rather than monitoring. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
+1. **Does the deployment pipeline check for a functioning health endpoint before production deployment?** If not, services can ship without health checks and nobody will know until an incident. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+2. **Does the team have an explicit standard for what a service needs before it goes to production?** If the standard does not exist or is not enforced, services will reflect individual engineer habits rather than a team baseline. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
+3. **Are there services in production with no associated alerts?** If yes, those services will cause incidents that the team discovers from user reports rather than monitoring. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
 
-**Ready to fix this?** The most common cause is [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations#how-to-fix-it" >}}) section for week-by-week steps.

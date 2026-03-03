@@ -3,10 +3,10 @@ title: "Learning Paths"
 description: >
   Curated reading paths through the CD Migration Guide, organized by role and goal.
   Follow a path end-to-end or jump in at the step that matches where your team is today.
-weight: 15
+weight: 16
 ---
 
-The [CD](glossary/#cd-continuous-delivery) Migration Guide covers a lot of ground. These paths cut through it by role and goal,
+The [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Migration Guide covers a lot of ground. These paths cut through it by role and goal,
 giving you a sequenced route from your current pain to a concrete improvement. Each path is
 self-contained - you do not need to read the whole guide to follow one.
 
@@ -21,13 +21,13 @@ still reach production despite high coverage. This path takes you from recognizi
 to understanding the root causes, then gives you the fix guide and the structural changes that
 prevent recurrence.
 
-1. [Tests Randomly Pass or Fail](symptoms/testing/flaky-tests/) - confirm the symptom
-2. [Slow Test Suites](symptoms/testing/slow-test-suites/) - related pain
-3. [Inverted Test Pyramid](anti-patterns/testing/inverted-test-pyramid/) - root cause
-4. [Manual Testing Only](anti-patterns/testing/manual-testing-only/) - root cause
-5. [Testing Fundamentals](migrate-to-cd/migration-path/foundations/testing-fundamentals/) - fix guide
-6. [Testing and Observability Gaps](defect-sources/testing-and-observability-gaps/) - prevent recurrence
-7. [Pipeline Reference Architecture](pipeline-reference-architecture/) - quality gate placement
+1. [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - confirm the symptom
+2. [Slow Test Suites]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - related pain
+3. [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - root cause
+4. [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}) - root cause
+5. [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - fix guide
+6. [Testing and Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - prevent recurrence
+7. [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - quality gate placement
 
 ---
 
@@ -40,13 +40,13 @@ evidence before proposing changes. This path helps you identify which symptoms a
 situation, attach a cost to them, find the root cause in your process, and then point to
 research-backed capabilities and a concrete starting step.
 
-1. [For Managers](symptoms/for-managers/) - identify your team's symptoms
-2. [Infrequent Releases](symptoms/deployment/infrequent-releases/) - quantify the cost
-3. [Missing Deployment Pipeline](anti-patterns/pipeline/missing-deployment-pipeline/) - name the root cause
-4. [CAB Approval Gates](anti-patterns/organizational-cultural/cab-gates/) - address the process gap
-5. [DORA Recommended Practices](dora-capabilities/) - the research backing
-6. [Phase 0 - Assess](migrate-to-cd/migration-path/assess/) - start here with your team
-7. [Baseline Metrics](migrate-to-cd/migration-path/assess/baseline-metrics/) - measure before you change
+1. [For Managers]({{< relref "/docs/symptoms/for-managers" >}}) - identify your team's symptoms
+2. [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - quantify the cost
+3. [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - name the root cause
+4. [CAB Approval Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}) - address the process gap
+5. [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}) - the research backing
+6. [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - start here with your team
+7. [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - measure before you change
 
 ---
 
@@ -54,19 +54,19 @@ research-backed capabilities and a concrete starting step.
 
 **Audience:** Tech Lead | **Time investment:** Ongoing over the migration
 
-Your team has an existing system, existing habits, and real [constraints](glossary/#constraint). A greenfield guide
+Your team has an existing system, existing habits, and real [constraints]({{< relref "/docs/reference/glossary#constraint" >}}). A greenfield guide
 will not help you here. This path starts with diagnostic framing, walks through the full
 phased migration from assess through optimize, and closes with the defect source catalog so
 you understand what you are structurally preventing as you build each capability.
 
-1. [Start Here](start-here/) - diagnostic framing
-2. [Triage Your Symptoms](triage/) - interactive diagnostic
-3. [Brownfield Migration](migrate-to-cd/brownfield/) - context for existing systems
-4. [Phase 0 - Assess](migrate-to-cd/migration-path/assess/) - value stream and baselines
-5. [Phase 1 - Foundations](migrate-to-cd/migration-path/foundations/) - trunk, tests, build
-6. [Phase 2 - Pipeline](migrate-to-cd/migration-path/pipeline/) - automation path
-7. [Phase 3 - Optimize](migrate-to-cd/migration-path/optimize/) - flow and metrics
-8. [Systemic Defect Sources](defect-sources/) - understand what you are preventing
+1. [Start Here]({{< relref "/docs/start-here" >}}) - diagnostic framing
+2. [Triage Your Symptoms]({{< relref "/docs/triage" >}}) - interactive diagnostic
+3. [Brownfield Migration]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - context for existing systems
+4. [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - value stream and baselines
+5. [Phase 1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) - trunk, tests, build
+6. [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - automation path
+7. [Phase 3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) - flow and metrics
+8. [Systemic Defect Sources]({{< relref "/docs/reference/defect-sources" >}}) - understand what you are preventing
 
 ---
 
@@ -74,18 +74,18 @@ you understand what you are structurally preventing as you build each capability
 
 **Audience:** Developer or Tech Lead | **Time investment:** 2-4 hours of reading, then ongoing practice
 
-AI [agents](glossary/#agent-ai) writing and submitting code are a new kind of contributor with a different failure
+AI [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) writing and submitting code are a new kind of contributor with a different failure
 profile. This path explains what changes with agents in the loop, walks through the constraint
 model and workflow architecture, and then covers the concrete setup, session discipline, and
 quality gates needed to keep agent output safe to ship.
 
-1. [Agentic CD Overview](agentic-cd/) - what changes with AI agents
-2. [Agent Delivery Contract](agentic-cd/specification/first-class-artifacts/) - the constraint model
-3. [Agentic Architecture](agentic-cd/architecture/agentic-architecture/) - skills, agents, hooks
-4. [Agent Configuration](agentic-cd/architecture/agent-configuration/) - concrete setup
-5. [Small-Batch Sessions](agentic-cd/architecture/small-batch-sessions/) - discipline for agent work
-6. [Pipeline Enforcement](agentic-cd/operations/pipeline-enforcement/) - quality gates for agent output
-7. [Pitfalls and Metrics](agentic-cd/operations/pitfalls-and-metrics/) - what goes wrong and how to measure
+1. [Agentic CD Overview]({{< relref "/docs/agentic-cd" >}}) - what changes with AI agents
+2. [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the constraint model
+3. [Agentic Architecture]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - skills, agents, hooks
+4. [Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) - concrete setup
+5. [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) - discipline for agent work
+6. [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - quality gates for agent output
+7. [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - what goes wrong and how to measure
 
 ---
 
@@ -93,8 +93,8 @@ quality gates needed to keep agent output safe to ship.
 
 If your team is partway through a migration, jump in at the relevant phase:
 
-- [Phase 0 - Assess](migrate-to-cd/migration-path/assess/) - you know something is wrong but have not measured it yet
-- [Phase 1 - Foundations](migrate-to-cd/migration-path/foundations/) - you have committed to CD but lack the basics
-- [Phase 2 - Pipeline](migrate-to-cd/migration-path/pipeline/) - you have basics in place and need a reliable automated path
-- [Phase 3 - Optimize](migrate-to-cd/migration-path/optimize/) - your [pipeline](../glossary/#pipeline) works but flow is still slow or unreliable
-- [Phase 4 - Continuous Deployment](migrate-to-cd/migration-path/continuous-deployment/) - you deploy frequently and want to remove the last manual gates
+- [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - you know something is wrong but have not measured it yet
+- [Phase 1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) - you have committed to CD but lack the basics
+- [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - you have basics in place and need a reliable automated path
+- [Phase 3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) - your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) works but flow is still slow or unreliable
+- [Phase 4 - Continuous Deployment]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) - you deploy frequently and want to remove the last manual gates

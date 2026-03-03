@@ -243,16 +243,16 @@ Expect pushback and address it directly:
 | Metric | What to look for |
 |--------|-----------------|
 | Gate wait time | Should decrease as automated criteria replace manual review scope |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as the per-release ceremony drops |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as gate wait time is removed from the delivery cycle |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as the per-release ceremony drops |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as gate wait time is removed from the delivery cycle |
 | Gate rejection rate | Should decrease as automated tests catch bugs before they reach the gate |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should remain stable or improve as automated criteria are strengthened |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as deployments, including hotfixes, are no longer queued behind a manual gate |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should remain stable or improve as automated criteria are strengthened |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as deployments, including hotfixes, are no longer queued behind a manual gate |
 
 ## Related Content
 
-- [Testing Only at the End](../testing-only-at-the-end/) - The upstream pattern that makes the manual gate feel necessary
-- [Manual Regression Testing Gates](../manual-regression-testing-gates/) - The specific regression testing practice that often drives this gate
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building the automated coverage that replaces manual gate function
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Encoding quality criteria in the pipeline rather than in individual approvals
-- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using data from the gate audit to prioritize test automation investment
+- [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}) - The upstream pattern that makes the manual gate feel necessary
+- [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - The specific regression testing practice that often drives this gate
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the automated coverage that replaces manual gate function
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Encoding quality criteria in the pipeline rather than in individual approvals
+- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using data from the gate audit to prioritize test automation investment

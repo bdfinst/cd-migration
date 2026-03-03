@@ -228,15 +228,15 @@ pass.
 |--------|-----------------|
 | Number of active release branches | Should decrease toward one and eventually zero |
 | Backport operations per sprint | Should decrease as branches are retired |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as the backport overhead is removed from the development workflow |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Should decrease as fixes no longer need to propagate through multiple branches |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as the backport overhead is removed from the development workflow |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as fixes no longer need to propagate through multiple branches |
 | Bug regression rate on release branches | Should decrease as backporting with conflict resolution is eliminated |
-| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as work consolidates on trunk |
+| [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as work consolidates on trunk |
 
 ## Related Content
 
-- [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - The model that eliminates the need for release branches
-- [Cherry-Pick Releases](../cherry-pick-releases/) - The earlier-stage pattern that often precedes extensive release branching
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - Small releases reduce the business pressure to maintain old versions
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Decomposing work for safe incremental delivery without version branching
-- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Why multiple release branches undermine pipeline effectiveness
+- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - The model that eliminates the need for release branches
+- [Cherry-Pick Releases]({{< relref "/docs/anti-patterns/branching-integration/cherry-pick-releases" >}}) - The earlier-stage pattern that often precedes extensive release branching
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Small releases reduce the business pressure to maintain old versions
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Decomposing work for safe incremental delivery without version branching
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Why multiple release branches undermine pipeline effectiveness

@@ -58,7 +58,7 @@ feedback during development. A suite that runs in minutes gives feedback before 
 moves on. A suite that runs in 30 or more minutes gives feedback after the developer has started
 something else entirely.
 
-When the suite takes 40 minutes, developers do not run it locally. They push to [CI](../../glossary/#ci-continuous-integration) and context-
+When the suite takes 40 minutes, developers do not run it locally. They push to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) and context-
 switch to a different task. When the result comes back, they have lost the mental model of the
 code they changed. Investigating a failure takes longer because they have to re-read their own
 code. Fixing the failure takes longer because they are now juggling two streams of work.
@@ -107,11 +107,11 @@ logic changes, a handful of focused tests need updating - not thirty browser flo
 
 When most of your tests are end-to-end or integration tests that hit real services, your ability
 to deploy depends on every system in the chain being available and healthy. If the payment
-provider's sandbox is down, your [pipeline](../../glossary/#pipeline) fails. If the shared staging database is slow, your
+provider's sandbox is down, your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) fails. If the shared staging database is slow, your
 tests time out. If another team deployed a breaking change to a shared service, your tests fail
 even though your code is correct.
 
-This is the opposite of what [CD](../../glossary/#cd-continuous-delivery) requires. Continuous delivery demands that your team can deploy
+This is the opposite of what [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires. Continuous delivery demands that your team can deploy
 independently, at any time, regardless of the state of external systems. A test architecture
 built on E2E tests makes your deployment hostage to every dependency in your ecosystem.
 
@@ -140,7 +140,7 @@ value it provides. The target architecture looks like this:
 | Test type | Role | Runs in pipeline? | Uses real external services? |
 |-----------|------|-------------------|----------------------------|
 | **Unit** | Verify high-complexity logic - business rules, calculations, edge cases | Yes, gates the build | No |
-| **Functional** | Verify component behavior from the actor's perspective with [test doubles](../../../testing/test-doubles/) for external dependencies | Yes, gates the build | No (localhost only) |
+| **Functional** | Verify component behavior from the actor's perspective with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) for external dependencies | Yes, gates the build | No (localhost only) |
 | **Contract** | Validate that test doubles still match live external services | Asynchronously, does not gate | Yes |
 | **E2E** | Smoke-test critical business paths in a fully integrated environment | Post-deploy verification only | Yes |
 
@@ -175,12 +175,12 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
 2. Write functional tests from the actor's perspective. A user submitting a form, a service
    calling an API endpoint, a consumer reading from a queue. Test through the component's public
    interface.
-3. Replace external dependencies with [test doubles](../../../testing/test-doubles/).
+3. Replace external dependencies with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}).
    Use in-memory databases or testcontainers for data stores, HTTP stubs (WireMock, nock, MSW)
    for external APIs, and fakes or spies for message queues. Prefer running a dependency locally
    over mocking it entirely - don't poke more holes in reality than you need to stay
    deterministic.
-4. Add [contract tests](../../../testing/contract/) to validate that your test doubles
+4. Add [contract tests]({{< relref "/docs/reference/testing/contract" >}}) to validate that your test doubles
    still match the real services. Contract tests verify format, not specific data. Run them
    asynchronously - they should not block the build, but failures should trigger investigation.
 
@@ -191,7 +191,7 @@ replacement makes the suite faster and more reliable.
 
 While building out functional tests, identify the high-complexity logic within each component -
 discount calculations, eligibility rules, parsing, validation. Write unit tests for these using
-[TDD](../../glossary/#tdd-test-driven-development): failing test first, implementation, then refactor.
+[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}): failing test first, implementation, then refactor.
 
 Test public APIs, not private methods. If a refactoring that preserves behavior breaks your unit
 tests, the tests are coupled to implementation details. Move that coverage up to a functional
@@ -238,7 +238,7 @@ the expense of clarity.
 
 | Metric | What to look for |
 |--------|-----------------|
-| Test suite duration | Should decrease toward [under 10 minutes](../../../testing/feedback-speed/) |
+| Test suite duration | Should decrease toward [under 10 minutes]({{< relref "/docs/reference/testing/feedback-speed" >}}) |
 | Flaky test count in gating suite | Should reach and stay at zero |
 | Functional test coverage of key components | Should increase as E2E tests are replaced |
 | E2E test count | Should decrease to a small set of critical-path smoke tests |
@@ -256,10 +256,10 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture guide for CD pipelines
-- [Unit Tests](../../../testing/unit/) - Writing fast, deterministic tests for logic
-- [Functional Tests](../../../testing/functional/) - Testing your system in isolation with test doubles
-- [Contract Tests](../../../testing/contract/) - Verifying that test doubles match reality
-- [Test Doubles](../../../testing/test-doubles/) - Techniques for replacing external dependencies in tests
-- [End-to-End Tests](../../../testing/e2e/) - When and how to use E2E tests appropriately
-- [Testing & Observability Gaps](../../defect-sources/testing-and-observability-gaps/) - the defect categories this anti-pattern fails to catch.
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
+- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Writing fast, deterministic tests for logic
+- [Functional Tests]({{< relref "/docs/reference/testing/functional" >}}) - Testing your system in isolation with test doubles
+- [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) - Verifying that test doubles match reality
+- [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Techniques for replacing external dependencies in tests
+- [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) - When and how to use E2E tests appropriately
+- [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - the defect categories this anti-pattern fails to catch.

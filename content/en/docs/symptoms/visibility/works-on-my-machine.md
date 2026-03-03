@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-A developer runs the application locally and everything works. They push to [CI](../../glossary/#ci-continuous-integration) and the build
+A developer runs the application locally and everything works. They push to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) and the build
 fails. Or a teammate pulls the same branch and gets a different result. Or a bug report comes in
 that nobody can reproduce locally.
 
@@ -36,7 +36,7 @@ machine becomes unique. One developer installed Python 3.9, another has 3.11. On
 Reproducible, containerized development environments eliminate the variance by ensuring every
 developer works in an identical setup.
 
-**Read more:** [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ### Manual Deployments
 
@@ -45,7 +45,7 @@ identically. Each developer interprets the instructions slightly differently, in
 different version, or skips a step that seems optional. The manual process guarantees divergence
 over time. Infrastructure as code and automated setup scripts ensure consistency.
 
-**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Tightly Coupled Monolith
 
@@ -55,29 +55,29 @@ differences. Well-designed code with explicit, declared dependencies works the s
 everywhere. Code that reaches into its runtime environment for undeclared dependencies works only
 where those dependencies happen to exist.
 
-**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ## How to narrow it down
 
 1. **Do all developers use the same OS, runtime versions, and dependency versions?** If not,
    environment divergence is the most likely cause. Start with
-   [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/).
+   [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 2. **Is the development environment setup automated or manual?** If it is a wiki page that takes
    a day to follow, the manual process creates the divergence. Start with
-   [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+   [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 3. **Does the application depend on local services, file paths, or system configuration that is
    not declared in the codebase?** If the application has implicit environmental dependencies,
    it will behave differently wherever those dependencies differ. Start with
-   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+   [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 
 ---
 
-**Ready to fix this?** The most common cause is [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Tests Pass in One Environment but Fail in Another](../../symptoms/testing/environment-dependent-failures/) - The same root cause manifests in both development and testing
-- [Staging Passes but Production Fails](../../symptoms/deployment/staging-passes-production-fails/) - Environment inconsistency at the deployment stage
-- [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Unique environments that diverge over time
-- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making all environments consistent and reproducible
-- [Everything as Code](../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Infrastructure and configuration managed in version control
+- [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - The same root cause manifests in both development and testing
+- [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Environment inconsistency at the deployment stage
+- [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Unique environments that diverge over time
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Making all environments consistent and reproducible
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Infrastructure and configuration managed in version control

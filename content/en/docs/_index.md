@@ -9,36 +9,25 @@ description: >
 
 {{% pageinfo %}}
 **Start with your problem, not the guide.**
-[Not sure what is wrong? Answer a few questions.](triage/) |
-[Developer symptoms](symptoms/for-developers/) |
-[Manager symptoms](symptoms/for-managers/)
+[Not sure what is wrong? Answer a few questions.]({{< relref "/docs/triage" >}}) |
+[Developer symptoms]({{< relref "/docs/symptoms/for-developers" >}}) |
+[Manager symptoms]({{< relref "/docs/symptoms/for-managers" >}})
 
-Not sure where to start? See [Learning Paths](learning-paths/) for curated reading sequences by role and goal.
-
-This guide expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and
-the production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org).
-Each adapted page includes attribution to its source material.
+New here? Read [Start Here]({{< relref "/docs/start-here" >}}) or follow a
+[Learning Path]({{< relref "/docs/learning-paths" >}}) for a guided sequence by role.
 {{% /pageinfo %}}
 
 ## Diagnose
 
-- **[Start Here](start-here/)** - [CD](glossary/#cd-continuous-delivery) and [ACD](glossary/#acd-agentic-continuous-delivery) become diagnostic tools when you take the offsetting questions seriously.
-- **[Triage](triage/)** - Answer a few questions to find the symptoms and anti-patterns that match your situation.
-- **[Dysfunction Symptoms](symptoms/)** - Observable problems teams experience, organized by testing, deployment, flow, and visibility.
-- **[Anti-Patterns](anti-patterns/)** - Common practices that undermine delivery performance, with concrete steps to fix each one.
+- **[Triage]({{< relref "/docs/triage" >}})** - Answer a few questions to find the symptoms that match your situation.
+- **[Dysfunction Symptoms]({{< relref "/docs/symptoms" >}})** - Observable problems organized by testing, deployment, flow, and visibility.
+- **[Anti-Patterns]({{< relref "/docs/anti-patterns" >}})** - Practices that undermine delivery, with steps to fix each one.
 
 ## Migrate
 
-- **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from Assess through Foundations, [Pipeline](glossary/#pipeline), Optimize, and [Continuous Deployment](glossary/#continuous-deployment).
-- **[Systemic Defect Fixes](defect-sources/)** - A catalog of defect sources with earliest detection points and systemic prevention strategies.
-- **[ACD](agentic-cd/)** - Constraints and practices for AI agent-generated changes, plus the AI adoption roadmap.
+- **[Migration Phases]({{< relref "/docs/migrate-to-cd" >}})** - Assess, Foundations, Pipeline, Optimize, Deliver on Demand.
+- **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for AI agent-generated changes.
 
 ## Reference
 
-- **[Practices](practices/)** - Core CD practice definitions from MinimumCD.
-- **[Metrics](metrics/)** - Delivery metrics definitions.
-- **[Testing](testing/)** - Testing types, patterns, and best practices.
-- **[Glossary](glossary/)** - Key terms and definitions.
-- **[FAQ](faq/)** - Common questions about continuous delivery and this migration guide.
-- **[Resources](resources/)** - Books, talks, and further reading.
-- **[Credits](credits/)** - Contributors who have helped shape this guide.
+- **[Reference Section]({{< relref "/docs/reference" >}})** - Practices, metrics, testing, pipeline architecture, glossary, FAQ, and resources.

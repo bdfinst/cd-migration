@@ -39,7 +39,7 @@ don't know, I need to ask my manager," work is being pushed.
 ## Why This Is a Problem
 
 Push-based assignment is one of the most quietly destructive practices a team can have. It
-undermines nearly every [CD](../../glossary/#cd-continuous-delivery) practice by breaking the connection between the team and the flow of
+undermines nearly every [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practice by breaking the connection between the team and the flow of
 work. Each of its effects compounds the others.
 
 ### It reduces quality
@@ -79,12 +79,12 @@ perspectives are involved earlier.
 ### It makes delivery timelines unpredictable
 
 Push assignment optimizes for utilization - keeping everyone busy - not for flow - getting things
-done. Every developer has their own assigned work, so team [WIP](../../glossary/#wip-work-in-progress) is the sum of all individual
+done. Every developer has their own assigned work, so team [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) is the sum of all individual
 assignments. There is no mechanism to say "we have too much in progress, let's finish something
 first." WIP limits become meaningless when the person assigning work doesn't see the full picture.
 
 Bottlenecks are invisible because the manager assigns around them instead of surfacing them. If one
-area of the system is a [constraint](../../glossary/#constraint), the assigner may not notice because they are looking at people,
+area of the system is a [constraint]({{< relref "/docs/reference/glossary#constraint" >}}), the assigner may not notice because they are looking at people,
 not flow. In a pull system, the bottleneck becomes obvious: work piles up in one column and nobody
 pulls it because the downstream step is full.
 
@@ -123,7 +123,7 @@ next person simply picks up the item with enough shared context to continue.
 
 ### Impact on continuous delivery
 
-Continuous delivery depends on a steady, predictable flow of small changes through the [pipeline](../../glossary/#pipeline).
+Continuous delivery depends on a steady, predictable flow of small changes through the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 Push-based assignment produces the opposite: batch-based assignment at sprint planning, uneven
 bursts of activity as different developers finish at different times, blocked work sitting idle
 because the assigned person is busy with something else, and no team-level mechanism for optimizing
@@ -187,7 +187,7 @@ Pull-based work and WIP limits reinforce each other:
   whatever the manager thinks of next.
 - Together, they create a system where work flows continuously from backlog to done.
 
-See [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) for how to set and enforce WIP limits.
+See [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) for how to set and enforce WIP limits.
 
 ### What managers do instead
 
@@ -206,19 +206,19 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 | Metric | What to look for |
 |--------|-----------------|
 | Percentage of stories pre-assigned at sprint start | Should drop to near zero |
-| [Work in progress](../../../metrics/work-in-progress/) | Should decrease as team focuses on finishing |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as swarming increases |
+| [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should decrease as team focuses on finishing |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as swarming increases |
 | Stories completed per sprint | Should stabilize or increase despite less "busyness" |
 | Rework rate | Stories returned for rework or reopened after completion - should decrease |
 | Knowledge distribution | Track who works on which parts of the system - should broaden over time |
 
 ## Related Content
 
-- [Everything Started, Nothing Finished](../../../symptoms/flow/too-much-wip/) - High WIP caused by individual assignment queues
-- [Pull Requests Sit for Days Waiting for Review](../../../symptoms/flow/prs-waiting-for-review/) - Reviews deprioritized when everyone has their own assigned work
-- [Uneven Workloads](../../../symptoms/flow/uneven-workloads/) - Imbalance that self-corrects in a pull system
-- [Blocked Work Sits Idle](../../../symptoms/flow/blocked-work-sits-idle/) - Blockers that persist because nobody feels authorized to pick up someone else's story
-- [Completed Work Misses the Intent](../../../symptoms/flow/completed-work-misses-intent/) - Rework from developers receiving tickets without business context
-- [Limiting WIP](../../../migrate-to-cd/migration-path/optimize/limiting-wip/) - Pull-based work and WIP limits are complementary practices
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - Pull works best when items are small and well-defined
-- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The team's agreement to pull, not push, should be explicit
+- [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP caused by individual assignment queues
+- [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Reviews deprioritized when everyone has their own assigned work
+- [Uneven Workloads]({{< relref "/docs/symptoms/flow/work-management/uneven-workloads" >}}) - Imbalance that self-corrects in a pull system
+- [Blocked Work Sits Idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}) - Blockers that persist because nobody feels authorized to pick up someone else's story
+- [Completed Work Misses the Intent]({{< relref "/docs/symptoms/flow/work-management/completed-work-misses-intent" >}}) - Rework from developers receiving tickets without business context
+- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Pull-based work and WIP limits are complementary practices
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Pull works best when items are small and well-defined
+- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - The team's agreement to pull, not push, should be explicit

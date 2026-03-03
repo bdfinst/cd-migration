@@ -18,9 +18,9 @@ you are seeing, identifies the most likely root causes (anti-patterns), and prov
 questions to narrow down which cause applies to your situation. Follow the anti-pattern link to
 find concrete fix steps.
 
-**Related anti-pattern categories:** [Monitoring and Observability Anti-Patterns](../../anti-patterns/monitoring-observability/),
-[Organizational and Cultural Anti-Patterns](../../anti-patterns/organizational-cultural/)
+**Related anti-pattern categories:** [Monitoring and Observability Anti-Patterns]({{< relref "/docs/anti-patterns/monitoring-observability" >}}),
+[Organizational and Cultural Anti-Patterns]({{< relref "/docs/anti-patterns/organizational-cultural" >}})
 
-**Related guides:** [Progressive Rollout](../../migrate-to-cd/migration-path/continuous-deployment/progressive-rollout/),
-[Working Agreements](../../migrate-to-cd/migration-path/foundations/working-agreements/),
-[Metrics-Driven Improvement](../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/)
+**Related guides:** [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}),
+[Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}),
+[Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})

@@ -54,7 +54,7 @@ number of directory segments between P and `content/en/docs/`:
 
 - `content/en/docs/agentic-cd/small-batch-sessions.md` → 1 level deep → `../glossary/`
 - `content/en/docs/anti-patterns/team-workflow/horizontal-slicing.md` → 2 levels deep → `../../glossary/`
-- `content/en/docs/migrate-to-cd/migration-path/foundations/work-decomposition.md` → 3 levels deep → `../../../glossary/`
+- `content/en/docs/migrate-to-cd/foundations/work-decomposition.md` → 3 levels deep → `../../../glossary/`
 
 The full link format: `[term text](RELATIVE_PATH#anchor)`
 

@@ -105,19 +105,19 @@ to the hidden coupling in the code.
 
 ### Impact on continuous delivery
 
-[Continuous delivery](../../glossary/#cd-continuous-delivery) depends on a fast, reliable automated test suite. Without that suite, the
-[pipeline](../../glossary/#pipeline) cannot provide the safety signal that makes frequent deployment safe. If tests cannot run
+[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) depends on a fast, reliable automated test suite. Without that suite, the
+[pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) cannot provide the safety signal that makes frequent deployment safe. If tests cannot run
 in isolation, the pipeline either skips them (dangerous) or depends on heavyweight infrastructure
 (slow and fragile). Either outcome makes continuous delivery impractical.
 
 CD pipelines are designed to provide feedback in minutes, not hours. A test suite that requires a
 live database, external APIs, and environmental setup to run is incompatible with that requirement.
-The pipeline becomes the bottleneck that limits [deployment frequency](../../glossary/#deployment-frequency), rather than the automation
+The pipeline becomes the bottleneck that limits [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), rather than the automation
 that enables it. Teams cannot confidently deploy multiple times per day when every test run requires
 30 minutes and a set of live external services.
 
 Untestable architecture is often the root cause when teams say "we can't go faster - we need more
-QA time." The real [constraint](../../glossary/#constraint) is not QA capacity. It is the absence of a test suite that can verify
+QA time." The real [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) is not QA capacity. It is the absence of a test suite that can verify
 changes quickly and automatically.
 
 ## How to Fix It
@@ -267,16 +267,16 @@ between components, not the business rules inside each one.
 | Metric | What to look for |
 |--------|-----------------|
 | Unit test count | Should increase as seams are created; more tests without infrastructure dependencies |
-| [Build duration](../../../metrics/build-duration/) | Should decrease as infrastructure-dependent tests are replaced with fast unit tests |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Should decrease as infrastructure-dependent tests are replaced with fast unit tests |
 | Test suite pass rate | Should increase as flaky infrastructure-dependent tests are replaced with deterministic doubles |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as test coverage catches regressions before deployment |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as developers get faster feedback from the test suite |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as test coverage catches regressions before deployment |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as developers get faster feedback from the test suite |
 | Files with test coverage | Should increase as refactoring progresses; track by module |
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Building the test suite that testable architecture enables
-- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Module boundaries that make injection points natural
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - Integrating the test suite into every build
-- [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - Finding the untestable modules that cause the most pain
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Why a reliable pipeline requires fast, isolated tests
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the test suite that testable architecture enables
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Module boundaries that make injection points natural
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Integrating the test suite into every build
+- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Finding the untestable modules that cause the most pain
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Why a reliable pipeline requires fast, isolated tests

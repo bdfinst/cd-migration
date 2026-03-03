@@ -105,16 +105,16 @@ Some organizations need a single shared environment as a final integration check
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Lead time](../../../metrics/lead-time/) | Reduction in time spent waiting for staging environment access |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Decline in production failures as isolated environments catch environment-specific bugs reliably |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Faster cycle time as staging wait and contention debugging are eliminated from the workflow |
-| [Work in progress](../../../metrics/work-in-progress/) | Reduction in changes queued waiting for staging, as teams no longer serialize on a shared resource |
-| [Release frequency](../../../metrics/release-frequency/) | Teams deploy more often once the shared environment bottleneck is removed |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in time spent waiting for staging environment access |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Decline in production failures as isolated environments catch environment-specific bugs reliably |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Faster cycle time as staging wait and contention debugging are eliminated from the workflow |
+| [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in changes queued waiting for staging, as teams no longer serialize on a shared resource |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often once the shared environment bottleneck is removed |
 
 ## Related Content
 
-- [Production-like environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/)
-- [No infrastructure as code](../no-infrastructure-as-code/)
-- [No environment parity](../no-environment-parity/)
-- [Pipeline architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/)
-- [Small batches](../../../migrate-to-cd/migration-path/optimize/small-batches/)
+- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
+- [No environment parity]({{< relref "/docs/anti-patterns/pipeline/no-environment-parity" >}})
+- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
+- [Small batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}})

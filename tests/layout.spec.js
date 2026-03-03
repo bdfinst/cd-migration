@@ -3,8 +3,8 @@ const { test, expect } = require('@playwright/test');
 const BASE_URL = process.env.BASE_URL || 'http://localhost:8080';
 
 const PAGES_TO_CHECK = [
-  '/docs/migrate-to-cd/migration-path/foundations/trunk-based-development/',
-  '/docs/migrate-to-cd/migration-path/foundations/trunk-based-development/tbd-migration/',
+  '/docs/migrate-to-cd/foundations/trunk-based-development/',
+  '/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration/',
   '/docs/agentic-cd/getting-started/adoption-roadmap/',
   '/docs/agentic-cd/specification/agent-assisted-specification/',
   '/docs/agentic-cd/architecture/agent-configuration/',

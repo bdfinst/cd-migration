@@ -54,7 +54,7 @@ cascade breakage across boundaries that humans had learned to navigate carefully
 This is not a flaw in the agents. It is the diagnostic working as intended.
 
 For the full picture on ACD constraints and practices, see the
-[ACD](agentic-cd/) section.
+[ACD]({{< relref "/docs/agentic-cd" >}}) section.
 
 ## Fix the System, Not the Symptoms
 
@@ -72,8 +72,8 @@ For the full argument, see
 
 ## Where to Go Next
 
-- **[Triage](triage/)** - Answer a few questions to identify your most likely dysfunction.
-- **[Dysfunction Symptoms](symptoms/)** - Browse observable problems by category.
-- **[Migration Phases](migrate-to-cd/migration-path/)** - A phased path from assessment
+- **[Triage]({{< relref "/docs/triage" >}})** - Answer a few questions to identify your most likely dysfunction.
+- **[Dysfunction Symptoms]({{< relref "/docs/symptoms" >}})** - Browse observable problems by category.
+- **[Migration Phases]({{< relref "/docs/migrate-to-cd" >}})** - A phased path from assessment
   through continuous deployment.
-- **[Agentic CD](agentic-cd/)** - Constraints and practices for AI agent-generated changes.
+- **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for AI agent-generated changes.

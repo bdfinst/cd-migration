@@ -33,7 +33,7 @@ Service B if Service B is not updated at the same time. The architecture forces 
 because the boundaries between services are not real boundaries. They are implementation details
 that leak across service lines.
 
-**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ### Distributed Monolith
 
@@ -50,17 +50,17 @@ benefits (independent deployment, team autonomy, fault isolation). Deploying one
 requires deploying the others because the boundaries do not correspond to independent units of
 business functionality.
 
-**Read more:** [Distributed Monolith](../../anti-patterns/architecture/distributed-monolith/)
+**Read more:** [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}})
 
 ### Horizontal Slicing
 
 When work for a feature is decomposed by service ("Team A builds the API, Team B updates the UI,
 Team C modifies the processor"), each team's change is incomplete on its own. Nothing is
-[deployable](../../glossary/#deployable) until all teams finish their part. The decomposition created the coordination
+[deployable]({{< relref "/docs/reference/glossary#deployable" >}}) until all teams finish their part. The decomposition created the coordination
 requirement. Vertical slicing within each team's domain, with stable contracts between services,
 allows each team to deploy when their slice is ready.
 
-**Read more:** [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/)
+**Read more:** [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}})
 
 ### Undone Work
 
@@ -70,36 +70,36 @@ only runs during the release window. Or deployment is gated on a manual approval
 team. The coordination is not forced by the architecture but by process decisions that bundle
 independent changes into a single release event.
 
-**Read more:** [Undone Work](../../anti-patterns/team-workflow/undone-work/)
+**Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})
 
 ## How to narrow it down
 
 1. **Do services share a database or call each other without versioned contracts?** If yes, the
    architecture forces coordination. Changes to shared state or unversioned interfaces cannot be
    deployed independently. Start with
-   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+   [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 2. **Does every user-facing request require a synchronous chain across multiple services?** If a
    single business operation touches three or more services in sequence, the service boundaries
    were drawn in the wrong place. You have a distributed monolith. Start with
-   [Distributed Monolith](../../anti-patterns/architecture/distributed-monolith/).
+   [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}).
 3. **Was the feature decomposed by service or team rather than by behavior?** If each team built
    their piece of the feature independently and now all pieces must go out together, the work was
    sliced horizontally. Start with
-   [Horizontal Slicing](../../anti-patterns/team-workflow/horizontal-slicing/).
+   [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}).
 4. **Could each service technically be deployed on its own, but process or policy prevents it?**
    If the coupling is in the release process (shared release window, cross-team sign-off, manual
-   integration test gate) rather than in the code, the [constraint](../../glossary/#constraint) is organizational. Start with
-   [Undone Work](../../anti-patterns/team-workflow/undone-work/) and examine whether the definition
+   integration test gate) rather than in the code, the [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) is organizational. Start with
+   [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}) and examine whether the definition
    of done requires unnecessary coordination.
 
-**Ready to fix this?** The most common cause is [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/). Start with its [How to Fix It](../../anti-patterns/architecture/tightly-coupled-monolith/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith#how-to-fix-it" >}}) section for week-by-week steps.
 
 ---
 
 ## Related Content
 
-- [Releases Are Infrequent and Painful](../infrequent-releases/) - Coordination overhead makes releases less frequent
-- [Distributed Monolith](../../anti-patterns/architecture/distributed-monolith/) - Services that cannot deploy independently
-- [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/) - Architectural coupling that forces coordination
-- [Architecture Decoupling](../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - Breaking dependencies between services
-- [Lead Time](../../metrics/lead-time/) - Measure the cost of coordination in delivery speed
+- [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Coordination overhead makes releases less frequent
+- [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - Services that cannot deploy independently
+- [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - Architectural coupling that forces coordination
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Breaking dependencies between services
+- [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) - Measure the cost of coordination in delivery speed

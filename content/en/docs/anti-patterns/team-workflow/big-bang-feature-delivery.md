@@ -237,17 +237,17 @@ guideline.
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Work in progress](../../../metrics/work-in-progress/) | Should decrease as stories are smaller and move through the system faster |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as features are broken into deliverable slices |
-| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as developers merge to main more often |
+| [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should decrease as stories are smaller and move through the system faster |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as features are broken into deliverable slices |
+| [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as developers merge to main more often |
 | Average pull request size (lines changed) | Should decrease toward a target of under 400 net lines |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as features in flight are smaller and complete faster |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as features in flight are smaller and complete faster |
 | Production incidents per deployment | Should decrease as smaller deployments carry less risk |
 
 ## Related Content
 
-- [Work Decomposition](../../../migrate-to-cd/migration-path/foundations/work-decomposition/) - The practice of breaking large features into small, deliverable slices
-- [Feature Flags](../../../migrate-to-cd/migration-path/optimize/feature-flags/) - The mechanism that enables incremental delivery of user-invisible work
-- [Small Batches](../../../migrate-to-cd/migration-path/optimize/small-batches/) - The principle that small changes are safer and faster than large ones
-- [Monolithic Work Items](monolithic-work-items/) - A closely related anti-pattern at the story level
-- [Horizontal Slicing](horizontal-slicing/) - The anti-pattern of building all the backend before any frontend
+- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice of breaking large features into small, deliverable slices
+- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - The mechanism that enables incremental delivery of user-invisible work
+- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle that small changes are safer and faster than large ones
+- [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - A closely related anti-pattern at the story level
+- [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - The anti-pattern of building all the backend before any frontend

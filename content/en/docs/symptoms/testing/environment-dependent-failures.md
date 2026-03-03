@@ -13,8 +13,8 @@ tags:
 
 ## What you are seeing
 
-A developer runs the tests locally and they pass. They push to [CI](../../glossary/#ci-continuous-integration) and the same tests fail. Or the
-CI [pipeline](../../glossary/#pipeline) is green but the tests fail in the staging environment. The failures are not caused by
+A developer runs the tests locally and they pass. They push to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) and the same tests fail. Or the
+CI [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is green but the tests fail in the staging environment. The failures are not caused by
 a code defect. They are caused by differences between environments: a different OS version, a
 different database version, a different timezone setting, a missing environment variable, or a
 service that is available locally but not in CI.
@@ -37,7 +37,7 @@ staging environment has a third. These differences are invisible until a test ex
 path that behaves differently across versions. The fix is not to harmonize configurations manually
 (they will drift again) but to provision all environments from the same infrastructure code.
 
-**Read more:** [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/)
+**Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ### Manual Deployments
 
@@ -47,7 +47,7 @@ person with slightly different settings. The staging environment was set up mont
 been updated. Manual processes are never identical twice, and the variance causes environment-
 dependent behavior.
 
-**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Tightly Coupled Monolith
 
@@ -57,29 +57,29 @@ external state differs. Well-isolated code with explicit dependencies is portabl
 environments. Tightly coupled code that reaches into its environment for implicit dependencies is
 fragile.
 
-**Read more:** [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/)
+**Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
 ## How to narrow it down
 
 1. **Are all environments provisioned from the same infrastructure code?** If not, environment
    drift is the most likely cause. Start with
-   [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/).
+   [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 2. **Are environment setup and configuration manual?** If different people configured different
    environments, the variance is a direct result of manual processes. Start with
-   [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+   [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 3. **Do the failing tests depend on external services, filesystem paths, or system
    configuration?** If tests assume specific external state rather than declaring explicit
    dependencies, the code's coupling to its environment is the issue. Start with
-   [Tightly Coupled Monolith](../../anti-patterns/architecture/tightly-coupled-monolith/).
+   [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 
 ---
 
-**Ready to fix this?** The most common cause is [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/). Start with its [How to Fix It](../../anti-patterns/pipeline/snowflake-environments/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Tests Randomly Pass or Fail](../flaky-tests/) - Environment differences are a common cause of flaky tests
-- [It Works on My Machine](../../symptoms/visibility/works-on-my-machine/) - The same root cause affects both testing and development
-- [Snowflake Environments](../../anti-patterns/pipeline/snowflake-environments/) - Eliminating environment variance
-- [Production-Like Environments](../../migrate-to-cd/migration-path/pipeline/production-like-environments/) - Making all environments consistent
-- [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Designing tests that are environment-independent
+- [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Environment differences are a common cause of flaky tests
+- [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same root cause affects both testing and development
+- [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Eliminating environment variance
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Making all environments consistent
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Designing tests that are environment-independent

@@ -25,7 +25,7 @@ Unstructured, unaggregated logs are one form of not having instrumented a system
 
 Structured logging requires deliberate adoption: a standard log format, consistent field names, correlation identifiers on every log entry. When these are in place, a query that previously required thirty minutes of manual grepping across servers runs in seconds from a single interface.
 
-**Read more:** [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Knowledge silos
 
@@ -33,12 +33,12 @@ Understanding how to navigate the logging infrastructure - which servers hold wh
 
 When logs are aggregated into a centralized, searchable system, the knowledge of where to look is built into the tooling. Any team member can write a query without knowing the physical location of log files.
 
-**Read more:** [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/)
+**Read more:** [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 
 ## How to narrow it down
 
-1. **Can the team search logs across all services from a single interface?** If debugging requires SSH access to individual servers, logs are not aggregated. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
-2. **Can the team trace a single request across multiple services using a shared correlation ID?** If not, distributed debugging is manual assembly work. Start with [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/).
-3. **Can new team members debug production issues independently, without help from senior engineers?** If debugging requires knowing the informal map of log locations and formats, the knowledge is siloed. Start with [Knowledge silos](../../anti-patterns/team-workflow/knowledge-silos/).
+1. **Can the team search logs across all services from a single interface?** If debugging requires SSH access to individual servers, logs are not aggregated. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
+2. **Can the team trace a single request across multiple services using a shared correlation ID?** If not, distributed debugging is manual assembly work. Start with [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
+3. **Can new team members debug production issues independently, without help from senior engineers?** If debugging requires knowing the informal map of log locations and formats, the knowledge is siloed. Start with [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}).
 
-**Ready to fix this?** The most common cause is [Blind operations](../../anti-patterns/monitoring-observability/blind-operations/). Start with its [How to Fix It](../../anti-patterns/monitoring-observability/blind-operations/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations#how-to-fix-it" >}}) section for week-by-week steps.

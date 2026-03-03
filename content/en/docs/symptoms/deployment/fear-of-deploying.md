@@ -38,16 +38,16 @@ a configuration was set incorrectly. The fear is not of the code but of the depl
 itself. Automated deployments that execute the same steps identically every time eliminate the
 process-level risk.
 
-**Read more:** [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/)
+**Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Missing Deployment Pipeline
 
 When there is no automated path from commit to production, the team has no confidence that the
-deployed [artifact](../../glossary/#artifact) has been properly built and tested. Did someone run the tests? Are we deploying
-the right version? Is this the same artifact that was tested in staging? Without a [pipeline](../../glossary/#pipeline) that
+deployed [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has been properly built and tested. Did someone run the tests? Are we deploying
+the right version? Is this the same artifact that was tested in staging? Without a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that
 enforces these checks, every deployment requires the team to manually verify the prerequisites.
 
-**Read more:** [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/)
+**Read more:** [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ### Blind Operations
 
@@ -56,7 +56,7 @@ quickly whether the deploy succeeded or failed. The fear is not just that someth
 that they will not know it broke until a customer reports it. Monitoring and automated health
 checks transform deployment from "deploy and hope" to "deploy and verify."
 
-**Read more:** [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/)
+**Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Manual Testing Only
 
@@ -66,7 +66,7 @@ knows it. Every deployment carries the risk that an untested code path will fail
 comprehensive automated test suite gives the team evidence that the code works, replacing hope
 with confidence.
 
-**Read more:** [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/)
+**Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
 ### Monolithic Work Items
 
@@ -75,35 +75,35 @@ once. A deployment with 200 lines changed across 3 files is easy to reason about
 back. A deployment with 5,000 lines changed across 40 files is unpredictable. Small, frequent
 deployments reduce risk per deployment rather than accumulating it.
 
-**Read more:** [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/)
+**Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
 ## How to narrow it down
 
 1. **Is the deployment process automated?** If a human runs the deployment, the fear may be of the
    process, not the code. Start with
-   [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/).
+   [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 2. **Does the team have an automated pipeline from commit to production?** If not, there is no
    systematic guarantee that the right artifact with the right tests reaches production. Start with
-   [Missing Deployment Pipeline](../../anti-patterns/pipeline/missing-deployment-pipeline/).
+   [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 3. **Can the team verify production health within minutes of deploying?** If not, the fear
    includes not knowing whether the deploy worked. Start with
-   [Blind Operations](../../anti-patterns/monitoring-observability/blind-operations/).
+   [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}).
 4. **Does the team have automated tests that provide confidence before deploying?** If not, the
    fear is that untested code will break. Start with
-   [Manual Testing Only](../../anti-patterns/testing/manual-testing-only/).
+   [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
 5. **How many changes are in a typical deployment?** If deployments are large batches, the risk
    per deployment is high by construction. Start with
-   [Monolithic Work Items](../../anti-patterns/team-workflow/monolithic-work-items/).
+   [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}).
 
 ---
 
-**Ready to fix this?** The most common cause is [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/). Start with its [How to Fix It](../../anti-patterns/pipeline/manual-deployments/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.
 
 ## Related Content
 
-- [Releases Are Infrequent and Painful](../infrequent-releases/) - Fear of deploying leads to batching, which increases risk further
-- [Hardening Sprints Are Needed Before Every Release](../hardening-sprints/) - Teams afraid to deploy often need stabilization periods
-- [Manual Deployments](../../anti-patterns/pipeline/manual-deployments/) - Manual steps make deployments unpredictable
-- [Pipeline Architecture](../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Automated pipelines that make deployment routine
-- [Rollback](../../migrate-to-cd/migration-path/pipeline/rollback/) - Fast rollback reduces deployment risk
-- [Change Fail Rate](../../metrics/change-fail-rate/) - Track deployment reliability over time
+- [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Fear of deploying leads to batching, which increases risk further
+- [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - Teams afraid to deploy often need stabilization periods
+- [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) - Manual steps make deployments unpredictable
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Automated pipelines that make deployment routine
+- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Fast rollback reduces deployment risk
+- [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track deployment reliability over time

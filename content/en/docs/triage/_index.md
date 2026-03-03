@@ -18,8 +18,8 @@ sub-questions to find the most relevant symptom pages.
 Your tests are non-deterministic. This is often caused by environment differences or test
 architecture that depends on external systems.
 
-- **[Tests Randomly Pass or Fail](../symptoms/testing/flaky-tests/)** - Pipeline fails, rerun passes, nobody investigates
-- **[Tests Pass in One Environment but Fail in Another](../symptoms/testing/environment-dependent-failures/)** - Works locally, fails in CI, or the reverse
+- **[Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}})** - Pipeline fails, rerun passes, nobody investigates
+- **[Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}})** - Works locally, fails in [CI](../reference/glossary/#ci-continuous-integration), or the reverse
 
 </details>
 
@@ -29,7 +29,7 @@ architecture that depends on external systems.
 Coverage measures which lines execute, not whether the tests verify correct behavior. High
 coverage with low defect detection points to a test design problem.
 
-- **[High Coverage but Tests Miss Defects](../symptoms/testing/high-coverage-ineffective-tests/)** - Tests assert implementation details instead of behavior
+- **[High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}})** - Tests assert implementation details instead of behavior
 
 </details>
 
@@ -39,7 +39,7 @@ coverage with low defect detection points to a test design problem.
 When tests are coupled to implementation details rather than behavior, any internal change
 causes test failures even when the behavior is correct.
 
-- **[Refactoring Breaks Tests](../symptoms/testing/refactoring-breaks-tests/)** - Internal changes break tests that should not care about implementation
+- **[Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}})** - Internal changes break tests that should not care about implementation
 
 </details>
 
@@ -48,8 +48,8 @@ causes test failures even when the behavior is correct.
 
 Slow tests delay feedback and encourage developers to skip running them locally.
 
-- **[Test Suite Is Too Slow to Run](../symptoms/testing/slow-test-suites/)** - Tests take so long that developers avoid running them
-- **[Pipelines Take Too Long](../symptoms/flow/slow-pipelines/)** - The overall pipeline is slow, not just tests
+- **[Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}})** - Tests take so long that developers avoid running them
+- **[Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}})** - The overall pipeline is slow, not just tests
 
 </details>
 
@@ -63,8 +63,8 @@ Slow tests delay feedback and encourage developers to skip running them locally.
 
 When deployments frequently cause incidents, the team learns to treat them as high-risk events.
 
-- **[The Team Is Afraid to Deploy](../symptoms/deployment/fear-of-deploying/)** - Deployments cause anxiety because they frequently fail
-- **[Releases Are Infrequent and Painful](../symptoms/deployment/infrequent-releases/)** - The team batches changes into large, risky releases
+- **[The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}})** - Deployments cause anxiety because they frequently fail
+- **[Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}})** - The team batches changes into large, risky releases
 
 </details>
 
@@ -73,8 +73,8 @@ When deployments frequently cause incidents, the team learns to treat them as hi
 
 Deployment coordination signals architectural coupling or process constraints.
 
-- **[Multiple Services Must Be Deployed Together](../symptoms/deployment/coordinated-deployments/)** - Services cannot be deployed independently
-- **[Merge Freezes Before Deployments](../symptoms/deployment/merge-freeze/)** - The team stops merging to stabilize before a release
+- **[Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}})** - Services cannot be deployed independently
+- **[Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})** - The team stops merging to stabilize before a release
 
 </details>
 
@@ -84,8 +84,8 @@ Deployment coordination signals architectural coupling or process constraints.
 If you need dedicated time to "harden" before releasing, the normal development process is not
 producing releasable code.
 
-- **[Hardening Sprints Are Needed Before Every Release](../symptoms/deployment/hardening-sprints/)** - Extra time required to make code production-ready
-- **[Staging Passes but Production Fails](../symptoms/deployment/staging-passes-production-fails/)** - Staging environment does not catch production problems
+- **[Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}})** - Extra time required to make code production-ready
+- **[Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}})** - Staging environment does not catch production problems
 
 </details>
 
@@ -97,10 +97,10 @@ producing releasable code.
 <details>
 <summary>Lots of things are in progress but few are finishing</summary>
 
-High work-in-progress means the team is spread thin. Nothing gets the focus needed to finish.
+High [work-in-progress](../reference/glossary/#wip-work-in-progress) means the team is spread thin. Nothing gets the focus needed to finish.
 
-- **[Everything Started, Nothing Finished](../symptoms/flow/too-much-wip/)** - The board shows many items in progress, few reaching done
-- **[Work Items Take Days or Weeks to Complete](../symptoms/flow/work-items-take-too-long/)** - Individual items take far longer than estimated
+- **[Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}})** - The board shows many items in progress, few reaching done
+- **[Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}})** - Individual items take far longer than estimated
 
 </details>
 
@@ -109,8 +109,8 @@ High work-in-progress means the team is spread thin. Nothing gets the focus need
 
 When integration is deferred, branches diverge and merging becomes painful.
 
-- **[Merging Is Painful and Time-Consuming](../symptoms/flow/painful-merges/)** - Merges require significant effort to resolve conflicts
-- **[Pull Requests Sit for Days Waiting for Review](../symptoms/flow/prs-waiting-for-review/)** - Code waits in the review queue instead of flowing forward
+- **[Merging Is Painful and Time-Consuming]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}})** - Merges require significant effort to resolve conflicts
+- **[Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}})** - Code waits in the review queue instead of flowing forward
 
 </details>
 
@@ -119,8 +119,8 @@ When integration is deferred, branches diverge and merging becomes painful.
 
 Slow feedback loops mean developers context-switch away and problems grow before they are caught.
 
-- **[Feedback Takes Hours Instead of Minutes](../symptoms/flow/no-fast-feedback/)** - Developers wait hours or days to learn if a change works
-- **[Pipelines Take Too Long](../symptoms/flow/slow-pipelines/)** - The pipeline itself is the bottleneck
+- **[Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}})** - Developers wait hours or days to learn if a change works
+- **[Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}})** - The pipeline itself is the bottleneck
 
 </details>
 
@@ -134,8 +134,8 @@ Slow feedback loops mean developers context-switch away and problems grow before
 
 If your monitoring does not catch issues before users report them, you have an observability gap.
 
-- **[Production Issues Discovered by Customers](../symptoms/visibility/production-issues-found-by-customers/)** - Users report bugs the team did not know existed
-- **[Production Problems Are Discovered Hours or Days Late](../symptoms/visibility/slow-detection/)** - Incidents go unnoticed until impact accumulates
+- **[Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}})** - Users report bugs the team did not know existed
+- **[Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}})** - Incidents go unnoticed until impact accumulates
 
 </details>
 
@@ -144,8 +144,8 @@ If your monitoring does not catch issues before users report them, you have an o
 
 Environment inconsistency makes it impossible to reproduce problems reliably.
 
-- **[It Works on My Machine](../symptoms/visibility/works-on-my-machine/)** - Code works locally but fails elsewhere
-- **[Tests Pass in One Environment but Fail in Another](../symptoms/testing/environment-dependent-failures/)** - Environment differences cause test failures
+- **[It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}})** - Code works locally but fails elsewhere
+- **[Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}})** - Environment differences cause test failures
 
 </details>
 
@@ -154,7 +154,53 @@ Environment inconsistency makes it impossible to reproduce problems reliably.
 
 When the delivery process creates friction at every step, the team burns out.
 
-- **[Team Burnout and Unsustainable Pace](../symptoms/visibility/team-burnout/)** - Process overhead is wearing the team down
+- **[Team Burnout and Unsustainable Pace]({{< relref "/docs/symptoms/visibility/team-burnout" >}})** - Process overhead is wearing the team down
+
+</details>
+
+</details>
+
+<details>
+<summary><strong>Organizational and process problems</strong></summary>
+
+<details>
+<summary>Changes require approval chains or committees before deploying</summary>
+
+When manual approval gates exist between a green [pipeline](../reference/glossary/#pipeline) and production, they add delay
+without reducing risk.
+
+- **[Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}})** - Bureaucratic gates that add delay without reducing risk
+- **[Work Requires Sign-Off from Teams Not Involved in Delivery]({{< relref "/docs/symptoms/deployment/waiting-for-cross-team-approval" >}})** - Cross-team approvals that create queues
+
+</details>
+
+<details>
+<summary>Another team controls our pipeline or infrastructure</summary>
+
+When the team cannot change its own delivery process, improvement stalls.
+
+- **[Teams Cannot Change Their Own Pipeline]({{< relref "/docs/symptoms/deployment/pipeline-changes-require-another-team" >}})** - Pipeline changes require another team
+- **[Work Stalls Waiting for the Platform Team]({{< relref "/docs/symptoms/flow/work-management/waiting-on-platform-team" >}})** - Infrastructure requests create queues
+
+</details>
+
+<details>
+<summary>Knowledge is concentrated in a few people</summary>
+
+When only certain people can deploy, debug, or explain the architecture, the team is fragile.
+
+- **[Releases Depend on One Person]({{< relref "/docs/symptoms/deployment/release-manager-bottleneck" >}})** - One person is the bottleneck for every release
+- **[Delivery Slows Every Time the Team Rotates]({{< relref "/docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag" >}})** - New team members take weeks to become productive
+
+</details>
+
+<details>
+<summary>Leadership does not see delivery improvement as a priority</summary>
+
+Without organizational support, technical improvements stall at the first policy conflict.
+
+- **[Leadership Sees CD as a Technical Nice-to-Have]({{< relref "/docs/symptoms/visibility/no-leadership-buy-in" >}})** - No executive sponsorship for delivery improvement
+- **[Features Must Wait for a Separate QA Team]({{< relref "/docs/symptoms/deployment/waiting-on-qa-team" >}})** - Organizational structure creates handoffs
 
 </details>
 

@@ -77,7 +77,7 @@ Not all differences matter equally. Rank the gaps from the audit by how likely e
 
 ### Step 3: Align critical versions and topology (Weeks 3-6)
 
-Close the highest-priority gaps first. For version differences, upgrade the lagging environment. For topology differences, add the missing components to staging - a second application node behind a load balancer, a read replica for the database, a CDN layer. These changes may require infrastructure-as-code investment (see [No Infrastructure as Code](../no-infrastructure-as-code/)) to make them sustainable.
+Close the highest-priority gaps first. For version differences, upgrade the lagging environment. For topology differences, add the missing components to staging - a second application node behind a load balancer, a read replica for the database, a CDN layer. These changes may require infrastructure-as-code investment (see [No Infrastructure as Code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})) to make them sustainable.
 
 ### Step 4: Replace mocks with realistic integration patterns (Weeks 5-8)
 
@@ -102,16 +102,16 @@ Define both environments as instances of the same infrastructure code, with only
 
 | Metric | What to look for |
 |--------|-----------------|
-| [Change fail rate](../../../metrics/change-fail-rate/) | Declining rate of production failures attributable to environment configuration differences |
-| [Mean time to repair](../../../metrics/mean-time-to-repair/) | Shorter incident investigation time as "environment difference" is eliminated as a root cause category |
-| [Lead time](../../../metrics/lead-time/) | Reduction in manual production validation steps added to compensate for low staging confidence |
-| [Release frequency](../../../metrics/release-frequency/) | Teams release more often when they trust that staging results predict production behavior |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Fewer debugging cycles that turn out to be environment problems rather than application problems |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Declining rate of production failures attributable to environment configuration differences |
+| [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Shorter incident investigation time as "environment difference" is eliminated as a root cause category |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in manual production validation steps added to compensate for low staging confidence |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams release more often when they trust that staging results predict production behavior |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Fewer debugging cycles that turn out to be environment problems rather than application problems |
 
 ## Related Content
 
-- [Production-like environments](../../../migrate-to-cd/migration-path/pipeline/production-like-environments/)
-- [No infrastructure as code](../no-infrastructure-as-code/)
-- [Everything as code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/)
-- [Deterministic pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/)
-- [Value stream mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/)
+- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
+- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
+- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}})
+- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}})

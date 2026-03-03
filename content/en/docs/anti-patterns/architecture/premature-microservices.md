@@ -181,12 +181,12 @@ If any answer is unsatisfactory, keep it as a module.
 | Services that are always deployed together | Should be merged into a single deployable unit |
 | Time spent on service infrastructure versus features | Should shift toward features as services are consolidated |
 | Pipeline maintenance overhead | Should decrease as the number of pipelines decreases |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as operational overhead shrinks |
-| [Change fail rate](../../../metrics/change-fail-rate/) | Should decrease as distributed-system failure modes are eliminated |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as operational overhead shrinks |
+| [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as distributed-system failure modes are eliminated |
 
 ## Related Content
 
-- [Distributed Monolith](../distributed-monolith/) - When the boundaries are wrong, not just premature
-- [Architecture Decoupling](../../../migrate-to-cd/migration-path/optimize/architecture-decoupling/) - How to create real boundaries, whether in a monolith or between services
-- [Blind Operations](../../monitoring-observability/blind-operations/) - The operational maturity gap that makes microservices unmanageable
-- [Multiple Services Must Be Deployed Together](../../../symptoms/deployment/coordinated-deployments/) - The symptom that reveals unnecessary service coupling
+- [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - When the boundaries are wrong, not just premature
+- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - How to create real boundaries, whether in a monolith or between services
+- [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The operational maturity gap that makes microservices unmanageable
+- [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - The symptom that reveals unnecessary service coupling

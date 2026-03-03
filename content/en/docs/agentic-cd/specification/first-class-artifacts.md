@@ -9,18 +9,18 @@ aliases:
 ---
 
 {{% pageinfo %}}
-Each [artifact](../../glossary/#artifact) has a defined authority. When an [agent](../../glossary/#agent-ai) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
+Each [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has a defined authority. When an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
 
-For the framework overview and the eight constraints, see [ACD](../../).
+For the framework overview and the eight constraints, see [ACD]({{< relref "/docs" >}}).
 {{% /pageinfo %}}
 
 ## 1. Intent Description
 
 **What it is:** A self-contained problem statement, written by a human, that defines what the change should accomplish and why.
 
-An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test](../../getting-started/prompting-disciplines/#the-self-containment-test) for how to verify completeness.
+An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#the-self-containment-test" >}}) for how to verify completeness.
 
-**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) cycle.
+**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) cycle.
 
 **Example:**
 
@@ -44,7 +44,7 @@ well-behaved clients by 40% because abusive clients currently consume
 
 **What it is:** A description of how the system should behave from the user's perspective, expressed as observable outcomes.
 
-Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD](../../glossary/#bdd-behavior-driven-development) scenarios work well here:
+Agents can generate code that satisfies tests but does not produce the expected user experience. User-facing behavior descriptions bridge the gap between technical correctness and user value. [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios work well here:
 
 {{< card code=true header="**BDD scenarios: rate limit user-facing behavior**" lang="gherkin" >}}
 Scenario: Client exceeds rate limit
@@ -67,7 +67,7 @@ Scenario: Client within rate limit
 
 ## 3. Feature Description (Constraint Architecture)
 
-**What it is:** The architectural [constraints](../../glossary/#constraint), dependencies, and trade-off boundaries that govern the implementation.
+**What it is:** The architectural [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), dependencies, and trade-off boundaries that govern the implementation.
 
 Agents need explicit architectural context that human developers often carry in their heads. The feature description tells the agent where the change fits in the system, what components it touches, and what constraints apply. It separates hard boundaries (musts, must nots) from soft preferences and escalation triggers so the agent knows which constraints are non-negotiable.
 
@@ -100,13 +100,13 @@ Agents need explicit architectural context that human developers often carry in 
 
 ## 4. Acceptance Criteria
 
-**What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents](../../glossary/#agent-ai). These are the authoritative source of truth for what the code should do.
+**What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}). These are the authoritative source of truth for what the code should do.
 
 This artifact has two parts: the **done definition** (observable outcomes an independent observer could verify) and the **evaluation design** (test cases with known-good outputs that catch regressions). Together they **constrain** the agent. If the criteria are comprehensive, the agent cannot generate incorrect code that passes. If the criteria are shallow, the agent can generate code that passes tests but does not satisfy the intent.
 
 ### Acceptance criteria
 
-Write [acceptance criteria](../../glossary/#acceptance-criteria) as observable outcomes, not internal implementation details. Each criterion should be verifiable by someone who has never seen the code:
+Write [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) as observable outcomes, not internal implementation details. Each criterion should be verifiable by someone who has never seen the code:
 
 {{< card code=true header="**Acceptance criteria: rate limiting done definition**" lang="markdown" >}}
 1. An authenticated client making 100 requests in one minute receives normal
@@ -122,7 +122,7 @@ Write [acceptance criteria](../../glossary/#acceptance-criteria) as observable o
 
 ### Evaluation design
 
-Define test cases with known-good outputs so the agent (and the [pipeline](../../glossary/#pipeline)) can verify correctness mechanically:
+Define test cases with known-good outputs so the agent (and the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})) can verify correctness mechanically:
 
 {{< card code=true header="**Evaluation design: rate limiting test cases**" lang="markdown" >}}
 **Test Case 1 (Happy Path):** Client sends 50 requests in one minute.
@@ -141,7 +141,7 @@ a request. Result: Client B receives 200.
 Result: Middleware adds less than 5ms.
 {{< /card >}}
 
-Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents](../../operations/pipeline-enforcement/) enforce these two properties at pipeline speed.
+Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) enforce these two properties at pipeline speed.
 
 ### Connecting acceptance criteria to hypothesis validation
 
@@ -151,13 +151,13 @@ Acceptance criteria run in the pipeline on every commit. Hypothesis validation h
 
 This connection matters because a change can pass all acceptance criteria and still fail its hypothesis. Rate limiting might work perfectly and yet not reduce latency because the root cause was something else entirely. When that happens, the team has learned something valuable: the problem is not what they thought it was. That learning feeds back into the next intent description.
 
-The [metrics-driven improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
+The [metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
 
-**Key property:** The [pipeline](../../glossary/#pipeline) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
+**Key property:** The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
 ## 5. Implementation
 
-**What it is:** The actual code that implements the feature. In [ACD](../../glossary/#acd-agentic-continuous-delivery), this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
+**What it is:** The actual code that implements the feature. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), this may be generated entirely by the agent, co-authored by agent and human, or authored by a human with agent assistance.
 
 The implementation is the artifact most likely to be agent-generated. It must satisfy the acceptance criteria (tests), conform to the feature description (architecture), and achieve the intent description (purpose).
 
@@ -251,17 +251,17 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 
 Without them, an agent that detects a conflict between what the acceptance criteria expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
-These artifacts are valuable in any project. In [ACD](../../glossary/#acd-agentic-continuous-delivery), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
+These artifacts are valuable in any project. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
 
-With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/).
+With the six artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
 ## Related Content
 
-- [ACD](../../) - the framework overview, eight constraints, and workflow
-- [Pipeline Enforcement and Expert Agents](../../operations/pipeline-enforcement/) - how the pipeline enforces artifact consistency
-- [Pitfalls and Metrics](../../operations/pitfalls-and-metrics/) - common failure modes when artifacts are incomplete
-- [AI Adoption Roadmap](../../getting-started/adoption-roadmap/) - the prerequisite sequence before adopting artifact-driven workflows
-- [Agent-Assisted Specification](../agent-assisted-specification/) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
-- [The Four Prompting Disciplines](../../getting-started/prompting-disciplines/) - the skills that produce these artifacts
-- [Testing](../../../testing/) - testing strategies that inform acceptance criteria
-- [Hypothesis-Driven Development](../../../migrate-to-cd/migration-path/optimize/hypothesis-driven-development/) - the foundational practice of treating every change as an experiment
+- [ACD]({{< relref "/docs" >}}) - the framework overview, eight constraints, and workflow
+- [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the pipeline enforces artifact consistency
+- [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - common failure modes when artifacts are incomplete
+- [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence before adopting artifact-driven workflows
+- [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
+- [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skills that produce these artifacts
+- [Testing]({{< relref "/docs/reference/testing" >}}) - testing strategies that inform acceptance criteria
+- [Hypothesis-Driven Development]({{< relref "/docs/migrate-to-cd/optimize/hypothesis-driven-development" >}}) - the foundational practice of treating every change as an experiment

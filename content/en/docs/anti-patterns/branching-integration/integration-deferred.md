@@ -181,13 +181,13 @@ Set the expectation:
 - Every developer integrates their work to trunk at least once per day.
 - If a developer has been working on a branch for more than a day without integrating, that is a
   problem to discuss at standup.
-- Track [integration frequency](../../../metrics/integration-frequency/) per developer
+- Track [integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) per developer
   per day. Make it visible alongside the build dashboard.
 
 This will expose problems. Some developers will say their work is not ready to integrate. That is a
 decomposition problem - the work is too large. Some will say they cannot integrate because the build
 is too slow. That is a pipeline problem. Each problem is worth solving. See
-[Long-Lived Feature Branches](long-lived-feature-branches/) for techniques to break large work
+[Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) for techniques to break large work
 into daily integrations.
 
 ### Step 4: Make the build fast enough to provide useful feedback (Weeks 2-3)
@@ -235,15 +235,15 @@ the team works.
 |--------|-----------------|
 | Build pass rate | Percentage of builds that pass on first run - should be above 95% |
 | Time to fix a broken build | Should be under 15 minutes, with revert as the fallback |
-| [Integration frequency](../../../metrics/integration-frequency/) | At least one integration per developer per day |
-| [Build duration](../../../metrics/build-duration/) | Should be under 10 minutes for the primary feedback loop |
+| [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | At least one integration per developer per day |
+| [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Should be under 10 minutes for the primary feedback loop |
 | Longest period with a red build | Should be measured in minutes, not hours or days |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as integration overhead drops and stabilization periods disappear |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as integration overhead drops and stabilization periods disappear |
 
 ## Related Content
 
-- [Trunk-Based Development](../../../migrate-to-cd/migration-path/foundations/trunk-based-development/) - CI requires integrating to a shared trunk, not just building branches
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The pipeline infrastructure that CI depends on
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - Fast, reliable tests are essential for a CI build that teams trust
-- [Long-Lived Feature Branches](long-lived-feature-branches/) - Long branches prevent daily integration and are both a cause and symptom of missing CI
-- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The team agreement to keep the build green must be explicit
+- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - CI requires integrating to a shared trunk, not just building branches
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - The pipeline infrastructure that CI depends on
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Fast, reliable tests are essential for a CI build that teams trust
+- [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - Long branches prevent daily integration and are both a cause and symptom of missing CI
+- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - The team agreement to keep the build green must be explicit

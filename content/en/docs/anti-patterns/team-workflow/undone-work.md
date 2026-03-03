@@ -138,12 +138,12 @@ Each step that is automated eliminates a hidden queue and brings "developer done
 |--------|-----------------:|
 | Gap between "developer done" and "in production" | Should decrease toward zero |
 | Stories in hidden queues (validation, deployment) | Should decrease as queues are eliminated or automated |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as the full path from commit to production shortens |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should become more accurate as it measures the real end-to-end time |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the full path from commit to production shortens |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should become more accurate as it measures the real end-to-end time |
 
 ## Related Content
 
-- [Monolithic Work Items](../monolithic-work-items/) - Large items are more likely to have undone work because they take longer to validate
-- [Manual Deployments](../../pipeline/manual-deployments/) - Manual deployment processes create the deployment gap
-- [Manual Regression Testing Gates](../../testing/manual-regression-testing-gates/) - Manual testing gates create the validation queue
-- [Working Agreements](../../../migrate-to-cd/migration-path/foundations/working-agreements/) - The definition of done is a working agreement the team owns
+- [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - Large items are more likely to have undone work because they take longer to validate
+- [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) - Manual deployment processes create the deployment gap
+- [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Manual testing gates create the validation queue
+- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - The definition of done is a working agreement the team owns

@@ -17,7 +17,7 @@ you are seeing, identifies the most likely root causes (anti-patterns), and prov
 questions to narrow down which cause applies to your situation. Follow the anti-pattern link to
 find concrete fix steps.
 
-**Related anti-pattern categories:** [Testing Anti-Patterns](../../anti-patterns/testing/),
-[Pipeline Anti-Patterns](../../anti-patterns/pipeline/)
+**Related anti-pattern categories:** [Testing Anti-Patterns]({{< relref "/docs/anti-patterns/testing" >}}),
+[Pipeline Anti-Patterns]({{< relref "/docs/anti-patterns/pipeline" >}})
 
-**Related guide:** [Testing Fundamentals](../../migrate-to-cd/migration-path/foundations/testing-fundamentals/)
+**Related guide:** [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})

@@ -32,7 +32,7 @@ quality is seen as QA's responsibility, developers write less thorough tests of 
 why duplicate the effort? The siloed structure makes late testing the structural default rather
 than an avoidable outcome.
 
-**Read more:** [Siloed QA Team](../../anti-patterns/organizational-cultural/siloed-qa-team/)
+**Read more:** [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}})
 
 ### QA Signoff as a Release Gate
 
@@ -42,26 +42,26 @@ ships. If QA finds a defect, the release waits while it is fixed and retested. T
 means quality problems are found late, in large batches, making them expensive to fix and
 disruptive to release schedules.
 
-**Read more:** [QA Signoff as a Release Gate](../../anti-patterns/testing/qa-signoff-gate/)
+**Read more:** [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}})
 
 ## How to narrow it down
 
 1. **Is there a "waiting for QA" column on the board, and do items spend days there?** If
    work regularly accumulates waiting for QA to pick it up, the team has a handoff bottleneck
    rather than a continuous quality practice. Start with
-   [Siloed QA Team](../../anti-patterns/organizational-cultural/siloed-qa-team/).
+   [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}}).
 2. **Can the team deploy without QA sign-off?** If QA approval is a required step before
    any production release, the gate creates batch testing and late defect discovery. Start with
-   [QA Signoff as a Release Gate](../../anti-patterns/testing/qa-signoff-gate/).
+   [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}}).
 
-**Ready to fix this?** The most common cause is [Siloed QA Team](../../anti-patterns/organizational-cultural/siloed-qa-team/). Start with its [How to Fix It](../../anti-patterns/organizational-cultural/siloed-qa-team/#how-to-fix-it) section for week-by-week steps.
+**Ready to fix this?** The most common cause is [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team#how-to-fix-it" >}}) section for week-by-week steps.
 
 ---
 
 ## Related Content
 
-- [Security Review Bottleneck](../security-review-bottleneck/) - Same structural pattern with a security team gate
-- [Change Management Overhead](../change-management-overhead/) - Additional approval gates that accumulate before release
-- [Waiting on Platform Team](../../symptoms/flow/waiting-on-platform-team/) - Related cross-team dependency pattern
-- [Siloed QA Team](../../anti-patterns/organizational-cultural/siloed-qa-team/) - QA as a separate function rather than shared practice
-- [QA Signoff as a Release Gate](../../anti-patterns/testing/qa-signoff-gate/) - Formal gate that creates batch testing and late feedback
+- [Security Review Bottleneck]({{< relref "/docs/symptoms/deployment/security-review-bottleneck" >}}) - Same structural pattern with a security team gate
+- [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}) - Additional approval gates that accumulate before release
+- [Waiting on Platform Team]({{< relref "/docs/symptoms/flow/work-management/waiting-on-platform-team" >}}) - Related cross-team dependency pattern
+- [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}}) - QA as a separate function rather than shared practice
+- [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}}) - Formal gate that creates batch testing and late feedback

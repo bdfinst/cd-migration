@@ -11,10 +11,10 @@ description: >
 
 Grouped the 12 flat Agentic CD pages into four subsections for easier navigation:
 
-- **[Getting Started](../agentic-cd/getting-started/)** - configuration, learning curve, prompting disciplines, and adoption roadmap
-- **[Specification & Contracts](../agentic-cd/specification/)** - agent delivery contract and agent-assisted specification
-- **[Agent Architecture](../agentic-cd/architecture/)** - architecture patterns, coding and review setup, and small-batch sessions
-- **[Operations & Governance](../agentic-cd/operations/)** - pipeline enforcement, tokenomics, and pitfalls and metrics
+- **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, prompting disciplines, and adoption roadmap
+- **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent delivery contract and agent-assisted specification
+- **[Agent Architecture]({{< relref "/docs/agentic-cd/architecture" >}})** - architecture patterns, coding and review setup, and small-batch sessions
+- **[Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})** - pipeline enforcement, tokenomics, and pitfalls and metrics
 
 All old URLs redirect to their new locations via Hugo aliases.
 
@@ -22,13 +22,13 @@ All old URLs redirect to their new locations via Hugo aliases.
 
 ### New content
 
-- **[The Four Prompting Disciplines](../agentic-cd/getting-started/prompting-disciplines/)** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: Prompt Craft, Context Engineering, Intent Engineering, and Specification Engineering. Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
+- **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: Prompt Craft, Context Engineering, Intent Engineering, and Specification Engineering. Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
 
-- **[The Discovery Loop](../agentic-cd/specification/agent-assisted-specification/#the-discovery-loop-from-conversation-to-specification)** - New section in Agent-Assisted Specification describing a four-phase conversational workflow for producing structured specifications: Initial Framing, Deep-Dive Interview, Drafting, and Stress-Test Review.
+- **[The Discovery Loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}})** - New section in Agent-Assisted Specification describing a four-phase conversational workflow for producing structured specifications: Initial Framing, Deep-Dive Interview, Drafting, and Stress-Test Review.
 
-- **[Complete Specification Example](../agentic-cd/specification/agent-assisted-specification/#complete-specification-example)** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, acceptance criteria, and evaluation design.
+- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, acceptance criteria, and evaluation design.
 
-- **[Acceptance Criteria](../glossary/#acceptance-criteria)** - New glossary entry defining acceptance criteria as concrete expectations usable as fitness functions, executed as deterministic tests or evaluated by review agents.
+- **[Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})** - New glossary entry defining acceptance criteria as concrete expectations usable as fitness functions, executed as deterministic tests or evaluated by review agents.
 
 ### Terminology alignment
 

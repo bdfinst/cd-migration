@@ -18,7 +18,7 @@ tags:
 ## What This Looks Like
 
 Deploying to production requires a person. Someone opens a terminal, SSHs into a server, pulls the
-latest code, runs a build command, and restarts a service. Or they download an [artifact](../../glossary/#artifact) from a
+latest code, runs a build command, and restarts a service. Or they download an [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) from a
 shared drive, copy it to the right server, and run an install script. The steps live in a wiki page,
 a shared document, or in someone's head. Every deployment is a manual operation performed by
 whoever knows the procedure.
@@ -52,7 +52,7 @@ Common variations:
   that was tested is not necessarily the build that gets deployed.
 
 The telltale sign: if deploying requires a specific person, a specific machine, or a specific
-document that must be followed step by step, no [pipeline](../../glossary/#pipeline) exists.
+document that must be followed step by step, no [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exists.
 
 ## Why This Is a Problem
 
@@ -78,13 +78,13 @@ because the steps are encoded in the pipeline definition and execute the same wa
 
 ### It increases rework
 
-Manual deployments are slow, so teams batch changes to reduce [deployment frequency](../../glossary/#deployment-frequency). Batching means
+Manual deployments are slow, so teams batch changes to reduce [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}). Batching means
 more changes per deployment. More changes means harder debugging when something goes wrong, because
 any of dozens of commits could be the cause. The team spends hours bisecting changes to find the
 one that broke production.
 
 Failed manual deployments create their own rework. A deployment that goes wrong must be diagnosed,
-rolled back (if [rollback](../../glossary/#rollback) is even possible), and re-attempted. Each re-attempt burns time and
+rolled back (if [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) is even possible), and re-attempted. Each re-attempt burns time and
 attention. If the deployment corrupted data or left the system in a partial state, the recovery
 effort dwarfs the original deployment.
 
@@ -109,7 +109,7 @@ worked." Stakeholders learn that deployment dates are approximate, not firm.
 
 The unpredictability also limits deployment frequency. If each deployment takes hours of manual
 effort and carries risk of failure, the team deploys as infrequently as possible. This increases
-[batch size](../../glossary/#batch-size), which increases risk, which makes deployments even more painful, which further
+[batch size]({{< relref "/docs/reference/glossary#batch-size" >}}), which increases risk, which makes deployments even more painful, which further
 discourages frequent deployment. The team is trapped in a cycle where the lack of a pipeline makes
 deployments costly, and costly deployments make the lack of a pipeline seem acceptable.
 
@@ -136,7 +136,7 @@ entire team.
 
 ### Impact on continuous delivery
 
-[Continuous delivery](../../glossary/#cd-continuous-delivery) requires an automated, repeatable pipeline that can take any commit from trunk
+[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires an automated, repeatable pipeline that can take any commit from trunk
 and deliver it to production with confidence. Without a pipeline, none of this is possible. There
 is no automation to repeat. There is no confidence that the process will work the same way twice.
 There is no path from commit to production that does not require a human to drive it.
@@ -167,7 +167,7 @@ Every manual step will become an automated step.
 Start with the simplest piece: turning source code into a deployable artifact without manual
 intervention.
 
-1. Choose a [CI](../../glossary/#ci-continuous-integration) server (Jenkins, GitHub Actions, GitLab CI, CircleCI, or any tool that triggers on
+1. Choose a [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) server (Jenkins, GitHub Actions, GitLab CI, CircleCI, or any tool that triggers on
    commit).
 2. Configure it to check out the code and run the build command on every push to trunk.
 3. Store the build output as a versioned artifact.
@@ -228,10 +228,10 @@ grows, drop the manual verification.
 |--------|-----------------|
 | Manual steps in the deployment process | Should decrease to zero |
 | Deployment duration | Should decrease and stabilize as manual steps are automated |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as deployment cost drops |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as deployment cost drops |
 | Deployment failure rate | Should decrease as human error is removed |
 | People who can deploy to production | Should increase from one or two to the entire team |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as the manual deployment bottleneck is eliminated |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the manual deployment bottleneck is eliminated |
 
 ## Team Discussion
 
@@ -243,9 +243,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The first step in building a pipeline
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - How to structure a pipeline from commit to production
-- [Single Path to Production](../../../migrate-to-cd/migration-path/pipeline/single-path-to-production/) - Every change follows the same automated path
-- [Everything as Code](../../../migrate-to-cd/migration-path/foundations/everything-as-code/) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
-- [Identify Constraints](../../../migrate-to-cd/migration-path/assess/identify-constraints/) - The absence of a pipeline is often the primary constraint on delivery
-- [Systemic Defect Sources](../../defect-sources/) - understand where defects enter the system when there is no automated detection path.
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - The first step in building a pipeline
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - How to structure a pipeline from commit to production
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Every change follows the same automated path
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
+- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - The absence of a pipeline is often the primary constraint on delivery
+- [Systemic Defect Sources]({{< relref "/docs/reference/defect-sources" >}}) - understand where defects enter the system when there is no automated detection path.

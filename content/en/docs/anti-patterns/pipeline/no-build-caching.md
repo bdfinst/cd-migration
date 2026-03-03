@@ -234,13 +234,13 @@ Expect pushback and address it directly:
 | Pipeline stage duration - dependency download | Should drop to near zero on cache hits |
 | Pipeline stage duration - compilation | Should drop after incremental compilation is enabled |
 | Total pipeline duration | Should reach the team's agreed budget (often 10 minutes or less) |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as faster pipelines reduce wait time in the delivery flow |
-| [Lead time](../../../metrics/lead-time/) | Should decrease as pipeline bottlenecks are removed |
-| [Integration frequency](../../../metrics/integration-frequency/) | Should increase as the cost of each integration drops |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as faster pipelines reduce wait time in the delivery flow |
+| [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as pipeline bottlenecks are removed |
+| [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as the cost of each integration drops |
 
 ## Related Content
 
-- [Pipeline Architecture](../../../migrate-to-cd/migration-path/pipeline/pipeline-architecture/) - Structuring the pipeline so slow stages do not block fast feedback
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Caching and parallelism must not introduce non-determinism
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - Reliable build automation is the foundation that caching is built on
-- [Metrics-Driven Improvement](../../../migrate-to-cd/migration-path/optimize/metrics-driven-improvement/) - Using build time data to prioritize optimization work
+- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Structuring the pipeline so slow stages do not block fast feedback
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Caching and parallelism must not introduce non-determinism
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Reliable build automation is the foundation that caching is built on
+- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using build time data to prioritize optimization work

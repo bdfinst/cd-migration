@@ -20,7 +20,7 @@ Generate a new guide page for the "Migrate to CD" section of the CD migration gu
 ## Instructions
 
 1. **Ask the user** which practice or topic to write if not already specified. Ask which phase it belongs to: Assess, Foundations, Pipeline, Optimize, or Continuous Deployment.
-2. **Read a canonical example** at `content/en/docs/migrate-to-cd/migration-path/foundations/trunk-based-development.md` to calibrate tone, depth, and structure.
+2. **Read a canonical example** at `content/en/docs/migrate-to-cd/foundations/trunk-based-development.md` to calibrate tone, depth, and structure.
 3. **Identify related anti-pattern and symptom pages** from the lists below for cross-referencing.
 4. **Generate the page** following the template below.
 5. **Validate before finishing:**
@@ -182,12 +182,12 @@ Use relative links from guide page directories: `../../../anti-patterns/[categor
 - `monitoring-observability/blind-operations` - Blind Operations
 
 **Organizational & Cultural:**
-- `organizational-cultural/cab-gates` - CAB Gates
-- `organizational-cultural/deadline-driven-development` - Deadline-Driven Development
-- `organizational-cultural/missing-product-ownership` - Missing Product Ownership
-- `organizational-cultural/pressure-to-skip-testing` - Pressure to Skip Testing
-- `organizational-cultural/thin-spread-teams` - Thin-Spread Teams
-- `organizational-cultural/velocity-as-individual-metric` - Velocity as Individual Metric
+- `organizational-cultural/governance-process/cab-gates` - CAB Gates
+- `organizational-cultural/planning/deadline-driven-development` - Deadline-Driven Development
+- `organizational-cultural/team-dynamics/missing-product-ownership` - Missing Product Ownership
+- `organizational-cultural/team-dynamics/pressure-to-skip-testing` - Pressure to Skip Testing
+- `organizational-cultural/team-dynamics/thin-spread-teams` - Thin-Spread Teams
+- `organizational-cultural/planning/velocity-as-individual-metric` - Velocity as Individual Metric
 
 **Pipeline & Infrastructure:**
 - `pipeline/manual-deployments` - Manual Deployments
@@ -228,12 +228,12 @@ Use relative links from guide page directories: `../../../symptoms/[subdirectory
 - `deployment/staging-passes-production-fails` - Staging Passes, Production Fails
 
 **Flow:**
-- `flow/too-much-wip` - Too Much WIP
-- `flow/work-items-take-too-long` - Work Items Take Too Long
-- `flow/prs-waiting-for-review` - PRs Waiting for Review
-- `flow/painful-merges` - Painful Merges
-- `flow/no-fast-feedback` - No Fast Feedback
-- `flow/slow-pipelines` - Slow Pipelines
+- `flow/work-management/too-much-wip` - Too Much WIP
+- `flow/work-management/work-items-take-too-long` - Work Items Take Too Long
+- `flow/integration/prs-waiting-for-review` - PRs Waiting for Review
+- `flow/integration/painful-merges` - Painful Merges
+- `flow/integration/no-fast-feedback` - No Fast Feedback
+- `flow/integration/slow-pipelines` - Slow Pipelines
 
 **Visibility:**
 - `visibility/production-issues-found-by-customers` - Production Issues Found by Customers
@@ -268,4 +268,4 @@ Use relative links: `../../../reference/metrics/[slug]/`
 
 ## Output
 
-Write the generated page to `content/en/docs/migrate-to-cd/migration-path/[phase-directory]/[slug].md` where `[slug]` is the practice name in kebab-case.
+Write the generated page to `content/en/docs/migrate-to-cd/[phase-directory]/[slug].md` where `[slug]` is the practice name in kebab-case.

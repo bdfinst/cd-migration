@@ -235,14 +235,14 @@ The goal is to eliminate the dedicated testing phase entirely:
 | Manual test case count | Should decrease steadily as cases are automated or retired |
 | Manual testing phase duration | Should shrink toward zero |
 | Automated test count in pipeline | Should grow as manual cases are converted |
-| [Release frequency](../../../metrics/release-frequency/) | Should increase as the manual gate shrinks |
-| [Development cycle time](../../../metrics/development-cycle-time/) | Should decrease as the testing phase is eliminated |
+| [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as the manual gate shrinks |
+| [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as the testing phase is eliminated |
 | Time from code complete to release | Should converge toward pipeline duration, not testing phase duration |
 
 ## Related Content
 
-- [Testing Fundamentals](../../../migrate-to-cd/migration-path/foundations/testing-fundamentals/) - The test architecture that replaces manual regression suites
-- [Deterministic Pipeline](../../../migrate-to-cd/migration-path/pipeline/deterministic-pipeline/) - Automated tests in the pipeline replace manual gates
-- [Inverted Test Pyramid](inverted-test-pyramid/) - Manual regression testing often coexists with an inverted pyramid
-- [Build Automation](../../../migrate-to-cd/migration-path/foundations/build-automation/) - The pipeline infrastructure needed to run tests on every commit
-- [Value Stream Mapping](../../../migrate-to-cd/migration-path/assess/value-stream-mapping/) - Reveals how much time the manual testing phase adds to lead time
+- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture that replaces manual regression suites
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Automated tests in the pipeline replace manual gates
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Manual regression testing often coexists with an inverted pyramid
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - The pipeline infrastructure needed to run tests on every commit
+- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Reveals how much time the manual testing phase adds to lead time
