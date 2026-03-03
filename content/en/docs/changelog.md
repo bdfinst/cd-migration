@@ -29,7 +29,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ### Migrate to CD
 
-- Flattened the migration path: removed the intermediate `migration-path/` directory so phases (assess, foundations, pipeline, optimize, continuous-deployment) are direct children of [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})
+- Flattened the migration path: removed the intermediate `migration-path/` directory so phases (assess, foundations, [pipeline](reference/glossary/#pipeline), optimize, continuous-deployment) are direct children of [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})
 
 ### Symptoms
 
