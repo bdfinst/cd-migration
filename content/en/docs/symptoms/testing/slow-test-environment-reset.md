@@ -54,6 +54,22 @@ never intended to run on every change.
 
 **Read more:** [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
 
+### Too Many Hard Dependencies in the Test Suite
+
+When tests require live databases, running services, and real network connections for every
+assertion, the environment reset is slow because every dependency must be restored to a known
+state. A test that validates billing logic should not need a running payment gateway. A test
+that checks order validation should not need a populated product catalog database.
+
+The fix is to match each test to the right layer. Functional tests that verify business rules
+use in-memory databases or controlled fixtures - no environment reset needed. Contract tests
+verify service boundaries with [virtual services](../../reference/glossary/#virtual-service) instead of live instances. Only a small number
+of end-to-end tests need the fully assembled environment, and those run outside the pipeline's
+critical path. When the pipeline's critical path depends on heavyweight integration for every
+assertion, the reset time is a direct consequence of testing at the wrong layer.
+
+**Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
+
 ### Testing Only at the End
 
 When testing is deferred to a late stage - after development, after integration, before release
@@ -77,7 +93,12 @@ services - do not need environment resets. They run in isolation with their own 
    their own data. Start with
    [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
    and refactor tests to use isolated data fixtures.
-3. **Does the full suite only run before releases, not on every change?** If the suite is a
+3. **Do most tests require live databases, running services, or network connections?** If the
+   majority of tests need the fully assembled environment, the suite is testing at the wrong
+   layer. Functional tests with in-memory databases and virtual services for external
+   dependencies would eliminate the reset bottleneck for most assertions. Start with
+   [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
+4. **Does the full suite only run before releases, not on every change?** If the suite is a
    release gate rather than a pipeline stage, it was designed for a different feedback loop.
    Start with
    [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}) and move
@@ -91,6 +112,8 @@ services - do not need environment resets. They run in isolation with their own 
 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Related symptom caused by environment inconsistency
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not just the reset
+- [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many tests at the E2E layer requiring full environment setup
+- [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Virtual services and in-memory replacements for external dependencies
 - [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}) - The most common root cause of long reset times
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Treating regression as a manual checkpoint rather than automated feedback
 - [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Designing environments that are both realistic and fast to provision
