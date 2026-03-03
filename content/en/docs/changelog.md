@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-03 - Glossary: Dependency and External Dependency
+
+Added [Dependency]({{< relref "/docs/reference/glossary#dependency" >}}) and [External Dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) definitions to the glossary, clarifying the distinction between internal and external dependencies and when test doubles are appropriate.
+
 ## 2026-03-03 - Site-Wide Restructure for Navigation and Discoverability
 
 Major reorganization to reduce sidebar depth, group related content, and improve discoverability.
