@@ -92,9 +92,23 @@ See [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-c
 
 ## The ACD Workflow
 
-Humans define specifications. Agents generate tests and implementation. The pipeline enforces correctness. Human review at Test Validation and Code Review is an interim state that [expert validation agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) progressively replace using the same [replacement cycle]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) used throughout the CD migration.
+Humans own the specifications. Agents collaborate during specification and own test generation and implementation. The pipeline enforces correctness. At every specification stage, the [four-step cycle]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-pattern" >}}) applies: human drafts, agent critiques, human decides, agent refines.
 
-The workflow stages, actor responsibilities, and session structure are detailed in [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) and [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+| Stage | Human | Agent | Pipeline |
+|-------|-------|-------|----------|
+| [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) | Draft and own the problem statement and hypothesis | Find ambiguity, suggest edge cases, sharpen hypothesis | |
+| [User-Facing Behavior]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#2-user-facing-behavior" >}}) | Define and approve BDD scenarios | Generate scenario drafts, find gaps and weak scenarios | |
+| [Feature Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}) | Set constraints and architectural boundaries | Suggest architectural considerations and integration points | |
+| [Acceptance Criteria]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}) | Define thresholds and evaluation design | Draft non-functional criteria, check cross-artifact consistency | |
+| [Specification Validation]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#validating-the-complete-specification-set" >}}) | Gate before implementation begins | Review all four artifacts for conflicts, gaps, and ambiguity | |
+| Test Generation | | Generate test code from BDD scenarios, feature description, and acceptance criteria | |
+| Test Validation | Review (interim) | [Expert validation agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) progressively replace human review | |
+| [Implementation]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions#session-structure" >}}) | | Generate production code within one [small-batch session]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) per scenario | |
+| Pipeline Verification | | | Run all tests; all scenarios implemented so far must pass |
+| Code Review | Review (interim) | [Expert validation agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) progressively replace human review | |
+| Deployment | | | Deploy through the same pipeline as any other change |
+
+Human review at Test Validation and Code Review is an interim state. Replace it using the same [replacement cycle]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) used throughout the CD migration. See [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) for the full set of expert agents and how to adopt them.
 
 ## Related Content
 
