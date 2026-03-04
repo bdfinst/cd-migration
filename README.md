@@ -6,7 +6,7 @@
 
 Practices, patterns, and solutions to deploy every change with confidence. Built on years of helping teams across industries remove friction, improve delivery outcomes, and raise team morale through continuous delivery.
 
-**Site:** [migration.minimumcd.org](https://migration.minimumcd.org/)
+**Site:** [beyond.minimumcd.org](https://beyond.minimumcd.org/)
 
 This guide expands on the practices defined at [MinimumCD.org](https://minimumcd.org) and production-tested playbooks from the [Dojo Consortium](https://dojoconsortium.org), grounded in one driving question: "Why can't I deliver today's work to production today?"
 

@@ -1,4 +1,4 @@
-baseURL     = "https://migration.minimumcd.org/"
+baseURL     = "https://beyond.minimumcd.org/"
 description = "MinimumCD Practice Guide - a phased migration from quarterly releases to continuous delivery"
 title       = "MinimumCD Practice Guide"
 

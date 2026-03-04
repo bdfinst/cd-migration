@@ -4,7 +4,7 @@
 
 site:
   name: "Minimum CD - Migration Guide"
-  url: "https://migration.minimumcd.org"
+  url: "https://beyond.minimumcd.org"
   description: >
     A learning path for migrating to continuous delivery, built on years of hands-on
     experience helping teams remove friction and improve delivery outcomes.
