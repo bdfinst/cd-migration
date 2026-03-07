@@ -1,0 +1,1 @@
+{"rule":"AGREEMENT_SENT_START","sentence":"^\\QThe sections below give patterns for each component type: skills, agents, commands, hooks({{< relref \"/docs/reference/glossary#hook-agent\" >}}), and the cross-cutting concerns that tie them together.\\E$"}
