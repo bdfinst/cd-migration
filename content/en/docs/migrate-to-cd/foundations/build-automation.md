@@ -7,14 +7,12 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
-
-Build automation is the mechanism that turns [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) and testing into a [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) loop. If you cannot build, test, and package your application with a single command, you cannot automate your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). This page covers the practices that make your build reproducible, fast, and trustworthy.
+Build automation is the single-command loop that makes [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) possible. If you cannot build, test, and package with one command, you cannot automate your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 {{% /pageinfo %}}
 
 ## What Build Automation Means
 
-Build automation is the practice of scripting every step required to go from source code to a [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) [artifact]({{< relref "/docs/reference/glossary#artifact" >}}). A single command - or a single CI trigger - should execute the entire sequence:
+A single command (or CI trigger) executes the entire sequence from source code to [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) [artifact]({{< relref "/docs/reference/glossary#artifact" >}}):
 
 1. **Compile** the source code (if applicable)
 2. **Run** all automated tests
@@ -31,6 +29,8 @@ If the answer is no, your build is not fully automated.
 
 ## Why Build Automation Matters for CD
 
+Without build automation, every other practice in this guide breaks down. You cannot have continuous integration if the build requires manual intervention. You cannot have a deterministic pipeline if the build produces different results depending on who runs it.
+
 | [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Requirement | How Build Automation Supports It |
 |----------------|----------------------------------|
 | **Reproducibility** | The same commit always produces the same artifact, on any machine |
@@ -38,8 +38,6 @@ If the answer is no, your build is not fully automated.
 | **Confidence** | If the build passes, the artifact is trustworthy |
 | **Developer experience** | Developers run the same build locally that CI runs, eliminating "works on my machine" |
 | **Pipeline foundation** | The CD pipeline is just the build running automatically on every commit |
-
-Without build automation, every other practice in this guide breaks down. You cannot have continuous integration if the build requires manual intervention. You cannot have a deterministic pipeline if the build produces different results depending on who runs it.
 
 ## Key Practices
 
@@ -50,7 +48,7 @@ Your build configuration lives in the same repository as your code. It is versio
 **What belongs in version control:**
 
 - Build scripts (Makefile, build.gradle, package.json scripts, Dockerfile)
-- Dependency manifests (requirements.txt, go.mod, pom.xml, package-lock.json)
+- [Dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests (requirements.txt, go.mod, pom.xml, package-lock.json)
 - Pipeline definitions (.github/workflows, .gitlab-ci.yml, Jenkinsfile)
 - Environment setup scripts (docker-compose.yml for local development)
 
@@ -88,9 +86,9 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 
 **Guidelines:**
 
-- Cache aggressively for local development and CI
-- Invalidate caches when dependencies or build configuration change
-- Do not cache test results - tests must always run
+- **Cache aggressively** for local development and CI
+- **Invalidate caches** when dependencies or build configuration change
+- **Never cache test results.** Tests must always run
 
 ### 4. Single Build Script Entry Point
 
@@ -127,13 +125,13 @@ Every build artifact must be traceable to the exact commit that produced it.
 
 - Tag artifacts with the Git commit SHA or a build number derived from it
 - Store build metadata (commit, branch, timestamp, builder) in the artifact or alongside it
-- Never overwrite an existing artifact - if the version exists, the artifact is immutable
+- Never overwrite an existing artifact. If the version exists, the artifact is immutable
 
 This becomes critical in [Phase 2]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}}) when you establish [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) practices.
 
 ## CI Server Setup Basics
 
-The CI server is the mechanism that runs your build automatically. In Phase 1, the setup is straightforward:
+The CI server is the mechanism that runs your build automatically.
 
 ### What the CI Server Does
 
@@ -163,8 +161,8 @@ steps:
 ### CI Principles for Phase 1
 
 - **Run on every commit.** Not nightly, not weekly, not "when someone remembers." Every commit to trunk triggers a build.
-- **Keep the build green.** A failing build is the team's top priority. Work stops until trunk is green again. (See [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}).)
-- **Run the same build everywhere.** The CI server runs the same script as local development. No CI-only steps that developers cannot reproduce.
+- **Treat a failing build as the team's top priority.** Stop work until trunk is green again. (See [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}).)
+- **Run the same build everywhere.** Use the same script in CI and local development. No CI-only steps that developers cannot reproduce.
 - **Fail fast.** Run the fastest checks first (compilation, unit tests) before the slower ones (integration tests, packaging).
 
 ## Build Time Targets
@@ -188,49 +186,15 @@ Slow builds are a common [constraint]({{< relref "/docs/reference/glossary#const
 4. **Split the build.** Run fast checks (lint, compile, unit tests) as a "fast feedback" stage. Run slower checks (integration tests, security scans) as a second stage.
 5. **Upgrade build hardware.** Sometimes the fastest optimization is more CPU and RAM.
 
-The target is under 10 minutes for the feedback loop that developers use on every commit. Longer-running validation (E2E tests, performance tests) can run in a separate stage.
-
 ## Common Anti-Patterns
 
-### Manual Build Steps
-
-**Symptom:** The build process includes steps like "open this tool and click Run" or "SSH into the build server and execute this script."
-
-**Problem:** Manual steps are error-prone, slow, and cannot be parallelized or cached. They are the single biggest obstacle to build automation.
-
-**Fix:** Script every step. If a human must perform the step today, write a script that performs it tomorrow.
-
-### Environment-Specific Builds
-
-**Symptom:** The build produces different artifacts for different environments (dev, staging, production). Or the build only works on specific machines because of pre-installed tools.
-
-**Problem:** Environment-specific builds mean you are not testing the same artifact you deploy. Bugs that appear in production but not in staging become impossible to diagnose.
-
-**Fix:** Build one artifact and configure it per environment at deployment time. The artifact is immutable; the configuration is external. (See [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) in Phase 2.)
-
-### Build Scripts That Only Run in CI
-
-**Symptom:** The CI pipeline has build steps that developers cannot run locally. Local development uses a different build process.
-
-**Problem:** Developers cannot reproduce CI failures locally, leading to slow debugging cycles and "push and pray" development.
-
-**Fix:** Use a single build entry point (Makefile, build script) that both CI and developers use. CI configuration should only add triggers and notifications, not build logic.
-
-### Missing Dependency Pinning
-
-**Symptom:** Builds break randomly because a dependency released a new version overnight.
-
-**Problem:** Without pinned dependencies, the build is non-deterministic. The same code can produce different results on different days.
-
-**Fix:** Use lock files. Pin all dependency versions. Update dependencies intentionally, not accidentally.
-
-### Long Build Queues
-
-**Symptom:** Developers commit to trunk, but the build does not run for 20 minutes because the CI server is processing a queue.
-
-**Problem:** Delayed feedback defeats the purpose of CI. If developers do not see the result of their commit for 30 minutes, they have already moved on.
-
-**Fix:** Ensure your CI infrastructure can handle your team's commit frequency. Use parallel build agents. Prioritize builds on the main branch.
+| Anti-pattern | Impact | Fix |
+|---|---|---|
+| **Manual build steps** | Error-prone, slow, and impossible to parallelize or cache. | Script every step so no human intervention is required. |
+| **Environment-specific builds** | You are not testing the same artifact you deploy, making production bugs impossible to diagnose. | Build one artifact and configure it per environment at deployment time. (See [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}).) |
+| **Build scripts that only run in CI** | Developers cannot reproduce CI failures locally, leading to slow debugging cycles. | Use a single build entry point that both CI and developers use. |
+| **Missing dependency pinning** | The build is non-deterministic; the same code can produce different results on different days. | Use lock files and pin all dependency versions. |
+| **Long build queues** | Delayed feedback defeats the purpose of CI because developers context-switch before seeing results. | Ensure CI infrastructure can handle your commit frequency with parallel build agents. |
 
 ## Measuring Success
 
@@ -253,9 +217,9 @@ Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed u
 
 ## Related Content
 
-- [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Symptom caused by unoptimized or missing build automation
-- [Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - Symptom eliminated when the build runs the same everywhere
-- [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - Anti-pattern where no automated path from commit to production exists
-- [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Anti-pattern caused by environment-specific builds
-- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Companion guide for versioning build scripts, pipelines, and infrastructure
-- [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) - Metric for tracking build speed improvements
+- [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}): symptom caused by unoptimized or missing build automation
+- [Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}): symptom eliminated when the build runs the same everywhere
+- [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}): anti-pattern where no automated path from commit to production exists
+- [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}): anti-pattern caused by environment-specific builds
+- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}): companion guide for versioning build scripts, pipelines, and infrastructure
+- [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}): metric for tracking build speed improvements

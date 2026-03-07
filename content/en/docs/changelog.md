@@ -7,6 +7,15 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-06 - Testing Fundamentals Restructured into Subsection
+
+- Restructured [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) from a single long page into a subsection with four focused child pages: [What to Test]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}), and [Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}).
+- Added four SVG diagrams to Pipeline Test Strategy showing tests inside the pipeline, tests outside the pipeline, the contract test validation loop, and the full pipeline test architecture.
+
+## 2026-03-06 - Repository Readiness for Agentic Development
+
+- Added [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) - a new getting-started page covering readiness scoring, upgrade sequence, agent-friendly test structure, build ergonomics, and the link between repository quality and agent accuracy/token efficiency.
+
 ## 2026-03-03 - AI Tech Debt: Layered Detection and Stage 5 Spec References
 
 - Updated [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}) to describe the two-layer approach for automated structural quality detection: deterministic tools (duplication detection, complexity limits, architecture rules) as the first layer and the semantic review agent with architectural constraints as the second layer.

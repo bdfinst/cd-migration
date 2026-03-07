@@ -262,6 +262,7 @@ Referenced in:
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}),
 [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
 [The Deployment Target Does Not Support Modern CI/CD Tooling]({{< relref "/docs/symptoms/flow/developer-experience/mainframe-constraints" >}}),
 [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}),
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
@@ -496,7 +497,10 @@ invocation is impractical or non-deterministic.
 See also: [Hard Dependency](#hard-dependency), [Soft Dependency](#soft-dependency).
 
 Referenced in:
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
+[Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
 ### DORA Metrics
 
@@ -539,6 +543,9 @@ in our pipeline?" If yes, it is an internal dependency and should be tested thro
 paths. If no, it is an external dependency and a test double is appropriate.
 
 See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
+
+Referenced in:
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
 
 ## F
 
@@ -837,6 +844,7 @@ Referenced in:
 [Services in the Same Portfolio Have Wildly Different Maturity Levels]({{< relref "/docs/symptoms/flow/work-management/uneven-service-maturity" >}}),
 [Services Reach Production with No Health Checks or Alerting]({{< relref "/docs/symptoms/deployment/services-without-health-checks" >}}),
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
 [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}),
 [Symptoms for Developers]({{< relref "/docs/symptoms/for-developers" >}}),
 [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
@@ -1052,6 +1060,9 @@ Referenced in:
 ### TDD (Test-Driven Development)
 
 See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#tdd-test-driven-development" >}}).
+
+Referenced in:
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
 
 ### Token
 
