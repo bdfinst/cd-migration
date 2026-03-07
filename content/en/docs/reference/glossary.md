@@ -84,6 +84,35 @@ Referenced in:
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
+### Agent Loop
+
+The iterative cycle an [agent](#agent-ai) follows during execution: receive a goal, invoke a
+tool, observe the result, decide the next action, repeat until done or a stopping condition is
+reached. Each iteration consumes [tokens](#token) for both the accumulated context and the new
+output. Long agent loops increase cost and latency, which is why [small-batch sessions](#agent-session)
+bound each loop to a single [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}})
+scenario. See [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}).
+
+Referenced in:
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
+### Agent Session
+
+A bounded [agent](#agent-ai) invocation that implements exactly one
+[BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario and ends
+with a commit. Each session starts with a curated context load, produces a tested change, and
+closes with a context summary that replaces the full conversation for future sessions. Bounding
+sessions to a single scenario keeps context small, costs predictable, and commits reviewable.
+See [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}).
+
+Referenced in:
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
 ### Artifact
 
 A packaged, versioned output of a build process (e.g., a container image, JAR file, or binary).
@@ -397,6 +426,21 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
+### Context Engineering
+
+The practice of curating the complete information environment an [agent](#agent-ai) operates
+within. Context engineering goes beyond writing better [prompts](#prompt) - it means assembling
+the right project files, conventions, [constraints](#constraint), and prior session state so
+the agent starts each [session](#agent-session) with everything it needs and nothing it does
+not. See
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#2-context-engineering" >}}).
+
+Referenced in:
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
 ### Continuous Deployment
 
 An extension of continuous delivery where every change that passes the automated pipeline is
@@ -502,6 +546,49 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
+### Declarative Agent
+
+An [agent](#agent-ai) defined entirely as markdown documents - [skills](#skill-agent),
+[system prompts](#system-prompt), and rules files - that runs inside an existing agent runtime
+(Claude Code, Cursor, or similar). The runtime provides the [agent loop](#agent-loop), tool
+execution, and context management. Use declarative agents when a developer is present and the
+runtime provides the tools needed. See
+[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture#declarative-agents-vs-programmatic-agents" >}}).
+
+Referenced in:
+[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}})
+
+### Delivery Contract
+
+The set of structured specification documents that anchor an [ACD](#acd-agentic-continuous-delivery)
+workflow. A delivery contract typically includes four artifacts arranged in an authority hierarchy:
+an intent description (what and why), user-facing behavior expressed as
+[BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios (observable
+outcomes), a feature description (architectural constraints, musts, must-nots), and
+[acceptance criteria](#acceptance-criteria) (done definition and evaluation design). When an
+[agent](#agent-ai) detects a conflict between artifacts, the higher-authority artifact wins.
+See [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
+
+Referenced in:
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
+### Done Definition
+
+The observable outcomes portion of [acceptance criteria](#acceptance-criteria). A done definition
+describes what "done" looks like from an independent observer's perspective - someone who was
+not involved in the implementation. Combined with an [evaluation design](#evaluation-design),
+done definitions form the testable boundary of a [delivery contract](#delivery-contract). See
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
+
+Referenced in:
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
+
 ### DORA Metrics
 
 The four key metrics identified by the DORA (DevOps Research and Assessment) research program
@@ -546,6 +633,36 @@ See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
 
 Referenced in:
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+
+### Evaluation Design
+
+The test-cases-with-known-good-outputs portion of [acceptance criteria](#acceptance-criteria).
+An evaluation design specifies concrete inputs and their expected outputs so that both humans
+and [agents](#agent-ai) can verify whether code satisfies the [done definition](#done-definition).
+Shallow evaluation designs (few cases, no edge coverage) allow code that passes tests but
+violates intent. Thorough evaluation designs catch model regressions before they reach
+production. See
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
+
+Referenced in:
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
+### Expert Agent
+
+A specialized [agent](#agent-ai) that runs as a [pipeline](#pipeline) gate to validate a
+specific concern such as test fidelity, security patterns, architectural compliance, or intent
+alignment. Expert agents extend traditional pipeline tooling by catching semantic defects that
+linters and static analyzers cannot detect. They are adopted in parallel with human review and
+replace the human gate only after demonstrating a low false-positive rate.
+See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
+[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}})
 
 ## F
 
@@ -638,6 +755,23 @@ See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#functional-a
 
 ## G
 
+### Guardrail
+
+A safety constraint encoded in a [pipeline](#pipeline), [system prompt](#system-prompt), or
+[hook](#hook-agent) that limits what an [agent](#agent-ai) can do. Guardrails are deterministic
+boundaries, not suggestions. Examples include pre-commit hooks that block secrets from being
+committed, pipeline gates that reject changes exceeding a complexity threshold, and system
+prompt rules that prevent an agent from modifying test specifications. Guardrails protect
+against both agent errors and [hallucinations](#hallucination) without requiring human
+intervention on every change. See
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
 ### GitFlow
 
 A branching model created by Vincent Driessen in 2010 that uses multiple long-lived branches
@@ -666,6 +800,24 @@ Eliminating hard dependencies is a focus of
 Referenced in:
 [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}})
 
+### Hallucination
+
+A predictable defect mode - not a rare failure - where an LLM generates plausible-looking but
+incorrect output: code that references APIs that do not exist, tests that assert the wrong
+behavior, or architectural claims that contradict the actual codebase. Hallucinations are more
+likely when the [agent](#agent-ai) lacks sufficient [context](#context-llm) about the project,
+which is why [context engineering](#context-engineering) and
+[repository readiness](#repository-readiness) reduce hallucination rates. Pipeline
+[guardrails](#guardrail) and [review sub-agents](#sub-agent) catch hallucinations that slip
+past the implementation agent. See
+[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}),
+[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
+
 ### Hardening Sprint
 
 A sprint dedicated to stabilizing and fixing defects before a release. The existence of
@@ -675,6 +827,21 @@ deployable. See [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundatio
 
 Referenced in:
 [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}})
+
+### Hook (Agent)
+
+A deterministic, automated action that runs in response to a specific event during an
+[agent session](#agent-session). Pre-hooks validate inputs before the agent acts (e.g., lint,
+type-check, secret scan). Post-hooks validate outputs after the agent finishes (e.g., SAST,
+test execution). Hooks execute standard tooling - fast, free of AI cost, and repeatable. They
+run before the [review orchestrator](#orchestrator), so AI review tokens are spent only on
+changes that already pass mechanical checks. See
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration#hooks" >}}).
+
+Referenced in:
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}})
 
 ### Hypothesis-Driven Development
 
@@ -704,6 +871,21 @@ environments are handled externally. See [Immutable Artifacts]({{< relref "/docs
 
 Referenced in:
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})
+
+### Intent Engineering
+
+The practice of encoding organizational purpose, values, and trade-off hierarchies into an
+[agent's](#agent-ai) operating environment. An agent given [context](#context-llm) but no intent
+will make technically defensible decisions that miss the point. Intent engineering defines the
+decision boundaries the agent operates within - what to optimize for, when to escalate to a
+human, and which trade-offs are acceptable. The formalized output of intent engineering is
+the intent description in the [delivery contract](#delivery-contract). See
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#3-intent-engineering" >}}).
+
+Referenced in:
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
 ### Integration Frequency
 
@@ -747,6 +929,19 @@ Referenced in:
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
 [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}})
+
+### Model Routing
+
+Assigning tasks to appropriately-sized LLMs based on task complexity rather than using a single
+frontier model for everything. Routing, context assembly, and aggregation tasks require minimal
+reasoning and run cheaply on small models. Code generation and semantic review require strong
+reasoning and justify frontier model costs. Model routing treats [token](#token) cost as a
+first-class design constraint alongside latency and reliability. See
+[Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+
+Referenced in:
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
 ### Modular Monolith
 
@@ -921,6 +1116,52 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
+### Prompt Craft
+
+Synchronous, session-based instruction writing in a chat window. Prompt craft is the foundation
+of the four [prompting disciplines](#prompting-discipline) - writing clear, structured
+instructions with examples, counter-examples, explicit output formats, and rules for resolving
+ambiguity. It is now considered table stakes, equivalent to fluent typing. Every developer
+using AI tools reaches baseline proficiency here. The skill is necessary but insufficient for
+agentic workflows, which require [context engineering](#context-engineering),
+[intent engineering](#intent-engineering), and
+[specification engineering](#specification-engineering). See
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#1-prompt-craft-the-foundation" >}}).
+
+Referenced in:
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
+### Prompting Discipline
+
+The four-layer skill framework developers master as AI moves from a chat partner to a
+long-running worker. The four disciplines, in order from foundation to ceiling:
+[prompt craft](#prompt-craft), [context engineering](#context-engineering),
+[intent engineering](#intent-engineering), and
+[specification engineering](#specification-engineering). Each layer builds on the one below it.
+Developers at Stage 5-6 of the agentic learning curve operate across all four simultaneously.
+See [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
+### Programmatic Agent
+
+An [agent](#agent-ai) implemented as a standalone program (typically JavaScript or Java) that
+calls the LLM API directly and manages its own [agent loop](#agent-loop), tool definitions,
+error handling, and context assembly. Unlike a [declarative agent](#declarative-agent), a
+programmatic agent does not depend on an interactive runtime. Use programmatic agents when the
+agent must run without a developer present: CI/CD pipeline gates, scheduled audits, event-driven
+triggers, or parallel fan-out across repositories. The [model-agnostic abstraction layer]({{< relref "/docs/agentic-cd/architecture/agentic-architecture#model-agnostic-abstraction-layer" >}})
+is the minimum infrastructure a programmatic agent system needs. See
+[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture#declarative-agents-vs-programmatic-agents" >}}).
+
+Referenced in:
+[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}})
+
 ## R
 
 ### Rollback
@@ -960,7 +1201,37 @@ Referenced in:
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
+### Repository Readiness
+
+The degree to which a repository is prepared for [agent](#agent-ai)-driven development. A
+repository scores high on readiness when an agent can clone it, install dependencies, build,
+run tests, and iterate without human intervention. Key factors include deterministic builds,
+fast test suites, clear naming conventions, consistent project structure, and machine-readable
+documentation. Low repository readiness is the most common reason agents produce poor results,
+because the agent spends its [context](#context-llm) and [tokens](#token) navigating ambiguity
+instead of solving the problem. See
+[Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
+[Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}})
+
 ## S
+
+### Skill (Agent)
+
+A reusable, named session procedure defined as a markdown document that an [agent](#agent-ai)
+or [orchestrator](#orchestrator) invokes by name (e.g., `/start-session`, `/review`,
+`/end-session`). Skills encode the session discipline from
+[agent sessions](#agent-session) so the orchestrator does not re-derive the workflow each time.
+Skills are not executable code; they are structured instructions. See
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration#skills" >}}).
+
+Referenced in:
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}})
 
 ### Soft Dependency
 
@@ -968,6 +1239,24 @@ A dependency that can be worked around or deferred. Unlike hard dependencies, so
 do not block work but may influence sequencing or design decisions. Feature flags can turn many
 hard dependencies into soft dependencies by allowing incomplete integrations to be deployed in
 a disabled state.
+
+### Specification Engineering
+
+The practice of writing structured documents that [agents](#agent-ai) can execute against over
+extended timelines. Specification engineering is the skill that separates developers at Stage
+5-6 of the agentic learning curve from everyone else. When agents run autonomously for hours,
+you cannot course-correct in real time - the specification must be complete enough that an
+independent executor reaches the right outcome without asking questions. Key skills include
+writing self-contained problem statements, [acceptance criteria](#acceptance-criteria) with
+[done definitions](#done-definition), [evaluation designs](#evaluation-design), and
+decomposing large projects into small, bounded subtasks. The output of specification
+engineering is the [delivery contract](#delivery-contract). See
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#4-specification-engineering-the-new-ceiling" >}}).
+
+Referenced in:
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
 ### Story Points
 
@@ -1081,6 +1370,42 @@ Referenced in:
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
+### Tokenomics
+
+The architectural discipline of treating [token](#token) cost as a first-class design constraint
+alongside latency and reliability. Tokenomics applies five strategies:
+
+- **Context hygiene:** strip what does not change [agent](#agent-ai) behavior
+- **[Model routing](#model-routing):** match model tier to task complexity
+- **Structured output:** JSON between agents, not prose
+- **[Prompt caching](#prompt-caching):** stable content first, dynamic content last
+- **Batch-size control:** bound [sessions](#agent-session) to limit accumulated context
+
+Tokenomics is not about spending less - it is about spending tokens where they produce value
+and cutting waste where they do not. See
+[Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+
+Referenced in:
+[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
+### Tool Use
+
+The mechanism by which an [agent](#agent-ai) interacts with external systems during its
+[agent loop](#agent-loop). On each iteration, the agent can invoke a tool (read a file, run a
+test, execute a shell command, call an API), observe the result, and decide its next action.
+Tool use is what distinguishes an agent from a single LLM call - the ability to act on the
+environment, not just generate text. Each tool call adds [tokens](#token) to the context
+(the call itself plus the result), which is why [context engineering](#context-engineering)
+and [tokenomics](#tokenomics) account for tool-call overhead.
+
+Referenced in:
+[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
 
 ### Toil
 

@@ -18,17 +18,15 @@ This page assumes familiarity with [Agent Delivery Contract]({{< relref "/docs/a
 
 ## Overview
 
-A multi-agent system that was not deliberately designed looks like a distributed monolith: everything depends on everything else, [context]({{< relref "/docs/reference/glossary#context-llm" >}}) passes unchecked through every boundary, and no component has clear ownership. Add token costs to the usual distributed systems failure modes and the problem compounds: a carelessly assembled context bundle that reaches a frontier model five times per workflow iteration is not a minor inefficiency, it is a recurring tax on every workflow run.
+A multi-agent system that was not deliberately designed looks like a distributed monolith: everything depends on everything else, [context]({{< relref "/docs/reference/glossary#context-llm" >}}) passes unchecked through every boundary, and no component has clear ownership. The defense is the same set of principles that prevent spaghetti in application code: single responsibility, explicit interfaces, and separation of concerns applied to agent boundaries. Three failure patterns show what happens without them:
 
-Three failure patterns appear consistently in poorly structured agentic systems:
-
-**Token waste from undisciplined context.** Without explicit rules about what passes between components, agents accumulate context until the window fills or costs spike. An [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) that receives a 50,000-token context when its actual task requires 5,000 tokens wastes 90% of its input budget on every invocation.
+**Token waste from undisciplined context.** Without explicit rules about what passes between components, agents accumulate context until the window fills or costs spike. An [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) that receives a 50,000-token context when its actual task requires 5,000 tokens wastes 90% of its input budget.
 
 **Cascading failures from missing error boundaries.** When one agent's unstructured prose output becomes another agent's input, parsing ambiguity becomes a failure source. A model that produces a slightly different output format than expected on one run can silently corrupt downstream agent behavior without triggering any explicit error.
 
 **Brittle workflows from model-coupled instructions.** Skills and commands written for one model's specific instruction style often degrade when run on a different model. Workflows that hard-code model-specific behaviors - Claude's particular handling of XML tags, Gemini's response to certain role descriptions - cannot be handed off or used in multi-model configurations without manual rewriting.
 
-Getting architecture right addresses all three. The sections below give patterns for each component type: skills, agents, commands, hooks, and the cross-cutting concerns that tie them together.
+Getting architecture right addresses all three. The sections below give patterns for each component type: skills, agents, commands, [hooks]({{< relref "/docs/reference/glossary#hook-agent" >}}), and the cross-cutting concerns that tie them together.
 
 **Key takeaways:**
 
@@ -68,7 +66,7 @@ Signs a skill should be extracted:
 
 Inline instructions when a procedure is used exactly once, is tightly coupled to the specific agent's context, or is too short to justify its own file (under 5-6 lines of instruction). Extract to a skill file when a procedure is reused, when it will be maintained independently of the agent configuration, or when it is long enough that reading the agent's [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) requires scrolling past it.
 
-A useful test: if you replaced the inline instruction with a skill reference, would the agent system prompt read more clearly? If yes, extract it.
+A useful test: replace the inline instruction with a skill reference and check whether the agent system prompt reads more clearly. If it does, extract it.
 
 ### File and Folder Structure
 
@@ -91,7 +89,7 @@ Organize skills in a flat or two-level hierarchy within a `skills/` directory. A
     pipeline-restore.md
 {{< /card >}}
 
-Keeping separate `skills/` directories per model is not duplication if the skills differ in ways specific to that model's behavior. It is a problem if the skills differ only because they were written at different times by different people without a shared template. The goal is model-agnostic skills that live in a shared location; model-specific variants should be the exception and should be explicitly labeled as such.
+Separate `skills/` directories per model are justified when the skills genuinely differ in ways specific to that model's behavior. They are a problem when the skills differ only because they were written at different times by different people without a shared template. The goal is model-agnostic skills that live in a shared location; model-specific variants should be the exception and should be explicitly labeled as such.
 
 ### Writing Model-Agnostic Skill Instructions
 
@@ -196,6 +194,12 @@ The differences are explicit: Gemini benefits from named input fields (`bdd_scen
 
 ---
 
+## How Skills and Agents Relate
+
+A [skill]({{< relref "/docs/reference/glossary#skill-agent" >}}) is what an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) knows how to do. An agent is the runtime that executes skills. Skills are stateless instruction documents; agents are stateful execution loops that read skills, invoke tools, and iterate toward a goal. One agent can invoke many skills. One skill can be invoked by different agents. Skills can be reviewed, tested, and versioned independently of the agent that runs them - changing a skill does not require changing the agent, and swapping the agent does not require rewriting the skills.
+
+---
+
 ## Agents
 
 ### Defining Agent Boundaries
@@ -215,7 +219,7 @@ Use a single agent when:
 - There is no meaningful parallelism available (each step depends on the previous step's output)
 - The cost of the inter-agent communication overhead exceeds the cost of doing the work in a single agent
 
-Decomposing into multiple agents introduces latency, context assembly overhead, and additional failure surfaces. Do not decompose for the sake of architectural elegance. Decompose when there is a concrete benefit: parallelism, context budget enforcement, or specialized model routing.
+Decomposing into multiple agents introduces latency, context assembly overhead, and additional failure surfaces. Do not decompose for the sake of architectural elegance. Decompose when there is a concrete benefit: parallelism, context budget enforcement, or specialized [model routing]({{< relref "/docs/reference/glossary#model-routing" >}}).
 
 ### When to Decompose
 
@@ -248,6 +252,49 @@ Agent failures fall into three categories, each requiring a different response:
 **Soft failure (the agent returns a valid response indicating a blocking issue).** This is not a failure of the agent - it is the agent doing its job. Route the finding to the appropriate handler (typically returning it to the implementation agent for resolution) without treating it as an error condition.
 
 **Silent degradation (the agent returns a valid-looking response that is subtly wrong).** This is the hardest failure mode to detect. Defend against it with output schemas and schema validation at every boundary. A response that does not conform to the expected schema should be treated as a hard failure, not silently accepted.
+
+### Declarative Agents vs. Programmatic Agents
+
+An agent can be defined in two fundamentally different ways. The choice shapes how it is authored, deployed, and maintained.
+
+**[Declarative agents]({{< relref "/docs/reference/glossary#declarative-agent" >}})** are markdown documents - [skills](#skills), [system prompts]({{< relref "/docs/reference/glossary#system-prompt" >}}), and rules files - that run inside an existing agent runtime (Claude Code, Cursor, Windsurf, Cline, or similar). The runtime provides the [agent loop]({{< relref "/docs/reference/glossary#agent-loop" >}}), tool execution, and context management. The developer writes only the instructions.
+
+**[Programmatic agents]({{< relref "/docs/reference/glossary#programmatic-agent" >}})** are standalone programs, typically written in JavaScript or Java, that call the LLM API directly and manage their own agent loop, tool definitions, error handling, and context assembly. The developer writes both the instructions and the execution infrastructure.
+
+#### When to use declarative agents
+
+Use declarative agents when a developer is present and the agent runs inside an interactive session. This is the default for most development work.
+
+- **Interactive coding sessions.** The developer invokes `/start-session`, works alongside the agent, and commits. The runtime handles tool calls, file reads, and shell execution.
+- **Pre-commit review.** The [review orchestrator]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-review-orchestrator" >}}) and its [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) run as skills within the developer's active session.
+- **Rapid iteration.** Changing a declarative agent means editing a markdown file. No build step, no deployment, no dependency management.
+- **Cross-model portability.** A well-written markdown skill works across Claude, Gemini, and other capable models. Switching models means changing a configuration flag.
+
+**Trade-off:** Declarative agents depend on the runtime's capabilities. If the runtime does not support a tool you need (a specific API call, a database query, a custom binary), the declarative agent cannot use it unless the runtime is extensible via MCP or similar protocols.
+
+#### When to use programmatic agents
+
+Use programmatic agents when the agent must run without a developer present, integrate into automated infrastructure, or require capabilities the interactive runtime does not provide.
+
+- **CI/CD pipeline gates.** The agent must execute headlessly, return a structured exit code, and complete within a time budget.
+- **Scheduled or event-driven execution.** Nightly audits, webhook-triggered reviews, or any agent that needs its own process lifecycle.
+- **Custom tool orchestration.** When the agent needs to call internal APIs, query databases, or interact with systems no standard runtime exposes.
+- **Parallel fan-out at scale.** Running 20 review agents across 20 repositories requires process-level control that interactive runtimes do not provide.
+
+**Trade-off:** Programmatic agents require engineering investment. You own the agent loop, retry logic, error handling, [token]({{< relref "/docs/reference/glossary#token" >}}) tracking, and [prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) configuration. The [model-agnostic abstraction layer](#model-agnostic-abstraction-layer) is the minimum infrastructure a programmatic agent system needs.
+
+#### The progression
+
+Most teams start declarative and migrate specific agents to programmatic as automation needs emerge. The [skills](#skills) often survive the migration intact - the same markdown instructions can be injected as the system prompt in a programmatic agent's API call. What changes is the execution wrapper, not the instructions.
+
+| Layer | Agent type | Example |
+|-------|-----------|---------|
+| Developer session | Declarative | `/start-session`, `/review`, `/end-session` skills in Claude Code or Cursor |
+| Pre-commit gate | Declarative | Review sub-agents invoked by the developer's session runtime |
+| CI pipeline gate | Programmatic | Expert validation agents running as pipeline steps |
+| Scheduled audit | Programmatic | Nightly dependency or license compliance agents |
+
+The boundary is not a quality boundary. Declarative agents are the right tool when a runtime is available. Programmatic agents are the right tool when one is not.
 
 ### Multi-Agent Pipeline Example: Release Readiness Checks
 
@@ -330,7 +377,7 @@ Output (JSON only, no other text):
 }
 {{< /card >}}
 
-In this configuration, Claude handles orchestration because routing and context assembly do not require long-context capability. Gemini handles changelog review because a full changelog for a major release can be large enough to crowd out other context in a smaller window. Neither assignment is mandatory - the point is that the structured interface (JSON input, JSON output with a defined schema) makes the sub-agent swappable. Replacing the Gemini changelog agent with a Claude one requires changing only the invocation target, not the orchestration logic.
+Claude handles orchestration because routing and context assembly do not require long-context capability. Gemini handles changelog review because a full changelog for a major release can crowd out other context in a smaller window. Neither assignment is mandatory - the structured interface (JSON input, JSON output with a defined schema) makes the sub-agent swappable. Replacing the Gemini changelog agent with a Claude one requires changing only the invocation target, not the orchestration logic.
 
 For a concrete application of this pattern to coding and pre-commit review - including full system prompt rules for each agent - see [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}).
 
@@ -433,7 +480,7 @@ Rules:
 - Format: "<ticket_id>: <imperative sentence describing the change>"
 {{< /card >}}
 
-The explicit instruction to treat inputs as data and the injection detection rule do not guarantee safety against a sophisticated adversary, but they raise the bar substantially over undefended interpolation.
+The explicit instruction to treat inputs as data and the injection detection rule do not guarantee safety against a sophisticated adversary, but they reduce the attack surface compared to raw interpolation.
 
 ### Well-Structured vs. Poorly-Structured Command Comparison
 
@@ -508,7 +555,7 @@ A hook that fails should fail cleanly with a clear error message. A hook that ha
 
 ### Using Hooks to Enforce Guardrails or Inject Context
 
-Pre-hooks are the right place for guardrails that must apply regardless of the skill being invoked. Rather than duplicating a guardrail across every skill document, implement it once as a pre-hook:
+Pre-hooks are the right place for [guardrails]({{< relref "/docs/reference/glossary#guardrail" >}}) that must apply regardless of the skill being invoked. Rather than duplicating a guardrail across every skill document, implement it once as a pre-hook:
 
 {{< card code=true header="**hooks.yml: pre-invoke guardrails**" lang="yaml" >}}
 # hooks.yml - applies to all agent invocations
@@ -582,7 +629,7 @@ console.log("Schema validation passed.");
 process.exit(0);
 {{< /card >}}
 
-This hook exits with a non-zero code if the output is malformed, which causes the orchestrator to treat the invocation as a hard failure. The hook does not know or care whether the output came from Claude or Gemini - it validates the contract, not the model.
+This hook exits with a non-zero code if the output is malformed, which causes the orchestrator to treat the invocation as a hard failure. The hook is model-agnostic - it validates the contract, not the model.
 
 **Key takeaways:**
 
