@@ -100,11 +100,12 @@ Referenced in:
 
 ### Agent Session
 
-A bounded [agent](#agent-ai) invocation that implements exactly one
-[BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario and ends
-with a commit. Each session starts with a curated context load, produces a tested change, and
-closes with a context summary that replaces the full conversation for future sessions. Bounding
-sessions to a single scenario keeps context small, costs predictable, and commits reviewable.
+A bounded [agent](#agent-ai) invocation scoped to a single, well-defined task. Each session
+starts with a curated context load, produces a tested change, and closes with a context summary
+that replaces the full conversation for future sessions. The task might be a
+[BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario, a bug
+fix, a refactoring step, or any other change small enough to review in one pass. Bounding
+sessions to small batches keeps context focused, costs predictable, and commits reviewable.
 See [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}).
 
 Referenced in:
