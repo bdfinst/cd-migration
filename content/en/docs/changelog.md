@@ -7,6 +7,20 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-07 - Agentic CD Glossary Split
+
+- Moved 30 AI and agentic-specific terms from the [main glossary]({{< relref "/docs/reference/glossary" >}}) into a dedicated [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary" >}}).
+- Main glossary retains stub entries that redirect to the new glossary for each moved term.
+
+## 2026-03-06 - Testing Fundamentals Restructured into Subsection
+
+- Restructured [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) from a single long page into a subsection with four focused child pages: [What to Test]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}), and [Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}).
+- Added four SVG diagrams to Pipeline Test Strategy showing tests inside the [pipeline](reference/glossary/#pipeline), tests outside the pipeline, the contract test validation loop, and the full pipeline test architecture.
+
+## 2026-03-06 - Repository Readiness for Agentic Development
+
+- Added [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) - a new getting-started page covering readiness scoring, upgrade sequence, agent-friendly test structure, build ergonomics, and the link between repository quality and agent accuracy/[token](reference/glossary/#token) efficiency.
+
 ## 2026-03-03 - AI Tech Debt: Layered Detection and Stage 5 Spec References
 
 - Updated [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}) to describe the two-layer approach for automated structural quality detection: deterministic tools (duplication detection, complexity limits, architecture rules) as the first layer and the semantic review agent with architectural constraints as the second layer.
@@ -62,10 +76,10 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 Grouped the 12 flat Agentic [CD](reference/glossary/#cd-continuous-delivery) pages into four subsections for easier navigation:
 
-- **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, prompting disciplines, and adoption roadmap
-- **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent delivery contract and agent-assisted specification
+- **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, [prompting disciplines](reference/glossary/#prompting-discipline), and adoption roadmap
+- **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent [delivery contract](reference/glossary/#delivery-contract) and agent-assisted specification
 - **[Agent Architecture]({{< relref "/docs/agentic-cd/architecture" >}})** - architecture patterns, coding and review setup, and small-batch sessions
-- **[Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})** - pipeline enforcement, tokenomics, and pitfalls and metrics
+- **[Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})** - pipeline enforcement, [tokenomics](reference/glossary/#tokenomics), and pitfalls and metrics
 
 All old URLs redirect to their new locations via Hugo aliases.
 
@@ -73,11 +87,11 @@ All old URLs redirect to their new locations via Hugo aliases.
 
 ### New content
 
-- **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: Prompt Craft, Context Engineering, Intent Engineering, and Specification Engineering. Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
+- **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: [Prompt Craft](reference/glossary/#prompt-craft), [Context Engineering](reference/glossary/#context-engineering), [Intent Engineering](reference/glossary/#intent-engineering), and [Specification Engineering](reference/glossary/#specification-engineering). Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
 
 - **[The Discovery Loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}})** - New section in Agent-Assisted Specification describing a four-phase conversational workflow for producing structured specifications: Initial Framing, Deep-Dive Interview, Drafting, and Stress-Test Review.
 
-- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, [acceptance criteria](reference/glossary/#acceptance-criteria), and evaluation design.
+- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, [acceptance criteria](reference/glossary/#acceptance-criteria), and [evaluation design](reference/glossary/#evaluation-design).
 
 - **[Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})** - New glossary entry defining acceptance criteria as concrete expectations usable as fitness functions, executed as deterministic tests or evaluated by review agents.
 

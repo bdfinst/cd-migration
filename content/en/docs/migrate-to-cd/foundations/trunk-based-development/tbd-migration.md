@@ -12,20 +12,9 @@ description: >
 This is a detailed companion to the [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations" >}}) overview. It covers specific migration paths, regulated environment guidance, multi-team strategies, and concrete scenarios.
 {{% /pageinfo %}}
 
-[Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) and CI requires very frequent code integration, at least daily, to
-the trunk. Doing that either requires [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) or worthless process overhead to do multiple merges to
-accomplish this. So, if you want CI, you're not getting there without trunk-based development. However, standing up TBD
-is not as simple as "collapse all the branches." CD is a quality process, not just automated code delivery.
-Trunk-based development is the first step in establishing that quality process and in uncovering the problems in the
-current process.
+This guide walks you through migrating from [GitFlow]({{< relref "/docs/reference/glossary#gitflow" >}}) or long-lived branches to [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}). It covers two paths (short-lived branches and direct trunk commits), essential practices, regulated-environment compliance, and common pitfalls.
 
-[GitFlow]({{< relref "/docs/reference/glossary#gitflow" >}}), and other branching models that use long-lived branches, optimize for isolation to protect working code from
-untested or poorly tested code. They create the illusion of safety while silently increasing risk through long feedback delays. The result is predictable: painful merges, stale assumptions, and feedback that arrives too late
-to matter.
-
-TBD reverses that. It optimizes for rapid feedback, smaller changes, and collaborative discovery, the ingredients required for CI and continuous delivery.
-
-This article explains how to move from GitFlow (or any long-lived branch pattern) toward TBD, and what "good" actually looks like along the way.
+Long-lived branches hide problems. TBD exposes them early, which is why it is the first step toward [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
 
 ---
 
@@ -56,7 +45,7 @@ The first meaningful change is simple:
 
 Your first goal isn't true TBD. It's shorter-lived branches: changes that live for hours or a couple of days, not weeks.
 
-That alone exposes dependency issues, unclear requirements, and missing tests, which is exactly the point. The pain tells you where improvement is needed.
+That alone exposes [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) issues, unclear requirements, and missing tests, which is exactly the point. The pain tells you where improvement is needed.
 
 ---
 
@@ -66,40 +55,15 @@ You cannot improve what you don't measure. Before changing anything, establish [
 
 ### Essential Metrics to Track Weekly
 
-#### Branch Lifetime
-
-- Average time from branch creation to merge
-- Maximum branch age currently open
-- Target: Reduce average from weeks to days, then to hours
-
-#### Integration Health
-
-- Number of merge conflicts per week
-- Time spent resolving conflicts
-- Target: Conflicts should decrease as [integration frequency]({{< relref "/docs/reference/glossary#integration-frequency" >}}) increases
-
-#### Delivery Speed
-
-- Time from commit to production deployment
-- Number of commits per day reaching production
-- Target: Decrease time to production, increase [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}})
-
-#### Quality Indicators
-
-- Build/test execution time
-- Test failure rate
-- Production incidents per deployment
-- Target: Fast, reliable tests; stable deployments
-
-#### Work Decomposition
-
-- Average pull request size (lines changed)
-- Number of files changed per commit
-- Target: Smaller, more focused changes
+| Metric | What to Track | Target |
+|--------|--------------|--------|
+| Branch Lifetime | Average time from branch creation to merge | Reduce from weeks to days, then hours |
+| Integration Health | Merge conflicts per week and time resolving them | Conflicts decrease as [integration frequency]({{< relref "/docs/reference/glossary#integration-frequency" >}}) increases |
+| Delivery Speed | Time from commit to production deployment | Decrease time to production, increase [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) |
+| Quality Indicators | Build/test execution time, test failure rate, incidents per deployment | Fast, reliable tests and stable deployments |
+| Work Decomposition | Average pull request size (lines changed) | Smaller, more focused changes |
 
 Start with just two or three of these. Don't let measurement become its own project.
-
-The goal isn't perfect data. It's visibility into whether you're actually moving in the right direction.
 
 ---
 
@@ -137,7 +101,7 @@ If a change is too large to merge within a day or two, the problem isn't the bra
 Branch lifetime shortens when you stop guessing about expected behavior.
 Bring product, QA, and developers together *before coding*:
 
-- Write acceptance criteria collaboratively
+- Write [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) collaboratively
 - Turn them into executable tests
 - Then write code to make those tests pass
 
@@ -336,94 +300,11 @@ describe('Checkout flow', () => {
 
 If you only test with the flag on, you'll break production when the flag is off.
 
-#### Two Types of Feature Flags
+#### Keep Flags Short-Lived
 
-Feature flags serve two fundamentally different purposes:
+For TBD, most flags are temporary release flags: they hide incomplete work during integration and get removed once the feature is stable (typically 1-4 weeks). Set a removal date when you create each flag, assign an owner, and treat unremoved flags as technical debt.
 
-**Temporary Release Flags** (should be removed):
-
-- Control rollout of new features
-- Enable gradual deployment
-- Allow quick [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) of changes
-- Test in production before full release
-- **Lifecycle**: Created for a release, removed once stable (typically 1-4 weeks)
-
-**Permanent Configuration Flags** (designed to stay):
-
-- User preferences and settings (dark mode, email notifications, etc.)
-- Customer-specific features (enterprise vs. free tier)
-- A/B testing and experimentation
-- Regional or regulatory variations
-- Operational controls (read-only mode, maintenance mode)
-- **Lifecycle**: Part of your product's configuration system
-
-**The distinction matters**: Temporary release flags create technical debt if not removed. Permanent configuration flags are part of your feature set and belong in your configuration management system.
-
-Most of the feature flags you create for TBD migration will be **temporary release flags** that must be removed.
-
-#### Release Flag Lifecycle Management
-
-**Temporary release flags are scaffolding, not permanent architecture.**
-
-Every temporary release flag should have:
-
-1. A creation date
-2. A purpose
-3. An expected removal date
-4. An owner responsible for removal
-
-**Track your flags:**
-
-{{< card code=true header="**Tracking flag metadata for lifecycle management**" lang="javascript" >}}
-// flags.config.js
-module.exports = {
-  flags: [
-    {
-      name: 'newCheckoutFlow',
-      created: '2024-01-15',
-      owner: 'checkout-team',
-      jiraTicket: 'SHOP-1234',
-      removalTarget: '2024-02-15',
-      purpose: 'Progressive rollout of redesigned checkout'
-    }
-  ]
-};
-{{< /card >}}
-
-**Set reminders to remove flags.** Permanent flags multiply complexity and slow you down.
-
-#### When to Remove a Flag
-
-Remove a flag when:
-
-- The feature is 100% rolled out and stable
-- You're confident you won't need to roll back
-- Usually 1-2 weeks after full deployment
-
-**Removal process:**
-
-1. Set flag to always-on in code
-2. Deploy and monitor
-3. If stable for 48 hours, delete the conditional logic entirely
-4. Remove the flag from configuration
-
-#### Common Anti-Patterns to Avoid
-
-**Don't:**
-
-- Let temporary release flags become permanent (if it's truly permanent, it should be a configuration option)
-- Let release flags accumulate without removal
-- Skip testing both flag states
-- Use flags to hide broken code
-- Create flags for every tiny change
-
-**Do:**
-
-- Use release flags for large or risky changes
-- Remove release flags as soon as the feature is stable
-- Clearly document whether each flag is temporary (release) or permanent (configuration)
-- Test both enabled and disabled states
-- Move permanent feature toggles to your configuration management system
+For a deeper taxonomy of flag types (release flags vs. permanent configuration flags) and lifecycle management practices, see the [feature flag glossary entry]({{< relref "/docs/reference/glossary#feature-flag" >}}).
 
 ### Commit Small and Commit Often
 
@@ -610,7 +491,7 @@ Managers often worry about:
 **Address these with data:**
 
 - Show branch age metrics before/after
-- Track cycle time improvements
+- Track [cycle time]({{< relref "/docs/reference/glossary#development-cycle-time" >}}) improvements
 - Demonstrate faster feedback on defects
 - Highlight reduced merge conflicts
 
@@ -788,7 +669,7 @@ Common regulatory requirements that seem to conflict with TBD:
 
 - Changes must follow a documented approval workflow
 - Risk assessment before deployment
-- Rollback capability for failed changes
+- [Rollback]({{< relref "/docs/reference/glossary#rollback" >}}) capability for failed changes
 
 #### Documentation Requirements
 
@@ -948,7 +829,7 @@ Even if the feature isn't complete, integrate what you have:
 **Monday 9 AM:**
 Developer creates branch `feature/JIRA-1234-add-audit-logging` from trunk.
 
-**Monday 9 AM - 2 PM:**
+**Monday 9 AM to 2 PM:**
 Developer implements audit logging for user authentication events. Commits reference JIRA-1234. Automated tests run on each commit.
 
 **Monday 2 PM:**
@@ -1023,22 +904,6 @@ Long-lived branches often have messy commit history, force pushes, and unclear a
 - Deployment gates requiring authority to operate
 - Complete audit trail from commit to production
 
-### The Real Choice
-
-The question isn't "TBD or compliance."
-
-The real choice is: compliance theater with long-lived branches and risky big-bang merges, or actual compliance with short-lived branches and safe daily integration.
-
-Short-lived branches provide:
-
-- Better audit trails (small, traceable changes)
-- Better separation of duties (reviewable changes)
-- Better change control (automated enforcement)
-- Lower risk (small, reversible changes)
-- Faster feedback (problems caught early)
-
-That's not just compatible with compliance. That's better compliance.
-
 ---
 
 ## What Will Hurt (At First)
@@ -1050,7 +915,7 @@ When you migrate to TBD, you'll expose every weakness you've been avoiding:
 - Fragile integration points
 - Architecture that resists small changes
 - Gaps in automated validation
-- Long manual processes in the value stream
+- Long manual processes in the [value stream]({{< relref "/docs/reference/glossary#value-stream-map" >}})
 
 This is not a regression.
 This is the **point**.
@@ -1061,7 +926,20 @@ Problems you discover early are problems you can fix cheaply.
 
 ## Common Pitfalls to Avoid
 
-Teams migrating to TBD often make predictable mistakes. Here's how to avoid them.
+Teams migrating to TBD often make predictable mistakes. The table below summarizes all ten; the three most critical are expanded afterward.
+
+| Pitfall | Category | What to Do Instead |
+|---------|----------|-------------------|
+| Renaming branches without changing habits | Process | Focus on integration frequency, not branch names |
+| Merging daily without testing integration points | Testing | Use contract tests; integrate at the interface level, not just source control |
+| Skipping test investment | Testing | Invest in test infrastructure *before* increasing integration frequency |
+| Using flags as a testing escape hatch | Feature Flags | Test both flag states; flags hide features from users, not from your test suite |
+| Keeping flags forever | Feature Flags | Set a removal date at creation; track flags like technical debt |
+| Forcing TBD on an unprepared team | Change Management | Start with volunteers, run experiments, let success create pull |
+| Ignoring [work decomposition]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) | Process | Decompose work into smaller, independently valuable increments |
+| No clear definition of "done" | Process | Define "integrated" as deployed to a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) and validated |
+| Treating trunk as unstable | Process | Trunk must always be production-ready; fix broken builds immediately |
+| Forgetting TBD is a means, not an end | Outcomes | Measure cycle time, defect rates, and deployment frequency, not just commit counts |
 
 ### Pitfall 1: Treating TBD as Just a Branch Renaming Exercise
 
@@ -1085,28 +963,6 @@ You're batching integration for later. When you finally connect your component t
 **What to do instead:**
 Ensure your tests exercise the boundaries between components. Use contract tests for service interfaces. Integrate at the interface level, not just at the source control level.
 
-### Pitfall 3: Skipping Test Investment
-
-**The mistake:**
-"We'll adopt TBD first, then improve our tests later."
-
-**Why it fails:**
-Without fast, reliable tests, frequent integration is terrifying. You'll revert to long-lived branches because trunk feels unsafe.
-
-**What to do instead:**
-Invest in test infrastructure *first*. Make your slowest tests faster. Fix flaky tests. Only then increase integration frequency.
-
-### Pitfall 4: Using Feature Flags as a Testing Escape Hatch
-
-**The mistake:**
-"It's fine to commit broken code as long as it's behind a flag."
-
-**Why it fails:**
-Untested code is still untested, flag or no flag. When you enable the flag, you'll discover the bugs you should have caught earlier.
-
-**What to do instead:**
-Test both flag states. Flags hide features from users, not from your test suite.
-
 ### Pitfall 5: Keeping Flags Forever
 
 **The mistake:**
@@ -1117,61 +973,6 @@ Every permanent flag doubles your testing surface area and increases complexity.
 
 **What to do instead:**
 Set a removal date when creating each flag. Track flags like technical debt. Remove them aggressively once features are stable.
-
-### Pitfall 6: Forcing TBD on an Unprepared Team
-
-**The mistake:**
-Mandating TBD before the team understands why or how it works.
-
-**Why it fails:**
-People resist changes they don't understand or didn't choose. They'll find ways to work around it or sabotage it.
-
-**What to do instead:**
-Start with volunteers. Run experiments. Share results. Let success create pull, not push.
-
-### Pitfall 7: Ignoring the Need for Small Changes
-
-**The mistake:**
-Trying to do TBD while still working on features that take weeks to complete.
-
-**Why it fails:**
-If your work naturally takes weeks, you can't integrate daily. You'll create [work-in-progress]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) commits that don't add value.
-
-**What to do instead:**
-Learn to decompose work into smaller, independently valuable increments. This is a skill that must be developed.
-
-### Pitfall 8: No Clear Definition of "Done"
-
-**The mistake:**
-Integrating code that "works on my machine" without validating it in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}).
-
-**Why it fails:**
-Integration bugs don't surface until deployment. By then, you've integrated many other changes, making root cause analysis harder.
-
-**What to do instead:**
-Define "integrated" as "deployed to a staging environment and validated." Your pipeline should do this automatically.
-
-### Pitfall 9: Treating Trunk as Unstable
-
-**The mistake:**
-"Trunk is where we experiment. Stable code goes in release branches."
-
-**Why it fails:**
-If trunk can't be released at any time, you don't have CI. You've just moved your integration problems to a different branch.
-
-**What to do instead:**
-Trunk must always be production-ready. Use feature flags for incomplete work. Fix broken builds immediately.
-
-### Pitfall 10: Forgetting That TBD is a Means, Not an End
-
-**The mistake:**
-Optimizing for trunk commits without improving cycle time, quality, or delivery speed.
-
-**Why it fails:**
-TBD is valuable because it enables fast feedback and low-cost changes. If those aren't improving, TBD isn't working.
-
-**What to do instead:**
-Measure outcomes, not activities. Track cycle time, defect rates, deployment frequency, and time to restore service.
 
 ---
 
@@ -1548,61 +1349,15 @@ async getPaymentStatus(orderId) {
 
 ## References and Further Reading
 
-### Trunk-Based Development
-
-**Core Resources:**
-
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) - Comprehensive guide by Paul Hammant
 - ["Continuous Delivery"](https://continuousdelivery.com) by Jez Humble and David Farley - Foundational text on CD practices
 - [Martin Fowler on Feature Toggles](https://martinfowler.com/articles/feature-toggles.html) - Deep dive into feature flag patterns
-
-### Testing Practices
-
-**ATDD and BDD:**
-
 - ["Specification by Example"](https://gojko.net/books/specification-by-example/) by Gojko Adzic - Collaborative test writing
-- "The Cucumber Book" by Matt Wynne and Aslak Hellesoy - Practical BDD guide
-- [Three Amigos sessions](https://www.agilealliance.org/glossary/three-amigos/) - Collaborative requirements discovery
-
-**[Test-Driven Development]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}):**
-
-- "Test-Driven Development: By Example" by Kent Beck - TDD fundamentals
-- "Growing Object-Oriented Software, Guided by Tests" by Steve Freeman and Nat Pryce - TDD at scale
-
-**Contract Testing:**
-
 - [Pact Documentation](https://docs.pact.io/) - Consumer-driven contract testing
-- [Spring Cloud Contract](https://spring.io/projects/spring-cloud-contract) - For JVM ecosystems
-
-### Patterns for Incremental Change
-
-**Database Migrations:**
-
-- "Refactoring Databases" by Scott Ambler and Pramod Sadalage - Expand-contract pattern
-- [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html) - Martin Fowler
-
-**Legacy Code:**
-
 - "Working Effectively with Legacy Code" by Michael Feathers - Characterization tests and strangler patterns
-- [Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html) - Incremental rewrites
-
-### Team Dynamics and Change Management
-
+- [Evolutionary Database Design](https://martinfowler.com/articles/evodb.html) - Martin Fowler on expand-contract migrations
 - "Accelerate" by Nicole Forsgren, Jez Humble, and Gene Kim - Data on what drives software delivery performance
-- "Team Topologies" by Matthew Skelton and Manuel Pais - Organizing teams for fast flow
 - [State of DevOps Reports](https://dora.dev/) - Annual research on delivery practices
-
-### Continuous Integration
-
-- "Continuous Integration: Improving Software Quality and Reducing Risk" by Paul Duvall
-- [ThoughtWorks on CI](https://www.thoughtworks.com/continuous-integration) - Foundational practices
-- [Continuous Delivery Foundation](https://cd.foundation/) - Community and standards
-
-### Communities and Discussions
-
-- [DevOps subreddit](https://www.reddit.com/r/devops/) - Practitioner discussions
-- [Continuous Delivery Slack](https://continuousdelivery.slack.com/) - Active community
-- [Software Engineering Stack Exchange](https://softwareengineering.stackexchange.com/) - Q&A on practices
 
 ---
 
@@ -1617,4 +1372,4 @@ Start optimizing for feedback.
 Small, tested, integrated changes, delivered continuously, will always outperform big batches delivered occasionally.
 
 That's why teams migrate to TBD.
-Not because it's trendy, but because it's the only path to real continuous integration and continuous delivery.
+Not because it's trendy, but because it's the only path to real continuous integration and [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).

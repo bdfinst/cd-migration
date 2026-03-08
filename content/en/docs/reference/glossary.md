@@ -9,6 +9,9 @@ description: >
 This glossary defines the terms used across every phase of the CD migration guide. Where a term
 has a specific meaning within a migration phase, the relevant phase is noted.
 
+For terms related to agentic continuous delivery, AI agents, and LLMs, see the
+[Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary" >}}).
+
 ## A
 
 ### Acceptance Criteria
@@ -41,48 +44,19 @@ Referenced in:
 
 ### ACD (Agentic Continuous Delivery)
 
-The application of continuous delivery in environments where software changes are proposed by
-AI agents. ACD extends CD with additional constraints, delivery artifacts, and pipeline
-enforcement to reliably constrain agent autonomy without slowing delivery. ACD assumes the
-team already practices continuous delivery. Without that foundation, the agentic extensions
-have nothing to extend. See [Agentic Continuous Delivery]({{< relref "/docs/agentic-cd" >}}).
-
-Referenced in:
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
-[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
-[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}),
-[Your Migration Journey]({{< relref "/docs" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#acd-agentic-continuous-delivery" >}}).
 
 ### Agent (AI)
 
-An AI system that uses tool calls in a loop to complete multi-step tasks autonomously. Unlike a
-single LLM call that returns a response, an agent can invoke tools, observe results, and decide
-what to do next until a goal is met or a stopping condition is reached. An agent's behavior is
-shaped by its prompt - the complete set of instructions, context, and constraints it receives at
-the start of a session. See [Agentic CD]({{< relref "/docs/agentic-cd" >}}).
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-ai" >}}).
 
-Referenced in:
-[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
-[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
-[AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[Learning Paths]({{< relref "/docs/learning-paths" >}}),
-[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+### Agent Loop
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-loop" >}}).
+
+### Agent Session
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-session" >}}).
 
 ### Artifact
 
@@ -262,6 +236,7 @@ Referenced in:
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}),
 [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
 [The Deployment Target Does Not Support Modern CI/CD Tooling]({{< relref "/docs/symptoms/flow/developer-experience/mainframe-constraints" >}}),
 [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}),
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
@@ -365,36 +340,15 @@ Referenced in:
 
 ### Context (LLM)
 
-The complete assembled input provided to an LLM for a single inference call. Context includes
-the system prompt, tool definitions, any reference material or documents, conversation history,
-and the current user request. "Context" and "prompt" are often used interchangeably; the
-distinction is that "context" emphasizes what information is present, while "prompt" emphasizes
-the structured input as a whole. Context is measured in [tokens](#token). As context grows, costs
-and latency increase and performance can degrade when relevant information is buried far from
-the end of the context. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
-
-Referenced in:
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-llm" >}}).
 
 ### Context Window
 
-The maximum number of tokens an LLM can process in a single call, spanning both input and
-output. The context window is a hard limit; exceeding it requires truncation or a redesigned
-approach. Large context windows (150,000+ tokens) create false confidence - more available
-space does not mean better performance, and filling the window increases both latency and cost.
-See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-window" >}}).
 
-Referenced in:
-[Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+### Context Engineering
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-engineering" >}}).
 
 ### Continuous Deployment
 
@@ -496,7 +450,22 @@ invocation is impractical or non-deterministic.
 See also: [Hard Dependency](#hard-dependency), [Soft Dependency](#soft-dependency).
 
 Referenced in:
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
+[Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
+[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
+[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
+
+### Declarative Agent
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#declarative-agent" >}}).
+
+### Delivery Contract
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#delivery-contract" >}}).
+
+### Done Definition
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#done-definition" >}}).
 
 ### DORA Metrics
 
@@ -539,6 +508,17 @@ in our pipeline?" If yes, it is an internal dependency and should be tested thro
 paths. If no, it is an external dependency and a test double is appropriate.
 
 See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
+
+Referenced in:
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+
+### Evaluation Design
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#evaluation-design" >}}).
+
+### Expert Agent
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#expert-agent" >}}).
 
 ## F
 
@@ -631,6 +611,23 @@ See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#functional-a
 
 ## G
 
+### Guardrail
+
+A safety constraint encoded in a [pipeline](#pipeline), [system prompt](#system-prompt), or
+[hook](#hook-agent) that limits what an [agent](#agent-ai) can do. Guardrails are deterministic
+boundaries, not suggestions. Examples include pre-commit hooks that block secrets from being
+committed, pipeline gates that reject changes exceeding a complexity threshold, and system
+prompt rules that prevent an agent from modifying test specifications. Guardrails protect
+against both agent errors and [hallucinations](#hallucination) without requiring human
+intervention on every change. See
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+
+Referenced in:
+[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
+[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
+[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
+
 ### GitFlow
 
 A branching model created by Vincent Driessen in 2010 that uses multiple long-lived branches
@@ -659,6 +656,10 @@ Eliminating hard dependencies is a focus of
 Referenced in:
 [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}})
 
+### Hallucination
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hallucination" >}}).
+
 ### Hardening Sprint
 
 A sprint dedicated to stabilizing and fixing defects before a release. The existence of
@@ -668,6 +669,10 @@ deployable. See [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundatio
 
 Referenced in:
 [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}})
+
+### Hook (Agent)
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hook-agent" >}}).
 
 ### Hypothesis-Driven Development
 
@@ -697,6 +702,10 @@ environments are handled externally. See [Immutable Artifacts]({{< relref "/docs
 
 Referenced in:
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})
+
+### Intent Engineering
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#intent-engineering" >}}).
 
 ### Integration Frequency
 
@@ -741,6 +750,10 @@ Referenced in:
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
 [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}})
 
+### Model Routing
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#model-routing" >}}).
+
 ### Modular Monolith
 
 A single deployable application whose codebase is organized into well-defined modules with
@@ -761,19 +774,7 @@ Referenced in:
 
 ### Orchestrator
 
-An agent that coordinates the work of other agents. The orchestrator receives a high-level goal,
-breaks it into sub-tasks, delegates those sub-tasks to specialized [sub-agents](#sub-agent), and
-assembles the results. Because orchestrators accumulate context across multiple steps, context
-hygiene at agent boundaries is especially important - what the orchestrator passes to each
-sub-agent is a cost and quality decision. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
-
-Referenced in:
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#orchestrator" >}}).
 
 ## P
 
@@ -837,6 +838,7 @@ Referenced in:
 [Services in the Same Portfolio Have Wildly Different Maturity Levels]({{< relref "/docs/symptoms/flow/work-management/uneven-service-maturity" >}}),
 [Services Reach Production with No Health Checks or Alerting]({{< relref "/docs/symptoms/deployment/services-without-health-checks" >}}),
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
 [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}),
 [Symptoms for Developers]({{< relref "/docs/symptoms/for-developers" >}}),
 [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
@@ -881,37 +883,23 @@ Referenced in:
 
 ### Prompt
 
-The complete structured input provided to an LLM for a single inference call. A prompt is not
-a one- or two-sentence question. In production agentic systems, a prompt is a composed document
-that typically includes: a system instruction block (role definition, constraints, output format
-requirements), tool definitions, relevant context (documents, code, conversation history), and
-the user's request or task description. The system instruction block and tool definitions alone
-can consume thousands of tokens before any user content is included. Understanding what a prompt
-actually contains is a prerequisite for effective tokenomics. See
-[Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
-
-Referenced in:
-[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
-[Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt" >}}).
 
 ### Prompt Caching
 
-A server-side optimization where stable portions of a prompt are stored and reused across
-repeated calls instead of being processed as new input each time. Effective caching requires
-placing static content (system instructions, tool definitions, reference documents) at the
-beginning of the prompt so cache hits cover the maximum token span. Dynamic content (user
-request, current state) goes at the end where it does not invalidate the cached prefix.
-See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt-caching" >}}).
 
-Referenced in:
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+### Prompt Craft
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt-craft" >}}).
+
+### Prompting Discipline
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompting-discipline" >}}).
+
+### Programmatic Agent
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#programmatic-agent" >}}).
 
 ## R
 
@@ -952,7 +940,15 @@ Referenced in:
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
+### Repository Readiness
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#repository-readiness" >}}).
+
 ## S
+
+### Skill (Agent)
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#skill-agent" >}}).
 
 ### Soft Dependency
 
@@ -960,6 +956,10 @@ A dependency that can be worked around or deferred. Unlike hard dependencies, so
 do not block work but may influence sequencing or design decisions. Feature flags can turn many
 hard dependencies into soft dependencies by allowing incomplete integrations to be deployed in
 a disabled state.
+
+### Specification Engineering
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#specification-engineering" >}}).
 
 ### Story Points
 
@@ -976,16 +976,7 @@ Referenced in:
 
 ### Sub-agent
 
-A specialized agent invoked by an [orchestrator](#orchestrator) to perform a specific,
-well-defined task. Sub-agents should receive only the context relevant to their task - not
-the orchestrator's full accumulated context. Passing oversized context bundles to sub-agents
-is a common source of unnecessary token consumption and can degrade performance by burying
-relevant information. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
-
-Referenced in:
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#sub-agent" >}}).
 
 ### Subdomain Product Team
 
@@ -1003,19 +994,7 @@ Referenced in:
 
 ### System Prompt
 
-The static, stable instruction block placed at the start of a [prompt](#prompt) that establishes
-the model's role, constraints, output format requirements, and tool definitions. Unlike the
-user-provided portion of the prompt, system prompts change rarely between calls and are the
-primary candidates for [prompt caching](#prompt-caching). Keeping the system prompt concise and
-placing it first maximizes cache effectiveness and reduces per-call input costs.
-See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
-
-Referenced in:
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#system-prompt" >}}).
 
 ## T
 
@@ -1053,23 +1032,20 @@ Referenced in:
 
 See [Testing Glossary]({{< relref "/docs/reference/testing/glossary#tdd-test-driven-development" >}}).
 
+Referenced in:
+[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+
 ### Token
 
-The billing and capacity unit for LLMs. A token is roughly three-quarters of an English word.
-All LLM costs, latency, and context limits are measured in tokens, not words, sentences, or
-API calls. Input and output tokens are priced and counted separately. Output tokens typically
-cost 2-5x more than input tokens because generating tokens is computationally more expensive
-than reading them. Frontier models cost 10-20x more per token than smaller alternatives.
-See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#token" >}}).
 
-Referenced in:
-[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
-[Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
-[AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}),
-[Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
-[Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
-[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
-[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+### Tokenomics
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#tokenomics" >}}).
+
+### Tool Use
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#tool-use" >}}).
 
 ### Toil
 

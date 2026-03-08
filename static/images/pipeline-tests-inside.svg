@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <!-- Background -->
+  <rect width="720" height="400" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a2a3a">Tests Inside the Pipeline</text>
+  <text x="360" y="50" text-anchor="middle" font-size="12" fill="#667">Deterministic - Blocks Deployment - No External Dependencies</text>
+
+  <!-- Pre-Merge container -->
+  <rect x="30" y="70" width="360" height="290" rx="6" fill="#edf2f7" stroke="#224968" stroke-width="1.5"/>
+  <rect x="30" y="70" width="360" height="32" rx="6" fill="#224968"/>
+  <rect x="30" y="90" width="360" height="12" fill="#224968"/>
+  <text x="210" y="92" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Pre-Merge</text>
+  <text x="350" y="92" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)">&lt; 10 min</text>
+
+  <!-- Static Analysis -->
+  <rect x="55" y="118" width="310" height="44" rx="4" fill="#4a6741" stroke="#3a5331" stroke-width="1"/>
+  <text x="210" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Static Analysis</text>
+  <text x="210" y="153" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Linting, type checks, security scans</text>
+
+  <!-- Unit Tests -->
+  <rect x="55" y="172" width="310" height="44" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="210" y="192" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Unit Tests</text>
+  <text x="210" y="207" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Behavior in isolation - all deps are test doubles</text>
+
+  <!-- Integration Tests -->
+  <rect x="55" y="226" width="310" height="44" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="210" y="246" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Integration Tests</text>
+  <text x="210" y="261" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Module boundaries - external deps stubbed</text>
+
+  <!-- Functional Tests -->
+  <rect x="55" y="280" width="310" height="44" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="210" y="300" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Functional Tests</text>
+  <text x="210" y="315" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Full service in isolation - all external deps faked</text>
+
+  <!-- Arrow between stages -->
+  <line x1="400" y1="215" x2="438" y2="215" stroke="#224968" stroke-width="2"/>
+  <polygon points="438,215 430,210 430,220" fill="#224968"/>
+  <text x="419" y="205" text-anchor="middle" font-size="10" fill="#667">pass</text>
+
+  <!-- Post-Merge container -->
+  <rect x="448" y="130" width="240" height="170" rx="6" fill="#edf2f7" stroke="#224968" stroke-width="1.5"/>
+  <rect x="448" y="130" width="240" height="32" rx="6" fill="#224968"/>
+  <rect x="448" y="150" width="240" height="12" fill="#224968"/>
+  <text x="568" y="152" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Post-Merge</text>
+
+  <!-- Re-run suite -->
+  <rect x="468" y="180" width="200" height="56" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="568" y="202" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Re-run Full</text>
+  <text x="568" y="218" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Deterministic Suite</text>
+
+  <!-- Explanation under post-merge -->
+  <text x="568" y="256" text-anchor="middle" font-size="10" fill="#556">Catches merge-order</text>
+  <text x="568" y="270" text-anchor="middle" font-size="10" fill="#556">interactions between changes</text>
+
+  <!-- Test doubles callout -->
+  <rect x="448" y="320" width="240" height="40" rx="4" fill="#fff" stroke="#99aabb" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="468" y="338" font-size="11" fill="#556">&#9432;</text>
+  <text x="484" y="338" font-size="11" fill="#556">All external dependencies replaced</text>
+  <text x="484" y="352" font-size="11" fill="#556">by test doubles (stubs, fakes, mocks)</text>
+
+  <!-- Bottom legend -->
+  <rect x="30" y="374" width="12" height="12" rx="2" fill="#224968"/>
+  <text x="48" y="384" font-size="11" fill="#556">Blocks deployment on failure</text>
+  <rect x="220" y="374" width="12" height="12" rx="2" fill="#4a6741"/>
+  <text x="238" y="384" font-size="11" fill="#556">Static analysis gate</text>
+  <rect x="390" y="374" width="12" height="12" rx="2" fill="#edf2f7" stroke="#224968" stroke-width="1"/>
+  <text x="408" y="384" font-size="11" fill="#556">Pipeline stage</text>
+
+</svg>

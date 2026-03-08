@@ -100,182 +100,23 @@ Both paths are valid. The important thing is **daily integration to trunk**. Do 
 
 ## Essential Supporting Practices
 
-Trunk-based development does not work in isolation. These supporting practices make daily integration safe and sustainable.
+Trunk-based development does not work in isolation. These practices make daily integration safe:
 
-### Feature Flags
+- **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}):** Merge incomplete work without exposing it to users.
+- **Branch by abstraction:** Replace implementations behind stable interfaces without long-lived branches.
+- **Connect last:** Build new code paths without wiring them in until they are complete.
+- **Small, atomic commits:** Each commit is a single logical change that leaves trunk releasable.
+- **[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})/ATDD:** Tests written before code provide the safety net for frequent integration.
 
-When you integrate to trunk daily, incomplete features will exist on trunk. [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) let you merge code that is not yet ready for users.
+The [TBD Migration Guide]({{< relref "tbd-migration" >}}) covers each practice in detail with code examples.
 
-{{< card code=true header="**Simple feature flag example**" lang="javascript" >}}
-// Simple feature flag example
-if (featureFlags.isEnabled('new-checkout-flow', user)) {
-  return newCheckout(cart);
-} else {
-  return legacyCheckout(cart);
-}
-{{< /card >}}
+## Getting Started
 
-**Rules for feature flags in TBD:**
+Start by shortening [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}), then tighten to daily integration. The [TBD Migration Guide]({{< relref "tbd-migration" >}}) walks through each step with team agreements, metrics, and retrospective checkpoints.
 
-- Use flags to decouple deployment from release
-- Remove flags within days or weeks - they are temporary by design
-- Keep flag logic simple; avoid nested or dependent flags
-- Test both flag states in your automated test suite
+## Common Pitfalls
 
-**When NOT to use feature flags:**
-
-- New features that can be built and connected in a final commit - use Connect Last instead
-- Behavior changes that replace existing logic - use Branch by Abstraction instead
-- New API routes - build the route, expose it as the last change
-- Bug fixes or hotfixes - deploy immediately without a flag
-- Simple changes where standard deployment is sufficient
-
-Feature flags are covered in more depth in [Phase 3: Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}).
-
-### Evolutionary Coding Practices
-
-The ability to make code changes that are not complete features and integrate them to trunk without breaking existing behavior is a core skill for trunk-based development. You never make big-bang changes. You make small changes that limit risk. Feature flags are one approach, but two other patterns are equally important.
-
-#### Branch by Abstraction
-
-Branch by abstraction lets you gradually replace existing behavior while continuously integrating to trunk. It works in four steps:
-
-{{< card code=true header="**Branch by abstraction - four-step pattern**" lang="javascript" >}}
-// Step 1: Create abstraction (integrate to trunk)
-class PaymentProcessor {
-  process(payment) {
-    return this.implementation.process(payment)
-  }
-}
-
-// Step 2: Add new implementation alongside old (integrate to trunk)
-class StripePaymentProcessor {
-  process(payment) {
-    // New Stripe implementation
-  }
-}
-
-// Step 3: Switch implementations (integrate to trunk)
-const processor = useNewStripe
-  ? new StripePaymentProcessor()
-  : new LegacyProcessor()
-
-// Step 4: Remove old implementation (integrate to trunk)
-{{< /card >}}
-
-Each step is a separate commit that keeps trunk working. The old behavior runs until you explicitly switch, and you can remove the abstraction layer once the migration is complete.
-
-#### Connect Last
-
-Connect Last means you build all the components of a feature, each individually tested and integrated to trunk, and wire them into the user-visible path only in the final commit.
-
-{{< card code=true header="**Connect Last pattern - build components then wire to UI**" lang="javascript" >}}
-// Commits 1-10: Build new checkout components (all tested, all integrated)
-function CheckoutStep1() { /* tested, working */ }
-function CheckoutStep2() { /* tested, working */ }
-function CheckoutStep3() { /* tested, working */ }
-
-// Commit 11: Wire up to UI (final integration)
-router.get('/checkout', CheckoutStep1);
-{{< /card >}}
-
-Because nothing references the new code until the last commit, there is no risk of breaking existing behavior during development.
-
-#### Which Pattern Should I Use?
-
-| Pattern | Best for | Example |
-|---------|----------|---------|
-| **Connect Last** | New features that do not affect existing code | Building a new checkout flow, adding a new report page |
-| **Branch by Abstraction** | Replacing or modifying existing behavior | Swapping a payment processor, migrating a data layer |
-| **Feature Flags** | Gradual rollout, testing in production, or customer-specific features | Dark launches, A/B tests, beta programs |
-
-If your change does not touch existing code paths, Connect Last is the simplest option. If you are replacing something that already exists, Branch by Abstraction gives you a safe migration path. Reserve feature flags for cases where you need runtime control over who sees the change.
-
-### Commit Small, Commit Often
-
-Each commit should be a small, coherent change that leaves trunk in a working state. If you are committing once a day in a large batch, you are not getting the benefit of TBD.
-
-**Guidelines:**
-
-- Each commit should be independently deployable
-- A commit should represent a single logical change
-- If you cannot describe the change in one sentence, it is too big
-- Target multiple commits per day, not one large commit at end of day
-
-### Test-Driven Development (TDD) and ATDD
-
-[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) provides the safety net that makes frequent integration sustainable. When every change is accompanied by tests, you can integrate confidently.
-
-- **TDD:** Write the test before the code. Red, green, refactor.
-- **ATDD (Acceptance Test-Driven Development):** Write acceptance criteria as executable tests before implementation.
-
-Both practices ensure that your test suite grows with your code and that trunk remains releasable.
-
-## Getting Started: A Tactical Guide
-
-### Step 1: Shorten Your Branches
-
-If your team currently uses long-lived feature branches, start by shortening their lifespan.
-
-| Current State | Target |
-|---------------|--------|
-| Branches live for weeks | Branches live for < 1 week |
-| Merge once per sprint | Merge multiple times per week |
-| Large merge conflicts are normal | Conflicts are rare and small |
-
-**Action:** Set a team agreement that no branch lives longer than 2 days. Track branch age as a metric.
-
-### Step 2: Integrate Daily
-
-Tighten the window from 2 days to 1 day.
-
-**Action:**
-
-- Every developer merges to trunk at least once per day, every day they write code
-- If work is not complete, use a feature flag or other technique to merge safely
-- Track [integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) as your primary metric
-
-### Step 3: Ensure Trunk Stays Green
-
-Daily integration is only useful if trunk remains in a releasable state.
-
-**Action:**
-
-- Run your test suite on every merge to trunk
-- If the build breaks, fixing it becomes the team's top priority
-- Establish a [working agreement]({{< relref "/docs/reference/glossary#working-agreement" >}}): "broken build = stop the line" (see [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}))
-
-### Step 4: Remove the Safety Net of Long Branches
-
-Once the team is integrating daily with a green trunk, eliminate the option of long-lived branches.
-
-**Action:**
-
-- Configure branch protection rules to warn or block branches older than 24 hours
-- Remove any workflow that depends on long-lived branches (e.g., "dev" or "release" branches)
-- Celebrate the transition - this is a significant shift in how the team works
-
-## Key Pitfalls
-
-### 1. "We integrate daily, but we also keep our feature branches"
-
-If you are merging to trunk daily but also maintaining a long-lived feature branch, you are not doing TBD. The feature branch will diverge, and merging it later will be painful. The integration to trunk must be the **only** integration point.
-
-### 2. "Our builds are too slow for frequent integration"
-
-If your CI [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) takes 30 minutes, integrating multiple times a day feels impractical. This is a real constraint - address it by investing in [build automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) and parallelizing your test suite. Target a build time under 10 minutes.
-
-### 3. "We can't integrate incomplete features to trunk"
-
-Yes, you can. Use feature flags to hide incomplete work from users. The code exists on trunk, but the feature is not active. This is a standard practice at every company that practices CD.
-
-### 4. "Code review takes too long for daily integration"
-
-If pull request reviews take 2 days, daily integration is impossible. The solution is to change how you review: pair programming provides continuous review, mob programming reviews in real time, and small changes can be reviewed asynchronously in minutes. See [Code Review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}}) for specific techniques.
-
-### 5. "What if someone pushes a bad commit to trunk?"
-
-This is why you have automated tests, CI, and the "broken build = top priority" agreement. Bad commits will happen. The question is how fast you detect and fix them. With TBD and CI, the answer is minutes, not days.
+Teams migrating to TBD commonly stumble on slow CI builds, incomplete feature flags, and treating branch renaming as real integration. See [Common Pitfalls to Avoid]({{< relref "tbd-migration#common-pitfalls-to-avoid" >}}) for detailed guidance and fixes.
 
 ## Measuring Success
 
@@ -288,20 +129,15 @@ Track these metrics to verify your TBD adoption:
 | [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | < 10 minutes | Enables frequent integration without frustration |
 | Merge conflict frequency | Decreasing over time | Confirms small changes reduce conflicts |
 
-## Further Reading
-
-This page covers the essentials for Phase 1 of your migration. For detailed guidance on specific scenarios:
-
-- [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
-- [Trunk-Based Development]({{< relref "/docs/reference/practices/trunk-based-development" >}}) - Practice definition and minimum criteria
-- [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
-
 ## Next Step
 
 Once your team is integrating to trunk daily, build the test suite that makes that integration trustworthy. Continue to [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}).
 
 ## Related Content
 
+- [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
+- [Trunk-Based Development]({{< relref "/docs/reference/practices/trunk-based-development" >}}) - Practice definition and minimum criteria
+- [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant
 - [Painful Merges]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}}) - Symptom eliminated by integrating to trunk daily
 - [Merge Freeze]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Symptom caused by long-lived branches and infrequent integration
 - [No Fast Feedback]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Symptom that daily integration and CI address directly
