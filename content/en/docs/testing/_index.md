@@ -34,7 +34,7 @@ A test architecture that achieves this has three responsibilities:
 
 ### The anti-pattern: the ice cream cone
 
-{{< figure src="/images/ice-cream-cone.svg" alt="The ice cream cone anti-pattern: an inverted test distribution where most testing effort goes to manual and end-to-end tests at the top, with too few fast unit tests at the bottom" >}}
+{{< figure src="/images/ice-cream-cone.svg" class="figure-half" alt="The ice cream cone anti-pattern: an inverted test distribution where most testing effort goes to manual and end-to-end tests at the top, with too few fast unit tests at the bottom" >}}
 
 Most teams that struggle with CD have inverted the pyramid - too many slow, flaky end-to-end tests and too few fast, focused ones. Manual gates block every release. The pipeline cannot give a fast, reliable answer, so deployments become high-ceremony events.
 
