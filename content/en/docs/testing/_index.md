@@ -44,7 +44,7 @@ A test architecture is the deliberate structure of how different test types work
 your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
 reinforce each other.
 
-{{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Pipeline diagram showing three zones: pre-merge (Static Analysis, Unit Tests, Component Tests - deterministic, blocks merge), post-deployment (E2E Smoke Tests, Synthetic Monitoring - non-deterministic, triggers rollback or alerts), and an async lane below (Contract Tests - non-deterministic, triggers review). Dashed arrows show contract tests running asynchronously, informed by the pre-merge stage and feeding results back toward the post-deployment zone." >}}
+{{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Four-lane CD pipeline diagram. Pipeline lane: Commit triggers pre-merge checks (Static Analysis, Unit Tests, Component Tests - deterministic, blocks merge), then Build, Deploy to test environment, Deploy to production, and a green Live checkmark. Post-deploy lane: E2E Smoke Tests triggered after test environment deploy (triggers rollback); E2E and Synthetic Monitoring triggered after production deploy (triggers alerts and rollback) - both non-blocking. Async lane: Contract Tests run across the full pipeline width on schedule or on contract change - non-deterministic, triggers review, never blocks. Continuous lane: Exploratory Testing and Usability Testing run continuously alongside delivery and never block." >}}
 
 | Layer | Test Type | Role | Deterministic? | Details |
 |-------|-----------|------|----------------|---------|
