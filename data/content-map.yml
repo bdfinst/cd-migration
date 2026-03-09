@@ -547,15 +547,15 @@ sections:
           - file: pitfalls-and-metrics.md
             title: "Pitfalls and Metrics"
 
-  # ---- Testing Recommendations (weight 16) ----
+  # ---- Architecting Tests for CD (weight 16) ----
 
   - path: docs/testing/
-    title: "Testing Recommendations"
+    title: "Architecting Tests for CD"
     weight: 16
     purpose: "Test architecture, types, and best practices for building confidence in your delivery pipeline."
     pages:
       - file: _index.md
-        title: "Testing Recommendations"
+        title: "Architecting Tests for CD"
     subsections:
       - path: ""
         title: "Test Types"

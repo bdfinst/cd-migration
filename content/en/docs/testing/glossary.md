@@ -100,7 +100,7 @@ traffic periods. Synthetic monitors are non-deterministic (they depend on live e
 and are never a pre-merge gate. Failures trigger alerts or rollback decisions, not build blocks.
 
 Referenced in:
-[Testing Recommendations]({{< relref "/docs/testing" >}}),
+[Architecting Tests for CD]({{< relref "/docs/testing" >}}),
 [End-to-End Tests]({{< relref "/docs/testing/e2e" >}})
 
 ### Virtual Service

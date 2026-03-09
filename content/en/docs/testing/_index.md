@@ -1,6 +1,6 @@
 ---
-title: "Testing Recommendations"
-linkTitle: "Testing"
+title: "Architecting Tests for CD"
+linkTitle: "CD Testing"
 weight: 16
 description: >
   Test architecture, types, and best practices for building confidence in your delivery pipeline.

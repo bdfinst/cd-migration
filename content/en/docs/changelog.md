@@ -11,9 +11,9 @@ description: >
 
 Added [Synthetic Monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) definition to the Testing Glossary.
 
-## 2026-03-09 - Testing Recommendations Moved to Top-Level Section
+## 2026-03-09 - Testing Section Moved to Top-Level, Renamed "Architecting Tests for CD"
 
-Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as a peer of the Reference section, rebranded as [Testing Recommendations]({{< relref "/docs/testing" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.
+Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as a peer of the Reference section, renamed to [Architecting Tests for CD]({{< relref "/docs/testing" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.
 
 ## 2026-03-09 - Contract Testing: Consumer/Provider and CDC vs. Contract-First
 
