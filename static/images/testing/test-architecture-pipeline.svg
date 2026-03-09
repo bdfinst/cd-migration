@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="tap-title tap-desc">
+  <title id="tap-title">Test Architecture Pipeline</title>
+  <desc id="tap-desc">A horizontal pipeline diagram with two lanes. Main lane (top): Commit triggers Static Analysis, Unit Tests, and Component Tests - all deterministic and blocking - which pass a quality gate before a Deploy step, after which E2E Smoke Tests and Synthetic Monitoring run post-deployment (non-deterministic, trigger rollback or alerts). Async lane (bottom): Contract Tests run independently on a schedule or on provider deploy, are non-deterministic, and trigger review on failure rather than blocking the pipeline.</desc>
+
+  <rect width="760" height="300" fill="#ffffff"/>
+
+  <defs>
+    <marker id="tap-arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#6b7280"/>
+    </marker>
+    <marker id="tap-arr-async" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <!-- ── Lane labels ── -->
+  <text x="8" y="96" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#6b7280" text-anchor="start" transform="rotate(-90,8,96)">MAIN PIPELINE</text>
+  <text x="8" y="246" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#9ca3af" text-anchor="start" transform="rotate(-90,8,246)">ASYNC</text>
+
+  <!-- ── Lane separating line ── -->
+  <line x1="24" y1="164" x2="748" y2="164" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN PIPELINE LANE  (y≈90 centerline)
+  ══════════════════════════════════════════════════════ -->
+
+  <!-- Commit circle -->
+  <circle cx="52" cy="90" r="20" fill="#1e3a5f" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="52" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fff">COM</text>
+  <text x="52" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fff">MIT</text>
+
+  <!-- Arrow: commit → pre-merge box -->
+  <line x1="73" y1="90" x2="93" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tap-arr)"/>
+
+  <!-- Pre-merge box: Static + Unit + Component -->
+  <rect x="96" y="50" width="210" height="80" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="201" y="71" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#14532d">Pre-merge</text>
+  <text x="201" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Static Analysis</text>
+  <text x="201" y="101" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Unit Tests</text>
+  <text x="201" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Component Tests</text>
+
+  <!-- "Deterministic · Blocks" badge -->
+  <rect x="102" y="134" width="198" height="16" rx="3" fill="#16a34a"/>
+  <text x="201" y="146" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fff" letter-spacing="0.04em">DETERMINISTIC  ·  BLOCKS MERGE</text>
+
+  <!-- Arrow: pre-merge → gate -->
+  <line x1="307" y1="90" x2="327" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tap-arr)"/>
+
+  <!-- Gate diamond -->
+  <polygon points="348,70 368,90 348,110 328,90" fill="#16a34a" stroke="#14532d" stroke-width="1.5"/>
+  <text x="348" y="94" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#fff">✓</text>
+
+  <!-- Arrow: gate → deploy -->
+  <line x1="369" y1="90" x2="389" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tap-arr)"/>
+
+  <!-- Deploy box -->
+  <rect x="392" y="68" width="80" height="44" rx="6" fill="#1e3a5f" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="432" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#fff">Deploy</text>
+  <text x="432" y="102" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#93c5fd">artifact</text>
+
+  <!-- Arrow: deploy → post-deploy -->
+  <line x1="473" y1="90" x2="493" y2="90" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tap-arr)"/>
+
+  <!-- Post-deploy box: E2E + Synthetic monitoring -->
+  <rect x="496" y="50" width="216" height="80" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="604" y="71" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#78350f">Post-deployment</text>
+  <text x="604" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e">E2E Smoke Tests</text>
+  <text x="604" y="101" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e">Synthetic Monitoring</text>
+  <text x="604" y="115" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e"> </text>
+
+  <!-- "Non-deterministic · Triggers rollback/alerts" badge -->
+  <rect x="502" y="134" width="204" height="16" rx="3" fill="#d97706"/>
+  <text x="604" y="146" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fff" letter-spacing="0.03em">NON-DETERMINISTIC  ·  TRIGGERS</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       ASYNC LANE  (y≈230 centerline)
+  ══════════════════════════════════════════════════════ -->
+
+  <!-- Curved arrow from pre-merge area down to contract box -->
+  <path d="M 201,131 Q 201,178 310,210" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#tap-arr-async)"/>
+
+  <!-- Curved arrow from contract box back up toward post-deploy area -->
+  <path d="M 490,218 Q 570,178 604,151" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#tap-arr-async)"/>
+
+  <!-- Contract tests box -->
+  <rect x="310" y="185" width="182" height="60" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="401" y="206" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#1e293b">Contract Tests</text>
+  <text x="401" y="221" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#475569">On schedule or provider deploy</text>
+  <text x="401" y="235" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#475569"> </text>
+
+  <!-- "Non-deterministic · Triggers review" badge -->
+  <rect x="316" y="248" width="170" height="16" rx="3" fill="#64748b"/>
+  <text x="401" y="260" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="#fff" letter-spacing="0.03em">NON-DETERMINISTIC  ·  REVIEW</text>
+
+  <!-- Async label on dashed arrows -->
+  <text x="228" y="175" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af" font-style="italic">async</text>
+  <text x="530" y="175" font-family="system-ui,sans-serif" font-size="9" fill="#9ca3af" font-style="italic">async</text>
+</svg>

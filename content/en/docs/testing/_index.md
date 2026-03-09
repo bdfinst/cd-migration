@@ -44,6 +44,8 @@ A test architecture is the deliberate structure of how different test types work
 your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
 reinforce each other.
 
+{{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Pipeline diagram showing three zones: pre-merge (Static Analysis, Unit Tests, Component Tests - deterministic, blocks merge), post-deployment (E2E Smoke Tests, Synthetic Monitoring - non-deterministic, triggers rollback or alerts), and an async lane below (Contract Tests - non-deterministic, triggers review). Dashed arrows show contract tests running asynchronously, informed by the pre-merge stage and feeding results back toward the post-deployment zone." >}}
+
 | Layer | Test Type | Role | Deterministic? | Details |
 |-------|-----------|------|----------------|---------|
 | 1 | [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify behavior in isolation - catch logic errors, regressions, and edge cases instantly | Yes | Fastest feedback loop; use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies |
