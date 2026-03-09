@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-09 - Add Synthetic Monitoring to Testing Glossary
+
+Added [Synthetic Monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) definition to the Testing Glossary.
+
 ## 2026-03-09 - Testing Recommendations Moved to Top-Level Section
 
 Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as a peer of the Reference section, rebranded as [Testing Recommendations]({{< relref "/docs/testing" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.

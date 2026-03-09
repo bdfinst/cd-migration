@@ -90,6 +90,19 @@ Referenced in:
 [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
 [Unit Tests]({{< relref "/docs/testing/unit" >}})
 
+### Synthetic Monitoring
+
+Automated scripts that continuously execute realistic user journeys or API calls against a
+live production (or production-like) environment and alert when those journeys fail or degrade.
+Unlike passive monitoring that watches for errors in real user traffic, synthetic monitoring
+proactively simulates user behavior on a schedule - so problems are detected even during low
+traffic periods. Synthetic monitors are non-deterministic (they depend on live external systems)
+and are never a pre-merge gate. Failures trigger alerts or rollback decisions, not build blocks.
+
+Referenced in:
+[Testing Recommendations]({{< relref "/docs/testing" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/e2e" >}})
+
 ### Virtual Service
 
 A test double that simulates a real external service over the network, responding to HTTP
