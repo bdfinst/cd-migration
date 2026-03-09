@@ -19,6 +19,6 @@ better-targeted testing and observability that closes the specific gaps.
 ## Related Content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
-- [Testing]({{< relref "/docs/reference/testing" >}}) - testing types and best practices
+- [Testing]({{< relref "/docs/testing" >}}) - testing types and best practices
 - [Testing Symptoms]({{< relref "/docs/symptoms/testing" >}}) - symptoms caused by testing gaps
 - [Visibility Symptoms]({{< relref "/docs/symptoms/visibility" >}}) - symptoms caused by missing observability

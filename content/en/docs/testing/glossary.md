@@ -2,6 +2,8 @@
 title: "Testing Glossary"
 linkTitle: "Testing Glossary"
 weight: 100
+aliases:
+  - /docs/reference/testing/glossary/
 description: >
   Definitions for testing terms as they are used on this site.
 ---
@@ -12,18 +14,18 @@ other communities may use the same words differently.
 ### Component Test
 
 A deterministic test that verifies a complete frontend component or backend service through
-its public interface, with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) replacing
+its public interface, with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) replacing
 all external dependencies. No real databases, downstream services, or network calls leave
 the process. Component tests cover the assembled behavior of a unit - how its internal
 modules, business logic, and interface layer work together - without depending on any system
 the team does not control. Sometimes called a sociable unit test when the scope covers multiple
 collaborating objects within the component boundary. Contrast with
-[end-to-end tests]({{< relref "/docs/reference/testing/e2e" >}}) which use real external dependencies.
+[end-to-end tests]({{< relref "/docs/testing/e2e" >}}) which use real external dependencies.
 
 Referenced in:
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}}),
-[Component Tests]({{< relref "/docs/reference/testing/component" >}}),
-[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}}),
+[Component Tests]({{< relref "/docs/testing/component" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/e2e" >}})
 
 ### Black Box Testing
 
@@ -35,7 +37,7 @@ Black box tests are resilient to refactoring because they verify **what** the co
 
 Referenced in:
 [Testing]({{< relref "/docs" >}}),
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}})
 
 ### Functional Acceptance Tests
 
@@ -59,18 +61,18 @@ to the entire public interface of a frontend component or backend service, that 
 [component test](#component-test).
 
 Referenced in:
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}}),
-[Component Tests]({{< relref "/docs/reference/testing/component" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}}),
+[Component Tests]({{< relref "/docs/testing/component" >}})
 
 ### Solitary Unit Test
 
-A [unit test]({{< relref "/docs/reference/testing/unit" >}}) that replaces all collaborators with
-[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) and exercises a single class or
+A [unit test]({{< relref "/docs/testing/unit" >}}) that replaces all collaborators with
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) and exercises a single class or
 function in complete isolation. Contrast with [sociable unit test](#sociable-unit-test),
 which allows real in-process collaborators while still replacing external I/O.
 
 Referenced in:
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}})
 
 ### TDD (Test-Driven Development)
 
@@ -86,7 +88,7 @@ Referenced in:
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
 [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}})
 
 ### Virtual Service
 
@@ -96,11 +98,11 @@ virtual service runs as a standalone process and is accessed via real network ca
 it suitable for component testing and end-to-end testing where your application needs to
 make actual HTTP requests against a dependency. Service virtualization tools can create
 virtual services from recorded traffic or API specifications. See
-[Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}).
+[Test Doubles]({{< relref "/docs/testing/test-doubles" >}}).
 
 Referenced in:
-[Component Tests]({{< relref "/docs/reference/testing/component" >}}),
-[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}),
+[Component Tests]({{< relref "/docs/testing/component" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/e2e" >}}),
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
 
 ### White Box Testing
@@ -114,4 +116,4 @@ on observable outcomes.
 
 Referenced in:
 [Testing]({{< relref "/docs" >}}),
-[Unit Tests]({{< relref "/docs/reference/testing/unit" >}})
+[Unit Tests]({{< relref "/docs/testing/unit" >}})

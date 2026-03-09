@@ -2,6 +2,8 @@
 title: "Static Analysis"
 linkTitle: "Static Analysis"
 weight: 6
+aliases:
+  - /docs/reference/testing/static/
 description: >
   Code analysis tools that evaluate non-running code for security vulnerabilities, complexity, and best practice violations.
 ---

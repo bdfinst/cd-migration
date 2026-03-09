@@ -140,7 +140,7 @@ value it provides. The target architecture looks like this:
 | Test type | Role | Runs in pipeline? | Uses real external services? |
 |-----------|------|-------------------|----------------------------|
 | **Unit** | Verify high-complexity logic - business rules, calculations, edge cases | Yes, gates the build | No |
-| **Functional** | Verify component behavior from the actor's perspective with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) for external dependencies | Yes, gates the build | No (localhost only) |
+| **Functional** | Verify component behavior from the actor's perspective with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies | Yes, gates the build | No (localhost only) |
 | **Contract** | Validate that test doubles still match live external services | Asynchronously, does not gate | Yes |
 | **E2E** | Smoke-test critical business paths in a fully integrated environment | Post-deploy verification only | Yes |
 
@@ -175,12 +175,12 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
 2. Write functional tests from the actor's perspective. A user submitting a form, a service
    calling an API endpoint, a consumer reading from a queue. Test through the component's public
    interface.
-3. Replace external dependencies with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}).
+3. Replace external dependencies with [test doubles]({{< relref "/docs/testing/test-doubles" >}}).
    Use in-memory databases or testcontainers for data stores, HTTP stubs (WireMock, nock, MSW)
    for external APIs, and fakes or spies for message queues. Prefer running a dependency locally
    over mocking it entirely - don't poke more holes in reality than you need to stay
    deterministic.
-4. Add [contract tests]({{< relref "/docs/reference/testing/contract" >}}) to validate that your test doubles
+4. Add [contract tests]({{< relref "/docs/testing/contract" >}}) to validate that your test doubles
    still match the real services. Contract tests verify format, not specific data. Run them
    asynchronously - they should not block the build, but failures should trigger investigation.
 
@@ -238,7 +238,7 @@ the expense of clarity.
 
 | Metric | What to look for |
 |--------|-----------------|
-| Test suite duration | Should decrease toward [under 10 minutes]({{< relref "/docs/reference/testing/feedback-speed" >}}) |
+| Test suite duration | Should decrease toward [under 10 minutes]({{< relref "/docs/testing/feedback-speed" >}}) |
 | Flaky test count in gating suite | Should reach and stay at zero |
 | Functional test coverage of key components | Should increase as E2E tests are replaced |
 | E2E test count | Should decrease to a small set of critical-path smoke tests |
@@ -257,9 +257,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 ## Related Content
 
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
-- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Writing fast, deterministic tests for logic
-- [Component Tests]({{< relref "/docs/reference/testing/component" >}}) - Testing your system in isolation with test doubles
-- [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) - Verifying that test doubles match reality
-- [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Techniques for replacing external dependencies in tests
-- [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) - When and how to use E2E tests appropriately
+- [Unit Tests]({{< relref "/docs/testing/unit" >}}) - Writing fast, deterministic tests for logic
+- [Component Tests]({{< relref "/docs/testing/component" >}}) - Testing your system in isolation with test doubles
+- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - Verifying that test doubles match reality
+- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Techniques for replacing external dependencies in tests
+- [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) - When and how to use E2E tests appropriately
 - [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - the defect categories this anti-pattern fails to catch.

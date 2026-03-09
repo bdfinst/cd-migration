@@ -2,6 +2,8 @@
 title: "Test Doubles"
 linkTitle: "Test Doubles"
 weight: 7
+aliases:
+  - /docs/reference/testing/test-doubles/
 description: >
   Patterns for isolating dependencies in tests: stubs, mocks, fakes, spies, and dummies.
 ---
@@ -45,13 +47,13 @@ Test doubles allow you to:
 
 Test doubles are used in every layer of deterministic testing:
 
-- **[Unit tests]({{< relref "/docs/reference/testing/unit" >}})**: nearly all dependencies are replaced with test doubles to
+- **[Unit tests]({{< relref "/docs/testing/unit" >}})**: nearly all dependencies are replaced with test doubles to
   achieve full isolation.
-- **[Component tests]({{< relref "/docs/reference/testing/component" >}})**: all dependencies that cross the component boundary
+- **[Component tests]({{< relref "/docs/testing/component" >}})**: all dependencies that cross the component boundary
   (external APIs, databases, downstream services) are replaced to maintain determinism.
 
 Test doubles should be used **less** in later [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) stages.
-[End-to-end tests]({{< relref "/docs/reference/testing/e2e" >}}) use no test doubles by design.
+[End-to-end tests]({{< relref "/docs/testing/e2e" >}}) use no test doubles by design.
 
 ## Examples
 
@@ -111,7 +113,7 @@ class FakeUserRepository {
   the implementation. Tests become brittle and break on every refactor. Only mock what is
   necessary to maintain determinism.
 - **Not validating test doubles**: if the real dependency changes its contract, your test
-  doubles silently drift. Use [contract tests]({{< relref "/docs/reference/testing/contract" >}}) to keep doubles honest.
+  doubles silently drift. Use [contract tests]({{< relref "/docs/testing/contract" >}}) to keep doubles honest.
 - **Complex mock setup**: if setting up mocks requires dozens of lines, the system under test
   may have too many dependencies. Consider refactoring the production code rather than adding
   more mocks.

@@ -263,5 +263,5 @@ With the artifacts defined, the next question is how the pipeline enforces consi
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence before adopting artifact-driven workflows
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skills that produce these artifacts
-- [Testing]({{< relref "/docs/reference/testing" >}}) - testing strategies that inform acceptance criteria
+- [Testing]({{< relref "/docs/testing" >}}) - testing strategies that inform acceptance criteria
 - [Hypothesis-Driven Development]({{< relref "/docs/migrate-to-cd/optimize/hypothesis-driven-development" >}}) - the foundational practice of treating every change as an experiment

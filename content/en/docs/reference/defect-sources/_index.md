@@ -65,7 +65,7 @@ null safety, branch age), AI adds cost without benefit. Look for the <span class
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - Extend continuous delivery with constraints for AI agent-generated changes
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Safely incorporate AI into your delivery process
 - [Assess Phase]({{< relref "/docs/migrate-to-cd/assess" >}}) - Current-state assessment where defect source analysis begins
-- [Testing]({{< relref "/docs/reference/testing" >}}) - Testing types, patterns, and best practices
+- [Testing]({{< relref "/docs/testing" >}}) - Testing types, patterns, and best practices
 - [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}) - Patterns that undermine delivery performance
 - [Testing Symptoms]({{< relref "/docs/symptoms/testing" >}}) - Symptoms caused by testing gaps
 - [Deployment Symptoms]({{< relref "/docs/symptoms/deployment" >}}) - Symptoms caused by deployment process problems

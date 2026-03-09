@@ -50,7 +50,7 @@ determine that a change is safe to deploy without depending on any system we do 
 Teams that answer "yes" design a test architecture where fast, deterministic tests catch the vast
 majority of defects, contract tests verify that test doubles match reality, and a small number of
 non-deterministic tests run post-deployment as monitoring. For the full breakdown of this
-architecture, see the [Testing section]({{< relref "/docs/reference/testing" >}}).
+architecture, see the [Testing section]({{< relref "/docs/testing" >}}).
 
 ### The anti-pattern: the ice cream cone
 
@@ -126,7 +126,7 @@ more deterministic, and more focused on the code your team actually ships.
 ## Test Architecture for the CD Pipeline
 
 A test architecture is the deliberate structure of how different test types work together across
-your pipeline to give you deployment confidence. The [Testing section]({{< relref "/docs/reference/testing" >}})
+your pipeline to give you deployment confidence. The [Testing section]({{< relref "/docs/testing" >}})
 provides the full architecture reference, including five layers of tests (unit, integration,
 functional, contract, and end-to-end), how they map to pipeline stages, pre-merge vs post-merge
 strategies, a decision matrix for choosing test types, and best practices.

@@ -1,9 +1,11 @@
 ---
-title: "Testing"
+title: "Testing Recommendations"
 linkTitle: "Testing"
-weight: 12
+weight: 16
 description: >
   Test architecture, types, and best practices for building confidence in your delivery pipeline.
+aliases:
+  - /docs/reference/testing/
 ---
 
 A reliable test suite is essential for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). This page describes the test
@@ -36,7 +38,7 @@ This reframes the testing conversation. Instead of counting tests by type and tr
 diagram, you design a test architecture where:
 
 1. **Fast, deterministic tests** catch the vast majority of defects and run on every commit.
-   These tests use [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) for anything outside
+   These tests use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for anything outside
    the team's control. They give you a reliable go/no-go signal in minutes.
 
 2. **Contract tests** verify that your test doubles still match reality. They run asynchronously
@@ -69,33 +71,26 @@ reinforce each other.
 
 | Layer | Test Type | Role | Deterministic? | Details |
 |-------|-----------|------|----------------|---------|
-| 1 | [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) | Verify behavior in isolation - catch logic errors, regressions, and edge cases instantly | Yes | Fastest feedback loop; use [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) for external dependencies |
-| 2 | [Component Tests]({{< relref "/docs/reference/testing/component" >}}) | Verify a complete frontend component or backend service through its public interface | Yes | All external dependencies replaced with test doubles; fast enough to run on every commit |
-| 3 | [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) | Verify that your test doubles still match reality | No | Runs asynchronously; failures trigger review, not pipeline blocks |
-| 4 | [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing | No | Post-deployment; never a pre-merge gate |
+| 1 | [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify behavior in isolation - catch logic errors, regressions, and edge cases instantly | Yes | Fastest feedback loop; use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies |
+| 2 | [Component Tests]({{< relref "/docs/testing/component" >}}) | Verify a complete frontend component or backend service through its public interface | Yes | All external dependencies replaced with test doubles; fast enough to run on every commit |
+| 3 | [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify that your test doubles still match reality | No | Runs asynchronously; failures trigger review, not pipeline blocks |
+| 4 | [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing | No | Post-deployment; never a pre-merge gate |
 | - | Exploratory Testing | Unscripted investigation to discover unexpected behavior, usability issues, and edge cases | No | Never blocks the pipeline; runs continuously alongside delivery |
 | - | Usability Testing | Validates that real users can accomplish goals effectively and without confusion | No | Never blocks the pipeline; informs product decisions |
 
-[Static Analysis]({{< relref "/docs/reference/testing/static" >}}) runs alongside layers 1-2, catching code quality, security, and
-style issues without executing the code. [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) are used throughout
+[Static Analysis]({{< relref "/docs/testing/static" >}}) runs alongside layers 1-2, catching code quality, security, and
+style issues without executing the code. [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) are used throughout
 layers 1-2 to isolate external dependencies.
 
 ### How the layers work together
 
-{{< card code=true header="**Test layers by pipeline stage**" lang="text" >}}
-Pipeline stage    Test layer              Deterministic?   Blocks deploy?
-─────────────────────────────────────────────────────────────────────────
-On every commit   Unit tests              Yes              Yes
-                  Component tests         Yes              Yes
-
-Separate stage    Integration tests       Only if           Yes, if deterministic
-                                          controlled
-
-Asynchronous      Contract tests          No               No (triggers review)
-
-Post-deployment   E2E smoke tests         No               Triggers rollback if critical
-                  Synthetic monitoring    No               Triggers alerts
-{{< /card >}}
+| Pipeline Stage | Test Layer | Deterministic? | Blocks Deploy? |
+|----------------|------------|----------------|----------------|
+| On every commit | Unit tests | Yes | Yes |
+| On every commit | Component tests | Yes | Yes |
+| Asynchronous | Contract tests | No | No - triggers review |
+| Post-deployment | E2E smoke tests | No | Triggers rollback if critical |
+| Post-deployment | Synthetic monitoring | No | Triggers alerts |
 
 The critical insight: **everything that blocks deployment is deterministic and under your
 control.** Everything that involves external systems runs asynchronously or post-deployment. This
@@ -127,12 +122,12 @@ Use this reference to decide what type of test to write and where it runs in you
 
 | What You Need to Verify | Test Type | Speed | Deterministic? | Blocks Deploy? |
 |--------------------------|-----------|-------|----------------|----------------|
-| A function or method behaves correctly | [Unit]({{< relref "/docs/reference/testing/unit" >}}) | Milliseconds | Yes | Yes |
-| A complete component or service works through its public interface | [Component]({{< relref "/docs/reference/testing/component" >}}) | Milliseconds to seconds | Yes | Yes |
-| Your test doubles match reality | [Contract]({{< relref "/docs/reference/testing/contract" >}}) | Seconds | No | No |
-| Two or more real components working together, up to the full system | [E2E / Integration]({{< relref "/docs/reference/testing/e2e" >}}) | Seconds to minutes | No | No |
-| Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/reference/testing/static" >}}) | Seconds | Yes | Yes |
-| UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/reference/testing/static" >}}) + [Component]({{< relref "/docs/reference/testing/component" >}}) | Seconds | Yes | Yes |
+| A function or method behaves correctly | [Unit]({{< relref "/docs/testing/unit" >}}) | Milliseconds | Yes | Yes |
+| A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/component" >}}) | Milliseconds to seconds | Yes | Yes |
+| Your test doubles match reality | [Contract]({{< relref "/docs/testing/contract" >}}) | Seconds | No | No |
+| Two or more real components working together, up to the full system | [E2E / Integration]({{< relref "/docs/testing/e2e" >}}) | Seconds to minutes | No | No |
+| Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/testing/static" >}}) | Seconds | Yes | Yes |
+| UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/testing/static" >}}) + [Component]({{< relref "/docs/testing/component" >}}) | Seconds | Yes | Yes |
 | Unexpected behavior, edge cases, real-world workflows | Exploratory Testing | Varies | No | Never |
 | Real users can accomplish goals effectively | Usability Testing | Varies | No | Never |
 
@@ -187,14 +182,14 @@ Use this reference to decide what type of test to write and where it runs in you
 
 | Type | Purpose |
 |------|---------|
-| [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) | Verify individual units of behavior in isolation |
-| [Component Tests]({{< relref "/docs/reference/testing/component" >}}) | Verify a complete frontend component or backend service with test doubles for external deps |
-| [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) | Verify API contracts between services |
-| [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing |
-| [Integration Tests]({{< relref "/docs/reference/testing/integration" >}}) | Alias for End-to-End Tests |
-| [Static Analysis]({{< relref "/docs/reference/testing/static" >}}) | Catch issues without running code |
-| [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) | Patterns for isolating dependencies in tests |
-| [Feedback Speed]({{< relref "/docs/reference/testing/feedback-speed" >}}) | Why test suite speed matters and the cognitive science behind the targets |
+| [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify individual units of behavior in isolation |
+| [Component Tests]({{< relref "/docs/testing/component" >}}) | Verify a complete frontend component or backend service with test doubles for external deps |
+| [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify API contracts between services |
+| [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing |
+| [Integration Tests]({{< relref "/docs/testing/integration" >}}) | Alias for End-to-End Tests |
+| [Static Analysis]({{< relref "/docs/testing/static" >}}) | Catch issues without running code |
+| [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) | Patterns for isolating dependencies in tests |
+| [Feedback Speed]({{< relref "/docs/testing/feedback-speed" >}}) | Why test suite speed matters and the cognitive science behind the targets |
 
 ## Related Content
 

@@ -191,7 +191,7 @@ For each boundary between domains:
    changing field semantics requires a new version. Both old and new versions are supported for a
    defined deprecation period.
 4. **Contract tests.** Write tests that verify the producer honors the contract. Write tests that
-   verify the consumer handles the contract correctly. See [Contract Testing]({{< relref "/docs/reference/testing/contract" >}})
+   verify the consumer handles the contract correctly. See [Contract Testing]({{< relref "/docs/testing/contract" >}})
    for implementation guidance.
 
 Teams should not proceed to separate deployment pipelines until contracts are explicit and tested.
@@ -236,4 +236,4 @@ for a worked example of this pattern when teams share a [modular monolith]({{< r
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - the architecture anti-pattern that misaligned team ownership produces
 - [Thin Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}) - the organizational anti-pattern of distributing engineers too thin across too many services
 - [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - how to slice work vertically within a team's domain boundary
-- [Contract Testing]({{< relref "/docs/reference/testing/contract" >}}) - how to define and enforce the contracts between domain teams
+- [Contract Testing]({{< relref "/docs/testing/contract" >}}) - how to define and enforce the contracts between domain teams

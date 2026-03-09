@@ -123,7 +123,7 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests]({{< relref "/docs/reference/testing" >}}) at service boundaries. AI-generated code is
+- Add [contract tests]({{< relref "/docs/testing" >}}) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in under ten minutes. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.

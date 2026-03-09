@@ -2,6 +2,8 @@
 title: "Contract Tests"
 linkTitle: "Contract Tests"
 weight: 5
+aliases:
+  - /docs/reference/testing/contract/
 description: >
   Tests that verify the interface between a consumer and a provider has not broken. Non-deterministic; never a pipeline gate, but essential for keeping component test doubles accurate.
 ---
@@ -11,7 +13,7 @@ description: >
 ## Definition
 
 A contract test verifies that the test doubles used in
-[component tests]({{< relref "/docs/reference/testing/component" >}}) still accurately represent the
+[component tests]({{< relref "/docs/testing/component" >}}) still accurately represent the
 real external system. It does this by running against the **live** external sub-system
 and asserting that the interface structure - response shapes, field names, types, and
 status codes - matches what the test doubles expect.

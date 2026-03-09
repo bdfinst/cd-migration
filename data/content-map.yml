@@ -547,12 +547,45 @@ sections:
           - file: pitfalls-and-metrics.md
             title: "Pitfalls and Metrics"
 
+  # ---- Testing Recommendations (weight 16) ----
+
+  - path: docs/testing/
+    title: "Testing Recommendations"
+    weight: 16
+    purpose: "Test architecture, types, and best practices for building confidence in your delivery pipeline."
+    pages:
+      - file: _index.md
+        title: "Testing Recommendations"
+    subsections:
+      - path: ""
+        title: "Test Types"
+        page_count: 9
+        pages:
+          - file: unit.md
+            title: "Unit Tests"
+          - file: component.md
+            title: "Component Tests"
+          - file: contract.md
+            title: "Contract Tests"
+          - file: e2e.md
+            title: "End-to-End Tests"
+          - file: integration.md
+            title: "Integration Tests (terminology)"
+          - file: static.md
+            title: "Static Analysis"
+          - file: test-doubles.md
+            title: "Test Doubles"
+          - file: feedback-speed.md
+            title: "Test Feedback Speed"
+          - file: glossary.md
+            title: "Testing Glossary"
+
   # ---- Reference section (weight 15) ----
 
   - path: docs/reference/
     title: "Reference"
     weight: 15
-    purpose: "Practice definitions, metrics, testing guidance, glossary, and other reference material."
+    purpose: "Practice definitions, metrics, glossary, and other reference material."
     pages:
       - file: cd-dependency-tree.md
         title: "CD Dependency Tree"
@@ -608,31 +641,6 @@ sections:
             title: "Release Frequency"
           - file: work-in-progress.md
             title: "Work in Progress"
-
-      - path: testing/
-        title: "Testing"
-        page_count: 9
-        pages:
-          - file: component.md
-            title: "Component Tests"
-          - file: contract.md
-            title: "Contract Tests"
-          - file: e2e.md
-            title: "End-to-End Tests"
-          - file: integration.md
-            title: "Integration Tests (terminology)"
-          - file: feedback-speed.md
-            title: "Test Feedback Speed"
-          - file: glossary.md
-            title: "Testing Glossary"
-          - file: integration.md
-            title: "Integration Tests"
-          - file: static.md
-            title: "Static Analysis"
-          - file: test-doubles.md
-            title: "Test Doubles"
-          - file: unit.md
-            title: "Unit Tests"
 
       - path: pipeline-reference-architecture/
         title: "Pipeline Reference Architecture"

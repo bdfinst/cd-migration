@@ -4,6 +4,7 @@ linkTitle: "Component Tests"
 weight: 2
 aliases:
   - /docs/reference/testing/functional/
+  - /docs/reference/testing/component/
 description: >
   Deterministic tests that verify a complete frontend component or backend service through its public interface, using test doubles for all external dependencies.
 ---
@@ -14,7 +15,7 @@ description: >
 
 A component test verifies a complete component - either a frontend component rendered
 in isolation, or a backend service exercised through its public interface - with
-[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) replacing all external dependencies.
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) replacing all external dependencies.
 No real databases, downstream services, or network calls leave the process. The test
 treats the component as a [black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}):
 inputs go in through the public interface (API endpoint, rendered UI), observable
@@ -42,8 +43,8 @@ any system the team does not control.
   announcements** as part of feature verification.
 
 If the test needs a real external dependency (live database, live downstream service),
-it is an [end-to-end test]({{< relref "/docs/reference/testing/e2e" >}}). If it tests a single
-unit in isolation, it is a [unit test]({{< relref "/docs/reference/testing/unit" >}}).
+it is an [end-to-end test]({{< relref "/docs/testing/e2e" >}}). If it tests a single
+unit in isolation, it is a [unit test]({{< relref "/docs/testing/unit" >}}).
 
 ## Characteristics
 

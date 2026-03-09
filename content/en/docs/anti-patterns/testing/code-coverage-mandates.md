@@ -178,5 +178,5 @@ informational rather than a gate.
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - When most tests are at the wrong level
 - [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - When teams face pressure that undermines test quality
-- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Writing fast, deterministic tests for logic
+- [Unit Tests]({{< relref "/docs/testing/unit" >}}) - Writing fast, deterministic tests for logic
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - Why coverage mandates are especially dangerous when agents optimize for coverage rather than intent

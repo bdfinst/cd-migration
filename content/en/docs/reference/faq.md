@@ -230,7 +230,7 @@ pipeline becomes a bottleneck rather than an enabler. The fix is incremental: qu
 flaky tests, parallelize execution, rebalance toward fast unit tests, and set a pipeline
 time budget (under 10 minutes). See
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and the
-[Testing reference section]({{< relref "/docs/reference/testing" >}}) for detailed guidance.
+[Testing reference section]({{< relref "/docs/testing" >}}) for detailed guidance.
 
 ### Where do I start if I am not sure which phase applies to us?
 

@@ -98,7 +98,7 @@ A comprehensive suite of automated tests provides confidence that the software i
 Tests are reliable, fast, and maintained as carefully as production code.
 
 **Migration relevance:** [Phase 1: Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}).
-Also see the [Testing reference section]({{< relref "/docs/reference/testing" >}}) for guidance on specific test types.
+Also see the [Testing reference section]({{< relref "/docs/testing" >}}) for guidance on specific test types.
 
 ### Test Data Management
 

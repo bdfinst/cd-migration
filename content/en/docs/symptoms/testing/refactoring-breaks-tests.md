@@ -66,5 +66,5 @@ every internal change ripples across the test suite.
 - [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - Tests that verify implementation often create high coverage without catching bugs
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Over-reliance on integration and E2E tests amplifies this problem
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Test architecture that supports refactoring
-- [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Black box testing that survives internal changes
-- [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Using test doubles without coupling to implementation
+- [Unit Tests]({{< relref "/docs/testing/unit" >}}) - Black box testing that survives internal changes
+- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Using test doubles without coupling to implementation

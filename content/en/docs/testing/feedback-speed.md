@@ -2,6 +2,8 @@
 title: "Test Feedback Speed"
 linkTitle: "Feedback Speed"
 weight: 8
+aliases:
+  - /docs/reference/testing/feedback-speed/
 description: >
   Why test suite speed matters for developer effectiveness and how cognitive limits set the targets.
 ---

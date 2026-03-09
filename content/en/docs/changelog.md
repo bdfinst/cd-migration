@@ -7,9 +7,13 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-09 - Testing Recommendations Moved to Top-Level Section
+
+Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as a peer of the Reference section, rebranded as [Testing Recommendations]({{< relref "/docs/testing" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.
+
 ## 2026-03-09 - Contract Testing: Consumer/Provider and CDC vs. Contract-First
 
-Expanded [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) to cover:
+Expanded [Contract Tests]({{< relref "/docs/testing/contract" >}}) to cover:
 
 - Consumer contract testing - what the consumer is trying to discover (fields I depend on, types, status codes)
 - Provider contract testing - what the provider is trying to discover (breaking changes to any consumer)
@@ -19,18 +23,18 @@ Expanded [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) to 
 
 ## 2026-03-09 - Testing Taxonomy: E2E Absorbs Integration, Integration Forwarding Page
 
-- [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) now covers the full spectrum of tests involving real external dependencies - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
-- Added [Integration Tests]({{< relref "/docs/reference/testing/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
+- [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) now covers the full spectrum of tests involving real external dependencies - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
+- Added [Integration Tests]({{< relref "/docs/testing/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
 
 ## 2026-03-09 - Testing Taxonomy: Component Tests, Integration Test Redefinition
 
 Restructured the testing reference section with a clearer taxonomy:
 
-- Added [Component Tests]({{< relref "/docs/reference/testing/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
-- Redefined [Integration Tests]({{< relref "/docs/reference/testing/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
-- Updated [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) to clarify the solitary vs. sociable distinction.
+- Added [Component Tests]({{< relref "/docs/testing/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
+- Redefined [Integration Tests]({{< relref "/docs/testing/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
+- Updated [Unit Tests]({{< relref "/docs/testing/unit" >}}) to clarify the solitary vs. sociable distinction.
 - Added Exploratory Testing and Usability Testing to the architecture table as non-blocking activities.
-- Added Component Test, Integration Test, Sociable Unit Test, and Solitary Unit Test entries to the [Testing Glossary]({{< relref "/docs/reference/testing/glossary" >}}).
+- Added Component Test, Integration Test, Sociable Unit Test, and Solitary Unit Test entries to the [Testing Glossary]({{< relref "/docs/testing/glossary" >}}).
 
 ## 2026-03-03 - Glossary: Dependency and External Dependency
 

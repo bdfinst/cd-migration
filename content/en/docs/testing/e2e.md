@@ -2,6 +2,8 @@
 title: "End-to-End Tests"
 linkTitle: "End-to-End Tests"
 weight: 4
+aliases:
+  - /docs/reference/testing/e2e/
 description: >
   Tests that exercise two or more real components up to the full system. Also called integration testing. Non-deterministic by nature; never a pre-merge gate.
 ---
@@ -11,7 +13,7 @@ description: >
 ## Definition
 
 An end-to-end test (also called an **integration test**) exercises real components
-working together - no [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) replace
+working together - no [test doubles]({{< relref "/docs/testing/test-doubles" >}}) replace
 the dependencies under test. The scope ranges from two services calling each other,
 to a service talking to a real database, to a complete user journey through every
 layer of the system.
@@ -27,7 +29,7 @@ test data collisions, or third-party rate limits.
 
 "Integration test" and "end-to-end test" are often used interchangeably in the
 industry. Martin Fowler distinguishes between narrow integration tests (which use test
-doubles at the boundary - what this site calls [component tests]({{< relref "/docs/reference/testing/component" >}}))
+doubles at the boundary - what this site calls [component tests]({{< relref "/docs/testing/component" >}}))
 and broad integration tests (which use real dependencies). He prefers to call the
 broad kind "system tests" or "end-to-end tests." This site uses end-to-end to cover
 the full spectrum of tests that involve real external dependencies.
@@ -56,11 +58,11 @@ run, and maintain. Use them for:
 - **Happy-path validation** of critical business flows that cannot be verified any
   other way (e.g., a payment flow that depends on a real payment provider).
 - **Cross-team workflows** that span multiple deployables and cannot be isolated
-  within a single [component test]({{< relref "/docs/reference/testing/component" >}}).
+  within a single [component test]({{< relref "/docs/testing/component" >}}).
 
 Do **not** use end-to-end tests to cover edge cases, error handling, or input
-validation. Those scenarios belong in [unit]({{< relref "/docs/reference/testing/unit" >}}) or
-[component]({{< relref "/docs/reference/testing/component" >}}) tests, which are faster, cheaper, and
+validation. Those scenarios belong in [unit]({{< relref "/docs/testing/unit" >}}) or
+[component]({{< relref "/docs/testing/component" >}}) tests, which are faster, cheaper, and
 deterministic.
 
 ### Vertical vs. horizontal
@@ -130,7 +132,7 @@ test("user can add an item to cart and check out", async ({ page }) => {
 
 - **Using end-to-end tests as the primary safety net**: this is the ice cream cone
   anti-pattern. The majority of your confidence should come from unit and
-  [component]({{< relref "/docs/reference/testing/component" >}}) tests, which are fast and
+  [component]({{< relref "/docs/testing/component" >}}) tests, which are fast and
   deterministic. End-to-end tests are expensive insurance for the gaps.
 - **Blocking the pipeline**: end-to-end tests must never be a pre-merge gate. Their
   non-determinism will eventually block a deploy for reasons unrelated to code quality.
@@ -161,8 +163,8 @@ smoke tests immediately after deployment. This is acceptable only if the team in
 in keeping those tests stable. A flaky smoke gate is worse than no gate: it trains
 developers to ignore failures.
 
-Use [contract tests]({{< relref "/docs/reference/testing/contract" >}}) to verify that the
-[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) in your component tests still
+Use [contract tests]({{< relref "/docs/testing/contract" >}}) to verify that the
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) in your component tests still
 match reality. This gives you deterministic pre-merge confidence without depending on
 live external systems.
 

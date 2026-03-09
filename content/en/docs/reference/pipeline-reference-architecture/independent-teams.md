@@ -145,7 +145,7 @@ least to most coordination required. Use the strongest approach your context sup
 |----------|-------------|----------------------|-----------|
 | **Provider schema compatibility** | Provider's pipeline checks every change for backward compatibility against its own published schema (e.g., OpenAPI diff). No consumer involvement needed. | None between teams | Teams are in different organizations, or consumers are external/unknown |
 | **Provider-maintained consumer tests** | Provider team writes tests that exercise known consumer usage patterns based on API analytics, documentation, or past breakage. | Minimal - provider observes consumers | Provider can see consumer traffic patterns but cannot require consumer participation |
-| **Consumer-driven contracts** | Consumers publish pacts describing the subset of the provider API they depend on. Provider runs these pacts in its pipeline. See [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}). | High - shared tooling, broker, and agreement to maintain pacts | Teams are in the same organization with shared tooling and willingness to maintain pacts |
+| **Consumer-driven contracts** | Consumers publish pacts describing the subset of the provider API they depend on. Provider runs these pacts in its pipeline. See [Contract Tests]({{< relref "/docs/testing/contract" >}}). | High - shared tooling, broker, and agreement to maintain pacts | Teams are in the same organization with shared tooling and willingness to maintain pacts |
 
 Most organizations use a mix. Internal teams with shared tooling can adopt consumer-driven
 contracts. Teams consuming third-party or cross-organization APIs use provider schema
@@ -216,6 +216,6 @@ pipeline. Repeat until the integration pipeline is empty.
 
 - [Quality Gates]({{< relref "/docs" >}}) - the full gate sequence this pipeline applies
 - [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}) - the pattern teams evolve from
-- [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) - contract testing patterns and examples
+- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - contract testing patterns and examples
 - [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - how to extract services incrementally
 - [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - the risk of jumping to this architecture too early
