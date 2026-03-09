@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <!-- Background -->
+  <rect width="720" height="520" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a2a3a">How Contract Tests Validate Test Doubles</text>
+
+  <!-- ==================== -->
+  <!-- LEFT: Inside Pipeline -->
+  <!-- ==================== -->
+  <rect x="20" y="56" width="320" height="230" rx="6" fill="#edf2f7" stroke="#224968" stroke-width="1.5"/>
+  <rect x="20" y="56" width="320" height="30" rx="6" fill="#224968"/>
+  <rect x="20" y="74" width="320" height="12" fill="#224968"/>
+  <text x="180" y="77" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Inside Pipeline (deterministic)</text>
+
+  <!-- Your Code box -->
+  <rect x="45" y="104" width="120" height="50" rx="4" fill="#224968"/>
+  <text x="105" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Your Code</text>
+
+  <!-- Test Double box -->
+  <rect x="215" y="104" width="110" height="50" rx="4" fill="#4a6741"/>
+  <text x="270" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Test Double</text>
+  <text x="270" y="142" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">(stub / fake)</text>
+
+  <!-- Arrows between code and double -->
+  <line x1="165" y1="120" x2="213" y2="120" stroke="#556" stroke-width="1.2"/>
+  <polygon points="213,120 206,116 206,124" fill="#556"/>
+  <text x="189" y="113" text-anchor="middle" font-size="9" fill="#667">calls</text>
+
+  <line x1="215" y1="142" x2="167" y2="142" stroke="#556" stroke-width="1.2"/>
+  <polygon points="167,142 174,138 174,146" fill="#556"/>
+  <text x="189" y="155" text-anchor="middle" font-size="9" fill="#667">canned response</text>
+
+  <!-- Pipeline result -->
+  <rect x="75" y="186" width="210" height="36" rx="4" fill="#fff" stroke="#224968" stroke-width="1"/>
+  <text x="180" y="200" text-anchor="middle" font-size="11" fill="#224968">Fast, deterministic result</text>
+  <text x="180" y="213" text-anchor="middle" font-size="10" fill="#667">No network, no external systems</text>
+
+  <!-- Down arrow from Your Code to result -->
+  <line x1="180" y1="154" x2="180" y2="184" stroke="#bbc" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Assumes label -->
+  <rect x="75" y="236" width="210" height="24" rx="3" fill="#e8edf3" stroke="#99aabc" stroke-width="1"/>
+  <text x="180" y="252" text-anchor="middle" font-size="10" fill="#556">Assumes test doubles are accurate</text>
+
+  <!-- ===================== -->
+  <!-- RIGHT: Outside Pipeline -->
+  <!-- ===================== -->
+  <rect x="380" y="56" width="320" height="230" rx="6" fill="#fdf6e3" stroke="#7a5c2e" stroke-width="1.5"/>
+  <rect x="380" y="56" width="320" height="30" rx="6" fill="#7a5c2e"/>
+  <rect x="380" y="74" width="320" height="12" fill="#7a5c2e"/>
+  <text x="540" y="77" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">Outside Pipeline (scheduled)</text>
+
+  <!-- Contract Test box -->
+  <rect x="405" y="104" width="120" height="50" rx="4" fill="#7a5c2e"/>
+  <text x="465" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Contract</text>
+  <text x="465" y="142" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Test</text>
+
+  <!-- Real External API box -->
+  <rect x="575" y="104" width="110" height="50" rx="4" fill="#6b3a3a"/>
+  <text x="630" y="126" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Real External</text>
+  <text x="630" y="142" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">API</text>
+
+  <!-- Arrows between contract test and real API -->
+  <line x1="525" y1="120" x2="573" y2="120" stroke="#556" stroke-width="1.2"/>
+  <polygon points="573,120 566,116 566,124" fill="#556"/>
+  <text x="549" y="113" text-anchor="middle" font-size="9" fill="#667">real request</text>
+
+  <line x1="575" y1="142" x2="527" y2="142" stroke="#556" stroke-width="1.2"/>
+  <polygon points="527,142 534,138 534,146" fill="#556"/>
+  <text x="549" y="155" text-anchor="middle" font-size="9" fill="#667">real response</text>
+
+  <!-- Compare box -->
+  <rect x="405" y="186" width="280" height="36" rx="4" fill="#fff" stroke="#7a5c2e" stroke-width="1"/>
+  <text x="545" y="200" text-anchor="middle" font-size="11" fill="#7a5c2e">Compares real response schema</text>
+  <text x="545" y="213" text-anchor="middle" font-size="10" fill="#99885a">against test double definition</text>
+
+  <!-- Down arrow from contract test to compare -->
+  <line x1="540" y1="154" x2="540" y2="184" stroke="#bba" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Validates label -->
+  <rect x="405" y="236" width="280" height="24" rx="3" fill="#f5edd5" stroke="#bba278" stroke-width="1"/>
+  <text x="545" y="252" text-anchor="middle" font-size="10" fill="#7a5c2e">Confirms or denies accuracy of test doubles</text>
+
+  <!-- ==================== -->
+  <!-- CONNECTING BRIDGE -->
+  <!-- ==================== -->
+  <line x1="345" y1="252" x2="375" y2="252" stroke="#99aabc" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ==================== -->
+  <!-- OUTCOMES SECTION -->
+  <!-- ==================== -->
+  <text x="360" y="312" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2a3a">Outcome</text>
+
+  <!-- Divider -->
+  <line x1="360" y1="322" x2="360" y2="500" stroke="#ddd" stroke-width="1"/>
+
+  <!-- MATCH outcome (left) -->
+  <rect x="50" y="334" width="270" height="90" rx="6" fill="#eef6ee" stroke="#3a7a3a" stroke-width="1.5"/>
+
+  <!-- Green check circle -->
+  <circle cx="80" cy="362" r="14" fill="#3a7a3a"/>
+  <text x="80" y="367" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">&#10003;</text>
+
+  <text x="102" y="358" font-size="14" font-weight="600" fill="#2d5e2d">Match</text>
+  <text x="102" y="376" font-size="11" fill="#4a7a4a">Test doubles are accurate.</text>
+  <text x="102" y="392" font-size="11" fill="#4a7a4a">Pipeline results are trustworthy.</text>
+  <text x="102" y="410" font-size="10" fill="#6a9a6a">No action needed.</text>
+
+  <!-- MISMATCH outcome (right) -->
+  <rect x="400" y="334" width="270" height="90" rx="6" fill="#fdf3e0" stroke="#7a5c2e" stroke-width="1.5"/>
+
+  <!-- Amber warning triangle -->
+  <polygon points="430,350 416,374 444,374" fill="#7a5c2e"/>
+  <text x="430" y="371" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">!</text>
+
+  <text x="452" y="358" font-size="14" font-weight="600" fill="#5a4420">Mismatch</text>
+  <text x="452" y="376" font-size="11" fill="#7a5c2e">External API has changed.</text>
+  <text x="452" y="392" font-size="11" fill="#7a5c2e">Test doubles need updating.</text>
+  <text x="452" y="410" font-size="10" fill="#99885a">Alert team. Update doubles. Re-verify.</text>
+
+  <!-- Feedback arrows from outcomes back to top -->
+
+  <!-- Match arrow back to pipeline -->
+  <path d="M 185 334 L 185 316 C 185 306 170 300 170 290" fill="none" stroke="#3a7a3a" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="170,290 166,298 174,298" fill="#3a7a3a"/>
+
+  <!-- Mismatch arrow back to test doubles -->
+  <path d="M 535 334 L 535 316 C 535 306 430 300 370 292" fill="none" stroke="#7a5c2e" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="370,292 376,300 380,294" fill="#7a5c2e"/>
+
+  <!-- Step labels at bottom -->
+  <rect x="20" y="444" width="680" height="60" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="36" y="464" font-size="11" font-weight="600" fill="#1a2a3a">The cycle:</text>
+  <text x="36" y="481" font-size="10" fill="#556">1. Pipeline tests use test doubles</text>
+  <text x="220" y="481" font-size="10" fill="#556">2. Contract tests hit real APIs</text>
+  <text x="390" y="481" font-size="10" fill="#556">3. Compare real vs expected</text>
+  <text x="560" y="481" font-size="10" fill="#556">4. Update doubles on drift</text>
+  <text x="36" y="496" font-size="10" fill="#889">Result: Pipeline never touches external systems, but catches when they change.</text>
+
+</svg>

@@ -18,7 +18,7 @@ Each pitfall below has a root cause in the same two gaps: skipped [agent deliver
 
 **The failure is not the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
 
-**Humans define the test specifications before implementation begins.** Scenarios, edge cases, acceptance criteria. The agent generates the test code from those specifications.
+**Humans define the test specifications before implementation begins.** Scenarios, edge cases, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). The agent generates the test code from those specifications.
 
 **Validate agent-generated test code for two properties.** First, it must test observable behavior, not implementation internals. Second, it must faithfully cover what the human specified. Skipping this validation is the most common way [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) fails.
 
@@ -146,7 +146,7 @@ Review the context documents for each active workstream quarterly. Archive or de
 
 ## Related Content
 
-- [ACD]({{< relref "/docs" >}}) - the framework overview, eight constraints, and workflow
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts that prevent these pitfalls
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - the automated checks that catch failures
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence that prevents most of these pitfalls

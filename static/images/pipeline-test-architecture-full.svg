@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <!-- Background -->
+  <rect width="720" height="370" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="360" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a2a3a">Full Pipeline Test Architecture</text>
+
+  <!-- ===== STAGE BOXES (left to right) ===== -->
+
+  <!-- Every Commit -->
+  <rect x="16" y="66" width="145" height="200" rx="5" fill="#edf2f7" stroke="#224968" stroke-width="1.5"/>
+  <rect x="16" y="66" width="145" height="26" rx="5" fill="#224968"/>
+  <rect x="16" y="84" width="145" height="8" fill="#224968"/>
+  <text x="88" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Every Commit</text>
+
+  <rect x="26" y="106" width="125" height="32" rx="3" fill="#4a6741"/>
+  <text x="88" y="126" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Static Analysis</text>
+
+  <rect x="26" y="146" width="125" height="32" rx="3" fill="#224968"/>
+  <text x="88" y="166" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Unit Tests</text>
+
+  <rect x="26" y="186" width="125" height="32" rx="3" fill="#224968"/>
+  <text x="88" y="206" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Integration Tests</text>
+
+  <rect x="26" y="226" width="125" height="32" rx="3" fill="#224968"/>
+  <text x="88" y="246" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Functional Tests</text>
+
+  <!-- Arrow: Commit -> Post-Merge -->
+  <line x1="163" y1="166" x2="186" y2="166" stroke="#224968" stroke-width="1.5"/>
+  <polygon points="186,166 180,162 180,170" fill="#224968"/>
+  <text x="174" y="158" text-anchor="middle" font-size="8" fill="#667">pass</text>
+
+  <!-- Post-Merge -->
+  <rect x="190" y="96" width="115" height="140" rx="5" fill="#f0fff0" stroke="#4a6741" stroke-width="1.5"/>
+  <rect x="190" y="96" width="115" height="26" rx="5" fill="#4a6741"/>
+  <rect x="190" y="114" width="115" height="8" fill="#4a6741"/>
+  <text x="247" y="116" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Post-Merge</text>
+
+  <rect x="200" y="134" width="95" height="48" rx="3" fill="#4a6741"/>
+  <text x="247" y="154" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Re-run Full</text>
+  <text x="247" y="168" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Deterministic Suite</text>
+
+  <text x="247" y="202" text-anchor="middle" font-size="8" fill="#4a6741">Catches merge-order</text>
+  <text x="247" y="212" text-anchor="middle" font-size="8" fill="#4a6741">interactions</text>
+
+  <!-- Arrow: Post-Merge -> Post-Deploy -->
+  <line x1="307" y1="166" x2="330" y2="166" stroke="#4a6741" stroke-width="1.5"/>
+  <polygon points="330,166 324,162 324,170" fill="#4a6741"/>
+  <text x="318" y="158" text-anchor="middle" font-size="8" fill="#667">deploy</text>
+
+  <!-- Scheduled (Contract Tests) - sits above the main flow -->
+  <rect x="334" y="66" width="130" height="80" rx="5" fill="#fdf6e3" stroke="#7a5c2e" stroke-width="1.5"/>
+  <rect x="334" y="66" width="130" height="26" rx="5" fill="#7a5c2e"/>
+  <rect x="334" y="84" width="130" height="8" fill="#7a5c2e"/>
+  <text x="399" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Scheduled</text>
+
+  <rect x="344" y="106" width="110" height="32" rx="3" fill="#7a5c2e"/>
+  <text x="399" y="126" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Contract Tests</text>
+
+  <!-- Dashed arrow: Contract back to Commit (routed ABOVE all boxes) -->
+  <path d="M 399 66 L 399 48 L 88 48 L 88 64" fill="none" stroke="#7a5c2e" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="88,64 84,56 92,56" fill="#7a5c2e"/>
+  <text x="243" y="44" text-anchor="middle" font-size="8" fill="#7a5c2e">failures update test doubles</text>
+
+  <!-- Post-Deploy -->
+  <rect x="334" y="166" width="130" height="100" rx="5" fill="#fce4e4" stroke="#6b3a3a" stroke-width="1.5"/>
+  <rect x="334" y="166" width="130" height="26" rx="5" fill="#6b3a3a"/>
+  <rect x="334" y="184" width="130" height="8" fill="#6b3a3a"/>
+  <text x="399" y="186" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Post-Deploy</text>
+
+  <rect x="344" y="206" width="110" height="32" rx="3" fill="#6b3a3a"/>
+  <text x="399" y="226" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">E2E Smoke Tests</text>
+
+  <text x="399" y="256" text-anchor="middle" font-size="8" fill="#6b3a3a">Critical happy paths</text>
+
+  <!-- Arrow: Post-Deploy -> Production -->
+  <line x1="466" y1="216" x2="490" y2="216" stroke="#6b3a3a" stroke-width="1.5"/>
+  <polygon points="490,216 484,212 484,220" fill="#6b3a3a"/>
+
+  <!-- Production -->
+  <rect x="494" y="166" width="130" height="100" rx="5" fill="#f4e6f4" stroke="#5a2d5a" stroke-width="1.5"/>
+  <rect x="494" y="166" width="130" height="26" rx="5" fill="#5a2d5a"/>
+  <rect x="494" y="184" width="130" height="8" fill="#5a2d5a"/>
+  <text x="559" y="186" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Production</text>
+
+  <rect x="504" y="206" width="110" height="32" rx="3" fill="#5a2d5a"/>
+  <text x="559" y="222" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Synthetic</text>
+  <text x="559" y="234" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">Monitoring</text>
+
+  <text x="559" y="256" text-anchor="middle" font-size="8" fill="#5a2d5a">Continuous health checks</text>
+
+  <!-- Dashed arrow: E2E failure -> rollback (routed BELOW all boxes) -->
+  <path d="M 399 268 L 399 286 L 170 286 L 170 268" fill="none" stroke="#6b3a3a" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="170,268 166,276 174,276" fill="#6b3a3a"/>
+  <text x="284" y="298" text-anchor="middle" font-size="8" fill="#6b3a3a">failure triggers rollback</text>
+
+  <!-- Dashed arrow: Production alerts -->
+  <path d="M 559 268 L 559 286 L 660 286" fill="none" stroke="#5a2d5a" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="660" y="276" width="50" height="20" rx="3" fill="#fff" stroke="#5a2d5a" stroke-width="1"/>
+  <text x="685" y="290" text-anchor="middle" font-size="10" font-weight="600" fill="#5a2d5a">Alerts</text>
+
+  <!-- Legend bar -->
+  <rect x="16" y="320" width="688" height="34" rx="4" fill="#f0f0f0" stroke="#ddd" stroke-width="1"/>
+
+  <rect x="28" y="330" width="10" height="10" rx="2" fill="#224968"/>
+  <text x="44" y="339" font-size="10" fill="#556">Blocks deploy</text>
+
+  <rect x="138" y="330" width="10" height="10" rx="2" fill="#4a6741"/>
+  <text x="154" y="339" font-size="10" fill="#556">Re-verification</text>
+
+  <rect x="260" y="330" width="10" height="10" rx="2" fill="#7a5c2e"/>
+  <text x="276" y="339" font-size="10" fill="#556">Async validation</text>
+
+  <rect x="390" y="330" width="10" height="10" rx="2" fill="#6b3a3a"/>
+  <text x="406" y="339" font-size="10" fill="#556">Post-deploy checks</text>
+
+  <rect x="530" y="330" width="10" height="10" rx="2" fill="#5a2d5a"/>
+  <text x="546" y="339" font-size="10" fill="#556">Production monitoring</text>
+
+</svg>

@@ -9,7 +9,7 @@ aliases:
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow]({{< relref "/docs" >}}) (Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) accelerate that work and why the effort stays small.
+The specification stages of the [ACD workflow]({{< relref "/docs/agentic-cd" >}}) (Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The Pattern
@@ -344,7 +344,7 @@ displays a graceful "No Data Found" state rather than crashing.
 
 ## Related Content
 
-- [The ACD Workflow]({{< relref "/docs" >}}) - the full workflow these tips support
+- [The ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these tips support
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - detailed definitions of each artifact
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skill framework that produces specifications like the example above
 - [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - why changes must stay small enough for frequent, safe deployment

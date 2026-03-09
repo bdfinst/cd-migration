@@ -87,7 +87,7 @@ manual review.
 
 **What to do:**
 
-- Use AI to review tickets, user stories, and acceptance criteria before development begins.
+- Use AI to review tickets, user stories, and [acceptance criteria](../../reference/glossary/#acceptance-criteria) before development begins.
   Prompt it to identify gaps, contradictions, untestable statements, and missing edge cases.
 - Use AI to generate test scenarios from requirements. If the AI cannot generate clear test
   cases, the requirements are not clear enough for a human either.
@@ -116,7 +116,7 @@ maintainable?).
 **Development guardrails:**
 
 - Code style enforcement (linters, formatters) that runs automatically
-- Architecture rules (dependency constraints, module boundaries) enforced in the pipeline
+- Architecture rules ([dependency](../../reference/glossary/#dependency) constraints, module boundaries) enforced in the pipeline
 - Security scanning (SAST, dependency vulnerability checks) on every commit
 
 **What to do:**
@@ -170,12 +170,12 @@ Humans define what to test. [Agents]({{< relref "/docs/reference/glossary#agent-
 **What to do:**
 
 - Use AI for code generation with the specification-first workflow described in
-  [the ACD workflow]({{< relref "/docs" >}}). Define test scenarios first, let AI generate
+  [the ACD workflow]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}). Define test scenarios first, let AI generate
   the test code (validated for behavior focus and spec fidelity), then let AI generate
   the implementation.
 - Use AI for refactoring: extracting interfaces, reducing complexity, improving test coverage.
   These are high-value, low-risk tasks where AI excels. Well-structured, well-named code
-  also reduces the token cost of every subsequent AI interaction - see
+  also reduces the [token](../../reference/glossary/#token) cost of every subsequent AI interaction - see
   [Tokenomics: Code Quality as a Token Cost Driver]({{< relref "/docs/agentic-cd/operations/tokenomics#8-code-quality-as-a-token-cost-driver" >}}).
 - Use AI to analyze incidents and suggest fixes, with the same pipeline validation applied to
   any change.
@@ -200,7 +200,7 @@ to measure progress.
 - [Brownfield CD Overview]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - the phased migration approach this roadmap parallels
 - [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the core mechanical cycle for Reduce Delivery Friction
 - [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) - catalog of defect causes that AI can help detect during Clarify Work
-- [ACD]({{< relref "/docs" >}}) - the destination for teams completing this roadmap
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the destination for teams completing this roadmap
 - [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts that Accelerate with AI's specification-first workflow requires
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the pipeline enforces the guardrails from Harden Guardrails and Reduce Delivery Friction

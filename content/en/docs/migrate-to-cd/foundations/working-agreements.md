@@ -9,20 +9,20 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations**
 
-The practices in Phase 1 - [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), testing, small work, and fast review - only work when the whole team commits to them. [Working agreements]({{< relref "/docs/reference/glossary#working-agreement" >}}) make that commitment explicit. This page covers the key agreements a team needs before moving to [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation in Phase 2.
+The practices in Phase 1 ([trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), testing, small work, and fast review) only work when the whole team commits to them. [Working agreements]({{< relref "/docs/reference/glossary#working-agreement" >}}) make that commitment explicit. This page covers the key agreements a team needs before moving to [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation in Phase 2.
 {{% /pageinfo %}}
 
 ## Why Working Agreements Matter
 
-A working agreement is a shared commitment that the team creates, owns, and enforces together. It is not a policy imposed from outside. It is the team's own answer to the question: "How do we work together?"
+A working agreement is a shared commitment that the team creates, owns, and enforces together. No one imposes it from outside. The team answers one question for itself: "How do we work together?"
 
-Without working agreements, [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD - they are practicing individual preferences.
+Without working agreements, [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD. They are practicing individual preferences.
 
 Working agreements prevent this drift by making expectations explicit. When everyone agrees on what "done" means, what "ready" means, and how [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) works, the team can hold each other accountable without conflict.
 
 ## Definition of Done
 
-The Definition of Done (DoD) is the team's shared standard for when a work item is complete. For CD, the Definition of Done must include deployment.
+The Definition of Done (DoD) is the team's shared standard for when a work item is complete. For CD, done means delivered to the end user.
 
 ### Minimum Definition of Done for CD
 
@@ -31,18 +31,18 @@ A work item is **done** when all of the following are true:
 - [ ] Code is integrated to trunk
 - [ ] All automated tests pass
 - [ ] Code has been reviewed (via pairing, mob, or pull request)
-- [ ] The change is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) to production
+- [ ] The change is delivered to the end user (or [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) to production at any time)
 - [ ] No known defects are introduced
 - [ ] Relevant documentation is updated (API docs, runbooks, etc.)
 - [ ] [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are in place for incomplete user-facing features
 
-### Why "Deployed to Production" Matters
+### Why "Delivered to the End User" Matters
 
 Many teams define "done" as "code is merged." This creates a gap between "done" and "delivered." Work accumulates in a staging environment, waiting for a release. Risk grows with each unreleased change.
 
-In a CD organization, "done" means the change is in production (or ready to be deployed to production at any time). This is the ultimate test of completeness: the change works in the real environment, with real data, under real load.
+In a CD organization, "done" means the change has reached the end user (or is ready to reach them at any time). This is the ultimate test of completeness: the change works in the real environment, with real data, under real load.
 
-In Phase 1, you may not yet have the pipeline to deploy every change to production automatically. That is fine - your DoD should still include "deployable to production" as the standard, even if the deployment step is not yet automated. The pipeline work in [Phase 2]({{< relref "/docs/anti-patterns/pipeline" >}}) will close that gap.
+In Phase 1, you may not yet have the pipeline to deliver every change automatically. That is fine. Your DoD should still include "delivered to the end user" as the standard, even if the delivery step is not yet automated. The pipeline work in [Phase 2]({{< relref "/docs/anti-patterns/pipeline" >}}) will close that gap.
 
 ### Extending Your Definition of Done
 
@@ -52,12 +52,14 @@ As your CD maturity grows, extend the DoD:
 |-------|-----------------|
 | Phase 1 (Foundations) | Code integrated to trunk, tests pass, reviewed, deployable |
 | Phase 2 (Pipeline) | [Artifact]({{< relref "/docs/reference/glossary#artifact" >}}) built and validated by the pipeline |
-| Phase 3 (Optimize) | Change deployed to production behind a feature flag |
-| Phase 4 (Deliver on Demand) | Change deployed to production and monitored |
+| Phase 3 (Optimize) | Change delivered to users behind a feature flag |
+| Phase 4 (Deliver on Demand) | Change delivered to users and monitored |
 
 ## Definition of Ready
 
-The Definition of Ready (DoR) answers: "When is a work item ready to be worked on?" Pulling unready work into development creates waste - unclear requirements lead to rework, missing [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) lead to untestable changes, and oversized stories lead to long-lived branches.
+The Definition of Ready (DoR) answers: "When is a work item ready to be worked on?"
+
+Pulling unready work into development creates waste. Unclear requirements lead to rework. Missing [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) lead to untestable changes. Oversized stories lead to long-lived branches.
 
 ### Minimum Definition of Ready for CD
 
@@ -65,8 +67,8 @@ A work item is **ready** when all of the following are true:
 
 - [ ] Acceptance criteria are defined and specific (using Given-When-Then or equivalent)
 - [ ] The work item is small enough to complete in 2 days or less
-- [ ] The work item is testable - the team knows how to verify it works
-- [ ] Dependencies are identified and resolved (or the work item is independent)
+- [ ] The work item is testable (the team knows how to verify it works)
+- [ ] [Dependencies]({{< relref "/docs/reference/glossary#dependency" >}}) are identified and resolved (or the work item is independent)
 - [ ] The team has discussed the work item (Three Amigos or equivalent)
 - [ ] The work item is estimated (or the team has agreed estimation is unnecessary for items this small)
 
@@ -78,7 +80,7 @@ A work item is **ready** when all of the following are true:
 
 ## CI Working Agreement
 
-The CI working agreement codifies how the team practices continuous integration. This is the most operationally critical working agreement for CD.
+The CI working agreement codifies how the team practices continuous integration. Every other agreement depends on a working CI process, making this the foundation the rest builds on.
 
 ### The CI Agreement
 
@@ -98,7 +100,7 @@ The team agrees to the following practices:
 
 **Broken builds:**
 
-- [ ] A broken build is the team's top priority - it is fixed before any new work begins
+- [ ] A broken build is the team's top priority. It is fixed before any new work begins
 - [ ] The developer(s) who broke the build are responsible for fixing it immediately
 - [ ] If the fix will take more than 10 minutes, revert the change and fix it offline
 - [ ] No one commits to a broken trunk (except to fix the break)
@@ -117,16 +119,16 @@ This is the single most important CI agreement. When the build is broken:
 - Trunk is not releasable. The team has lost its safety net.
 - Every minute the build stays broken, the team accumulates risk.
 
-"Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive - it is the team protecting its own ability to deliver.
+"Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive. It is the team protecting its own ability to deliver.
 
-#### Stop the Line - Why All Work Stops
+#### Stop the Line: Why All Work Stops
 
-Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops** - not just merges. Every developer on the team shifts attention to restoring green.
+Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops**, not just merges. Every developer on the team shifts attention to restoring green.
 
 This sounds extreme, but the reasoning is straightforward:
 
 - **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-leverage activity anyone on the team can do.
-- **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress - it is inventory.
+- **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress. It is inventory.
 - **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not just the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
 
 #### Two Timelines: Stop vs. Do Not Stop
@@ -152,9 +154,9 @@ The team that stops immediately pays a small, predictable cost. The team that do
 
 ### The Revert Rule
 
-If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished - they are protecting the team's flow.
+If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished. They are protecting the team's flow.
 
-Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost - the code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative - a broken trunk for hours while someone debugs - is far more costly.
+Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost. The code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative, a broken trunk for hours while someone debugs, is far more costly.
 
 #### When to Forward Fix vs. Revert
 
@@ -162,7 +164,7 @@ Not every broken build requires a revert. If the developer who broke it can iden
 
 1. **Start a 15-minute timer** the moment the build goes red.
 2. If the developer has a fix ready and pushed within 15 minutes, ship the forward fix.
-3. If the timer expires and the fix is not in trunk, **revert immediately** - no extensions, no "I'm almost done."
+3. If the timer expires and the fix is not in trunk, **revert immediately**. No extensions, no "I'm almost done."
 
 The timer prevents the most common failure mode: a developer who is "five minutes away" from a fix for an hour. After 15 minutes without a fix, the probability of a quick resolution drops sharply, and the cost to the rest of the team climbs. Revert, restore green, and fix the problem offline without time pressure.
 
@@ -172,11 +174,11 @@ Teams adopting stop-the-line discipline encounter predictable pushback. These re
 
 | Objection | Response |
 |-----------|----------|
-| "We can't afford to stop - we have a deadline." | You cannot afford not to stop. Every minute the build is red, you accumulate changes that are untested against the real baseline. Stopping for 20 minutes now prevents losing half a day later. The fastest path to your deadline runs through a green build. |
-| "Stopping kills our velocity." | Velocity that includes work built on a broken trunk is an illusion. Those [story points]({{< relref "/docs/reference/glossary#story-points" >}}) will come back as rework, failed deployments, or production incidents. Real velocity requires a releasable trunk. |
-| "We already stop all the time - it's not working." | Frequent stops indicate a different problem: the team is merging changes that break the build too often. Address that root cause with better pre-merge testing, smaller commits, and pair programming on risky changes. Stop-the-line is the safety net, not the solution for chronic build instability. |
-| "It's a known flaky test - we can ignore it." | A flaky test you ignore trains the team to ignore all red builds. Fix the flaky test or remove it. There is no middle ground. A red build must always mean "something is wrong" or the signal loses all value. |
-| "Management won't support stopping feature work." | Frame it in terms management cares about: [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}) and rework cost. Show the two-timeline comparison above. Teams that stop immediately have shorter cycle times and less unplanned rework. This is not about being cautious - it is about being fast. |
+| "We can't afford to stop. We have a deadline." | Stopping for 20 minutes now prevents losing half a day later. The fastest path to your deadline runs through a green build. |
+| "Stopping kills our velocity." | Velocity built on a broken trunk is an illusion. Those [story points]({{< relref "/docs/reference/glossary#story-points" >}}) will come back as rework or production incidents. |
+| "We already stop all the time. It's not working." | Frequent stops mean the team is merging changes that break the build too often. Fix that root cause with better pre-merge testing and smaller commits. |
+| "It's a known flaky test. We can ignore it." | Ignoring a flaky test trains the team to ignore all red builds. Fix it or remove it. |
+| "Management won't support stopping feature work." | Show the two-timeline comparison above. Teams that stop immediately have shorter [lead times]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}) and less unplanned rework. |
 
 ## How Working Agreements Support the CD Migration
 
@@ -190,11 +192,9 @@ Each working agreement maps directly to a Phase 1 practice:
 | [Work decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) | DoR: work items < 2 days. WIP limits |
 | [Code review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}}) | CI: review within 2 hours. DoD: code reviewed |
 
-Without these agreements, individual practices exist in isolation. Working agreements connect them into a coherent way of working.
-
 ## Template: Create Your Own Working Agreements
 
-Use this template as a starting point. Customize it for your team's context. The specific targets may differ, but the structure should remain.
+Use this template as a starting point. Customize it for your team's context.
 
 ### Team Working Agreement Template
 
@@ -208,7 +208,7 @@ A work item is done when:
 - [ ] Code is integrated to trunk
 - [ ] All automated tests pass
 - [ ] Code has been reviewed (method: [pair / mob / PR])
-- [ ] The change is deployable to production
+- [ ] The change is delivered to the end user (or deployable at any time)
 - [ ] No known defects are introduced
 - [ ] [Add team-specific criteria]
 
@@ -249,8 +249,8 @@ All changes require team consensus.
 
 1. **Include everyone.** Every team member should participate in creating the agreement. Agreements imposed by a manager or tech lead are policies, not agreements.
 2. **Start simple.** Do not try to cover every scenario. Start with the essentials (DoD, DoR, CI) and add specifics as the team identifies gaps.
-3. **Make them visible.** Post the agreements where the team sees them daily - on a team wiki, in the team channel, or on a physical board.
-4. **Review regularly.** Agreements should evolve as the team matures. Review them monthly. Remove agreements that are second nature. Add agreements for new challenges.
+3. **Make them visible.** Post the agreements where the team sees them daily: on a team wiki, in the team channel, or on a physical board.
+4. **Review regularly.** Agreements should evolve as the team matures. Review them monthly. **Remove agreements that are second nature.** Add agreements for new challenges.
 5. **Enforce collectively.** Working agreements are only effective if the team holds each other accountable. This is a team responsibility, not a manager responsibility.
 6. **Start with agreements you can keep.** If the team is currently integrating once a week, do not agree to integrate three times daily. Agree to integrate daily, practice for a month, then tighten.
 
@@ -273,9 +273,9 @@ You are ready to move to [Phase 2: Pipeline]({{< relref "/docs/anti-patterns/pip
 
 ## Related Content
 
-- [Team Burnout]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - Symptom that clear agreements and sustainable practices help prevent
-- [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}}) - Anti-pattern addressed by WIP limit agreements
-- [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}) - Anti-pattern prevented by a strong Definition of Done
-- [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - Anti-pattern where pressure overrides team agreements
-- [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}) - Anti-pattern that undermines collaborative working agreements
-- [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}) - Research-backed capabilities that working agreements support
+- [Team Burnout]({{< relref "/docs/symptoms/visibility/team-burnout" >}}): Symptom that clear agreements and sustainable practices help prevent
+- [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}}): Anti-pattern addressed by WIP limit agreements
+- [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}): Anti-pattern prevented by a strong Definition of Done
+- [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}): Anti-pattern where pressure overrides team agreements
+- [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}): Anti-pattern that undermines collaborative working agreements
+- [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}): Research-backed capabilities that working agreements support

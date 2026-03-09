@@ -21,14 +21,11 @@ Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipel
 4. **[Decompose work]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})** - Break features into small, deliverable increments
 5. **[Streamline code review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}})** - Fast, effective review that doesn't block flow
 6. **[Establish working agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}})** - Shared definitions of done and ready
-7. **[Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})** - Infrastructure, pipelines, schemas, monitoring, and security policies in version control, delivered through pipelines
+7. **[Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})** - Version-control everything that defines your system: infrastructure, pipelines, schemas, monitoring, and security policies
 
 ## Why This Phase Matters
 
-These practices are the prerequisites for everything that follows. [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}})
-eliminates merge hell. Testing fundamentals give you the confidence to deploy frequently.
-Small work decomposition reduces risk per change. Together, they create the feedback loops
-that drive continuous improvement.
+Teams that skip these foundations end up automating a broken process. A pipeline that deploys untested code from long-lived branches does not improve delivery. It amplifies risk. These practices ensure that what enters the pipeline is already safe to ship.
 
 ## When You're Ready to Move On
 
@@ -37,7 +34,7 @@ You're ready for [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >
 - All developers integrate to trunk at least once per day
 - Your test suite catches real defects and runs in under 10 minutes
 - You can build and package your application with a single command
-- Most work items are completable within 2 days
+- Most work items can be completed within 2 days
 
 **Next:** [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - build a single automated path from commit to production.
 

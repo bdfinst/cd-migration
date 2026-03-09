@@ -11,16 +11,16 @@ aliases:
 {{% pageinfo %}}
 The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is the enforcement mechanism for [agentic continuous delivery]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) (ACD). Standard quality gates handle mechanical checks. Expert validation [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) handle the judgment calls that standard tools cannot make.
 
-For the framework overview, see [ACD]({{< relref "/docs" >}}). For the [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) the pipeline enforces, see [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
+For the framework overview, see [ACD]({{< relref "/docs/agentic-cd" >}}). For the [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) the pipeline enforces, see [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
 {{% /pageinfo %}}
 
 ## How Quality Gates Enforce ACD
 
-The Pipeline Verification and Deployment stages of the [ACD workflow]({{< relref "/docs" >}}) are where the [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) does the heavy lifting. Each pipeline stage enforces a specific [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) constraint:
+The Pipeline Verification and Deployment stages of the [ACD workflow]({{< relref "/docs/agentic-cd" >}}) are where the [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) does the heavy lifting. Each pipeline stage enforces a specific [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) constraint:
 
 - **Pre-commit gates** (linting, type checking, secret scanning, SAST) catch the mechanical errors agents produce most often: style violations, type mismatches, and accidentally embedded secrets. These run in seconds and give the agent immediate feedback.
-- **[CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1** (build + unit tests) validates the acceptance criteria. If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
-- **CD Stage 1** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
+- **[CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1** (build + unit tests) validates the [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). If human-defined tests fail, the agent's implementation is wrong regardless of how plausible the code looks.
+- **[CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1** (contract + schema tests) enforces the system constraints artifact at integration boundaries. Agent-generated code is particularly prone to breaking implicit contracts between modules or services.
 - **CD Stage 2** (mutation testing, performance benchmarks, security integration tests) catches the subtle correctness issues that agents introduce: code that passes tests but violates non-functional requirements or leaves untested edge cases.
 - **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}). This is where the [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios become automated verification.
 - **Production verification** ([canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
@@ -67,7 +67,7 @@ With the pipeline and expert agents in place, the next question is what goes wro
 ## Related Content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - multi-agent pipeline patterns and hook design for enforcement workflows
-- [ACD]({{< relref "/docs" >}}) - the framework overview, eight constraints, and workflow
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts the pipeline enforces
 - [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - the full quality gate sequence
 - [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting automated checks

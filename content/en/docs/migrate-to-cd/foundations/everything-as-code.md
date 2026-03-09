@@ -3,7 +3,7 @@ title: "Everything as Code"
 linkTitle: "Everything as Code"
 weight: 7
 description: >
-  Every artifact that defines your system - infrastructure, pipelines, configuration, database schemas, monitoring - belongs in version control and is delivered through pipelines.
+  Every artifact that defines your system (infrastructure, pipelines, configuration, database schemas, monitoring) belongs in version control and is delivered through pipelines.
 ---
 
 {{% pageinfo %}}
@@ -15,11 +15,7 @@ everything required to build, deploy, and operate your system is defined as code
 controlled, reviewed, and delivered through the same automated pipelines as your application.
 {{% /pageinfo %}}
 
-## The Principle
-
-Continuous delivery requires that any change to your system - application code, infrastructure,
-pipeline configuration, database schema, monitoring rules, security policies - can be made through
-a single, consistent process: change the code, commit, let the pipeline deliver it.
+## One process for every change
 
 When something is defined as code:
 
@@ -38,15 +34,11 @@ When something is not defined as code, it is a liability. It cannot be reviewed,
 reproduced. It exists only in someone's head, a wiki page that is already outdated, or a
 configuration that was applied manually and has drifted from any documented state.
 
-## What "Everything" Means
+## What belongs in version control
 
 ### Application code
 
-This is where most teams start, and it is the least controversial. Your application source code
-is in version control, built and tested by a pipeline, and deployed as an [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}).
-
-If your application code is not in version control, start here. Nothing else in this page matters
-until this is in place.
+Application code in version control is the baseline. If your team is not there yet, start here before reading further.
 
 ### Infrastructure
 
@@ -69,30 +61,12 @@ defined in code and provisioned through automation.
 
 **Why it matters for CD:** If creating or modifying an environment requires manual steps, your
 [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) is limited by the availability and speed of the person who performs those
-steps. If a production server fails and you cannot recreate it from code, your mean time to
-recovery is measured in hours or days instead of minutes.
+steps. If a production server fails and you cannot recreate it from code, your [mean time to
+recovery]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) is measured in hours or days instead of minutes.
 
 ### Pipeline definitions
 
-Your pipeline configuration belongs in the same repository as the code it builds and
-deploys. The pipeline is code, not a configuration applied through a UI.
-
-**What this looks like:**
-
-- Pipeline definitions in `.github/workflows/`, `.gitlab-ci.yml`, `Jenkinsfile`, or equivalent
-- Pipeline changes go through the same review process as application code
-- Pipeline behavior is deterministic - the same commit always produces the same pipeline behavior
-- Teams can modify their own pipelines without filing tickets
-
-**What this replaces:**
-
-- Pipeline configuration maintained through a Jenkins UI that nobody is allowed to touch
-- A "platform team" that owns all pipeline definitions and queues change requests
-- Pipeline behavior that varies depending on server state or installed plugins
-
-**Why it matters for CD:** The pipeline is the path to production. If the pipeline itself cannot
-be changed through a reviewed, automated process, it becomes a bottleneck and a risk. Pipeline
-changes should flow with the same speed and safety as application changes.
+Pipeline configuration (`.github/workflows/`, `.gitlab-ci.yml`, `Jenkinsfile`, or equivalent) belongs in the same repository as the code it builds. When pipeline changes go through the same review and automation as application code, teams can modify their own delivery process without tickets or UI-only bottlenecks.
 
 ### Database schemas and migrations
 
@@ -121,51 +95,16 @@ automated migrations removes this bottleneck.
 
 ### Application configuration
 
-Environment-specific configuration - database connection strings, API endpoints, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}})
-states, logging levels - should be defined as code and managed through version control.
-
-**What this looks like:**
-
-- Configuration values stored in a config management system (Consul, AWS Parameter Store,
-  environment variable definitions in infrastructure code)
-- Configuration changes are committed, reviewed, and deployed through a pipeline
-- The same application [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is deployed to every environment; only the configuration differs
-
-**What this replaces:**
-
-- Configuration files edited manually on servers
-- Environment variables set by hand and forgotten
-- Configuration that exists only in a deployment runbook
-
-See [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) for detailed guidance on
-externalizing configuration.
+Environment-specific values (connection strings, API endpoints, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) states, logging levels) should live in a config management system and flow through a pipeline so the same [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is deployed to every environment. When configuration is committed and reviewed like code, you eliminate drift between environments and "works in staging" surprises. See [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) for detailed guidance.
 
 ### Monitoring, alerting, and observability
 
-Dashboards, alert rules, SLO definitions, and logging configuration should be defined as code.
-
-**What this looks like:**
-
-- Alert rules defined in Terraform, Prometheus rules files, or Datadog monitors-as-code
-- Dashboards defined as JSON or YAML, not built by hand in a UI
-- SLO definitions tracked in version control alongside the services they measure
-- Logging configuration (what to log, where to send it, retention policies) in code
-
-**What this replaces:**
-
-- Dashboards built manually in a monitoring UI that nobody knows how to recreate
-- Alert rules that were configured by hand during an incident and never documented
-- Monitoring configuration that exists only on the monitoring server
-
-**Why it matters for CD:** If you deploy ten times a day, you need to know instantly whether each
-deployment is healthy. If your monitoring and alerting configuration is manual, it will drift,
-break, or be incomplete. Monitoring-as-code ensures that every service has consistent, reviewed,
-reproducible observability.
+Dashboards, alert rules, SLO definitions, and logging configuration should be defined as code (Terraform, Prometheus rules, Datadog monitors-as-code, or equivalent). When you deploy frequently, you need to know instantly whether each deployment is healthy. Monitoring defined as code ensures every service has consistent, reviewed, reproducible observability instead of hand-built dashboards and undocumented alert rules.
 
 ### Security policies
 
-Security controls - access policies, network rules, secret rotation schedules, compliance
-checks - should be defined as code and enforced automatically.
+Security controls (access policies, network rules, secret rotation schedules, compliance
+checks) should be defined as code and enforced automatically.
 
 **What this looks like:**
 
@@ -205,7 +144,7 @@ ticket to another team, or a manual step, it is not.
 | Monitoring and alerting | Rarely | Monitoring gaps, unreproducible dashboards, alert fatigue |
 | Security policies | Rarely | Security as a gate instead of a guardrail, audit failures |
 
-The goal is for every row in this table to be "yes." You will not get there overnight, but every
+**The goal is for every row in this table to be "yes."** You will not get there overnight, but every
 artifact you move from manual to code-managed removes a bottleneck and a risk.
 
 ## How to Get There
@@ -246,15 +185,15 @@ application code.
 
 | Metric | What to look for |
 |--------|-----------------|
-| Artifact types managed as code | Track how many of the categories above are fully code-managed. The number should increase over time. |
-| Manual changes to production | Count any change made outside of a pipeline (SSH, UI clicks, manual scripts). Target: zero. |
-| Environment recreation time | How long does it take to recreate a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) from scratch? Should decrease as more infrastructure moves to code. |
-| Mean time to recovery | When infrastructure-as-code is in place, recovery from failures is "re-run the pipeline." [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) drops dramatically. |
+| Artifact types managed as code | Count of categories fully code-managed; should increase over time |
+| Manual changes to production | Changes made outside a pipeline (SSH, UI, manual scripts); target zero |
+| Environment recreation time | Time to recreate a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) from scratch; should shrink steadily |
+| Mean time to recovery | [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) drops when recovery means "re-run the pipeline" |
 
 ## Related Content
 
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - The build itself must be a single, version-controlled command
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - The pipeline is the only way changes reach production
-- [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) - Externalize configuration from artifacts
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Same inputs, same outputs, every time
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Infrastructure-as-code enables environment parity
+- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}): The build itself must be a single, version-controlled command
+- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}): The pipeline is the only way changes reach production
+- [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}): Externalize configuration from artifacts
+- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}): Same inputs, same outputs, every time
+- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}): Infrastructure-as-code enables environment parity

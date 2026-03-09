@@ -40,6 +40,38 @@ Restructured the testing reference section with a clearer taxonomy:
 - Added Exploratory Testing and Usability Testing to the architecture table as non-blocking activities.
 - Added Component Test, Integration Test, Sociable Unit Test, and Solitary Unit Test entries to the [Testing Glossary]({{< relref "/docs/testing/glossary" >}}).
 
+## 2026-03-07 - Agentic CD Glossary Split
+
+- Moved 30 AI and agentic-specific terms from the [main glossary]({{< relref "/docs/reference/glossary" >}}) into a dedicated [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary" >}}).
+- Main glossary retains stub entries that redirect to the new glossary for each moved term.
+
+## 2026-03-06 - Testing Fundamentals Restructured into Subsection
+
+- Restructured [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) from a single long page into a subsection with four focused child pages: [What to Test]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}), and [Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}).
+- Added four SVG diagrams to Pipeline Test Strategy showing tests inside the [pipeline](reference/glossary/#pipeline), tests outside the pipeline, the contract test validation loop, and the full pipeline test architecture.
+
+## 2026-03-06 - Repository Readiness for Agentic Development
+
+- Added [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) - a new getting-started page covering readiness scoring, upgrade sequence, agent-friendly test structure, build ergonomics, and the link between repository quality and agent accuracy/[token](reference/glossary/#token) efficiency.
+
+## 2026-03-03 - AI Tech Debt: Layered Detection and Stage 5 Spec References
+
+- Updated [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}) to describe the two-layer approach for automated structural quality detection: deterministic tools (duplication detection, complexity limits, architecture rules) as the first layer and the semantic review agent with architectural constraints as the second layer.
+- Fixed Stage 5 in [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}) to reference [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) and [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) directly from the spec-first workflow description.
+- Fixed placeholder `{{< relref "/docs" >}}` links across all Agentic CD pages to point to the correct destinations.
+
+## 2026-03-03 - New Triage Problems: AI Coding and Test Environment Reset
+
+Added four new triage problems with supporting content:
+
+- [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - new symptom page for teams where AI output ships without critical review
+- [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}) - new anti-pattern with fix steps for establishing review standards for AI output
+- [AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}) - new symptom page for teams where AI tools add overhead instead of reducing it
+- [Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}}) - new symptom page for slow environment and database reset blocking regression testing
+- [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}) - new symptom page for AI-generated structural drift, tied to agentic-cd refactoring guidance
+
+Updated the [triage page]({{< relref "/docs/triage" >}}) with entries for all five problems, including a pointer to existing content for developer assignment to unfamiliar components.
+
 ## 2026-03-03 - Glossary: Dependency and External Dependency
 
 Added [Dependency]({{< relref "/docs/reference/glossary#dependency" >}}) and [External Dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) definitions to the glossary, clarifying the distinction between internal and external dependencies and when test doubles are appropriate.
@@ -50,7 +82,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ### Migrate to CD
 
-- Flattened the migration path: removed the intermediate `migration-path/` directory so phases (assess, foundations, pipeline, optimize, continuous-deployment) are direct children of [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})
+- Flattened the migration path: removed the intermediate `migration-path/` directory so phases (assess, foundations, [pipeline](reference/glossary/#pipeline), optimize, continuous-deployment) are direct children of [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})
 
 ### Symptoms
 
@@ -62,7 +94,7 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ### Reference Section
 
-- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, pipeline reference architecture, defect sources, glossary, FAQ, [DORA](reference/glossary/#dora-metrics) capabilities, dependency tree, and resources
+- Created a new [Reference]({{< relref "/docs/reference" >}}) section consolidating practices, metrics, testing, [pipeline](reference/glossary/#pipeline) reference architecture, defect sources, glossary, FAQ, [DORA](reference/glossary/#dora-metrics) capabilities, dependency tree, and resources
 
 ### Infrastructure
 
@@ -75,12 +107,12 @@ Major reorganization to reduce sidebar depth, group related content, and improve
 
 ## 2026-03-02 - Agentic CD: Sidebar Reorganization
 
-Grouped the 12 flat Agentic CD pages into four subsections for easier navigation:
+Grouped the 12 flat Agentic [CD](reference/glossary/#cd-continuous-delivery) pages into four subsections for easier navigation:
 
-- **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, prompting disciplines, and adoption roadmap
-- **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent delivery contract and agent-assisted specification
+- **[Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})** - configuration, learning curve, [prompting disciplines](reference/glossary/#prompting-discipline), and adoption roadmap
+- **[Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})** - agent [delivery contract](reference/glossary/#delivery-contract) and agent-assisted specification
 - **[Agent Architecture]({{< relref "/docs/agentic-cd/architecture" >}})** - architecture patterns, coding and review setup, and small-batch sessions
-- **[Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})** - pipeline enforcement, tokenomics, and pitfalls and metrics
+- **[Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})** - pipeline enforcement, [tokenomics](reference/glossary/#tokenomics), and pitfalls and metrics
 
 All old URLs redirect to their new locations via Hugo aliases.
 
@@ -88,17 +120,17 @@ All old URLs redirect to their new locations via Hugo aliases.
 
 ### New content
 
-- **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: Prompt Craft, Context Engineering, Intent Engineering, and Specification Engineering. Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
+- **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - New page covering the four layers of skill developers must master as AI moves from chat partner to long-running worker: [Prompt Craft](reference/glossary/#prompt-craft), [Context Engineering](reference/glossary/#context-engineering), [Intent Engineering](reference/glossary/#intent-engineering), and [Specification Engineering](reference/glossary/#specification-engineering). Includes the synchronous-to-autonomous skill shift, the self-containment test, the planner-worker architecture, and organizational impact.
 
 - **[The Discovery Loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}})** - New section in Agent-Assisted Specification describing a four-phase conversational workflow for producing structured specifications: Initial Framing, Deep-Dive Interview, Drafting, and Stress-Test Review.
 
-- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, acceptance criteria, and evaluation design.
+- **[Complete Specification Example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})** - Full VSM-Automator specification demonstrating what the discovery loop produces: intent description, feature description, task decomposition, [acceptance criteria](reference/glossary/#acceptance-criteria), and [evaluation design](reference/glossary/#evaluation-design).
 
 - **[Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})** - New glossary entry defining acceptance criteria as concrete expectations usable as fitness functions, executed as deterministic tests or evaluated by review agents.
 
 ### Terminology alignment
 
-Standardized artifact and workflow stage names across the Agentic CD section so the same concepts use the same terms everywhere:
+Standardized [artifact](reference/glossary/#artifact) and workflow stage names across the Agentic CD section so the same concepts use the same terms everywhere:
 
 ### Structural cleanup
 

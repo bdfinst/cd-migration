@@ -14,12 +14,12 @@ Code review is essential for quality, but it is also the most common bottleneck 
 
 ## Why Code Review Matters for CD
 
-Code review serves multiple purposes:
+Automated tools catch syntax errors, style violations, and known vulnerability patterns. Code review exists for the things automation cannot evaluate.
 
-- **Defect detection:** A second pair of eyes catches bugs that the author missed.
-- **Knowledge sharing:** Reviews spread understanding of the codebase across the team.
-- **Consistency:** Reviews enforce coding standards and architectural patterns.
-- **Mentoring:** Junior developers learn by having their code reviewed and by reviewing others' code.
+- **Cognitive load and maintainability:** Tools can count complexity points, but they cannot judge whether the logic is intuitive. A human reviewer catches over-engineered abstractions and code that will confuse a teammate maintaining it at 3:00 AM.
+- **Systemic context:** Static analysis sees the code but does not remember the past. A peer reviewer remembers that Service X handles retries poorly and can spot an implementation that is technically correct but will trigger a known systemic weakness. Reviewers also verify that the solution aligns with the platform's long-term architectural direction.
+- **Knowledge distribution:** If the author is the only person who understands a critical path, the team is at risk. Review ensures at least one other person shares that context. It is also the primary mechanism for cross-pollinating new patterns and domain knowledge across the team.
+- **Novel security and logic bypasses:** Automation catches known patterns like SQL injection. It often misses logical security flaws - for example, a change to a discount calculation that accidentally allows a negative total. Human reviewers also verify that the developer did not take a dangerous shortcut that bypasses a policy not yet codified in the pipeline.
 
 These are real benefits. The challenge is that traditional code review - open a pull request, wait for someone to review it, address comments, wait again - is too slow for CD.
 

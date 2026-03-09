@@ -11,7 +11,7 @@ aliases:
 {{% pageinfo %}}
 Each [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has a defined authority. When an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) detects a conflict between artifacts, it cannot resolve that conflict by modifying the artifact it does not own. The feature description wins over the implementation. The intent description wins over the feature description.
 
-For the framework overview and the eight constraints, see [ACD]({{< relref "/docs" >}}).
+For the framework overview and the eight constraints, see [ACD]({{< relref "/docs/agentic-cd" >}}).
 {{% /pageinfo %}}
 
 ## 1. Intent Description
@@ -67,7 +67,7 @@ Scenario: Client within rate limit
 
 ## 3. Feature Description (Constraint Architecture)
 
-**What it is:** The architectural [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), dependencies, and trade-off boundaries that govern the implementation.
+**What it is:** The architectural [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), [dependencies](../../reference/glossary/#dependency), and trade-off boundaries that govern the implementation.
 
 Agents need explicit architectural context that human developers often carry in their heads. The feature description tells the agent where the change fits in the system, what components it touches, and what constraints apply. It separates hard boundaries (musts, must nots) from soft preferences and escalation triggers so the agent knows which constraints are non-negotiable.
 
@@ -257,7 +257,7 @@ With the artifacts defined, the next question is how the pipeline enforces consi
 
 ## Related Content
 
-- [ACD]({{< relref "/docs" >}}) - the framework overview, eight constraints, and workflow
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the pipeline enforces artifact consistency
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - common failure modes when artifacts are incomplete
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence before adopting artifact-driven workflows

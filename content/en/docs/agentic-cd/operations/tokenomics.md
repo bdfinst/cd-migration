@@ -66,7 +66,7 @@ querying the database, which could allow unauthorized access."
 
 The JSON version conveys the same information in a fraction of the tokens and requires no natural language parsing step. When one agent's output becomes another agent's input, define a schema for that interface the same way you would define an API contract.
 
-This applies directly to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}): intent descriptions, feature descriptions, test specifications, and other artifacts passed between agents should be structured documents with defined fields, not open-ended prose.
+This applies directly to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}): intent descriptions, feature descriptions, test specifications, and other [artifacts](../../reference/glossary/#artifact) passed between agents should be structured documents with defined fields, not open-ended prose.
 
 ### 4. Strategic Prompt Caching
 
@@ -148,7 +148,7 @@ Refactoring for human readability and refactoring for token efficiency are the s
 
 Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest leverage.
 
-**Enforcing these improvements through the pipeline:**
+**Enforcing these improvements through the [pipeline](../../reference/glossary/#pipeline):**
 
 Structural and naming improvements degrade without enforcement. Two pipeline mechanisms
 keep them from slipping back:
@@ -182,7 +182,7 @@ review burden.
 
 Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}})) creates predictable token cost patterns because the workflow is structured. Apply optimization at each stage:
 
-**Specification stages (Intent Description through Acceptance Criteria):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
+**Specification stages (Intent Description through [Acceptance Criteria](../../reference/glossary/#acceptance-criteria)):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
 
 **Test Generation:** The agent receives the user-facing behavior, feature description, and acceptance criteria. Pass only these three [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
 
@@ -206,7 +206,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 ## Related Content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - cross-cutting concerns including idempotency, model-agnostic abstraction, and structured inter-agent communication
-- [ACD]({{< relref "/docs" >}}) - the framework overview, constraints, and workflow
+- [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, constraints, and workflow
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the structured artifacts that token-efficient inter-agent communication depends on
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - expert agents that run as pipeline gates and whose own token costs should be managed
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - failure modes including review queue backup that compound token costs

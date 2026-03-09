@@ -49,6 +49,7 @@ Without these foundations, adding agents amplifies existing problems rather than
 
 - **[Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}})** - where to put what: project context file, rules, skills, and hooks mapped to their purpose and time horizon
 - **[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
+- **[Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}})** - how to assess and upgrade a repository so agents can clone, build, test, and iterate without human intervention
 - **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - the four layers of skill developers must master as AI moves from chat partner to long-running worker
 - **[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}})** - covers organizational prerequisites before adopting agentic workflows
 
@@ -86,7 +87,7 @@ These constraints are **not mandatory practices.** They describe the *minimum co
 
 ## Agent Delivery Contract
 
-Every ACD change is anchored by [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - structured documents that define intent, behavior, constraints, acceptance criteria, and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
+Every ACD change is anchored by [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - structured documents that define intent, behavior, constraints, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}), and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
 
 See [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) for the authority hierarchy, detailed definitions, and examples.
 
