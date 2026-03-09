@@ -90,7 +90,7 @@ layers 1-2 to isolate external dependencies.
 | On every commit | Component tests | Yes | Yes |
 | Asynchronous | Contract tests | No | No - triggers review |
 | Post-deployment | E2E smoke tests | No | Triggers rollback if critical |
-| Post-deployment | Synthetic monitoring | No | Triggers alerts |
+| Post-deployment | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | No | Triggers alerts |
 
 The critical insight: **everything that blocks deployment is deterministic and under your
 control.** Everything that involves external systems runs asynchronously or post-deployment. This
@@ -109,7 +109,7 @@ both of which undermine [continuous integration]({{< relref "/docs/reference/glo
 
 **Post-merge** (after code lands on trunk, before or after deployment): Re-run the full
 deterministic suite against the integrated trunk. If integration tests can be kept deterministic,
-run them here. Then run contract tests, E2E smoke tests, and synthetic monitoring. Target: under
+run them here. Then run contract tests, E2E smoke tests, and [synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}). Target: under
 30 minutes for the full post-merge cycle.
 
 Why re-run pre-merge tests post-merge? Two changes can each pass pre-merge independently but
