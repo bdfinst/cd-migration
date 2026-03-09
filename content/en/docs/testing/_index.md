@@ -8,60 +8,35 @@ aliases:
   - /docs/reference/testing/
 ---
 
-A reliable test suite is essential for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). This page describes the test
-architecture that gives your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) the confidence to deploy any change - even when
-dependencies outside your control are unavailable. The child pages cover each test type
-in detail.
+A test architecture that lets your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) deploy confidently, regardless of external system availability, is a core [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) capability. The child pages cover each test type.
 
 ## Beyond the Test Pyramid
 
-The test pyramid - many unit tests at the base, fewer integration tests in the middle, a handful
-of end-to-end tests at the top - has been the dominant mental model for test strategy since Mike
-Cohn introduced it. The core insight is sound: **push testing as low as possible.** Lower-level
-tests are faster, more deterministic, and cheaper to maintain. Higher-level tests are slower,
-more brittle, and more expensive.
+{{< figure src="/images/testing/test-pyramid.svg" alt="The test pyramid: a triangle with Unit Tests at the wide base (fast, cheap, many), Integration/Component in the middle, and End-to-End at the narrow top (slow, expensive, few). Arrows on the sides indicate cost and speed increase toward the top." >}}
 
-But as a prescriptive model, the pyramid is overly simplistic. Teams that treat it as a rigid
-ratio end up in unproductive debates about whether they have "too many" integration tests or "not
-enough" unit tests. The shape of your test distribution matters far less than whether your tests,
-taken together, give you the confidence to deploy.
+The test pyramid says: write many fast unit tests at the base, fewer integration tests in the middle, and only a handful of end-to-end tests at the top. The underlying principle is sound - **lower-level tests are faster, more deterministic, and cheaper to maintain.**
+
+### Where teams go wrong
+
+The pyramid is often treated as a metric rather than a principle. Teams count tests by type and debate ratios: "do we have enough unit tests?" or "are our integration tests too many?" This misses the point. The distribution is not the goal. The goal is:
+
+> **Can our pipeline determine that a change is safe to deploy without depending on any system we do not control?**
+
+A pipeline that answers yes can deploy at any time - even when a downstream service is down, a third-party API is slow, or a partner team hasn't shipped yet. That independence is what CD requires.
 
 ### What actually matters
 
-The pyramid's principle - **write tests with different granularity** - remains correct. But for
-CD, the question is not "do we have the right pyramid shape?" The question is:
+A test architecture that achieves this has three responsibilities:
 
-> **Can our pipeline determine that a change is safe to deploy without depending on any system we
-> do not control?**
-
-This reframes the testing conversation. Instead of counting tests by type and trying to match a
-diagram, you design a test architecture where:
-
-1. **Fast, deterministic tests** catch the vast majority of defects and run on every commit.
-   These tests use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for anything outside
-   the team's control. They give you a reliable go/no-go signal in minutes.
-
-2. **Contract tests** verify that your test doubles still match reality. They run asynchronously
-   and catch drift between your assumptions and the real world - without blocking your pipeline.
-
-3. **A small number of non-deterministic tests** validate that the fully integrated system works.
-   These run post-deployment and provide monitoring, not gating.
-
-This structure means your pipeline can confidently say "yes, deploy this" even if a downstream
-API is having an outage, a third-party service is slow, or a partner team hasn't deployed their
-latest changes yet. Your ability to deliver is decoupled from the reliability of systems you do
-not own.
+1. **Fast, deterministic tests** run on every commit using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies. They give a reliable go/no-go signal in minutes.
+2. **Contract tests** verify that those test doubles still match reality, running asynchronously without blocking the pipeline.
+3. **A small number of post-deployment tests** validate the integrated system and provide monitoring, not gating.
 
 ### The anti-pattern: the ice cream cone
 
-Most teams that struggle with CD have an inverted test distribution - too many slow, expensive
-end-to-end tests and too few fast, focused tests.
-
 {{< figure src="/images/ice-cream-cone.svg" alt="The ice cream cone anti-pattern: an inverted test distribution where most testing effort goes to manual and end-to-end tests at the top, with too few fast unit tests at the bottom" >}}
 
-The ice cream cone makes CD impossible. Manual testing gates block every release. End-to-end tests
-take hours, fail randomly, and depend on external systems being healthy. The pipeline cannot give
-a fast, reliable answer about deployability, so deployments become high-ceremony events.
+Most teams that struggle with CD have inverted the pyramid - too many slow, flaky end-to-end tests and too few fast, focused ones. Manual gates block every release. The pipeline cannot give a fast, reliable answer, so deployments become high-ceremony events.
 
 ## Test Architecture
 

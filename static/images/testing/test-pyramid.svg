@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-labelledby="tp-title tp-desc">
+  <title id="tp-title">The Test Pyramid</title>
+  <desc id="tp-desc">A triangle divided into three horizontal bands. The wide base is labeled "Unit Tests" and annotated "fast, cheap, many". The middle band is labeled "Integration / Component" and annotated "slower, more expensive". The narrow top is labeled "End-to-End" and annotated "slow, expensive, few". A vertical arrow on the left reads "Slower and more expensive" pointing upward. A vertical arrow on the right reads "Faster and cheaper" pointing downward.</desc>
+
+  <rect width="560" height="340" fill="#ffffff"/>
+
+  <!-- Pyramid: apex at top-center, base at bottom -->
+  <!-- Base corners: (60, 280) and (500, 280). Apex: (280, 40) -->
+
+  <!-- E2E band (top) - apex (280,40) to y=130 slice -->
+  <!-- At y=130: x = 60 + (500-60)*(130-280)/(280-280)... let me compute properly -->
+  <!-- Left edge at y: x_left = 280 - (280-60)*((y-40)/(280-40)) = 280 - 220*((y-40)/240) -->
+  <!-- Right edge at y: x_right = 280 + 220*((y-40)/240) -->
+  <!-- At y=130: factor=(130-40)/240=90/240=0.375; x_left=280-82.5=197.5; x_right=362.5 -->
+  <!-- At y=200: factor=160/240=0.667; x_left=280-146.7=133.3; x_right=426.7 -->
+
+  <!-- E2E top band: apex to y=130 -->
+  <polygon points="280,40 197,130 363,130" fill="#fde8e8" stroke="#e05252" stroke-width="1.5"/>
+
+  <!-- Integration/Component middle band: y=130 to y=200 -->
+  <polygon points="197,130 363,130 427,200 133,200" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+
+  <!-- Unit base band: y=200 to y=280 -->
+  <polygon points="133,200 427,200 500,280 60,280" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+
+  <!-- Dividing lines -->
+  <line x1="197" y1="130" x2="363" y2="130" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="133" y1="200" x2="427" y2="200" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Band labels -->
+  <text x="280" y="96" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#b91c1c">End-to-End</text>
+  <text x="280" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#b91c1c">slow, expensive, few</text>
+
+  <text x="280" y="162" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#92400e">Integration / Component</text>
+  <text x="280" y="177" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e">moderate speed and cost</text>
+
+  <text x="280" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1e40af">Unit Tests</text>
+  <text x="280" y="250" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#1e40af">fast, cheap, many</text>
+
+  <!-- Left axis arrow: slow/expensive going up -->
+  <defs>
+    <marker id="tp-arr-up" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 6,4 0,8 6" fill="#6b7280"/>
+    </marker>
+    <marker id="tp-arr-down" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 0,4 6,8 0" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <line x1="28" y1="260" x2="28" y2="60" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tp-arr-up)"/>
+  <text transform="rotate(-90,14,160)" x="14" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Slower and more expensive</text>
+
+  <!-- Right axis arrow: fast/cheap going down -->
+  <line x1="532" y1="60" x2="532" y2="260" stroke="#6b7280" stroke-width="1.5" marker-end="url(#tp-arr-down)"/>
+  <text transform="rotate(90,546,160)" x="546" y="160" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">Faster and cheaper</text>
+
+  <!-- Caption -->
+  <text x="280" y="316" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#374151">The Test Pyramid: more tests at lower levels, fewer at higher levels</text>
+</svg>
