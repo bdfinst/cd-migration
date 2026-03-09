@@ -3,82 +3,116 @@ title: "End-to-End Tests"
 linkTitle: "End-to-End Tests"
 weight: 4
 description: >
-  Non-deterministic tests that validate the entire software system along with its integration with external interfaces and production-like scenarios.
+  Tests that exercise two or more real components up to the full system. Also called integration testing. Non-deterministic by nature; never a pre-merge gate.
 ---
+
+{{< figure src="/images/testing/e2e-test.svg" alt="End-to-end test scope spectrum. Narrow scope: a test drives a real service that calls a real database. Full-system scope: a browser drives a real frontend, which calls a real backend, which calls a real database. All components are real at every scope - no test doubles." >}}
 
 ## Definition
 
-End-to-end (E2E) tests validate the entire software system, including its integration with
-external interfaces. They exercise complete production-like scenarios using real (or
-production-like) data and environments to simulate real-time settings. No test doubles are
-used. The test hits live services, databases, and third-party integrations just as a real
-user would.
+An end-to-end test (also called an **integration test**) exercises real components
+working together - no [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) replace
+the dependencies under test. The scope ranges from two services calling each other,
+to a service talking to a real database, to a complete user journey through every
+layer of the system.
 
-Because they depend on external systems, E2E tests are typically **non-deterministic**: they
-can fail for reasons unrelated to code correctness, such as network instability or
-third-party outages.
+The defining characteristic is that **real external dependencies are present**: actual
+databases, live downstream services, real message brokers, or third-party APIs.
+Because those dependencies introduce timing, state, and availability factors outside
+the test's control, end-to-end tests are typically **non-deterministic**. They fail
+for reasons unrelated to code correctness - network instability, service unavailability,
+test data collisions, or third-party rate limits.
+
+### Terminology note
+
+"Integration test" and "end-to-end test" are often used interchangeably in the
+industry. Martin Fowler distinguishes between narrow integration tests (which use test
+doubles at the boundary - what this site calls [component tests]({{< relref "/docs/reference/testing/component" >}}))
+and broad integration tests (which use real dependencies). He prefers to call the
+broad kind "system tests" or "end-to-end tests." This site uses end-to-end to cover
+the full spectrum of tests that involve real external dependencies.
+
+## Scope
+
+End-to-end tests cover a spectrum based on how many components are real:
+
+| Scope | Example |
+|-------|---------|
+| **Narrow** | A service making real calls to a real database |
+| **Service-to-service** | Order service calling the real inventory service |
+| **Multi-service** | A user journey spanning three live services |
+| **Full system** | A browser test through a staging environment with all dependencies live |
+
+All of these involve real external dependencies. All share the same fundamental
+non-determinism risk. Use the narrowest scope that gives you the confidence you need.
 
 ## When to Use
 
-E2E tests should be the **least-used** test type due to their high cost in execution time and
-maintenance. Use them for:
+Use end-to-end tests sparingly. They are the most expensive test type to write,
+run, and maintain. Use them for:
 
-- **Happy-path validation** of critical business flows (e.g., user signup, checkout, payment
-  processing).
-- **Smoke testing** a deployed environment to verify that key integrations are functioning.
-- **Cross-team workflows** that span multiple sub-systems and cannot be tested any other way.
+- **Smoke testing** a deployed environment to verify that key integrations are
+  functioning after a deployment.
+- **Happy-path validation** of critical business flows that cannot be verified any
+  other way (e.g., a payment flow that depends on a real payment provider).
+- **Cross-team workflows** that span multiple deployables and cannot be isolated
+  within a single [component test]({{< relref "/docs/reference/testing/component" >}}).
 
-Do **not** use E2E tests to cover edge cases, error handling, or input validation. Those
-scenarios belong in [unit]({{< relref "/docs/reference/testing/unit" >}}), [integration]({{< relref "/docs/reference/testing/integration" >}}), or
-[functional]({{< relref "/docs/reference/testing/functional" >}}) tests.
+Do **not** use end-to-end tests to cover edge cases, error handling, or input
+validation. Those scenarios belong in [unit]({{< relref "/docs/reference/testing/unit" >}}) or
+[component]({{< relref "/docs/reference/testing/component" >}}) tests, which are faster, cheaper, and
+deterministic.
 
-### Vertical vs. Horizontal E2E Tests
+### Vertical vs. horizontal
 
-**Vertical E2E tests** target features under the control of a single team:
+**Vertical** end-to-end tests target features owned by a single team:
 
-- Favoriting an item and verifying it persists across refresh.
-- Creating a saved list and adding items to it.
+- An order is created and the confirmation email is sent.
+- A user uploads a file and it appears in their document list.
 
-**Horizontal E2E tests** span multiple teams:
+**Horizontal** end-to-end tests span multiple teams:
 
-- Navigating from the homepage through search, item detail, cart, and checkout.
+- A user navigates from homepage through search, product detail, cart, and checkout.
 
-Horizontal tests are significantly more complex and fragile. Due to their large failure
-surface area, they are **not suitable for blocking release [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}})**.
+Horizontal tests have a large failure surface and are significantly more fragile.
+They are **not suitable for blocking the pipeline**; run them on a schedule and
+review failures out of band.
 
 ## Characteristics
 
-| Property        | Value                                              |
-|-----------------|----------------------------------------------------|
-| **Speed**       | Seconds to minutes per test                        |
-| **Determinism** | Typically non-deterministic                        |
-| **Scope**       | Full system including external integrations         |
-| **Dependencies**| Real services, databases, third-party APIs          |
-| **Network**     | Full network access                                |
-| **Database**    | Live databases                                     |
-| **Breaks build**| Generally no (see guidance below)                  |
+| Property        | Value                                                        |
+|-----------------|--------------------------------------------------------------|
+| **Speed**       | Seconds to minutes per test                                  |
+| **Determinism** | Typically non-deterministic                                  |
+| **Scope**       | Two or more real components, up to the full system           |
+| **Dependencies**| Real services, databases, brokers, third-party APIs          |
+| **Network**     | Full network access                                          |
+| **Database**    | Live databases                                               |
+| **Breaks build**| No - triggers review or rollback, not a pre-merge gate       |
 
 ## Examples
 
-A vertical E2E test verifying user lookup through a live web interface:
+A narrow end-to-end test verifying a service against a real database:
 
-{{< card code=true header="**Vertical E2E test - user lookup via live web interface**" lang="java" >}}
-@Test
-public void verifyValidUserLookup() throws Exception {
-    // Act -- interact with the live application
-    homePage.getUserData("validUserId");
-    waitForElement(By.xpath("//span[@id='name']"));
+{{< card code=true header="**Narrow E2E - order service against a real database**" lang="javascript" >}}
+describe("OrderRepository (real database)", () => {
+  it("should persist and retrieve an order by ID", async () => {
+    const order = await orderRepository.create({
+      itemId: "item-42",
+      quantity: 2,
+      customerId: "cust-99",
+    });
 
-    // Assert -- verify real data returned from the live backend
-    assertEquals("Ada Lovelace", homePage.getName());
-    assertEquals("Engineering", homePage.getOrgName());
-    assertEquals("Grace Hopper", homePage.getManagerName());
-}
+    const retrieved = await orderRepository.findById(order.id);
+    expect(retrieved.itemId).toBe("item-42");
+    expect(retrieved.status).toBe("pending");
+  });
+});
 {{< /card >}}
 
-A browser-based E2E test using a tool like Playwright:
+A full-system browser test using a browser automation framework:
 
-{{< card code=true header="**Browser-based E2E test - add to cart and checkout with Playwright**" lang="javascript" >}}
+{{< card code=true header="**Full-system E2E - add to cart and checkout with browser automation**" lang="javascript" >}}
 test("user can add an item to cart and check out", async ({ page }) => {
   await page.goto("https://staging.example.com");
   await page.getByRole("link", { name: "Running Shoes" }).click();
@@ -94,37 +128,43 @@ test("user can add an item to cart and check out", async ({ page }) => {
 
 ## Anti-Patterns
 
-- **Using E2E tests as the primary safety net**: this is the "ice cream cone" anti-pattern.
-  E2E tests are slow and fragile; the majority of your confidence should come from unit and
-  integration tests.
-- **Blocking the pipeline with horizontal E2E tests**: these tests span too many teams and
-  failure surfaces. Run them asynchronously and review failures out of band.
-- **Ignoring flaky failures**: E2E tests often fail for environmental reasons. Track the
-  frequency and root cause of failures. If a test is not providing signal, fix it or remove
-  it.
-- **Testing edge cases in E2E**: exhaustive input validation and error-path testing should
-  happen in cheaper, faster test types.
-- **Not capturing failure context**: E2E failures are expensive to debug. Capture
+- **Using end-to-end tests as the primary safety net**: this is the ice cream cone
+  anti-pattern. The majority of your confidence should come from unit and
+  [component]({{< relref "/docs/reference/testing/component" >}}) tests, which are fast and
+  deterministic. End-to-end tests are expensive insurance for the gaps.
+- **Blocking the pipeline**: end-to-end tests must never be a pre-merge gate. Their
+  non-determinism will eventually block a deploy for reasons unrelated to code quality.
+- **Blocking on horizontal tests**: horizontal tests span too many teams and failure
+  surfaces. Run them on a schedule and review failures as a team.
+- **Ignoring flaky failures**: track frequency and root cause. A test that fails for
+  environmental reasons is not providing a code quality signal - fix it or remove it.
+- **Testing edge cases here**: exhaustive permutation testing in end-to-end tests is
+  slow, expensive, and duplicates what unit and component tests should cover.
+- **Not capturing failure context**: end-to-end failures are expensive to debug. Capture
   screenshots, network logs, and video recordings automatically on failure.
 
 ## Connection to CD Pipeline
 
-E2E tests run in the **later stages** of the delivery pipeline, after the build [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has
-passed all deterministic tests and has been deployed to a staging or pre-production
-environment:
+End-to-end tests run **after deployment**, not before:
 
-1. **Post-deployment smoke tests**: a small, fast suite of vertical E2E tests verifies that
-   the deployment succeeded and critical paths work.
-2. **Scheduled regression suites**: broader E2E suites (including horizontal tests) run on a
-   schedule rather than on every commit.
-3. **Production monitoring**: customer experience alarms (synthetic monitoring) are a form of
-   continuous E2E testing that runs in production.
+{{< card code=true header="**E2E tests in the pipeline**" lang="text" >}}
+Stage 1 (every commit)    Unit tests              Deterministic    Blocks
+                          Component tests         Deterministic    Blocks
 
-Because E2E tests are non-deterministic, they should **not break the build** in most cases. A
-team may choose to gate on a small set of highly reliable vertical E2E tests, but must invest
-in reducing false positives to make this valuable. [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipelines should be optimized for rapid
-recovery of production issues rather than attempting to prevent all defects with slow,
-fragile E2E gates.
+Post-deployment           E2E smoke tests         Non-deterministic   Triggers rollback
+                          Scheduled E2E suites    Non-deterministic   Review out of band
+                          Synthetic monitoring    Non-deterministic   Triggers alerts
+{{< /card >}}
+
+A team may choose to gate on a small, highly reliable set of vertical end-to-end
+smoke tests immediately after deployment. This is acceptable only if the team invests
+in keeping those tests stable. A flaky smoke gate is worse than no gate: it trains
+developers to ignore failures.
+
+Use [contract tests]({{< relref "/docs/reference/testing/contract" >}}) to verify that the
+[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) in your component tests still
+match reality. This gives you deterministic pre-merge confidence without depending on
+live external systems.
 
 ---
 

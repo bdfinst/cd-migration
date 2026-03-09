@@ -258,7 +258,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
 - [Unit Tests]({{< relref "/docs/reference/testing/unit" >}}) - Writing fast, deterministic tests for logic
-- [Functional Tests]({{< relref "/docs/reference/testing/functional" >}}) - Testing your system in isolation with test doubles
+- [Component Tests]({{< relref "/docs/reference/testing/component" >}}) - Testing your system in isolation with test doubles
 - [Contract Tests]({{< relref "/docs/reference/testing/contract" >}}) - Verifying that test doubles match reality
 - [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) - Techniques for replacing external dependencies in tests
 - [End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}) - When and how to use E2E tests appropriately

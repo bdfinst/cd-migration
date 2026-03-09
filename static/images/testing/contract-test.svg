@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="crt-title crt-desc">
+  <title id="crt-title">Contract Test Pattern: Consumer-Driven Contracts</title>
+  <desc id="crt-desc">Three columns showing the consumer-driven contract flow. Left column: Consumer team runs a component test against a test double of the provider, generating a contract. Center: the Contract artifact published to a broker. Right column: Provider team runs a verification step against the real service implementation using the consumer contract. Arrows show: consumer publishes contract to broker, broker delivers contract to provider, provider returns verification result.</desc>
+
+  <rect width="720" height="400" fill="#ffffff"/>
+
+  <defs>
+    <marker id="crt-arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#6b7280"/>
+    </marker>
+    <marker id="crt-arr-rev" markerWidth="8" markerHeight="6" refX="1" refY="3" orient="auto">
+      <polygon points="8 0,0 3,8 6" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <!-- CONSUMER column (left) -->
+  <text x="130" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#374151">Consumer Team</text>
+
+  <!-- Component test box -->
+  <rect x="24" y="44" width="212" height="56" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="130" y="67" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5b21b6">Component Test</text>
+  <text x="130" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#7c3aed">exercises consumer code</text>
+
+  <!-- Arrow: component test to provider double -->
+  <line x1="130" y1="100" x2="130" y2="134" stroke="#6b7280" stroke-width="1.5" marker-end="url(#crt-arr)"/>
+
+  <!-- Provider double (amber) -->
+  <rect x="24" y="134" width="212" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="130" y="157" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#92400e">Provider Test Double</text>
+  <text x="130" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#d97706">records expected interactions</text>
+
+  <!-- What consumer is discovering -->
+  <rect x="24" y="208" width="212" height="76" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="130" y="228" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#166534">Consumer discovers:</text>
+  <text x="130" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Do fields I depend on exist?</text>
+  <text x="130" y="259" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Are types what I expect?</text>
+  <text x="130" y="274" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Do status codes match?</text>
+
+  <!-- CONTRACT column (center) -->
+  <text x="360" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#374151">Contract</text>
+
+  <!-- Contract artifact (document shape) -->
+  <rect x="300" y="116" width="120" height="86" rx="6" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Dog-ear fold -->
+  <polygon points="388,116 420,116 388,148" fill="#e2e8f0" stroke="#64748b" stroke-width="1"/>
+  <text x="360" y="155" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#374151">Contract Artifact</text>
+  <text x="360" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">contract artifact</text>
+  <text x="360" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#6b7280">published to broker</text>
+
+  <!-- Arrow: consumer to contract -->
+  <line x1="236" y1="158" x2="298" y2="158" stroke="#6b7280" stroke-width="1.5" marker-end="url(#crt-arr)"/>
+  <text x="267" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">publishes</text>
+
+  <!-- Arrow: contract to provider -->
+  <line x1="422" y1="158" x2="482" y2="158" stroke="#6b7280" stroke-width="1.5" marker-end="url(#crt-arr)"/>
+  <text x="452" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">verifies</text>
+
+  <!-- Return result arrow (curved, below) -->
+  <path d="M 560,258 Q 560,310 360,310 Q 160,310 160,284" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#crt-arr-rev)"/>
+  <text x="360" y="326" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">verification result</text>
+
+  <!-- PROVIDER column (right) -->
+  <text x="580" y="26" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#374151">Provider Team</text>
+
+  <!-- Verification runner -->
+  <rect x="484" y="44" width="192" height="56" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="580" y="67" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5b21b6">Verification Runner</text>
+  <text x="580" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#7c3aed">runs consumer expectations</text>
+
+  <!-- Arrow: runner to real service -->
+  <line x1="580" y1="100" x2="580" y2="134" stroke="#6b7280" stroke-width="1.5" marker-end="url(#crt-arr)"/>
+
+  <!-- Real service (blue) -->
+  <rect x="484" y="134" width="192" height="50" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="580" y="157" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Real Service</text>
+  <text x="580" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#3b82f6">actual implementation</text>
+
+  <!-- What provider is discovering -->
+  <rect x="484" y="208" width="192" height="76" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+  <text x="580" y="228" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600" fill="#166534">Provider discovers:</text>
+  <text x="580" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Did I break a consumer field?</text>
+  <text x="580" y="259" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Did I change a type or status?</text>
+  <text x="580" y="274" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#166534">Am I backward compatible?</text>
+
+  <!-- Legend -->
+  <rect x="24" y="364" width="12" height="12" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+  <text x="40" y="375" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test / verification</text>
+  <rect x="190" y="364" width="12" height="12" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="206" y="375" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test double</text>
+  <rect x="320" y="364" width="12" height="12" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="336" y="375" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Real service</text>
+  <rect x="440" y="364" width="12" height="12" rx="2" fill="#f1f5f9" stroke="#64748b" stroke-width="1"/>
+  <text x="456" y="375" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Contract artifact</text>
+</svg>

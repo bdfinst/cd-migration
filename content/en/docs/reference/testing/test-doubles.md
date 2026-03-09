@@ -47,10 +47,8 @@ Test doubles are used in every layer of deterministic testing:
 
 - **[Unit tests]({{< relref "/docs/reference/testing/unit" >}})**: nearly all dependencies are replaced with test doubles to
   achieve full isolation.
-- **[Integration tests]({{< relref "/docs/reference/testing/integration" >}})**: external sub-systems (APIs, databases, message
-  queues) are replaced, but internal collaborators remain real.
-- **[Functional tests]({{< relref "/docs/reference/testing/functional" >}})**: dependencies that cross the sub-system boundary
-  are replaced to maintain determinism.
+- **[Component tests]({{< relref "/docs/reference/testing/component" >}})**: all dependencies that cross the component boundary
+  (external APIs, databases, downstream services) are replaced to maintain determinism.
 
 Test doubles should be used **less** in later [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) stages.
 [End-to-end tests]({{< relref "/docs/reference/testing/e2e" >}}) use no test doubles by design.
@@ -62,11 +60,11 @@ A JavaScript stub providing a canned response:
 {{< card code=true header="**JavaScript stub returning a fixed user**" lang="javascript" >}}
 // Stub: return a fixed user regardless of input
 const userRepository = {
-  findById: jest.fn().mockResolvedValue({
+  findById: stub().returns(Promise.resolve({
     id: "u1",
     name: "Ada Lovelace",
     email: "ada@example.com",
-  }),
+  })),
 };
 
 const user = await userService.getUser("u1");
@@ -75,10 +73,10 @@ expect(user.name).toBe("Ada Lovelace");
 
 A Java spy verifying interaction:
 
-{{< card code=true header="**Java spy verifying call count with Mockito**" lang="java" >}}
+{{< card code=true header="**Java spy verifying call count with a mocking framework**" lang="java" >}}
 @Test
 public void shouldCallUserServiceExactlyOnce() {
-    UserService spyService = Mockito.spy(userService);
+    UserService spyService = spy(userService);
     doReturn(testUser).when(spyService).getUserInfo("u123");
 
     User result = spyService.getUserInfo("u123");

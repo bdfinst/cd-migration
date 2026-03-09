@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" role="img" aria-labelledby="ct-title ct-desc">
+  <title id="ct-title">Component Test Pattern</title>
+  <desc id="ct-desc">A test actor on the left sends a request through the component boundary. Inside the boundary, real internal modules (API Layer, Business Logic, Data Adapter) are wired together. Outside the boundary on the right, a Database and an External API are represented by Test Double boxes connected via dashed lines.</desc>
+
+  <rect width="680" height="360" fill="#ffffff"/>
+
+  <defs>
+    <marker id="ct-arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#6b7280"/>
+    </marker>
+    <marker id="ct-arr-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="ct-arr-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <!-- Component boundary (dashed) -->
+  <rect x="110" y="38" width="340" height="268" rx="8" fill="#f8fafc" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="280" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">Component Boundary</text>
+
+  <!-- Internal modules (real, blue) -->
+  <!-- API Layer -->
+  <rect x="148" y="72" width="120" height="40" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="208" y="97" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">API Layer</text>
+
+  <!-- Arrow: API Layer to Business Logic -->
+  <line x1="208" y1="112" x2="208" y2="148" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ct-arr-blue)"/>
+
+  <!-- Business Logic -->
+  <rect x="148" y="148" width="120" height="40" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="208" y="173" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Business Logic</text>
+
+  <!-- Arrow: Business Logic to Data Adapter -->
+  <line x1="208" y1="188" x2="208" y2="224" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ct-arr-blue)"/>
+
+  <!-- Data Adapter -->
+  <rect x="148" y="224" width="120" height="40" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="208" y="249" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Data Adapter</text>
+
+  <!-- "real" label inside boundary -->
+  <text x="300" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280" font-style="italic">all real</text>
+
+  <!-- Test actor on left -->
+  <rect x="16" y="152" width="72" height="36" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="52" y="168" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5b21b6">Test</text>
+  <text x="52" y="182" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5b21b6">Actor</text>
+
+  <!-- Arrow: test to boundary (public interface) -->
+  <line x1="88" y1="170" x2="148" y2="92" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ct-arr)"/>
+  <text x="108" y="122" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">public</text>
+  <text x="108" y="134" font-family="system-ui,sans-serif" font-size="9" fill="#6b7280">interface</text>
+
+  <!-- Dashed arrow: boundary to DB Double -->
+  <line x1="450" y1="168" x2="484" y2="155" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ct-arr-amber)"/>
+
+  <!-- DB Test Double -->
+  <rect x="484" y="120" width="166" height="44" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="567" y="140" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#92400e">Database</text>
+  <text x="567" y="156" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#d97706">test double</text>
+
+  <!-- Dashed arrow: boundary to API Double -->
+  <line x1="450" y1="210" x2="484" y2="222" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ct-arr-amber)"/>
+
+  <!-- External API Test Double -->
+  <rect x="484" y="208" width="166" height="44" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="567" y="228" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#92400e">External API</text>
+  <text x="567" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#d97706">test double</text>
+
+  <!-- Legend -->
+  <rect x="16" y="326" width="12" height="12" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+  <text x="32" y="337" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test actor</text>
+  <rect x="116" y="326" width="12" height="12" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="132" y="337" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Real code</text>
+  <rect x="216" y="326" width="12" height="12" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="232" y="337" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test double (no real external deps)</text>
+</svg>

@@ -613,14 +613,16 @@ sections:
         title: "Testing"
         page_count: 9
         pages:
+          - file: component.md
+            title: "Component Tests"
           - file: contract.md
             title: "Contract Tests"
           - file: e2e.md
             title: "End-to-End Tests"
+          - file: integration.md
+            title: "Integration Tests (terminology)"
           - file: feedback-speed.md
             title: "Test Feedback Speed"
-          - file: functional.md
-            title: "Functional Tests"
           - file: glossary.md
             title: "Testing Glossary"
           - file: integration.md

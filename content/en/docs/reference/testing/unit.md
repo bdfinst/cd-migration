@@ -6,6 +6,8 @@ description: >
   Fast, deterministic tests that verify a unit of behavior through its public interface, asserting on what the code does rather than how it works.
 ---
 
+{{< figure src="/images/testing/unit-test.svg" alt="Solitary unit test: test actor sends input to a Unit Under Test; all collaborators are replaced by test doubles. Sociable unit test: test actor sends input to a Unit Under Test that uses real in-process collaborators; only external I/O is replaced by a test double." >}}
+
 ## Definition
 
 A unit test is a deterministic test that exercises a **unit of behavior** (a single
@@ -18,6 +20,19 @@ not on how it produces it.
 
 All external dependencies are replaced with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) so the test runs
 quickly and produces the same result every time.
+
+### Solitary vs. sociable unit tests
+
+A **solitary unit test** replaces all collaborators with test doubles and exercises a single
+class or function in complete isolation.
+
+A **sociable unit test** allows real in-process collaborators to participate - for example,
+a service object calling a real domain model - while still replacing any external I/O (network,
+database, file system) with test doubles. Both styles are unit tests as long as no real external
+dependency is involved.
+
+When the scope expands to an entire frontend component or a complete backend service exercised
+through its public API, that is a [component test]({{< relref "/docs/reference/testing/component" >}}).
 
 [White box testing]({{< relref "/docs/reference/glossary#white-box-testing" >}}) (asserting on internal method
 calls, call order, or private state) creates change-detector tests that break during routine
@@ -42,7 +57,7 @@ The purpose of unit tests is to:
 
 Unit tests are the right choice when the behavior under test can be exercised without network
 access, file system access, or database connections. If you need any of those, you likely need
-an [integration test]({{< relref "/docs/reference/testing/integration" >}}) or a [functional test]({{< relref "/docs/reference/testing/functional" >}}) instead.
+a [component test]({{< relref "/docs/reference/testing/component" >}}) or an [end-to-end test]({{< relref "/docs/reference/testing/e2e" >}}) instead.
 
 ## Characteristics
 
@@ -80,9 +95,9 @@ describe("castArray", () => {
 });
 {{< /card >}}
 
-A Java unit test using Mockito to isolate the system under test:
+A Java unit test using a mocking framework to isolate the system under test:
 
-{{< card code=true header="**Java unit test with Mockito stub isolating the controller**" lang="java" >}}
+{{< card code=true header="**Java unit test with mocking framework stub isolating the controller**" lang="java" >}}
 @Test
 public void shouldReturnUserDetails() {
     // Arrange

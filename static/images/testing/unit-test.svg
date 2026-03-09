@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" role="img" aria-labelledby="ut-title ut-desc">
+  <title id="ut-title">Unit Test Patterns: Solitary and Sociable</title>
+  <desc id="ut-desc">Two panels. Left: Solitary unit test - a test actor passes input to a Unit Under Test; all collaborators are replaced by Test Double boxes connected via dashed lines. Right: Sociable unit test - a test actor passes input to a Unit Under Test that uses real Collaborator objects; only external I/O is replaced by a Test Double.</desc>
+
+  <rect width="700" height="300" fill="#ffffff"/>
+
+  <defs>
+    <marker id="ut-arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#6b7280"/>
+    </marker>
+    <marker id="ut-arr-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="ut-arr-amber" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT PANEL: Solitary -->
+  <text x="175" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#374151">Solitary</text>
+  <text x="175" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">all collaborators replaced</text>
+
+  <!-- Test actor -->
+  <rect x="18" y="122" width="70" height="36" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="53" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5b21b6">Test</text>
+
+  <!-- Arrow: test to unit -->
+  <line x1="88" y1="140" x2="120" y2="140" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ut-arr)"/>
+
+  <!-- Unit Under Test -->
+  <rect x="120" y="100" width="120" height="80" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="180" y="135" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Unit Under</text>
+  <text x="180" y="151" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Test</text>
+
+  <!-- Dashed arrow: unit to Double 1 -->
+  <line x1="240" y1="122" x2="262" y2="108" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ut-arr-amber)"/>
+
+  <!-- Test Double 1 -->
+  <rect x="262" y="90" width="80" height="34" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="302" y="111" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#92400e">Test Double</text>
+
+  <!-- Dashed arrow: unit to Double 2 -->
+  <line x1="240" y1="158" x2="262" y2="172" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ut-arr-amber)"/>
+
+  <!-- Test Double 2 -->
+  <rect x="262" y="164" width="80" height="34" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="302" y="185" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#92400e">Test Double</text>
+
+  <!-- Panel divider -->
+  <line x1="350" y1="10" x2="350" y2="285" stroke="#e5e7eb" stroke-width="1.5"/>
+
+  <!-- RIGHT PANEL: Sociable -->
+  <text x="525" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#374151">Sociable</text>
+  <text x="525" y="46" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#6b7280">real in-process collaborators</text>
+
+  <!-- Test actor -->
+  <rect x="362" y="122" width="70" height="36" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="397" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5b21b6">Test</text>
+
+  <!-- Arrow: test to unit -->
+  <line x1="432" y1="140" x2="462" y2="140" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ut-arr)"/>
+
+  <!-- Unit Under Test -->
+  <rect x="462" y="100" width="110" height="80" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="517" y="135" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Unit Under</text>
+  <text x="517" y="151" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#1e40af">Test</text>
+
+  <!-- Solid arrow: unit to Collaborator 1 (real) -->
+  <line x1="572" y1="120" x2="590" y2="108" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ut-arr-blue)"/>
+
+  <!-- Collaborator 1 (real) -->
+  <rect x="590" y="90" width="80" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="630" y="109" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1e40af">Collaborator</text>
+
+  <!-- Solid arrow: unit to Collaborator 2 (real) -->
+  <line x1="572" y1="152" x2="590" y2="152" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ut-arr-blue)"/>
+
+  <!-- Collaborator 2 (real) -->
+  <rect x="590" y="138" width="80" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="630" y="157" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#1e40af">Collaborator</text>
+
+  <!-- Dashed arrow: unit to Test Double (external I/O only) -->
+  <line x1="572" y1="170" x2="590" y2="196" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ut-arr-amber)"/>
+
+  <!-- Test Double (external I/O) -->
+  <rect x="590" y="186" width="80" height="30" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="630" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#92400e">Test Double</text>
+  <text x="630" y="222" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-style="italic" fill="#d97706">external I/O only</text>
+
+  <!-- Legend -->
+  <rect x="20" y="262" width="12" height="12" rx="2" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+  <text x="36" y="273" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test</text>
+  <rect x="80" y="262" width="12" height="12" rx="2" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="96" y="273" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Real code</text>
+  <rect x="178" y="262" width="12" height="12" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="194" y="273" font-family="system-ui,sans-serif" font-size="11" fill="#374151">Test double</text>
+</svg>

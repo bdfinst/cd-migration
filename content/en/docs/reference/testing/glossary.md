@@ -9,6 +9,22 @@ description: >
 These definitions reflect how this site uses each term. They are not universal definitions -
 other communities may use the same words differently.
 
+### Component Test
+
+A deterministic test that verifies a complete frontend component or backend service through
+its public interface, with [test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) replacing
+all external dependencies. No real databases, downstream services, or network calls leave
+the process. Component tests cover the assembled behavior of a unit - how its internal
+modules, business logic, and interface layer work together - without depending on any system
+the team does not control. Sometimes called a sociable unit test when the scope covers multiple
+collaborating objects within the component boundary. Contrast with
+[end-to-end tests]({{< relref "/docs/reference/testing/e2e" >}}) which use real external dependencies.
+
+Referenced in:
+[Unit Tests]({{< relref "/docs/reference/testing/unit" >}}),
+[Component Tests]({{< relref "/docs/reference/testing/component" >}}),
+[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}})
+
 ### Black Box Testing
 
 A testing approach where the test exercises code through its public interface and asserts
@@ -33,6 +49,29 @@ only real user feedback can confirm we are building the right thing.
 Referenced in:
 [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}})
 
+### Sociable Unit Test
+
+A [unit test](#solitary-unit-test) that allows real in-process collaborators to participate -
+for example, a service object calling a real domain model or value object - while still
+replacing any external I/O (network, database, file system) with test doubles. The "unit"
+being tested is a behavior that spans multiple in-process objects. When the scope expands
+to the entire public interface of a frontend component or backend service, that is a
+[component test](#component-test).
+
+Referenced in:
+[Unit Tests]({{< relref "/docs/reference/testing/unit" >}}),
+[Component Tests]({{< relref "/docs/reference/testing/component" >}})
+
+### Solitary Unit Test
+
+A [unit test]({{< relref "/docs/reference/testing/unit" >}}) that replaces all collaborators with
+[test doubles]({{< relref "/docs/reference/testing/test-doubles" >}}) and exercises a single class or
+function in complete isolation. Contrast with [sociable unit test](#sociable-unit-test),
+which allows real in-process collaborators while still replacing external I/O.
+
+Referenced in:
+[Unit Tests]({{< relref "/docs/reference/testing/unit" >}})
+
 ### TDD (Test-Driven Development)
 
 A development practice where tests are written before the production code that makes them
@@ -54,13 +93,14 @@ Referenced in:
 A test double that simulates a real external service over the network, responding to HTTP
 requests with pre-configured or recorded responses. Unlike in-process stubs or mocks, a
 virtual service runs as a standalone process and is accessed via real network calls, making
-it suitable for functional testing and integration testing where your application needs to
-make actual HTTP requests against a dependency. Tools such as WireMock, Mountebank, and
-Hoverfly can create virtual services from recorded traffic or API specifications. See
+it suitable for component testing and end-to-end testing where your application needs to
+make actual HTTP requests against a dependency. Service virtualization tools can create
+virtual services from recorded traffic or API specifications. See
 [Test Doubles]({{< relref "/docs/reference/testing/test-doubles" >}}).
 
 Referenced in:
-[Integration Tests]({{< relref "/docs/reference/testing/integration" >}}),
+[Component Tests]({{< relref "/docs/reference/testing/component" >}}),
+[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}),
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
 
 ### White Box Testing

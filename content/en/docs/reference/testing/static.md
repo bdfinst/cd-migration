@@ -54,13 +54,13 @@ benefits from linting, formatting, and dependency scanning.
 
 A `.eslintrc.json` configuration enforcing test quality rules:
 
-{{< card code=true header="**ESLint configuration for test quality rules**" lang="json" >}}
+{{< card code=true header="**Linter configuration for test quality rules**" lang="json" >}}
 {
   "rules": {
-    "jest/no-disabled-tests": "warn",
-    "jest/expect-expect": "error",
-    "jest/no-commented-out-tests": "error",
-    "jest/valid-expect": "error",
+    "no-disabled-tests": "warn",
+    "require-assertions": "error",
+    "no-commented-out-tests": "error",
+    "valid-assertions": "error",
     "no-unused-vars": "error",
     "no-console": "warn"
   }
@@ -83,7 +83,7 @@ calculateTotal("19.99", 3);
 
 ### Dependency Scanning
 
-Tools like `npm audit`, Snyk, or Dependabot scan for known vulnerabilities:
+Dependency scanning tools scan for known vulnerabilities:
 
 {{< card code=true header="**npm audit output example**" lang="bash" >}}
 $ npm audit
@@ -111,9 +111,9 @@ catches known vulnerability patterns. Automated checks cover structural issues (
 text, invalid ARIA attributes, insufficient contrast ratios, broken heading hierarchy) while
 manual review covers subjective aspects like whether alt text is actually meaningful.
 
-A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
+An accessibility checker configuration running WCAG 2.1 AA checks against rendered pages:
 
-{{< card code=true header="**pa11y-ci configuration for WCAG 2.1 AA checks**" lang="json" >}}
+{{< card code=true header="**Accessibility checker configuration for WCAG 2.1 AA**" lang="json" >}}
 {
   "defaults": {
     "standard": "WCAG2AA",
@@ -127,16 +127,14 @@ A `.pa11yci` configuration running WCAG 2.1 AA checks against rendered pages:
 }
 {{< /card >}}
 
-An axe-core unit test asserting that a rendered component has no accessibility violations:
+An accessibility scanner test asserting that a rendered component has no violations:
 
-{{< card code=true header="**axe-core accessibility test with jest-axe**" lang="javascript" >}}
-import { axe, toHaveNoViolations } from "jest-axe";
-
-expect.extend(toHaveNoViolations);
+{{< card code=true header="**Accessibility scanner test verifying no WCAG violations**" lang="javascript" >}}
+// accessibility scanner setup (e.g. import scanner and extend assertions)
 
 it("should have no accessibility violations", async () => {
   const { container } = render(<LoginForm />);
-  const results = await axe(container);
+  const results = await accessibilityScanner(container);
   expect(results).toHaveNoViolations();
 });
 {{< /card >}}

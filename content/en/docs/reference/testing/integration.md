@@ -1,125 +1,46 @@
 ---
 title: "Integration Tests"
 linkTitle: "Integration Tests"
-weight: 2
+weight: 45
 description: >
-  Deterministic tests that verify how units interact together or with external system boundaries using test doubles for non-deterministic dependencies.
+  "Integration test" is an industry term with two distinct meanings. This page maps both to the appropriate test type on this site.
 ---
 
-## Definition
+"Integration test" is widely used but inconsistently defined. Martin Fowler draws a
+useful distinction between two kinds:
 
-An integration test is a deterministic test that verifies how the unit under test interacts
-with other units without directly accessing external sub-systems. It may validate multiple
-units working together (sometimes called a "sociable unit test") or the portion of the code
-that interfaces with an external network dependency while using a test double to represent
-that dependency.
+### Narrow integration tests
 
-For clarity: an "integration test" is **not** a test that broadly integrates multiple
-sub-systems. That is an [end-to-end test]({{< relref "/docs/reference/testing/e2e" >}}).
+A **narrow integration test** exercises the portion of code that interfaces with an
+external system - the HTTP client, the database query layer, the message producer -
+with a [test double]({{< relref "/docs/reference/testing/test-doubles" >}}) replacing the real
+external system. The test is deterministic and fast because no real network call or
+database is involved. The goal is to verify that the boundary layer code behaves
+correctly against a controlled stand-in.
 
-## When to Use
+This site covers narrow integration tests under
+[Component Tests]({{< relref "/docs/reference/testing/component" >}}). A component test exercises
+a complete frontend component or backend service through its public interface, with
+test doubles for all external dependencies - which includes the boundary layer that
+Fowler's narrow integration test focuses on.
 
-Integration tests provide the best balance of speed, confidence, and cost. Use them when:
+### Broad integration tests
 
-- You need to verify that **multiple units collaborate correctly** (for example, a service
-  calling a repository that calls a data mapper).
-- You need to validate **the interface layer** to an external system (HTTP client, message
-  producer, database query) while keeping the external system replaced by a test double.
-- You want to confirm that a **refactoring** did not break behavior. Integration tests that
-  avoid testing implementation details survive refactors without modification.
-- You are building a **front-end component** that composes child components and needs to verify
-  the assembled behavior from the user's perspective.
+A **broad integration test** (also called a wide integration test) wires two or more
+real components together - a real database, a live downstream service, a real message
+broker - with no test doubles replacing those dependencies. Fowler himself prefers to
+call these "system tests" or "end-to-end tests" to avoid confusion with the narrow
+kind.
 
-If the test requires a live network call to a system outside localhost, it is either a
-[contract test]({{< relref "/docs/reference/testing/contract" >}}) or an [E2E test]({{< relref "/docs/reference/testing/e2e" >}}).
-
-## Characteristics
-
-| Property        | Value                                         |
-|-----------------|-----------------------------------------------|
-| **Speed**       | Milliseconds to low seconds                   |
-| **Determinism** | Always deterministic                          |
-| **Scope**       | Multiple units or a unit plus its boundary    |
-| **Dependencies**| External systems replaced with test doubles   |
-| **Network**     | Localhost only                                |
-| **Database**    | Localhost / in-memory only                    |
-| **Breaks build**| Yes                                           |
-
-## Examples
-
-A JavaScript integration test verifying that a connector returns structured data:
-
-{{< card code=true header="**Integration test - connector returning structured data**" lang="javascript" >}}
-describe("retrieving Hygieia data", () => {
-  it("should return counts of merged pull requests per day", async () => {
-    const result = await hygieiaConnector.getResultsByDay(
-      hygieiaConfigs.integrationFrequencyRoute,
-      testTeam,
-      startDate,
-      endDate
-    );
-
-    expect(result.status).toEqual(200);
-    expect(result.data).toBeInstanceOf(Array);
-    expect(result.data[0]).toHaveProperty("value");
-    expect(result.data[0]).toHaveProperty("dateStr");
-  });
-
-  it("should return an empty array if the team does not exist", async () => {
-    const result = await hygieiaConnector.getResultsByDay(
-      hygieiaConfigs.integrationFrequencyRoute,
-      0,
-      startDate,
-      endDate
-    );
-    expect(result.data).toEqual([]);
-  });
-});
-{{< /card >}}
-
-### Subcategories
-
-**Service integration tests** validate how the system under test responds to information
-from an external service. Use [virtual services]({{< relref "/docs/reference/glossary#virtual-service" >}}) or static mocks; pair with
-[contract tests]({{< relref "/docs/reference/testing/contract" >}}) to keep the doubles current.
-
-**Database integration tests** validate query logic against a controlled data store. Prefer
-in-memory databases, isolated DB instances, or personalized datasets over shared live data.
-
-**Front-end integration tests** render the component tree and interact with it the way a
-user would. Follow the accessibility order of operations for element selection: visible text
-and labels first, ARIA roles second, test IDs only as a last resort.
-
-## Anti-Patterns
-
-- **Peeking behind the curtain**: using tools that expose component internals (e.g.,
-  Enzyme's `instance()` or `state()`) instead of testing from the user's perspective.
-- **Mocking too aggressively**: replacing every collaborator turns an integration test into a
-  unit test and removes the value of testing real interactions. Only mock what is necessary to
-  maintain determinism.
-- **Testing implementation details**: asserting on internal state, private methods, or call
-  counts rather than observable output.
-- **Introducing a test user**: creating an artificial actor that would never exist in
-  production. Write tests from the perspective of a real end-user or API consumer.
-- **Tolerating flaky tests**: non-deterministic integration tests erode trust. Fix or remove
-  them immediately.
-- **Duplicating E2E scope**: if the test integrates multiple deployed sub-systems with live
-  network calls, it belongs in the E2E category, not here.
-
-## Connection to CD Pipeline
-
-Integration tests form the largest portion of a healthy test suite (the "trophy" or the
-middle of the pyramid). They run alongside unit tests in the earliest [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) stages:
-
-1. **Local development**: run in watch mode or before committing.
-2. **PR verification**: CI executes the full suite; failures block merge.
-3. **Trunk verification**: CI reruns on the merged HEAD.
-
-Because they are deterministic and fast, integration tests **should always break the build**.
-A team whose refactors break many tests likely has too few integration tests and too many
-fine-grained unit tests. As Kent C. Dodds advises: "Write tests, not too many, mostly
-integration."
+This site covers broad integration tests under
+[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}), which covers the full spectrum
+from two services calling each other with real dependencies, up to a complete
+browser-driven user journey through every layer of the system.
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+If you arrived here looking for tests that use test doubles at the service boundary,
+see [Component Tests]({{< relref "/docs/reference/testing/component" >}}).
+
+If you arrived here looking for tests that involve real external dependencies, see
+[End-to-End Tests]({{< relref "/docs/reference/testing/e2e" >}}).
