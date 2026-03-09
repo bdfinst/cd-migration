@@ -1,48 +1,31 @@
 ---
 title: "Integration Tests"
 linkTitle: "Integration Tests"
-weight: 45
+weight: 5
 aliases:
   - /docs/reference/testing/integration/
 description: >
-  "Integration test" is an industry term with two distinct meanings. This page maps both to the appropriate test type on this site.
+  Tests that exercise real external dependencies to validate that contract test doubles still match reality. Non-deterministic; never a pre-merge gate.
 ---
 
-"Integration test" is widely used but inconsistently defined. Martin Fowler draws a
-useful distinction between two kinds:
+"Integration test" is widely used but inconsistently defined. On this site, **integration
+tests** are tests that involve **real external dependencies** - actual databases, live
+downstream services, real message brokers, or third-party APIs. They are non-deterministic
+because those dependencies introduce timing, state, and availability factors outside the
+test's control.
 
-### Narrow integration tests
+Integration tests serve a specific role in the test architecture: they **validate that the
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) used in your
+[contract tests]({{< relref "/docs/testing/contract" >}}) still match reality**. Without
+integration tests, contract test doubles can silently drift from the real behavior of the
+systems they simulate - giving false confidence.
 
-A **narrow integration test** exercises the portion of code that interfaces with an
-external system - the HTTP client, the database query layer, the message producer -
-with a [test double]({{< relref "/docs/testing/test-doubles" >}}) replacing the real
-external system. The test is deterministic and fast because no real network call or
-database is involved. The goal is to verify that the boundary layer code behaves
-correctly against a controlled stand-in.
+Because integration tests depend on live systems, they run **post-deployment** or on a
+schedule - never as a pre-merge gate. Failures trigger review or rollback decisions, not
+build failures.
 
-This site covers narrow integration tests under
-[Component Tests]({{< relref "/docs/testing/component" >}}). A component test exercises
-a complete frontend component or backend service through its public interface, with
-test doubles for all external dependencies - which includes the boundary layer that
-Fowler's narrow integration test focuses on.
+For tests that validate interface boundaries using test doubles (deterministic), see
+[Contract Tests]({{< relref "/docs/testing/contract" >}}).
 
-### Broad integration tests
-
-A **broad integration test** (also called a wide integration test) wires two or more
-real components together - a real database, a live downstream service, a real message
-broker - with no test doubles replacing those dependencies. Fowler himself prefers to
-call these "system tests" or "end-to-end tests" to avoid confusion with the narrow
-kind.
-
-This site covers broad integration tests under
-[End-to-End Tests]({{< relref "/docs/testing/e2e" >}}), which covers the full spectrum
-from two services calling each other with real dependencies, up to a complete
-browser-driven user journey through every layer of the system.
-
----
-
-If you arrived here looking for tests that use test doubles at the service boundary,
-see [Component Tests]({{< relref "/docs/testing/component" >}}).
-
-If you arrived here looking for tests that involve real external dependencies, see
+For full-system browser tests and multi-service smoke tests, see
 [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}).

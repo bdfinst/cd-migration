@@ -40,7 +40,8 @@ sub-second to sub-minute feedback.
 | **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | <span class="gate-required">Required</span> |
 | **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
 | **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
-| **Unit tests** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
+| **[Solitary and sociable unit tests]({{< relref "/docs/testing/unit" >}})** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/testing/contract" >}})** | Interface mismatches, wrong assumptions about external system boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI semantic code review** | Logic errors, missing edge cases, subtle injection vectors beyond pattern matching | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}), [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 
@@ -59,13 +60,13 @@ These run on every commit to trunk.
 | <span class="ai-high">&#9650;</span> **AI vulnerability reachability analysis** | Correlate CVEs with actual code usage paths to prioritize exploitable risks over theoretical ones | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 | **Stage duration warning** | Warn if Stage 1 exceeds 10 minutes; slow fast-feedback loops mask defects and delay trunk integration | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}) | |
 
-### CD Stage 1: Integration and Contract Tests <span class="stage-time">< 10 min</span>
+### CD Stage 1: Contract and Boundary Validation <span class="stage-time">< 10 min</span>
 
 These validate boundaries between components.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **Contract tests** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/testing/contract" >}})** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State]({{< relref "/docs/reference/defect-sources/data-and-state" >}}) | <span class="gate-required">Required</span> |
 | **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure]({{< relref "/docs/reference/defect-sources/dependency-and-infrastructure" >}}) | |
 | **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
@@ -103,6 +104,34 @@ These validate user-facing behavior in a [production-like environment]({{< relre
 | **Feature interaction tests** | Unanticipated feature interactions | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI intent alignment review** | Acceptance criteria vs. user behavior data misalignment; specs that meet the letter but miss the intent | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
 
+---
+
+## Out-of-Pipeline Verification
+
+The following checks are non-deterministic - they depend on live environments, external
+systems, or real user behavior - and cannot be made into blocking pipeline gates without
+coupling your ability to deploy to factors outside your control. They run asynchronously
+or post-deployment and back up the deterministic pipeline with a continuous safety net.
+Failures trigger review, alerts, or rollback decisions. They never block a commit from
+reaching production.
+
+### Integration Tests (Post-Deploy)
+
+[Integration tests]({{< relref "/docs/testing/integration" >}}) validate that the
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) used in
+[contract tests]({{< relref "/docs/testing/contract" >}}) still match the real services
+they simulate. They are non-deterministic because they exercise real service boundaries
+and their results depend on the current state of those services. They run on a schedule
+or post-deployment - not on every commit - and failures trigger review, not a
+pipeline block.
+
+| Check | Defect Sources Addressed | Catalog Section | Pre-Feature |
+|-------|--------------------------|-----------------|:-----------:|
+| **Provider verification** | Interface drift between contract test doubles and real services | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **Cross-service integration validation** | Breaking changes at real service boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| <span class="ai-high">&#9650;</span> **AI boundary coverage analysis** | Integration boundaries missing contract tests; semantic service relationship mapping | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
+| <span class="ai-high">&#9650;</span> **AI behavioral assumption detection** | Undocumented assumptions at service boundaries that contract tests don't cover | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
+
 ### Production Verification
 
 These run during and after deployment. They are not optional - they close the feedback loop.
@@ -130,9 +159,9 @@ this baseline.
 3. Secret scanning
 4. SAST for injection patterns
 5. Compilation / build
-6. Unit tests
-7. Dependency vulnerability scan
-8. Contract tests at every integration boundary
+6. Solitary and sociable unit tests
+7. Contract tests at every integration boundary
+8. Dependency vulnerability scan
 9. Schema migration validation
 {{% /alert %}}
 

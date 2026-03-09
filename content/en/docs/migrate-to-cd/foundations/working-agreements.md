@@ -271,10 +271,6 @@ You are ready to move to [Phase 2: Pipeline]({{< relref "/docs/anti-patterns/pip
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Team Burnout]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - Symptom that clear agreements and sustainable practices help prevent

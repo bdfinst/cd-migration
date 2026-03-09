@@ -63,7 +63,7 @@ switch to a different task. When the result comes back, they have lost the menta
 code they changed. Investigating a failure takes longer because they have to re-read their own
 code. Fixing the failure takes longer because they are now juggling two streams of work.
 
-A well-structured suite - built on functional tests with test doubles and unit tests for complex
+A well-structured suite - built on component tests with test doubles and unit tests for complex
 logic - runs in under 10 minutes. Developers run it locally before pushing. Failures are caught
 while the code is still fresh. The feedback loop is tight enough to support continuous integration.
 
@@ -80,7 +80,7 @@ This behavior is rational given the incentives, but it is catastrophic for quali
 hide behind the noise. A test that detects a genuine regression gets rerun and ignored alongside
 the flaky tests.
 
-Unit tests and functional tests with test doubles are deterministic. They produce the same result
+Unit tests and component tests with test doubles are deterministic. They produce the same result
 every time. When a deterministic test fails, the developer knows with certainty that they broke
 something. There is no rerun. There is no "is that real?" The failure demands investigation.
 
@@ -98,8 +98,8 @@ When a feature changes, every E2E test that touches that feature must be updated
 the checkout page breaks 30 E2E tests even if the underlying behavior has not changed. The team
 spends more time maintaining E2E tests than writing new features.
 
-Functional tests and unit tests are cheap to write and cheap to maintain. They test behavior from
-the actor's perspective, not UI layout or browser flows. A functional test that verifies a
+Component tests and unit tests are cheap to write and cheap to maintain. They test behavior from
+the actor's perspective, not UI layout or browser flows. A component test that verifies a
 discount is applied correctly does not care whether the button is blue or green. When the discount
 logic changes, a handful of focused tests need updating - not thirty browser flows.
 
@@ -115,7 +115,7 @@ This is the opposite of what [CD]({{< relref "/docs/reference/glossary#cd-contin
 independently, at any time, regardless of the state of external systems. A test architecture
 built on E2E tests makes your deployment hostage to every dependency in your ecosystem.
 
-A suite built on unit tests, functional tests, and contract tests runs entirely within your
+A suite built on unit tests, component tests, and contract tests runs entirely within your
 control. External dependencies are replaced with test doubles that are validated by contract
 tests. Your pipeline can tell you "this change is safe to deploy" even if every external system
 is offline.
@@ -140,17 +140,17 @@ value it provides. The target architecture looks like this:
 | Test type | Role | Runs in pipeline? | Uses real external services? |
 |-----------|------|-------------------|----------------------------|
 | **Unit** | Verify high-complexity logic - business rules, calculations, edge cases | Yes, gates the build | No |
-| **Functional** | Verify component behavior from the actor's perspective with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies | Yes, gates the build | No (localhost only) |
+| **Component** | Verify component behavior from the actor's perspective with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies | Yes, gates the build | No (localhost only) |
 | **Contract** | Validate that test doubles still match live external services | Asynchronously, does not gate | Yes |
 | **E2E** | Smoke-test critical business paths in a fully integrated environment | Post-deploy verification only | Yes |
 
-Functional tests are the workhorse. They test what the system does for its actors - a user
+Component tests are the workhorse. They test what the system does for its actors - a user
 interacting with a UI, a service consuming an API - without coupling to internal implementation
 or external infrastructure. They are fast because they avoid real I/O. They are deterministic
 because they use test doubles for anything outside the component boundary. They survive
 refactoring because they assert on outcomes, not method calls.
 
-Unit tests complement functional tests for code with high cyclomatic complexity where you need to
+Unit tests complement component tests for code with high cyclomatic complexity where you need to
 exercise many permutations quickly - branching business rules, validation logic, calculations
 with boundary conditions. Do not write unit tests for trivial code just to increase coverage.
 
@@ -163,16 +163,16 @@ Map your current test distribution. Count tests by type, measure total duration,
 every test that requires a real external service or produces intermittent failures.
 
 Quarantine every flaky test immediately - move it out of the pipeline-gating suite. For each one,
-decide: fix it if the flakiness has a solvable cause, replace it with a deterministic functional
+decide: fix it if the flakiness has a solvable cause, replace it with a deterministic component
 test, or delete it if the behavior is already covered elsewhere. Flaky tests erode confidence and
 train developers to ignore failures. Target zero flaky tests in the gating suite by end of week.
 
-### Step 2: Build functional tests for your highest-risk components (Weeks 2-4)
+### Step 2: Build component tests for your highest-risk components (Weeks 2-4)
 
 Pick the components with the highest defect rate or the most E2E test coverage. For each one:
 
 1. Identify the actors - who or what interacts with this component?
-2. Write functional tests from the actor's perspective. A user submitting a form, a service
+2. Write component tests from the actor's perspective. A user submitting a form, a service
    calling an API endpoint, a consumer reading from a queue. Test through the component's public
    interface.
 3. Replace external dependencies with [test doubles]({{< relref "/docs/testing/test-doubles" >}}).
@@ -184,12 +184,12 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
    still match the real services. Contract tests verify format, not specific data. Run them
    asynchronously - they should not block the build, but failures should trigger investigation.
 
-As functional tests come online, remove the E2E tests that covered the same behavior. Each
+As component tests come online, remove the E2E tests that covered the same behavior. Each
 replacement makes the suite faster and more reliable.
 
 ### Step 3: Add unit tests where complexity demands them (Weeks 2-4)
 
-While building out functional tests, identify the high-complexity logic within each component -
+While building out component tests, identify the high-complexity logic within each component -
 discount calculations, eligibility rules, parsing, validation. Write unit tests for these using
 [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}): failing test first, implementation, then refactor.
 
@@ -199,8 +199,8 @@ test.
 
 ### Step 4: Reduce E2E to critical-path smoke tests (Weeks 4-6)
 
-With functional tests covering component behavior, most E2E tests are now redundant. For each
-remaining E2E test, ask: "Does this test a scenario that functional tests with test doubles
+With component tests covering component behavior, most E2E tests are now redundant. For each
+remaining E2E test, ask: "Does this test a scenario that component tests with test doubles
 already cover?" If yes, remove it.
 
 Keep E2E tests only for the critical business paths that require a fully integrated environment -
@@ -212,11 +212,11 @@ their failure surface area. Move surviving E2E tests to a post-deploy verificati
 
 Every change gets tests. Establish the team norm for what kind:
 
-- **Functional tests are the default.** Every new feature, endpoint, or workflow gets tests from
+- **Component tests are the default.** Every new feature, endpoint, or workflow gets tests from
   the actor's perspective, with test doubles for external dependencies.
 - **Unit tests are for complex logic.** Business rules with many branches, calculations with
   edge cases, parsing and validation.
-- **E2E tests are rare.** Added only for new critical business paths where functional tests
+- **E2E tests are rare.** Added only for new critical business paths where component tests
   cannot provide equivalent confidence.
 - **Bug fixes get a regression test** at the level that catches the defect most directly.
 
@@ -228,11 +228,11 @@ the expense of clarity.
 
 | Objection | Response |
 |-----------|----------|
-| "Functional tests with test doubles don't test anything real" | They test real behavior from the actor's perspective. A functional test verifies the logic of order submission and that the component handles each possible response correctly - success, validation failure, timeout - without waiting on a live service. Contract tests running asynchronously validate that your test doubles still match the real service contracts. |
-| "E2E tests catch bugs that other tests miss" | A small number of critical-path E2E tests catch bugs that cross system boundaries. But hundreds of E2E tests do not catch proportionally more - they add flakiness and wait time. Most integration bugs are caught by functional tests with well-maintained test doubles validated by contract tests. |
-| "We can't delete E2E tests - they're our safety net" | A flaky safety net gives false confidence. Replace E2E tests with deterministic functional tests that catch bugs reliably, then keep a small E2E smoke suite for post-deploy verification of critical paths. |
-| "Our code is too tightly coupled to test at the component level" | That is an architecture problem. Start by writing functional tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) to wrap untestable code in a testable layer. |
-| "We don't have time to redesign the test suite" | You are already paying the cost in slow feedback, flaky builds, and manual verification. The fix is incremental: replace one E2E test with a functional test each day. After a month, the suite is measurably faster and more reliable. |
+| "Component tests with test doubles don't test anything real" | They test real behavior from the actor's perspective. A component test verifies the logic of order submission and that the component handles each possible response correctly - success, validation failure, timeout - without waiting on a live service. Contract tests running asynchronously validate that your test doubles still match the real service contracts. |
+| "E2E tests catch bugs that other tests miss" | A small number of critical-path E2E tests catch bugs that cross system boundaries. But hundreds of E2E tests do not catch proportionally more - they add flakiness and wait time. Most integration bugs are caught by component tests with well-maintained test doubles validated by contract tests. |
+| "We can't delete E2E tests - they're our safety net" | A flaky safety net gives false confidence. Replace E2E tests with deterministic component tests that catch bugs reliably, then keep a small E2E smoke suite for post-deploy verification of critical paths. |
+| "Our code is too tightly coupled to test at the component level" | That is an architecture problem. Start by writing component tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) to wrap untestable code in a testable layer. |
+| "We don't have time to redesign the test suite" | You are already paying the cost in slow feedback, flaky builds, and manual verification. The fix is incremental: replace one E2E test with a component test each day. After a month, the suite is measurably faster and more reliable. |
 
 ## Measuring Progress
 
@@ -240,7 +240,7 @@ the expense of clarity.
 |--------|-----------------|
 | Test suite duration | Should decrease toward [under 10 minutes]({{< relref "/docs/testing/feedback-speed" >}}) |
 | Flaky test count in gating suite | Should reach and stay at zero |
-| Functional test coverage of key components | Should increase as E2E tests are replaced |
+| Component test coverage of key components | Should increase as E2E tests are replaced |
 | E2E test count | Should decrease to a small set of critical-path smoke tests |
 | Pipeline pass rate | Should increase as non-deterministic tests are removed from the gate |
 | Developers running tests locally | Should increase as the suite gets faster |
@@ -250,7 +250,7 @@ the expense of clarity.
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
-- When a new regression is caught in production, what type of test would have caught it earlier - unit, integration, or end-to-end?
+- When a new regression is caught in production, what type of test would have caught it earlier - unit, component, or end-to-end?
 - How long does our end-to-end test suite take to run? Would we be able to run it on every commit?
 - If we could only write one new test today, what is the riskiest untested behavior we would cover?
 

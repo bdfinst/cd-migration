@@ -110,7 +110,3 @@ To improve Change Fail Rate:
   impact of defective changes before they reach all users.
 - Conduct blameless post-incident reviews and feed learnings back into the
   delivery pipeline.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

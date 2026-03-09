@@ -1,7 +1,7 @@
 ---
 title: "Component Tests"
 linkTitle: "Component Tests"
-weight: 2
+weight: 1
 aliases:
   - /docs/reference/testing/functional/
   - /docs/reference/testing/component/
@@ -21,9 +21,9 @@ treats the component as a [black box]({{< relref "/docs/reference/glossary#black
 inputs go in through the public interface (API endpoint, rendered UI), observable
 outputs come out, and the test asserts only on those outputs.
 
-This is sometimes called a **sociable unit test**: the test allows real collaborators
-to interact within the component boundary while replacing everything outside that
-boundary with doubles.
+This is broader than a [sociable unit test]({{< relref "/docs/testing/unit#solitary-vs-sociable-unit-tests" >}}):
+where a sociable unit test allows in-process collaborators for a single behavior, a
+component test exercises the entire assembled component through its public interface.
 
 The goal is to verify the assembled behavior of a component - that its modules,
 business logic, and interface layer work together correctly - without depending on
@@ -183,7 +183,3 @@ Because component tests are deterministic, they **should always break the build*
 failure. A healthy [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline relies
 on a strong component test suite to verify assembled behavior - not just individual
 units - before any code reaches an environment with real dependencies.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

@@ -118,7 +118,3 @@ To improve MTTR:
 - Practice incident response regularly, including deploying rollbacks and hotfixes.
 - Conduct blameless post-incident reviews and feed learnings back into the pipeline
   and monitoring.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

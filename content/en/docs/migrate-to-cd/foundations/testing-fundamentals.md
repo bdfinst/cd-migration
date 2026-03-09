@@ -127,8 +127,8 @@ more deterministic, and more focused on the code your team actually ships.
 
 A test architecture is the deliberate structure of how different test types work together across
 your pipeline to give you deployment confidence. The [Testing section]({{< relref "/docs/testing" >}})
-provides the full architecture reference, including five layers of tests (unit, integration,
-functional, contract, and end-to-end), how they map to pipeline stages, pre-merge vs post-merge
+provides the full architecture reference, including five layers of tests (unit, component,
+contract, end-to-end, and integration), how they map to pipeline stages, pre-merge vs post-merge
 strategies, a decision matrix for choosing test types, and best practices.
 
 The key principle: **everything that blocks deployment must be deterministic and under your
@@ -190,7 +190,7 @@ Assess where you stand before making changes.
 
 - Run your full test suite 3 times. Note total duration and any tests that pass intermittently
   (flaky tests).
-- Count tests by type: unit, integration, functional, end-to-end.
+- Count tests by type: unit, component, contract, end-to-end.
 - Identify tests that require external dependencies (databases, APIs, file systems) to run.
 - Record your baseline: total test count, pass rate, duration, flaky test count.
 - Map each test type to a pipeline stage. Which tests gate deployment? Which run asynchronously?
@@ -226,24 +226,24 @@ and replace that dependency with a test double.
   - **In-memory fakes** for databases (e.g., SQLite, H2, testcontainers with local instances).
   - **HTTP stubs** for external APIs (e.g., WireMock, nock, MSW).
   - **Fakes** for message queues, email services, and other infrastructure.
-- Replace the dependencies in your unit, integration, and functional tests.
+- Replace the dependencies in your unit and component tests.
 - Move the original tests that hit real services into a separate suite - these become your
   starting contract tests or E2E smoke tests.
 
 **Output:** A test suite where everything that blocks the build is deterministic and runs without
 network access to external systems.
 
-### Add functional tests for critical paths
+### Add component tests for critical paths
 
-If you don't have functional tests (component tests) that exercise your whole service in
+If you don't have component tests that exercise your whole service in
 isolation, start with the most critical paths.
 
 **Actions:**
 
 - Identify the 3-5 most critical user journeys or API endpoints in your application.
-- Write a functional test for each: boot the application, stub external dependencies, send a
+- Write a component test for each: boot the application, stub external dependencies, send a
   real request or simulate a real user action, verify the response.
-- Each functional test should prove that the feature works correctly assuming external
+- Each component test should prove that the feature works correctly assuming external
   dependencies behave as expected (which your test doubles encode).
 - Run these in CI on every commit.
 
@@ -258,7 +258,7 @@ issues. Set up a contract test for it.
   codes) of the dependency's API.
 - Run it on a schedule (e.g., every hour or daily), not on every commit.
 - When it fails, update your test doubles to match the new reality and re-verify your
-  functional tests.
+  component tests.
 - If the dependency is owned by another team in your organization, explore consumer-driven
   contracts with a tool like [Pact](https://pact.io/).
 
@@ -454,7 +454,7 @@ As your test architecture matures, add techniques that find defects humans overl
 |-----------|---------------|---------------|
 | **Mutation testing** (Stryker, PIT) | Tests that pass but do not actually verify behavior - your test suite's blind spots | When basic coverage is in place but defect escape rate is not dropping |
 | **Property-based testing** | Edge cases and boundary conditions across large input spaces that example-based tests miss | When defects cluster around unexpected input combinations |
-| **Chaos engineering** | Failure modes in distributed systems - what happens when a dependency is slow, returns errors, or disappears | When you have functional tests and contract tests in place and need confidence in failure handling |
+| **Chaos engineering** | Failure modes in distributed systems - what happens when a dependency is slow, returns errors, or disappears | When you have component tests and contract tests in place and need confidence in failure handling |
 | **Static analysis and linting** | Null safety violations, type errors, security vulnerabilities, dead code | From day one - these are cheap and fast |
 
 For more examples of mapping defect origins to detection methods and systemic corrections, see
@@ -476,9 +476,7 @@ the [CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-p
 With a reliable test suite in place, automate your build process so that building, testing, and
 packaging happens with a single command. Continue to [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}).
 
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
+ Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
 
 ---
 

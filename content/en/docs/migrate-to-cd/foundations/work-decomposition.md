@@ -280,10 +280,6 @@ Small, well-decomposed work flows through the system quickly - but only if code 
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Symptom caused by large work items that block the pipeline

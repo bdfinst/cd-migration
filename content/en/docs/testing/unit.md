@@ -1,7 +1,7 @@
 ---
 title: "Unit Tests"
 linkTitle: "Unit Tests"
-weight: 1
+weight: 8
 aliases:
   - /docs/reference/testing/unit/
 description: >
@@ -151,7 +151,3 @@ A healthy [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})
 [black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}) unit tests that verify behavior
 rather than implementation, giving developers the confidence to refactor freely and ship
 small changes frequently.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

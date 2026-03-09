@@ -239,5 +239,5 @@ prioritization and focus on the validations that are actually blocking faster de
 - [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle behind incremental replacement
 - [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Refactoring strategies for testability
 - [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Where automated validations live
-- [Component Testing]({{< relref "/docs/testing/component" >}}) - Structuring automated functional tests
+- [Component Testing]({{< relref "/docs/testing/component" >}}) - Structuring automated component tests
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - Applying the replacement cycle to AI expert validation agents

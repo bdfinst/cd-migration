@@ -195,7 +195,7 @@ remove the old path when all callers have migrated.
 
 Once a boundary exists, use it to scope testing:
 
-1. Write tests for the module's public interface (contract tests and functional tests).
+1. Write tests for the module's public interface (contract tests and component tests).
 2. Changes within the module only need to run the module's own tests plus the interface tests.
    If the interface tests pass, nothing outside the module can break.
 3. Reserve the full integration suite for deployment validation, not developer feedback.

@@ -1,7 +1,7 @@
 ---
 title: "Test Feedback Speed"
 linkTitle: "Feedback Speed"
-weight: 8
+weight: 4
 aliases:
   - /docs/reference/testing/feedback-speed/
 description: >
@@ -57,21 +57,21 @@ run in watch mode, re-executing on every save. At this speed, TDD becomes natura
 result is part of the writing process, not a separate step. This is where you test complex logic
 with many permutations.
 
-**Pre-push verification (under 2 minutes).** The full unit test suite and the functional tests
+**Pre-push verification (under 2 minutes).** The full unit test suite and the component tests
 for the component you changed should complete before you push. At this speed, the developer
 stays engaged and acts on failures immediately. This is where you catch regressions.
 
-**CI pipeline (under 10 minutes).** The full deterministic suite - all unit tests, all functional
-tests, all integration tests - should complete within 10 minutes of commit. At this speed, the
+**CI pipeline (under 10 minutes).** The full deterministic suite - all unit tests, all component
+tests, all contract tests - should complete within 10 minutes of commit. At this speed, the
 developer has not yet fully disengaged from the change. If CI fails, they can investigate while
 the code is still fresh.
 
-**Post-deploy verification (minutes to hours).** E2E smoke tests and contract test validation
+**Post-deploy verification (minutes to hours).** E2E smoke tests and integration test validation
 run after deployment. These are non-deterministic, slower, and less frequent. Failures at this
 level trigger investigation, not immediate developer action.
 
 When a test suite exceeds 10 minutes, the solution is not to accept slower feedback. It is to
-redesign the suite: replace E2E tests with functional tests using test doubles, parallelize test
+redesign the suite: replace E2E tests with component tests using test doubles, parallelize test
 execution, and move non-deterministic tests out of the gating path.
 
 ## Impact on application architecture

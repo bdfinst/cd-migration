@@ -28,9 +28,9 @@ A pipeline that answers yes can deploy at any time - even when a downstream serv
 
 A test architecture that achieves this has three responsibilities:
 
-1. **Fast, deterministic tests** run on every commit using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies. They give a reliable go/no-go signal in minutes.
-2. **Contract tests** verify that those test doubles still match reality, running asynchronously without blocking the pipeline.
-3. **A small number of post-deployment tests** validate the integrated system and provide monitoring, not gating.
+1. **Fast, deterministic tests** - unit, component, and contract tests - run on every commit using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies. They give a reliable go/no-go signal in minutes.
+2. **Acceptance tests** verify user-facing behavior in a deployed test environment and gate promotion to production.
+3. **Post-deployment integration tests** validate that contract test doubles still match the real external systems, providing monitoring rather than gating.
 
 ### The anti-pattern: the ice cream cone
 
@@ -44,14 +44,16 @@ A test architecture is the deliberate structure of how different test types work
 your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
 reinforce each other.
 
-{{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Four-lane CD pipeline diagram. Pipeline lane: Commit triggers pre-merge checks (Static Analysis, Unit Tests, Component Tests - deterministic, blocks merge), then Build, Deploy to test environment, Deploy to production, and a green Live checkmark. Post-deploy lane: E2E Smoke Tests triggered after test environment deploy (triggers rollback); E2E and Synthetic Monitoring triggered after production deploy (triggers alerts and rollback) - both non-blocking. Async lane: Contract Tests run across the full pipeline width on schedule or on contract change - non-deterministic, triggers review, never blocks. Continuous lane: Exploratory Testing and Usability Testing run continuously alongside delivery and never block." >}}
+{{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Four-lane CD pipeline diagram. Pipeline lane: Commit triggers pre-merge and CI checks (Static Analysis, Unit Tests, Component Tests, Contract Tests - deterministic, blocks merge), then Build, Deploy to test environment, Acceptance Tests in test environment (Functional, Load, Chaos, Resilience, Compliance - gates promotion to production), Deploy to production, and a green Live checkmark. Post-deploy lane: Production Verification (Health Checks, Real User Monitoring, SLO) triggered after production deploy - non-deterministic, triggers alerts, never blocks promotion. Async lane: Integration Tests validate contract test doubles against real systems - non-deterministic, post-deploy, failures trigger review. Continuous lane: Exploratory Testing and Usability Testing run continuously alongside delivery and never block." >}}
 
 | Layer | Test Type | Role | Deterministic? | Details |
 |-------|-----------|------|----------------|---------|
 | 1 | [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify behavior in isolation - catch logic errors, regressions, and edge cases instantly | Yes | Fastest feedback loop; use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies |
 | 2 | [Component Tests]({{< relref "/docs/testing/component" >}}) | Verify a complete frontend component or backend service through its public interface | Yes | All external dependencies replaced with test doubles; fast enough to run on every commit |
-| 3 | [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify that your test doubles still match reality | No | Runs asynchronously; failures trigger review, not pipeline blocks |
-| 4 | [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing | No | Post-deployment; never a pre-merge gate |
+| 3 | [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify interface boundaries with external systems using test doubles | Yes | Also called narrow integration tests; validated by [integration tests]({{< relref "/docs/testing/integration" >}}) |
+| 4 | Acceptance Tests | Verify user-facing behavior in a deployed test environment | No | Functional, load, chaos, resilience, compliance; gates production deploy |
+| 5 | [Integration Tests]({{< relref "/docs/testing/integration" >}}) | Validate that contract test doubles still match real external systems | No | Post-deployment; failures trigger review, not a pipeline block |
+| 6 | [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise user journeys or multi-service flows through real systems | No | Post-deployment smoke tests; triggers rollback; never a pre-merge gate |
 | - | Exploratory Testing | Unscripted investigation to discover unexpected behavior, usability issues, and edge cases | No | Never blocks the pipeline; runs continuously alongside delivery |
 | - | Usability Testing | Validates that real users can accomplish goals effectively and without confusion | No | Never blocks the pipeline; informs product decisions |
 
@@ -65,28 +67,30 @@ layers 1-2 to isolate external dependencies.
 |----------------|------------|----------------|----------------|
 | On every commit | Unit tests | Yes | Yes |
 | On every commit | Component tests | Yes | Yes |
-| Asynchronous | Contract tests | No | No - triggers review |
-| Post-deployment | E2E smoke tests | No | Triggers rollback if critical |
-| Post-deployment | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | No | Triggers alerts |
+| On every commit | Contract tests | Yes | Yes |
+| Post-deploy (test env) | Acceptance tests | No | Yes - gates production |
+| Post-deploy (production) | Integration tests | No | No - triggers review |
+| Post-deploy (production) | E2E smoke tests | No | No - triggers rollback |
+| Post-deploy (production) | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | No | No - triggers alerts |
 
-The critical insight: **everything that blocks deployment is deterministic and under your
-control.** Everything that involves external systems runs asynchronously or post-deployment. This
-is what gives you the independence to deploy any time, regardless of the state of the world
-around you.
+The critical insight: **everything that blocks merge is deterministic and under your
+control.** Acceptance tests gate production promotion after verifying the deployed artifact.
+Everything that involves real external systems runs post-deployment. This is what gives you
+the independence to deploy any time, regardless of the state of the world around you.
 
 ### Pre-merge vs post-merge
 
 The table above maps to two distinct phases of your pipeline, each with different goals and
 constraints.
 
-**Pre-merge** (before code lands on trunk): Run unit and component tests. These must all be
+**Pre-merge** (before code lands on trunk): Run unit, component, and contract tests. These must all be
 deterministic and fast. Target: under 10 minutes total. This is the quality gate that every
 change must pass. If pre-merge tests are slow, developers batch up changes or skip local runs,
 both of which undermine [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
 
 **Post-merge** (after code lands on trunk, before or after deployment): Re-run the full
-deterministic suite against the integrated trunk. If integration tests can be kept deterministic,
-run them here. Then run contract tests, E2E smoke tests, and [synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}). Target: under
+deterministic suite against the integrated trunk. Then run integration tests, E2E smoke tests, and
+[synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) post-deploy. Target: under
 30 minutes for the full post-merge cycle.
 
 Why re-run pre-merge tests post-merge? Two changes can each pass pre-merge independently but
@@ -101,8 +105,10 @@ Use this reference to decide what type of test to write and where it runs in you
 |--------------------------|-----------|-------|----------------|----------------|
 | A function or method behaves correctly | [Unit]({{< relref "/docs/testing/unit" >}}) | Milliseconds | Yes | Yes |
 | A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/component" >}}) | Milliseconds to seconds | Yes | Yes |
-| Your test doubles match reality | [Contract]({{< relref "/docs/testing/contract" >}}) | Seconds | No | No |
-| Two or more real components working together, up to the full system | [E2E / Integration]({{< relref "/docs/testing/e2e" >}}) | Seconds to minutes | No | No |
+| Your code correctly interacts with external system interfaces | [Contract]({{< relref "/docs/testing/contract" >}}) | Milliseconds to seconds | Yes | Yes |
+| User-facing behavior in a deployed environment | Acceptance | Minutes | No | Yes - gates production |
+| Contract test doubles still match real external systems | [Integration]({{< relref "/docs/testing/integration" >}}) | Seconds to minutes | No | No |
+| User journeys or multi-service flows through real systems | [E2E]({{< relref "/docs/testing/e2e" >}}) | Seconds to minutes | No | No |
 | Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/testing/static" >}}) | Seconds | Yes | Yes |
 | UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/testing/static" >}}) + [Component]({{< relref "/docs/testing/component" >}}) | Seconds | Yes | Yes |
 | Unexpected behavior, edge cases, real-world workflows | Exploratory Testing | Varies | No | Never |
@@ -137,7 +143,7 @@ Use this reference to decide what type of test to write and where it runs in you
 ### Do Not
 
 - **Do not tolerate flaky tests.** Quarantine or delete them immediately.
-- **Do not gate your pipeline on non-deterministic tests.** E2E and contract test failures
+- **Do not gate your pipeline on non-deterministic tests.** E2E and integration test failures
   should trigger review or alerts, not block deployment.
 - **Do not couple your deployment to external system availability.** If a third-party API being
   down prevents you from deploying, your test architecture has a critical gap.
@@ -150,23 +156,10 @@ Use this reference to decide what type of test to write and where it runs in you
 - **Do not use sleep/wait for timing-dependent tests.** Use explicit waits, polling, or
   event-driven assertions.
 - **Do not require a running database or external service for unit or component tests.** That
-  makes them end-to-end (integration) tests - which is fine, but categorize them correctly
+  makes them integration or end-to-end tests - which is fine, but categorize them correctly
   and run them post-deployment, not as a pre-merge gate.
 - **Do not make exploratory or usability testing a release gate.** These activities are
   continuous and inform product direction; they are not a pass/fail checkpoint before deployment.
-
-## Test Types
-
-| Type | Purpose |
-|------|---------|
-| [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify individual units of behavior in isolation |
-| [Component Tests]({{< relref "/docs/testing/component" >}}) | Verify a complete frontend component or backend service with test doubles for external deps |
-| [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify API contracts between services |
-| [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise two or more real components up to the full system; also called integration testing |
-| [Integration Tests]({{< relref "/docs/testing/integration" >}}) | Alias for End-to-End Tests |
-| [Static Analysis]({{< relref "/docs/testing/static" >}}) | Catch issues without running code |
-| [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) | Patterns for isolating dependencies in tests |
-| [Feedback Speed]({{< relref "/docs/testing/feedback-speed" >}}) | Why test suite speed matters and the cognitive science behind the targets |
 
 ## Related Content
 
@@ -174,6 +167,4 @@ Use this reference to decide what type of test to write and where it runs in you
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Establishing testing practices as part of CD migration
 - [High Coverage but Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - When tests pass but do not catch real defects
 
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).
+ Additional concepts drawn from Ham Vocke, [The Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html), and Toby Clemson, [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/).

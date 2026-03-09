@@ -114,7 +114,3 @@ To improve Lead Time:
 - Reduce [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) to shrink the largest component of
   lead time.
 - Monitor and eliminate environment provisioning delays.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

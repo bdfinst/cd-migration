@@ -262,10 +262,6 @@ As teams mature their pipeline architecture toward loose coupling, they build th
 foundation for [Phase 3: Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) - where the focus shifts from building
 the pipeline to improving its speed and reliability.
 
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
 ## Related Content
 
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - a symptom directly addressed by applying the Theory of Constraints to pipeline architecture

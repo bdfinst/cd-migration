@@ -111,7 +111,3 @@ To improve Release Frequency:
   feature flags and service virtualization.
 - Adopt [Trunk-Based Development](https://trunkbaseddevelopment.com/) so that
   trunk is always in a deployable state.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

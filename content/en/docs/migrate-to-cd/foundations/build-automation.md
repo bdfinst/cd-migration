@@ -247,10 +247,6 @@ With build automation in place, you can build, test, and package your applicatio
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Symptom caused by unoptimized or missing build automation

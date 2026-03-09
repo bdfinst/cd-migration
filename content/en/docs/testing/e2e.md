@@ -1,20 +1,20 @@
 ---
 title: "End-to-End Tests"
 linkTitle: "End-to-End Tests"
-weight: 4
+weight: 3
 aliases:
   - /docs/reference/testing/e2e/
 description: >
-  Tests that exercise two or more real components up to the full system. Also called integration testing. Non-deterministic by nature; never a pre-merge gate.
+  Tests that exercise two or more real components up to the full system. Non-deterministic by nature; never a pre-merge gate.
 ---
 
 {{< figure src="/images/testing/e2e-test.svg" alt="End-to-end test scope spectrum. Narrow scope: a test drives a real service that calls a real database. Full-system scope: a browser drives a real frontend, which calls a real backend, which calls a real database. All components are real at every scope - no test doubles." >}}
 
 ## Definition
 
-An end-to-end test (also called an **integration test**) exercises real components
-working together - no [test doubles]({{< relref "/docs/testing/test-doubles" >}}) replace
-the dependencies under test. The scope ranges from two services calling each other,
+An end-to-end test exercises real components working together - no
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}) replace the dependencies under
+test. The scope ranges from two services calling each other,
 to a service talking to a real database, to a complete user journey through every
 layer of the system.
 
@@ -29,10 +29,12 @@ test data collisions, or third-party rate limits.
 
 "Integration test" and "end-to-end test" are often used interchangeably in the
 industry. Martin Fowler distinguishes between narrow integration tests (which use test
-doubles at the boundary - what this site calls [component tests]({{< relref "/docs/testing/component" >}}))
-and broad integration tests (which use real dependencies). He prefers to call the
-broad kind "system tests" or "end-to-end tests." This site uses end-to-end to cover
-the full spectrum of tests that involve real external dependencies.
+doubles at the boundary - what this site calls
+[contract tests]({{< relref "/docs/testing/contract" >}})) and broad integration tests
+(which use real dependencies). This site treats them as distinct categories:
+[integration tests]({{< relref "/docs/testing/integration" >}}) validate that contract
+test doubles still match the real external systems, while end-to-end tests exercise
+user journeys or multi-service flows through real systems.
 
 ## Scope
 
@@ -152,8 +154,10 @@ End-to-end tests run **after deployment**, not before:
 {{< card code=true header="**E2E tests in the pipeline**" lang="text" >}}
 Stage 1 (every commit)    Unit tests              Deterministic    Blocks
                           Component tests         Deterministic    Blocks
+                          Contract tests          Deterministic    Blocks
 
-Post-deployment           E2E smoke tests         Non-deterministic   Triggers rollback
+Post-deployment           Integration tests       Non-deterministic   Validates contract doubles
+                          E2E smoke tests         Non-deterministic   Triggers rollback
                           Scheduled E2E suites    Non-deterministic   Review out of band
                           Synthetic monitoring    Non-deterministic   Triggers alerts
 {{< /card >}}
@@ -167,7 +171,3 @@ Use [contract tests]({{< relref "/docs/testing/contract" >}}) to verify that the
 [test doubles]({{< relref "/docs/testing/test-doubles" >}}) in your component tests still
 match reality. This gives you deterministic pre-merge confidence without depending on
 live external systems.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

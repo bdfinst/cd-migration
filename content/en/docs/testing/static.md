@@ -172,7 +172,3 @@ Static analysis is the **first gate** in the [CD]({{< relref "/docs/reference/gl
 Because static analysis requires no running code, no test environment, and no external
 dependencies, it is the cheapest and fastest form of quality verification. A mature CD
 pipeline treats static analysis failures the same as test failures: they break the build.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

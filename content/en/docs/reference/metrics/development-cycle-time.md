@@ -111,7 +111,3 @@ To improve Development Cycle Time:
 - Improve test design so the pipeline runs faster without sacrificing coverage.
 - Limit [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) so the team focuses on finishing
   work rather than starting new items.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

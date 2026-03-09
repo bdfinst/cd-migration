@@ -162,10 +162,6 @@ WIP limits expose problems. [Metrics-Driven Improvement]({{< relref "/docs/migra
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - the primary symptom that WIP limits address

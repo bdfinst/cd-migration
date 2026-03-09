@@ -180,10 +180,6 @@ determine which bottleneck to address first.
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Deployment Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) - detailed guidance on measuring how often you deploy

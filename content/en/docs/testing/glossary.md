@@ -14,13 +14,8 @@ other communities may use the same words differently.
 ### Component Test
 
 A deterministic test that verifies a complete frontend component or backend service through
-its public interface, with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) replacing
-all external dependencies. No real databases, downstream services, or network calls leave
-the process. Component tests cover the assembled behavior of a unit - how its internal
-modules, business logic, and interface layer work together - without depending on any system
-the team does not control. Sometimes called a sociable unit test when the scope covers multiple
-collaborating objects within the component boundary. Contrast with
-[end-to-end tests]({{< relref "/docs/testing/e2e" >}}) which use real external dependencies.
+its public interface, with test doubles for all external dependencies. See
+[Component Tests]({{< relref "/docs/testing/component" >}}) for full definition and examples.
 
 Referenced in:
 [Unit Tests]({{< relref "/docs/testing/unit" >}}),
@@ -36,7 +31,7 @@ Black box tests are resilient to refactoring because they verify **what** the co
 **how** it does it. Contrast with [white box testing](#white-box-testing).
 
 Referenced in:
-[Testing]({{< relref "/docs" >}}),
+[CD Testing]({{< relref "/docs/testing" >}}),
 [Unit Tests]({{< relref "/docs/testing/unit" >}})
 
 ### Functional Acceptance Tests
@@ -128,5 +123,5 @@ white box testing in unit tests; prefer [black box testing](#black-box-testing) 
 on observable outcomes.
 
 Referenced in:
-[Testing]({{< relref "/docs" >}}),
+[CD Testing]({{< relref "/docs/testing" >}}),
 [Unit Tests]({{< relref "/docs/testing/unit" >}})

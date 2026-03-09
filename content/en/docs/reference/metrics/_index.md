@@ -21,7 +21,3 @@ over time. Start with the metrics most relevant to your current phase.
 | [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Time to restore service after failure |
 | [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | How often releases reach production |
 | [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Amount of started but unfinished work |
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

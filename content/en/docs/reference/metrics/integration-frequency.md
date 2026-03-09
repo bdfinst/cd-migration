@@ -94,7 +94,3 @@ To improve Integration Frequency:
 - Adopt [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) or branch by abstraction to decouple integration from release.
 - Practice [Trunk-Based Development](https://trunkbaseddevelopment.com/) with
   short-lived branches lasting less than one day.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

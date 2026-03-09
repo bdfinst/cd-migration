@@ -104,7 +104,3 @@ To improve Build Duration:
   artifacts between builds.
 - **Set a build time budget.** Alert the team whenever a new test or step pushes
   the build past your target, so test efficiency is continuously maintained.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

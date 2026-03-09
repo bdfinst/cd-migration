@@ -1,29 +1,34 @@
 ---
 title: "Contract Tests"
 linkTitle: "Contract Tests"
-weight: 5
+weight: 2
 aliases:
   - /docs/reference/testing/contract/
 description: >
-  Tests that verify the interface between a consumer and a provider has not broken. Non-deterministic; never a pipeline gate, but essential for keeping component test doubles accurate.
+  Deterministic tests that verify interface boundaries with external systems using test doubles. Also called narrow integration tests. Validated by integration tests running against real systems.
 ---
 
 {{< figure src="/images/testing/contract-test.svg" alt="Consumer-driven contract flow: consumer team runs a component test against a provider test double, generating a contract artifact. The provider team runs a verification step against the real service using the consumer contract. Both sides discover different things: consumers check for fields and types they depend on; providers check they have not broken any consumer." >}}
 
 ## Definition
 
-A contract test verifies that the test doubles used in
-[component tests]({{< relref "/docs/testing/component" >}}) still accurately represent the
-real external system. It does this by running against the **live** external sub-system
-and asserting that the interface structure - response shapes, field names, types, and
-status codes - matches what the test doubles expect.
+A contract test (also called a **narrow integration test**) is a deterministic test that
+validates your code's interaction with an external system's interface using
+[test doubles]({{< relref "/docs/testing/test-doubles" >}}). It verifies that the boundary
+layer code - HTTP clients, database query layers, message producers - correctly handles
+the expected request/response shapes, field names, types, and status codes.
 
 A contract test validates **interface structure, not business behavior**. It answers
-"is the shape of this response what we expect?" not "is the logic correct?" Business
-logic belongs in component tests.
+"does my code correctly interact with the interface I expect?" not "is the logic correct?"
+Business logic belongs in [component tests]({{< relref "/docs/testing/component" >}}).
 
-Because contract tests hit live systems, they are **non-deterministic** and must never
-block the pipeline. Failures trigger review, not a build failure.
+Because contract tests use test doubles rather than live systems, they are
+**deterministic** and run on every commit as part of the pipeline. They block the build
+on failure, just like unit and component tests.
+
+[Integration tests]({{< relref "/docs/testing/integration" >}}) validate that contract
+test doubles still match the real external systems by running against live dependencies
+post-deployment.
 
 ## Consumer and Provider Perspectives
 
@@ -127,13 +132,13 @@ schema and then adopt CDC tooling as the number of consumers grows.
 
 | Property        | Value                                             |
 |-----------------|---------------------------------------------------|
-| **Speed**       | Seconds (depends on network latency)              |
-| **Determinism** | Non-deterministic (hits live services)            |
+| **Speed**       | Milliseconds to seconds                           |
+| **Determinism** | Always deterministic (uses test doubles)          |
 | **Scope**       | Interface boundary between two systems            |
-| **Dependencies**| Live external sub-system                          |
-| **Network**     | Yes (calls the real dependency or a broker)       |
-| **Database**    | Depends on the provider                           |
-| **Breaks build**| No - failures trigger review, not build failure   |
+| **Dependencies**| All replaced with test doubles                    |
+| **Network**     | None or localhost only                            |
+| **Database**    | None                                              |
+| **Breaks build**| Yes                                               |
 
 ## Examples
 
@@ -205,8 +210,9 @@ describe("GET /stock/:id - OpenAPI contract", () => {
   providers brittle. Only assert on what your code actually reads.
 - **Testing specific data values**: asserting that `name` equals `"Alice"` makes the test
   brittle. Assert on types, required fields, and status codes instead.
-- **Breaking the build on failure**: contract tests hit live systems. A network hiccup is
-  not a code quality signal. Treat failures as investigation triggers.
+- **Hitting live systems in contract tests**: contract tests must use test doubles to stay
+  deterministic. Validating doubles against live systems is the role of
+  [integration tests]({{< relref "/docs/testing/integration" >}}), which run post-deployment.
 - **Running infrequently**: contract tests should run often enough to catch drift before it
   causes a production incident. High-volatility APIs may need hourly runs.
 - **Skipping provider verification in CDC**: publishing consumer expectations is only half
@@ -214,23 +220,18 @@ describe("GET /stock/:id - OpenAPI contract", () => {
 
 ## Connection to CD Pipeline
 
-Contract tests run **asynchronously** from the main build - on a schedule, on provider
-deploy, or triggered by a new consumer contract being published:
+Contract tests run **on every commit** as part of the deterministic pipeline:
 
 {{< card code=true header="**Contract tests in the pipeline**" lang="text" >}}
-Stage 1 (every commit)   Unit tests              Deterministic    Blocks
+On every commit          Unit tests              Deterministic    Blocks
                          Component tests         Deterministic    Blocks
+                         Contract tests          Deterministic    Blocks
 
-Asynchronous             Consumer contract tests  Non-deterministic   No (triggers review)
-                         Provider verification    Non-deterministic   No (triggers negotiation)
-
-Post-deployment          E2E smoke tests          Non-deterministic   Triggers rollback
+Post-deployment          Integration tests       Non-deterministic   Validates contract doubles
+                         E2E smoke tests         Non-deterministic   Triggers rollback
 {{< /card >}}
 
-Contract tests are the bridge that keeps your fast, deterministic component test suite
-honest. Without them, the test doubles in your component tests can silently drift from
-the real behavior of the systems they replace - giving you false confidence.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Contract tests verify that your boundary layer code correctly interacts with the
+interfaces you depend on. [Integration tests]({{< relref "/docs/testing/integration" >}})
+validate that those test doubles still match the real external systems by running
+against live dependencies post-deployment.

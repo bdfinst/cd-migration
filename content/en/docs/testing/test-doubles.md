@@ -126,18 +126,14 @@ class FakeUserRepository {
 Test doubles are a foundational technique that enables the fast, deterministic tests required
 for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}):
 
-- **Early pipeline stages** (static analysis, unit tests, integration tests) rely heavily on
-  test doubles to stay fast and deterministic. This is where the majority of defects are
-  caught.
-- **Later pipeline stages** (E2E tests, production monitoring) use fewer or no test doubles,
-  trading speed for realism.
-- **Contract tests** run asynchronously to validate that test doubles still match reality,
-  closing the gap between the deterministic and non-deterministic stages of the pipeline.
+- **Early pipeline stages** (static analysis, unit tests, component tests, contract tests) rely
+  heavily on test doubles to stay fast and deterministic. This is where the majority of defects
+  are caught.
+- **Later pipeline stages** (integration tests, E2E tests, production monitoring) use fewer or
+  no test doubles, trading speed for realism.
+- **Integration tests** run post-deployment to validate that the test doubles used in contract
+  tests still match the real external systems.
 
 The guiding principle from Justin Searls applies: "Don't poke too many holes in reality."
 Use test doubles when you must, but prefer real implementations when they are fast and
 deterministic.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

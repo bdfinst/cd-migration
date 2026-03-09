@@ -124,7 +124,3 @@ To reduce WIP:
 - Make the board visible and accurate. Use it as the single source of truth for
   what the team is working on.
 - Identify and address recurring blockers that cause items to stall in progress.
-
----
-
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

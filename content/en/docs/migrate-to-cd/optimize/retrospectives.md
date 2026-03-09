@@ -217,10 +217,6 @@ With metrics-driven improvement and effective retrospectives, you have the engin
 
 ---
 
-Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
----
-
 ## Related Content
 
 - [Team Burnout]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - a symptom that effective retrospectives help detect and address early
