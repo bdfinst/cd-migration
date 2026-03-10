@@ -478,7 +478,15 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#delivery-contrac
 
 ### Done Definition
 
-See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#done-definition" >}}).
+The observable outcomes portion of [acceptance criteria](#acceptance-criteria). A done definition
+describes what "done" looks like from an independent observer's perspective - someone who was
+not involved in the implementation. Combined with an [evaluation design]({{< relref "/docs/agentic-cd/glossary#evaluation-design" >}}),
+done definitions form the testable boundary of a [delivery contract]({{< relref "/docs/agentic-cd/glossary#delivery-contract" >}}). See
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
+
+Referenced in:
+[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
+[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
 
 ### DORA Metrics
 

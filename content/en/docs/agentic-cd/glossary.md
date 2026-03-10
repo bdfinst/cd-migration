@@ -172,15 +172,7 @@ Referenced in:
 
 ### Done Definition
 
-The observable outcomes portion of [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). A done definition
-describes what "done" looks like from an independent observer's perspective - someone who was
-not involved in the implementation. Combined with an [evaluation design](#evaluation-design),
-done definitions form the testable boundary of a [delivery contract](#delivery-contract). See
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
-
-Referenced in:
-[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
-[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
+See [Reference Glossary]({{< relref "/docs/reference/glossary#done-definition" >}}).
 
 ## E
 
@@ -188,7 +180,7 @@ Referenced in:
 
 The test-cases-with-known-good-outputs portion of [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}).
 An evaluation design specifies concrete inputs and their expected outputs so that both humans
-and [agents](#agent-ai) can verify whether code satisfies the [done definition](#done-definition).
+and [agents](#agent-ai) can verify whether code satisfies the [done definition]({{< relref "/docs/reference/glossary#done-definition" >}}).
 Shallow evaluation designs (few cases, no edge coverage) allow code that passes tests but
 violates intent. Thorough evaluation designs catch model regressions before they reach
 production. See
@@ -423,7 +415,7 @@ extended timelines. Specification engineering is the skill that separates develo
 you cannot course-correct in real time - the specification must be complete enough that an
 independent executor reaches the right outcome without asking questions. Key skills include
 writing self-contained problem statements, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) with
-[done definitions](#done-definition), [evaluation designs](#evaluation-design), and
+[done definitions]({{< relref "/docs/reference/glossary#done-definition" >}}), [evaluation designs](#evaluation-design), and
 decomposing large projects into small, bounded subtasks. The output of specification
 engineering is the [delivery contract](#delivery-contract). See
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#4-specification-engineering-the-new-ceiling" >}}).
