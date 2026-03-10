@@ -43,4 +43,4 @@ For detailed guidance on building a deterministic pipeline, see:
 
 - [Martin Fowler: Eradicating Non-Determinism in Tests](https://martinfowler.com/articles/nonDeterminism.html)
 - [Google Testing Blog: Just Say No to More End-to-End Tests](https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html)
-- [Continuous Delivery: Deployment Pipeline Best Practices](https://continuousdelivery.com/foundations/test-automation/)
+- [Continuous Delivery: Deployment Pipeline good practices](https://continuousdelivery.com/foundations/test-automation/)

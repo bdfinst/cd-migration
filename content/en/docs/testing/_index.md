@@ -3,7 +3,7 @@ title: "Architecting Tests for CD"
 linkTitle: "CD Testing"
 weight: 16
 description: >
-  Test architecture, types, and best practices for building confidence in your delivery pipeline.
+  Test architecture, types, and good practices for building confidence in your delivery pipeline.
 aliases:
   - /docs/reference/testing/
 ---
@@ -107,7 +107,7 @@ conflict when combined on trunk. The post-merge run catches these integration ef
 
 This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. If all tests pass, the artifact has been regression-tested.
 
-## Best Practices
+## good practices
 
 ### Do
 

@@ -18,4 +18,4 @@ external dependencies as untrusted boundaries.
 ## Related Content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
-- [Testing]({{< relref "/docs/testing" >}}) - testing types and best practices
+- [Testing]({{< relref "/docs/testing" >}}) - testing types and good practices

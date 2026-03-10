@@ -98,7 +98,7 @@ found 2 vulnerabilities (1 moderate, 1 high)
 
 | Type                    | Purpose                                                      |
 |-------------------------|--------------------------------------------------------------|
-| **Linting**             | Catches common errors and enforces best practices            |
+| **Linting**             | Catches common errors and enforces good practices            |
 | **Formatting**          | Enforces consistent code style, removing subjective debates  |
 | **Complexity analysis** | Flags overly deep or long code blocks that breed defects     |
 | **Type checking**       | Prevents type-related bugs, replacing some unit tests        |

@@ -310,7 +310,7 @@ The most effective teams use ambient visibility - information that is passively 
 
 **Chat integrations:** Post build results to the team channel automatically. Keep these concise - a green checkmark or red alert with a link to the build is enough. Verbose build logs in chat become noise.
 
-### Notification Best Practices
+### Notification good practices
 
 Notifications are powerful when used well and destructive when overused. The goal is to notify the right people at the right time with the right level of urgency.
 

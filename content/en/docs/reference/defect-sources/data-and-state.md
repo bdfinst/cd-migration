@@ -19,4 +19,4 @@ defects, data corruption often cannot be fixed by deploying a new version.
 ## Related Content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
-- [Testing]({{< relref "/docs/testing" >}}) - testing types and best practices
+- [Testing]({{< relref "/docs/testing" >}}) - testing types and good practices

@@ -22,5 +22,5 @@ budgets, and automated enforcement - not periodic manual testing.
 ## Related Content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
-- [Testing]({{< relref "/docs/testing" >}}) - testing types and best practices
+- [Testing]({{< relref "/docs/testing" >}}) - testing types and good practices
 - [Visibility Symptoms]({{< relref "/docs/symptoms/visibility" >}}) - symptoms caused by missing observability

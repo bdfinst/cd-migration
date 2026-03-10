@@ -578,7 +578,7 @@ sections:
   - path: docs/testing/
     title: "Architecting Tests for CD"
     weight: 16
-    purpose: "Test architecture, types, and best practices for building confidence in your delivery pipeline."
+    purpose: "Test architecture, types, and good practices for building confidence in your delivery pipeline."
     pages:
       - file: _index.md
         title: "Architecting Tests for CD"
