@@ -72,9 +72,9 @@ enableGitInfo = false
   ]
   section = [
     "HTML",
+    "Markdown",
     "RSS",
-    "print",
-    "Markdown"
+    "print"
   ]
 
 [[module.mounts]]
@@ -96,7 +96,6 @@ enableGitInfo = false
   ]
 
   offlineSearch = false
-
 
   prism_syntax_highlighting = true
   pygmentsCodeFences        = true
@@ -128,7 +127,7 @@ enableGitInfo = false
     navbar_translucent_over_cover_disable = true
     show_nav_title                        = true
     sidebar_cache_limit                   = 10
-    sidebar_menu_compact                  = true
+    sidebar_menu_compact                  = false
     sidebar_menu_foldable                 = true
     sidebar_search_disable                = true
 

@@ -26,7 +26,7 @@ your control. The more weight you put at the base, the faster and more reliable 
 
 ### The testing trophy
 
-{{< figure src="/images/testing/testing-trophy.svg" class="figure-half" alt="The testing trophy: a trophy-shaped diagram where Component Tests form the large dominant bowl, Unit Tests form the narrow stem, Static Analysis forms the base pedestal, and End-to-End tests form a narrow band at the top rim." >}}
+{{< figure src="/images/testing/testing-trophy.svg" class="figure-half" alt="The testing trophy: a trophy-shaped diagram where Component Tests form the large diamond-shaped body, Unit Tests form the narrow stem, Static Analysis forms the base pedestal, and End-to-End tests form a small triangle at the peak." >}}
 
 The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putting component tests at the center. Where the pyramid emphasizes unit tests at the base, the trophy argues that component tests give you the most confidence per test because they exercise realistic user behavior through a component's public interface while still using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies.
 
@@ -57,37 +57,27 @@ Most teams that struggle with CD have inverted the pyramid - too many slow, flak
 ## Test Architecture
 
 A test architecture is the deliberate structure of how different test types work together across
-your pipeline to give you deployment confidence. Each layer has a specific role, and the layers
-reinforce each other.
+your pipeline to give you deployment confidence. Use the table below to decide what type of test
+to write and where it runs. This is not a comprehensive list. It shows how common tests impact
+pipeline design and how teams should structure their suites. See the
+[Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}})
+for a complete quality gate sequence.
 
 {{< figure src="/images/testing/test-architecture-pipeline.svg" alt="Four-lane CD pipeline diagram. Pipeline lane: Commit triggers pre-merge and CI checks (Static Analysis, Unit Tests, Component Tests, Contract Tests - deterministic, blocks merge), then Build, Deploy to test environment, Acceptance Tests in test environment (Component, Load, Chaos, Resilience, Compliance - gates promotion to production), Deploy to production, and a green Live checkmark. Post-deploy lane: Production Verification (Health Checks, Real User Monitoring, SLO) triggered after production deploy - non-deterministic, triggers alerts, never blocks promotion. Async lane: Integration Tests validate contract test doubles against real systems - non-deterministic, post-deploy, failures trigger review. Continuous lane: Exploratory Testing and Usability Testing run continuously alongside delivery and never block." >}}
 
-| Layer | Test Type | Role | Deterministic? | Details |
-|-------|-----------|------|----------------|---------|
-| 1 | [Unit Tests]({{< relref "/docs/testing/unit" >}}) | Verify behavior in isolation - catch logic errors, regressions, and edge cases instantly | Yes | Fastest feedback loop; use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies |
-| 2 | [Component Tests]({{< relref "/docs/testing/component" >}}) | Verify a complete frontend component or backend service through its public interface | Yes | All external dependencies replaced with test doubles; fast enough to run on every commit |
-| 3 | [Contract Tests]({{< relref "/docs/testing/contract" >}}) | Verify interface boundaries with external systems using test doubles | Yes | Also called narrow integration tests; validated by [integration tests]({{< relref "/docs/testing/integration" >}}) |
-| 4 | Acceptance Tests | Validate that a deployed artifact is deliverable - a pipeline stage, not a single test type | No | Includes component, load, chaos, resilience, compliance; gates production deploy |
-| 5 | [Integration Tests]({{< relref "/docs/testing/integration" >}}) | Validate that contract test doubles still match real external systems | No | Run in a test environment with versioned test data; on demand or scheduled; failures trigger review |
-| 6 | [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) | Exercise user journeys or multi-service flows through real systems | No | Post-deployment smoke tests; triggers rollback; never a pre-merge gate |
-| - | Exploratory Testing | Unscripted investigation to discover unexpected behavior, usability issues, and edge cases | No | Never blocks the pipeline; runs continuously alongside delivery |
-| - | Usability Testing | Validates that real users can accomplish goals effectively and without confusion | No | Never blocks the pipeline; informs product decisions |
-
-[Static Analysis]({{< relref "/docs/testing/static" >}}) runs alongside layers 1-2, catching code quality, security, and
-style issues without executing the code. [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) are used throughout
-layers 1-2 to isolate external dependencies.
-
-### How the layers work together
-
-| Pipeline Stage | Test Layer | Deterministic? | Blocks Deploy? |
-|----------------|------------|----------------|----------------|
-| On every commit | Unit tests | Yes | {{< blocks-deploy >}} |
-| On every commit | Component tests | Yes | {{< blocks-deploy >}} |
-| On every commit | Contract tests | Yes | {{< blocks-deploy >}} |
-| Post-deploy (test env) | Acceptance tests | No | {{< blocks-deploy >}} - gates production |
-| Test environment (on demand/scheduled) | Integration tests | No | No - triggers review |
-| Post-deploy (production) | E2E smoke tests | No | No - triggers [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) |
-| Post-deploy (production) | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | No | No - triggers alerts |
+| Pipeline Stage | What You Need to Verify | Test Type | Speed | Deterministic? | Blocks Deploy? |
+|----------------|-------------------------|-----------|-------|----------------|----------------|
+| CI | A function or method behaves correctly | [Unit]({{< relref "/docs/testing/unit" >}}) | Milliseconds | Yes | {{< blocks-deploy >}} |
+| CI | A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/component" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
+| CI | Your code correctly interacts with external system interfaces | [Contract]({{< relref "/docs/testing/contract" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
+| CI | Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/testing/static" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
+| CI | UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/testing/static" >}}) + [Component]({{< relref "/docs/testing/component" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
+| Acceptance Testing | Deployed artifact meets [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) | Deploy, Smoke, Load, Resilience, Compliance, etc. | Minutes | No | {{< blocks-deploy >}} - gates production |
+| Post-deploy (production) | Critical user journeys work in production | [E2E smoke]({{< relref "/docs/testing/e2e" >}}) | Seconds to minutes | No | No - triggers [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) |
+| Post-deploy (production) | Production health and SLOs | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | Continuous | No | No - triggers alerts |
+| On demand/scheduled | Contract [test doubles]({{< relref "/docs/testing/test-doubles" >}}) still match real external systems | [Integration]({{< relref "/docs/testing/integration" >}}) | Seconds to minutes | No | No - triggers review |
+| Continuous | Unexpected behavior, edge cases, real-world workflows | Exploratory Testing | Varies | No | Never |
+| Continuous | Real users can accomplish goals effectively | Usability Testing | Varies | No | Never |
 
 The critical insight: **everything that blocks merge is deterministic and under your
 control.** Acceptance tests gate production promotion after verifying the deployed artifact.
@@ -96,7 +86,7 @@ the independence to deploy any time, regardless of the state of the world around
 
 ### Pre-merge vs post-merge
 
-The table above maps to two distinct phases of your pipeline, each with different goals and
+The table maps to two distinct phases of your pipeline, each with different goals and
 constraints.
 
 **Pre-merge** (before code lands on trunk): Run unit, component, and contract tests. These must all be
@@ -116,23 +106,6 @@ conflict when combined on trunk. The post-merge run catches these integration ef
 > **If a post-merge failure occurs, the team fixes it immediately. Trunk must always be releasable.**
 
 This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. If all tests pass, the artifact has been regression-tested.
-
-## Testing Matrix
-
-Use this reference to decide what type of test to write and where it runs in your pipeline. This is not a comprehensive list of all test types. It shows how common tests impact pipeline design decisions and how teams should structure their suites. See the [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) for a complete quality gate sequence.
-
-| What You Need to Verify                                            | Test Type                                                                                                        | Speed                   | Deterministic? | Blocks Deploy?                 |
-|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|-------------------------|----------------|--------------------------------|
-| A function or method behaves correctly                             | [Unit]({{< relref "/docs/testing/unit" >}})                                                                      | Milliseconds            | Yes            | {{< blocks-deploy >}}         |
-| A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/component" >}})                                                            | Milliseconds to seconds | Yes            | {{< blocks-deploy >}}         |
-| Your code correctly interacts with external system interfaces      | [Contract]({{< relref "/docs/testing/contract" >}})                                                              | Milliseconds to seconds | Yes            | {{< blocks-deploy >}}         |
-| Code quality, security, and style compliance                       | [Static Analysis]({{< relref "/docs/testing/static" >}})                                                         | Seconds                 | Yes            | {{< blocks-deploy >}}         |
-| UI meets WCAG accessibility standards                              | [Static Analysis]({{< relref "/docs/testing/static" >}}) + [Component]({{< relref "/docs/testing/component" >}}) | Seconds                 | Yes            | {{< blocks-deploy >}}         |
-| Deployed artifact meets [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})                        | Acceptance (functional, load, chaos, resilience, compliance)                                                     | Minutes                 | No             | {{< blocks-deploy >}} - gates production |
-| Contract test doubles still match real external systems            | [Integration]({{< relref "/docs/testing/integration" >}})                                                        | Seconds to minutes      | No             | No                             |
-| User journeys or multi-service flows through real systems          | [E2E]({{< relref "/docs/testing/e2e" >}})                                                                        | Seconds to minutes      | No             | No                             |
-| Unexpected behavior, edge cases, real-world workflows              | Exploratory Testing                                                                                              | Varies                  | No             | Never                          |
-| Real users can accomplish goals effectively                        | Usability Testing                                                                                                | Varies                  | No             | Never                          |
 
 ## Best Practices
 

@@ -1,58 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 420" font-family="system-ui, -apple-system, sans-serif" font-size="14">
-  <defs>
-    <linearGradient id="manual" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#dc3545"/>
-      <stop offset="100%" stop-color="#c82333"/>
-    </linearGradient>
-    <linearGradient id="e2e" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#e8694a"/>
-      <stop offset="100%" stop-color="#d9534f"/>
-    </linearGradient>
-    <linearGradient id="integration" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f0ad4e"/>
-      <stop offset="100%" stop-color="#ec971f"/>
-    </linearGradient>
-    <linearGradient id="unit" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#5cb85c"/>
-      <stop offset="100%" stop-color="#449d44"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 420" role="img" aria-labelledby="ic-title ic-desc" font-family="system-ui, -apple-system, sans-serif" font-size="14">
+  <title id="ic-title">The Ice Cream Cone Anti-Pattern</title>
+  <desc id="ic-desc">An inverted test distribution where most testing effort goes to manual and end-to-end tests at the top, with too few fast unit tests at the bottom. The widest layer is Manual Testing, narrowing down through End-to-End, Integration, to a thin Unit Tests base.</desc>
+
+  <rect width="480" height="420" fill="#ffffff"/>
 
   <!-- Title -->
-  <text x="240" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">The Ice Cream Cone Anti-Pattern</text>
+  <text x="240" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#374151">The Ice Cream Cone Anti-Pattern</text>
 
-  <!-- Manual Testing - widest at top -->
-  <rect x="65" y="48" width="350" height="72" rx="6" fill="url(#manual)"/>
-  <text x="240" y="80" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Manual Testing</text>
-  <text x="240" y="100" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Most testing happens here</text>
+  <!-- Manual Testing - widest at top (darker red) -->
+  <rect x="65" y="48" width="350" height="72" rx="6" fill="#fde8e8" stroke="#e05252" stroke-width="1.5"/>
+  <text x="240" y="80" text-anchor="middle" fill="#b91c1c" font-weight="600" font-size="15">Manual Testing</text>
+  <text x="240" y="100" text-anchor="middle" fill="#b91c1c" font-size="12">Most testing happens here</text>
 
-  <!-- E2E Tests -->
-  <rect x="105" y="128" width="270" height="72" rx="6" fill="url(#e2e)"/>
-  <text x="240" y="160" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">End-to-End Tests</text>
-  <text x="240" y="180" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Slow, flaky, expensive</text>
+  <!-- E2E Tests (red) -->
+  <rect x="105" y="128" width="270" height="72" rx="6" fill="#fde8e8" stroke="#e05252" stroke-width="1.5"/>
+  <text x="240" y="160" text-anchor="middle" fill="#b91c1c" font-weight="600" font-size="15">End-to-End Tests</text>
+  <text x="240" y="180" text-anchor="middle" fill="#b91c1c" font-size="12">Slow, flaky, expensive</text>
 
-  <!-- Integration Tests -->
-  <rect x="155" y="208" width="170" height="72" rx="6" fill="url(#integration)"/>
-  <text x="240" y="240" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Integration Tests</text>
-  <text x="240" y="260" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Some, but not enough</text>
+  <!-- Integration / Component Tests (amber) -->
+  <rect x="155" y="208" width="170" height="72" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="240" y="237" text-anchor="middle" fill="#92400e" font-weight="600" font-size="14">Integration /</text>
+  <text x="240" y="255" text-anchor="middle" fill="#92400e" font-weight="600" font-size="14">Component Tests</text>
+  <text x="240" y="273" text-anchor="middle" fill="#92400e" font-size="12">Some, but not enough</text>
 
-  <!-- Unit Tests - narrowest at bottom -->
-  <rect x="190" y="288" width="100" height="72" rx="6" fill="url(#unit)"/>
-  <text x="240" y="320" text-anchor="middle" fill="#fff" font-weight="600" font-size="15">Unit Tests</text>
-  <text x="240" y="340" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="12">Too few</text>
+  <!-- Unit Tests - narrowest at bottom (blue) -->
+  <rect x="190" y="288" width="100" height="72" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="240" y="320" text-anchor="middle" fill="#1e40af" font-weight="600" font-size="15">Unit Tests</text>
+  <text x="240" y="340" text-anchor="middle" fill="#1e40af" font-size="12">Too few</text>
 
   <!-- Arrows and labels on the right -->
-  <line x1="425" y1="84" x2="425" y2="324" stroke="#666" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <polygon points="425,84 420,94 430,94" fill="#666"/>
-  <polygon points="425,324 420,314 430,314" fill="#666"/>
-  <text x="432" y="148" fill="#666" font-size="11">Slow</text>
-  <text x="432" y="164" fill="#666" font-size="11">Expensive</text>
-  <text x="432" y="180" fill="#666" font-size="11">Flaky</text>
+  <defs>
+    <marker id="ic-arr-up" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 6,4 0,8 6" fill="#6b7280"/>
+    </marker>
+    <marker id="ic-arr-down" markerWidth="8" markerHeight="6" refX="4" refY="3" orient="auto">
+      <polygon points="0 0,4 6,8 0" fill="#6b7280"/>
+    </marker>
+  </defs>
 
-  <text x="432" y="248" fill="#666" font-size="11">Fast</text>
-  <text x="432" y="264" fill="#666" font-size="11">Cheap</text>
-  <text x="432" y="280" fill="#666" font-size="11">Reliable</text>
+  <line x1="425" y1="314" x2="425" y2="94" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ic-arr-up)"/>
+  <text x="432" y="148" fill="#6b7280" font-size="11">Slow</text>
+  <text x="432" y="164" fill="#6b7280" font-size="11">Expensive</text>
+  <text x="432" y="180" fill="#6b7280" font-size="11">Flaky</text>
+
+  <line x1="55" y1="94" x2="55" y2="314" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ic-arr-down)"/>
+  <text x="40" y="220" fill="#6b7280" font-size="11" text-anchor="end">Fast</text>
+  <text x="40" y="236" fill="#6b7280" font-size="11" text-anchor="end">Cheap</text>
+  <text x="40" y="252" fill="#6b7280" font-size="11" text-anchor="end">Reliable</text>
 
   <!-- Caption -->
-  <text x="240" y="400" text-anchor="middle" fill="#666" font-size="13" font-style="italic">Inverted distribution: most effort in the slowest, least reliable tests</text>
+  <text x="240" y="400" text-anchor="middle" fill="#374151" font-size="11">Inverted distribution: most effort in the slowest, least reliable tests</text>
 </svg>

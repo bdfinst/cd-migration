@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400" role="img" aria-labelledby="tt-title tt-desc">
   <title id="tt-title">The Testing Trophy</title>
-  <desc id="tt-desc">A trophy-shaped diagram with four layers. Static Analysis forms the small base pedestal at the bottom. Unit Tests form the narrow stem. Component Tests form the large, dominant bowl of the trophy, representing the bulk of the test suite. End-to-End tests form a narrow band at the top rim.</desc>
+  <desc id="tt-desc">A trophy-shaped diagram with four layers. Static Analysis forms the small base pedestal at the bottom. Unit Tests form the narrow stem. Component Tests form the large diamond-shaped body, representing the bulk of the test suite. End-to-End tests form a small triangle at the peak.</desc>
 
   <rect width="560" height="400" fill="#ffffff"/>
 
@@ -8,18 +8,19 @@
   <polygon points="195,355 365,355 335,315 225,315" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
 
   <!-- Stem (Unit Tests) - blue -->
-  <polygon points="225,315 335,315 315,268 245,268" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <polygon points="225,315 335,315 310,260 250,260" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
 
-  <!-- Bowl (Component Tests) - amber, the dominant section -->
-  <path d="M 245,268 C 225,258 85,245 82,170 C 80,118 95,95 112,88 L 448,88 C 465,95 480,118 478,170 C 475,245 335,258 315,268 Z" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <!-- Diamond body (Component Tests) - amber, the dominant section -->
+  <!-- Narrow at bottom (stem top), widens to max at y=155, narrows to top at y=80 -->
+  <polygon points="250,260 310,260 480,155 310,80 250,80 80,155" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
 
-  <!-- Top rim (End-to-End) - red -->
-  <path d="M 112,88 C 108,72 114,54 128,50 L 432,50 C 446,54 452,72 448,88 Z" fill="#fde8e8" stroke="#e05252" stroke-width="1.5"/>
+  <!-- Triangle peak (End-to-End) - red -->
+  <polygon points="250,80 310,80 280,42" fill="#fde8e8" stroke="#e05252" stroke-width="1.5"/>
 
   <!-- Dividing lines -->
   <line x1="225" y1="315" x2="335" y2="315" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
-  <line x1="245" y1="268" x2="315" y2="268" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
-  <line x1="112" y1="88" x2="448" y2="88" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="250" y1="260" x2="310" y2="260" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="250" y1="80" x2="310" y2="80" stroke="#9ca3af" stroke-width="1" stroke-dasharray="4,3"/>
 
   <!-- Labels -->
   <!-- Static Analysis (base) -->
@@ -27,14 +28,14 @@
   <text x="280" y="346" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#2e7d32">linting, type checking, formatting</text>
 
   <!-- Unit Tests (stem) -->
-  <text x="280" y="296" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1e40af">Unit Tests</text>
+  <text x="280" y="292" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1e40af">Unit Tests</text>
 
-  <!-- Component Tests (bowl) -->
-  <text x="280" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#92400e">Component Tests</text>
-  <text x="280" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e">the bulk of your tests</text>
+  <!-- Component Tests (diamond) -->
+  <text x="280" y="165" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#92400e">Component Tests</text>
+  <text x="280" y="181" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#92400e">the bulk of your tests</text>
 
-  <!-- End-to-End (top rim) -->
-  <text x="280" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#b91c1c">End-to-End</text>
+  <!-- End-to-End (triangle peak) -->
+  <text x="280" y="68" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#b91c1c">E2E</text>
 
   <!-- Caption -->
   <text x="280" y="388" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#374151">The Testing Trophy: component tests carry the most weight</text>
