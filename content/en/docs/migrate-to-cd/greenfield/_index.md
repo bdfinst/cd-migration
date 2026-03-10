@@ -118,7 +118,7 @@ Design your test architecture before you have tests to migrate. Establish:
 
 - Unit tests for all business logic
 - Integration tests for every external boundary (databases, APIs, message queues)
-- Functional tests that exercise your service in isolation with test doubles for dependencies
+- Component tests that exercise your service in isolation with test doubles for dependencies
 - Contract tests for every external dependency
 - A clear rule: everything that blocks deployment is deterministic
 

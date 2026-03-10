@@ -18,9 +18,10 @@ its public interface, with test doubles for all external dependencies. See
 [Component Tests]({{< relref "/docs/testing/component" >}}) for full definition and examples.
 
 Referenced in:
-[Unit Tests]({{< relref "/docs/testing/unit" >}}),
 [Component Tests]({{< relref "/docs/testing/component" >}}),
-[End-to-End Tests]({{< relref "/docs/testing/e2e" >}})
+[End-to-End Tests]({{< relref "/docs/testing/e2e" >}}),
+[Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
+[Unit Tests]({{< relref "/docs/testing/unit" >}})
 
 ### Black Box Testing
 
@@ -34,16 +35,21 @@ Referenced in:
 [CD Testing]({{< relref "/docs/testing" >}}),
 [Unit Tests]({{< relref "/docs/testing/unit" >}})
 
-### Functional Acceptance Tests
+### Acceptance Tests {#functional-acceptance-tests}
 
-Automated tests that verify a system behaves as specified. Functional acceptance tests
-exercise end-to-end user workflows in a
+Automated tests that verify a system behaves as specified. Acceptance tests
+exercise user workflows in a
 [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) and confirm the implementation
 matches the acceptance criteria. They answer "did we build what was specified?" rather than
 "does the code work?" They do not validate whether the specification itself is correct -
 only real user feedback can confirm we are building the right thing.
 
+In CD, acceptance testing is a pipeline stage, not a single test type. It can include
+component tests, load tests, chaos tests, resilience tests, and compliance tests. Any test
+that runs after CI to gate promotion to production is an acceptance test.
+
 Referenced in:
+[CD Testing]({{< relref "/docs/testing" >}}),
 [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}})
 
 ### Sociable Unit Test

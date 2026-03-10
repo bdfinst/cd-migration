@@ -53,9 +53,9 @@ stated requirement?"
 
 ### Inverted Test Pyramid
 
-When the test suite relies heavily on end-to-end tests and lacks targeted unit and functional
+When the test suite relies heavily on end-to-end tests and lacks targeted unit and component
 tests, AI-generated code can pass the suite without its internal logic being verified. A
-comprehensive functional test suite would catch the cases where the AI's implementation
+comprehensive component test suite would catch the cases where the AI's implementation
 diverges from the domain rules. Without it, "tests pass" is a weak signal.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
@@ -72,7 +72,7 @@ diverges from the domain rules. Without it, "tests pass" is a weak signal.
    starts?** If acceptance criteria are vague or added after the fact, neither the AI nor the
    developer has a clear target. Start with
    [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}).
-3. **Does your test suite include functional tests that verify business rules with specific
+3. **Does your test suite include component tests that verify business rules with specific
    inputs and outputs?** If the suite is mostly end-to-end or integration tests, AI-generated
    code can satisfy them without being correct at the rule level. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).

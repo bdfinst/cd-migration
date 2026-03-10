@@ -362,6 +362,12 @@ pre.mermaid {
   background-color: #6c757d;
 }
 
+// Blocks-deploy indicator for testing matrix
+.blocks-deploy {
+  color: #dc3545;
+  font-weight: 700;
+}
+
 // ---------------------------------------------------------------------------
 // Prism syntax highlighting - WCAG 2.1 AA contrast overrides (4.5:1 on #fff)
 // Uses !important because prism.css loads after this stylesheet.

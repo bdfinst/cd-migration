@@ -21,10 +21,10 @@
   <text x="88" y="166" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Unit Tests</text>
 
   <rect x="26" y="186" width="125" height="32" rx="3" fill="#224968"/>
-  <text x="88" y="206" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Integration Tests</text>
+  <text x="88" y="206" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Contract Tests</text>
 
   <rect x="26" y="226" width="125" height="32" rx="3" fill="#224968"/>
-  <text x="88" y="246" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Functional Tests</text>
+  <text x="88" y="246" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Component Tests</text>
 
   <!-- Arrow: Commit -> Post-Merge -->
   <line x1="163" y1="166" x2="186" y2="166" stroke="#224968" stroke-width="1.5"/>
@@ -49,16 +49,16 @@
   <polygon points="330,166 324,162 324,170" fill="#4a6741"/>
   <text x="318" y="158" text-anchor="middle" font-size="8" fill="#667">deploy</text>
 
-  <!-- Scheduled (Contract Tests) - sits above the main flow -->
+  <!-- Scheduled (Integration Tests) - sits above the main flow -->
   <rect x="334" y="66" width="130" height="80" rx="5" fill="#fdf6e3" stroke="#7a5c2e" stroke-width="1.5"/>
   <rect x="334" y="66" width="130" height="26" rx="5" fill="#7a5c2e"/>
   <rect x="334" y="84" width="130" height="8" fill="#7a5c2e"/>
   <text x="399" y="86" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Scheduled</text>
 
   <rect x="344" y="106" width="110" height="32" rx="3" fill="#7a5c2e"/>
-  <text x="399" y="126" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Contract Tests</text>
+  <text x="399" y="126" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">Integration Tests</text>
 
-  <!-- Dashed arrow: Contract back to Commit (routed ABOVE all boxes) -->
+  <!-- Dashed arrow: Integration back to Commit (routed ABOVE all boxes) -->
   <path d="M 399 66 L 399 48 L 88 48 L 88 64" fill="none" stroke="#7a5c2e" stroke-width="1.2" stroke-dasharray="4,3"/>
   <polygon points="88,64 84,56 92,56" fill="#7a5c2e"/>
   <text x="243" y="44" text-anchor="middle" font-size="8" fill="#7a5c2e">failures update test doubles</text>

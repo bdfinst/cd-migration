@@ -31,6 +31,7 @@ Referenced in:
 [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}),
 [AI Is Generating Technical Debt Faster Than the Team Can Absorb It]({{< relref "/docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt" >}}),
 [AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [Find Your Symptom]({{< relref "/docs/triage" >}}),
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
@@ -124,7 +125,9 @@ debugging, and shorten feedback loops. Reducing batch size is a core focus of
 [Phase 3 - Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}).
 
 Referenced in:
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}),
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
 [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}),
@@ -145,6 +148,7 @@ Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
 [AI Tooling Slows You Down Instead of Speeding You Up]({{< relref "/docs/symptoms/flow/developer-experience/ai-tooling-slowdown" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [Knowledge & Communication Defects]({{< relref "/docs/reference/defect-sources/knowledge-and-communication" >}}),
@@ -174,6 +178,7 @@ decomposition or slow code review. See [Trunk-Based Development]({{< relref "/do
 
 Referenced in:
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}),
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}),
 [Merging Is Painful and Time-Consuming]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}}),
@@ -206,12 +211,14 @@ Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [Data Pipelines and ML Models Have No Deployment Automation]({{< relref "/docs/symptoms/flow/developer-experience/ml-pipeline-deployment-gaps" >}}),
 [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
 [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}),
 [Independent Teams, Independent Deployables]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}),
@@ -254,6 +261,7 @@ Referenced in:
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
 [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}),
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
@@ -268,6 +276,7 @@ CI. See [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-aut
 
 Referenced in:
 [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}),
 [Data & State Defects]({{< relref "/docs/reference/defect-sources/data-and-state" >}}),
@@ -276,6 +285,7 @@ Referenced in:
 [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}),
 [Developers Cannot Run the Pipeline Locally]({{< relref "/docs/symptoms/flow/developer-experience/no-local-pipeline-execution" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}),
 [Component Tests]({{< relref "/docs/testing/component" >}}),
 [Integration & Boundaries Defects]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}),
@@ -321,6 +331,7 @@ Referenced in:
 [Current State Checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}),
 [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}),
 [Learning Paths]({{< relref "/docs/learning-paths" >}}),
@@ -363,6 +374,7 @@ Referenced in:
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
@@ -380,6 +392,7 @@ Referenced in:
 [Deployable Definition]({{< relref "/docs/migrate-to-cd/pipeline/deployable-definition" >}}),
 [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Component Tests]({{< relref "/docs/testing/component" >}}),
 [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}),
 [Independent Teams, Independent Deployables]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}),
@@ -479,6 +492,7 @@ Referenced in:
 [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}),
 [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}),
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
@@ -551,6 +565,7 @@ flags decouple deployment from release. See [Feature Flags]({{< relref "/docs/mi
 
 Referenced in:
 [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
@@ -560,6 +575,7 @@ Referenced in:
 [Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}),
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
 [Hard-Coded Environment Assumptions]({{< relref "/docs/anti-patterns/pipeline/hardcoded-environment-assumptions" >}}),
 [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}),
@@ -604,10 +620,6 @@ Referenced in:
 [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}),
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches#vertical-slicing-in-distributed-systems" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}})
-
-### Functional Acceptance Tests
-
-See [Testing Glossary]({{< relref "/docs/testing/glossary#functional-acceptance-tests" >}}).
 
 ## G
 
@@ -701,6 +713,8 @@ pipeline is the exact artifact that is deployed to production. Configuration dif
 environments are handled externally. See [Immutable Artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}}).
 
 Referenced in:
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})
 
 ### Intent Engineering
@@ -726,6 +740,7 @@ Referenced in:
 [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}),
 [Leadership Sees CD as a Technical Nice-to-Have]({{< relref "/docs/symptoms/visibility/no-leadership-buy-in" >}}),
 [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}),
@@ -786,6 +801,7 @@ on its way to production. See [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-
 Referenced in:
 [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}),
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [Data Pipelines and ML Models Have No Deployment Automation]({{< relref "/docs/symptoms/flow/developer-experience/ml-pipeline-deployment-gaps" >}}),
@@ -874,6 +890,7 @@ of deployment failures. See [Production-Like Environments]({{< relref "/docs/ref
 Referenced in:
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Hard-Coded Environment Assumptions]({{< relref "/docs/anti-patterns/pipeline/hardcoded-environment-assumptions" >}}),
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
 [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}),
@@ -909,6 +926,7 @@ The ability to revert a production deployment to a previous known-good state. CD
 automated rollback that takes minutes, not hours. See [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}).
 
 Referenced in:
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}),
@@ -1007,9 +1025,11 @@ prerequisite for CD. See [Trunk-Based Development]({{< relref "/docs/migrate-to-
 
 Referenced in:
 [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
 [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
 [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}),
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}),
@@ -1058,6 +1078,7 @@ Referenced in:
 [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}),
 [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
 [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}),
 [Deployable Definition]({{< relref "/docs/migrate-to-cd/pipeline/deployable-definition" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
@@ -1098,6 +1119,7 @@ showing process time, wait time, and percent complete and accurate at each step.
 foundational tool for [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}).
 
 Referenced in:
+[FAQ]({{< relref "/docs/reference/faq" >}}),
 [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}})
 
 ### Vertical Sliced Story
@@ -1129,6 +1151,7 @@ in [Phase 3 - Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wi
 
 Referenced in:
 [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
+[CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
 [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}),

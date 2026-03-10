@@ -97,7 +97,7 @@ These validate user-facing behavior in a [production-like environment]({{< relre
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **[Functional acceptance tests]({{< relref "/docs/reference/glossary#functional-acceptance-tests" >}})** | Implementation does not match acceptance criteria | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
+| **[Acceptance tests]({{< relref "/docs/testing/glossary#functional-acceptance-tests" >}})** | Implementation does not match [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
 | **Load and capacity tests** | Unknown capacity limits, slow response times | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | **Chaos and resilience tests** | Network partition handling, missing graceful degradation | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | **Cache invalidation verification** | Cache invalidation errors | [Data & State]({{< relref "/docs/reference/defect-sources/data-and-state" >}}) | |
@@ -112,7 +112,7 @@ The following checks are non-deterministic - they depend on live environments, e
 systems, or real user behavior - and cannot be made into blocking pipeline gates without
 coupling your ability to deploy to factors outside your control. They run asynchronously
 or post-deployment and back up the deterministic pipeline with a continuous safety net.
-Failures trigger review, alerts, or rollback decisions. They never block a commit from
+Failures trigger review, alerts, or [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) decisions. They never block a commit from
 reaching production.
 
 ### Integration Tests (Post-Deploy)

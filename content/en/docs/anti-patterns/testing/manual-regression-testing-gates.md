@@ -90,7 +90,7 @@ rework: the developer must stop what they are doing, reload the context of a com
 diagnose the issue, fix it, and send it back to the tester for re-verification. The re-verification
 may invalidate other test cases, requiring additional re-testing.
 
-The batch size amplifies the rework. When two weeks of changes are tested together, a bug could be
+The [batch size](../../reference/glossary/#batch-size) amplifies the rework. When two weeks of changes are tested together, a bug could be
 in any of dozens of commits. Narrowing down the cause takes longer because there are more
 variables. When the same bug would have been caught by an automated test minutes after it was
 introduced, the developer would have fixed it in the same sitting - one context switch instead of
@@ -141,10 +141,10 @@ duration, not hours to the testing phase. A team with 10,000 automated tests run
 
 ### Impact on continuous delivery
 
-Manual regression testing is fundamentally incompatible with continuous delivery. CD requires that
+Manual regression testing is fundamentally incompatible with [continuous delivery](../../reference/glossary/#cd-continuous-delivery). CD requires that
 any commit can be released at any time. A manual testing gate that takes days means the team can
 release at most once per testing cycle. If the gate takes a week, the team releases at most every
-two or three weeks - regardless of how fast their pipeline is or how small their changes are.
+two or three weeks - regardless of how fast their [pipeline](../../reference/glossary/#pipeline) is or how small their changes are.
 
 The manual gate also breaks the feedback loop that CD depends on. CD gives developers confidence
 that their change works by running automated checks within minutes. A manual gate replaces that
@@ -176,7 +176,7 @@ Pick the 20 test cases that cover the most critical paths - the ones that would 
 damage if they regressed. Automate them:
 
 - Business logic tests become unit tests.
-- API behavior tests become functional tests.
+- API behavior tests become component tests.
 - Critical user journeys become a small set of E2E smoke tests.
 
 Do not try to automate everything at once. Start with the cases that give the most confidence per
@@ -185,7 +185,7 @@ scenarios so the team no longer depends on manual execution for those paths.
 
 ### Step 3: Run automated tests in the pipeline on every commit
 
-Move the new automated tests into the CI pipeline so they run on every push. This is the critical
+Move the new automated tests into the [CI](../../reference/glossary/#ci-continuous-integration) pipeline so they run on every push. This is the critical
 shift: testing moves from a phase at the end of development to a continuous activity that happens
 with every change.
 

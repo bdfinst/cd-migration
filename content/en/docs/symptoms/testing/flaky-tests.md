@@ -30,7 +30,7 @@ on network connectivity, shared test environments, external service availability
 rendering timing. Any of these can produce a different result on each run. A suite built mostly
 on E2E tests will always be flaky because it is built on non-deterministic foundations.
 
-Replacing E2E tests with functional tests that use test doubles for external dependencies makes
+Replacing E2E tests with [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) that use test doubles for external dependencies makes
 the suite deterministic by design. The test produces the same result every time because it
 controls all its inputs.
 
@@ -65,7 +65,7 @@ architectural coupling, not a testing problem.
 1. **Do the flaky tests hit real external services or shared environments?** If yes, the tests
    are non-deterministic by design. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) and replace them with
-   functional tests using test doubles.
+   component tests using test doubles.
 2. **Do tests pass locally but fail in CI, or vice versa?** If yes, the environments differ.
    Start with [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 3. **Do tests pass individually but fail when run together, or fail in a different order?** If

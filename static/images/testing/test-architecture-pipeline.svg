@@ -142,7 +142,7 @@
   <!-- top accent bar -->
   <rect x="455" y="38" width="110" height="4" rx="3" fill="#3b82f6" opacity="0.7"/>
   <text x="510" y="57" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="9.5" font-weight="700" fill="#ffffff">Acceptance Tests</text>
-  <text x="510" y="71" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="8" fill="#93c5fd">Functional · Load · Chaos</text>
+  <text x="510" y="71" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="8" fill="#93c5fd">Component · Load · Chaos</text>
   <text x="510" y="83" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="8" fill="#93c5fd">Resilience · Compliance</text>
   <text x="510" y="105" text-anchor="middle" font-family="'Segoe UI',system-ui,sans-serif" font-size="7" fill="#60a5fa" font-style="italic">gates production deploy</text>
 

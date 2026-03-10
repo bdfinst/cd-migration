@@ -61,7 +61,7 @@ assertion, the environment reset is slow because every dependency must be restor
 state. A test that validates billing logic should not need a running payment gateway. A test
 that checks order validation should not need a populated product catalog database.
 
-The fix is to match each test to the right layer. Functional tests that verify business rules
+The fix is to match each test to the right layer. [Component tests](../../testing/glossary/#component-test) that verify business rules
 use in-memory databases or controlled fixtures - no environment reset needed. Contract tests
 verify service boundaries with [virtual services](../../reference/glossary/#virtual-service) instead of live instances. Only a small number
 of end-to-end tests need the fully assembled environment, and those run outside the pipeline's
@@ -78,7 +78,7 @@ system is inherently slow because it involves restoring a large database, restar
 services, and verifying cross-service connectivity. The tests were designed for a heavyweight
 environment because they run at a heavyweight stage.
 
-Tests designed to run early - functional tests with controlled data, contract tests between
+Tests designed to run early - component tests with controlled data, contract tests between
 services - do not need environment resets. They run in isolation with their own data fixtures.
 
 **Read more:** [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}})
@@ -95,7 +95,7 @@ services - do not need environment resets. They run in isolation with their own 
    and refactor tests to use isolated data fixtures.
 3. **Do most tests require live databases, running services, or network connections?** If the
    majority of tests need the fully assembled environment, the suite is testing at the wrong
-   layer. Functional tests with in-memory databases and virtual services for
+   layer. Component tests with in-memory databases and virtual services for
    [external dependencies](../../reference/glossary/#external-dependency) would eliminate the reset bottleneck for most assertions. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 4. **Does the full suite only run before releases, not on every change?** If the suite is a

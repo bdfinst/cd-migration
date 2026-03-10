@@ -24,14 +24,14 @@
   <text x="210" y="192" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Unit Tests</text>
   <text x="210" y="207" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Behavior in isolation - all deps are test doubles</text>
 
-  <!-- Integration Tests -->
+  <!-- Contract Tests -->
   <rect x="55" y="226" width="310" height="44" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
-  <text x="210" y="246" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Integration Tests</text>
-  <text x="210" y="261" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Module boundaries - external deps stubbed</text>
+  <text x="210" y="246" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Contract Tests</text>
+  <text x="210" y="261" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Interface boundaries - external deps stubbed</text>
 
-  <!-- Functional Tests -->
+  <!-- Component Tests -->
   <rect x="55" y="280" width="310" height="44" rx="4" fill="#224968" stroke="#1a3a54" stroke-width="1"/>
-  <text x="210" y="300" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Functional Tests</text>
+  <text x="210" y="300" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">Component Tests</text>
   <text x="210" y="315" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Full service in isolation - all external deps faked</text>
 
   <!-- Arrow between stages -->
