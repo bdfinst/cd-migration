@@ -24,8 +24,9 @@
 
   <!-- Labels -->
   <!-- Static Analysis (base) -->
-  <text x="280" y="332" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#2e7d32">Static Analysis</text>
-  <text x="280" y="346" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#2e7d32">linting, type checking, formatting</text>
+  <text x="280" y="329" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#2e7d32">Static Analysis</text>
+  <text x="280" y="341" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#2e7d32">linting, type checking</text>
+  <text x="280" y="352" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#2e7d32">and formatting</text>
 
   <!-- Unit Tests (stem) -->
   <text x="280" y="292" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#1e40af">Unit Tests</text>
