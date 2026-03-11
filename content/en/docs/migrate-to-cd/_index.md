@@ -4,13 +4,15 @@ linkTitle: "Migrate to CD"
 weight: 6
 sidebar_divider_above: true
 description: >
-  A phased approach to adopting continuous delivery, from assessing your current state through full continuous deployment.
+  A phased approach to adopting continuous delivery, from assessing your current state through delivering on demand.
 ---
 
 {{% pageinfo %}}
-Choose the path that matches your situation. Brownfield teams migrating existing systems and
-greenfield teams building from scratch each have a dedicated guide. The phases below provide
-the roadmap both approaches follow.
+Continuous delivery gives teams low-risk releases, faster time to market, higher quality, and
+reduced burnout. Choose the path that matches your situation. Brownfield teams migrating
+existing systems and greenfield teams building from scratch each have a dedicated guide. The
+phases below provide the roadmap both approaches follow. CD adoption involves the whole
+team: product, development, operations, and leadership.
 {{% /pageinfo %}}
 
 ## The Phases
@@ -18,10 +20,14 @@ the roadmap both approaches follow.
 | Phase | Focus | Key Question |
 |-------|-------|-------------|
 | [0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) | Understand your current state | How far are we from [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})? |
-| [1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) | Daily integration, testing, small batches | Can we integrate safely every day? |
-| [2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) | Automated path from commit to production | Can we deploy any commit automatically? |
-| [3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) | Reduce [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}), limit [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}), measure | Can we deliver small changes quickly? |
+| [1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) | Daily integration, testing, small batches, stop on red | Can we integrate safely every day? |
+| [2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) | Automated path from commit to production, security scanning | Can we deploy any commit automatically? |
+| [3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) | Reduce [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}), limit [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}), observability, measure | Can we deliver small changes quickly? |
 | [4 - Deliver on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) | Deploy any change when the business needs it | Can we deliver any change to production when needed? |
+
+These phases are a starting framework, not a finish line. Teams that reach Phase 4 continue
+improving by revisiting practices, tightening feedback loops, and adapting to new constraints.
+Most teams work across multiple phases at once.
 
 ## Where to Start
 

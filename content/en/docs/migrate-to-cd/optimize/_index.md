@@ -23,10 +23,11 @@ delivery frequency.
 5. **[Run effective retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}})** - Continuously improve the delivery process
 6. **[Decouple architecture]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}})** - Enable independent deployment of components
 7. **[Align teams to code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}})** - Match team ownership to code boundaries for independent deployment
+8. **Build observability** - Structured logging, monitoring, and alerting so you can detect problems and recover quickly
 
 ## Why This Phase Matters
 
-Having a pipeline isn't enough - you need to optimize the flow through it. Teams that
+Having a pipeline isn't enough. You need to optimize the flow through it. Teams that
 deploy weekly with a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline are missing most of the benefits. Small batches reduce
 risk, feature flags enable testing in production, and metrics-driven improvement creates
 a virtuous cycle of getting better at getting better.
@@ -40,7 +41,7 @@ You're ready for [Phase 4: Deliver on Demand]({{< relref "/docs/migrate-to-cd/co
 - Your WIP limits keep work flowing without bottlenecks
 - You're measuring and improving your DORA metrics regularly
 
-**Next:** [Phase 4 - Continuous Deployment]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) - remove the last manual gates and deploy on demand.
+**Next:** [Phase 4 - Deliver on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) - remove the last manual gates and deploy on demand.
 
 ---
 

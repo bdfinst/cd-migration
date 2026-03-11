@@ -24,6 +24,7 @@ way changes reach production.
 6. **[Use production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})** - Test in environments that match production
 7. **[Design your pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})** - Efficient quality gates for your context
 8. **[Enable rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}})** - Fast recovery from any deployment
+9. **Integrate security scanning** - Dependency checks, secret detection, and static analysis as pipeline quality gates
 
 ## Why This Phase Matters
 
