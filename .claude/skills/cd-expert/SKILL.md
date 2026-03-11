@@ -60,9 +60,25 @@ Determine the mode (`review`, `fix`, or `compare`) and target files.
 Read `reference.md` in this skill directory. This contains the authoritative
 principles and practices from continuousdelivery.com and minimumcd.org.
 
-### 3. Read target files
+### 3. Read target files and explore context
 
-Read each target file completely.
+Read each target file completely. Then explore the surrounding context to
+understand what the page promises versus what it delivers:
+
+- **For section landing pages (`_index.md`):** Read the child pages too. A
+  landing page that links to Phase 1, Phase 2, etc. cannot be evaluated in
+  isolation. The landing page's claims, phase descriptions, and key questions
+  must be checked against what the child pages actually contain.
+- **For pages that reference other site content:** Follow cross-references to
+  verify they support the claims made. If a page says "see the testing guide"
+  but that guide contradicts the page's advice, that is a finding.
+- **For pages in a sequence:** Read the previous and next pages in the sequence
+  to check for consistency in terminology, progression, and framing.
+
+This broader exploration catches gaps that single-file analysis misses: a phase
+table that promises "daily integration" but whose child page never mentions
+trunk-based development, or a landing page that frames continuous deployment as
+the end goal while its own Phase 4 page says otherwise.
 
 ### 4. Execute mode
 
@@ -86,6 +102,11 @@ Check for:
 - Missing principles from continuousdelivery.com that apply to the topic
 - Missing nuance (e.g., stating a practice without the "why")
 - Missing common misconceptions that readers are likely to have
+- Practices that are prerequisites for what the page describes but are never
+  mentioned (e.g., observability for confident deployment, security scanning
+  in the pipeline, database change management for brownfield teams,
+  organizational readiness for cultural shifts)
+- Promises made by the page that child pages or linked content do not fulfill
 
 **Alignment checks:**
 
@@ -228,3 +249,13 @@ strategy, deployment pipelines, and migration guidance.
   review mode for focused pages like anti-patterns and symptoms.
 - When evaluating, consider the page's audience. A manager-focused page need not
   include implementation details, but it must not misrepresent the practices.
+- Go beyond the single file. The most valuable findings come from checking
+  whether a page's promises hold up when you read what it links to. A landing
+  page that says "Phase 1 covers daily integration" but whose Phase 1 child
+  page never mentions trunk-based development is a real gap, even though
+  neither file is wrong in isolation.
+- Look for missing prerequisites. If a page describes deploying frequently but
+  never mentions observability, or describes a pipeline but omits security
+  scanning, those are completeness gaps worth flagging - even if the reference
+  material does not list them explicitly. Apply your CD expertise beyond the
+  reference document.
