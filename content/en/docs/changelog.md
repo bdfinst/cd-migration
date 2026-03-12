@@ -7,6 +7,16 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-12 - Systems thinking improvements to Migrate to CD
+
+Applied systems thinking analysis to the Migrate to CD section. Changes across six files:
+
+- Added the fear amplification loop explanation and leadership conditions to the main [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}}) index
+- Clarified that phases overlap and are not a strict sequence
+- Named DORA metrics explicitly in [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) and framed them as continuous tracking, not a Phase 3 concern
+- Reframed phase gate criteria from "you're ready when" to "start investing when making consistent progress toward" across Phases 1, 2, and 3
+- Added a "What to Expect" section to [Brownfield CD]({{< relref "/docs/migrate-to-cd/brownfield" >}}) covering the valley of despair, organizational lag, and the role of metrics in sustaining buy-in
+
 ## 2026-03-09 - Add Synthetic Monitoring to Testing Glossary
 
 Added [Synthetic Monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) definition to the Testing Glossary.

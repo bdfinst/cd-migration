@@ -22,6 +22,31 @@ alongside regular delivery work.
 The good news: every team that has successfully adopted CD has done it this way. The practices in
 this guide are designed for incremental adoption, not big-bang transformation.
 
+## What to Expect
+
+Brownfield CD adoption is predictably difficult in ways that catch teams off guard. Knowing what
+is coming makes it less likely you will interpret normal friction as evidence that the approach
+is wrong.
+
+**Things will feel slower before they feel faster.** When you adopt trunk-based development and
+start building a real test suite, you are working against the grain of an existing codebase. Tests
+will reveal problems that were previously hidden. Integration friction will surface. Teams
+sometimes mistake this initial friction for regression. It is not - it is the system becoming
+visible. The slowdown is temporary. The improvement it enables is permanent.
+
+**The technical practices will be ready before the organization is.** You can complete Phases 1
+through 3 while approval processes, change windows, and release coordination overhead remain
+unchanged. The pipeline will be capable of deploying any green build long before the organization
+gives you permission to do it on demand. This organizational lag is the most common stall point
+in Phase 4. Plan for it early - start the conversation with leadership while you are still in
+Phase 2 so there is no surprise when you arrive at Phase 4 ready to remove the last gates.
+
+**Metrics are your evidence.** The hardest part of brownfield migration is sustaining investment
+through the long period when foundations are being built but delivery feels slow. Track your
+[DORA metrics](../../reference/glossary/#dora-metrics) from Phase 0. Small improvements in lead time and deployment frequency
+become the business case for continued investment. Without this data, leadership will pull the
+team back to feature work at the first sign of difficulty.
+
 ## The Migration Phases
 
 The migration is organized into five phases. Each phase builds on the previous one. Start with

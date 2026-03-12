@@ -34,7 +34,8 @@ and makes deployment a routine, low-risk event.
 
 ## When You're Ready to Move On
 
-You're ready for [Phase 3: Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) when:
+Start investing in [Phase 3: Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) when you are making
+consistent progress toward these - don't wait for every criterion to be perfect:
 
 - Every change reaches production through the same automated pipeline
 - The pipeline produces the same result for the same inputs

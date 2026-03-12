@@ -19,7 +19,7 @@ delivery frequency.
 1. **[Reduce batch size]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}})** - Deliver smaller, more frequent changes
 2. **[Use feature flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}})** - Decouple deployment from release
 3. **[Limit work in progress]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}})** - Focus on finishing over starting
-4. **[Drive improvement with metrics]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})** - Use [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) and improvement kata
+4. **[Drive improvement with metrics]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})** - Use the [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) you baselined in Phase 0 to measure improvement and run improvement kata
 5. **[Run effective retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}})** - Continuously improve the delivery process
 6. **[Decouple architecture]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}})** - Enable independent deployment of components
 7. **[Align teams to code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}})** - Match team ownership to code boundaries for independent deployment
@@ -34,12 +34,13 @@ a virtuous cycle of getting better at getting better.
 
 ## When You're Ready to Move On
 
-You're ready for [Phase 4: Deliver on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) when:
+Start investing in [Phase 4: Deliver on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) when
+you are making consistent progress toward these - don't wait for every criterion to be perfect:
 
 - Most changes are small enough to deploy independently
 - Feature flags let you deploy incomplete features safely
 - Your WIP limits keep work flowing without bottlenecks
-- You're measuring and improving your DORA metrics regularly
+- You're reviewing and acting on your DORA metrics regularly
 
 **Next:** [Phase 4 - Deliver on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) - remove the last manual gates and deploy on demand.
 

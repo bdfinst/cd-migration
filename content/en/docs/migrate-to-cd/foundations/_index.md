@@ -29,7 +29,8 @@ Teams that skip these foundations end up automating a broken process. A pipeline
 
 ## When You're Ready to Move On
 
-You're ready for [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) when:
+Start investing in [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) when you are making
+consistent progress toward these - don't wait for every criterion to be perfect:
 
 - All developers integrate to trunk at least once per day
 - Your test suite catches real defects and runs in under 10 minutes

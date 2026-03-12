@@ -19,7 +19,7 @@ the [constraints]({{< relref "/docs/reference/glossary#constraint" >}}) that wil
 ## What You'll Do
 
 1. **[Map your value stream]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}})** - Visualize the flow from idea to production
-2. **[Establish baseline metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}})** - Measure your current delivery performance
+2. **[Establish baseline metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}})** - Measure your current [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}): deployment frequency, lead time for changes, change failure rate, and mean time to restore. Track these throughout the migration - they are your evidence of progress and your case for continued investment.
 3. **[Identify constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}})** - Find the bottlenecks limiting your flow
 4. **[Complete the current-state checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}})** - Self-assess against MinimumCD practices
 
