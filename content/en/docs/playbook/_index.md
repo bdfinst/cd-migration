@@ -12,13 +12,19 @@ Each play targets a common delivery challenge. You can run any play in isolation
 
 ## Baseline Your Delivery Metrics
 
-**What:** Measure [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), [lead time for changes]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), [change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), and [mean time to restore]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) before making any other changes.
+**What:** Capture two sets of numbers before making any other changes: CI health metrics
+([integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), build success rate, time to fix a broken build) and the four
+[DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) ([deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), [lead time for changes]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), [change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), [mean time to restore]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}})).
 
-**Why:** Improvement without measurement is guesswork. A baseline gives you a before-and-after comparison that builds the case for continued investment and tells you whether your changes are working.
+**Why:** CI health metrics are leading indicators - they move immediately when team behaviors change
+and surface problems while they are still small. DORA metrics are lagging outcomes - they confirm
+that improvement is compounding into better delivery performance. You need both.
 
-**How to measure success:** You have actual numbers for all four [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}), tracked at least weekly. The team reviews them in retrospectives.
+**How to measure success:** You have numbers for all seven metrics written down and dated. The team
+tracks CI health metrics weekly to drive improvement experiments. DORA metrics are reviewed monthly
+to confirm progress.
 
-**Resources:** [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - [DORA Metrics Reference]({{< relref "/docs/reference/metrics" >}}) - [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}})
+**Resources:** [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - [DORA Metrics Reference]({{< relref "/docs/reference/metrics" >}})
 
 ---
 
@@ -91,6 +97,25 @@ Each play targets a common delivery challenge. You can run any play in isolation
 **How to measure success:** [Lead time for changes]({{< relref "/docs/reference/metrics/lead-time" >}}) decreases within 2-3 sprints. Fewer stories carry over between sprints.
 
 **Resources:** [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - [Work in Progress Metric]({{< relref "/docs/reference/metrics/work-in-progress" >}}) - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}})
+
+---
+
+## Switch from Assigning Work to Pulling Work
+
+**What:** Stop pre-assigning stories to individuals at sprint planning. Instead, order the backlog
+by priority, leave all items unassigned, and have developers pull the top available item whenever
+they need work - swarming to help finish in-progress items before starting anything new.
+
+**Why:** Push-based assignment optimizes for keeping individuals busy, not for finishing work.
+It creates knowledge silos, hides bottlenecks, and makes code review feel like a distraction
+from "my stories." Pull-based work makes bottlenecks visible, self-balances workloads, and
+aligns the whole team around completing the highest-priority item.
+
+**How to measure success:** Pre-assigned stories at sprint start drops to near zero. [Work in
+progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) decreases. [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) shortens within 2-3 sprints as
+swarming increases. Knowledge of the codebase broadens across the team over time.
+
+**Resources:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
 ---
 
