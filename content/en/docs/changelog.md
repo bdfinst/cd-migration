@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-12 - Add symptom page for test automation lag
+
+Added [Test Automation Always Lags Behind Development]({{< relref "/docs/symptoms/testing/test-automation-lags-development" >}}) to the testing symptoms section. Covers the pattern where manual QA runs first and automation is written from those results, including a before/after workflow diagram and causes linked to Testing Only at the End, Siloed QA Team, and Manual Testing Only.
+
 ## 2026-03-12 - Systems thinking improvements to Migrate to CD
 
 Applied systems thinking analysis to the Migrate to CD section. Changes across six files:

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" role="img" aria-labelledby="e2e-title e2e-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img" aria-labelledby="e2e-title e2e-desc">
   <title id="e2e-title">End-to-End Test Scope Spectrum</title>
   <desc id="e2e-desc">Two examples of end-to-end tests. Left: narrow scope showing a service making real calls to a real database. Right: full-system scope showing a browser driving a real frontend, which calls a real backend service, which calls a real database. All components are real with no test doubles at either scope.</desc>
 

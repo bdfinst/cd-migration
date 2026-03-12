@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" width="720" height="520"
+     role="img" aria-labelledby="ctv-title ctv-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="ctv-title">How Contract Tests Validate Test Doubles</title>
+  <desc id="ctv-desc">Two-panel diagram showing the contract test validation loop. Inside Pipeline (left): Your Code calls a Test Double which returns a canned response, producing a fast deterministic result with no external systems. Outside Pipeline (right): a Contract Test sends a real request to a Real External API and compares the real response schema against the test double definition. Outcome: a Match confirms the test doubles are accurate and no action is needed; a Mismatch means the external API has changed, alerting the team to update doubles and re-verify.</desc>
 
   <!-- Background -->
   <rect width="720" height="520" fill="#fafafa" rx="4"/>
@@ -38,7 +43,7 @@
   <text x="180" y="213" text-anchor="middle" font-size="10" fill="#667">No network, no external systems</text>
 
   <!-- Down arrow from Your Code to result -->
-  <line x1="180" y1="154" x2="180" y2="184" stroke="#bbc" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="180" y1="154" x2="180" y2="184" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,2"/>
 
   <!-- Assumes label -->
   <rect x="75" y="236" width="210" height="24" rx="3" fill="#e8edf3" stroke="#99aabc" stroke-width="1"/>
@@ -77,7 +82,7 @@
   <text x="545" y="213" text-anchor="middle" font-size="10" fill="#99885a">against test double definition</text>
 
   <!-- Down arrow from contract test to compare -->
-  <line x1="540" y1="154" x2="540" y2="184" stroke="#bba" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="540" y1="154" x2="540" y2="184" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="3,2"/>
 
   <!-- Validates label -->
   <rect x="405" y="236" width="280" height="24" rx="3" fill="#f5edd5" stroke="#bba278" stroke-width="1"/>
@@ -94,7 +99,7 @@
   <text x="360" y="312" text-anchor="middle" font-size="14" font-weight="600" fill="#1a2a3a">Outcome</text>
 
   <!-- Divider -->
-  <line x1="360" y1="322" x2="360" y2="500" stroke="#ddd" stroke-width="1"/>
+  <line x1="360" y1="322" x2="360" y2="500" stroke="#e5e7eb" stroke-width="1"/>
 
   <!-- MATCH outcome (left) -->
   <rect x="50" y="334" width="270" height="90" rx="6" fill="#eef6ee" stroke="#3a7a3a" stroke-width="1.5"/>
@@ -131,12 +136,12 @@
   <polygon points="370,292 376,300 380,294" fill="#7a5c2e"/>
 
   <!-- Step labels at bottom -->
-  <rect x="20" y="444" width="680" height="60" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <rect x="20" y="444" width="680" height="60" rx="4" fill="#fafafa" stroke="#e5e7eb" stroke-width="1"/>
   <text x="36" y="464" font-size="11" font-weight="600" fill="#1a2a3a">The cycle:</text>
   <text x="36" y="481" font-size="10" fill="#556">1. Pipeline tests use test doubles</text>
   <text x="220" y="481" font-size="10" fill="#556">2. Contract tests hit real APIs</text>
   <text x="390" y="481" font-size="10" fill="#556">3. Compare real vs expected</text>
   <text x="560" y="481" font-size="10" fill="#556">4. Update doubles on drift</text>
-  <text x="36" y="496" font-size="10" fill="#889">Result: Pipeline never touches external systems, but catches when they change.</text>
+  <text x="36" y="496" font-size="10" fill="#556">Result: Pipeline never touches external systems, but catches when they change.</text>
 
 </svg>

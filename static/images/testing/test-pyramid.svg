@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-labelledby="tp-title tp-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" width="560" height="340" role="img" aria-labelledby="tp-title tp-desc">
   <title id="tp-title">The Test Pyramid</title>
   <desc id="tp-desc">A triangle divided into three horizontal bands. The wide base is labeled "Unit Tests" and annotated "fast, cheap, many". The middle band is labeled "Integration / Component" and annotated "slower, more expensive". The narrow top is labeled "End-to-End" and annotated "slow, expensive, few". A vertical arrow on the left reads "Slower and more expensive" pointing upward. A vertical arrow on the right reads "Faster and cheaper" pointing downward.</desc>
 

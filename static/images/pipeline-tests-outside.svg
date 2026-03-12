@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380"
+     role="img" aria-labelledby="pto-title pto-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="pto-title">Tests Outside the Pipeline</title>
+  <desc id="pto-desc">Two-group diagram showing tests that run outside the deployment pipeline. Asynchronous (left): Integration Tests run on a schedule against real external systems to validate test doubles; failures trigger a test double update and re-verification, not a build failure. Post-Deployment (right): E2E Smoke Tests and Synthetic Monitoring run against production or production-like environments; failures trigger rollback or alerts, never block deployment.</desc>
 
   <!-- Background -->
   <rect width="720" height="380" fill="#fafafa" rx="4"/>

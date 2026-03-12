@@ -1,0 +1,29 @@
+{
+  "skill_name": "cd-diagram",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "The test-automation-lags-development.md symptom page currently has two Mermaid diagrams in a 'Workflow comparison' section. Replace both Mermaid diagrams with a single, well-designed SVG that clearly shows the before/after workflow: Before - dev codes story, QA manually tests, automation is written from QA results, backlog grows. After - dev codes story AND writes automated tests, QA does exploratory testing, story ships with coverage. Use the site's canonical color palette. Save the SVG to the correct location and update the markdown to reference it.",
+      "expected_output": "An SVG file saved to static/images/symptoms/test-automation-lags-development.svg, the markdown file updated to remove the two Mermaid code blocks and replace them with a Hugo figure shortcode. SVG uses site color palette, text fits inside shapes, has accessibility title and desc elements, and includes a legend.",
+      "files": [
+        "content/en/docs/symptoms/testing/test-automation-lags-development.md"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Create an SVG diagram for the siloed-qa-team anti-pattern page. The diagram should show the contrast between the anti-pattern (dev team codes, hands off to separate QA team, QA tests manually, bugs reported back to dev) versus the integrated approach (dev and QA collaborate during development, automated tests written together, quality is a shared practice). Save it to the correct location for an anti-pattern diagram and give me the figure shortcode to add to the page.",
+      "expected_output": "An SVG file saved to static/images/anti-patterns/siloed-qa-team.svg with a before/after layout. Correct Hugo figure shortcode provided. SVG uses site canonical colors (red for anti-pattern side, green/navy for integrated side), text fits inside all shapes, accessibility elements present.",
+      "files": [
+        "content/en/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The testing-only-at-the-end anti-pattern page describes how testing as a sequential phase after development creates a lag. Create an SVG diagram that shows the timeline of a sprint: on top, the anti-pattern where dev occupies the first 8 days, then QA occupies the last 4 days (testing only at the end); on the bottom, the better approach where testing happens throughout all 12 days alongside development. The diagram should make the time-overlap difference visually obvious.",
+      "expected_output": "An SVG file saved to static/images/anti-patterns/testing-only-at-the-end.svg showing a timeline comparison. The anti-pattern row shows sequential dev then QA blocks. The improved row shows overlapping dev and test activities across the full timeline. Site color palette used, text fits inside shapes, legend included, figure shortcode provided.",
+      "files": [
+        "content/en/docs/anti-patterns/testing/testing-only-at-the-end.md"
+      ]
+    }
+  ]
+}

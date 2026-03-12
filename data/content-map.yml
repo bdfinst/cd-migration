@@ -30,7 +30,7 @@ sections:
     subsections:
       - path: testing/
         title: "Test Suite Problems"
-        page_count: 9
+        page_count: 10
         pages:
           - file: ai-code-without-understanding.md
             title: "AI-Generated Code Ships Without Developer Understanding"
@@ -50,6 +50,8 @@ sections:
             title: "Test Suite Is Too Slow to Run"
           - file: test-data-management-chaos.md
             title: "Tests Interfere with Each Other Through Shared Data"
+          - file: test-automation-lags-development.md
+            title: "Test Automation Always Lags Behind Development"
 
       - path: deployment/
         title: "Deployment and Release Problems"

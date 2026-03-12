@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="system-ui, -apple-system, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420"
+     role="img" aria-labelledby="hf-title hf-desc"
+     font-family="system-ui, -apple-system, sans-serif">
+
+  <title id="hf-title">Hotfix Flow: Anti-Pattern vs. Correct Approach</title>
+  <desc id="hf-desc">Two-panel Git branching diagram. Anti-pattern (top): a fix is applied only to the release branch (v1.0) and never ported back to trunk; the defect remains in all future releases from trunk. Correct approach (bottom): the fix is committed to trunk first, then cherry-picked to the release branch (v1.0); the defect is resolved in both the release and all future trunk-based releases.</desc>
 
   <!-- === ANTI-PATTERN SECTION === -->
   <rect x="10" y="10" width="740" height="188" rx="6" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>

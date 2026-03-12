@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400"
+     role="img" aria-labelledby="toae-title toae-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="toae-title">Sprint Timeline: Testing Only at the End vs. Testing Throughout</title>
+  <desc id="toae-desc">
+    Two sprint timeline comparisons over 12 days. Anti-pattern (top): development occupies days 1
+    through 8, then QA occupies days 9 through 12 as a separate sequential phase with no overlap.
+    Better approach (bottom): development runs all 12 days while testing happens in parallel
+    throughout the entire sprint, overlapping completely with development from day 1 to day 12.
+    The contrast shows that the anti-pattern delays feedback until the last 4 days, while
+    continuous testing provides feedback from the first day.
+  </desc>
+
+  <!-- Background -->
+  <rect width="720" height="400" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="360" y="32" text-anchor="middle" font-size="17"
+        font-weight="bold" fill="#1a2a3a">Sprint Timeline: When Does Testing Happen?</text>
+
+  <!-- ===== DAY AXIS HEADER ===== -->
+  <!-- Shared axis labels for days 1-12 -->
+  <!-- x = 80 + (day-1)*50 for start of each day block, center = x + 25 -->
+
+  <!-- Anti-pattern section label -->
+  <text x="14" y="75" font-size="12" font-weight="700" fill="#a63123" dominant-baseline="middle">Anti-</text>
+  <text x="14" y="91" font-size="12" font-weight="700" fill="#a63123" dominant-baseline="middle">pattern</text>
+
+  <!-- Better approach section label -->
+  <text x="14" y="215" font-size="12" font-weight="700" fill="#0d7a32" dominant-baseline="middle">Better</text>
+  <text x="14" y="231" font-size="12" font-weight="700" fill="#0d7a32" dominant-baseline="middle">approach</text>
+
+  <!-- ===== ANTI-PATTERN TIMELINE ===== -->
+
+  <!-- Container background for anti-pattern -->
+  <rect x="72" y="55" width="616" height="80" rx="6"
+        fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+
+  <!-- Dev bar: days 1-8 (x=80 to x=480, width=400) -->
+  <rect x="80" y="68" width="400" height="54" rx="4"
+        fill="#a63123" stroke="#8a2518" stroke-width="1"/>
+  <text x="280" y="89" text-anchor="middle" font-size="13"
+        font-weight="600" fill="#fff">Development</text>
+  <text x="280" y="107" text-anchor="middle" font-size="11"
+        fill="rgba(255,255,255,0.85)">Days 1 - 8</text>
+
+  <!-- QA bar: days 9-12 (x=480 to x=680, width=200) -->
+  <rect x="480" y="68" width="200" height="54" rx="4"
+        fill="#6c757d" stroke="#565e64" stroke-width="1"/>
+  <text x="580" y="89" text-anchor="middle" font-size="13"
+        font-weight="600" fill="#fff">QA Phase</text>
+  <text x="580" y="107" text-anchor="middle" font-size="11"
+        fill="rgba(255,255,255,0.85)">Days 9 - 12</text>
+
+  <!-- Gap callout: vertical marker at x=480 -->
+  <line x1="480" y1="56" x2="480" y2="134" stroke="#a63123" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="484" y="148" font-size="11" fill="#a63123" font-weight="600">Handoff: feedback delayed 8 days</text>
+
+  <!-- ===== BETTER APPROACH TIMELINE ===== -->
+
+  <!-- Container background for better approach -->
+  <rect x="72" y="185" width="616" height="96" rx="6"
+        fill="#edf2f7" stroke="#224968" stroke-width="1.5"/>
+
+  <!-- Dev bar: days 1-12 (full width, x=80 to x=680, width=600) -->
+  <rect x="80" y="196" width="600" height="36" rx="4"
+        fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="380" y="219" text-anchor="middle" font-size="13"
+        font-weight="600" fill="#fff">Development - Days 1 through 12</text>
+
+  <!-- Testing bar: days 1-12 overlapping (slightly offset below, same width) -->
+  <rect x="80" y="240" width="600" height="36" rx="4"
+        fill="#0d7a32" stroke="#0a6128" stroke-width="1"/>
+  <text x="380" y="263" text-anchor="middle" font-size="13"
+        font-weight="600" fill="#fff">Testing throughout - Days 1 through 12</text>
+
+  <!-- Overlap bracket / callout -->
+  <text x="484" y="300" font-size="11" fill="#0d7a32" font-weight="600">Feedback available from day 1</text>
+
+  <!-- ===== DAY AXIS (shared, drawn at bottom of both sections) ===== -->
+
+  <!-- Axis line for anti-pattern -->
+  <line x1="80" y1="135" x2="680" y2="135" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Axis line for better approach -->
+  <line x1="80" y1="285" x2="680" y2="285" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Day tick marks and labels - anti-pattern axis -->
+  <!-- Days 1-12: tick at x = 80 + (day-1)*50, label centered -->
+  <line x1="80" y1="132" x2="80" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="80" y="150" text-anchor="middle" font-size="10" fill="#556">1</text>
+  <line x1="130" y1="132" x2="130" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="130" y="150" text-anchor="middle" font-size="10" fill="#556">2</text>
+  <line x1="180" y1="132" x2="180" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="180" y="150" text-anchor="middle" font-size="10" fill="#556">3</text>
+  <line x1="230" y1="132" x2="230" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="230" y="150" text-anchor="middle" font-size="10" fill="#556">4</text>
+  <line x1="280" y1="132" x2="280" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="280" y="150" text-anchor="middle" font-size="10" fill="#556">5</text>
+  <line x1="330" y1="132" x2="330" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="330" y="150" text-anchor="middle" font-size="10" fill="#556">6</text>
+  <line x1="380" y1="132" x2="380" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="380" y="150" text-anchor="middle" font-size="10" fill="#556">7</text>
+  <line x1="430" y1="132" x2="430" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="430" y="150" text-anchor="middle" font-size="10" fill="#556">8</text>
+  <line x1="480" y1="132" x2="480" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="480" y="150" text-anchor="middle" font-size="10" fill="#556">9</text>
+  <line x1="530" y1="132" x2="530" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="530" y="150" text-anchor="middle" font-size="10" fill="#556">10</text>
+  <line x1="580" y1="132" x2="580" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="580" y="150" text-anchor="middle" font-size="10" fill="#556">11</text>
+  <line x1="630" y1="132" x2="630" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="630" y="150" text-anchor="middle" font-size="10" fill="#556">12</text>
+  <line x1="680" y1="132" x2="680" y2="138" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="700" y="150" text-anchor="middle" font-size="10" fill="#556">Day</text>
+
+  <!-- Day tick marks and labels - better approach axis -->
+  <line x1="80" y1="282" x2="80" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="80" y="300" text-anchor="middle" font-size="10" fill="#556">1</text>
+  <line x1="130" y1="282" x2="130" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="130" y="300" text-anchor="middle" font-size="10" fill="#556">2</text>
+  <line x1="180" y1="282" x2="180" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="180" y="300" text-anchor="middle" font-size="10" fill="#556">3</text>
+  <line x1="230" y1="282" x2="230" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="230" y="300" text-anchor="middle" font-size="10" fill="#556">4</text>
+  <line x1="280" y1="282" x2="280" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="280" y="300" text-anchor="middle" font-size="10" fill="#556">5</text>
+  <line x1="330" y1="282" x2="330" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="330" y="300" text-anchor="middle" font-size="10" fill="#556">6</text>
+  <line x1="380" y1="282" x2="380" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="380" y="300" text-anchor="middle" font-size="10" fill="#556">7</text>
+  <line x1="430" y1="282" x2="430" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="430" y="300" text-anchor="middle" font-size="10" fill="#556">8</text>
+  <line x1="480" y1="282" x2="480" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="480" y="300" text-anchor="middle" font-size="10" fill="#556">9</text>
+  <line x1="530" y1="282" x2="530" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="530" y="300" text-anchor="middle" font-size="10" fill="#556">10</text>
+  <line x1="580" y1="282" x2="580" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="580" y="300" text-anchor="middle" font-size="10" fill="#556">11</text>
+  <line x1="630" y1="282" x2="630" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="630" y="300" text-anchor="middle" font-size="10" fill="#556">12</text>
+  <line x1="680" y1="282" x2="680" y2="288" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="700" y="300" text-anchor="middle" font-size="10" fill="#556">Day</text>
+
+  <!-- ===== LEGEND ===== -->
+  <rect x="80" y="358" width="12" height="12" rx="2"
+        fill="#a63123" stroke="#8a2518" stroke-width="1"/>
+  <text x="96" y="369" font-size="11" fill="#556">Development (anti-pattern)</text>
+
+  <rect x="290" y="358" width="12" height="12" rx="2"
+        fill="#6c757d" stroke="#565e64" stroke-width="1"/>
+  <text x="306" y="369" font-size="11" fill="#556">QA phase (sequential)</text>
+
+  <rect x="480" y="358" width="12" height="12" rx="2"
+        fill="#224968" stroke="#1a3a54" stroke-width="1"/>
+  <text x="496" y="369" font-size="11" fill="#556">Development (continuous)</text>
+
+  <rect x="80" y="378" width="12" height="12" rx="2"
+        fill="#0d7a32" stroke="#0a6128" stroke-width="1"/>
+  <text x="96" y="389" font-size="11" fill="#556">Testing throughout</text>
+
+</svg>

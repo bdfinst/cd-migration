@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" role="img" aria-labelledby="ct-title ct-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 360" width="680" height="360" role="img" aria-labelledby="ct-title ct-desc">
   <title id="ct-title">Component Test Pattern</title>
   <desc id="ct-desc">A test actor on the left sends a request through the component boundary. Inside the boundary, real internal modules (API Layer, Business Logic, Data Adapter) are wired together. Outside the boundary on the right, a Database and an External API are represented by Test Double boxes connected via dashed lines.</desc>
 

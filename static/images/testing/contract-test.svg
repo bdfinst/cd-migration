@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="crt-title crt-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img" aria-labelledby="crt-title crt-desc">
   <title id="crt-title">Contract Test Pattern: Consumer-Driven Contracts</title>
   <desc id="crt-desc">Three columns showing the consumer-driven contract flow. Left column: Consumer team runs a component test against a test double of the provider, generating a contract. Center: the Contract artifact published to a broker. Right column: Provider team runs a verification step against the real service implementation using the consumer contract. Arrows show: consumer publishes contract to broker, broker delivers contract to provider, provider returns verification result.</desc>
 

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" role="img" aria-labelledby="ut-title ut-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="700" height="300" role="img" aria-labelledby="ut-title ut-desc">
   <title id="ut-title">Unit Test Patterns: Solitary and Sociable</title>
   <desc id="ut-desc">Two panels. Left: Solitary unit test - a test actor passes input to a Unit Under Test; all collaborators are replaced by Test Double boxes connected via dashed lines. Right: Sociable unit test - a test actor passes input to a Unit Under Test that uses real Collaborator objects; only external I/O is replaced by a Test Double.</desc>
 
