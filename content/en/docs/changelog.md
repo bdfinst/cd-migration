@@ -7,6 +7,14 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-12 - New Section: Evaluation and Quality
+
+Added three new pages under [Evaluation and Quality]({{< relref "/docs/agentic-cd/evaluation" >}}):
+
+- [AI Eval Methodology]({{< relref "/docs/agentic-cd/evaluation/ai-eval-methodology" >}}) - Three-layer grading framework (deterministic, transcript, LLM rubric) and eval development cycle for AI coding tools
+- [Team AI Evals]({{< relref "/docs/agentic-cd/evaluation/team-ai-evals" >}}) - Setting up eval infrastructure, writing positive and negative tests, choosing graders, and CI integration for team AI tools
+- [Platform AI Evals]({{< relref "/docs/agentic-cd/evaluation/platform-ai-evals" >}}) - Shared eval infrastructure, multi-plugin architecture, and meta-evaluation for AI enablement platforms
+
 ## 2026-03-12 - Add symptom page for test automation lag
 
 Added [Test Automation Always Lags Behind Development]({{< relref "/docs/symptoms/testing/test-automation-lags-development" >}}) to the testing symptoms section. Covers the pattern where manual QA runs first and automation is written from those results, including a before/after workflow diagram and causes linked to Testing Only at the End, Siloed QA Team, and Manual Testing Only.
