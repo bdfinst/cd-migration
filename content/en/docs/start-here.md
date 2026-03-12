@@ -73,7 +73,10 @@ For the full argument, see
 ## Where to Go Next
 
 - **[Triage]({{< relref "/docs/triage" >}})** - Answer a few questions to identify your most likely dysfunction.
-- **[Dysfunction Symptoms]({{< relref "/docs/symptoms" >}})** - Browse observable problems by category.
-- **[Migration Phases]({{< relref "/docs/migrate-to-cd" >}})** - A phased path from assessment
-  through continuous deployment.
-- **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for AI agent-generated changes.
+- **[Dysfunction Symptoms]({{< relref "/docs/symptoms" >}})** - Browse observable delivery problems by category and trace them back to root causes.
+- **[Anti-Patterns]({{< relref "/docs/anti-patterns" >}})** - A catalog of harmful practices organized by domain, each with root causes and remediation steps.
+- **[Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})** - A phased path from assessment through continuous deployment, covering both greenfield and brownfield contexts.
+- **[Improvement Plays]({{< relref "/docs/playbook" >}})** - Standalone plays teams can run independently to address specific delivery problems.
+- **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for safely incorporating AI agent-generated changes into your pipeline.
+- **[Architecting Tests for CD]({{< relref "/docs/testing" >}})** - Test types, architecture, and practices for building confidence in your delivery pipeline.
+- **[Reference]({{< relref "/docs/reference" >}})** - Practice definitions, metrics, glossary, and other supporting material.
