@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 - Assess**
+**Phase 0 - Assess** | {{< scope-label "team" >}}
 {{% /pageinfo %}}
 
 You cannot improve what you have not measured. Before making any changes to your delivery process,

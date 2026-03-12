@@ -362,6 +362,31 @@ pre.mermaid {
   background-color: #6c757d;
 }
 
+// Scope badges for migration guide pages
+.scope-label {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
+.scope-label--team {
+  background-color: #0d7a32;
+}
+
+.scope-label--team-org {
+  background-color: #b25000;
+}
+
+.scope-label--org {
+  background-color: #224968;
+}
+
 // Blocks-deploy indicator for testing matrix
 .blocks-deploy {
   color: #dc3545;

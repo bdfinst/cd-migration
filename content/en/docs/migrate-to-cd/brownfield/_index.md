@@ -114,6 +114,32 @@ CD adoption works best when a single team can experiment, learn, and iterate wit
 organizational consensus. Once one team demonstrates results, other teams have a concrete example
 to follow.
 
+## What Your Team Controls vs. What Requires Broader Change
+
+Not all brownfield challenges are yours to solve alone. Knowing the difference helps you
+prioritize what to start now and what to bring to management.
+
+**Your team controls directly:**
+
+- Incrementally adding tests to code you touch, reducing [branch lifetime]({{< relref "/docs/reference/glossary#branch-lifetime" >}}), and automating your
+  build and deployment steps
+- Documenting and then systematically replacing manual validation steps with automated
+  equivalents
+- Identifying and enforcing module boundaries within a monolith without reorganizing teams
+- Measuring your own delivery metrics and establishing a baseline to show improvement over time
+
+**Requires broader change:**
+
+- **Process handoffs to other teams:** If your deployment requires sign-off from a separate QA
+  or ops team, improving your deployment frequency requires changing how those teams engage with
+  your delivery pipeline - not just improving the pipeline itself.
+- **Shared environment access:** When your team competes with others for a shared staging
+  environment, resolving that bottleneck requires organizational action (dedicated environments,
+  self-service provisioning, or explicit time-slicing agreements).
+- **Management commitment to migration time:** Brownfield migration takes sustained investment
+  alongside feature delivery. If leadership expects the same feature throughput during the
+  migration, the migration will stall. Building this case with data is part of the work.
+
 ## Common Brownfield Challenges
 
 These challenges are specific to migrating existing systems. For the full catalog of problems

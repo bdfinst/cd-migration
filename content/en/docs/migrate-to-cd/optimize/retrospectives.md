@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize**
+**Phase 3 - Optimize** | {{< scope-label "team" >}}
 
 A retrospective is the team's primary mechanism for turning observations into improvements. Without effective retrospectives, [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits expose problems that nobody addresses, metrics trend in the wrong direction with no response, and the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration stalls.
 {{% /pageinfo %}}

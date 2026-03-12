@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team-org" >}}
 
 If it is not in version control, it does not exist. If it is not delivered through a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), it
 is a manual step. Manual steps block [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). This page establishes the principle that
@@ -146,6 +146,34 @@ ticket to another team, or a manual step, it is not.
 
 **The goal is for every row in this table to be "yes."** You will not get there overnight, but every
 artifact you move from manual to code-managed removes a bottleneck and a risk.
+
+## What Your Team Controls vs. What Requires Broader Change
+
+Some artifact types your team can move to code-managed delivery without involving anyone
+outside your boundary. Others depend on access, budget, or policy decisions beyond the team.
+
+**Your team controls directly:**
+
+- Application code versioning and pipeline definitions (if they live in your repository)
+- Database schema migrations (once your team owns the schema)
+- Application configuration management and [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) integration
+- Monitoring and alerting definitions for your own services
+
+**Requires broader change:**
+
+- **Infrastructure provisioning:** If a platform team or ops team manages cloud resources, you
+  need their involvement to move infrastructure to code. Start by proposing to own your own
+  service infrastructure, or work within a self-service platform they provide.
+- **Security policies:** Defining access policies and compliance checks as code typically
+  requires collaboration with a security or compliance team. The goal is to automate what they
+  currently do manually - frame it as making their work more consistent and auditable, not
+  bypassing their control.
+- **Closing manual back doors:** Revoking direct production access (SSH, console access) is an
+  organizational policy decision. Build the case with data: show that your pipeline is reliable
+  enough to be the only path before asking for the access to be revoked.
+
+Start with what you control, then make the case for organizational support using the reliability
+you have already demonstrated.
 
 ## How to Get There
 

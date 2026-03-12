@@ -7,6 +7,8 @@ description: >
 ---
 
 {{% pageinfo %}}
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
+
 Build automation is the single-command loop that makes [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) possible. If you cannot build, test, and package with one command, you cannot automate your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 {{% /pageinfo %}}
 

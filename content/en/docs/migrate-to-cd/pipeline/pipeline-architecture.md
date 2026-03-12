@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline**
+**Phase 2 - Pipeline** | {{< scope-label "team" >}}
 {{% /pageinfo %}}
 
 ## Definition

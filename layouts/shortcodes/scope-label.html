@@ -1,0 +1,4 @@
+{{- $level := .Get 0 | default (.Get "level") -}}
+{{- $labels := dict "team" "Scope: Team" "team-org" "Scope: Team + Org" "org" "Scope: Org" -}}
+{{- $label := index $labels $level | default (printf "Scope: %s" $level) -}}
+<span class="scope-label scope-label--{{ $level }}">{{ $label }}</span>

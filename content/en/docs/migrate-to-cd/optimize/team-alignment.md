@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Teams that own a domain end-to-end can deploy independently. Teams organized around technical layers cannot.
+**Phase 3 - Optimize** | {{< scope-label "org" >}} | Teams that own a domain end-to-end can deploy independently. Teams organized around technical layers cannot.
 {{% /pageinfo %}}
 
 ## How Team Structure Shapes Code

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline**
+**Phase 2 - Pipeline** | {{< scope-label "team-org" >}}
 {{% /pageinfo %}}
 
 ## Definition
@@ -177,6 +177,31 @@ automate this comparison.
 In Kubernetes or similar platforms, use namespaces to create isolated environments within
 a shared cluster. Each namespace gets its own set of services, databases, and
 configuration, providing isolation without the cost of separate clusters.
+
+## What Your Team Controls vs. What Requires Broader Change
+
+**Your team controls directly:**
+
+- Defining what "production-like" means for your service and what dimensions matter for your
+  tests (runtime, database version, service topology)
+- Writing environment parity tests and adding parity checks to your pipeline
+- Provisioning ephemeral environments for your own pull requests if your team has cloud access
+  or a self-service platform is available
+- Anonymizing and generating representative test data within your own data scope
+
+**Requires broader change:**
+
+- **Shared infrastructure:** If your staging environment is owned and operated by a platform or
+  ops team, improving parity requires their involvement. Frame it as a request for self-service
+  environment provisioning rather than a configuration change they have to maintain.
+- **Network access and firewall rules:** Production-like network topology often requires changes
+  to security groups and firewall rules that your team cannot make unilaterally.
+- **Cloud budget for ephemeral environments:** Spinning up an environment per pull request has
+  a cost. If your team does not have budget authority, you need to make the case to management
+  with the data on how much environment bottlenecks currently cost in developer wait time.
+
+Start with parity improvements within your control - matching database versions, fixing runtime
+mismatches - while building the case for organizational support on infrastructure ownership.
 
 ## How to Get Started
 

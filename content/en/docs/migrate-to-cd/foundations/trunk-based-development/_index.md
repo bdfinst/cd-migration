@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
 
 [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) is the first foundation to establish. Without daily integration to a shared trunk, the rest of the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
 {{% /pageinfo %}}

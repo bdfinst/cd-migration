@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Original content combining [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) recommendations and improvement kata
+**Phase 3 - Optimize** | {{< scope-label "team" >}} | Original content combining [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) recommendations and improvement kata
 
 Improvement without measurement is guesswork. This page combines the DORA four key metrics with the improvement kata pattern to create a systematic, repeatable approach to getting better at delivery.
 {{% /pageinfo %}}

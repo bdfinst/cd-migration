@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 2 - Pipeline**
+**Phase 2 - Pipeline** | {{< scope-label "team-org" >}}
 {{% /pageinfo %}}
 
 ## Definition
@@ -202,6 +202,31 @@ function newCheckoutFlow() {
 // Final commit: wire it up
 <button onClick={newCheckoutFlow}>Checkout</button>
 {{< /card >}}
+
+## What Your Team Controls vs. What Requires Broader Change
+
+**Your team controls directly:**
+
+- Building and consolidating your own pipeline so all your changes flow through one path
+- Replacing multiple branch-based workflows (GitFlow, hotfix branches) with trunk-based
+  development and [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}})
+- Making your pipeline fast enough to handle urgent fixes without needing a shortcut
+- Eliminating environment-specific pipelines within your own service boundary
+
+**Requires broader change:**
+
+- **Revoking direct production access:** Removing SSH access and console-based deployment
+  rights requires coordination with security, operations, and often management. Build trust in
+  your pipeline before asking for access to be revoked - prove it is reliable first.
+- **Compliance-required manual gates:** If an audit or regulatory requirement mandates a human
+  sign-off before production deployment, removing that gate requires engaging your compliance or
+  security team to find an automated equivalent that satisfies the same requirement.
+- **Emergency procedures:** "Break glass" runbooks that allow bypassing the pipeline in
+  incidents are usually owned by operations or SRE teams. Work with them to make your pipeline
+  the fastest path, so the break-glass procedure is genuinely a last resort.
+
+The organizational steps are harder, but the technical steps - building a reliable, fast
+pipeline - are the prerequisite that makes the organizational conversation possible.
 
 ## How to Get Started
 
