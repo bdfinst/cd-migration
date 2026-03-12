@@ -368,6 +368,8 @@ sections:
                 title: "Distant Date Commitments"
               - file: estimation-theater.md
                 title: "Estimation Theater"
+              - file: dora-metrics-as-goals.md
+                title: "DORA Metrics as Delivery Improvement Goals"
               - file: velocity-as-individual-metric.md
                 title: "Velocity as Individual Metric"
               - file: velocity-as-team-metric.md
@@ -518,6 +520,14 @@ sections:
             title: "Experience Reports"
           - file: progressive-rollout.md
             title: "Progressive Rollout"
+
+  # ---- Improvement Plays (weight 7) ----
+
+  - path: docs/playbook/
+    title: "Improvement Plays"
+    weight: 7
+    purpose: "Standalone improvement plays teams can run independently or as part of a CD migration. Each play covers what it is, why to do it, how to measure success, and links to related content."
+    pages: []  # Section landing page only; plays are inline on the index
 
   # ---- Agentic CD (weight 9) ----
 

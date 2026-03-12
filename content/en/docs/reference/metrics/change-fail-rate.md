@@ -3,7 +3,7 @@ title: "Change Fail Rate"
 linkTitle: "Change Fail Rate"
 weight: 5
 description: >
-  Percentage of production deployments that cause a failure or require remediation. A DORA key metric for delivery stability.
+  Percentage of production deployments that cause a failure or require remediation. A DORA lagging outcome metric for delivery stability.
 ---
 
 ## Definition
@@ -26,6 +26,10 @@ A "failed change" includes any deployment that:
 This is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics. It measures the stability side of
 delivery performance, complementing the throughput metrics of
 [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}).
+Change Fail Rate is a lagging outcome metric: it reflects the cumulative quality of your
+test coverage, change size practices, and pipeline gates. The leading indicator to improve
+first is [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), since smaller batches
+fail less often and are easier to diagnose.
 
 ## How to Measure
 

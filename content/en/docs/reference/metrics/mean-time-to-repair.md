@@ -3,7 +3,7 @@ title: "Mean Time to Repair"
 linkTitle: "Mean Time to Repair"
 weight: 6
 description: >
-  Average time from when a production incident is detected until service is restored. A DORA key metric for recovery capability.
+  Average time from when a production incident is detected until service is restored. A DORA lagging outcome metric for recovery capability.
 ---
 
 ## Definition
@@ -24,6 +24,11 @@ automated deployments, good observability, and practiced incident response.
 The *Accelerate* research identifies MTTR as one of the four key [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) and
 notes that "software delivery performance is a combination of lead time, release
 frequency, and MTTR." It is the stability counterpart to the throughput metrics.
+MTTR is a lagging outcome metric: it reflects the combined effectiveness of observability,
+rollback capability, pipeline speed, and incident response practices. The leading indicators
+to address first are [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) (which sets the floor
+on how fast a fix can be deployed) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}})
+(teams that deploy often have well-rehearsed recovery procedures).
 
 ## How to Measure
 

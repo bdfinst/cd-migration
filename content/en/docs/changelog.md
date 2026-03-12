@@ -7,6 +7,14 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-12 - Improve leading vs lagging metrics framing across site
+
+Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to lead with CI health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
+
+## 2026-03-12 - Add Improvement Plays section
+
+Added [Improvement Plays]({{< relref "/docs/playbook" >}}) as a new top-level section. Eight standalone plays covering common delivery challenges: baseline metrics, story slicing, stopping the line, deleting long-lived branches, test-before-fix, pipeline automation, WIP limits, and definition of deployable.
+
 ## 2026-03-12 - Add symptom page for test automation lag
 
 Added [Test Automation Always Lags Behind Development]({{< relref "/docs/symptoms/testing/test-automation-lags-development" >}}) to the testing symptoms section. Covers the pattern where manual QA runs first and automation is written from those results, including a before/after workflow diagram and causes linked to Testing Only at the End, Siloed QA Team, and Manual Testing Only.

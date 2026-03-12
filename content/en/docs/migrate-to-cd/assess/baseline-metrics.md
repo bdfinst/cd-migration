@@ -35,8 +35,14 @@ useful than no measurement at all.
 ## The Four Essential Metrics
 
 The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research program (now part of Google Cloud) identified four key metrics that predict
-software delivery performance and organizational outcomes. These are the metrics you should
-baseline first.
+software delivery performance and organizational outcomes. Capture these as your starting
+baseline.
+
+These are lagging outcome metrics. They reflect the cumulative effect of many upstream behaviors
+and move slowly as those behaviors change. Recording them now gives you an honest "before"
+picture and a reference point for measuring progress months into the migration. Once you begin
+improving, track [CI health metrics]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement#ci-health-metrics" >}})
+as your primary leading indicators: they surface problems and confirm progress immediately.
 
 ### 1. Deployment Frequency
 
