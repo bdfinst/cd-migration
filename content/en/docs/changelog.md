@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-13 - Add DORA benchmarking symptom page
+
+Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat DORA metrics as performance targets rather than diagnostic tools.
+
 ## 2026-03-12 - Add Team Chatbot page
 
 Added [Team Chatbot]({{< relref "/docs/team-chatbot" >}}) - a downloadable facilitator chatbot setup that teams paste into any LLM to get a CD migration guide that diagnoses their situation and points to relevant site resources.

@@ -194,12 +194,14 @@ sections:
 
       - path: visibility/
         title: "Production Visibility and Team Health"
-        page_count: 9
+        page_count: 10
         pages:
           - file: alert-fatigue.md
             title: "The Team Ignores Alerts Because There Are Too Many"
           - file: chaotic-incident-response.md
             title: "When Something Breaks, Nobody Knows What to Do"
+          - file: chasing-dora-benchmarks.md
+            title: "The Team Is Chasing DORA Benchmarks"
           - file: logs-without-insight.md
             title: "Logs Exist but Cannot Be Searched or Correlated"
           - file: no-leadership-buy-in.md
@@ -745,7 +747,7 @@ standalone_pages:
 totals:
   top_level_sections: 6  # triage, symptoms, anti-patterns, migrate-to-cd, agentic-cd, reference
   subsections: 24  # symptoms(4 + 4 flow subs) + anti-patterns(6 + 3 org-cultural subs) + migrate-to-cd(6 + 1 tbd sub) + agentic-cd(4) + reference(5)
-  symptom_pages: 66  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 9 visibility + 2 root-level(for-developers, for-managers) - note: flow _index.md pages not counted
+  symptom_pages: 67  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 10 visibility + 2 root-level(for-developers, for-managers) - note: flow _index.md pages not counted
   anti_pattern_pages: 64  # 7 team-workflow + 4 branching + 9 testing + 12 pipeline + 26 org-cultural(10+9+7) + 1 monitoring + 5 architecture
   migration_guide_pages: 32  # 2 brownfield + 0 greenfield + 4 assess + 7 foundations(6+1 tbd) + 8 pipeline + 8 optimize + 3 continuous-deployment
   agentic_cd_pages: 14
