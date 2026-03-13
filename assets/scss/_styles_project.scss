@@ -1242,6 +1242,193 @@ pre.mermaid {
 }
 
 // ---------------------------------------------------------------------------
+// Triage questionnaire - interactive symptom finder
+// ---------------------------------------------------------------------------
+
+#triage-questionnaire {
+  max-width: 680px;
+  margin: 1.5rem 0;
+
+  .triage-breadcrumb {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4a6a8a;
+    margin-bottom: 0.75rem;
+    min-height: 1.2em;
+  }
+
+  .triage-card {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .triage-context {
+    font-size: 0.85rem;
+    color: #4a6a8a;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-question-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 1rem;
+  }
+
+  .triage-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .triage-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #c8d8e8;
+    border-left: 3px solid #c8d8e8;
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    color: #1a2a3a;
+    cursor: pointer;
+    white-space: normal;
+    min-height: 2.5rem;
+    transition: border-color 0.12s, background 0.12s, color 0.12s;
+
+    &:hover {
+      border-color: #30648e;
+      border-left-color: #224968;
+      background: #edf2f7;
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+  }
+
+  // Result card
+  .triage-reframe {
+    border-left: 4px solid #026f27;
+    background: rgba(13, 122, 50, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .triage-reframe-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #026f27;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-reframe-text {
+    font-size: 0.9rem;
+    color: #1a2a3a;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .triage-result-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a2a3a;
+    margin: 0 0 1rem;
+    border: none;
+    padding: 0;
+  }
+
+  .triage-result-cta {
+    display: inline-block;
+    background: #224968;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background: #1a3a54;
+      text-decoration: none;
+      color: #fff !important;
+    }
+  }
+
+  .triage-also-see-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4a6a8a;
+    margin-bottom: 0.25rem;
+  }
+
+  .triage-also-see {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  // Navigation buttons
+  .triage-nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .triage-back,
+  .triage-restart {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+  }
+
+  // Mobile
+  @media (max-width: 600px) {
+    .triage-card {
+      padding: 1.1rem 1.1rem;
+    }
+
+    .triage-option {
+      font-size: 0.85rem;
+      padding: 0.55rem 0.75rem;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Tabpane - visually obvious tabs matching site palette
 // ---------------------------------------------------------------------------
 

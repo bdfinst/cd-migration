@@ -1,0 +1,315 @@
+{{- $data := site.Data.triage -}}
+
+<noscript>
+<details>
+<summary><strong>We have problems with our tests</strong></summary>
+
+<details>
+<summary>Tests pass sometimes and fail sometimes without code changes</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/testing/flaky-tests/">Tests Randomly Pass or Fail</a></strong> - Pipeline fails, rerun passes, nobody investigates</li>
+<li><strong><a href="/docs/symptoms/testing/environment-dependent-failures/">Tests Pass in One Environment but Fail in Another</a></strong> - Works locally, fails in CI, or the reverse</li>
+</ul>
+</details>
+
+<details>
+<summary>We have good coverage numbers but bugs still reach production</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/testing/high-coverage-ineffective-tests/">High Coverage but Tests Miss Defects</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>The test suite takes too long to run</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/testing/slow-test-suites/">Test Suite Is Too Slow to Run</a></strong></li>
+<li><strong><a href="/docs/symptoms/testing/slow-test-environment-reset/">Test Environments Take Too Long to Reset Between Runs</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/integration/slow-pipelines/">Pipelines Take Too Long</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>We never have enough test automation</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/testing/test-automation-lags-development/">Test Automation Always Lags Behind Development</a></strong></li>
+<li><strong><a href="/docs/symptoms/testing/legacy-system-no-tests/">A Large Codebase Has No Automated Tests</a></strong></li>
+</ul>
+</details>
+
+</details>
+
+<details>
+<summary><strong>Deploying and releasing is painful</strong></summary>
+
+<details>
+<summary>The team avoids or dreads deployments</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/deployment/fear-of-deploying/">The Team Is Afraid to Deploy</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/infrequent-releases/">Teams That Deploy Infrequently</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>We need a stabilization period before each release</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/deployment/hardening-sprints/">Hardening Sprints Are Needed Before Every Release</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>Deployments require coordination or approvals</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/deployment/coordinated-deployments/">Multiple Services Must Be Deployed Together</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/change-management-overhead/">Every Change Requires a Ticket and Approval Chain</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/waiting-for-cross-team-approval/">Work Requires Sign-Off from Teams Not Involved in Delivery</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/release-manager-bottleneck/">Releases Depend on One Person</a></strong></li>
+</ul>
+</details>
+
+</details>
+
+<details>
+<summary><strong>Work piles up and moves slowly</strong></summary>
+
+<details>
+<summary>Everything is in progress but nothing is finishing</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/flow/work-management/too-much-wip/">Everything Started, Nothing Finished</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/work-management/blocked-work-sits-idle/">Blocked Work Sits Idle</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>Code integration is slow or painful</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/flow/integration/painful-merges/">Merging Is Painful and Time-Consuming</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/integration/prs-waiting-for-review/">Pull Requests Sit for Days Waiting for Review</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/integration/no-fast-feedback/">Feedback Takes Hours Instead of Minutes</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/integration/slow-pipelines/">Pipelines Take Too Long</a></strong></li>
+</ul>
+</details>
+
+</details>
+
+<details>
+<summary><strong>We don't know what's happening in prod</strong></summary>
+
+<details>
+<summary>Monitoring or alerting is not working</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/visibility/alert-fatigue/">The Team Ignores Alerts</a></strong></li>
+<li><strong><a href="/docs/symptoms/visibility/slow-detection/">Production Problems Are Discovered Hours or Days Late</a></strong></li>
+<li><strong><a href="/docs/symptoms/visibility/production-issues-found-by-customers/">Production Issues Discovered by Customers</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary>Incidents and failures are hard to handle</summary>
+<ul>
+<li><strong><a href="/docs/symptoms/visibility/chaotic-incident-response/">When Something Breaks, Nobody Knows What to Do</a></strong></li>
+<li><strong><a href="/docs/symptoms/visibility/works-on-my-machine/">It Works on My Machine</a></strong></li>
+</ul>
+</details>
+
+</details>
+
+<details>
+<summary><strong>A person or team is a bottleneck</strong></summary>
+<ul>
+<li><strong><a href="/docs/symptoms/deployment/release-manager-bottleneck/">Releases Depend on One Person</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/pipeline-changes-require-another-team/">Teams Cannot Change Their Own Pipeline</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/work-management/waiting-on-platform-team/">Teams Are Blocked Waiting on a Platform Team</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/waiting-on-qa-team/">Features Must Wait for a Separate QA Team</a></strong></li>
+<li><strong><a href="/docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag/">Knowledge Concentration Slows the Team</a></strong></li>
+</ul>
+</details>
+
+<details>
+<summary><strong>Leadership or process is blocking us</strong></summary>
+<ul>
+<li><strong><a href="/docs/symptoms/visibility/no-leadership-buy-in/">Leadership Sees CD as a Technical Nice-to-Have</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/change-management-overhead/">Every Change Requires a Ticket and Approval Chain</a></strong></li>
+<li><strong><a href="/docs/symptoms/deployment/hardening-sprints/">Hardening Sprints Are Needed Before Every Release</a></strong></li>
+</ul>
+</details>
+</noscript>
+
+<div id="triage-questionnaire" style="display:none">
+  <div class="triage-breadcrumb" id="triage-breadcrumb" aria-live="polite"></div>
+
+  <div class="triage-card" id="triage-card" role="region" aria-label="Triage questionnaire"></div>
+
+  <div class="triage-nav">
+    <button class="triage-back" id="triage-back" style="display:none" type="button">Back</button>
+    <button class="triage-restart" id="triage-restart" type="button">Start over</button>
+  </div>
+</div>
+
+{{- /*
+  safeJS is required here. Hugo's html/template applies JavaScript context escaping
+  inside <script> tags: jsonify returns a Go string value, which the template engine
+  would JSON-encode again into a string literal. safeJS marks the value as trusted JS,
+  bypassing that double-encoding so the browser receives valid JSON, not a quoted string.
+*/ -}}
+<script type="application/json" id="triage-data">{{ $data | jsonify | safeJS }}</script>
+
+<script>
+(function () {
+  var dataEl = document.getElementById('triage-data');
+  if (!dataEl) { return; }
+  var TRIAGE_DATA = JSON.parse(dataEl.textContent);
+
+  var questionsById = {};
+  var resultsById = {};
+
+  TRIAGE_DATA.questions.forEach(function (q) { questionsById[q.id] = q; });
+  TRIAGE_DATA.results.forEach(function (r) { resultsById[r.id] = r; });
+
+  // Dev-mode validation: warn on dangling next pointers
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    TRIAGE_DATA.questions.forEach(function (q) {
+      (q.options || []).forEach(function (opt) {
+        var next = opt.next;
+        if (next.indexOf('result:') === 0) {
+          var rid = next.slice(7);
+          if (!resultsById[rid]) {
+            console.warn('[triage] Dangling result pointer: "' + rid + '" in question "' + q.id + '"');
+          }
+        } else {
+          if (!questionsById[next]) {
+            console.warn('[triage] Dangling question pointer: "' + next + '" in question "' + q.id + '"');
+          }
+        }
+      });
+    });
+  }
+
+  var state = { type: 'question', id: 'start' };
+  var history = [];
+
+  function navigate(nextValue) {
+    history.push({ type: state.type, id: state.id });
+    if (nextValue.indexOf('result:') === 0) {
+      state = { type: 'result', id: nextValue.slice(7) };
+    } else {
+      state = { type: 'question', id: nextValue };
+    }
+    window.history.replaceState(null, '', '#' + (state.type === 'result' ? 'r' : 'q') + '-' + state.id);
+    renderCurrent();
+  }
+
+  function back() {
+    if (history.length === 0) return;
+    state = history.pop();
+    window.history.replaceState(null, '', '#' + (state.type === 'result' ? 'r' : 'q') + '-' + state.id);
+    renderCurrent();
+  }
+
+  function reset() {
+    history = [];
+    state = { type: 'question', id: 'start' };
+    window.history.replaceState(null, '', window.location.pathname);
+    renderCurrent();
+  }
+
+  function escape(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderCurrent() {
+    var backBtn = document.getElementById('triage-back');
+    var breadcrumb = document.getElementById('triage-breadcrumb');
+    var card = document.getElementById('triage-card');
+
+    backBtn.style.display = history.length > 0 ? 'inline-block' : 'none';
+
+    if (history.length === 0) {
+      breadcrumb.textContent = '';
+    } else {
+      breadcrumb.textContent = 'Step ' + (history.length + 1);
+    }
+
+    if (state.type === 'question') {
+      renderQuestion(card, questionsById[state.id]);
+    } else {
+      renderResult(card, resultsById[state.id]);
+    }
+  }
+
+  function renderQuestion(card, q) {
+    if (!q) {
+      card.innerHTML = '<p>Question not found.</p>';
+      return;
+    }
+    var html = '<div class="triage-question">';
+    if (q.context) {
+      html += '<p class="triage-context">' + escape(q.context) + '</p>';
+    }
+    html += '<p class="triage-question-text">' + escape(q.text) + '</p>';
+    html += '<div class="triage-options">';
+    (q.options || []).forEach(function (opt) {
+      html += '<button class="triage-option" data-next="' + escape(opt.next) + '" type="button">' + escape(opt.label) + '</button>';
+    });
+    html += '</div></div>';
+    card.innerHTML = html;
+  }
+
+  function renderResult(card, r) {
+    if (!r) {
+      card.innerHTML = '<p>Result not found.</p>';
+      return;
+    }
+    var html = '<div class="triage-result">';
+    html += '<div class="triage-reframe">';
+    html += '<p class="triage-reframe-label">The real problem may be:</p>';
+    html += '<p class="triage-reframe-text">' + escape(r.reframe) + '</p>';
+    html += '</div>';
+    html += '<h3 class="triage-result-title">' + escape(r.title) + '</h3>';
+    html += '<a class="triage-result-cta" href="' + escape(r.symptom_path) + '/">Read the symptom page</a>';
+    if (r.also_see && r.also_see.length > 0) {
+      html += '<p class="triage-also-see-label">Also see:</p><ul class="triage-also-see">';
+      r.also_see.forEach(function (link) {
+        html += '<li><a href="' + escape(link.path) + '/">' + escape(link.label) + '</a></li>';
+      });
+      html += '</ul>';
+    }
+    html += '</div>';
+    card.innerHTML = html;
+  }
+
+  // Event delegation for option buttons
+  document.getElementById('triage-card').addEventListener('click', function (e) {
+    var btn = e.target.closest('.triage-option');
+    if (btn) {
+      navigate(btn.getAttribute('data-next'));
+    }
+  });
+
+  document.getElementById('triage-back').addEventListener('click', back);
+  document.getElementById('triage-restart').addEventListener('click', reset);
+
+  // Deep link support: read hash on load
+  var hash = window.location.hash;
+  if (hash) {
+    if (hash.indexOf('#q-') === 0) {
+      var qid = hash.slice(3);
+      if (questionsById[qid]) {
+        state = { type: 'question', id: qid };
+      }
+    } else if (hash.indexOf('#r-') === 0) {
+      var rid = hash.slice(3);
+      if (resultsById[rid]) {
+        state = { type: 'result', id: rid };
+      }
+    }
+  }
+
+  // Show the interactive widget and render
+  document.getElementById('triage-questionnaire').style.display = 'block';
+  renderCurrent();
+})();
+</script>

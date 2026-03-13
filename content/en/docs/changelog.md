@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-13 - Replace triage accordion with interactive questionnaire
+
+Replaced the static nested accordion on [Find Your Symptom]({{< relref "/docs/triage" >}}) with an interactive probing questionnaire. The questionnaire asks about the presenting problem, then probes deeper to surface the real underlying cause before linking to the symptom page. Question tree and results are defined in `data/triage.yaml`; deep linking via URL hash is supported.
+
 ## 2026-03-13 - Add DORA benchmarking symptom page
 
 Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat DORA metrics as performance targets rather than diagnostic tools.

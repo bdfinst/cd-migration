@@ -15,7 +15,7 @@ sections:
   - path: docs/triage/
     title: "Find Your Symptom"
     weight: 3
-    purpose: "Interactive triage guide that helps teams narrow down which dysfunction symptom matches their situation."
+    purpose: "Interactive questionnaire that probes beyond the surface problem to surface the real underlying cause, then links to the relevant symptom page. Driven by data/triage.yaml; rendered by layouts/shortcodes/triage-questionnaire.html."
     pages: []  # Section landing page only; no child pages
 
   - path: docs/symptoms/
