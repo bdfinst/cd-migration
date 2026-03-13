@@ -267,6 +267,20 @@ results:
       phase - it starts after development ends. The fix is structural: tests must be
       written as part of finishing each story, not as a follow-up activity.
     symptom_path: /docs/symptoms/testing/test-automation-lags-development
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/testing-only-at-the-end
+        label: "Testing Only at the End"
+      - path: /docs/anti-patterns/testing/qa-signoff-gate
+        label: "QA Sign-Off Gate"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+        label: "Replace Manual Validations"
+    measures:
+      - "Stories with no automation: should trend toward zero"
+      - "Time from code complete to merge: falls when testing is not a separate phase"
+      - "Bug escape rate: fewer defects reach QA or production"
     also_see:
       - path: /docs/symptoms/deployment/waiting-on-qa-team
         label: "Features Must Wait for a Separate QA Team"
@@ -279,6 +293,20 @@ results:
       that guarantees delay. The constraint is the organizational boundary, not the
       number of people.
     symptom_path: /docs/symptoms/deployment/waiting-on-qa-team
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team
+        label: "Siloed QA Team"
+      - path: /docs/anti-patterns/testing/qa-signoff-gate
+        label: "QA Sign-Off Gate"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+        label: "Replace Manual Validations"
+    measures:
+      - "Feature lead time: shrinks when QA is no longer a separate queue"
+      - "Deployment frequency: increases once the QA bottleneck is removed"
+      - "Test coverage per story: grows as developers own their own testing"
 
   - id: fear-of-deploying
     title: "The Team Is Afraid to Deploy"
@@ -287,6 +315,24 @@ results:
       The fear is rational, but the response - larger batches, more manual verification
       - is making the problem worse. The fix is smaller batches and automated deployment.
     symptom_path: /docs/symptoms/deployment/fear-of-deploying
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/manual-deployments
+        label: "Manual Deployments"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/sprint-boundary-deployments
+        label: "Deployments Tied to Sprint Boundaries"
+      - path: /docs/anti-patterns/branching-integration/integration-deferred
+        label: "Integration Deferred Too Long"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+        label: "Pipeline Architecture"
+      - path: /docs/migrate-to-cd/optimize/small-batches
+        label: "Work in Small Batches"
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+    measures:
+      - "Deployment frequency: rising toward weekly, then daily"
+      - "Change failure rate: falls as smaller batches contain less risk"
+      - "Team sentiment: deployments stop being treated as events requiring full-team presence"
     also_see:
       - path: /docs/symptoms/deployment/infrequent-releases
         label: "Teams That Deploy Infrequently"
@@ -299,6 +345,24 @@ results:
       because components were not tested together until the end. This is an integration
       problem, not a testing capacity problem.
     symptom_path: /docs/symptoms/deployment/hardening-sprints
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/hardening-sprints
+        label: "Hardening Sprints Anti-Pattern"
+      - path: /docs/anti-patterns/testing/testing-only-at-the-end
+        label: "Testing Only at the End"
+      - path: /docs/anti-patterns/branching-integration/integration-deferred
+        label: "Integration Deferred Too Long"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy
+        label: "Pipeline Test Strategy"
+      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+        label: "Replace Manual Validations"
+      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+        label: "Adopt Trunk-Based Development"
+    measures:
+      - "Hardening sprint duration: should shrink toward zero"
+      - "Integration defects per release: falls as components are tested together continuously"
+      - "Time from feature complete to ship: shortens when there is no stabilization phase"
 
   - id: alert-fatigue
     title: "The Team Ignores Alerts Because There Are Too Many"
@@ -308,6 +372,16 @@ results:
       alert requires a human judgment call about whether to act, the team stops trusting
       the system.
     symptom_path: /docs/symptoms/visibility/alert-fatigue
+    anti_patterns:
+      - path: /docs/anti-patterns/monitoring-observability/blind-operations
+        label: "Blind Operations"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+    measures:
+      - "Alert action rate: percentage of alerts that result in a human action should increase"
+      - "Mean time to acknowledge: falls when alerts are trustworthy"
+      - "Muted or silenced alerts: should trend toward zero"
 
   - id: slow-detection
     title: "Production Problems Are Discovered Hours or Days Late"
@@ -316,6 +390,18 @@ results:
       many users have been affected and the causal change is buried in subsequent work.
       This is an observability gap, not a monitoring configuration problem.
     symptom_path: /docs/symptoms/visibility/slow-detection
+    anti_patterns:
+      - path: /docs/anti-patterns/monitoring-observability/blind-operations
+        label: "Blind Operations"
+      - path: /docs/anti-patterns/pipeline/no-deployment-health-checks
+        label: "No Deployment Health Checks"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+    measures:
+      - "Mean time to detect: should fall from hours or days toward minutes"
+      - "Customer-reported issues: fewer incidents where users find the problem before monitoring"
+      - "Post-deploy anomaly detection time: should be measurable in minutes"
 
   - id: production-issues-found-by-customers
     title: "Production Issues Discovered by Customers"
@@ -324,6 +410,16 @@ results:
       wrong. This is not about adding more alerts - it is about knowing what normal
       looks like so anomalies are visible immediately.
     symptom_path: /docs/symptoms/visibility/production-issues-found-by-customers
+    anti_patterns:
+      - path: /docs/anti-patterns/monitoring-observability/blind-operations
+        label: "Blind Operations"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+    measures:
+      - "Ratio of internal to customer-detected defects: should shift heavily toward internal"
+      - "Mean time to detect: falls as monitoring covers actual user-facing behavior"
+      - "Support ticket volume for production bugs: decreases as detection improves"
 
   - id: no-leadership-buy-in
     title: "Leadership Sees CD as a Technical Nice-to-Have"
@@ -332,6 +428,22 @@ results:
       current delivery process. The conversation needs to move from technical practices
       to delivery outcomes: lead time, change fail rate, time spent on unplanned work.
     symptom_path: /docs/symptoms/visibility/no-leadership-buy-in
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/misaligned-incentives
+        label: "Misaligned Incentives"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-improvement-time
+        label: "No Time for Improvement"
+      - path: /docs/anti-patterns/organizational-cultural/planning/were-different-mindset
+        label: "The 'We're Different' Mindset"
+    solutions:
+      - path: /docs/migrate-to-cd/assess/baseline-metrics
+        label: "Establish Baseline Metrics"
+      - path: /docs/migrate-to-cd/optimize/metrics-driven-improvement
+        label: "Metrics-Driven Improvement"
+    measures:
+      - "Improvement backlog: leadership-sponsored items appear regularly"
+      - "Time allocated to improvement: team has protected capacity for CD work"
+      - "Delivery metrics visibility: DORA metrics are tracked and reviewed by leadership"
 
   - id: flaky-tests
     title: "Tests Randomly Pass or Fail"
@@ -340,6 +452,22 @@ results:
       shared state, timing dependencies, or external system coupling - not about your
       code. Reruns hide the problem; investigation reveals it.
     symptom_path: /docs/symptoms/testing/flaky-tests
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/shared-test-environments
+        label: "Shared Test Environments"
+      - path: /docs/anti-patterns/pipeline/no-environment-parity
+        label: "No Environment Parity"
+      - path: /docs/anti-patterns/testing/inverted-test-pyramid
+        label: "Inverted Test Pyramid"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+        label: "Deterministic Pipeline"
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+    measures:
+      - "Flaky test count: tracked and trending downward"
+      - "Pipeline rerun rate: decreases as non-determinism is eliminated"
+      - "Developer trust in the pipeline: teams stop treating failures as noise"
 
   - id: environment-dependent-failures
     title: "Tests Pass in One Environment but Fail in Another"
@@ -348,6 +476,22 @@ results:
       Tests should be deterministic regardless of where they run. The fix is environment
       parity, not more reruns.
     symptom_path: /docs/symptoms/testing/environment-dependent-failures
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/no-environment-parity
+        label: "No Environment Parity"
+      - path: /docs/anti-patterns/pipeline/snowflake-environments
+        label: "Snowflake Environments"
+      - path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions
+        label: "Hardcoded Environment Assumptions"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+      - path: /docs/migrate-to-cd/foundations/everything-as-code
+        label: "Everything as Code"
+    measures:
+      - "Environment-specific failures: should approach zero as parity improves"
+      - "Time spent on 'works locally, fails in CI' investigation: decreases"
+      - "Environment provisioning time: shrinks as infrastructure is codified"
 
   - id: high-coverage-ineffective
     title: "High Coverage but Tests Miss Defects"
@@ -356,6 +500,18 @@ results:
       asserting implementation details rather than outcomes will pass while real defects
       go undetected. Coverage is the wrong metric here.
     symptom_path: /docs/symptoms/testing/high-coverage-ineffective-tests
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/code-coverage-mandates
+        label: "Coverage Percentage Mandates"
+      - path: /docs/anti-patterns/testing/inverted-test-pyramid
+        label: "Inverted Test Pyramid"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test
+        label: "What to Test"
+    measures:
+      - "Defects reaching production: falls even if coverage percentage stays flat"
+      - "Tests that break on refactor without behavior change: should decrease"
+      - "Defect detection shift left: more bugs found in CI, fewer in production"
 
   - id: refactoring-breaks-tests
     title: "Refactoring Breaks Tests"
@@ -364,6 +520,16 @@ results:
       internal change even when behavior is unchanged. This is a test design problem:
       tests should specify what the code does, not how it does it.
     symptom_path: /docs/symptoms/testing/refactoring-breaks-tests
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/inverted-test-pyramid
+        label: "Inverted Test Pyramid"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test
+        label: "What to Test"
+    measures:
+      - "Test failures on safe refactors: should decrease as tests target behavior"
+      - "Refactoring velocity: time to complete internal changes without external behavior change"
+      - "Ratio of unit to integration to e2e tests: shifting toward the base of the pyramid"
 
   - id: slow-test-suites
     title: "Test Suite Is Too Slow to Run"
@@ -372,6 +538,18 @@ results:
       in faster hardware or parallelization, check whether the test pyramid is inverted.
       The fix is usually test design, not infrastructure.
     symptom_path: /docs/symptoms/testing/slow-test-suites
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/inverted-test-pyramid
+        label: "Inverted Test Pyramid"
+      - path: /docs/anti-patterns/testing/manual-testing-only
+        label: "Manual Testing Only"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy
+        label: "Pipeline Test Strategy"
+    measures:
+      - "Local test suite runtime: target under 10 minutes for developer feedback"
+      - "Developer skip rate: how often the suite is not run before push"
+      - "Proportion of fast unit tests: should increase as the test pyramid is corrected"
 
   - id: slow-test-environment-reset
     title: "Test Environments Take Too Long to Reset Between Runs"
@@ -380,6 +558,20 @@ results:
       environment dependency problem. Tests that require real infrastructure resets are
       integration tests by nature - and they are expensive.
     symptom_path: /docs/symptoms/testing/slow-test-environment-reset
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/shared-test-environments
+        label: "Shared Test Environments"
+      - path: /docs/anti-patterns/pipeline/snowflake-environments
+        label: "Snowflake Environments"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+        label: "Deterministic Pipeline"
+    measures:
+      - "Environment setup time per test run: should decrease significantly"
+      - "Test isolation: tests should be runnable in any order without shared state"
+      - "Infrastructure-dependent test count: fewer tests requiring full environment resets"
 
   - id: slow-pipelines
     title: "Pipelines Take Too Long"
@@ -388,6 +580,20 @@ results:
       minute developers are context-switching and a minute defects are not yet caught.
       Pipeline optimization is a delivery throughput problem.
     symptom_path: /docs/symptoms/flow/integration/slow-pipelines
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/no-build-caching
+        label: "No Build Caching"
+      - path: /docs/anti-patterns/testing/inverted-test-pyramid
+        label: "Inverted Test Pyramid"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+        label: "Deterministic Pipeline"
+      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+        label: "Pipeline Architecture"
+    measures:
+      - "Pipeline duration: target under 10 minutes for the main feedback loop"
+      - "Commit-to-feedback time: how long until a developer knows if their change is green"
+      - "Context-switch rate: developers should not need to move to other work while waiting"
 
   - id: no-fast-feedback
     title: "Feedback Takes Hours Instead of Minutes"
@@ -396,6 +602,20 @@ results:
       If feedback takes hours, problems are always discovered after more work has been
       built on top of them.
     symptom_path: /docs/symptoms/flow/integration/no-fast-feedback
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/missing-deployment-pipeline
+        label: "No Deployment Pipeline"
+      - path: /docs/anti-patterns/testing/manually-triggered-tests
+        label: "Manually Triggered Tests"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+        label: "Pipeline Architecture"
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+    measures:
+      - "Time from commit to first automated feedback: target under 10 minutes"
+      - "Defect detection lag: how old is a bug when first found"
+      - "Manual trigger frequency: every test run should be automatic on commit"
 
   - id: too-much-wip
     title: "Everything Started, Nothing Finished"
@@ -404,6 +624,20 @@ results:
       the team has more in-flight work than capacity to complete it, each item takes
       longer and finishing rates drop further. Reducing WIP limits is the leverage point.
     symptom_path: /docs/symptoms/flow/work-management/too-much-wip
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/unbounded-wip
+        label: "Unbounded Work in Progress"
+      - path: /docs/anti-patterns/team-workflow/push-based-work-assignment
+        label: "Push-Based Work Assignment"
+    solutions:
+      - path: /docs/migrate-to-cd/optimize/limiting-wip
+        label: "Limit Work in Progress"
+      - path: /docs/migrate-to-cd/optimize/small-batches
+        label: "Work in Small Batches"
+    measures:
+      - "Average WIP count: falls as limits are enforced"
+      - "Cycle time: how long from start to done - should shrink"
+      - "Finishing rate: items completed per sprint or week should increase"
 
   - id: work-items-take-too-long
     title: "Work Items Take Days or Weeks to Complete"
@@ -412,6 +646,18 @@ results:
       and too large to estimate reliably. Work decomposition is the fix - not faster
       developers or better estimates.
     symptom_path: /docs/symptoms/flow/work-management/work-items-take-too-long
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/monolithic-work-items
+        label: "Monolithic Work Items"
+      - path: /docs/anti-patterns/team-workflow/big-bang-feature-delivery
+        label: "Big-Bang Feature Delivery"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/work-decomposition
+        label: "Work Decomposition"
+    measures:
+      - "Average story size: should trend toward one to three days to complete"
+      - "Estimation accuracy: smaller items are easier to estimate correctly"
+      - "Cycle time variance: high variance signals items are too large"
 
   - id: painful-merges
     title: "Merging Is Painful and Time-Consuming"
@@ -420,6 +666,20 @@ results:
       branches diverge, the more conflicts compound. Short-lived branches integrated
       daily eliminate most merge pain.
     symptom_path: /docs/symptoms/flow/integration/painful-merges
+    anti_patterns:
+      - path: /docs/anti-patterns/branching-integration/long-lived-feature-branches
+        label: "Long-Lived Feature Branches"
+      - path: /docs/anti-patterns/branching-integration/integration-deferred
+        label: "Integration Deferred Too Long"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration
+        label: "Migrate to Trunk-Based Development"
+      - path: /docs/migrate-to-cd/foundations/work-decomposition
+        label: "Work Decomposition"
+    measures:
+      - "Branch lifetime: should fall toward one to two days"
+      - "Merge conflict rate: decreases as integration becomes more frequent"
+      - "Time spent resolving conflicts: should trend toward near-zero"
 
   - id: prs-waiting-for-review
     title: "Pull Requests Sit for Days Waiting for Review"
@@ -428,6 +688,20 @@ results:
       Large PRs take longer to review and get deprioritized. The fix is smaller, more
       frequent integrations - not more reviewers.
     symptom_path: /docs/symptoms/flow/integration/prs-waiting-for-review
+    anti_patterns:
+      - path: /docs/anti-patterns/branching-integration/long-lived-feature-branches
+        label: "Long-Lived Feature Branches"
+      - path: /docs/anti-patterns/team-workflow/unbounded-wip
+        label: "Unbounded Work in Progress"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+        label: "Adopt Trunk-Based Development"
+      - path: /docs/migrate-to-cd/foundations/work-decomposition
+        label: "Work Decomposition"
+    measures:
+      - "PR age at merge: should fall from days toward hours"
+      - "PR size: smaller diffs receive faster review"
+      - "Review turnaround time: time from PR open to first review comment"
 
   - id: blocked-work-sits-idle
     title: "Blocked Work Sits Idle Instead of Being Picked Up"
@@ -436,6 +710,18 @@ results:
       optimizing for individual utilization rather than flow. The goal is to finish
       work, not to keep every person busy.
     symptom_path: /docs/symptoms/flow/work-management/blocked-work-sits-idle
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/push-based-work-assignment
+        label: "Push-Based Work Assignment"
+      - path: /docs/anti-patterns/team-workflow/unbounded-wip
+        label: "Unbounded Work in Progress"
+    solutions:
+      - path: /docs/migrate-to-cd/optimize/limiting-wip
+        label: "Limit Work in Progress"
+    measures:
+      - "Blocked item age: how long items sit in a blocked state before action"
+      - "Swarming rate: how often the team helps unblock vs waiting for the owner"
+      - "Blocked item ratio: percentage of WIP that is blocked at any time"
 
   - id: completed-work-misses-intent
     title: "Completed Stories Don't Match What Was Needed"
@@ -444,6 +730,20 @@ results:
       and stakeholders is too long. Stakeholders see outcomes at release time, not during
       development when course-correction is cheap.
     symptom_path: /docs/symptoms/flow/work-management/completed-work-misses-intent
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/horizontal-slicing
+        label: "Horizontal Slicing"
+      - path: /docs/anti-patterns/team-workflow/big-bang-feature-delivery
+        label: "Big-Bang Feature Delivery"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/work-decomposition
+        label: "Work Decomposition"
+      - path: /docs/migrate-to-cd/optimize/hypothesis-driven-development
+        label: "Hypothesis-Driven Development"
+    measures:
+      - "Rework rate: percentage of completed items that require revision"
+      - "Stakeholder review frequency: how often stakeholders see working software"
+      - "Feedback loop length: time from start to first stakeholder validation"
 
   - id: works-on-my-machine
     title: "It Works on My Machine"
@@ -452,6 +752,22 @@ results:
       same results in all environments. When it doesn't, the environment - not the
       developer's machine - is the source of truth.
     symptom_path: /docs/symptoms/visibility/works-on-my-machine
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/snowflake-environments
+        label: "Snowflake Environments"
+      - path: /docs/anti-patterns/pipeline/no-environment-parity
+        label: "No Environment Parity"
+      - path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions
+        label: "Hardcoded Environment Assumptions"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+      - path: /docs/migrate-to-cd/foundations/everything-as-code
+        label: "Everything as Code"
+    measures:
+      - "Environment-specific failure rate: should approach zero"
+      - "Environment setup time: shrinks as environments are codified and reproducible"
+      - "Onboarding time for new developers: falls when local setup is automated"
 
   - id: chaotic-incident-response
     title: "When Something Breaks, Nobody Knows What to Do"
@@ -460,6 +776,20 @@ results:
       procedures and unclear ownership, every incident is improvised. Response procedures
       and operational ownership must be established before the next incident, not during it.
     symptom_path: /docs/symptoms/visibility/chaotic-incident-response
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-operational-ownership
+        label: "No Operational Ownership"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/blame-culture
+        label: "Blame Culture"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+    measures:
+      - "Mean time to restore: falls as runbooks improve response"
+      - "Incident escalation rate: fewer incidents require all-hands intervention"
+      - "Post-incident action completion rate: improvements are actually made"
 
   - id: team-burnout
     title: "Team Burnout and Unsustainable Pace"
@@ -468,6 +798,22 @@ results:
       Unplanned work, thrashing, and manual toil compound into an unsustainable cycle.
       The fix requires examining the sources of interrupt-driven work.
     symptom_path: /docs/symptoms/visibility/team-burnout
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture
+        label: "Hero Culture"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-improvement-time
+        label: "No Time for Improvement"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams
+        label: "Teams Spread Too Thin"
+    solutions:
+      - path: /docs/migrate-to-cd/optimize/retrospectives
+        label: "Retrospectives"
+      - path: /docs/migrate-to-cd/optimize/limiting-wip
+        label: "Limit Work in Progress"
+    measures:
+      - "Unplanned work percentage: time spent on interrupt-driven work vs planned work"
+      - "On-call page rate: should fall as reliability improves"
+      - "Team health survey scores: tracked over time as a leading indicator"
 
   - id: ai-code-without-understanding
     title: "AI-Generated Code Ships Without Developer Understanding"
@@ -476,6 +822,20 @@ results:
       AI-generated code ships bugs and security issues when developers accept output
       without understanding what it does.
     symptom_path: /docs/symptoms/testing/ai-code-without-understanding
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/rubber-stamping-ai-code
+        label: "Rubber-Stamping AI-Generated Code"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing
+        label: "Pressure to Skip Testing"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/code-review
+        label: "Code Review Practices"
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+    measures:
+      - "Post-merge defect rate for AI-generated code: should match human-written code"
+      - "Code review depth: reviewers should be able to explain every accepted change"
+      - "Security finding rate: should not increase as AI usage grows"
 
   - id: legacy-no-tests
     title: "A Large Codebase Has No Automated Tests"
@@ -484,6 +844,20 @@ results:
       "write all the tests first" - it is adding tests at the points of change,
       incrementally building coverage where the code is actively being modified.
     symptom_path: /docs/symptoms/testing/legacy-system-no-tests
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/manual-testing-only
+        label: "Manual Testing Only"
+      - path: /docs/anti-patterns/testing/testing-only-at-the-end
+        label: "Testing Only at the End"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+      - path: /docs/migrate-to-cd/brownfield/
+        label: "Brownfield Migration Guide"
+    measures:
+      - "Automated test count in actively changed modules: growing over time"
+      - "Defect rate in tested vs untested areas: tested areas should have fewer regressions"
+      - "Developer confidence to change: qualitative - are teams willing to refactor?"
 
   - id: coordinated-deployments
     title: "Multiple Services Must Be Deployed Together"
@@ -493,6 +867,22 @@ results:
       ways that prevent independent delivery. This is an architecture problem, not a
       deployment process problem.
     symptom_path: /docs/symptoms/deployment/coordinated-deployments
+    anti_patterns:
+      - path: /docs/anti-patterns/architecture/tightly-coupled-monolith
+        label: "Tightly Coupled Monolith"
+      - path: /docs/anti-patterns/architecture/shared-database
+        label: "Shared Database"
+      - path: /docs/anti-patterns/architecture/distributed-monolith
+        label: "Distributed Monolith"
+    solutions:
+      - path: /docs/migrate-to-cd/optimize/architecture-decoupling
+        label: "Architecture Decoupling"
+      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+        label: "Single Path to Production"
+    measures:
+      - "Services that can be deployed independently: should increase over time"
+      - "Coordinated release count: should fall as services decouple"
+      - "Consumer contract test coverage: rises as APIs are versioned independently"
 
   - id: merge-freeze
     title: "Merge Freezes Before Deployments"
@@ -501,6 +891,22 @@ results:
       merge changes up to the moment of deployment, the pipeline is not providing the
       confidence it should. Merge freezes compound batching risk.
     symptom_path: /docs/symptoms/deployment/merge-freeze
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/sprint-boundary-deployments
+        label: "Deployments Tied to Sprint Boundaries"
+      - path: /docs/anti-patterns/branching-integration/integration-deferred
+        label: "Integration Deferred Too Long"
+      - path: /docs/anti-patterns/branching-integration/long-lived-feature-branches
+        label: "Long-Lived Feature Branches"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+        label: "Adopt Trunk-Based Development"
+      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+        label: "Single Path to Production"
+    measures:
+      - "Merge freeze duration and frequency: should decrease toward zero"
+      - "Pipeline confidence level: team's willingness to ship from main at any time"
+      - "Time between merge and deploy: should shorten as trust in the pipeline grows"
 
   - id: staging-passes-production-fails
     title: "Staging Passes but Production Fails"
@@ -509,6 +915,20 @@ results:
       mismatches, or missing dependencies mean staging catches different bugs than
       production. Environment parity is the fix.
     symptom_path: /docs/symptoms/deployment/staging-passes-production-fails
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/no-environment-parity
+        label: "No Environment Parity"
+      - path: /docs/anti-patterns/pipeline/snowflake-environments
+        label: "Snowflake Environments"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+        label: "Production-Like Environments"
+      - path: /docs/migrate-to-cd/foundations/everything-as-code
+        label: "Everything as Code"
+    measures:
+      - "Staging-to-production failure rate discrepancy: should narrow as parity improves"
+      - "Bugs found only in production: should decrease"
+      - "Environment configuration drift: time since last environment definition update"
 
   - id: change-management-overhead
     title: "Every Change Requires a Ticket and Approval Chain"
@@ -517,6 +937,22 @@ results:
       reducing risk - they shift risk discovery from before deployment to after it.
       The question to ask: what does this approval verify that the pipeline does not?
     symptom_path: /docs/symptoms/deployment/change-management-overhead
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/cab-gates
+        label: "Change Advisory Board Gates"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval
+        label: "Manual Compliance Approvals"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/deployment-windows
+        label: "Deployment Windows"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+        label: "Deterministic Pipeline"
+      - path: /docs/migrate-to-cd/optimize/metrics-driven-improvement
+        label: "Metrics-Driven Improvement"
+    measures:
+      - "Approval cycle time: should shrink as pipeline evidence replaces manual review"
+      - "Change failure rate: should not increase as manual gates are replaced by pipeline gates"
+      - "Lead time for changes: falls as approval bottlenecks are removed"
 
   - id: waiting-for-cross-team-approval
     title: "Work Requires Sign-Off from Teams Not Involved in Delivery"
@@ -525,6 +961,20 @@ results:
       that grow over time. If the approving team is not embedded in delivery, their
       approval is theater, not verification.
     symptom_path: /docs/symptoms/deployment/waiting-for-cross-team-approval
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team
+        label: "Separate Operations Team"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern
+        label: "Separation of Duties as a Bottleneck"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+      - path: /docs/migrate-to-cd/optimize/team-alignment
+        label: "Team Alignment"
+    measures:
+      - "Cross-team approval wait time: should shorten as collaboration patterns improve"
+      - "Approvals that block deployment: count and trend over time"
+      - "Cross-team review turnaround: from request to approval"
 
   - id: pipeline-changes-require-another-team
     title: "Teams Cannot Change Their Own Pipeline"
@@ -533,6 +983,20 @@ results:
       blocked behind another team's prioritization. Pipeline ownership must belong to
       the team delivering the software.
     symptom_path: /docs/symptoms/deployment/pipeline-changes-require-another-team
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team
+        label: "Separate Operations Team"
+      - path: /docs/anti-patterns/pipeline/pipeline-not-versioned
+        label: "Pipeline Not Version-Controlled"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/everything-as-code
+        label: "Everything as Code"
+      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+        label: "Pipeline Architecture"
+    measures:
+      - "Pipeline change lead time: from request to deployed - should shrink to same-day"
+      - "Pipeline improvement frequency: how often teams can iterate on their pipeline"
+      - "Blocked pipeline changes: count should trend toward zero"
 
   - id: no-rollback-capability
     title: "Deployments Are One-Way Doors"
@@ -541,6 +1005,20 @@ results:
       makes deployment reversible so the cost of a bad deploy is low enough that
       deploying often becomes safe.
     symptom_path: /docs/symptoms/deployment/no-rollback-capability
+    anti_patterns:
+      - path: /docs/anti-patterns/pipeline/manual-deployments
+        label: "Manual Deployments"
+      - path: /docs/anti-patterns/pipeline/no-deployment-health-checks
+        label: "No Deployment Health Checks"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/rollback
+        label: "Rollback Strategy"
+      - path: /docs/migrate-to-cd/continuous-deployment/progressive-rollout
+        label: "Progressive Rollout"
+    measures:
+      - "Mean time to restore: falls when rollback is a practiced, routine operation"
+      - "Deployment-triggered incidents: decreases as rollback confidence grows"
+      - "Deployment frequency: can increase once rollback makes it low-risk"
 
   - id: release-manager-bottleneck
     title: "Releases Depend on One Person"
@@ -549,6 +1027,20 @@ results:
       concentrated in one person. Every team member should be able to deploy. When only
       one person can, their absence stops delivery.
     symptom_path: /docs/symptoms/deployment/release-manager-bottleneck
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/knowledge-silos
+        label: "Knowledge Silos"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture
+        label: "Hero Culture"
+    solutions:
+      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+        label: "Single Path to Production"
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+    measures:
+      - "Number of team members who have deployed to production: should be all of them"
+      - "Deployment bus factor: how many people must be unavailable to block a release"
+      - "Deployment frequency variation: should not dip when the release manager is out"
 
   - id: ai-accelerated-tech-debt
     title: "AI Is Accelerating Technical Debt Faster Than the Team Can Absorb"
@@ -558,6 +1050,22 @@ results:
       just arrives faster than humans writing code alone. The fix requires investment
       in quality practices that scale with generation speed.
     symptom_path: /docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt
+    anti_patterns:
+      - path: /docs/anti-patterns/testing/rubber-stamping-ai-code
+        label: "Rubber-Stamping AI-Generated Code"
+      - path: /docs/anti-patterns/team-workflow/undone-work
+        label: "Undone Work Accumulates"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing
+        label: "Pressure to Skip Testing"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+        label: "Get Started with Test Automation"
+      - path: /docs/migrate-to-cd/foundations/code-review
+        label: "Code Review Practices"
+    measures:
+      - "Defect density in AI-assisted code: should match or improve over time"
+      - "Technical debt items created per sprint: should not grow faster than resolution rate"
+      - "Code review thoroughness: time and depth of review for AI-generated code"
 
   - id: ai-tooling-slowdown
     title: "AI Tools Are Slowing the Team Down"
@@ -566,6 +1074,13 @@ results:
       or poor integration with existing workflows - cost more time than they save.
       The problem is adoption without fit-assessment, not AI tooling in general.
     symptom_path: /docs/symptoms/flow/developer-experience/ai-tooling-slowdown
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+    measures:
+      - "Developer time saved vs spent on AI tool overhead: should be net positive"
+      - "Tool adoption rate: teams using AI tools by choice, not mandate"
+      - "Flow state interruptions: how often AI tool friction breaks developer focus"
 
   - id: waiting-on-platform-team
     title: "Teams Are Blocked Waiting on a Platform Team"
@@ -574,6 +1089,18 @@ results:
       change, the platform team becomes a permanent bottleneck. Self-service infrastructure
       with guardrails is the fix - not more headcount in the platform team.
     symptom_path: /docs/symptoms/flow/work-management/waiting-on-platform-team
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team
+        label: "Separate Operations Team"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+      - path: /docs/migrate-to-cd/optimize/team-alignment
+        label: "Team Alignment"
+    measures:
+      - "Platform request wait time: from ticket to fulfillment"
+      - "Self-service infrastructure requests: percentage completed without platform team involvement"
+      - "Delivery team cycle time: should not include platform queue wait time"
 
   - id: rotation-ramp-up-drag
     title: "Knowledge Concentration Slows the Team"
@@ -582,6 +1109,20 @@ results:
       hostage to that person's availability. This is not a training problem - it is
       a documentation and pairing practice problem that compounds over time.
     symptom_path: /docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/knowledge-silos
+        label: "Knowledge Silos"
+      - path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-operational-ownership
+        label: "No Operational Ownership"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/working-agreements
+        label: "Establish Working Agreements"
+      - path: /docs/migrate-to-cd/foundations/everything-as-code
+        label: "Everything as Code"
+    measures:
+      - "Ramp-up time for new team members: should fall as documentation improves"
+      - "Bus factor: number of people who must be present for work to proceed"
+      - "Cross-area contribution: team members working across more parts of the system"
 
   - id: slow-defect-resolution
     title: "Bugs Take Too Long to Fix After Discovery"
@@ -590,6 +1131,20 @@ results:
       a skill problem. If bugs queue separately from features, they age without being
       fixed. Treating defects as first-class work items is the starting point.
     symptom_path: /docs/symptoms/flow/developer-experience/slow-defect-resolution
+    anti_patterns:
+      - path: /docs/anti-patterns/team-workflow/push-based-work-assignment
+        label: "Push-Based Work Assignment"
+      - path: /docs/anti-patterns/team-workflow/undone-work
+        label: "Undone Work Accumulates"
+    solutions:
+      - path: /docs/migrate-to-cd/optimize/limiting-wip
+        label: "Limit Work in Progress"
+      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop
+        label: "Defect Feedback Loop"
+    measures:
+      - "Mean defect age at fix: time from discovery to resolution should shrink"
+      - "Defect queue depth: number of open bugs should not grow faster than resolution rate"
+      - "Defect escape rate: fewer bugs that were discovered late vs caught early"
 
   - id: infrequent-releases
     title: "Teams That Deploy Infrequently"
@@ -599,3 +1154,21 @@ results:
       accumulates more change. The path out is making individual releases smaller
       and more routine, not less frequent.
     symptom_path: /docs/symptoms/deployment/infrequent-releases
+    anti_patterns:
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/sprint-boundary-deployments
+        label: "Deployments Tied to Sprint Boundaries"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/deployment-windows
+        label: "Deployment Windows"
+      - path: /docs/anti-patterns/organizational-cultural/governance-process/release-trains
+        label: "Release Trains"
+    solutions:
+      - path: /docs/migrate-to-cd/foundations/work-decomposition
+        label: "Work Decomposition"
+      - path: /docs/migrate-to-cd/optimize/small-batches
+        label: "Work in Small Batches"
+      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+        label: "Single Path to Production"
+    measures:
+      - "Deployment frequency: rising from monthly toward weekly, then daily"
+      - "Deployment batch size: number of changes per release - should decrease"
+      - "Change failure rate: should improve or hold steady as frequency increases"

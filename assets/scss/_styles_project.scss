@@ -1350,6 +1350,87 @@ pre.mermaid {
     padding: 0;
   }
 
+  .triage-antipatterns {
+    border-left: 4px solid #8a4500;
+    background: rgba(180, 100, 0, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-antipatterns-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8a4500;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-antipatterns-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .triage-solutions {
+    border-left: 4px solid #005b8a;
+    background: rgba(0, 100, 160, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-solutions-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #005b8a;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-solutions-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .triage-measures {
+    border-left: 4px solid #4a6a8a;
+    background: rgba(74, 106, 138, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .triage-measures-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #4a6a8a;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-measures-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
   .triage-result-cta {
     display: inline-block;
     background: #224968;

@@ -269,6 +269,33 @@
     html += '<p class="triage-reframe-text">' + escape(r.reframe) + '</p>';
     html += '</div>';
     html += '<h3 class="triage-result-title">' + escape(r.title) + '</h3>';
+    if (r.anti_patterns && r.anti_patterns.length > 0) {
+      html += '<div class="triage-antipatterns">';
+      html += '<p class="triage-antipatterns-label">Practices driving this:</p>';
+      html += '<ul class="triage-antipatterns-list">';
+      r.anti_patterns.forEach(function (link) {
+        html += '<li><a href="' + escape(link.path) + '/">' + escape(link.label) + '</a></li>';
+      });
+      html += '</ul></div>';
+    }
+    if (r.solutions && r.solutions.length > 0) {
+      html += '<div class="triage-solutions">';
+      html += '<p class="triage-solutions-label">Where to start:</p>';
+      html += '<ul class="triage-solutions-list">';
+      r.solutions.forEach(function (link) {
+        html += '<li><a href="' + escape(link.path) + '/">' + escape(link.label) + '</a></li>';
+      });
+      html += '</ul></div>';
+    }
+    if (r.measures && r.measures.length > 0) {
+      html += '<div class="triage-measures">';
+      html += '<p class="triage-measures-label">How to know it\'s improving:</p>';
+      html += '<ul class="triage-measures-list">';
+      r.measures.forEach(function (item) {
+        html += '<li>' + escape(item) + '</li>';
+      });
+      html += '</ul></div>';
+    }
     html += '<a class="triage-result-cta" href="' + escape(r.symptom_path) + '/">Read the symptom page</a>';
     if (r.also_see && r.also_see.length > 0) {
       html += '<p class="triage-also-see-label">Also see:</p><ul class="triage-also-see">';

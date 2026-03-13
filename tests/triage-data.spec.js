@@ -169,4 +169,46 @@ test.describe('triage.yaml graph connectivity', () => {
     }
     expect(bad, bad.join('\n')).toHaveLength(0);
   });
+
+  test('anti_patterns links in results have both path and label', () => {
+    const bad = [];
+    for (const r of results) {
+      for (const link of (r.anti_patterns || [])) {
+        if (!link.path || !link.label) {
+          bad.push(`result "${r.id}" anti_patterns entry missing path or label`);
+        }
+        if (link.path && !link.path.startsWith('/')) {
+          bad.push(`result "${r.id}" anti_patterns path "${link.path}" does not start with /`);
+        }
+      }
+    }
+    expect(bad, bad.join('\n')).toHaveLength(0);
+  });
+
+  test('solutions links in results have both path and label', () => {
+    const bad = [];
+    for (const r of results) {
+      for (const link of (r.solutions || [])) {
+        if (!link.path || !link.label) {
+          bad.push(`result "${r.id}" solutions entry missing path or label`);
+        }
+        if (link.path && !link.path.startsWith('/')) {
+          bad.push(`result "${r.id}" solutions path "${link.path}" does not start with /`);
+        }
+      }
+    }
+    expect(bad, bad.join('\n')).toHaveLength(0);
+  });
+
+  test('measures entries in results are non-empty strings', () => {
+    const bad = [];
+    for (const r of results) {
+      for (const item of (r.measures || [])) {
+        if (typeof item !== 'string' || item.trim() === '') {
+          bad.push(`result "${r.id}" measures entry is not a non-empty string`);
+        }
+      }
+    }
+    expect(bad, bad.join('\n')).toHaveLength(0);
+  });
 });
