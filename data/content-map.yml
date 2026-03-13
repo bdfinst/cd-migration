@@ -725,6 +725,10 @@ standalone_pages:
     title: "Learning Paths"
     purpose: "Curated reading sequences through the site content for different roles and goals."
 
+  - file: team-chatbot.md
+    title: "Team Chatbot"
+    purpose: "Downloadable facilitator chatbot setup that teams paste into any LLM to get a CD migration guide that diagnoses their situation and points to relevant resources."
+
   - file: credits.md
     title: "Credits"
     purpose: "Acknowledgments for contributors and sources."
@@ -746,4 +750,4 @@ totals:
   migration_guide_pages: 32  # 2 brownfield + 0 greenfield + 4 assess + 7 foundations(6+1 tbd) + 8 pipeline + 8 optimize + 3 continuous-deployment
   agentic_cd_pages: 14
   reference_pages: 44  # 9 practices + 8 metrics + 9 testing + 3 pipeline-ref + 10 defect-sources + 5 standalone(glossary, faq, dora, cd-dependency-tree, resources)
-  standalone_pages: 5  # start-here, learning-paths, credits, changelog, under-construction
+  standalone_pages: 6  # start-here, learning-paths, team-chatbot, credits, changelog, under-construction
