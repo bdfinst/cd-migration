@@ -1,0 +1,168 @@
+{{- $areas := (index site.Data "finder-healthcheck") -}}
+{{- $aps := (index site.Data "finder-antipatterns") -}}
+
+<noscript>
+<p>Enable JavaScript to use the interactive health check worksheet. Without JavaScript, browse anti-patterns by category:</p>
+<ul>
+<li><a href="/docs/anti-patterns/pipeline/">Pipeline Anti-Patterns</a></li>
+<li><a href="/docs/anti-patterns/testing/">Testing Anti-Patterns</a></li>
+<li><a href="/docs/anti-patterns/organizational-cultural/">Organizational and Cultural Anti-Patterns</a></li>
+</ul>
+</noscript>
+
+<div id="hcw-container" style="display:none" aria-label="Health check worksheet">
+
+  <p class="hcw-instructions">Work through each delivery area. Check every statement that describes your team. Then click <strong>Show Results</strong>.</p>
+
+  <div id="hcw-areas" role="group" aria-label="Health check areas"></div>
+
+  <div class="hcw-actions">
+    <button id="hcw-submit" type="button" class="hcw-btn-primary" disabled>Show Results</button>
+    <button id="hcw-reset" type="button" class="hcw-btn-secondary">Start Over</button>
+    <span id="hcw-count" class="hcw-count" aria-live="polite">0 checked</span>
+  </div>
+
+  <div id="hcw-results" style="display:none" aria-live="polite"></div>
+
+</div>
+
+<script type="application/json" id="hcw-areas-data">{{ $areas | jsonify | safeJS }}</script>
+<script type="application/json" id="hcw-ap-data">{{ $aps | jsonify | safeJS }}</script>
+
+<script>
+(function () {
+  var areasEl = document.getElementById('hcw-areas-data');
+  var apEl = document.getElementById('hcw-ap-data');
+  if (!areasEl || !apEl) { return; }
+
+  var AREAS = JSON.parse(areasEl.textContent);
+  var AP_LIST = JSON.parse(apEl.textContent);
+
+  var apById = {};
+  AP_LIST.forEach(function (ap) { apById[ap.id] = ap; });
+
+  var checked = {};
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderAreas() {
+    var container = document.getElementById('hcw-areas');
+    var html = '';
+
+    AREAS.forEach(function (area) {
+      html += '<div class="hcw-area">';
+      html += '<div class="hcw-area-header">';
+      html += '<h3 class="hcw-area-title">' + esc(area.title) + '</h3>';
+      html += '<p class="hcw-area-desc">' + esc(area.description) + '</p>';
+      html += '</div>';
+      html += '<div class="hcw-statements">';
+      area.statements.forEach(function (stmt) {
+        var key = area.id + '/' + stmt.id;
+        var isChecked = checked[key] ? ' checked' : '';
+        var apIds = JSON.stringify(stmt.anti_patterns);
+        html += '<label class="hcw-statement-item' + isChecked + '" data-area="' + esc(area.id) + '" data-stmt="' + esc(stmt.id) + '" data-aps=\'' + apIds + '\'>';
+        html += '<input type="checkbox" name="stmt" value="' + esc(key) + '"' + isChecked + '>';
+        html += '<span class="hcw-statement-text">' + esc(stmt.text) + '</span>';
+        html += '</label>';
+      });
+      html += '</div></div>';
+    });
+
+    container.innerHTML = html;
+    attachListeners();
+  }
+
+  function attachListeners() {
+    var boxes = document.querySelectorAll('#hcw-areas input[type="checkbox"]');
+    boxes.forEach(function (box) {
+      box.addEventListener('change', function () {
+        var label = box.closest('label');
+        if (box.checked) {
+          checked[box.value] = JSON.parse(label.getAttribute('data-aps'));
+          label.classList.add('checked');
+        } else {
+          delete checked[box.value];
+          label.classList.remove('checked');
+        }
+        updateCount();
+      });
+    });
+  }
+
+  function updateCount() {
+    var n = Object.keys(checked).length;
+    document.getElementById('hcw-count').textContent = n + ' checked';
+    document.getElementById('hcw-submit').disabled = n === 0;
+    document.getElementById('hcw-results').style.display = 'none';
+  }
+
+  function computeResults() {
+    var apCount = {};
+    Object.values(checked).forEach(function (apIds) {
+      apIds.forEach(function (apId) {
+        apCount[apId] = (apCount[apId] || 0) + 1;
+      });
+    });
+
+    var sorted = Object.keys(apCount).sort(function (a, b) {
+      return apCount[b] - apCount[a];
+    });
+
+    return sorted.map(function (apId) {
+      return { ap: apById[apId], count: apCount[apId] };
+    }).filter(function (item) { return item.ap; });
+  }
+
+  function renderResults(results) {
+    var el = document.getElementById('hcw-results');
+    var total = Object.keys(checked).length;
+
+    if (results.length === 0) {
+      el.innerHTML = '<p class="hcw-no-results">No matching anti-patterns found. Try checking more statements.</p>';
+      el.style.display = 'block';
+      return;
+    }
+
+    var html = '<div class="hcw-results-header">';
+    html += '<p class="hcw-results-summary">' + total + ' statement' + (total !== 1 ? 's' : '') + ' checked. These practices are likely driving your delivery problems:</p>';
+    html += '</div>';
+    html += '<ul class="hcw-results-list">';
+
+    results.forEach(function (item) {
+      var weight = item.count >= 3 ? 'hcw-result-high' : item.count === 2 ? 'hcw-result-med' : 'hcw-result-low';
+      html += '<li class="hcw-result-item ' + weight + '">';
+      html += '<a href="' + esc(item.ap.path) + '" class="hcw-result-link">' + esc(item.ap.title) + '</a>';
+      html += '<span class="hcw-result-count">' + item.count + ' indicator' + (item.count !== 1 ? 's' : '') + '</span>';
+      html += '</li>';
+    });
+
+    html += '</ul>';
+    html += '<p class="hcw-results-note">Address the highest-count practices first. Each links to a step-by-step fix guide.</p>';
+
+    el.innerHTML = html;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('hcw-submit').addEventListener('click', function () {
+    renderResults(computeResults());
+  });
+
+  document.getElementById('hcw-reset').addEventListener('click', function () {
+    checked = {};
+    renderAreas();
+    updateCount();
+    document.getElementById('hcw-results').style.display = 'none';
+  });
+
+  document.getElementById('hcw-container').style.display = 'block';
+  renderAreas();
+  updateCount();
+})();
+</script>

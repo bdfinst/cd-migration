@@ -1,0 +1,151 @@
+- id: deployment-release
+  title: "Deployment and Release"
+  description: "How your team ships software to production"
+  statements:
+    - id: deploy-fear
+      text: "The team treats deployments as high-risk events requiring coordination and full-team attention"
+      anti_patterns: [manual-deployments, missing-deployment-pipeline]
+    - id: hardening-needed
+      text: "We need a dedicated stabilization period or hardening sprint before each release"
+      anti_patterns: [hardening-sprints, testing-only-at-the-end, manual-testing-only]
+    - id: infrequent
+      text: "We deploy to production monthly or less frequently"
+      anti_patterns: [manual-deployments, missing-deployment-pipeline, sprint-boundary-deployments]
+    - id: approval-required
+      text: "Every deployment requires approval from a change advisory board or manager"
+      anti_patterns: [cab-gates, compliance-manual-approval, separation-of-duties-antipattern]
+    - id: no-rollback
+      text: "We cannot quickly reverse a deployment if something goes wrong"
+      anti_patterns: [manual-deployments, blind-operations, no-deployment-health-checks]
+    - id: coordinated
+      text: "Deploying one service requires coordinating and deploying other services at the same time"
+      anti_patterns: [tightly-coupled-monolith, distributed-monolith]
+
+- id: testing-practice
+  title: "Testing Practice"
+  description: "How your team validates that software works before shipping"
+  statements:
+    - id: manual-testing
+      text: "We rely on significant manual testing before each release"
+      anti_patterns: [manual-testing-only, testing-only-at-the-end, qa-signoff-gate]
+    - id: slow-suite
+      text: "Running the full test suite takes 30 minutes or more"
+      anti_patterns: [inverted-test-pyramid, shared-test-environments]
+    - id: flaky
+      text: "Tests fail randomly without code changes - the team re-runs without investigating"
+      anti_patterns: [inverted-test-pyramid, shared-test-environments]
+    - id: coverage-not-confidence
+      text: "We have high test coverage numbers but bugs still reach production"
+      anti_patterns: [inverted-test-pyramid, code-coverage-mandates]
+    - id: refactor-breaks
+      text: "Refactoring code breaks many tests even when behavior does not change"
+      anti_patterns: [inverted-test-pyramid]
+    - id: env-failures
+      text: "Tests pass in one environment but fail in another"
+      anti_patterns: [shared-test-environments, snowflake-environments, no-environment-parity]
+
+- id: code-integration
+  title: "Code Integration"
+  description: "How your team merges and integrates code changes"
+  statements:
+    - id: long-branches
+      text: "Developers work on branches for more than a few days before merging"
+      anti_patterns: [long-lived-feature-branches, integration-deferred]
+    - id: painful-merges
+      text: "Merging branches regularly requires resolving significant conflicts"
+      anti_patterns: [long-lived-feature-branches, integration-deferred]
+    - id: pr-wait
+      text: "Pull requests sit for more than a day waiting for review"
+      anti_patterns: [knowledge-silos, push-based-work-assignment]
+    - id: merge-freeze
+      text: "The team stops merging code for a period before each release to stabilize"
+      anti_patterns: [long-lived-feature-branches, sprint-boundary-deployments]
+    - id: slow-feedback
+      text: "Developers wait 30 minutes or more to learn whether a pushed change passed CI"
+      anti_patterns: [inverted-test-pyramid, shared-test-environments]
+
+- id: pipeline-automation
+  title: "Pipeline and Automation"
+  description: "How code moves from commit to running in production"
+  statements:
+    - id: no-pipeline
+      text: "There is no automated path from code commit to production deployment"
+      anti_patterns: [missing-deployment-pipeline, manual-deployments]
+    - id: pipeline-ownership
+      text: "We need another team to make changes to our deployment pipeline"
+      anti_patterns: [separate-ops-team, no-operational-ownership, pipeline-not-versioned]
+    - id: env-diff
+      text: "Our staging and production environments are configured differently"
+      anti_patterns: [snowflake-environments, no-environment-parity, hardcoded-environment-assumptions]
+    - id: rebuild-per-env
+      text: "We rebuild the application for each environment rather than promoting the same artifact"
+      anti_patterns: [config-embedded-in-artifacts, hardcoded-environment-assumptions]
+    - id: no-iac
+      text: "Environments are provisioned and configured manually rather than through code"
+      anti_patterns: [no-infrastructure-as-code, snowflake-environments]
+
+- id: visibility-monitoring
+  title: "Visibility and Monitoring"
+  description: "How your team knows what is happening in production"
+  statements:
+    - id: customer-reports
+      text: "Customers report production problems before the team knows about them"
+      anti_patterns: [blind-operations, missing-deployment-pipeline]
+    - id: late-detection
+      text: "It takes more than 15 minutes to detect that a deployment caused a problem"
+      anti_patterns: [blind-operations, no-deployment-health-checks]
+    - id: alert-noise
+      text: "Alerts fire so often that the team routinely ignores or suppresses them"
+      anti_patterns: [blind-operations]
+    - id: works-on-my-machine
+      text: "Code works locally but fails in CI or production in ways that are hard to reproduce"
+      anti_patterns: [snowflake-environments, no-environment-parity, no-infrastructure-as-code]
+    - id: chaotic-incidents
+      text: "During incidents the team is unsure where to look or who is responsible"
+      anti_patterns: [blind-operations, knowledge-silos, no-operational-ownership]
+
+- id: team-dynamics
+  title: "Team Dynamics"
+  description: "How your team collaborates, shares ownership, and improves"
+  statements:
+    - id: knowledge-silos
+      text: "Only one or two people understand certain parts of the system"
+      anti_patterns: [knowledge-silos, thin-spread-teams, hero-culture]
+    - id: same-people-incidents
+      text: "The same people resolve every incident or production issue"
+      anti_patterns: [hero-culture, knowledge-silos, no-operational-ownership]
+    - id: no-improvement-time
+      text: "The team has no protected time for technical improvement or reducing debt"
+      anti_patterns: [no-improvement-time, deadline-driven-development]
+    - id: blame
+      text: "When things go wrong, the focus is on who made the mistake rather than what caused it"
+      anti_patterns: [blame-culture, misaligned-incentives]
+    - id: no-ownership
+      text: "No one feels ownership over the operational health of services in production"
+      anti_patterns: [no-operational-ownership, separate-ops-team, siloed-qa-team]
+    - id: handoff-to-qa
+      text: "Completed features are handed off to a separate QA team before they can ship"
+      anti_patterns: [siloed-qa-team, qa-signoff-gate, testing-only-at-the-end]
+
+- id: planning-work
+  title: "Planning and Work Management"
+  description: "How your team plans, sizes, and tracks delivery work"
+  statements:
+    - id: large-stories
+      text: "Work items routinely take more than a week from start to done"
+      anti_patterns: [monolithic-work-items, horizontal-slicing, big-bang-feature-delivery]
+    - id: too-much-wip
+      text: "Many items are in progress simultaneously but few are finishing each sprint"
+      anti_patterns: [unbounded-wip, push-based-work-assignment, monolithic-work-items]
+    - id: dependencies
+      text: "Sprint planning is dominated by negotiating cross-team dependencies"
+      anti_patterns: [tightly-coupled-monolith, distributed-monolith]
+    - id: missed-commitments
+      text: "Sprint commitments are routinely missed and delivery forecasts are unreliable"
+      anti_patterns: [monolithic-work-items, unbounded-wip, deadline-driven-development]
+    - id: late-feedback
+      text: "Stakeholders do not see working software until release day"
+      anti_patterns: [big-bang-feature-delivery, monolithic-work-items]
+    - id: estimation-theater
+      text: "Estimation sessions consume significant time but forecasts remain inaccurate"
+      anti_patterns: [estimation-theater, velocity-as-team-metric]

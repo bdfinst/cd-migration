@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-16 - Replace guided triage with multi-symptom selector and team health check
+
+Retired the guided triage questionnaire. [Find Your Problems]({{< relref "/docs/triage" >}}) now offers two self-service tools: a [Multi-Symptom Selector]({{< relref "/docs/triage/multi-symptom" >}}) that lets individuals check symptoms filtered by their role (manager, scrum master, developer) and see ranked anti-patterns, and a [Team Health Check]({{< relref "/docs/triage/health-check" >}}) worksheet organized by seven delivery areas for use in retrospectives and team assessments. Both tools surface anti-patterns without requiring a facilitator.
+
 ## 2026-03-13 - Replace triage accordion with interactive questionnaire
 
 Replaced the static nested accordion on [Find Your Symptom]({{< relref "/docs/triage" >}}) with an interactive probing questionnaire. The questionnaire asks about the presenting problem, then probes deeper to surface the real underlying cause before linking to the symptom page. Question tree and results are defined in `data/triage.yaml`; deep linking via URL hash is supported.

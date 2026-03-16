@@ -1583,3 +1583,540 @@ pre.mermaid {
 .td-content > .tab-content .tab-pane {
   max-width: 100%;
 }
+
+// ---------------------------------------------------------------------------
+// Find Your Problems - entry screen cards
+// ---------------------------------------------------------------------------
+
+.finder-entry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.finder-entry-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1.5px solid #dce4ed;
+  border-top: 4px solid $primary;
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: box-shadow 0.15s, border-top-color 0.15s, transform 0.15s;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+    border-top-color: #0d7a32;
+    box-shadow: 0 6px 20px rgba(34, 73, 104, 0.16);
+    transform: translateY(-2px);
+  }
+}
+
+.finder-entry-icon {
+  font-size: 1.5rem;
+  color: $primary;
+  margin-bottom: 0.6rem;
+}
+
+.finder-entry-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a2a3a;
+  margin-bottom: 0.5rem;
+}
+
+.finder-entry-desc {
+  font-size: 0.88rem;
+  color: #5a6877;
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.finder-entry-cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+// ---------------------------------------------------------------------------
+// Multi-symptom selector
+// ---------------------------------------------------------------------------
+
+#mss-container {
+  max-width: 820px;
+  margin: 1rem 0;
+
+  .mss-persona-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f0f5fa;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+  }
+
+  .mss-persona-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #4a6a8a;
+    margin-right: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .mss-persona-btn {
+    background: #fff;
+    border: 1px solid #b8cad8;
+    border-radius: 4px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #4a6a8a;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+
+    &:hover {
+      border-color: #224968;
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+
+    &.mss-persona-active {
+      background: #224968;
+      border-color: #224968;
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  .mss-instructions {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+    margin-bottom: 1rem;
+  }
+
+  .mss-category {
+    margin-bottom: 1.25rem;
+  }
+
+  .mss-category-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4a6a8a;
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e2e6ea;
+  }
+
+  .mss-symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .mss-symptom-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.45rem 0.65rem;
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.84rem;
+    color: #2a3a4a;
+    line-height: 1.4;
+    transition: background 0.1s, border-color 0.1s;
+
+    input[type="checkbox"] {
+      margin-top: 0.15em;
+      flex-shrink: 0;
+      accent-color: #224968;
+    }
+
+    &:hover {
+      background: #edf2f7;
+      border-color: #b8cad8;
+    }
+
+    &.checked {
+      background: rgba(34, 73, 104, 0.07);
+      border-color: #224968;
+      color: #1a2a3a;
+      font-weight: 600;
+    }
+  }
+
+  .mss-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+
+  .mss-btn-primary {
+    background: #0d7a32;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #0b6a2b;
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #0d7a32;
+      outline-offset: 2px;
+    }
+  }
+
+  .mss-btn-secondary {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+  }
+
+  .mss-count {
+    font-size: 0.82rem;
+    color: #4a6a8a;
+    font-weight: 600;
+  }
+
+  // Results
+  #mss-results {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .mss-results-summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 0.75rem;
+  }
+
+  .mss-results-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mss-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.75rem;
+    background: #fff;
+    border: 1px solid #dce4ed;
+    border-left: 4px solid #dce4ed;
+    border-radius: 4px;
+    gap: 0.75rem;
+
+    &.mss-result-high {
+      border-left-color: #8a4500;
+    }
+
+    &.mss-result-med {
+      border-left-color: #224968;
+    }
+
+    &.mss-result-low {
+      border-left-color: #b8cad8;
+    }
+  }
+
+  .mss-result-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #224968;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .mss-result-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a6a8a;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mss-results-note {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0;
+  }
+
+  .mss-no-results {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+  }
+
+  @media (max-width: 600px) {
+    .mss-symptom-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Health check worksheet
+// ---------------------------------------------------------------------------
+
+#hcw-container {
+  max-width: 820px;
+  margin: 1rem 0;
+
+  .hcw-instructions {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+    margin-bottom: 1.25rem;
+  }
+
+  .hcw-area {
+    margin-bottom: 1.75rem;
+  }
+
+  .hcw-area-header {
+    margin-bottom: 0.6rem;
+  }
+
+  .hcw-area-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #224968;
+    margin: 0 0 0.2rem;
+  }
+
+  .hcw-area-desc {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0 0 0.5rem;
+    font-style: italic;
+  }
+
+  .hcw-statements {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 0.25rem;
+    border-left: 3px solid #e2e6ea;
+  }
+
+  .hcw-statement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.87rem;
+    color: #2a3a4a;
+    line-height: 1.45;
+    transition: background 0.1s, border-color 0.1s;
+
+    input[type="checkbox"] {
+      margin-top: 0.15em;
+      flex-shrink: 0;
+      accent-color: #224968;
+    }
+
+    &:hover {
+      background: #edf2f7;
+      border-color: #b8cad8;
+    }
+
+    &.checked {
+      background: rgba(34, 73, 104, 0.07);
+      border-color: #224968;
+      font-weight: 600;
+      color: #1a2a3a;
+    }
+  }
+
+  .hcw-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hcw-btn-primary {
+    background: #0d7a32;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #0b6a2b;
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #0d7a32;
+      outline-offset: 2px;
+    }
+  }
+
+  .hcw-btn-secondary {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+  }
+
+  .hcw-count {
+    font-size: 0.82rem;
+    color: #4a6a8a;
+    font-weight: 600;
+  }
+
+  // Results
+  #hcw-results {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hcw-results-summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 0.75rem;
+  }
+
+  .hcw-results-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .hcw-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.75rem;
+    background: #fff;
+    border: 1px solid #dce4ed;
+    border-left: 4px solid #dce4ed;
+    border-radius: 4px;
+    gap: 0.75rem;
+
+    &.hcw-result-high {
+      border-left-color: #8a4500;
+    }
+
+    &.hcw-result-med {
+      border-left-color: #224968;
+    }
+
+    &.hcw-result-low {
+      border-left-color: #b8cad8;
+    }
+  }
+
+  .hcw-result-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #224968;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .hcw-result-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a6a8a;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .hcw-results-note {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0;
+  }
+
+  .hcw-no-results {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+  }
+}
