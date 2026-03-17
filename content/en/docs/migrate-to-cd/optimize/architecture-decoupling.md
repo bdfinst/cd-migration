@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Original content based on Dojo Consortium delivery journey patterns
+**Phase 3 - Optimize** | {{< scope-label "team-org" >}} | Original content based on Dojo Consortium delivery journey patterns
 
 You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) and provides practical strategies for moving from entangled to loosely coupled.
 {{% /pageinfo %}}
@@ -191,6 +191,32 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 - **Timeouts:** Set aggressive timeouts on all external calls. A 30-second timeout on a service that should respond in 100ms is not a timeout - it is a hang.
 - **Bulkheads:** Isolate failures so that one failing dependency does not consume all resources.
 - **Graceful degradation:** Define what the user experience should be when a dependency is down. "Recommendations unavailable" is better than a 500 error.
+
+## What Your Team Controls vs. What Requires Broader Change
+
+**Your team controls directly:**
+
+- Identifying coupling points within your service boundary using the strangler fig pattern and
+  branch by abstraction
+- Defining explicit API contracts for interfaces your team owns and versioning them
+- Moving from shared databases to independently owned data stores within your domain
+- Introducing event-based communication for new integrations you build
+
+**Requires broader change:**
+
+- **Team structure:** Moving from State 1 (entangled) to State 3 (loosely coupled) at
+  organizational scale requires aligning team ownership to domain boundaries. Individual teams
+  cannot reorganize themselves - this is a management decision. See
+  [Team Alignment]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}) for how to make that case.
+- **Shared infrastructure ownership:** If your team depends on a shared platform or shared
+  services team for deployment, storage, or networking, full decoupling requires either
+  migrating to self-service infrastructure or renegotiating ownership boundaries with those teams.
+- **Legacy integration contracts:** When you own one side of a tightly coupled contract but
+  another team owns the other side, migrating to an event-based or versioned API model requires
+  coordinated agreement and migration planning with that team.
+
+Start with the decoupling work within your own boundary. Use measured improvements in deployment
+frequency and lead time to make the case for the organizational changes.
 
 ## Practical Steps for Architecture Decoupling
 

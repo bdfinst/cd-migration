@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
 
 [Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires that trunk always be releasable, which means testing it automatically on every change. A collection of tests is not enough. You need a **test architecture**: different test types working together so the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can confidently deploy any change, even when external systems are unavailable.
 {{% /pageinfo %}}

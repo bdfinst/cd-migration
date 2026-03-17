@@ -3,7 +3,7 @@ title: "Build Duration"
 linkTitle: "Build Duration"
 weight: 2
 description: >
-  Time from code commit to a deployable artifact. A critical constraint on feedback speed and mean time to repair.
+  Time from code commit to a deployable artifact. A leading indicator of feedback speed and the floor for mean time to repair.
 ---
 
 ## Definition

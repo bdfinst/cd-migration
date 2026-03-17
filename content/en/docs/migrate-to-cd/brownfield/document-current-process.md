@@ -7,6 +7,8 @@ description: >
 ---
 
 {{% pageinfo %}}
+{{< scope-label "team" >}}
+
 The [Brownfield CD overview]({{< relref "/docs/migrate-to-cd" >}}) covers the migration phases, principles, and common challenges.
 This page covers the **first practical step** - documenting what actually happens today between a
 developer finishing a change and that change running in production.

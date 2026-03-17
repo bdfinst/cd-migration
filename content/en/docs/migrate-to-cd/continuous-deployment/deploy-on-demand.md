@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 4 - Deliver on Demand** | Original content
+**Phase 4 - Deliver on Demand** | {{< scope-label "org" >}} | Original content
 
 Deploy on demand means that any change which passes the full automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can reach production without waiting for a human to press a button, open a ticket, or schedule a window. This page covers the prerequisites, the transition from [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}), and how to address the organizational concerns that are the real barriers.
 {{% /pageinfo %}}

@@ -3,7 +3,7 @@ title: "Release Frequency"
 linkTitle: "Release Frequency"
 weight: 7
 description: >
-  How often changes are deployed to production. A DORA key metric for delivery throughput and team capability.
+  How often changes are deployed to production. A DORA lagging outcome metric that confirms delivery throughput.
 ---
 
 ## Definition
@@ -16,10 +16,12 @@ per week, or per month, depending on the team's current cadence.
 releaseFrequency = productionDeployments / timePeriod
 {{< /card >}}
 
-This is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics. It measures the throughput side of
-delivery performance, measuring how rapidly the team can get completed work into the hands
-of users. Higher release frequency enables faster feedback, smaller [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}),
-and reduced deployment risk.
+This is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics and a lagging outcome metric. It reflects the
+cumulative effect of upstream behaviors: work decomposition, integration practices, test
+quality, and pipeline automation. Higher release frequency is a consequence of those behaviors
+improving, not a lever to pull directly. To improve release frequency, improve
+[Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) and
+[Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) first.
 
 Each deployment should deliver a meaningful change. Re-deploying the same artifact
 or deploying empty changes does not count.

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 - Assess**
+**Phase 0 - Assess** | {{< scope-label "team" >}}
 {{% /pageinfo %}}
 
 This checklist translates the practices defined by [MinimumCD.org](https://minimumcd.org) into

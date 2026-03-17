@@ -7,13 +7,29 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
-## 2026-03-12 - New Section: Evaluation and Quality
+## 2026-03-14 - New Section: Evaluation and Quality
 
 Added three new pages under [Evaluation and Quality]({{< relref "/docs/agentic-cd/evaluation" >}}):
 
 - [AI Eval Methodology]({{< relref "/docs/agentic-cd/evaluation/ai-eval-methodology" >}}) - Three-layer grading framework (deterministic, transcript, LLM rubric) and eval development cycle for AI coding tools
 - [Team AI Evals]({{< relref "/docs/agentic-cd/evaluation/team-ai-evals" >}}) - Setting up eval infrastructure, writing positive and negative tests, choosing graders, and CI integration for team AI tools
 - [Platform AI Evals]({{< relref "/docs/agentic-cd/evaluation/platform-ai-evals" >}}) - Shared eval infrastructure, multi-plugin architecture, and meta-evaluation for AI enablement platforms
+
+## 2026-03-13 - Add DORA benchmarking symptom page
+
+Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat DORA metrics as performance targets rather than diagnostic tools.
+
+## 2026-03-12 - Add Team Chatbot page
+
+Added [Team Chatbot]({{< relref "/docs/team-chatbot" >}}) - a downloadable facilitator chatbot setup that teams paste into any LLM to get a CD migration guide that diagnoses their situation and points to relevant site resources.
+
+## 2026-03-12 - Improve leading vs lagging metrics framing across site
+
+Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to lead with CI health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
+
+## 2026-03-12 - Add Improvement Plays section
+
+Added [Improvement Plays]({{< relref "/docs/playbook" >}}) as a new top-level section. Eight standalone plays covering common delivery challenges: baseline metrics, story slicing, stopping the line, deleting long-lived branches, test-before-fix, pipeline automation, WIP limits, and definition of deployable.
 
 ## 2026-03-12 - Add symptom page for test automation lag
 

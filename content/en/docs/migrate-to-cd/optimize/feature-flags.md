@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize**
+**Phase 3 - Optimize** | {{< scope-label "team" >}}
 
 [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are the mechanism that makes [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) of features without redeploying.
 {{% /pageinfo %}}

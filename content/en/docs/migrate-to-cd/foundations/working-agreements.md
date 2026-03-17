@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
 
 The practices in Phase 1 ([trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), testing, small work, and fast review) only work when the whole team commits to them. [Working agreements]({{< relref "/docs/reference/glossary#working-agreement" >}}) make that commitment explicit. This page covers the key agreements a team needs before moving to [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation in Phase 2.
 {{% /pageinfo %}}

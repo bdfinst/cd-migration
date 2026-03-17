@@ -3,7 +3,7 @@ title: "Development Cycle Time"
 linkTitle: "Development Cycle Time"
 weight: 3
 description: >
-  Average time from when work starts until it is running in production. A key flow metric for identifying delivery bottlenecks.
+  Average time from when work starts until it is running in production. A leading indicator of batch size and delivery flow.
 ---
 
 ## Definition

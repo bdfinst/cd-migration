@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
 
 This is a detailed companion to the [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations" >}}) overview. It covers specific migration paths, regulated environment guidance, multi-team strategies, and concrete scenarios.
 {{% /pageinfo %}}

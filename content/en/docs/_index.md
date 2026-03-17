@@ -26,6 +26,7 @@ New here? Read [Start Here]({{< relref "/docs/start-here" >}}) or follow a
 ## Migrate
 
 - **[Migration Phases]({{< relref "/docs/migrate-to-cd" >}})** - Assess, Foundations, Pipeline, Optimize, Deliver on Demand.
+- **[Improvement Plays]({{< relref "/docs/playbook" >}})** - Standalone plays for common delivery challenges. Run any play in isolation or as part of a migration.
 - **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for AI agent-generated changes.
 
 ## Reference

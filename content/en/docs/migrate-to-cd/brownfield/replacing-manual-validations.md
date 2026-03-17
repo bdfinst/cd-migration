@@ -7,6 +7,8 @@ description: >
 ---
 
 {{% pageinfo %}}
+{{< scope-label "team" >}}
+
 The [Brownfield CD overview]({{< relref "/docs/migrate-to-cd" >}}) covers the migration phases, principles, and common challenges.
 This page covers the **core mechanical process** - the specific, repeating cycle of replacing
 manual validations with automation that drives every phase forward.

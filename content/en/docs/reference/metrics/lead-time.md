@@ -3,7 +3,7 @@ title: "Lead Time"
 linkTitle: "Lead Time"
 weight: 4
 description: >
-  Total time from when a change is committed until it is running in production. A DORA key metric for delivery throughput.
+  Total time from when a change is committed until it is running in production. A DORA lagging outcome metric for pipeline efficiency.
 ---
 
 ## Definition
@@ -11,7 +11,10 @@ description: >
 Lead Time measures the total elapsed time from when a code change is committed to
 the version control system until that change is successfully running in production.
 This is one of the four key metrics identified by the [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) (DevOps Research and
-Assessment) team as a predictor of software delivery performance.
+Assessment) team as a predictor of software delivery performance. Lead Time is a lagging
+outcome metric: it reflects the cumulative effect of pipeline automation, work decomposition,
+and integration practices. Improving [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) and
+[Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) are the leading indicators to address first.
 
 {{< card code=true header="**Lead Time formula**" lang="text" >}}
 leadTime = productionDeployTimestamp - commitTimestamp

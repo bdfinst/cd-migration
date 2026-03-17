@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 1 - Foundations**
+**Phase 1 - Foundations** | {{< scope-label "team" >}}
 
 [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) requires daily integration, and daily integration requires small work. This page covers the techniques for breaking work into small, deliverable increments that flow through your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) continuously.
 {{% /pageinfo %}}

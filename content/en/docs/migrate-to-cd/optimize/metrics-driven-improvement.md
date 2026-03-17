@@ -3,24 +3,79 @@ title: "Metrics-Driven Improvement"
 linkTitle: "Metrics-Driven Improvement"
 weight: 4
 description: >
-  Use DORA metrics and improvement kata to drive systematic delivery improvement.
+  Use leading CI metrics to drive improvement during migration. Use DORA outcome metrics to confirm it's working.
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize** | Original content combining [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) recommendations and improvement kata
+**Phase 3 - Optimize** | {{< scope-label "team" >}} | Original content combining [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) recommendations and improvement kata
 
-Improvement without measurement is guesswork. This page combines the DORA four key metrics with the improvement kata pattern to create a systematic, repeatable approach to getting better at delivery.
+Improvement without measurement is guesswork. This page covers two types of metrics, how they relate, and how to use them together in a systematic improvement cycle.
 {{% /pageinfo %}}
+
+## Two Types of Metrics
+
+Not all delivery metrics are equally useful for driving improvement. Understanding the difference prevents a common trap: tracking the wrong metrics and wondering why nothing changes.
+
+**Leading indicators** reflect the current state of team behaviors. They move immediately when those behaviors change and surface problems while they are still small. [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), [development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}), branch duration, and build success rate are leading indicators. When these are unhealthy, the cause is visible and addressable today.
+
+**DORA outcome metrics** reflect the cumulative effect of many upstream behaviors. They confirm that improvement work is having the expected systemic effect, but they move slowly. A team can work diligently on CI practices for weeks before those improvements appear in deployment frequency or lead time numbers. Setting DORA metrics as improvement targets produces pressure to optimize the number rather than the behaviors that generate it. See [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
+
+Use leading indicators to drive improvement experiments. Use DORA metrics to confirm that the improvements are compounding into better delivery outcomes.
 
 ## The Problem with Ad Hoc Improvement
 
 Most teams improve accidentally. Someone reads a blog post, suggests a change at standup, and the team tries it for a week before forgetting about it. This produces sporadic, unmeasurable progress that is impossible to sustain.
 
-Metrics-driven improvement replaces this with a disciplined cycle: measure where you are, define where you want to be, run a small experiment, measure the result, and repeat. The improvement kata provides the structure. DORA metrics provide the measures.
+Metrics-driven improvement replaces this with a disciplined cycle: measure where you are, define where you want to be, run a small experiment, measure the result, and repeat. The improvement kata provides the structure. Leading indicators drive the experiments. DORA metrics confirm the system-level effect.
+
+## CI Health Metrics
+
+[CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) health metrics are leading indicators. They reflect the current state of the behaviors that CD depends on and move immediately when those behaviors change. Problems in these metrics are visible and addressable today, weeks before they surface in DORA outcome numbers.
+
+Track these as your primary improvement signal during the migration. Run experiments against them. Use DORA metrics to confirm that the improvements are compounding.
+
+### Commits Per Day Per Developer
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The average number of commits integrated to trunk per developer per day |
+| **How to measure** | Count trunk commits (or merged pull requests) over a period and divide by the number of active developers and working days |
+| **Good target** | 2 or more per developer per day |
+| **Why it matters** | Low commit frequency indicates large batch sizes, long-lived branches, or developers waiting to integrate. All of these increase merge risk and slow feedback. |
+
+**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}) and work decomposition.
+
+**If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
+
+### Build Success Rate
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The percentage of CI builds that pass on the first attempt |
+| **How to measure** | Divide the number of green builds by total builds over a period |
+| **Good target** | 90% or higher |
+| **Why it matters** | A frequently broken build disrupts the entire team. Developers cannot integrate confidently when the build is unreliable, leading to longer feedback cycles and batching of changes. |
+
+**If the number is low:** Common causes include flaky tests, insufficient local validation before committing, or environmental inconsistencies between developer machines and CI. Start by identifying and quarantining flaky tests, then ensure developers can run a representative build locally before pushing.
+
+**If the number is high but DORA metrics are still lagging:** The build may pass but take too long, or the build may not cover enough to catch real problems. Check build duration and test coverage.
+
+### Time to Fix a Broken Build
+
+| Aspect | Detail |
+|--------|--------|
+| **What it measures** | The elapsed time from a build breaking to the next green build on trunk |
+| **How to measure** | Record the timestamp of the first red build and the timestamp of the next green build. Track the median. |
+| **Good target** | Less than 10 minutes |
+| **Why it matters** | A broken build blocks everyone. The longer it stays broken, the more developers stack changes on top of a broken baseline, compounding the problem. Fast fix times are a sign of strong CI discipline. |
+
+**If the number is high:** The team may not be treating broken builds as a stop-the-line event. Establish a team agreement: when the build breaks, fixing it takes priority over all other work. If builds break frequently and take long to fix, reduce change size so failures are easier to diagnose.
 
 ## The Four DORA Metrics
 
-The DORA research program (now part of Google Cloud) has identified four key metrics that predict software delivery performance. These are the metrics you should track throughout your [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration.
+The DORA research program (now part of Google Cloud) identified four key metrics that correlate with software delivery performance and organizational outcomes. These are lagging outcome metrics: they reflect the cumulative effect of many upstream behaviors. Track them to confirm that your improvement work is having the expected systemic effect, and to establish a baseline for reporting progress to leadership.
+
+Do not set these as improvement targets or OKRs. See [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 
 ### 1. Deployment Frequency
 
@@ -65,7 +120,7 @@ The percentage of deployments that cause a failure in production requiring remed
 
 **What it tells you:** How effective your testing and validation pipeline is. High failure rates indicate gaps in test coverage, insufficient pre-production validation, or overly large changes.
 
-**How to measure:** Track deployments that result in a degraded service, require rollback, or need a hotfix. Divide by total deployments. A "failure" is defined by the team - typically any incident that requires immediate human intervention.
+**How to measure:** Track deployments that result in a degraded service, require rollback, or need a hotfix. Divide by total deployments. A "failure" is defined by the team (typically any incident that requires immediate human intervention).
 
 ### 4. Mean Time to Restore (MTTR)
 
@@ -81,49 +136,6 @@ How long it takes to recover from a failure in production.
 **What it tells you:** How resilient your system and team are. Long recovery times indicate manual rollback processes, poor observability, or insufficient incident response practices.
 
 **How to measure:** Record the timestamp when a production failure is detected and the timestamp when service is fully restored. Track the median.
-
-## CI Health Metrics
-
-DORA metrics are outcome metrics - they tell you how delivery is performing overall. [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) health metrics are leading indicators that give you earlier feedback on the health of your integration practices. Problems in these metrics show up days or weeks before they surface in DORA numbers.
-
-Track these alongside DORA metrics to catch issues before they compound.
-
-### Commits Per Day Per Developer
-
-| Aspect | Detail |
-|--------|--------|
-| **What it measures** | The average number of commits integrated to trunk per developer per day |
-| **How to measure** | Count trunk commits (or merged pull requests) over a period and divide by the number of active developers and working days |
-| **Good target** | 2 or more per developer per day |
-| **Why it matters** | Low commit frequency indicates large batch sizes, long-lived branches, or developers waiting to integrate. All of these increase merge risk and slow feedback. |
-
-**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}) and work decomposition.
-
-**If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
-
-### Build Success Rate
-
-| Aspect | Detail |
-|--------|--------|
-| **What it measures** | The percentage of CI builds that pass on the first attempt |
-| **How to measure** | Divide the number of green builds by total builds over a period |
-| **Good target** | 90% or higher |
-| **Why it matters** | A frequently broken build disrupts the entire team. Developers cannot integrate confidently when the build is unreliable, leading to longer feedback cycles and batching of changes. |
-
-**If the number is low:** Common causes include flaky tests, insufficient local validation before committing, or environmental inconsistencies between developer machines and CI. Start by identifying and quarantining flaky tests, then ensure developers can run a representative build locally before pushing.
-
-**If the number is high but DORA metrics are still lagging:** The build may pass but take too long, or the build may not cover enough to catch real problems. Check build duration and test coverage.
-
-### Time to Fix a Broken Build
-
-| Aspect | Detail |
-|--------|--------|
-| **What it measures** | The elapsed time from a build breaking to the next green build on trunk |
-| **How to measure** | Record the timestamp of the first red build and the timestamp of the next green build. Track the median. |
-| **Good target** | Less than 10 minutes |
-| **Why it matters** | A broken build blocks everyone. The longer it stays broken, the more developers stack changes on top of a broken baseline, compounding the problem. Fast fix times are a sign of strong CI discipline. |
-
-**If the number is high:** The team may not be treating broken builds as a stop-the-line event. Establish a team agreement: when the build breaks, fixing it takes priority over all other work. If builds break frequently and take long to fix, reduce change size so failures are easier to diagnose.
 
 ## The DORA Recommended Practices
 

@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 0 - Assess**
+**Phase 0 - Assess** | {{< scope-label "team-org" >}}
 {{% /pageinfo %}}
 
 Your [value stream map]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) shows you where time goes. Your
@@ -34,6 +34,31 @@ The implication for your [CD]({{< relref "/docs/reference/glossary#cd-continuous
 of impact.** Fix the biggest one first. Then find the next one. Then fix that. This is how you
 make sustained, measurable progress rather than spreading effort across improvements that do not
 move the needle.
+
+### What your team controls
+
+Your team can apply constraint analysis to everything within your delivery boundary without
+needing external approval:
+
+- Running the value stream mapping exercise and gathering baseline metrics
+- Identifying testing bottlenecks, code review delays, and environment availability issues
+- Resolving integration and merge conflicts through trunk-based development
+- Addressing work decomposition and WIP limit problems
+
+### What requires broader change
+
+Some constraints are organizational, not technical. Your team can identify them, but resolving
+them requires engaging outside your boundary:
+
+- **Deployment gates:** CAB meetings, multi-team sign-offs, and approval queues are policy
+  decisions. Removing or automating them requires organizational consensus.
+- **Manual handoffs:** When work must pass through a separate test team, security review, or
+  operations team, the constraint is in the process structure, not the pipeline. Resolving it
+  means changing how those teams engage, not just how your team works.
+- **Change windows:** Release schedules and deployment blackout periods are set by the
+  organization, not the team. Challenge them with data, not just intent.
+
+Use the constraint analysis in this page to build a prioritized case for those conversations.
 
 ## Common Constraint Categories
 

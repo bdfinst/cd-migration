@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize**
+**Phase 3 - Optimize** | {{< scope-label "team" >}}
 
 [Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
 {{% /pageinfo %}}

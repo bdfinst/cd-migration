@@ -1,0 +1,98 @@
+{
+  "skill_name": "cd-facilitator",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "We're a team of 8 developers, releasing to production every 6-8 weeks. Every release is a stressful 2-day event involving 4 people manually running scripts. We often get hotfixes needed a day after release. Can you generate a facilitator chatbot setup we can use to help our team figure out how to improve?",
+      "expected_output": "A complete cd-facilitator-chatbot.md file with: (1) clear setup instructions for pasting the system prompt into any LLM, (2) a self-contained system prompt that includes the site structure from llms.txt, instructs the chatbot to ask diagnostic questions before advising, and references beyond.minimumcd.org pages, (3) a suggested opening message the team can paste.",
+      "assertions": [
+        {
+          "id": "file-created",
+          "text": "Output file cd-facilitator-chatbot.md was created and is non-empty"
+        },
+        {
+          "id": "system-prompt-code-block",
+          "text": "The output contains at least one fenced code block (triple backtick) containing the system prompt so it is easy to copy"
+        },
+        {
+          "id": "site-urls-in-system-prompt",
+          "text": "The system prompt contains at least 3 beyond.minimumcd.org URLs (evidence the llms.txt was fetched and embedded)"
+        },
+        {
+          "id": "diagnostic-first-instruction",
+          "text": "The system prompt explicitly instructs the chatbot to ask diagnostic questions before offering advice or recommendations"
+        },
+        {
+          "id": "llm-names-in-setup",
+          "text": "The setup/instructions section names at least 2 specific LLMs by name (e.g. Claude, ChatGPT, Gemini)"
+        },
+        {
+          "id": "three-section-structure",
+          "text": "The output has three clearly labelled sections: setup instructions, system prompt, and suggested opening message"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Our CI pipeline takes 45 minutes to run and flakes on maybe 20% of runs. Devs have started ignoring test failures because 'it's probably just flake'. We're a 12-person team shipping maybe once a month. Generate a chatbot our team lead can use to run a workshop session to diagnose and address our delivery problems.",
+      "expected_output": "A complete cd-facilitator-chatbot.md file with: (1) setup instructions including instructions for at least 2 named LLMs, (2) a system prompt that embeds the site's page structure with URLs, includes diagnostic-first facilitation behavior, and references the symptoms/anti-patterns relevant to test problems, (3) a suggested opening message.",
+      "assertions": [
+        {
+          "id": "file-created",
+          "text": "Output file cd-facilitator-chatbot.md was created and is non-empty"
+        },
+        {
+          "id": "system-prompt-code-block",
+          "text": "The output contains at least one fenced code block containing the system prompt"
+        },
+        {
+          "id": "site-urls-in-system-prompt",
+          "text": "The system prompt contains at least 3 beyond.minimumcd.org URLs"
+        },
+        {
+          "id": "diagnostic-first-instruction",
+          "text": "The system prompt explicitly instructs the chatbot to ask diagnostic questions before offering advice"
+        },
+        {
+          "id": "llm-names-in-setup",
+          "text": "The setup/instructions section names at least 2 specific LLMs by name"
+        },
+        {
+          "id": "three-section-structure",
+          "text": "The output has three clearly labelled sections: setup instructions, system prompt, and suggested opening message"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We're starting a brand new greenfield project next month. Small team of 5. We want to build CD in from day one but none of us have done it before. We want a chatbot that can guide us through setting this up correctly as we go. Can you generate one?",
+      "expected_output": "A complete cd-facilitator-chatbot.md file with: (1) setup instructions, (2) a system prompt that understands the greenfield context and guides the team through the CD migration phases from the start, with links to the relevant site pages, (3) a suggested opening message appropriate for a team starting fresh.",
+      "assertions": [
+        {
+          "id": "file-created",
+          "text": "Output file cd-facilitator-chatbot.md was created and is non-empty"
+        },
+        {
+          "id": "system-prompt-code-block",
+          "text": "The output contains at least one fenced code block containing the system prompt"
+        },
+        {
+          "id": "site-urls-in-system-prompt",
+          "text": "The system prompt contains at least 3 beyond.minimumcd.org URLs"
+        },
+        {
+          "id": "diagnostic-first-instruction",
+          "text": "The system prompt explicitly instructs the chatbot to ask diagnostic questions before offering advice"
+        },
+        {
+          "id": "llm-names-in-setup",
+          "text": "The setup/instructions section names at least 2 specific LLMs by name"
+        },
+        {
+          "id": "three-section-structure",
+          "text": "The output has three clearly labelled sections: setup instructions, system prompt, and suggested opening message"
+        }
+      ]
+    }
+  ]
+}

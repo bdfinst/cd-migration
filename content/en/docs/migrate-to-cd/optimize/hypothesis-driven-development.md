@@ -7,7 +7,7 @@ description: >
 ---
 
 {{% pageinfo %}}
-**Phase 3 - Optimize**
+**Phase 3 - Optimize** | {{< scope-label "team" >}}
 
 Hypothesis-driven development treats every change as an experiment. Instead of building features because someone asked for them and hoping they help, teams state a predicted outcome before writing code, measure the result after deployment, and use the evidence to decide what to do next. Combined with [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [small batches]({{< relref "/docs/reference/glossary#batch-size" >}}), and [metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}), this practice closes the loop between shipping and learning.
 {{% /pageinfo %}}
