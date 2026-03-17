@@ -66,8 +66,8 @@ current state and identify the [constraints]({{< relref "/docs/reference/glossar
 
 ## Related Content
 
-- [For Developers]({{< relref "/docs/symptoms/for-developers" >}}) - Common pain points developers face before CD adoption
-- [For Managers]({{< relref "/docs/symptoms/for-managers" >}}) - How delivery problems appear from a management perspective
+- [For Developers]({{< relref "/docs/triage/for-developers" >}}) - Common pain points developers face before CD adoption
+- [For Managers]({{< relref "/docs/triage/for-managers" >}}) - How delivery problems appear from a management perspective
 - [Brownfield CD]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - Migrating an existing system
 - [Greenfield CD]({{< relref "/docs/migrate-to-cd/greenfield" >}}) - Building CD from day one
 - [FAQ]({{< relref "/docs/reference/faq" >}}) - Frequently asked questions about continuous delivery

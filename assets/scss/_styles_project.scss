@@ -815,20 +815,21 @@ pre.mermaid {
   }
 
   .lp-btn-secondary {
-    background: transparent;
-    border: 1.5px solid rgba(255, 255, 255, 0.28);
-    color: rgba(255, 255, 255, 0.82) !important;
-    font-weight: 600;
+    background: #fff;
+    border: 1.5px solid #fff;
+    color: #224968 !important;
+    font-weight: 700;
     font-size: 1rem;
     padding: 0.7rem 2rem;
     border-radius: 4px;
     text-decoration: none;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    transition: background 0.15s, box-shadow 0.15s;
 
     &:hover {
-      border-color: rgba(255, 255, 255, 0.6);
-      color: #fff !important;
-      background: rgba(255, 255, 255, 0.06);
+      background: #edf2f7;
+      border-color: #edf2f7;
+      color: #224968 !important;
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
       text-decoration: none;
     }
   }
@@ -1242,6 +1243,274 @@ pre.mermaid {
 }
 
 // ---------------------------------------------------------------------------
+// Triage questionnaire - interactive symptom finder
+// ---------------------------------------------------------------------------
+
+#triage-questionnaire {
+  max-width: 680px;
+  margin: 1.5rem 0;
+
+  .triage-breadcrumb {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4a6a8a;
+    margin-bottom: 0.75rem;
+    min-height: 1.2em;
+  }
+
+  .triage-card {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .triage-context {
+    font-size: 0.85rem;
+    color: #4a6a8a;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-question-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 1rem;
+  }
+
+  .triage-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .triage-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #c8d8e8;
+    border-left: 3px solid #c8d8e8;
+    border-radius: 4px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    color: #1a2a3a;
+    cursor: pointer;
+    white-space: normal;
+    min-height: 2.5rem;
+    transition: border-color 0.12s, background 0.12s, color 0.12s;
+
+    &:hover {
+      border-color: #30648e;
+      border-left-color: #224968;
+      background: #edf2f7;
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+  }
+
+  // Result card
+  .triage-reframe {
+    border-left: 4px solid #026f27;
+    background: rgba(13, 122, 50, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .triage-reframe-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #026f27;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-reframe-text {
+    font-size: 0.9rem;
+    color: #1a2a3a;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .triage-result-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a2a3a;
+    margin: 0 0 1rem;
+    border: none;
+    padding: 0;
+  }
+
+  .triage-antipatterns {
+    border-left: 4px solid #8a4500;
+    background: rgba(180, 100, 0, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-antipatterns-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8a4500;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-antipatterns-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .triage-solutions {
+    border-left: 4px solid #005b8a;
+    background: rgba(0, 100, 160, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .triage-solutions-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #005b8a;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-solutions-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .triage-measures {
+    border-left: 4px solid #4a6a8a;
+    background: rgba(74, 106, 138, 0.05);
+    border-radius: 0 4px 4px 0;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .triage-measures-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #4a6a8a;
+    margin-bottom: 0.4rem;
+  }
+
+  .triage-measures-list {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  .triage-result-cta {
+    display: inline-block;
+    background: #224968;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-bottom: 1rem;
+
+    &:hover {
+      background: #1a3a54;
+      text-decoration: none;
+      color: #fff !important;
+    }
+  }
+
+  .triage-also-see-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #4a6a8a;
+    margin-bottom: 0.25rem;
+  }
+
+  .triage-also-see {
+    font-size: 0.88rem;
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      margin-bottom: 0.2rem;
+    }
+  }
+
+  // Navigation buttons
+  .triage-nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .triage-back,
+  .triage-restart {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+  }
+
+  // Mobile
+  @media (max-width: 600px) {
+    .triage-card {
+      padding: 1.1rem 1.1rem;
+    }
+
+    .triage-option {
+      font-size: 0.85rem;
+      padding: 0.55rem 0.75rem;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Tabpane - visually obvious tabs matching site palette
 // ---------------------------------------------------------------------------
 
@@ -1314,4 +1583,682 @@ pre.mermaid {
 // which constrains panes to 80% width on lg+ screens.
 .td-content > .tab-content .tab-pane {
   max-width: 100%;
+}
+
+// ---------------------------------------------------------------------------
+// Find Your Problems - entry screen cards
+// ---------------------------------------------------------------------------
+
+.finder-entry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.finder-entry-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1.5px solid #dce4ed;
+  border-top: 4px solid $primary;
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: box-shadow 0.15s, border-top-color 0.15s, transform 0.15s;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+    border-top-color: #0d7a32;
+    box-shadow: 0 6px 20px rgba(34, 73, 104, 0.16);
+    transform: translateY(-2px);
+  }
+}
+
+.finder-entry-icon {
+  font-size: 1.5rem;
+  color: $primary;
+  margin-bottom: 0.6rem;
+}
+
+.finder-entry-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a2a3a;
+  margin-bottom: 0.5rem;
+}
+
+.finder-entry-desc {
+  font-size: 0.88rem;
+  color: #5a6877;
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.finder-entry-cta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+// ---------------------------------------------------------------------------
+// Multi-symptom selector - stepped pain-first flow
+// ---------------------------------------------------------------------------
+
+#mss-container {
+  max-width: 820px;
+  margin: 1rem 0;
+
+  // Progress indicator
+  .mss-progress {
+    margin-bottom: 1.25rem;
+  }
+
+  .mss-progress-steps {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.25rem;
+  }
+
+  .mss-progress-step {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #a0adb8;
+    padding: 0.4rem 0.75rem;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+
+    &.mss-progress-active {
+      color: #224968;
+      background: #edf2f7;
+    }
+
+    &.mss-progress-done {
+      color: #0d7a32;
+    }
+  }
+
+  .mss-progress-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+
+    .mss-progress-done & {
+      background: #0d7a32;
+      border-color: #0d7a32;
+      color: #fff;
+    }
+  }
+
+  // Step panels
+  .mss-step {
+    display: none;
+
+    &.mss-step-active {
+      display: block;
+      animation: mss-fade-in 0.25s ease;
+    }
+  }
+
+  @keyframes mss-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .mss-instructions {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+    margin-bottom: 1rem;
+  }
+
+  // Step 1: Pain points
+  .mss-pain-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mss-pain-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 0.85rem;
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: #2a3a4a;
+    line-height: 1.4;
+    transition: background 0.12s, border-color 0.12s;
+
+    input[type="checkbox"] {
+      margin: 0;
+      flex-shrink: 0;
+      accent-color: #224968;
+    }
+
+    &:hover {
+      background: #edf2f7;
+      border-color: #b8cad8;
+    }
+
+    &.checked {
+      background: rgba(34, 73, 104, 0.07);
+      border-color: #224968;
+      color: #1a2a3a;
+      font-weight: 600;
+    }
+  }
+
+  // Step 2: Symptoms
+  .mss-legend {
+    font-size: 0.78rem;
+    color: #6a7880;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .mss-category {
+    margin-bottom: 1.25rem;
+  }
+
+  .mss-category-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4a6a8a;
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #e2e6ea;
+  }
+
+  .mss-symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .mss-symptom-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.45rem 0.65rem;
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.84rem;
+    color: #2a3a4a;
+    line-height: 1.4;
+    transition: background 0.1s, border-color 0.1s;
+
+    input[type="checkbox"] {
+      margin-top: 0.15em;
+      flex-shrink: 0;
+      accent-color: #224968;
+    }
+
+    &:hover {
+      background: #edf2f7;
+      border-color: #b8cad8;
+    }
+
+    &.checked {
+      background: rgba(34, 73, 104, 0.07);
+      border-color: #224968;
+      color: #1a2a3a;
+      font-weight: 600;
+    }
+  }
+
+  // Impact indicator icons (CSS-only circles)
+  .mss-impact-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.2em;
+
+    &.mss-impact-high {
+      background: #8a4500;
+    }
+
+    &.mss-impact-medium {
+      background: #8a4500;
+      opacity: 0.45;
+    }
+
+    &.mss-impact-low {
+      background: transparent;
+      border: 2px solid #b8cad8;
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  // Shared actions
+  .mss-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+
+  .mss-btn-primary {
+    background: #0d7a32;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #0b6a2b;
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #0d7a32;
+      outline-offset: 2px;
+    }
+  }
+
+  .mss-btn-back {
+    background: none;
+    border: 1px solid #b8cad8;
+    border-radius: 4px;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4a6a8a;
+    cursor: pointer;
+    transition: border-color 0.12s, color 0.12s;
+
+    &:hover {
+      border-color: #224968;
+      color: #224968;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #224968;
+      outline-offset: 2px;
+    }
+  }
+
+  .mss-btn-secondary {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+  }
+
+  .mss-count {
+    font-size: 0.82rem;
+    color: #4a6a8a;
+    font-weight: 600;
+  }
+
+  // Step 3: Results
+  #mss-results {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .mss-results-summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 0.75rem;
+  }
+
+  .mss-results-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .mss-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0.75rem;
+    background: #fff;
+    border: 1px solid #dce4ed;
+    border-left: 4px solid #dce4ed;
+    border-radius: 4px;
+    gap: 0.75rem;
+
+    &.mss-result-high {
+      border-left-color: #8a4500;
+    }
+
+    &.mss-result-med {
+      border-left-color: #224968;
+    }
+
+    &.mss-result-low {
+      border-left-color: #b8cad8;
+    }
+  }
+
+  .mss-result-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .mss-result-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #224968;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .mss-result-context {
+    font-size: 0.75rem;
+    color: #6a7880;
+    line-height: 1.3;
+  }
+
+  .mss-result-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a6a8a;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mss-results-note {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0;
+  }
+
+  .mss-no-results {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+  }
+
+  @media (max-width: 600px) {
+    .mss-symptom-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mss-progress-steps {
+      gap: 0.1rem;
+    }
+
+    .mss-progress-step {
+      font-size: 0.72rem;
+      padding: 0.3rem 0.5rem;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Health check worksheet
+// ---------------------------------------------------------------------------
+
+#hcw-container {
+  max-width: 820px;
+  margin: 1rem 0;
+
+  .hcw-instructions {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+    margin-bottom: 1.25rem;
+  }
+
+  .hcw-area {
+    margin-bottom: 1.75rem;
+  }
+
+  .hcw-area-header {
+    margin-bottom: 0.6rem;
+  }
+
+  .hcw-area-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #224968;
+    margin: 0 0 0.2rem;
+  }
+
+  .hcw-area-desc {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0 0 0.5rem;
+    font-style: italic;
+  }
+
+  .hcw-statements {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-left: 0.25rem;
+    border-left: 3px solid #e2e6ea;
+  }
+
+  .hcw-statement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.5rem 0.75rem;
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.87rem;
+    color: #2a3a4a;
+    line-height: 1.45;
+    transition: background 0.1s, border-color 0.1s;
+
+    input[type="checkbox"] {
+      margin-top: 0.15em;
+      flex-shrink: 0;
+      accent-color: #224968;
+    }
+
+    &:hover {
+      background: #edf2f7;
+      border-color: #b8cad8;
+    }
+
+    &.checked {
+      background: rgba(34, 73, 104, 0.07);
+      border-color: #224968;
+      font-weight: 600;
+      color: #1a2a3a;
+    }
+  }
+
+  .hcw-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+    flex-wrap: wrap;
+  }
+
+  .hcw-btn-primary {
+    background: #0d7a32;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover:not(:disabled) {
+      background: #0b6a2b;
+    }
+
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #0d7a32;
+      outline-offset: 2px;
+    }
+  }
+
+  .hcw-btn-secondary {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #30648e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #224968;
+    }
+  }
+
+  .hcw-count {
+    font-size: 0.82rem;
+    color: #4a6a8a;
+    font-weight: 600;
+  }
+
+  // Results
+  #hcw-results {
+    background: #f7f9fb;
+    border: 1px solid #dce4ed;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .hcw-results-summary {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    margin-bottom: 0.75rem;
+  }
+
+  .hcw-results-list {
+    list-style: none;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .hcw-result-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.75rem;
+    background: #fff;
+    border: 1px solid #dce4ed;
+    border-left: 4px solid #dce4ed;
+    border-radius: 4px;
+    gap: 0.75rem;
+
+    &.hcw-result-high {
+      border-left-color: #8a4500;
+    }
+
+    &.hcw-result-med {
+      border-left-color: #224968;
+    }
+
+    &.hcw-result-low {
+      border-left-color: #b8cad8;
+    }
+  }
+
+  .hcw-result-link {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #224968;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .hcw-result-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a6a8a;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .hcw-results-note {
+    font-size: 0.8rem;
+    color: #6a7880;
+    margin: 0;
+  }
+
+  .hcw-no-results {
+    font-size: 0.88rem;
+    color: #4a6a8a;
+  }
 }
