@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-03-17 - Redesign triage with pain-first guided flow and persona pages
+
+Redesigned the [Multi-Symptom Selector]({{< relref "/docs/triage/multi-symptom" >}}) to use a 3-step pain-first flow: pick high-level pain points, check relevant symptoms (sorted by impact), then see contextual results. Removed the role/persona filter in favor of shared ownership. Added impact indicators to symptoms derived from anti-pattern count. Added [For Agile Coaches]({{< relref "/docs/triage/for-agile-coaches" >}}) curated reading list alongside existing developer and manager lists. Moved all persona pages into [Triage Your Problems]({{< relref "/docs/triage" >}}), renamed the section, and removed redundant triage entry points from the homepage.
+
 ## 2026-03-16 - Replace guided triage with multi-symptom selector and team health check
 
 Retired the guided triage questionnaire. [Find Your Problems]({{< relref "/docs/triage" >}}) now offers two self-service tools: a [Multi-Symptom Selector]({{< relref "/docs/triage/multi-symptom" >}}) that lets individuals check symptoms filtered by their role (manager, scrum master, developer) and see ranked anti-patterns, and a [Team Health Check]({{< relref "/docs/triage/health-check" >}}) worksheet organized by seven delivery areas for use in retrospectives and team assessments. Both tools surface anti-patterns without requiring a facilitator.
