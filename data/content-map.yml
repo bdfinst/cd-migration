@@ -13,20 +13,22 @@ sections:
   # ---- Diagnosis sections (weight 3-5) ----
 
   - path: docs/triage/
-    title: "Find Your Symptom"
+    title: "Triage Your Problems"
     weight: 3
-    purpose: "Interactive questionnaire that probes beyond the surface problem to surface the real underlying cause, then links to the relevant symptom page. Driven by data/triage.yaml; rendered by layouts/shortcodes/triage-questionnaire.html."
-    pages: []  # Section landing page only; no child pages
+    purpose: "Interactive tools and curated reading lists to identify delivery problems without a facilitator."
+    pages:
+      - file: for-developers.md
+        title: "Symptoms for Developers"
+      - file: for-agile-coaches.md
+        title: "Symptoms for Agile Coaches"
+      - file: for-managers.md
+        title: "Symptoms for Managers"
 
   - path: docs/symptoms/
     title: "Dysfunction Symptoms"
     weight: 4
     purpose: "Observable delivery problems organized by category so teams can start from what they see and trace back to root causes."
-    pages:
-      - file: for-developers.md
-        title: "Symptoms for Developers"
-      - file: for-managers.md
-        title: "Symptoms for Managers"
+    pages: []
     subsections:
       - path: testing/
         title: "Test Suite Problems"
@@ -747,7 +749,7 @@ standalone_pages:
 totals:
   top_level_sections: 6  # triage, symptoms, anti-patterns, migrate-to-cd, agentic-cd, reference
   subsections: 24  # symptoms(4 + 4 flow subs) + anti-patterns(6 + 3 org-cultural subs) + migrate-to-cd(6 + 1 tbd sub) + agentic-cd(4) + reference(5)
-  symptom_pages: 67  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 10 visibility + 2 root-level(for-developers, for-managers) - note: flow _index.md pages not counted
+  symptom_pages: 65  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 10 visibility - note: persona pages moved to triage section
   anti_pattern_pages: 64  # 7 team-workflow + 4 branching + 9 testing + 12 pipeline + 26 org-cultural(10+9+7) + 1 monitoring + 5 architecture
   migration_guide_pages: 32  # 2 brownfield + 0 greenfield + 4 assess + 7 foundations(6+1 tbd) + 8 pipeline + 8 optimize + 3 continuous-deployment
   agentic_cd_pages: 14

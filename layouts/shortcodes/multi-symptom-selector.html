@@ -13,25 +13,48 @@
 
 <div id="mss-container" style="display:none" aria-label="Multi-symptom selector">
 
-  <div class="mss-persona-bar" role="group" aria-label="Filter by role">
-    <span class="mss-persona-label">I am a:</span>
-    <button class="mss-persona-btn mss-persona-active" data-persona="all" type="button">Everyone</button>
-    <button class="mss-persona-btn" data-persona="manager" type="button">Manager</button>
-    <button class="mss-persona-btn" data-persona="scrum-master" type="button">Scrum Master</button>
-    <button class="mss-persona-btn" data-persona="developer" type="button">Developer</button>
+  <div class="mss-progress" role="navigation" aria-label="Progress">
+    <ol class="mss-progress-steps">
+      <li class="mss-progress-step mss-progress-active" data-step="1"><span class="mss-progress-num">1</span> Pain points</li>
+      <li class="mss-progress-step" data-step="2"><span class="mss-progress-num">2</span> Symptoms</li>
+      <li class="mss-progress-step" data-step="3"><span class="mss-progress-num">3</span> Results</li>
+    </ol>
   </div>
 
-  <p class="mss-instructions">Check everything that sounds familiar. Then click <strong>Find Problems</strong>.</p>
-
-  <div id="mss-symptom-list" role="group" aria-label="Symptom checklist"></div>
-
-  <div class="mss-actions">
-    <button id="mss-submit" type="button" class="mss-btn-primary" disabled>Find Problems</button>
-    <button id="mss-reset" type="button" class="mss-btn-secondary">Clear All</button>
-    <span id="mss-count" class="mss-count" aria-live="polite">0 selected</span>
+  <!-- Step 1: Pain points -->
+  <div class="mss-step mss-step-active" data-step="1">
+    <p class="mss-instructions">What problems does your team experience? Pick up to three.</p>
+    <div id="mss-pain-list" class="mss-pain-grid" role="group" aria-label="Pain point selection"></div>
+    <div class="mss-actions">
+      <button id="mss-to-step2" type="button" class="mss-btn-primary" disabled>Next: Pick symptoms</button>
+      <span id="mss-pain-count" class="mss-count" aria-live="polite">0 of 3 selected</span>
+    </div>
   </div>
 
-  <div id="mss-results" style="display:none" aria-live="polite"></div>
+  <!-- Step 2: Symptoms -->
+  <div class="mss-step" data-step="2">
+    <p class="mss-instructions">Check everything that sounds familiar. Higher-impact symptoms are listed first.</p>
+    <p class="mss-legend">
+      <span class="mss-impact-icon mss-impact-high" title="High impact on delivery outcomes"></span> High impact
+      <span class="mss-impact-icon mss-impact-medium" title="Medium impact on delivery outcomes"></span> Medium
+      <span class="mss-impact-icon mss-impact-low" title="Low impact on delivery outcomes"></span> Low
+    </p>
+    <div id="mss-symptom-list" role="group" aria-label="Symptom checklist"></div>
+    <div class="mss-actions">
+      <button id="mss-back-to-1" type="button" class="mss-btn-back">Back</button>
+      <button id="mss-submit" type="button" class="mss-btn-primary" disabled>Find problems</button>
+      <span id="mss-count" class="mss-count" aria-live="polite">0 selected</span>
+    </div>
+  </div>
+
+  <!-- Step 3: Results -->
+  <div class="mss-step" data-step="3">
+    <div id="mss-results" aria-live="polite"></div>
+    <div class="mss-actions">
+      <button id="mss-back-to-2" type="button" class="mss-btn-back">Back to symptoms</button>
+      <button id="mss-reset" type="button" class="mss-btn-secondary">Start over</button>
+    </div>
+  </div>
 
 </div>
 
@@ -50,8 +73,23 @@
   var apById = {};
   AP_LIST.forEach(function (ap) { apById[ap.id] = ap; });
 
-  var currentPersona = 'all';
-  var checked = {};
+  // Pain points map to symptom categories
+  var PAIN_POINTS = [
+    { id: 'release-pain', label: 'Releases are painful or risky', categories: ['deployment'] },
+    { id: 'testing-gaps', label: 'We find bugs late or lack test confidence', categories: ['testing'] },
+    { id: 'slow-integration', label: 'Merging and integration slow us down', categories: ['flow-integration'] },
+    { id: 'work-stuck', label: 'Work sits waiting or takes too long', categories: ['flow-work'] },
+    { id: 'dev-friction', label: 'Development environment and tooling cause friction', categories: ['flow-developer'] },
+    { id: 'knowledge-gaps', label: 'Knowledge is siloed or lost when people move', categories: ['flow-knowledge'] },
+    { id: 'blind-production', label: 'We lack visibility into production and team health', categories: ['visibility'] }
+  ];
+
+  var MAX_PAIN = 3;
+  var selectedPain = {};
+  var checkedSymptoms = {};
+  var currentStep = 1;
+
+  var IMPACT_ORDER = { high: 0, medium: 1, low: 2 };
 
   function esc(str) {
     return String(str)
@@ -61,46 +99,113 @@
       .replace(/"/g, '&quot;');
   }
 
-  // Group symptoms by category
-  function groupByCategory(symptoms) {
+  // Step navigation
+  function goToStep(step) {
+    currentStep = step;
+    var steps = document.querySelectorAll('.mss-step');
+    steps.forEach(function (el) {
+      var s = parseInt(el.getAttribute('data-step'));
+      el.classList.toggle('mss-step-active', s === step);
+    });
+    var indicators = document.querySelectorAll('.mss-progress-step');
+    indicators.forEach(function (el) {
+      var s = parseInt(el.getAttribute('data-step'));
+      el.classList.toggle('mss-progress-active', s === step);
+      el.classList.toggle('mss-progress-done', s < step);
+    });
+    document.getElementById('mss-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Step 1: Pain points
+  function renderPainPoints() {
+    var list = document.getElementById('mss-pain-list');
+    var html = '';
+    PAIN_POINTS.forEach(function (pp) {
+      var isChecked = selectedPain[pp.id] ? ' checked' : '';
+      html += '<label class="mss-pain-item' + isChecked + '">';
+      html += '<input type="checkbox" name="pain" value="' + esc(pp.id) + '"' + isChecked + '>';
+      html += '<span class="mss-pain-text">' + esc(pp.label) + '</span>';
+      html += '</label>';
+    });
+    list.innerHTML = html;
+    attachPainListeners();
+  }
+
+  function attachPainListeners() {
+    var boxes = document.querySelectorAll('#mss-pain-list input[type="checkbox"]');
+    boxes.forEach(function (box) {
+      box.addEventListener('change', function () {
+        if (box.checked) {
+          if (Object.keys(selectedPain).length >= MAX_PAIN) {
+            box.checked = false;
+            return;
+          }
+          selectedPain[box.value] = true;
+          box.closest('label').classList.add('checked');
+        } else {
+          delete selectedPain[box.value];
+          box.closest('label').classList.remove('checked');
+        }
+        updatePainCount();
+      });
+    });
+  }
+
+  function updatePainCount() {
+    var n = Object.keys(selectedPain).length;
+    document.getElementById('mss-pain-count').textContent = n + ' of ' + MAX_PAIN + ' selected';
+    document.getElementById('mss-to-step2').disabled = n === 0;
+  }
+
+  // Step 2: Symptoms filtered by pain points
+  function getActiveCategories() {
+    var cats = [];
+    Object.keys(selectedPain).forEach(function (painId) {
+      var pp = PAIN_POINTS.find(function (p) { return p.id === painId; });
+      if (pp) { cats = cats.concat(pp.categories); }
+    });
+    return cats;
+  }
+
+  function renderSymptoms() {
+    var cats = getActiveCategories();
+    var list = document.getElementById('mss-symptom-list');
+
+    // Group symptoms by category, filtered to active categories
     var order = ['deployment', 'testing', 'flow-integration', 'flow-work', 'flow-developer', 'flow-knowledge', 'visibility'];
     var groups = {};
     var labels = {};
-    symptoms.forEach(function (s) {
+    SYMPTOMS.forEach(function (s) {
+      if (cats.indexOf(s.category) === -1) { return; }
       if (!groups[s.category]) {
         groups[s.category] = [];
         labels[s.category] = s.category_label;
       }
       groups[s.category].push(s);
     });
-    var result = [];
-    order.forEach(function (cat) {
-      if (groups[cat]) {
-        result.push({ category: cat, label: labels[cat], symptoms: groups[cat] });
-      }
-    });
-    return result;
-  }
 
-  function renderSymptoms() {
-    var list = document.getElementById('mss-symptom-list');
-    var groups = groupByCategory(SYMPTOMS);
-    var html = '';
-
-    groups.forEach(function (group) {
-      // Check if any symptoms in this group are visible for current persona
-      var visible = group.symptoms.filter(function (s) {
-        return currentPersona === 'all' || s.personas.indexOf(currentPersona) !== -1;
+    // Sort each group by impact
+    Object.keys(groups).forEach(function (cat) {
+      groups[cat].sort(function (a, b) {
+        return (IMPACT_ORDER[a.impact || 'low'] || 2) - (IMPACT_ORDER[b.impact || 'low'] || 2);
       });
-      if (visible.length === 0) { return; }
+    });
 
+    var html = '';
+    order.forEach(function (cat) {
+      if (!groups[cat]) { return; }
       html += '<div class="mss-category">';
-      html += '<h3 class="mss-category-title">' + esc(group.label) + '</h3>';
+      html += '<h3 class="mss-category-title">' + esc(labels[cat]) + '</h3>';
       html += '<div class="mss-symptom-grid">';
-      visible.forEach(function (s) {
-        var isChecked = checked[s.id] ? ' checked' : '';
+      groups[cat].forEach(function (s) {
+        var isChecked = checkedSymptoms[s.id] ? ' checked' : '';
+        var impact = s.impact || 'low';
+        var impactTitle = impact === 'high' ? 'High impact on delivery outcomes'
+                        : impact === 'medium' ? 'Medium impact on delivery outcomes'
+                        : 'Low impact on delivery outcomes';
         html += '<label class="mss-symptom-item' + isChecked + '">';
         html += '<input type="checkbox" name="symptom" value="' + esc(s.id) + '"' + isChecked + '>';
+        html += '<span class="mss-impact-icon mss-impact-' + impact + '" title="' + impactTitle + '"></span>';
         html += '<span class="mss-symptom-text">' + esc(s.title) + '</span>';
         html += '</label>';
       });
@@ -108,44 +213,59 @@
     });
 
     list.innerHTML = html;
-    attachCheckboxListeners();
+    attachSymptomListeners();
+    updateSymptomCount();
   }
 
-  function attachCheckboxListeners() {
+  function attachSymptomListeners() {
     var boxes = document.querySelectorAll('#mss-symptom-list input[type="checkbox"]');
     boxes.forEach(function (box) {
       box.addEventListener('change', function () {
         if (box.checked) {
-          checked[box.value] = true;
+          checkedSymptoms[box.value] = true;
           box.closest('label').classList.add('checked');
         } else {
-          delete checked[box.value];
+          delete checkedSymptoms[box.value];
           box.closest('label').classList.remove('checked');
         }
-        updateCount();
+        updateSymptomCount();
       });
     });
   }
 
-  function updateCount() {
-    var n = Object.keys(checked).length;
-    var countEl = document.getElementById('mss-count');
-    var submitBtn = document.getElementById('mss-submit');
-    countEl.textContent = n + (n === 1 ? ' selected' : ' selected');
-    submitBtn.disabled = n === 0;
-    // Hide stale results when selection changes
-    document.getElementById('mss-results').style.display = 'none';
+  function updateSymptomCount() {
+    var n = Object.keys(checkedSymptoms).length;
+    document.getElementById('mss-count').textContent = n + (n === 1 ? ' selected' : ' selected');
+    document.getElementById('mss-submit').disabled = n === 0;
   }
 
+  // Step 3: Results
   function computeResults() {
     var apCount = {};
-    var checkedIds = Object.keys(checked);
+    var apPainLinks = {};
+    var checkedIds = Object.keys(checkedSymptoms);
 
     checkedIds.forEach(function (sid) {
       var symptom = SYMPTOMS.find(function (s) { return s.id === sid; });
       if (!symptom) { return; }
+
+      // Find which pain point labels match this symptom's category
+      var painLabels = [];
+      Object.keys(selectedPain).forEach(function (painId) {
+        var pp = PAIN_POINTS.find(function (p) { return p.id === painId; });
+        if (pp && pp.categories.indexOf(symptom.category) !== -1) {
+          painLabels.push(pp.label);
+        }
+      });
+
       symptom.anti_patterns.forEach(function (apId) {
         apCount[apId] = (apCount[apId] || 0) + 1;
+        if (!apPainLinks[apId]) { apPainLinks[apId] = []; }
+        painLabels.forEach(function (label) {
+          if (apPainLinks[apId].indexOf(label) === -1) {
+            apPainLinks[apId].push(label);
+          }
+        });
       });
     });
 
@@ -154,73 +274,74 @@
     });
 
     return sorted.map(function (apId) {
-      return { ap: apById[apId], count: apCount[apId] };
+      return { ap: apById[apId], count: apCount[apId], painLinks: apPainLinks[apId] || [] };
     }).filter(function (item) { return item.ap; });
   }
 
   function renderResults(results) {
     var el = document.getElementById('mss-results');
-    var total = Object.keys(checked).length;
+    var total = Object.keys(checkedSymptoms).length;
 
     if (results.length === 0) {
-      el.innerHTML = '<p class="mss-no-results">No matching anti-patterns found. Try selecting more symptoms.</p>';
-      el.style.display = 'block';
+      el.innerHTML = '<p class="mss-no-results">No matching anti-patterns found. Go back and select more symptoms.</p>';
       return;
     }
 
     var html = '<div class="mss-results-header">';
-    html += '<p class="mss-results-summary">Based on ' + total + ' selected symptom' + (total !== 1 ? 's' : '') + ', these practices are likely driving your problems:</p>';
+    html += '<p class="mss-results-summary">Based on ' + total + ' symptom' + (total !== 1 ? 's' : '') + ', these practices are likely driving your problems:</p>';
     html += '</div>';
     html += '<ul class="mss-results-list">';
 
     results.forEach(function (item) {
       var weight = item.count >= 3 ? 'mss-result-high' : item.count === 2 ? 'mss-result-med' : 'mss-result-low';
       html += '<li class="mss-result-item ' + weight + '">';
+      html += '<div class="mss-result-main">';
       html += '<a href="' + esc(item.ap.path) + '" class="mss-result-link">' + esc(item.ap.title) + '</a>';
+      if (item.painLinks.length > 0) {
+        html += '<span class="mss-result-context">Related to: ' + item.painLinks.map(function (l) { return esc(l.toLowerCase()); }).join(', ') + '</span>';
+      }
+      html += '</div>';
       html += '<span class="mss-result-count">' + item.count + ' symptom' + (item.count !== 1 ? 's' : '') + '</span>';
       html += '</li>';
     });
 
     html += '</ul>';
-    html += '<p class="mss-results-note">Higher counts indicate stronger signal. Start with the top anti-patterns.</p>';
+    html += '<p class="mss-results-note">Higher counts indicate stronger signal. Start with the top result.</p>';
 
     el.innerHTML = html;
-    el.style.display = 'block';
-    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  // Persona tabs
-  document.getElementById('mss-container').addEventListener('click', function (e) {
-    var btn = e.target.closest('.mss-persona-btn');
-    if (btn) {
-      currentPersona = btn.getAttribute('data-persona');
-      document.querySelectorAll('.mss-persona-btn').forEach(function (b) {
-        b.classList.toggle('mss-persona-active', b === btn);
-      });
-      checked = {};
-      updateCount();
-      renderSymptoms();
-      document.getElementById('mss-results').style.display = 'none';
-    }
+  // Navigation buttons
+  document.getElementById('mss-to-step2').addEventListener('click', function () {
+    renderSymptoms();
+    goToStep(2);
   });
 
-  // Submit
+  document.getElementById('mss-back-to-1').addEventListener('click', function () {
+    goToStep(1);
+  });
+
   document.getElementById('mss-submit').addEventListener('click', function () {
     var results = computeResults();
     renderResults(results);
+    goToStep(3);
   });
 
-  // Reset
+  document.getElementById('mss-back-to-2').addEventListener('click', function () {
+    goToStep(2);
+  });
+
   document.getElementById('mss-reset').addEventListener('click', function () {
-    checked = {};
-    updateCount();
-    renderSymptoms();
-    document.getElementById('mss-results').style.display = 'none';
+    selectedPain = {};
+    checkedSymptoms = {};
+    renderPainPoints();
+    updatePainCount();
+    goToStep(1);
   });
 
   // Init
   document.getElementById('mss-container').style.display = 'block';
-  renderSymptoms();
-  updateCount();
+  renderPainPoints();
+  updatePainCount();
 })();
 </script>

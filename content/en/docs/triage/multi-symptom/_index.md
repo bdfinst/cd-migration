@@ -3,10 +3,9 @@ title: "Multi-Symptom Selector"
 linkTitle: "Multi-Symptom Selector"
 weight: 1
 description: >
-  Check every problem that sounds familiar. The selector finds anti-patterns driving multiple symptoms at once.
+  Start from your pain points. The selector narrows to relevant symptoms and finds the anti-patterns driving them.
 ---
 
-Check every symptom that sounds like your team. The more you select, the better the signal.
-Use the persona filter to focus on what is visible from your role.
+Start with what hurts, then drill into specifics. The selector finds anti-patterns driving multiple symptoms at once.
 
 {{< multi-symptom-selector >}}

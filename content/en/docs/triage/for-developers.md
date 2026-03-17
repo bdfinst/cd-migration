@@ -1,7 +1,9 @@
 ---
 title: "Symptoms for Developers"
 linkTitle: "For Developers"
-weight: 6
+weight: 3
+aliases:
+  - /docs/symptoms/for-developers/
 description: >
   Dysfunction symptoms grouped by the friction developers and tech leads experience - from daily
   coding pain to team-level delivery patterns.
@@ -23,6 +25,9 @@ familiar, follow the link to find what is causing it and how to fix it.
 - **[Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}})** - You rename a method or restructure a class and 15 tests fail, even though the behavior is correct. Technical debt accumulates because cleanup is too expensive.
 - **[Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}})** - Running tests locally is so slow that you skip it and push to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) instead, trading fast feedback for a longer loop.
 - **[High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}})** - Coverage is above 80% but bugs still make it to production. The tests check that code runs, not that it works correctly.
+- **[A Large Codebase Has No Automated Tests]({{< relref "/docs/symptoms/testing/legacy-system-no-tests" >}})** - No automated tests means every change is risky and slow. Manual testing cannot keep up with delivery pace.
+- **[Tests Interfere with Each Other Through Shared Data]({{< relref "/docs/symptoms/testing/test-data-management-chaos" >}})** - Shared test data causes tests to fail unpredictably. You cannot trust the results without re-running.
+- **[Test Environments Take Too Long to Reset]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}})** - Resetting takes so long that you skip local runs or batch changes to avoid the wait.
 
 ## Integrating and merging
 
@@ -37,6 +42,9 @@ familiar, follow the link to find what is causing it and how to fix it.
 - **[Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})** - The team stops merging to stabilize before each release, creating artificial bottlenecks and deferred work.
 - **[Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}})** - A dedicated stabilization period is needed before every release because the normal process does not produce releasable code.
 - **[Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}})** - Services are coupled so that deploying one requires deploying others at the same time.
+- **[Database Migrations Block or Break Deployments]({{< relref "/docs/symptoms/deployment/database-migrations-block-deploys" >}})** - Schema changes couple deployments to manual coordination and downtime windows.
+- **[API Changes Break Consumers Without Warning]({{< relref "/docs/symptoms/deployment/api-changes-break-consumers" >}})** - Changing an API breaks downstream services because there are no contracts or versioning.
+- **[Deployments Are One-Way Doors]({{< relref "/docs/symptoms/deployment/no-rollback-capability" >}})** - There is no fast rollback, so every deployment carries irreversible risk.
 
 ## Environment and production surprises
 
@@ -45,5 +53,9 @@ familiar, follow the link to find what is causing it and how to fix it.
 - **[Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}})** - The staging environment gives false confidence. Problems that staging should catch reach production.
 - **[Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}})** - The team learns about production problems from customer reports instead of monitoring.
 - **[Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}})** - Incidents are not detected until the impact has already accumulated.
+- **[Setting Up a Development Environment Takes Days]({{< relref "/docs/symptoms/flow/developer-experience/painful-local-development-setup" >}})** - Onboarding friction and undocumented setup steps waste developer time before any code is written.
+- **[Getting a Test Environment Requires Filing a Ticket]({{< relref "/docs/symptoms/flow/developer-experience/lack-of-self-service-environments" >}})** - Developers cannot self-serve environments, creating wait time before any testing.
+- **[When Something Breaks, Nobody Knows What to Do]({{< relref "/docs/symptoms/visibility/chaotic-incident-response" >}})** - Incident response is chaotic because there are no runbooks or clear ownership.
+- **[The Team Ignores Alerts Because There Are Too Many]({{< relref "/docs/symptoms/visibility/alert-fatigue" >}})** - Alert noise trains developers to ignore monitoring, masking real incidents.
 
 See [Learning Paths]({{< relref "/docs/learning-paths" >}}) for a structured reading sequence if you want a guided path through diagnosis and fixes.

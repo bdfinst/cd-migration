@@ -1,599 +1,616 @@
 - id: fear-of-deploying
-  title: "The team is afraid to deploy"
+  title: The team is afraid to deploy
   path: /docs/symptoms/deployment/fear-of-deploying/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
-  anti_patterns: [manual-deployments, missing-deployment-pipeline, blind-operations, manual-testing-only, monolithic-work-items]
-
+  anti_patterns: [manual-deployments, missing-deployment-pipeline, blind-operations,
+    manual-testing-only, monolithic-work-items]
+  impact: high
 - id: infrequent-releases
-  title: "Releases are infrequent and painful"
+  title: Releases are infrequent and painful
   path: /docs/symptoms/deployment/infrequent-releases/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
-  anti_patterns: [manual-deployments, missing-deployment-pipeline, cab-gates, monolithic-work-items, manual-regression-testing-gates]
-
+  anti_patterns: [manual-deployments, missing-deployment-pipeline, cab-gates, monolithic-work-items,
+    manual-regression-testing-gates]
+  impact: high
 - id: hardening-sprints
-  title: "Hardening sprints are needed before every release"
+  title: Hardening sprints are needed before every release
   path: /docs/symptoms/deployment/hardening-sprints/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
-  anti_patterns: [manual-testing-only, inverted-test-pyramid, undone-work, monolithic-work-items, pressure-to-skip-testing]
-
+  anti_patterns: [manual-testing-only, inverted-test-pyramid, undone-work, monolithic-work-items,
+    pressure-to-skip-testing]
+  impact: high
 - id: merge-freeze
-  title: "Merge freezes before deployments"
+  title: Merge freezes before deployments
   path: /docs/symptoms/deployment/merge-freeze/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
   anti_patterns: [manual-deployments, integration-deferred, missing-deployment-pipeline]
-
+  impact: high
 - id: coordinated-deployments
-  title: "Multiple services must be deployed together"
+  title: Multiple services must be deployed together
   path: /docs/symptoms/deployment/coordinated-deployments/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
-  anti_patterns: [tightly-coupled-monolith, distributed-monolith, horizontal-slicing, undone-work]
-
+  anti_patterns: [tightly-coupled-monolith, distributed-monolith, horizontal-slicing,
+    undone-work]
+  impact: high
 - id: waiting-on-qa-team
-  title: "Features must wait for a separate QA team"
+  title: Features must wait for a separate QA team
   path: /docs/symptoms/deployment/waiting-on-qa-team/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master]
   anti_patterns: [siloed-qa-team, qa-signoff-gate]
-
+  impact: medium
 - id: release-manager-bottleneck
-  title: "Releases depend on one person"
+  title: Releases depend on one person
   path: /docs/symptoms/deployment/release-manager-bottleneck/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master]
   anti_patterns: [manual-deployments, knowledge-silos, snowflake-environments, missing-deployment-pipeline]
-
+  impact: high
 - id: change-management-overhead
-  title: "Every change requires a ticket and approval chain"
+  title: Every change requires a ticket and approval chain
   path: /docs/symptoms/deployment/change-management-overhead/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
   anti_patterns: [cab-gates, manual-deployments, missing-deployment-pipeline]
-
+  impact: high
 - id: staging-passes-production-fails
-  title: "Staging passes but production fails"
+  title: Staging passes but production fails
   path: /docs/symptoms/deployment/staging-passes-production-fails/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, developer]
-  anti_patterns: [snowflake-environments, blind-operations, tightly-coupled-monolith, manual-deployments]
-
+  anti_patterns: [snowflake-environments, blind-operations, tightly-coupled-monolith,
+    manual-deployments]
+  impact: high
 - id: regressions-on-release
-  title: "New releases introduce regressions"
+  title: New releases introduce regressions
   path: /docs/symptoms/deployment/regressions-on-release/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, developer]
   anti_patterns: [testing-only-at-the-end, long-lived-feature-branches, release-branches-backporting]
-
+  impact: high
 - id: no-rollback-capability
-  title: "Deployments are one-way doors"
+  title: Deployments are one-way doors
   path: /docs/symptoms/deployment/no-rollback-capability/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, developer]
-  anti_patterns: [manual-deployments, missing-deployment-pipeline, blind-operations, snowflake-environments]
-
+  anti_patterns: [manual-deployments, missing-deployment-pipeline, blind-operations,
+    snowflake-environments]
+  impact: high
 - id: pipeline-changes-require-another-team
-  title: "Teams cannot change their own pipeline"
+  title: Teams cannot change their own pipeline
   path: /docs/symptoms/deployment/pipeline-changes-require-another-team/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [scrum-master, developer]
   anti_patterns: [separate-ops-team, pipeline-not-versioned, no-infrastructure-as-code]
-
+  impact: high
 - id: security-review-bottleneck
-  title: "Security review is a gate, not a guardrail"
+  title: Security review is a gate, not a guardrail
   path: /docs/symptoms/deployment/security-review-bottleneck/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master]
   anti_patterns: [missing-deployment-pipeline, cab-gates, manual-regression-testing-gates]
-
+  impact: high
 - id: waiting-for-cross-team-approval
-  title: "Work requires sign-off from teams not involved in delivery"
+  title: Work requires sign-off from teams not involved in delivery
   path: /docs/symptoms/deployment/waiting-for-cross-team-approval/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager, scrum-master, developer]
   anti_patterns: [compliance-manual-approval, separation-of-duties-antipattern]
-
+  impact: medium
 - id: artifacts-rebuilt-per-environment
-  title: "The build runs again for every environment"
+  title: The build runs again for every environment
   path: /docs/symptoms/deployment/artifacts-rebuilt-per-environment/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
   anti_patterns: [snowflake-environments, missing-deployment-pipeline]
-
+  impact: medium
 - id: database-migrations-block-deploys
-  title: "Database migrations block or break deployments"
+  title: Database migrations block or break deployments
   path: /docs/symptoms/deployment/database-migrations-block-deploys/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
-  anti_patterns: [manual-deployments, snowflake-environments, missing-deployment-pipeline, tightly-coupled-monolith]
-
+  anti_patterns: [manual-deployments, snowflake-environments, missing-deployment-pipeline,
+    tightly-coupled-monolith]
+  impact: high
 - id: api-changes-break-consumers
-  title: "API changes break consumers without warning"
+  title: API changes break consumers without warning
   path: /docs/symptoms/deployment/api-changes-break-consumers/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
   anti_patterns: [distributed-monolith, tightly-coupled-monolith, knowledge-silos]
-
+  impact: high
 - id: deploy-release-coupled
-  title: "Every deployment is immediately visible to all users"
+  title: Every deployment is immediately visible to all users
   path: /docs/symptoms/deployment/deploy-release-coupled/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
   anti_patterns: [monolithic-work-items, missing-deployment-pipeline, horizontal-slicing]
-
+  impact: high
 - id: no-deployment-audit-trail
-  title: "No evidence of what was deployed or when"
+  title: No evidence of what was deployed or when
   path: /docs/symptoms/deployment/no-deployment-audit-trail/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [manager]
   anti_patterns: [manual-deployments, missing-deployment-pipeline, snowflake-environments]
-
+  impact: high
 - id: services-without-health-checks
-  title: "Services reach production with no health checks or alerting"
+  title: Services reach production with no health checks or alerting
   path: /docs/symptoms/deployment/services-without-health-checks/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
   anti_patterns: [blind-operations, missing-deployment-pipeline]
-
+  impact: medium
 - id: stateful-service-deployment-outages
-  title: "Deploying stateful services causes outages"
+  title: Deploying stateful services causes outages
   path: /docs/symptoms/deployment/stateful-service-deployment-outages/
   category: deployment
-  category_label: "Deployment and Release"
+  category_label: Deployment and Release
   personas: [developer]
   anti_patterns: [manual-deployments, missing-deployment-pipeline, snowflake-environments]
-
+  impact: high
 - id: flaky-tests
-  title: "Tests randomly pass or fail"
+  title: Tests randomly pass or fail
   path: /docs/symptoms/testing/flaky-tests/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
   anti_patterns: [inverted-test-pyramid, snowflake-environments, tightly-coupled-monolith]
-
+  impact: high
 - id: refactoring-breaks-tests
-  title: "Refactoring breaks tests even when behavior is unchanged"
+  title: Refactoring breaks tests even when behavior is unchanged
   path: /docs/symptoms/testing/refactoring-breaks-tests/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
   anti_patterns: [inverted-test-pyramid, tightly-coupled-monolith]
-
+  impact: medium
 - id: slow-test-suites
-  title: "Test suite is too slow to run"
+  title: Test suite is too slow to run
   path: /docs/symptoms/testing/slow-test-suites/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
   anti_patterns: [inverted-test-pyramid, tightly-coupled-monolith, manual-testing-only]
-
+  impact: high
 - id: high-coverage-ineffective-tests
-  title: "High coverage but tests miss defects"
+  title: High coverage but tests miss defects
   path: /docs/symptoms/testing/high-coverage-ineffective-tests/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [manager, developer]
-  anti_patterns: [inverted-test-pyramid, pressure-to-skip-testing, code-coverage-mandates, manual-testing-only]
-
+  anti_patterns: [inverted-test-pyramid, pressure-to-skip-testing, code-coverage-mandates,
+    manual-testing-only]
+  impact: high
 - id: environment-dependent-failures
-  title: "Tests pass in one environment but fail in another"
+  title: Tests pass in one environment but fail in another
   path: /docs/symptoms/testing/environment-dependent-failures/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
   anti_patterns: [snowflake-environments, manual-deployments, tightly-coupled-monolith]
-
+  impact: high
 - id: legacy-system-no-tests
-  title: "A large codebase has no automated tests"
+  title: A large codebase has no automated tests
   path: /docs/symptoms/testing/legacy-system-no-tests/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [manager, developer]
   anti_patterns: [manual-testing-only, tightly-coupled-monolith, pressure-to-skip-testing]
-
+  impact: high
 - id: test-data-management-chaos
-  title: "Tests interfere with each other through shared data"
+  title: Tests interfere with each other through shared data
   path: /docs/symptoms/testing/test-data-management-chaos/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
   anti_patterns: [manual-testing-only, inverted-test-pyramid, snowflake-environments]
-
+  impact: high
 - id: slow-test-environment-reset
-  title: "Test environments take too long to reset between runs"
+  title: Test environments take too long to reset between runs
   path: /docs/symptoms/testing/slow-test-environment-reset/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [developer]
-  anti_patterns: [shared-test-environments, manual-regression-testing-gates, inverted-test-pyramid, testing-only-at-the-end]
-
+  anti_patterns: [shared-test-environments, manual-regression-testing-gates, inverted-test-pyramid,
+    testing-only-at-the-end]
+  impact: high
 - id: test-automation-lags-development
-  title: "Test automation always lags behind development"
+  title: Test automation always lags behind development
   path: /docs/symptoms/testing/test-automation-lags-development/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [manager, scrum-master, developer]
   anti_patterns: [testing-only-at-the-end, siloed-qa-team, manual-testing-only]
-
+  impact: high
 - id: ai-code-without-understanding
-  title: "AI-generated code ships without developer understanding"
+  title: AI-generated code ships without developer understanding
   path: /docs/symptoms/testing/ai-code-without-understanding/
   category: testing
-  category_label: "Testing"
+  category_label: Testing
   personas: [manager, developer]
   anti_patterns: [rubber-stamping-ai-code, monolithic-work-items, inverted-test-pyramid]
-
+  impact: high
 - id: painful-merges
-  title: "Merging is painful and time-consuming"
+  title: Merging is painful and time-consuming
   path: /docs/symptoms/flow/integration/painful-merges/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [manager, developer]
   anti_patterns: [long-lived-feature-branches, integration-deferred, monolithic-work-items]
-
+  impact: high
 - id: prs-waiting-for-review
-  title: "Pull requests sit for days waiting for review"
+  title: Pull requests sit for days waiting for review
   path: /docs/symptoms/flow/integration/prs-waiting-for-review/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [manager, scrum-master, developer]
   anti_patterns: [long-lived-feature-branches, knowledge-silos, push-based-work-assignment]
-
+  impact: high
 - id: slow-pipelines
-  title: "Pipelines take too long"
+  title: Pipelines take too long
   path: /docs/symptoms/flow/integration/slow-pipelines/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [developer]
-  anti_patterns: [inverted-test-pyramid, snowflake-environments, tightly-coupled-monolith, manual-regression-testing-gates]
-
+  anti_patterns: [inverted-test-pyramid, snowflake-environments, tightly-coupled-monolith,
+    manual-regression-testing-gates]
+  impact: high
 - id: no-fast-feedback
-  title: "Feedback takes hours instead of minutes"
+  title: Feedback takes hours instead of minutes
   path: /docs/symptoms/flow/integration/no-fast-feedback/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [developer]
-  anti_patterns: [inverted-test-pyramid, integration-deferred, manual-testing-only, long-lived-feature-branches, manual-regression-testing-gates]
-
+  anti_patterns: [inverted-test-pyramid, integration-deferred, manual-testing-only,
+    long-lived-feature-branches, manual-regression-testing-gates]
+  impact: high
 - id: resistance-to-trunk-based-development
-  title: "The team resists merging to the main branch"
+  title: The team resists merging to the main branch
   path: /docs/symptoms/flow/integration/resistance-to-trunk-based-development/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [scrum-master, developer]
-  anti_patterns: [manual-testing-only, manual-regression-testing-gates, long-lived-feature-branches, monolithic-work-items]
-
+  anti_patterns: [manual-testing-only, manual-regression-testing-gates, long-lived-feature-branches,
+    monolithic-work-items]
+  impact: high
 - id: speed-vs-stability-tension
-  title: "The team is caught between shipping fast and not breaking things"
+  title: The team is caught between shipping fast and not breaking things
   path: /docs/symptoms/flow/integration/speed-vs-stability-tension/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [manager, scrum-master, developer]
-  anti_patterns: [manual-deployments, missing-deployment-pipeline, pressure-to-skip-testing, deadline-driven-development]
-
+  anti_patterns: [manual-deployments, missing-deployment-pipeline, pressure-to-skip-testing,
+    deadline-driven-development]
+  impact: high
 - id: monorepo-without-tooling
-  title: "Every change rebuilds the entire repository"
+  title: Every change rebuilds the entire repository
   path: /docs/symptoms/flow/integration/monorepo-without-tooling/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [developer]
   anti_patterns: [missing-deployment-pipeline, manual-deployments]
-
+  impact: medium
 - id: polyglot-stack-no-pipeline-standards
-  title: "Each language has its own ad hoc pipeline"
+  title: Each language has its own ad hoc pipeline
   path: /docs/symptoms/flow/integration/polyglot-stack-no-pipeline-standards/
   category: flow-integration
-  category_label: "Code Integration"
+  category_label: Code Integration
   personas: [scrum-master, developer]
   anti_patterns: [missing-deployment-pipeline, knowledge-silos, manual-deployments]
-
+  impact: high
 - id: too-much-wip
-  title: "Everything started, nothing finished"
+  title: Everything started, nothing finished
   path: /docs/symptoms/flow/work-management/too-much-wip/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master, developer]
   anti_patterns: [push-based-work-assignment, horizontal-slicing, unbounded-wip]
-
+  impact: high
 - id: work-items-take-too-long
-  title: "Work items take days or weeks to complete"
+  title: Work items take days or weeks to complete
   path: /docs/symptoms/flow/work-management/work-items-take-too-long/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master, developer]
-  anti_patterns: [horizontal-slicing, monolithic-work-items, long-lived-feature-branches, push-based-work-assignment]
-
+  anti_patterns: [horizontal-slicing, monolithic-work-items, long-lived-feature-branches,
+    push-based-work-assignment]
+  impact: high
 - id: blocked-work-sits-idle
-  title: "Blocked work sits idle instead of being picked up"
+  title: Blocked work sits idle instead of being picked up
   path: /docs/symptoms/flow/work-management/blocked-work-sits-idle/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [scrum-master, developer]
   anti_patterns: [push-based-work-assignment, knowledge-silos]
-
+  impact: medium
 - id: dependency-heavy-planning
-  title: "Sprint planning is dominated by dependency negotiation"
+  title: Sprint planning is dominated by dependency negotiation
   path: /docs/symptoms/flow/work-management/dependency-heavy-planning/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
-  anti_patterns: [tightly-coupled-monolith, distributed-monolith, horizontal-slicing, monolithic-work-items]
-
+  anti_patterns: [tightly-coupled-monolith, distributed-monolith, horizontal-slicing,
+    monolithic-work-items]
+  impact: high
 - id: completed-work-misses-intent
-  title: "Completed stories do not match what was needed"
+  title: Completed stories do not match what was needed
   path: /docs/symptoms/flow/work-management/completed-work-misses-intent/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
   anti_patterns: [push-based-work-assignment, missing-product-ownership]
-
+  impact: medium
 - id: delayed-stakeholder-feedback
-  title: "Stakeholders see working software only at release time"
+  title: Stakeholders see working software only at release time
   path: /docs/symptoms/flow/work-management/delayed-stakeholder-feedback/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
   anti_patterns: [monolithic-work-items, horizontal-slicing, undone-work, deadline-driven-development]
-
+  impact: high
 - id: uneven-workloads
-  title: "Some developers are overloaded while others wait"
+  title: Some developers are overloaded while others wait
   path: /docs/symptoms/flow/work-management/uneven-workloads/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
   anti_patterns: [push-based-work-assignment, thin-spread-teams]
-
+  impact: medium
 - id: waiting-on-platform-team
-  title: "Work stalls waiting for the platform team"
+  title: Work stalls waiting for the platform team
   path: /docs/symptoms/flow/work-management/waiting-on-platform-team/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [scrum-master, developer]
   anti_patterns: [separate-ops-team, no-operational-ownership]
-
+  impact: medium
 - id: uneven-service-maturity
-  title: "Services in the same portfolio have wildly different maturity"
+  title: Services in the same portfolio have wildly different maturity
   path: /docs/symptoms/flow/work-management/uneven-service-maturity/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
   anti_patterns: [missing-deployment-pipeline, thin-spread-teams]
-
+  impact: medium
 - id: third-party-dependency-constraints
-  title: "Vendor release cycles constrain deployment frequency"
+  title: Vendor release cycles constrain deployment frequency
   path: /docs/symptoms/flow/work-management/third-party-dependency-constraints/
   category: flow-work
-  category_label: "Work Management"
+  category_label: Work Management
   personas: [manager, scrum-master]
   anti_patterns: [tightly-coupled-monolith, distributed-monolith, missing-deployment-pipeline]
-
+  impact: high
 - id: painful-local-development-setup
-  title: "Setting up a development environment takes days"
+  title: Setting up a development environment takes days
   path: /docs/symptoms/flow/developer-experience/painful-local-development-setup/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [snowflake-environments, knowledge-silos, tightly-coupled-monolith]
-
+  impact: high
 - id: no-local-pipeline-execution
-  title: "Developers cannot run the pipeline locally"
+  title: Developers cannot run the pipeline locally
   path: /docs/symptoms/flow/developer-experience/no-local-pipeline-execution/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [missing-deployment-pipeline, snowflake-environments]
-
+  impact: medium
 - id: lack-of-self-service-environments
-  title: "Getting a test environment requires filing a ticket"
+  title: Getting a test environment requires filing a ticket
   path: /docs/symptoms/flow/developer-experience/lack-of-self-service-environments/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [snowflake-environments, missing-deployment-pipeline, knowledge-silos]
-
+  impact: high
 - id: slow-defect-resolution
-  title: "Bugs in familiar areas take disproportionately long to fix"
+  title: Bugs in familiar areas take disproportionately long to fix
   path: /docs/symptoms/flow/developer-experience/slow-defect-resolution/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [scrum-master, developer]
   anti_patterns: [knowledge-silos, thin-spread-teams]
-
+  impact: medium
 - id: domain-model-erosion
-  title: "The codebase no longer reflects the business domain"
+  title: The codebase no longer reflects the business domain
   path: /docs/symptoms/flow/developer-experience/domain-model-erosion/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [thin-spread-teams, knowledge-silos]
-
+  impact: medium
 - id: inadequate-tooling
-  title: "The development workflow has friction at every step"
+  title: The development workflow has friction at every step
   path: /docs/symptoms/flow/developer-experience/inadequate-tooling/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [scrum-master, developer]
   anti_patterns: [missing-deployment-pipeline, manual-deployments]
-
+  impact: medium
 - id: mainframe-constraints
-  title: "The deployment target does not support modern CI/CD tooling"
+  title: The deployment target does not support modern CI/CD tooling
   path: /docs/symptoms/flow/developer-experience/mainframe-constraints/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [manager, developer]
   anti_patterns: [manual-deployments, missing-deployment-pipeline, knowledge-silos]
-
+  impact: high
 - id: ml-pipeline-deployment-gaps
-  title: "Data pipelines and ML models have no deployment automation"
+  title: Data pipelines and ML models have no deployment automation
   path: /docs/symptoms/flow/developer-experience/ml-pipeline-deployment-gaps/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [missing-deployment-pipeline, manual-deployments, knowledge-silos]
-
+  impact: high
 - id: ai-accelerated-tech-debt
-  title: "AI is generating technical debt faster than the team can absorb"
+  title: AI is generating technical debt faster than the team can absorb
   path: /docs/symptoms/flow/developer-experience/ai-accelerated-tech-debt/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [manager, developer]
   anti_patterns: [rubber-stamping-ai-code]
-
+  impact: low
 - id: ai-tooling-slowdown
-  title: "AI tooling slows you down instead of speeding you up"
+  title: AI tooling slows you down instead of speeding you up
   path: /docs/symptoms/flow/developer-experience/ai-tooling-slowdown/
   category: flow-developer
-  category_label: "Developer Experience"
+  category_label: Developer Experience
   personas: [developer]
   anti_patterns: [knowledge-silos]
-
+  impact: low
 - id: distributed-team-no-overlap
-  title: "The team has no shared working hours across time zones"
+  title: The team has no shared working hours across time zones
   path: /docs/symptoms/flow/team-knowledge/distributed-team-no-overlap/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [manager, scrum-master]
   anti_patterns: [long-lived-feature-branches, monolithic-work-items, knowledge-silos]
-
+  impact: high
 - id: meaningless-retrospectives
-  title: "Retrospectives produce no real change"
+  title: Retrospectives produce no real change
   path: /docs/symptoms/flow/team-knowledge/meaningless-retrospectives/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [scrum-master]
   anti_patterns: [unbounded-wip, push-based-work-assignment, deadline-driven-development]
-
+  impact: high
 - id: no-shared-workflow-expectations
-  title: "The team has no shared agreements about how to work"
+  title: The team has no shared agreements about how to work
   path: /docs/symptoms/flow/team-knowledge/no-shared-workflow-expectations/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [scrum-master, developer]
   anti_patterns: [push-based-work-assignment, unbounded-wip, thin-spread-teams]
-
+  impact: high
 - id: repeated-domain-mistakes
-  title: "The same mistakes happen in the same domain repeatedly"
+  title: The same mistakes happen in the same domain repeatedly
   path: /docs/symptoms/flow/team-knowledge/repeated-domain-mistakes/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [scrum-master, developer]
   anti_patterns: [thin-spread-teams, knowledge-silos]
-
+  impact: medium
 - id: rotation-ramp-up-drag
-  title: "Delivery slows every time the team rotates"
+  title: Delivery slows every time the team rotates
   path: /docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [manager, scrum-master]
   anti_patterns: [thin-spread-teams, knowledge-silos]
-
+  impact: medium
 - id: team-instability
-  title: "Team membership changes constantly"
+  title: Team membership changes constantly
   path: /docs/symptoms/flow/team-knowledge/team-instability/
   category: flow-knowledge
-  category_label: "Team Knowledge"
+  category_label: Team Knowledge
   personas: [manager, scrum-master]
   anti_patterns: [knowledge-silos, unbounded-wip, thin-spread-teams, push-based-work-assignment]
-
+  impact: high
 - id: alert-fatigue
-  title: "The team ignores alerts because there are too many"
+  title: The team ignores alerts because there are too many
   path: /docs/symptoms/visibility/alert-fatigue/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [developer]
   anti_patterns: [blind-operations, missing-deployment-pipeline]
-
+  impact: medium
 - id: chaotic-incident-response
-  title: "When something breaks, nobody knows what to do"
+  title: When something breaks, nobody knows what to do
   path: /docs/symptoms/visibility/chaotic-incident-response/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, developer]
   anti_patterns: [knowledge-silos, blind-operations, manual-deployments]
-
+  impact: high
 - id: logs-without-insight
-  title: "Logs exist but cannot be searched or correlated"
+  title: Logs exist but cannot be searched or correlated
   path: /docs/symptoms/visibility/logs-without-insight/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [developer]
   anti_patterns: [blind-operations, knowledge-silos]
-
+  impact: medium
 - id: no-leadership-buy-in
-  title: "Leadership sees CD as a technical nice-to-have"
+  title: Leadership sees CD as a technical nice-to-have
   path: /docs/symptoms/visibility/no-leadership-buy-in/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager]
   anti_patterns: [velocity-as-individual-metric, missing-product-ownership, deadline-driven-development]
-
+  impact: high
 - id: outdated-documentation
-  title: "Runbooks and architecture docs are years out of date"
+  title: Runbooks and architecture docs are years out of date
   path: /docs/symptoms/visibility/outdated-documentation/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [developer]
   anti_patterns: [knowledge-silos, manual-deployments, snowflake-environments]
-
+  impact: high
 - id: production-issues-found-by-customers
-  title: "Production issues discovered by customers"
+  title: Production issues discovered by customers
   path: /docs/symptoms/visibility/production-issues-found-by-customers/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, developer]
   anti_patterns: [blind-operations, manual-deployments, missing-deployment-pipeline]
-
+  impact: high
 - id: slow-detection
-  title: "Production problems are discovered hours or days late"
+  title: Production problems are discovered hours or days late
   path: /docs/symptoms/visibility/slow-detection/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, developer]
   anti_patterns: [blind-operations, undone-work, manual-deployments]
-
+  impact: high
 - id: team-burnout
-  title: "Team burnout and unsustainable pace"
+  title: Team burnout and unsustainable pace
   path: /docs/symptoms/visibility/team-burnout/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, scrum-master]
-  anti_patterns: [thin-spread-teams, deadline-driven-development, unbounded-wip, push-based-work-assignment, velocity-as-individual-metric]
-
+  anti_patterns: [thin-spread-teams, deadline-driven-development, unbounded-wip, push-based-work-assignment,
+    velocity-as-individual-metric]
+  impact: high
 - id: works-on-my-machine
-  title: "It works on my machine"
+  title: It works on my machine
   path: /docs/symptoms/visibility/works-on-my-machine/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, developer]
   anti_patterns: [snowflake-environments, manual-deployments, tightly-coupled-monolith]
-
+  impact: high
 - id: chasing-dora-benchmarks
-  title: "The team is chasing DORA benchmarks"
+  title: The team is chasing DORA benchmarks
   path: /docs/symptoms/visibility/chasing-dora-benchmarks/
   category: visibility
-  category_label: "Visibility and Monitoring"
+  category_label: Visibility and Monitoring
   personas: [manager, scrum-master]
   anti_patterns: [dora-metrics-as-goals, velocity-as-team-metric]
+  impact: medium
