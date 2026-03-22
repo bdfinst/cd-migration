@@ -7,7 +7,7 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
-## 2026-03-14 - New Section: Evaluation and Quality
+## 2026-03-21 - New Section: Evaluation and Quality
 
 Added three new pages under [Evaluation and Quality]({{< relref "/docs/agentic-cd/evaluation" >}}):
 
