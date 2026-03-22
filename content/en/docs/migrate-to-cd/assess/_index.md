@@ -44,7 +44,7 @@ You're ready for [Phase 1: Foundations]({{< relref "/docs/migrate-to-cd/foundati
 
 ## Related Content
 
-- [For Managers]({{< relref "/docs/symptoms/for-managers" >}}) - how to recognize delivery problems from a leadership perspective
+- [For Managers]({{< relref "/docs/triage/for-managers" >}}) - how to recognize delivery problems from a leadership perspective
 - [Phase 1: Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) - the next phase after assessment is complete
 - [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}) - industry-recognized capabilities that underpin delivery performance
 - [Deployment Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) - one of the key metrics you will baseline in this phase
