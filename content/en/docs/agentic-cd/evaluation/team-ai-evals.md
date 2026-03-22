@@ -4,13 +4,13 @@ linkTitle: "Team AI Evals"
 weight: 21
 description: >
   How individual teams set up, write, and run evals for their AI coding tools using eval-driven development.
-aliases:
-  - /docs/agentic-cd/team-ai-evals/
 ---
 
 {{% pageinfo %}}
 If you would notice a regression, it needs an eval. This page covers setting up eval infrastructure, writing your first positive and negative tests, choosing graders, and integrating evals into your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 {{% /pageinfo %}}
+
+> **Reference implementation:** The [dev-plugins](https://github.com/bailejl/dev-plugins) repository demonstrates these patterns with Promptfoo, Claude Code, and custom graders.
 
 ## What Needs Evals
 
@@ -75,7 +75,7 @@ evals/my-tool/             # Stays in repo
 ### Configuration
 
 The eval config sets the model provider, timeout, output format, and baseline
-assertions that apply to every test. From [evals/frontend-dev/promptfooconfig.yaml](https://github.com/bailejl/dev-plugins/blob/main/evals/frontend-dev/promptfooconfig.yaml):
+assertions that apply to every test. From `evals/frontend-dev/promptfooconfig.yaml` in the reference implementation:
 
 ```yaml
 providers:
@@ -395,7 +395,7 @@ for reasons unrelated to the capability it tests.
 ```
 
 This saves a timestamped record of pass@k metrics, git commit, and branch to
-[evals/frontend-dev/eval-history.jsonl](https://github.com/bailejl/dev-plugins/blob/main/evals/frontend-dev/eval-history.jsonl). Use baselines to track improvement over time
+`evals/frontend-dev/eval-history.jsonl`. Use baselines to track improvement over time
 and detect regressions across prompt changes.
 
 ## Model Migration Testing

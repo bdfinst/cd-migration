@@ -4,13 +4,13 @@ linkTitle: "Platform AI Evals"
 weight: 22
 description: >
   How platform teams build shared eval infrastructure for reusable AI coding tools that serve multiple teams and diverse codebases.
-aliases:
-  - /docs/agentic-cd/platform-ai-evals/
 ---
 
 {{% pageinfo %}}
 Platform teams build reusable AI coding tools for multiple teams. Shared eval infrastructure (base configs, grader libraries, rubric templates) eliminates duplication and enforces consistency across the plugin portfolio.
 {{% /pageinfo %}}
+
+> **Reference implementation:** The [dev-plugins](https://github.com/bailejl/dev-plugins) repository demonstrates these patterns with Promptfoo, Claude Code, and custom graders.
 
 ## What is an AI Enablement Platform
 
@@ -27,98 +27,9 @@ The eval challenge compounds this: each tool in your portfolio needs its own eva
 suite, and those suites share common infrastructure. Without shared eval patterns, you
 duplicate graders, rubrics, and fixture conventions across every plugin.
 
-## Shared Eval Infrastructure
-
-Platform teams need a shared foundation that every plugin eval builds on. This
-eliminates duplication and enforces consistency.
-
-### Base Configuration
-
-A single base config defines the provider, timeout, output format, and universal
-assertions. From [eval-infra/promptfoo-base.yaml](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/promptfoo-base.yaml):
-
-```yaml
-providers:
-  - id: anthropic:messages:claude-sonnet-4-20250514
-    label: claude-sonnet
-    config:
-      temperature: 0
-      max_tokens: 16384
-
-defaultTest:
-  options:
-    timeout: 300000
-    transform: output.trim()
-  assert:
-    # Universal assertions applied to every test case
-    - type: javascript
-      value: "output.length > 0"
-      metric: non_empty_output
-    - type: javascript
-      value: "output.length >= 500"
-      metric: min_output_length
-    - type: javascript
-      value: "output.length <= 50000"
-      metric: max_output_length
-```
-
-Every plugin config replicates these defaults and adds plugin-specific variables
-(`pluginRoot`, `fixtureRoot`, `graderRoot`, `referenceRoot`). Shared variables
-(`evalInfraRoot`, `graderLibRoot`, `rubricRoot`) point back to the central
-infrastructure.
-
-### Shared Grader Library
-
-The grader library ([eval-infra/grader-lib/](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/grader-lib/)) provides reusable grading functions
-that any plugin can use:
-
-| Grader                   | Purpose                                             |
-| ------------------------ | --------------------------------------------------- |
-| `report-schema.js`       | Validates markdown heading structure or JSON fields |
-| `finding-parser.js`      | Extracts findings with severity and evidence        |
-| `hallucination-check.js` | Detects fabricated file path references             |
-| `transcript-utils.js`    | Parses agent transcripts and tool-call sequences    |
-| `build-check.sh`         | Runs `npm install && npm run build` in fixtures     |
-| `lint-check.sh`          | Runs ESLint and reports error/warning counts        |
-
-Plugin-specific graders import from the shared library. For example, a transcript
-grader in [evals/ai-readiness/graders/transcript/evidence-gathering.js](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/graders/transcript/evidence-gathering.js) loads
-`transcript-utils.js` from the shared `graderLibRoot` path to parse transcripts
-and count tool calls.
-
-### Shared Rubric Templates
-
-LLM rubric templates in [eval-infra/rubric-templates/](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/rubric-templates/) provide consistent judging
-criteria across plugins:
-
-- `code-quality-base.md` - Five weighted criteria (correctness, readability,
-  maintainability, idiomatic usage, error handling) with a 3.5/5 pass threshold
-- `over-engineering-base.md` - Checks for unnecessary abstraction and complexity
-- `instruction-following.md` - Checks adherence to prompt instructions
-- `report-quality.md` - Evaluates report structure and actionability
-
-Plugin-specific rubrics extend or reference these templates. This prevents each
-plugin team from inventing their own quality criteria.
-
-### The Extend and Specialize Pattern
-
-The shared infrastructure provides the foundation. Each plugin specializes it:
-
-1. **Base config** sets provider, timeout, and universal assertions
-2. **Shared graders** handle common structural checks
-3. **Shared rubrics** define baseline quality criteria
-4. **Plugin config** adds plugin-specific variables and test suites
-5. **Plugin graders** handle domain-specific checks (e.g., accessibility patterns,
-   security vulnerability detection)
-6. **Plugin rubrics** add domain-specific quality criteria
-
-This layering means a new plugin gets structural validation, hallucination detection,
-and transcript analysis for free. The plugin author only writes graders for the
-domain-specific checks their tool needs.
-
 ## Multi-Plugin Eval Architecture
 
-The monorepo structure separates shipping artifacts from eval infrastructure:
+The [dev-plugins](https://github.com/bailejl/dev-plugins) reference implementation demonstrates a monorepo structure that separates shipping artifacts from eval infrastructure. This example uses Claude Code plugins, but the same pattern applies to any collection of reusable AI tools:
 
 ```
 plugins/frontend-dev/          # Ships to users
@@ -164,7 +75,7 @@ npm run eval:readiness         # Another plugin
 npm run eval:all               # All plugins
 ```
 
-The [eval-infra/scripts/run-plugin-evals.sh](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/scripts/run-plugin-evals.sh) script iterates over a `KNOWN_PLUGINS`
+The `eval-infra/scripts/run-plugin-evals.sh` script iterates over a `KNOWN_PLUGINS`
 list, running each plugin's eval suite and aggregating results.
 
 ### Plugin Validation
@@ -179,6 +90,95 @@ This checks for required directories, manifest fields, at least one command, at 
 one eval suite, and proper naming conventions. Validation catches structural problems
 before they cause confusing eval failures.
 
+## Shared Eval Infrastructure
+
+Platform teams need a shared foundation that every plugin eval builds on. This
+eliminates duplication and enforces consistency.
+
+### Base Configuration
+
+A single base config defines the provider, timeout, output format, and universal
+assertions. From `eval-infra/promptfoo-base.yaml` in the reference implementation:
+
+```yaml
+providers:
+  - id: anthropic:messages:claude-sonnet-4-20250514
+    label: claude-sonnet
+    config:
+      temperature: 0
+      max_tokens: 16384
+
+defaultTest:
+  options:
+    timeout: 300000
+    transform: output.trim()
+  assert:
+    # Universal assertions applied to every test case
+    - type: javascript
+      value: "output.length > 0"
+      metric: non_empty_output
+    - type: javascript
+      value: "output.length >= 500"
+      metric: min_output_length
+    - type: javascript
+      value: "output.length <= 50000"
+      metric: max_output_length
+```
+
+Every plugin config replicates these defaults and adds plugin-specific variables
+(`pluginRoot`, `fixtureRoot`, `graderRoot`, `referenceRoot`). Shared variables
+(`evalInfraRoot`, `graderLibRoot`, `rubricRoot`) point back to the central
+infrastructure.
+
+### Shared Grader Library
+
+The grader library (`eval-infra/grader-lib/`) provides reusable grading functions
+that any plugin can use:
+
+| Grader                   | Purpose                                             |
+| ------------------------ | --------------------------------------------------- |
+| `report-schema.js`       | Validates markdown heading structure or JSON fields |
+| `finding-parser.js`      | Extracts findings with severity and evidence        |
+| `hallucination-check.js` | Detects fabricated file path references             |
+| `transcript-utils.js`    | Parses agent transcripts and tool-call sequences    |
+| `build-check.sh`         | Runs `npm install && npm run build` in fixtures     |
+| `lint-check.sh`          | Runs ESLint and reports error/warning counts        |
+
+Plugin-specific graders import from the shared library. For example, a transcript
+grader in `evals/ai-readiness/graders/transcript/evidence-gathering.js` loads
+`transcript-utils.js` from the shared `graderLibRoot` path to parse transcripts
+and count tool calls.
+
+### Shared Rubric Templates
+
+LLM rubric templates in `eval-infra/rubric-templates/` provide consistent judging
+criteria across plugins:
+
+- `code-quality-base.md` - Five weighted criteria (correctness, readability,
+  maintainability, idiomatic usage, error handling) with a 3.5/5 pass threshold
+- `over-engineering-base.md` - Checks for unnecessary abstraction and complexity
+- `instruction-following.md` - Checks adherence to prompt instructions
+- `report-quality.md` - Evaluates report structure and actionability
+
+Plugin-specific rubrics extend or reference these templates. This prevents each
+plugin team from inventing their own quality criteria.
+
+### The Extend and Specialize Pattern
+
+The shared infrastructure provides the foundation. Each plugin specializes it:
+
+1. **Base config** sets provider, timeout, and universal assertions
+2. **Shared graders** handle common structural checks
+3. **Shared rubrics** define baseline quality criteria
+4. **Plugin config** adds plugin-specific variables and test suites
+5. **Plugin graders** handle domain-specific checks (e.g., accessibility patterns,
+   security vulnerability detection)
+6. **Plugin rubrics** add domain-specific quality criteria
+
+This layering means a new plugin gets structural validation, hallucination detection,
+and transcript analysis for free. The plugin author only writes graders for the
+domain-specific checks their tool needs.
+
 ## Fixture Diversity
 
 Platform tools must handle diverse codebases. Your fixture portfolio should cover the
@@ -186,7 +186,7 @@ range of code your tools will encounter in production.
 
 ### Building a Fixture Matrix
 
-From [evals/ai-readiness/fixtures/](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/fixtures/), seven fixture types exercise different tool
+From `evals/ai-readiness/fixtures/` in the reference implementation, seven fixture types exercise different tool
 capabilities:
 
 | Fixture                | What It Tests                            | Positive/Negative |
@@ -230,7 +230,7 @@ Reference solutions serve double duty on a platform team:
    `messy-repo-audit.md` documents exactly what findings the code review tool should
    produce, at what severity, with what evidence.
 
-From [evals/ai-readiness/reference-solutions/](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/reference-solutions/), seven reference solutions cover the
+From `evals/ai-readiness/reference-solutions/` in the reference implementation, seven reference solutions cover the
 full fixture portfolio:
 
 | Reference Solution           | Fixture                |
@@ -358,7 +358,7 @@ Record baselines after significant prompt or eval changes:
 ./eval-infra/scripts/record-baseline.sh ai-readiness
 ```
 
-This appends a timestamped JSON record to [evals/ai-readiness/eval-history.jsonl](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/eval-history.jsonl)
+This appends a timestamped JSON record to `evals/ai-readiness/eval-history.jsonl`
 with pass@k metrics, git commit, and branch. Use the history to:
 
 - Detect metric regressions across prompt changes
@@ -384,9 +384,9 @@ accumulate stale tests that slow runs and obscure signal.
 
 **Ownership model:**
 
-- **Shared graders** (in [eval-infra/grader-lib/](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/grader-lib/)) - platform team owns
-- **Plugin-specific graders** (in [evals/<plugin>/graders/](https://github.com/bailejl/dev-plugins/blob/main/evals/<plugin>/graders/)) - plugin team owns
-- **Rubric templates** (in [eval-infra/rubric-templates/](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/rubric-templates/)) - platform team owns
+- **Shared graders** (in `eval-infra/grader-lib/`) - platform team owns
+- **Plugin-specific graders** (in `evals/<plugin>/graders/`) - plugin team owns
+- **Rubric templates** (in `eval-infra/rubric-templates/`) - platform team owns
 
 **Review cadence:** Quarterly, aligned with model migration timelines. Review
 pass@k trends, retire saturated cases, split oversized suites, and recalibrate

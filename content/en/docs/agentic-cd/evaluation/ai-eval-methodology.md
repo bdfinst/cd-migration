@@ -4,8 +4,6 @@ linkTitle: "AI Eval Methodology"
 weight: 20
 description: >
   A three-layer grading framework and development cycle for evaluating non-deterministic AI coding tools with automated behavioral testing.
-aliases:
-  - /docs/agentic-cd/ai-eval-methodology/
 ---
 
 {{% pageinfo %}}
@@ -116,34 +114,9 @@ false positive rates. They check structural properties of the output.
 - Output references real files from the fixture, not hallucinated paths
 - Specific keywords or patterns appear (or do not appear) in the output
 
-**Example: Score Arithmetic Validation**
+A score arithmetic grader parses category scores and weights from agent output, computes the weighted average, and compares it to the reported overall score. A small tolerance (e.g., +/- 3 points) accommodates rounding. This catches a common failure mode: the agent reports individual category scores and a total that do not add up.
 
-From [evals/ai-readiness/graders/deterministic/score-arithmetic.js](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/graders/deterministic/score-arithmetic.js#L102):
-
-```javascript
-// Parses category scores and weights from multiple formats:
-//   Table:  | Category | 85 | 20% |
-//   List:   - Code Quality: 72/100 (weight: 25%)
-//   Dash:   Category -- 72
-// Computes weighted average and compares to reported overall score.
-// Allows +/- 3 point tolerance.
-// Returns { pass, score, reason, calculatedScore, reportedScore }
-```
-
-This grader catches a common failure mode: the agent reports individual category scores
-and a total that do not add up.
-
-**Example: Report Structure Validation**
-
-From [eval-infra/grader-lib/report-schema.js](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/grader-lib/report-schema.js):
-
-```javascript
-// validateReport(content, schema) checks that:
-//   - Required markdown headings exist at the correct level
-//   - Headings match expected patterns (regex or exact string)
-//   - Required sections have non-empty content beneath them
-//   - Output falls within minLength / maxLength bounds
-```
+A report structure grader validates that the output contains required headings at the correct level, that headings match expected patterns, that required sections have non-empty content, and that the output falls within length bounds.
 
 ### Layer 2: Transcript Graders
 
@@ -156,30 +129,7 @@ the agent's tool-call sequence and conversation turns to verify sound process.
 - The agent used multiple evidence sources, not just one
 - Evidence-gathering actions make up a sufficient proportion of total actions
 
-**Example: Evidence Gathering Validation**
-
-From [evals/ai-readiness/graders/transcript/evidence-gathering.js](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/graders/transcript/evidence-gathering.js):
-
-```javascript
-// Three checks:
-// 1. Evidence before findings -- were evidence tools used before the first
-//    turn containing finding/issue/violation language?
-// 2. Multiple evidence sources -- were at least 2 different evidence tools used?
-// 3. Evidence gathering ratio -- at least 40% of tool actions were evidence-gathering
-//
-// Passes if >= 2 of 3 checks pass (score >= 0.6)
-```
-
-This catches agents that jump to conclusions without reading the code, or that rely
-on a single tool (like Grep) without examining actual file contents.
-
-The shared transcript parsing library (`eval-infra/grader-lib/transcript-utils.js`)
-provides the building blocks:
-
-- `parseTranscript(raw)` - handles JSON, message arrays, and plain text formats
-- `countToolCalls(transcript, toolName)` - counts calls to a specific tool
-- `getToolSequence(transcript)` - returns the ordered list of tools used
-- `findEvidence(transcript, pattern)` - searches transcript for regex matches
+An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (e.g., at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
 
 ### Layer 3: LLM Rubrics
 
@@ -187,20 +137,7 @@ LLM rubrics use a language model as judge to evaluate qualities that resist
 deterministic checking: accuracy of findings, quality of recommendations, appropriate
 severity ratings, and absence of hallucination.
 
-**Example: Code Quality Rubric**
-
-From [eval-infra/rubric-templates/code-quality-base.md](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/rubric-templates/code-quality-base.md):
-
-```
-Five criteria with weights:
-  Correctness    (30%) -- 1-5 scale, "does not run" to "handles all edge cases"
-  Readability    (20%) -- 1-5 scale, "incomprehensible" to "exemplary clarity"
-  Maintainability(20%) -- 1-5 scale, "monolithic" to "highly modular"
-  Idiomatic Usage(15%) -- 1-5 scale, "fights the framework" to "expert-level"
-  Error Handling (15%) -- 1-5 scale, "no error handling" to "comprehensive"
-
-Weighted total computed, pass threshold >= 3.5
-```
+A typical code quality rubric defines weighted criteria such as correctness, readability, maintainability, idiomatic usage, and error handling, each scored on a 1-5 scale. The LLM judge scores each criterion, a weighted total is computed, and the result passes if it meets a threshold (e.g., 3.5 out of 5).
 
 LLM rubrics are the slowest and most expensive grading layer. Use them for qualities
 that the other layers cannot check.
@@ -211,22 +148,12 @@ Human review is a calibration tool, not a fourth runtime layer. You do not inclu
 human review in the automated eval pipeline. Instead, you use human review
 periodically to verify that your graders are correctly calibrated.
 
-**When to calibrate:**
+The CORE-Bench study found that fixing grader bugs improved measured performance
+from 42% to 95%. Uncalibrated graders waste prompt engineering effort on problems
+that do not exist.
 
-- After writing a new grader or rubric
-- After adding a new fixture to the suite
-- When score distributions shift unexpectedly
-- Before and after a model migration
-
-**The calibration process:** Review 5-10 transcripts per eval run. For each
-transcript, independently judge pass/fail before looking at the grader's verdict.
-If you disagree with the grader, the grader is wrong. Fix the grader, not your
-judgment.
-
-**Why this matters:** The CORE-Bench study found that fixing grader bugs improved
-measured performance from 42% to 95%. The agents were performing far better than
-the graders indicated. Uncalibrated graders give you false signal, which leads to
-wasted prompt engineering effort on problems that do not exist.
+For the hands-on calibration process and recalibration triggers, see
+[Calibrating Graders]({{< relref "team-ai-evals#calibrating-graders" >}}).
 
 ### Decision Table: When to Use Each Layer
 
@@ -243,31 +170,15 @@ wasted prompt engineering effort on problems that do not exist.
 
 ### Worked Example: Three Layers Combined
 
-From [evals/ai-readiness/suites/code-review.yaml](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/suites/code-review.yaml), a single test case uses all
-three layers:
+Consider a code review eval that sends a messy codebase to the agent (mixed naming conventions, duplicated logic, dead code, a god class). A single test case uses all three layers:
 
-The test sends a messy codebase to the agent (mixed naming conventions, duplicated
-logic, dead code, a god class). Five assertions grade the output:
+1. **Deterministic** (high weight): Checks that findings reference specific files and line numbers from the fixture, and that the report has the expected heading structure.
 
-1. **Deterministic** (`evidence-cited.js`, weight 3): Checks that findings reference
-   specific files and line numbers from the fixture.
+2. **Transcript** (medium weight): Verifies the agent read code files before producing findings.
 
-2. **Deterministic** (`report-structure.js`, weight 1): Validates the report has
-   the expected markdown heading structure.
+3. **LLM Rubric** (high weight): Judges whether findings include specific file references and accurate descriptions, and whether recommendations are actionable rather than generic.
 
-3. **Transcript** (`evidence-gathering.js`, weight 2): Verifies the agent read code
-   files before producing findings.
-
-4. **LLM Rubric** (finding quality, weight 3): Judges whether findings include
-   specific file references and accurate descriptions.
-
-5. **LLM Rubric** (coaching quality, weight 2): Judges whether recommendations are
-   specific and actionable, not generic advice.
-
-The deterministic graders run in milliseconds and catch structural failures. The
-transcript grader catches agents that skip evidence gathering. The LLM rubrics
-evaluate the subjective quality that only another language model can assess. Together,
-they cover structure, process, and quality.
+The deterministic graders run in milliseconds and catch structural failures. The transcript grader catches agents that skip evidence gathering. The LLM rubrics evaluate the subjective quality that only another language model can assess. Together, they cover structure, process, and quality.
 
 ## Positive and Negative Test Pairs
 
@@ -286,17 +197,8 @@ positive tests, you have no idea whether the tool actually works.
 **Naming convention:** Every positive suite file `suite.yaml` has a corresponding
 `suite-neg.yaml`.
 
-**Example From [evals/frontend-dev/](https://github.com/bailejl/dev-plugins/blob/main/evals/frontend-dev/suites):**
-
-`a11y.yaml` (positive): Gives the agent a `BadForm.jsx` component with 10 documented
-accessibility violations (missing labels, no keyboard handlers, color-only error
-indication, heading level skips). Asserts the agent detects missing labels, error
-association issues, and keyboard problems.
-
-`a11y-neg.yaml` (negative): Gives the agent accessible components (a `Card` with
-proper `alt=""` on decorative images and `aria-labelledby`, a `SearchBox` with proper
-`<label htmlFor>` and `aria-describedby`). Asserts the agent does not flag these as
-violations and reports zero critical findings.
+For a step-by-step walkthrough of building positive and negative test pairs, see
+[Writing Your First Eval]({{< relref "team-ai-evals#writing-your-first-eval" >}}).
 
 ## Fixture Design
 
@@ -321,17 +223,8 @@ determines your eval quality.
 
 - **Diverse fixture types.** Different fixtures exercise different capabilities.
 
-**Example fixture portfolio** From [evals/ai-readiness/fixtures/](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/fixtures/):
-
-| Fixture                | Tests                                                  |
-| ---------------------- | ------------------------------------------------------ |
-| `messy-repo/`          | Naming inconsistency, duplication, dead code           |
-| `insecure-repo/`       | Hardcoded secrets, SQL injection, missing auth         |
-| `bad-git-repo/`        | Git hygiene (large files, poor commit messages)        |
-| `untested-repo/`       | Missing test coverage, incomplete test suites          |
-| `bad-api-repo/`        | API design issues (inconsistent routes, no validation) |
-| `spaghetti-arch-repo/` | God classes, circular dependencies, mixed concerns     |
-| `clean-repo/`          | Well-structured code for negative tests                |
+For a fixture portfolio example, see
+[Building a Fixture Matrix]({{< relref "platform-ai-evals#building-a-fixture-matrix" >}}).
 
 ## Task Quality
 
@@ -387,7 +280,7 @@ Computed as `C(c, k) / C(n, k)`. This tells you how consistently the agent succe
 | pass^5                | > 60%  |
 | Negative suite pass@1 | > 90%  |
 
-The [eval-infra/scripts/compute-pass-at-k.py](https://github.com/bailejl/dev-plugins/blob/main/eval-infra/scripts/compute-pass-at-k.py) script computes both metrics from promptfoo output, with optional grouping by suite or eval type.
+Most eval frameworks support computing both metrics from multi-trial output, with optional grouping by suite or eval type.
 
 ## Reference Solutions
 
@@ -402,8 +295,7 @@ looks like for each fixture. They serve two purposes:
    scoring.
 
 Each reference solution covers one fixture and documents the expected findings, their
-severities, and the evidence that supports them. See
-[evals/ai-readiness/reference-solutions/](https://github.com/bailejl/dev-plugins/blob/main/evals/ai-readiness/reference-solutions/) for examples covering seven fixture types.
+severities, and the evidence that supports them.
 
 ## Common Pitfalls
 
