@@ -257,7 +257,7 @@ unrealistic, your evals give false confidence.
 
 The eval-rubric pattern uses a structured assessment against known best practices.
 This repo's `/eval-rubric` command scores the eval infrastructure against 12 dimensions
-from Anthropic's "Demystifying Evals for AI Agents" article, each scored 0-5:
+from Anthropic's "[Demystifying Evals for AI Agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)" article, each scored 0-5:
 
 1. Start Early with Real Failures
 2. Source from Real User Behavior
