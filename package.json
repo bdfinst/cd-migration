@@ -38,7 +38,7 @@
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
+    "@playwright/test": "^1.59.1",
     "autoprefixer": "^10.4.27",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
