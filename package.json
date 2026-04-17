@@ -38,18 +38,18 @@
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "autoprefixer": "^10.4.27",
+    "@playwright/test": "^1.59.1",
+    "autoprefixer": "^10.5.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
     "js-yaml": "^4.1.1",
     "linkinator": "^7.6.1",
     "markdownlint-cli": "^0.48.0",
     "pa11y-ci": "^4.1.0",
-    "pagefind": "^1.4.0",
-    "postcss": "^8.5.8",
+    "pagefind": "^1.5.2",
+    "postcss": "^8.5.10",
     "postcss-cli": "^11.0.1",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "prettier-plugin-go-template": "^0.0.15",
     "prettier-plugin-toml": "^2.0.6"
   }
