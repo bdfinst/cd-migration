@@ -82,7 +82,7 @@ enableGitInfo = false
   target = "content"
 
 [languages.en]
-  languageName = "English"
+  label = "English"
 
   [languages.en.params]
     description = "MinimumCD Practice Guide - a phased migration from quarterly releases to continuous delivery"

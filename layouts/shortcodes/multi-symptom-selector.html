@@ -1,5 +1,5 @@
-{{- $symptoms := (index site.Data "finder-symptoms") -}}
-{{- $aps := (index site.Data "finder-antipatterns") -}}
+{{- $symptoms := (index hugo.Data "finder-symptoms") -}}
+{{- $aps := (index hugo.Data "finder-antipatterns") -}}
 
 <noscript>
 <p>Enable JavaScript to use the interactive symptom selector. Without JavaScript, browse symptoms by category:</p>

@@ -1,5 +1,5 @@
-{{- $areas := (index site.Data "finder-healthcheck") -}}
-{{- $aps := (index site.Data "finder-antipatterns") -}}
+{{- $areas := (index hugo.Data "finder-healthcheck") -}}
+{{- $aps := (index hugo.Data "finder-antipatterns") -}}
 
 <noscript>
 <p>Enable JavaScript to use the interactive health check worksheet. Without JavaScript, browse anti-patterns by category:</p>
