@@ -35,7 +35,8 @@
     "layout-check": "bash scripts/layout-check.sh",
     "triage-check": "bash scripts/triage-check.sh",
     "test": "npm run lint && npm run link-check:local",
-    "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy"
+    "sync-versions": "sed -n 's/^NODE_VERSION = \"\\(.*\\)\"/\\1/p' netlify.toml > .node-version && sed -n 's/^GO_VERSION = \"\\(.*\\)\"/\\1/p' netlify.toml > .go-version",
+    "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy && npm run sync-versions"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
