@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440"
+     role="img" aria-labelledby="ecc-title ecc-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="ecc-title">Event Consumer: layers tested by each test type</title>
+  <desc id="ecc-desc">
+    A coverage matrix for the event consumer pattern. Rows are the architectural layers: message handler logic, idempotency and ordering control, dead-letter and poison-message handling, backpressure, broker gateway, the external broker, and the schema registry. Columns are the test types: solitary unit, component (in-band, with broker doubles), gateway integration, broker contract, and out-of-band synthetic publish. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker and schema registry.
+  </desc>
+
+  <rect width="760" height="440" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    Event Consumer: Layers Tested by Each Test Type
+  </text>
+
+  <!-- Column headers -->
+  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+
+  <rect x="180" y="56" width="108" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
+  <text x="234" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
+  <text x="234" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="290" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
+  <text x="344" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="344" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(in-band)</text>
+
+  <rect x="400" y="56" width="108" height="36" rx="4" fill="#30648e" stroke="#224968"/>
+  <text x="454" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
+  <text x="454" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+
+  <rect x="510" y="56" width="108" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
+  <text x="564" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Broker</text>
+  <text x="564" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+
+  <rect x="620" y="56" width="108" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="674" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">Synthetic</text>
+  <text x="674" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(out-of-band)</text>
+
+  <!-- Row 1: Handler logic -->
+  <rect x="30" y="104" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Message handler logic</text>
+  <text x="40" y="139" font-size="10" fill="#556">pure transformation per message</text>
+  <circle cx="234" cy="126" r="9" fill="#4a6741"/>
+  <circle cx="344" cy="126" r="9" fill="#224968"/>
+
+  <!-- Row 2: Idempotency / ordering -->
+  <rect x="30" y="148" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Idempotency and ordering</text>
+  <text x="40" y="183" font-size="10" fill="#556">duplicate delivery absorbed; ordering policy enforced</text>
+  <circle cx="344" cy="170" r="9" fill="#224968"/>
+
+  <!-- Row 3: DLQ / poison -->
+  <rect x="30" y="192" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Dead-letter and poison-message handling</text>
+  <text x="40" y="227" font-size="10" fill="#556">malformed message routed to DLQ with correlation ID; consumer survives</text>
+  <circle cx="344" cy="214" r="9" fill="#224968"/>
+
+  <!-- Row 4: Backpressure -->
+  <rect x="30" y="236" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Backpressure</text>
+  <text x="40" y="271" font-size="10" fill="#556">consumer slows when downstream is slow; offsets uncommitted on failure</text>
+  <circle cx="344" cy="258" r="9" fill="#224968"/>
+
+  <!-- Row 5: Broker gateway -->
+  <rect x="30" y="280" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Broker gateway</text>
+  <text x="40" y="315" font-size="10" fill="#556">protocol, offset commits, consumer-group rebalancing</text>
+  <circle cx="344" cy="302" r="9" fill="#224968"/>
+  <circle cx="454" cy="302" r="9" fill="#30648e"/>
+
+  <!-- Row 6: External broker + registry -->
+  <rect x="30" y="324" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">External broker and schema registry</text>
+  <text x="40" y="359" font-size="10" fill="#556">doubled in component, real in gateway; synthetic publish post-deploy</text>
+  <circle cx="344" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="454" cy="346" r="9" fill="#30648e"/>
+  <circle cx="564" cy="346" r="9" fill="#6c757d"/>
+  <circle cx="674" cy="346" r="9" fill="#6c757d"/>
+
+  <!-- Legend -->
+  <circle cx="44" cy="400" r="8" fill="#224968"/>
+  <text x="58" y="404" font-size="11" fill="#556">Real code under test</text>
+  <circle cx="206" cy="400" r="8" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="220" y="404" font-size="11" fill="#556">Doubled in this test</text>
+  <text x="370" y="404" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 410"
+     role="img" aria-labelledby="epc-title epc-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="epc-title">Event Producer: layers tested by each test type</title>
+  <desc id="epc-desc">
+    A coverage matrix for the event producer pattern. Rows are the architectural layers: domain emit decision, outbox or transactional emit, broker gateway, and the external broker. Columns are the test types: solitary unit, component (in-band, with broker doubles and a real database), gateway integration, provider contract, and out-of-band synthetic state change. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover the emit decision logic. Component tests cover outbox atomicity, retry on broker unavailable, and trace propagation with the broker doubled and the database real. Gateway integration tests pin the broker protocol against a real broker container. Provider contract verification runs against every consumer's published expectations. Out-of-band synthetic state change confirms the message arrives in the real broker with the expected shape.
+  </desc>
+
+  <rect width="760" height="410" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    Event Producer: Layers Tested by Each Test Type
+  </text>
+
+  <!-- Column headers -->
+  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+
+  <rect x="180" y="56" width="108" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
+  <text x="234" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
+  <text x="234" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="290" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
+  <text x="344" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="344" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(in-band)</text>
+
+  <rect x="400" y="56" width="108" height="36" rx="4" fill="#30648e" stroke="#224968"/>
+  <text x="454" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
+  <text x="454" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+
+  <rect x="510" y="56" width="108" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
+  <text x="564" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Provider</text>
+  <text x="564" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+
+  <rect x="620" y="56" width="108" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="674" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">Synthetic</text>
+  <text x="674" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(out-of-band)</text>
+
+  <!-- Row 1: Domain emit decision -->
+  <rect x="30" y="104" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Domain emit decision</text>
+  <text x="40" y="139" font-size="10" fill="#556">when, what, and which routing key</text>
+  <circle cx="234" cy="126" r="9" fill="#4a6741"/>
+  <circle cx="344" cy="126" r="9" fill="#224968"/>
+
+  <!-- Row 2: Outbox / transactional emit -->
+  <rect x="30" y="148" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Outbox or transactional emit</text>
+  <text x="40" y="183" font-size="10" fill="#556">DB write and message emit happen as a unit; trace propagation</text>
+  <circle cx="344" cy="170" r="9" fill="#224968"/>
+
+  <!-- Row 3: Broker gateway -->
+  <rect x="30" y="192" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Broker gateway</text>
+  <text x="40" y="227" font-size="10" fill="#556">protocol, headers, retry on broker unavailable</text>
+  <circle cx="344" cy="214" r="9" fill="#224968"/>
+  <circle cx="454" cy="214" r="9" fill="#30648e"/>
+
+  <!-- Row 4: External broker -->
+  <rect x="30" y="236" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">External broker</text>
+  <text x="40" y="271" font-size="10" fill="#556">doubled in component, real in gateway; synthetic state change post-deploy</text>
+  <circle cx="344" cy="258" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="454" cy="258" r="9" fill="#30648e"/>
+  <circle cx="564" cy="258" r="9" fill="#6c757d"/>
+  <circle cx="674" cy="258" r="9" fill="#6c757d"/>
+
+  <!-- Row 5: Database (external) -->
+  <rect x="30" y="280" width="700" height="44" fill="#ffffff" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Database (external)</text>
+  <text x="40" y="315" font-size="10" fill="#556">real DB in component to validate outbox atomicity</text>
+  <circle cx="344" cy="302" r="9" fill="#224968"/>
+  <circle cx="454" cy="302" r="9" fill="#30648e"/>
+
+  <!-- Legend -->
+  <circle cx="44" cy="362" r="8" fill="#224968"/>
+  <text x="58" y="366" font-size="11" fill="#556">Real code under test</text>
+  <circle cx="206" cy="362" r="8" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="220" y="366" font-size="11" fill="#556">Doubled in this test</text>
+  <text x="370" y="366" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+  <text x="44" y="394" font-size="10" fill="#556" font-style="italic">
+    Outbox atomicity is a join across persistence and broker; component tests run with a real DB and a doubled broker so the join is observable.
+  </text>
+</svg>

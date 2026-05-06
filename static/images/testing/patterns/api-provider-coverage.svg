@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380"
+     role="img" aria-labelledby="apv-title apv-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="apv-title">API Provider: layers tested by each test type</title>
+  <desc id="apv-desc">
+    A coverage matrix for the API provider pattern. Rows are the architectural layers: HTTP and API surface, domain logic, persistence adapter, and the external database. Columns are the test types that cover this pattern: solitary unit, sociable unit, component (in-band), gateway integration, and provider contract. Filled dots mark layers exercised by real code in that test type; outlined dots mark layers stood in by a double. Solitary unit tests cover only domain logic. Sociable unit tests cover domain logic and the persistence adapter wired together. Component tests cover the HTTP API, domain logic, and persistence adapter together, with the external database doubled. Gateway integration tests exercise the persistence adapter against the real database engine. Provider contract tests verify the HTTP API surface against published consumer expectations.
+  </desc>
+
+  <rect width="760" height="380" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    API Provider: Layers Tested by Each Test Type
+  </text>
+
+  <!-- Column headers (test types) -->
+  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+
+  <rect x="180" y="56" width="108" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
+  <text x="234" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
+  <text x="234" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="290" y="56" width="108" height="36" rx="4" fill="#0d7a32" stroke="#0a6128"/>
+  <text x="344" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Sociable</text>
+  <text x="344" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="400" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
+  <text x="454" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="454" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(in-band)</text>
+
+  <rect x="510" y="56" width="108" height="36" rx="4" fill="#30648e" stroke="#224968"/>
+  <text x="564" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
+  <text x="564" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+
+  <rect x="620" y="56" width="108" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
+  <text x="674" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Provider</text>
+  <text x="674" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+
+  <!-- Row 1: HTTP / API surface -->
+  <rect x="30" y="104" width="700" height="50" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="40" y="125" font-size="12" font-weight="600" fill="#1a2a3a">HTTP / API surface</text>
+  <text x="40" y="142" font-size="10" fill="#556">routing, auth, validation, status codes</text>
+  <circle cx="454" cy="129" r="9" fill="#224968"/>
+  <circle cx="674" cy="129" r="9" fill="#6c757d"/>
+
+  <!-- Row 2: Domain logic -->
+  <rect x="30" y="154" width="700" height="50" fill="#edf2f7" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="40" y="175" font-size="12" font-weight="600" fill="#1a2a3a">Domain logic</text>
+  <text x="40" y="192" font-size="10" fill="#556">business rules, invariants, state transitions</text>
+  <circle cx="234" cy="179" r="9" fill="#4a6741"/>
+  <circle cx="344" cy="179" r="9" fill="#0d7a32"/>
+  <circle cx="454" cy="179" r="9" fill="#224968"/>
+
+  <!-- Row 3: Persistence adapter -->
+  <rect x="30" y="204" width="700" height="50" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="40" y="225" font-size="12" font-weight="600" fill="#1a2a3a">Persistence adapter</text>
+  <text x="40" y="242" font-size="10" fill="#556">queries, transactions, migrations</text>
+  <circle cx="344" cy="229" r="9" fill="#0d7a32"/>
+  <circle cx="454" cy="229" r="9" fill="#224968"/>
+  <circle cx="564" cy="229" r="9" fill="#30648e"/>
+
+  <!-- Row 4: Database (external) -->
+  <rect x="30" y="254" width="700" height="50" fill="#edf2f7" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="40" y="275" font-size="12" font-weight="600" fill="#1a2a3a">Database (external)</text>
+  <text x="40" y="292" font-size="10" fill="#556">production engine; doubled in component, real in gateway</text>
+  <circle cx="454" cy="279" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="564" cy="279" r="9" fill="#30648e"/>
+
+  <!-- Legend -->
+  <circle cx="44" cy="338" r="8" fill="#224968"/>
+  <text x="58" y="342" font-size="11" fill="#556">Real code under test</text>
+  <circle cx="206" cy="338" r="8" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="220" y="342" font-size="11" fill="#556">Doubled in this test</text>
+  <text x="370" y="342" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+</svg>

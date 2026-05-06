@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470"
+     role="img" aria-labelledby="uic-title uic-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="uic-title">User Interface: layers tested by each test type</title>
+  <desc id="uic-desc">
+    A coverage matrix for the user interface pattern. Rows are the architectural layers: pure rendering, component composition, feature behavior in the rendered DOM, the backend HTTP gateway, the in-memory renderer (such as JSDOM), the real browser engine, and the real backend API. Columns are the test types: solitary unit, sociable unit, JSDOM component, headless-browser component, consumer contract, and end-to-end (post-deploy). Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover pure rendering. Sociable unit tests cover composition. JSDOM component tests cover feature behavior, the backend gateway, and the in-memory renderer with the real backend doubled. Headless-browser component tests run a representative subset of the same flows in a real browser engine to catch what JSDOM gets wrong. Consumer contract tests pin what the UI sends and depends on at each backend boundary. End-to-end tests run post-deploy in a real browser against the real backend and never block the build.
+  </desc>
+
+  <rect width="760" height="470" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    User Interface: Layers Tested by Each Test Type
+  </text>
+
+  <!-- Column headers -->
+  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+
+  <rect x="180" y="56" width="92" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
+  <text x="226" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
+  <text x="226" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="274" y="56" width="92" height="36" rx="4" fill="#0d7a32" stroke="#0a6128"/>
+  <text x="320" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Sociable</text>
+  <text x="320" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="368" y="56" width="92" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
+  <text x="414" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="414" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(JSDOM)</text>
+
+  <rect x="462" y="56" width="92" height="36" rx="4" fill="#30648e" stroke="#224968"/>
+  <text x="508" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="508" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(browser)</text>
+
+  <rect x="556" y="56" width="92" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
+  <text x="602" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Consumer</text>
+  <text x="602" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+
+  <rect x="650" y="56" width="92" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="696" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">E2E</text>
+  <text x="696" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(post-deploy)</text>
+
+  <!-- Row 1: Pure rendering -->
+  <rect x="30" y="104" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Pure rendering</text>
+  <text x="40" y="139" font-size="10" fill="#556">a component renders given props or state</text>
+  <circle cx="226" cy="126" r="9" fill="#4a6741"/>
+  <circle cx="320" cy="126" r="9" fill="#0d7a32"/>
+  <circle cx="414" cy="126" r="9" fill="#224968"/>
+  <circle cx="508" cy="126" r="9" fill="#30648e"/>
+
+  <!-- Row 2: Composition -->
+  <rect x="30" y="148" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Component composition</text>
+  <text x="40" y="183" font-size="10" fill="#556">composed components wire correctly</text>
+  <circle cx="320" cy="170" r="9" fill="#0d7a32"/>
+  <circle cx="414" cy="170" r="9" fill="#224968"/>
+  <circle cx="508" cy="170" r="9" fill="#30648e"/>
+
+  <!-- Row 3: Feature behavior + a11y -->
+  <rect x="30" y="192" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Feature behavior in the rendered DOM</text>
+  <text x="40" y="227" font-size="10" fill="#556">flows, form validation, a11y assertions, error UX</text>
+  <circle cx="414" cy="214" r="9" fill="#224968"/>
+  <circle cx="508" cy="214" r="9" fill="#30648e"/>
+
+  <!-- Row 4: Backend gateway -->
+  <rect x="30" y="236" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Backend HTTP gateway</text>
+  <text x="40" y="271" font-size="10" fill="#556">fetch / request build, response parse, retry, auth headers</text>
+  <circle cx="414" cy="258" r="9" fill="#224968"/>
+  <circle cx="508" cy="258" r="9" fill="#30648e"/>
+  <circle cx="602" cy="258" r="9" fill="#6c757d"/>
+
+  <!-- Row 5: Renderer (JSDOM vs browser) -->
+  <rect x="30" y="280" width="712" height="44" fill="#ffffff" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Renderer (in-memory or real)</text>
+  <text x="40" y="315" font-size="10" fill="#556">JSDOM stands in for the browser; headless browser is the real renderer</text>
+  <circle cx="414" cy="302" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="508" cy="302" r="9" fill="#30648e"/>
+  <circle cx="696" cy="302" r="9" fill="#6c757d"/>
+
+  <!-- Row 6: Backend API (external) -->
+  <rect x="30" y="324" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">Backend API (external)</text>
+  <text x="40" y="359" font-size="10" fill="#556">doubled with MSW or service worker in pipeline; real in E2E</text>
+  <circle cx="414" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="508" cy="346" r="9" fill="none" stroke="#30648e" stroke-width="2"/>
+  <circle cx="696" cy="346" r="9" fill="#6c757d"/>
+
+  <!-- Legend -->
+  <circle cx="44" cy="402" r="8" fill="#224968"/>
+  <text x="58" y="406" font-size="11" fill="#556">Real code under test</text>
+  <circle cx="206" cy="402" r="8" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="220" y="406" font-size="11" fill="#556">Doubled in this test</text>
+  <text x="370" y="406" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+  <text x="44" y="438" font-size="10" fill="#556" font-style="italic">
+    Run the full feature suite under JSDOM; run a representative subset in a headless browser to validate JSDOM has not lied to you.
+  </text>
+  <text x="44" y="454" font-size="10" fill="#556" font-style="italic">
+    E2E happy-path smoke tests run post-deploy against the real browser and real backend; failures block the rollout, not the build.
+  </text>
+</svg>

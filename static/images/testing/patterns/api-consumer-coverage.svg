@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470"
+     role="img" aria-labelledby="apc-title apc-desc"
+     font-family="system-ui, -apple-system, sans-serif" font-size="13">
+
+  <title id="apc-title">API Consumer: layers tested by each test type</title>
+  <desc id="apc-desc">
+    A coverage matrix for the API consumer pattern, which adds outbound calls on top of the API provider pattern. Rows are the architectural layers: HTTP and API surface, domain logic and orchestration, resilience policy (retry, circuit breaker, timeout, fallback), outbound HTTP gateway, persistence adapter, the external database, and the external downstream service. Columns are the test types: solitary unit, sociable unit, component (in-band, with fault-injecting gateway doubles), gateway integration, consumer contract, and an out-of-band integration check. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Component tests cover all internal layers including resilience under degraded dependencies, with both downstream service and database doubled. Gateway integration tests pin the outbound protocol and the persistence protocol against either WireMock or real containers. Consumer contract tests pin what the service sends and depends on at the outbound boundary. Out-of-band integration checks confirm the doubles still match the real downstream services.
+  </desc>
+
+  <rect width="760" height="470" fill="#fafafa" rx="4"/>
+
+  <!-- Title -->
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    API Consumer: Layers Tested by Each Test Type
+  </text>
+
+  <!-- Column headers -->
+  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+
+  <rect x="180" y="56" width="92" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
+  <text x="226" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
+  <text x="226" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="274" y="56" width="92" height="36" rx="4" fill="#0d7a32" stroke="#0a6128"/>
+  <text x="320" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Sociable</text>
+  <text x="320" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+
+  <rect x="368" y="56" width="92" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
+  <text x="414" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
+  <text x="414" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(in-band)</text>
+
+  <rect x="462" y="56" width="92" height="36" rx="4" fill="#30648e" stroke="#224968"/>
+  <text x="508" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
+  <text x="508" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+
+  <rect x="556" y="56" width="92" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
+  <text x="602" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Consumer</text>
+  <text x="602" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+
+  <rect x="650" y="56" width="92" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="696" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">Integration</text>
+  <text x="696" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(out-of-band)</text>
+
+  <!-- Row 1: HTTP / API surface -->
+  <rect x="30" y="104" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">HTTP / API surface (inbound)</text>
+  <text x="40" y="139" font-size="10" fill="#556">routing, auth, validation</text>
+  <circle cx="414" cy="126" r="9" fill="#224968"/>
+
+  <!-- Row 2: Domain logic / orchestration -->
+  <rect x="30" y="148" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Domain logic and orchestration</text>
+  <text x="40" y="183" font-size="10" fill="#556">composes calls, computes results</text>
+  <circle cx="226" cy="170" r="9" fill="#4a6741"/>
+  <circle cx="320" cy="170" r="9" fill="#0d7a32"/>
+  <circle cx="414" cy="170" r="9" fill="#224968"/>
+
+  <!-- Row 3: Resilience -->
+  <rect x="30" y="192" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Resilience policy</text>
+  <text x="40" y="227" font-size="10" fill="#556">retry, circuit breaker, timeout, fallback</text>
+  <circle cx="414" cy="214" r="9" fill="#224968"/>
+
+  <!-- Row 4: Outbound HTTP gateway -->
+  <rect x="30" y="236" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
+  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Outbound HTTP gateway</text>
+  <text x="40" y="271" font-size="10" fill="#556">request build, response parse, headers, deadlines</text>
+  <circle cx="414" cy="258" r="9" fill="#224968"/>
+  <circle cx="508" cy="258" r="9" fill="#30648e"/>
+  <circle cx="602" cy="258" r="9" fill="#6c757d"/>
+
+  <!-- Row 5: Persistence adapter -->
+  <rect x="30" y="280" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Persistence adapter</text>
+  <text x="40" y="315" font-size="10" fill="#556">queries, transactions, migrations</text>
+  <circle cx="414" cy="302" r="9" fill="#224968"/>
+  <circle cx="508" cy="302" r="9" fill="#30648e"/>
+
+  <!-- Row 6: Database (external) -->
+  <rect x="30" y="324" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">Database (external)</text>
+  <text x="40" y="359" font-size="10" fill="#556">production engine; doubled in component, real in gateway</text>
+  <circle cx="414" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="508" cy="346" r="9" fill="#30648e"/>
+
+  <!-- Row 7: Downstream service (external) -->
+  <rect x="30" y="368" width="712" height="44" fill="#ffffff" stroke="#e5e7eb" stroke-dasharray="5,3"/>
+  <text x="40" y="387" font-size="12" font-weight="600" fill="#1a2a3a">Downstream service (external)</text>
+  <text x="40" y="403" font-size="10" fill="#556">third-party or in-house API; doubled in pipeline, exercised post-deploy</text>
+  <circle cx="414" cy="390" r="9" fill="none" stroke="#224968" stroke-width="2"/>
+  <circle cx="508" cy="390" r="9" fill="none" stroke="#30648e" stroke-width="2"/>
+  <circle cx="696" cy="390" r="9" fill="#6c757d"/>
+
+  <!-- Legend -->
+  <circle cx="44" cy="438" r="8" fill="#224968"/>
+  <text x="58" y="442" font-size="11" fill="#556">Real code under test</text>
+  <circle cx="206" cy="438" r="8" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="220" y="442" font-size="11" fill="#556">Doubled in this test</text>
+  <text x="370" y="442" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+</svg>
