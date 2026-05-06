@@ -14,19 +14,25 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Read tool versions from netlify.toml
+        run: |
+          echo "HUGO_VERSION=$(grep 'HUGO_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
+          echo "NODE_VERSION=$(grep 'NODE_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
+          echo "GO_VERSION=$(grep 'GO_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
+
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
       - uses: actions/setup-go@v6
         with:
-          go-version: "1.25.3"
+          go-version: ${{ env.GO_VERSION }}
 
       - name: Install Hugo
         run: |
-          wget -q https://github.com/gohugoio/hugo/releases/download/v0.161.1/hugo_extended_0.161.1_linux-amd64.deb
-          sudo dpkg -i hugo_extended_0.161.1_linux-amd64.deb
+          wget -q https://github.com/gohugoio/hugo/releases/download/v${{ env.HUGO_VERSION }}/hugo_extended_${{ env.HUGO_VERSION }}_linux-amd64.deb
+          sudo dpkg -i hugo_extended_${{ env.HUGO_VERSION }}_linux-amd64.deb
 
       - run: npm ci
 
