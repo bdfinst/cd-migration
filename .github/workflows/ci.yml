@@ -16,9 +16,9 @@ jobs:
 
       - name: Read tool versions from netlify.toml
         run: |
-          echo "HUGO_VERSION=$(grep 'HUGO_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
-          echo "NODE_VERSION=$(grep 'NODE_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
-          echo "GO_VERSION=$(grep 'GO_VERSION' netlify.toml | grep -oP '"[0-9.]+"' | tr -d '"')" >> $GITHUB_ENV
+          echo "HUGO_VERSION=$(grep -oP '^HUGO_VERSION = "\K[^"]+' netlify.toml)" >> $GITHUB_ENV
+          echo "NODE_VERSION=$(grep -oP '^NODE_VERSION = "\K[^"]+' netlify.toml)" >> $GITHUB_ENV
+          echo "GO_VERSION=$(grep -oP '^GO_VERSION = "\K[^"]+' netlify.toml)" >> $GITHUB_ENV
 
       - uses: actions/setup-node@v6
         with:
