@@ -35,7 +35,7 @@
     "layout-check": "bash scripts/layout-check.sh",
     "triage-check": "bash scripts/triage-check.sh",
     "test": "npm run lint && npm run link-check:local",
-    "sync-versions": "sed -n 's/^NODE_VERSION = \"\\(.*\\)\"/\\1/p' netlify.toml > .node-version && sed -n 's/^GO_VERSION = \"\\(.*\\)\"/\\1/p' netlify.toml > .go-version",
+    "sync-versions": "bash scripts/sync-versions.sh",
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy && npm run sync-versions"
   },
   "devDependencies": {
