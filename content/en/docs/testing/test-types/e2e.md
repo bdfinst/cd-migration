@@ -81,7 +81,7 @@ deterministic.
 
 Horizontal tests have a large failure surface and are significantly more fragile.
 They are **not suitable for blocking the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})**; run them on a schedule and
-review failures out of band.
+review failures out-of-band.
 
 ## Characteristics
 
@@ -159,7 +159,7 @@ Stage 1 (every commit)    Unit tests              Deterministic    Blocks
 
 Post-deployment           Integration tests       Non-deterministic   Validates contract doubles
                           E2E smoke tests         Non-deterministic   Triggers rollback
-                          Scheduled E2E suites    Non-deterministic   Review out of band
+                          Scheduled E2E suites    Non-deterministic   Review out-of-band
                           Synthetic monitoring    Non-deterministic   Triggers alerts
 {{< /card >}}
 

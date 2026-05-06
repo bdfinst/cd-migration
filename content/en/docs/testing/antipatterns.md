@@ -46,7 +46,7 @@ Replacing every collaborator with a mock so the test sees only the system under 
 
 ### Complex mock setup
 
-If a single test needs dozens of lines to set up its mocks, the system under test probably has too many dependencies for one unit of behaviour. Setup complexity is a smell pointing at the production design, not at the test. Refactor the production code (extract a collaborator, narrow the interface, push concerns into separate classes) before adding more mocks.
+If a single test needs dozens of lines to set up its mocks, the system under test probably has too many dependencies for one unit of behavior. Setup complexity is a smell pointing at the production design, not at the test. Refactor the production code (extract a collaborator, narrow the interface, push concerns into separate classes) before adding more mocks.
 
 ### Sleeping in tests
 

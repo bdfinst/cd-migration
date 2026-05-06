@@ -41,8 +41,10 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 - **Invalid arguments to the library**: throws the documented error type.
 - **Public symbol removed or renamed**: the API-surface test fails the build.
 
-## Test double validation and pipeline placement
+## Test double validation
 
 File system doubles validated by integration tests against the real FS in a temp directory. Subprocess doubles validated by tests that actually spawn the subprocess on each supported OS. Doctests validate README examples against the real binary or library on every build.
+
+## Pipeline placement
 
 Unit and component tests run in CI Stage 1 on every supported OS; API surface diff and doctests in CI Stage 1; cross-platform integration tests in CI Stage 2 if slow.

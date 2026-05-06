@@ -40,7 +40,7 @@ The test asserts that **the adapter correctly speaks the protocol**: that it ser
 
 #### What the test is *not* for
 
-It does **not** test the behaviour of the dependency itself. If the adapter asks for a user, the test validates that the response parses into a valid `User` object - not *which* user comes back, not the dependency's own business rules, not anything that the dependency owns. The dependency's correctness is the dependency's problem; the adapter's job is to speak the protocol faithfully. Conflating the two produces brittle tests that fail on unrelated changes to the dependency's data or logic.
+It does **not** test the behavior of the dependency itself. If the adapter asks for a user, the test validates that the response parses into a valid `User` object - not *which* user comes back, not the dependency's own business rules, not anything that the dependency owns. The dependency's correctness is the dependency's problem; the adapter's job is to speak the protocol faithfully. Conflating the two produces brittle tests that fail on unrelated changes to the dependency's data or logic.
 
 #### Pipeline placement
 
@@ -51,7 +51,7 @@ Runs [in-band](#in-band-test) **only** when both conditions hold:
 
 For everything else - third-party APIs, services owned by another team, dependencies whose state the team can't reset between runs - the test runs [out-of-band](#out-of-band-test) on a schedule. Out-of-band placement is the default for any adapter test that touches a system outside the team's full control. Failures trigger review, not a build break. Pulling these tests in-band is the most common cause of flaky pipelines.
 
-#### Distinguishing from neighbouring test types
+#### Distinguishing from neighboring test types
 
 Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): an adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles in the pipeline; adapter integration tests pin protocol against the real dependency.
 
@@ -86,7 +86,7 @@ Referenced in:
 
 ### Cluster Test
 
-A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behaviour that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
+A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behavior that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
@@ -118,14 +118,14 @@ Referenced in:
 
 ### Cross-OS Test Matrix
 
-A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behaviour single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
+A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behavior single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
 
 ### Deployed-binary Test
 
-A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behaviour at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behaviour is tested in component tests against an in-memory assembled app.
+A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behavior at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behavior is tested in component tests against an in-memory assembled app.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}}),
@@ -163,7 +163,7 @@ Referenced in:
 
 ### Soak Test
 
-A long-running test that exercises a deployed service for hours or days under representative load to catch behaviour that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behaviour over time.
+A long-running test that exercises a deployed service for hours or days under representative load to catch behavior that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behavior over time.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
@@ -246,7 +246,7 @@ Test doubles let you:
 - Use a **stub** when you need to supply data but don't care how it was requested.
 - Use a **spy** when you need to verify call arguments or call count.
 - Use a **mock** when the interaction itself is the primary thing being verified.
-- Use a **fake** when you need realistic behaviour but can't use the real system.
+- Use a **fake** when you need realistic behavior but can't use the real system.
 - Use a **dummy** when a parameter is required by the interface but irrelevant to the test.
 
 Test doubles are heaviest in the early [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) stages ([unit]({{< relref "/docs/testing/test-types/unit" >}}), [component]({{< relref "/docs/testing/test-types/component" >}}), [contract]({{< relref "/docs/testing/test-types/contract" >}}) tests) where deterministic speed is the priority. They thin out as you move through the pipeline; [end-to-end tests]({{< relref "/docs/testing/test-types/e2e" >}}) use no doubles by design. The guiding principle from Justin Searls: "Don't poke too many holes in reality." Use a double when you must, and prefer the real implementation when it's fast and deterministic.

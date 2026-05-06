@@ -39,8 +39,10 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 - **Broker unavailable for an extended period**: the outbox accumulates with bounded growth and alerts at a threshold.
 - **Breaking schema change**: fails provider-side contract verification before shipping.
 
-## Test double validation and pipeline placement
+## Test double validation
 
 The broker double in component tests is validated against a real broker container the team controls in [adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}). The test asserts the adapter publishes with the right routing key, headers, and serialization - it does not assert which messages downstream consumers happen to read or in what order; those are downstream concerns. Provider-side contract verification runs in this service's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against every consumer's published expectations.
+
+## Pipeline placement
 
 Outbox component tests and routing tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; adapter integration tests against a team-controlled broker container in CI Stage 1 or Stage 2; adapter integration tests against a managed broker the team can't pin run [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule. Provider-side contract verification in [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1; post-deploy synthetic state change verifies the message arrives with the expected shape.

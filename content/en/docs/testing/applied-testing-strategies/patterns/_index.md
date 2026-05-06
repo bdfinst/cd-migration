@@ -9,7 +9,7 @@ description: >
 Each page in this subsection covers one component pattern. The structure is the same on every page so you can scan-compare:
 
 1. **What needs covered** - the layers of testing the pattern typically benefits from.
-2. **Positive test cases** - common success behaviours worth testing.
+2. **Positive test cases** - common success behaviors worth testing.
 3. **Negative test cases** - common failure modes that produce production incidents.
 4. **Test double validation** - how the doubles in [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) tests stay honest.
 5. **Pipeline placement** - where each test type tends to run.

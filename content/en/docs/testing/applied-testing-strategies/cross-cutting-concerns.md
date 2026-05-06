@@ -1,6 +1,6 @@
 ---
-title: "Cross-cutting Concerns"
-linkTitle: "Cross-cutting Concerns"
+title: "Cross-Cutting Concerns"
+linkTitle: "Cross-Cutting Concerns"
 weight: 3
 description: >
   Concerns that cut across every pattern: authn/authz, database migrations, fixtures, observability, performance, mutation testing, flake handling, and time budgets.

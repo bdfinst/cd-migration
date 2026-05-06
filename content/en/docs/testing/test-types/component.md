@@ -25,7 +25,7 @@ The component's **own** persistence layer is the boundary that admits a choice. 
 
 A component test does **not** exercise more than one component end-to-end. A test that drives a UI which calls a real backend which writes to a real database is a fullstack flow - that's an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}). Each component gets its own component tests at its own boundary; the frontend has its tests against a doubled backend, the backend has its tests against a doubled downstream and a real-or-doubled DB.
 
-This is broader than a [sociable unit test]({{< relref "/docs/testing/test-types/unit#solitary-vs-sociable-unit-tests" >}}): a sociable unit test exercises a single behaviour through a few collaborators; a component test exercises the entire assembled component through its public interface.
+This is broader than a [sociable unit test]({{< relref "/docs/testing/test-types/unit#solitary-vs-sociable-unit-tests" >}}): a sociable unit test exercises a single behavior through a few collaborators; a component test exercises the entire assembled component through its public interface.
 
 ## When component tests earn their keep
 
@@ -33,7 +33,7 @@ A component test overlaps with the combination of provider [contract tests]({{< 
 
 They earn their keep when the component has:
 
-- **Cross-cutting behaviour at the seams.** Auth, multi-tenancy, persistence, and event emission interacting on a single request is where production bugs live. Each layer in isolation may pass; the seam between them is what a component test exercises.
+- **Cross-cutting behavior at the seams.** Auth, multi-tenancy, persistence, and event emission interacting on a single request is where production bugs live. Each layer in isolation may pass; the seam between them is what a component test exercises.
 - **Non-trivial framework wiring.** Middleware ordering, error-handler mapping (does a domain exception become 409 or 500?), DI-container configuration, request-body limits. Spy-based unit tests bypass all of this. Contract tests bypass it unless they exercise the fully booted app.
 - **[Acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) you want to map 1:1 to tests.** A test that says "POST /orders with valid payment returns 201 and emits `OrderPlaced`" reads as the user story. The fragmented equivalent (contract test for shape + unit test for domain + spy for delegation + unit test for emission) covers the same ground but no single test reads as the story.
 - **Realistic UI flows.** Keyboard navigation, focus management, and screen-reader announcements need the rendered DOM, not a unit test of a component class.
@@ -43,12 +43,12 @@ They overlap heavily with other layers when the component is:
 - **Thin CRUD with no middleware to speak of.** Provider contract verification against a booted app plus sociable unit tests of the domain cover most of what a component test would. Keep one per critical flow as smoke coverage; skip exhaustive component coverage.
 - **Pure transformation logic.** Parsers, calculators, scheduling math. Unit tests give better coverage per unit of effort.
 
-If you're choosing between an extra component test and an extra unit test for the same behaviour, the unit test is cheaper to write, run, and maintain. Component tests earn their keep at the seams between layers, not in repeating ground that unit tests already cover.
+If you're choosing between an extra component test and an extra unit test for the same behavior, the unit test is cheaper to write, run, and maintain. Component tests earn their keep at the seams between layers, not in repeating ground that unit tests already cover.
 
 Two boundary cases worth naming:
 
 - A test that needs to **span more than one component** (a real frontend driving a real backend) is an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}), not a component test.
-- A test that exercises **a single unit of behaviour** through a few collaborators is a [unit test]({{< relref "/docs/testing/test-types/unit" >}}), not a component test.
+- A test that exercises **a single unit of behavior** through a few collaborators is a [unit test]({{< relref "/docs/testing/test-types/unit" >}}), not a component test.
 
 ## Characteristics
 
@@ -69,7 +69,7 @@ Two boundary cases worth naming:
 A component test for a REST API, exercising the full application stack with the
 downstream inventory service replaced by a test double:
 
-{{< card code=true header="**Backend component test - order creation with mocked inventory service**" lang="javascript" >}}
+{{< card code=true header="**Backend component test - order creation with stubbed inventory service**" lang="javascript" >}}
 describe("POST /orders", () => {
   it("should create an order and return 201", async () => {
     // Arrange: mock the inventory service response
@@ -105,9 +105,9 @@ describe("POST /orders", () => {
 
 ### Frontend Component
 
-A component test exercising a login flow with a mocked authentication service:
+A component test exercising a login flow with a stubbed authentication service:
 
-{{< card code=true header="**Frontend component test - login flow with mocked auth service**" lang="javascript" >}}
+{{< card code=true header="**Frontend component test - login flow with stubbed auth service**" lang="javascript" >}}
 describe("Login page", () => {
   it("should redirect to the dashboard after successful login", async () => {
     mockAuthService.login.mockResolvedValue({ token: "abc123" });
