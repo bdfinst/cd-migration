@@ -40,7 +40,7 @@ evidence before proposing changes. This path helps you identify which symptoms a
 situation, attach a cost to them, find the root cause in your process, and then point to
 research-backed capabilities and a concrete starting step.
 
-1. [For Managers]({{< relref "/docs/symptoms/for-managers" >}}) - identify your team's symptoms
+1. [For Managers]({{< relref "/docs/triage/for-managers" >}}) - identify your team's symptoms
 2. [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - quantify the cost
 3. [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - name the root cause
 4. [CAB Approval Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}) - address the process gap

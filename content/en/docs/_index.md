@@ -9,12 +9,10 @@ description: >
 
 {{% pageinfo %}}
 **Start with your problem, not the guide.**
-[Not sure what is wrong? Answer a few questions.]({{< relref "/docs/triage" >}}) |
-[Developer symptoms]({{< relref "/docs/symptoms/for-developers" >}}) |
-[Manager symptoms]({{< relref "/docs/symptoms/for-managers" >}})
+[Not sure what is wrong? Answer a few questions.]({{< relref "/docs/triage" >}})
 
 New here? Read [Start Here]({{< relref "/docs/start-here" >}}) or follow a
-[Learning Path]({{< relref "/docs/learning-paths" >}}) for a guided sequence by role.
+[Learning Path]({{< relref "/docs/learning-paths" >}}) for a guided reading sequence.
 {{% /pageinfo %}}
 
 ## Diagnose

@@ -53,6 +53,26 @@ Split the anti-patterns catalog and migration guidance into a new sister page, [
 
 Added [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}) to the testing section. A practical guide covering positive cases, negative cases, double validation, and [pipeline](reference/glossary/#pipeline) placement for eight common component patterns: API providers, API consumers, scheduled jobs, user interfaces, event consumers, event producers, CLI tools and libraries, and stateful services. Includes seven cross-cutting principles, an anti-patterns catalog, migration guidance for existing test suites, code examples per pattern, cross-cutting concerns (authn/authz, migrations, fixtures, observability, performance, mutation testing, flake handling, time budgets), and a per-component checklist.
 
+## 2026-03-21 - New Section: Evaluation and Quality
+
+Added three new pages under [Evaluation and Quality]({{< relref "/docs/agentic-cd/evaluation" >}}):
+
+- [AI Eval Methodology]({{< relref "/docs/agentic-cd/evaluation/ai-eval-methodology" >}}) - Three-layer grading framework (deterministic, transcript, LLM rubric) and eval development cycle for AI coding tools
+- [Team AI Evals]({{< relref "/docs/agentic-cd/evaluation/team-ai-evals" >}}) - Setting up eval infrastructure, writing positive and negative tests, choosing graders, and CI integration for team AI tools
+- [Platform AI Evals]({{< relref "/docs/agentic-cd/evaluation/platform-ai-evals" >}}) - Shared eval infrastructure, multi-plugin architecture, and meta-evaluation for AI enablement platforms
+
+## 2026-03-17 - Redesign triage with pain-first guided flow and persona pages
+
+Redesigned the [Multi-Symptom Selector]({{< relref "/docs/triage/multi-symptom" >}}) to use a 3-step pain-first flow: pick high-level pain points, check relevant symptoms (sorted by impact), then see contextual results. Removed the role/persona filter in favor of shared ownership. Added impact indicators to symptoms derived from anti-pattern count. Added [For Agile Coaches]({{< relref "/docs/triage/for-agile-coaches" >}}) curated reading list alongside existing developer and manager lists. Moved all persona pages into [Triage Your Problems]({{< relref "/docs/triage" >}}), renamed the section, and removed redundant triage entry points from the homepage.
+
+## 2026-03-16 - Replace guided triage with multi-symptom selector and team health check
+
+Retired the guided triage questionnaire. [Find Your Problems]({{< relref "/docs/triage" >}}) now offers two self-service tools: a [Multi-Symptom Selector]({{< relref "/docs/triage/multi-symptom" >}}) that lets individuals check symptoms filtered by their role (manager, scrum master, developer) and see ranked anti-patterns, and a [Team Health Check]({{< relref "/docs/triage/health-check" >}}) worksheet organized by seven delivery areas for use in retrospectives and team assessments. Both tools surface anti-patterns without requiring a facilitator.
+
+## 2026-03-13 - Replace triage accordion with interactive questionnaire
+
+Replaced the static nested accordion on [Find Your Symptom]({{< relref "/docs/triage" >}}) with an interactive probing questionnaire. The questionnaire asks about the presenting problem, then probes deeper to surface the real underlying cause before linking to the symptom page. Question tree and results are defined in `data/triage.yaml`; deep linking via URL hash is supported.
+
 ## 2026-03-13 - Add DORA benchmarking symptom page
 
 Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat [DORA metrics](reference/glossary/#dora-metrics) as performance targets rather than diagnostic tools.

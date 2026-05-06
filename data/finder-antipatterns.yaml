@@ -1,0 +1,159 @@
+- id: blind-operations
+  title: "Blind Operations"
+  path: /docs/anti-patterns/monitoring-observability/blind-operations/
+- id: cab-gates
+  title: "CAB Gates"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/cab-gates/
+- id: code-coverage-mandates
+  title: "Code Coverage Mandates"
+  path: /docs/anti-patterns/testing/code-coverage-mandates/
+- id: compliance-manual-approval
+  title: "Compliance via Manual Approval"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval/
+- id: config-embedded-in-artifacts
+  title: "Config Embedded in Artifacts"
+  path: /docs/anti-patterns/pipeline/config-embedded-in-artifacts/
+- id: deadline-driven-development
+  title: "Deadline-Driven Development"
+  path: /docs/anti-patterns/organizational-cultural/planning/deadline-driven-development/
+- id: distributed-monolith
+  title: "Distributed Monolith"
+  path: /docs/anti-patterns/architecture/distributed-monolith/
+- id: dora-metrics-as-goals
+  title: "DORA Metrics as Goals"
+  path: /docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals/
+- id: estimation-theater
+  title: "Estimation Theater"
+  path: /docs/anti-patterns/organizational-cultural/planning/estimation-theater/
+- id: hardcoded-environment-assumptions
+  title: "Hardcoded Environment Assumptions"
+  path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions/
+- id: hardening-sprints
+  title: "Hardening Sprints"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/hardening-sprints/
+- id: hero-culture
+  title: "Hero Culture"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture/
+- id: horizontal-slicing
+  title: "Horizontal Slicing"
+  path: /docs/anti-patterns/team-workflow/horizontal-slicing/
+- id: integration-deferred
+  title: "Deferred Integration"
+  path: /docs/anti-patterns/branching-integration/integration-deferred/
+- id: inverted-test-pyramid
+  title: "Inverted Test Pyramid"
+  path: /docs/anti-patterns/testing/inverted-test-pyramid/
+- id: knowledge-silos
+  title: "Knowledge Silos"
+  path: /docs/anti-patterns/team-workflow/knowledge-silos/
+- id: long-lived-feature-branches
+  title: "Long-Lived Feature Branches"
+  path: /docs/anti-patterns/branching-integration/long-lived-feature-branches/
+- id: manual-deployments
+  title: "Manual Deployments"
+  path: /docs/anti-patterns/pipeline/manual-deployments/
+- id: manual-regression-testing-gates
+  title: "Manual Regression Testing Gates"
+  path: /docs/anti-patterns/testing/manual-regression-testing-gates/
+- id: manual-testing-only
+  title: "Manual Testing Only"
+  path: /docs/anti-patterns/testing/manual-testing-only/
+- id: manually-triggered-tests
+  title: "Manually Triggered Tests"
+  path: /docs/anti-patterns/testing/manually-triggered-tests/
+- id: misaligned-incentives
+  title: "Misaligned Incentives"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/misaligned-incentives/
+- id: missing-deployment-pipeline
+  title: "Missing Deployment Pipeline"
+  path: /docs/anti-patterns/pipeline/missing-deployment-pipeline/
+- id: missing-product-ownership
+  title: "Missing Product Ownership"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/missing-product-ownership/
+- id: monolithic-work-items
+  title: "Monolithic Work Items"
+  path: /docs/anti-patterns/team-workflow/monolithic-work-items/
+- id: no-build-caching
+  title: "No Build Caching"
+  path: /docs/anti-patterns/pipeline/no-build-caching/
+- id: no-deployment-health-checks
+  title: "No Deployment Health Checks"
+  path: /docs/anti-patterns/pipeline/no-deployment-health-checks/
+- id: no-environment-parity
+  title: "No Environment Parity"
+  path: /docs/anti-patterns/pipeline/no-environment-parity/
+- id: no-improvement-time
+  title: "No Improvement Time"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-improvement-time/
+- id: no-infrastructure-as-code
+  title: "No Infrastructure as Code"
+  path: /docs/anti-patterns/pipeline/no-infrastructure-as-code/
+- id: no-operational-ownership
+  title: "No Operational Ownership"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-operational-ownership/
+- id: pipeline-not-versioned
+  title: "Pipeline Not Versioned"
+  path: /docs/anti-patterns/pipeline/pipeline-not-versioned/
+- id: pressure-to-skip-testing
+  title: "Pressure to Skip Testing"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing/
+- id: push-based-work-assignment
+  title: "Push-Based Work Assignment"
+  path: /docs/anti-patterns/team-workflow/push-based-work-assignment/
+- id: qa-signoff-gate
+  title: "QA Sign-Off Gate"
+  path: /docs/anti-patterns/testing/qa-signoff-gate/
+- id: release-branches-backporting
+  title: "Release Branches and Backporting"
+  path: /docs/anti-patterns/branching-integration/release-branches-backporting/
+- id: rubber-stamping-ai-code
+  title: "Rubber-Stamping AI-Generated Code"
+  path: /docs/anti-patterns/testing/rubber-stamping-ai-code/
+- id: separate-ops-team
+  title: "Separate Ops Team"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team/
+- id: separation-of-duties-antipattern
+  title: "Separation of Duties Antipattern"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern/
+- id: shared-test-environments
+  title: "Shared Test Environments"
+  path: /docs/anti-patterns/pipeline/shared-test-environments/
+- id: siloed-qa-team
+  title: "Siloed QA Team"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team/
+- id: snowflake-environments
+  title: "Snowflake Environments"
+  path: /docs/anti-patterns/pipeline/snowflake-environments/
+- id: sprint-boundary-deployments
+  title: "Sprint-Boundary Deployments"
+  path: /docs/anti-patterns/organizational-cultural/governance-process/sprint-boundary-deployments/
+- id: testing-only-at-the-end
+  title: "Testing Only at the End"
+  path: /docs/anti-patterns/testing/testing-only-at-the-end/
+- id: thin-spread-teams
+  title: "Thin-Spread Teams"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams/
+- id: tightly-coupled-monolith
+  title: "Tightly Coupled Monolith"
+  path: /docs/anti-patterns/architecture/tightly-coupled-monolith/
+- id: unbounded-wip
+  title: "Unbounded WIP"
+  path: /docs/anti-patterns/team-workflow/unbounded-wip/
+- id: undone-work
+  title: "Undone Work"
+  path: /docs/anti-patterns/team-workflow/undone-work/
+- id: velocity-as-individual-metric
+  title: "Velocity as Individual Metric"
+  path: /docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric/
+- id: velocity-as-team-metric
+  title: "Velocity as Team Metric"
+  path: /docs/anti-patterns/organizational-cultural/planning/velocity-as-team-metric/
+- id: big-bang-feature-delivery
+  title: "Big-Bang Feature Delivery"
+  path: /docs/anti-patterns/team-workflow/big-bang-feature-delivery/
+- id: blame-culture
+  title: "Blame Culture"
+  path: /docs/anti-patterns/organizational-cultural/team-dynamics/blame-culture/
+- id: no-contract-testing
+  title: "No Contract Testing"
+  path: /docs/anti-patterns/testing/no-contract-testing/
