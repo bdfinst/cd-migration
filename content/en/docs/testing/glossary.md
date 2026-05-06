@@ -13,30 +13,6 @@ description: >
 These definitions reflect how this site uses each term. They are not universal definitions -
 other communities may use the same words differently.
 
-### Component Test
-
-A deterministic test that verifies a complete frontend component or backend service through
-its public interface, with test doubles for all external dependencies. See
-[Component Tests]({{< relref "/docs/testing/test-types/component" >}}) for full definition and examples.
-
-Referenced in:
-[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
-[End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}}),
-[Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
-[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
-
-### Black Box Testing
-
-A testing approach where the test exercises code through its public interface and asserts
-only on observable outputs - return values, state changes visible to consumers, or side
-effects such as messages sent. The test has no knowledge of internal implementation details.
-Black box tests are resilient to refactoring because they verify **what** the code does, not
-**how** it does it. Contrast with [white box testing](#white-box-testing).
-
-Referenced in:
-[CD Testing]({{< relref "/docs/testing" >}}),
-[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
-
 ### Acceptance Tests {#functional-acceptance-tests}
 
 Automated tests that verify a system behaves as specified. Acceptance tests
@@ -54,11 +30,119 @@ Referenced in:
 [CD Testing]({{< relref "/docs/testing" >}}),
 [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}})
 
+### Adapter Integration Test
+
+A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. (Legacy name from Toby Clemson: "gateway integration test.")
+
+#### What the test is for
+
+The test asserts that **the adapter correctly speaks the protocol**: that it serializes the request the way the dependency expects, parses the response shape correctly, maps errors to the right exception types, propagates headers, enforces timeouts, and handles transactional semantics.
+
+#### What the test is *not* for
+
+It does **not** test the behaviour of the dependency itself. If the adapter asks for a user, the test validates that the response parses into a valid `User` object - not *which* user comes back, not the dependency's own business rules, not anything that the dependency owns. The dependency's correctness is the dependency's problem; the adapter's job is to speak the protocol faithfully. Conflating the two produces brittle tests that fail on unrelated changes to the dependency's data or logic.
+
+#### Pipeline placement
+
+Runs [in-band](#in-band-test) **only** when both conditions hold:
+
+1. The team has full control over the dependency - a database, broker, or service the team owns and can pin to a known version, typically via a per-test testcontainer.
+2. The test is fully deterministic against that controlled instance.
+
+For everything else - third-party APIs, services owned by another team, dependencies whose state the team can't reset between runs - the test runs [out-of-band](#out-of-band-test) on a schedule. Out-of-band placement is the default for any adapter test that touches a system outside the team's full control. Failures trigger review, not a build break. Pulling these tests in-band is the most common cause of flaky pipelines.
+
+#### Distinguishing from neighbouring test types
+
+Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): an adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles in the pipeline; adapter integration tests pin protocol against the real dependency.
+
+Referenced in:
+[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
+[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
+[Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}),
+[Antipatterns]({{< relref "/docs/testing/antipatterns" >}}),
+[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
+[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}}),
+[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}}),
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
+
+### API Surface Test
+
+A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services; an API surface test pins the source-level boundary between a library and its callers.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
+### Black Box Testing
+
+A testing approach where the test exercises code through its public interface and asserts
+only on observable outputs - return values, state changes visible to consumers, or side
+effects such as messages sent. The test has no knowledge of internal implementation details.
+Black box tests are resilient to refactoring because they verify **what** the code does, not
+**how** it does it. Contrast with [white box testing](#white-box-testing).
+
+Referenced in:
+[CD Testing]({{< relref "/docs/testing" >}}),
+[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
+
+### Cluster Test
+
+A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behaviour that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
+
+Referenced in:
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
+
+### Component Test
+
+A deterministic test that verifies a complete frontend component or backend service through
+its public interface, with test doubles for all external dependencies. See
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}) for full definition and examples.
+
+Referenced in:
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}}),
+[Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
+[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
+
+### Contract Test
+
+A deterministic test that verifies the boundary between two systems using [test doubles](#test-double). Sometimes called a *narrow integration test*. Has two perspectives. A **consumer contract test** asks "do the fields and status codes I depend on still exist?" and asserts only on the subset of the API the consumer actually uses. A **provider contract test** asks "have my changes broken any of my consumers?" and runs every consumer's published expectations against the real provider implementation. The same shape applies to broker topics (a "broker contract") and to source-and-sink schemas in pipelines ("source/sink contract") - the test object is the boundary, the perspective is whichever side the test runs from.
+
+Contract tests are deterministic and run pre-merge as [in-band tests](#in-band-test). They block the build like any other in-band test. See [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) for the full discussion of consumer-driven contracts (CDC) and contract-first development.
+
+Referenced in:
+[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
+[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
+[Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}),
+[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
+[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}})
+
+### Cross-OS Test Matrix
+
+A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behaviour single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
+### Deployed-binary Test
+
+A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behaviour at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behaviour is tested in component tests against an in-memory assembled app.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}}),
+[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}})
+
+### Doctest
+
+An executable test extracted from documentation - typically the README or inline code samples - that runs the documented examples against the real binary or library and fails the build if the examples are broken. Doctests close the gap between "the docs say X works" and "X actually works in the latest build". Most languages have framework support: Python's `doctest` module, Rust's `#[doc]` attribute, and Markdown-based runners for Node and Java.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
 ### In-Band Test
 
 A test that runs **in the delivery pipeline** as part of the commit-to-deploy flow. In-band tests must be deterministic, which means [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) replace anything that crosses the component boundary - downstream services, message brokers, schedulers, browsers talking to real backends. Failures block the build or the deployment.
 
-The bulk of any project's test suite is in-band: unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/testing/test-types/contract" >}}), and adapter integration tests against testcontainers or recorded fixtures. They give a deterministic go/no-go signal in minutes.
+The bulk of any project's test suite is in-band: unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/testing/test-types/contract" >}}), and [adapter integration tests](#adapter-integration-test) against team-controlled dependencies (testcontainers running an engine the team pins). Adapter integration tests against third-party services or shared environments run [out-of-band](#out-of-band-test) on a schedule, not in-band. They give a deterministic go/no-go signal in minutes.
 
 Contrast with [out-of-band tests](#out-of-band-test), which run on a schedule against real systems and never gate the build.
 
@@ -76,6 +160,13 @@ Referenced in:
 [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}),
 [Architecting Tests for CD]({{< relref "/docs/testing" >}}),
 [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}})
+
+### Soak Test
+
+A long-running test that exercises a deployed service for hours or days under representative load to catch behaviour that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behaviour over time.
+
+Referenced in:
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
 
 ### Sociable Unit Test
 
@@ -98,6 +189,35 @@ Contrast with [sociable unit test](#sociable-unit-test), which allows real colla
 while still replacing external I/O.
 
 Referenced in:
+[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
+
+### Synthetic Monitoring
+
+Automated scripts that continuously execute realistic user journeys or API calls against a
+live production (or production-like) environment and alert when those journeys fail or degrade.
+Unlike passive monitoring that watches for errors in real user traffic, synthetic monitoring
+proactively simulates user behavior on a schedule - so problems are detected even during low
+traffic periods. Synthetic monitors are non-deterministic (they depend on live external systems)
+and are never a pre-merge gate. Failures trigger alerts or rollback decisions, not build blocks.
+
+Referenced in:
+[Architecting Tests for CD]({{< relref "/docs/testing" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}})
+
+### TDD (Test-Driven Development)
+
+A development practice where tests are written before the production code that makes them
+pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
+a fast, reliable test suite. TDD feeds into the [testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+required in Phase 1.
+
+Referenced in:
+[CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
+[Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}),
+[Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}),
+[Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
+[TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
+[Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
 [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
 
 ### Test Double
@@ -139,109 +259,6 @@ Referenced in:
 [Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
 [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}),
 [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
-
-### Contract Test
-
-A deterministic test that verifies the boundary between two systems using [test doubles](#test-double). Sometimes called a *narrow integration test*. Has two perspectives. A **consumer contract test** asks "do the fields and status codes I depend on still exist?" and asserts only on the subset of the API the consumer actually uses. A **provider contract test** asks "have my changes broken any of my consumers?" and runs every consumer's published expectations against the real provider implementation. The same shape applies to broker topics (a "broker contract") and to source-and-sink schemas in pipelines ("source/sink contract") - the test object is the boundary, the perspective is whichever side the test runs from.
-
-Contract tests are deterministic and run pre-merge as [in-band tests](#in-band-test). They block the build like any other in-band test. See [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) for the full discussion of consumer-driven contracts (CDC) and contract-first development.
-
-Referenced in:
-[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
-[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
-[Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}),
-[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
-[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}})
-
-### Adapter Integration Test
-
-A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. The test type carries the legacy name "adapter integration test" (Toby Clemson) because "gateway" was the original abstraction name for these adapters.
-
-Pins the protocol-level behaviour: serialization, deserialization, header handling, timeout behaviour, error mapping, transactional semantics. Deterministic enough to run [in-band](#in-band-test) when fast; otherwise pushed to a later CI stage but still gating.
-
-Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles; adapter integration tests pin protocol against the real dependency.
-
-Referenced in:
-[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
-[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
-[Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}),
-[Antipatterns]({{< relref "/docs/testing/antipatterns" >}}),
-[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
-[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}}),
-[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}}),
-[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
-
-### Cluster Test
-
-A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behaviour that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
-
-Referenced in:
-[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
-
-### Soak Test
-
-A long-running test that exercises a deployed service for hours or days under representative load to catch behaviour that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behaviour over time.
-
-Referenced in:
-[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
-
-### Deployed-binary Test
-
-A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behaviour at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behaviour is tested in component tests against an in-memory assembled app.
-
-Referenced in:
-[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}}),
-[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}})
-
-### API Surface Test
-
-A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services; an API surface test pins the source-level boundary between a library and its callers.
-
-Referenced in:
-[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
-
-### Doctest
-
-An executable test extracted from documentation - typically the README or inline code samples - that runs the documented examples against the real binary or library and fails the build if the examples are broken. Doctests close the gap between "the docs say X works" and "X actually works in the latest build". Most languages have framework support: Python's `doctest` module, Rust's `#[doc]` attribute, and Markdown-based runners for Node and Java.
-
-Referenced in:
-[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
-
-### Cross-OS Test Matrix
-
-A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behaviour single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
-
-Referenced in:
-[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
-
-### TDD (Test-Driven Development)
-
-A development practice where tests are written before the production code that makes them
-pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
-a fast, reliable test suite. TDD feeds into the [testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
-required in Phase 1.
-
-Referenced in:
-[CD for Greenfield Projects]({{< relref "/docs/migrate-to-cd/greenfield" >}}),
-[Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}),
-[Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}),
-[Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
-[TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
-[Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
-[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
-
-### Synthetic Monitoring
-
-Automated scripts that continuously execute realistic user journeys or API calls against a
-live production (or production-like) environment and alert when those journeys fail or degrade.
-Unlike passive monitoring that watches for errors in real user traffic, synthetic monitoring
-proactively simulates user behavior on a schedule - so problems are detected even during low
-traffic periods. Synthetic monitors are non-deterministic (they depend on live external systems)
-and are never a pre-merge gate. Failures trigger alerts or rollback decisions, not build blocks.
-
-Referenced in:
-[Architecting Tests for CD]({{< relref "/docs/testing" >}}),
-[End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}})
 
 ### Virtual Service
 

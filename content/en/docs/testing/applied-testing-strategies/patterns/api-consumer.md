@@ -48,10 +48,10 @@ Common cases to consider, not an exhaustive list. The bulk of the negative testi
 
 ## Test double validation
 
-This is where the "doubles need tests" rule lives or dies. Four layers:
+This is where the "[doubles]({{< relref "/docs/testing/glossary#test-double" >}}) need tests" rule lives or dies. Four layers:
 
 1. **Consumer-side contract tests** run in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) on every commit using doubles. They pin the request the consumer sends and the response shape the consumer depends on. Contract artifacts are published to a broker. Fast, deterministic, blocks the build.
-2. **Adapter integration tests** exercise the outbound HTTP client against either WireMock loaded with provider-supplied fixtures, or, for in-house dependencies, against a containerized instance of the real provider in a known state. These verify the gateway code correctly speaks the protocol: serialization, deserialization, header handling, timeout behavior, error mapping.
+2. **[Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}})** exercise the outbound HTTP client against the real dependency in a controlled state - typically a testcontainer running an in-house service the team owns. They verify the adapter code correctly speaks the protocol: serialization, deserialization, header handling, timeout behaviour, error mapping. The test asserts the *adapter*'s correctness, not the dependency's behaviour: if the test asks for a user, it validates that the response parses into a valid `User`, not which user was returned. For third-party dependencies the team can't run in a controlled state, run these tests [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule. WireMock loaded with provider-supplied fixtures is a useful complement but functions more like a contract test against recorded shapes than an integration test against the live protocol.
 3. **Provider-side contract verification** runs in the *provider's* pipeline. The provider executes every consumer's published contract against the real provider implementation. Breaking changes are caught at the source before the provider deploys.
 4. **Post-deploy integration check** runs periodically against the real downstream in a non-production environment. Same fixtures used in contract tests. Catches drift in fields the contract didn't pin, version skew, environment differences. Failures trigger review, not a build break. See [Out-of-Pipeline Verification]({{< relref "/docs/reference/pipeline-reference-architecture" >}}#out-of-pipeline-verification).
 
@@ -64,7 +64,8 @@ The anti-pattern to avoid: stubbing the third-party SDK directly. Always wrap th
 Same as the [API provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}) pattern, plus:
 
 - Consumer-side contract tests: pre-commit and [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1.
-- [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) for the outbound HTTP client (against WireMock or testcontainer): CI Stage 1 or Stage 2.
+- [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) for the outbound HTTP client against an in-house dependency the team controls (a testcontainer running the team's own service in a known state): CI Stage 1 or Stage 2.
+- Adapter integration tests against a third-party API or a service owned by another team: [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule, never [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}). The risk of a flaky external service blocking deploys outweighs any in-band coverage benefit, and adapter tests with WireMock fixtures already cover the team's adapter code.
 - Resilience component tests with fault injection: CI Stage 1.
 - Post-deploy integration checks against real downstreams: out of pipeline, on a schedule.
 

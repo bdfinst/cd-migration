@@ -47,9 +47,9 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation and pipeline placement
 
-The broker double in component tests is validated by adapter integration tests against a real broker container (Kafka in Docker, ElasticMQ for SQS). Schema registry double is validated by contract tests pinning each version, plus a post-deploy check against the real registry. Post-deploy synthetic publishes a known message to the real topic in a non-prod environment.
+The broker double in component tests is validated by [adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) against a real broker container the team controls (Kafka in Docker, ElasticMQ for SQS, Redpanda in Docker). The test exercises the broker client adapter against that controlled instance and asserts the adapter speaks the protocol correctly - it does not assert anything about which messages the broker returns or in what order; that is the broker's behaviour, not the adapter's. Schema registry double is validated by contract tests pinning each version, plus a post-deploy check against the real registry. Post-deploy synthetic publishes a known message to the real topic in a non-prod environment.
 
-Handler unit tests and component tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; adapter integration tests in CI Stage 1 or Stage 2; post-deploy synthetic on a schedule.
+Handler unit tests and component tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; adapter integration tests against a team-controlled broker container in CI Stage 1 or Stage 2; adapter integration tests against a managed broker the team can't pin to a known state run [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule, alongside the post-deploy synthetic.
 
 ## Example: idempotency under duplicate delivery
 

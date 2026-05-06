@@ -8,13 +8,13 @@ description: >
 
 A practical guide for fully testing eight common component patterns. Builds on the test-type definitions in [Architecting Tests for CD]({{< relref "/docs/testing" >}}) and the deterministic-pipeline model used throughout this site.
 
-This is a set of recommended patterns to consider when designing a test suite, not a prescriptive checklist. The patterns describe shapes of components teams commonly build; the lists of positive cases, negative cases, and pipeline placements are common things to consider for that shape, not an all-inclusive set. Use them as a starting point for the conversation about what your component actually needs.
+This is a set of recommended patterns to consider when designing a test suite, not a prescriptive checklist. The patterns describe shapes of components teams commonly build; the lists of positive cases, negative cases, and [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) placements are common things to consider for that shape, not an all-inclusive set. Use them as a starting point for the conversation about what your component actually needs.
 
 That said, three goals apply to every pattern:
 
 1. **Cover the positive paths** - the component does what it should under expected inputs.
 2. **Cover the negative paths** - the component fails safely, predictably, and observably under bad inputs, broken [dependencies]({{< relref "/docs/reference/glossary#dependency" >}}), and adverse conditions.
-3. **Validate the test doubles** - every double used to keep deterministic tests fast must be backed by a non-deterministic check that the double still matches reality.
+3. **Validate the [test doubles]({{< relref "/docs/testing/glossary#test-double" >}})** - every double used to keep deterministic tests fast must be backed by a non-deterministic check that the double still matches reality.
 
 If the third point is missing, the first two lie to you over time.
 
@@ -29,7 +29,7 @@ If the third point is missing, the first two lie to you over time.
 
 Two phrases that look similar but mean different things:
 
-- **Adapter integration test** (Toby Clemson's "integration test"): a narrow test of a single gateway (HTTP client, DB query layer, message producer) exercised against the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in. Runs [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) - in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) - if fast enough. Pin the protocol behavior.
+- **[Adapter integration test]({{< relref "/docs/testing/glossary#adapter-integration-test" >}})** (Toby Clemson's "integration test"): a narrow test of a single boundary adapter (HTTP client, DB query layer, message-broker client) exercised against the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in. Pins the adapter's protocol behaviour - serialization, deserialization, headers, error mapping - **not** the behaviour of the dependency itself. Runs [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) only when the team has full control over the dependency (typically a per-test testcontainer) and the test is fully deterministic; otherwise runs [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule.
 - **Out-of-band integration check** (this site's [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}})): runs [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule or post-deploy against real external systems. Confirms that doubles used by in-band tests still match reality. Failures trigger review, not a build break.
 
 When this section says bare "integration test," it's the gateway flavor unless qualified.
