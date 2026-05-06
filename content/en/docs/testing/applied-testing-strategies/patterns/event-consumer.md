@@ -20,9 +20,9 @@ This pattern has problems the [API provider]({{< relref "/docs/testing/applied-t
 | Ordering | Out-of-order messages produce documented outcomes | In-process [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 | Backpressure | Consumer slows when downstream is slow | Resilience [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 | Broker contract | Topic, schema, headers | [Contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
-| Broker client | Real protocol behavior, offset commits, consumer group rebalancing | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against a real broker container |
+| Broker client | Real protocol behavior, offset commits, consumer group rebalancing | [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) against a real broker container |
 
-{{< inline-svg src="/images/testing/patterns/event-consumer-coverage.svg" alt="Layered diagram of an event consumer with six architectural layers. The first five (message handler logic, idempotency and ordering, dead-letter and poison-message handling, backpressure, broker client) are inside the component boundary. Below the dashed boundary, the external broker and schema registry are drawn with a dashed border. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker." >}}
+{{< inline-svg src="/images/testing/patterns/event-consumer-coverage.svg" alt="Layered diagram of an event consumer with six architectural layers. The first five (message handler logic, idempotency and ordering, dead-letter and poison-message handling, backpressure, broker client) are inside the component boundary. Below the dashed boundary, the external broker and schema registry are drawn with a dashed border. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Adapter integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker." >}}
 
 ## Positive test cases
 
@@ -47,9 +47,9 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation and pipeline placement
 
-The broker double in component tests is validated by gateway integration tests against a real broker container (Kafka in Docker, ElasticMQ for SQS). Schema registry double is validated by contract tests pinning each version, plus a post-deploy check against the real registry. Post-deploy synthetic publishes a known message to the real topic in a non-prod environment.
+The broker double in component tests is validated by adapter integration tests against a real broker container (Kafka in Docker, ElasticMQ for SQS). Schema registry double is validated by contract tests pinning each version, plus a post-deploy check against the real registry. Post-deploy synthetic publishes a known message to the real topic in a non-prod environment.
 
-Handler unit tests and component tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; gateway integration tests in CI Stage 1 or Stage 2; post-deploy synthetic on a schedule.
+Handler unit tests and component tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; adapter integration tests in CI Stage 1 or Stage 2; post-deploy synthetic on a schedule.
 
 ## Example: idempotency under duplicate delivery
 

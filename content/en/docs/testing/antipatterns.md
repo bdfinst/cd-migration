@@ -38,7 +38,7 @@ Stubbing a third-party SDK, ORM, HTTP client, or cloud SDK directly in tests. Th
 
 ### Doubles without validating tests
 
-Any [test double]({{< relref "/docs/testing/glossary#test-double" >}}) that has no corresponding mechanism (contract test, gateway integration test, post-deploy integration check) keeping it honest is a lie waiting to be discovered in production. If a double exists and there's no traceable answer to "how would we know if this stopped matching reality?" that double is a known risk and should be tracked as one.
+Any [test double]({{< relref "/docs/testing/glossary#test-double" >}}) that has no corresponding mechanism (contract test, adapter integration test, post-deploy integration check) keeping it honest is a lie waiting to be discovered in production. If a double exists and there's no traceable answer to "how would we know if this stopped matching reality?" that double is a known risk and should be tracked as one.
 
 ### Over-mocking
 
@@ -86,7 +86,7 @@ The right first move depends on what the suite looks like now. Five common start
 
 1. Identify the third-party clients (HTTP, DB, cloud SDKs). For each, define a thin gateway interface owned by the team.
 2. Replace direct SDK use in production code with the gateway. Tests now double the gateway, which the team controls.
-3. Add gateway integration tests against the real [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) (testcontainer, sandbox account). The doubles are now backed by reality.
+3. Add adapter integration tests against the real [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) (testcontainer, sandbox account). The doubles are now backed by reality.
 
 ### If line coverage is high but production keeps breaking
 

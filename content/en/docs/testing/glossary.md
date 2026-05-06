@@ -58,7 +58,7 @@ Referenced in:
 
 A test that runs **in the delivery pipeline** as part of the commit-to-deploy flow. In-band tests must be deterministic, which means [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) replace anything that crosses the component boundary - downstream services, message brokers, schedulers, browsers talking to real backends. Failures block the build or the deployment.
 
-The bulk of any project's test suite is in-band: unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/testing/test-types/contract" >}}), and gateway integration tests against testcontainers or recorded fixtures. They give a deterministic go/no-go signal in minutes.
+The bulk of any project's test suite is in-band: unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/testing/test-types/contract" >}}), and adapter integration tests against testcontainers or recorded fixtures. They give a deterministic go/no-go signal in minutes.
 
 Contrast with [out-of-band tests](#out-of-band-test), which run on a schedule against real systems and never gate the build.
 
@@ -153,13 +153,13 @@ Referenced in:
 [Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
 [Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}})
 
-### Gateway Integration Test
+### Adapter Integration Test
 
-A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. The test type carries the legacy name "gateway integration test" (Toby Clemson) because "gateway" was the original abstraction name for these adapters.
+A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. The test type carries the legacy name "adapter integration test" (Toby Clemson) because "gateway" was the original abstraction name for these adapters.
 
 Pins the protocol-level behaviour: serialization, deserialization, header handling, timeout behaviour, error mapping, transactional semantics. Deterministic enough to run [in-band](#in-band-test) when fast; otherwise pushed to a later CI stage but still gating.
 
-Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a gateway integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles; gateway integration tests pin protocol against the real dependency.
+Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles; adapter integration tests pin protocol against the real dependency.
 
 Referenced in:
 [API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),

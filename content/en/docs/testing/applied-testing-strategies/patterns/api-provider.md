@@ -14,11 +14,11 @@ A backend service that exposes an HTTP/gRPC/GraphQL API and owns its own data. N
 | --- | --- | --- |
 | Domain logic | Business rules, invariants, state transitions | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
 | Module collaboration | Validators + repositories + domain working together | [Sociable unit tests]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) |
-| Persistence adapter | Query correctness, transaction boundaries, migrations against the real DB engine | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (testcontainers running production engine and version) |
+| Persistence adapter | Query correctness, transaction boundaries, migrations against the real DB engine | [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) (testcontainers running production engine and version) |
 | Assembled component | Routing, validation, business logic, and persistence wired together through the controller layer | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with persistence either real (testcontainers) or doubled (in-memory repository) |
 | Served API | What downstream consumers depend on | [Provider-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
 
-{{< inline-svg src="/images/testing/patterns/api-provider-coverage.svg" alt="Layered diagram of an API provider showing four architectural layers stacked top to bottom. The first three are inside the component boundary: HTTP and API surface (covered by component tests and provider contract tests), domain logic (covered by solitary unit, sociable unit, and component tests), and persistence adapter (covered by sociable unit, gateway integration, and component tests). Below the dashed component boundary, the external database is doubled in component tests (in-memory or testcontainer) and used real in gateway integration tests against the production engine." >}}
+{{< inline-svg src="/images/testing/patterns/api-provider-coverage.svg" alt="Layered diagram of an API provider showing four architectural layers stacked top to bottom. The first three are inside the component boundary: HTTP and API surface (covered by component tests and provider contract tests), domain logic (covered by solitary unit, sociable unit, and component tests), and persistence adapter (covered by sociable unit, adapter integration, and component tests). Below the dashed component boundary, the external database is doubled in component tests (in-memory or testcontainer) and used real in adapter integration tests against the production engine." >}}
 
 ## Positive test cases
 
@@ -48,13 +48,13 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 Doubles in this pattern are mostly around persistence. Two layers keep them honest:
 
-1. **Gateway integration tests run against a real instance of your production database engine** (the same major version, same extensions). If component tests use an in-memory SQLite shim while production runs Postgres, the shim is the lie. The gateway integration test exercises every query and migration against a Postgres testcontainer in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
+1. **Adapter integration tests run against a real instance of your production database engine** (the same major version, same extensions). If component tests use an in-memory SQLite shim while production runs Postgres, the shim is the lie. The adapter integration test exercises every query and migration against a Postgres testcontainer in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
 2. **Provider-side contract tests** verify the API still satisfies every published consumer expectation. See [Consumer and Provider Perspectives]({{< relref "/docs/testing/test-types/contract" >}}#consumer-and-provider-perspectives). Provider verification is where you discover that a "harmless" field rename broke a consumer before that consumer deploys.
 
 ## Pipeline placement
 
 - Unit + sociable unit tests: pre-commit and CI Stage 1.
-- Gateway integration tests against testcontainers: CI Stage 1 if fast, Stage 2 otherwise.
+- Adapter integration tests against testcontainers: CI Stage 1 if fast, Stage 2 otherwise.
 - Component tests: CI Stage 1.
 - Provider-side contract verification: [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1 (Contract and Boundary Validation).
 

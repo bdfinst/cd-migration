@@ -4,7 +4,7 @@
 
   <title id="clc-title">CLI Tool or Library: layers and the tests that cover each</title>
   <desc id="clc-desc">
-    Five architectural layers stacked top to bottom. The first four (pure logic and parsing, CLI invocation surface or library API, file system and subprocess adapter, and documented README examples) are inside the component boundary. Below the dashed component boundary, the real OS, file system, and subprocess are drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure logic and parsing. Component tests cover invocation through the entrypoint. Gateway integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify README examples run against the real binary or library. The cross-OS CI matrix runs the suite on every supported OS to catch platform-specific bugs.
+    Five architectural layers stacked top to bottom. The first four (pure logic and parsing, CLI invocation surface or library API, file system and subprocess adapter, and documented README examples) are inside the component boundary. Below the dashed component boundary, the real OS, file system, and subprocess are drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure logic and parsing. Component tests cover invocation through the entrypoint. Adapter integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify README examples run against the real binary or library. The cross-OS CI matrix runs the suite on every supported OS to catch platform-specific bugs.
   </desc>
 
   <rect width="720" height="612" fill="#fafafa" rx="4"/>
@@ -42,7 +42,7 @@
   <rect x="30" y="224" width="6" height="60" fill="#224968"/>
   <text x="50" y="248" font-size="14" font-weight="700" fill="#1a2a3a">File system and subprocess adapter</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="234" width="80" height="20" rx="10" fill="#224968"/><text x="426" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="472" y="234" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="234" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
   <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="234" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
   <text x="50" y="272" font-size="11" font-style="italic" fill="#556">Paths, encodings, signal handling, spawn semantics</text>
 
@@ -67,9 +67,9 @@
   <rect x="30" y="404" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="428" font-size="14" font-weight="700" fill="#1a2a3a">Real OS, file system, subprocess</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="438" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="472" y="438" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="438" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
   <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="438" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
-  <text x="50" y="470" font-size="11" font-style="italic" fill="#556">Path separators, line endings, signals. Doubled in component; real in gateway integration and the cross-OS matrix.</text>
+  <text x="50" y="470" font-size="11" font-style="italic" fill="#556">Path separators, line endings, signals. Doubled in component; real in adapter integration and the cross-OS matrix.</text>
 
   <!-- Legend -->
   <rect x="40" y="538" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>

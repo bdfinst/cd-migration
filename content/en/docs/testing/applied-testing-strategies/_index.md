@@ -29,7 +29,7 @@ If the third point is missing, the first two lie to you over time.
 
 Two phrases that look similar but mean different things:
 
-- **Gateway integration test** (Toby Clemson's "integration test"): a narrow test of a single gateway (HTTP client, DB query layer, message producer) exercised against the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in. Runs [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) - in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) - if fast enough. Pin the protocol behavior.
+- **Adapter integration test** (Toby Clemson's "integration test"): a narrow test of a single gateway (HTTP client, DB query layer, message producer) exercised against the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in. Runs [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) - in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) - if fast enough. Pin the protocol behavior.
 - **Out-of-band integration check** (this site's [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}})): runs [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) on a schedule or post-deploy against real external systems. Confirms that doubles used by in-band tests still match reality. Failures trigger review, not a build break.
 
 When this section says bare "integration test," it's the gateway flavor unless qualified.

@@ -4,7 +4,7 @@
 
   <title id="apv-title">API Provider: layers and the tests that cover each</title>
   <desc id="apv-desc">
-    Four architectural layers stacked top to bottom. The first three are inside the component boundary; the fourth (the database) is external, drawn with a dashed border. Each layer band shows its name, a one-line description, and the test types that exercise it as small coloured pills. HTTP and API surface is exercised by component tests and provider contract tests. Domain logic is exercised by solitary unit, sociable unit, and component tests. The persistence adapter is exercised by sociable unit, gateway integration, and component tests. The external database is doubled in component tests (in-memory or testcontainer) and used real in gateway integration tests.
+    Four architectural layers stacked top to bottom. The first three are inside the component boundary; the fourth (the database) is external, drawn with a dashed border. Each layer band shows its name, a one-line description, and the test types that exercise it as small coloured pills. HTTP and API surface is exercised by component tests and provider contract tests. Domain logic is exercised by solitary unit, sociable unit, and component tests. The persistence adapter is exercised by sociable unit, adapter integration, and component tests. The external database is doubled in component tests (in-memory or testcontainer) and used real in adapter integration tests.
   </desc>
 
   <rect width="720" height="492" fill="#fafafa" rx="4"/>
@@ -41,7 +41,7 @@
   <rect x="30" y="220" width="6" height="68" fill="#224968"/>
   <text x="50" y="244" font-size="14" font-weight="700" fill="#1a2a3a">Persistence adapter</text>
   <a href="/docs/testing/glossary/#sociable-unit-test" target="_top"><rect x="340" y="230" width="104" height="20" rx="10" fill="#0d7a32"/><text x="392" y="244" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="450" y="230" width="144" height="20" rx="10" fill="#30648e"/><text x="522" y="244" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="450" y="230" width="144" height="20" rx="10" fill="#30648e"/><text x="522" y="244" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="230" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="244" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="270" font-size="11" font-style="italic" fill="#556">Queries, transactions, migrations</text>
 
@@ -59,8 +59,8 @@
   <rect x="30" y="336" width="6" height="68" fill="#6c757d"/>
   <text x="50" y="360" font-size="14" font-weight="700" fill="#1a2a3a">Database (external)</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="450" y="346" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="490" y="360" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="536" y="346" width="144" height="20" rx="10" fill="#30648e"/><text x="608" y="360" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
-  <text x="50" y="386" font-size="11" font-style="italic" fill="#556">Production engine. Doubled in component tests; real in gateway integration tests.</text>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="536" y="346" width="144" height="20" rx="10" fill="#30648e"/><text x="608" y="360" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
+  <text x="50" y="386" font-size="11" font-style="italic" fill="#556">Production engine. Doubled in component tests; real in adapter integration tests.</text>
 
   <!-- Legend -->
   <rect x="40" y="434" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>

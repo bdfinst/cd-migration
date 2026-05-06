@@ -20,7 +20,7 @@ The hard problems differ from the consumer side: atomicity with persistence (did
 | Retry on broker unavailable | Outbox drains once broker recovers | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with fault-injecting broker client double |
 | Trace propagation | Trace context in headers matches the inbound request | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 
-{{< inline-svg src="/images/testing/patterns/event-producer-coverage.svg" alt="Layered diagram of an event producer with five architectural layers. The first three (domain emit decision, outbox or transactional emit, broker client) are inside the component boundary. Below the dashed boundary, the external broker and the database used by the outbox are drawn with dashed borders. Solitary unit tests cover the emit decision logic. Component tests cover outbox atomicity, retry on broker unavailable, and trace propagation, run with a real database and a doubled broker. Gateway integration pins the broker protocol against a real broker container. Provider contract verification runs against every consumer's published expectations. Out-of-band synthetic state change confirms the message arrives in the real broker." >}}
+{{< inline-svg src="/images/testing/patterns/event-producer-coverage.svg" alt="Layered diagram of an event producer with five architectural layers. The first three (domain emit decision, outbox or transactional emit, broker client) are inside the component boundary. Below the dashed boundary, the external broker and the database used by the outbox are drawn with dashed borders. Solitary unit tests cover the emit decision logic. Component tests cover outbox atomicity, retry on broker unavailable, and trace propagation, run with a real database and a doubled broker. Adapter integration pins the broker protocol against a real broker container. Provider contract verification runs against every consumer's published expectations. Out-of-band synthetic state change confirms the message arrives in the real broker." >}}
 
 ## Positive test cases
 
@@ -41,6 +41,6 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation and pipeline placement
 
-The broker double in component tests is validated against a real broker container in [gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}). Provider-side contract verification runs in this service's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against every consumer's published expectations.
+The broker double in component tests is validated against a real broker container in [adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}). Provider-side contract verification runs in this service's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against every consumer's published expectations.
 
 Outbox component tests and routing tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; broker client integration tests in CI Stage 1 or Stage 2; provider-side contract verification in [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1; post-deploy synthetic state change verifies the message arrives with the expected shape.

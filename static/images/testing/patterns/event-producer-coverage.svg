@@ -4,7 +4,7 @@
 
   <title id="epc-title">Event Producer: layers and the tests that cover each</title>
   <desc id="epc-desc">
-    Five architectural layers stacked top to bottom. The first three (domain emit decision, outbox or transactional emit, and broker client) are inside the component boundary. Below the dashed component boundary, the external broker and the database used by the outbox are drawn with dashed borders. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover the emit decision logic. Component tests cover outbox atomicity, retry on broker unavailable, and trace propagation, run with a real database and a doubled broker. Gateway integration pins the broker protocol against a real broker container. Provider contract verification runs against every consumer's published expectations. Out-of-band synthetic state change confirms the message arrives in the real broker.
+    Five architectural layers stacked top to bottom. The first three (domain emit decision, outbox or transactional emit, and broker client) are inside the component boundary. Below the dashed component boundary, the external broker and the database used by the outbox are drawn with dashed borders. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover the emit decision logic. Component tests cover outbox atomicity, retry on broker unavailable, and trace propagation, run with a real database and a doubled broker. Adapter integration pins the broker protocol against a real broker container. Provider contract verification runs against every consumer's published expectations. Out-of-band synthetic state change confirms the message arrives in the real broker.
   </desc>
 
   <rect width="720" height="572" fill="#fafafa" rx="4"/>
@@ -38,7 +38,7 @@
   <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="204" width="6" height="60" fill="#224968"/>
   <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Broker client</text>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="426" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="498" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="426" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="498" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
   <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="576" y="214" width="50" height="20" rx="10" fill="#6c757d"/><text x="601" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Prv.</text></a>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="632" y="214" width="48" height="20" rx="10" fill="#224968"/><text x="656" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
   <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Protocol, headers, retry on broker unavailable</text>
@@ -57,17 +57,17 @@
   <rect x="30" y="316" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="340" font-size="14" font-weight="700" fill="#1a2a3a">External broker</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="316" y="350" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="356" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="402" y="350" width="120" height="20" rx="10" fill="#30648e"/><text x="462" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="402" y="350" width="120" height="20" rx="10" fill="#30648e"/><text x="462" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
   <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="528" y="350" width="98" height="20" rx="10" fill="#6c757d"/><text x="577" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Provider contract</text></a>
   <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="632" y="350" width="48" height="20" rx="10" fill="#6c757d"/><text x="656" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB</text></a>
-  <text x="50" y="382" font-size="11" font-style="italic" fill="#556">Doubled in component; real in gateway integration; OOB synthetic state change on a schedule.</text>
+  <text x="50" y="382" font-size="11" font-style="italic" fill="#556">Doubled in component; real in adapter integration; OOB synthetic state change on a schedule.</text>
 
   <!-- Layer 5: Database (external) -->
   <rect x="30" y="404" width="660" height="60" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="404" width="6" height="60" fill="#6c757d"/>
   <text x="50" y="428" font-size="14" font-weight="700" fill="#1a2a3a">Database (external)</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="450" y="414" width="80" height="20" rx="10" fill="#224968"/><text x="490" y="428" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="536" y="414" width="144" height="20" rx="10" fill="#30648e"/><text x="608" y="428" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="536" y="414" width="144" height="20" rx="10" fill="#30648e"/><text x="608" y="428" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
   <text x="50" y="452" font-size="11" font-style="italic" fill="#556">Real DB in component to validate outbox atomicity</text>
 
   <!-- Legend -->

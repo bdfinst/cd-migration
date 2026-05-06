@@ -4,7 +4,7 @@
 
   <title id="sjc-title">Scheduled Job: layers and the tests that cover each</title>
   <desc id="sjc-desc">
-    Six architectural layers stacked top to bottom. The first four (pure transformation logic, job orchestration, source and sink adapters, and process startup) are inside the component boundary. Below the dashed component boundary, the external source and sink and the external scheduler and system clock are drawn with dashed borders. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure transformation. Component tests cover orchestration with the clock and gateways doubled. Gateway integration tests pin source and sink protocols against real containers. Deployed-binary tests cover process startup on the actual artifact. Out-of-band integration uses the real scheduler and clock on a schedule.
+    Six architectural layers stacked top to bottom. The first four (pure transformation logic, job orchestration, source and sink adapters, and process startup) are inside the component boundary. Below the dashed component boundary, the external source and sink and the external scheduler and system clock are drawn with dashed borders. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure transformation. Component tests cover orchestration with the clock and gateways doubled. Adapter integration tests pin source and sink protocols against real containers. Deployed-binary tests cover process startup on the actual artifact. Out-of-band integration uses the real scheduler and clock on a schedule.
   </desc>
 
   <rect width="720" height="632" fill="#fafafa" rx="4"/>
@@ -38,7 +38,7 @@
   <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="204" width="6" height="60" fill="#224968"/>
   <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Source and sink adapters</text>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="346" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="346" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
   <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="496" y="214" width="124" height="20" rx="10" fill="#6c757d"/><text x="558" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Source/sink contract</text></a>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="626" y="214" width="54" height="20" rx="10" fill="#224968"/><text x="653" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
   <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Protocol, error mapping, transactional semantics</text>
@@ -64,9 +64,9 @@
   <rect x="30" y="384" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="408" font-size="14" font-weight="700" fill="#1a2a3a">External source and sink</text>
   <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="472" y="418" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="418" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
   <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="598" y="418" width="82" height="20" rx="10" fill="#6c757d"/><text x="639" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integ.</text></a>
-  <text x="50" y="450" font-size="11" font-style="italic" fill="#556">Data store, broker, file system. Doubled in component; real in gateway integration.</text>
+  <text x="50" y="450" font-size="11" font-style="italic" fill="#556">Data store, broker, file system. Doubled in component; real in adapter integration.</text>
 
   <!-- Layer 6: External scheduler and system clock -->
   <rect x="30" y="472" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>

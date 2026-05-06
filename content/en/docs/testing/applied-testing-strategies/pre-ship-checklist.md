@@ -13,7 +13,7 @@ Use this as a set of prompts for a quick self-audit, not a list of gates that mu
 - [ ] Every public-interface contract (inbound and outbound) has a [contract test]({{< relref "/docs/testing/test-types/contract" >}}) running in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 - [ ] Classes are tested through their public methods only. No reflection, no test-only visibility relaxations, no asserting on private state.
 - [ ] Every consumed [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) is wrapped in a gateway the team owns; doubles are of the gateway, not of the third-party library.
-- [ ] Every gateway has a gateway integration test against the real dependency or a high-fidelity stand-in (testcontainer, WireMock with provider fixtures).
+- [ ] Every gateway has a adapter integration test against the real dependency or a high-fidelity stand-in (testcontainer, WireMock with provider fixtures).
 - [ ] The bulk of testing runs [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) in the pipeline and gates the build; [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) checks against real systems run on a schedule and trigger review on failure, never a build break.
 - [ ] Every [test double]({{< relref "/docs/testing/glossary#test-double" >}}) has a corresponding non-deterministic check that exercises the real dependency on a schedule or post-deploy.
 - [ ] Every documented failure mode has a negative test.

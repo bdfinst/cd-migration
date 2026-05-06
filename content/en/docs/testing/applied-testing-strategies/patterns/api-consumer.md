@@ -14,12 +14,12 @@ Everything from the [API provider]({{< relref "/docs/testing/applied-testing-str
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Outbound HTTP client | Request shape, response parsing, status code handling, header propagation, timeout enforcement | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (against WireMock or, periodically, the real downstream) |
+| Outbound HTTP client | Request shape, response parsing, status code handling, header propagation, timeout enforcement | [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) (against WireMock or, periodically, the real downstream) |
 | Consumed API contract | The fields and status codes the consumer depends on | [Consumer-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
 | Resilience under degraded [dependencies]({{< relref "/docs/reference/glossary#dependency" >}}) | Retries, circuit breaking, backoff, fallback, partial-failure compensation | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with fault-injecting client doubles |
 | Composite behavior | The service still returns useful responses when downstreams misbehave | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 
-{{< inline-svg src="/images/testing/patterns/api-consumer-coverage.svg" alt="Layered diagram of an API consumer with seven architectural layers. The first five (HTTP and API surface, domain logic and orchestration, resilience policy, outbound HTTP client, persistence adapter) are inside the component boundary. Below the dashed boundary, the external database and the external downstream service are drawn with dashed borders. Component tests cover every internal layer including resilience, with both database and downstream service doubled. Gateway integration tests pin the outbound and persistence protocols against real containers. Consumer contract tests pin the outbound boundary. Out-of-band integration tests exercise the real downstream service to confirm doubles still match reality." >}}
+{{< inline-svg src="/images/testing/patterns/api-consumer-coverage.svg" alt="Layered diagram of an API consumer with seven architectural layers. The first five (HTTP and API surface, domain logic and orchestration, resilience policy, outbound HTTP client, persistence adapter) are inside the component boundary. Below the dashed boundary, the external database and the external downstream service are drawn with dashed borders. Component tests cover every internal layer including resilience, with both database and downstream service doubled. Adapter integration tests pin the outbound and persistence protocols against real containers. Consumer contract tests pin the outbound boundary. Out-of-band integration tests exercise the real downstream service to confirm doubles still match reality." >}}
 
 ## Positive test cases
 
@@ -51,7 +51,7 @@ Common cases to consider, not an exhaustive list. The bulk of the negative testi
 This is where the "doubles need tests" rule lives or dies. Four layers:
 
 1. **Consumer-side contract tests** run in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) on every commit using doubles. They pin the request the consumer sends and the response shape the consumer depends on. Contract artifacts are published to a broker. Fast, deterministic, blocks the build.
-2. **Gateway integration tests** exercise the outbound HTTP client against either WireMock loaded with provider-supplied fixtures, or, for in-house dependencies, against a containerized instance of the real provider in a known state. These verify the gateway code correctly speaks the protocol: serialization, deserialization, header handling, timeout behavior, error mapping.
+2. **Adapter integration tests** exercise the outbound HTTP client against either WireMock loaded with provider-supplied fixtures, or, for in-house dependencies, against a containerized instance of the real provider in a known state. These verify the gateway code correctly speaks the protocol: serialization, deserialization, header handling, timeout behavior, error mapping.
 3. **Provider-side contract verification** runs in the *provider's* pipeline. The provider executes every consumer's published contract against the real provider implementation. Breaking changes are caught at the source before the provider deploys.
 4. **Post-deploy integration check** runs periodically against the real downstream in a non-production environment. Same fixtures used in contract tests. Catches drift in fields the contract didn't pin, version skew, environment differences. Failures trigger review, not a build break. See [Out-of-Pipeline Verification]({{< relref "/docs/reference/pipeline-reference-architecture" >}}#out-of-pipeline-verification).
 
@@ -64,7 +64,7 @@ The anti-pattern to avoid: stubbing the third-party SDK directly. Always wrap th
 Same as the [API provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}) pattern, plus:
 
 - Consumer-side contract tests: pre-commit and [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1.
-- [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) for the outbound HTTP client (against WireMock or testcontainer): CI Stage 1 or Stage 2.
+- [Adapter integration tests]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}) for the outbound HTTP client (against WireMock or testcontainer): CI Stage 1 or Stage 2.
 - Resilience component tests with fault injection: CI Stage 1.
 - Post-deploy integration checks against real downstreams: out of pipeline, on a schedule.
 
