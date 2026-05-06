@@ -4,6 +4,7 @@ linkTitle: "Unit Tests"
 weight: 8
 aliases:
   - /docs/reference/testing/unit/
+  - /docs/testing/unit/
 description: >
   Fast, deterministic tests that verify a unit of behavior through its public interface, asserting on what the code does rather than how it works.
 ---
@@ -20,7 +21,7 @@ collaborating objects. What matters is that the test treats the code as a
 [black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}) and asserts only on what it produces,
 not on how it produces it.
 
-All external dependencies are replaced with [test doubles]({{< relref "/docs/testing/test-doubles" >}}) so the test runs
+All [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}) are replaced with [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) so the test runs
 quickly and produces the same result every time.
 
 ### Solitary vs. sociable unit tests
@@ -34,7 +35,7 @@ database, file system) with test doubles. Both styles are unit tests as long as 
 dependency is involved.
 
 When the scope expands to an entire frontend component or a complete backend service exercised
-through its public API, that is a [component test]({{< relref "/docs/testing/component" >}}).
+through its public API, that is a [component test]({{< relref "/docs/testing/test-types/component" >}}).
 
 [White box testing]({{< relref "/docs/reference/glossary#white-box-testing" >}}) (asserting on internal method
 calls, call order, or private state) creates change-detector tests that break during routine
@@ -59,7 +60,7 @@ The purpose of unit tests is to:
 
 Unit tests are the right choice when the behavior under test can be exercised without network
 access, file system access, or database connections. If you need any of those, you likely need
-a [component test]({{< relref "/docs/testing/component" >}}) or an [end-to-end test]({{< relref "/docs/testing/e2e" >}}) instead.
+a [component test]({{< relref "/docs/testing/test-types/component" >}}) or an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}) instead.
 
 ## Characteristics
 

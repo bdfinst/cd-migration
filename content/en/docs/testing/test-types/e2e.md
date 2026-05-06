@@ -4,6 +4,7 @@ linkTitle: "End-to-End Tests"
 weight: 3
 aliases:
   - /docs/reference/testing/e2e/
+  - /docs/testing/e2e/
 description: >
   Tests that exercise two or more real components up to the full system. Non-deterministic by nature; never a pre-merge gate.
 ---
@@ -13,12 +14,12 @@ description: >
 ## Definition
 
 An end-to-end test exercises real components working together - no
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}) replace the dependencies under
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) replace the dependencies under
 test. The scope ranges from two services calling each other,
 to a service talking to a real database, to a complete user journey through every
 layer of the system.
 
-The defining characteristic is that **real external dependencies are present**: actual
+The defining characteristic is that **real [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}) are present**: actual
 databases, live downstream services, real message brokers, or third-party APIs.
 Because those dependencies introduce timing, state, and availability factors outside
 the test's control, end-to-end tests are typically **non-deterministic**. They fail
@@ -30,9 +31,9 @@ test data collisions, or third-party rate limits.
 "Integration test" and "end-to-end test" are often used interchangeably in the
 industry. Martin Fowler distinguishes between narrow integration tests (which use test
 doubles at the boundary - what this site calls
-[contract tests]({{< relref "/docs/testing/contract" >}})) and broad integration tests
+[contract tests]({{< relref "/docs/testing/test-types/contract" >}})) and broad integration tests
 (which use real dependencies). This site treats them as distinct categories:
-[integration tests]({{< relref "/docs/testing/integration" >}}) validate that contract
+[integration tests]({{< relref "/docs/testing/test-types/integration" >}}) validate that contract
 test doubles still match the real external systems, while end-to-end tests exercise
 user journeys or multi-service flows through real systems.
 
@@ -59,12 +60,12 @@ run, and maintain. Use them for:
   functioning after a deployment.
 - **Happy-path validation** of critical business flows that cannot be verified any
   other way (e.g., a payment flow that depends on a real payment provider).
-- **Cross-team workflows** that span multiple deployables and cannot be isolated
-  within a single [component test]({{< relref "/docs/testing/component" >}}).
+- **Cross-team workflows** that span multiple [deployables]({{< relref "/docs/reference/glossary#deployable" >}}) and cannot be isolated
+  within a single [component test]({{< relref "/docs/testing/test-types/component" >}}).
 
 Do **not** use end-to-end tests to cover edge cases, error handling, or input
-validation. Those scenarios belong in [unit]({{< relref "/docs/testing/unit" >}}) or
-[component]({{< relref "/docs/testing/component" >}}) tests, which are faster, cheaper, and
+validation. Those scenarios belong in [unit]({{< relref "/docs/testing/test-types/unit" >}}) or
+[component]({{< relref "/docs/testing/test-types/component" >}}) tests, which are faster, cheaper, and
 deterministic.
 
 ### Vertical vs. horizontal
@@ -79,7 +80,7 @@ deterministic.
 - A user navigates from homepage through search, product detail, cart, and checkout.
 
 Horizontal tests have a large failure surface and are significantly more fragile.
-They are **not suitable for blocking the pipeline**; run them on a schedule and
+They are **not suitable for blocking the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})**; run them on a schedule and
 review failures out of band.
 
 ## Characteristics
@@ -92,7 +93,7 @@ review failures out of band.
 | **Dependencies**| Real services, databases, brokers, third-party APIs          |
 | **Network**     | Full network access                                          |
 | **Database**    | Live databases                                               |
-| **Breaks build**| No - triggers review or rollback, not a pre-merge gate       |
+| **Breaks build**| No - triggers review or [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), not a pre-merge gate       |
 
 ## Examples
 
@@ -134,7 +135,7 @@ test("user can add an item to cart and check out", async ({ page }) => {
 
 - **Using end-to-end tests as the primary safety net**: this is the ice cream cone
   anti-pattern. The majority of your confidence should come from unit and
-  [component]({{< relref "/docs/testing/component" >}}) tests, which are fast and
+  [component]({{< relref "/docs/testing/test-types/component" >}}) tests, which are fast and
   deterministic. End-to-end tests are expensive insurance for the gaps.
 - **Blocking the pipeline**: end-to-end tests must never be a pre-merge gate. Their
   non-determinism will eventually block a deploy for reasons unrelated to code quality.
@@ -167,7 +168,7 @@ smoke tests immediately after deployment. This is acceptable only if the team in
 in keeping those tests stable. A flaky smoke gate is worse than no gate: it trains
 developers to ignore failures.
 
-Use [contract tests]({{< relref "/docs/testing/contract" >}}) to verify that the
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}) in your component tests still
+Use [contract tests]({{< relref "/docs/testing/test-types/contract" >}}) to verify that the
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) in your component tests still
 match reality. This gives you deterministic pre-merge confidence without depending on
 live external systems.

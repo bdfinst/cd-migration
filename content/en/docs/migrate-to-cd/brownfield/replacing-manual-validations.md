@@ -145,7 +145,7 @@ manual cases. The manual suite shrinks with each cycle:
 Each cycle also gets faster because the team builds skill and the test infrastructure matures.
 For more on structuring automated tests effectively, see
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and
-[Component Testing]({{< relref "/docs/testing/component" >}}).
+[Component Testing]({{< relref "/docs/testing/test-types/component" >}}).
 
 ## When Refactoring Is a Prerequisite
 
@@ -241,5 +241,5 @@ prioritization and focus on the validations that are actually blocking faster de
 - [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle behind incremental replacement
 - [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Refactoring strategies for testability
 - [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Where automated validations live
-- [Component Testing]({{< relref "/docs/testing/component" >}}) - Structuring automated component tests
+- [Component Testing]({{< relref "/docs/testing/test-types/component" >}}) - Structuring automated component tests
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - Applying the replacement cycle to AI expert validation agents

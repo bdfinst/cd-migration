@@ -40,8 +40,8 @@ sub-second to sub-minute feedback.
 | **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | <span class="gate-required">Required</span> |
 | **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
 | **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
-| **[Solitary and sociable unit tests]({{< relref "/docs/testing/unit" >}})** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
-| **[Contract tests]({{< relref "/docs/testing/contract" >}})** | Interface mismatches, wrong assumptions about external system boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **[Solitary and sociable unit tests]({{< relref "/docs/testing/test-types/unit" >}})** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/testing/test-types/contract" >}})** | Interface mismatches, wrong assumptions about external system boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI semantic code review** | Logic errors, missing edge cases, subtle injection vectors beyond pattern matching | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}), [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 
@@ -66,7 +66,7 @@ These validate boundaries between components.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **[Contract tests]({{< relref "/docs/testing/contract" >}})** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/testing/test-types/contract" >}})** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State]({{< relref "/docs/reference/defect-sources/data-and-state" >}}) | <span class="gate-required">Required</span> |
 | **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure]({{< relref "/docs/reference/defect-sources/dependency-and-infrastructure" >}}) | |
 | **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
@@ -117,9 +117,9 @@ reaching production.
 
 ### Integration Tests (Post-Deploy)
 
-[Integration tests]({{< relref "/docs/testing/integration" >}}) validate that the
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}) used in
-[contract tests]({{< relref "/docs/testing/contract" >}}) still match the real services
+[Integration tests]({{< relref "/docs/testing/test-types/integration" >}}) validate that the
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) used in
+[contract tests]({{< relref "/docs/testing/test-types/contract" >}}) still match the real services
 they simulate. They are non-deterministic because they exercise real service boundaries
 and their results depend on the current state of those services. They run on a schedule
 or post-deployment - not on every commit - and failures trigger review, not a

@@ -7,21 +7,67 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-05-06 - Restructure CD Testing menu into "Testing Tips"
+
+Renamed the testing section's sidebar entry from "CD Testing" to "Testing Tips" and reorganized:
+
+- New [Test Types]({{< relref "/docs/testing/test-types" >}}) subsection containing the six test-type definition pages (unit, component, contract, integration, end-to-end, static analysis).
+- Renamed "Improving Existing Test Suites" to [Testing Antipatterns]({{< relref "/docs/testing/antipatterns" >}}).
+- Reordered the section sidebar: Feedback Speed first (sets the why), then Test Types, Applied Strategies, Antipatterns, Glossary.
+- Folded the standalone Test Doubles page into the [Glossary]({{< relref "/docs/testing/glossary#test-double" >}}) (the five flavours, when to use each) and the [Antipatterns]({{< relref "/docs/testing/antipatterns" >}}) page (over-mocking, complex mock setup). The standalone page is removed; the old URL redirects to the glossary.
+- Shortened the testing glossary's sidebar entry from "Testing Glossary" to "Glossary" since the section context already implies "testing."
+- Dropped the "Pattern N:" numbering from the eight component-pattern pages in Applied Testing Strategies; titles now read plainly (API Provider, Scheduled Job, etc.). The cross-references in the body and the patterns landing list updated accordingly.
+
+Old URLs (`/docs/testing/unit/`, `/docs/testing/improving-test-suites/`, etc.) redirect via Hugo aliases.
+
+## 2026-05-05 - Add per-pattern coverage diagrams to Applied Testing Strategies
+
+Added a "layers tested by each test type" coverage matrix diagram to each of the eight pattern pages in [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies/patterns" >}}). Each diagram shows the architectural layers as rows, the relevant test types as columns, and marks each cell as real code under test, doubled, or not exercised, so a reader can see at a glance which tests cover which layers and where doubles need their own validation.
+
+## 2026-05-05 - Reframe in-process / out-of-process as in-band / out-of-band
+
+Replaced the in-process / out-of-process terminology with [in-band](testing/glossary/#in-band-test) / [out-of-band](testing/glossary/#out-of-band-test) throughout Applied Testing Strategies. The new framing centres on [pipeline](reference/glossary/#pipeline) placement (does the test gate delivery?) rather than process boundary (does the SUT run in the test process?), which is the distinction that actually matters for [CD](reference/glossary/#cd-continuous-delivery).
+
+- New glossary entries: [In-Band Test]({{< relref "/docs/testing/glossary#in-band-test" >}}) and [Out-of-Band Test]({{< relref "/docs/testing/glossary#out-of-band-test" >}}).
+- Cross-cutting principles 1 and 2 merged into one principle on in-band vs out-of-band.
+- "Assembled component (in-process)" / "Assembled component (out-of-process)" rows in pattern tables collapsed into a single [Component test](testing/glossary/#component-test) row.
+- Pattern 4 (UI) renamed JSDOM vs headless browser distinction in plain terms.
+- Cost and time budget table: "Out-of-process count" column dropped; replaced with explicit in-band suite budgets.
+
+## 2026-05-05 - Break Applied Testing Strategies into a subsection of CD Testing
+
+Broke the long single Applied Testing Strategies page into a subsection of [Architecting Tests for CD]({{< relref "/docs/testing" >}}). New layout:
+
+- [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}) subsection landing with the three-point goal, terminology, and six cross-cutting principles.
+- [Pre-ship Checklist]({{< relref "/docs/testing/applied-testing-strategies/pre-ship-checklist" >}}).
+- [Patterns]({{< relref "/docs/testing/applied-testing-strategies/patterns" >}}) sub-subsection with one page per pattern (API provider, API consumer, scheduled job, user interface, event consumer, event producer, CLI/library, stateful service).
+- [Cross-cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) covering authn/authz, database migrations, fixtures, observability, performance, mutation testing, flake handling, and time budgets.
+
+## 2026-05-05 - Restructure Applied Testing Strategies; add Improving Existing Test Suites
+
+Following an editorial review, restructured Applied Testing Strategies for scannability and to remove duplication with neighboring testing pages. Cross-cutting principles compressed to short pointers to the pages that own each topic. The pre-ship checklist moved to the top. Pattern 2's negative test list became a Fault / Expected behavior / Test mechanism table. Patterns 5 to 8 marked as deliberately briefer sketches.
+
+Split the anti-patterns catalog and migration guidance into a new sister page, [Improving Existing Test Suites]({{< relref "/docs/testing/antipatterns" >}}), so that each page has one job: applied-testing-strategies is the pattern reference; improving-test-suites is the rework guide.
+
+## 2026-05-05 - Add Applied Testing Strategies guide
+
+Added [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}) to the testing section. A practical guide covering positive cases, negative cases, double validation, and [pipeline](reference/glossary/#pipeline) placement for eight common component patterns: API providers, API consumers, scheduled jobs, user interfaces, event consumers, event producers, CLI tools and libraries, and stateful services. Includes seven cross-cutting principles, an anti-patterns catalog, migration guidance for existing test suites, code examples per pattern, cross-cutting concerns (authn/authz, migrations, fixtures, observability, performance, mutation testing, flake handling, time budgets), and a per-component checklist.
+
 ## 2026-03-13 - Add DORA benchmarking symptom page
 
-Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat DORA metrics as performance targets rather than diagnostic tools.
+Added [The Team Is Chasing DORA Benchmarks]({{< relref "/docs/symptoms/visibility/chasing-dora-benchmarks" >}}) symptom page covering teams that treat [DORA metrics](reference/glossary/#dora-metrics) as performance targets rather than diagnostic tools.
 
 ## 2026-03-12 - Add Team Chatbot page
 
-Added [Team Chatbot]({{< relref "/docs/team-chatbot" >}}) - a downloadable facilitator chatbot setup that teams paste into any LLM to get a CD migration guide that diagnoses their situation and points to relevant site resources.
+Added [Team Chatbot]({{< relref "/docs/team-chatbot" >}}) - a downloadable facilitator chatbot setup that teams paste into any LLM to get a [CD](reference/glossary/#cd-continuous-delivery) migration guide that diagnoses their situation and points to relevant site resources.
 
 ## 2026-03-12 - Improve leading vs lagging metrics framing across site
 
-Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to lead with CI health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
+Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to lead with [CI](reference/glossary/#ci-continuous-integration) health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
 
 ## 2026-03-12 - Add Improvement Plays section
 
-Added [Improvement Plays]({{< relref "/docs/playbook" >}}) as a new top-level section. Eight standalone plays covering common delivery challenges: baseline metrics, story slicing, stopping the line, deleting long-lived branches, test-before-fix, pipeline automation, WIP limits, and definition of deployable.
+Added [Improvement Plays]({{< relref "/docs/playbook" >}}) as a new top-level section. Eight standalone plays covering common delivery challenges: [baseline metrics](reference/glossary/#baseline-metrics), story slicing, stopping the line, deleting long-lived branches, test-before-fix, pipeline automation, [WIP](reference/glossary/#wip-work-in-progress) limits, and definition of [deployable](reference/glossary/#deployable).
 
 ## 2026-03-12 - Add symptom page for test automation lag
 
@@ -47,28 +93,28 @@ Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as
 
 ## 2026-03-09 - Contract Testing: Consumer/Provider and CDC vs. Contract-First
 
-Expanded [Contract Tests]({{< relref "/docs/testing/contract" >}}) to cover:
+Expanded [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) to cover:
 
 - Consumer contract testing - what the consumer is trying to discover (fields I depend on, types, status codes)
 - Provider contract testing - what the provider is trying to discover (breaking changes to any consumer)
 - Consumer-driven contract development (CDC) - consumers write expectations, providers verify against them
-- Contract-first development - contracts defined upfront as formal artifacts (OpenAPI, Protobuf), teams develop in parallel
+- Contract-first development - contracts defined upfront as formal [artifacts](reference/glossary/#artifact) (OpenAPI, Protobuf), teams develop in parallel
 - Guidance on when to prefer each approach
 
 ## 2026-03-09 - Testing Taxonomy: E2E Absorbs Integration, Integration Forwarding Page
 
-- [End-to-End Tests]({{< relref "/docs/testing/e2e" >}}) now covers the full spectrum of tests involving real external dependencies - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
-- Added [Integration Tests]({{< relref "/docs/testing/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
+- [End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}}) now covers the full spectrum of tests involving real [external dependencies](reference/glossary/#external-dependency) - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
+- Added [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
 
 ## 2026-03-09 - Testing Taxonomy: Component Tests, Integration Test Redefinition
 
 Restructured the testing reference section with a clearer taxonomy:
 
-- Added [Component Tests]({{< relref "/docs/testing/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
-- Redefined [Integration Tests]({{< relref "/docs/testing/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
-- Updated [Unit Tests]({{< relref "/docs/testing/unit" >}}) to clarify the solitary vs. sociable distinction.
+- Added [Component Tests]({{< relref "/docs/testing/test-types/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
+- Redefined [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
+- Updated [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}) to clarify the solitary vs. sociable distinction.
 - Added Exploratory Testing and Usability Testing to the architecture table as non-blocking activities.
-- Added Component Test, Integration Test, Sociable Unit Test, and Solitary Unit Test entries to the [Testing Glossary]({{< relref "/docs/testing/glossary" >}}).
+- Added Component Test, Integration Test, [Sociable Unit Test](testing/glossary/#sociable-unit-test), and [Solitary Unit Test](testing/glossary/#solitary-unit-test) entries to the [Testing Glossary]({{< relref "/docs/testing/glossary" >}}).
 
 ## 2026-03-07 - Agentic CD Glossary Split
 

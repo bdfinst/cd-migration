@@ -8,7 +8,7 @@ const PAGES_TO_CHECK = [
   '/docs/agentic-cd/getting-started/adoption-roadmap/',
   '/docs/agentic-cd/specification/agent-assisted-specification/',
   '/docs/agentic-cd/architecture/agent-configuration/',
-  '/docs/testing/static/',
+  '/docs/testing/test-types/static/',
 ];
 
 test.describe('Code block layout', () => {

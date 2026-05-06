@@ -145,7 +145,7 @@ entire codebase. Apply TDD to new code and to any code you modify.
 
 - [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}) - Where these tests fit in your pipeline
 - [Flaky Tests]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Symptom of non-deterministic tests
-- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Patterns for isolating dependencies
-- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - Verifying test doubles match reality
+- [Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}) - Patterns for isolating dependencies
+- [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) - Verifying test doubles match reality
 - [No Contract Testing Between Services]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) - The anti-pattern this action plan addresses
 - [A Large Codebase Has No Automated Tests]({{< relref "/docs/symptoms/testing/legacy-system-no-tests" >}}) - Starting testing on a brownfield codebase

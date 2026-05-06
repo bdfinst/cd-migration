@@ -5,6 +5,7 @@ weight: 1
 aliases:
   - /docs/reference/testing/functional/
   - /docs/reference/testing/component/
+  - /docs/testing/component/
 description: >
   Deterministic tests that verify a complete frontend component or backend service through its public interface, using test doubles for all external dependencies.
 ---
@@ -15,13 +16,13 @@ description: >
 
 A component test verifies a complete component - either a frontend component rendered
 in isolation, or a backend service exercised through its public interface - with
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}) replacing all external dependencies.
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) replacing all [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}).
 No real databases, downstream services, or network calls leave the process. The test
 treats the component as a [black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}):
 inputs go in through the public interface (API endpoint, rendered UI), observable
 outputs come out, and the test asserts only on those outputs.
 
-This is broader than a [sociable unit test]({{< relref "/docs/testing/unit#solitary-vs-sociable-unit-tests" >}}):
+This is broader than a [sociable unit test]({{< relref "/docs/testing/test-types/unit#solitary-vs-sociable-unit-tests" >}}):
 where a sociable unit test allows in-process collaborators for a single behavior, a
 component test exercises the entire assembled component through its public interface.
 
@@ -37,14 +38,14 @@ any system the team does not control.
   depending on live external services or databases.
 - You need to simulate realistic user workflows (filling in forms, navigating pages,
   submitting API requests) while keeping the test fast and repeatable.
-- You are validating **acceptance criteria** for a user story and want a test that
+- You are validating **[acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})** for a user story and want a test that
   maps directly to the specified behavior.
 - You need to verify **keyboard navigation, focus management, and screen reader
   announcements** as part of feature verification.
 
 If the test needs a real external dependency (live database, live downstream service),
-it is an [end-to-end test]({{< relref "/docs/testing/e2e" >}}). If it tests a single
-unit in isolation, it is a [unit test]({{< relref "/docs/testing/unit" >}}).
+it is an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}). If it tests a single
+unit in isolation, it is a [unit test]({{< relref "/docs/testing/test-types/unit" >}}).
 
 ## Characteristics
 
@@ -169,12 +170,12 @@ describe("Checkout flow", () => {
 
 ## Connection to CD Pipeline
 
-Component tests run after unit tests in the pipeline and provide the broadest fast,
+Component tests run after unit tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) and provide the broadest fast,
 deterministic feedback before code is promoted:
 
 1. **Local development**: run before committing. Deterministic scope keeps them fast
    enough to run locally without slowing the development loop.
-2. **PR verification**: CI executes the full suite; failures block merge.
+2. **PR verification**: [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) executes the full suite; failures block merge.
 3. **Trunk verification**: the same tests run on the merged HEAD to catch conflicts.
 4. **Pre-deployment gate**: component tests can serve as the final deterministic gate
    before a [build artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is promoted.

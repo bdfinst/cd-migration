@@ -64,7 +64,7 @@ Unreliable tests destroy the agent's feedback loop. An agent that cannot trust t
 **What makes agents unreliable:** flaky tests, tests that require manual setup, tests that depend on external services without mocking, tests that pass in one environment but fail in another.
 
 - Fix or quarantine flaky tests. A test suite that randomly fails teaches agents to ignore failures.
-- Remove external service dependencies from unit tests. Use [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for anything outside the process boundary.
+- Remove external service dependencies from unit tests. Use [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for anything outside the process boundary.
 - Ensure tests run from a single command with no manual pre-steps
 - Make test output deterministic: same inputs, same results, every time
 

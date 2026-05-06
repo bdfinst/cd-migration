@@ -84,6 +84,6 @@ result.
 - [Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}}) - Another sign that tests verify implementation instead of behavior
 - [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}) - When coverage targets incentivize the wrong testing behavior
 - [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building tests that catch real defects
-- [Unit Tests]({{< relref "/docs/testing/unit" >}}) - Writing fast, behavior-focused tests
+- [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}) - Writing fast, behavior-focused tests
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Measure defect escape rate instead of coverage percentage
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - How ineffective tests undermine the acceptance criteria that agents depend on

@@ -169,7 +169,7 @@ API versioning allows consumers and producers to evolve independently.
 - **Never make a breaking change without a new version.** Adding fields is non-breaking. Removing fields is breaking. Changing field types is breaking.
 - **Support at least two versions simultaneously.** This gives consumers time to migrate.
 - **Deprecate old versions with a timeline.** "Version 1 will be removed on date X."
-- **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing]({{< relref "/docs/testing/contract" >}}).
+- **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing]({{< relref "/docs/testing/test-types/contract" >}}).
 
 ### Strategy 3: Prefer Asynchronous Communication
 
@@ -280,6 +280,6 @@ With optimized flow, small batches, metrics-driven improvement, and a decoupled 
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - the anti-pattern of a monolith with no internal boundaries
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - the anti-pattern of microservices that still require coordinated releases
 - [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - splitting into services before domain boundaries are clear
-- [Contract Testing]({{< relref "/docs/testing/contract" >}}) - the testing approach that enables independent deployment of services
+- [Contract Testing]({{< relref "/docs/testing/test-types/contract" >}}) - the testing approach that enables independent deployment of services
 - [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - the deployment strategy enabled by a decoupled architecture
 - [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}) - the organizational counterpart: matching team boundaries to the code boundaries that decoupling creates

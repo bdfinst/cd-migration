@@ -19,4 +19,4 @@ Contract testing and deliberate boundary design are the primary defenses.
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/testing" >}}) - testing types and good practices
-- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - verify that your test doubles still match reality
+- [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) - verify that your test doubles still match reality

@@ -4,6 +4,7 @@ linkTitle: "Contract Tests"
 weight: 2
 aliases:
   - /docs/reference/testing/contract/
+  - /docs/testing/contract/
 description: >
   Deterministic tests that verify interface boundaries with external systems using test doubles. Also called narrow integration tests. Validated by integration tests running against real systems.
 ---
@@ -14,19 +15,19 @@ description: >
 
 A contract test (also called a **narrow integration test**) is a deterministic test that
 validates your code's interaction with an external system's interface using
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}). It verifies that the boundary
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}). It verifies that the boundary
 layer code - HTTP clients, database query layers, message producers - correctly handles
 the expected request/response shapes, field names, types, and status codes.
 
 A contract test validates **interface structure, not business behavior**. It answers
 "does my code correctly interact with the interface I expect?" not "is the logic correct?"
-Business logic belongs in [component tests]({{< relref "/docs/testing/component" >}}).
+Business logic belongs in [component tests]({{< relref "/docs/testing/test-types/component" >}}).
 
 Because contract tests use test doubles rather than live systems, they are
-**deterministic** and run on every commit as part of the pipeline. They block the build
+**deterministic** and run on every commit as part of the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). They block the build
 on failure, just like unit and component tests.
 
-[Integration tests]({{< relref "/docs/testing/integration" >}}) validate that contract
+[Integration tests]({{< relref "/docs/testing/test-types/integration" >}}) validate that contract
 test doubles still match the real external systems by running against live dependencies
 post-deployment.
 
@@ -85,7 +86,7 @@ as part of their own build.
 The flow:
 
 1. Consumer team writes tests defining their expectations against a mock provider.
-2. The consumer tests generate a contract artifact.
+2. The consumer tests generate a contract [artifact]({{< relref "/docs/reference/glossary#artifact" >}}).
 3. The contract is published to a shared contract broker.
 4. The provider team runs the consumer's contract expectations against their real
    implementation.
@@ -135,7 +136,7 @@ schema and then adopt CDC tooling as the number of consumers grows.
 | **Speed**       | Milliseconds to seconds                           |
 | **Determinism** | Always deterministic (uses test doubles)          |
 | **Scope**       | Interface boundary between two systems            |
-| **Dependencies**| All replaced with test doubles                    |
+| **[Dependencies]({{< relref "/docs/reference/glossary#dependency" >}})**| All replaced with test doubles                    |
 | **Network**     | None or localhost only                            |
 | **Database**    | None                                              |
 | **Breaks build**| Yes                                               |
@@ -212,7 +213,7 @@ describe("GET /stock/:id - OpenAPI contract", () => {
   brittle. Assert on types, required fields, and status codes instead.
 - **Hitting live systems in contract tests**: contract tests must use test doubles to stay
   deterministic. Validating doubles against live systems is the role of
-  [integration tests]({{< relref "/docs/testing/integration" >}}), which run post-deployment.
+  [integration tests]({{< relref "/docs/testing/test-types/integration" >}}), which run post-deployment.
 - **Running infrequently**: contract tests should run often enough to catch drift before it
   causes a production incident. High-volatility APIs may need hourly runs.
 - **Skipping provider verification in CDC**: publishing consumer expectations is only half
@@ -232,6 +233,6 @@ Post-deployment          Integration tests       Non-deterministic   Validates c
 {{< /card >}}
 
 Contract tests verify that your boundary layer code correctly interacts with the
-interfaces you depend on. [Integration tests]({{< relref "/docs/testing/integration" >}})
+interfaces you depend on. [Integration tests]({{< relref "/docs/testing/test-types/integration" >}})
 validate that those test doubles still match the real external systems by running
 against live dependencies post-deployment.

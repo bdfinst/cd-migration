@@ -1,6 +1,6 @@
 ---
 title: "Architecting Tests for CD"
-linkTitle: "CD Testing"
+linkTitle: "Testing Tips"
 weight: 16
 description: >
   Test architecture, types, and good practices for building confidence in your delivery pipeline.
@@ -28,7 +28,7 @@ your control. The more weight you put at the base, the faster and more reliable 
 
 {{< figure src="/images/testing/testing-trophy.svg" class="figure-half" alt="The testing trophy: a trophy-shaped diagram where Component Tests form the large diamond-shaped body, Unit Tests form the narrow stem, Static Analysis forms the base pedestal, and End-to-End tests form a small triangle at the peak." >}}
 
-The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putting component tests at the center. Where the pyramid emphasizes unit tests at the base, the trophy argues that component tests give you the most confidence per test because they exercise realistic user behavior through a component's public interface while still using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for external dependencies.
+The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putting component tests at the center. Where the pyramid emphasizes unit tests at the base, the trophy argues that [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) give you the most confidence per test because they exercise realistic user behavior through a component's public interface while still using [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for external dependencies.
 
 The trophy also makes static analysis explicit as the foundation. Linting, type checking, and formatting catch entire categories of defects for free - no test code to write or maintain.
 
@@ -44,8 +44,8 @@ A pipeline that answers yes can deploy at any time - even when a downstream serv
 
 A test architecture that achieves this has three responsibilities:
 
-1. **Fast, deterministic tests** - unit, component, and contract tests - run on every commit using [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}). They give a reliable go/no-go signal in minutes.
-2. **Acceptance tests** validate that a deployed artifact is deliverable. Acceptance testing is not a single test type. It is a pipeline stage that can include component tests, load tests, chaos tests, resilience tests, and compliance tests. Any test that runs after CI to gate promotion to production is an acceptance test.
+1. **Fast, deterministic tests** - unit, component, and contract tests - run on every commit using [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}). They give a reliable go/no-go signal in minutes.
+2. **[Acceptance tests]({{< relref "/docs/testing/glossary#functional-acceptance-tests" >}})** validate that a deployed artifact is deliverable. Acceptance testing is not a single test type. It is a pipeline stage that can include component tests, load tests, chaos tests, resilience tests, and compliance tests. Any test that runs after CI to gate promotion to production is an acceptance test.
 3. **Integration tests** validate that contract test doubles still match the real external systems. They run in a dedicated test environment with versioned test data, on demand or on a schedule, providing monitoring rather than gating.
 
 ### The anti-pattern: the ice cream cone
@@ -67,15 +67,15 @@ for a complete quality gate sequence.
 
 | Pipeline Stage | What You Need to Verify | Test Type | Speed | Deterministic? | Blocks Deploy? |
 |----------------|-------------------------|-----------|-------|----------------|----------------|
-| CI | A function or method behaves correctly | [Unit]({{< relref "/docs/testing/unit" >}}) | Milliseconds | Yes | {{< blocks-deploy >}} |
-| CI | A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/component" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
-| CI | Your code correctly interacts with external system interfaces | [Contract]({{< relref "/docs/testing/contract" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
-| CI | Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/testing/static" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
-| CI | UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/testing/static" >}}) + [Component]({{< relref "/docs/testing/component" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
+| CI | A function or method behaves correctly | [Unit]({{< relref "/docs/testing/test-types/unit" >}}) | Milliseconds | Yes | {{< blocks-deploy >}} |
+| CI | A complete component or service works through its public interface | [Component]({{< relref "/docs/testing/test-types/component" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
+| CI | Your code correctly interacts with external system interfaces | [Contract]({{< relref "/docs/testing/test-types/contract" >}}) | Milliseconds to seconds | Yes | {{< blocks-deploy >}} |
+| CI | Code quality, security, and style compliance | [Static Analysis]({{< relref "/docs/testing/test-types/static" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
+| CI | UI meets WCAG accessibility standards | [Static Analysis]({{< relref "/docs/testing/test-types/static" >}}) + [Component]({{< relref "/docs/testing/test-types/component" >}}) | Seconds | Yes | {{< blocks-deploy >}} |
 | Acceptance Testing | Deployed artifact meets [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) | Deploy, Smoke, Load, Resilience, Compliance, etc. | Minutes | No | {{< blocks-deploy >}} - gates production |
-| Post-deploy (production) | Critical user journeys work in production | [E2E smoke]({{< relref "/docs/testing/e2e" >}}) | Seconds to minutes | No | No - triggers [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) |
+| Post-deploy (production) | Critical user journeys work in production | [E2E smoke]({{< relref "/docs/testing/test-types/e2e" >}}) | Seconds to minutes | No | No - triggers [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) |
 | Post-deploy (production) | Production health and SLOs | [Synthetic monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) | Continuous | No | No - triggers alerts |
-| On demand/scheduled | Contract [test doubles]({{< relref "/docs/testing/test-doubles" >}}) still match real external systems | [Integration]({{< relref "/docs/testing/integration" >}}) | Seconds to minutes | No | No - triggers review |
+| On demand/scheduled | Contract [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) still match real external systems | [Integration]({{< relref "/docs/testing/test-types/integration" >}}) | Seconds to minutes | No | No - triggers review |
 | Continuous | Unexpected behavior, edge cases, real-world workflows | Exploratory Testing | Varies | No | Never |
 | Continuous | Real users can accomplish goals effectively | Usability Testing | Varies | No | Never |
 

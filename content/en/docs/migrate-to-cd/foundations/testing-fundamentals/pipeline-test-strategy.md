@@ -17,7 +17,7 @@ deterministic, and free of [external dependencies]({{< relref "/docs/reference/g
 
 {{< figure src="/images/pipeline-tests-inside.svg" alt="Tests inside the pipeline: pre-merge stage runs static analysis, unit tests, integration tests, and component tests in under 10 minutes. Post-merge re-runs the full deterministic suite. All external dependencies are replaced by test doubles." >}}
 
-Every test in this [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) uses [test doubles]({{< relref "/docs/testing/test-doubles" >}}) for
+Every test in this [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) uses [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for
 external dependencies. No test calls a real external API, database, or third-party service. This
 means:
 
@@ -79,7 +79,7 @@ share a contract specification (using a tool like [Pact](https://pact.io/)):
   provider actually delivers.
 
 This shifts contract validation from "detect and react" to "prevent." See
-[Contract Tests]({{< relref "/docs/testing/contract" >}}) for implementation details.
+[Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) for implementation details.
 
 ## Summary: All Stages at a Glance
 
@@ -99,8 +99,8 @@ for each test type, including code examples and anti-patterns.
 ## Related Content
 
 - [Testing Reference]({{< relref "/docs/testing" >}}) - Full reference for each test type
-- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Patterns for stubs, mocks, fakes, spies, and dummies
-- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - Consumer-driven and provider contracts in detail
+- [Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}) - Patterns for stubs, mocks, fakes, spies, and dummies
+- [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) - Consumer-driven and provider contracts in detail
 - [Test Feedback Speed]({{< relref "/docs/testing/feedback-speed" >}}) - The cognitive science behind the 10-minute target
 - [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - The pipeline structure these tests feed into
 - [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - Reference diagrams for single-team and multi-team pipelines

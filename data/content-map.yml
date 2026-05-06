@@ -598,9 +598,21 @@ sections:
         title: "Architecting Tests for CD"
     subsections:
       - path: ""
-        title: "Test Types"
-        page_count: 9
+        title: "Section Pages"
+        page_count: 3
         pages:
+          - file: feedback-speed.md
+            title: "Test Feedback Speed"
+          - file: antipatterns.md
+            title: "Testing Antipatterns"
+          - file: glossary.md
+            title: "Testing Glossary"
+      - path: test-types/
+        title: "Test Types"
+        purpose: "Definitions of the test types used throughout this site: unit, component, contract, integration, end-to-end, and static analysis."
+        pages:
+          - file: _index.md
+            title: "Test Types"
           - file: unit.md
             title: "Unit Tests"
           - file: component.md
@@ -613,12 +625,39 @@ sections:
             title: "Integration Tests (terminology)"
           - file: static.md
             title: "Static Analysis"
-          - file: test-doubles.md
-            title: "Test Doubles"
-          - file: feedback-speed.md
-            title: "Test Feedback Speed"
-          - file: glossary.md
-            title: "Testing Glossary"
+      - path: applied-testing-strategies/
+        title: "Applied Testing Strategies"
+        purpose: "Practical guidance for fully testing eight common component patterns, plus cross-cutting concerns and a pre-ship checklist."
+        pages:
+          - file: _index.md
+            title: "Applied Testing Strategies"
+          - file: pre-ship-checklist.md
+            title: "Pre-ship Checklist"
+          - file: cross-cutting-concerns.md
+            title: "Cross-cutting Concerns"
+        subsections:
+          - path: patterns/
+            title: "Patterns"
+            page_count: 9
+            pages:
+              - file: _index.md
+                title: "Patterns"
+              - file: api-provider.md
+                title: "API Provider"
+              - file: api-consumer.md
+                title: "API Consumer"
+              - file: scheduled-job.md
+                title: "Scheduled Job"
+              - file: user-interface.md
+                title: "User Interface"
+              - file: event-consumer.md
+                title: "Event Consumer"
+              - file: event-producer.md
+                title: "Event Producer"
+              - file: cli-library.md
+                title: "CLI Tool or Library"
+              - file: stateful-service.md
+                title: "Stateful Service"
 
   # ---- Reference section (weight 15) ----
 

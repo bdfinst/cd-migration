@@ -4,6 +4,7 @@ linkTitle: "Static Analysis"
 weight: 6
 aliases:
   - /docs/reference/testing/static/
+  - /docs/testing/static/
 description: >
   Code analysis tools that evaluate non-running code for security vulnerabilities, complexity, and best practice violations.
 ---
@@ -12,7 +13,7 @@ description: >
 
 Static analysis (also called static testing) evaluates **non-running code** against rules for
 known good practices. Unlike other test types that execute code and observe behavior, static
-analysis inspects source code, configuration files, and dependency manifests to detect
+analysis inspects source code, configuration files, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to detect
 problems before the code ever runs.
 
 Static analysis serves several key purposes:
@@ -169,6 +170,6 @@ Static analysis is the **first gate** in the [CD]({{< relref "/docs/reference/gl
 5. **Scheduled scans**: dependency and security scanners run on a schedule to catch newly
    disclosed vulnerabilities in existing dependencies.
 
-Because static analysis requires no running code, no test environment, and no external
-dependencies, it is the cheapest and fastest form of quality verification. A mature CD
+Because static analysis requires no running code, no test environment, and no [external
+dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}), it is the cheapest and fastest form of quality verification. A mature CD
 pipeline treats static analysis failures the same as test failures: they break the build.

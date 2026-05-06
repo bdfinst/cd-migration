@@ -104,5 +104,5 @@ whether developers actually trust the suite enough to deploy on green.
 - [High Coverage, Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - When coverage metrics mask poor test quality
 - [Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}}) - Tests that assert on implementation details instead of behavior
 - [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}) - The anti-pattern of mandating coverage targets
-- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Patterns for isolating dependencies in tests
-- [Contract Tests]({{< relref "/docs/testing/contract" >}}) - Verifying that test doubles match reality
+- [Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}) - Patterns for isolating dependencies in tests
+- [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) - Verifying that test doubles match reality

@@ -1,7 +1,7 @@
 ---
 title: "Test Feedback Speed"
 linkTitle: "Feedback Speed"
-weight: 4
+weight: 1
 aliases:
   - /docs/reference/testing/feedback-speed/
 description: >
@@ -10,7 +10,7 @@ description: >
 
 ## Why speed has a threshold
 
-The 10-minute CI target and the preference for sub-second unit tests are not arbitrary. They come
+The 10-minute [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) target and the preference for sub-second unit tests are not arbitrary. They come
 from how human cognition handles interrupted work. When a developer makes a change and waits for
 test results, three things determine whether that feedback is useful: whether the developer still
 holds the mental model of the change, whether they can act on the result immediately, and whether
@@ -44,7 +44,7 @@ Different feedback speeds produce fundamentally different developer behaviors:
 
 The 10-minute CI target exists because it is the boundary between "developer waits and acts on
 the result" and "developer starts something else and pays a full context-switch penalty." Below
-10 minutes, feedback is actionable. Above 10 minutes, feedback becomes an interruption. DORA's
+10 minutes, feedback is actionable. Above 10 minutes, feedback becomes an interruption. [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}})'s
 research on continuous integration reinforces this: tests should complete in under 10 minutes to
 support the fast feedback loops that high-performing teams depend on.[^dora-ci]
 
@@ -53,15 +53,15 @@ support the fast feedback loops that high-performing teams depend on.[^dora-ci]
 These cognitive breakpoints should drive how you structure your test suite:
 
 **Local development (under 1 second).** Unit tests for the code you are actively changing should
-run in watch mode, re-executing on every save. At this speed, TDD becomes natural - the test
+run in watch mode, re-executing on every save. At this speed, [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) becomes natural - the test
 result is part of the writing process, not a separate step. This is where you test complex logic
 with many permutations.
 
-**Pre-push verification (under 2 minutes).** The full unit test suite and the component tests
+**Pre-push verification (under 2 minutes).** The full unit test suite and the [component tests]({{< relref "/docs/testing/glossary#component-test" >}})
 for the component you changed should complete before you push. At this speed, the developer
 stays engaged and acts on failures immediately. This is where you catch regressions.
 
-**CI pipeline (under 10 minutes).** The full deterministic suite - all unit tests, all component
+**CI [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) (under 10 minutes).** The full deterministic suite - all unit tests, all component
 tests, all contract tests - should complete within 10 minutes of commit. At this speed, the
 developer has not yet fully disengaged from the change. If CI fails, they can investigate while
 the code is still fresh.

@@ -79,10 +79,10 @@ Referenced in:
 [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}),
 [Developers Cannot Run the Pipeline Locally]({{< relref "/docs/symptoms/flow/developer-experience/no-local-pipeline-execution" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
-[End-to-End Tests]({{< relref "/docs/testing/e2e" >}}),
+[End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}}),
 [Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
-[Component Tests]({{< relref "/docs/testing/component" >}}),
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
 [Independent Teams, Independent Deployables]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}),
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}),
 [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}),
@@ -242,12 +242,12 @@ Referenced in:
 [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}),
 [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}),
 [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}),
-[Test Doubles]({{< relref "/docs/testing/test-doubles" >}}),
+[Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}),
 [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}),
 [The Deployment Target Does Not Support Modern CI/CD Tooling]({{< relref "/docs/symptoms/flow/developer-experience/mainframe-constraints" >}}),
 [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}),
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
-[Unit Tests]({{< relref "/docs/testing/unit" >}}),
+[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}),
 [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
 
 ### Change Failure Rate (CFR)
@@ -287,7 +287,7 @@ Referenced in:
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}),
-[Component Tests]({{< relref "/docs/testing/component" >}}),
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
 [Integration & Boundaries Defects]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}),
 [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}),
 [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}),
@@ -314,7 +314,7 @@ Referenced in:
 [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}),
 [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
 [The Development Workflow Has Friction at Every Step]({{< relref "/docs/symptoms/flow/developer-experience/inadequate-tooling" >}}),
-[Unit Tests]({{< relref "/docs/testing/unit" >}})
+[Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
 
 ### Constraint
 
@@ -393,7 +393,7 @@ Referenced in:
 [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
-[Component Tests]({{< relref "/docs/testing/component" >}}),
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
 [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}),
 [Independent Teams, Independent Deployables]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}),
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}),
@@ -455,7 +455,7 @@ vary by location and ownership:
 
 The distinction matters for testing. Internal dependencies are part of your own codebase and
 should be exercised through real code paths in tests. Replacing them with
-[test doubles]({{< relref "/docs/testing/test-doubles" >}}) couples your tests to
+[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) couples your tests to
 implementation details and causes rippling failures during routine refactoring. Reserve test
 doubles for [external dependencies](#external-dependency) and runtime connections where real
 invocation is impractical or non-deterministic.
@@ -825,7 +825,7 @@ Referenced in:
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
 [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}),
-[Component Tests]({{< relref "/docs/testing/component" >}}),
+[Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
 [Getting a Test Environment Requires Filing a Ticket]({{< relref "/docs/symptoms/flow/developer-experience/lack-of-self-service-environments" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}),
@@ -868,7 +868,7 @@ Referenced in:
 [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
 [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}),
 [Teams Cannot Change Their Own Pipeline Without Another Team]({{< relref "/docs/symptoms/deployment/pipeline-changes-require-another-team" >}}),
-[Test Doubles]({{< relref "/docs/testing/test-doubles" >}}),
+[Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}),
 [Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}}),
 [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}),
 [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}),

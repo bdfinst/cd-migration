@@ -113,7 +113,7 @@ services - do not need environment resets. They run in isolation with their own 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Related symptom caused by environment inconsistency
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not just the reset
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many tests at the E2E layer requiring full environment setup
-- [Test Doubles]({{< relref "/docs/testing/test-doubles" >}}) - Virtual services and in-memory replacements for external dependencies
+- [Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}) - Virtual services and in-memory replacements for external dependencies
 - [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}) - The most common root cause of long reset times
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Treating regression as a manual checkpoint rather than automated feedback
 - [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Designing environments that are both realistic and fast to provision
