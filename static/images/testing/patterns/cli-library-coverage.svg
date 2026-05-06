@@ -1,91 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 612"
      role="img" aria-labelledby="clc-title clc-desc"
      font-family="system-ui, -apple-system, sans-serif" font-size="13">
 
-  <title id="clc-title">CLI Tool or Library: layers tested by each test type</title>
+  <title id="clc-title">CLI Tool or Library: layers and the tests that cover each</title>
   <desc id="clc-desc">
-    A coverage matrix for the CLI tool or library pattern. Rows are the architectural layers: pure logic and parsing, the CLI invocation surface (argv, stdin, stdout, stderr, exit code) or the library's exported API, the file system and subprocess gateway, the documented examples in the README, and the real OS file system and subprocess. Columns are the test types: solitary unit, component (in-band, through the CLI entrypoint or library API), gateway integration, API surface diff, doctests, and a cross-platform CI matrix. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover pure logic and parsing. Component tests cover CLI invocation through the entrypoint. Gateway integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify the README examples actually work. The cross-platform matrix runs the suite on every supported OS.
+    Five architectural layers stacked top to bottom. The first four (pure logic and parsing, CLI invocation surface or library API, file system and subprocess gateway, and documented README examples) are inside the component boundary. Below the dashed component boundary, the real OS, file system, and subprocess are drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure logic and parsing. Component tests cover invocation through the entrypoint. Gateway integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify README examples run against the real binary or library. The cross-OS CI matrix runs the suite on every supported OS to catch platform-specific bugs.
   </desc>
 
-  <rect width="760" height="420" fill="#fafafa" rx="4"/>
+  <rect width="720" height="612" fill="#fafafa" rx="4"/>
 
   <!-- Title -->
-  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
-    CLI Tool or Library: Layers Tested by Each Test Type
+  <text x="360" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    CLI Tool or Library: Layers and the Tests That Cover Each
   </text>
 
-  <!-- Column headers -->
-  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+  <!-- Inside boundary label -->
+  <text x="40" y="56" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#224968">
+    INSIDE THE COMPONENT BOUNDARY
+  </text>
 
-  <rect x="180" y="56" width="92" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
-  <text x="226" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
-  <text x="226" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+  <!-- Layer 1: Pure logic / parsing -->
+  <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="68" width="6" height="60" fill="#224968"/>
+  <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Pure logic and parsing</text>
+  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="116" font-size="11" font-style="italic" fill="#556">Functions, classes, parsers; no I/O</text>
 
-  <rect x="274" y="56" width="92" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="320" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
-  <text x="320" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(invocation)</text>
+  <!-- Layer 2: CLI invocation / library API -->
+  <rect x="30" y="136" width="660" height="80" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="136" width="6" height="80" fill="#224968"/>
+  <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">CLI invocation surface or library API</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="316" y="170" width="80" height="20" rx="10" fill="#224968"/><text x="356" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/testing/glossary/#api-surface-test" target="_top"><rect x="402" y="170" width="106" height="20" rx="10" fill="#6c757d"/><text x="455" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">API surface diff</text></a>
+  <a href="/docs/testing/glossary/#doctest" target="_top"><rect x="514" y="170" width="76" height="20" rx="10" fill="#6c757d"/><text x="552" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
+  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="596" y="170" width="84" height="20" rx="10" fill="#224968"/><text x="638" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS CI</text></a>
+  <text x="50" y="202" font-size="11" font-style="italic" fill="#556">argv, stdin, stdout, stderr, exit code, --help, exported symbols</text>
 
-  <rect x="368" y="56" width="92" height="36" rx="4" fill="#30648e" stroke="#224968"/>
-  <text x="414" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
-  <text x="414" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+  <!-- Layer 3: FS / subprocess gateway -->
+  <rect x="30" y="224" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="224" width="6" height="60" fill="#224968"/>
+  <text x="50" y="248" font-size="14" font-weight="700" fill="#1a2a3a">File system and subprocess gateway</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="234" width="80" height="20" rx="10" fill="#224968"/><text x="426" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="472" y="234" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="234" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
+  <text x="50" y="272" font-size="11" font-style="italic" fill="#556">Paths, encodings, signal handling, spawn semantics</text>
 
-  <rect x="462" y="56" width="92" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
-  <text x="508" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">API Surface</text>
-  <text x="508" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Diff</text>
+  <!-- Layer 4: Documented README examples -->
+  <rect x="30" y="292" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="292" width="6" height="60" fill="#224968"/>
+  <text x="50" y="316" font-size="14" font-weight="700" fill="#1a2a3a">Documented README examples</text>
+  <a href="/docs/testing/glossary/#doctest" target="_top"><rect x="600" y="302" width="80" height="20" rx="10" fill="#6c757d"/><text x="640" y="316" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
+  <text x="50" y="340" font-size="11" font-style="italic" fill="#556">Examples in the docs actually run against the real binary or library</text>
 
-  <rect x="556" y="56" width="92" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
-  <text x="602" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Doctests</text>
-  <text x="602" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(examples)</text>
+  <!-- Boundary divider -->
+  <line x1="40" y1="374" x2="680" y2="374" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="360" y="370" text-anchor="middle" font-size="10" fill="#556" font-weight="600" font-style="italic">component boundary</text>
 
-  <rect x="650" y="56" width="92" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="696" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Cross-OS</text>
-  <text x="696" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">CI matrix</text>
+  <!-- Outside boundary label -->
+  <text x="40" y="392" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#6c757d">
+    OUTSIDE THE BOUNDARY
+  </text>
 
-  <!-- Row 1: Pure logic / parsing -->
-  <rect x="30" y="104" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Pure logic and parsing</text>
-  <text x="40" y="139" font-size="10" fill="#556">functions, classes, parsers; no I/O</text>
-  <circle cx="226" cy="126" r="9" fill="#4a6741"/>
-  <circle cx="320" cy="126" r="9" fill="#224968"/>
-
-  <!-- Row 2: CLI invocation / library API -->
-  <rect x="30" y="148" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">CLI invocation surface or library API</text>
-  <text x="40" y="183" font-size="10" fill="#556">argv, stdin, stdout, stderr, exit code, --help, exported symbols</text>
-  <circle cx="320" cy="170" r="9" fill="#224968"/>
-  <circle cx="508" cy="170" r="9" fill="#6c757d"/>
-  <circle cx="602" cy="170" r="9" fill="#6c757d"/>
-  <circle cx="696" cy="170" r="9" fill="#224968"/>
-
-  <!-- Row 3: FS / subprocess gateway -->
-  <rect x="30" y="192" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">File system and subprocess gateway</text>
-  <text x="40" y="227" font-size="10" fill="#556">paths, encodings, signal handling, spawn semantics</text>
-  <circle cx="320" cy="214" r="9" fill="#224968"/>
-  <circle cx="414" cy="214" r="9" fill="#30648e"/>
-  <circle cx="696" cy="214" r="9" fill="#224968"/>
-
-  <!-- Row 4: README examples -->
-  <rect x="30" y="236" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Documented README examples</text>
-  <text x="40" y="271" font-size="10" fill="#556">examples in the docs actually run against the real binary or library</text>
-  <circle cx="602" cy="258" r="9" fill="#6c757d"/>
-
-  <!-- Row 5: Real OS / FS / subprocess -->
-  <rect x="30" y="280" width="712" height="44" fill="#ffffff" stroke="#e5e7eb" stroke-dasharray="5,3"/>
-  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Real OS, file system, subprocess</text>
-  <text x="40" y="315" font-size="10" fill="#556">path separators, line endings, signals; doubled in component, real in gateway</text>
-  <circle cx="320" cy="302" r="9" fill="none" stroke="#224968" stroke-width="2"/>
-  <circle cx="414" cy="302" r="9" fill="#30648e"/>
-  <circle cx="696" cy="302" r="9" fill="#224968"/>
+  <!-- Layer 5: Real OS / FS / subprocess -->
+  <rect x="30" y="404" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="30" y="404" width="6" height="80" fill="#6c757d"/>
+  <text x="50" y="428" font-size="14" font-weight="700" fill="#1a2a3a">Real OS, file system, subprocess</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="438" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="472" y="438" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="438" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
+  <text x="50" y="470" font-size="11" font-style="italic" fill="#556">Path separators, line endings, signals. Doubled in component; real in gateway integration and the cross-OS matrix.</text>
 
   <!-- Legend -->
-  <circle cx="44" cy="356" r="8" fill="#224968"/>
-  <text x="58" y="360" font-size="11" fill="#556">Real code under test</text>
-  <circle cx="206" cy="356" r="8" fill="none" stroke="#224968" stroke-width="2"/>
-  <text x="220" y="360" font-size="11" fill="#556">Doubled in this test</text>
-  <text x="370" y="360" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
-  <text x="44" y="392" font-size="10" fill="#556" font-style="italic">
-    The cross-OS matrix is not a test type so much as where the same suite runs; it catches platform-specific path, encoding, and signal-handling bugs.
-  </text>
+  <rect x="40" y="538" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="40" y="538" width="4" height="16" fill="#224968"/>
+  <text x="78" y="550" font-size="11" fill="#556">internal layer</text>
+  <rect x="320" y="539" width="24" height="14" rx="7" fill="#224968"/>
+  <text x="354" y="550" font-size="11" fill="#556">real code under test</text>
+
+  <rect x="40" y="562" width="30" height="16" rx="3" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="40" y="562" width="4" height="16" fill="#6c757d"/>
+  <text x="78" y="574" font-size="11" fill="#556">external (dashed border)</text>
+  <rect x="320" y="563" width="24" height="14" rx="7" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="354" y="574" font-size="11" fill="#556">doubled in this test</text>
+
 </svg>

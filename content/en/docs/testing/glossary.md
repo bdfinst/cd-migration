@@ -140,6 +140,78 @@ Referenced in:
 [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}),
 [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}})
 
+### Contract Test
+
+A deterministic test that verifies the boundary between two systems using [test doubles](#test-double). Sometimes called a *narrow integration test*. Has two perspectives. A **consumer contract test** asks "do the fields and status codes I depend on still exist?" and asserts only on the subset of the API the consumer actually uses. A **provider contract test** asks "have my changes broken any of my consumers?" and runs every consumer's published expectations against the real provider implementation. The same shape applies to broker topics (a "broker contract") and to source-and-sink schemas in pipelines ("source/sink contract") - the test object is the boundary, the perspective is whichever side the test runs from.
+
+Contract tests are deterministic and run pre-merge as [in-band tests](#in-band-test). They block the build like any other in-band test. See [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) for the full discussion of consumer-driven contracts (CDC) and contract-first development.
+
+Referenced in:
+[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
+[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
+[Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}),
+[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
+[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}})
+
+### Gateway Integration Test
+
+A narrow test of a single gateway (HTTP client, DB query layer, message producer, file-system adapter) exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. Pins the protocol-level behaviour: serialization, deserialization, header handling, timeout behaviour, error mapping, transactional semantics. Deterministic enough to run [in-band](#in-band-test) when fast; otherwise pushed to a later CI stage but still gating.
+
+Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a gateway integration test isolates one gateway, not a flow across multiple components. Different from a [contract test](#contract-test) of the same gateway: contract tests pin shape against doubles; gateway integration tests pin protocol against the real dependency.
+
+Referenced in:
+[API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),
+[API Provider]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-provider" >}}),
+[Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}),
+[Antipatterns]({{< relref "/docs/testing/antipatterns" >}}),
+[Event Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-consumer" >}}),
+[Event Producer]({{< relref "/docs/testing/applied-testing-strategies/patterns/event-producer" >}}),
+[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}}),
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
+
+### Cluster Test
+
+A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behaviour that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
+
+Referenced in:
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
+
+### Soak Test
+
+A long-running test that exercises a deployed service for hours or days under representative load to catch behaviour that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behaviour over time.
+
+Referenced in:
+[Stateful Service]({{< relref "/docs/testing/applied-testing-strategies/patterns/stateful-service" >}})
+
+### Deployed-binary Test
+
+A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behaviour at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behaviour is tested in component tests against an in-memory assembled app.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}}),
+[Scheduled Job]({{< relref "/docs/testing/applied-testing-strategies/patterns/scheduled-job" >}})
+
+### API Surface Test
+
+A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services; an API surface test pins the source-level boundary between a library and its callers.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
+### Doctest
+
+An executable test extracted from documentation - typically the README or inline code samples - that runs the documented examples against the real binary or library and fails the build if the examples are broken. Doctests close the gap between "the docs say X works" and "X actually works in the latest build". Most languages have framework support: Python's `doctest` module, Rust's `#[doc]` attribute, and Markdown-based runners for Node and Java.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
+### Cross-OS Test Matrix
+
+A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behaviour single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
+
+Referenced in:
+[CLI Tool or Library]({{< relref "/docs/testing/applied-testing-strategies/patterns/cli-library" >}})
+
 ### TDD (Test-Driven Development)
 
 A development practice where tests are written before the production code that makes them

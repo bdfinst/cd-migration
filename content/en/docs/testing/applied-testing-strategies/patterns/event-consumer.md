@@ -16,13 +16,13 @@ This pattern has problems the [API provider]({{< relref "/docs/testing/applied-t
 | --- | --- | --- |
 | Message handler | Pure transformation per message | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
 | Idempotency | Same message twice produces the same effect | In-process [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
-| Poison message handling | Malformed message goes to DLQ, doesn't crash the consumer | In-process component tests |
-| Ordering | Out-of-order messages produce documented outcomes | In-process component tests |
-| Backpressure | Consumer slows when downstream is slow | Resilience component tests |
-| Broker contract | Topic, schema, headers | [Contract tests]({{< relref "/docs/testing/test-types/contract" >}}) |
-| Broker gateway | Real protocol behavior, offset commits, consumer group rebalancing | Gateway integration tests against a real broker container |
+| Poison message handling | Malformed message goes to DLQ, doesn't crash the consumer | In-process [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
+| Ordering | Out-of-order messages produce documented outcomes | In-process [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
+| Backpressure | Consumer slows when downstream is slow | Resilience [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
+| Broker contract | Topic, schema, headers | [Contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
+| Broker gateway | Real protocol behavior, offset commits, consumer group rebalancing | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against a real broker container |
 
-{{< figure src="/images/testing/patterns/event-consumer-coverage.svg" alt="Coverage matrix for an event consumer. Rows are message handler logic, idempotency and ordering, dead-letter and poison-message handling, backpressure, broker gateway, and the external broker and schema registry. Columns are solitary unit, component (in-band, with broker doubles), gateway integration, broker contract, and out-of-band synthetic publish. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker and schema registry." >}}
+{{< inline-svg src="/images/testing/patterns/event-consumer-coverage.svg" alt="Layered diagram of an event consumer with six architectural layers. The first five (message handler logic, idempotency and ordering, dead-letter and poison-message handling, backpressure, broker gateway) are inside the component boundary. Below the dashed boundary, the external broker and schema registry are drawn with a dashed border. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker." >}}
 
 ## Positive test cases
 
@@ -53,10 +53,12 @@ Handler unit tests and component tests run in [CI]({{< relref "/docs/reference/g
 
 ## Example: idempotency under duplicate delivery
 
-```java
+`Money.usd` takes minor units (cents); 4250 represents $42.50.
+
+{{< tabpane >}}
+{{< tab header="Java" lang="java" >}}
 @Test
 void same_message_processed_twice_creates_one_payment_record() {
-  // Money.usd takes minor units (cents). 4250 = $42.50.
   PaymentEvent event = new PaymentEvent(
       "evt-9f12", OrderId.of("ord-001"), Money.usd(4250));
   PaymentRepo repo = new InMemoryPaymentRepo();
@@ -68,4 +70,34 @@ void same_message_processed_twice_creates_one_payment_record() {
   assertThat(repo.findByEventId("evt-9f12")).hasSize(1);
   assertThat(repo.totalForOrder(OrderId.of("ord-001"))).isEqualTo(Money.usd(4250));
 }
-```
+{{< /tab >}}
+{{< tab header="C#" lang="csharp" >}}
+[Fact]
+public void Same_message_processed_twice_creates_one_payment_record()
+{
+    var evt = new PaymentEvent("evt-9f12", OrderId.Of("ord-001"), Money.Usd(4250));
+    var repo = new InMemoryPaymentRepo();
+    var handler = new PaymentEventHandler(repo);
+
+    handler.Handle(evt);
+    handler.Handle(evt);
+
+    repo.FindByEventId("evt-9f12").Should().HaveCount(1);
+    repo.TotalForOrder(OrderId.Of("ord-001")).Should().Be(Money.Usd(4250));
+}
+{{< /tab >}}
+{{< tab header="JavaScript" lang="javascript" >}}
+test("same message processed twice creates one payment record", () => {
+  const event = new PaymentEvent(
+    "evt-9f12", OrderId.of("ord-001"), Money.usd(4250));
+  const repo = new InMemoryPaymentRepo();
+  const handler = new PaymentEventHandler(repo);
+
+  handler.handle(event);
+  handler.handle(event);
+
+  expect(repo.findByEventId("evt-9f12")).toHaveLength(1);
+  expect(repo.totalForOrder(OrderId.of("ord-001"))).toEqual(Money.usd(4250));
+});
+{{< /tab >}}
+{{< /tabpane >}}

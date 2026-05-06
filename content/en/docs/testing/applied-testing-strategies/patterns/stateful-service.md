@@ -14,15 +14,15 @@ The hard problems are concurrency, recovery, and unbounded growth. Stateful serv
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| State machine logic | Pure transitions | [Solitary unit tests]({{< relref "/docs/testing/test-types/unit" >}}) |
-| Persistence and checkpointing | State survives restart or rebuilds correctly | [Component tests]({{< relref "/docs/testing/test-types/component" >}}) with real persistence |
-| Recovery from crash | Restart converges to a consistent state | Tests that simulate crash mid-write |
-| Leader election | Only one leader; transitions are observable; split-brain is impossible | Cluster tests with real consensus library |
-| Replication | Followers stay in sync; backpressure is documented | Cluster tests |
-| Memory bounds | State doesn't grow unbounded; eviction policy holds | Long-running soak tests |
-| Connection lifecycle | Sessions clean up on disconnect; reconnect is documented | Component tests |
+| State machine logic | Pure transitions | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
+| Persistence and checkpointing | State survives restart or rebuilds correctly | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with real persistence |
+| Recovery from crash | Restart converges to a consistent state | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) that simulate crash mid-write |
+| Leader election | Only one leader; transitions are observable; split-brain is impossible | [Cluster tests]({{< relref "/docs/testing/glossary#cluster-test" >}}) with real consensus library |
+| Replication | Followers stay in sync; backpressure is documented | [Cluster tests]({{< relref "/docs/testing/glossary#cluster-test" >}}) |
+| Memory bounds | State doesn't grow unbounded; eviction policy holds | Long-running [soak tests]({{< relref "/docs/testing/glossary#soak-test" >}}) |
+| Connection lifecycle | Sessions clean up on disconnect; reconnect is documented | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 
-{{< figure src="/images/testing/patterns/stateful-service-coverage.svg" alt="Coverage matrix for a stateful service. Rows are state machine logic, persistence and recovery, single-node concurrency, replication and leader election, memory bounds and long-run behavior, and the persistence engine (external). Columns are solitary unit, component (in-band, single-node), gateway integration, cluster tests, and out-of-band soak and chaos. Solitary unit tests cover state transitions. Component tests cover persistence, recovery, and single-node concurrency. Gateway integration tests pin the persistence protocol against the real production engine. Cluster tests exercise replication and leader election against a multi-node testcontainer setup with the real consensus library. Out-of-band soak and chaos catch unbounded growth, slow leaks, and replication-lag drift over hours or days against a deployed instance." >}}
+{{< inline-svg src="/images/testing/patterns/stateful-service-coverage.svg" alt="Layered diagram of a stateful service with six architectural layers. The first five (state machine logic, persistence and recovery, single-node concurrency, replication and leader election, memory bounds and long-run behaviour) are inside the component boundary. Below the dashed boundary, the persistence engine is drawn with a dashed border. Solitary unit tests cover state transitions. Component tests cover persistence, recovery, and single-node concurrency. Cluster tests exercise replication and leader election against a multi-node testcontainer setup. Out-of-band soak and chaos tests catch unbounded growth, slow leaks, and replication-lag drift against a deployed instance." >}}
 
 ## Positive test cases
 
@@ -45,6 +45,6 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation and pipeline placement
 
-Persistence doubles validated by gateway integration tests against the real production engine. Consensus library doubles validated by cluster tests against a multi-node testcontainer setup. Soak tests run out of [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against a deployed instance to catch slow leaks and unbounded growth.
+Persistence doubles validated by [gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against the real production engine. Consensus library doubles validated by cluster tests against a multi-node testcontainer setup. Soak tests run out of [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against a deployed instance to catch slow leaks and unbounded growth.
 
 State machine unit tests, recovery component tests, and single-node concurrency tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; cluster tests with real consensus library in CI Stage 2; soak and chaos tests out of pipeline.

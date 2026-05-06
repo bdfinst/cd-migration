@@ -12,18 +12,17 @@ A UI that renders data and accepts user interaction. Talks to one or more backen
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Pure rendering | Component renders given props/state | [Solitary unit tests]({{< relref "/docs/testing/test-types/unit" >}}) |
+| Pure rendering | Component renders given props/state | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
 | Component composition | Composed components wire correctly | [Sociable unit tests]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) |
-| Feature behavior (JSDOM) | A flow (login, checkout, search) works through the rendered DOM with backend gateways doubled | [Component tests]({{< relref "/docs/testing/test-types/component" >}}) in JSDOM or equivalent in-memory renderer |
-| Feature behavior (real browser) | The same flows in a real browser engine, exercising real layout, real event loop, real network stack to a stubbed backend (WireMock or service worker mocks) | A small set of component tests in headless Chromium/Firefox/WebKit |
-| Backend contract | What the UI sends and expects from each backend endpoint | [Consumer-side contract tests]({{< relref "/docs/testing/test-types/contract" >}}) |
-| End-to-end happy paths | A small number of critical journeys against real backends | E2E tests, post-deploy |
+| Feature behaviour | A flow (login, checkout, search) works through the rendered DOM with the backend stubbed at the network layer | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) driven by Playwright with the team's unit-testing framework as the runner |
+| Backend contract | What the UI sends and expects from each backend endpoint | [Consumer-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
+| End-to-end happy paths | A small number of critical journeys against real backends | [E2E tests]({{< relref "/docs/testing/test-types/e2e" >}}), post-deploy |
 | Visual regression | The UI looks right | Snapshot or visual diff tests |
-| Accessibility | The UI works for assistive tech and keyboard users | Assertions in component tests + automated WCAG scanning |
+| Accessibility | The UI works for assistive tech and keyboard users | Assertions in [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) + automated WCAG scanning |
 
-{{< figure src="/images/testing/patterns/user-interface-coverage.svg" alt="Coverage matrix for a user interface. Rows are pure rendering, component composition, feature behavior in the rendered DOM, the backend HTTP gateway, the renderer (JSDOM or real browser), and the external backend API. Columns are solitary unit, sociable unit, JSDOM component, headless-browser component, consumer contract, and end-to-end (post-deploy). Solitary unit tests cover pure rendering. Sociable unit tests cover composition. JSDOM component tests cover feature behavior, backend gateway, and the in-memory renderer with the real backend doubled. Headless-browser component tests run a representative subset of the same flows in a real browser. Consumer contract tests pin what the UI sends and depends on at each backend boundary. End-to-end tests run post-deploy in a real browser against the real backend and never block the build." >}}
+{{< inline-svg src="/images/testing/patterns/user-interface-coverage.svg" alt="Layered diagram of a user interface with five architectural layers. The first four (pure rendering, component composition, feature behaviour in the rendered DOM, backend HTTP gateway) are inside the component boundary. Below the dashed boundary, the external backend API is drawn with a dashed border. Solitary unit tests cover pure rendering. Sociable unit tests cover composition. Component tests driven by Playwright cover feature behaviour with the backend doubled at the network layer. Consumer contract tests pin each backend boundary. End-to-end tests run post-deploy against the real backend." >}}
 
-The default for UI work is JSDOM: render the component tree in JSDOM (or React Native's test renderer, or whatever the framework's in-memory renderer is), drive it with Testing Library, double the backend gateway. The headless-browser variant, the same component tests running in headless Chromium, is the layer that catches what JSDOM gets wrong: real CSS layout, real focus management, real event timing, real Intersection Observer behavior. Run the full suite under JSDOM; run a representative subset in a headless browser to validate that JSDOM hasn't lied to you.
+UI component tests run in a real browser engine (Chromium, Firefox, WebKit) driven by Playwright, with the team's existing unit-testing framework (Vitest, Jest, or whatever is already in the project) as the runner. In-memory renderer shortcuts like JSDOM are rejected: they trade accuracy for speed and produce false greens around layout, focus, event timing, Intersection Observer, and animations - exactly the surface where UI bugs live. Playwright's headless Chromium starts in milliseconds and runs the suite fast enough to use as the default. Backends are stubbed at the network layer with `page.route` so the same fixtures drive component tests today and end-to-end smoke tests later.
 
 ## Positive test cases
 
@@ -52,51 +51,99 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation
 
-Two classes of doubles, validated through different mechanisms:
+Backend doubles in component tests must match the real backends. Same mechanism as the [API consumer pattern]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}): the UI is a consumer, every backend it talks to is a provider. Consumer-driven contracts run on every commit; provider verification runs in the backend's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). Post-deploy E2E smoke tests against the real backend close the loop on drift the contract didn't pin.
 
-1. **Backend doubles in component tests must match the real backends.** Same mechanism as the [API consumer pattern]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}): the UI is a consumer, every backend it talks to is a provider. Consumer-driven contracts run on every commit; provider verification runs in the backend's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). Post-deploy E2E smoke tests against the real backend close the loop on drift the contract didn't pin.
-2. **The renderer itself is a double of the real browser.** JSDOM and other in-memory renderers approximate browser behavior. Well enough for most logic, badly enough for layout, focus, and timing. The headless-browser subset is what validates the renderer-level double [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}). The E2E suite running [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) against a real browser and a real backend in production-like conditions is the final backstop. Out-of-band failures trigger review, not a build break.
+Because UI component tests run in a real browser engine, there is no renderer-level double to validate. The browser **is** the production renderer, just headless. The remaining gap is between the stubbed backend and the real backend, which the [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) E2E suite covers. Out-of-band failures trigger review, not a build break.
 
 ## Pipeline placement
 
-- Unit and JSDOM component tests (including a11y assertions): [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1.
-- Headless-browser component tests (small set): CI Stage 1 or Stage 2.
+- Unit tests (rendering, composition): [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1.
+- Component tests in headless browser (including a11y assertions): CI Stage 1.
 - Visual regression: CI Stage 1 if fast, CI Stage 2 if slow.
 - Consumer-side contract tests for each backend: CI Stage 1.
-- E2E happy-path smoke tests against real backends in real browsers: post-deploy, in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}), blocking the rollout but not the build.
+- E2E happy-path smoke tests against real backends: post-deploy, in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}), blocking the rollout but not the build.
 - Real user monitoring + synthetic transactions: continuously in production.
 
-## Example: JSDOM component test
+## Example: UI component test for an error path
 
-A flow-oriented test for the checkout error path. The backend gateway is doubled with MSW; the test asserts the user sees a documented error message and the spinner does not get stuck:
+A flow-oriented test for the checkout error path. Playwright drives a headless browser; the backend is stubbed at the network layer with `page.route`; the team's existing unit-testing framework (Vitest, JUnit, xUnit) runs the test. The assertion: the user sees a documented error message and the spinner does not get stuck.
 
-```javascript
-import { http, HttpResponse } from "msw";
-import { setupServer } from "msw/node";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { Checkout } from "./Checkout.jsx";
-import { cartFixture } from "./test/fixtures.js";
+{{< tabpane >}}
+{{< tab header="Java" lang="java" >}}
+@Test
+void shows_error_and_clears_spinner_when_checkout_fails_with_500() {
+  try (Playwright playwright = Playwright.create();
+       Browser browser = playwright.chromium().launch()) {
+    Page page = browser.newPage();
 
-const server = setupServer();
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+    page.route("**/api/checkout", route ->
+        route.fulfill(new Route.FulfillOptions()
+            .setStatus(500)
+            .setContentType("application/json")
+            .setBody("{\"error\":{\"code\":\"INTERNAL\"}}")));
+
+    page.navigate("http://localhost:3000/checkout");
+    page.getByRole(AriaRole.BUTTON,
+        new Page.GetByRoleOptions().setName("Place order")).click();
+
+    assertThat(page.getByRole(AriaRole.ALERT))
+        .containsText("Something went wrong, please try again");
+    assertThat(page.getByRole(AriaRole.STATUS)).not().isVisible();
+  }
+}
+{{< /tab >}}
+{{< tab header="C#" lang="csharp" >}}
+[Fact]
+public async Task Shows_error_and_clears_spinner_when_checkout_fails_with_500()
+{
+    using var playwright = await Playwright.CreateAsync();
+    await using var browser = await playwright.Chromium.LaunchAsync();
+    var page = await browser.NewPageAsync();
+
+    await page.RouteAsync("**/api/checkout", route => route.FulfillAsync(new()
+    {
+        Status = 500,
+        ContentType = "application/json",
+        Body = "{\"error\":{\"code\":\"INTERNAL\"}}"
+    }));
+
+    await page.GotoAsync("http://localhost:3000/checkout");
+    await page.GetByRole(AriaRole.Button, new() { Name = "Place order" })
+        .ClickAsync();
+
+    await Expect(page.GetByRole(AriaRole.Alert))
+        .ToContainTextAsync("Something went wrong, please try again");
+    await Expect(page.GetByRole(AriaRole.Status)).Not.ToBeVisibleAsync();
+}
+{{< /tab >}}
+{{< tab header="JavaScript" lang="javascript" >}}
+import { test, expect, beforeAll, afterAll } from "vitest";
+import { chromium } from "playwright";
+
+let browser;
+
+beforeAll(async () => { browser = await chromium.launch(); });
+afterAll(async () => { await browser.close(); });
 
 test("shows error and clears spinner when checkout fails with 500", async () => {
-  server.use(
-    http.post("/api/checkout", () => HttpResponse.json(
-      { error: { code: "INTERNAL" } }, { status: 500 }))
+  const page = await browser.newPage();
+
+  await page.route("**/api/checkout", route =>
+    route.fulfill({
+      status: 500,
+      contentType: "application/json",
+      body: JSON.stringify({ error: { code: "INTERNAL" } }),
+    })
   );
-  const user = userEvent.setup();
-  render(<Checkout cart={cartFixture()} />);
 
-  await user.click(screen.getByRole("button", { name: /place order/i }));
+  await page.goto("http://localhost:3000/checkout");
+  await page.getByRole("button", { name: /place order/i }).click();
 
-  expect(await screen.findByRole("alert"))
-    .toHaveTextContent(/something went wrong, please try again/i);
-  expect(screen.queryByRole("status")).not.toBeInTheDocument();
+  await expect(page.getByRole("alert"))
+    .toContainText(/something went wrong, please try again/i);
+  await expect(page.getByRole("status")).not.toBeVisible();
 });
-```
+{{< /tab >}}
+{{< /tabpane >}}
 
-The test exercises the rendered DOM the way a real user would. The backend double is MSW, which intercepts at the network layer rather than at the SDK, so the same fixtures can drive the headless-browser variant of this test.
+The test exercises the rendered DOM the way a real user would. Intercepting at the network layer with `page.route` keeps the same fixtures reusable when the component test gets promoted to an end-to-end smoke test against the real backend.

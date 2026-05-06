@@ -14,12 +14,12 @@ Everything from the [API provider]({{< relref "/docs/testing/applied-testing-str
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Outbound gateway | Request shape, response parsing, status code handling, header propagation, timeout enforcement | Gateway integration tests (against WireMock or, periodically, the real downstream) |
-| Outbound contract | The fields and status codes the consumer depends on | [Consumer-side contract tests]({{< relref "/docs/testing/test-types/contract" >}}) |
+| Outbound gateway | Request shape, response parsing, status code handling, header propagation, timeout enforcement | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (against WireMock or, periodically, the real downstream) |
+| Outbound contract | The fields and status codes the consumer depends on | [Consumer-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
 | Resilience under degraded [dependencies]({{< relref "/docs/reference/glossary#dependency" >}}) | Retries, circuit breaking, backoff, fallback, partial-failure compensation | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with fault-injecting gateway doubles |
-| Composite behavior | The service still returns useful responses when downstreams misbehave | Component tests |
+| Composite behavior | The service still returns useful responses when downstreams misbehave | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 
-{{< figure src="/images/testing/patterns/api-consumer-coverage.svg" alt="Coverage matrix for an API consumer. Rows are HTTP and API surface, domain logic and orchestration, resilience policy (retry, circuit breaker, timeout, fallback), outbound HTTP gateway, persistence adapter, the external database, and the external downstream service. Columns are solitary unit, sociable unit, component (in-band, with fault-injecting gateway doubles), gateway integration, consumer contract, and out-of-band integration. Component tests cover every internal layer including resilience, with both downstream service and database doubled. Gateway integration tests pin the outbound and persistence protocols against real containers. Consumer contract tests pin what the service sends and depends on at the outbound boundary. Out-of-band integration confirms the doubles still match the real downstream services." >}}
+{{< inline-svg src="/images/testing/patterns/api-consumer-coverage.svg" alt="Layered diagram of an API consumer with seven architectural layers. The first five (HTTP and API surface, domain logic and orchestration, resilience policy, outbound HTTP gateway, persistence adapter) are inside the component boundary. Below the dashed boundary, the external database and the external downstream service are drawn with dashed borders. Component tests cover every internal layer including resilience, with both database and downstream service doubled. Gateway integration tests pin the outbound and persistence protocols against real containers. Consumer contract tests pin the outbound boundary. Out-of-band integration tests exercise the real downstream service to confirm doubles still match reality." >}}
 
 ## Positive test cases
 
@@ -72,7 +72,77 @@ Same as the [API provider]({{< relref "/docs/testing/applied-testing-strategies/
 
 A negative-path test for downstream timeout. The payment gateway double simulates a slow response, the test asserts the deadline enforces and the upstream caller gets the documented error envelope:
 
-```javascript
+{{< tabpane >}}
+{{< tab header="Java" lang="java" >}}
+@SpringBootTest
+@AutoConfigureMockMvc
+class PaymentTimeoutTest {
+
+  @Autowired MockMvc mvc;
+  @Autowired InMemoryOrderRepo orderRepo;
+  @MockBean PaymentsGateway payments;
+
+  @Test
+  void returns_504_when_payment_service_exceeds_deadline() throws Exception {
+    when(payments.charge(any())).thenAnswer(inv -> {
+      Thread.sleep(50);
+      throw new UpstreamTimeoutException("payments");
+    });
+
+    var body = """
+      { "items": [{"sku": "A1", "qty": 1}], "paymentToken": "pm_ok" }
+      """;
+
+    mvc.perform(post("/orders")
+        .header("Authorization", "Bearer tok_valid")
+        .contentType(APPLICATION_JSON)
+        .content(body))
+      .andExpect(status().isGatewayTimeout())
+      .andExpect(jsonPath("$.error.code").value("UPSTREAM_TIMEOUT"));
+
+    assertThat(orderRepo.all()).isEmpty();
+  }
+}
+{{< /tab >}}
+{{< tab header="C#" lang="csharp" >}}
+public class PaymentTimeoutTests : IClassFixture<WebApplicationFactory<Program>>
+{
+    private readonly HttpClient client;
+    private readonly InMemoryOrderRepo orderRepo = new();
+    private readonly Mock<IPaymentsGateway> payments = new();
+
+    public PaymentTimeoutTests(WebApplicationFactory<Program> factory)
+    {
+        payments.Setup(p => p.ChargeAsync(It.IsAny<ChargeRequest>()))
+            .Returns(async () =>
+            {
+                await Task.Delay(50);
+                throw new UpstreamTimeoutException("payments");
+            });
+
+        client = factory.WithWebHostBuilder(b => b.ConfigureServices(s =>
+        {
+            s.AddSingleton<IOrderRepo>(orderRepo);
+            s.AddSingleton(payments.Object);
+        })).CreateClient();
+    }
+
+    [Fact]
+    public async Task Returns_504_when_payment_service_exceeds_deadline()
+    {
+        client.DefaultRequestHeaders.Authorization = new("Bearer", "tok_valid");
+        var body = new { items = new[] { new { sku = "A1", qty = 1 } }, paymentToken = "pm_ok" };
+
+        var response = await client.PostAsJsonAsync("/orders", body);
+
+        response.StatusCode.Should().Be(HttpStatusCode.GatewayTimeout);
+        var error = await response.Content.ReadFromJsonAsync<ErrorEnvelope>();
+        error!.Error.Code.Should().Be("UPSTREAM_TIMEOUT");
+        orderRepo.All().Should().BeEmpty();
+    }
+}
+{{< /tab >}}
+{{< tab header="JavaScript" lang="javascript" >}}
 test("returns 504 when payment service exceeds deadline", async () => {
   const slowPayments = {
     charge: () => new Promise((_, reject) => {
@@ -91,6 +161,7 @@ test("returns 504 when payment service exceeds deadline", async () => {
   expect(res.body.error.code).toBe("UPSTREAM_TIMEOUT");
   expect(orderRepo.all()).toHaveLength(0);
 });
-```
+{{< /tab >}}
+{{< /tabpane >}}
 
 The test verifies three things at once: the documented status code, the structured error body the API contract promises, and that no partial state was committed.

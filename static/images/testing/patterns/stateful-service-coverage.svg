@@ -1,92 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 632"
      role="img" aria-labelledby="ssc-title ssc-desc"
      font-family="system-ui, -apple-system, sans-serif" font-size="13">
 
-  <title id="ssc-title">Stateful Service: layers tested by each test type</title>
+  <title id="ssc-title">Stateful Service: layers and the tests that cover each</title>
   <desc id="ssc-desc">
-    A coverage matrix for the stateful service pattern. Rows are the architectural layers: state machine logic, persistence and checkpointing, single-node concurrency, replication and leader election, connection lifecycle, the persistence engine (external), and the multi-node cluster (external). Columns are the test types: solitary unit, component (in-band, single node), gateway integration, cluster tests, and out-of-band soak and chaos. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover state transitions. Component tests cover persistence, recovery, and single-node concurrency with real persistence. Gateway integration tests pin the persistence protocol against the real production engine. Cluster tests exercise replication and leader election against a multi-node testcontainer setup with the real consensus library. Out-of-band soak tests catch unbounded growth, slow leaks, and replication-lag drift over hours or days against a deployed instance.
+    Six architectural layers stacked top to bottom. The first five (state machine logic, persistence and recovery, single-node concurrency, replication and leader election, and memory bounds and long-run behaviour) are inside the component boundary. Below the dashed component boundary, the persistence engine is drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover state transitions. Component tests cover persistence, recovery, and single-node concurrency. Cluster tests exercise replication and leader election against a multi-node testcontainer setup. Soak and chaos tests run out of band against a deployed instance.
   </desc>
 
-  <rect width="760" height="470" fill="#fafafa" rx="4"/>
+  <rect width="720" height="632" fill="#fafafa" rx="4"/>
 
   <!-- Title -->
-  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
-    Stateful Service: Layers Tested by Each Test Type
+  <text x="360" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    Stateful Service: Layers and the Tests That Cover Each
   </text>
 
-  <!-- Column headers -->
-  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+  <!-- Inside boundary label -->
+  <text x="40" y="56" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#224968">
+    INSIDE THE COMPONENT BOUNDARY
+  </text>
 
-  <rect x="180" y="56" width="108" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
-  <text x="234" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
-  <text x="234" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+  <!-- Layer 1: State machine logic -->
+  <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="68" width="6" height="60" fill="#224968"/>
+  <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">State machine logic</text>
+  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="116" font-size="11" font-style="italic" fill="#556">Pure transitions; documented machine</text>
 
-  <rect x="290" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="344" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
-  <text x="344" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(single-node)</text>
+  <!-- Layer 2: Persistence and recovery -->
+  <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="136" width="6" height="60" fill="#224968"/>
+  <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Persistence and recovery</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="184" font-size="11" font-style="italic" fill="#556">State survives restart; consistent state after crash mid-write</text>
 
-  <rect x="400" y="56" width="108" height="36" rx="4" fill="#30648e" stroke="#224968"/>
-  <text x="454" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
-  <text x="454" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+  <!-- Layer 3: Single-node concurrency -->
+  <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="204" width="6" height="60" fill="#224968"/>
+  <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Single-node concurrency</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Serialized mutations; connection lifecycle and reconnect</text>
 
-  <rect x="510" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="564" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Cluster</text>
-  <text x="564" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Tests</text>
+  <!-- Layer 4: Replication and leader election -->
+  <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="272" width="6" height="60" fill="#224968"/>
+  <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Replication and leader election</text>
+  <a href="/docs/testing/glossary/#cluster-test" target="_top"><rect x="600" y="282" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cluster tests</text></a>
+  <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Followers stay in sync; minority partition steps down; no split-brain</text>
 
-  <rect x="620" y="56" width="108" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="674" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">Soak / Chaos</text>
-  <text x="674" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(out-of-band)</text>
+  <!-- Layer 5: Memory bounds / long-run -->
+  <rect x="30" y="340" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="340" width="6" height="60" fill="#224968"/>
+  <text x="50" y="364" font-size="14" font-weight="700" fill="#1a2a3a">Memory bounds and long-run behaviour</text>
+  <a href="/docs/testing/glossary/#soak-test" target="_top"><rect x="566" y="350" width="114" height="20" rx="10" fill="#6c757d"/><text x="623" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Soak / chaos (OOB)</text></a>
+  <text x="50" y="388" font-size="11" font-style="italic" fill="#556">Eviction policy holds; no unbounded growth; replication-lag stays in budget</text>
 
-  <!-- Row 1: State machine logic -->
-  <rect x="30" y="104" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">State machine logic</text>
-  <text x="40" y="139" font-size="10" fill="#556">pure transitions; documented machine</text>
-  <circle cx="234" cy="126" r="9" fill="#4a6741"/>
-  <circle cx="344" cy="126" r="9" fill="#224968"/>
+  <!-- Boundary divider -->
+  <line x1="40" y1="418" x2="680" y2="418" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="360" y="414" text-anchor="middle" font-size="10" fill="#556" font-weight="600" font-style="italic">component boundary</text>
 
-  <!-- Row 2: Persistence / checkpointing -->
-  <rect x="30" y="148" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Persistence and recovery</text>
-  <text x="40" y="183" font-size="10" fill="#556">state survives restart; consistent state after crash mid-write</text>
-  <circle cx="344" cy="170" r="9" fill="#224968"/>
+  <!-- Outside boundary label -->
+  <text x="40" y="436" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#6c757d">
+    OUTSIDE THE BOUNDARY
+  </text>
 
-  <!-- Row 3: Single-node concurrency -->
-  <rect x="30" y="192" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Single-node concurrency</text>
-  <text x="40" y="227" font-size="10" fill="#556">serialized mutations; connection lifecycle and reconnect</text>
-  <circle cx="344" cy="214" r="9" fill="#224968"/>
-
-  <!-- Row 4: Replication / leader election -->
-  <rect x="30" y="236" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Replication and leader election</text>
-  <text x="40" y="271" font-size="10" fill="#556">followers stay in sync; minority partition steps down; no split-brain</text>
-  <circle cx="564" cy="258" r="9" fill="#224968"/>
-
-  <!-- Row 5: Memory bounds / leaks -->
-  <rect x="30" y="280" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Memory bounds and long-run behavior</text>
-  <text x="40" y="315" font-size="10" fill="#556">eviction policy holds; no unbounded growth; replication-lag stays in budget</text>
-  <circle cx="674" cy="302" r="9" fill="#6c757d"/>
-
-  <!-- Row 6: Persistence engine (external) -->
-  <rect x="30" y="324" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
-  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">Persistence engine (external)</text>
-  <text x="40" y="359" font-size="10" fill="#556">production engine; doubled or in-memory in single-node component, real in gateway</text>
-  <circle cx="344" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
-  <circle cx="454" cy="346" r="9" fill="#30648e"/>
-  <circle cx="564" cy="346" r="9" fill="#224968"/>
-  <circle cx="674" cy="346" r="9" fill="#6c757d"/>
+  <!-- Layer 6: Persistence engine (external) -->
+  <rect x="30" y="448" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="30" y="448" width="6" height="80" fill="#6c757d"/>
+  <text x="50" y="472" font-size="14" font-weight="700" fill="#1a2a3a">Persistence engine (external)</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="316" y="482" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="356" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="402" y="482" width="120" height="20" rx="10" fill="#30648e"/><text x="462" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#cluster-test" target="_top"><rect x="528" y="482" width="80" height="20" rx="10" fill="#224968"/><text x="568" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cluster</text></a>
+  <a href="/docs/testing/glossary/#soak-test" target="_top"><rect x="614" y="482" width="66" height="20" rx="10" fill="#6c757d"/><text x="647" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Soak</text></a>
+  <text x="50" y="514" font-size="11" font-style="italic" fill="#556">Production engine. Doubled or in-memory in single-node component; real in gateway and cluster.</text>
 
   <!-- Legend -->
-  <circle cx="44" cy="402" r="8" fill="#224968"/>
-  <text x="58" y="406" font-size="11" fill="#556">Real code under test</text>
-  <circle cx="206" cy="402" r="8" fill="none" stroke="#224968" stroke-width="2"/>
-  <text x="220" y="406" font-size="11" fill="#556">Doubled in this test</text>
-  <text x="370" y="402" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
-  <text x="44" y="438" font-size="10" fill="#556" font-style="italic">
-    Cluster tests run against a multi-node testcontainer setup with the real consensus library; this is the only way to exercise leader election and split-brain.
-  </text>
-  <text x="44" y="454" font-size="10" fill="#556" font-style="italic">
-    Soak and chaos tests run out of pipeline against a deployed instance; failures trigger review, not a build break.
-  </text>
+  <rect x="40" y="564" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="40" y="564" width="4" height="16" fill="#224968"/>
+  <text x="78" y="576" font-size="11" fill="#556">internal layer</text>
+  <rect x="320" y="565" width="24" height="14" rx="7" fill="#224968"/>
+  <text x="354" y="576" font-size="11" fill="#556">real code under test</text>
+
+  <rect x="40" y="588" width="30" height="16" rx="3" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="40" y="588" width="4" height="16" fill="#6c757d"/>
+  <text x="78" y="600" font-size="11" fill="#556">external (dashed border)</text>
+  <rect x="320" y="589" width="24" height="14" rx="7" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="354" y="600" font-size="11" fill="#556">doubled in this test</text>
+
 </svg>

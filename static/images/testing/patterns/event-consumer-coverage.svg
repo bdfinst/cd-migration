@@ -1,87 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 632"
      role="img" aria-labelledby="ecc-title ecc-desc"
      font-family="system-ui, -apple-system, sans-serif" font-size="13">
 
-  <title id="ecc-title">Event Consumer: layers tested by each test type</title>
+  <title id="ecc-title">Event Consumer: layers and the tests that cover each</title>
   <desc id="ecc-desc">
-    A coverage matrix for the event consumer pattern. Rows are the architectural layers: message handler logic, idempotency and ordering control, dead-letter and poison-message handling, backpressure, broker gateway, the external broker, and the schema registry. Columns are the test types: solitary unit, component (in-band, with broker doubles), gateway integration, broker contract, and out-of-band synthetic publish. Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms the doubles still match the real broker and schema registry.
+    Six architectural layers stacked top to bottom. The first five (message handler logic, idempotency and ordering, dead-letter and poison-message handling, backpressure, and broker gateway) are inside the component boundary. Below the dashed component boundary, the external broker and schema registry are drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover handler logic. Component tests cover idempotency, dead-letter handling, ordering, and backpressure with the broker doubled. Gateway integration tests pin the broker protocol against a real broker container. Broker contract tests pin the topic, schema, and headers. Out-of-band synthetic publish confirms doubles still match the real broker.
   </desc>
 
-  <rect width="760" height="440" fill="#fafafa" rx="4"/>
+  <rect width="720" height="632" fill="#fafafa" rx="4"/>
 
   <!-- Title -->
-  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
-    Event Consumer: Layers Tested by Each Test Type
+  <text x="360" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    Event Consumer: Layers and the Tests That Cover Each
   </text>
 
-  <!-- Column headers -->
-  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+  <!-- Inside boundary label -->
+  <text x="40" y="56" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#224968">
+    INSIDE THE COMPONENT BOUNDARY
+  </text>
 
-  <rect x="180" y="56" width="108" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
-  <text x="234" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
-  <text x="234" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+  <!-- Layer 1: Message handler logic -->
+  <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="68" width="6" height="60" fill="#224968"/>
+  <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Message handler logic</text>
+  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="116" font-size="11" font-style="italic" fill="#556">Pure transformation per message</text>
 
-  <rect x="290" y="56" width="108" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="344" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
-  <text x="344" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(in-band)</text>
+  <!-- Layer 2: Idempotency and ordering -->
+  <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="136" width="6" height="60" fill="#224968"/>
+  <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Idempotency and ordering</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="184" font-size="11" font-style="italic" fill="#556">Duplicate delivery absorbed; ordering policy enforced</text>
 
-  <rect x="400" y="56" width="108" height="36" rx="4" fill="#30648e" stroke="#224968"/>
-  <text x="454" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Gateway</text>
-  <text x="454" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Integration</text>
+  <!-- Layer 3: DLQ / poison -->
+  <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="204" width="6" height="60" fill="#224968"/>
+  <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Dead-letter and poison-message handling</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Malformed message routed to DLQ with correlation ID; consumer survives</text>
 
-  <rect x="510" y="56" width="108" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
-  <text x="564" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Broker</text>
-  <text x="564" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+  <!-- Layer 4: Backpressure -->
+  <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="272" width="6" height="60" fill="#224968"/>
+  <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Backpressure</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="282" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Consumer slows when downstream is slow; offsets uncommitted on failure</text>
 
-  <rect x="620" y="56" width="108" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="674" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">Synthetic</text>
-  <text x="674" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(out-of-band)</text>
+  <!-- Layer 5: Broker gateway -->
+  <rect x="30" y="340" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="340" width="6" height="60" fill="#224968"/>
+  <text x="50" y="364" font-size="14" font-weight="700" fill="#1a2a3a">Broker gateway</text>
+  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="426" y="350" width="144" height="20" rx="10" fill="#30648e"/><text x="498" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integration</text></a>
+  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="576" y="350" width="50" height="20" rx="10" fill="#6c757d"/><text x="601" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Brk.</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="632" y="350" width="48" height="20" rx="10" fill="#224968"/><text x="656" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
+  <text x="50" y="388" font-size="11" font-style="italic" fill="#556">Protocol, offset commits, consumer-group rebalancing</text>
 
-  <!-- Row 1: Handler logic -->
-  <rect x="30" y="104" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Message handler logic</text>
-  <text x="40" y="139" font-size="10" fill="#556">pure transformation per message</text>
-  <circle cx="234" cy="126" r="9" fill="#4a6741"/>
-  <circle cx="344" cy="126" r="9" fill="#224968"/>
+  <!-- Boundary divider -->
+  <line x1="40" y1="418" x2="680" y2="418" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="360" y="414" text-anchor="middle" font-size="10" fill="#556" font-weight="600" font-style="italic">component boundary</text>
 
-  <!-- Row 2: Idempotency / ordering -->
-  <rect x="30" y="148" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Idempotency and ordering</text>
-  <text x="40" y="183" font-size="10" fill="#556">duplicate delivery absorbed; ordering policy enforced</text>
-  <circle cx="344" cy="170" r="9" fill="#224968"/>
+  <!-- Outside boundary label -->
+  <text x="40" y="436" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#6c757d">
+    OUTSIDE THE BOUNDARY
+  </text>
 
-  <!-- Row 3: DLQ / poison -->
-  <rect x="30" y="192" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Dead-letter and poison-message handling</text>
-  <text x="40" y="227" font-size="10" fill="#556">malformed message routed to DLQ with correlation ID; consumer survives</text>
-  <circle cx="344" cy="214" r="9" fill="#224968"/>
-
-  <!-- Row 4: Backpressure -->
-  <rect x="30" y="236" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Backpressure</text>
-  <text x="40" y="271" font-size="10" fill="#556">consumer slows when downstream is slow; offsets uncommitted on failure</text>
-  <circle cx="344" cy="258" r="9" fill="#224968"/>
-
-  <!-- Row 5: Broker gateway -->
-  <rect x="30" y="280" width="700" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Broker gateway</text>
-  <text x="40" y="315" font-size="10" fill="#556">protocol, offset commits, consumer-group rebalancing</text>
-  <circle cx="344" cy="302" r="9" fill="#224968"/>
-  <circle cx="454" cy="302" r="9" fill="#30648e"/>
-
-  <!-- Row 6: External broker + registry -->
-  <rect x="30" y="324" width="700" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
-  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">External broker and schema registry</text>
-  <text x="40" y="359" font-size="10" fill="#556">doubled in component, real in gateway; synthetic publish post-deploy</text>
-  <circle cx="344" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
-  <circle cx="454" cy="346" r="9" fill="#30648e"/>
-  <circle cx="564" cy="346" r="9" fill="#6c757d"/>
-  <circle cx="674" cy="346" r="9" fill="#6c757d"/>
+  <!-- Layer 6: External broker and schema registry -->
+  <rect x="30" y="448" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="30" y="448" width="6" height="80" fill="#6c757d"/>
+  <text x="50" y="472" font-size="14" font-weight="700" fill="#1a2a3a">External broker and schema registry</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="316" y="482" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="356" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/testing/glossary/#gateway-integration-test" target="_top"><rect x="402" y="482" width="120" height="20" rx="10" fill="#30648e"/><text x="462" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Gateway integ.</text></a>
+  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="528" y="482" width="98" height="20" rx="10" fill="#6c757d"/><text x="577" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Broker contract</text></a>
+  <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="632" y="482" width="48" height="20" rx="10" fill="#6c757d"/><text x="656" y="496" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB</text></a>
+  <text x="50" y="514" font-size="11" font-style="italic" fill="#556">Doubled in component; real in gateway integration; OOB synthetic publish on a schedule.</text>
 
   <!-- Legend -->
-  <circle cx="44" cy="400" r="8" fill="#224968"/>
-  <text x="58" y="404" font-size="11" fill="#556">Real code under test</text>
-  <circle cx="206" cy="400" r="8" fill="none" stroke="#224968" stroke-width="2"/>
-  <text x="220" y="404" font-size="11" fill="#556">Doubled in this test</text>
-  <text x="370" y="404" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
+  <rect x="40" y="564" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="40" y="564" width="4" height="16" fill="#224968"/>
+  <text x="78" y="576" font-size="11" fill="#556">internal layer</text>
+  <rect x="320" y="565" width="24" height="14" rx="7" fill="#224968"/>
+  <text x="354" y="576" font-size="11" fill="#556">real code under test</text>
+
+  <rect x="40" y="588" width="30" height="16" rx="3" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="40" y="588" width="4" height="16" fill="#6c757d"/>
+  <text x="78" y="600" font-size="11" fill="#556">external (dashed border)</text>
+  <rect x="320" y="589" width="24" height="14" rx="7" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="354" y="600" font-size="11" fill="#556">doubled in this test</text>
+
 </svg>

@@ -12,13 +12,13 @@ A backend service that exposes an HTTP/gRPC/GraphQL API and owns its own data. N
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Domain logic | Business rules, invariants, state transitions | [Solitary unit tests]({{< relref "/docs/testing/test-types/unit" >}}) |
+| Domain logic | Business rules, invariants, state transitions | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
 | Module collaboration | Validators + repositories + domain working together | [Sociable unit tests]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) |
-| Persistence gateway | Query correctness, transaction boundaries, migrations against the real DB engine | Gateway integration tests (testcontainers running production engine and version) |
-| Assembled component | Routing, validation, business logic, and persistence wired together through the controller layer | [Component tests]({{< relref "/docs/testing/test-types/component" >}}) with persistence either real (testcontainers) or doubled (in-memory repository) |
-| Consumer expectations | What downstream consumers depend on | [Provider-side contract tests]({{< relref "/docs/testing/test-types/contract" >}}) |
+| Persistence gateway | Query correctness, transaction boundaries, migrations against the real DB engine | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (testcontainers running production engine and version) |
+| Assembled component | Routing, validation, business logic, and persistence wired together through the controller layer | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with persistence either real (testcontainers) or doubled (in-memory repository) |
+| Served API | What downstream consumers depend on | [Provider-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
 
-{{< figure src="/images/testing/patterns/api-provider-coverage.svg" alt="Coverage matrix showing which architectural layers each test type covers for an API provider. Rows are HTTP and API surface, domain logic, persistence adapter, and the external database. Columns are solitary unit, sociable unit, component (in-band), gateway integration, and provider contract. Solitary unit tests cover only domain logic. Sociable unit tests cover domain plus persistence adapter. Component tests cover all three internal layers with the database doubled. Gateway integration exercises the persistence adapter against the real database engine. Provider contract verifies the HTTP API surface against published consumer expectations." >}}
+{{< inline-svg src="/images/testing/patterns/api-provider-coverage.svg" alt="Layered diagram of an API provider showing four architectural layers stacked top to bottom. The first three are inside the component boundary: HTTP and API surface (covered by component tests and provider contract tests), domain logic (covered by solitary unit, sociable unit, and component tests), and persistence adapter (covered by sociable unit, gateway integration, and component tests). Below the dashed component boundary, the external database is doubled in component tests (in-memory or testcontainer) and used real in gateway integration tests against the production engine." >}}
 
 ## Positive test cases
 
@@ -60,9 +60,71 @@ Doubles in this pattern are mostly around persistence. Two layers keep them hone
 
 ## Example: component test
 
-A flow-oriented component test for an order-placement endpoint. The full app is assembled with an in-memory order repository and an in-memory event bus. The test drives the assembled component through its HTTP handlers via supertest, and asserts on observable outcomes (status, persisted state, emitted event):
+A flow-oriented component test for an order-placement endpoint. The full app is assembled with an in-memory order repository and an in-memory event bus. The test drives the assembled component through its HTTP handlers and asserts on observable outcomes (status, persisted state, emitted event):
 
-```javascript
+{{< tabpane >}}
+{{< tab header="Java" lang="java" >}}
+@SpringBootTest
+@AutoConfigureMockMvc
+class OrderPlacementTest {
+
+  @Autowired MockMvc mvc;
+  @Autowired InMemoryOrderRepo orderRepo;
+  @Autowired InMemoryEventBus events;
+
+  @Test
+  void places_order_with_valid_payment_creates_order_and_emits_OrderPlaced() throws Exception {
+    var body = """
+      { "items": [{"sku": "A1", "qty": 2}], "paymentToken": "pm_ok" }
+      """;
+
+    var result = mvc.perform(post("/orders")
+        .header("Authorization", "Bearer tok_valid")
+        .contentType(APPLICATION_JSON)
+        .content(body))
+      .andExpect(status().isCreated())
+      .andReturn();
+
+    var orderId = JsonPath.<String>read(result.getResponse().getContentAsString(), "$.id");
+    assertThat(orderRepo.findById(orderId)).isPresent();
+    assertThat(events.published()).anyMatch(e ->
+        e.type().equals("OrderPlaced") && e.orderId().equals(orderId));
+  }
+}
+{{< /tab >}}
+{{< tab header="C#" lang="csharp" >}}
+public class OrderPlacementTests : IClassFixture<WebApplicationFactory<Program>>
+{
+    private readonly HttpClient client;
+    private readonly InMemoryOrderRepo orderRepo = new();
+    private readonly InMemoryEventBus events = new();
+
+    public OrderPlacementTests(WebApplicationFactory<Program> factory)
+    {
+        client = factory.WithWebHostBuilder(b => b.ConfigureServices(s =>
+        {
+            s.AddSingleton<IOrderRepo>(orderRepo);
+            s.AddSingleton<IEventBus>(events);
+        })).CreateClient();
+    }
+
+    [Fact]
+    public async Task Places_order_with_valid_payment_creates_order_and_emits_OrderPlaced()
+    {
+        client.DefaultRequestHeaders.Authorization = new("Bearer", "tok_valid");
+        var body = new { items = new[] { new { sku = "A1", qty = 2 } }, paymentToken = "pm_ok" };
+
+        var response = await client.PostAsJsonAsync("/orders", body);
+
+        response.StatusCode.Should().Be(HttpStatusCode.Created);
+        var created = await response.Content.ReadFromJsonAsync<OrderCreated>();
+        orderRepo.FindById(created!.Id).Should().NotBeNull();
+        events.Published.Should().Contain(e =>
+            e.Type == "OrderPlaced" && e.OrderId == created.Id);
+    }
+}
+{{< /tab >}}
+{{< tab header="JavaScript" lang="javascript" >}}
 import request from "supertest";
 import { buildApp } from "./app.js";
 import { InMemoryOrderRepo } from "./test/in-memory-order-repo.js";
@@ -84,6 +146,7 @@ test("places order with valid payment creates order and emits OrderPlaced", asyn
     expect.objectContaining({ type: "OrderPlaced", orderId: res.body.id })
   );
 });
-```
+{{< /tab >}}
+{{< /tabpane >}}
 
 The test asserts on what a real caller can observe, not on private methods or call sequences inside the controller.

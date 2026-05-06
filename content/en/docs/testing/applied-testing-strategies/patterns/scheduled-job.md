@@ -14,14 +14,14 @@ This pattern has two test design challenges that the [API provider]({{< relref "
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Pure transformation logic | The data calculation itself, with no I/O | [Solitary unit tests]({{< relref "/docs/testing/test-types/unit" >}}) |
-| Source/sink gateways | Reading from sources, writing to sinks: protocol correctness, error mapping | Gateway integration tests against real source/sink containers or WireMock |
-| Job orchestration | Idempotency, partial failure recovery, checkpointing, locking, time-window logic | [Component tests]({{< relref "/docs/testing/test-types/component" >}}) through the job's invocation entrypoint, with gateway doubles, source/sink doubles, and an injected clock |
-| Process startup | Exit codes, signal handling, configuration loading, real environment wiring | A small set of component tests that invoke the deployed job binary |
-| Scheduling integration | The scheduler triggers the right entrypoint with the right arguments, environment, secrets, and concurrency settings | Post-deploy integration check against the real scheduler in a non-prod environment |
-| Observability | Job ran, succeeded/failed, duration, records processed, error count | Assertions in component tests |
+| Pure transformation logic | The data calculation itself, with no I/O | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
+| Source/sink gateways | Reading from sources, writing to sinks: protocol correctness, error mapping | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against real source/sink containers or WireMock |
+| Job orchestration | Idempotency, partial failure recovery, checkpointing, locking, time-window logic | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) through the job's invocation entrypoint, with gateway doubles, source/sink doubles, and an injected clock |
+| Process startup | Exit codes, signal handling, configuration loading, real environment wiring | [Deployed-binary tests]({{< relref "/docs/testing/glossary#deployed-binary-test" >}}) that invoke the real [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) |
+| Scheduling integration | The scheduler triggers the right entrypoint with the right arguments, environment, secrets, and concurrency settings | [Out-of-band integration check]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) against the real scheduler in a non-prod environment |
+| Observability | Job ran, succeeded/failed, duration, records processed, error count | Assertions in [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
 
-{{< figure src="/images/testing/patterns/scheduled-job-coverage.svg" alt="Coverage matrix for a scheduled job. Rows are pure transformation logic, job orchestration (idempotency, locking, time windows, checkpointing), source and sink gateways, process startup, and the external scheduler, system clock, source, and sink. Columns are solitary unit, component (in-band, with an injected clock and source and sink doubles), gateway integration, source and sink contract, deployed-binary tests, and out-of-band integration. Solitary unit tests cover pure transformation logic. Component tests cover orchestration with the clock and gateways doubled. Gateway integration exercises source and sink gateways against real containers. Deployed-binary tests cover process startup, configuration loading, and exit codes on the actual artifact the scheduler will invoke. The out-of-band check is what catches scheduler typos, secret resolution failures, and time-zone mismatches between the test clock and production wiring." >}}
+{{< inline-svg src="/images/testing/patterns/scheduled-job-coverage.svg" alt="Layered diagram of a scheduled job with six architectural layers. The first four (pure transformation logic, job orchestration, source and sink gateways, process startup) are inside the component boundary. Below the dashed boundary, the external source and sink and the external scheduler and system clock are drawn with dashed borders. Solitary unit tests cover pure transformation. Component tests cover orchestration with the clock and gateways doubled. Gateway integration tests pin source and sink protocols against real containers. Deployed-binary tests cover process startup on the actual artifact the scheduler will invoke. Out-of-band integration uses the real scheduler and clock on a schedule." >}}
 
 Process startup matters more here than for an API service, because scheduled jobs typically have non-trivial startup behavior (config loading, secret resolution, lock acquisition) that a component test with the SUT in-memory can bypass. The right shape is many component tests for behavior, plus one or two tests that invoke the actual deployed binary the scheduler will invoke.
 
@@ -55,7 +55,7 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 Three classes of doubles need validation, each through a different mechanism:
 
 1. **The injected clock.** Every [in-band test]({{< relref "/docs/testing/glossary#in-band-test" >}}) that depends on "now" uses an injected clock. Validate it with one [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) check that runs against the real system clock, exercises a known time-window calculation, and confirms the production wiring of the clock [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) is correct. This catches the "tests use UTC, prod uses container local time" class of bug.
-2. **Source and sink gateways.** Same model as the [API consumer pattern]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}). Gateway integration tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exercise each gateway against a real source/sink container or WireMock. Contract tests pin the shape. Post-deploy integration checks confirm the doubles still match the real systems on a schedule.
+2. **Source and sink gateways.** Same model as the [API consumer pattern]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}). Gateway integration tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exercise each gateway against a real source/sink container or WireMock. [Contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) pin the shape. Post-deploy integration checks confirm the doubles still match the real systems on a schedule.
 3. **The scheduler trigger.** The doubled trigger in component tests must match what the real scheduler invokes. Verify with a post-deploy integration check that runs the real scheduler against a deployed instance in a non-prod environment and confirms the entrypoint is found, the cron expression fires at the expected times, environment variables and secrets resolve, and the concurrency policy holds. This is the test that catches "passed in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}), didn't run in prod because the cron expression had a typo."
 
 ## Pipeline placement
@@ -69,28 +69,56 @@ Three classes of doubles need validation, each through a different mechanism:
 
 ## Example: time-window logic with an injected clock
 
-A test that pins the daily-report window calculation around a DST boundary. The clock is injected so the test deterministically simulates the moment of interest. `sourceDouble` and `sinkDouble` are field-level fakes set up in the test class; assertions use AssertJ:
+A test that pins the daily-report window calculation around a DST boundary. The clock is injected so the test deterministically simulates the moment of interest. `source` and `sink` are field-level fakes set up in the test class with seeded data for 2026-03-08 and 2026-03-09.
 
-```java
+{{< tabpane >}}
+{{< tab header="Java" lang="java" >}}
 @Test
 void daily_report_run_after_DST_spring_forward_uses_correct_window() {
-  // sourceDouble and sinkDouble are InMemoryReportSource / InMemoryReportSink
-  // initialized in @BeforeEach with seeded data for 2026-03-08 and 2026-03-09.
   Clock fixedClock = Clock.fixed(
       Instant.parse("2026-03-09T07:30:00Z"),
       ZoneOffset.UTC);
-  ReportJob job = new ReportJob(fixedClock, sourceDouble, sinkDouble);
+  ReportJob job = new ReportJob(fixedClock, source, sink);
 
   job.run();
 
-  Report emitted = sinkDouble.lastReport();
+  Report emitted = sink.lastReport();
   assertThat(emitted.windowStart())
       .isEqualTo(Instant.parse("2026-03-08T05:00:00Z"));
   assertThat(emitted.windowEnd())
       .isEqualTo(Instant.parse("2026-03-09T05:00:00Z"));
   assertThat(emitted.recordsProcessed())
-      .isEqualTo(sourceDouble.recordsForDay("2026-03-08"));
+      .isEqualTo(source.recordsForDay("2026-03-08"));
 }
-```
+{{< /tab >}}
+{{< tab header="C#" lang="csharp" >}}
+[Fact]
+public void Daily_report_run_after_DST_spring_forward_uses_correct_window()
+{
+    var fixedClock = new FakeClock(DateTimeOffset.Parse("2026-03-09T07:30:00Z"));
+    var job = new ReportJob(fixedClock, source, sink);
+
+    job.Run();
+
+    var emitted = sink.LastReport();
+    emitted.WindowStart.Should().Be(DateTimeOffset.Parse("2026-03-08T05:00:00Z"));
+    emitted.WindowEnd.Should().Be(DateTimeOffset.Parse("2026-03-09T05:00:00Z"));
+    emitted.RecordsProcessed.Should().Be(source.RecordsForDay("2026-03-08"));
+}
+{{< /tab >}}
+{{< tab header="JavaScript" lang="javascript" >}}
+test("daily report run after DST spring forward uses correct window", () => {
+  const fixedClock = { now: () => new Date("2026-03-09T07:30:00Z") };
+  const job = new ReportJob({ clock: fixedClock, source, sink });
+
+  job.run();
+
+  const emitted = sink.lastReport();
+  expect(emitted.windowStart).toEqual(new Date("2026-03-08T05:00:00Z"));
+  expect(emitted.windowEnd).toEqual(new Date("2026-03-09T05:00:00Z"));
+  expect(emitted.recordsProcessed).toBe(source.recordsForDay("2026-03-08"));
+});
+{{< /tab >}}
+{{< /tabpane >}}
 
 A separate [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) check runs the deployed binary against the real system clock once, to verify the production wiring of the clock dependency matches the doubled clock used here.

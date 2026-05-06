@@ -59,8 +59,8 @@ This prevents silent regressions where the code "works" but the operator can't s
 Three classes of perf tests, each with a different home in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}):
 
 1. **Per-endpoint perf budgets** in component tests. Simple latency assertion under no load (`assertThat(p99).isLessThan(50ms)`). Catches algorithmic regressions cheaply. Fits in CI Stage 1 if the assertions are tight and the runtime is stable.
-2. **Load tests** in acceptance. k6, Gatling, or Locust against a deployed instance. Validate p99 latency, throughput, and error rate at expected production load. Gates production promotion.
-3. **Soak tests** out of pipeline. Long-running load to catch memory leaks, file handle leaks, and slow drift. Scheduled, non-blocking.
+2. **Load tests** in [acceptance]({{< relref "/docs/testing/glossary#functional-acceptance-tests" >}}). k6, Gatling, or Locust against a deployed instance. Validate p99 latency, throughput, and error rate at expected production load. Gates production promotion.
+3. **[Soak tests]({{< relref "/docs/testing/glossary#soak-test" >}})** out of pipeline. Long-running load to catch memory leaks, file handle leaks, and slow drift. Scheduled, non-blocking.
 
 A perf regression that breaches a documented budget should block deploy. A regression within budget but worse than baseline should generate a finding for review, not a build failure: noisy alerts get ignored.
 
@@ -95,11 +95,11 @@ Empirical starting points for [in-band]({{< relref "/docs/testing/glossary#in-ba
 | 1 (API provider) | < 5 min | Most logic in unit and component tests |
 | 2 (API consumer) | < 5 min | More gateway and resilience tests than 1 |
 | 3 (scheduled job) | < 3 min | Plus a small set of tests that exercise the deployed binary |
-| 4 (UI) | < 8 min | JSDOM for the bulk; a representative subset in headless browser |
+| 4 (UI) | < 8 min | Component tests in headless browser via Playwright + the team's unit-testing framework |
 | 5 (event consumer) | < 5 min | Real broker container for gateway tests |
 | 6 (event producer) | < 5 min | Same |
 | 7 (CLI / library) | < 3 min | One pass per supported OS in CI matrix |
-| 8 (stateful service) | < 8 min | Real persistence; cluster tests in Stage 2 |
+| 8 (stateful service) | < 8 min | Real persistence; [cluster tests]({{< relref "/docs/testing/glossary#cluster-test" >}}) in Stage 2 |
 
 The total CD pipeline in-band suite under 10 minutes is the gating [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) at the team level. The first lever for hitting that budget is **parallel execution**: the suite should fan out across cores or runners, not run serially. Parallelism only works when tests are independent of each other - no shared mutable state, no ordering dependencies, no global fixtures that one test mutates and another reads. Decoupling tests is a prerequisite for speed, not an optimization on top of it.
 

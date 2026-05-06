@@ -14,13 +14,13 @@ The pattern is different because the consumer is a developer or another program,
 
 | Layer | Concern | Test type |
 | --- | --- | --- |
-| Pure logic | Functions, classes, parsers | [Solitary unit tests]({{< relref "/docs/testing/test-types/unit" >}}) |
-| CLI invocation | Argument parsing, exit codes, output streams | [Component tests]({{< relref "/docs/testing/test-types/component" >}}) through the CLI entrypoint |
-| Cross-platform | Path separators, line endings, signal handling | Tests run on every supported OS in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) matrix |
-| Public API surface | Library's exported types and functions | API surface tests (snapshot of the public API; diff fails the build) |
-| Documented examples | The README examples actually work | Doctests / executable docs |
+| Pure logic | Functions, classes, parsers | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
+| CLI invocation | Argument parsing, exit codes, output streams | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) through the CLI entrypoint |
+| Cross-platform | Path separators, line endings, signal handling | [Cross-OS test matrix]({{< relref "/docs/testing/glossary#cross-os-test-matrix" >}}) running the suite on every supported OS in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) |
+| Public API surface | Library's exported types and functions | [API surface tests]({{< relref "/docs/testing/glossary#api-surface-test" >}}) (snapshot of the public API; diff fails the build) |
+| Documented examples | The README examples actually work | [Doctests]({{< relref "/docs/testing/glossary#doctest" >}}) / executable docs |
 
-{{< figure src="/images/testing/patterns/cli-library-coverage.svg" alt="Coverage matrix for a CLI tool or library. Rows are pure logic and parsing, the CLI invocation surface or library API, the file system and subprocess gateway, the documented README examples, and the real OS, file system, and subprocess. Columns are solitary unit, component (in-band, through the CLI entrypoint or library API), gateway integration, API surface diff, doctests, and a cross-OS CI matrix. Solitary unit tests cover pure logic and parsing. Component tests cover invocation through the entrypoint. Gateway integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify README examples run against the real binary or library. The cross-OS CI matrix runs the suite on every supported OS to catch path, encoding, and signal-handling bugs." >}}
+{{< inline-svg src="/images/testing/patterns/cli-library-coverage.svg" alt="Layered diagram of a CLI tool or library with five architectural layers. The first four (pure logic and parsing, CLI invocation surface or library API, file system and subprocess gateway, documented README examples) are inside the component boundary. Below the dashed boundary, the real OS, file system, and subprocess are drawn with a dashed border. Solitary unit tests cover pure logic and parsing. Component tests cover invocation through the entrypoint. Gateway integration tests cover the file system and subprocess against the real OS in a temp directory. The API surface diff catches removal or rename of any public symbol. Doctests verify README examples run against the real binary or library. The cross-OS CI matrix runs the suite on every supported OS to catch platform-specific bugs." >}}
 
 ## Positive test cases
 

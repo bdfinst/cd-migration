@@ -2169,3 +2169,18 @@ pre.mermaid {
     color: #4a6a8a;
   }
 }
+
+// Inline-SVG figures: make labelled pills inside coverage diagrams look clickable.
+figure svg a {
+  cursor: pointer;
+}
+
+figure svg a:hover text,
+figure svg a:focus text {
+  text-decoration: underline;
+}
+
+figure svg a:focus-visible {
+  outline: 2px solid #224968;
+  outline-offset: 2px;
+}

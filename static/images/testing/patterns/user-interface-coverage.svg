@@ -1,104 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 532"
      role="img" aria-labelledby="uic-title uic-desc"
      font-family="system-ui, -apple-system, sans-serif" font-size="13">
 
-  <title id="uic-title">User Interface: layers tested by each test type</title>
+  <title id="uic-title">User Interface: layers and the tests that cover each</title>
   <desc id="uic-desc">
-    A coverage matrix for the user interface pattern. Rows are the architectural layers: pure rendering, component composition, feature behavior in the rendered DOM, the backend HTTP gateway, the in-memory renderer (such as JSDOM), the real browser engine, and the real backend API. Columns are the test types: solitary unit, sociable unit, JSDOM component, headless-browser component, consumer contract, and end-to-end (post-deploy). Filled dots mark layers exercised by real code; outlined dots mark doubled layers. Solitary unit tests cover pure rendering. Sociable unit tests cover composition. JSDOM component tests cover feature behavior, the backend gateway, and the in-memory renderer with the real backend doubled. Headless-browser component tests run a representative subset of the same flows in a real browser engine to catch what JSDOM gets wrong. Consumer contract tests pin what the UI sends and depends on at each backend boundary. End-to-end tests run post-deploy in a real browser against the real backend and never block the build.
+    Five architectural layers stacked top to bottom. The first four (pure rendering, component composition, feature behaviour in the rendered DOM, and backend HTTP gateway) are inside the component boundary. Below the dashed component boundary, the external backend API is drawn with a dashed border. Each band shows its name, a one-line description, and the test types that exercise it as small coloured pills. Solitary unit tests cover pure rendering. Sociable unit tests cover composition. Component tests driven by Playwright with the team's unit-testing framework cover feature behaviour with the backend stubbed at the network layer. Consumer contract tests pin each backend boundary. End-to-end tests run post-deploy in a real browser against the real backend.
   </desc>
 
-  <rect width="760" height="470" fill="#fafafa" rx="4"/>
+  <rect width="720" height="532" fill="#fafafa" rx="4"/>
 
   <!-- Title -->
-  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
-    User Interface: Layers Tested by Each Test Type
+  <text x="360" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a2a3a">
+    User Interface: Layers and the Tests That Cover Each
   </text>
 
-  <!-- Column headers -->
-  <text x="105" y="78" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2a3a">Layer</text>
+  <!-- Inside boundary label -->
+  <text x="40" y="56" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#224968">
+    INSIDE THE COMPONENT BOUNDARY
+  </text>
 
-  <rect x="180" y="56" width="92" height="36" rx="4" fill="#4a6741" stroke="#3a5331"/>
-  <text x="226" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solitary</text>
-  <text x="226" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+  <!-- Layer 1: Pure rendering -->
+  <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="68" width="6" height="60" fill="#224968"/>
+  <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Pure rendering</text>
+  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="488" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="540" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="116" font-size="11" font-style="italic" fill="#556">A component renders given props or state</text>
 
-  <rect x="274" y="56" width="92" height="36" rx="4" fill="#0d7a32" stroke="#0a6128"/>
-  <text x="320" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Sociable</text>
-  <text x="320" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Unit</text>
+  <!-- Layer 2: Component composition -->
+  <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="136" width="6" height="60" fill="#224968"/>
+  <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Component composition</text>
+  <a href="/docs/testing/glossary/#sociable-unit-test" target="_top"><rect x="488" y="146" width="104" height="20" rx="10" fill="#0d7a32"/><text x="540" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="184" font-size="11" font-style="italic" fill="#556">Composed components wire correctly</text>
 
-  <rect x="368" y="56" width="92" height="36" rx="4" fill="#224968" stroke="#1a3a54"/>
-  <text x="414" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
-  <text x="414" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(JSDOM)</text>
+  <!-- Layer 3: Feature behaviour in the DOM -->
+  <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="204" width="6" height="60" fill="#224968"/>
+  <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Feature behaviour in the rendered DOM</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Flows, form validation, a11y assertions, error UX (Playwright + unit-test framework)</text>
 
-  <rect x="462" y="56" width="92" height="36" rx="4" fill="#30648e" stroke="#224968"/>
-  <text x="508" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Component</text>
-  <text x="508" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">(browser)</text>
+  <!-- Layer 4: Backend HTTP gateway -->
+  <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="30" y="272" width="6" height="60" fill="#224968"/>
+  <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Backend HTTP gateway</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="448" y="282" width="80" height="20" rx="10" fill="#224968"/><text x="488" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="534" y="282" width="146" height="20" rx="10" fill="#6c757d"/><text x="607" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Consumer contract</text></a>
+  <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Fetch / request build, response parse, retry, auth headers</text>
 
-  <rect x="556" y="56" width="92" height="36" rx="4" fill="#6c757d" stroke="#565e64"/>
-  <text x="602" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Consumer</text>
-  <text x="602" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Contract</text>
+  <!-- Boundary divider -->
+  <line x1="40" y1="354" x2="680" y2="354" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="360" y="350" text-anchor="middle" font-size="10" fill="#556" font-weight="600" font-style="italic">component boundary</text>
 
-  <rect x="650" y="56" width="92" height="36" rx="4" fill="none" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="696" y="72" text-anchor="middle" font-size="11" font-weight="700" fill="#556">E2E</text>
-  <text x="696" y="86" text-anchor="middle" font-size="11" font-weight="700" fill="#556">(post-deploy)</text>
+  <!-- Outside boundary label -->
+  <text x="40" y="372" font-size="10" font-weight="700" letter-spacing="0.08em" fill="#6c757d">
+    OUTSIDE THE BOUNDARY
+  </text>
 
-  <!-- Row 1: Pure rendering -->
-  <rect x="30" y="104" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="123" font-size="12" font-weight="600" fill="#1a2a3a">Pure rendering</text>
-  <text x="40" y="139" font-size="10" fill="#556">a component renders given props or state</text>
-  <circle cx="226" cy="126" r="9" fill="#4a6741"/>
-  <circle cx="320" cy="126" r="9" fill="#0d7a32"/>
-  <circle cx="414" cy="126" r="9" fill="#224968"/>
-  <circle cx="508" cy="126" r="9" fill="#30648e"/>
-
-  <!-- Row 2: Composition -->
-  <rect x="30" y="148" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="167" font-size="12" font-weight="600" fill="#1a2a3a">Component composition</text>
-  <text x="40" y="183" font-size="10" fill="#556">composed components wire correctly</text>
-  <circle cx="320" cy="170" r="9" fill="#0d7a32"/>
-  <circle cx="414" cy="170" r="9" fill="#224968"/>
-  <circle cx="508" cy="170" r="9" fill="#30648e"/>
-
-  <!-- Row 3: Feature behavior + a11y -->
-  <rect x="30" y="192" width="712" height="44" fill="#ffffff" stroke="#e5e7eb"/>
-  <text x="40" y="211" font-size="12" font-weight="600" fill="#1a2a3a">Feature behavior in the rendered DOM</text>
-  <text x="40" y="227" font-size="10" fill="#556">flows, form validation, a11y assertions, error UX</text>
-  <circle cx="414" cy="214" r="9" fill="#224968"/>
-  <circle cx="508" cy="214" r="9" fill="#30648e"/>
-
-  <!-- Row 4: Backend gateway -->
-  <rect x="30" y="236" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb"/>
-  <text x="40" y="255" font-size="12" font-weight="600" fill="#1a2a3a">Backend HTTP gateway</text>
-  <text x="40" y="271" font-size="10" fill="#556">fetch / request build, response parse, retry, auth headers</text>
-  <circle cx="414" cy="258" r="9" fill="#224968"/>
-  <circle cx="508" cy="258" r="9" fill="#30648e"/>
-  <circle cx="602" cy="258" r="9" fill="#6c757d"/>
-
-  <!-- Row 5: Renderer (JSDOM vs browser) -->
-  <rect x="30" y="280" width="712" height="44" fill="#ffffff" stroke="#e5e7eb" stroke-dasharray="5,3"/>
-  <text x="40" y="299" font-size="12" font-weight="600" fill="#1a2a3a">Renderer (in-memory or real)</text>
-  <text x="40" y="315" font-size="10" fill="#556">JSDOM stands in for the browser; headless browser is the real renderer</text>
-  <circle cx="414" cy="302" r="9" fill="none" stroke="#224968" stroke-width="2"/>
-  <circle cx="508" cy="302" r="9" fill="#30648e"/>
-  <circle cx="696" cy="302" r="9" fill="#6c757d"/>
-
-  <!-- Row 6: Backend API (external) -->
-  <rect x="30" y="324" width="712" height="44" fill="#edf2f7" stroke="#e5e7eb" stroke-dasharray="5,3"/>
-  <text x="40" y="343" font-size="12" font-weight="600" fill="#1a2a3a">Backend API (external)</text>
-  <text x="40" y="359" font-size="10" fill="#556">doubled with MSW or service worker in pipeline; real in E2E</text>
-  <circle cx="414" cy="346" r="9" fill="none" stroke="#224968" stroke-width="2"/>
-  <circle cx="508" cy="346" r="9" fill="none" stroke="#30648e" stroke-width="2"/>
-  <circle cx="696" cy="346" r="9" fill="#6c757d"/>
+  <!-- Layer 5: Backend API (external) -->
+  <rect x="30" y="384" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="30" y="384" width="6" height="80" fill="#6c757d"/>
+  <text x="50" y="408" font-size="14" font-weight="700" fill="#1a2a3a">Backend API (external)</text>
+  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="490" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="530" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/testing/test-types/e2e/" target="_top"><rect x="606" y="418" width="74" height="20" rx="10" fill="#6c757d"/><text x="643" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">E2E</text></a>
+  <text x="50" y="450" font-size="11" font-style="italic" fill="#556">Stubbed via page.route in component tests; real in E2E smoke.</text>
 
   <!-- Legend -->
-  <circle cx="44" cy="402" r="8" fill="#224968"/>
-  <text x="58" y="406" font-size="11" fill="#556">Real code under test</text>
-  <circle cx="206" cy="402" r="8" fill="none" stroke="#224968" stroke-width="2"/>
-  <text x="220" y="406" font-size="11" fill="#556">Doubled in this test</text>
-  <text x="370" y="406" font-size="11" fill="#556">Empty cell: layer not exercised by that test type</text>
-  <text x="44" y="438" font-size="10" fill="#556" font-style="italic">
-    Run the full feature suite under JSDOM; run a representative subset in a headless browser to validate JSDOM has not lied to you.
-  </text>
-  <text x="44" y="454" font-size="10" fill="#556" font-style="italic">
-    E2E happy-path smoke tests run post-deploy against the real browser and real backend; failures block the rollout, not the build.
-  </text>
+  <rect x="40" y="494" width="30" height="16" rx="3" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="40" y="494" width="4" height="16" fill="#224968"/>
+  <text x="78" y="506" font-size="11" fill="#556">internal layer</text>
+  <rect x="320" y="495" width="24" height="14" rx="7" fill="#224968"/>
+  <text x="354" y="506" font-size="11" fill="#556">real code under test</text>
+
+  <rect x="40" y="518" width="30" height="16" rx="3" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <rect x="40" y="518" width="4" height="16" fill="#6c757d"/>
+  <text x="78" y="530" font-size="11" fill="#556">external (dashed border)</text>
+  <rect x="320" y="519" width="24" height="14" rx="7" fill="none" stroke="#224968" stroke-width="2"/>
+  <text x="354" y="530" font-size="11" fill="#556">doubled in this test</text>
+
 </svg>

@@ -1,0 +1,9 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $svgPath := printf "static%s" $src -}}
+<figure class="figure">
+  {{- readFile $svgPath | safeHTML -}}
+  {{- with $alt -}}
+  <figcaption class="figure-caption sr-only">{{ . }}</figcaption>
+  {{- end -}}
+</figure>
