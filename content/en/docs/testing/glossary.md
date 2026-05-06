@@ -155,9 +155,11 @@ Referenced in:
 
 ### Gateway Integration Test
 
-A narrow test of a single gateway (HTTP client, DB query layer, message producer, file-system adapter) exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. Pins the protocol-level behaviour: serialization, deserialization, header handling, timeout behaviour, error mapping, transactional semantics. Deterministic enough to run [in-band](#in-band-test) when fast; otherwise pushed to a later CI stage but still gating.
+A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. The test type carries the legacy name "gateway integration test" (Toby Clemson) because "gateway" was the original abstraction name for these adapters.
 
-Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a gateway integration test isolates one gateway, not a flow across multiple components. Different from a [contract test](#contract-test) of the same gateway: contract tests pin shape against doubles; gateway integration tests pin protocol against the real dependency.
+Pins the protocol-level behaviour: serialization, deserialization, header handling, timeout behaviour, error mapping, transactional semantics. Deterministic enough to run [in-band](#in-band-test) when fast; otherwise pushed to a later CI stage but still gating.
+
+Different from a broader [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}): a gateway integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles; gateway integration tests pin protocol against the real dependency.
 
 Referenced in:
 [API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),

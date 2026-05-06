@@ -14,7 +14,7 @@ A backend service that exposes an HTTP/gRPC/GraphQL API and owns its own data. N
 | --- | --- | --- |
 | Domain logic | Business rules, invariants, state transitions | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
 | Module collaboration | Validators + repositories + domain working together | [Sociable unit tests]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) |
-| Persistence gateway | Query correctness, transaction boundaries, migrations against the real DB engine | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (testcontainers running production engine and version) |
+| Persistence adapter | Query correctness, transaction boundaries, migrations against the real DB engine | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) (testcontainers running production engine and version) |
 | Assembled component | Routing, validation, business logic, and persistence wired together through the controller layer | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) with persistence either real (testcontainers) or doubled (in-memory repository) |
 | Served API | What downstream consumers depend on | [Provider-side contract tests]({{< relref "/docs/testing/glossary#contract-test" >}}) |
 

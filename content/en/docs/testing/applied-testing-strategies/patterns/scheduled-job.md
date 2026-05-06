@@ -15,8 +15,8 @@ This pattern has two test design challenges that the [API provider]({{< relref "
 | Layer | Concern | Test type |
 | --- | --- | --- |
 | Pure transformation logic | The data calculation itself, with no I/O | [Solitary unit tests]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) |
-| Source/sink gateways | Reading from sources, writing to sinks: protocol correctness, error mapping | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against real source/sink containers or WireMock |
-| Job orchestration | Idempotency, partial failure recovery, checkpointing, locking, time-window logic | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) through the job's invocation entrypoint, with gateway doubles, source/sink doubles, and an injected clock |
+| Source and sink adapters | Reading from sources, writing to sinks: protocol correctness, error mapping | [Gateway integration tests]({{< relref "/docs/testing/glossary#gateway-integration-test" >}}) against real source/sink containers or WireMock |
+| Job orchestration | Idempotency, partial failure recovery, checkpointing, locking, time-window logic | [Component tests]({{< relref "/docs/testing/glossary#component-test" >}}) through the job's invocation entrypoint, with client doubles, source/sink doubles, and an injected clock |
 | Process startup | Exit codes, signal handling, configuration loading, real environment wiring | [Deployed-binary tests]({{< relref "/docs/testing/glossary#deployed-binary-test" >}}) that invoke the real [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) |
 | Scheduling integration | The scheduler triggers the right entrypoint with the right arguments, environment, secrets, and concurrency settings | [Out-of-band integration check]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) against the real scheduler in a non-prod environment |
 | Observability | Job ran, succeeded/failed, duration, records processed, error count | Assertions in [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) |
@@ -61,7 +61,7 @@ Three classes of doubles need validation, each through a different mechanism:
 ## Pipeline placement
 
 - Unit and component tests: CI Stage 1.
-- Source/sink gateway integration tests: CI Stage 1 or Stage 2.
+- Gateway integration tests for the source and sink adapters: CI Stage 1 or Stage 2.
 - Contract tests for each source and sink: CI Stage 1.
 - Component tests of the deployed binary (small set): CI Stage 1 or Stage 2.
 - Real-clock and real-scheduler integration check: out of pipeline, scheduled, against a non-prod environment.
