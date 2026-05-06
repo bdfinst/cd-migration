@@ -585,6 +585,17 @@ sections:
             title: "Tokenomics: Optimizing Token Usage in Agent Architecture"
           - file: pitfalls-and-metrics.md
             title: "Pitfalls and Metrics"
+
+      - path: evaluation/
+        title: "Evaluation & Quality"
+        page_count: 3
+        pages:
+          - file: ai-eval-methodology.md
+            title: "AI Eval Methodology for Coding Tools"
+          - file: team-ai-evals.md
+            title: "Team AI Evals for Coding Tools"
+          - file: platform-ai-evals.md
+            title: "AI Evals for AI Enablement Platforms"
     pages:
       - file: glossary.md
         title: "Agentic CD Glossary"
