@@ -10,8 +10,9 @@ description: >
 
 ## Why speed has a threshold
 
-The 10-minute [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) target and the preference for sub-second unit tests are not arbitrary. They come
-from how human cognition handles interrupted work. When a developer makes a change and waits for
+The 10-minute [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) target and the preference for sub-second unit tests are not arbitrary. They are
+long-standing conventions in CD practice, and they align with how human cognition handles
+interrupted work. When a developer makes a change and waits for
 test results, three things determine whether that feedback is useful: whether the developer still
 holds the mental model of the change, whether they can act on the result immediately, and whether
 the wait is short enough that they do not context-switch to something else.
@@ -38,14 +39,16 @@ Different feedback speeds produce fundamentally different developer behaviors:
 |--------------|-------------------|-----------------|
 | **Under 1 second** | Feels instantaneous. The developer stays in flow, treating the test result as part of the editing cycle.[^nielsen-1993] | Working memory is fully intact. The change and the result are experienced as a single action. |
 | **1 to 10 seconds** | The developer waits. Attention may drift briefly but returns without effort. | Working memory is intact. The developer can act on the result immediately. |
-| **10 seconds to 2 minutes** | The developer starts to feel the wait. They may glance at another window or check a message, but they do not start a new task. | Working memory begins to decay. The developer can still recover context quickly, but each additional second increases the chance of distraction.[^nielsen-1993] |
+| **10 seconds to 2 minutes** | The developer starts to feel the wait. They may glance at another window or check a message, but they do not start a new task. | Working memory begins to decay. Nielsen's 10-second limit marks the point where attention starts to wander;[^nielsen-1993] beyond it, each additional second increases the chance of distraction (extrapolated from the same perceptual thresholds). |
 | **2 to 10 minutes** | The developer context-switches. They check email, review a PR, or start thinking about a different problem. When the result arrives, they must actively return to the original task. | Working memory is partially lost. Rebuilding context takes several minutes depending on the complexity of the change.[^mark-2008] |
 | **Over 10 minutes** | The developer fully disengages and starts a different task. The test result arrives as an interruption to whatever they are now doing. | Working memory of the original change is gone. Rebuilding it takes upward of 23 minutes.[^mark-2008] Investigating a failure means re-reading code they wrote an hour ago. |
 
-The 10-minute CI target exists because it is the boundary between "developer waits and acts on
-the result" and "developer starts something else and pays a full context-switch penalty." Below
-10 minutes, feedback is actionable. Above 10 minutes, feedback becomes an interruption. [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}})'s
-research on continuous integration reinforces this: tests should complete in under 10 minutes to
+The conventional 10-minute CI target lines up with the boundary between "developer waits and acts
+on the result" and "developer starts something else and pays a full context-switch penalty."
+Below 10 minutes, feedback is actionable. Above 10 minutes, feedback becomes an interruption. The
+number itself is an established CD convention rather than a figure the cognitive research
+produces directly, but [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}})'s research on
+continuous integration converges on the same target: tests should complete in under 10 minutes to
 support the fast feedback loops that high-performing teams depend on.[^dora-ci]
 
 ## What this means for test architecture

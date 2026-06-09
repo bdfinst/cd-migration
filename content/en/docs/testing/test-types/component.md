@@ -55,7 +55,7 @@ Two boundary cases worth naming:
 | Property        | Value                                              |
 |-----------------|----------------------------------------------------|
 | **Speed**       | Milliseconds to seconds                            |
-| **Determinism** | Always deterministic                               |
+| **Determinism** | Deterministic (with per-test isolation when a real engine is used) |
 | **Scope**       | One backend service or one frontend component      |
 | **Dependencies**| Systems the team doesn't control are doubled       |
 | **Network**     | Localhost only (testcontainers permitted)          |

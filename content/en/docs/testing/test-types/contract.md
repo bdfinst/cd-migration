@@ -188,16 +188,22 @@ describe("Inventory Service - Provider Verification", () => {
 A contract-first schema validation test verifying a provider response against an OpenAPI spec:
 
 {{< card code=true header="**Contract-first test - OpenAPI schema validation**" lang="javascript" >}}
+// The OpenAPI document is the source of truth. Validate the whole response
+// against the named schema rather than hand-checking individual fields - a
+// field-by-field check drifts from the spec the moment the spec changes.
+const validator = openApiValidator(openApiSpec);
+
 describe("GET /stock/:id - OpenAPI contract", () => {
   it("should return a response conforming to the published schema", async () => {
     const response = await fetch("http://localhost:3001/stock/item-42");
     const body = await response.json();
 
-    // Validate against the OpenAPI schema, not specific values
     expect(response.status).toBe(200);
-    expect(typeof body.available).toBe("boolean");
-    expect(typeof body.quantity).toBe("number");
-    // Additional fields the consumer does not use are not asserted on
+
+    // Asserts structure, types, required fields, and additionalProperties
+    // rules exactly as the OpenAPI schema declares them.
+    const result = validator.validate(body, "StockResponse");
+    expect(result.errors).toEqual([]);
   });
 });
 {{< /card >}}
