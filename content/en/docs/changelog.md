@@ -7,6 +7,22 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-06-09 - Give accessibility testing a single home
+
+Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home. Those three pages now point to this section as the strategy hub while keeping their concrete examples.
+
+## 2026-06-09 - Testing content critical-review fixes
+
+Resolved internal contradictions and weak examples surfaced by a review of the testing content:
+
+- Reconciled when a real database may run in the pre-merge suite. A team-controlled, per-test-isolated testcontainer is now consistently described as in-band and deterministic across [Architecting Tests for CD]({{< relref "/docs/testing" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), and [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}); only shared or external systems are forbidden in-band. Stopped mislabeling testcontainers as "in-memory fakes."
+- Disambiguated the overloaded term "integration test." Added a section to [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) distinguishing the out-of-band check from the in-band [adapter integration test]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}), and corrected the in-band pipeline figure caption (contract tests, not integration tests).
+- Replaced the Java unit-test example in [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}) with a sociable test of real domain logic; the previous mock pass-through asserted nothing meaningful.
+- Clarified in [Architecting Tests for CD]({{< relref "/docs/testing" >}}) that acceptance gates fire on deterministic thresholds even when the underlying test is statistical, so the "do not gate on non-deterministic tests" rule no longer reads as a contradiction.
+- Conditioned the "delete the corresponding E2E tests" migration step in [Testing Antipatterns]({{< relref "/docs/testing/antipatterns" >}}) on the out-of-band double validation actually running.
+- Softened the cognitive-science framing in [Test Feedback Speed]({{< relref "/docs/testing/feedback-speed" >}}): the 10-minute target is a CD convention the research aligns with, not a figure derived from it, and Nielsen's thresholds are no longer cited beyond what they measured.
+- Made the contract-first example in [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) validate against the OpenAPI schema instead of hand-checking fields, and qualified the "always deterministic" and "regression-tested" claims.
+
 ## 2026-05-06 - Restructure CD Testing menu into "Testing Tips"
 
 Renamed the testing section's sidebar entry from "CD Testing" to "Testing Tips" and reorganized:

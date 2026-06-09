@@ -98,21 +98,33 @@ describe("castArray", () => {
 });
 {{< /card >}}
 
-A Java unit test using a mocking framework to isolate the system under test:
+A Java sociable unit test exercising real domain logic through its public interface. The
+collaborators (the pricing policy and the order model) are real objects, not mocks, and the test
+asserts on the observable outcome - the computed total - rather than on which methods were called:
 
-{{< card code=true header="**Java unit test with mocking framework stub isolating the controller**" lang="java" >}}
+{{< card code=true header="**Java sociable unit test for a bulk-discount pricing rule**" lang="java" >}}
 @Test
-public void shouldReturnUserDetails() {
-    // Arrange
-    User mockUser = new User("Ada", "Engineering");
-    when(userService.getUserInfo("u123")).thenReturn(mockUser);
+public void appliesBulkDiscountWhenQuantityReachesThreshold() {
+    // Arrange: real collaborators, no test doubles - this is pure in-process logic
+    PricingPolicy pricing = new PricingPolicy(
+        bulkThreshold(10), bulkDiscountRate(0.15));
+    Order order = new Order(new LineItem("widget", money("20.00"), quantity(12)));
 
     // Act
-    User result = userController.getUser("u123");
+    Money total = pricing.totalFor(order);
 
-    // Assert
-    assertEquals("Ada", result.getName());
-    assertEquals("Engineering", result.getDepartment());
+    // Assert: the observable result, not the sequence of internal calls
+    // 12 * 20.00 = 240.00, less 15% = 204.00
+    assertEquals(money("204.00"), total);
+}
+
+@Test
+public void chargesFullPriceBelowTheThreshold() {
+    PricingPolicy pricing = new PricingPolicy(
+        bulkThreshold(10), bulkDiscountRate(0.15));
+    Order order = new Order(new LineItem("widget", money("20.00"), quantity(9)));
+
+    assertEquals(money("180.00"), pricing.totalFor(order));
 }
 {{< /card >}}
 

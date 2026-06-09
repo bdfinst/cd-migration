@@ -80,7 +80,7 @@ The right first move depends on what the suite looks like now. Five common start
 
 1. Inventory the flows the E2E suite exercises. Pick the top five that fail most often.
 2. Build [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) for those flows. Double the backend through the gateway the team owns.
-3. Once green, delete the corresponding E2E tests. Don't keep both: duplicated coverage doubles the maintenance cost without doubling the confidence.
+3. Once those component tests are green *and* the doubles they rely on are backed by a [contract test]({{< relref "/docs/testing/test-types/contract" >}}) plus an [out-of-band check]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) that is actually running and watched, delete the corresponding E2E tests. Don't keep both: duplicated coverage doubles the maintenance cost without doubling the confidence. Until that out-of-band validation is in place and monitored, keep one real-integration smoke test per flow - the component test's confidence rests on doubles, and deleting the last real-integration signal before anything proves those doubles still match reality just moves the risk somewhere you can't see it.
 
 ### If most "unit" tests mock third-party SDKs
 

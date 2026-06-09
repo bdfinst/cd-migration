@@ -3,7 +3,7 @@ title: "Cross-Cutting Concerns"
 linkTitle: "Cross-Cutting Concerns"
 weight: 3
 description: >
-  Concerns that cut across every pattern: authn/authz, database migrations, fixtures, observability, performance, mutation testing, flake handling, and time budgets.
+  Concerns that cut across every pattern: authn/authz, database migrations, fixtures, observability, accessibility, performance, mutation testing, flake handling, and time budgets.
 ---
 
 The [patterns]({{< relref "/docs/testing/applied-testing-strategies/patterns" >}}) describe testing organized by component shape. The concerns below cut across all patterns and deserve dedicated coverage in any non-trivial system.
@@ -53,6 +53,22 @@ The pattern: in [component tests]({{< relref "/docs/testing/test-types/component
 3. The structured log line is emitted with correlation ID, error code, and any fields the runbook depends on.
 
 This prevents silent regressions where the code "works" but the operator can't see what's happening when it doesn't.
+
+## Accessibility testing
+
+For any pattern that renders a user interface, accessibility is a functional requirement, not a finishing touch, and it belongs in the same [in-band]({{< relref "/docs/testing/glossary#in-band-test" >}}) / [out-of-band]({{< relref "/docs/testing/glossary#out-of-band-test" >}}) split as every other concern on this page. The dividing line is the one the whole test architecture uses: deterministic checks gate the build; subjective judgment runs continuously and never blocks.
+
+The governing rule: **automate the deterministic rules, reserve human judgment for the rest.** A large share of [WCAG]({{< relref "/docs/testing/test-types/static#accessibility-linting" >}}) success criteria are machine-checkable - missing alt attributes, invalid or contradictory ARIA, unlabeled form controls, insufficient color contrast, broken heading hierarchy, a missing document language. Those are deterministic and belong in the pipeline. The remainder - whether alt text is *meaningful*, whether the screen-reader narrative makes sense, whether a flow is actually operable with a keyboard or a switch device - cannot be settled by a tool and must not be faked with one.
+
+Three tiers, mapped to pipeline placement:
+
+1. **Static analysis (in-band, blocks build).** Accessibility linting catches structural violations in source without rendering: missing alt text, ARIA misuse, label associations, heading order. It runs in the IDE, pre-commit, and CI, exactly like any other [static check]({{< relref "/docs/testing/test-types/static" >}}). Cheapest and fastest; treat high-severity findings as build-breaking, the same as a security finding.
+2. **Component tests against the rendered DOM (in-band, blocks build).** Some violations exist only in the rendered output: contrast computed after CSS resolves, focus order, dynamic ARIA state, keyboard operability. A scanner assertion inside a [component test]({{< relref "/docs/testing/test-types/component" >}}) (`expect(results).toHaveNoViolations()`) plus explicit keyboard-navigation assertions cover these deterministically, on every commit. The [user interface pattern]({{< relref "/docs/testing/applied-testing-strategies/patterns/user-interface" >}}) shows the full shape.
+3. **Manual audit and assistive-technology testing (out-of-band, never a gate).** Real screen-reader passes, keyboard-only walkthroughs, and expert review of whether the experience is coherent. This is continuous and informs the backlog; like exploratory testing, it is not a pass/fail checkpoint and must not gate a deploy.
+
+**The caveat that keeps tiers 1 and 2 honest:** automated checks detect only a fraction of WCAG success criteria - industry estimates commonly land between a third and a half, depending on the tool and the page. A green automated scan means "no *detectable* violations," not "accessible." Wiring a scanner into the build is necessary and high-value, but a team that reads a passing scan as proof of accessibility has the same false-confidence problem as a team that reads high line coverage as proof of correctness. The deterministic tiers shrink the manual surface; they do not remove it.
+
+This mirrors [observability as a tested artifact](#observability-as-a-tested-artifact) above: the machine-verifiable part of a human contract gets pinned in the deterministic suite, and the judgment part stays with people.
 
 ## Performance and load testing
 

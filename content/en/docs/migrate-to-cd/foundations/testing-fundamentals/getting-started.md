@@ -68,8 +68,13 @@ and replace that dependency with a test double.
 - List every external service your tests depend on: databases, APIs, message queues, file
   storage, third-party services.
 - For each dependency, decide the right test double approach:
-  - **In-memory fakes** for databases (e.g., SQLite, H2, testcontainers with local instances).
-  - **HTTP stubs** for external APIs (e.g., WireMock, nock, MSW).
+  - **In-memory fakes** for databases (e.g., an in-memory repository, or SQLite/H2 standing in
+    for the production engine). Fastest, but they do not exercise real SQL semantics.
+  - **A team-controlled real engine in a per-test testcontainer** when the production query
+    plan, constraints, or migrations matter. This is a real database, not a fake, but it stays
+    deterministic because the team pins the version and isolates state per test, so it runs
+    in-band.
+  - **HTTP stubs** for external APIs the team does not control (e.g., WireMock, nock, MSW).
   - **Fakes** for message queues, email services, and other infrastructure.
 - Replace the dependencies in your unit and component tests.
 - Move the original tests that hit real services into a separate suite. These become your

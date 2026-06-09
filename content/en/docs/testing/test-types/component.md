@@ -55,7 +55,7 @@ Two boundary cases worth naming:
 | Property        | Value                                              |
 |-----------------|----------------------------------------------------|
 | **Speed**       | Milliseconds to seconds                            |
-| **Determinism** | Always deterministic                               |
+| **Determinism** | Deterministic (with per-test isolation when a real engine is used) |
 | **Scope**       | One backend service or one frontend component      |
 | **Dependencies**| Systems the team doesn't control are doubled       |
 | **Network**     | Localhost only (testcontainers permitted)          |
@@ -127,6 +127,12 @@ describe("Login page", () => {
 Component tests already exercise the UI from the actor's perspective, making them the
 natural place to verify that interactions work for all users. Accessibility assertions
 fit alongside existing assertions rather than in a separate test suite.
+
+This is the second of three tiers in the
+[Accessibility testing]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}})
+strategy: static-analysis linting catches structural violations in source, component tests catch
+the rendered-only ones (computed contrast, focus order, keyboard operability), and manual audits
+cover the subjective remainder.
 
 {{< card code=true header="**Accessibility component test - keyboard navigation and WCAG assertions**" lang="javascript" >}}
 // accessibility scanner setup

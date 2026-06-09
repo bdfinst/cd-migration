@@ -84,6 +84,12 @@ control.** Acceptance tests gate production promotion after verifying the deploy
 Everything that involves real external systems runs post-deployment. This is what gives you
 the independence to deploy any time, regardless of the state of the world around you.
 
+Acceptance tests can include non-deterministic activities (load, chaos, resilience), but the
+gate decision is still deterministic: it fires on a documented pass/fail threshold - a
+performance budget, an error-rate ceiling, a required compliance check - not on the raw
+variability of the measurement. That is different from gating on a flaky test whose pass/fail
+flips for reasons unrelated to the change, which the Do Not list below warns against.
+
 ### Pre-merge vs post-merge
 
 The table maps to two distinct phases of your pipeline, each with different goals and
@@ -105,7 +111,7 @@ conflict when combined on trunk. The post-merge run catches these integration ef
 
 > **If a post-merge failure occurs, the team fixes it immediately. Trunk must always be releasable.**
 
-This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. If all tests pass, the artifact has been regression-tested.
+This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. A green run means the artifact has been regression-tested against every behavior the suite encodes - no more and no less, which is why the suite's coverage of prior behavior is what makes the signal trustworthy.
 
 ## good practices
 
@@ -131,13 +137,17 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
 - **Run automated accessibility checks on every commit.** WCAG compliance scans are fast,
   deterministic, and catch violations that are invisible to sighted developers. Treat them
   like security scans: automate the detectable rules and reserve manual review for
-  subjective judgment.
+  subjective judgment. See [Accessibility testing]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}})
+  for the full three-tier strategy and pipeline placement.
 
 ### Do Not
 
 - **Do not tolerate flaky tests.** Quarantine or delete them immediately.
-- **Do not gate your pipeline on non-deterministic tests.** E2E and integration test failures
-  should trigger review or alerts, not block deployment.
+- **Do not gate your pipeline on flaky, non-deterministic test signals.** E2E and integration
+  test failures - pass/fail that flips for reasons unrelated to the change - should trigger
+  review or alerts, not block deployment. (An acceptance gate that fires on a deterministic
+  threshold, like a performance budget, is not this: the gate decision is stable even when the
+  underlying measurement varies.)
 - **Do not couple your deployment to external system availability.** If a third-party API being
   down prevents you from deploying, your test architecture has a critical gap.
 - **Do not write tests after the fact as a checkbox exercise.** Tests written without
@@ -148,9 +158,12 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
   state.
 - **Do not use sleep/wait for timing-dependent tests.** Use explicit waits, polling, or
   event-driven assertions.
-- **Do not require a running database or external service for unit or component tests.** That
-  makes them integration or end-to-end tests - which is fine, but categorize them correctly
-  and run them post-deployment, not as a pre-merge gate.
+- **Do not let unit or component tests depend on a shared or external database or service.** A
+  real engine the team controls and isolates per test - a per-test testcontainer, or a
+  transaction that rolls back at teardown - is fine in-band and stays deterministic. A
+  *shared, mutable* database, or any service the team does not control, is not: that
+  reintroduces non-determinism, so categorize the test as integration or end-to-end and run it
+  post-deployment, not as a pre-merge gate.
 - **Do not make exploratory or usability testing a release gate.** These activities are
   continuous and inform product direction; they are not a pass/fail checkpoint before deployment.
 
