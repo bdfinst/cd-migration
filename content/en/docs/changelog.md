@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-06-09 - Give accessibility testing a single home
+
+Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home.
+
 ## 2026-06-09 - Testing content critical-review fixes
 
 Resolved internal contradictions and weak examples surfaced by a review of the testing content:
