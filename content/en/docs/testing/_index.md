@@ -137,7 +137,8 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
 - **Run automated accessibility checks on every commit.** WCAG compliance scans are fast,
   deterministic, and catch violations that are invisible to sighted developers. Treat them
   like security scans: automate the detectable rules and reserve manual review for
-  subjective judgment.
+  subjective judgment. See [Accessibility testing]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}})
+  for the full three-tier strategy and pipeline placement.
 
 ### Do Not
 

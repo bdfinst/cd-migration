@@ -114,6 +114,10 @@ catches known vulnerability patterns. Automated checks cover structural issues (
 text, invalid ARIA attributes, insufficient contrast ratios, broken heading hierarchy) while
 manual review covers subjective aspects like whether alt text is actually meaningful.
 
+Linting is the first of three tiers. For how it fits with component-test DOM scans and manual
+audits across the pipeline - and the caveat that automated checks catch only a fraction of WCAG
+criteria - see [Accessibility testing]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}}).
+
 An accessibility checker configuration running WCAG 2.1 AA checks against rendered pages:
 
 {{< card code=true header="**Accessibility checker configuration for WCAG 2.1 AA**" lang="json" >}}

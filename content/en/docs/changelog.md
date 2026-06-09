@@ -9,7 +9,7 @@ description: >
 
 ## 2026-06-09 - Give accessibility testing a single home
 
-Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home.
+Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home. Those three pages now point to this section as the strategy hub while keeping their concrete examples.
 
 ## 2026-06-09 - Testing content critical-review fixes
 
