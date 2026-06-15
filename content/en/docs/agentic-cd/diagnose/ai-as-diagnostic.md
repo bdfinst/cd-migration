@@ -103,8 +103,7 @@ it. The diagnostic that finds the missing knowledge and the tool that supplies i
 
 The payoff is lopsided because the flow of work is dominated by wait time and coordination cost.
 Pointing AI at that, rather than at the 12% that is coding, is what produces order-of-magnitude
-improvements in lead time and quality. As Daniel Brock puts it, "AI can annihilate coordination
-costs between devs and the rest of your org." Applied to real coordination-heavy work, removing
+improvements in lead time and quality. Applied to real coordination-heavy work, removing
 dependencies has compressed multi-week analyses into days and lifted on-time odds from single digits
 to coin-flip or better. Every win came from removing dependencies, not from typing faster.
 
