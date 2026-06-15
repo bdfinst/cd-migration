@@ -42,7 +42,7 @@ to win.
 
 ### 3. Knowledge decays across handoffs
 
-The tacit knowledge surviving `n` handoffs is about 1 / 2ⁿ. Half is lost at the first handoff,
+The unwritten knowledge surviving `n` handoffs is about 1 / 2ⁿ. Half is lost at the first handoff,
 three-quarters by the second. The intent in someone's head does not travel cleanly across an email,
 a ticket, and a standup. What arrives at the far end is a lossy copy.
 

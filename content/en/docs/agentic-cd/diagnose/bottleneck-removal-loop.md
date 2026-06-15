@@ -33,11 +33,11 @@ Use AI in every phase, not only to write code, but to solve old coordination pro
 
 You cannot remove a bottleneck you have not named. This phase produces a bottleneck map and a
 [classification]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}), and it starts with
-the real system rather than a maturity model. Use two complementary techniques.
+the real system rather than a maturity model. Use two techniques that work together.
 
 ### Technique 1: Walk the Value Stream (the Litmus Test)
 
-Take something from your backlog that is small, deterministic, and meaningful enough to touch the
+Take something from your backlog that is small, predictable, and meaningful enough to touch the
 real delivery system. Observe a developer, and where appropriate an agent, work the change from idea
 to production readiness, and record four things:
 
@@ -45,7 +45,7 @@ to production readiness, and record four things:
 - **Developer interventions** - every moment a human must supply context, make a judgment, execute a
   manual step, recover from tool friction, or interpret unclear feedback.
 - **Handoffs and approvals** - how many people must touch or sign off on the change.
-- **Agentic friction** - the subtler signal: where an agent can act, but not efficiently or safely.
+- **Agentic friction** - the quieter signal: where an agent can act, but not efficiently or safely.
   It searches for knowledge that should be discoverable, writes a test that does not reflect business
   behavior, waits on an environment that is hard to start, or makes a plausible change that violates
   an implicit standard.
@@ -53,7 +53,7 @@ to production readiness, and record four things:
 This is not a performance review of the developer or the agent. It is a performance review of the
 system. Ask where the work waited, where it required tribal knowledge, where safety depended on
 manual judgment, where security or compliance entered too late, and where the pipeline gave a clear
-next action versus merely saying no. The output is a map of exactly where the value stream stops.
+next action instead of just saying no. The output is a map of exactly where the value stream stops.
 
 ### Technique 2: Context Harvesting (Read the Process Exhaust with AI)
 
@@ -64,12 +64,11 @@ People navigate it by knowing whom to ask. An agent cannot, and neither can a ne
 
 Point AI at that exhaust. Have it read the chat history around a stuck request, the wikis and
 runbooks for a service, the ticket trail of a recurring delay, and the transcripts of the meetings
-where decisions were actually made. Then ask it to reconstruct the real process: who is involved,
+where decisions were actually made. Then ask it to piece together the real process: who is involved,
 what each handoff waits on, where the same questions get re-asked, and which knowledge lives in a
-single person's head. What once took weeks of interviews becomes a synthesis an agent produces in
-hours.
+single person's head. What once took weeks of interviews now takes an agent a few hours.
 
-Context harvesting does double duty. It accelerates the diagnosis, and it produces the first durable
+Context harvesting does double duty. It speeds up the diagnosis, and it produces the first durable
 artifact, a written account of how the process actually works, that Phase 3 will build on. In the
 agent era, the context you harvest here becomes infrastructure later.
 

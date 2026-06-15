@@ -7,8 +7,8 @@ description: >
 ---
 
 {{% pageinfo %}}
-The reflexive use of AI is to generate more code. The high-leverage use is to remove the
-dependencies that dominate lead time. This page holds the four convictions a leader needs for that
+The obvious use of AI is to generate more code. The bigger win is to remove the
+dependencies that dominate lead time. This page holds the four beliefs a leader needs for that
 to work, and the five properties that turn the [Golden Rule]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-golden-rule" >}})
 into specific moves.
 {{% /pageinfo %}}
@@ -17,13 +17,13 @@ into specific moves.
 
 ### Principle 1: Treat AI as a Diagnostic Before an Accelerator
 
-The first gift AI gives an enterprise is not speed. It is visibility. When an
+The first capability AI gives an enterprise is not speed; it's visibility. When an
 [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) struggles to make a small change, it
-reveals where the system depends on implicit knowledge, a dependency you could not see before. When
-generated tests are brittle, behavior was never specified. When code is ready but cannot move, the
-constraint was downstream all along.
+reveals where the system depends on implicit knowledge, a dependency you could not see before. If
+generated tests are brittle, behavior was never specified. And when code is ready but cannot move,
+that constraint was downstream all along.
 
-Read these as system signals, not tool immaturity. Every place an agent stalls is a coordination
+Read these as system signals, not "AI is the problem." Every place an agent stalls is a coordination
 cost made visible, and the start of your improvement backlog.
 
 This is the most honest feedback a delivery system can get, because an agent is a literal executor.
@@ -45,26 +45,26 @@ exactly as coupled as before. Two measures matter, and neither is adoption.
   [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), more frequent safe
   delivery, less work aging in queues.
 
-Count the dependencies you remove, but judge yourself on whether the system got faster at turning
+Count the dependencies you removed, and the subsequent time saved, but judge yourself on whether the system got faster at turning
 ideas into value. Output is abundant. Accelerated flow is scarce.
 
 ### Principle 3: Use the AI Enablement Properties to Accelerate
 
-Once you have named the dependency, the [five properties](#the-five-ai-enablement-properties) below
+Once you have named the dependency, the [five properties](#the-five-ai-enablement-properties)
 are how you remove it. Point them at Layers 2 and 3, the process and the organization, not just at
 Layer 1, the code. That is AI Process Engineering: every property applied is a dependency removed,
 and by the Golden Rule, your odds doubled.
 
-But the leverage is asymmetric, and a leader has to respect the limit. **AI substitutes for the
-creation of work, not its acceptance.** It can draft the requirement, the design, and the code, but
-only the real user can confirm a change matches their job. When the same scarce expert gates both
-intake and acceptance, AI compresses the front and leaves the back untouched, and the bottleneck
-concentrates where automation has no purchase. So the move has two halves: aim the properties at the
-dependencies they can remove, and deliberately fund the human judgment they cannot.
+But the payoff is lopsided, and a leader has to respect the limit. **AI can do the work, but it
+cannot accept the work.** It can draft the requirement, the design, and the code, but only the real
+user can confirm a change matches their job. When the same scarce expert both takes in the work and
+signs it off, AI speeds up the front and leaves the back untouched, and the bottleneck just moves to
+where automation cannot help. So the move has two halves: aim the properties at the dependencies they
+can remove, and deliberately fund the human judgment they cannot.
 
 ### Principle 4: Build Intent, Safety, and Control Into the Flow
 
-Agents are fast and literal. They act safely only inside boundaries they can perceive. Everything a
+Agents are fast and literal. They act safely only inside boundaries they can see. Everything a
 human used to carry in their head - the requirement's real intent, the architecture rule no one
 wrote down, the security expectation, the unspoken fact that "done" includes an audit artifact - has
 to become something the system can enforce: testable intent, constraints expressed as rules, checks
@@ -84,7 +84,7 @@ Five properties describe how AI removes a dependency. Each one, applied, is a de
 
 | Property | What it does | Dependency it removes |
 |----------|--------------|-----------------------|
-| **Knowledge** | Assimilate, manage, and reason over knowledge; democratize it and sharpen accuracy | "Wait for the person who knows" |
+| **Knowledge** | Take in, manage, and reason over knowledge; share it widely and sharpen accuracy | "Wait for the person who knows" |
 | **Capability** | Do the things you used to wait on others for; turn yourself into a team | "Wait for another role or skill" |
 | **Capacity** | Do work faster and at volume; one person does the work of many | "Wait for more hands" |
 | **Parallelism** | Act in many places at once: independence of action, self-service, decoupling | "Serialize through a shared resource" |
@@ -101,7 +101,7 @@ captured. An agent can. It reads the codebase, the tickets, the chat history, an
 rather than merely following one. That is why ACD does more than expose a knowledge gap: it can fill
 it. The diagnostic that finds the missing knowledge and the tool that supplies it are the same tool.
 
-The payoff is asymmetric because the flow of work is dominated by wait time and coordination cost.
+The payoff is lopsided because the flow of work is dominated by wait time and coordination cost.
 Pointing AI at that, rather than at the 12% that is coding, is what produces order-of-magnitude
 improvements in lead time and quality. As Daniel Brock puts it, "AI can annihilate coordination
 costs between devs and the rest of your org." Applied to real coordination-heavy work, removing

@@ -3,12 +3,12 @@ title: "Where the Bottleneck Moves"
 linkTitle: "Bottleneck Taxonomy"
 weight: 3
 description: >
-  As AI compresses the middle of the delivery lifecycle, the constraint migrates to the ends. A seven-phase map and five bottleneck categories tell you where to look.
+  As AI compresses the middle of the delivery lifecycle, the constraint moves to the ends. A seven-phase map and five bottleneck categories tell you where to look.
 ---
 
 {{% pageinfo %}}
 AI compresses the making phases of delivery hardest and barely touches the rest. So as creation
-cost falls, the constraint does not disappear. It migrates outward to the phases AI does not
+cost falls, the constraint does not disappear. It moves outward to the phases AI does not
 cheapen. This page gives you a shared map of the delivery lifecycle and the five categories of
 bottleneck that map onto it, each with its agent-speed signal and the intervention pattern that
 removes it.
@@ -50,25 +50,25 @@ Each phase answers one question:
 - **Support** sustains, fixes, and improves it, and feeds what it learns back into the next
   Discovery.
 
-This is not a bespoke model. It is the consensus spine of every serious lifecycle framework, from
+This is not a custom model. It is the common backbone of every serious lifecycle framework, from
 the classic SDLC to the DevOps loop to ISO/IEC/IEEE 12207. Plain verbs are used so every discipline
 can read the same map.
 
-## The Bottleneck Migrates to the Ends
+## The Bottleneck Moves to the Ends
 
 The reason a delivery leader should care about the map is what AI does to it. AI compresses the
-making phases hardest, **Design and Build** (shown in blue above), because that is the work most
-directly substitutable by generation. It barely touches the rest. So as creation cost falls, the
-constraint migrates outward to the phases generation does not cheapen (shown in red):
+making phases hardest, **Design and Build** (shown in blue above), because that is the work AI is
+most able to generate. It barely touches the rest. So as creation cost falls, the
+constraint moves outward to the phases generation does not cheapen (shown in red):
 
-- **Discovery**, where the scarce act is deciding what is worth building.
+- **Discovery**, where the hard part is deciding what is worth building.
 - **Verify**, where correctness, security, and trust still have to be proven. A cheap-to-write change
   is not a cheap-to-trust one.
 - **Operate and Support**, where the system has to run and be sustained in the real world.
 
 This is the asymmetry from
 [Principle 3]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic#principle-3-use-the-ai-enablement-properties-to-accelerate" >}})
-drawn onto the lifecycle: AI substitutes for the creation of work, not its acceptance. The
+drawn onto the lifecycle: AI can do the work, but it cannot accept it. The
 bottleneck moves from the middle of the PDLC to its ends.
 
 ## The Five Bottleneck Categories
@@ -86,8 +86,8 @@ Name the category to know the intervention. Find it on the lifecycle to know whe
 
 Read the categories against the migration and the pattern is plain. The bottlenecks AI pressures
 cluster at the ends of the lifecycle - BN-1 at Discovery, BN-3 across Build and Verify, BN-5 at
-Operate and Support - precisely the phases generation does not make cheaper. BN-2 and BN-4 are the
-gate pathologies in between: controls an organization survives at human speed but that turn into
+Operate and Support - exactly the phases generation does not make cheaper. BN-2 and BN-4 are the
+gate problems in between: controls an organization survives at human speed but that turn into
 queues the moment implementation accelerates. Both kinds are coordination costs. The map tells you
 which is which.
 

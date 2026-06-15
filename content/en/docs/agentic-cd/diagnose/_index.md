@@ -23,7 +23,7 @@ Coding is becoming cheap and fast. In some contexts it is becoming functionally 
 easier to generate. Tests, scripts, and prototypes appear in minutes. But features still wait for
 clarification. Designs still queue behind a few experts. Test environments still break.
 Change approvals still happen on a calendar built for a slower world. Audit evidence still
-ricochets across teams. Production readiness still depends on knowledge carried in people's heads.
+bounces between teams. Production readiness still depends on knowledge carried in people's heads.
 
 AI made it obvious that coding was never the bottleneck. So, the question is, "Where is it?"
 
@@ -58,7 +58,7 @@ agent-generated work safely.
 There are two ways to point AI at delivery:
 
 - **AI Product Engineering** uses AI to help build the thing - generate code, tests, and
-  prototypes. This is the reflexive use, and it lands on the code.
+  prototypes. This is the obvious use, and it lands on the code.
 - **AI Process Engineering** uses AI to remove the coordination cost around building the thing -
   the dependencies, handoffs, and missing context that dominate lead time.
 
@@ -89,7 +89,7 @@ cost of being wrong.
 > The downstream pipe must exceed the input rate. If creation runs faster than the system can safely
 > deliver, the queue - and the risk it carries - grows until the system stalls.
 
-So expand downstream capacity first, or at least in lockstep: shorten feedback loops, automate the
+So expand downstream capacity first, or at least at the same time: shorten feedback loops, automate the
 gates, [limit work in progress]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}), and keep
 [batches small]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}). Only then does faster
 creation turn into faster value instead of a deeper queue.
