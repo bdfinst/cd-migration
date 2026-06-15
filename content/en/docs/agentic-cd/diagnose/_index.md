@@ -104,7 +104,7 @@ it swallows most of what AI gives back: every hour saved in creation is lost aga
 coupling, and incoherence, and the net barely moves. When the arithmetic is that punishing, rewiring
 the existing system may not be the rational move. The alternative is to start over - stand up a
 greenfield organization with new processes and clean architecture and rebuild quickly without
-carrying the baggage. That option deserves serious consideration more often than leaders admit. This
+carrying the baggage. That option gets dismissed too quickly. This
 subsection assumes you have weighed that path and chosen to rewire rather than replace.
 {{% /alert %}}
 
