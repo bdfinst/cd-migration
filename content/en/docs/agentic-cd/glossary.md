@@ -87,7 +87,80 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
+### AI Enablement Properties
+
+The five ways AI removes a dependency, each ending a specific wait: **Knowledge** (the wait for the
+person who knows), **Capability** (the wait for another role or skill), **Capacity** (the wait for
+more hands), **Parallelism** (serializing through a shared resource), and **Optionality** (committing
+early because exploring is expensive). Each property applied is a dependency removed, and by the
+[Golden Rule](#golden-rule) your odds of arriving on time with quality roughly double. See
+[Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}).
+
+Referenced in:
+[Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}),
+[The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}})
+
+### AI Process Engineering
+
+Using AI to remove the coordination cost around building software - the dependencies, handoffs, and
+missing context that dominate lead time - rather than to generate more code. It aims AI at Layers 2
+and 3 (tools and social circuitry), where the constraint lives, not at Layer 1 (the code). Contrast
+with [AI Product Engineering](#ai-product-engineering). The order matters: Process before Product. See
+[The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}).
+
+Referenced in:
+[The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}),
+[Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}})
+
+### AI Product Engineering
+
+Using AI to help build the thing: generate code, tests, and prototypes at Layer 1, the code. This is
+the reflexive use of AI. It is valuable but lands on roughly 12% of lead time, so it should follow
+[AI Process Engineering](#ai-process-engineering), which attacks the other 88%. See
+[The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}).
+
+Referenced in:
+[The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}})
+
+## B
+
+### Bottleneck Removal Loop
+
+A four-phase operating rhythm for removing delivery friction: Identify and Diagnose, Re-engineer the
+Bottleneck, Document and Share, then Iterate to the Next Constraint. Phase 1 uses two diagnostic
+techniques - walking the value stream and harvesting the organization's process exhaust. Because
+every constraint removed exposes the next, the loop never ends. See
+[The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}).
+
+Referenced in:
+[The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}),
+[Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}})
+
 ## C
+
+### Coherence
+
+One of the three C's of [coordination cost](#coordination-cost): everyone needs the same current
+understanding - the requirement's real intent, the architecture rule no one wrote down, the
+unspoken definition of "done." Coherence is the knowledge that decays across handoffs. Making it
+executable - testable intent, constraints as rules, checks in the pipeline - is how shared
+understanding stops being something a teammate or an agent has to wait for. See
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-three-cs-of-coordination-cost" >}}).
+
+Referenced in:
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}),
+[Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}})
+
+### Contention
+
+One of the three C's of [coordination cost](#coordination-cost): queuing for shared people and
+resources - the architect everyone needs, the one environment everyone tests in. Contention is
+why wait time rises with utilization: a resource that is 90% busy makes work queue at roughly nine
+times its own duration. See
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-three-cs-of-coordination-cost" >}}).
+
+Referenced in:
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}})
 
 ### Context (LLM)
 
@@ -136,6 +209,33 @@ Referenced in:
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
+### Coordination Cost
+
+The cost of work waiting on people, tools, and decisions rather than the cost of doing the work
+itself. It is the dominant share of delivery [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}})
+- coding is only about 12% - and it follows rules: wait time rises with utilization, each
+[dependency]({{< relref "/docs/reference/glossary#dependency" >}}) roughly halves your odds of
+arriving on time with quality, and knowledge decays across handoffs. It surfaces as the three C's:
+[Contention](#contention), [Coupling](#coupling), and [Coherence](#coherence). The lever against it
+is the [Golden Rule](#golden-rule). See
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}).
+
+Referenced in:
+[The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}),
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}),
+[Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}})
+
+### Coupling
+
+One of the three C's of [coordination cost](#coordination-cost): your work cannot finish until
+someone else's does - a cross-team dependency, a shared release train, a sign-off you do not
+control. Coupling is why coordination risk compounds: with `n` dependencies, a clean on-time pass
+is about 1 in 2ⁿ. See
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-three-cs-of-coordination-cost" >}}).
+
+Referenced in:
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}})
 
 ## D
 
@@ -205,6 +305,23 @@ Referenced in:
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}),
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}})
+
+## G
+
+### Golden Rule
+
+The single lever against [coordination cost](#coordination-cost): removing a
+[dependency]({{< relref "/docs/reference/glossary#dependency" >}}) roughly doubles your odds of
+arriving on time with quality. It is the inverse of the 1-in-2ⁿ curve - go from four dependencies to
+three and your odds rise from 6% to 12%. It is why the leadership move is dependency removal, not
+local acceleration, and why each turn of the [Bottleneck Removal Loop](#bottleneck-removal-loop)
+compounds the last. See
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-golden-rule" >}}).
+
+Referenced in:
+[Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}),
+[Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}),
+[The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}})
 
 ## H
 
@@ -292,6 +409,20 @@ Referenced in:
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
 ## P
+
+### PDLC (Product Delivery Lifecycle)
+
+The path every change travels from a raw idea to value running in production and sustained over
+time, in seven phases: Discovery, Design, Build, Verify, Deploy, Operate, Support - and then back to
+Discovery, because delivery is a loop, not a line. It is the consensus spine of the major lifecycle
+frameworks (SDLC, the DevOps loop, Stage-Gate, ISO/IEC/IEEE 12207), stated in plain verbs so
+business, engineering, security, and audit read the same map. AI compresses the making phases
+(Design and Build) hardest, so the bottleneck migrates to the ends. See
+[Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}).
+
+Referenced in:
+[Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}),
+[The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}})
 
 ### Prompt
 
