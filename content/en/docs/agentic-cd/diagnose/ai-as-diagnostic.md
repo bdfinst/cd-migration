@@ -112,9 +112,10 @@ to coin-flip or better. Every win came from removing dependencies, not from typi
 AI Process Engineering is not permission to skip engineering discipline. Integrating AI **is**
 software engineering. To be great at it you must be great at DevOps and
 [CI]({{< relref "/docs/reference/practices/continuous-integration" >}}), because that is your safety
-net. As the DORA 2025 *State of DevOps Report* found, "AI magnifies the strengths of high-performing
-organizations and the dysfunctions of low-performing ones." The advance is augmentation, not
-replacement. Keep your critical thinking.
+net. As the 2025 DORA report, *State of AI-assisted Software Development*, found, AI is "an
+amplifier, magnifying an organization's existing strengths and weaknesses." Point it at a strong
+delivery system and it accelerates; point it at a broken one and it magnifies the dysfunction. The
+advance is augmentation, not replacement. Keep your critical thinking.
 
 This is the same point the [Agentic CD]({{< relref "/docs/agentic-cd" >}}) section makes from the
 engineering side: an agent-generated change must meet or exceed the same quality bar as a
