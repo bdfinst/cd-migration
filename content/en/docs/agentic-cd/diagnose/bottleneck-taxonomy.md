@@ -76,33 +76,33 @@ bottleneck moves from the middle of the PDLC to its ends.
 Most agent-speed delivery problems fall into five categories, each anchored to a phase of the PDLC.
 Name the category to know the intervention. Find it on the lifecycle to know where to look.
 
-| Bottleneck | PDLC phase | Agent-speed signal | Intervention pattern |
-|------------|-----------|--------------------|----------------------|
-| **BN-1 Discovery & Requirements Churn** | Discovery | The agent builds the wrong thing quickly | Use AI to synthesize requirements, expose ambiguity, and generate testable acceptance criteria before implementation |
-| **BN-2 Architecture & Design Gatekeeping** | Design | The agent crosses unclear boundaries or overloads scarce experts | Make constraints explicit: decision records, service maps, dependency rules, paved-path examples, automated checks |
-| **BN-3 Testing & Quality Friction** | Build / Verify | Generation outpaces review; generated tests check implementation, not behavior | Use AI to expand behavioral coverage and edge cases, but validate tests against known failure modes before trusting them |
-| **BN-4 Change Management & Deployment Gates** | Deploy | Same-day fixes wait for windows, approvals, or readiness rituals | Move controls into the pipeline, automate evidence, standardize risk classification, shrink batch size, improve rollback |
-| **BN-5 Knowledge Silos & Team Coupling** | Operate / Support | The agent stalls without the human who knows where the tool lives or who owns the service | Create discoverable ownership records, runbooks, service catalogs, and agent-accessible knowledge bases |
+| Category | PDLC phase | Agent-speed signal | Intervention pattern |
+|----------|-----------|--------------------|----------------------|
+| **Discovery & Requirements Churn** | Discovery | The agent builds the wrong thing quickly | Use AI to synthesize requirements, expose ambiguity, and generate testable acceptance criteria before implementation |
+| **Architecture & Design Gatekeeping** | Design | The agent crosses unclear boundaries or overloads scarce experts | Make constraints explicit: decision records, service maps, dependency rules, paved-path examples, automated checks |
+| **Testing & Quality Friction** | Build / Verify | Generation outpaces review; generated tests check implementation, not behavior | Use AI to expand behavioral coverage and edge cases, but validate tests against known failure modes before trusting them |
+| **Change Management & Deployment Gates** | Deploy | Same-day fixes wait for windows, approvals, or readiness rituals | Move controls into the pipeline, automate evidence, standardize risk classification, shrink batch size, improve rollback |
+| **Knowledge Silos & Team Coupling** | Operate / Support | The agent stalls without the human who knows where the tool lives or who owns the service | Create discoverable ownership records, runbooks, service catalogs, and agent-accessible knowledge bases |
 
 Read the categories against the migration and the pattern is plain. The bottlenecks AI pressures
-cluster at the ends of the lifecycle - BN-1 at Discovery, BN-3 across Build and Verify, BN-5 at
-Operate and Support - exactly the phases generation does not make cheaper. BN-2 and BN-4 are the
-gate problems in between: controls an organization survives at human speed but that turn into
-queues the moment implementation accelerates. Both kinds are coordination costs. The map tells you
-which is which.
+cluster at the ends of the lifecycle - requirements churn at Discovery, testing and quality friction
+across Build and Verify, and knowledge silos at Operate and Support - exactly the phases generation
+does not make cheaper. Architecture gatekeeping and deployment gates are the gate problems in
+between: controls an organization survives at human speed but that turn into queues the moment
+implementation accelerates. Both kinds are coordination costs. The map tells you which is which.
 
 ## Where Each Category Points on This Site
 
 The interventions above are not abstract. Each category maps to existing guidance you can act on
 today.
 
-| Bottleneck | Where to go next |
-|------------|------------------|
-| **BN-1 Discovery** | [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) and the [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) artifact |
-| **BN-2 Design** | [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}), the [Feature Description constraints]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}), and [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) |
-| **BN-3 Testing** | [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and the [Evaluation & Quality]({{< relref "/docs/agentic-cd/evaluation" >}}) pages |
-| **BN-4 Deployment** | [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}), [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}), and [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) |
-| **BN-5 Knowledge** | [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) and [Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}) |
+| Category | Where to go next |
+|----------|------------------|
+| **Discovery & Requirements Churn** | [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) and the [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) artifact |
+| **Architecture & Design Gatekeeping** | [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}), the [Feature Description constraints]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}), and [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) |
+| **Testing & Quality Friction** | [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and the [Evaluation & Quality]({{< relref "/docs/agentic-cd/evaluation" >}}) pages |
+| **Change Management & Deployment Gates** | [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}), [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}), and [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) |
+| **Knowledge Silos & Team Coupling** | [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) and [Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}) |
 
 The output of classification is a named, classified constraint, mapped to where it lives in the
 lifecycle, not a hunch. The next page turns that into a method.
