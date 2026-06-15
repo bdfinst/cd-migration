@@ -1,0 +1,58 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommitsDisabled"
+  ],
+  "schedule": ["before 6am on monday"],
+  "labels": ["dependencies"],
+  "automerge": true,
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "description": "Never auto-merge major updates; require human review",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Rendering-critical: Hugo 0.x and the Docsy theme can break the site (e.g. Hugo 0.162 security.allowContent) without failing link-check, so review manually",
+      "matchDepNames": ["gohugoio/hugo", "github.com/google/docsy"],
+      "automerge": false,
+      "labels": ["dependencies", "rendering-critical"]
+    },
+    {
+      "description": "Keep the Go version in go.mod and netlify.toml updated together",
+      "matchDepNames": ["go"],
+      "groupName": "go version"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track HUGO_VERSION in netlify.toml against Hugo GitHub releases",
+      "managerFilePatterns": ["netlify.toml"],
+      "matchStrings": ["HUGO_VERSION = \"(?<currentValue>[^\"]+)\""],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "gohugoio/hugo",
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    },
+    {
+      "customType": "regex",
+      "description": "Track GO_VERSION in netlify.toml against Go releases",
+      "managerFilePatterns": ["netlify.toml"],
+      "matchStrings": ["GO_VERSION = \"(?<currentValue>[^\"]+)\""],
+      "datasourceTemplate": "golang-version",
+      "depNameTemplate": "go"
+    },
+    {
+      "customType": "regex",
+      "description": "Track NODE_VERSION in netlify.toml against Node.js releases",
+      "managerFilePatterns": ["netlify.toml"],
+      "matchStrings": ["NODE_VERSION = \"(?<currentValue>[^\"]+)\""],
+      "datasourceTemplate": "node-version",
+      "depNameTemplate": "node",
+      "versioningTemplate": "node"
+    }
+  ]
+}
