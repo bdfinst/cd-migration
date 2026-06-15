@@ -69,6 +69,30 @@ coding is roughly 12% of [lead time]({{< relref "/docs/reference/glossary#lead-t
 Make coding 50% faster and you save about 6%. Take coding to zero and roughly 88% of lead time is
 untouched. The leverage is in the 88%, not the 12%. Aim AI there.
 
+### Accelerating Creation First Backfires
+
+The order is not just a question of where the gains are. Accelerating creation before you clear the
+friction is actively harmful, not merely low-value. AI raises the rate at which work *enters* the
+system - more pull requests, more changes, more proposed fixes - without touching the rate at which
+the system can review, test, deploy, validate, and accept that work. When input outruns downstream
+throughput, the excess does not vanish. It piles up as undelivered inventory:
+[work in progress]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) waiting in a queue.
+
+That inventory is where the real damage compounds. Every change sitting undelivered is a change
+nobody has confirmed in production, so the [feedback loop]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}})
+lengthens and the pile of unvalidated, uncertain work grows - and it grows *much* faster than the
+modest lead-time savings creation speed buys you. You have traded a small gain in typing speed for a
+large increase in [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}), risk, and the
+cost of being wrong.
+
+> The downstream pipe must exceed the input rate. If creation runs faster than the system can safely
+> deliver, the queue - and the risk it carries - grows without bound.
+
+So expand downstream capacity first, or at least in lockstep: shorten feedback loops, automate the
+gates, [limit work in progress]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}), and keep
+[batches small]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}). Only then does faster
+creation turn into faster value instead of a deeper queue.
+
 This is the same sequence the [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}})
 describes from the practitioner's side: remove friction and add safety before you accelerate. This
 subsection gives the leadership-level frame and the diagnostic method behind that sequence.
