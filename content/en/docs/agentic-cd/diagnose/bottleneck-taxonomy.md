@@ -50,9 +50,9 @@ Each phase answers one question:
 - **Support** sustains, fixes, and improves it, and feeds what it learns back into the next
   Discovery.
 
-This is not a custom model. It is the common backbone of every serious lifecycle framework, from
-the classic SDLC to the DevOps loop to ISO/IEC/IEEE 12207. Plain verbs are used so every discipline
-can read the same map.
+This is not a custom model. It lines up with the backbone of the major lifecycle frameworks - the
+classic SDLC, the DevOps loop, and ISO/IEC/IEEE 12207. We use plain verbs so every discipline can
+read the same map.
 
 ## The Bottleneck Moves to the Ends
 

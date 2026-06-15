@@ -3,7 +3,7 @@ title: "The New Bottleneck"
 linkTitle: "Diagnose First"
 weight: 5
 description: >
-  When coding is fast and cheap, the real constraints become obvious; the work around the code. Use CD as the diagnostic to find delivery friction, then use AI to remove it.
+  When coding is fast and cheap, the real constraints become obvious: the work around the code. Use CD as the diagnostic to find delivery friction, then use AI to remove it.
 ---
 
 {{% pageinfo %}}
@@ -25,7 +25,7 @@ clarification. Designs still queue behind a few experts. Test environments still
 Change approvals still happen on a calendar built for a slower world. Audit evidence still
 bounces between teams. Production readiness still depends on knowledge carried in people's heads.
 
-AI made it obvious that coding was never the bottleneck. So, the question is, "Where is it?"
+AI made it obvious that coding was never the bottleneck. So the question is: where is it?
 
 ## This Is a Diagnostic, Not a Failure
 

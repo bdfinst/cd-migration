@@ -8,7 +8,7 @@ description: >
 
 {{% pageinfo %}}
 The obvious use of AI is to generate more code. The bigger win is to remove the
-dependencies that dominate lead time. This page holds the four beliefs a leader needs for that
+dependencies that dominate lead time. This page covers the four principles a leader needs for that
 to work, and the five properties that turn the [Golden Rule]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-golden-rule" >}})
 into specific moves.
 {{% /pageinfo %}}
@@ -45,8 +45,8 @@ exactly as coupled as before. Two measures matter, and neither is adoption.
   [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), more frequent safe
   delivery, less work aging in queues.
 
-Count the dependencies you removed, and the subsequent time saved, but judge yourself on whether the system got faster at turning
-ideas into value. Output is abundant. Accelerated flow is scarce.
+Count the dependencies you removed and the time saved. But judge yourself on whether the system got
+faster at turning ideas into value. Output is abundant. Accelerated flow is scarce.
 
 ### Principle 3: Use the AI Enablement Properties to Accelerate
 

@@ -90,10 +90,10 @@ remove?
 Re-engineer by applying the
 [five AI Enablement Properties]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic#the-five-ai-enablement-properties" >}})
 and aim them at Layers 2 and 3, the process and the organization, not just Layer 1, the code. The
-simplification levers from *Wiring the Winning Organization* are how you rewire the architecture:
-slowification (slow down to design the work before running it), simplification, modularization,
-incrementalism, linearization, and amplification. The leadership move is choosing which dependency to
-remove. AI is how you remove it.
+three levers from *Wiring the Winning Organization* are how you rewire the architecture:
+slowification (slow down to design the work before you run it), simplification (break the work into
+smaller, independent, more linear steps), and amplification (make problems visible the moment they
+appear). The leadership move is choosing which dependency to remove. AI is how you remove it.
 
 **Put safety and security on the same path as speed.** Re-engineering is not a permission slip for
 uncontrolled change. It is the opposite. If agents produce more change, the organization needs
@@ -110,7 +110,7 @@ A local improvement no one else can find becomes another silo. The work is not d
 bottleneck is gone. It is done when the next team, and the next agent, can remove the same class of
 constraint without rediscovering how.
 
-The best operators do not just solve problems where they occur. They deliberately disseminate the
+The best operators do not just solve problems where they occur. They deliberately spread the
 knowledge throughout the organization. One without the other stalls.
 
 - **Local learning** - capture the solution where the work happened, in durable form: a prompt, a
