@@ -14,7 +14,7 @@ Added a new [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) subsect
 - [The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}) - thesis page: when coding is nearly free, the constraint moves to the work around the code; Process before Product.
 - [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) - the physics: the three C's, the Golden Rule, and why coding is only ~12% of lead time.
 - [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}) - four leadership principles and the five AI Enablement Properties.
-- [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - the seven-phase PDLC and the BN-1..BN-5 bottleneck taxonomy, each linked to existing guidance.
+- [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - the seven-phase PDLC and the bottleneck taxonomy, each linked to existing guidance.
 - [The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}) - the four-phase method, the value-stream litmus walk, and AI context harvesting.
 - Updated the [Agentic CD landing]({{< relref "/docs/agentic-cd" >}}) and [Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}}) to point readers to Diagnose First, and added glossary terms (coordination cost, the three C's, Golden Rule, AI Enablement Properties, AI Process/Product Engineering, Bottleneck Removal Loop, PDLC).
 
