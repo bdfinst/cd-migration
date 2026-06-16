@@ -67,10 +67,6 @@ The teams that benefit most are the ones that treat pipeline failures, test brit
 deployment friction as signals - not noise. They invest in architectural discipline, automated
 quality gates they actually trust, and organizational structures that minimize handoffs.
 
-Reading the diagnostic is only half the work. For *how* to clear what it reveals - the physics of
-why work waits, and a repeatable loop that uses AI to remove the underlying knowledge dependencies -
-see [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) in the Agentic CD section.
-
 For the full argument, see
 [ACD Is a Diagnostic Tool](https://bryanfinster.substack.com/p/acd-is-a-diagnostic-tool).
 
