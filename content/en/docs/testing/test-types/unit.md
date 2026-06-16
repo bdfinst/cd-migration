@@ -26,16 +26,9 @@ quickly and produces the same result every time.
 
 ### Solitary vs. sociable unit tests
 
-A **solitary unit test** replaces all collaborators with test doubles and exercises a single
-class or function in complete isolation.
+A [solitary unit test]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) replaces all collaborators with test doubles. A [sociable unit test]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) allows real in-process collaborators while still replacing any external I/O. Both styles are unit tests as long as no real external dependency is involved.
 
-A **sociable unit test** allows real in-process collaborators to participate - for example,
-a service object calling a real domain model - while still replacing any external I/O (network,
-database, file system) with test doubles. Both styles are unit tests as long as no real external
-dependency is involved.
-
-When the scope expands to an entire frontend component or a complete backend service exercised
-through its public API, that is a [component test]({{< relref "/docs/testing/test-types/component" >}}).
+When the scope expands to an entire frontend component or a complete backend service exercised through its public API, that is a [component test]({{< relref "/docs/testing/test-types/component" >}}).
 
 [White box testing]({{< relref "/docs/reference/glossary#white-box-testing" >}}) (asserting on internal method
 calls, call order, or private state) creates change-detector tests that break during routine
