@@ -12,16 +12,6 @@ Agentic continuous delivery ([ACD]({{< relref "/docs/reference/glossary#acd-agen
 
 {{< figure src="/images/CI_before_AI.png" alt="Don't put the AI cart before the CI horse - Integrating AI is software engineering. To be great at this, you need to be great at DevOps and CI." >}}
 
-## Diagnose Before You Accelerate
-
-When coding is nearly free, the constraint moves to the work around the code: the coordination,
-safety, and delivery architecture that decides whether faster creation becomes faster value. AI's
-first gift is not speed. It is visibility into where that work waits. Before extending CD for agents,
-read [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}): it gives the physics of the new
-bottleneck, a map of where it moves, and a repeatable loop for removing it. **Improve everything
-around development first; then accelerate.** This page covers the engineering half of that work, the
-constraints that keep agent-generated changes safe.
-
 ## What Is ACD?
 
 **An agent-generated change must meet or exceed the same quality bar as a human-generated change.** The pipeline does not care who wrote the code. It cares whether the code is correct, tested, and safe to deploy.

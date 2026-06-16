@@ -7,8 +7,5 @@ description: >
 ---
 
 {{% pageinfo %}}
-New to this section? Start with [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) to find
-your delivery friction before you configure agents. These Getting Started pages then cover the
-configuration, skills, and prerequisites teams need before agents can safely contribute to the
-delivery pipeline.
+Start here. These pages cover the configuration, skills, and prerequisites teams need before agents can safely contribute to the delivery pipeline.
 {{% /pageinfo %}}
