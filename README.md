@@ -191,3 +191,7 @@ The markdownlint config permits these HTML elements in markdown files: `div`, `h
 This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE).
 
 Content is adapted from [MinimumCD.org](https://minimumcd.org) and the [Dojo Consortium](https://dojoconsortium.org), both licensed under CC BY 4.0.
+
+## CodeGraph
+
+This repository uses [CodeGraph](https://github.com/colbymchenry/codegraph) for semantic code intelligence.
