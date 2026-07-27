@@ -25,7 +25,7 @@ The component's **own** persistence layer is the boundary that admits a choice. 
 
 A component test does **not** exercise more than one component end-to-end. A test that drives a UI which calls a real backend which writes to a real database is a fullstack flow - that's an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}). Each component gets its own component tests at its own boundary; the frontend has its tests against a doubled backend, the backend has its tests against a doubled downstream and a real-or-doubled DB.
 
-This is broader than a [sociable unit test]({{< relref "/docs/testing/test-types/unit#solitary-vs-sociable-unit-tests" >}}): a sociable unit test exercises a single behavior through a few collaborators; a component test exercises the entire assembled component through its public interface.
+This is broader than a [sociable unit test]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}): a sociable unit test exercises a single behavior through a few collaborators; a component test exercises the entire assembled component through its public interface.
 
 ## When component tests earn their keep
 
