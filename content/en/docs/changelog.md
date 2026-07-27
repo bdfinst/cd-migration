@@ -7,6 +7,17 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-06-15 - Add "Diagnose First" to Agentic CD
+
+Added a new [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) subsection that reframes agentic CD as a diagnostic before an accelerator: improve everything around development first, using CD to find delivery friction and AI to remove it.
+
+- [The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}) - thesis page: when coding is nearly free, the constraint moves to the work around the code; Process before Product.
+- [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) - the physics: the three C's, the Golden Rule, and why coding is only ~12% of lead time.
+- [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}) - four leadership principles and the five AI Enablement Properties.
+- [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - the seven-phase PDLC and the bottleneck taxonomy, each linked to existing guidance.
+- [The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}) - the four-phase method, the value-stream litmus walk, and AI context harvesting.
+- Updated the [Agentic CD landing]({{< relref "/docs/agentic-cd" >}}) and [Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}}) to point readers to Diagnose First, and added glossary terms (coordination cost, the three C's, Golden Rule, AI Enablement Properties, AI Process/Product Engineering, Bottleneck Removal Loop, PDLC).
+
 ## 2026-06-09 - Give accessibility testing a single home
 
 Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home. Those three pages now point to this section as the strategy hub while keeping their concrete examples.
