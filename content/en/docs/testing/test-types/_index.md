@@ -3,7 +3,7 @@ title: "Test Types"
 linkTitle: "Test Types"
 weight: 2
 description: >
-  Definitions of the test types used throughout this site: unit, component, contract, integration, end-to-end, and static analysis.
+  Definitions of the test types used throughout this site.
 ---
 
 Definitions for the test types used throughout this site. Each page covers what the type is, when it runs in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), what it asserts on, and what it does not.

@@ -13,36 +13,32 @@ description: >
 
 ## Definition
 
-A unit test is a deterministic test that exercises a **unit of behavior** (a single
-meaningful action or decision your code makes) and verifies that the observable outcome is
-correct. The "unit" is not a function, method, or class. It is a behavior: given these inputs,
-the system produces this result. A single behavior may involve one function or several
-collaborating objects. What matters is that the test treats the code as a
-[black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}) and asserts only on what it produces,
-not on how it produces it.
+Verification of the smallest testable piece of code—typically a single function, method, or class—in complete isolation from the rest of the application, network, file system, or external services. [Test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) are used where needed.
 
-All [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}) are replaced with [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) so the test runs
-quickly and produces the same result every time.
+## Scope & Boundaries
+
+Execution runs entirely in-memory. All external dependencies (databases, APIs, message brokers, system clocks) are replaced with test doubles (stubs, mocks, or fakes).
+
+## Characteristics
+
+Millisecond execution speeds, highly deterministic (zero flakiness), and pinpoint failure localization.
+
+## Good Practices:
+- Test public behavior, not implementation details: Assert on return values and visible side effects rather than internal private state or execution paths.
+- Strict isolation: Keep all tests in-memory; mock or stub out network, disk I/O, database, and system time to ensure sub-millisecond execution.
+- Single assertion concept: Each test should verify one specific behavior or edge case to maintain pinpoint failure localization.
+
+## Anti-Patterns
+
+- Over-mocking: Mocking domain entities, data transfer objects, or language primitives instead of purely external/infrastructure boundaries.
+- Testing private methods: Forcing visibility or coupling tests to internal helper methods, which causes refactoring resistance without increasing behavioral confidence.
+- Inter-test dependencies: Letting execution order matter or sharing mutable global state between test cases.
 
 ### Solitary vs. sociable unit tests
 
 A [solitary unit test]({{< relref "/docs/testing/glossary#solitary-unit-test" >}}) replaces all collaborators with test doubles. A [sociable unit test]({{< relref "/docs/testing/glossary#sociable-unit-test" >}}) allows real in-process collaborators while still replacing any external I/O. Both styles are unit tests as long as no real external dependency is involved.
 
-When the scope expands to an entire frontend component or a complete backend service exercised through its public API, that is a [component test]({{< relref "/docs/testing/test-types/component" >}}).
-
-[White box testing]({{< relref "/docs/reference/glossary#white-box-testing" >}}) (asserting on internal method
-calls, call order, or private state) creates change-detector tests that break during routine
-refactoring without catching real defects. Prefer testing through the public interface (methods,
-APIs, exported functions) and asserting on return values, state changes visible to consumers,
-or observable side effects.
-
-The purpose of unit tests is to:
-
-- Verify that a unit of behavior produces the correct observable outcome.
-- Cover high-complexity logic where many input permutations exist, such as business rules, calculations, and state transitions.
-- Keep cyclomatic complexity visible and manageable through good separation of concerns.
-
-## When to Use
+## When to Run Them
 
 - **During development**: run the relevant subset of unit tests continuously while writing
   code. [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) (Red-Green-Refactor) is the most effective workflow.
@@ -55,21 +51,7 @@ Unit tests are the right choice when the behavior under test can be exercised wi
 access, file system access, or database connections. If you need any of those, you likely need
 a [component test]({{< relref "/docs/testing/test-types/component" >}}) or an [end-to-end test]({{< relref "/docs/testing/test-types/e2e" >}}) instead.
 
-## Characteristics
-
-| Property        | Value                                    |
-|-----------------|------------------------------------------|
-| **Speed**       | Milliseconds per test                    |
-| **Determinism** | Always deterministic                     |
-| **Scope**       | A single unit of behavior                |
-| **Dependencies**| All replaced with test doubles           |
-| **Network**     | None                                     |
-| **Database**    | None                                     |
-| **Breaks build**| Yes                                      |
-
 ## Examples
-
-A JavaScript unit test verifying a pure utility function:
 
 {{< card code=true header="**JavaScript unit test for castArray utility**" lang="javascript" >}}
 // castArray.test.js
@@ -121,39 +103,14 @@ public void chargesFullPriceBelowTheThreshold() {
 }
 {{< /card >}}
 
-## Anti-Patterns
-
-- **[White box testing]({{< relref "/docs/reference/glossary#white-box-testing" >}})**: asserting on internal
-  state, call order, or private method behavior rather than observable output. These
-  change-detector tests break during refactoring without catching real defects. Test through
-  the public interface instead.
-- **Testing private methods**: private implementations are meant to change. They are
-  exercised indirectly through the behavior they support. Test the public interface instead.
-- **No assertions**: a test that runs code without asserting anything provides false
-  confidence. Lint rules can catch this automatically.
-- **Disabling or skipping tests**: skipped tests erode confidence over time. Fix or remove
-  them.
-- **Confusing "unit" with "function"**: a unit of behavior may span multiple collaborating
-  objects. Forcing one-test-per-function creates brittle tests that mirror the implementation
-  structure rather than verifying meaningful outcomes.
-- **Ice cream cone testing**: relying primarily on slow E2E tests while neglecting fast unit
-  tests inverts the test pyramid and slows feedback.
-- **Chasing coverage numbers**: gaming coverage metrics (e.g., running code paths without
-  meaningful assertions) creates a false sense of confidence. Focus on behavior coverage
-  instead.
-
 ## Connection to CD Pipeline
 
-Unit tests occupy the base of the test pyramid. They run in the earliest stages of the
+Unit tests run in the earliest stages of the
 [CD pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) and provide the fastest feedback loop:
 
 1. **Local development**: watch mode reruns tests on every save.
 2. **Pre-commit**: hooks run the suite before code reaches version control.
 3. **PR verification**: CI runs the full suite and blocks merge on failure.
-4. **Trunk verification**: CI reruns tests on the merged HEAD to catch integration issues.
+4. **Integrated change verification**: CI reruns tests on the merged HEAD to catch integration issues.
 
-Because unit tests are fast and deterministic, they should always break the build on failure.
-A healthy [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline depends on a large, reliable suite of
-[black box]({{< relref "/docs/reference/glossary#black-box-testing" >}}) unit tests that verify behavior
-rather than implementation, giving developers the confidence to refactor freely and ship
-small changes frequently.
+They should always halt the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline on failure.

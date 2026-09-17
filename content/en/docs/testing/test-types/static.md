@@ -11,45 +11,41 @@ description: >
 
 ## Definition
 
-Static analysis (also called static testing) evaluates **non-running code** against rules for
-known good practices. Unlike other test types that execute code and observe behavior, static
-analysis inspects source code, configuration files, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to detect
-problems before the code ever runs.
+Static analysis (also called static testing) evaluates non-running code against rules for known good practices, inspecting source, configuration, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to catch errors, complexity, and security issues before the code ever runs.
 
-Static analysis serves several key purposes:
+## Scope & Boundaries
 
-- **Catches errors** that would otherwise surface at runtime.
-- **Warns of excessive complexity** that degrades the ability to change code safely.
-- **Identifies security vulnerabilities** and coding patterns that provide attack vectors.
-- **Enforces coding standards** by removing subjective style debates from code reviews.
-- **Alerts to dependency issues** such as outdated packages, known CVEs, license
-  incompatibilities, or supply-chain compromises.
+Analysis runs against source code, configuration files, and dependency manifests at rest - no application starts and no [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) are needed. Scope is the entire codebase, not a single unit, component, or transaction.
 
-## When to Use
+## Characteristics
 
-Static analysis should run **continuously**, at every stage where feedback is possible:
+Seconds-scale execution (the fastest test category), fully deterministic, and codebase-wide scope, with no external dependencies except the network calls a dependency scanner makes to a vulnerability database.
+
+## Good Practices
+
+- Run it everywhere feedback is possible: IDE plugins, pre-commit hooks, and CI each catch issues before the next stage makes them more expensive to fix.
+- Customize the ruleset: default rules are a starting point; add rules for patterns that keep coming up in code review.
+- Enforce it as a gate: treat lint, type, and security findings as build-breaking, the same as a failing test.
+
+## Anti-Patterns
+
+- Disabling rules instead of fixing code: suppressing linter warnings or ignoring security findings erodes the value of static analysis over time.
+- Skipping ruleset customization: default rules are a starting point, not a ceiling, for patterns specific to the codebase.
+- Running static analysis only in CI: by the time CI reports a formatting error, the developer has context-switched; IDE and pre-commit feedback catch it sooner.
+- Ignoring dependency vulnerabilities: known CVEs in dependencies are a direct attack vector and should break the build.
+- Treating static analysis as optional: if developers can bypass the checks, they will.
+
+## When to Run It
 
 - **In the IDE**: real-time feedback as developers type, via editor plugins and language
   server integrations.
 - **On save**: format-on-save and lint-on-save catch issues immediately.
 - **Pre-commit**: hooks prevent problematic code from entering version control.
-- **In [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})**: the full suite of static checks runs on every PR and on the trunk after merge,
-  verifying that earlier local checks were not bypassed.
+- **In [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})**: the full suite of static checks runs on every PR and on the trunk after
+  merge, verifying that earlier local checks were not bypassed.
 
 Static analysis is always applicable. Every project, regardless of language or platform,
 benefits from linting, formatting, and dependency scanning.
-
-## Characteristics
-
-| Property        | Value                                         |
-|-----------------|-----------------------------------------------|
-| **Speed**       | Seconds (typically the fastest test category) |
-| **Determinism** | Always deterministic                          |
-| **Scope**       | Entire codebase (source, config, dependencies)|
-| **Dependencies**| None (analyzes code at rest)                  |
-| **Network**     | None (except dependency scanners)             |
-| **Database**    | None                                          |
-| **Breaks build**| Yes                                           |
 
 ## Examples
 
@@ -146,19 +142,6 @@ it("should have no accessibility violations", async () => {
 });
 {{< /card >}}
 
-## Anti-Patterns
-
-- **Disabling rules instead of fixing code**: suppressing linter warnings or ignoring
-  security findings erodes the value of static analysis over time.
-- **Not customizing rules**: default rulesets are a starting point. Write custom rules for
-  patterns that come up repeatedly in code reviews.
-- **Running static analysis only in CI**: by the time CI reports a formatting error, the
-  developer has context-switched. IDE plugins and pre-commit hooks provide immediate feedback.
-- **Ignoring dependency vulnerabilities**: known CVEs in dependencies are a direct attack
-  vector. Treat high-severity findings as build-breaking.
-- **Treating static analysis as optional**: static checks should be mandatory and enforced.
-  If developers can bypass them, they will.
-
 ## Connection to CD Pipeline
 
 Static analysis is the **first gate** in the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), providing the fastest feedback:
@@ -174,6 +157,4 @@ Static analysis is the **first gate** in the [CD]({{< relref "/docs/reference/gl
 5. **Scheduled scans**: dependency and security scanners run on a schedule to catch newly
    disclosed vulnerabilities in existing dependencies.
 
-Because static analysis requires no running code, no test environment, and no [external
-dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}), it is the cheapest and fastest form of quality verification. A mature CD
-pipeline treats static analysis failures the same as test failures: they break the build.
+Because it requires no running code and no [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}), static analysis is the cheapest, fastest gate. A mature CD pipeline treats its failures like any other test failure: they break the build.
