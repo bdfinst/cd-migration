@@ -52,8 +52,16 @@ enableGitInfo = false
 
 [imaging]
   anchor         = "Smart"
-  quality        = 75
   resampleFilter = "CatmullRom"
+
+[imaging.jpeg]
+  quality = 75
+
+[imaging.webp]
+  quality = 75
+
+[imaging.avif]
+  quality = 75
 
 [markup.goldmark.parser.attribute]
   block = true
