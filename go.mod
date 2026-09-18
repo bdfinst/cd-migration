@@ -3,7 +3,5 @@ module github.com/Minimum-CD/cd-migration
 go 1.25.3
 
 require (
-	github.com/FortAwesome/Font-Awesome v0.0.0-20241216213156-af620534bfc3 // indirect
-	github.com/google/docsy v0.17.0 // indirect
-	github.com/twbs/bootstrap v5.3.8+incompatible // indirect
+	github.com/google/docsy/theme v0.17.0 // indirect
 )
