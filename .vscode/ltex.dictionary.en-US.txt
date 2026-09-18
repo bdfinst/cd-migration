@@ -6,3 +6,4 @@ agentic-cd
 context-llm
 agentic
 changelog
+deserialization

@@ -93,9 +93,7 @@ Referenced in:
 
 ### Component Test
 
-A deterministic test that verifies a complete frontend component or backend service through
-its public interface, with test doubles for all external dependencies. See
-[Component Tests]({{< relref "/docs/testing/test-types/component" >}}) for full definition and examples.
+See [Component Tests]({{< relref "/docs/testing/test-types/component" >}}).
 
 Referenced in:
 [Component Tests]({{< relref "/docs/testing/test-types/component" >}}),
@@ -105,9 +103,7 @@ Referenced in:
 
 ### Contract Test
 
-A deterministic test that verifies the boundary between two systems using [test doubles](#test-double). Sometimes called a *narrow integration test*. Has two perspectives. A **consumer contract test** asks "do the fields and status codes I depend on still exist?" and asserts only on the subset of the API the consumer actually uses. A **provider contract test** asks "have my changes broken any of my consumers?" and runs every consumer's published expectations against the real provider implementation. The same shape applies to broker topics (a "broker contract") and to source-and-sink schemas in pipelines ("source/sink contract") - the test object is the boundary, the perspective is whichever side the test runs from.
-
-Contract tests are deterministic and run pre-merge as [in-band tests](#in-band-test). They block the build like any other in-band test. See [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) for the full discussion of consumer-driven contracts (CDC) and contract-first development.
+See [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}).
 
 Referenced in:
 [API Consumer]({{< relref "/docs/testing/applied-testing-strategies/patterns/api-consumer" >}}),

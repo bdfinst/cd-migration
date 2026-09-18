@@ -15,11 +15,13 @@ independence to deploy any time, regardless of the state of the world around you
 These tests run on every commit and **block deployment if they fail**. They must be fast,
 deterministic, and free of [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}).
 
-{{< figure src="/images/pipeline-tests-inside.svg" alt="Tests inside the pipeline: pre-merge stage runs static analysis, unit tests, integration tests, and component tests in under 10 minutes. Post-merge re-runs the full deterministic suite. All external dependencies are replaced by test doubles." >}}
+{{< figure src="/images/pipeline-tests-inside.svg" alt="Tests inside the pipeline: pre-merge stage runs static analysis, unit tests, contract tests, and component tests in under 10 minutes. Post-merge re-runs the full deterministic suite. Systems the team does not control are replaced by test doubles." >}}
 
 Every test in this [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) uses [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for
-external dependencies. No test calls a real external API, database, or third-party service. This
-means:
+anything that crosses the component boundary into a system the team does not control: third-party
+APIs, downstream services owned by other teams, message brokers. No in-band test calls a shared
+or external service. A real engine the team owns and isolates per test - a database in a per-test
+testcontainer, for example - is permitted in-band because it stays deterministic. This means:
 
 - **A downstream outage cannot block your deployment.** Your pipeline runs the same whether
   external systems are healthy or down.

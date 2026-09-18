@@ -4,6 +4,11 @@ title       = "MinimumCD Practice Guide"
 
 enableGitInfo = false
 
+[security]
+  # Hugo 0.162+ denies text/html content files by default (security.allowContent).
+  # The Docsy landing page is content/en/_index.html, so re-allow all content media types.
+  allowContent = ['.*']
+
 [services.googleAnalytics]
   enableRobotsTXT = true
   id              = "G-KVLFMQXEF1"
@@ -47,8 +52,16 @@ enableGitInfo = false
 
 [imaging]
   anchor         = "Smart"
-  quality        = 75
   resampleFilter = "CatmullRom"
+
+[imaging.jpeg]
+  quality = 75
+
+[imaging.webp]
+  quality = 75
+
+[imaging.avif]
+  quality = 75
 
 [markup.goldmark.parser.attribute]
   block = true
