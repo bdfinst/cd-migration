@@ -58,7 +58,7 @@
   "allowScripts": {
     "fsevents@2.3.3": true,
     "fsevents@2.3.2": true,
-    "puppeteer@24.38.0": true
+    "puppeteer@24.43.1": true
   },
   "workspaces": [
     "packages/hugoautogen"
