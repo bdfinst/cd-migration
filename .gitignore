@@ -10,4 +10,4 @@ test-results/
 UPDATE.md
 UPDATE_PLAN.md
 .claude/skills/*-workspace/
-.claude/metrics/cost-metering.*
+.claude/metrics/*
