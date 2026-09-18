@@ -1,6 +1,6 @@
 ---
-title: "Architecting Tests for CD"
-linkTitle: "Testing Tips"
+title: "Test Strategies"
+linkTitle: "Test Strategies"
 weight: 16
 description: >
   Test architecture, types, and good practices for building confidence in your delivery pipeline.
