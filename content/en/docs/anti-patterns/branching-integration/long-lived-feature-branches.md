@@ -179,11 +179,11 @@ into smaller pieces. Both outcomes are desirable.
 The most common objection is "my feature is too big to merge in a day." This is true when the
 feature is designed as a monolithic unit. The fix is decomposition:
 
-- **Branch by abstraction.** Introduce a new code path alongside the old one. Merge the new code
+- **[Branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}).** Introduce a new code path alongside the old one. Merge the new code
   path in small increments. Switch over when ready.
 - **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}).** Hide incomplete work behind a toggle so it can be merged to trunk without
   being visible to users.
-- **Keystone interface pattern.** Build all the back-end work first, merge it incrementally, and
+- **[Dark code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}) (keystone interface pattern).** Build all the back-end work first, merge it incrementally, and
   add the UI entry point last. The feature is invisible until the keystone is placed.
 - **[Vertical slices]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}).** Deliver the feature as a series of thin, user-visible increments instead of
   building all layers at once.
@@ -212,7 +212,7 @@ enable short-lived branches. The two practices reinforce each other.
 
 | Objection                                                      | Response                                                                                                                                                                                                                                              |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| "My feature takes three weeks - I can't merge in a day"        | The feature takes three weeks. The branch does not have to. Use branch by abstraction, feature flags, or vertical slicing to merge daily while the feature grows incrementally on trunk.                                                              |
+| "My feature takes three weeks - I can't merge in a day"        | The feature takes three weeks. The branch does not have to. Use [branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}), feature flags, or vertical slicing to merge daily while the feature grows incrementally on trunk.                                                              |
 | "Merging incomplete code to trunk is dangerous"                | Incomplete code behind a feature flag or without a UI entry point is not dangerous - it is invisible. The danger is a three-week branch that lands as a single untested merge.                                                                        |
 | "I need my branch to keep my work separate from other changes" | That separation is the problem. You want to discover conflicts early, when they are small and cheap to fix. A branch that hides conflicts for three weeks is not protecting you - it is accumulating risk.                                            |
 | "We tried short-lived branches and it was chaos"               | Short-lived branches require supporting practices: feature flags, good decomposition, fast CI, and a culture of small changes. Without those supports, it will feel chaotic. The fix is to build the supports, not to retreat to long-lived branches. |

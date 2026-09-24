@@ -102,13 +102,12 @@ Both paths are valid. The important thing is **daily integration to trunk**. Do 
 
 Trunk-based development does not work in isolation. These practices make daily integration safe:
 
-- **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}):** Merge incomplete work without exposing it to users.
-- **Branch by abstraction:** Replace implementations behind stable interfaces without long-lived branches.
-- **Connect last:** Build new code paths without wiring them in until they are complete.
+- **[Evolutionary coding techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}):** [Dark code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}), [branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}), [parallel run]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/parallel-run" >}}), and [expand and contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}}) let you merge incomplete work without exposing it to users, in most cases without a flag at all.
+- **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}):** The last-resort technique in that hierarchy, for cases the others can't cover.
 - **Small, atomic commits:** Each commit is a single logical change that leaves trunk releasable.
 - **[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})/ATDD:** Tests written before code provide the safety net for frequent integration.
 
-The [TBD Migration Guide]({{< relref "tbd-migration" >}}) covers each practice in detail with code examples.
+The [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) section and the [TBD Migration Guide]({{< relref "tbd-migration" >}}) cover each practice in detail with code examples.
 
 ## Getting Started
 
@@ -135,6 +134,7 @@ Once your team is integrating to trunk daily, build the test suite that makes th
 
 ## Related Content
 
+- [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) - Dark code, branch by abstraction, parallel run, and expand and contract, ordered from least to most costly to maintain
 - [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
 - [Trunk-Based Development]({{< relref "/docs/reference/practices/trunk-based-development" >}}) - Practice definition and minimum criteria
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com) - Comprehensive reference by Paul Hammant

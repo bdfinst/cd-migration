@@ -7,6 +7,18 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-09-24 - Add Evolutionary Coding Techniques section
+
+Added a new [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) subsection under Trunk-Based Development that ranks the techniques for integrating incomplete work to trunk from least to most costly to maintain, positioning feature flags as the last resort rather than the default.
+
+- [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) - the decision hierarchy and a "how to choose" checklist
+- [Dark Code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}) - deploying new logic before anything calls it
+- [Branch by Abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}) - replacing an implementation behind a stable interface
+- [Parallel Run]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/parallel-run" >}}) - proving a new implementation matches production behavior before cutover
+- [Expand and Contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}}) - evolving a shared schema or API contract without a breaking change
+- Added glossary entries for branch by abstraction, dark code, expand and contract, and parallel run, and cross-linked the new section from [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}), the [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}), [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}), and [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}})
+- Fixed a mislabeled example in the TBD Migration Guide that called an in-process implementation swap a "strangler fig pattern"; it is branch by abstraction
+
 ## 2026-06-15 - Add "Diagnose First" to Agentic CD
 
 Added a new [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) subsection that reframes agentic CD as a diagnostic before an accelerator: improve everything around development first, using CD to find delivery friction and AI to remove it.

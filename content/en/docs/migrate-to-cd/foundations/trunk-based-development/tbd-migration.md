@@ -231,7 +231,7 @@ These practices apply to **both paths**, whether you're using short-lived branch
 
 ### Use Feature Flags the Right Way
 
-[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are one of several **evolutionary coding practices** that allow you to integrate incomplete work safely. Other methods include branch by abstraction and connect-last patterns.
+[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are one of several **[evolutionary coding techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}})** that allow you to integrate incomplete work safely, and the one to reach for last. See [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) for the full decision hierarchy, including dark code, branch by abstraction, parallel run, and expand and contract.
 
 Feature flags are not a testing strategy.
 They are a **release** strategy.
@@ -1076,6 +1076,8 @@ Create a `feature/notifications` branch. Work for three weeks. Submit a massive 
 
 **TBD approach:**
 
+The interface and its implementations are new code with no existing caller, so they ship as [dark code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}) first. Only the final send behavior, which has a real user-facing effect, needs a feature flag.
+
 **First commit:** Define notification interface, commit to trunk
 
 {{< card code=true header="**Day 1: NotificationService contract**" lang="javascript" >}}
@@ -1142,7 +1144,7 @@ You need to split the `users.name` column into `first_name` and `last_name`.
 **Old approach:**
 Update schema, update all code, deploy everything at once. Hope nothing breaks.
 
-**TBD approach (expand-contract pattern):**
+**TBD approach ([expand and contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}}) pattern):**
 
 **Step 1: Expand**
 Add new columns without removing the old one:
@@ -1238,10 +1240,10 @@ describe('Current auth behavior', () => {
 
 These tests document how the system *actually* works. Commit.
 
-**Strangler fig pattern**
+**[Branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}})**
 Create new implementation alongside old one:
 
-{{< card code=true header="**Strangler fig - new implementation alongside old**" lang="javascript" >}}
+{{< card code=true header="**Branch by abstraction - new implementation alongside old**" lang="javascript" >}}
 class LegacyAuthService {
   // Existing messy code (don't touch it)
 }

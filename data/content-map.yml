@@ -471,6 +471,19 @@ sections:
             pages:
               - file: tbd-migration.md
                 title: "TBD Migration Guide"
+            subsections:
+              - path: evolutionary-coding/
+                title: "Evolutionary Coding Techniques"
+                page_count: 4
+                pages:
+                  - file: dark-code.md
+                    title: "Dark Code"
+                  - file: branch-by-abstraction.md
+                    title: "Branch by Abstraction"
+                  - file: parallel-run.md
+                    title: "Parallel Run"
+                  - file: expand-and-contract.md
+                    title: "Expand and Contract"
 
       - path: pipeline/
         title: "Phase 2: Pipeline"
@@ -814,7 +827,7 @@ totals:
   subsections: 25  # symptoms(4 + 4 flow subs) + anti-patterns(6 + 3 org-cultural subs) + migrate-to-cd(6 + 1 tbd sub) + agentic-cd(5: diagnose, getting-started, specification, architecture, operations, evaluation) + reference(5)
   symptom_pages: 65  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 10 visibility - note: persona pages moved to triage section
   anti_pattern_pages: 64  # 7 team-workflow + 4 branching + 9 testing + 12 pipeline + 26 org-cultural(10+9+7) + 1 monitoring + 5 architecture
-  migration_guide_pages: 32  # 2 brownfield + 0 greenfield + 4 assess + 7 foundations(6+1 tbd) + 8 pipeline + 8 optimize + 3 continuous-deployment
+  migration_guide_pages: 36  # 2 brownfield + 0 greenfield + 4 assess + 11 foundations(6+1 tbd+4 evolutionary-coding) + 8 pipeline + 8 optimize + 3 continuous-deployment
   agentic_cd_pages: 18
   reference_pages: 44  # 9 practices + 8 metrics + 9 testing + 3 pipeline-ref + 10 defect-sources + 5 standalone(glossary, faq, dora, cd-dependency-tree, resources)
   standalone_pages: 6  # start-here, learning-paths, team-chatbot, credits, changelog, under-construction

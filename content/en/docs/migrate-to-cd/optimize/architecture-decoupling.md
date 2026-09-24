@@ -197,7 +197,7 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 **Your team controls directly:**
 
 - Identifying coupling points within your service boundary using the strangler fig pattern and
-  branch by abstraction
+  [branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}})
 - Defining explicit API contracts for interfaces your team owns and versioning them
 - Moving from shared databases to independently owned data stores within your domain
 - Introducing event-based communication for new integrations you build
@@ -276,6 +276,7 @@ With optimized flow, small batches, metrics-driven improvement, and a decoupled 
 
 ## Related Content
 
+- [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) - in-process techniques like branch by abstraction and expand and contract, for when the change doesn't need a full strangler fig
 - [Coordinated Deployments]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - the primary symptom that architecture coupling causes
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - the anti-pattern of a monolith with no internal boundaries
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - the anti-pattern of microservices that still require coordinated releases

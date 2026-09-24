@@ -210,7 +210,7 @@ and the feedback loop breaks.
 |-----------|----------|
 | "The build is too slow to fix every red immediately" | Then the build is too slow, and that is a separate problem to solve. A slow build is not a reason to ignore failures - it is a reason to invest in making the build faster. |
 | "Some tests are flaky - we can't treat every failure as real" | Quarantine flaky tests into a non-blocking suite. The blocking suite must be deterministic. If a test in the blocking suite fails, it is real until proven otherwise. |
-| "We can't integrate daily - our features take weeks" | The features take weeks. The integrations do not have to. Use branch by abstraction, feature flags, or vertical slicing to integrate partial work daily. |
+| "We can't integrate daily - our features take weeks" | The features take weeks. The integrations do not have to. Use [branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}), feature flags, or vertical slicing to integrate partial work daily. |
 | "Fixing someone else's broken build is not my job" | It is the whole team's job. A red build blocks everyone. If the person who broke it is unavailable, someone else should revert or fix it. The team owns the build, not the individual. |
 | "We have CI - the build server runs on every push" | A build server is not CI. CI is the practice of integrating frequently and keeping the build green. If the build has been red for a week, you have a build server, not continuous integration. |
 

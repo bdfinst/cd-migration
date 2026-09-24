@@ -12,6 +12,8 @@ description: >
 [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are the mechanism that makes [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) of features without redeploying.
 {{% /pageinfo %}}
 
+Feature flags are one technique among several for integrating incomplete work safely, and the most expensive one to maintain. Before reaching for a flag, work through the [evolutionary coding techniques hierarchy]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}): dark code, branch by abstraction, parallel run, and expand and contract each solve part of what a flag solves, without the lifecycle overhead. This page assumes you've already ruled those out.
+
 ## Why Feature Flags?
 
 In [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}), deployment and release are two separate events:
@@ -79,11 +81,12 @@ graph TD
 
 | Technique | How It Works | When to Use |
 |-----------|-------------|-------------|
-| **Branch by Abstraction** | Introduce an abstraction layer, build the new implementation behind it, switch when ready | Replacing an existing subsystem or library |
-| **Connect Tests Last** | Build internal components without connecting them to the UI or API | New backend functionality that has no user-facing impact until connected |
-| **Dark Launch** | Deploy the code path but do not route any traffic to it | New infrastructure, new services, or new endpoints that are not yet referenced |
+| **[Branch by Abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}})** | Introduce an abstraction layer, build the new implementation behind it, switch when ready | Replacing an existing implementation or library |
+| **[Dark Code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}})** | Build and deploy internal components without connecting them to the UI, API, or any caller | New backend functionality that has no user-facing impact until connected |
+| **[Parallel Run]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/parallel-run" >}})** | Run the new implementation alongside the old one and compare results before trusting it | High-risk rewrites where correctness must be proven on production traffic |
+| **[Expand and Contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}})** | Evolve a shared schema or contract across non-breaking phases | Database schema changes and API contract changes with multiple consumers |
 
-These alternatives avoid the lifecycle overhead of feature flags while still enabling trunk-based development with incomplete work.
+See [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) for the full decision hierarchy. These alternatives avoid the lifecycle overhead of feature flags while still enabling trunk-based development with incomplete work.
 
 ## Implementation Approaches
 
@@ -426,6 +429,7 @@ Small batches and feature flags let you deploy more frequently, but deploying mo
 
 ## Related Content
 
+- [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) - the decision hierarchy to work through before reaching for a flag
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - a symptom that feature flags help eliminate by making deployments reversible
 - [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - the symptom of batching releases that flags help break
 - [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - the practice that feature flags make safe for incomplete work

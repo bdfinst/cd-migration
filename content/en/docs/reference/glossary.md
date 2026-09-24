@@ -170,6 +170,25 @@ Referenced in:
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
 [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}})
 
+### Branch by Abstraction
+
+An [evolutionary coding technique]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}})
+that introduces an interface over an existing implementation, builds a new implementation
+behind it, and switches the binding once the new implementation is ready, all in small commits
+on trunk. It replaces a long-lived branch with an abstraction layer that has two implementations,
+one of which is live. See
+[Branch by Abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}).
+
+Referenced in:
+[Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}),
+[Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}),
+[Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
+[Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}}),
+[Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}),
+[Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}),
+[TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}),
+[Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}})
+
 ### Branch Lifetime
 
 The elapsed time between creating a branch and merging it to trunk. CD requires branch lifetimes
@@ -380,6 +399,21 @@ Referenced in:
 
 ## D
 
+### Dark Code
+
+An [evolutionary coding technique]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}})
+where new logic is built, tested, and deployed to production before anything calls it: no route,
+UI trigger, or message consumer references it yet. It carries zero release risk because it is
+unreachable until a final commit wires it in. Also called "connect tests last" or a dark launch
+of code. See
+[Dark Code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}).
+
+Referenced in:
+[Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}),
+[Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}),
+[Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}),
+[TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}})
+
 ### Deployable
 
 A change that has passed all automated quality gates defined by the team and is ready for
@@ -513,6 +547,18 @@ Referenced in:
 
 ## E
 
+### Expand and Contract
+
+An [evolutionary coding technique]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}})
+for evolving a shared database schema or API contract across non-breaking phases: expand the
+contract to support both the old and new shape, dual-write and backfill, switch reads to the
+new shape, then contract by removing the old shape. Also called parallel change. See
+[Expand and Contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}}).
+
+Referenced in:
+[Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}),
+[TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}})
+
 ### External Dependency
 
 A [dependency](#dependency) on code or services outside your team's direct control. External
@@ -580,6 +626,7 @@ Referenced in:
 [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}),
 [Database Migrations Block or Break Deployments]({{< relref "/docs/symptoms/deployment/database-migrations-block-deploys" >}}),
 [Deploying Stateful Services Causes Outages]({{< relref "/docs/symptoms/deployment/stateful-service-deployment-outages" >}}),
+[Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}),
 [Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}),
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
 [Experience Reports]({{< relref "/docs/migrate-to-cd/continuous-deployment/experience-reports" >}}),
@@ -800,6 +847,19 @@ Referenced in:
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#orchestrator" >}}).
 
 ## P
+
+### Parallel Run
+
+An [evolutionary coding technique]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}})
+where a new implementation runs alongside the current one against the same production input,
+without its result ever being returned to the caller, so mismatches can be measured before the
+new implementation is trusted. Also called shadowing or a dark launch of logic. See
+[Parallel Run]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/parallel-run" >}}).
+
+Referenced in:
+[Branch by Abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}),
+[Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}),
+[Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}})
 
 ### Pipeline
 
