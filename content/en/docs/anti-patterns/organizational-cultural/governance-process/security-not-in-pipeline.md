@@ -128,8 +128,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - design the pipeline stages that include security scanning
-- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - security scans must produce reliable, repeatable results to be trusted
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design the pipeline stages that include security scanning
+- [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - security scans must produce reliable, repeatable results to be trusted
 - [Compliance interpreted as manual approval]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval" >}}) - automated security controls support the case for replacing manual compliance gates
 - [Separation of duties as separate teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) - related pattern where security review creates organizational walls
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - security scanning in the single path ensures every change is verified
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - security scanning in the single path ensures every change is verified

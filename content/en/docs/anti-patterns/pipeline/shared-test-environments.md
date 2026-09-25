@@ -113,8 +113,8 @@ Some organizations need a single shared environment as a final integration check
 
 ## Related Content
 
-- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
 - [No environment parity]({{< relref "/docs/anti-patterns/pipeline/no-environment-parity" >}})
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
-- [Small batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}})
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})
+- [Small batches]({{< relref "/docs/optimize/small-batches" >}})

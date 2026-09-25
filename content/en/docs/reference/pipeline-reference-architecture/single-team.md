@@ -82,4 +82,4 @@ independently deployable services with their
 - [Quality Gates]({{< relref "/docs" >}}) - the full gate sequence this pipeline applies
 - [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}) - the next pattern when one team is not enough
 - [Modular Monolith]({{< relref "/docs/reference/glossary#modular-monolith" >}}) - glossary definition
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - how to evolve pipeline architecture from entangled to loosely coupled
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - how to evolve pipeline architecture from entangled to loosely coupled

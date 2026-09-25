@@ -146,4 +146,4 @@ Each step that is automated eliminates a hidden queue and brings "developer done
 - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - Large items are more likely to have undone work because they take longer to validate
 - [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) - Manual deployment processes create the deployment gap
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Manual testing gates create the validation queue
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - The definition of done is a working agreement the team owns
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - The definition of done is a working agreement the team owns

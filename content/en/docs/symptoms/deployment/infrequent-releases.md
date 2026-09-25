@@ -99,5 +99,5 @@ because the test suite is manual and grows with every feature.
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Infrequent releases are often driven by deployment fear
 - [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Stabilization overhead that accompanies large releases
 - [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - No automated path from commit to production
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Reducing release size to reduce risk
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Reducing release size to reduce risk
 - [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) - Measure how often the team ships to production

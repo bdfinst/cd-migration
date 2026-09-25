@@ -105,7 +105,7 @@ Configure your deployment tooling to require a passing pipeline run before any d
 
 ## Related Content
 
-- [Testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
-- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}})
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
-- [Metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})
+- [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})
+- [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}})
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})
+- [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}})

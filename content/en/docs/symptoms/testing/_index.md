@@ -20,4 +20,4 @@ find concrete fix steps.
 **Related anti-pattern categories:** [Testing Anti-Patterns]({{< relref "/docs/anti-patterns/testing" >}}),
 [Pipeline Anti-Patterns]({{< relref "/docs/anti-patterns/pipeline" >}})
 
-**Related guide:** [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})
+**Related guide:** [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})

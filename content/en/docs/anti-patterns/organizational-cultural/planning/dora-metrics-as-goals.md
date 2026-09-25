@@ -144,7 +144,7 @@ metrics exposes and removes constraints directly, rather than waiting for a lagg
 
 ### Step 3: Connect improvement experiments to behaviors, not numbers
 
-Use the [improvement kata]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to
+Use the [improvement kata]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) to
 run improvement experiments against the leading indicators. A hypothesis like "if we decompose
 stories to a one-day target, integration frequency will increase because less work will be
 batched before integrating" is testable within a week. A hypothesis like "if we improve our
@@ -185,9 +185,9 @@ working to remove, not side-by-side metric tables.
 
 ## Related Content
 
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - using leading and lagging metrics together in an improvement kata
-- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - capturing DORA metrics as a starting point, not a target
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - using leading and lagging metrics together in an improvement kata
+- [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - capturing DORA metrics as a starting point, not a target
 - [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) - the leading indicator most directly tied to CD health
 - [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) - measuring story-level batch size
 - [Velocity as a Team Productivity Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-team-metric" >}}) - the same anti-pattern applied to story points
-- [Hypothesis-Driven Development]({{< relref "/docs/migrate-to-cd/optimize/hypothesis-driven-development" >}}) - running improvement experiments against leading indicators
+- [Hypothesis-Driven Development]({{< relref "/docs/optimize/hypothesis-driven-development" >}}) - running improvement experiments against leading indicators

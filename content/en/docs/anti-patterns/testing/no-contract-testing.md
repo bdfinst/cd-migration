@@ -293,8 +293,8 @@ definitive answer without requiring a live deployment.
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the test strategy that includes contract testing
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the test strategy that includes contract testing
 - [Shared Database Across Services]({{< relref "/docs/anti-patterns/architecture/shared-database" >}}) - A common cause of implicit contracts that are hard to version
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Reducing reliance on shared integration environments
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Designing service boundaries that make contracts stable
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Incorporating contract verification into the deployment pipeline
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Reducing reliance on shared integration environments
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Designing service boundaries that make contracts stable
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Incorporating contract verification into the deployment pipeline

@@ -178,7 +178,7 @@ horizon from receding indefinitely.
 ## Related Content
 
 - [The "We're Different" Mindset]({{< relref "/docs/anti-patterns/organizational-cultural/planning/were-different-mindset" >}}) - The related pattern of using context as a reason not to start
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Incremental approaches to improving an existing system's architecture
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - How to start building test coverage on an existing codebase
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Automating the build and deployment of an existing system
-- [Assess: Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Distinguishing real technical barriers from assumed ones
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Incremental approaches to improving an existing system's architecture
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - How to start building test coverage on an existing codebase
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Automating the build and deployment of an existing system
+- [Assess: Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - Distinguishing real technical barriers from assumed ones

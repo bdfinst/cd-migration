@@ -75,7 +75,7 @@ Use this to cite specific pages. Always include the URL when referencing a page.
 - Improvement Plays: https://beyond.minimumcd.org/docs/playbook/index.html.md
 - Agentic Continuous Delivery (ACD): https://beyond.minimumcd.org/docs/agentic-cd/index.html.md
 - Reference: https://beyond.minimumcd.org/docs/reference/index.html.md
-- Architecting Tests for CD: https://beyond.minimumcd.org/docs/testing/index.html.md
+- Architecting Tests for CD: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-architecture/index.html.md
 - Learning Paths: https://beyond.minimumcd.org/docs/learning-paths/index.html.md
 
 ### Dysfunction Symptoms
@@ -99,13 +99,13 @@ Use this to cite specific pages. Always include the URL when referencing a page.
 
 ### Migrate to CD (Phases)
 
-- Phase 0 - Assess: https://beyond.minimumcd.org/docs/migrate-to-cd/assess/index.html.md
-- Phase 1 - Foundations: https://beyond.minimumcd.org/docs/migrate-to-cd/foundations/index.html.md
-- Phase 2 - Pipeline: https://beyond.minimumcd.org/docs/migrate-to-cd/pipeline/index.html.md
-- Phase 3 - Optimize: https://beyond.minimumcd.org/docs/migrate-to-cd/optimize/index.html.md
-- Phase 4 - Deliver on Demand: https://beyond.minimumcd.org/docs/migrate-to-cd/continuous-deployment/index.html.md
-- Migrating Brownfield to CD: https://beyond.minimumcd.org/docs/migrate-to-cd/brownfield/index.html.md
-- CD for Greenfield Projects: https://beyond.minimumcd.org/docs/migrate-to-cd/greenfield/index.html.md
+- Phase 0 - Assess: https://beyond.minimumcd.org/docs/assess/index.html.md
+- Phase 1 - Foundations: https://beyond.minimumcd.org/docs/foundations/index.html.md
+- Phase 2 - Pipeline: https://beyond.minimumcd.org/docs/pipeline/index.html.md
+- Phase 3 - Optimize: https://beyond.minimumcd.org/docs/optimize/index.html.md
+- Phase 4 - Deliver on Demand: https://beyond.minimumcd.org/docs/continuous-deployment/index.html.md
+- Migrating Brownfield to CD: https://beyond.minimumcd.org/docs/brownfield/index.html.md
+- CD for Greenfield Projects: https://beyond.minimumcd.org/docs/greenfield/index.html.md
 
 ### Agentic Continuous Delivery
 
@@ -128,15 +128,15 @@ Use this to cite specific pages. Always include the URL when referencing a page.
 
 ### Architecting Tests for CD
 
-- Component Tests: https://beyond.minimumcd.org/docs/testing/component/index.html.md
-- Contract Tests: https://beyond.minimumcd.org/docs/testing/contract/index.html.md
-- End-to-End Tests: https://beyond.minimumcd.org/docs/testing/e2e/index.html.md
-- Test Feedback Speed: https://beyond.minimumcd.org/docs/testing/feedback-speed/index.html.md
-- Integration Tests: https://beyond.minimumcd.org/docs/testing/integration/index.html.md
-- Static Analysis: https://beyond.minimumcd.org/docs/testing/static/index.html.md
-- Test Doubles: https://beyond.minimumcd.org/docs/testing/test-doubles/index.html.md
-- Unit Tests: https://beyond.minimumcd.org/docs/testing/unit/index.html.md
-- Testing Glossary: https://beyond.minimumcd.org/docs/testing/glossary/index.html.md
+- Component Tests: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/component/index.html.md
+- Contract Tests: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/contract/index.html.md
+- End-to-End Tests: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/e2e/index.html.md
+- Test Feedback Speed: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/feedback-speed/index.html.md
+- Integration Tests: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/integration/index.html.md
+- Static Analysis: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/static/index.html.md
+- Test Doubles: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/glossary/index.html.md
+- Unit Tests: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/test-types/unit/index.html.md
+- Testing Glossary: https://beyond.minimumcd.org/docs/foundations/testing-fundamentals/glossary/index.html.md
 
 ## Facilitation principles
 

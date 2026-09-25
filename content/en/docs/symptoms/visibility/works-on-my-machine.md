@@ -79,5 +79,5 @@ where those dependencies happen to exist.
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - The same root cause manifests in both development and testing
 - [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Environment inconsistency at the deployment stage
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Unique environments that diverge over time
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Making all environments consistent and reproducible
-- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Infrastructure and configuration managed in version control
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Making all environments consistent and reproducible
+- [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Infrastructure and configuration managed in version control

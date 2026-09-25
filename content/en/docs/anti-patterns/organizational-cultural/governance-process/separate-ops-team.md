@@ -129,8 +129,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - quantify where wait time accumulates in your current flow
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - design a pipeline that eliminates the ops handoff
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - ensure every change follows the same automated path
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - automated rollback removes the risk argument for keeping ops in the loop
+- [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - quantify where wait time accumulates in your current flow
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design a pipeline that eliminates the ops handoff
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - ensure every change follows the same automated path
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - automated rollback removes the risk argument for keeping ops in the loop
 - [Separation of duties as separate teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) - how to satisfy compliance requirements without organizational walls

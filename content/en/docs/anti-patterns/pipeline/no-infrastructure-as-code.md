@@ -111,8 +111,8 @@ Delete an environment entirely and recreate it from source control alone, with n
 
 ## Related Content
 
-- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
-- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
-- [Identify constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}})
-- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}})
+- [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
+- [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})
+- [Identify constraints]({{< relref "/docs/assess/identify-constraints" >}})
+- [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}})

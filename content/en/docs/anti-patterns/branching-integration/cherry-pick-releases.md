@@ -232,8 +232,8 @@ process.
 
 ## Related Content
 
-- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - The branching model that makes trunk deployable by default
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into units small enough to merge complete
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Reducing batch size eliminates the need to hold back commits
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The branching model that makes trunk deployable by default
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking work into units small enough to merge complete
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Reducing batch size eliminates the need to hold back commits
 - [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}) - The pattern that cherry-picking evolves into when not addressed
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the test confidence that makes trunk trustworthy
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the test confidence that makes trunk trustworthy

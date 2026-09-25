@@ -23,31 +23,31 @@
   <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="68" width="6" height="60" fill="#224968"/>
   <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Pure transformation logic</text>
-  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="116" font-size="11" font-style="italic" fill="#556">The data calculation, no I/O</text>
 
   <!-- Layer 2: Job orchestration -->
   <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="136" width="6" height="60" fill="#224968"/>
   <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Job orchestration</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="184" font-size="11" font-style="italic" fill="#556">Idempotency, locking, time windows, checkpointing (injected clock)</text>
 
   <!-- Layer 3: Source and sink adapters -->
   <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="204" width="6" height="60" fill="#224968"/>
   <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Source and sink adapters</text>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="346" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
-  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="496" y="214" width="124" height="20" rx="10" fill="#6c757d"/><text x="558" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Source/sink contract</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="626" y="214" width="54" height="20" rx="10" fill="#224968"/><text x="653" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="346" y="214" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#contract-test" target="_top"><rect x="496" y="214" width="124" height="20" rx="10" fill="#6c757d"/><text x="558" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Source/sink contract</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="626" y="214" width="54" height="20" rx="10" fill="#224968"/><text x="653" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
   <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Protocol, error mapping, transactional semantics</text>
 
   <!-- Layer 4: Process startup -->
   <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="272" width="6" height="60" fill="#224968"/>
   <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Process startup</text>
-  <a href="/docs/testing/glossary/#deployed-binary-test" target="_top"><rect x="560" y="282" width="120" height="20" rx="10" fill="#224968"/><text x="620" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Deployed binary</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#deployed-binary-test" target="_top"><rect x="560" y="282" width="120" height="20" rx="10" fill="#224968"/><text x="620" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Deployed binary</text></a>
   <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Exit codes, signal handling, config and secret loading, lock acquisition</text>
 
   <!-- Boundary divider -->
@@ -63,17 +63,17 @@
   <rect x="30" y="384" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="384" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="408" font-size="14" font-weight="700" fill="#1a2a3a">External source and sink</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="418" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
-  <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="598" y="418" width="82" height="20" rx="10" fill="#6c757d"/><text x="639" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="386" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="472" y="418" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#out-of-band-test" target="_top"><rect x="598" y="418" width="82" height="20" rx="10" fill="#6c757d"/><text x="639" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integ.</text></a>
   <text x="50" y="450" font-size="11" font-style="italic" fill="#556">Data store, broker, file system. Doubled in component; real in adapter integration.</text>
 
   <!-- Layer 6: External scheduler and system clock -->
   <rect x="30" y="472" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="472" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="496" font-size="14" font-weight="700" fill="#1a2a3a">External scheduler and system clock</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="476" y="506" width="120" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="536" y="520" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component (clock doubled)</text></a>
-  <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="602" y="506" width="78" height="20" rx="10" fill="#6c757d"/><text x="641" y="520" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="476" y="506" width="120" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="536" y="520" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component (clock doubled)</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#out-of-band-test" target="_top"><rect x="602" y="506" width="78" height="20" rx="10" fill="#6c757d"/><text x="641" y="520" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integ.</text></a>
   <text x="50" y="538" font-size="11" font-style="italic" fill="#556">Cron expression, env, secrets, time-zone wiring. OOB check uses the real scheduler and clock.</text>
 
   <!-- Legend -->

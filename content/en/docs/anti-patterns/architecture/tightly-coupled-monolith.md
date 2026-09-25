@@ -246,9 +246,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Strategies for creating module boundaries
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Decoupling enables smaller, safer changes
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Scoping tests to module boundaries
-- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Finding the coupling that hurts most
-- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Making coordination overhead visible
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Strategies for creating module boundaries
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Decoupling enables smaller, safer changes
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Scoping tests to module boundaries
+- [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - Finding the coupling that hurts most
+- [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - Making coordination overhead visible
 - [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) - how tight coupling generates unintended side effects and feature interaction defects.

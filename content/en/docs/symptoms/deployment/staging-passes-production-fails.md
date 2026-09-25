@@ -80,5 +80,5 @@ becomes a source of variance between environments.
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same environment inconsistency pattern at a different stage
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment-dependent behavior is the common root
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Unique environments that diverge from production
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Making staging match production
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Making staging match production
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track deployment failures that staging should have caught

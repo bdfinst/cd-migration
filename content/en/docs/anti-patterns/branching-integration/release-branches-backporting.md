@@ -235,8 +235,8 @@ pass.
 
 ## Related Content
 
-- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - The model that eliminates the need for release branches
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The model that eliminates the need for release branches
 - [Cherry-Pick Releases]({{< relref "/docs/anti-patterns/branching-integration/cherry-pick-releases" >}}) - The earlier-stage pattern that often precedes extensive release branching
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Small releases reduce the business pressure to maintain old versions
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Decomposing work for safe incremental delivery without version branching
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Why multiple release branches undermine pipeline effectiveness
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Small releases reduce the business pressure to maintain old versions
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Decomposing work for safe incremental delivery without version branching
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Why multiple release branches undermine pipeline effectiveness

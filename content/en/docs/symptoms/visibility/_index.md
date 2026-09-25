@@ -21,6 +21,6 @@ find concrete fix steps.
 **Related anti-pattern categories:** [Monitoring and Observability Anti-Patterns]({{< relref "/docs/anti-patterns/monitoring-observability" >}}),
 [Organizational and Cultural Anti-Patterns]({{< relref "/docs/anti-patterns/organizational-cultural" >}})
 
-**Related guides:** [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}),
-[Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}),
-[Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}})
+**Related guides:** [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}}),
+[Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}),
+[Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}})

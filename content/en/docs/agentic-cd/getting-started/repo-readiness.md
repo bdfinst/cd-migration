@@ -64,11 +64,11 @@ Unreliable tests destroy the agent's feedback loop. An agent that cannot trust t
 **What makes agents unreliable:** flaky tests, tests that require manual setup, tests that depend on external services without mocking, tests that pass in one environment but fail in another.
 
 - Fix or quarantine flaky tests. A test suite that randomly fails teaches agents to ignore failures.
-- Remove external service dependencies from unit tests. Use [test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) for anything outside the process boundary.
+- Remove external service dependencies from unit tests. Use [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) for anything outside the process boundary.
 - Ensure tests run from a single command with no manual pre-steps
 - Make test output deterministic: same inputs, same results, every time
 
-See [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) for the test architecture that supports this.
+See [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) for the test architecture that supports this.
 
 **How AI can help:** Use an agent to run the test suite repeatedly and flag tests that produce different results across runs. Agents can also analyze test code to identify external service calls that should be replaced with test doubles, find shared mutable state between tests, and generate the stub or mock implementations needed to isolate unit tests from external dependencies.
 
@@ -238,7 +238,7 @@ An agent should be able to clone the repository, run the build command, run the 
 
 **Test runner output clarity:** The test runner should exit with code 0 on success and non-zero on failure. Failure output should go to stdout or stderr in a parseable format. A test runner that exits 0 with warnings buried in the output trains agents to treat success as ambiguous.
 
-See [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) for the broader build automation practices this builds on.
+See [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) for the broader build automation practices this builds on.
 
 ## Why This Matters for Agent Accuracy and Token Efficiency
 
@@ -264,5 +264,5 @@ Investing in repository readiness is not just preparation for agentic developmen
 - [Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}) - where to put project facts, rules, skills, and hooks so agents can find them
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the organizational prerequisite sequence, especially [Harden Guardrails]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap#harden-guardrails" >}}) and [Reduce Delivery Friction]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap#reduce-delivery-friction" >}}), which this page makes concrete at the repository level
 - [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - the full token optimization framework, including how code quality drives token cost
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - the test architecture foundations this page builds on
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - the build automation practices that make "single command to build" possible
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - the test architecture foundations this page builds on
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - the build automation practices that make "single command to build" possible

@@ -37,7 +37,7 @@ A deterministic pipeline produces consistent, repeatable results. Given the same
 
 For detailed guidance on building a deterministic pipeline, see:
 
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Phase 2 pipeline practice with anti-pattern/good-pattern examples and getting started steps
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Phase 2 pipeline practice with anti-pattern/good-pattern examples and getting started steps
 
 ## Additional Resources
 

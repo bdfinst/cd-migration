@@ -253,6 +253,6 @@ Expect pushback and address it directly:
 
 - [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}) - The upstream pattern that makes the manual gate feel necessary
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - The specific regression testing practice that often drives this gate
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the automated coverage that replaces manual gate function
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Encoding quality criteria in the pipeline rather than in individual approvals
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using data from the gate audit to prioritize test automation investment
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated coverage that replaces manual gate function
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Encoding quality criteria in the pipeline rather than in individual approvals
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using data from the gate audit to prioritize test automation investment

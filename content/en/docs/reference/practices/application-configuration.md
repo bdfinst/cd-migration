@@ -36,7 +36,7 @@ Application configuration should be:
 
 For detailed guidance on managing application configuration, see:
 
-- [Application Configuration]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) - Phase 2 pipeline practice with static vs dynamic feature flag patterns and getting started steps
+- [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) - Phase 2 pipeline practice with static vs dynamic feature flag patterns and getting started steps
 
 ## Additional Resources
 

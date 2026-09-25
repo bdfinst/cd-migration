@@ -136,8 +136,8 @@ These conversations produce different behavior than velocity conversations. They
 
 ## Related Content
 
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - CD metrics that replace velocity as delivery indicators
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Right-sizing work for fast delivery rather than high velocity
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Managing flow instead of managing utilization
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - Using retrospectives to improve delivery rather than defend velocity numbers
-- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - Establishing delivery metrics as the team's reference point
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - CD metrics that replace velocity as delivery indicators
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Right-sizing work for fast delivery rather than high velocity
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Managing flow instead of managing utilization
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - Using retrospectives to improve delivery rather than defend velocity numbers
+- [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - Establishing delivery metrics as the team's reference point

@@ -80,5 +80,5 @@ merges.
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Long-lived work creates the divergence that makes merges painful
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Merge pain discourages frequent integration
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - The primary cause of merge conflicts
-- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - Integrating at least daily to prevent divergence
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - Integrating at least daily to prevent divergence
 - [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) - Measure how often developers integrate to trunk

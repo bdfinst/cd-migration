@@ -28,8 +28,8 @@ infrequently (monthly, quarterly, or less) and want to reach a state where any c
 deployed to production at any time.
 
 You do not need to be starting from zero. If your team already has [CI](../glossary/#ci-continuous-integration) in place, you can begin
-with [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}). If you have a pipeline but deploy infrequently, start
-with [Phase 3: Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}). Use the [Phase 0 assessment]({{< relref "/docs/migrate-to-cd/assess" >}}) to find your
+with [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}). If you have a pipeline but deploy infrequently, start
+with [Phase 3: Optimize]({{< relref "/docs/optimize" >}}). Use the [Phase 0 assessment]({{< relref "/docs/assess" >}}) to find your
 starting point.
 
 ### Should we adopt this guide as an organization or as a team?
@@ -46,7 +46,7 @@ corners on quality.
 
 ### How do we use this guide for improvement?
 
-Start with [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}). Map your value stream, measure your current
+Start with [Phase 0: Assess]({{< relref "/docs/assess" >}}). Map your value stream, measure your current
 performance, and identify your top [constraints](../glossary/#constraint). Then work through the phases in order, focusing
 on one constraint at a time.
 
@@ -81,7 +81,7 @@ Continuous delivery also requires [trunk-based development](../glossary/#tbd-tru
 single path to production, [immutable artifacts](../glossary/#immutable-artifact), and the ability to deploy any green build.
 If your team has a pipeline but uses long-lived feature branches, deploys only at the end of a
 sprint, or requires manual testing before a release, you have a pipeline tool but you are not
-practicing continuous delivery. The [current-state checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}})
+practicing continuous delivery. The [current-state checklist]({{< relref "/docs/assess/current-state-checklist" >}})
 in Phase 0 helps you assess the gap.
 
 ### What does "the pipeline is the only path to production" mean?
@@ -96,7 +96,7 @@ If exceptions are allowed, you lose that guarantee, and your ability to reason a
 state degrades.
 
 During your migration, establishing this single path is a key milestone in
-[Phase 2]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}).
+[Phase 2]({{< relref "/docs/pipeline/single-path-to-production" >}}).
 
 ### What does "application configuration" mean in the context of CD?
 
@@ -105,14 +105,14 @@ the application code: database connection strings, API endpoints, [feature flag]
 levels, and similar settings.
 
 In a CD pipeline, configuration is externalized. It lives outside the artifact and is injected
-at deployment time. This is what makes [immutable artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}})
+at deployment time. This is what makes [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}})
 possible. You build the [artifact](../glossary/#artifact) once and deploy it to any environment by providing the
 appropriate configuration.
 
 If configuration is embedded in the artifact (for example, hardcoded URLs or environment-specific
 config files baked into a container image), you must rebuild the artifact for each environment,
 which means the artifact you tested is not the artifact you deploy. This breaks the immutability
-guarantee. See [Application Config]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}).
+guarantee. See [Application Config]({{< relref "/docs/pipeline/application-config" >}}).
 
 ### What is an "immutable artifact" and why does it matter?
 
@@ -126,7 +126,7 @@ staging but not in production" caused by differences in the build. If the same b
 deployed everywhere, build-related discrepancies are impossible.
 
 Immutability requires externalizing configuration (see above) and storing artifacts in a
-registry or repository. See [Immutable Artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}}).
+registry or repository. See [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}).
 
 ### What does "deployable" mean?
 
@@ -144,7 +144,7 @@ A typical deployable definition includes:
 - Smoke tests in the production-like environment pass
 
 If any of these gates fail, the change is not deployable. The pipeline makes this determination
-automatically and consistently. See [Deployable Definition]({{< relref "/docs/migrate-to-cd/pipeline/deployable-definition" >}}).
+automatically and consistently. See [Deployable Definition]({{< relref "/docs/pipeline/deployable-definition" >}}).
 
 ### What is the difference between deployment and release?
 
@@ -154,7 +154,7 @@ automatically and consistently. See [Deployable Definition]({{< relref "/docs/mi
 
 These are different events, and decoupling them is one of the most powerful techniques in CD.
 You can deploy code to production without releasing it to users by using
-[feature flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}). The code is running in production, but the new
+[feature flags]({{< relref "/docs/optimize/feature-flags" >}}). The code is running in production, but the new
 functionality is disabled. When you are ready, you enable the flag and the feature is released.
 
 This decoupling is important because it separates the technical risk (will the deployment
@@ -218,7 +218,7 @@ well-structured monolith with a comprehensive test suite and a reliable pipeline
 CD. A poorly structured collection of microservices with shared databases and coordinated
 releases cannot.
 
-Architecture decoupling is addressed in [Phase 3]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}), but
+Architecture decoupling is addressed in [Phase 3]({{< relref "/docs/optimize/architecture-decoupling" >}}), but
 it is about enabling independent deployment and reducing coordination costs, not about adopting
 any particular architectural style.
 
@@ -229,23 +229,23 @@ every CD practice: developers stop trusting the tests, broken builds are ignored
 pipeline becomes a bottleneck rather than an enabler. The fix is incremental: quarantine
 flaky tests, parallelize execution, rebalance toward fast unit tests, and set a pipeline
 time budget (under 10 minutes). See
-[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and the
-[Testing reference section]({{< relref "/docs/testing" >}}) for detailed guidance.
+[Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) and the
+[Testing reference section]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) for detailed guidance.
 
 ### Where do I start if I am not sure which phase applies to us?
 
-Start with [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}). Complete the
-[value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) exercise, take
-[baseline metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}), and fill out the
-[current-state checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}}). These activities will tell you
+Start with [Phase 0: Assess]({{< relref "/docs/assess" >}}). Complete the
+[value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) exercise, take
+[baseline metrics]({{< relref "/docs/assess/baseline-metrics" >}}), and fill out the
+[current-state checklist]({{< relref "/docs/assess/current-state-checklist" >}}). These activities will tell you
 exactly where you stand and which phase to begin with.
 
 If you do not have time for a full assessment, ask yourself these questions:
 
-- **Do all developers integrate to trunk at least daily?** If no, start with [Phase 1]({{< relref "/docs/migrate-to-cd/foundations" >}}).
-- **Do you have a single automated pipeline that every change goes through?** If no, start with [Phase 2]({{< relref "/docs/migrate-to-cd/pipeline" >}}).
-- **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2]({{< relref "/docs/migrate-to-cd/pipeline" >}}) completion criteria.
-- **Do you deploy at least weekly?** If no, look at [Phase 3]({{< relref "/docs/migrate-to-cd/optimize" >}}) for [batch size](../glossary/#batch-size) and flow optimization.
+- **Do all developers integrate to trunk at least daily?** If no, start with [Phase 1]({{< relref "/docs/foundations" >}}).
+- **Do you have a single automated pipeline that every change goes through?** If no, start with [Phase 2]({{< relref "/docs/pipeline" >}}).
+- **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2]({{< relref "/docs/pipeline" >}}) completion criteria.
+- **Do you deploy at least weekly?** If no, look at [Phase 3]({{< relref "/docs/optimize" >}}) for [batch size](../glossary/#batch-size) and flow optimization.
 
 ### Is CD about speed or quality?
 

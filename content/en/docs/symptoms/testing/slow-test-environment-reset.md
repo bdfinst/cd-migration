@@ -61,7 +61,7 @@ assertion, the environment reset is slow because every dependency must be restor
 state. A test that validates billing logic should not need a running payment gateway. A test
 that checks order validation should not need a populated product catalog database.
 
-The fix is to match each test to the right layer. [Component tests](../../testing/glossary/#component-test) that verify business rules
+The fix is to match each test to the right layer. [Component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) that verify business rules
 use in-memory databases or controlled fixtures - no environment reset needed. Contract tests
 verify service boundaries with [virtual services](../../reference/glossary/#virtual-service) instead of live instances. Only a small number
 of end-to-end tests need the fully assembled environment, and those run outside the pipeline's
@@ -113,8 +113,8 @@ services - do not need environment resets. They run in isolation with their own 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Related symptom caused by environment inconsistency
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not just the reset
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many tests at the E2E layer requiring full environment setup
-- [Test Doubles]({{< relref "/docs/testing/glossary#test-double" >}}) - Virtual services and in-memory replacements for external dependencies
+- [Test Doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) - Virtual services and in-memory replacements for external dependencies
 - [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}) - The most common root cause of long reset times
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Treating regression as a manual checkpoint rather than automated feedback
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Designing environments that are both realistic and fast to provision
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building a test strategy that does not depend on slow environment resets
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Designing environments that are both realistic and fast to provision
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building a test strategy that does not depend on slow environment resets

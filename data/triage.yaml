@@ -273,9 +273,9 @@ results:
       - path: /docs/anti-patterns/testing/qa-signoff-gate
         label: "QA Sign-Off Gate"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
-      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+      - path: /docs/brownfield/replacing-manual-validations
         label: "Replace Manual Validations"
     measures:
       - "Stories with no automation: should trend toward zero"
@@ -299,9 +299,9 @@ results:
       - path: /docs/anti-patterns/testing/qa-signoff-gate
         label: "QA Sign-Off Gate"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
-      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+      - path: /docs/brownfield/replacing-manual-validations
         label: "Replace Manual Validations"
     measures:
       - "Feature lead time: shrinks when QA is no longer a separate queue"
@@ -323,11 +323,11 @@ results:
       - path: /docs/anti-patterns/branching-integration/integration-deferred
         label: "Integration Deferred Too Long"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+      - path: /docs/pipeline/pipeline-architecture
         label: "Pipeline Architecture"
-      - path: /docs/migrate-to-cd/optimize/small-batches
+      - path: /docs/optimize/small-batches
         label: "Work in Small Batches"
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
     measures:
       - "Deployment frequency: rising toward weekly, then daily"
@@ -353,11 +353,11 @@ results:
       - path: /docs/anti-patterns/branching-integration/integration-deferred
         label: "Integration Deferred Too Long"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy
+      - path: /docs/foundations/testing-fundamentals/pipeline-test-strategy
         label: "Pipeline Test Strategy"
-      - path: /docs/migrate-to-cd/brownfield/replacing-manual-validations
+      - path: /docs/brownfield/replacing-manual-validations
         label: "Replace Manual Validations"
-      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+      - path: /docs/foundations/trunk-based-development/
         label: "Adopt Trunk-Based Development"
     measures:
       - "Hardening sprint duration: should shrink toward zero"
@@ -376,7 +376,7 @@ results:
       - path: /docs/anti-patterns/monitoring-observability/blind-operations
         label: "Blind Operations"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
     measures:
       - "Alert action rate: percentage of alerts that result in a human action should increase"
@@ -396,7 +396,7 @@ results:
       - path: /docs/anti-patterns/pipeline/no-deployment-health-checks
         label: "No Deployment Health Checks"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
     measures:
       - "Mean time to detect: should fall from hours or days toward minutes"
@@ -414,7 +414,7 @@ results:
       - path: /docs/anti-patterns/monitoring-observability/blind-operations
         label: "Blind Operations"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
     measures:
       - "Ratio of internal to customer-detected defects: should shift heavily toward internal"
@@ -436,9 +436,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/planning/were-different-mindset
         label: "The 'We're Different' Mindset"
     solutions:
-      - path: /docs/migrate-to-cd/assess/baseline-metrics
+      - path: /docs/assess/baseline-metrics
         label: "Establish Baseline Metrics"
-      - path: /docs/migrate-to-cd/optimize/metrics-driven-improvement
+      - path: /docs/optimize/metrics-driven-improvement
         label: "Metrics-Driven Improvement"
     measures:
       - "Improvement backlog: leadership-sponsored items appear regularly"
@@ -460,9 +460,9 @@ results:
       - path: /docs/anti-patterns/testing/inverted-test-pyramid
         label: "Inverted Test Pyramid"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+      - path: /docs/pipeline/deterministic-pipeline
         label: "Deterministic Pipeline"
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
     measures:
       - "Flaky test count: tracked and trending downward"
@@ -484,9 +484,9 @@ results:
       - path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions
         label: "Hardcoded Environment Assumptions"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
-      - path: /docs/migrate-to-cd/foundations/everything-as-code
+      - path: /docs/foundations/everything-as-code
         label: "Everything as Code"
     measures:
       - "Environment-specific failures: should approach zero as parity improves"
@@ -506,7 +506,7 @@ results:
       - path: /docs/anti-patterns/testing/inverted-test-pyramid
         label: "Inverted Test Pyramid"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test
+      - path: /docs/foundations/testing-fundamentals/what-to-test
         label: "What to Test"
     measures:
       - "Defects reaching production: falls even if coverage percentage stays flat"
@@ -524,7 +524,7 @@ results:
       - path: /docs/anti-patterns/testing/inverted-test-pyramid
         label: "Inverted Test Pyramid"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test
+      - path: /docs/foundations/testing-fundamentals/what-to-test
         label: "What to Test"
     measures:
       - "Test failures on safe refactors: should decrease as tests target behavior"
@@ -544,7 +544,7 @@ results:
       - path: /docs/anti-patterns/testing/manual-testing-only
         label: "Manual Testing Only"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy
+      - path: /docs/foundations/testing-fundamentals/pipeline-test-strategy
         label: "Pipeline Test Strategy"
     measures:
       - "Local test suite runtime: target under 10 minutes for developer feedback"
@@ -564,9 +564,9 @@ results:
       - path: /docs/anti-patterns/pipeline/snowflake-environments
         label: "Snowflake Environments"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
-      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+      - path: /docs/pipeline/deterministic-pipeline
         label: "Deterministic Pipeline"
     measures:
       - "Environment setup time per test run: should decrease significantly"
@@ -586,9 +586,9 @@ results:
       - path: /docs/anti-patterns/testing/inverted-test-pyramid
         label: "Inverted Test Pyramid"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+      - path: /docs/pipeline/deterministic-pipeline
         label: "Deterministic Pipeline"
-      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+      - path: /docs/pipeline/pipeline-architecture
         label: "Pipeline Architecture"
     measures:
       - "Pipeline duration: target under 10 minutes for the main feedback loop"
@@ -608,9 +608,9 @@ results:
       - path: /docs/anti-patterns/testing/manually-triggered-tests
         label: "Manually Triggered Tests"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+      - path: /docs/pipeline/pipeline-architecture
         label: "Pipeline Architecture"
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
     measures:
       - "Time from commit to first automated feedback: target under 10 minutes"
@@ -630,9 +630,9 @@ results:
       - path: /docs/anti-patterns/team-workflow/push-based-work-assignment
         label: "Push-Based Work Assignment"
     solutions:
-      - path: /docs/migrate-to-cd/optimize/limiting-wip
+      - path: /docs/optimize/limiting-wip
         label: "Limit Work in Progress"
-      - path: /docs/migrate-to-cd/optimize/small-batches
+      - path: /docs/optimize/small-batches
         label: "Work in Small Batches"
     measures:
       - "Average WIP count: falls as limits are enforced"
@@ -652,7 +652,7 @@ results:
       - path: /docs/anti-patterns/team-workflow/big-bang-feature-delivery
         label: "Big-Bang Feature Delivery"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/work-decomposition
+      - path: /docs/foundations/work-decomposition
         label: "Work Decomposition"
     measures:
       - "Average story size: should trend toward one to three days to complete"
@@ -672,9 +672,9 @@ results:
       - path: /docs/anti-patterns/branching-integration/integration-deferred
         label: "Integration Deferred Too Long"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration
+      - path: /docs/foundations/trunk-based-development/tbd-migration
         label: "Migrate to Trunk-Based Development"
-      - path: /docs/migrate-to-cd/foundations/work-decomposition
+      - path: /docs/foundations/work-decomposition
         label: "Work Decomposition"
     measures:
       - "Branch lifetime: should fall toward one to two days"
@@ -694,9 +694,9 @@ results:
       - path: /docs/anti-patterns/team-workflow/unbounded-wip
         label: "Unbounded Work in Progress"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+      - path: /docs/foundations/trunk-based-development/
         label: "Adopt Trunk-Based Development"
-      - path: /docs/migrate-to-cd/foundations/work-decomposition
+      - path: /docs/foundations/work-decomposition
         label: "Work Decomposition"
     measures:
       - "PR age at merge: should fall from days toward hours"
@@ -716,7 +716,7 @@ results:
       - path: /docs/anti-patterns/team-workflow/unbounded-wip
         label: "Unbounded Work in Progress"
     solutions:
-      - path: /docs/migrate-to-cd/optimize/limiting-wip
+      - path: /docs/optimize/limiting-wip
         label: "Limit Work in Progress"
     measures:
       - "Blocked item age: how long items sit in a blocked state before action"
@@ -736,9 +736,9 @@ results:
       - path: /docs/anti-patterns/team-workflow/big-bang-feature-delivery
         label: "Big-Bang Feature Delivery"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/work-decomposition
+      - path: /docs/foundations/work-decomposition
         label: "Work Decomposition"
-      - path: /docs/migrate-to-cd/optimize/hypothesis-driven-development
+      - path: /docs/optimize/hypothesis-driven-development
         label: "Hypothesis-Driven Development"
     measures:
       - "Rework rate: percentage of completed items that require revision"
@@ -760,9 +760,9 @@ results:
       - path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions
         label: "Hardcoded Environment Assumptions"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
-      - path: /docs/migrate-to-cd/foundations/everything-as-code
+      - path: /docs/foundations/everything-as-code
         label: "Everything as Code"
     measures:
       - "Environment-specific failure rate: should approach zero"
@@ -782,9 +782,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/blame-culture
         label: "Blame Culture"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
     measures:
       - "Mean time to restore: falls as runbooks improve response"
@@ -806,9 +806,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams
         label: "Teams Spread Too Thin"
     solutions:
-      - path: /docs/migrate-to-cd/optimize/retrospectives
+      - path: /docs/optimize/retrospectives
         label: "Retrospectives"
-      - path: /docs/migrate-to-cd/optimize/limiting-wip
+      - path: /docs/optimize/limiting-wip
         label: "Limit Work in Progress"
     measures:
       - "Unplanned work percentage: time spent on interrupt-driven work vs planned work"
@@ -828,9 +828,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing
         label: "Pressure to Skip Testing"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/code-review
+      - path: /docs/foundations/code-review
         label: "Code Review Practices"
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
     measures:
       - "Post-merge defect rate for AI-generated code: should match human-written code"
@@ -850,9 +850,9 @@ results:
       - path: /docs/anti-patterns/testing/testing-only-at-the-end
         label: "Testing Only at the End"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
-      - path: /docs/migrate-to-cd/brownfield/
+      - path: /docs/brownfield/
         label: "Brownfield Migration Guide"
     measures:
       - "Automated test count in actively changed modules: growing over time"
@@ -875,9 +875,9 @@ results:
       - path: /docs/anti-patterns/architecture/distributed-monolith
         label: "Distributed Monolith"
     solutions:
-      - path: /docs/migrate-to-cd/optimize/architecture-decoupling
+      - path: /docs/optimize/architecture-decoupling
         label: "Architecture Decoupling"
-      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+      - path: /docs/pipeline/single-path-to-production
         label: "Single Path to Production"
     measures:
       - "Services that can be deployed independently: should increase over time"
@@ -899,9 +899,9 @@ results:
       - path: /docs/anti-patterns/branching-integration/long-lived-feature-branches
         label: "Long-Lived Feature Branches"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/trunk-based-development/
+      - path: /docs/foundations/trunk-based-development/
         label: "Adopt Trunk-Based Development"
-      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+      - path: /docs/pipeline/single-path-to-production
         label: "Single Path to Production"
     measures:
       - "Merge freeze duration and frequency: should decrease toward zero"
@@ -921,9 +921,9 @@ results:
       - path: /docs/anti-patterns/pipeline/snowflake-environments
         label: "Snowflake Environments"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/production-like-environments
+      - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
-      - path: /docs/migrate-to-cd/foundations/everything-as-code
+      - path: /docs/foundations/everything-as-code
         label: "Everything as Code"
     measures:
       - "Staging-to-production failure rate discrepancy: should narrow as parity improves"
@@ -945,9 +945,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/governance-process/deployment-windows
         label: "Deployment Windows"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/deterministic-pipeline
+      - path: /docs/pipeline/deterministic-pipeline
         label: "Deterministic Pipeline"
-      - path: /docs/migrate-to-cd/optimize/metrics-driven-improvement
+      - path: /docs/optimize/metrics-driven-improvement
         label: "Metrics-Driven Improvement"
     measures:
       - "Approval cycle time: should shrink as pipeline evidence replaces manual review"
@@ -967,9 +967,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern
         label: "Separation of Duties as a Bottleneck"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
-      - path: /docs/migrate-to-cd/optimize/team-alignment
+      - path: /docs/optimize/team-alignment
         label: "Team Alignment"
     measures:
       - "Cross-team approval wait time: should shorten as collaboration patterns improve"
@@ -989,9 +989,9 @@ results:
       - path: /docs/anti-patterns/pipeline/pipeline-not-versioned
         label: "Pipeline Not Version-Controlled"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/everything-as-code
+      - path: /docs/foundations/everything-as-code
         label: "Everything as Code"
-      - path: /docs/migrate-to-cd/pipeline/pipeline-architecture
+      - path: /docs/pipeline/pipeline-architecture
         label: "Pipeline Architecture"
     measures:
       - "Pipeline change lead time: from request to deployed - should shrink to same-day"
@@ -1011,9 +1011,9 @@ results:
       - path: /docs/anti-patterns/pipeline/no-deployment-health-checks
         label: "No Deployment Health Checks"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/rollback
+      - path: /docs/pipeline/rollback
         label: "Rollback Strategy"
-      - path: /docs/migrate-to-cd/continuous-deployment/progressive-rollout
+      - path: /docs/continuous-deployment/progressive-rollout
         label: "Progressive Rollout"
     measures:
       - "Mean time to restore: falls when rollback is a practiced, routine operation"
@@ -1033,9 +1033,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture
         label: "Hero Culture"
     solutions:
-      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+      - path: /docs/pipeline/single-path-to-production
         label: "Single Path to Production"
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
     measures:
       - "Number of team members who have deployed to production: should be all of them"
@@ -1058,9 +1058,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing
         label: "Pressure to Skip Testing"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started
+      - path: /docs/foundations/testing-fundamentals/getting-started
         label: "Get Started with Test Automation"
-      - path: /docs/migrate-to-cd/foundations/code-review
+      - path: /docs/foundations/code-review
         label: "Code Review Practices"
     measures:
       - "Defect density in AI-assisted code: should match or improve over time"
@@ -1075,7 +1075,7 @@ results:
       The problem is adoption without fit-assessment, not AI tooling in general.
     symptom_path: /docs/symptoms/flow/developer-experience/ai-tooling-slowdown
     solutions:
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
     measures:
       - "Developer time saved vs spent on AI tool overhead: should be net positive"
@@ -1093,9 +1093,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team
         label: "Separate Operations Team"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
-      - path: /docs/migrate-to-cd/optimize/team-alignment
+      - path: /docs/optimize/team-alignment
         label: "Team Alignment"
     measures:
       - "Platform request wait time: from ticket to fulfillment"
@@ -1115,9 +1115,9 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/team-dynamics/no-operational-ownership
         label: "No Operational Ownership"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/working-agreements
+      - path: /docs/foundations/working-agreements
         label: "Establish Working Agreements"
-      - path: /docs/migrate-to-cd/foundations/everything-as-code
+      - path: /docs/foundations/everything-as-code
         label: "Everything as Code"
     measures:
       - "Ramp-up time for new team members: should fall as documentation improves"
@@ -1137,9 +1137,9 @@ results:
       - path: /docs/anti-patterns/team-workflow/undone-work
         label: "Undone Work Accumulates"
     solutions:
-      - path: /docs/migrate-to-cd/optimize/limiting-wip
+      - path: /docs/optimize/limiting-wip
         label: "Limit Work in Progress"
-      - path: /docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop
+      - path: /docs/foundations/testing-fundamentals/defect-feedback-loop
         label: "Defect Feedback Loop"
     measures:
       - "Mean defect age at fix: time from discovery to resolution should shrink"
@@ -1162,11 +1162,11 @@ results:
       - path: /docs/anti-patterns/organizational-cultural/governance-process/release-trains
         label: "Release Trains"
     solutions:
-      - path: /docs/migrate-to-cd/foundations/work-decomposition
+      - path: /docs/foundations/work-decomposition
         label: "Work Decomposition"
-      - path: /docs/migrate-to-cd/optimize/small-batches
+      - path: /docs/optimize/small-batches
         label: "Work in Small Batches"
-      - path: /docs/migrate-to-cd/pipeline/single-path-to-production
+      - path: /docs/pipeline/single-path-to-production
         label: "Single Path to Production"
     measures:
       - "Deployment frequency: rising from monthly toward weekly, then daily"

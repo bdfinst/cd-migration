@@ -65,7 +65,10 @@ cd-migration/
     docs/
       anti-patterns/        Anti-pattern pages (7 categories)
       symptoms/             Symptom pages (testing, deployment, flow, visibility)
-      migrate-to-cd/        Migration phases and guides
+      migrate-to-cd.md      Migration overview
+      assess/ foundations/ pipeline/ optimize/ continuous-deployment/
+                            Migration phases (testing guidance lives in foundations/testing-fundamentals/)
+      brownfield/ greenfield/  Path-specific migration guides
       reference/            Glossary, metrics, testing guides
       defect-sources.md     Defect detection catalog
       agentic-cd.md

@@ -23,40 +23,40 @@
   <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="68" width="6" height="60" fill="#224968"/>
   <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">HTTP / API surface (inbound)</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="116" font-size="11" font-style="italic" fill="#556">Routing, auth, validation</text>
 
   <!-- Layer 2: Domain logic and orchestration -->
   <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="136" width="6" height="60" fill="#224968"/>
   <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Domain logic and orchestration</text>
-  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="380" y="146" width="104" height="20" rx="10" fill="#4a6741"/><text x="432" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
-  <a href="/docs/testing/glossary/#sociable-unit-test" target="_top"><rect x="490" y="146" width="104" height="20" rx="10" fill="#0d7a32"/><text x="542" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#solitary-unit-test" target="_top"><rect x="380" y="146" width="104" height="20" rx="10" fill="#4a6741"/><text x="432" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#sociable-unit-test" target="_top"><rect x="490" y="146" width="104" height="20" rx="10" fill="#0d7a32"/><text x="542" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="184" font-size="11" font-style="italic" fill="#556">Composes calls, computes results</text>
 
   <!-- Layer 3: Resilience policy -->
   <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="204" width="6" height="60" fill="#224968"/>
   <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Resilience policy</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Retry, circuit breaker, timeout, fallback</text>
 
   <!-- Layer 4: Outbound HTTP client -->
   <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="272" width="6" height="60" fill="#224968"/>
   <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Outbound HTTP client</text>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="346" y="282" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
-  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="496" y="282" width="124" height="20" rx="10" fill="#6c757d"/><text x="558" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Consumer contract</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="626" y="282" width="54" height="20" rx="10" fill="#224968"/><text x="653" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="346" y="282" width="144" height="20" rx="10" fill="#30648e"/><text x="418" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integration</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#contract-test" target="_top"><rect x="496" y="282" width="124" height="20" rx="10" fill="#6c757d"/><text x="558" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Consumer contract</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="626" y="282" width="54" height="20" rx="10" fill="#224968"/><text x="653" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Comp.</text></a>
   <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Request build, response parse, headers, deadlines</text>
 
   <!-- Layer 5: Persistence adapter -->
   <rect x="30" y="340" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="340" width="6" height="60" fill="#224968"/>
   <text x="50" y="364" font-size="14" font-weight="700" fill="#1a2a3a">Persistence adapter</text>
-  <a href="/docs/testing/glossary/#sociable-unit-test" target="_top"><rect x="490" y="350" width="104" height="20" rx="10" fill="#0d7a32"/><text x="542" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="350" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#sociable-unit-test" target="_top"><rect x="490" y="350" width="104" height="20" rx="10" fill="#0d7a32"/><text x="542" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="350" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="364" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="388" font-size="11" font-style="italic" fill="#556">Queries, transactions, migrations</text>
 
   <!-- Boundary divider -->
@@ -72,17 +72,17 @@
   <rect x="30" y="448" width="660" height="60" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="448" width="6" height="60" fill="#6c757d"/>
   <text x="50" y="472" font-size="14" font-weight="700" fill="#1a2a3a">Database (external)</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="490" y="458" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="530" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="576" y="458" width="104" height="20" rx="10" fill="#30648e"/><text x="628" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="490" y="458" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="530" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="576" y="458" width="104" height="20" rx="10" fill="#30648e"/><text x="628" y="472" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
   <text x="50" y="496" font-size="11" font-style="italic" fill="#556">Production engine. Doubled in component; real in adapter integration.</text>
 
   <!-- Layer 7: Downstream service (external) -->
   <rect x="30" y="516" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="516" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="540" font-size="14" font-weight="700" fill="#1a2a3a">Downstream service (external)</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="370" y="550" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="410" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="456" y="550" width="120" height="20" rx="10" fill="none" stroke="#30648e" stroke-width="2"/><text x="516" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#30648e">Adapter integ.</text></a>
-  <a href="/docs/testing/glossary/#out-of-band-test" target="_top"><rect x="582" y="550" width="98" height="20" rx="10" fill="#6c757d"/><text x="631" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integration</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="370" y="550" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="410" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="456" y="550" width="120" height="20" rx="10" fill="none" stroke="#30648e" stroke-width="2"/><text x="516" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#30648e">Adapter integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#out-of-band-test" target="_top"><rect x="582" y="550" width="98" height="20" rx="10" fill="#6c757d"/><text x="631" y="564" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">OOB integration</text></a>
   <text x="50" y="582" font-size="11" font-style="italic" fill="#556">Third-party or in-house API. Doubled in pipeline tests; OOB integration uses the real downstream on a schedule.</text>
 
   <!-- Legend -->

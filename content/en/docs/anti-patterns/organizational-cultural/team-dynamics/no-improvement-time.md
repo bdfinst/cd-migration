@@ -130,8 +130,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - use delivery metrics to identify where improvement investment has the highest return
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - retrospectives are the forum where improvement items should be identified and prioritized
-- [Identify constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - finding the highest-leverage improvement targets requires identifying the constraint that limits throughput
-- [Testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - test automation is one of the first improvement investments that pays back quickly
-- [Working agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - defining the improvement allocation in team working agreements protects it from sprint-by-sprint negotiation
+- [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - use delivery metrics to identify where improvement investment has the highest return
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - retrospectives are the forum where improvement items should be identified and prioritized
+- [Identify constraints]({{< relref "/docs/assess/identify-constraints" >}}) - finding the highest-leverage improvement targets requires identifying the constraint that limits throughput
+- [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - test automation is one of the first improvement investments that pays back quickly
+- [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - defining the improvement allocation in team working agreements protects it from sprint-by-sprint negotiation

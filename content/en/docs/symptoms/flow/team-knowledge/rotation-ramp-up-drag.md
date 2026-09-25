@@ -60,4 +60,4 @@ reconstruction from scratch.
 - [Blocked Work Sits Idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}) - Knowledge gaps that prevent anyone else from picking up stuck work
 - [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}) - Rotation model that prevents domain expertise from accumulating
 - [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Domain knowledge concentrated in individuals rather than shared
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Documented practices that survive team changes
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Documented practices that survive team changes

@@ -77,6 +77,6 @@ actually healthy is a separate question that may or may not get answered.
 - [Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}}) - The next stage of the same problem: customers become the monitoring
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Slow detection makes deployments feel riskier
 - [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The root cause when no automated detection exists
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Embedding health checks into the deployment process
-- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Automated rollback on health check failure
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Embedding health checks into the deployment process
+- [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}}) - Automated rollback on health check failure
 - [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) - Track detection and recovery speed

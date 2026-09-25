@@ -86,7 +86,7 @@ Compare the file's heading structure against the required template for its page 
 
 - **Relative links** - For each relative link in the body, check that the target file exists. Severity: `ERROR` if target does not exist.
 - **"Read more" links** (symptom pages) - Verify they point to files under `anti-patterns/`. Severity: `ERROR` if pointing elsewhere.
-- **"Related Content" links** (anti-pattern pages) - Verify they point to guide pages under `migrate-to-cd/` or `reference/`. Severity: `WARNING` if pointing to other anti-pattern or symptom pages (these are not wrong but may indicate a missed guide link).
+- **"Related Content" links** (anti-pattern pages) - Verify they point to guide pages under the phase sections (`assess/`, `foundations/`, `pipeline/`, `optimize/`, `continuous-deployment/`) or `reference/`. Severity: `WARNING` if pointing to other anti-pattern or symptom pages (these are not wrong but may indicate a missed guide link).
 - **Under-construction links** - Flag any link to `under-construction/`. Severity: `INFO` (these are intentional drafts, just surface them).
 - **External links** - Do not validate external URLs, just note their presence. Severity: none.
 

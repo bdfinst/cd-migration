@@ -31,7 +31,7 @@ This ordering step also has a human gate. Review the proposed slice sequence bef
 
 The broad understanding is not in the implementation agent's [context]({{< relref "/docs/reference/glossary#context-llm" >}}). Each implementation session receives the relevant subset. The full feature scope lives in the artifacts, not in any single session.
 
-**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for full-stack versus subdomain teams.
+**This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for full-stack versus subdomain teams.
 
 ## Session Structure
 
@@ -267,8 +267,8 @@ If the pipeline fails in a later session (a prior scenario breaks), the agent mu
 
 - [ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to establish the broad understanding before sessions begin
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - the same discipline applied to human-authored work
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - the same discipline applied to human-authored work
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) - vertical slicing defined for both full-stack product teams and subdomain product teams in distributed systems
 - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - the anti-pattern that emerges when distributed teams split work by layer instead of by behavior within their domain
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - context engineering and specification engineering applied to session design
 - [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - why context size matters and how to control it

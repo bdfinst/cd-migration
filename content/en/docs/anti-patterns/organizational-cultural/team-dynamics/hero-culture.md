@@ -128,8 +128,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Working agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - define shared ownership expectations that prevent hero dependencies from forming
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - automated rollback reduces the need for a hero to manually recover from bad deployments
-- [Identify constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - hero dependencies are a form of constraint; map them before attempting to resolve them
+- [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared ownership expectations that prevent hero dependencies from forming
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - automated rollback reduces the need for a hero to manually recover from bad deployments
+- [Identify constraints]({{< relref "/docs/assess/identify-constraints" >}}) - hero dependencies are a form of constraint; map them before attempting to resolve them
 - [Blame culture after incidents]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/blame-culture" >}}) - hero culture and blame culture frequently co-exist and reinforce each other
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - use retrospectives to surface and address hero dependencies before they become critical
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - use retrospectives to surface and address hero dependencies before they become critical

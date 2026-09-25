@@ -1,7 +1,7 @@
 ---
 title: "Agentic Continuous Delivery (ACD)"
 linkTitle: "Agentic CD"
-weight: 9
+weight: 29
 description: >
   Extend continuous delivery with constraints, delivery artifacts, and practices for AI agent-generated changes.
 ---
@@ -43,13 +43,13 @@ Before jumping into agentic workflows, ensure your team has the prerequisite del
 ACD extends continuous delivery. These practices must be working before agents can safely contribute:
 
 - **[Continuous Integration]({{< relref "/docs/reference/practices/continuous-integration" >}})** - all work integrates to trunk at least daily with automated build and test
-- **[Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}})** - a test architecture that properly stress tests every change to ensure it's deliverable on demand.
-- **[Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}})** - a single command builds, tests, and packages the application
-- **[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})** - features broken into increments deliverable in two days or less
-- **[Code Review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}})** - fast feedback without blocking flow
-- **[Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})** - infrastructure, pipelines, configuration, and schemas in version control
-- **[Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})** - all changes reach production through the same automated pipeline
-- **[Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}})** - same inputs always produce the same outputs
+- **[Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})** - a test architecture that properly stress tests every change to ensure it's deliverable on demand.
+- **[Build Automation]({{< relref "/docs/foundations/build-automation" >}})** - a single command builds, tests, and packages the application
+- **[Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})** - features broken into increments deliverable in two days or less
+- **[Code Review]({{< relref "/docs/foundations/code-review" >}})** - fast feedback without blocking flow
+- **[Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}})** - infrastructure, pipelines, configuration, and schemas in version control
+- **[Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}})** - all changes reach production through the same automated pipeline
+- **[Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}})** - same inputs always produce the same outputs
 
 Without these foundations, adding agents amplifies existing problems rather than accelerating delivery.
 
@@ -119,14 +119,14 @@ Humans own the specifications. Agents collaborate during specification and own t
 | Code Review | Review (interim) | [Expert validation agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) progressively replace human review | |
 | Deployment | | | Deploy through the same pipeline as any other change |
 
-Human review at Test Validation and Code Review is an interim state. Replace it using the same [replacement cycle]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) used throughout the CD migration. See [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) for the full set of expert agents and how to adopt them.
+Human review at Test Validation and Code Review is an interim state. Replace it using the same [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) used throughout the CD migration. See [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) for the full set of expert agents and how to adopt them.
 
 ## Related Content
 
 - [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - quality gates sequenced by defect detection priority
-- [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting expert validation agents
+- [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting expert validation agents
 - [Defect Sources]({{< relref "/docs/reference/defect-sources" >}}) - where defects originate, informing acceptance criteria and system constraints
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - limiting change size, with extra rigor for agent-generated changes
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - limiting change size, with extra rigor for agent-generated changes
 - [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}) - an anti-pattern especially dangerous when agents optimize for coverage rather than intent
 - [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - an anti-pattern that ACD counters by making test-first workflow mandatory
 - [High Coverage but Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - a testing symptom that undermines the acceptance criteria agents depend on

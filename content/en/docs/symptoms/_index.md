@@ -1,9 +1,12 @@
 ---
 title: "Dysfunction Symptoms"
 linkTitle: "Dysfunction Symptoms"
-weight: 4
+weight: 5
+sidebar_collapsed: true
 description: >
   Start from what you observe. Find the anti-patterns causing it.
+cascade:
+  sidebar_collapsed: true
 ---
 
 Not sure which anti-pattern is hurting your team? Start here. Choose the path that fits how you

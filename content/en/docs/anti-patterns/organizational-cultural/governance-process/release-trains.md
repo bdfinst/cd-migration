@@ -239,8 +239,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - A consistent automated path replaces manual coordination
-- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - Decoupling deployment from release removes the need for coordinated release windows
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Smaller, more frequent deployments carry less risk than large, infrequent ones
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback makes frequent deployment safe enough to stop scheduling it
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - A consistent automated path replaces manual coordination
+- [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Decoupling deployment from release removes the need for coordinated release windows
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Smaller, more frequent deployments carry less risk than large, infrequent ones
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback makes frequent deployment safe enough to stop scheduling it
 - [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}) - A related pattern where manual approval creates similar delays

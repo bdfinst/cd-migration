@@ -79,5 +79,5 @@ code provides no lower-level testing seams.
 - [Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Slow tests are the most common cause of slow pipelines
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Slow suites force developers into long feedback loops
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many slow tests at the wrong level
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Rebalancing the test pyramid for speed
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Rebalancing the test pyramid for speed
 - [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) - Track pipeline speed as a first-class metric

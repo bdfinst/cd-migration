@@ -236,8 +236,8 @@ boundaries:
 
 ## Related Content
 
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle that reduces deployment risk by reducing deployment size
-- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - Decoupling deployment from user visibility for product owner approval workflows
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Stories small enough to complete and deploy frequently
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - The principle that reduces deployment risk by reducing deployment size
+- [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Decoupling deployment from user visibility for product owner approval workflows
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Stories small enough to complete and deploy frequently
 - [Release Trains]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/release-trains" >}}) - The same batch deployment pattern at a larger scale
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - One automated path that deploys any passing change on demand
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - One automated path that deploys any passing change on demand

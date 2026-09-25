@@ -141,6 +141,6 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 
 ## Related Content
 
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice guide for breaking work into small increments
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice guide for breaking work into small increments
 - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - Decomposition without vertical slicing still produces items that cannot flow independently
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Batch size reduction at every level
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Batch size reduction at every level

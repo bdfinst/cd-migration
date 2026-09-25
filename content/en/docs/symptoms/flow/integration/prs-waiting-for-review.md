@@ -73,6 +73,6 @@ incentive structure deprioritizes collaboration.
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Blocked PRs drive up work in progress
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Review delays are a form of slow feedback
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - Branches that outlive their review window
-- [Code Review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}}) - Making review fast and continuous
-- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - Short-lived branches that are reviewed same-day
+- [Code Review]({{< relref "/docs/foundations/code-review" >}}) - Making review fast and continuous
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - Short-lived branches that are reviewed same-day
 - [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) - Track review wait time as part of cycle time

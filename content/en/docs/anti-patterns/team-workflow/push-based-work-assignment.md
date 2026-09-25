@@ -187,7 +187,7 @@ Pull-based work and WIP limits reinforce each other:
   whatever the manager thinks of next.
 - Together, they create a system where work flows continuously from backlog to done.
 
-See [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) for how to set and enforce WIP limits.
+See [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) for how to set and enforce WIP limits.
 
 ### What managers do instead
 
@@ -219,6 +219,6 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 - [Uneven Workloads]({{< relref "/docs/symptoms/flow/work-management/uneven-workloads" >}}) - Imbalance that self-corrects in a pull system
 - [Blocked Work Sits Idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}) - Blockers that persist because nobody feels authorized to pick up someone else's story
 - [Completed Work Misses the Intent]({{< relref "/docs/symptoms/flow/work-management/completed-work-misses-intent" >}}) - Rework from developers receiving tickets without business context
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Pull-based work and WIP limits are complementary practices
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Pull works best when items are small and well-defined
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - The team's agreement to pull, not push, should be explicit
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Pull-based work and WIP limits are complementary practices
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Pull works best when items are small and well-defined
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - The team's agreement to pull, not push, should be explicit

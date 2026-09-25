@@ -243,9 +243,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - The first step in building a pipeline
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - How to structure a pipeline from commit to production
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Every change follows the same automated path
-- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
-- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - The absence of a pipeline is often the primary constraint on delivery
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - The first step in building a pipeline
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - How to structure a pipeline from commit to production
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Every change follows the same automated path
+- [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Pipeline definitions, infrastructure, and deployment procedures belong in version control
+- [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - The absence of a pipeline is often the primary constraint on delivery
 - [Systemic Defect Sources]({{< relref "/docs/reference/defect-sources" >}}) - understand where defects enter the system when there is no automated detection path.

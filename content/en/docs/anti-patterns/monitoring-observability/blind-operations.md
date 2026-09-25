@@ -215,8 +215,8 @@ confidence because it can verify health automatically.
 
 ## Related Content
 
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Where deployment verification fits in the pipeline
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Observability enables data-driven rollback decisions
-- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Canary deployments require metric comparison
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using production data to guide improvement
-- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - Establishing the numbers you need before you can improve them
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Where deployment verification fits in the pipeline
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Observability enables data-driven rollback decisions
+- [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}}) - Canary deployments require metric comparison
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using production data to guide improvement
+- [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - Establishing the numbers you need before you can improve them

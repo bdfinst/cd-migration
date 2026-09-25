@@ -7,16 +7,23 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-09-25 - Flatten navigation and merge testing into Testing Fundamentals
+
+- Grouped the sidebar into Diagnose, Improve, and Look Up sections. Symptoms and Anti-Patterns start collapsed; everything else starts expanded.
+- Removed the Migrate to CD wrapper. The phases and the brownfield and greenfield guides are now top-level sections, and [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}}) remains as the overview page. Old URLs redirect.
+- Moved everything from Test Strategies into [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}): the landing essay is now [Test Architecture]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}), and Test Types, Patterns, Applied Testing Strategies, Test Feedback Speed, Testing Antipatterns, and the Testing Glossary sit alongside the existing pages. Old URLs redirect.
+- Moved [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) up a level so it sits beside Trunk-Based Development.
+
 ## 2026-09-24 - Add Evolutionary Coding Techniques section
 
-Added a new [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) subsection under Trunk-Based Development that ranks the techniques for integrating incomplete work to trunk from least to most costly to maintain, positioning feature flags as the last resort rather than the default.
+Added a new [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) subsection in Phase 1 - Foundations that ranks the techniques for integrating incomplete work to trunk from least to most costly to maintain, positioning feature flags as the last resort rather than the default.
 
-- [Evolutionary Coding Techniques]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding" >}}) - the decision hierarchy and a "how to choose" checklist
-- [Dark Code]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/dark-code" >}}) - deploying new logic before anything calls it
-- [Branch by Abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}) - replacing an implementation behind a stable interface
-- [Parallel Run]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/parallel-run" >}}) - proving a new implementation matches production behavior before cutover
-- [Expand and Contract]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/expand-and-contract" >}}) - evolving a shared schema or API contract without a breaking change
-- Added glossary entries for branch by abstraction, dark code, expand and contract, and parallel run, and cross-linked the new section from [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}), the [TBD Migration Guide]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/tbd-migration" >}}), [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}), and [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}})
+- [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - the decision hierarchy and a "how to choose" checklist
+- [Dark Code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}) - deploying new logic before anything calls it
+- [Branch by Abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) - replacing an implementation behind a stable interface
+- [Parallel Run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}) - proving a new implementation matches production behavior before cutover
+- [Expand and Contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) - evolving a shared schema or API contract without a breaking change
+- Added glossary entries for branch by abstraction, dark code, expand and contract, and parallel run, and cross-linked the new section from [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}), the [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}}), [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}), and [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}})
 - Fixed a mislabeled example in the TBD Migration Guide that called an in-process implementation swap a "strangler fig pattern"; it is branch by abstraction
 
 ## 2026-06-15 - Add "Diagnose First" to Agentic CD
@@ -32,28 +39,28 @@ Added a new [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) subsect
 
 ## 2026-06-09 - Give accessibility testing a single home
 
-Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home. Those three pages now point to this section as the strategy hub while keeping their concrete examples.
+Added an "Accessibility testing" section to [Cross-Cutting Concerns]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns" >}}) that owns the strategy: the automate-the-deterministic-rules-reserve-judgment-for-the-rest principle, the three-tier pipeline placement (static analysis, component tests against the rendered DOM, manual assistive-technology audits), and the caveat that automated scanners detect only a fraction of WCAG success criteria. Previously the accessibility guidance was scattered across the static-analysis, component-test, and section-overview pages with no canonical home. Those three pages now point to this section as the strategy hub while keeping their concrete examples.
 
 ## 2026-06-09 - Testing content critical-review fixes
 
 Resolved internal contradictions and weak examples surfaced by a review of the testing content:
 
-- Reconciled when a real database may run in the pre-merge suite. A team-controlled, per-test-isolated testcontainer is now consistently described as in-band and deterministic across [Architecting Tests for CD]({{< relref "/docs/testing" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), and [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}); only shared or external systems are forbidden in-band. Stopped mislabeling testcontainers as "in-memory fakes."
-- Disambiguated the overloaded term "integration test." Added a section to [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) distinguishing the out-of-band check from the in-band [adapter integration test]({{< relref "/docs/testing/glossary#adapter-integration-test" >}}), and corrected the in-band pipeline figure caption (contract tests, not integration tests).
-- Replaced the Java unit-test example in [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}) with a sociable test of real domain logic; the previous mock pass-through asserted nothing meaningful.
-- Clarified in [Architecting Tests for CD]({{< relref "/docs/testing" >}}) that acceptance gates fire on deterministic thresholds even when the underlying test is statistical, so the "do not gate on non-deterministic tests" rule no longer reads as a contradiction.
-- Conditioned the "delete the corresponding E2E tests" migration step in [Testing Antipatterns]({{< relref "/docs/testing/antipatterns" >}}) on the out-of-band double validation actually running.
-- Softened the cognitive-science framing in [Test Feedback Speed]({{< relref "/docs/testing/feedback-speed" >}}): the 10-minute target is a CD convention the research aligns with, not a figure derived from it, and Nielsen's thresholds are no longer cited beyond what they measured.
-- Made the contract-first example in [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) validate against the OpenAPI schema instead of hand-checking fields, and qualified the "always deterministic" and "regression-tested" claims.
+- Reconciled when a real database may run in the pre-merge suite. A team-controlled, per-test-isolated testcontainer is now consistently described as in-band and deterministic across [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}), [Pipeline Test Strategy]({{< relref "/docs/foundations/testing-fundamentals/pipeline-test-strategy" >}}), and [Getting Started]({{< relref "/docs/foundations/testing-fundamentals/getting-started" >}}); only shared or external systems are forbidden in-band. Stopped mislabeling testcontainers as "in-memory fakes."
+- Disambiguated the overloaded term "integration test." Added a section to [Integration Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) distinguishing the out-of-band check from the in-band [adapter integration test]({{< relref "/docs/foundations/testing-fundamentals/glossary#adapter-integration-test" >}}), and corrected the in-band pipeline figure caption (contract tests, not integration tests).
+- Replaced the Java unit-test example in [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) with a sociable test of real domain logic; the previous mock pass-through asserted nothing meaningful.
+- Clarified in [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) that acceptance gates fire on deterministic thresholds even when the underlying test is statistical, so the "do not gate on non-deterministic tests" rule no longer reads as a contradiction.
+- Conditioned the "delete the corresponding E2E tests" migration step in [Testing Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}) on the out-of-band double validation actually running.
+- Softened the cognitive-science framing in [Test Feedback Speed]({{< relref "/docs/foundations/testing-fundamentals/feedback-speed" >}}): the 10-minute target is a CD convention the research aligns with, not a figure derived from it, and Nielsen's thresholds are no longer cited beyond what they measured.
+- Made the contract-first example in [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) validate against the OpenAPI schema instead of hand-checking fields, and qualified the "always deterministic" and "regression-tested" claims.
 
 ## 2026-05-06 - Restructure CD Testing menu into "Testing Tips"
 
 Renamed the testing section's sidebar entry from "CD Testing" to "Testing Tips" and reorganized:
 
-- New [Test Types]({{< relref "/docs/testing/test-types" >}}) subsection containing the six test-type definition pages (unit, component, contract, integration, end-to-end, static analysis).
-- Renamed "Improving Existing Test Suites" to [Testing Antipatterns]({{< relref "/docs/testing/antipatterns" >}}).
+- New [Test Types]({{< relref "/docs/foundations/testing-fundamentals/test-types" >}}) subsection containing the six test-type definition pages (unit, component, contract, integration, end-to-end, static analysis).
+- Renamed "Improving Existing Test Suites" to [Testing Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}).
 - Reordered the section sidebar: Feedback Speed first (sets the why), then Test Types, Applied Strategies, Antipatterns, Glossary.
-- Folded the standalone Test Doubles page into the [Glossary]({{< relref "/docs/testing/glossary#test-double" >}}) (the five flavours, when to use each) and the [Antipatterns]({{< relref "/docs/testing/antipatterns" >}}) page (over-mocking, complex mock setup). The standalone page is removed; the old URL redirects to the glossary.
+- Folded the standalone Test Doubles page into the [Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) (the five flavours, when to use each) and the [Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}) page (over-mocking, complex mock setup). The standalone page is removed; the old URL redirects to the glossary.
 - Shortened the testing glossary's sidebar entry from "Testing Glossary" to "Glossary" since the section context already implies "testing."
 - Dropped the "Pattern N:" numbering from the eight component-pattern pages in Applied Testing Strategies; titles now read plainly (API Provider, Scheduled Job, etc.). The cross-references in the body and the patterns landing list updated accordingly.
 
@@ -61,36 +68,36 @@ Old URLs (`/docs/testing/unit/`, `/docs/testing/improving-test-suites/`, etc.) r
 
 ## 2026-05-05 - Add per-pattern coverage diagrams to Applied Testing Strategies
 
-Added a "layers tested by each test type" coverage matrix diagram to each of the eight pattern pages in [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies/patterns" >}}). Each diagram shows the architectural layers as rows, the relevant test types as columns, and marks each cell as real code under test, doubled, or not exercised, so a reader can see at a glance which tests cover which layers and where doubles need their own validation.
+Added a "layers tested by each test type" coverage matrix diagram to each of the eight pattern pages in [Applied Testing Strategies]({{< relref "/docs/foundations/testing-fundamentals/patterns" >}}). Each diagram shows the architectural layers as rows, the relevant test types as columns, and marks each cell as real code under test, doubled, or not exercised, so a reader can see at a glance which tests cover which layers and where doubles need their own validation.
 
 ## 2026-05-05 - Reframe in-process / out-of-process as in-band / out-of-band
 
-Replaced the in-process / out-of-process terminology with [in-band](testing/glossary/#in-band-test) / [out-of-band](testing/glossary/#out-of-band-test) throughout Applied Testing Strategies. The new framing centres on [pipeline](reference/glossary/#pipeline) placement (does the test gate delivery?) rather than process boundary (does the SUT run in the test process?), which is the distinction that actually matters for [CD](reference/glossary/#cd-continuous-delivery).
+Replaced the in-process / out-of-process terminology with [in-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#in-band-test" >}}) / [out-of-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) throughout Applied Testing Strategies. The new framing centres on [pipeline](reference/glossary/#pipeline) placement (does the test gate delivery?) rather than process boundary (does the SUT run in the test process?), which is the distinction that actually matters for [CD](reference/glossary/#cd-continuous-delivery).
 
-- New glossary entries: [In-Band Test]({{< relref "/docs/testing/glossary#in-band-test" >}}) and [Out-of-Band Test]({{< relref "/docs/testing/glossary#out-of-band-test" >}}).
+- New glossary entries: [In-Band Test]({{< relref "/docs/foundations/testing-fundamentals/glossary#in-band-test" >}}) and [Out-of-Band Test]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}).
 - Cross-cutting principles 1 and 2 merged into one principle on in-band vs out-of-band.
-- "Assembled component (in-process)" / "Assembled component (out-of-process)" rows in pattern tables collapsed into a single [Component test](testing/glossary/#component-test) row.
+- "Assembled component (in-process)" / "Assembled component (out-of-process)" rows in pattern tables collapsed into a single [Component test]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) row.
 - Pattern 4 (UI) renamed JSDOM vs headless browser distinction in plain terms.
 - Cost and time budget table: "Out-of-process count" column dropped; replaced with explicit in-band suite budgets.
 
 ## 2026-05-05 - Break Applied Testing Strategies into a subsection of CD Testing
 
-Broke the long single Applied Testing Strategies page into a subsection of [Architecting Tests for CD]({{< relref "/docs/testing" >}}). New layout:
+Broke the long single Applied Testing Strategies page into a subsection of [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}). New layout:
 
-- [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}) subsection landing with the three-point goal, terminology, and six cross-cutting principles.
-- [Pre-ship Checklist]({{< relref "/docs/testing/applied-testing-strategies/pre-ship-checklist" >}}).
-- [Patterns]({{< relref "/docs/testing/applied-testing-strategies/patterns" >}}) sub-subsection with one page per pattern (API provider, API consumer, scheduled job, user interface, event consumer, event producer, CLI/library, stateful service).
-- [Cross-cutting Concerns]({{< relref "/docs/testing/applied-testing-strategies/cross-cutting-concerns" >}}) covering authn/authz, database migrations, fixtures, observability, performance, mutation testing, flake handling, and time budgets.
+- [Applied Testing Strategies]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies" >}}) subsection landing with the three-point goal, terminology, and six cross-cutting principles.
+- [Pre-ship Checklist]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/pre-ship-checklist" >}}).
+- [Patterns]({{< relref "/docs/foundations/testing-fundamentals/patterns" >}}) sub-subsection with one page per pattern (API provider, API consumer, scheduled job, user interface, event consumer, event producer, CLI/library, stateful service).
+- [Cross-cutting Concerns]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns" >}}) covering authn/authz, database migrations, fixtures, observability, performance, mutation testing, flake handling, and time budgets.
 
 ## 2026-05-05 - Restructure Applied Testing Strategies; add Improving Existing Test Suites
 
 Following an editorial review, restructured Applied Testing Strategies for scannability and to remove duplication with neighboring testing pages. Cross-cutting principles compressed to short pointers to the pages that own each topic. The pre-ship checklist moved to the top. Pattern 2's negative test list became a Fault / Expected behavior / Test mechanism table. Patterns 5 to 8 marked as deliberately briefer sketches.
 
-Split the anti-patterns catalog and migration guidance into a new sister page, [Improving Existing Test Suites]({{< relref "/docs/testing/antipatterns" >}}), so that each page has one job: applied-testing-strategies is the pattern reference; improving-test-suites is the rework guide.
+Split the anti-patterns catalog and migration guidance into a new sister page, [Improving Existing Test Suites]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}), so that each page has one job: applied-testing-strategies is the pattern reference; improving-test-suites is the rework guide.
 
 ## 2026-05-05 - Add Applied Testing Strategies guide
 
-Added [Applied Testing Strategies]({{< relref "/docs/testing/applied-testing-strategies" >}}) to the testing section. A practical guide covering positive cases, negative cases, double validation, and [pipeline](reference/glossary/#pipeline) placement for eight common component patterns: API providers, API consumers, scheduled jobs, user interfaces, event consumers, event producers, CLI tools and libraries, and stateful services. Includes seven cross-cutting principles, an anti-patterns catalog, migration guidance for existing test suites, code examples per pattern, cross-cutting concerns (authn/authz, migrations, fixtures, observability, performance, mutation testing, flake handling, time budgets), and a per-component checklist.
+Added [Applied Testing Strategies]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies" >}}) to the testing section. A practical guide covering positive cases, negative cases, double validation, and [pipeline](reference/glossary/#pipeline) placement for eight common component patterns: API providers, API consumers, scheduled jobs, user interfaces, event consumers, event producers, CLI tools and libraries, and stateful services. Includes seven cross-cutting principles, an anti-patterns catalog, migration guidance for existing test suites, code examples per pattern, cross-cutting concerns (authn/authz, migrations, fixtures, observability, performance, mutation testing, flake handling, time budgets), and a per-component checklist.
 
 ## 2026-03-21 - New Section: Evaluation and Quality
 
@@ -122,7 +129,7 @@ Added [Team Chatbot]({{< relref "/docs/team-chatbot" >}}) - a downloadable facil
 
 ## 2026-03-12 - Improve leading vs lagging metrics framing across site
 
-Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) to lead with [CI](reference/glossary/#ci-continuous-integration) health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
+Added [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) anti-pattern page covering the misuse of DORA metrics as OKRs and performance targets. Updated [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) to lead with [CI](reference/glossary/#ci-continuous-integration) health metrics (leading indicators) before DORA outcome metrics. Updated [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) and the [Metrics reference index]({{< relref "/docs/reference/metrics" >}}) to distinguish leading indicators from lagging DORA outcome metrics. Updated all eight individual metric reference pages with explicit indicator type labeling.
 
 ## 2026-03-12 - Add Improvement Plays section
 
@@ -138,21 +145,21 @@ Applied systems thinking analysis to the Migrate to CD section. Changes across s
 
 - Added the fear amplification loop explanation and leadership conditions to the main [Migrate to CD]({{< relref "/docs/migrate-to-cd" >}}) index
 - Clarified that phases overlap and are not a strict sequence
-- Named DORA metrics explicitly in [Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) and framed them as continuous tracking, not a Phase 3 concern
+- Named DORA metrics explicitly in [Phase 0: Assess]({{< relref "/docs/assess" >}}) and framed them as continuous tracking, not a Phase 3 concern
 - Reframed phase gate criteria from "you're ready when" to "start investing when making consistent progress toward" across Phases 1, 2, and 3
-- Added a "What to Expect" section to [Brownfield CD]({{< relref "/docs/migrate-to-cd/brownfield" >}}) covering the valley of despair, organizational lag, and the role of metrics in sustaining buy-in
+- Added a "What to Expect" section to [Brownfield CD]({{< relref "/docs/brownfield" >}}) covering the valley of despair, organizational lag, and the role of metrics in sustaining buy-in
 
 ## 2026-03-09 - Add Synthetic Monitoring to Testing Glossary
 
-Added [Synthetic Monitoring]({{< relref "/docs/testing/glossary#synthetic-monitoring" >}}) definition to the Testing Glossary.
+Added [Synthetic Monitoring]({{< relref "/docs/foundations/testing-fundamentals/glossary#synthetic-monitoring" >}}) definition to the Testing Glossary.
 
 ## 2026-03-09 - Testing Section Moved to Top-Level, Renamed "Architecting Tests for CD"
 
-Moved the Testing section from `/docs/reference/testing/` to `/docs/testing/` as a peer of the Reference section, renamed to [Architecting Tests for CD]({{< relref "/docs/testing" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.
+Moved the Testing section from `/docs/reference/testing/` to `/docs/foundations/testing-fundamentals/test-architecture/` as a peer of the Reference section, renamed to [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}). All old URLs redirect via Hugo aliases. Updated all cross-references across the site.
 
 ## 2026-03-09 - Contract Testing: Consumer/Provider and CDC vs. Contract-First
 
-Expanded [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) to cover:
+Expanded [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) to cover:
 
 - Consumer contract testing - what the consumer is trying to discover (fields I depend on, types, status codes)
 - Provider contract testing - what the provider is trying to discover (breaking changes to any consumer)
@@ -162,18 +169,18 @@ Expanded [Contract Tests]({{< relref "/docs/testing/test-types/contract" >}}) to
 
 ## 2026-03-09 - Testing Taxonomy: E2E Absorbs Integration, Integration Forwarding Page
 
-- [End-to-End Tests]({{< relref "/docs/testing/test-types/e2e" >}}) now covers the full spectrum of tests involving real [external dependencies](reference/glossary/#external-dependency) - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
-- Added [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
+- [End-to-End Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}) now covers the full spectrum of tests involving real [external dependencies](reference/glossary/#external-dependency) - from two services with a real database to a full-system browser test. Notes that this is also called "integration testing" in the industry, with a terminology section explaining the naming landscape.
+- Added [Integration Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) as a terminology forwarding page explaining where different uses of "integration test" map in this site's taxonomy.
 
 ## 2026-03-09 - Testing Taxonomy: Component Tests, Integration Test Redefinition
 
 Restructured the testing reference section with a clearer taxonomy:
 
-- Added [Component Tests]({{< relref "/docs/testing/test-types/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
-- Redefined [Integration Tests]({{< relref "/docs/testing/test-types/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
-- Updated [Unit Tests]({{< relref "/docs/testing/test-types/unit" >}}) to clarify the solitary vs. sociable distinction.
+- Added [Component Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}) - a new test type covering frontend components and backend services tested through their public interface with test doubles for all external dependencies. Absorbs and replaces the former Functional Tests page (old URL redirects automatically).
+- Redefined [Integration Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) to mean tests against real external dependencies (actual databases, live downstream services) in a controlled environment. Documents the complexity this brings: test data management, non-determinism risks, slower execution, and environment availability. Integration tests only belong in the pipeline if they can be kept deterministic.
+- Updated [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) to clarify the solitary vs. sociable distinction.
 - Added Exploratory Testing and Usability Testing to the architecture table as non-blocking activities.
-- Added Component Test, Integration Test, [Sociable Unit Test](testing/glossary/#sociable-unit-test), and [Solitary Unit Test](testing/glossary/#solitary-unit-test) entries to the [Testing Glossary]({{< relref "/docs/testing/glossary" >}}).
+- Added Component Test, Integration Test, [Sociable Unit Test]({{< relref "/docs/foundations/testing-fundamentals/glossary#sociable-unit-test" >}}), and [Solitary Unit Test]({{< relref "/docs/foundations/testing-fundamentals/glossary#solitary-unit-test" >}}) entries to the [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary" >}}).
 
 ## 2026-03-07 - Agentic CD Glossary Split
 
@@ -182,7 +189,7 @@ Restructured the testing reference section with a clearer taxonomy:
 
 ## 2026-03-06 - Testing Fundamentals Restructured into Subsection
 
-- Restructured [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) from a single long page into a subsection with four focused child pages: [What to Test]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/what-to-test" >}}), [Pipeline Test Strategy]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/pipeline-test-strategy" >}}), [Getting Started]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/getting-started" >}}), and [Defect Feedback Loop]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop" >}}).
+- Restructured [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) from a single long page into a subsection with four focused child pages: [What to Test]({{< relref "/docs/foundations/testing-fundamentals/what-to-test" >}}), [Pipeline Test Strategy]({{< relref "/docs/foundations/testing-fundamentals/pipeline-test-strategy" >}}), [Getting Started]({{< relref "/docs/foundations/testing-fundamentals/getting-started" >}}), and [Defect Feedback Loop]({{< relref "/docs/foundations/testing-fundamentals/defect-feedback-loop" >}}).
 - Added four SVG diagrams to Pipeline Test Strategy showing tests inside the [pipeline](reference/glossary/#pipeline), tests outside the pipeline, the contract test validation loop, and the full pipeline test architecture.
 
 ## 2026-03-06 - Repository Readiness for Agentic Development

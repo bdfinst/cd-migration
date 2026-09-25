@@ -65,5 +65,5 @@ flowing to whoever has capacity.
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP and uneven workloads reinforce each other
 - [Burnout and Unsustainable Pace]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - Chronically overloaded developers burn out
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Assignment model that prevents self-balancing
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Constraints that make imbalance visible
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Constraints that make imbalance visible
 - [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) - Track per-person WIP to surface imbalance

@@ -69,7 +69,7 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 
 - **Self-contained problem statements:** Can the task be solved without the agent fetching additional information?
 - **[Acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}):** Writing three sentences that an independent observer could use to verify "done"
-- **Decomposition:** Breaking a multi-day project into small subtasks with clear boundaries (see [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}))
+- **Decomposition:** Breaking a multi-day project into small subtasks with clear boundaries (see [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}))
 - **Evaluation design:** Creating test cases with known-good outputs to catch model regressions
 
 **Where it maps on the learning curve:** [Stage 5-6]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-5-spec-first-agentic-development" >}}). Specification engineering is what makes spec-first agentic development and multi-agent architecture possible.

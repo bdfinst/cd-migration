@@ -98,6 +98,6 @@ less effective, more expensive, and blocks the release.
 - [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Hardening and freezes are companion symptoms
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Hardening sprints reinforce the belief that deployment is risky
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - Manual testing phases that drive hardening cycles
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Automated testing that builds quality in continuously
-- [Deployable Definition]({{< relref "/docs/migrate-to-cd/pipeline/deployable-definition" >}}) - Making every commit production-ready by definition
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Automated testing that builds quality in continuously
+- [Deployable Definition]({{< relref "/docs/pipeline/deployable-definition" >}}) - Making every commit production-ready by definition
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track whether quality improves without hardening

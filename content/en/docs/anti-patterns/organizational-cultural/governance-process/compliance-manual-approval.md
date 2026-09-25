@@ -129,7 +129,7 @@ Expect pushback and address it directly:
 ## Related Content
 
 - [Separation of duties as separate teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) - closely related pattern where compliance requirements are implemented as organizational walls
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - automated pipeline controls are the mechanism for replacing manual approval gates
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - design the pipeline to capture the evidence compliance requires
-- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - visualize how much of your lead time is consumed by approval waits
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - automated pipeline controls are the mechanism for replacing manual approval gates
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design the pipeline to capture the evidence compliance requires
+- [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - visualize how much of your lead time is consumed by approval waits
 - [Security scanning not in the pipeline]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/security-not-in-pipeline" >}}) - automated security controls are part of the compliance evidence story

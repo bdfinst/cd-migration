@@ -256,8 +256,8 @@ window.
 
 ## Related Content
 
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback is the other half of automated health checks
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Health checks must run in environments that reflect production behavior
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Health checks belong at the end of the single automated path
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Smoke tests must be reliable to serve as health gates
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Use deployment health data to drive improvement decisions
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback is the other half of automated health checks
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Health checks must run in environments that reflect production behavior
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Health checks belong at the end of the single automated path
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Smoke tests must be reliable to serve as health gates
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Use deployment health data to drive improvement decisions

@@ -403,140 +403,191 @@ sections:
           - file: untestable-architecture.md
             title: "Untestable Architecture"
 
-  # ---- Migration guide sections (weight 6-7) ----
+  # ---- Migration guide (Improve group) ----
+  # Overview page: docs/migrate-to-cd.md (URL /docs/migrate-to-cd/). Phases and path guides are top-level sections.
 
-  - path: docs/migrate-to-cd/
-    title: "Migrate to CD"
-    weight: 6
-    purpose: "Step-by-step guides for adopting continuous delivery, covering both greenfield and brownfield contexts with a phased migration path."
+  - path: docs/brownfield/
+    title: "Migrating Brownfield to CD"
+    page_count: 2
+    pages:
+      - file: document-current-process.md
+        title: "Document Your Current Process"
+      - file: replacing-manual-validations.md
+        title: "Replacing Manual Validations with Automation"
+
+  - path: docs/greenfield/
+    title: "CD for Greenfield Projects"
+    page_count: 0
+    pages: []  # Section landing page only
+
+  - path: docs/assess/
+    title: "Phase 0: Assess"
+    page_count: 4
+    pages:
+      - file: baseline-metrics.md
+        title: "Baseline Metrics"
+      - file: current-state-checklist.md
+        title: "Current State Checklist"
+      - file: identify-constraints.md
+        title: "Identify Constraints"
+      - file: value-stream-mapping.md
+        title: "Value Stream Mapping"
+
+  - path: docs/foundations/
+    title: "Phase 1: Foundations"
+    page_count: 5
+    pages:
+      - file: build-automation.md
+        title: "Build Automation"
+      - file: code-review.md
+        title: "Code Review"
+      - file: everything-as-code.md
+        title: "Everything as Code"
+      - file: work-decomposition.md
+        title: "Work Decomposition"
+      - file: working-agreements.md
+        title: "Working Agreements"
     subsections:
-      - path: brownfield/
-        title: "Migrating Brownfield to CD"
-        page_count: 2
+      - path: testing-fundamentals/
+        title: "Testing Fundamentals"
+        page_count: 10
         pages:
-          - file: document-current-process.md
-            title: "Document Your Current Process"
-          - file: replacing-manual-validations.md
-            title: "Replacing Manual Validations with Automation"
+          - file: test-architecture.md
+            title: "Test Architecture"
+          - file: what-to-test.md
+            title: "What to Test - and What Not To"
+          - file: pipeline-test-strategy.md
+            title: "Pipeline Test Strategy"
+          - file: getting-started.md
+            title: "Getting Started"
+          - file: defect-feedback-loop.md
+            title: "Defect Feedback Loop"
+          - file: feedback-speed.md
+            title: "Test Feedback Speed"
+          - file: antipatterns.md
+            title: "Testing Antipatterns"
+          - file: glossary.md
+            title: "Testing Glossary"
+        subsections:
+          - path: test-types/
+            title: "Test Types"
+            purpose: "Definitions of the test types used throughout this site: unit, component, contract, integration, end-to-end, smoke, and static analysis."
+            pages:
+              - file: unit.md
+                title: "Unit Tests"
+              - file: component.md
+                title: "Component Tests"
+              - file: contract.md
+                title: "Contract Tests"
+              - file: e2e.md
+                title: "End-to-End Tests"
+              - file: integration.md
+                title: "Integration Tests (terminology)"
+              - file: smoke.md
+                title: "Smoke Tests"
+              - file: static.md
+                title: "Static Analysis"
+          - path: patterns/
+            title: "Patterns"
+            purpose: "How to fully test eight common component patterns."
+            pages:
+              - file: api-provider.md
+                title: "API Provider"
+              - file: api-consumer.md
+                title: "API Consumer"
+              - file: scheduled-job.md
+                title: "Scheduled Job"
+              - file: user-interface.md
+                title: "User Interface"
+              - file: event-consumer.md
+                title: "Event Consumer"
+              - file: event-producer.md
+                title: "Event Producer"
+              - file: cli-library.md
+                title: "CLI Tool or Library"
+              - file: stateful-service.md
+                title: "Stateful Service"
+          - path: applied-testing-strategies/
+            title: "Applied Testing Strategies"
+            purpose: "Cross-cutting concerns and a pre-ship checklist that apply to every component pattern."
+            pages:
+              - file: pre-ship-checklist.md
+                title: "Pre-ship Checklist"
+              - file: cross-cutting-concerns.md
+                title: "Cross-cutting Concerns"
 
-      - path: greenfield/
-        title: "CD for Greenfield Projects"
-        page_count: 0
-        pages: []  # Section landing page only
+      - path: trunk-based-development/
+        title: "Trunk-Based Development"
+        page_count: 1
+        pages:
+          - file: tbd-migration.md
+            title: "TBD Migration Guide"
 
-      - path: assess/
-        title: "Phase 0: Assess"
+      - path: evolutionary-coding/
+        title: "Evolutionary Coding Techniques"
         page_count: 4
         pages:
-          - file: baseline-metrics.md
-            title: "Baseline Metrics"
-          - file: current-state-checklist.md
-            title: "Current State Checklist"
-          - file: identify-constraints.md
-            title: "Identify Constraints"
-          - file: value-stream-mapping.md
-            title: "Value Stream Mapping"
+          - file: dark-code.md
+            title: "Dark Code"
+          - file: branch-by-abstraction.md
+            title: "Branch by Abstraction"
+          - file: parallel-run.md
+            title: "Parallel Run"
+          - file: expand-and-contract.md
+            title: "Expand and Contract"
 
-      - path: foundations/
-        title: "Phase 1: Foundations"
-        page_count: 5
-        pages:
-          - file: build-automation.md
-            title: "Build Automation"
-          - file: code-review.md
-            title: "Code Review"
-          - file: everything-as-code.md
-            title: "Everything as Code"
-          - file: work-decomposition.md
-            title: "Work Decomposition"
-          - file: working-agreements.md
-            title: "Working Agreements"
-        subsections:
-          - path: testing-fundamentals/
-            title: "Testing Fundamentals"
-            page_count: 4
-            pages:
-              - file: what-to-test.md
-                title: "What to Test - and What Not To"
-              - file: pipeline-test-strategy.md
-                title: "Pipeline Test Strategy"
-              - file: getting-started.md
-                title: "Getting Started"
-              - file: defect-feedback-loop.md
-                title: "Defect Feedback Loop"
+  - path: docs/pipeline/
+    title: "Phase 2: Pipeline"
+    page_count: 8
+    pages:
+      - file: application-config.md
+        title: "Application Configuration"
+      - file: deployable-definition.md
+        title: "Deployable Definition"
+      - file: deterministic-pipeline.md
+        title: "Deterministic Pipeline"
+      - file: immutable-artifacts.md
+        title: "Immutable Artifacts"
+      - file: pipeline-architecture.md
+        title: "Pipeline Architecture"
+      - file: production-like-environments.md
+        title: "Production-Like Environments"
+      - file: rollback.md
+        title: "Rollback"
+      - file: single-path-to-production.md
+        title: "Single Path to Production"
 
-          - path: trunk-based-development/
-            title: "Trunk-Based Development"
-            page_count: 1
-            pages:
-              - file: tbd-migration.md
-                title: "TBD Migration Guide"
-            subsections:
-              - path: evolutionary-coding/
-                title: "Evolutionary Coding Techniques"
-                page_count: 4
-                pages:
-                  - file: dark-code.md
-                    title: "Dark Code"
-                  - file: branch-by-abstraction.md
-                    title: "Branch by Abstraction"
-                  - file: parallel-run.md
-                    title: "Parallel Run"
-                  - file: expand-and-contract.md
-                    title: "Expand and Contract"
+  - path: docs/optimize/
+    title: "Phase 3: Optimize"
+    page_count: 8
+    pages:
+      - file: architecture-decoupling.md
+        title: "Architecture Decoupling"
+      - file: feature-flags.md
+        title: "Feature Flags"
+      - file: hypothesis-driven-development.md
+        title: "Hypothesis-Driven Development"
+      - file: limiting-wip.md
+        title: "Limiting Work in Progress"
+      - file: metrics-driven-improvement.md
+        title: "Metrics-Driven Improvement"
+      - file: retrospectives.md
+        title: "Retrospectives"
+      - file: small-batches.md
+        title: "Small Batches"
+      - file: team-alignment.md
+        title: "Team Alignment to Code"
 
-      - path: pipeline/
-        title: "Phase 2: Pipeline"
-        page_count: 8
-        pages:
-          - file: application-config.md
-            title: "Application Configuration"
-          - file: deployable-definition.md
-            title: "Deployable Definition"
-          - file: deterministic-pipeline.md
-            title: "Deterministic Pipeline"
-          - file: immutable-artifacts.md
-            title: "Immutable Artifacts"
-          - file: pipeline-architecture.md
-            title: "Pipeline Architecture"
-          - file: production-like-environments.md
-            title: "Production-Like Environments"
-          - file: rollback.md
-            title: "Rollback"
-          - file: single-path-to-production.md
-            title: "Single Path to Production"
-
-      - path: optimize/
-        title: "Phase 3: Optimize"
-        page_count: 8
-        pages:
-          - file: architecture-decoupling.md
-            title: "Architecture Decoupling"
-          - file: feature-flags.md
-            title: "Feature Flags"
-          - file: hypothesis-driven-development.md
-            title: "Hypothesis-Driven Development"
-          - file: limiting-wip.md
-            title: "Limiting Work in Progress"
-          - file: metrics-driven-improvement.md
-            title: "Metrics-Driven Improvement"
-          - file: retrospectives.md
-            title: "Retrospectives"
-          - file: small-batches.md
-            title: "Small Batches"
-          - file: team-alignment.md
-            title: "Team Alignment to Code"
-
-      - path: continuous-deployment/
-        title: "Phase 4: Deliver on Demand"
-        page_count: 3
-        pages:
-          - file: deploy-on-demand.md
-            title: "Deploy on Demand"
-          - file: experience-reports.md
-            title: "Experience Reports"
-          - file: progressive-rollout.md
-            title: "Progressive Rollout"
+  - path: docs/continuous-deployment/
+    title: "Phase 4: Deliver on Demand"
+    page_count: 3
+    pages:
+      - file: deploy-on-demand.md
+        title: "Deploy on Demand"
+      - file: experience-reports.md
+        title: "Experience Reports"
+      - file: progressive-rollout.md
+        title: "Progressive Rollout"
 
   # ---- Improvement Plays (weight 7) ----
 
@@ -625,78 +676,6 @@ sections:
     pages:
       - file: glossary.md
         title: "Agentic CD Glossary"
-
-  # ---- Architecting Tests for CD (weight 16) ----
-
-  - path: docs/testing/
-    title: "Architecting Tests for CD"
-    weight: 16
-    purpose: "Test architecture, types, and good practices for building confidence in your delivery pipeline."
-    pages:
-      - file: _index.md
-        title: "Architecting Tests for CD"
-    subsections:
-      - path: ""
-        title: "Section Pages"
-        page_count: 3
-        pages:
-          - file: feedback-speed.md
-            title: "Test Feedback Speed"
-          - file: antipatterns.md
-            title: "Testing Antipatterns"
-          - file: glossary.md
-            title: "Testing Glossary"
-      - path: test-types/
-        title: "Test Types"
-        purpose: "Definitions of the test types used throughout this site: unit, component, contract, integration, end-to-end, and static analysis."
-        pages:
-          - file: _index.md
-            title: "Test Types"
-          - file: unit.md
-            title: "Unit Tests"
-          - file: component.md
-            title: "Component Tests"
-          - file: contract.md
-            title: "Contract Tests"
-          - file: e2e.md
-            title: "End-to-End Tests"
-          - file: integration.md
-            title: "Integration Tests (terminology)"
-          - file: static.md
-            title: "Static Analysis"
-      - path: applied-testing-strategies/
-        title: "Applied Testing Strategies"
-        purpose: "Practical guidance for fully testing eight common component patterns, plus cross-cutting concerns and a pre-ship checklist."
-        pages:
-          - file: _index.md
-            title: "Applied Testing Strategies"
-          - file: pre-ship-checklist.md
-            title: "Pre-ship Checklist"
-          - file: cross-cutting-concerns.md
-            title: "Cross-cutting Concerns"
-        subsections:
-          - path: patterns/
-            title: "Patterns"
-            page_count: 9
-            pages:
-              - file: _index.md
-                title: "Patterns"
-              - file: api-provider.md
-                title: "API Provider"
-              - file: api-consumer.md
-                title: "API Consumer"
-              - file: scheduled-job.md
-                title: "Scheduled Job"
-              - file: user-interface.md
-                title: "User Interface"
-              - file: event-consumer.md
-                title: "Event Consumer"
-              - file: event-producer.md
-                title: "Event Producer"
-              - file: cli-library.md
-                title: "CLI Tool or Library"
-              - file: stateful-service.md
-                title: "Stateful Service"
 
   # ---- Reference section (weight 15) ----
 
@@ -823,11 +802,11 @@ standalone_pages:
 
 # Summary statistics
 totals:
-  top_level_sections: 6  # triage, symptoms, anti-patterns, migrate-to-cd, agentic-cd, reference
+  top_level_sections: 13  # triage, symptoms, anti-patterns, assess, foundations, pipeline, optimize, continuous-deployment, brownfield, greenfield, playbook, agentic-cd, reference
   subsections: 25  # symptoms(4 + 4 flow subs) + anti-patterns(6 + 3 org-cultural subs) + migrate-to-cd(6 + 1 tbd sub) + agentic-cd(5: diagnose, getting-started, specification, architecture, operations, evaluation) + reference(5)
   symptom_pages: 65  # 9 testing + 21 deployment + 34 flow(8+10+10+6) + 10 visibility - note: persona pages moved to triage section
   anti_pattern_pages: 64  # 7 team-workflow + 4 branching + 9 testing + 12 pipeline + 26 org-cultural(10+9+7) + 1 monitoring + 5 architecture
-  migration_guide_pages: 36  # 2 brownfield + 0 greenfield + 4 assess + 11 foundations(6+1 tbd+4 evolutionary-coding) + 8 pipeline + 8 optimize + 3 continuous-deployment
+  migration_guide_pages: 60  # non-index pages across the phase and path sections, including foundations/testing-fundamentals
   agentic_cd_pages: 18
   reference_pages: 44  # 9 practices + 8 metrics + 9 testing + 3 pipeline-ref + 10 defect-sources + 5 standalone(glossary, faq, dora, cd-dependency-tree, resources)
   standalone_pages: 6  # start-here, learning-paths, team-chatbot, credits, changelog, under-construction

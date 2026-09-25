@@ -1,7 +1,8 @@
 ---
 title: "Reference"
 linkTitle: "Reference"
-weight: 15
+weight: 40
+sidebar_group_label: "Look Up"
 sidebar_divider_above: true
 description: >
   Practice definitions, metrics, glossary, and other reference material.

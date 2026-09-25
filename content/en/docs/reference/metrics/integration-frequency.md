@@ -89,8 +89,8 @@ frequent integration, every downstream metric suffers:
 To improve Integration Frequency:
 
 - Decompose stories into smaller increments using
-  [Behavior-Driven Development]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}).
+  [Behavior-Driven Development]({{< relref "/docs/foundations/work-decomposition" >}}).
 - Use [Test-Driven Development]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) to produce modular, independently testable code.
-- Adopt [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) or [branch by abstraction]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development/evolutionary-coding/branch-by-abstraction" >}}) to decouple integration from release.
+- Adopt [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) or [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) to decouple integration from release.
 - Practice [Trunk-Based Development](https://trunkbaseddevelopment.com/) with
   short-lived branches lasting less than one day.

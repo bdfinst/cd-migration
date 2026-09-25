@@ -99,9 +99,9 @@ today.
 | Category | Where to go next |
 |----------|------------------|
 | **Discovery & Requirements Churn** | [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) and the [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) artifact |
-| **Architecture & Design Gatekeeping** | [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}), the [Feature Description constraints]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}), and [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) |
-| **Testing & Quality Friction** | [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and the [Evaluation & Quality]({{< relref "/docs/agentic-cd/evaluation" >}}) pages |
-| **Change Management & Deployment Gates** | [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}), [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}), and [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) |
+| **Architecture & Design Gatekeeping** | [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}), the [Feature Description constraints]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}), and [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) |
+| **Testing & Quality Friction** | [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) and the [Evaluation & Quality]({{< relref "/docs/agentic-cd/evaluation" >}}) pages |
+| **Change Management & Deployment Gates** | [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}), [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}), and [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) |
 | **Knowledge Silos & Team Coupling** | [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}) and [Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}) |
 
 The output of classification is a named, classified constraint, mapped to where it lives in the

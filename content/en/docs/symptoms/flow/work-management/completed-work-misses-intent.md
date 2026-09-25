@@ -43,7 +43,7 @@ they can be satisfied without delivering value. A story that specifies "add a co
 can be implemented in a way that technically adds the dialog but makes it unusable. Requirements
 that do not express the user's goal leave room for implementations that miss the point.
 
-**Read more:** [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
+**Read more:** [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
 ## How to narrow it down
 
@@ -54,7 +54,7 @@ that do not express the user's goal leave room for implementations that miss the
 2. **Are the acceptance criteria expressed as user outcomes or as implementation checklists?**
    If criteria describe what to build rather than what the user should be able to do, the
    requirements do not encode intent. Start with
-   [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) and
+   [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) and
    look at how stories are written and refined.
 
 **Ready to fix this?** The most common cause is [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment#how-to-fix-it" >}}) section for week-by-week steps.
@@ -66,5 +66,5 @@ that do not express the user's goal leave room for implementations that miss the
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Rework adds unplanned items that inflate WIP
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Rework loops extend cycle time
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Assignment without context leads to intent mismatch
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into slices with clear, outcome-focused acceptance criteria
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Team norms for refinement and Three Amigos sessions
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking work into slices with clear, outcome-focused acceptance criteria
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Team norms for refinement and Three Amigos sessions

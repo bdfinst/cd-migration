@@ -153,7 +153,7 @@ commitments should be more reliable. Use this data to make the case for continui
 ## Related Content
 
 - [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - Deadline pressure is the most common reason teams skip tests
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Establishing "quality is not negotiable" as a team norm
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using data to demonstrate the cost of deadline-driven shortcuts
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing "quality is not negotiable" as a team norm
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using data to demonstrate the cost of deadline-driven shortcuts
 - [Missing Product Ownership]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/missing-product-ownership" >}}) - Without a product owner, there is nobody to negotiate scope against deadlines
 - [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}) - Deadline culture and individual metrics reinforce each other

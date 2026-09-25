@@ -128,8 +128,8 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - how to build an effective automated test suite
-- [Working agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - define shared quality expectations across the team
-- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - make test results reliable so the pipeline can be trusted
-- [Metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - use data to track the transition from siloed to embedded testing
+- [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - how to build an effective automated test suite
+- [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared quality expectations across the team
+- [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - make test results reliable so the pipeline can be trusted
+- [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - use data to track the transition from siloed to embedded testing
 - [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}}) - related pattern where testing isolation mirrors deployment isolation

@@ -240,7 +240,7 @@ Expect pushback and address it directly:
 
 ## Related Content
 
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Structuring the pipeline so slow stages do not block fast feedback
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Caching and parallelism must not introduce non-determinism
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Reliable build automation is the foundation that caching is built on
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using build time data to prioritize optimization work
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Structuring the pipeline so slow stages do not block fast feedback
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Caching and parallelism must not introduce non-determinism
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Reliable build automation is the foundation that caching is built on
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using build time data to prioritize optimization work

@@ -30,7 +30,7 @@ Rollback on-demand means the ability to quickly and safely revert to a previous 
 
 For detailed guidance on implementing rollback capability, see:
 
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Phase 2 pipeline practice with blue-green, canary, feature flag, and database-safe rollback patterns
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Phase 2 pipeline practice with blue-green, canary, feature flag, and database-safe rollback patterns
 
 ## Additional Resources
 

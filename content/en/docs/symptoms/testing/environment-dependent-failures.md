@@ -81,5 +81,5 @@ fragile.
 - [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Environment differences are a common cause of flaky tests
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same root cause affects both testing and development
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Eliminating environment variance
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Making all environments consistent
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Designing tests that are environment-independent
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Making all environments consistent
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Designing tests that are environment-independent

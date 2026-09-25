@@ -188,6 +188,6 @@ improvements explicitly.
 
 - [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The observability gap that makes operational ownership impossible to exercise effectively
 - [Outsourced Development with Handoffs]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/outsourced-development-handoffs" >}}) - The related pattern of separating builders from operators
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Environments that surface operational problems before production does
-- [Deploy on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment/deploy-on-demand" >}}) - The end state where the team owns the full delivery path including production
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - The forum for converting production incidents into development process improvements
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Environments that surface operational problems before production does
+- [Deploy on Demand]({{< relref "/docs/continuous-deployment/deploy-on-demand" >}}) - The end state where the team owns the full delivery path including production
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - The forum for converting production incidents into development process improvements

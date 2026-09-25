@@ -141,7 +141,7 @@ having one.
 
 ## Related Content
 
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Establishing norms for how requirements enter the team
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Clear product ownership enables effective decomposition during refinement
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing norms for how requirements enter the team
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Clear product ownership enables effective decomposition during refinement
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - Missing product ownership often coexists with arbitrary deadlines from competing stakeholders
 - [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}) - Without clear product direction, teams fall back on measuring output instead of outcomes

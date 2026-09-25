@@ -112,8 +112,8 @@ Configure the vault so that each application and each pipeline role can access o
 
 ## Related Content
 
-- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
-- [Application configuration management]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}})
+- [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
+- [Application configuration management]({{< relref "/docs/pipeline/application-config" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
 - [Pipeline definitions not in version control]({{< relref "/docs/anti-patterns/pipeline/pipeline-not-versioned" >}})
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}})

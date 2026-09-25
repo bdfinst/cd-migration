@@ -210,9 +210,9 @@ raise it with engineering leadership.
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building a test strategy that becomes part of how the team works
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Making "done includes tests" an explicit team agreement
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building a test strategy that becomes part of how the team works
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Making "done includes tests" an explicit team agreement
 - [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}) - Where this anti-pattern ends up if left unchecked
 - [Flaky Tests]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Another way trust in the test suite erodes
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using data to make the case for quality practices
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using data to make the case for quality practices
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - How ACD counters this anti-pattern by making test-first workflow mandatory

@@ -110,8 +110,8 @@ Define both environments as instances of the same infrastructure code, with only
 
 ## Related Content
 
-- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
+- [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
-- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
-- [Deterministic pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}})
-- [Value stream mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}})
+- [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
+- [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}})
+- [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}})

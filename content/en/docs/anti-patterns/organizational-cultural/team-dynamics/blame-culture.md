@@ -125,7 +125,7 @@ Expect pushback and address it directly:
 ## Related Content
 
 - [Hero culture]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture" >}}) - blame culture and hero culture reinforce each other; heroes are often exempt from blame, everyone else is not
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - retrospectives that follow blameless principles build the same muscle as blameless post-mortems
-- [Working agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - team norms that explicitly address how failure is handled prevent blame culture from taking hold
-- [Metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - system-level metrics provide objective analysis that reduces the tendency to attribute outcomes to individuals
-- [Current state checklist]({{< relref "/docs/migrate-to-cd/assess/current-state-checklist" >}}) - cultural safety is a prerequisite for many checklist items; assess this early
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - retrospectives that follow blameless principles build the same muscle as blameless post-mortems
+- [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - team norms that explicitly address how failure is handled prevent blame culture from taking hold
+- [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - system-level metrics provide objective analysis that reduces the tendency to attribute outcomes to individuals
+- [Current state checklist]({{< relref "/docs/assess/current-state-checklist" >}}) - cultural safety is a prerequisite for many checklist items; assess this early

@@ -3,7 +3,7 @@ title: "Learning Paths"
 description: >
   Curated reading paths through the CD Migration Guide, organized by role and goal.
   Follow a path end-to-end or jump in at the step that matches where your team is today.
-weight: 16
+weight: 3
 ---
 
 The [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Migration Guide covers a lot of ground. These paths cut through it by role and goal,
@@ -25,7 +25,7 @@ prevent recurrence.
 2. [Slow Test Suites]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - related pain
 3. [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - root cause
 4. [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}) - root cause
-5. [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - fix guide
+5. [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - fix guide
 6. [Testing and Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - prevent recurrence
 7. [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - quality gate placement
 
@@ -45,8 +45,8 @@ research-backed capabilities and a concrete starting step.
 3. [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - name the root cause
 4. [CAB Approval Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}) - address the process gap
 5. [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}) - the research backing
-6. [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - start here with your team
-7. [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - measure before you change
+6. [Phase 0 - Assess]({{< relref "/docs/assess" >}}) - start here with your team
+7. [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - measure before you change
 
 ---
 
@@ -61,11 +61,11 @@ you understand what you are structurally preventing as you build each capability
 
 1. [Start Here]({{< relref "/docs/start-here" >}}) - diagnostic framing
 2. [Triage Your Symptoms]({{< relref "/docs/triage" >}}) - interactive diagnostic
-3. [Brownfield Migration]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - context for existing systems
-4. [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - value stream and baselines
-5. [Phase 1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) - trunk, tests, build
-6. [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - automation path
-7. [Phase 3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) - flow and metrics
+3. [Brownfield Migration]({{< relref "/docs/brownfield" >}}) - context for existing systems
+4. [Phase 0 - Assess]({{< relref "/docs/assess" >}}) - value stream and baselines
+5. [Phase 1 - Foundations]({{< relref "/docs/foundations" >}}) - trunk, tests, build
+6. [Phase 2 - Pipeline]({{< relref "/docs/pipeline" >}}) - automation path
+7. [Phase 3 - Optimize]({{< relref "/docs/optimize" >}}) - flow and metrics
 8. [Systemic Defect Sources]({{< relref "/docs/reference/defect-sources" >}}) - understand what you are preventing
 
 ---
@@ -93,8 +93,8 @@ quality gates needed to keep agent output safe to ship.
 
 If your team is partway through a migration, jump in at the relevant phase:
 
-- [Phase 0 - Assess]({{< relref "/docs/migrate-to-cd/assess" >}}) - you know something is wrong but have not measured it yet
-- [Phase 1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) - you have committed to CD but lack the basics
-- [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - you have basics in place and need a reliable automated path
-- [Phase 3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) - your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) works but flow is still slow or unreliable
-- [Phase 4 - Continuous Deployment]({{< relref "/docs/migrate-to-cd/continuous-deployment" >}}) - you deploy frequently and want to remove the last manual gates
+- [Phase 0 - Assess]({{< relref "/docs/assess" >}}) - you know something is wrong but have not measured it yet
+- [Phase 1 - Foundations]({{< relref "/docs/foundations" >}}) - you have committed to CD but lack the basics
+- [Phase 2 - Pipeline]({{< relref "/docs/pipeline" >}}) - you have basics in place and need a reliable automated path
+- [Phase 3 - Optimize]({{< relref "/docs/optimize" >}}) - your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) works but flow is still slow or unreliable
+- [Phase 4 - Continuous Deployment]({{< relref "/docs/continuous-deployment" >}}) - you deploy frequently and want to remove the last manual gates

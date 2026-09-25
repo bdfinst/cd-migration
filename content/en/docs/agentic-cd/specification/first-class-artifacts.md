@@ -20,7 +20,7 @@ For the framework overview and the eight constraints, see [ACD]({{< relref "/doc
 
 An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#the-self-containment-test" >}}) for how to verify completeness.
 
-**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) cycle.
+**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) cycle.
 
 **Example:**
 
@@ -151,7 +151,7 @@ Acceptance criteria run in the pipeline on every commit. Hypothesis validation h
 
 This connection matters because a change can pass all acceptance criteria and still fail its hypothesis. Rate limiting might work perfectly and yet not reduce latency because the root cause was something else entirely. When that happens, the team has learned something valuable: the problem is not what they thought it was. That learning feeds back into the next intent description.
 
-The [metrics-driven improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
+The [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
 
 **Key property:** The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
@@ -263,5 +263,5 @@ With the artifacts defined, the next question is how the pipeline enforces consi
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence before adopting artifact-driven workflows
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to write clear intent descriptions and BDD scenarios that agents can implement reliably
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skills that produce these artifacts
-- [Testing]({{< relref "/docs/testing" >}}) - testing strategies that inform acceptance criteria
-- [Hypothesis-Driven Development]({{< relref "/docs/migrate-to-cd/optimize/hypothesis-driven-development" >}}) - the foundational practice of treating every change as an experiment
+- [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing strategies that inform acceptance criteria
+- [Hypothesis-Driven Development]({{< relref "/docs/optimize/hypothesis-driven-development" >}}) - the foundational practice of treating every change as an experiment

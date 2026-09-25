@@ -90,6 +90,6 @@ automated prefix.
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Slow pipelines are the primary cause of slow feedback
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Slow tests are the most common cause of slow pipelines
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many slow tests at the wrong level
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Pipeline design for speed
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Optimizing pipeline structure
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Pipeline design for speed
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Optimizing pipeline structure
 - [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) - Track pipeline speed as a first-class metric

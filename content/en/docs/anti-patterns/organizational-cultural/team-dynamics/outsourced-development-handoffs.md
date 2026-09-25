@@ -196,8 +196,8 @@ to align contract boundaries with value delivery rather than functional speciali
 
 ## Related Content
 
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - The pipeline model that replaces multi-team handoff chains
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the automated test layer that replaces manual QA handoffs
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Reducing the gap between test and production that creates late defect discovery
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - The pipeline model that replaces multi-team handoff chains
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated test layer that replaces manual QA handoffs
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Reducing the gap between test and production that creates late defect discovery
 - [No On-Call or Operational Ownership]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/no-operational-ownership" >}}) - The related pattern where the team that builds does not run
-- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Visualizing the handoff delays in the current delivery process
+- [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - Visualizing the handoff delays in the current delivery process

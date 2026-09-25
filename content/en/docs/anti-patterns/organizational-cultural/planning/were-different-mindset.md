@@ -189,8 +189,8 @@ explicitly and share them. The "we're different" mindset is defeated by examples
 
 ## Related Content
 
-- [Assess: Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - A structured method for distinguishing real constraints from assumed ones
-- [Value Stream Mapping]({{< relref "/docs/migrate-to-cd/assess/value-stream-mapping" >}}) - Making the current delivery process visible so improvement areas can be identified
+- [Assess: Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - A structured method for distinguishing real constraints from assumed ones
+- [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - Making the current delivery process visible so improvement areas can be identified
 - [After the Rewrite]({{< relref "/docs/anti-patterns/organizational-cultural/planning/after-the-rewrite" >}}) - A related pattern that defers improvement to a future that never arrives
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Establishing shared commitments to start improving, whatever the constraints
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using evidence to make the case for change
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing shared commitments to start improving, whatever the constraints
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using evidence to make the case for change

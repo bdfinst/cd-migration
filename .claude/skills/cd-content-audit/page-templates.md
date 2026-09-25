@@ -10,7 +10,7 @@ Determine page type from file path:
 |-------------|-----------|
 | `content/en/docs/anti-patterns/**/*.md` (not `_index.md`) | Anti-pattern |
 | `content/en/docs/symptoms/**/*.md` (not `_index.md`, `triage.md`, `for-*.md`) | Symptom |
-| `content/en/docs/migrate-to-cd/**/*.md` (not `_index.md`) | Guide |
+| `content/en/docs/**/*.md` (not `_index.md`) | Guide |
 
 ## Anti-Pattern Page Structure
 

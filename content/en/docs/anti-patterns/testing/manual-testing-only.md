@@ -205,9 +205,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - How to build a test strategy for CD
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Tests need a pipeline to run in
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - How to build a test strategy for CD
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Tests need a pipeline to run in
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - The next problem to solve once you have tests
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - The manual testing this replaces
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Tests as automated quality gates
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Tests as automated quality gates
 - [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) - defect categories that survive without automated test coverage.

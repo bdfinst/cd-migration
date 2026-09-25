@@ -82,5 +82,5 @@ For the full argument, see
 - **[Migrate to CD]({{< relref "/docs/migrate-to-cd" >}})** - A phased path from assessment through continuous deployment, covering both greenfield and brownfield contexts.
 - **[Improvement Plays]({{< relref "/docs/playbook" >}})** - Standalone plays teams can run independently to address specific delivery problems.
 - **[Agentic CD]({{< relref "/docs/agentic-cd" >}})** - Constraints and practices for safely incorporating AI agent-generated changes into your pipeline.
-- **[Architecting Tests for CD]({{< relref "/docs/testing" >}})** - Test types, architecture, and practices for building confidence in your delivery pipeline.
+- **[Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}})** - Test types, architecture, and practices for building confidence in your delivery pipeline.
 - **[Reference]({{< relref "/docs/reference" >}})** - Practice definitions, metrics, glossary, and other supporting material.

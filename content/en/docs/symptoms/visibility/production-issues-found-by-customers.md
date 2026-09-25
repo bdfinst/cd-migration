@@ -73,5 +73,5 @@ usually skipped under time pressure.
 - [Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}}) - Both symptoms indicate missing observability
 - [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Staging does not catch what monitoring would
 - [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - No monitoring, no alerting, no visibility
-- [Progressive Rollout]({{< relref "/docs/migrate-to-cd/continuous-deployment/progressive-rollout" >}}) - Canary deployments that detect problems before full rollout
+- [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}}) - Canary deployments that detect problems before full rollout
 - [Mean Time to Repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) - Measure how quickly the team detects and resolves incidents

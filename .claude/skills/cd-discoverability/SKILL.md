@@ -33,7 +33,7 @@ Analyze the CD migration site and recommend improvements that make it easier for
    - Docs landing: `content/en/docs/_index.md`
    - Symptom pages: `content/en/docs/symptoms/` (4 subdirectories: testing, deployment, flow, visibility)
    - Anti-pattern pages: `content/en/docs/anti-patterns/` (7 subdirectories)
-   - Guide pages: `content/en/docs/migrate-to-cd/`
+   - Guide pages: `content/en/docs/`
    - Reference: `content/en/docs/reference/`
    - Triage page: `content/en/docs/symptoms/triage.md`
    - For Developers: `content/en/docs/symptoms/for-developers.md`

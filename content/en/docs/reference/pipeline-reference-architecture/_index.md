@@ -40,8 +40,8 @@ sub-second to sub-minute feedback.
 | **SAST (injection patterns)** | Injection vulnerabilities, taint analysis | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | <span class="gate-required">Required</span> |
 | **Race condition detection** | Race conditions (thread sanitizers, where language supports it) | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
 | **Accessibility linting** | Missing alt text, ARIA violations, contrast failures | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
-| **[Solitary and sociable unit tests]({{< relref "/docs/testing/test-types/unit" >}})** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
-| **[Contract tests]({{< relref "/docs/testing/test-types/contract" >}})** | Interface mismatches, wrong assumptions about external system boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **[Solitary and sociable unit tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})** | Logic errors, unintended side effects, edge cases | [Change & Complexity]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}})** | Interface mismatches, wrong assumptions about external system boundaries | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI semantic code review** | Logic errors, missing edge cases, subtle injection vectors beyond pattern matching | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}), [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 
@@ -66,7 +66,7 @@ These validate boundaries between components.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **[Contract tests]({{< relref "/docs/testing/test-types/contract" >}})** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
+| **[Contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}})** | Interface mismatches, wrong assumptions about upstream/downstream | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | <span class="gate-required">Required</span> |
 | **Schema migration validation** | Schema migration and backward compatibility failures | [Data & State]({{< relref "/docs/reference/defect-sources/data-and-state" >}}) | <span class="gate-required">Required</span> |
 | **Infrastructure-as-code drift detection** | Configuration drift, environment differences | [Dependency & Infrastructure]({{< relref "/docs/reference/defect-sources/dependency-and-infrastructure" >}}) | |
 | **Environment parity checks** | Test environments not reflecting production | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
@@ -97,7 +97,7 @@ These validate user-facing behavior in a [production-like environment]({{< relre
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
-| **[Acceptance tests]({{< relref "/docs/testing/glossary#functional-acceptance-tests" >}})** | Implementation does not match [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
+| **[Acceptance tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#functional-acceptance-tests" >}})** | Implementation does not match [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) | [Product & Discovery]({{< relref "/docs/reference/defect-sources/product-and-discovery" >}}) | |
 | **Load and capacity tests** | Unknown capacity limits, slow response times | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | **Chaos and resilience tests** | Network partition handling, missing graceful degradation | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | **Cache invalidation verification** | Cache invalidation errors | [Data & State]({{< relref "/docs/reference/defect-sources/data-and-state" >}}) | |
@@ -117,9 +117,9 @@ reaching production.
 
 ### Integration Tests (Post-Deploy)
 
-[Integration tests]({{< relref "/docs/testing/test-types/integration" >}}) validate that the
-[test doubles]({{< relref "/docs/testing/glossary#test-double" >}}) used in
-[contract tests]({{< relref "/docs/testing/test-types/contract" >}}) still match the real services
+[Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) validate that the
+[test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) used in
+[contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) still match the real services
 they simulate. They are non-deterministic because they exercise real service boundaries
 and their results depend on the current state of those services. They run on a schedule
 or post-deployment - not on every commit - and failures trigger review, not a
@@ -151,7 +151,7 @@ These run during and after deployment. They are not optional - they close the fe
 {{% alert title="These gates must be active before starting feature work" color="warning" %}}
 Without these gates passing on every commit to trunk, defects accumulate faster than the
 team can detect them. If any are missing, add them before writing new features. The
-[Foundations phase]({{< relref "/docs/migrate-to-cd/foundations" >}}) covers how to establish
+[Foundations phase]({{< relref "/docs/foundations" >}}) covers how to establish
 this baseline.
 
 1. Linting and formatting
@@ -211,10 +211,10 @@ architecture patterns in detail.
 ## Related Content
 
 - [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) - the defect source catalog that informs gate selection
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - how to evolve pipeline architecture from entangled to loosely coupled
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - how to evolve pipeline architecture from entangled to loosely coupled
 - [Deterministic Pipeline]({{< relref "/docs/reference/practices/deterministic-pipeline" >}}) - ensuring the pipeline produces consistent results
 - [Single Path to Production]({{< relref "/docs/reference/practices/single-path-to-production" >}}) - why all changes must flow through one pipeline
 - [Immutable Artifacts]({{< relref "/docs/reference/practices/immutable-artifacts" >}}) - build once, deploy everywhere
-- [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - the migration phase that establishes the pipeline
+- [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) - the migration phase that establishes the pipeline
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - what happens when pipeline architecture is not optimized
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - additional pipeline constraints when AI agents contribute changes

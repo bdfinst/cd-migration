@@ -90,8 +90,8 @@ cost of being wrong.
 > deliver, the queue - and the risk it carries - grows until the system stalls.
 
 So expand downstream capacity first, or at least at the same time: shorten feedback loops, automate the
-gates, [limit work in progress]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}), and keep
-[batches small]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}). Only then does faster
+gates, [limit work in progress]({{< relref "/docs/optimize/limiting-wip" >}}), and keep
+[batches small]({{< relref "/docs/optimize/small-batches" >}}). Only then does faster
 creation turn into faster value instead of a deeper queue.
 
 This is the same sequence the [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}})
@@ -129,7 +129,7 @@ work so that faster creation produces faster value rather than faster defects.
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the practitioner sequence: remove friction and add safety before accelerating
 - [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}) - the constraints and artifacts that keep agent-generated work safe
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - how to measure whether the system is actually getting faster
-- [Brownfield CD Overview]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - the phased migration this diagnostic sits on top of
+- [Brownfield CD Overview]({{< relref "/docs/brownfield" >}}) - the phased migration this diagnostic sits on top of
 
 ---
 

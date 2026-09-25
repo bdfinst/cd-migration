@@ -106,6 +106,6 @@ produce points.
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP is a direct contributor to burnout
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Blocked work creates frustration and context switching
 - [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}) - Teams spread across too many responsibilities
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Explicit team norms that protect sustainable pace
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Reducing overload by constraining work in progress
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Explicit team norms that protect sustainable pace
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Reducing overload by constraining work in progress
 - [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) - Track WIP as a leading indicator of team health

@@ -52,7 +52,7 @@ See [Learning Paths]({{< relref "/docs/learning-paths" >}}) for a structured pat
 If these symptoms sound familiar, these resources can help you build a case for change and
 find a starting point:
 
-- **[Phase 0: Assess]({{< relref "/docs/migrate-to-cd/assess" >}})** - Map your value stream, take baseline measurements, and identify your top constraints.
+- **[Phase 0: Assess]({{< relref "/docs/assess" >}})** - Map your value stream, take baseline measurements, and identify your top constraints.
 - **[DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}})** - The research-backed capabilities that predict delivery performance. Use this to connect symptoms to organizational capabilities.
 - **[Metrics Reference]({{< relref "/docs/reference/metrics" >}})** - Definitions for the metrics used throughout this guide, including the four DORA metrics.
 - **[FAQ: How long does the migration take?]({{< relref "/docs/reference/faq#how-long-does-the-migration-take" >}})** - Rough timelines for each phase of the migration.

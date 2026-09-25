@@ -173,6 +173,6 @@ to leadership as evidence that the current commitment model carries hidden inacc
 
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - The sprint-level version of the same pressure
 - [Missing Product Ownership]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/missing-product-ownership" >}}) - Without a product owner, there is nobody to renegotiate scope as understanding develops
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking features into pieces that can ship independently
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The delivery practice that makes distant date commitments unnecessary
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using historical delivery data to make more accurate forecasts
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking features into pieces that can ship independently
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - The delivery practice that makes distant date commitments unnecessary
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using historical delivery data to make more accurate forecasts

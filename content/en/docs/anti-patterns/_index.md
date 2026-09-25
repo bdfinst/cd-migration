@@ -1,9 +1,12 @@
 ---
 title: "Quality and Delivery Anti-Patterns"
 linkTitle: "Anti-Patterns"
-weight: 5
+weight: 6
+sidebar_collapsed: true
 description: >
   Start here. Find the anti-patterns your team is facing and learn the path to solving them.
+cascade:
+  sidebar_collapsed: true
 ---
 
 {{% pageinfo %}}

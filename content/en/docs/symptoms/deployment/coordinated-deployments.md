@@ -101,5 +101,5 @@ independent changes into a single release event.
 - [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Coordination overhead makes releases less frequent
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - Services that cannot deploy independently
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - Architectural coupling that forces coordination
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Breaking dependencies between services
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Breaking dependencies between services
 - [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) - Measure the cost of coordination in delivery speed

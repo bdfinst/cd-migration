@@ -157,5 +157,5 @@ different toolchain.
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Roster instability driven by treating engineers as interchangeable capacity
 - [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Thin-spread teams create silos at the product level, not just the subsystem level
 - [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}}) - Too many products is WIP at the team level
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Agreements on product scope and capacity allocation
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Reducing coupling between products makes ownership boundaries cleaner
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Agreements on product scope and capacity allocation
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Reducing coupling between products makes ownership boundaries cleaner

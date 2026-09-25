@@ -57,10 +57,10 @@ The dependency tree directly informs the sequencing of migration phases:
 
 | Dependency Layer | Migration Phase | Why This Order |
 |-----------------|-----------------|----------------|
-| Development practices ([BDD](../glossary/#bdd-behavior-driven-development), trunk-based development) | [Phase 1 - Foundations]({{< relref "/docs/migrate-to-cd/foundations" >}}) | These are prerequisites for CI, which is a prerequisite for everything else |
-| Build and test infrastructure (build automation, automated testing, test environments) | [Phase 1]({{< relref "/docs/migrate-to-cd/foundations" >}}) and [Phase 2]({{< relref "/docs/migrate-to-cd/pipeline" >}}) | You need reliable build and test infrastructure before you can build a reliable pipeline |
-| Pipeline practices (application pipeline, immutable artifacts, configuration management, [rollback](../glossary/#rollback)) | [Phase 2 - Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) | The pipeline depends on solid CI and development practices |
-| Flow optimization (small batches, feature flags, [WIP](../glossary/#wip-work-in-progress) limits, metrics) | [Phase 3 - Optimize]({{< relref "/docs/migrate-to-cd/optimize" >}}) | Optimization requires a working pipeline to optimize |
+| Development practices ([BDD](../glossary/#bdd-behavior-driven-development), trunk-based development) | [Phase 1 - Foundations]({{< relref "/docs/foundations" >}}) | These are prerequisites for CI, which is a prerequisite for everything else |
+| Build and test infrastructure (build automation, automated testing, test environments) | [Phase 1]({{< relref "/docs/foundations" >}}) and [Phase 2]({{< relref "/docs/pipeline" >}}) | You need reliable build and test infrastructure before you can build a reliable pipeline |
+| Pipeline practices (application pipeline, immutable artifacts, configuration management, [rollback](../glossary/#rollback)) | [Phase 2 - Pipeline]({{< relref "/docs/pipeline" >}}) | The pipeline depends on solid CI and development practices |
+| Flow optimization (small batches, feature flags, [WIP](../glossary/#wip-work-in-progress) limits, metrics) | [Phase 3 - Optimize]({{< relref "/docs/optimize" >}}) | Optimization requires a working pipeline to optimize |
 | Organizational practices (cross-functional teams, component ownership, developer-driven support) | All phases | These cross-cutting practices support every phase. Team structure should be addressed early because it constrains architecture and work decomposition |
 
 ## Understanding the Dependency Model

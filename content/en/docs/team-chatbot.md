@@ -4,7 +4,7 @@ linkTitle: "Team Chatbot"
 description: >
   A ready-to-use facilitator chatbot that helps your team diagnose delivery problems
   and navigate the CD migration journey - works with any LLM.
-weight: 17
+weight: 41
 icon: "fas fa-robot"
 ---
 

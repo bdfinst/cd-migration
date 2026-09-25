@@ -267,8 +267,8 @@ application logic (as opposed to configuration loading):
 
 ## Related Content
 
-- [Application Configuration]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}}) - The right way to vary behavior between environments is through configuration
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Environments should differ only in scale and configuration, not in behavior
-- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - Proper feature flags replace environment-name feature toggles
-- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Configuration belongs in version control, not in conditional code
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - A deterministic pipeline requires the same code to run in every environment
+- [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) - The right way to vary behavior between environments is through configuration
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Environments should differ only in scale and configuration, not in behavior
+- [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Proper feature flags replace environment-name feature toggles
+- [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Configuration belongs in version control, not in conditional code
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - A deterministic pipeline requires the same code to run in every environment

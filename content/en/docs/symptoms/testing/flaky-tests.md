@@ -30,7 +30,7 @@ on network connectivity, shared test environments, external service availability
 rendering timing. Any of these can produce a different result on each run. A suite built mostly
 on E2E tests will always be flaky because it is built on non-deterministic foundations.
 
-Replacing E2E tests with [component tests]({{< relref "/docs/testing/glossary#component-test" >}}) that use test doubles for external dependencies makes
+Replacing E2E tests with [component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) that use test doubles for external dependencies makes
 the suite deterministic by design. The test produces the same result every time because it
 controls all its inputs.
 
@@ -82,5 +82,5 @@ architectural coupling, not a testing problem.
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment differences cause similar non-determinism
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Flaky tests compound slow feedback loops
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - The most common structural cause of flaky tests
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building a fast, reliable test suite
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building a fast, reliable test suite
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track whether test reliability improvements reduce production failures

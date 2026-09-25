@@ -107,4 +107,4 @@ that has not been made explicit.
 - [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - Related symptom where AI speed comes at the cost of comprehension
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Common failure modes when teams adopt AI coding tools
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Staged approach to adopting AI tools safely
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into pieces small enough for fast feedback
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking work into pieces small enough for fast feedback

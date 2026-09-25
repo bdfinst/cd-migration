@@ -148,7 +148,7 @@ through the layers within their domain, not through the entire system.
 How "end-to-end" is defined depends on what your team owns. A [full-stack product team]({{< relref "/docs/reference/glossary#full-stack-product-team" >}}) owns the
 entire user-facing surface from UI to database; their slice is done when a user can observe the
 behavior. A [subdomain product team]({{< relref "/docs/reference/glossary#subdomain-product-team" >}}) owns a service boundary; their slice is done when the API
-contract satisfies the agreed behavior for consumers. The [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) guide covers both
+contract satisfies the agreed behavior for consumers. The [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) guide covers both
 contexts with diagrams.
 
 For each service the team owns, identify the contracts other services depend on. These contracts
@@ -235,9 +235,9 @@ enter the sprint.
 
 ## Related Content
 
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice guide for vertical slicing techniques, including how the approach differs for full-stack product teams versus subdomain product teams in distributed systems
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Vertical slicing is how you achieve small batch size at the story level
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice guide for vertical slicing techniques, including how the approach differs for full-stack product teams versus subdomain product teams in distributed systems
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Vertical slicing is how you achieve small batch size at the story level
 - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Horizontal slices are often large because they span an entire layer
-- [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}) - Vertical slices enable daily integration because each is independently complete
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Loose coupling between services enables independent vertical slicing
-- [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}) - Organizing teams around domain boundaries rather than layers removes the structural cause of horizontal slicing
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - Vertical slices enable daily integration because each is independently complete
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Loose coupling between services enables independent vertical slicing
+- [Team Alignment to Code]({{< relref "/docs/optimize/team-alignment" >}}) - Organizing teams around domain boundaries rather than layers removes the structural cause of horizontal slicing

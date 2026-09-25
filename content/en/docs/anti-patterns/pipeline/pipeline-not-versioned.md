@@ -103,8 +103,8 @@ Establish a policy that pipeline definitions are changed only through the source
 
 ## Related Content
 
-- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}})
+- [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
-- [Build automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}})
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})
+- [Build automation]({{< relref "/docs/foundations/build-automation" >}})
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}})

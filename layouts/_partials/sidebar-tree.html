@@ -121,6 +121,9 @@
   {{ if $s.Params.sidebar_divider_above -}}
   <li class="td-sidebar-nav__divider" aria-hidden="true"></li>
   {{ end -}}
+  {{ with $s.Params.sidebar_group_label -}}
+  <li class="td-sidebar-nav__group-label">{{ . }}</li>
+  {{ end -}}
   <li class="td-sidebar-nav__section-title td-sidebar-nav__section
         {{- if $withChild }} with-child{{ else }} without-child{{ end -}}
         {{ if $activePath }} active-path{{ end -}}
@@ -129,7 +132,7 @@
       id="{{ $mid }}-li" {{- /**/ -}}
     >
     {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
-    <input type="checkbox" id="{{ $mid }}-check" aria-label="Toggle {{ $s.LinkTitle }}"{{ if $activePath}} checked{{ end }}/>
+    <input type="checkbox" id="{{ $mid }}-check" aria-label="Toggle {{ $s.LinkTitle }}"{{ if or $activePath (not $s.Params.sidebar_collapsed) }} checked{{ end }}/>
     <label for="{{ $mid }}-check">{{/**/ -}}
       <a href="{{ $manualLink }}"
         {{- if ne $s.LinkTitle $manualLinkTitle }} {{/**/ -}}

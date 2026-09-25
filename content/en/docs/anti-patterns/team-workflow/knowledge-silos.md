@@ -129,6 +129,6 @@ investment in long-term team capacity.
 - [Domain Model Erosion]({{< relref "/docs/symptoms/flow/developer-experience/domain-model-erosion" >}}) - Codebase drift when domain understanding lives in too few people
 - [Repeated Domain Mistakes]({{< relref "/docs/symptoms/flow/team-knowledge/repeated-domain-mistakes" >}}) - Same errors recur when knowledge leaves with the people who held it
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Roster changes that drain knowledge the team never externalized
-- [Code Review]({{< relref "/docs/migrate-to-cd/foundations/code-review" >}}) - Review practices that spread knowledge
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Team norms for review rotation and pairing
+- [Code Review]({{< relref "/docs/foundations/code-review" >}}) - Review practices that spread knowledge
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Team norms for review rotation and pairing
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Push assignment reinforces silos by always sending the same work to the same person

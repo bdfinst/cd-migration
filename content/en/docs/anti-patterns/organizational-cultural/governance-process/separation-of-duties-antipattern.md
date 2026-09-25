@@ -132,6 +132,6 @@ Expect pushback and address it directly:
 
 - [Compliance interpreted as manual approval]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval" >}}) - related pattern where compliance is used to justify other manual gates
 - [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}}) - the organizational pattern this anti-pattern creates
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - the automated pipeline that replaces the manual deployment team role
-- [Pipeline architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - design the pipeline with SoD controls built in
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - automated rollback capability reduces the risk argument for keeping a separate deployment team
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - the automated pipeline that replaces the manual deployment team role
+- [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design the pipeline with SoD controls built in
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - automated rollback capability reduces the risk argument for keeping a separate deployment team

@@ -1,7 +1,7 @@
 ---
 title: "Credits"
 linkTitle: "Credits"
-weight: 19
+weight: 42
 description: >
   Contributors who have helped shape this migration guide.
 ---

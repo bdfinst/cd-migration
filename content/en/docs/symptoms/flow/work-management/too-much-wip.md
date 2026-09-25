@@ -72,5 +72,5 @@ busy by starting things rather than finishing them.
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - High WIP directly increases cycle time
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Review queues are a common source of excess WIP
 - [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}}) - No limits on work in progress
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Setting and enforcing WIP limits
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Setting and enforcing WIP limits
 - [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) - Measuring and tracking WIP over time

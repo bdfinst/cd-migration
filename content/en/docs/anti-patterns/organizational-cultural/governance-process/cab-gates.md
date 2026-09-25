@@ -241,9 +241,9 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 
 ## Related Content
 
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - The pipeline replaces manual gates
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Automated controls that provide consistent quality checks
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback replaces manual rollback plans in change requests
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using data to prove that automated controls work
-- [Deploy on Demand]({{< relref "/docs/migrate-to-cd/continuous-deployment/deploy-on-demand" >}}) - The end state where any change can deploy when ready
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - The pipeline replaces manual gates
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Automated controls that provide consistent quality checks
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback replaces manual rollback plans in change requests
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using data to prove that automated controls work
+- [Deploy on Demand]({{< relref "/docs/continuous-deployment/deploy-on-demand" >}}) - The end state where any change can deploy when ready
 - [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}) - how slow, batch-based approval processes introduce the defects they aim to prevent.

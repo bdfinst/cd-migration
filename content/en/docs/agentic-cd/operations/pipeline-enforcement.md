@@ -53,7 +53,7 @@ Expert validation agents fill this gap. These are AI agents dedicated to a speci
 
 **Do not deploy expert agents and immediately reduce human review.** Expert validation agents need calibration before they can replace human judgment. An agent that flags too many false positives trains the team to ignore it. An agent that misses real issues creates false confidence. Run expert agents in parallel with human review for at least 20 cycles before any reduction in human coverage.
 
-Expert validation agents are new automated checks. Adopt them using the same [replacement cycle]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) that drives every brownfield [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration:
+Expert validation agents are new automated checks. Adopt them using the same [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) that drives every brownfield [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration:
 
 1. **Identify** a manual validation currently performed by a human reviewer. For example, checking whether test code actually tests what the specification requires.
 2. **Automate** the check by deploying an expert agent as a pipeline gate. The agent runs on every change and produces a pass/fail result with reasoning.
@@ -70,6 +70,6 @@ With the pipeline and expert agents in place, the next question is what goes wro
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts the pipeline enforces
 - [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - the full quality gate sequence
-- [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting automated checks
+- [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting automated checks
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - what goes wrong and how to measure progress
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the prerequisite sequence, especially Harden Guardrails and Reduce Delivery Friction

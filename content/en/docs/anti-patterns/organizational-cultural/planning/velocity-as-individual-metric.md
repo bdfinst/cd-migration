@@ -147,7 +147,7 @@ throughput.
 
 ## Related Content
 
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Making "velocity is a team planning tool" an explicit norm
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Choosing metrics that drive the right behavior
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Making "velocity is a team planning tool" an explicit norm
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Choosing metrics that drive the right behavior
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Individual assignment reinforces individual measurement
 - [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Individual metrics discourage the cross-training that breaks silos

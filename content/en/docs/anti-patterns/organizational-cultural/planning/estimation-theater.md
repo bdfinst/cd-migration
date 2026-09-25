@@ -177,8 +177,8 @@ ambiguous? Fix the root cause, not the estimate.
 
 ## Related Content
 
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice that makes small, consistent stories possible
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Why smaller work items improve delivery more than better estimates
-- [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - Establishing shared norms around what "ready to start" means
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using throughput data as a more reliable planning input than velocity
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - Reducing the number of stories in flight improves delivery more than improving estimation
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice that makes small, consistent stories possible
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Why smaller work items improve delivery more than better estimates
+- [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing shared norms around what "ready to start" means
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using throughput data as a more reliable planning input than velocity
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - Reducing the number of stories in flight improves delivery more than improving estimation

@@ -20,6 +20,6 @@ find concrete fix steps.
 **Related anti-pattern categories:** [Pipeline Anti-Patterns]({{< relref "/docs/anti-patterns/pipeline" >}}),
 [Architecture Anti-Patterns]({{< relref "/docs/anti-patterns/architecture" >}})
 
-**Related guides:** [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}),
-[Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}),
-[Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}})
+**Related guides:** [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}),
+[Rollback]({{< relref "/docs/pipeline/rollback" >}}),
+[Small Batches]({{< relref "/docs/optimize/small-batches" >}})

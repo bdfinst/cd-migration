@@ -347,5 +347,5 @@ displays a graceful "No Data Found" state rather than crashing.
 - [The ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these tips support
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - detailed definitions of each artifact
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skill framework that produces specifications like the example above
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - why changes must stay small enough for frequent, safe deployment
-- [Hypothesis-Driven Development]({{< relref "/docs/migrate-to-cd/optimize/hypothesis-driven-development" >}}) - the lifecycle for forming, testing, and validating hypotheses
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - why changes must stay small enough for frequent, safe deployment
+- [Hypothesis-Driven Development]({{< relref "/docs/optimize/hypothesis-driven-development" >}}) - the lifecycle for forming, testing, and validating hypotheses

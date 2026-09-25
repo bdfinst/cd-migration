@@ -85,6 +85,6 @@ diverges from the domain rules. Without it, "tests pass" is a weak signal.
 
 - [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}) - The anti-pattern of accepting AI output without critical review
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Common failure modes when teams adopt AI coding tools
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building a test suite that catches logic errors regardless of who wrote the code
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building a test suite that catches logic errors regardless of who wrote the code
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Why end-to-end tests alone cannot catch AI-generated logic errors
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Prerequisites for safe AI-assisted development

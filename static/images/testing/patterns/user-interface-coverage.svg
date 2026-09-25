@@ -23,31 +23,31 @@
   <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="68" width="6" height="60" fill="#224968"/>
   <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Pure rendering</text>
-  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="488" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="540" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#solitary-unit-test" target="_top"><rect x="488" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="540" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="116" font-size="11" font-style="italic" fill="#556">A component renders given props or state</text>
 
   <!-- Layer 2: Component composition -->
   <rect x="30" y="136" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="136" width="6" height="60" fill="#224968"/>
   <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">Component composition</text>
-  <a href="/docs/testing/glossary/#sociable-unit-test" target="_top"><rect x="488" y="146" width="104" height="20" rx="10" fill="#0d7a32"/><text x="540" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#sociable-unit-test" target="_top"><rect x="488" y="146" width="104" height="20" rx="10" fill="#0d7a32"/><text x="540" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Sociable unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="146" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="184" font-size="11" font-style="italic" fill="#556">Composed components wire correctly</text>
 
   <!-- Layer 3: Feature behaviour in the DOM -->
   <rect x="30" y="204" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="204" width="6" height="60" fill="#224968"/>
   <text x="50" y="228" font-size="14" font-weight="700" fill="#1a2a3a">Feature behaviour in the rendered DOM</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="214" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="228" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="252" font-size="11" font-style="italic" fill="#556">Flows, form validation, a11y assertions, error UX (Playwright + unit-test framework)</text>
 
   <!-- Layer 4: Backend HTTP client -->
   <rect x="30" y="272" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="272" width="6" height="60" fill="#224968"/>
   <text x="50" y="296" font-size="14" font-weight="700" fill="#1a2a3a">Backend HTTP client</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="448" y="282" width="80" height="20" rx="10" fill="#224968"/><text x="488" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
-  <a href="/docs/testing/glossary/#contract-test" target="_top"><rect x="534" y="282" width="146" height="20" rx="10" fill="#6c757d"/><text x="607" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Consumer contract</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="448" y="282" width="80" height="20" rx="10" fill="#224968"/><text x="488" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#contract-test" target="_top"><rect x="534" y="282" width="146" height="20" rx="10" fill="#6c757d"/><text x="607" y="296" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Consumer contract</text></a>
   <text x="50" y="320" font-size="11" font-style="italic" fill="#556">Fetch / request build, response parse, retry, auth headers</text>
 
   <!-- Boundary divider -->
@@ -63,8 +63,8 @@
   <rect x="30" y="384" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="384" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="408" font-size="14" font-weight="700" fill="#1a2a3a">Backend API (external)</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="490" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="530" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/test-types/e2e/" target="_top"><rect x="606" y="418" width="74" height="20" rx="10" fill="#6c757d"/><text x="643" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">E2E</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="490" y="418" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="530" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/test-types/e2e/" target="_top"><rect x="606" y="418" width="74" height="20" rx="10" fill="#6c757d"/><text x="643" y="432" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">E2E</text></a>
   <text x="50" y="450" font-size="11" font-style="italic" fill="#556">Stubbed via page.route in component tests; real in E2E smoke.</text>
 
   <!-- Legend -->

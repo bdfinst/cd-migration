@@ -127,6 +127,6 @@ constraints, then lower again.
 
 ## Related Content
 
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - The practice guide for implementing WIP limits
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Reducing batch size reinforces low WIP
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - The practice guide for implementing WIP limits
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Reducing batch size reinforces low WIP
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Push assignment and missing WIP limits are mutually reinforcing

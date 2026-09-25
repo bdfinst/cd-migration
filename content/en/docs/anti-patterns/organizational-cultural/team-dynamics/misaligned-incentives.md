@@ -177,6 +177,6 @@ improvement as legitimate work, not as optional infrastructure overhead.
 
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - Deadline incentives are a specific form of misaligned incentives
 - [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}) - Using velocity as a performance metric creates its own misalignment
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Building the case for delivery health metrics
-- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - Establishing current delivery health as a foundation for improvement goals
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - The forum for surfacing incentive misalignment and proposing change
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Building the case for delivery health metrics
+- [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - Establishing current delivery health as a foundation for improvement goals
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - The forum for surfacing incentive misalignment and proposing change

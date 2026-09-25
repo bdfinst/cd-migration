@@ -78,5 +78,5 @@ The metric is a trailing indicator; the practices come first.
 
 - [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}) - the anti-pattern driving this symptom
 - [Metrics reference]({{< relref "/docs/reference/metrics" >}}) - what each metric measures and what causes it to improve
-- [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - how to use metrics diagnostically at the start of a migration
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - using metrics to guide improvement rather than report progress
+- [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - how to use metrics diagnostically at the start of a migration
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - using metrics to guide improvement rather than report progress

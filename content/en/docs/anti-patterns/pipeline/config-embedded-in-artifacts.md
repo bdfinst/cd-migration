@@ -109,8 +109,8 @@ Add a pipeline step that records the artifact checksum after the build and verif
 
 ## Related Content
 
-- [Application configuration management]({{< relref "/docs/migrate-to-cd/pipeline/application-config" >}})
-- [Immutable artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}})
-- [Production-like environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}})
-- [Everything as code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}})
-- [Single path to production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}})
+- [Application configuration management]({{< relref "/docs/pipeline/application-config" >}})
+- [Immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}})
+- [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
+- [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
+- [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}})

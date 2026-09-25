@@ -234,8 +234,8 @@ sprint is unnecessary because the product is always within the release criteria.
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building automated quality checks that prevent hardening sprint accumulation
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Small stories with clear acceptance criteria are less likely to accumulate bugs
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Smaller work items mean smaller blast radius when bugs do occur
-- [Retrospectives]({{< relref "/docs/migrate-to-cd/optimize/retrospectives" >}}) - Using retrospectives to address the root causes that create hardening sprint backlogs
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building automated quality checks that prevent hardening sprint accumulation
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Small stories with clear acceptance criteria are less likely to accumulate bugs
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Smaller work items mean smaller blast radius when bugs do occur
+- [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - Using retrospectives to address the root causes that create hardening sprint backlogs
 - [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - The closely related cultural pressure that causes quality to be deferred

@@ -248,8 +248,8 @@ than windowed, large-batch deployment.
 
 ## Related Content
 
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Automated rollback is what makes deployment safe enough to do at any time
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - One consistent automated path replaces manually staffed deployment events
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - Smaller deployments are the primary lever for reducing deployment risk
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback is what makes deployment safe enough to do at any time
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - One consistent automated path replaces manually staffed deployment events
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Smaller deployments are the primary lever for reducing deployment risk
 - [Release Trains]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/release-trains" >}}) - A closely related pattern where a scheduled release window governs all changes
 - [Change Advisory Board Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}) - Another gate-based anti-pattern that creates similar queuing and batching problems

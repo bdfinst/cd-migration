@@ -228,8 +228,8 @@ loss and no human intervention:
 
 ## Related Content
 
-- [Everything as Code]({{< relref "/docs/migrate-to-cd/foundations/everything-as-code" >}}) - Infrastructure, configuration, and environments defined in source control
-- [Production-Like Environments]({{< relref "/docs/migrate-to-cd/pipeline/production-like-environments" >}}) - Ensuring test environments match production
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - How environments fit into the deployment pipeline
+- [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Infrastructure, configuration, and environments defined in source control
+- [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Ensuring test environments match production
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - How environments fit into the deployment pipeline
 - [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}) - Snowflake environments often coexist with manual deployment processes
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - A pipeline that gives the same answer every time requires identical environments
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - A pipeline that gives the same answer every time requires identical environments

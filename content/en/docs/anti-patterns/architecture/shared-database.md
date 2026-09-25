@@ -229,8 +229,8 @@ and making others write through that service's API.
 
 ## Related Content
 
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - The broader strategy for reducing service coupling
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - The broader strategy for reducing service coupling
 - [No Contract Testing]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) - Verifying API boundaries between services
 - [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - When splitting services creates more coupling than it removes
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - The shared database is the most common cause of the distributed monolith pattern
-- [Single Path to Production]({{< relref "/docs/migrate-to-cd/pipeline/single-path-to-production" >}}) - Independent data ownership is a prerequisite for independent deployment paths
+- [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Independent data ownership is a prerequisite for independent deployment paths

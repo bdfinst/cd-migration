@@ -101,6 +101,6 @@ Automated testing in the pipeline replaces this queue with instant feedback.
 - [Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Pipeline speed is the most common feedback bottleneck
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Review queues add days to the feedback loop
 - [Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}}) - Delayed integration delays feedback
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Automated builds that give feedback in minutes
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Fast tests as the foundation of fast feedback
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Automated builds that give feedback in minutes
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Fast tests as the foundation of fast feedback
 - [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) - Track the speed of your feedback loop

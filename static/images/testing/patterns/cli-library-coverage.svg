@@ -23,34 +23,34 @@
   <rect x="30" y="68" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="68" width="6" height="60" fill="#224968"/>
   <text x="50" y="92" font-size="14" font-weight="700" fill="#1a2a3a">Pure logic and parsing</text>
-  <a href="/docs/testing/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#solitary-unit-test" target="_top"><rect x="490" y="78" width="104" height="20" rx="10" fill="#4a6741"/><text x="542" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Solitary unit</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="600" y="78" width="80" height="20" rx="10" fill="#224968"/><text x="640" y="92" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
   <text x="50" y="116" font-size="11" font-style="italic" fill="#556">Functions, classes, parsers; no I/O</text>
 
   <!-- Layer 2: CLI invocation / library API -->
   <rect x="30" y="136" width="660" height="80" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="136" width="6" height="80" fill="#224968"/>
   <text x="50" y="160" font-size="14" font-weight="700" fill="#1a2a3a">CLI invocation surface or library API</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="316" y="170" width="80" height="20" rx="10" fill="#224968"/><text x="356" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
-  <a href="/docs/testing/glossary/#api-surface-test" target="_top"><rect x="402" y="170" width="106" height="20" rx="10" fill="#6c757d"/><text x="455" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">API surface diff</text></a>
-  <a href="/docs/testing/glossary/#doctest" target="_top"><rect x="514" y="170" width="76" height="20" rx="10" fill="#6c757d"/><text x="552" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
-  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="596" y="170" width="84" height="20" rx="10" fill="#224968"/><text x="638" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS CI</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="316" y="170" width="80" height="20" rx="10" fill="#224968"/><text x="356" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#api-surface-test" target="_top"><rect x="402" y="170" width="106" height="20" rx="10" fill="#6c757d"/><text x="455" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">API surface diff</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#doctest" target="_top"><rect x="514" y="170" width="76" height="20" rx="10" fill="#6c757d"/><text x="552" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#cross-os-test-matrix" target="_top"><rect x="596" y="170" width="84" height="20" rx="10" fill="#224968"/><text x="638" y="184" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS CI</text></a>
   <text x="50" y="202" font-size="11" font-style="italic" fill="#556">argv, stdin, stdout, stderr, exit code, --help, exported symbols</text>
 
   <!-- Layer 3: FS / subprocess gateway -->
   <rect x="30" y="224" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="224" width="6" height="60" fill="#224968"/>
   <text x="50" y="248" font-size="14" font-weight="700" fill="#1a2a3a">File system and subprocess adapter</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="234" width="80" height="20" rx="10" fill="#224968"/><text x="426" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="234" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
-  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="234" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="386" y="234" width="80" height="20" rx="10" fill="#224968"/><text x="426" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="472" y="234" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="234" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
   <text x="50" y="272" font-size="11" font-style="italic" fill="#556">Paths, encodings, signal handling, spawn semantics</text>
 
   <!-- Layer 4: Documented README examples -->
   <rect x="30" y="292" width="660" height="60" rx="6" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
   <rect x="30" y="292" width="6" height="60" fill="#224968"/>
   <text x="50" y="316" font-size="14" font-weight="700" fill="#1a2a3a">Documented README examples</text>
-  <a href="/docs/testing/glossary/#doctest" target="_top"><rect x="600" y="302" width="80" height="20" rx="10" fill="#6c757d"/><text x="640" y="316" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#doctest" target="_top"><rect x="600" y="302" width="80" height="20" rx="10" fill="#6c757d"/><text x="640" y="316" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Doctests</text></a>
   <text x="50" y="340" font-size="11" font-style="italic" fill="#556">Examples in the docs actually run against the real binary or library</text>
 
   <!-- Boundary divider -->
@@ -66,9 +66,9 @@
   <rect x="30" y="404" width="660" height="80" rx="6" fill="#edf2f7" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
   <rect x="30" y="404" width="6" height="80" fill="#6c757d"/>
   <text x="50" y="428" font-size="14" font-weight="700" fill="#1a2a3a">Real OS, file system, subprocess</text>
-  <a href="/docs/testing/glossary/#component-test" target="_top"><rect x="386" y="438" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
-  <a href="/docs/testing/glossary/#adapter-integration-test" target="_top"><rect x="472" y="438" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
-  <a href="/docs/testing/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="438" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#component-test" target="_top"><rect x="386" y="438" width="80" height="20" rx="10" fill="none" stroke="#224968" stroke-width="2"/><text x="426" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#224968">Component</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#adapter-integration-test" target="_top"><rect x="472" y="438" width="120" height="20" rx="10" fill="#30648e"/><text x="532" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Adapter integ.</text></a>
+  <a href="/docs/foundations/testing-fundamentals/glossary/#cross-os-test-matrix" target="_top"><rect x="598" y="438" width="82" height="20" rx="10" fill="#224968"/><text x="639" y="452" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">Cross-OS</text></a>
   <text x="50" y="470" font-size="11" font-style="italic" fill="#556">Path separators, line endings, signals. Doubled in component; real in adapter integration and the cross-OS matrix.</text>
 
   <!-- Legend -->

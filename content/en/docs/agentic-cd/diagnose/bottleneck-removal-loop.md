@@ -163,7 +163,7 @@ directly. They will be the teams that remove friction, improve quality, and make
 - [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - the classification Phase 1 produces
 - [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}) - the properties you apply in Phase 2
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - one full pass of this loop, sequenced for practitioners
-- [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the mechanical cycle for moving controls into the pipeline
+- [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the mechanical cycle for moving controls into the pipeline
 
 ---
 

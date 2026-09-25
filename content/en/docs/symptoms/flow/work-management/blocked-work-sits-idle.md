@@ -60,4 +60,4 @@ the knowledge needed to continue the work lives in one person.
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Knowledge silos worsen when people leave
 - [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - Assignment model that prevents swarming
 - [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Concentrated knowledge that prevents handoff
-- [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - WIP limits make blocked items visible and prompt swarming
+- [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - WIP limits make blocked items visible and prompt swarming

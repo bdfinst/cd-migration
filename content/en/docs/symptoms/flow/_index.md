@@ -27,6 +27,6 @@ find concrete fix steps.
 **Related anti-pattern categories:** [Team Workflow Anti-Patterns]({{< relref "/docs/anti-patterns/team-workflow" >}}),
 [Branching and Integration Anti-Patterns]({{< relref "/docs/anti-patterns/branching-integration" >}})
 
-**Related guides:** [Trunk-Based Development]({{< relref "/docs/migrate-to-cd/foundations/trunk-based-development" >}}),
-[Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}),
-[Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}})
+**Related guides:** [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}),
+[Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}),
+[Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}})

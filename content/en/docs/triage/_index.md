@@ -1,7 +1,9 @@
 ---
 title: "Triage Your Problems"
 linkTitle: "Triage Your Problems"
-weight: 3
+weight: 4
+sidebar_group_label: "Diagnose"
+sidebar_divider_above: true
 aliases:
   - /docs/find-your-problems/
 description: >

@@ -27,7 +27,7 @@ Immutability provides the confidence to know that the results from the pipeline 
 
 For detailed guidance on implementing immutable artifacts, see:
 
-- [Immutable Artifacts]({{< relref "/docs/migrate-to-cd/pipeline/immutable-artifacts" >}}) - Phase 2 pipeline practice with anti-patterns, good patterns, and getting started steps
+- [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) - Phase 2 pipeline practice with anti-patterns, good patterns, and getting started steps
 
 ## Additional Resources
 

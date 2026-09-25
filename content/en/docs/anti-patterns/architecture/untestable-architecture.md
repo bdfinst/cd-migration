@@ -275,8 +275,8 @@ between components, not the business rules inside each one.
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the test suite that testable architecture enables
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Module boundaries that make injection points natural
-- [Build Automation]({{< relref "/docs/migrate-to-cd/foundations/build-automation" >}}) - Integrating the test suite into every build
-- [Identify Constraints]({{< relref "/docs/migrate-to-cd/assess/identify-constraints" >}}) - Finding the untestable modules that cause the most pain
-- [Deterministic Pipeline]({{< relref "/docs/migrate-to-cd/pipeline/deterministic-pipeline" >}}) - Why a reliable pipeline requires fast, isolated tests
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the test suite that testable architecture enables
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Module boundaries that make injection points natural
+- [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Integrating the test suite into every build
+- [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - Finding the untestable modules that cause the most pain
+- [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Why a reliable pipeline requires fast, isolated tests

@@ -246,8 +246,8 @@ guideline.
 
 ## Related Content
 
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - The practice of breaking large features into small, deliverable slices
-- [Feature Flags]({{< relref "/docs/migrate-to-cd/optimize/feature-flags" >}}) - The mechanism that enables incremental delivery of user-invisible work
-- [Small Batches]({{< relref "/docs/migrate-to-cd/optimize/small-batches" >}}) - The principle that small changes are safer and faster than large ones
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice of breaking large features into small, deliverable slices
+- [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - The mechanism that enables incremental delivery of user-invisible work
+- [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - The principle that small changes are safer and faster than large ones
 - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - A closely related anti-pattern at the story level
 - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - The anti-pattern of building all the backend before any frontend

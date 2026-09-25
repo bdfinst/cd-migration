@@ -104,6 +104,6 @@ deployments reduce risk per deployment rather than accumulating it.
 - [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Fear of deploying leads to batching, which increases risk further
 - [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - Teams afraid to deploy often need stabilization periods
 - [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) - Manual steps make deployments unpredictable
-- [Pipeline Architecture]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) - Automated pipelines that make deployment routine
-- [Rollback]({{< relref "/docs/migrate-to-cd/pipeline/rollback" >}}) - Fast rollback reduces deployment risk
+- [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Automated pipelines that make deployment routine
+- [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Fast rollback reduces deployment risk
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track deployment reliability over time

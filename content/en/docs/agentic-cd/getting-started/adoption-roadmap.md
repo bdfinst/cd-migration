@@ -13,7 +13,7 @@ AI adoption stress-tests your organization. AI does not create new problems. It 
 existing ones faster. Teams that try to accelerate with AI before fixing their delivery process get the
 same result as putting a bigger engine in a car with no brakes. This page provides the
 recommended sequence for incorporating AI safely, mirroring the
-[brownfield migration phases]({{< relref "/docs/migrate-to-cd/brownfield" >}}).
+[brownfield migration phases]({{< relref "/docs/brownfield" >}}).
 {{% /pageinfo %}}
 
 ## Before You Add AI: A Decision Framework
@@ -123,7 +123,7 @@ maintainable?).
 
 - Audit your current guardrails. For each one, ask: "If AI generated code that violated this,
   would our pipeline catch it?" If the answer is no, fix the guardrail before expanding AI use.
-- Add [contract tests]({{< relref "/docs/testing" >}}) at service boundaries. AI-generated code is
+- Add [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) at service boundaries. AI-generated code is
   particularly prone to breaking implicit contracts between services.
 - Ensure test suites run in under ten minutes. Slow tests create pressure to skip them, which
   is dangerous when code is generated faster.
@@ -144,7 +144,7 @@ accelerates the code generation phase.
 **What to do:**
 
 - Remove manual approval gates that add wait time without adding safety
-  (see [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}})).
+  (see [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}})).
 - Fix fragile test and staging environments that cause intermittent failures.
 - Shorten [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}). If branches live longer than a day, integration pain will increase
   as AI accelerates code generation.
@@ -189,16 +189,16 @@ to measure progress.
 
 | AI Adoption Stage | Brownfield Phase | Key Connection |
 |-------------------|-----------------|----------------|
-| Quality Tools | Assess | Use the [current-state assessment]({{< relref "/docs/migrate-to-cd/assess" >}}) to evaluate AI tooling alongside delivery process gaps |
-| Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) |
-| Harden Guardrails | Foundations / Pipeline | The [testing fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) and pipeline gates are the same work, with AI-readiness as additional motivation |
-| Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) unblocks AI-speed delivery |
+| Quality Tools | Assess | Use the [current-state assessment]({{< relref "/docs/assess" >}}) to evaluate AI tooling alongside delivery process gaps |
+| Clarify Work | Assess / Foundations | AI-generated test scenarios from requirements feed directly into [work decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) |
+| Harden Guardrails | Foundations / Pipeline | The [testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) and pipeline gates are the same work, with AI-readiness as additional motivation |
+| Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) unblocks AI-speed delivery |
 | Accelerate with AI | Optimize / CD | The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) become the delivery contract once the pipeline is deterministic and fast |
 
 ## Related Content
 
-- [Brownfield CD Overview]({{< relref "/docs/migrate-to-cd/brownfield" >}}) - the phased migration approach this roadmap parallels
-- [Replacing Manual Validations]({{< relref "/docs/migrate-to-cd/brownfield/replacing-manual-validations" >}}) - the core mechanical cycle for Reduce Delivery Friction
+- [Brownfield CD Overview]({{< relref "/docs/brownfield" >}}) - the phased migration approach this roadmap parallels
+- [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the core mechanical cycle for Reduce Delivery Friction
 - [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) - catalog of defect causes that AI can help detect during Clarify Work
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the destination for teams completing this roadmap
 - [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}) - problems that Harden Guardrails and Reduce Delivery Friction are designed to eliminate

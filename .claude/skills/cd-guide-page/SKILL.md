@@ -20,7 +20,7 @@ Generate a new guide page for the "Migrate to CD" section of the CD migration gu
 ## Instructions
 
 1. **Ask the user** which practice or topic to write if not already specified. Ask which phase it belongs to: Assess, Foundations, Pipeline, Optimize, or Continuous Deployment.
-2. **Read a canonical example** at `content/en/docs/migrate-to-cd/foundations/trunk-based-development.md` to calibrate tone, depth, and structure.
+2. **Read a canonical example** at `content/en/docs/foundations/trunk-based-development.md` to calibrate tone, depth, and structure.
 3. **Identify related anti-pattern and symptom pages** from the lists below for cross-referencing.
 4. **Generate the page** following the template below.
 5. **Validate before finishing:**
@@ -268,4 +268,4 @@ Use relative links: `../../../reference/metrics/[slug]/`
 
 ## Output
 
-Write the generated page to `content/en/docs/migrate-to-cd/[phase-directory]/[slug].md` where `[slug]` is the practice name in kebab-case.
+Write the generated page to `content/en/docs/[phase-directory]/[slug].md` where `[slug]` is the practice name in kebab-case.

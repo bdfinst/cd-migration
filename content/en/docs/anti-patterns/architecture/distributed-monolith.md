@@ -190,6 +190,6 @@ access when all consumers have migrated.
 
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - The same coupling problem in a single codebase
 - [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - When the problem is not wrong boundaries but unnecessary decomposition
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - Strategies for creating real service boundaries
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Strategies for creating real service boundaries
 - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - Technical-layer decomposition that produces distributed monoliths
 - [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - The primary symptom of a distributed monolith

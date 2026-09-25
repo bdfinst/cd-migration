@@ -1,7 +1,7 @@
 ---
 title: "Improvement Plays"
 linkTitle: "Improvement Plays"
-weight: 7
+weight: 28
 description: >
   Focused, standalone improvement plays teams can run independently or as part of a larger CD migration.
 ---
@@ -24,7 +24,7 @@ that improvement is compounding into better delivery performance. You need both.
 tracks CI health metrics weekly to drive improvement experiments. DORA metrics are reviewed monthly
 to confirm progress.
 
-**Resources:** [Baseline Metrics]({{< relref "/docs/migrate-to-cd/assess/baseline-metrics" >}}) - [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - [DORA Metrics Reference]({{< relref "/docs/reference/metrics" >}})
+**Resources:** [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - [DORA Metrics Reference]({{< relref "/docs/reference/metrics" >}})
 
 ---
 
@@ -36,7 +36,7 @@ to confirm progress.
 
 **How to measure success:** Average story cycle time drops below 2 days within two sprints. [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) count decreases.
 
-**Resources:** [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}})
+**Resources:** [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}})
 
 ---
 
@@ -72,7 +72,7 @@ to confirm progress.
 
 **How to measure success:** Defect recurrence rate drops. The team can point to a test for every recent bug fix. Coverage grows on critical paths without a dedicated "write tests" project.
 
-**Resources:** [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - [Legacy System With No Tests]({{< relref "/docs/symptoms/testing/legacy-system-no-tests" >}}) - [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}})
+**Resources:** [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - [Legacy System With No Tests]({{< relref "/docs/symptoms/testing/legacy-system-no-tests" >}}) - [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}})
 
 ---
 
@@ -84,7 +84,7 @@ to confirm progress.
 
 **How to measure success:** That deployment step no longer requires a person. Deployment time decreases. The specific bottleneck person is no longer needed for that step.
 
-**Resources:** [Phase 2: Pipeline]({{< relref "/docs/migrate-to-cd/pipeline" >}}) - [Single Path to Production]({{< relref "/docs/reference/practices/single-path-to-production" >}}) - [Release Manager Bottleneck]({{< relref "/docs/symptoms/deployment/release-manager-bottleneck" >}})
+**Resources:** [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) - [Single Path to Production]({{< relref "/docs/reference/practices/single-path-to-production" >}}) - [Release Manager Bottleneck]({{< relref "/docs/symptoms/deployment/release-manager-bottleneck" >}})
 
 ---
 
@@ -115,7 +115,7 @@ aligns the whole team around completing the highest-priority item.
 progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) decreases. [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) shortens within 2-3 sprints as
 swarming increases. Knowledge of the codebase broadens across the team over time.
 
-**Resources:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - [Limiting WIP]({{< relref "/docs/migrate-to-cd/optimize/limiting-wip" >}}) - [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}})
+**Resources:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) - [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
 ---
 
@@ -127,4 +127,4 @@ swarming increases. Knowledge of the codebase broadens across the team over time
 
 **How to measure success:** Deployment decisions are consistent across team members. No deployment is blocked by a subjective manual checklist. The criteria are enforced in the pipeline, not in a meeting.
 
-**Resources:** [Definition of Deployable]({{< relref "/docs/reference/practices/definition-of-deployable" >}}) - [Working Agreements]({{< relref "/docs/migrate-to-cd/foundations/working-agreements" >}}) - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}})
+**Resources:** [Definition of Deployable]({{< relref "/docs/reference/practices/definition-of-deployable" >}}) - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}})

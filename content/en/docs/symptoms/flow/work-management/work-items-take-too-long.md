@@ -87,5 +87,5 @@ than the team collectively resolving the blocker.
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP and long cycle times reinforce each other
 - [Merging Is Painful and Time-Consuming]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}}) - Long-lived work creates merge pain that further slows delivery
 - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - Stories too large to finish quickly
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Breaking work into small, deliverable slices
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking work into small, deliverable slices
 - [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) - Measure time from first commit to deployable

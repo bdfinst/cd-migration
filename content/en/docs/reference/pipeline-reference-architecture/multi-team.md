@@ -121,7 +121,7 @@ architecture. To keep it fast:
 
 This architecture is a pragmatic pattern for organizations that cannot yet decompose their
 monolith into independently deployable services. The long-term goal is
-[loose coupling]({{< relref "/docs/migrate-to-cd/pipeline/pipeline-architecture" >}}) -
+[loose coupling]({{< relref "/docs/pipeline/pipeline-architecture" >}}) -
 independent services with independent pipelines that do not need a shared integration step.
 
 Signs you are ready to decompose:
@@ -137,5 +137,5 @@ Signs you are ready to decompose:
 - [Single Team, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/single-team" >}}) - the simpler pattern for one team
 - [Independent Teams, Independent Deployables]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}) - the target pattern when modules become independent services
 - [Modular Monolith]({{< relref "/docs/reference/glossary#modular-monolith" >}}) - glossary definition
-- [Architecture Decoupling]({{< relref "/docs/migrate-to-cd/optimize/architecture-decoupling" >}}) - how to move toward independent deployment
-- [Team Alignment to Code]({{< relref "/docs/migrate-to-cd/optimize/team-alignment" >}}) - how to structure teams around domain boundaries so this pipeline pattern works
+- [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - how to move toward independent deployment
+- [Team Alignment to Code]({{< relref "/docs/optimize/team-alignment" >}}) - how to structure teams around domain boundaries so this pipeline pattern works

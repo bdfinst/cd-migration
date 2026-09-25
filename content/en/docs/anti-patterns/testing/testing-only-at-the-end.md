@@ -241,8 +241,8 @@ rewards QA effort, not quality outcomes. Change what is measured.
 
 ## Related Content
 
-- [Testing Fundamentals]({{< relref "/docs/migrate-to-cd/foundations/testing-fundamentals" >}}) - Building the automated test suite that supports continuous testing
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated test suite that supports continuous testing
 - [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}}) - The downstream consequence of end-of-development testing
 - [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}) - The broader pattern of which this is a subset
-- [Work Decomposition]({{< relref "/docs/migrate-to-cd/foundations/work-decomposition" >}}) - Smaller stories make continuous testing more practical
-- [Metrics-Driven Improvement]({{< relref "/docs/migrate-to-cd/optimize/metrics-driven-improvement" >}}) - Using bug discovery distribution to guide improvement
+- [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Smaller stories make continuous testing more practical
+- [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Using bug discovery distribution to guide improvement
