@@ -7,6 +7,12 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-09-30 - SEO and llms.txt fixes
+
+- Fixed robots.txt not being generated, added more AI crawler user agents.
+- llms.txt now lists every non-draft page; llms-full.txt has shortcodes resolved and excludes the changelog.
+- Structured data no longer emits placeholder dates, adds breadcrumbs and publisher; sitemap now carries lastmod from git history.
+
 ## 2026-09-25 - Flatten navigation and merge testing into Testing Fundamentals
 
 - Grouped the sidebar into Diagnose, Improve, and Look Up sections. Symptoms and Anti-Patterns start collapsed; everything else starts expanded.

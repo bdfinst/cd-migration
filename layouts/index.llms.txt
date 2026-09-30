@@ -1,24 +1,35 @@
 # {{ site.Title }}
 
 > {{ site.Params.description }}
-{{ range site.Sections -}}
-{{ $pages := where .Pages "Draft" false -}}
-{{ if $pages }}
+
+Each link points to a plain-markdown version of the page. The full text of the site is at {{ "llms-full.txt" | absURL }}.
+{{ $optional := slice "reference" "changelog" -}}
+{{ $sections := slice -}}
+{{ range site.Sections -}}{{ if ne .Path "/docs" }}{{ $sections = $sections | append . }}{{ end }}{{ end -}}
+{{ with site.GetPage "docs" }}{{ range .Sections }}{{ $sections = $sections | append . }}{{ end }}{{ end -}}
+{{ with site.GetPage "docs" }}
 ## {{ .Title }}
-{{ range $pages }}
-- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "page-description.html" . }}
+{{ range sort (where (where .RegularPages "Draft" false) "File.BaseFileName" "ne" "under-construction") "Weight" }}
+- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "llms-description.txt" . | htmlUnescape }}
+{{- end }}
+{{ end -}}
+{{ range $pass := slice false true -}}
+{{ range $sections -}}
+{{ $sec := . -}}
+{{ $isOpt := in $optional (path.Base .Path) -}}
+{{ if eq $isOpt $pass -}}
+{{ $pages := where (where site.Pages "Kind" "in" (slice "page" "section")) "Draft" false -}}
+{{ $sub := slice -}}
+{{ range $pages -}}{{ if and (strings.HasPrefix .RelPermalink $sec.RelPermalink) (ne .RelPermalink $sec.RelPermalink) }}{{ $sub = $sub | append . }}{{ end }}{{ end -}}
+{{ $pages = $sub -}}
+{{ if not $sec.Draft -}}
+{{ if $pages }}
+## {{ if $pass }}Optional: {{ end }}{{ $sec.Title }}
+{{ range sort $pages "Weight" }}
+- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "llms-description.txt" . | htmlUnescape }}
 {{- end }}
 {{ end -}}
 {{ end -}}
-{{ $docs := site.GetPage "docs" -}}
-{{ with $docs -}}
-{{ range .Sections -}}
-{{ $pages := where .Pages "Draft" false -}}
-{{ if $pages }}
-## {{ .Title }}
-{{ range $pages }}
-- [{{ .Title }}]({{ .Permalink }}index.html.md): {{ partial "page-description.html" . }}
-{{- end }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
