@@ -1,0 +1,6 @@
+{{- $d := partial "page-description.html" . | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace -}}
+{{- if gt (strings.RuneCount $d) 160 -}}
+{{- $cut := substr $d 0 157 -}}
+{{- $cut = replaceRE `\s+\S*$` "" $cut -}}
+{{- $cut }}...
+{{- else -}}{{ $d }}{{- end -}}

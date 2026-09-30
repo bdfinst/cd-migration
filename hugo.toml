@@ -2,7 +2,8 @@ baseURL     = "https://beyond.minimumcd.org/"
 description = "MinimumCD Practice Guide - a phased migration from quarterly releases to continuous delivery"
 title       = "MinimumCD Practice Guide"
 
-enableGitInfo = false
+enableGitInfo   = true
+enableRobotsTXT = true
 
 [security]
   # Hugo 0.162+ denies text/html content files by default (security.allowContent).
@@ -10,14 +11,8 @@ enableGitInfo = false
   allowContent = ['.*']
 
 [services.googleAnalytics]
-  enableRobotsTXT = true
   id              = "G-KVLFMQXEF1"
 
-  disableKinds = []
-
-[sitemap]
-  changeFreq = "monthly"
-  priority   = 0.5
 
 [mediaTypes."text/plain"]
   suffixes = ["txt"]
