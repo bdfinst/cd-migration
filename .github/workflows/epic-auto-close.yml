@@ -1,0 +1,44 @@
+name: Epic auto-close
+
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  issues: write
+
+concurrency:
+  group: epic-auto-close
+  cancel-in-progress: false
+
+jobs:
+  auto-close-epic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close parent when all sub-issues are closed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          CLOSED: ${{ github.event.issue.number }}
+        run: |
+          PARENT_URL=$(gh api "repos/$REPO/issues/$CLOSED" -q '.parent_issue_url // empty')
+          if [ -z "$PARENT_URL" ]; then
+            echo "Issue #$CLOSED has no parent. Nothing to do."
+            exit 0
+          fi
+          PARENT=${PARENT_URL##*/}
+
+          STATE=$(gh api "repos/$REPO/issues/$PARENT" -q .state)
+          if [ "$STATE" != "open" ]; then
+            echo "Parent #$PARENT is already $STATE."
+            exit 0
+          fi
+
+          OPEN=$(gh api --paginate "repos/$REPO/issues/$PARENT/sub_issues?per_page=100" \
+            -q '.[] | select(.state=="open") | .number' | wc -l | tr -d ' ')
+          if [ "$OPEN" = "0" ]; then
+            gh issue close "$PARENT" --repo "$REPO" \
+              --comment "All sub-issues are closed. Closing this epic automatically."
+          else
+            echo "$OPEN sub-issue(s) of #$PARENT are still open."
+          fi

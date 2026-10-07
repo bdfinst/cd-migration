@@ -45,7 +45,7 @@ Determine the mode (`review`, `rewrite`, or `draft`) and target files.
 
 ### 2. Read principles
 
-Read `principles.md` in this skill directory for the full set of writing principles.
+Read `principles.md` in this skill directory for the full set of writing principles. Read `style-rules.md` for the documentation style rules (Google style, ASD-STE100-derived precision, and Zinsser). Apply both files in every mode.
 
 ### 3. Read target files
 
