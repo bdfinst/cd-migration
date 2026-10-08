@@ -23,10 +23,11 @@ shared drive, copy it to the right server, and run an install script. The steps 
 a shared document, or in someone's head. Every deployment is a manual operation performed by
 whoever knows the procedure.
 
-There is no automation connecting a code commit to a running system. A developer finishes a feature,
-pushes to the repository, and then a separate human process begins: someone must decide it is time
-to deploy, gather the right artifacts, prepare the target environment, execute the deployment, and
-verify that it worked. Each of these steps involves manual effort and human judgment.
+No automation connects a code commit to a running system. After a developer finishes a feature
+and pushes to the repository, a separate human process begins. Someone must decide
+it is time to deploy and gather the right artifacts. They prepare the target environment,
+execute the deployment, and verify that it worked. Each of these steps involves manual effort
+and human judgment.
 
 The deployment procedure is a craft. Certain people are known for being "good at deploys." New team
 members are warned not to attempt deployments alone. When the person who knows the procedure is
@@ -51,8 +52,8 @@ Common variations:
   locally, checks that it compiles, and copies the output to the deployment target. The build
   that was tested is not necessarily the build that gets deployed.
 
-The telltale sign: if deploying requires a specific person, a specific machine, or a specific
-document that must be followed step by step, no [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exists.
+The telltale sign: if deploying requires a specific person, a specific machine, or a
+step-by-step document, no [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exists.
 
 ## Why this is a problem
 
@@ -67,9 +68,9 @@ Tests may or may not be run before deploying. Static analysis may or may not be 
 artifact that reaches production may or may not be the same artifact that was tested. Every "may
 or may not" is a gap where defects slip through.
 
-Manual deployments also introduce their own defects. A step skipped in the checklist, a wrong
-version of a config file, a service restarted in the wrong order - these are deployment bugs that
-have nothing to do with the code. They are caused by the deployment process itself. The more manual
+Manual deployments also introduce their own defects. Examples include a skipped checklist step,
+a wrong version of a config file, or a service restarted in the wrong order. These deployment
+bugs have nothing to do with the code. The deployment process itself causes them. The more manual
 steps involved, the more opportunities for human error.
 
 A pipeline eliminates both categories of risk. Every commit passes through the same automated
@@ -108,9 +109,9 @@ on Tuesday" becomes "we can start the deployment on Tuesday, and we'll know by W
 worked." Stakeholders learn that deployment dates are approximate, not firm.
 
 The unpredictability also limits deployment frequency. If each deployment takes hours of manual
-effort and carries risk of failure, the team deploys as infrequently as possible. This increases
+effort and carries risk of failure, the team deploys as infrequently as possible. Infrequent deployment increases
 [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}), which increases risk, which makes deployments even more painful, which further
-discourages frequent deployment. The team is trapped in a cycle where the lack of a pipeline makes
+discourages frequent deployment. The team is trapped in a cycle. The lack of a pipeline makes
 deployments costly, and costly deployments make the lack of a pipeline seem acceptable.
 
 An automated pipeline makes deployment duration fixed and predictable. A deploy takes the same
@@ -181,13 +182,13 @@ If the team has any automated tests, add them to the pipeline so they run after 
 succeeds. If the team has no automated tests, add one. A single test that verifies the application
 starts up is more valuable than zero tests.
 
-The pipeline should now fail if the build fails or if any test fails. This is the first automated
-quality gate. No artifact is produced unless the code compiles and the tests pass.
+The pipeline should now fail if the build fails or if any test fails. That check is the first
+automated quality gate. No artifact is produced unless the code compiles and the tests pass.
 
 ### Step 4: Automate the deployment to a non-production environment (weeks 3-4)
 
-Take the manual deployment steps from Step 1 and encode them in a script or pipeline stage that
-deploys the tested artifact to a staging or test environment:
+Take the manual deployment steps from Step 1 and encode them in a script or pipeline stage. The
+script deploys the tested artifact to a staging or test environment:
 
 - Provision or configure the target environment.
 - Deploy the artifact.

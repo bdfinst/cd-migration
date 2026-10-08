@@ -23,9 +23,9 @@ installed that nobody remembers adding. Production has a configuration file that
 six months ago during an incident and never committed to source control. Nobody is sure all three
 environments are running the same OS patch level.
 
-A developer asks "why does this work in staging but not in production?" The answer takes hours to
-find because it requires comparing configurations across environments by hand - diffing config
-files, checking installed packages, verifying environment variables one by one.
+A developer asks "why does this work in staging but not in production?" The answer takes hours
+to find, because someone must compare configurations across environments by hand. They diff
+config files, check installed packages, and verify environment variables one by one.
 
 Common variations:
 
@@ -47,8 +47,8 @@ Common variations:
   someone created a new one alongside the old one. Both still exist. Nobody is sure which one the
   pipeline deploys to.
 
-The telltale sign: deploying the same artifact to two environments produces different results,
-and the team's first instinct is to check environment configuration rather than application code.
+The telltale sign: the same artifact produces different results in two environments. The team's
+first instinct is to check environment configuration rather than application code.
 
 ## Why this is a problem
 
@@ -58,16 +58,16 @@ unique, testing in staging tells you what works in staging - nothing more.
 
 ### It reduces quality
 
-When environments differ, bugs hide in the gaps. An application that works in staging may fail in
-production because of a different library version, a missing environment variable, or a filesystem
-permission that was set by hand. These bugs are invisible to testing because the test environment
+When environments differ, bugs hide in the gaps. An application that works in staging can fail
+in production. The cause might be a different library version, a missing environment variable,
+or a filesystem permission set by hand. These bugs are invisible to testing because the test environment
 does not reproduce the conditions that trigger them.
 
 The team learns this the hard way, one production incident at a time. Each incident teaches the
-team that "passed in staging" does not mean "will work in production." This erodes trust in the
-entire testing and deployment process. Developers start adding manual verification steps -
-checking production configs by hand before deploying, running smoke tests manually after
-deployment, asking the ops team to "keep an eye on things."
+team that "passed in staging" does not mean "will work in production." Each lesson erodes trust
+in the entire testing and deployment process. Developers start adding manual verification
+steps. They check production configs by hand before deploying, run smoke tests manually after
+deployment, and ask the ops team to "keep an eye on things."
 
 When environments are identical and provisioned from the same code, the gap between staging and
 production disappears. What works in staging works in production because the environments are the
@@ -76,14 +76,14 @@ same. Testing produces reliable results.
 ### It increases rework
 
 Snowflake environments cause two categories of rework. First, developers spend hours debugging
-environment-specific issues that have nothing to do with application code. "Why does this work on
-my machine but not in CI?" leads to comparing configurations, googling error messages related to
-version mismatches, and patching environments by hand. This time is pure waste.
+environment-specific issues that have nothing to do with application code. "Why does this work
+on my machine but not in CI?" leads to comparing configurations and googling version-mismatch
+error messages. It ends with patching environments by hand. That time is pure waste.
 
 Second, production incidents caused by environment drift require investigation, rollback, and
-fixes to both the application and the environment. A configuration difference that causes a
-production failure might take five minutes to fix once identified, but identifying it takes hours
-because nobody knows what the correct configuration should be.
+fixes to both the application and the environment. Fixing a configuration difference that
+causes a production failure might take five minutes. Finding it takes hours, because nobody
+knows what the correct configuration should be.
 
 Teams with reproducible environments spend zero time on environment debugging. If an environment
 is wrong, they destroy it and recreate it from code. The investigation time drops from hours to
@@ -124,7 +124,7 @@ because environments are disposable and cheap.
 ### Impact on continuous delivery
 
 Continuous delivery requires that any change can move from commit to production through a fully
-automated pipeline. Snowflake environments break this in multiple ways. The pipeline cannot
+automated pipeline. Snowflake environments break that requirement in multiple ways. The pipeline cannot
 provision environments automatically if environments are hand-configured. Testing results are
 unreliable because environments differ. Deployments fail unpredictably because of configuration
 drift.
@@ -180,7 +180,7 @@ variables:
 | Log level | debug | info | warn |
 | Replica count | 1 | 2 | 3 |
 
-The structure is identical. Only the values change. This eliminates accidental drift because every
+The structure is identical. Only the values change. A shared template eliminates accidental drift because every
 environment is built from the same template.
 
 ### Step 4: Provision environments through the pipeline
@@ -192,7 +192,7 @@ Add environment provisioning to the deployment pipeline:
 2. The application artifact is deployed to the freshly provisioned environment.
 3. If provisioning or deployment fails, the pipeline fails - no manual intervention.
 
-This closes the loop. Environments cannot drift because they are recreated or reconciled on
+Provisioning on every deployment closes the loop. Environments cannot drift because they are recreated or reconciled on
 every deployment. Manual SSH sessions and hand edits have no lasting effect because the next
 pipeline run overwrites them.
 
@@ -201,8 +201,8 @@ pipeline run overwrites them.
 The ultimate goal is that any environment can be destroyed and recreated in minutes with no data
 loss and no human intervention:
 
-1. Practice destroying and recreating staging weekly. This verifies the specification stays
-   accurate and builds team confidence.
+1. Practice destroying and recreating staging weekly. The practice verifies that the
+   specification stays accurate and builds team confidence.
 2. Provision ephemeral environments for feature branches or pull requests. Let the pipeline
    create and destroy them automatically.
 3. If recreating production is not feasible yet (stateful systems, licensing), ensure you can

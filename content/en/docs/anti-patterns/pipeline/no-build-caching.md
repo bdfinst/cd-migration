@@ -22,16 +22,16 @@ The compiler reprocesses every source file regardless of whether it changed. A b
 complete in two minutes takes fifteen because the first twelve are spent re-acquiring things the
 pipeline already had an hour ago.
 
-Nobody optimized the pipeline when it was set up because "we can fix that later." Later never
-arrived. The build is slow, but it works, and slowing down is so gradual that nobody identifies
-it as the crisis it is. New modules get added, new dependencies arrive, and the build grows from
+Nobody optimized the pipeline at setup because "we can fix that later," and later never
+arrived. The build is slow but works, and the slowdown is so gradual that nobody recognizes it
+as a crisis. New modules get added, new dependencies arrive, and the build grows from
 fifteen minutes to thirty to forty-five. Engineers start doing other things while the pipeline
-runs. Context switching becomes habitual. The slow pipeline stops being a pain point and starts
-being part of the culture.
+runs, and context switching becomes habitual. The slow pipeline stops being a pain point and
+starts being part of the culture.
 
 The problem compounds at scale. When ten developers are all pushing commits, ten pipelines are
 all downloading the same packages from the same registries at the same time. The network is
-saturated. Builds queue behind each other. A commit pushed at 9:00 AM might not have results
+saturated, and builds queue behind each other. A commit pushed at 9:00 AM might not have results
 until 9:50. The feedback loop that the pipeline was supposed to provide - fast signal on whether
 the code works - stretches to the point of uselessness.
 
@@ -51,7 +51,7 @@ Common variations:
 - **No build caching for test infrastructure.** Test database schemas are re-created from
   scratch on every run. Test fixture data is regenerated rather than persisted.
 
-The telltale sign: a developer asks "is the build done yet?" and the honest answer is "it's been
+The telltale sign: a developer asks "is the build done yet?" The honest answer is "it's been
 running for twenty minutes but we should have results in another ten or fifteen."
 
 ## Why this is a problem
@@ -62,7 +62,9 @@ seek feedback - which means defects go longer before detection.
 
 ### It reduces quality
 
-A 45-minute pipeline means a developer who pushed at 9:00 AM does not learn about a failing test until 9:45, by which time they have moved on and must reconstruct the context to fix it. The value of a CI pipeline comes from its speed. A pipeline that reports results in five minutes
+With a 45-minute pipeline, a developer who pushed at 9:00 AM does not learn about a failing test until 9:45. By then they have moved on and must reconstruct the context to fix it.
+
+The value of a CI pipeline comes from its speed. A pipeline that reports results in five minutes
 gives developers information while the change is still fresh in their minds. They can fix a
 failing test immediately, while they still understand the code they just wrote. A pipeline that
 takes forty-five minutes delivers results after the developer has context-switched into completely
@@ -84,15 +86,15 @@ it needs to be precise.
 
 Slow pipelines inflate the cost of every defect. A bug caught five minutes after it was
 introduced costs minutes to fix. A bug caught forty-five minutes later, after the developer has
-moved on, costs that context-switching overhead plus the debugging time plus the time to re-run
-the pipeline to verify the fix. Slow pipelines do not make bugs cheaper to find - they make
+moved on, costs much more. It adds context-switching overhead, debugging time, and a pipeline
+re-run to verify the fix. Slow pipelines do not make bugs cheaper to find - they make
 them dramatically more expensive.
 
 At the team level, slow pipelines create merge queues. When a build takes thirty minutes, only
-two or three pipelines can complete per hour. A team of ten developers trying to merge throughout
-the day creates a queue. Commits wait an hour or more to receive results. Developers who merge
+two or three pipelines can complete per hour. A team of ten developers trying to merge
+throughout the day creates a queue, and commits wait an hour or more for results. Developers who merge
 late discover their changes conflict with merges that completed while they were waiting. Conflict
-resolution adds more rework. The merge queue becomes a daily frustration that consumes hours
+resolution adds more rework, and the merge queue becomes a daily frustration that consumes hours
 of developer attention.
 
 Flaky external dependencies add another source of rework. When builds download packages from
@@ -103,12 +105,12 @@ that fails due to a rate limit on the npm registry is pure waste.
 
 ### It makes delivery timelines unpredictable
 
-Pipeline speed is a factor in every delivery estimate. If the pipeline takes forty-five minutes
-per run and a feature requires a dozen iterations to get right, the pipeline alone consumes nine
-hours of calendar time - and that assumes no queuing. Add pipeline queues during busy hours
+Pipeline speed is a factor in every delivery estimate. Suppose the pipeline takes forty-five
+minutes per run and a feature needs a dozen iterations to get right. The pipeline alone
+consumes nine hours of calendar time, and that assumes no queuing. Add pipeline queues during busy hours
 and the actual calendar time is worse.
 
-This makes delivery timelines hard to predict because pipeline duration is itself variable.
+Pipeline duration is itself variable, which makes delivery timelines hard to predict.
 A build that usually takes twenty minutes might take forty-five when registries are slow. It
 might take an hour when the build queue is backed up. Developers learn to pad their estimates
 to account for pipeline overhead, but the padding is imprecise because the overhead is
@@ -116,22 +118,22 @@ unpredictable.
 
 Teams working toward faster release cadences hit a ceiling imposed by pipeline duration.
 Deploying multiple times per day is impractical when each pipeline run takes forty-five minutes.
-The pipeline's slowness constrains deployment frequency and therefore constrains everything that
-depends on deployment frequency: feedback from users, time-to-fix for production defects,
-ability to respond to changing requirements.
+The pipeline's slowness constrains deployment frequency. That constraint extends to everything
+that depends on deployment frequency: user feedback, time-to-fix for production defects, and
+response to changing requirements.
 
 ### Impact on continuous delivery
 
 The pipeline is the primary mechanism of continuous delivery. Its speed determines how quickly
-a change can move from commit to production. A slow pipeline is a slow pipeline at every stage
-of the delivery process: slower feedback to developers, slower verification of fixes, slower
-deployment of urgent changes.
+a change can move from commit to production. A slow pipeline slows every stage of the delivery
+process. Feedback to developers, verification of fixes, and deployment of urgent changes all
+take longer.
 
 Teams that optimize their pipelines consistently find that deployment frequency increases
 naturally afterward. When a commit can go from push to production validation in ten minutes
 rather than forty-five, deploying frequently becomes practical rather than painful. The slow
-pipeline is often not the only barrier to CD, but it is frequently the most visible one and
-the one that yields the most immediate improvement when addressed.
+pipeline is often not the only barrier to CD. But it is frequently the most visible one, and
+fixing it yields the most immediate improvement.
 
 ## How to fix it
 
@@ -146,9 +148,12 @@ Measure before optimizing. Understand where the time goes:
 4. Check whether build times have been growing over time by comparing last month to three months
    ago.
 
-This baseline makes it possible to measure improvement. It also reveals whether the slow stage
-is dependency download (fixable with caching), compilation (fixable with incremental builds),
-or tests (a different problem requiring test optimization).
+This baseline makes it possible to measure improvement. It also reveals which kind of stage is
+slow:
+
+- Dependency download, which caching fixes.
+- Compilation, which incremental builds fix.
+- Tests, a different problem that requires test optimization.
 
 ### Step 2: Add dependency caching to the pipeline
 
@@ -179,8 +184,8 @@ If compilation is a major time sink, ensure the build tool is configured for inc
 - Node.js: use `--cache` flags for transpilers like Babel and TypeScript. TypeScript's
   `incremental` flag writes `.tsbuildinfo` files that skip unchanged files.
 
-Verify that incremental compilation is actually working by pushing a trivial change (a comment
-edit) and checking whether the build is faster than a full build.
+Verify that incremental compilation works. Push a trivial change, such as a comment edit, and
+check whether the build is faster than a full build.
 
 ### Step 4: Parallelize independent pipeline stages (weeks 2-3)
 
@@ -192,8 +197,8 @@ Review the pipeline for stages that are currently sequential but could run in pa
   integration tests starting after unit tests pass.
 
 Most modern pipeline tools support parallel stage execution. The improvement depends on how
-many independent stages exist, but it is common to cut total pipeline time by 30-50% by
-parallelizing work that was previously serialized by default.
+many independent stages exist. Parallelizing work that ran serially by default commonly cuts
+total pipeline time by 30-50%.
 
 ### Step 5: Move slow tests to a later pipeline stage (weeks 3-4)
 
@@ -205,14 +210,14 @@ Not all tests need to run before every deployment decision. Reorganize tests by 
 3. Slow tests (full end-to-end browser tests, load tests) run on a schedule or as part of
    the release validation stage.
 
-This does not eliminate slow tests - it moves them to a position where they are not blocking
+Reorganizing does not eliminate slow tests. It moves them to a position where they are not blocking
 the developer feedback loop. The developer gets fast results from the fast tests within
 minutes, while the slow tests run asynchronously.
 
 ### Step 6: Set a pipeline duration budget and enforce it (ongoing)
 
-Establish an agreed-upon maximum pipeline duration for the developer feedback stage - ten
-minutes is a common target - and treat any build that exceeds it as a defect to be fixed:
+Agree on a maximum pipeline duration for the developer feedback stage. Ten minutes is a common
+target. Treat any build that exceeds the budget as a defect to fix:
 
 1. Add build duration as a metric tracked on the team's improvement board.
 2. Assign ownership when a new dependency or test causes the pipeline to exceed the budget.

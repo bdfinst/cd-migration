@@ -27,6 +27,7 @@ into the source code.
 These checks accumulate over years through a pattern of small compromises. A developer needs to
 run a one-time data migration in production. Rather than add a proper feature flag or migration
 framework, they add a check: `if (env == 'production' && !migrationRan) { runMigration(); }`.
+
 A developer wants to enable a slow debug mode in staging only. They add
 `if (env == 'staging') { enableVerboseLogging(); }`. Each check makes sense in isolation and
 adds code that "nobody will ever touch again." Over time, the codebase accumulates dozens of
@@ -55,17 +56,17 @@ Common variations:
 - **Logging and monitoring gaps.** Debug logging enabled only in staging, metrics emission
   suppressed in test. The production behavior of these systems is untested.
 
-The telltale sign: "it works in staging" and "it works in production" are considered two
-different statements rather than synonyms, because the code genuinely behaves differently
-in each.
+The telltale sign: the team treats "it works in staging" and "it works in production" as two
+different statements. They are not synonyms, because the code genuinely behaves differently in
+each.
 
 ## Why this is a problem
 
 Environment-specific code branches create a fragmented codebase where no environment runs
 exactly the same software as any other. Testing in staging validates one version of the code.
-Production runs another. The staging-to-production promotion is not a verification that the
-same software works in a different environment - it is a transition to different software
-running in a different environment.
+Production runs another. The staging-to-production promotion does not verify that the same
+software works in a different environment. It is a transition to different software running in
+a different environment.
 
 ### It reduces quality
 
@@ -99,18 +100,18 @@ a [production-like environment]({{< relref "/docs/reference/glossary#production-
 and carries risk. Every reproduction attempt requires a deployment. The development cycle for
 production-only bugs is days, not hours.
 
-The environment-name checks also accumulate technical debt. Every new environment (a
-performance testing environment, a demo environment, a disaster recovery environment) requires
-auditing the codebase for existing environment-specific branches and deciding how each one
-should behave in the new context. Code that checks `if (env == 'staging')` does the wrong
+The environment-name checks also accumulate technical debt. Every new environment, such as a
+performance testing, demo, or disaster recovery environment, requires an audit of the existing
+environment-specific branches. For each branch, the team
+must decide how it should behave in the new context. Code that checks `if (env == 'staging')` does the wrong
 thing in a performance environment. Adding the performance environment creates another category
 of environment-specific bugs.
 
 ### It makes delivery timelines unpredictable
 
 Deployments to production become higher-risk events when production runs code that staging
-never ran. The team cannot fully trust staging validation, so they compensate with longer
-watching periods after production deployment, more conservative deployment schedules, and
+never ran. The team cannot fully trust staging validation, so they compensate. They watch
+longer after production deployment and adopt more conservative deployment schedules. They add
 manual verification steps that do not apply to staging deployments.
 
 When a production-only bug is discovered, diagnosing it takes longer than a standard bug
@@ -119,9 +120,9 @@ incident investigation must first determine whether the bug is production-specif
 adds steps before the actual debugging begins.
 
 The unpredictability compounds when production-specific bugs appear infrequently. A code path
-that runs only in production and only under certain conditions may not fail until a specific
-user action or a specific date (if, for example, the production-only branch contains a date
-calculation). These bugs have the longest time-to-discovery and the most complex investigation.
+that runs only in production and only under certain conditions might not fail for a long time.
+It might wait for a specific user action, or for a specific date if the branch contains a date
+calculation. These bugs have the longest time-to-discovery and the most complex investigation.
 
 ### Impact on continuous delivery
 

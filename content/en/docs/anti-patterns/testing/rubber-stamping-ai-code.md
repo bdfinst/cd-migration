@@ -48,9 +48,9 @@ Common variations:
   coverage measures execution, not correctness. Lines are exercised without the assertions
   that would catch wrong behavior.
 
-The telltale sign: when a bug appears in AI-generated code, the developer who committed it
-cannot describe what the change was supposed to do or what acceptance criteria it was verified
-against.
+The telltale sign: a bug appears in AI-generated code, and the developer who committed it
+cannot explain the change. They cannot say what it was supposed to do or which acceptance
+criteria they verified.
 
 ## Why this is a problem
 
@@ -69,12 +69,13 @@ make the code progressively harder to change.
 
 AI models generate code based on patterns in training data. Those patterns include insecure
 code. An AI assistant will produce code with SQL injection vulnerabilities, hardcoded secrets,
-missing input validation, or broken authentication flows if the [prompt](../../reference/glossary/#prompt) does not explicitly
-constrain against them - and sometimes even if it does.
+missing input validation, or broken authentication flows. It does so when the
+[prompt](../../reference/glossary/#prompt) does not explicitly constrain against them, and
+sometimes even when it does.
 
-A developer who defines security constraints as acceptance criteria before generating code
-would catch many of these issues because the criteria would include "rejects SQL fragments in
-input" or "secrets are read from environment, never hardcoded." Without those criteria, the
+Define security constraints as acceptance criteria before generating code, and you catch many
+of these issues. The criteria would include "rejects SQL fragments in input" or "secrets are
+read from environment, never hardcoded." Without those criteria, the
 developer has nothing to verify against. The vulnerability ships.
 
 ### It degrades the team's domain knowledge
@@ -84,10 +85,10 @@ acceptance criteria, the team stops making domain knowledge explicit. Over time,
 for "correct" exist only in the AI's training data - which is frozen, generic, and unaware of
 the team's specific constraints.
 
-This knowledge loss is invisible at first. The team is shipping features faster. But when
-something goes wrong - a production incident, an unexpected interaction, a requirement
-change - the team discovers they have no documented record of what the system is supposed
-to do, only what the AI happened to generate.
+This knowledge loss is invisible at first. The team is shipping features faster. Then something
+goes wrong, such as a production incident, an unexpected interaction, or a requirement change.
+The team discovers they have no record of what the system is supposed to do, only what the AI
+happened to generate.
 
 ### Impact on continuous delivery
 
@@ -105,12 +106,16 @@ no record of what the current behavior was supposed to be.
 
 ### Step 1: Establish the "own it or don't commit it" rule (week 1)
 
-Add a [working agreement](../../reference/glossary/#working-agreement): any code committed to the repository - regardless of whether a human
-or an AI wrote it - must be owned by the committing developer. Ownership means the developer
-can answer three questions: what does this change do, what [acceptance criteria](../../reference/glossary/#acceptance-criteria) did I verify
-it against, and how would I detect if it were wrong in production?
+Add a [working agreement](../../reference/glossary/#working-agreement): the committing
+developer owns any code committed to the repository, whether a human or an AI wrote it.
+Ownership means the developer can answer three questions:
 
-This does not mean the developer must trace every line of implementation. It means they must
+- What does this change do?
+- What [acceptance criteria](../../reference/glossary/#acceptance-criteria) did I verify it
+  against?
+- How would I detect if it were wrong in production?
+
+Ownership does not mean the developer must trace every line of implementation. It means they must
 understand the change's intent, its expected behavior, and its validation strategy. The AI
 handles the *how*. The developer owns the *what* and the *how do we know it works*. See the
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) for how
@@ -120,7 +125,7 @@ this ownership model works in practice.
 2. In code reviews, reviewers ask the author: what does this change do, what criteria did you
    verify, and what would a failure look like? If the author cannot answer, the review is not
    approved until they can.
-3. Track how often reviews are sent back for insufficient ownership. This is a leading
+3. Track how often reviews are sent back for insufficient ownership. That rate is a leading
    indicator of how often unexamined code was reaching the review stage.
 
 ### Step 2: Require acceptance criteria before AI-assisted implementation (weeks 2-3)

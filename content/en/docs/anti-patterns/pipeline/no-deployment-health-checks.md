@@ -17,25 +17,25 @@ tags:
 
 ## What this looks like
 
-The deployment completes. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) shows green. The release engineer posts in Slack: "Deploy
+The deployment completes, and the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) shows green. The release engineer posts in Slack: "Deploy
 done, watching for issues." For the next fifteen minutes, someone is refreshing the monitoring
 dashboard, clicking through the application manually, and checking error logs by eye. If nothing
-obviously explodes, they declare success and move on. If something does explode, they are already
-watching and respond immediately - which feels efficient until the day they step away for coffee
-and the explosion happens while nobody is watching.
+obviously explodes, they declare success and move on. If something does explode, they respond
+immediately, which feels efficient until the day the explosion happens while they are away
+getting coffee.
 
 The "wait and watch" ritual is a substitute for automation that nobody ever got around to
-building. The team knows they should have health checks. They have talked about it. Someone
-opened a ticket for it last quarter. The ticket is still open because automated health checks
+building. The team knows they should have health checks and has talked about them. Someone
+opened a ticket last quarter. The ticket is still open because automated health checks
 feel less urgent than the next feature. Besides, the current approach has worked fine so far -
 or seemed to, because most bad deployments have been caught within the watching window.
 
 What the team does not see is the category of failures that land outside the watching window.
 A deployment that causes a slow memory leak shows normal metrics for thirty minutes and then
 degrades over two hours. A change that breaks a nightly batch job is not caught by fifteen
-minutes of manual watching. A failure in an infrequently-used code path - the password reset
-flow, the report export, the API endpoint that only enterprise customers use - will not appear
-during a short manual verification session.
+minutes of manual watching. A short manual verification session also misses failures in rarely
+used code paths. Examples include the password reset flow, the report export, or an API
+endpoint only enterprise customers use.
 
 Common variations:
 
@@ -45,17 +45,16 @@ Common variations:
 - **The log watcher.** The release engineer reads the last 200 lines of application logs after
   deployment and looks for obvious error messages. Error patterns that are normal noise get
   ignored. New error patterns that blend in get missed.
-- **The "users will tell us" approach.** No active verification happens at all. If something
-  is wrong, a support ticket will arrive within a few hours. This is treated as acceptable
-  because the team has learned that most deployments are fine, not because they have verified
-  this one is.
+- **The "users will tell us" approach.** No active verification happens at all. If something is
+  wrong, a support ticket will arrive within a few hours. The team accepts this approach
+  because most deployments are fine, not because they have verified this one is.
 - **The monitoring dashboard glance.** Someone looks at the monitoring system after deployment
   and sees that the graphs look similar to before deployment. Graphs that require minutes to
   show trends - error rates, latency percentiles - are not given enough time to reveal problems
   before the watcher moves on.
 
-The telltale sign: the person who deployed cannot describe specifically what would need to happen
-in the monitoring system for them to declare the deployment failed and trigger a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}).
+The telltale sign: the person who deployed cannot say what monitoring signal would make them
+declare the deployment failed and trigger a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}).
 
 ## Why this is a problem
 
@@ -66,8 +65,8 @@ attention that is inconsistent, incomplete, and unavailable at 3 AM.
 ### It reduces quality
 
 Automated health checks verify that specific, concrete conditions are met after deployment.
-Error rate is below the baseline. Latency is within normal range. Health endpoints return 200.
-Key user flows complete successfully. These are precise, repeatable checks that evaluate the
+Error rate is below the baseline, and latency is within normal range. Health endpoints return
+200, and key user flows complete successfully. These precise, repeatable checks evaluate the
 same conditions every time.
 
 Manual watching cannot match this precision. A human watching a dashboard will notice a 50%
@@ -104,8 +103,8 @@ because more changes have accumulated.
 
 Manual post-deployment watching creates a variable time tax on every deployment. Someone must
 be available, must remain focused, and must be willing to declare failure if things go wrong.
-In practice, the watching period ends when the watcher decides they have seen enough - a
-judgment call that varies by person, time of day, and how busy they are with other things.
+In practice, the watching period ends when the watcher decides they have seen enough. That
+judgment call varies by person, time of day, and how busy they are with other things.
 
 This variability makes deployment scheduling unreliable. A team that wants to deploy multiple
 times per day cannot staff a thirty-minute watching window for every deployment. As deployment
@@ -125,16 +124,18 @@ probably look fine. Without automated health checks, the "with confidence" quali
 The team is not confident - they are hopeful.
 
 Health checks are not a nice-to-have addition to the deployment pipeline. They are the
-mechanism that closes the loop. The pipeline validates the code before deployment. Health checks
-validate the running system after deployment. Without both, the pipeline is only half-complete.
-A pipeline without health checks is a launch facility with no telemetry: it gets the rocket off
-the ground but has no way to know whether it reached orbit.
+mechanism that closes the loop. The pipeline validates the code before deployment, and health
+checks validate the running system after deployment. Without both, the pipeline is only
+half-complete.
+
+A pipeline without health checks is a launch facility with no telemetry. It gets the rocket off
+the ground but cannot tell whether the rocket reached orbit.
 
 High-performing delivery teams deploy frequently precisely because they have confidence in their
 health checks and rollback automation. Every deployment is verified by the same automated
-criteria. If those criteria are not met, rollback is triggered automatically. The human monitors
-the health check results, not the application itself. This is the difference between deploying
-with confidence and deploying with hope.
+criteria. If those criteria are not met, rollback is triggered automatically. The human
+monitors the health check results, not the application itself. Automated verification is the
+difference between deploying with confidence and deploying with hope.
 
 ## How to fix it
 
@@ -146,8 +147,8 @@ Agree on the criteria for a healthy deployment before writing any checks:
    flows must complete, which background jobs must run.
 2. Identify the [baseline metrics]({{< relref "/docs/reference/glossary#baseline-metrics" >}}) for the service: typical error rate, typical P95 latency,
    typical throughput. These become the comparison baselines for post-deployment checks.
-3. Define the threshold for rollback: for example, error rate more than 2x baseline for more
-   than two minutes, or P95 latency above 2000ms, or health endpoint returning non-200.
+3. Define the threshold for rollback. For example: error rate above 2x baseline for two
+   minutes, P95 latency above 2000ms, or a non-200 health endpoint.
 4. Write these criteria down before writing any code. The criteria define what the automation
    will implement.
 

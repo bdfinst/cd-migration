@@ -18,20 +18,20 @@ tags:
 
 ## What this looks like
 
-The team has a CI server. Code is built and tested automatically on every push. The pipeline
+The team has a CI server that builds and tests code automatically on every push. The pipeline
 dashboard is green. But between "pipeline passed" and "code running in production," there is a
 person. Someone must log into a deployment tool, click a button, select the right artifact, choose
 the right environment, and watch the output scroll by. Or they SSH into servers, pull the artifact,
 run migration scripts, restart services, and verify health checks - all by hand.
 
-The team may not even think of this as a problem. The build is automated. The tests run
-automatically. Deployment is "just the last step." But that last step takes 30 minutes to an hour
-of focused human attention, can only happen when the right person is available, and fails often
-enough that nobody wants to do it on a Friday afternoon.
+The team might not even think of manual deployment as a problem. The build and tests run
+automatically, and deployment is "just the last step." But that last step takes 30 minutes to an
+hour of focused human attention. It can only happen when the right person is available, and it
+fails often enough that nobody wants to do it on a Friday afternoon.
 
-Deployment has its own rituals. The team announces in Slack that a deploy is starting. Other
-developers stop merging. Someone watches the logs. Another person checks the monitoring dashboard.
-When it is done, someone posts a confirmation. The whole team holds its breath during the process
+Deployment has its own rituals: the team announces in Slack that a deploy is starting, and
+other developers stop merging. One person watches the logs while another checks the monitoring
+dashboard. When the deploy is done, someone posts a confirmation. The whole team holds its breath during the process
 and exhales when it works. This ceremony happens every time, whether the release is one commit or
 fifty.
 
@@ -59,8 +59,8 @@ separate activity, deployment is manual.
 ## Why this is a problem
 
 A manual deployment negates much of the value that an automated build and test pipeline provides.
-The pipeline can validate code in minutes, but if the last mile to production requires a human,
-the delivery speed is limited by that human's availability, attention, and reliability.
+The pipeline can validate code in minutes. If the last mile to production requires a human,
+that human's availability, attention, and reliability limit delivery speed.
 
 ### It reduces quality
 
@@ -71,9 +71,9 @@ services too quickly triggers a cascade of connection errors. These are process 
 introduced by the deployment method, not the software.
 
 Manual deployments also degrade the quality signal from the pipeline. The pipeline tests a specific
-artifact in a specific configuration. If the deployer manually adjusts configuration, selects a
-different artifact version, or skips a verification step, the deployed system no longer matches
-what the pipeline validated. The pipeline said "this is safe to deploy," but what actually reached
+artifact in a specific configuration. The deployer might adjust configuration by hand, select a
+different artifact version, or skip a verification step. Then the deployed system no longer
+matches what the pipeline validated. The pipeline said "this is safe to deploy," but what actually reached
 production is something slightly different.
 
 Automated deployment eliminates process defects by executing the same steps in the same order
@@ -85,15 +85,14 @@ whether it happens at 2 PM on Tuesday or 3 AM on Saturday.
 
 Because manual deployments are slow and risky, teams batch changes. Instead of deploying each
 commit individually, they accumulate a week or two of changes and deploy them together. When
-something breaks in production, the team must determine which of thirty commits caused the problem.
-This diagnosis takes hours. The fix takes more hours. If the fix itself requires a deployment, the
-team must go through the manual process again.
+something breaks in production, the team must determine which of thirty commits caused the
+problem. The diagnosis takes hours, and the fix takes more hours. If the fix itself requires a
+deployment, the team must go through the manual process again.
 
 Failed deployments are especially costly. A manual deployment that leaves the system in a broken
 state requires manual recovery. The deployer must diagnose what went wrong, decide whether to roll
-forward or roll back, and execute the recovery steps by hand. If the deployment was a multi-server
-process and some servers are on the new version while others are on the old version, the recovery
-is even harder. The team may spend more time recovering from a failed deployment than they spent
+forward or roll back, and execute the recovery steps by hand. Recovery is even harder after a
+partial multi-server deployment, with some servers on the new version and others on the old. The team may spend more time recovering from a failed deployment than they spent
 on the deployment itself.
 
 With automated deployments, each commit deploys individually. When something breaks, the cause is
@@ -108,9 +107,9 @@ If the deployer is in a meeting, the deployment waits. If the deployer is on vac
 deployment waits longer. If the deployment fails and the deployer needs help, the recovery depends
 on who else is around.
 
-This human dependency makes release timing unpredictable. The team cannot promise "this fix will be
-in production in 30 minutes" because the deployment requires a person who may not be available for
-hours. Urgent fixes wait for deployment windows. Critical patches wait for the release coordinator
+This human dependency makes release timing unpredictable. The team cannot promise "this fix
+will be in production in 30 minutes." The deployment requires a person who might not be
+available for hours. Urgent fixes wait for deployment windows. Critical patches wait for the release coordinator
 to finish lunch.
 
 The batching effect adds another layer of unpredictability. When teams batch changes to reduce
@@ -147,13 +146,13 @@ mean time to repair drops from hours to minutes.
 ### Impact on continuous delivery
 
 Continuous delivery means any commit that passes the pipeline can be released to production at any
-time with confidence. Manual deployment breaks this definition at "at any time." The commit can
-only be released when a human is available to perform the deployment, when the deployment window
-is open, and when the team is ready to dedicate attention to watching the process.
+time with confidence. Manual deployment breaks this definition at "at any time." The team can
+release the commit only when three conditions hold. A human is available to deploy, the
+deployment window is open, and the team can spare attention to watch.
 
 The manual deployment step is the bottleneck that limits everything upstream. The pipeline can
-validate commits in 10 minutes, but if deployment takes an hour of human effort, the team will
-never deploy more than a few times per day at best. In practice, teams with manual deployments
+validate commits in 10 minutes. If deployment takes an hour of human effort, the team never
+deploys more than a few times per day at best. In practice, teams with manual deployments
 release weekly or biweekly because the deployment overhead makes anything more frequent
 impractical.
 
@@ -184,8 +183,8 @@ tests pass. Start with a non-production environment:
 2. Trigger it automatically on every successful build.
 3. Add a smoke test after deployment to verify it worked.
 
-The team now gets automatic deployments to a non-production environment on every commit. This
-builds confidence in the automation and surfaces problems early.
+The team now gets automatic deployments to a non-production environment on every commit. These
+deployments build confidence in the automation and surface problems early.
 
 ### Step 3: Externalize configuration and secrets (weeks 2-3)
 
@@ -220,7 +219,7 @@ automated. No SSHing. No manual steps. No watching logs scroll by.
 Once the team has seen the automated production deployment succeed repeatedly, remove the manual
 approval gate. The pipeline now deploys to production automatically when all checks pass.
 
-This is the hardest step emotionally. The team will resist. Expect these objections:
+Removing the gate is the hardest step emotionally. The team will resist. Expect these objections:
 
 | Objection | Response |
 |-----------|----------|
