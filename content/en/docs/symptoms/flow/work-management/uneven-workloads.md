@@ -50,7 +50,7 @@ flowing to whoever has capacity.
    assignments are fixed at the start of the sprint and the team has no mechanism for
    rebalancing mid-sprint, the assignment model is the root cause. Start with
    [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}).
-2. **Are developers unable to help with overloaded areas because they don't know the codebase?**
+2. **Are developers unable to help with overloaded areas because they do not know the codebase?**
    If the team cannot rebalance because knowledge is siloed, people are locked into their
    assigned domain even when they have capacity. Start with
    [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}}) and
