@@ -11,7 +11,7 @@ Bring every page under `content/en/` in line with `.claude/skills/tech-writing-r
 - Skip `docs/changelog.md`, because entries are history.
 - Before you open the PR, run `npm test`. Then scan the changed files for endashes, emdashes, and emojis.
 - Add one changelog entry per phase, not per PR. Phases 1 and 2 are mechanical. A phase 3 PR gets an entry only if it rewrites a lot.
-- Any PR can merge in any order within its phase. Phase 0 must merge before phase 2.
+- Any PR can merge in any order within its phase. Step 0.1 must merge before phase 1. Steps 0.2 and 0.3 must merge before phase 2.
 
 ## Baseline (2026-10-07)
 
@@ -28,7 +28,7 @@ Bring every page under `content/en/` in line with `.claude/skills/tech-writing-r
 
 ## Section batches
 
-Use these batches in phases 1 to 3. Each batch has about 30 files or fewer.
+Use these batches in phases 1 to 3. Each batch has 40 files or fewer. The batches cover 315 pages; the 316th is `docs/changelog.md`, which is skipped.
 
 | ID | Path under `content/en/docs/` | Files |
 | --- | --- | --- |
@@ -47,7 +47,12 @@ Use these batches in phases 1 to 3. Each batch has about 30 files or fewer.
 
 ## Phase 0: prerequisites (3 PRs, independent of each other)
 
-**0.1 Add a style check script.** Add `scripts/check-style.sh` and a `npm run style-check` script. The check reports the greppable rules from the baseline table and is advisory (exit 0). Each later PR uses it to find targets and confirm the count dropped.
+**0.1 Add a style check script.** Add `scripts/check-style.sh` and a `npm run style-check` script. The check reports the greppable rules from the baseline table and is advisory (exit 0). Each later PR uses it to find targets and confirm the count dropped. The script must:
+
+- Skip `docs/changelog.md`.
+- Ignore proper nouns and acronyms in headings, using an allowlist in the script (for example CD, CI, DORA, Kubernetes, Agentic CD).
+- Ignore kept terms from steps 1b and 1c, using the same allowlist (for example "just-in-time", and "leverage" as a term of art).
+- Report contractions for information only. A grep cannot tell prose from procedures, so contractions do not count toward done.
 
 **0.2 Convert template headings to sentence case.** Update the heading text that pages must contain in `cd-anti-pattern-page`, `cd-symptom-page`, `cd-guide-page`, `cd-content-audit/SKILL.md`, and `cd-content-audit/page-templates.md`. For example, `## What This Looks Like` becomes `## What this looks like`. Without this change, the audit flags pages that phase 2 fixes.
 
@@ -68,7 +73,7 @@ Example PR title: `style(S1): replace e.g. and i.e. in symptoms/flow`.
 
 ## Phase 2: sentence-case headings (13 PRs)
 
-Steps 2.1 to 2.12 cover one batch each. Step 2.13 removes the audit tolerance from step 0.3.
+Steps 2.1 to 2.12 cover one batch each. Step 2.13 removes the audit tolerance from step 0.3 and the template-heading exception in `style-rules.md`.
 
 - Keep proper nouns, acronyms, and product names capitalized: CD, CI, DORA, Kubernetes, Agentic CD.
 - A change of case alone does not change the anchor, because Hugo generates lowercase heading IDs. If you change a heading's wording, search all of `content/` for `#old-anchor` links to the page and update them in the same PR. `npm test` catches missed anchors.
@@ -76,18 +81,14 @@ Steps 2.1 to 2.12 cover one batch each. Step 2.13 removes the audit tolerance fr
 
 ## Phase 3: judgment rewrites (12 PRs, one per batch, split further if needed)
 
-Run `/tech-writing-review rewrite` on the batch with `style-rules.md`. Limit it to these rules:
-
-- Sentences: 25 words or fewer, and 20 or fewer in procedures. One instruction per procedure sentence, starting with a verb.
-- Paragraphs: five sentences or fewer.
-- Voice: "you", active voice, present tense. "Must" only for hard requirements.
-- Precision: no unclear "it" or "this", no noun stacks of more than three nouns, prohibitions stated as direct commands.
-- Terms: use the glossary term for each concept (check with the `agentic-cd-docs` and `glossary` skills).
+Run `/tech-writing-review rewrite` on the batch. Limit it to the `style-rules.md` rules that phases 1 and 2 do not cover: sentence and paragraph length, voice, precision, and consistent terms. `style-rules.md` holds the limits, so this plan does not repeat them.
 
 If a batch diff is too big to review, split the PR by subfolder. Do not restructure sections. The `principles.md` structural work is out of scope.
 
 ## Done when
 
-- `npm run style-check` reports zero for every rule except contractions in prose.
+- `npm run style-check` reports zero for every counted rule, after its allowlist. Contractions are reported for information only.
 - `cd-content-audit` passes with sentence-case headings and no case tolerance.
 - `npm test` passes on `main`.
+
+When all three are true, delete this plan in the final PR.

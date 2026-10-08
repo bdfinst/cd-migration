@@ -7,45 +7,69 @@ on:
 permissions:
   issues: write
 
-concurrency:
-  group: epic-auto-close
-  cancel-in-progress: false
+# No concurrency group: a shared group keeps only one pending run and cancels
+# the rest, which would drop close events. Each run is idempotent, so
+# overlapping runs are safe.
 
 jobs:
   auto-close-epic:
     runs-on: ubuntu-latest
     steps:
       - name: Close ancestors whose sub-issues are all closed
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
-          CLOSED: ${{ github.event.issue.number }}
+          CLOSED_ISSUE_NUMBER: ${{ github.event.issue.number }}
         # Closing an issue with GITHUB_TOKEN does not trigger another workflow
         # run, so walk up the parent chain here instead of relying on recursion.
+        # https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
         run: |
-          CHILD=$CLOSED
-          while true; do
-            PARENT_URL=$(gh api "repos/$REPO/issues/$CHILD" -q '.parent_issue_url // empty')
+          set -euo pipefail
+          MAX_DEPTH=10
+          CHILD_NUMBER=$CLOSED_ISSUE_NUMBER
+
+          for _ in $(seq 1 "$MAX_DEPTH"); do
+            PARENT_URL=$(gh api "repos/$REPO/issues/$CHILD_NUMBER" -q '.parent_issue_url // empty')
             if [ -z "$PARENT_URL" ]; then
-              echo "Issue #$CHILD has no parent. Nothing more to do."
+              echo "Issue #$CHILD_NUMBER has no parent. Nothing more to do."
               exit 0
             fi
-            PARENT=${PARENT_URL##*/}
+            case "$PARENT_URL" in
+              "https://api.github.com/repos/$REPO/issues/"*) ;;
+              *)
+                echo "Parent $PARENT_URL is outside $REPO. Skipping."
+                exit 0
+                ;;
+            esac
+            PARENT_NUMBER=${PARENT_URL##*/}
+            if ! [[ "$PARENT_NUMBER" =~ ^[0-9]+$ ]]; then
+              echo "Unexpected parent URL: $PARENT_URL" >&2
+              exit 1
+            fi
 
-            STATE=$(gh api "repos/$REPO/issues/$PARENT" -q .state)
+            STATE=$(gh api "repos/$REPO/issues/$PARENT_NUMBER" -q .state)
             if [ "$STATE" != "open" ]; then
-              echo "Parent #$PARENT is already $STATE."
+              echo "Parent #$PARENT_NUMBER is already $STATE."
               exit 0
             fi
 
-            OPEN=$(gh api --paginate "repos/$REPO/issues/$PARENT/sub_issues?per_page=100" \
-              -q '.[] | select(.state=="open") | .number' | wc -l | tr -d ' ')
-            if [ "$OPEN" != "0" ]; then
-              echo "$OPEN sub-issue(s) of #$PARENT are still open."
+            # Capture before counting so a failed API call stops the script
+            # instead of counting as zero open sub-issues.
+            SUB_ISSUE_STATES=$(gh api --paginate "repos/$REPO/issues/$PARENT_NUMBER/sub_issues?per_page=100" -q '.[].state')
+            if [ -z "$SUB_ISSUE_STATES" ]; then
+              echo "Parent #$PARENT_NUMBER reports no sub-issues. Not closing it."
+              exit 0
+            fi
+            OPEN_SUB_ISSUE_COUNT=$(grep -cx open <<<"$SUB_ISSUE_STATES" || true)
+            if [ "$OPEN_SUB_ISSUE_COUNT" != "0" ]; then
+              echo "$OPEN_SUB_ISSUE_COUNT sub-issue(s) of #$PARENT_NUMBER are still open."
               exit 0
             fi
 
-            gh issue close "$PARENT" --repo "$REPO" \
+            gh issue close "$PARENT_NUMBER" --repo "$REPO" \
               --comment "All sub-issues are closed. Closing this epic automatically."
-            CHILD=$PARENT
+            CHILD_NUMBER=$PARENT_NUMBER
           done
+
+          echo "Stopped after $MAX_DEPTH levels of parents."

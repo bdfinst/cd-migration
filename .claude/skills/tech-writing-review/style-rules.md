@@ -1,6 +1,6 @@
 # Documentation style rules
 
-Reference for the tech-writing-review skill. These rules apply to prose the skill writes or reviews. They sit alongside `principles.md`, which covers page structure and scannability.
+Reference for the tech-writing-review skill. These rules apply to prose the skill writes or reviews. They sit alongside `principles.md`, which covers page structure and scannability and also addresses filler (principle 5), abstraction (principle 9), and voice (principle 12). If the two files conflict, `principles.md` decides structure and this file decides wording.
 
 ## The three rules
 
@@ -14,6 +14,7 @@ When they conflict, the Google guide decides formatting and mechanics, the STE-d
 
 - Address the reader as "you". Use active voice and present tense.
 - Use sentence case for headings. Make link text describe the target, never "here".
+  - Exception during the rollout: keep headings that a page template requires (for example `## What This Looks Like`) exactly as the template writes them. Remove this exception when step 2.13 of `.claude/plans/style-rules-rollout.md` is done.
 - Use the serial comma. Use "for example", not "e.g.".
 - Use numbered lists for ordered steps and bulleted lists for unordered items.
 - Format code, file names, and commands as code. Bold UI labels.
