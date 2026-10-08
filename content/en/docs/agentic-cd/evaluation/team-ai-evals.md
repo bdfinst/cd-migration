@@ -400,7 +400,7 @@ and detect regressions across prompt changes.
 
 ## Model Migration Testing
 
-When upgrading the underlying model (e.g., from Claude Sonnet 4 to a newer
+When upgrading the underlying model (for example, from Claude Sonnet 4 to a newer
 version), use your eval suite to validate the migration systematically.
 
 1. **Run the full suite on the current model.** Record baselines for all metrics.

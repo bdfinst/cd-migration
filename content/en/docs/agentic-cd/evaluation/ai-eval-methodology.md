@@ -25,7 +25,7 @@ shared AI enablement infrastructure. For team-specific eval setup, see
 | Transcript         | The full agent conversation log: tool calls, reasoning, output   |
 | Outcome            | The agent's final output for a task                              |
 | Evaluation harness | The framework that runs tasks, collects outcomes, applies graders |
-| Agent harness      | The runtime that executes the agent (e.g., Claude Code)          |
+| Agent harness      | The runtime that executes the agent (for example, Claude Code)   |
 | Evaluation suite   | A collection of related tasks testing one capability dimension   |
 
 **In the [dev-plugins](https://github.com/bailejl/dev-plugins) reference implementation:** Promptfoo is the evaluation harness. Claude Code is the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}})
@@ -114,7 +114,7 @@ false positive rates. They check structural properties of the output.
 - Output references real files from the fixture, not hallucinated paths
 - Specific keywords or patterns appear (or do not appear) in the output
 
-A score arithmetic grader parses category scores and weights from agent output, computes the weighted average, and compares it to the reported overall score. A small tolerance (e.g., +/- 3 points) accommodates rounding. This catches a common failure mode: the agent reports individual category scores and a total that do not add up.
+A score arithmetic grader parses category scores and weights from agent output, computes the weighted average, and compares it to the reported overall score. A small tolerance (for example, +/- 3 points) accommodates rounding. This catches a common failure mode: the agent reports individual category scores and a total that do not add up.
 
 A report structure grader validates that the output contains required headings at the correct level, that headings match expected patterns, that required sections have non-empty content, and that the output falls within length bounds.
 
@@ -129,7 +129,7 @@ the agent's tool-call sequence and conversation turns to verify sound process.
 - The agent used multiple evidence sources, not just one
 - Evidence-gathering actions make up a sufficient proportion of total actions
 
-An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (e.g., at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
+An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (for example, at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
 
 ### Layer 3: LLM Rubrics
 
@@ -137,7 +137,7 @@ LLM rubrics use a language model as judge to evaluate qualities that resist
 deterministic checking: accuracy of findings, quality of recommendations, appropriate
 severity ratings, and absence of hallucination.
 
-A typical code quality rubric defines weighted criteria such as correctness, readability, maintainability, idiomatic usage, and error handling, each scored on a 1-5 scale. The LLM judge scores each criterion, a weighted total is computed, and the result passes if it meets a threshold (e.g., 3.5 out of 5).
+A typical code quality rubric defines weighted criteria such as correctness, readability, maintainability, idiomatic usage, and error handling, each scored on a 1-5 scale. The LLM judge scores each criterion, a weighted total is computed, and the result passes if it meets a threshold (for example, 3.5 out of 5).
 
 LLM rubrics are the slowest and most expensive grading layer. Use them for qualities
 that the other layers cannot check.

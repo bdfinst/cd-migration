@@ -171,7 +171,7 @@ The shared infrastructure provides the foundation. Each plugin specializes it:
 2. **Shared graders** handle common structural checks
 3. **Shared rubrics** define baseline quality criteria
 4. **Plugin config** adds plugin-specific variables and test suites
-5. **Plugin graders** handle domain-specific checks (e.g., accessibility patterns,
+5. **Plugin graders** handle domain-specific checks (for example, accessibility patterns,
    security vulnerability detection)
 6. **Plugin rubrics** add domain-specific quality criteria
 
@@ -379,7 +379,7 @@ accumulate stale tests that slow runs and obscure signal.
 **When to split suites:**
 
 - **Suites exceeding 20 cases.** Large suites make it hard to identify which
-  capability dimension failed. Split by capability dimension (e.g., separate
+  capability dimension failed. Split by capability dimension (for example, separate
   "naming" from "architecture" tests).
 
 **Ownership model:**
