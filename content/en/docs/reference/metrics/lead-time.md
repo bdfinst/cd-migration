@@ -71,7 +71,7 @@ automated pipelines and continuous deployment.
 ## Common Pitfalls
 
 - **Measuring only build time.** Lead time includes everything after the commit,
-  not just the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline. Manual approval gates, scheduled deployment windows,
+  not only the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline. Manual approval gates, scheduled deployment windows,
   and environment provisioning delays must all be included.
 - **Ignoring waiting time.** A change may sit in a queue waiting for a release
   train, a change advisory board (CAB) review, or a deployment window. This wait

@@ -186,7 +186,7 @@ This architecture is the goal for organizations with:
 - **Synchronous dependency chains**: If Service A calls Service B which calls Service C
   in the request path, a deployment of C can break A through B. Circuit breakers and
   fallbacks are required at every boundary, and contract tests must cover failure modes,
-  not just success paths.
+  not only success paths.
 - **No contract verification discipline**: If teams skip backward compatibility checks
   or let contract test failures slide, breakage shifts from the pipeline to production.
   The architecture degrades into uncoordinated deployments with production as the
