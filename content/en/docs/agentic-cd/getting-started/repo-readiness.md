@@ -46,7 +46,7 @@ Without a runnable build, agents cannot verify any change. This is a hard blocke
 
 **What blocks agents entirely:** no runnable build, broken [dependency](../../reference/glossary/#dependency) resolution, build requires credentials or manual environment setup.
 
-- Ensure a single command (e.g., `make build`, `./gradlew build`, `npm run build`) works in a clean checkout with no prior setup beyond dependency installation
+- Ensure a single command (for example, `make build`, `./gradlew build`, `npm run build`) works in a clean checkout with no prior setup beyond dependency installation
 - Pin all dependencies with a committed lockfile
 - Remove any requirement for environment variables that do not have documented defaults
 - Document the build command in the README and in the project context file
@@ -85,7 +85,7 @@ Clear, fast feedback is the difference between an agent that self-corrects on th
 - Reduce total test suite time. Agents iterate faster with faster feedback. A ten-minute suite means ten minutes per attempt; a thirty-second unit suite means thirty seconds.
 - Structure test output so pass/fail is unambiguous. A test runner that exits with code 0 on success and non-zero on failure, with failure details on stdout, gives agents a clear signal.
 
-**How AI can help:** Use an agent to scan test assertions and rewrite bare assertions (e.g., `assertTrue(result)`) into descriptive ones that include expected and actual values. Agents can also analyze test suite timing to identify the slowest tests, suggest which integration tests can be replaced with faster unit tests, and split a monolithic test suite into fast and slow tiers with separate run commands.
+**How AI can help:** Use an agent to scan test assertions and rewrite bare assertions (for example, `assertTrue(result)`) into descriptive ones that include expected and actual values. Agents can also analyze test suite timing to identify the slowest tests, suggest which integration tests can be replaced with faster unit tests, and split a monolithic test suite into fast and slow tiers with separate run commands.
 
 ### Step 4: Document for agents
 
@@ -195,7 +195,7 @@ Inconsistent error handling is a slow leak. It does not block agents, but it cau
 - Choose one error handling pattern for the codebase and document it in the project context file
 - Apply the pattern consistently in new code. Enforce it with linter rules where possible.
 - Refactor the most frequently changed modules to use the chosen pattern first
-- Document where exceptions to the pattern are intentional (e.g., a different pattern at the framework boundary)
+- Document where exceptions to the pattern are intentional (for example, a different pattern at the framework boundary)
 
 **How AI can help:** Use an agent to survey the codebase and categorize the error handling patterns in use, including how many files use each pattern. This gives you a data-driven baseline for choosing the dominant pattern. Agents can then refactor modules to the chosen pattern incrementally, starting with the highest-churn files. They can also generate linter rules that flag deviations from the chosen pattern in new code.
 
@@ -227,8 +227,8 @@ Agents rely most on tests that are fast, deterministic, and produce clear failur
 
 A repository ready for agentic development has two commands an agent needs to know:
 
-1. **Build:** a single command that installs dependencies and compiles the project (e.g., `make build`, `./gradlew build`, `npm run build`)
-2. **Test:** a single command that runs the test suite (e.g., `make test`, `./gradlew test`, `npm test`)
+1. **Build:** a single command that installs dependencies and compiles the project (for example, `make build`, `./gradlew build`, `npm run build`)
+2. **Test:** a single command that runs the test suite (for example, `make test`, `./gradlew test`, `npm test`)
 
 An agent should be able to clone the repository, run the build command, run the test command, and see a clear pass/fail result without any human intervention. Everything between "clone" and "tests pass" must be automated.
 
