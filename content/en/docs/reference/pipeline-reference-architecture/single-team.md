@@ -51,7 +51,7 @@ graph TD
     H --> I
 ```
 
-## Key Characteristics
+## Key characteristics
 
 - **One pipeline, one artifact**: The entire application builds and deploys as a single
   [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}). There is no fan-out or fan-in.
@@ -64,7 +64,7 @@ graph TD
 - **Ownership**: The team owns the pipeline definition, which lives in the same repository
   as the application code.
 
-## When This Architecture Breaks Down
+## When this architecture breaks down
 
 This architecture stops working when:
 
@@ -77,7 +77,7 @@ When these symptoms appear, consider splitting into the
 independently deployable services with their
 [own pipelines]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}}).
 
-## Related Content
+## Related content
 
 - [Quality Gates]({{< relref "/docs" >}}) - the full gate sequence this pipeline applies
 - [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}) - the next pattern when one team is not enough

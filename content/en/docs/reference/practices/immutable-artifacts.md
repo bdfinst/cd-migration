@@ -16,20 +16,20 @@ Central to CD is that we are validating the artifact with the pipeline. It is bu
 
 Immutability provides the confidence to know that the results from the pipeline are real and repeatable.
 
-## What Is Improved
+## What is improved
 
 - **Everything must be version controlled**: source code, environment configurations, application configurations, and even test data. This reduces variability and improves the quality process.
 - **Confidence in testing**: The artifact validated in pre-production is byte-for-byte identical to what runs in production.
 - **Faster rollback**: Previous artifacts are unchanged in the artifact repository, ready to be redeployed.
 - **Audit trail**: Every artifact is traceable to a specific commit and pipeline run.
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on implementing immutable artifacts, see:
 
 - [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) - Phase 2 pipeline practice with anti-patterns, good patterns, and getting started steps
 
-## Additional Resources
+## Additional resources
 
 - [The Twelve-Factor App](https://12factor.net/)
 - [Continuous Delivery](https://continuousdelivery.com/) - Jez Humble and David Farley

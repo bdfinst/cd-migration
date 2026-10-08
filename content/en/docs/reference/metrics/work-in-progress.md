@@ -33,7 +33,7 @@ If throughput (the rate at which items are completed) stays constant, increasing
 directly increases cycle time. The only way to reduce cycle time without working
 faster is to reduce WIP.
 
-## How to Measure
+## How to measure
 
 1. **Count all in-progress items.** At a regular cadence (daily or at each standup),
    count the number of items in any active state on your team's board. Include
@@ -68,7 +68,7 @@ The guiding principle is that WIP should never exceed team size. A team of five
 should have at most five items in progress at any time. Elite teams often work
 in pairs, bringing WIP to roughly half the team size.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Hiding work.** Not moving items to "In Progress" when working on them keeps
   WIP artificially low. The board must reflect reality. If someone is working on

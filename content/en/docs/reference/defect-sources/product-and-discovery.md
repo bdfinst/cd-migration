@@ -19,7 +19,7 @@ fix because they compound through every downstream phase.
 | Prioritizing wrong work | Discovery | [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) versus business outcomes, WSJF scoring | Synthesize roadmap, customer data, and market signals to surface opportunity costs | WSJF prioritization with outcome data |
 | Inaccessible UI excludes users | Pre-commit | axe-core, pa11y, Lighthouse accessibility audits | <span class="ai-blocked">Current tooling sufficient</span> | WCAG compliance as acceptance criteria; automated accessibility checks in [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

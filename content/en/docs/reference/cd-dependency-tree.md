@@ -17,7 +17,7 @@ practices where each one supports and enables others. Understanding these depend
 you plan your migration in the right order, addressing foundational practices before building
 on them.
 
-## Using the Tree to Diagnose Problems
+## Using the tree to diagnose problems
 
 When something in your delivery process is not working, trace it through the dependency tree
 to find the root cause.
@@ -51,7 +51,7 @@ not solve the underlying issue and often adds [toil](../glossary/#toil) that mak
 that is broken, and the downstream problem resolves itself.
 {{% /alert %}}
 
-## Mapping to Migration Phases
+## Mapping to migration phases
 
 The dependency tree directly informs the sequencing of migration phases:
 
@@ -63,9 +63,9 @@ The dependency tree directly informs the sequencing of migration phases:
 | Flow optimization (small batches, feature flags, [WIP](../glossary/#wip-work-in-progress) limits, metrics) | [Phase 3 - Optimize]({{< relref "/docs/optimize" >}}) | Optimization requires a working pipeline to optimize |
 | Organizational practices (cross-functional teams, component ownership, developer-driven support) | All phases | These cross-cutting practices support every phase. Team structure should be addressed early because it constrains architecture and work decomposition |
 
-## Understanding the Dependency Model
+## Understanding the dependency model
 
-### How Dependencies Work
+### How dependencies work
 
 CD sits at the top of the tree. It depends directly on many practices, each of which has its own
 dependencies. When practice A depends on practice B, it means B is a prerequisite or enabler
@@ -87,7 +87,7 @@ testing, deployment automation, automated artifact versioning, and quality gates
 testing in turn depends on build automation. Build automation depends on version control and
 dependency management. The chain runs deep.
 
-### Key Dependency Chains
+### Key dependency chains
 
 #### BDD enables testing enables CI enables CD
 
@@ -98,7 +98,7 @@ enables Continuous Integration with confidence. And CI is the foundational prere
 If your team skips BDD, stories are ambiguous. If stories are ambiguous, tests are incomplete
 or wrong. If tests are unreliable, CI is unreliable. And if CI is unreliable, CD is impossible.
 
-#### Trunk-Based Development enables CI
+#### Trunk-based development enables CI
 
 CI requires that all developers integrate to a shared trunk at least once per day. If your team
 uses long-lived feature branches, you are not doing CI regardless of how often your build server

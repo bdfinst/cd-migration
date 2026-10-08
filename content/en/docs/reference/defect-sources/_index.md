@@ -18,7 +18,7 @@ The goal is systems thinking: detect issues as early as possible in the value st
 - No marker = AI assists at the current detection point but does not shift it earlier
 {{% /pageinfo %}}
 
-## How to Use This Catalog
+## How to use this catalog
 
 1. **Pick your pain point.** Find the category where your team loses the most time to defects or rework. Start there, not at the top.
 2. **Focus on the Systemic Prevention column.** Automated detection catches defects faster, but systemic prevention eliminates entire categories. Prioritize the prevention fix for each issue you selected.
@@ -60,7 +60,7 @@ and knowledge gaps. Where deterministic tools already solve the problem (infrast
 null safety, branch age), AI adds cost without benefit. Look for the <span class="ai-high">&#9650;</span> markers to find the highest-value AI opportunities.
 {{% /alert %}}
 
-## Related Content
+## Related content
 
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - Extend continuous delivery with constraints for AI agent-generated changes
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Safely incorporate AI into your delivery process

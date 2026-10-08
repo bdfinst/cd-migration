@@ -10,14 +10,14 @@ description: >
 
 The "definition of deployable" is your organization's agreed-upon set of non-negotiable quality criteria that every artifact must pass before it can be deployed to any environment. This definition should be automated, enforced by the pipeline, and treated as the authoritative verdict on whether a change is ready for deployment.
 
-## Key Principles
+## Key principles
 
 1. **Pipeline is definitive**: If the pipeline passes, the artifact is deployable - no exceptions
 2. **Automated validation**: All criteria are checked automatically, not manually
 3. **Consistent across environments**: The same standards apply whether deploying to test or production
 4. **Fails fast**: The pipeline rejects artifacts that do not meet the standard immediately
 
-## What Should Be in Your Definition
+## What should be in your definition
 
 Your definition of deployable should include automated checks for:
 
@@ -28,7 +28,7 @@ Your definition of deployable should include automated checks for:
 - **Reliability**: Health check validation, graceful degradation tests, rollback verification
 - **Code quality**: Linting, static analysis, complexity metrics
 
-## What Is Improved
+## What is improved
 
 - **Removes bottlenecks**: No waiting for manual approval meetings
 - **Increases quality**: Automated checks catch more issues than manual reviews
@@ -36,13 +36,13 @@ Your definition of deployable should include automated checks for:
 - **Improves collaboration**: Shared understanding of quality standards
 - **Enables continuous delivery**: Trust in the pipeline makes frequent deployments safe
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on defining what "deployable" means for your organization, see:
 
 - [Deployable Definition]({{< relref "/docs/pipeline/deployable-definition" >}}) - Phase 2 pipeline practice with progressive quality gates, context-specific definitions, and getting started steps
 
-## Additional Resources
+## Additional resources
 
 - [Dave Farley: Real Example of a Deployment Pipeline in the Fintech Industry](https://www.youtube.com/watch?v=bHKHdp4H-8w)
 - [Continuous Delivery: The Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)

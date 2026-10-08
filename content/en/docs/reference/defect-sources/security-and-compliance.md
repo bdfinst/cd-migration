@@ -20,7 +20,7 @@ automated verification at every stage.
 | Missing audit trails | Design | Structured logging verification, audit event coverage scoring | Review code for state-changing operations that lack audit logging | Audit logging as a framework default; every state change emits a structured event |
 | License compliance violations | CI | License scanning tools, SBOM generation and policy evaluation | Review license compatibility across the full dependency graph | Approved license allowlist enforced in CI; SBOM generated on every build |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

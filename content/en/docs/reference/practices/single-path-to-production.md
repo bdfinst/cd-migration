@@ -10,7 +10,7 @@ description: >
 
 The deployment pipeline is the single, standardized path for all changes to reach any environment - development, testing, staging, or production. No manual deployments, no side channels, no "quick fixes" bypassing the pipeline. If it is not deployed through the pipeline, it does not get deployed.
 
-## Key Principles
+## Key principles
 
 1. **Single path**: All deployments flow through the same pipeline
 2. **No exceptions**: Even hotfixes and rollbacks go through the pipeline
@@ -18,7 +18,7 @@ The deployment pipeline is the single, standardized path for all changes to reac
 4. **Auditable**: Every deployment is tracked and traceable
 5. **Consistent**: The same process deploys to all environments
 
-## What Is Improved
+## What is improved
 
 - **Reliability**: Every deployment is validated the same way
 - **Traceability**: Clear audit trail from commit to production
@@ -28,13 +28,13 @@ The deployment pipeline is the single, standardized path for all changes to reac
 - **Confidence**: Teams trust that production matches what was tested
 - **Recovery**: Rollbacks are as reliable as forward deployments
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on establishing a single path to production, see:
 
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Phase 2 pipeline practice with anti-patterns, code examples, and getting started steps
 
-## Additional Resources
+## Additional resources
 
 - [Continuous Delivery: The Deployment Pipeline](https://www.informit.com/articles/article.aspx?p=1621865)
 - [Accelerate](https://itrevolution.com/product/accelerate/) - Nicole Forsgren, Jez Humble, Gene Kim

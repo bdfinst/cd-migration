@@ -76,7 +76,7 @@ graph TD
     D1 --> D2["Health Checks + SLO Monitors<br/>Auto-Rollback"]:::prod
 ```
 
-## Key Characteristics
+## Key characteristics
 
 - **Module ownership by domain**: Each team owns a bounded module of the application's
   functionality. Ownership is defined by domain, not by technical layer. The team is
@@ -99,7 +99,7 @@ graph TD
   Sub-pipelines trigger based on path filters aligned to module boundaries, so a
   change to the payments module does not trigger the inventory sub-pipeline.
 
-## Preventing the Integration Pipeline from Becoming a Bottleneck
+## Preventing the integration pipeline from becoming a bottleneck
 
 The integration pipeline is a shared resource and the most likely bottleneck in this
 architecture. To keep it fast:
@@ -117,7 +117,7 @@ architecture. To keep it fast:
 5. **Monitor integration pipeline duration**: Set an alert if it exceeds 15 minutes. Treat
    this the same as a failing test - fix it immediately.
 
-## When to Move Away from This Architecture
+## When to move away from this architecture
 
 This architecture is a pragmatic pattern for organizations that cannot yet decompose their
 monolith into independently deployable services. The long-term goal is
@@ -131,7 +131,7 @@ Signs you are ready to decompose:
 - Teams are blocked by integration pipeline queuing more than once per week
 - Different parts of the application need different deployment cadences
 
-## Related Content
+## Related content
 
 - [Quality Gates]({{< relref "/docs" >}}) - the full gate sequence this pipeline applies
 - [Single Team, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/single-team" >}}) - the simpler pattern for one team

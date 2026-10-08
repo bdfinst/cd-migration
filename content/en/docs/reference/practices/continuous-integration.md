@@ -12,7 +12,7 @@ Continuous Integration (CI) is the activity of each developer integrating work t
 
 CI is not only about tooling - it is fundamentally about team workflow and working agreements.
 
-## Minimum Activities Required
+## Minimum activities required
 
 1. [Trunk-based development]({{< relref "/docs/reference/practices/trunk-based-development" >}}) - all work integrates to trunk
 2. Work integrates to trunk at a minimum daily (each developer, every day)
@@ -21,9 +21,9 @@ CI is not only about tooling - it is fundamentally about team workflow and worki
 5. All feature work stops when the build is red
 6. New work does not break delivered work
 
-## Why This Matters
+## Why this matters
 
-### Without CI, Teams Experience
+### Without CI, teams experience
 
 - **Integration hell**: Weeks or months of painful merge conflicts
 - **Late defect detection**: Bugs found after they are expensive to fix
@@ -32,7 +32,7 @@ CI is not only about tooling - it is fundamentally about team workflow and worki
 - **Slower delivery**: Time wasted on merge conflicts and rework
 - **Quality erosion**: Without rapid feedback, technical debt accumulates
 
-### With CI, Teams Achieve
+### With CI, teams achieve
 
 - **Rapid feedback**: Know within minutes if changes broke something
 - **Smaller changes**: Daily integration forces better work breakdown
@@ -41,7 +41,7 @@ CI is not only about tooling - it is fundamentally about team workflow and worki
 - **Faster delivery**: No integration delays blocking deployment
 - **Higher quality**: Continuous testing catches issues early
 
-## What Is Improved
+## What is improved
 
 ### Teamwork
 
@@ -53,7 +53,7 @@ CI requires strong teamwork to function correctly. Key improvements:
 - **Shared ownership**: Everyone maintains the codebase together
 - **Team goals over individual tasks**: Focus shifts from "my work" to "our progress"
 
-### Work Breakdown
+### Work breakdown
 
 CI forces better work decomposition:
 
@@ -71,7 +71,7 @@ CI requires a shift in testing approach:
 - **From** manual testing before deployment **to** automated testing on every commit
 - **From** separate QA phase **to** quality built into development
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on adopting CI practices during your CD migration, see:
 
@@ -79,7 +79,7 @@ For detailed guidance on adopting CI practices during your CD migration, see:
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Phase 1 testing architecture
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Phase 1 team commitments
 
-## Additional Resources
+## Additional resources
 
 - [Continuous Integration on Martin Fowler's site](https://martinfowler.com/articles/continuousIntegration.html)
 - [Accelerate](https://itrevolution.com/product/accelerate/) - Nicole Forsgren, Jez Humble, Gene Kim

@@ -16,7 +16,7 @@ longer it lives outside trunk, the higher the risk.
 | Unanticipated feature interactions | Acceptance Tests | Combinatorial and pairwise testing, feature flag interaction matrix | Reason about feature interactions semantically; flag conflicts testing matrices miss | Feature flags with controlled rollout; modular design; [canary deployments]({{< relref "/docs/reference/glossary#canary-deployment" >}}) |
 | Configuration drift | CI | Infrastructure-as-code drift detection, environment diffing | <span class="ai-blocked">Current tooling sufficient</span> | Infrastructure as code; immutable infrastructure; GitOps |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

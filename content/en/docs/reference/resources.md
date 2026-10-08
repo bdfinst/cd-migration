@@ -12,7 +12,7 @@ relevant to.
 
 ## Books
 
-### Continuous Delivery and Deployment
+### Continuous delivery and deployment
 
 **Modern Software Engineering** by Dave Farley
 : Farley's broader take on what it means to do software engineering well. Covers the principles
@@ -81,7 +81,7 @@ relevant to.
   migration starts with a codebase that has little or no automated testing.
 : *Most relevant to: [Phase 1: Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})*
 
-### Work Decomposition and Flow
+### Work decomposition and flow
 
 **User Story Mapping** by Jeff Patton
 : A practical guide to breaking features into deliverable increments using story maps. Patton's
@@ -179,7 +179,7 @@ relevant to.
   environment. Demonstrates that CD practices are compatible with compliance requirements.
 : *Most relevant to: [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}})*
 
-## Blog Posts and Articles
+## Blog posts and articles
 
 **[Continuous Integration Certification](https://martinfowler.com/bliki/ContinuousIntegrationCertification.html)** by Martin Fowler
 : A short, practical test for whether your team is actually practicing continuous integration.
@@ -191,7 +191,7 @@ relevant to.
   testing, and release stages. A good companion to the pipeline phase of this guide.
 : *Most relevant to: [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}})*
 
-## Recommended Reading Order
+## Recommended reading order
 
 If you are starting your migration and want to read in the most useful order:
 
