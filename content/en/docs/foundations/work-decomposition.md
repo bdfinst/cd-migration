@@ -18,11 +18,11 @@ aliases:
 
 [Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) depends on a core principle: **small changes, integrated frequently, are safer than large changes integrated rarely.**
 
-Every practice in Phase 1 reinforces this:
+Every practice in Phase 1 reinforces this principle:
 
 - [Trunk-based development]({{< relref "/docs/foundations/trunk-based-development" >}}) requires that you integrate at least daily. You cannot integrate a two-week feature daily unless you decompose it.
 - [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) work best when each change is small enough to test thoroughly.
-- [Code review]({{< relref "/docs/foundations/code-review" >}}) is fast when the change is small. A 50-line change can be reviewed in minutes. A 2,000-line change takes hours - if it gets reviewed at all.
+- [Code review]({{< relref "/docs/foundations/code-review" >}}) is fast when the change is small. A reviewer can review a 50-line change in minutes. A 2,000-line change takes hours - if it gets reviewed at all.
 
 The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research consistently shows that smaller [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}) correlate with higher delivery performance. Small changes have:
 
@@ -35,7 +35,7 @@ The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research cons
 
 **If a work item takes longer than 2 days to complete, it is too big.**
 
-Two days gives you at least one integration to trunk per day (the minimum for [TBD]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}})) and allows for the natural rhythm of development: plan, implement, test, integrate, move on.
+Two days gives you at least one integration to trunk per day (the minimum for [TBD]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}})). The 2-day limit also allows for the natural rhythm of development: plan, implement, test, integrate, move on.
 
 When a developer says "this will take a week," the answer is not "go faster." The answer is "break it into smaller pieces."
 
@@ -48,7 +48,7 @@ A work item is complete when it is:
 - The change is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) (even if the feature is not yet user-visible)
 - It meets the [Definition of Done]({{< relref "/docs/foundations/working-agreements" >}})
 
-If a story requires a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) to hide incomplete user-facing behavior, that is fine. The code is still integrated, tested, and deployable.
+A story might require a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) to hide incomplete user-facing behavior. A flag is fine in that case. The code is still integrated, tested, and deployable.
 
 ## Story slicing techniques
 
@@ -67,13 +67,13 @@ Good stories follow INVEST:
 
 ### Vertical slicing
 
-The most important slicing technique for CD is **[vertical slicing]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}})**: cutting through all layers of the application to deliver a thin but complete slice of functionality.
+The most important slicing technique for CD is **[vertical slicing]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}})**. A vertical slice cuts through all layers of the application to deliver a thin but complete slice of functionality.
 
 **Vertical slice (correct):**
 
 > "As a user, I can log in with my email and password."
 >
-> This slice touches the UI (login form), the API (authentication endpoint), and the database (user lookup). It is deployable and testable end-to-end.
+> This slice touches the UI (login form), the API (authentication endpoint), and the database (user lookup). The slice is deployable and testable end-to-end.
 
 **Horizontal slice (anti-pattern):**
 
@@ -142,11 +142,11 @@ Feature: User login
     And they remain on the login page
 {{< /card >}}
 
-Each scenario is a natural unit of work. Implement one scenario at a time, integrate to trunk after each one.
+Each scenario is a natural unit of work. Implement one scenario at a time. Integrate to trunk after each one.
 
 ## Task decomposition within stories
 
-Even well-sliced stories may contain multiple tasks. Decompose stories into tasks that can be completed and integrated independently.
+Even well-sliced stories may contain multiple tasks. Decompose stories into tasks that you can complete and integrate independently.
 
 **Example story:** "User can update their name"
 
@@ -156,21 +156,21 @@ Even well-sliced stories may contain multiple tasks. Decompose stories into task
 2. Add an editable name field that saves successfully (UI, API, and persistence in one pass, E2E test)
 3. Show a validation error when the name is blank (adds one business rule across all layers, unit and E2E test)
 
-Each task delivers a thin vertical slice of behavior and results in a commit to trunk. The story is completed through a series of small integrations, not one large merge.
+Each task delivers a thin vertical slice of behavior and results in a commit to trunk. The team completes the story through a series of small integrations, not one large merge.
 
 **Guidelines for task decomposition:**
 
 - Each task should take hours, not days
 - Each task should leave trunk in a working state after integration
-- Tasks should be ordered so that the simplest changes come first
-- If a task requires a feature flag or stub to be integrated safely, that is fine
+- Order tasks so that the simplest changes come first
+- If a task requires a feature flag or stub to integrate safely, use one
 
 ## Common anti-patterns
 
 - **[Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}):** Stories organized by layer ("build the schema," "build the API," "build the UI"). No individual slice is deployable.
 - **[Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}):** Stories with 10+ acceptance criteria or multi-week estimates. Break them into smaller stories using the slicing strategies above.
 - **Technical stories without business context:** Backlog items like "refactor the database access layer" that do not tie to a business outcome. Embed technical improvements in feature stories and keep them under 2 days.
-- **Splitting by role instead of by behavior:** Separate stories for "frontend developer builds the UI" and "backend developer builds the API" create handoff dependencies and delay integration. Write stories from the user's perspective so the same developer (or pair) implements the full vertical slice.
+- **Splitting by role instead of by behavior:** Teams write separate stories for "frontend developer builds the UI" and "backend developer builds the API." These stories create handoff dependencies and delay integration. Write stories from the user's perspective so the same developer (or pair) implements the full vertical slice.
 - **Deferring edge cases indefinitely:** Building the happy path and creating a backlog of "handle error case X" stories that never get prioritized. Error handling is not optional. Include the most important error cases in the initial decomposition and schedule them immediately after the happy path, not "someday."
 
 ## Measuring success

@@ -9,14 +9,14 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations** | {{< scope-label "team" >}}
 
-Branch by abstraction lets you replace an internal implementation, algorithm, or library on trunk, without a long-lived branch and without disrupting the code that already depends on it.
+Branch by abstraction lets you replace an internal implementation, algorithm, or library on trunk. You do not need a long-lived branch, and you do not disrupt the code that already depends on it.
 {{% /pageinfo %}}
 
 ## What is branch by abstraction?
 
-Branch by abstraction introduces an interface over an existing implementation, redirects callers to that interface, then builds and switches in a new implementation behind it, all as small commits on trunk. The "branching" happens in the abstraction layer, not in version control.
+Branch by abstraction introduces an interface over an existing implementation and redirects callers to that interface. You then build and switch in a new implementation behind the interface, all as small commits on trunk. The "branching" happens in the abstraction layer, not in version control.
 
-> The technique gets its name because it replaces a source-control branch with a branch in the code itself: an interface with two implementations, one of which is live.
+> The technique replaces a source-control branch with a branch in the code itself. That code branch is an interface with two implementations, one of which is live.
 
 ### What branch by abstraction is not
 
@@ -37,7 +37,7 @@ Branch by abstraction introduces an interface over an existing implementation, r
 
 ### Step 1: Abstract
 
-Introduce an interface over the existing code and redirect every caller to it. This is a zero-behavior-change commit: the interface wraps the current implementation and nothing else changes.
+Introduce an interface over the existing code and redirect every caller to it. The commit changes no behavior: the interface wraps the current implementation and nothing else changes.
 
 {{< card code=true header="**Step 1: introduce the interface over the existing implementation**" lang="javascript" >}}
 class AuthService {
@@ -52,7 +52,7 @@ const auth = new AuthService();
 
 ### Step 2: Implement
 
-Build the new implementation alongside the old one, as its own class. Commit and deploy the new class in small pieces; it isn't wired to any caller yet, so it carries the same zero risk as [dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}).
+Build the new implementation alongside the old one, as its own class. Commit and deploy the new class in small pieces. No caller uses the new class yet, so it carries the same zero risk as [dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}).
 
 {{< card code=true header="**Step 2: build the new implementation alongside the old one**" lang="javascript" >}}
 class LegacyAuthService {
@@ -70,14 +70,14 @@ class ModernAuthService {
 
 ### Step 3: Switch
 
-Change the dependency injection or factory binding to instantiate the new implementation instead of the old one. This is the entire cutover: one line, one commit, easy to revert.
+Change the dependency injection or factory binding to instantiate the new implementation instead of the old one. The binding change is the entire cutover: one line, one commit, easy to revert.
 
 {{< card code=true header="**Step 3: switch the binding to the new implementation**" lang="javascript" >}}
 // container.js
 container.register('AuthService', ModernAuthService); // was LegacyAuthService
 {{< /card >}}
 
-If you need to de-risk the switch further, or need confidence the two implementations produce identical results first, run them side by side with a [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}) before flipping the binding.
+You might need to de-risk the switch further or confirm that the two implementations produce identical results. In that case, run them side by side with a [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}) before flipping the binding.
 
 ### Step 4: Prune
 
@@ -97,7 +97,7 @@ Cleanup here is a straightforward deletion of a class. There is no scattered `if
 
 ### 1. "We built the new implementation and the interface in the same commit"
 
-This makes the abstraction hard to review on its own merits, and it removes the option to ship the interface as a safe, standalone step. Extract the interface first, verify it changes nothing, then start on the new implementation.
+Combining the two makes the abstraction hard to review on its own merits. It also removes the option to ship the interface as a safe, standalone step. Extract the interface first, verify it changes nothing, then start on the new implementation.
 
 ### 2. "We left the old implementation in place after the switch"
 

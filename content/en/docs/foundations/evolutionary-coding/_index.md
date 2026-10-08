@@ -16,7 +16,7 @@ description: >
 
 [Deployment]({{< relref "/docs/reference/glossary#deployable" >}}) is a technical action: pushing code to production. Release is a business decision: making a capability available to users. Evolutionary coding techniques are how you deploy continuously while controlling release independently.
 
-[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are the best-known way to make that separation, which is why teams reach for them first. But a runtime `if (flag)` branch is conditional complexity: every flag combination has to be tested, and the flag has to be deleted later or it becomes permanent debt. Most incomplete work does not need a flag at all. It needs to be structured so the unfinished parts are inert until they are ready.
+[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are the best-known way to make that separation, which is why teams reach for them first. But a runtime `if (flag)` branch is conditional complexity. You have to test every flag combination, and you have to delete the flag later or it becomes permanent debt. Most incomplete work does not need a flag at all. Structure the work so the unfinished parts are inert until they are ready.
 
 Use the least intrusive technique that solves the problem. Reach for a flag only when nothing simpler applies.
 
@@ -51,13 +51,13 @@ Ask these questions in order. Stop at the first "yes."
 3. **Do you need to prove the new logic produces the same answer as the old logic before you trust it?** Use [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}).
 4. **Are you changing a shared contract, like a database schema or an API, that other code or services depend on?** Use [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}).
 5. **Are you replacing a whole subsystem or service, not a single implementation?** Use the [strangler fig pattern]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) at the routing layer.
-6. **Is this strictly a business release timing decision, such as a coordinated launch, a kill switch, an entitlement, or an experiment, that none of the above can express?** Use a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}), and only at the edge of the system.
+6. **Is this strictly a business release timing decision that none of the above can express?** Examples include a coordinated launch, a kill switch, an entitlement, or an experiment. Use a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}), and only at the edge of the system.
 
 Reaching question 6 is a legitimate reason to flag. Reaching for a flag at question 1 is not.
 
 ## Rules if you do reach for a flag
 
-- **Flag at the edge, not in domain logic.** Put the check in a controller, router, or top-level entry point, never buried inside business logic or a data-access layer.
+- **Flag at the edge, not in domain logic.** Put the check in a controller, router, or top-level entry point. Never bury the check inside business logic or a data-access layer.
 - **Give every flag an expiration date at creation time.** No date means the flag is permanent, and permanent release flags are debt.
 - **Create the removal ticket in the same pull request that adds the flag.** Not later.
 - **Never nest flags.** If capability B depends on capability A, extend A's flag instead of stacking a second flag on top of it.

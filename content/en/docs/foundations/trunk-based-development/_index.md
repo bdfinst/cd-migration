@@ -16,9 +16,9 @@ aliases:
 
 ## What is trunk-based development?
 
-Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch - the trunk - at least once per day. The trunk is always kept in a releasable state.
+Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch - the trunk - at least once per day. The team always keeps the trunk in a releasable state.
 
-This is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})**. If your team is not integrating to trunk daily, you are not doing [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}), and you cannot do CD. There is no workaround.
+TBD is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})**. If your team is not integrating to trunk daily, you are not doing [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}), and you cannot do CD. There is no workaround.
 
 > "If it hurts, do it more often, and bring the pain forward."
 >
@@ -27,8 +27,8 @@ This is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/d
 ### What TBD is not
 
 - It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work - you do it in small increments.
-- It is **not** incompatible with code review. It requires review to happen quickly.
-- It is **not** reckless. It is the opposite: small, frequent integrations are far safer than large, infrequent merges.
+- It is **not** incompatible with code review. TBD requires review to happen quickly.
+- It is **not** reckless. TBD is the opposite: small, frequent integrations are far safer than large, infrequent merges.
 
 ## What trunk-based development improves
 
@@ -48,7 +48,7 @@ There are two valid approaches to trunk-based development. Both satisfy the mini
 
 ### Path 1: Short-lived branches
 
-Developers create branches that live for **less than 24 hours**. Work is done on the branch, reviewed quickly, and merged to trunk within a single day.
+Developers create branches that live for **less than 24 hours**. Developers do the work on the branch, get it reviewed quickly, and merge it to trunk within a single day.
 
 **How it works:**
 
@@ -57,7 +57,7 @@ Developers create branches that live for **less than 24 hours**. Work is done on
 3. Make small, focused changes
 4. Open a pull request (or use pair programming as the review)
 5. Merge to trunk before end of day
-6. The branch is deleted after merge
+6. Delete the branch after merge
 
 **Best for teams that:**
 
@@ -70,7 +70,7 @@ Developers create branches that live for **less than 24 hours**. Work is done on
 
 ### Path 2: Direct trunk commits
 
-Developers commit directly to trunk. Quality is ensured through pre-commit checks, pair programming, and strong automated testing.
+Developers commit directly to trunk. Pre-commit checks, pair programming, and strong automated testing ensure quality.
 
 **How it works:**
 
@@ -87,7 +87,7 @@ Developers commit directly to trunk. Quality is ensured through pre-commit check
 - Want maximum integration frequency
 - Have high trust and shared code ownership
 
-**Key constraint:** This requires excellent test coverage and a culture where the team owns quality collectively. Without these, direct trunk commits become reckless.
+**Key constraint:** Direct trunk commits require excellent test coverage and a culture where the team owns quality collectively. Without these, direct trunk commits become reckless.
 
 ## How to choose your path
 
@@ -104,10 +104,10 @@ Both paths are valid. The important thing is **daily integration to trunk**. Do 
 
 Trunk-based development does not work in isolation. These practices make daily integration safe:
 
-- **[Evolutionary coding techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}):** [Dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}), [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}), [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}), and [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) let you merge incomplete work without exposing it to users, in most cases without a flag at all.
+- **[Evolutionary coding techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}):** [Dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}), [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}), [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}), and [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) let you merge incomplete work without exposing it to users. In most cases, you need no flag at all.
 - **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}):** The last-resort technique in that hierarchy, for cases the others can't cover.
 - **Small, atomic commits:** Each commit is a single logical change that leaves trunk releasable.
-- **[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})/ATDD:** Tests written before code provide the safety net for frequent integration.
+- **[TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})/ATDD:** Tests you write before the code provide the safety net for frequent integration.
 
 The [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) section and the [TBD Migration Guide]({{< relref "tbd-migration" >}}) cover each practice in detail with code examples.
 

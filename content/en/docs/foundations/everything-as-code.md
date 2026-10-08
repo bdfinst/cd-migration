@@ -13,8 +13,8 @@ aliases:
 
 If it is not in version control, it does not exist. If it is not delivered through a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), it
 is a manual step. Manual steps block [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). This page establishes the principle that
-everything required to build, deploy, and operate your system is defined as code, version
-controlled, reviewed, and delivered through the same automated pipelines as your application.
+everything required to build, deploy, and operate your system is defined as code. You version
+control that code, review it, and deliver it through the same automated pipelines as your application.
 {{% /pageinfo %}}
 
 ## One process for every change
@@ -32,9 +32,9 @@ When something is defined as code:
 - It is **delivered through a pipeline.** No SSH, no clicking through UIs, no manual steps. The
   pipeline is the only path to production for everything, not only application code.
 
-When something is not defined as code, it is a liability. It cannot be reviewed, tested, or
-reproduced. It exists only in someone's head, a wiki page that is already outdated, or a
-configuration that was applied manually and has drifted from any documented state.
+When something is not defined as code, it is a liability. Nobody can review, test, or
+reproduce it. It exists only in someone's head or in a wiki page that is already outdated. Or it
+exists as a manual configuration that has drifted from any documented state.
 
 ## What belongs in version control
 
@@ -61,10 +61,9 @@ defined in code and provisioned through automation.
 - Filing tickets for another team to provision an environment
 - "Snowflake" servers that were configured by hand and nobody knows how to recreate
 
-**Why it matters for CD:** If creating or modifying an environment requires manual steps, your
-[deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) is limited by the availability and speed of the person who performs those
-steps. If a production server fails and you cannot recreate it from code, your [mean time to
-recovery]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) is measured in hours or days instead of minutes.
+**Why it matters for CD:** Creating or modifying an environment might require manual steps. If so, the availability and speed of the person who performs those
+steps limit your [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}). A production server might fail when you cannot recreate it from code. Then you measure your [mean time to
+recovery]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) in hours or days instead of minutes.
 
 ### Pipeline definitions
 
@@ -93,11 +92,11 @@ control, and applied through the pipeline.
 **Why it matters for CD:** Database changes are one of the most common reasons teams cannot deploy
 continuously. If schema changes require manual intervention, coordinated downtime, or a separate
 approval process, they become a bottleneck that forces batching. Treating schemas as code with
-automated migrations removes this bottleneck.
+automated migrations removes that bottleneck.
 
 ### Application configuration
 
-Environment-specific values (connection strings, API endpoints, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) states, logging levels) should live in a config management system and flow through a pipeline so the same [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is deployed to every environment. When configuration is committed and reviewed like code, you eliminate drift between environments and "works in staging" surprises. See [Application Config]({{< relref "/docs/pipeline/application-config" >}}) for detailed guidance.
+Environment-specific values (connection strings, API endpoints, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) states, logging levels) should live in a config management system and flow through a pipeline. That way, the same [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is deployed to every environment. When configuration is committed and reviewed like code, you eliminate drift between environments and "works in staging" surprises. See [Application Config]({{< relref "/docs/pipeline/application-config" >}}) for detailed guidance.
 
 ### Monitoring, alerting, and observability
 
@@ -124,8 +123,8 @@ checks) should be defined as code and enforced automatically.
 
 **Why it matters for CD:** Security and compliance requirements are the most common organizational
 blockers for CD. When security controls are defined as code and enforced by the pipeline, you can
-prove to auditors that every change passed security checks automatically. This is stronger
-evidence than a manual review, and it does not slow down delivery.
+prove to auditors that every change passed security checks automatically. Automated checks are stronger
+evidence than a manual review, and they do not slow down delivery.
 
 ## The "one change, one process" test
 
@@ -146,7 +145,7 @@ ticket to another team, or a manual step, it is not.
 | Monitoring and alerting | Rarely | Monitoring gaps, unreproducible dashboards, alert fatigue |
 | Security policies | Rarely | Security as a gate instead of a guardrail, audit failures |
 
-**The goal is for every row in this table to be "yes."** You will not get there overnight, but every
+**The goal is for every row in this table to be "yes."** You will not get there overnight. But every
 artifact you move from manual to code-managed removes a bottleneck and a risk.
 
 ## What your team controls vs. what requires broader change
@@ -168,8 +167,8 @@ outside your boundary. Others depend on access, budget, or policy decisions beyo
   service infrastructure, or work within a self-service platform they provide.
 - **Security policies:** Defining access policies and compliance checks as code typically
   requires collaboration with a security or compliance team. The goal is to automate what they
-  currently do manually - frame it as making their work more consistent and auditable, not
-  bypassing their control.
+  currently do manually. Frame the change as making their work more consistent and auditable, not
+  as bypassing their control.
 - **Closing manual back doors:** Revoking direct production access (SSH, console access) is an
   organizational policy decision. Build the case with data: show that your pipeline is reliable
   enough to be the only path before asking for the access to be revoked.
@@ -202,12 +201,12 @@ Once an artifact is defined as code, treat it with the same rigor as application
 
 ### Eliminate manual pathways
 
-The hardest part is closing the manual back doors. As long as someone can SSH into a server and
-make a change, or click through a UI to modify infrastructure, the code-defined state will drift
-from reality.
+The hardest part is closing the manual back doors. Someone might SSH into a server to make a
+change, or click through a UI to modify infrastructure. As long as they can, the code-defined state
+will drift from reality.
 
 The principle is the same as [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}})
-for application code: the pipeline is the only way any change reaches production. This applies to
+for application code: the pipeline is the only way any change reaches production. The same rule applies to
 infrastructure, configuration, schemas, monitoring, and policies as much as it applies to
 application code.
 

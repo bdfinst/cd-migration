@@ -19,19 +19,19 @@ Code review is essential for quality, but it is also the most common bottleneck 
 Automated tools catch syntax errors, style violations, and known vulnerability patterns. Code review exists for the things automation cannot evaluate.
 
 - **Cognitive load and maintainability:** Tools can count complexity points, but they cannot judge whether the logic is intuitive. A human reviewer catches over-engineered abstractions and code that will confuse a teammate maintaining it at 3:00 AM.
-- **Systemic context:** Static analysis sees the code but does not remember the past. A peer reviewer remembers that Service X handles retries poorly and can spot an implementation that is technically correct but will trigger a known systemic weakness. Reviewers also verify that the solution aligns with the platform's long-term architectural direction.
-- **Knowledge distribution:** If the author is the only person who understands a critical path, the team is at risk. Review ensures at least one other person shares that context. It is also the primary mechanism for cross-pollinating new patterns and domain knowledge across the team.
-- **Novel security and logic bypasses:** Automation catches known patterns like SQL injection. It often misses logical security flaws - for example, a change to a discount calculation that accidentally allows a negative total. Human reviewers also verify that the developer did not take a dangerous shortcut that bypasses a policy not yet codified in the pipeline.
+- **Systemic context:** Static analysis sees the code but does not remember the past. A peer reviewer remembers that Service X handles retries poorly. That reviewer can spot an implementation that is technically correct but will trigger a known systemic weakness. Reviewers also verify that the solution aligns with the platform's long-term architectural direction.
+- **Knowledge distribution:** If the author is the only person who understands a critical path, the team is at risk. Review ensures at least one other person shares that context. Review is also the primary mechanism for cross-pollinating new patterns and domain knowledge across the team.
+- **Novel security and logic bypasses:** Automation catches known patterns like SQL injection. Automation often misses logical security flaws - for example, a change to a discount calculation that accidentally allows a negative total. Human reviewers also verify that the developer did not take a dangerous shortcut that bypasses a policy not yet codified in the pipeline.
 
-These are real benefits. The challenge is that traditional code review - open a pull request, wait for someone to review it, address comments, wait again - is too slow for CD.
+These are real benefits. The challenge is that traditional code review is too slow for CD. You open a pull request, wait for someone to review it, address comments, and wait again.
 
 In a CD workflow, code review must happen **within minutes or hours, not days**. The review is still rigorous, but the process is designed for speed.
 
 ## The core tension: quality vs. flow
 
-Traditional teams optimize review for thoroughness: detailed comments, multiple reviewers, extensive back-and-forth. This produces high-quality reviews but blocks flow.
+Traditional teams optimize review for thoroughness: detailed comments, multiple reviewers, extensive back-and-forth. This approach produces high-quality reviews but blocks flow.
 
-CD teams optimize review for speed without sacrificing the quality that matters. The key insight is that **most of the quality benefit of code review comes from small, focused reviews done quickly**, not from exhaustive reviews done slowly.
+CD teams optimize review for speed without sacrificing the quality that matters. The key insight: **most of the quality benefit of code review comes from small, focused reviews done quickly**, not from exhaustive reviews done slowly.
 
 | Traditional Review | CD-Compatible Review |
 |--------------------|----------------------|
@@ -46,11 +46,11 @@ CD teams optimize review for speed without sacrificing the quality that matters.
 
 ### Synchronous review (preferred for CD)
 
-In synchronous review, the reviewer and author are engaged at the same time. Feedback is immediate. Questions are answered in real time. The review is done when the conversation ends.
+In synchronous review, the reviewer and author are engaged at the same time. Feedback is immediate. The author answers questions in real time. The review is done when the conversation ends.
 
 **Methods:**
 
-- **Pair programming:** Two developers work on the same code at the same time. Review is continuous. There is no separate review step because the code was reviewed as it was written.
+- **Pair programming:** Two developers work on the same code at the same time. Review is continuous. There is no separate review step because each developer reviews the code as it is written.
 - **Mob programming:** The entire team (or a subset) works on the same code together. Everyone reviews in real time.
 - **Over-the-shoulder review:** The author walks the reviewer through the change in person or on a video call. The reviewer asks questions and provides feedback immediately.
 
@@ -63,7 +63,7 @@ In synchronous review, the reviewer and author are engaged at the same time. Fee
 
 ### Asynchronous review (when necessary)
 
-Sometimes synchronous review is not possible - time zones, schedules, or team preferences may require asynchronous review. This is fine, but it must be fast.
+Sometimes synchronous review is not possible - time zones, schedules, or team preferences may require asynchronous review. Async review is fine, but it must be fast.
 
 **Rules for async review in a CD workflow:**
 
@@ -76,7 +76,7 @@ Sometimes synchronous review is not possible - time zones, schedules, or team pr
 
 ### Pair programming as review
 
-When two developers pair on a change, the code is reviewed as it is written. There is no separate review step, no pull request waiting for approval, and no delay to integration.
+When two developers pair on a change, they review the code as they write it. There is no separate review step, no pull request waiting for approval, and no delay to integration.
 
 **How it works with TBD:**
 
@@ -117,7 +117,7 @@ For teams that use pull requests, rapid async review adapts the pull request wor
 - **Keep PRs small.** Target < 200 lines of changed code. Smaller PRs get reviewed faster and more thoroughly.
 - **Provide context.** Write a clear PR description that explains what the change does, why it is needed, and how to verify it. A good description reduces review time dramatically.
 - **Use automated checks.** Run linting, formatting, and tests before the human review. The reviewer should focus on logic and design, not style.
-- **Approve and merge quickly.** If the change looks correct, approve it. Do not hold it for nitpicks. Nitpicks can be addressed in a follow-up commit.
+- **Approve and merge quickly.** If the change looks correct, approve it. Do not hold it for nitpicks. Address nitpicks in a follow-up commit.
 
 ## What to review
 
@@ -144,7 +144,7 @@ Not everything in a code change deserves the same level of scrutiny. Focus revie
 
 ## Review scope for small changes
 
-In a CD workflow, most changes are small - tens of lines, not hundreds. This changes the economics of review.
+In a CD workflow, most changes are small - tens of lines, not hundreds. Small changes alter the economics of review.
 
 | Change Size | Expected Review Time | Review Depth |
 |-------------|----------------------|--------------|
@@ -176,7 +176,7 @@ Establish clear team agreements about review expectations. Without explicit agre
 - Track review turnaround time. If it consistently exceeds 2 hours, discuss it in retrospectives.
 - Make review a first-class responsibility, not something developers do "when they have time."
 - If a reviewer is unavailable, any other team member can review. Do not create single-reviewer dependencies.
-- Consider pairing as the default and async review as the exception. This eliminates the review bottleneck entirely.
+- Consider pairing as the default and async review as the exception. Pairing by default eliminates the review bottleneck entirely.
 
 ## Code review and trunk-based development
 
@@ -189,7 +189,7 @@ Code review and TBD work together, but only if review does not block integration
 | Trunk is always releasable | Reviewers focus on correctness, not perfection |
 | Small, frequent changes | Small changes are reviewed quickly and thoroughly |
 
-If your team finds that review is the bottleneck preventing daily integration, the most effective solution is to adopt pair programming. It eliminates the review step entirely by making review continuous.
+If your team finds that review is the bottleneck preventing daily integration, the most effective solution is to adopt pair programming. Pairing eliminates the review step entirely by making review continuous.
 
 ## Measuring success
 
@@ -202,7 +202,7 @@ If your team finds that review is the bottleneck preventing daily integration, t
 
 ## Next step
 
-Code review practices need to be codified in team agreements alongside other shared commitments. Continue to [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) to establish your team's definitions of done, ready, and [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) practice.
+Codify code review practices in team agreements alongside other shared commitments. Continue to [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) to establish your team's definitions of done, ready, and [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) practice.
 
 ---
 
