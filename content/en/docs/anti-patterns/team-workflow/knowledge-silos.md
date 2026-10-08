@@ -70,7 +70,7 @@ the context is fresh and the cost of change is low.
 ### It makes delivery timelines unpredictable
 
 One person's vacation, sick day, or meeting schedule can block the entire team's work in a
-specific area. The team cannot plan around this because they never know when the bottleneck
+specific area. The team cannot plan around these absences because they never know when the bottleneck
 person will be unavailable. Delivery timelines depend on individual availability rather than
 team capacity.
 

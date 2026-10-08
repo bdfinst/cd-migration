@@ -26,9 +26,9 @@ changes.
 
 ## Why it matters for CD migration
 
-If you build a separate artifact for each environment - or worse, make manual adjustments
-to artifacts at deployment time - you can never be certain that what you tested is what
-you deployed. Every rebuild introduces the possibility of variance: a different dependency
+If you build a separate artifact for each environment, you can never be certain that what
+you tested is what you deployed. Manual adjustments to artifacts at deployment time are
+even worse. Every rebuild introduces the possibility of variance: a different dependency
 resolved, a different compiler flag applied, a different snapshot of the source.
 
 Immutable artifacts eliminate an entire class of "works in staging, fails in production"
@@ -43,10 +43,10 @@ staging to production, the deployment process becomes verifiable instead of hope
 
 ### Build once
 
-The artifact is produced exactly once, during the build stage of the pipeline. It is
-stored in an artifact repository (such as a container registry, Maven repository, npm
-registry, or object store) and every subsequent stage of the pipeline - and every
-environment - pulls and deploys that same artifact.
+The artifact is produced exactly once, during the build stage of the pipeline. The
+pipeline stores it in an artifact repository (such as a container registry, Maven
+repository, npm registry, or object store). Every subsequent pipeline stage and every
+environment pulls and deploys that same artifact.
 
 ### No manual adjustments
 
@@ -84,10 +84,10 @@ changed build environments.
 
 ### SNAPSHOT or mutable versions
 
-Using version identifiers like `-SNAPSHOT` (Maven), `latest` (container images), or
-unversioned "current" references means the same version label can point to different
-artifacts at different times. This makes it impossible to know exactly what is deployed.
-This applies to both the artifacts you produce and the dependencies you consume. A
+Some version identifiers are mutable: `-SNAPSHOT` (Maven), `latest` (container images), and
+unversioned "current" references. With these, the same version label can point to different
+artifacts at different times, so you cannot know exactly what is deployed. The problem
+applies to both the artifacts you produce and the dependencies you consume. A
 dependency pinned to a `-SNAPSHOT` version can change underneath you between builds,
 silently altering your artifact's behavior without any version change. Version numbers
 are cheap - assign a new one for every meaningful change rather than reusing a mutable
@@ -107,8 +107,9 @@ environment-coupled artifacts. The artifact should be environment-agnostic;
 
 ### Artifacts that self-modify
 
-Applications that write to their own deployment directory, modify their own configuration
-files at runtime, or store state alongside the application binary are not truly immutable.
+Some applications write to their own deployment directory, modify their own configuration
+files at runtime, or store state alongside the application binary. These applications are
+not truly immutable.
 Runtime state must be stored externally.
 
 ## Good patterns
@@ -135,9 +136,9 @@ definition: changing any byte changes the address.
 
 ### Signed artifacts
 
-Digitally sign artifacts at build time and verify the signature before deployment. This
-guarantees that the artifact has not been tampered with between the build and the
-deployment. This is especially important for supply chain security.
+Digitally sign artifacts at build time and verify the signature before deployment. The
+signature guarantees that nobody tampered with the artifact between the build and the
+deployment. Signing is especially important for supply chain security.
 
 ### Reproducible builds
 
@@ -150,13 +151,12 @@ it possible to verify that an artifact was produced from its claimed source.
 ### Step 1: Separate build from deployment
 
 If your pipeline currently rebuilds for each environment, restructure it into two
-distinct phases: a build phase that produces a single artifact, and a deployment phase that
-takes that artifact and deploys it to a target environment with the appropriate
-configuration.
+distinct phases. The build phase produces a single artifact. The deployment phase deploys
+that artifact to a target environment with the appropriate configuration.
 
 ### Step 2: Set up an artifact repository
 
-Choose an artifact repository appropriate for your technology stack - a container registry
+Choose an artifact repository that fits your technology stack. Use a container registry
 for container images, a package registry for libraries, or an object store for compiled
 binaries. All downstream pipeline stages pull from this repository.
 
@@ -181,8 +181,8 @@ the artifact in the repository.
 ### Step 6: Verify immutability
 
 Periodically verify that what is running in production matches what the pipeline built.
-Compare image digests, checksums, or signatures. This catches any manual modifications
-that may have bypassed the pipeline.
+Compare image digests, checksums, or signatures. The comparison catches any manual
+modifications that bypassed the pipeline.
 
 ## Connection to the pipeline phase
 
@@ -193,7 +193,7 @@ build is repeatable. The [deployable definition]({{< relref "/docs/pipeline/depl
 artifact meets quality criteria. Immutability ensures that the validated artifact - and
 only that artifact - reaches production.
 
-This practice also directly supports [rollback]({{< relref "/docs/pipeline/rollback" >}}): because previous artifacts
+Immutability also directly supports [rollback]({{< relref "/docs/pipeline/rollback" >}}). Because previous artifacts
 are stored unchanged in the artifact repository, rolling back means deploying a
 previous known-good artifact.
 

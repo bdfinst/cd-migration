@@ -24,7 +24,7 @@ generated tests are brittle, behavior was never specified. And when code is read
 that constraint was downstream all along.
 
 Read these as system signals, not "AI is the problem." Every place an agent stalls is a coordination
-cost made visible, and the start of your improvement backlog.
+cost made visible. Each one starts your improvement backlog.
 
 This is the most honest feedback a delivery system can get, because an agent is a literal executor.
 It cannot lean on tribal knowledge, read a hallway for context, or quietly work around a vague
@@ -38,9 +38,10 @@ not a flaw in the agents, it is the diagnostic working as intended."
 High usage is not high value. A team can roll out copilots to everyone and leave the delivery system
 exactly as coupled as before. Two measures matter, and neither is adoption.
 
-- **Leading: did a dependency leave the system?** This is the Golden Rule's test, visible in the
-  time from idea to clear intent, the wait for a design decision, the share of changes validated
-  automatically, and the number of controls moved from a meeting into the pipeline.
+- **Leading: did a dependency leave the system?** This question is the Golden Rule's test. You can
+  see the answer in the time from idea to clear intent and the wait for a design decision. You can
+  also see it in the share of changes validated automatically and the number of controls moved from
+  a meeting into the pipeline.
 - **Outcome: is value actually moving faster?** Shorter
   [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), more frequent safe
   delivery, less work aging in queues.
@@ -56,19 +57,22 @@ Layer 1, the code. That is AI Process Engineering: every property applied is a d
 and by the Golden Rule, your odds doubled.
 
 But the payoff is lopsided, and a leader has to respect the limit. **AI can do the work, but it
-cannot accept the work.** It can draft the requirement, the design, and the code, but only the real
-user can confirm a change matches their job. When the same scarce expert both takes in the work and
-signs it off, AI speeds up the front and leaves the back untouched, and the bottleneck moves to
-where automation cannot help. So the move has two halves: aim the properties at the dependencies they
-can remove, and deliberately fund the human judgment they cannot.
+cannot accept the work.** AI can draft the requirement, the design, and the code. Only the real
+user can confirm a change matches their job.
+
+Sometimes the same scarce expert both takes in the work and signs it off. Then AI speeds up the
+front, leaves the back untouched, and the bottleneck moves to where automation cannot help. So the
+move has two halves: aim the properties at the dependencies they can remove, and deliberately fund
+the human judgment they cannot.
 
 ### Principle 4: Build intent, safety, and control into the flow
 
-Agents are fast and literal. They act safely only inside boundaries they can see. Everything a
-human used to carry in their head - the requirement's real intent, the architecture rule no one
-wrote down, the security expectation, the unspoken fact that "done" includes an audit artifact - has
-to become something the system can enforce: testable intent, constraints expressed as rules, checks
-built into the pipeline, quality gates that encode real behavior. This is Coherence made executable.
+Agents are fast and literal, and they act safely only inside boundaries they can see. Consider everything a human used to carry in
+their head. That includes the requirement's real intent, the architecture rule no one wrote down, and
+the security expectation. It also includes the unspoken fact that "done" includes an audit artifact.
+
+All of it has to become something the system can enforce. That means testable intent, constraints expressed as rules, checks
+built into the pipeline, and quality gates that encode real behavior. Enforceable rules are Coherence made executable.
 
 The same logic governs controls. At human speed an organization survives late-stage gates. At agent
 speed they become traffic jams, because every control outside the flow is a dependency, and
@@ -96,10 +100,12 @@ your odds.
 Knowledge sits first for a reason. It is the [deepest of the three C's]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#underneath-the-three-cs-knowledge" >}}),
 and it is the one earlier automation could never touch. A script, a pipeline, a workflow engine can
 only execute a process someone has already written down; it cannot supply knowledge that was never
-captured. An agent can. It reads the codebase, the tickets, the chat history, and the runbooks and
-**infers and extracts** the understanding that lived in someone's head - it discovers the process
-rather than merely following one. That is why ACD does more than expose a knowledge gap: it can fill
-it. The diagnostic that finds the missing knowledge and the tool that supplies it are the same tool.
+captured. An agent can: it reads the codebase, the tickets, the chat history, and the runbooks.
+It **infers and extracts** the understanding that lived in someone's head, so it discovers the process
+rather than merely following one.
+
+That is why ACD does more than expose a knowledge gap: it can fill
+the gap. The diagnostic that finds the missing knowledge and the tool that supplies it are the same tool.
 
 The payoff is lopsided because the flow of work is dominated by wait time and coordination cost.
 Pointing AI at that, rather than at the 12% that is coding, is what produces order-of-magnitude
@@ -112,13 +118,14 @@ to coin-flip or better. Every win came from removing dependencies, not from typi
 AI Process Engineering is not permission to skip engineering discipline. Integrating AI **is**
 software engineering. To be great at it you must be great at DevOps and
 [CI]({{< relref "/docs/reference/practices/continuous-integration" >}}), because that is your safety
-net. As the 2025 DORA report, *State of AI-assisted Software Development*, found, AI is "an
-amplifier, magnifying an organization's existing strengths and weaknesses." Point it at a strong
-delivery system and it accelerates; point it at a broken one and it magnifies the dysfunction. The
-advance is augmentation, not replacement. Keep your critical thinking.
+net. The 2025 DORA report, *State of AI-assisted Software Development*, found that AI is "an
+amplifier, magnifying an organization's existing strengths and weaknesses."
 
-This is the same point the [Agentic CD]({{< relref "/docs/agentic-cd" >}}) section makes from the
-engineering side: an agent-generated change must meet or exceed the same quality bar as a
+Point AI at a strong delivery system and it accelerates; point it at a broken one and it magnifies the
+dysfunction. The advance is augmentation, not replacement. Keep your critical thinking.
+
+The [Agentic CD]({{< relref "/docs/agentic-cd" >}}) section makes the same point from the
+engineering side. An agent-generated change must meet or exceed the same quality bar as a
 human-generated change. The pipeline does not care who wrote the code.
 
 ## Related content

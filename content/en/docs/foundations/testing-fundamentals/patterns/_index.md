@@ -19,7 +19,7 @@ Each page in this subsection covers one component pattern. The structure is the 
 
 These are recommended starting points, not exhaustive lists or required gates. Real components have details these pages don't capture; ignore items that don't apply, and add items the pattern doesn't mention but your component clearly needs. The goal is to prompt the conversation, not to constrain it.
 
-API provider, API consumer, scheduled job, and user interface are covered in depth. Event consumer, event producer, CLI/library, and stateful service are deliberately briefer sketches: the same six principles apply, the same checklist still prompts useful questions, and the test double validation model is the same. Use the briefer sketches as a starting point and expand the depth in your own runbooks for the patterns your services actually use.
+API provider, API consumer, scheduled job, and user interface are covered in depth. Event consumer, event producer, CLI/library, and stateful service are deliberately briefer sketches. The same six principles apply, the same checklist still prompts useful questions, and the test double validation model is the same. Use the briefer sketches as a starting point and expand the depth in your own runbooks for the patterns your services actually use.
 
 ## The patterns
 

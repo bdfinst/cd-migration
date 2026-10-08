@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-ML models and data [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) are deployed manually while application code has a full [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})/[CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline. When a developer pushes a change to the application, tests run, an [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is built, and deployment promotes automatically through environments. But the ML model that drives the product's recommendations was trained two months ago and deployed by a data scientist who ran a Python script from their laptop. Nobody knows which version of the model is in production or what training data it was built on.
+ML models and data [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) are deployed manually while application code has a full [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})/[CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline. When a developer pushes a change to the application, tests run, an [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is built, and deployment promotes automatically through environments. But the ML model that drives the product's recommendations was trained two months ago. A data scientist deployed it by running a Python script from their laptop. Nobody knows which version of the model is in production or what training data it was built on.
 
-Data pipelines have a similar problem. The ETL job that populates the feature store was written in a Jupyter notebook, runs on a schedule via a cron job on a single server, and is updated by manually copying a new version to the server when it changes. There is no version control for the notebook, no automated tests for the pipeline logic, and no staging environment where the pipeline can be validated before it runs against production data.
+Data pipelines have a similar problem. The ETL job that populates the feature store was written in a Jupyter notebook. The job runs on a schedule via a cron job on a single server. To update the job, someone manually copies a new version to the server. There is no version control for the notebook and no automated tests for the pipeline logic. There is no staging environment to validate the pipeline before it runs against production data.
 
 ## Common causes
 
@@ -22,15 +22,15 @@ Data pipelines have a similar problem. The ETL job that populates the feature st
 
 The pipeline infrastructure that handles application deployments was not extended to cover model artifacts and data pipelines. Extending it requires ML-aware tooling - model registries, data versioning, training pipelines - that must be built or configured separately from standard application pipeline tools.
 
-Establishing basic practices first - version control for pipeline code, a model registry with version tracking, automated tests for pipeline logic - creates the foundation. A minimal pipeline that validates data pipeline changes before production deployment closes the gap between how application code and model artifacts are treated, removing the dual delivery standard.
+Establishing basic practices first - version control for pipeline code, a model registry with version tracking, automated tests for pipeline logic - creates the foundation. A minimal pipeline that validates data pipeline changes before production deployment closes the gap between how the team treats application code and model artifacts. That pipeline removes the dual delivery standard.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
 ### Manual deployments
 
-The default for ML work is manual because the discipline of ML operations is younger than software deployment automation. Without deliberate investment in model deployment automation, manual remains the default: a data scientist deploys a model by running a script, updating a config file, or copying files to a server.
+The default for ML work is manual because the discipline of ML operations is younger than software deployment automation. Without deliberate investment in model deployment automation, manual remains the default. A data scientist deploys a model by running a script, updating a config file, or copying files to a server.
 
-Applying the same deployment automation principles to model deployment - versioned artifacts, automated promotion, health checks after deployment - closes the gap between ML and application delivery standards.
+Apply the same deployment automation principles to model deployment: versioned artifacts, automated promotion, and health checks after deployment. Those principles close the gap between ML and application delivery standards.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 

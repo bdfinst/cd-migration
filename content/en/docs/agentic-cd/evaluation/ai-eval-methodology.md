@@ -116,7 +116,7 @@ false positive rates. They check structural properties of the output.
 
 A score arithmetic grader parses category scores and weights from agent output, computes the weighted average, and compares it to the reported overall score. A small tolerance (for example, +/- 3 points) accommodates rounding. This catches a common failure mode: the agent reports individual category scores and a total that do not add up.
 
-A report structure grader validates that the output contains required headings at the correct level, that headings match expected patterns, that required sections have non-empty content, and that the output falls within length bounds.
+A report structure grader validates that the output contains required headings at the correct level and that headings match expected patterns. It also validates that required sections have non-empty content and that the output falls within length bounds.
 
 ### Layer 2: Transcript graders
 
@@ -129,15 +129,21 @@ the agent's tool-call sequence and conversation turns to verify sound process.
 - The agent used multiple evidence sources, not only one
 - Evidence-gathering actions make up a sufficient proportion of total actions
 
-An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (for example, at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
+An evidence gathering grader checks three things:
+
+- Whether the agent used evidence-gathering tools (Read, Glob, Grep) before it stated findings
+- Whether the agent used at least two different evidence tools
+- Whether evidence-gathering actions make up a sufficient proportion of total actions (for example, at least 40%)
+
+This grader catches agents that jump to conclusions without reading the code. It also catches agents that rely on a single tool without examining actual file contents.
 
 ### Layer 3: LLM rubrics
 
 LLM rubrics use a language model as judge to evaluate qualities that resist
-deterministic checking: accuracy of findings, quality of recommendations, appropriate
-severity ratings, and absence of hallucination.
+deterministic checking. These qualities include accuracy of findings, quality of recommendations,
+appropriate severity ratings, and absence of hallucination.
 
-A typical code quality rubric defines weighted criteria such as correctness, readability, maintainability, idiomatic usage, and error handling, each scored on a 1-5 scale. The LLM judge scores each criterion, a weighted total is computed, and the result passes if it meets a threshold (for example, 3.5 out of 5).
+A typical code quality rubric defines weighted criteria such as correctness, readability, maintainability, idiomatic usage, and error handling, each scored on a 1-5 scale. The LLM judge scores each criterion, and the grader computes a weighted total. The result passes if it meets a threshold (for example, 3.5 out of 5).
 
 LLM rubrics are the slowest and most expensive grading layer. Use them for qualities
 that the other layers cannot check.

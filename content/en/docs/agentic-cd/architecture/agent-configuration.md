@@ -51,12 +51,15 @@ does not review code. Review agents do not modify code. Each agent has one respo
 This is the same separation of concerns that [pipeline enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}})
 applies at the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) level - brought to the pre-commit level.
 
-**Every agent boundary is a [token]({{< relref "/docs/reference/glossary#token" >}}) budget boundary.** What the orchestrator passes to the
-implementation agent, what it passes to the review orchestrator, and what each sub-agent
-receives and returns are all token cost decisions. The configuration below applies the
-[tokenomics strategies]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) concretely: model routing by task complexity,
-structured outputs between agents, [prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) through stable [system prompts]({{< relref "/docs/reference/glossary#system-prompt" >}}) placed
-first in each [context]({{< relref "/docs/reference/glossary#context-llm" >}}), and minimum-necessary-context rules at every boundary.
+**Every agent boundary is a [token]({{< relref "/docs/reference/glossary#token" >}}) budget boundary.** Each handoff is a token cost decision. That includes what the orchestrator passes to the
+implementation agent and the review orchestrator. It also includes what each sub-agent receives
+and returns. The configuration below applies the
+[tokenomics strategies]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) concretely:
+
+- Model routing by task complexity
+- Structured outputs between agents
+- [Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) through stable [system prompts]({{< relref "/docs/reference/glossary#system-prompt" >}}) placed first in each [context]({{< relref "/docs/reference/glossary#context-llm" >}})
+- Minimum-necessary-context rules at every boundary
 
 This page defines the configuration for each component in order: [Orchestrator](#the-orchestrator), [Implementation Agent](#the-implementation-agent), [Review Orchestrator](#the-review-orchestrator), and four [Review Sub-Agents](#review-sub-agents). The [Skills](#skills) section defines the session procedures each component uses. The [Hooks](#hooks) section defines the pre-commit gate sequence. The [Token Budget](#token-budget) section applies the tokenomics strategies to this configuration.
 
@@ -69,7 +72,9 @@ It does not generate implementation code. Its job is routing and context hygiene
 
 **Recommended model tier:** Small to mid. The orchestrator routes, assembles context, and
 writes session summaries. It does not reason about code. A frontier model here wastes tokens
-on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash.
+on a task that does not require frontier reasoning.
+
+Claude: Haiku. Gemini: Flash.
 
 **Responsibilities:**
 
@@ -81,7 +86,7 @@ on a task that does not require frontier reasoning. Claude: Haiku. Gemini: Flash
 - Enforce the pipeline-red rule ([ACD constraint 8]({{< relref "/docs/agentic-cd#acd-extensions-to-minimumcd" >}})):  if the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is failing,
   route only to pipeline-restore mode; block new feature work
 
-**Rules injected into the orchestrator system prompt.** The context assembly order below follows the general pattern from [Configuration Quick Start: Context Loading Order]({{< relref "/docs/agentic-cd/getting-started/agent-setup#context-loading-order" >}}), applied to this specific agent configuration:
+**Rules injected into the orchestrator system prompt.** The context assembly order below applies the general pattern from [Configuration Quick Start: Context Loading Order]({{< relref "/docs/agentic-cd/getting-started/agent-setup#context-loading-order" >}}) to this agent configuration:
 
 {{< card code=true header="**Orchestrator system prompt rules**" lang="markdown" >}}
 ## Orchestrator Rules
@@ -130,10 +135,11 @@ The implementation agent generates test code and production code for the current
 It operates within the context the orchestrator provides and does not reach outside that context.
 
 **Recommended model tier:** Mid to frontier. Code generation and test-first implementation
-require strong reasoning. This is the highest-value task in the session - invest model
-capability here. Output verbosity should be controlled explicitly: the agent returns code
-only, not explanations or rationale, unless the orchestrator requests them. Claude: Sonnet
-or Opus. Gemini: Pro.
+require strong reasoning. Implementation is the highest-value task in the session, so invest model
+capability here. Control output verbosity explicitly: the agent returns code
+only, not explanations or rationale, unless the orchestrator requests them.
+
+Claude: Sonnet or Opus. Gemini: Pro.
 
 **Receives from the orchestrator:**
 
@@ -644,7 +650,7 @@ the baseline mechanical checks.
 
 ## Token budget
 
-**A rising per-session cost with a stable block rate means context is growing unnecessarily. A rising block rate without rising cost means the review agents are finding real issues without accumulating noise.** Track these two signals and the cause of any cost increase becomes immediately clear.
+**A rising per-session cost with a stable block rate means context is growing unnecessarily. A rising block rate without rising cost means the review agents are finding real issues, not noise.** Track these two signals, and the cause of any cost increase becomes clear.
 
 The [tokenomics strategies]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) apply directly to this configuration. Three
 decisions have the most impact on cost per session.
@@ -664,8 +670,8 @@ this configuration:
 | Performance Review | Small to mid | Haiku or Sonnet | Flash | Structural pattern recognition; timeout and resource signatures |
 | Concurrency Review | Mid | Sonnet | Pro | Concurrent execution semantics; more than patterns, less than security |
 
-Running the implementation agent on a frontier model and routing the review orchestrator
-and performance review agent to smaller models cuts the token cost of a full session
+Run the implementation agent on a frontier model. Route the review orchestrator and the
+performance review agent to smaller models. This split cuts the token cost of a full session
 substantially compared to using one model for everything.
 
 ### Prompt caching
@@ -686,7 +692,7 @@ The `/start-session` and `/review` skills assemble context in this order:
 ### Measuring cost per session
 
 Track token spend at the session level, not the call level. A session that costs 10x the
-average is a design problem - usually an oversized context bundle passed to the implementation
+average is a design problem. The usual cause is an oversized context bundle passed to the implementation
 agent, or a review sub-agent receiving more content than its check requires.
 
 Metrics to track per session:

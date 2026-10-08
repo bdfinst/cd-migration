@@ -24,8 +24,8 @@ capacity.
 
 ### Push-based work assignment
 
-When managers distribute work at sprint planning, they are estimating in advance how long each
-item will take and who is the right person for it. Those estimates are routinely wrong. Some
+When managers distribute work at sprint planning, they estimate two things in advance: how long
+each item will take and who is the right person for it. Those estimates are routinely wrong. Some
 items take twice as long as expected; others finish in half the time. Because work was
 pre-assigned, there is no mechanism for the team to self-balance. Fast finishers wait for new
 assignments while slow finishers fall behind, regardless of available team capacity.
@@ -46,9 +46,9 @@ flowing to whoever has capacity.
 
 ## How to narrow it down
 
-1. **Does work get assigned at sprint planning and rarely change hands afterward?** If
-   assignments are fixed at the start of the sprint and the team has no mechanism for
-   rebalancing mid-sprint, the assignment model is the root cause. Start with
+1. **Does work get assigned at sprint planning and rarely change hands afterward?** Check
+   whether assignments are fixed at the start of the sprint with no way to rebalance mid-sprint.
+   If so, the assignment model is the root cause. Start with
    [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}).
 2. **Are developers unable to help with overloaded areas because they do not know the codebase?**
    If the team cannot rebalance because knowledge is siloed, people are locked into their

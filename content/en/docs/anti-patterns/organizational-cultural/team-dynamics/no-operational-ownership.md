@@ -21,6 +21,7 @@ tags:
 The development team builds a service and hands it to operations when it is "ready for production."
 From that point, operations owns it. When the service has an incident, the operations team is
 paged. They investigate, apply workarounds, and open tickets for anything requiring code changes.
+
 Those tickets go into the development team's backlog. The development team triages them during
 sprint planning, assigns them a priority, and schedules them for a future sprint.
 
@@ -54,15 +55,14 @@ Common variations:
   technically defensible. Nobody is accountable for the user-visible outcome, which is that
   the service is slow and nobody is fixing it.
 
-The telltale sign: when asked "who is responsible if this service has an outage at 2am?" there
-is either silence or an answer that refers to a team that did not build the service and does not
-understand its code.
+The telltale sign: ask "who is responsible if this service has an outage at 2am?" The answer is
+either silence or a team that did not build the service and does not understand its code.
 
 ## Why this is a problem
 
-Operational ownership is a feedback loop. When the team that builds a service is also responsible
-for running it, every production problem becomes information that improves the next decision about
-what to build, how to test it, and how to deploy it. When that feedback loop is severed, the
+Operational ownership is a feedback loop. Sometimes the team that builds a service is also
+responsible for running it. Then every production problem becomes information that improves the
+next decision about what to build, how to test it, and how to deploy it. When that feedback loop is severed, the
 signal disappears into a ticket queue and the learning never happens.
 
 ### It reduces quality
@@ -79,12 +79,13 @@ are immediate and personal produce quality that abstract code review cannot.
 
 ### It increases rework
 
-The service crashes. Operations restarts it. A ticket is filed: "service crashed; restarted;
+The service crashes, and operations restarts it. A ticket is filed: "service crashed; restarted;
 running again." The development team closes it as "operations-resolved" without investigating
-why. The service crashes again the following week. Operations restarts it. Another ticket is
-filed. This cycle repeats until the pattern becomes obvious enough to force a root-cause
-investigation - by which point users have been affected multiple times and operations has
-spent hours on a problem that a proper first investigation would have closed.
+why. The service crashes again the following week, and the cycle repeats.
+
+Eventually the pattern becomes obvious enough to force a root-cause investigation. By then, users
+have been affected multiple times. Operations has spent hours on a problem that a proper first
+investigation would have closed.
 
 The root cause is never identified without the developer who wrote the code. Without operational
 feedback reaching that developer, problems are fixed by symptom and the underlying defect stays
@@ -92,24 +93,24 @@ in production.
 
 ### It makes delivery timelines unpredictable
 
-A critical bug surfaces at midnight. Operations opens a ticket. The developer who can fix it
-does not see it until the next business day - and then has to drop current work, context-switch
-into code they may not have touched in weeks, and diagnose the problem from an incident report
-written by someone who does not know the application. By the time the fix ships, half a sprint
+A critical bug surfaces at midnight, and operations opens a ticket. The developer who can fix the bug
+does not see the ticket until the next business day. Then the developer must drop current work
+and context-switch into code they might not have touched in weeks. They diagnose the problem from
+an incident report written by someone who does not know the application. By the time the fix ships, half a sprint
 is gone.
 
 This unplanned work arrives without warning and at unpredictable intervals. Every significant
 production incident is a sprint disruption. Teams without operational ownership cannot plan their
-sprints reliably because they cannot predict how much of the sprint will be consumed by emergency
-responses to production problems in services they no longer actively maintain.
+sprints reliably. They cannot predict how much of the sprint will go to emergency responses for
+services they no longer actively maintain.
 
 ### Impact on continuous delivery
 
 CD requires that the team deploying code has both the authority and the accountability to ensure
 it works in production. The deployment pipeline - automated testing, deployment verification,
-health checks - is only as valuable as the feedback it provides. When the team that deployed the
-code does not receive the feedback from production, the pipeline is not producing the learning
-it was designed to produce.
+health checks - is only as valuable as the feedback it provides. If production feedback does not
+reach the team that deployed the code, the pipeline does not produce the learning it was designed
+for.
 
 CD also depends on a culture where production problems are treated as design feedback. "The service
 went down because the retry logic was wrong" is design information that should change how the
@@ -162,8 +163,8 @@ same incident channel. The boundary is explicit and agreed upon.
 ### Step 6: Close the feedback loop into development practice (ongoing)
 
 Every significant production incident should produce at least one change to the development
-process: a new automated test that would have caught the defect, an improvement to the deployment
-health check, a metric added to the dashboard. This is the core feedback loop that operational
+process. Examples include a new automated test that would have caught the defect, an improved
+deployment health check, or a new dashboard metric. This change is the core feedback loop that operational
 ownership is designed to enable. Track the connection between incidents and development practice
 improvements explicitly.
 

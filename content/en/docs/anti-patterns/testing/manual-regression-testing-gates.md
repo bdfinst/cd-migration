@@ -20,7 +20,7 @@ tags:
 
 Before every release, the team enters a testing phase. Testers open a spreadsheet or test
 management tool containing hundreds of scripted test cases. They walk through each one by hand:
-click this button, enter this value, verify this result. The testing takes days. Sometimes it takes
+click this button, enter this value, verify this result. The testing takes days, sometimes
 weeks. Nothing ships until every case is marked pass or fail, and every failure is triaged.
 
 Developers stop working on new features during this phase because testers need a stable build to
@@ -62,7 +62,7 @@ grows worse with every feature the team builds, and the thoroughness it promises
 ### It reduces quality
 
 Manual testing is less reliable than it appears. A human executing the same test case for the
-hundredth time will miss things. Attention drifts. Steps get skipped. Edge cases that seemed
+hundredth time will miss things. Attention drifts, and steps get skipped. Edge cases that seemed
 important when the test was written get glossed over when the tester is on row 600 of a
 spreadsheet. Studies on manual testing consistently show that testers miss 15-30% of defects
 that are present in the software they are testing.
@@ -74,8 +74,8 @@ partially describes software that no longer exists.
 
 The feedback delay compounds the quality problem. A developer who wrote code two weeks ago gets
 a bug report from a tester during the regression cycle. The developer has lost context on the
-change. They re-read their own code, try to remember what they were thinking, and fix the bug
-with less confidence than they would have had the day they wrote it.
+change. They re-read their own code and try to remember what they were thinking. They fix the
+bug with less confidence than they had the day they wrote it.
 
 Automated tests catch the same classes of bugs in seconds, with perfect consistency, every time
 the code changes. They do not get tired on row 600. They do not skip steps. They run against the
@@ -84,17 +84,16 @@ immediately, while the developer still has full context.
 
 ### It increases rework
 
-The manual testing gate creates a batch-and-queue cycle. Developers write code for two weeks, then
-testers spend a week finding bugs in that code. Every bug found during the regression cycle is
-rework: the developer must stop what they are doing, reload the context of a completed story,
+The manual testing gate creates a batch-and-queue cycle: developers write code for two weeks,
+then testers spend a week finding bugs in it. Every bug found during the regression cycle is
+rework. The developer must stop current work and reload the context of a completed story. They
 diagnose the issue, fix it, and send it back to the tester for re-verification. The re-verification
 may invalidate other test cases, requiring additional re-testing.
 
 The [batch size](../../reference/glossary/#batch-size) amplifies the rework. When two weeks of changes are tested together, a bug could be
 in any of dozens of commits. Narrowing down the cause takes longer because there are more
-variables. When the same bug would have been caught by an automated test minutes after it was
-introduced, the developer would have fixed it in the same sitting - one context switch instead of
-many.
+variables. An automated test would have caught the same bug minutes after it was introduced.
+The developer would have fixed it in the same sitting, with one context switch instead of many.
 
 The rework also affects testers. A bug fix during the regression cycle means the tester must re-run
 affected test cases. If the fix changes behavior elsewhere, the tester must re-run those cases too.
@@ -130,8 +129,8 @@ The test suite never shrinks. A team that takes three days to test today will ta
 six months and five days in a year. The testing phase consumes an ever-growing fraction of the
 team's capacity.
 
-This scaling problem is invisible at first. Three days of testing feels manageable. But the growth
-is relentless. The team that started with 200 test cases now has 800. The test phase that was two
+This scaling problem is invisible at first, because three days of testing feels manageable. But
+the growth is relentless. The team that started with 200 test cases now has 800. The test phase that was two
 days is now a week. And because the test cases were written by different people at different times,
 nobody can confidently remove any of them without risking a missed regression.
 
@@ -143,8 +142,8 @@ duration, not hours to the testing phase. A team with 10,000 automated tests run
 
 Manual regression testing is fundamentally incompatible with [continuous delivery](../../reference/glossary/#cd-continuous-delivery). CD requires that
 any commit can be released at any time. A manual testing gate that takes days means the team can
-release at most once per testing cycle. If the gate takes a week, the team releases at most every
-two or three weeks - regardless of how fast their [pipeline](../../reference/glossary/#pipeline) is or how small their changes are.
+release at most once per testing cycle. If the gate takes a week, the team releases at most
+every two or three weeks. That limit holds regardless of how fast their [pipeline](../../reference/glossary/#pipeline) is or how small their changes are.
 
 The manual gate also breaks the feedback loop that CD depends on. CD gives developers confidence
 that their change works by running automated checks within minutes. A manual gate replaces that
@@ -166,9 +165,11 @@ case in the regression suite:
 3. Rate its value: has this test ever caught a real bug? When was the last time?
 4. Rate its automation potential: can this be tested at a lower level (unit, functional, API)?
 
-Most teams discover that a large percentage of their manual test cases are either redundant (the
-same behavior is tested multiple times), outdated (the feature has changed), or automatable at a
-lower level.
+Most teams discover that many of their manual test cases fall into one of three groups:
+
+- Redundant: multiple cases test the same behavior.
+- Outdated: the feature has changed.
+- Automatable at a lower level.
 
 ### Step 2: Automate the highest-value cases first (weeks 2-4)
 
@@ -180,14 +181,14 @@ damage if they regressed. Automate them:
 - Critical user journeys become a small set of E2E smoke tests.
 
 Do not try to automate everything at once. Start with the cases that give the most confidence per
-minute of execution time. The goal is to build a fast automated suite that covers the riskiest
-scenarios so the team no longer depends on manual execution for those paths.
+minute of execution time. The goal is a fast automated suite that covers the riskiest
+scenarios. The team then no longer depends on manual execution for those paths.
 
 ### Step 3: Run automated tests in the pipeline on every commit
 
-Move the new automated tests into the [CI](../../reference/glossary/#ci-continuous-integration) pipeline so they run on every push. This is the critical
-shift: testing moves from a phase at the end of development to a continuous activity that happens
-with every change.
+Move the new automated tests into the [CI](../../reference/glossary/#ci-continuous-integration) pipeline
+so they run on every push. Running on every push is the critical shift. Testing moves from a
+phase at the end of development to a continuous activity that happens with every change.
 
 Every commit now gets immediate feedback on the critical paths. If a regression is introduced, the
 developer knows within minutes - not weeks.

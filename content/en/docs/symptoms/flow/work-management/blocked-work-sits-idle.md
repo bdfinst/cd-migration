@@ -9,10 +9,10 @@ tags:
 
 ## What you are seeing
 
-A developer opens a ticket on Monday and hits a blocker by Tuesday - a missing dependency, an
-unclear requirement, an area of the codebase they don't understand well. They flag it in standup.
+A developer opens a ticket on Monday and hits a blocker by Tuesday. The blocker might be a missing
+dependency, an unclear requirement, or an area of the codebase they don't understand well. They flag it in standup.
 The item sits in "in progress" for two more days while they work around the blocker or wait for
-it to resolve. Nobody picks it up.
+the blocker to resolve. Nobody picks it up.
 
 The board shows items stuck in the same column for days. Blockers get noted but rarely acted on
 by other team members. At sprint review, several items are "almost done" but not finished - each

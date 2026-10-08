@@ -10,9 +10,10 @@ This architecture suits a team of up to 8-10 people owning a
 [modular monolith]({{< relref "/docs/reference/glossary#modular-monolith" >}}) - a single deployable
 application with well-defined internal module boundaries. The codebase is organized by
 domain, not by technical layer. Each module encapsulates its own data, logic, and
-interfaces, communicating with other modules through explicit internal APIs. The
-application deploys as one unit, but its internal structure makes it possible to reason
-about, test, and change one module without understanding the entire codebase. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})
+interfaces. Modules communicate with each other through explicit internal APIs.
+
+The application deploys as one unit. Its internal structure lets you reason about, test,
+and change one module without understanding the entire codebase. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})
 is linear with parallel stages where dependencies allow.
 
 <div class="pipeline-legend">
@@ -60,7 +61,7 @@ graph TD
 - **[Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}})**: All developers commit to trunk at least daily. The pipeline
   runs on every commit.
 - **Total target time**: Under 15 minutes from commit to production-ready [artifact]({{< relref "/docs/reference/glossary#artifact" >}}).
-  Acceptance tests may extend this to 20 minutes for complex applications.
+  Acceptance tests might extend the total to 20 minutes for complex applications.
 - **Ownership**: The team owns the pipeline definition, which lives in the same repository
   as the application code.
 

@@ -15,8 +15,8 @@ aliases:
 ## Definition
 
 Production-like environments are pre-production environments that mirror the
-infrastructure, configuration, and behavior of production closely enough that passing
-tests in these environments provides genuine confidence that the change will work in
+infrastructure, configuration, and behavior of production. They mirror production closely
+enough that passing tests in them gives genuine confidence that the change will work in
 production.
 
 "Production-like" does not mean "identical to production" in every dimension. It means
@@ -28,9 +28,9 @@ environment needs the right infrastructure, networking, and data characteristics
 ## Why it matters for CD migration
 
 The gap between pre-production environments and production is where deployment failures
-hide. Teams that test in environments that differ significantly from production - in
-operating system, database version, network topology, resource constraints, or
-configuration - routinely discover issues only after deployment.
+hide. Teams that test in environments that differ significantly from production routinely
+discover issues only after deployment. The differences might be in operating system,
+database version, network topology, resource constraints, or configuration.
 
 For a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration, production-like environments are what transform pre-production testing
 from "we hope this works" to "we know this works." They close the gap between the
@@ -71,8 +71,8 @@ environment configuration cannot.
 ### Ephemeral environments
 
 Ephemeral environments are full-stack, on-demand, short-lived environments spun up for a
-specific purpose - a pull request, a test run, a demo - and destroyed when that purpose is
-complete.
+specific purpose, such as a pull request, a test run, or a demo. Teams destroy them when that
+purpose is complete.
 
 Key characteristics of ephemeral environments:
 
@@ -80,8 +80,8 @@ Key characteristics of ephemeral environments:
   message queues, caches, downstream services), not only the application in isolation
 - **On-demand** - any developer or pipeline can spin one up at any time without waiting
   for a shared resource
-- **Short-lived** - they exist for hours or days, not weeks or months. This prevents
-  configuration drift and stale state
+- **Short-lived** - they exist for hours or days, not weeks or months. Short lifetimes
+  prevent configuration drift and stale state
 - **Version controlled** - the environment definition is in code, and the environment is
   created from a specific version of that code
 - **Isolated** - they do not share resources with other environments. No shared databases,
@@ -95,7 +95,7 @@ pre-production environment and block each other's progress.
 ### Data is representative
 
 The data in pre-production environments must be representative of production data in
-structure, volume, and characteristics. This does not mean using production data directly
+structure, volume, and characteristics. Representative does not mean using production data directly
 (which raises security and privacy concerns). It means:
 
 - **Schema matches production** - same tables, same columns, same constraints
@@ -117,8 +117,8 @@ as manual changes accumulate.
 
 ### Environments that differ from production in critical ways
 
-Running a different database version in staging than production, using a different
-operating system, or skipping the load balancer that exists in production creates blind
+Some staging environments run a different database version or operating system than
+production, or skip the load balancer that production uses. These differences create blind
 spots where issues hide until they reach production.
 
 ### "It works on my laptop" as validation
@@ -132,13 +132,13 @@ development, but it does not replace testing in a production-like environment.
 
 Environments created by manually clicking through cloud consoles, running ad-hoc scripts,
 or following runbooks are unreproducible and drift over time. If you cannot destroy and
-recreate the environment from code in minutes, it is not suitable for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).
+recreate the environment from code in minutes, the environment is not suitable for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).
 
 ### Synthetic-only test data
 
-Using only hand-crafted test data with a few happy-path records misses the issues that
-emerge with production-scale data: slow queries, missing indexes, encoding problems, and
-edge cases that only appear in real-world data distributions.
+Hand-crafted test data with a few happy-path records misses the issues that emerge with
+production-scale data. Those issues include slow queries, missing indexes, encoding
+problems, and edge cases that only appear in real-world data distributions.
 
 ## Good patterns
 
@@ -153,19 +153,19 @@ templates.
 
 Automatically provision a full-stack ephemeral environment for every pull request. Run the
 full test suite against this environment. Tear it down when the pull request is merged or
-closed. This provides isolated, production-like validation for every change.
+closed. Per-pull-request environments provide isolated, production-like validation for every change.
 
 ### Production data sampling and anonymization
 
 Build an automated pipeline that samples production data, anonymizes it (removing PII,
-masking sensitive fields), and loads it into pre-production environments. This provides
-realistic data without security or privacy risks.
+masking sensitive fields), and loads it into pre-production environments. The sampled data
+is realistic without security or privacy risks.
 
 ### Service virtualization for external dependencies
 
-For external dependencies that cannot be replicated in pre-production (third-party APIs,
-partner systems), use service virtualization to create realistic test doubles that mimic
-the behavior, latency, and error modes of the real service.
+Some external dependencies cannot be replicated in pre-production (third-party APIs,
+partner systems). For these, use service virtualization to create realistic test doubles.
+The test doubles mimic the behavior, latency, and error modes of the real service.
 
 ### Environment parity monitoring
 
@@ -194,13 +194,13 @@ configuration, providing isolation without the cost of separate clusters.
 **Requires broader change:**
 
 - **Shared infrastructure:** If your staging environment is owned and operated by a platform or
-  ops team, improving parity requires their involvement. Frame it as a request for self-service
+  ops team, improving parity requires their involvement. Frame your ask as a request for self-service
   environment provisioning rather than a configuration change they have to maintain.
 - **Network access and firewall rules:** Production-like network topology often requires changes
   to security groups and firewall rules that your team cannot make unilaterally.
 - **Cloud budget for ephemeral environments:** Spinning up an environment per pull request has
-  a cost. If your team does not have budget authority, you need to make the case to management
-  with the data on how much environment bottlenecks currently cost in developer wait time.
+  a cost. If your team does not have budget authority, make the case to management. Use data
+  on how much environment bottlenecks currently cost in developer wait time.
 
 Start with parity improvements within your control - matching database versions, fixing runtime
 mismatches - while building the case for organizational support on infrastructure ownership.
@@ -245,7 +245,7 @@ on drift. Make parity a continuous concern, not a one-time setup.
 
 Production-like environments are where the pipeline's quality gates run. Without
 production-like environments, the [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}})
-produces a false signal - tests pass in an environment that does not resemble production,
+produces a false signal. Tests pass in an environment that does not resemble production,
 and failures appear only after deployment.
 
 [Immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) flow through these environments unchanged,

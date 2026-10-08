@@ -19,6 +19,7 @@ tags:
 
 During sprint review, a manager pulls up a report showing how many [story points]({{< relref "/docs/reference/glossary#story-points" >}}) each developer
 completed. Sarah finished 21 points. Marcus finished 13. The manager asks Marcus what happened.
+
 Marcus starts padding his estimates next sprint. Sarah starts splitting her work into more tickets
 so the numbers stay high. The team learns that the scoreboard matters more than the outcome.
 
@@ -31,7 +32,7 @@ Common variations:
   reviewing a PR, answering a question) to prove they are working. The board fills with
   administrative noise that obscures the actual delivery work.
 - **The clone-and-close.** When a story rolls over into the next sprint, the developer closes it
-  and creates a new one to avoid the appearance of an incomplete sprint. The original story's
+  and creates a new one. The new story hides the appearance of an incomplete sprint. The original story's
   history is lost. The rollover is hidden.
 - **The seniority expectation.** Senior developers are expected to complete more points than
   juniors. Seniors avoid helping others because pairing, mentoring, and reviewing do not produce
@@ -53,9 +54,9 @@ Cutting corners on testing, skipping edge cases, and merging code that "works fo
 more points per sprint. Quality gates feel like obstacles to the metric rather than safeguards for
 the product.
 
-Teams that measure outcomes instead of output focus on delivering working software. A developer who
-spends two days pairing with a colleague to get a critical feature right is contributing more than
-one who rushes three low-quality stories to completion.
+Teams that measure outcomes instead of output focus on delivering working software. Consider a
+developer who spends two days pairing with a colleague to get a critical feature right. That
+developer contributes more than one who rushes three low-quality stories to completion.
 
 ### It increases rework
 
@@ -74,13 +75,13 @@ they can "complete" more points and look productive. Over time, the relationship
 points and actual effort dissolves. A "5-point story" means whatever the developer needs it to mean
 for the scorecard. Sprint planning based on inflated estimates becomes fiction.
 
-When velocity is a team planning tool with no individual consequence, developers estimate honestly
-because accuracy helps the team plan, and there is no personal penalty for a lower number.
+When velocity is a team planning tool with no individual consequence, developers estimate honestly.
+Accuracy helps the team plan, and there is no personal penalty for a lower number.
 
 ### It destroys collaboration
 
-Helping a teammate debug their code, pairing on a tricky problem, or doing a thorough code review
-all take time away from completing your own stories. When individual points are tracked, every hour
+Helping a teammate debug their code takes time away from completing your own stories. So do
+pairing on a tricky problem and doing a thorough code review. When individual points are tracked, every hour
 spent helping someone else is an hour that does not appear on your scorecard. The rational response
 is to stop helping.
 

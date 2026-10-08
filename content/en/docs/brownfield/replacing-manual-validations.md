@@ -33,15 +33,15 @@ Two rules make this cycle work:
 - **Do not skip "validate."** Run the manual and automated checks in parallel long enough to
   prove the automation catches what the manual step caught. Without this evidence, the team will
   not trust the automation, and the manual step will creep back.
-- **Do not skip "remove."** Keeping both the manual and automated checks adds cost without
-  removing it. The goal is replacement, not duplication. Once the automated check is proven,
+- **Do not skip "remove."** Keeping both the manual and automated checks adds cost and
+  removes none. The goal is replacement, not duplication. Once the automated check proves itself,
   retire the manual step explicitly.
 
 ## Inventory your manual validations
 
 Before you can replace manual validations, you need to know what they are. A
 [value stream map]({{< relref "/docs/assess/value-stream-mapping" >}}) is the fastest way to find them. Walk the
-path from commit to production and mark every point where a human has to inspect, approve, verify,
+path from commit to production. Mark every point where a human has to inspect, approve, verify,
 or execute something before the change can move forward.
 
 Common manual validations and where they typically live:
@@ -79,7 +79,7 @@ High-frequency, long-duration, error-prone validations cause the most friction.
 - Is the validation well-defined? (clear pass/fail vs. subjective judgment)
 
 Start with high-friction, low-effort validations. These give you the fastest return and build
-momentum for harder automations later. This is the same constraint-based thinking described in
+momentum for harder automations later. This prioritization uses the same constraint-based thinking described in
 [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - fix the biggest bottleneck first.
 
 | | Low Effort | High Effort |
@@ -100,7 +100,7 @@ regression testing.
 ### Step 1: Identify
 
 The value stream map shows the 3-day manual regression cycle as the single largest wait time
-between "code complete" and "deployed." This is the constraint.
+between "code complete" and "deployed." That regression cycle is the constraint.
 
 ### Step 2: Automate (start small)
 
@@ -110,8 +110,8 @@ Do not attempt to automate all 200 test cases at once. Rank the test cases by tw
   tests catch the majority of real regressions.)
 - **Business criticality:** Which tests cover the highest-risk functionality?
 
-Pick the top 20 test cases by these criteria. Write automated tests for those 20 first. This is
-enough to start the validation step.
+Pick the top 20 test cases by these criteria. Write automated tests for those 20 first. Twenty tests
+are enough to start the validation step.
 
 ### Step 3: Validate (parallel run)
 
@@ -163,15 +163,15 @@ cases, refactoring is a prerequisite step within the replacement cycle - not a s
 | Scattered database access | Cannot test logic without a running database and specific data | Consolidate data access behind a repository layer that can be substituted in tests |
 
 The key discipline: refactor only the minimum needed for the specific validation you are
-automating. Do not expand the refactoring scope beyond what the current cycle requires. This keeps
-the refactoring small, low-risk, and tied to a concrete outcome.
+automating. Do not expand the refactoring scope beyond what the current cycle requires. A narrow
+scope keeps the refactoring small, low-risk, and tied to a concrete outcome.
 
 For more on decoupling strategies, see
 [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}).
 
 ## The compounding effect
 
-Each completed replacement cycle frees time that was previously spent on manual validation. That
+Each completed replacement cycle frees time that the team previously spent on manual validation. That
 freed time becomes available for the next automation cycle. The pace of migration accelerates as
 you progress:
 
@@ -183,8 +183,8 @@ you progress:
 | After 6 cycles | 2 days | 3 days freed | 6 validations automated |
 | After 8 cycles | 1 day | 4 days freed | 8 validations automated |
 
-Early cycles are the hardest because you have the least available time. This is why starting with
-the highest-friction, lowest-effort validation matters - it frees the most time for the least
+Early cycles are the hardest because you have the least available time. That is why you start with
+the highest-friction, lowest-effort validation. It frees the most time for the least
 investment.
 
 The same compounding dynamic applies to
@@ -209,8 +209,8 @@ The risk of big-step migration:
 - Feature delivery suffers because the team is consumed by a transformation project instead of
   delivering value.
 
-This connects directly to the brownfield migration principle:
-[do not stop delivering features]({{< relref "/docs/migrate-to-cd" >}}). The replacement cycle is designed to produce value at every
+Small steps connect directly to the brownfield migration principle:
+[do not stop delivering features]({{< relref "/docs/migrate-to-cd" >}}). The replacement cycle produces value at every
 iteration, not only at the end.
 
 For more on decomposing work into small steps, see
@@ -229,7 +229,7 @@ Track these metrics to gauge migration progress. Start collecting them from
 | Deployment frequency | How often you deploy to production | Increasing |
 | Lead time for changes | Time from commit to production | Decreasing |
 
-If manual validations remaining is decreasing but deployment frequency is not increasing, you may
+If manual validations remaining is decreasing but deployment frequency is not increasing, you might
 be automating low-friction validations that are not on the critical path. Revisit your
 prioritization and focus on the validations that are actually blocking faster delivery.
 

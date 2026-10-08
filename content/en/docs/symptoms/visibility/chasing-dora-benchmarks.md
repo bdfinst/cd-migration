@@ -15,13 +15,13 @@ tags:
 
 The team has started tracking DORA metrics and is now asking which benchmark tier they should
 be aiming for. Someone has seen the DORA research showing that elite performers deploy hundreds
-of times per day, and the question on the table is: what number should we be hitting? The
+of times per day. The question on the table is: what number should we be hitting? The
 conversation focuses on the metric, not on what is making deployments slow or risky.
 
 A related version of this symptom appears when the team debates which metric to "focus on
-first" as if improvement is a matter of directing attention at a number. The team wants to
-know whether they should prioritize deployment frequency or lead time, without connecting
-either metric to the specific practices that would cause them to change.
+first." The debate treats improvement as a matter of directing attention at a number. The team
+wants to know whether to prioritize deployment frequency or lead time. Nobody connects either
+metric to the specific practices that would cause it to change.
 
 The metrics are moving in the wrong direction, or not moving at all, and the response is to
 look harder at the dashboard. Improvement conversations center on the score rather than the
@@ -31,7 +31,7 @@ delivery process. The team knows what the numbers are but not what is causing th
 
 ### DORA metrics used as targets
 
-When DORA metrics are treated as OKRs or performance goals, teams optimize the number rather
+When leadership treats DORA metrics as OKRs or performance goals, teams optimize the number rather
 than the underlying behavior. Deployment frequency goes up because the team starts deploying
 to staging more often or splitting releases artificially. The metric improves. The actual
 delivery process does not. Leadership sees progress on the dashboard; the team knows the
@@ -47,8 +47,8 @@ practices are in place, not a target to engineer toward.
 
 ### Proxy metrics substituted for delivery understanding
 
-The DORA benchmark conversation is often a symptom of a broader pattern: using a reported
-number as a substitute for understanding what is actually happening in the delivery process.
+The DORA benchmark conversation often signals a broader pattern: a reported number substitutes
+for understanding what is actually happening in the delivery process.
 The same dynamic appears with story points and velocity. When a team optimizes velocity, point
 inflation follows. When a team optimizes deployment frequency without improving the pipeline,
 deploy theater follows. The metric drifts from the thing it was meant to measure.
@@ -67,9 +67,8 @@ The metric is a trailing indicator; the practices come first.
    than the practice. Start with
    [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 2. **Is the team asking which metric to improve rather than which practice is limiting them?**
-   If the conversation is about which number to focus on rather than what is slowing or
-   destabilizing deployments, the metrics have replaced process understanding rather than
-   supporting it. Start with
+   If the conversation is about which number to focus on, not what slows or destabilizes
+   deployments, the metrics have replaced process understanding. Start with
    [Velocity as a Team Productivity Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-team-metric" >}})
    for the pattern, then use the [Metrics reference]({{< relref "/docs/reference/metrics" >}})
    to connect each metric to the practices that drive it.

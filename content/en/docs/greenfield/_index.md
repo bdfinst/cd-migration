@@ -9,8 +9,8 @@ aliases:
 ---
 
 {{% pageinfo %}}
-Starting with [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is dramatically easier than migrating to it. When there is no legacy process,
-no existing test suite to fix, and no entrenched habits to change, you can build the right
+Starting with [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is dramatically easier than migrating to it. A new project has no legacy process,
+no existing test suite to fix, and no entrenched habits to change. You can build the right
 practices from the first commit. This section shows you how.
 {{% /pageinfo %}}
 
@@ -18,11 +18,11 @@ practices from the first commit. This section shows you how.
 
 Teams that build CD into a new project from the beginning avoid the most painful parts of the
 migration journey. There is no test suite to rewrite, no branching strategy to unwind, no
-deployment process to automate after the fact. Every practice described in this guide can be
-adopted on day one when there is no existing codebase to constrain you.
+deployment process to automate after the fact. You can adopt every practice in this guide on
+day one when there is no existing codebase to constrain you.
 
 The cost of adopting CD practices in a greenfield project is near zero. The cost of retrofitting
-them into a mature codebase can be months of work. The earlier you start, the less it costs.
+them into a mature codebase can be months of work. The earlier you start, the less adoption costs.
 
 ## What to build from day one
 
@@ -39,7 +39,7 @@ Your first commit should include:
 The validations you put in the pipeline on day one define the quality standard for the
 application. They are not overhead you add later - they are the mold that shapes every line of
 code that follows. If you add linting after 10,000 lines of code, you are fixing 10,000 lines of
-code. If you add it before the first line, every line is written to the standard.
+code. If you add linting before the first line, every line meets the standard.
 
 **Feature zero validations:**
 
@@ -58,7 +58,7 @@ code. If you add it before the first line, every line is written to the standard
 - **Commit message or PR conventions** - If you enforce conventional commits, changelog
   generation, or PR title formats, add the check now.
 
-Every one of these is trivial to add to an empty project and expensive to retrofit into a mature
+Every one of these validations is trivial to add to an empty project and expensive to retrofit into a mature
 codebase. The pipeline enforces them automatically, so the team never has to argue about them in
 review. The conversation shifts from "should we fix this?" to "the pipeline already enforces
 this."
@@ -70,14 +70,14 @@ and meet every standard you defined on day one.
 
 Your first deployment should happen before your first feature. Deploy the simplest possible
 application - a health check endpoint, a static page, a "hello world" - all the way to
-production through your pipeline. This is the single most important validation you can do early
-because it proves the entire path works: build, test, package, deploy, verify.
+production through your pipeline. This first deployment is the single most important early
+validation. It proves the entire path works: build, test, package, deploy, verify.
 
 **Why production, not staging:** The goal is to prove the full path works end-to-end. If you
 deploy only to a staging environment, you have proven that the pipeline works up to staging. You
 have not proven that production credentials, network routes, DNS, load balancers, permissions,
 and deployment targets are correctly configured. Every gap between your test environment and
-production is an assumption that will be tested for the first time under pressure, when it
+production is an assumption that you will first test under pressure, when the result
 matters most.
 
 Deploy "hello world" to production on day one, and you will discover:
@@ -93,7 +93,7 @@ a deadline.
 
 {{% alert title="Warning: deploying only to lower environments" %}}
 If organizational constraints prevent you from deploying to production immediately, deploy as
-close to production as you can. But be explicit about what this means: **every environment that
+close to production as you can. But be explicit about what that compromise means: **every environment that
 is not production is an approximation.** Lower environments may differ in network topology,
 security policies, resource capacity, data volume, and third-party integrations. Each difference
 is a gap in your confidence.

@@ -16,7 +16,7 @@ per week, or per month, depending on the team's current cadence.
 releaseFrequency = productionDeployments / timePeriod
 {{< /card >}}
 
-This is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics and a lagging outcome metric. It reflects the
+Release Frequency is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics and a lagging outcome metric. It reflects the
 cumulative effect of upstream behaviors: work decomposition, integration practices, test
 quality, and pipeline automation. Higher release frequency is a consequence of those behaviors
 improving, not a lever to pull directly. To improve release frequency, improve
@@ -75,22 +75,22 @@ set of changes.
 - **Batch releasing to hit a target.** Combining multiple changes into a single
   release to deploy "more often" defeats the purpose. The goal is small, individual
   changes flowing through the pipeline independently.
-- **Focusing on speed without quality.** If release frequency increases but
-  [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) also increases, the team is releasing
-  faster than its quality processes can support. Slow down and improve the pipeline.
+- **Focusing on speed without quality.** Release frequency and
+  [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) might rise together. Then the team is
+  releasing faster than its quality processes can support. Slow down and improve the pipeline.
 
 ## Connection to CD
 
 Release Frequency is the ultimate output metric of a Continuous Delivery pipeline:
 
-- **Validates the entire delivery system.** High release frequency is only possible
-  when the pipeline is fast, tests are reliable, deployment is automated, and the
-  team has confidence in the process. It is the end-to-end proof that CD is working.
+- **Validates the entire delivery system.** High release frequency requires a fast
+  pipeline, reliable tests, and automated deployment. The team must also have
+  confidence in the process. Release frequency is the end-to-end proof that CD is working.
 - **Reduces deployment risk.** Each deployment carries less change when deployments
   are frequent. Less change means less risk, easier [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), and simpler
   debugging when something goes wrong.
 - **Enables rapid feedback.** Frequent releases get features and fixes in front of
-  users sooner. This shortens the feedback loop and allows the team to course-correct
+  users sooner. Early delivery shortens the feedback loop and allows the team to course-correct
   before investing heavily in the wrong direction.
 - **Exercises recovery capability.** Teams that deploy frequently practice the
   deployment process daily. When a production incident occurs, the deployment

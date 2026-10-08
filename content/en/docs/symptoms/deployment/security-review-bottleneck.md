@@ -14,7 +14,7 @@ tags:
 
 The queue for security review is weeks long. Changes that are otherwise ready to deploy sit waiting while the central security team works through backlog from across the organization. When security review finally happens, it is often a cursory check because the backlog pressure is too high for thorough review.
 
-Security reviews happen late in the development cycle, after development is complete and the team has moved on to new work. When the security team identifies a real issue, it requires context-switching back to code written weeks ago. Developers have forgotten the details. The fix takes longer than it would have if the security issue had been caught during development.
+Security reviews happen late in the development cycle, after development is complete and the team has moved on to new work. When the security team identifies a real issue, the fix requires context-switching back to code written weeks ago. Developers have forgotten the details. The fix takes longer than it would have if the security issue had been caught during development.
 
 The security team does not scale with development velocity. As the organization ships more, the security queue grows. The team has learned to front-load reviews for "obviously security-sensitive" changes and skip or rush reviews for everything else - exactly the wrong approach. The changes that seem routine are often where vulnerabilities hide.
 
@@ -46,8 +46,8 @@ Automated testing eliminates the regression testing gate, which reduces how many
 
 ## How to narrow it down
 
-1. **Does the team have automated security scanning in the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline?** If not, security coverage depends on the central security team's capacity, which does not scale. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+1. **Does the team have automated security scanning in the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline?** If not, security coverage depends on the capacity of the central security team, which does not scale. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 2. **Is security review a manual approval gate before every production deployment?** If changes cannot deploy without explicit security approval, the gate is the [constraint]({{< relref "/docs/reference/glossary#constraint" >}}). Start with [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}).
-3. **Do changes queue for multiple manual approvals in sequence?** If security review is one of several sequential gates, reducing other gates will also reduce security review pressure. Start with [Manual regression testing gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}).
+3. **Do changes queue for multiple manual approvals in sequence?** If security review is one of several sequential gates, reducing other gates also reduces pressure on security review. Start with [Manual regression testing gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}).
 
 **Ready to fix this?** The most common cause is [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline#how-to-fix-it" >}}) section for week-by-week steps.

@@ -18,7 +18,7 @@ tags:
 
 ## What this looks like
 
-The team has a build server. It runs after every push. There is a dashboard somewhere that shows
+The team has a build server that runs after every push. There is a dashboard somewhere that shows
 build status. But the build has been red for three weeks and nobody has mentioned it. Developers
 push code, glance at the result if they remember, and move on. When someone finally investigates,
 the failure is in a test that broke weeks ago and nobody can remember which commit caused it.
@@ -57,9 +57,9 @@ continuous integration is not happening.
 
 ## Why this is a problem
 
-Continuous integration is not a tool - it is a practice. The practice requires that every developer
-integrates to a shared trunk at least once per day and that the team treats a broken build as the
-highest-priority problem. Without the practice, the build server is only infrastructure generating
+Continuous integration is not a tool - it is a practice. The practice requires every developer to
+integrate to a shared trunk at least once per day. It also requires the team to treat a broken
+build as the highest-priority problem. Without the practice, the build server is only infrastructure generating
 notifications that nobody reads.
 
 ### It reduces quality
@@ -71,7 +71,9 @@ signal becomes meaningless. Developers learn that a red build is background nois
 
 Once the build signal is untrusted, defects accumulate. A developer introduces a bug on Monday. The
 build fails, but it was already red from an unrelated failure, so nobody notices. Another developer
-introduces a different bug on Tuesday. By Friday, trunk has multiple interacting defects and nobody
+introduces a different bug on Tuesday.
+
+By Friday, trunk has multiple interacting defects and nobody
 knows when they were introduced or by whom. Debugging becomes archaeology.
 
 When the team practices continuous integration, a red build is rare and immediately actionable. The
@@ -84,12 +86,12 @@ clusters.
 Without continuous integration, developers work in isolation for days or weeks. Each developer
 assumes their code works because it passes on their machine or their branch. But they are building
 on assumptions about shared code that may already be outdated. When they finally integrate, they
-discover that someone else changed an API they depend on, renamed a class they import, or modified
-behavior they rely on.
+discover that someone else changed an API, renamed a class, or modified behavior they rely
+on.
 
 The rework cascade is predictable. Developer A changes a shared interface on Monday. Developer B
-builds three days of work on the old interface. On Thursday, developer B tries to integrate and
-discovers the conflict. Now they must rewrite three days of code to match the new interface. If
+builds three days of work on the old interface. On Thursday, developer B tries to integrate, discovers
+the conflict, and must rewrite three days of code to match the new interface. If
 they had integrated on Monday, the conflict would have been a five-minute fix.
 
 Teams that integrate continuously discover conflicts within hours, not days. The rework is measured
@@ -103,24 +105,24 @@ now?" Trunk may or may not compile. Tests may or may not pass. The last successf
 been a week ago. Between then and now, dozens of changes have landed without anyone verifying that
 they work together.
 
-This creates a stabilization period before every release. The team stops feature work, fixes the
-build, runs the test suite, and triages failures. This stabilization takes an unpredictable amount
-of time - sometimes a day, sometimes a week - because nobody knows how many problems have
-accumulated since the last known-good state.
+An unverified trunk creates a stabilization period before every release. The team stops feature
+work, fixes the build, runs the test suite, and triages failures. The stabilization takes anywhere
+from a day to a week. Nobody knows how many problems have accumulated since the last known-good
+state.
 
 With continuous integration, trunk is always in a known state. If the build is green, the team can
-release. If the build is red, the team knows exactly which commit broke it and how long ago. There
-is no stabilization period because the code is continuously stabilized. Release readiness is a
+release. If the build is red, the team knows exactly which commit broke it and how long ago.
+
+There is no stabilization period because the code is continuously stabilized. Release readiness is a
 fact that can be checked at any moment, not a state that must be achieved through a dedicated
 effort.
 
 ### It masks the true cost of integration problems
 
 When the build is permanently broken or rarely checked, the team cannot see the patterns that would
-tell them where their process is failing. Is the build slow? Nobody notices because nobody waits
-for it. Are certain tests flaky? Nobody notices because failures are expected. Do certain parts of
-the codebase cause more breakage than others? Nobody notices because nobody correlates failures to
-changes.
+tell them where their process is failing. Nobody notices a slow build, because nobody waits for
+it. Nobody notices flaky tests, because failures are expected. Nobody notices which parts of the
+codebase cause more breakage than others, because nobody correlates failures to changes.
 
 These hidden problems compound. The build gets slower because nobody is motivated to speed it up.
 Flaky tests multiply because nobody quarantines them. Brittle areas of the codebase stay brittle
@@ -147,7 +149,7 @@ requires that confidence to exist at all times.
 
 ### Step 1: Fix the build and agree it stays green
 
-Before anything else, get trunk to green. This is the team's first and most important commitment.
+Before anything else, get trunk to green. A green trunk is the team's first and most important commitment.
 
 1. Assign the broken build as the highest-priority work item. Stop feature work if necessary.
 2. Triage every failure: fix it, quarantine it to a non-blocking suite, or delete the test if it
@@ -158,7 +160,7 @@ Before anything else, get trunk to green. This is the team's first and most impo
 
 Write this agreement down. Put it in the team's working agreements document. If you do not have
 one, start one now. The agreement is simple: we do not commit on top of a red build, and we do not
-leave a red build for someone else to fix.
+leave one for someone else to fix.
 
 ### Step 2: Make the build visible
 
@@ -184,9 +186,11 @@ Set the expectation:
 - Track [integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) per developer
   per day. Make it visible alongside the build dashboard.
 
-This will expose problems. Some developers will say their work is not ready to integrate. That is a
+Daily integration will expose problems. Some developers will say their work is not ready to integrate. That is a
 decomposition problem - the work is too large. Some will say they cannot integrate because the build
-is too slow. That is a pipeline problem. Each problem is worth solving. See
+is too slow. That is a pipeline problem.
+
+Each problem is worth solving. See
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) for techniques to break large work
 into daily integrations.
 

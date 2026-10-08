@@ -10,7 +10,7 @@ aliases:
 
 The producer side, often paired with the [Event consumer]({{< relref "/docs/foundations/testing-fundamentals/patterns/event-consumer" >}}) pattern in the same service. After a state change, the service publishes a message that downstream consumers depend on.
 
-The hard problems differ from the consumer side: atomicity with persistence (did the DB row commit *and* the message publish?), exactly-once semantics that require an outbox or two-phase commit, and downstream consumer dependence on schema, routing key, and headers.
+The hard problems differ from the consumer side. The first is atomicity with persistence: did the DB row commit *and* the message publish? The second is exactly-once semantics that require an outbox or two-phase commit. The third is that downstream consumers depend on schema, routing key, and headers.
 
 ## What needs covered
 
@@ -43,8 +43,8 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation
 
-The broker double in component tests is validated against a real broker container the team controls in [adapter integration tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#adapter-integration-test" >}}). The test asserts the adapter publishes with the right routing key, headers, and serialization - it does not assert which messages downstream consumers happen to read or in what order; those are downstream concerns. Provider-side contract verification runs in this service's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against every consumer's published expectations.
+The broker double in component tests is validated against a real broker container the team controls in [adapter integration tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#adapter-integration-test" >}}). The test asserts the adapter publishes with the right routing key, headers, and serialization. It does not assert which messages downstream consumers happen to read or in what order, because those are downstream concerns. Provider-side contract verification runs in this service's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against every consumer's published expectations.
 
 ## Pipeline placement
 
-Outbox component tests and routing tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; adapter integration tests against a team-controlled broker container in CI Stage 1 or Stage 2; adapter integration tests against a managed broker the team can't pin run [out-of-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) on a schedule. Provider-side contract verification in [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1; post-deploy synthetic state change verifies the message arrives with the expected shape.
+Outbox component tests and routing tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1. Adapter integration tests against a team-controlled broker container run in CI Stage 1 or Stage 2. Adapter integration tests against a managed broker the team can't pin run [out-of-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) on a schedule. Provider-side contract verification runs in [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) Stage 1. A post-deploy synthetic state change verifies the message arrives with the expected shape.

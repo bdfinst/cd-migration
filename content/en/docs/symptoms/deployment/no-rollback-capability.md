@@ -14,7 +14,7 @@ tags:
 
 When something breaks in production, the only option is a forward fix. [Rolling back]({{< relref "/docs/reference/glossary#rollback" >}}) has never been practiced and there is no defined procedure for it. The previous version [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) may not exist. Nobody is sure of the exact steps. The unspoken understanding is that deployments only go forward.
 
-There is no defined reversal procedure. Database migrations run during deployment but [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Even if someone wanted to roll back, they would need to reconstruct the previous state from memory - and that assumes the database is in a compatible state, which it often is not.
+Database migrations run during deployment, but [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) migrations were never written. The build server from the previous deployment was recycled. Configuration was updated in place. Anyone who wanted to roll back would need to reconstruct the previous state from memory. That assumes the database is in a compatible state, which it often is not.
 
 The team compensates by delaying deployments, adding more manual verification before each one, and keeping deployments large so there are fewer of them. Each of these adaptations makes deployments larger and riskier - exactly the opposite of what reduces the risk.
 
@@ -38,7 +38,7 @@ When the pipeline exists, every previous artifact is stored and addressable. Rol
 
 ### Blind operations
 
-If the team cannot detect a bad deployment within minutes, they face a choice: roll back something that might be fine, or wait until the damage is certain. When detection takes hours, forward state has accumulated - new database writes, customer actions, downstream events - to the point where rollback is impractical even if someone wanted to do it.
+If the team cannot detect a bad deployment within minutes, they face a choice. They can roll back something that might be fine, or wait until the damage is certain. When detection takes hours, forward state accumulates: new database writes, customer actions, and downstream events. Eventually rollback becomes impractical even if someone wanted to do it.
 
 Fast detection changes the math. When the team knows within five minutes that a deployment caused a spike in errors, rollback is still a viable option. The window for clean rollback is open. Monitoring and health checks that fire immediately after deployment keep that window open long enough to use.
 
@@ -48,7 +48,7 @@ Fast detection changes the math. When the team knows within five minutes that a 
 
 When production is a hand-configured environment, "previous state" is not a well-defined concept. There is no snapshot to restore, no configuration-as-code to check out at a previous revision. Rolling back would require manually reconstructing the previous configuration from memory.
 
-Environments defined as code have a previous state by definition: the previous commit to the infrastructure repository. Rolling back the environment means checking out that commit and applying it. The team no longer faces the situation where "previous state" is something they would have to reconstruct from memory - it is in version control and can be restored.
+Environments defined as code have a previous state by definition: the previous commit to the infrastructure repository. Rolling back the environment means checking out that commit and applying it. The team no longer has to reconstruct "previous state" from memory. The previous state is in version control and can be restored.
 
 **Read more:** [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 

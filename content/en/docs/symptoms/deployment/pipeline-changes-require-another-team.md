@@ -15,12 +15,12 @@ and find it lives in a repository they do not have write access to, managed by t
 team. They file a ticket describing the change. The platform team reviews it, asks clarifying
 questions, schedules it for next sprint. The change ships two weeks later.
 
-The same pattern repeats for every pipeline modification: adding a new test stage, updating a
-deployment timeout, rotating a secret, enabling a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) in the pipeline. Each change is
+The same pattern repeats for every pipeline modification. Examples include adding a new test stage,
+updating a deployment timeout, rotating a secret, or enabling a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) in the pipeline. Each change is
 a ticket, a queue, a wait. Teams learn to live with suboptimal pipeline configurations rather
-than pay the cost of requesting every improvement. The pipeline calcifies - nobody changes it
-because changing it is expensive, so problems accumulate and are worked around rather than
-fixed.
+than pay the cost of requesting every improvement. The pipeline calcifies because changing
+it is expensive, so problems accumulate and teams work around them rather than
+fix them.
 
 ## Common causes
 
@@ -28,8 +28,8 @@ fixed.
 
 When a dedicated team owns the pipeline infrastructure, delivery teams have no path to change
 it themselves. The platform team controls who can modify pipeline definitions, which environments
-are available, and how deployments are structured. This separation was often put in place for
-consistency or security reasons, but the effect is that the teams doing the work cannot improve
+are available, and how deployments are structured. Organizations often create this separation for
+consistency or security reasons. As a result, the teams doing the work cannot improve
 the process supporting that work. Every pipeline improvement requires cross-team coordination,
 which means most improvements never happen.
 
@@ -37,10 +37,10 @@ which means most improvements never happen.
 
 ### Pipeline definitions not in version control
 
-When pipeline configurations are managed through a GUI, a proprietary tool, or some other
-mechanism outside version control, delivery teams cannot own them in the same way they own their
-application code. There is no pull request process for pipeline changes, no way to review or
-roll back, and no natural path for the delivery team to make changes. The configuration lives
+Some pipeline configurations are managed through a GUI, a proprietary tool, or some other
+mechanism outside version control. Delivery teams cannot own those configurations the way they own their
+application code. There is no pull request process for pipeline changes and no way to review or
+roll back. The delivery team has no natural path to make changes. The configuration lives
 in a system controlled by whoever administers the pipeline tool, which is typically not the
 delivery team.
 
@@ -52,8 +52,8 @@ When infrastructure is configured manually rather than defined as code, changes 
 to systems and knowledge that delivery teams typically do not have. A delivery team cannot
 self-service a new environment or update a deployment target without someone who has access
 to the infrastructure tooling. Infrastructure as code puts the configuration in files the
-delivery team can read, propose changes to, and own, removing the dependency on the platform
-team for every modification.
+delivery team can read, propose changes to, and own. The delivery team no longer depends on the
+platform team for every modification.
 
 **Read more:** [No Infrastructure as Code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})
 

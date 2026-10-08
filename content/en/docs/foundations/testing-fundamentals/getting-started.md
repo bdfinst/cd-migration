@@ -10,13 +10,13 @@ aliases:
 
 ## Starting without full coverage
 
-Teams often delay adopting [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) because their existing code lacks tests. This is backwards. You do
+Teams often delay adopting [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) because their existing code lacks tests. That reasoning is backwards. You do
 not need tests for existing code to begin. You need one rule applied without exception:
 
 > **Every new change gets a test. We will not go lower than the current level of code coverage.**
 
 Record your current coverage percentage as a baseline. Configure CI to fail if coverage drops
-below that number. This does not mean the baseline is good enough. It means the trend only moves
+below that number. The baseline is not necessarily good enough. It means the trend only moves
 in one direction. Every bug fix, every new feature, and every refactoring adds tests. Over time,
 coverage grows organically in the areas that matter most: the code that is actively changing.
 
@@ -62,7 +62,7 @@ failures also get ignored.
 
 ### 3. Decouple your pipeline from external dependencies
 
-This is the highest-impact change for CD. Identify every test that calls a real external service
+Decoupling is the highest-impact change for CD. Identify every test that calls a real external service
 and replace that dependency with a test double.
 
 **Actions:**
@@ -73,9 +73,9 @@ and replace that dependency with a test double.
   - **In-memory fakes** for databases (for example, an in-memory repository, or SQLite/H2 standing in
     for the production engine). Fastest, but they do not exercise real SQL semantics.
   - **A team-controlled real engine in a per-test testcontainer** when the production query
-    plan, constraints, or migrations matter. This is a real database, not a fake, but it stays
-    deterministic because the team pins the version and isolates state per test, so it runs
-    in-band.
+    plan, constraints, or migrations matter. This is a real database, not a fake. It stays
+    deterministic because the team pins the version and isolates state per test. As a result,
+    it runs in-band.
   - **HTTP stubs** for external APIs the team does not control (for example, WireMock, nock, MSW).
   - **Fakes** for message queues, email services, and other infrastructure.
 - Replace the dependencies in your unit and component tests.
@@ -93,10 +93,10 @@ isolation, start with the most critical paths.
 **Actions:**
 
 - Identify the 3-5 most critical user journeys or API endpoints in your application.
-- Write a component test for each: boot the application, stub external dependencies, send a
-  real request or simulate a real user action, verify the response.
-- Each component test should prove that the feature works correctly assuming external
-  dependencies behave as expected (which your test doubles encode).
+- Write a component test for each. Boot the application and stub external dependencies.
+  Send a real request or simulate a real user action, then verify the response.
+- Make each component test prove that the feature works correctly. The test assumes external
+  dependencies behave as your test doubles encode.
 - Run these in CI on every commit.
 
 **Output:** Component tests covering your critical paths, running in CI on every commit.

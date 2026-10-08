@@ -26,9 +26,9 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What works:** Low friction, no [context]({{< relref "/docs/reference/glossary#context-llm" >}}) management, passive. Excellent for boilerplate, repetitive patterns, argument completion, and common idioms. Speed gains are real, especially for code that follows well-known patterns.
 
-**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. There is no obvious failure that signals a ceiling has been hit - developers accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
+**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. No obvious failure signals that developers have hit a ceiling. They accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
 
-**What drives the move forward:** Deliberate curiosity, or an incident traced to an accepted suggestion the developer did not scrutinize. Developers who move forward are usually ones who encountered a demonstration of a higher stage and wanted to replicate it - not ones who naturally outgrew autocomplete.
+**What drives the move forward:** Deliberate curiosity, or an incident traced to an accepted suggestion the developer did not scrutinize. Developers who move forward usually saw a demonstration of a higher stage and wanted to replicate it. They did not naturally outgrow autocomplete.
 
 ## Stage 2: Prompted function generation
 
@@ -36,11 +36,13 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What it looks like:** The developer describes what a function or module should do, pastes the description into a chat interface, and integrates the result. This is single-turn: one request, one response, manual integration.
 
-**Where it breaks down:** Scope creep. As requests grow beyond a single function, integration errors accumulate: the generated code does not match the surrounding codebase's patterns, imports are wrong, naming conflicts emerge. The developer rewrites more than half the output and the AI saved little time. Larger requests also produce confidently incorrect code - the model cannot ask clarifying questions, so it fills in assumptions.
+**Where it breaks down:** Scope creep. As requests grow beyond a single function, integration errors accumulate. The generated code does not match the surrounding codebase's patterns, imports are wrong, and naming conflicts emerge. The developer rewrites more than half the output and the AI saved little time. Larger requests also produce confidently incorrect code - the model cannot ask clarifying questions, so it fills in assumptions.
 
 **What works:** Bounded, well-scoped tasks with clear inputs and outputs. Writing a parser, formatting utility, or data transformation that can be fully described in a few sentences. The developer reviews a self-contained unit of work.
 
-**Why developers abandon here:** Stage 2 is where many developers decide AI "cannot write real code." They try a larger task, receive confidently wrong output, spend an hour correcting it, and conclude the tool is not worth the effort for anything non-trivial. That conclusion is accurate at Stage 2. The problem is not the technology - it is the workflow. A single-turn [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) with no context, no surrounding code, and no specified constraints will produce plausible-looking guesses for anything beyond simple functions. Developers who abandon here never discover that the same model, given different inputs through a different workflow, produces dramatically better output.
+**Why developers abandon here:** Stage 2 is where many developers decide AI "cannot write real code." They try a larger task, receive confidently wrong output, and spend an hour correcting it. They conclude the tool is not worth the effort for anything non-trivial. That conclusion is accurate at Stage 2.
+
+The problem is not the technology - it is the workflow. A single-turn [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) with no context, no surrounding code, and no specified constraints will produce plausible-looking guesses for anything beyond simple functions. Developers who abandon here never discover what the same model can do. Given different inputs through a different workflow, it produces dramatically better output.
 
 **What drives the move forward:** Frustration that AI is only useful for small tasks, combined with exposure to someone using it for larger ones. The realization that giving the AI more context - the surrounding files, the calling code, the data structures - would produce better output. This realization is the entry point to [context engineering]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#2-context-engineering" >}}).
 
@@ -50,7 +52,9 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What it looks like:** Multi-turn back-and-forth with the model. Developer pastes relevant code, describes the problem, asks for changes, reviews output, pastes it back with follow-up questions. The conversation itself becomes the working context.
 
-**Where it breaks down:** [Context]({{< relref "/docs/reference/glossary#context-llm" >}}) accumulates. Long conversations degrade model performance as the relevant information gets buried. The model loses track of constraints stated early in the conversation. Developers start seeing contradictions between what the model said in turn 3 and what it generates in turn 15. Integration is still manual - copying from chat into the editor introduces transcription errors. The history of what changed and why lives in a chat window, not in version control.
+**Where it breaks down:** [Context]({{< relref "/docs/reference/glossary#context-llm" >}}) accumulates. Long conversations degrade model performance as the relevant information gets buried. The model loses track of constraints stated early in the conversation.
+
+Developers start seeing contradictions between what the model said in turn 3 and what it generates in turn 15. Integration is still manual - copying from chat into the editor introduces transcription errors. The history of what changed and why lives in a chat window, not in version control.
 
 **What works:** Exploration and learning. Asking "why does this fail" with a stack trace and getting a diagnosis. Iterating on a design by discussing trade-offs. For developers learning a new framework or language, this stage can be transformative.
 
@@ -62,7 +66,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What it looks like:** The [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) has tool access - it reads files, edits files, runs commands, and works across the codebase autonomously. The developer describes a task and the agent executes it, producing diffs across multiple files.
 
-**Where it breaks down:** Vague requirements. An agent given a fuzzy description makes reasonable-but-wrong architectural decisions, names things inconsistently, misses edge cases it cannot infer from the existing code, and produces changes that look correct locally but break something upstream. Review becomes hard because the diff spans many files and the reviewer must reconstruct the intent from the code rather than from a stated specification. Hallucinated APIs, missing error handling, and subtle correctness errors compound because each small decision compounds on the next.
+**Where it breaks down:** Vague requirements. An agent given a fuzzy description makes reasonable-but-wrong architectural decisions and names things inconsistently. It misses edge cases it cannot infer from the existing code and produces changes that look correct locally but break something upstream. Review becomes hard because the diff spans many files, and the reviewer must reconstruct intent from the code, not a stated specification. Hallucinated APIs, missing error handling, and subtle correctness errors compound because each small decision compounds on the next.
 
 **What works:** Larger-scoped tasks with clear intent. Refactoring a module to match a new interface, generating tests for existing code, migrating a [dependency]({{< relref "/docs/reference/glossary#dependency" >}}). The agent navigates the codebase rather than receiving pasted excerpts.
 
@@ -72,13 +76,15 @@ Progress through these stages does not happen naturally or automatically. It req
 
 {{< figure src="/images/agentic-stage5-spec-first.svg" alt="Stage 5 workflow: Human writes spec, agent generates tests, agent generates implementation, pipeline enforces correctness. All output still routes to human review. Bottleneck: human review throughput cannot keep pace with generation rate." >}}
 
-**What it looks like:** The developer writes a specification before the agent writes any code. The specification includes intent (why), behavior scenarios (what users experience), and constraints (performance budgets, architectural boundaries, edge case handling). The agent generates test code from the specification first. Tests pass when the behavior is correct. Implementation follows. The [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) defines the artifact structure. [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) describes how to produce specifications at a pace that does not bottleneck the development cycle.
+**What it looks like:** The developer writes a specification before the agent writes any code. The specification includes intent (why), behavior scenarios (what users experience), and constraints (performance budgets, architectural boundaries, edge case handling). The agent generates test code from the specification first. Tests pass when the behavior is correct. Implementation follows.
+
+The [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) defines the artifact structure. [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) describes how to produce specifications at a pace that does not bottleneck the development cycle.
 
 **Where it breaks down:** Review volume. A fast agent with a spec-first workflow generates changes faster than a human reviewer can validate them. The bottleneck shifts from code generation quality to human review throughput. The developer is now a reviewer of machine output, which is not where they deliver the most value.
 
 **What works:** Outcomes become predictable. The agent has bounded, unambiguous requirements. Tests make failures deterministic rather than subjective. Code review focuses on whether the implementation is reasonable, not on reconstructing what the developer meant. The specification becomes the record of why a change exists.
 
-**What drives the move forward:** The review queue. Agents generate changes at a pace that exceeds human review bandwidth. The next stage is not about the developer working harder - it is about replacing the human at the review stages that do not require human judgment.
+**What drives the move forward:** The review queue. Agents generate changes at a pace that exceeds human review bandwidth. The next stage is not about the developer working harder. It replaces the human at the review stages that do not require human judgment.
 
 ## Stage 6: Multi-agent architecture
 
@@ -105,11 +111,11 @@ Many developers do not advance past Stage 2 because the path forward is not visi
 
 **The problem at Stage 1:** Autocomplete delivers real, immediate value. There is no pressing failure, no visible ceiling, no obvious reason to change the workflow. Developers optimize their Stage 1 usage - learning which suggestions to trust, which to skip - and reach a stable equilibrium. That equilibrium is far below what is possible.
 
-**The problem at Stage 2:** The first serious failure at Stage 2 - an hour spent correcting hallucinated output - produces a lasting conclusion: AI is only for simple things. This conclusion comes from a single data point that is entirely valid for that workflow. The developer does not know the problem is the workflow.
+**The problem at Stage 2:** Take the first serious failure at Stage 2: an hour spent correcting hallucinated output. That failure produces a lasting conclusion: AI is only for simple things. This conclusion comes from a single data point that is entirely valid for that workflow. The developer does not know the problem is the workflow.
 
 **The problem at Stages 3-4:** Developers who push past Stage 2 often hit Stage 3 or 4 and run into context degradation or vague-requirements drift. Without spec-first discipline, agentic task completion produces hard-to-review diffs and subtle correctness errors. The failure mode looks like "AI makes more work than it saves" - which is true for that approach. Many developers loop back to Stage 2 and conclude they are not missing much.
 
-**What breaks the pattern:** Seeing a demonstration of Stage 5 or Stage 6 in practice. Watching someone write a specification, have an agent generate tests from it, implement against those tests, and commit a clean diff is a qualitatively different experience from struggling with a chat window. Many developers have not seen this. Most resources on "how to use AI for coding" describe Stage 2 or Stage 3 workflows.
+**What breaks the pattern:** Seeing a demonstration of Stage 5 or Stage 6 in practice. Watch someone write a specification, have an agent generate tests from it, implement against those tests, and commit a clean diff. That experience is qualitatively different from struggling with a chat window. Many developers have not seen this. Most resources on "how to use AI for coding" describe Stage 2 or Stage 3 workflows.
 
 This guide exists to close that gap. The [four prompting disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) describe the skill layers that correspond to these stages and what shifts when agents run autonomously.
 
@@ -124,7 +130,7 @@ This guide exists to close that gap. The [four prompting disciplines]({{< relref
 | Spec-first agentic | Predictable, testable output | Human review cannot keep up with generation rate |
 | Multi-agent architecture | Full pipeline throughput | Specification quality; agent orchestration design |
 
-Each stage resolves the previous stage's bottleneck and reveals the next one. Developers who skip stages - for example, moving straight from function generation to multi-agent architecture without spec-first discipline - find that automation amplifies the problems they skipped. An agent generating changes faster than specs can be written, or a reviewer agent validating against specifications that were never written, produces worse outcomes than a slower, more manual process. Skipping is tempting because the later tooling looks impressive. It does not work without the earlier discipline.
+Each stage resolves the previous stage's bottleneck and reveals the next one. Developers who skip stages - for example, moving straight from function generation to multi-agent architecture without spec-first discipline - find that automation amplifies the problems they skipped. Picture an agent generating changes faster than anyone writes specifications, or a reviewer agent validating against specifications nobody wrote. Either produces worse outcomes than a slower, more manual process. Skipping is tempting because the later tooling looks impressive, but the tooling does not work without the earlier discipline.
 
 ## Starting from where you are
 
@@ -134,7 +140,7 @@ Three questions locate you on the curve:
 2. **Does every agent task start from a written specification?** If not, you are at Stage 4 or below regardless of what tools you use.
 3. **Who reviews agent-generated changes?** If the answer is always a human reading every diff, you have not yet addressed the Stage 5 throughput ceiling.
 
-Many developers using AI coding tools are at Stage 1 or 2. Many concluded from an early Stage 2 failure that the ceiling is low and moved on. If you are at Stage 1 or 2 and feel like AI is only useful for simple work, the problem is almost certainly the workflow, not the technology.
+Many developers using AI coding tools are at Stage 1 or 2. Many concluded from an early Stage 2 failure that the ceiling is low and moved on. If you are at Stage 1 or 2 and think AI suits only simple work, the workflow is almost certainly the problem, not the technology.
 
 **If you are at Stage 1 or 2:** The highest-impact move is hands-on exposure to an agentic tool at Stage 4. Give the agent access to your codebase - let it read files, run tests, and produce a diff for a small task. The experience of watching an agent navigate a codebase is qualitatively different from receiving function output in a chat window. See [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) for how to structure small, low-risk tasks that demonstrate what is possible without exposing the full codebase to an unguided agent.
 

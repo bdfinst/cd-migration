@@ -12,8 +12,8 @@ tags:
 A bug is filed against the billing module. It looks simple from the outside - a calculation is
 off by a percentage in certain conditions. The developer assigned to it spends a day reading code
 before they can even reproduce the problem reliably. The fix takes another day. Two weeks later,
-a related bug appears: the fix was correct for the case it addressed but violated an assumption
-elsewhere in the module that nobody told the developer about.
+a related bug appears. The fix was correct for the case it addressed. But the fix violated an
+assumption elsewhere in the module that nobody told the developer about.
 
 Defect resolution time in specific areas of the system is consistently longer than in others.
 Post-mortems note that the fix was made by someone unfamiliar with the domain. Bugs cluster in
@@ -25,8 +25,8 @@ violated.
 ### Knowledge silos
 
 When only a few people understand a domain deeply, defects in that domain can only be resolved
-quickly by those people. When they are unavailable - on leave, on another team, or gone - the
-bug sits or gets assigned to someone who must reconstruct context before they can make progress.
+quickly by those people. Sometimes they are unavailable: on leave, on another team, or gone.
+Then the bug sits, or someone else gets the bug and must reconstruct context before making progress.
 The reconstruction is slow, incomplete, and prone to introducing new violations of rules the
 developer discovers only after the fact.
 
@@ -34,10 +34,10 @@ developer discovers only after the fact.
 
 ### Thin-spread teams
 
-When engineers are rotated through a domain based on capacity, the person available to fix a bug
-is often not the person who knows the domain. They are familiar with the tech stack but not with
-the business rules, edge cases, and historical decisions that make the module behave the way it
-does. Debugging becomes an exercise in reverse-engineering domain knowledge from code that may
+When managers rotate engineers through a domain based on capacity, the person available to fix a bug
+is often not the person who knows the domain. That person is familiar with the tech stack. They do
+not know the business rules, edge cases, and historical decisions that make the module behave the
+way it does. Debugging becomes an exercise in reverse-engineering domain knowledge from code that may
 not accurately reflect the original intent.
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})

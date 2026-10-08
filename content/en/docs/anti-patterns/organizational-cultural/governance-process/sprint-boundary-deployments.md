@@ -19,7 +19,9 @@ tags:
 
 The team runs two-week sprints. The sprint demo happens on Friday. Deployment to production
 happens on Friday after the demo, or sometimes the following Monday morning. Every story
-completed during the sprint ships in that deployment. A story finished on day two of the
+completed during the sprint ships in that deployment.
+
+A story finished on day two of the
 sprint waits twelve days before it reaches users. A story finished on day thirteen ships
 within hours of the boundary.
 
@@ -37,10 +39,10 @@ story completed on day thirteen ship together because they are in the same sprin
 deployment is coupled not by any technical dependency but by the calendar. The team has
 recreated the release train inside the sprint, with the sprint length as the train schedule.
 
-The two-week deployment cycle accumulates the same problems as any batch deployment: larger
-change sets per deployment, harder diagnosis when things go wrong, longer wait time for
-users to receive completed work, and artificial pressure to finish stories before the sprint
-boundary rather than when they are genuinely ready.
+The two-week deployment cycle accumulates the same problems as any batch deployment. Each
+deployment carries a larger change set, and diagnosis is harder when things go wrong. Users
+wait longer to receive completed work. The team feels artificial pressure to finish stories
+before the sprint boundary rather than when they are genuinely ready.
 
 Common variations:
 
@@ -53,8 +55,8 @@ Common variations:
   deployment process (weekly, bi-weekly) governs when staging work reaches production.
   The sprint adds a deployment stage without replacing the gating calendar.
 - **The sprint-aligned release planning.** Marketing and stakeholder communications are built
-  around the sprint boundary, making it socially difficult to deploy work before the sprint
-  ends even when the work is ready.
+  around the sprint boundary. That makes it socially difficult to deploy work before the sprint
+  ends, even when the work is ready.
 
 The telltale sign: a developer who finishes a story on day two is told to "mark it done for
 sprint review" rather than "deploy it now."
@@ -62,8 +64,8 @@ sprint review" rather than "deploy it now."
 ## Why this is a problem
 
 The sprint is a planning and learning cadence. It is not a deployment cadence. When the
-sprint becomes the deployment cadence, the team inherits all of the problems of infrequent
-batch deployment and adds an Agile ceremony layer on top. The sprint structure that is meant
+sprint becomes the deployment cadence, the team inherits all the problems of infrequent batch
+deployment. Then it adds an Agile ceremony layer on top. The sprint structure that is meant
 to produce fast feedback instead produces two-week batches with a demo attached.
 
 ### It reduces quality
@@ -87,22 +89,25 @@ in practice than in theory.
 
 ### It increases rework
 
-The sprint-boundary deployment pattern creates strong incentives for story-padding: adding
-estimated work to stories so they fill the sprint rather than completing early and sitting
-idle. A developer who finishes a story in three days when it was estimated as six might add
-refinements to avoid the appearance of the story completing too quickly. This is waste.
+The sprint-boundary deployment pattern creates strong incentives for story-padding. Developers
+add estimated work to stories so the stories fill the sprint, rather than finishing early and
+sitting idle. Suppose a developer finishes a story in three days when it was estimated at six.
+That developer might add refinements so the story does not appear to finish too quickly. This
+padding is waste.
 
-Sprint-boundary batching also increases the cost of defects found in production. A defect
-found on Monday in a story that was deployed Friday requires a fix, a full sprint pipeline
-run, and often a wait until the next sprint boundary before the fix reaches production. What
-should be a same-day fix becomes a two-week cycle. The defect lives in production for the
+Sprint-boundary batching also increases the cost of defects found in production. Suppose a
+defect in a story deployed Friday is found on Monday. The defect requires a fix and a full
+sprint pipeline run. Often the fix must also wait until the next sprint boundary to reach
+production.
+
+What should be a same-day fix becomes a two-week cycle. The defect lives in production for the
 full duration.
 
-Hot patches - emergency fixes that cannot wait for the sprint boundary - create process
+Hot patches are emergency fixes that cannot wait for the sprint boundary. They create process
 exceptions that generate their own overhead. Every hot patch requires a separate deployment
 outside the normal sprint cadence, which the team is not practiced at. Hot patch deployments
-are higher-risk because they fall outside the normal process, and the team has not automated
-them because they are supposed to be exceptional.
+are higher-risk because they fall outside the normal process. The team has not automated them
+because they are supposed to be exceptional.
 
 ### It makes delivery timelines unpredictable
 
@@ -113,13 +118,13 @@ was responsive; the delivery was not.
 
 Sprint boundaries also create false completion milestones. A story marked "done" at sprint
 review is done in the planning sense - completed, reviewed, accepted. But it is not done in
-the delivery sense - users cannot use it yet. Stakeholders who see a story marked done at
-sprint review and then ask for feedback from users a week later are surprised to learn the
-work has not reached production yet.
+the delivery sense - users cannot use it yet. Stakeholders see a story marked done at sprint
+review and ask users for feedback a week later. They are surprised to learn the work has not
+reached production yet.
 
 For multi-sprint features, the sprint-boundary deployment model means intermediate increments
-never reach production. The feature is developed across sprints but only deployed when the
-whole feature is ready - which combines the sprint boundary constraint with the big-bang
+never reach production. The team develops the feature across sprints but deploys it only when
+the whole feature is ready. That combines the sprint boundary constraint with the big-bang
 feature delivery problem. The sprints provide a development cadence but not a delivery
 cadence.
 
@@ -130,9 +135,9 @@ automated pipeline. The sprint-boundary deployment model imposes a mandatory hol
 completed work until the calendar says it is time. This is the definitional opposite of
 "can be deployed at any time."
 
-CD also creates the learning loop that makes Agile valuable. The value of a two-week sprint
-comes from delivering and learning from real production use within the sprint, then using
-those learnings to inform the next sprint. Sprint-boundary deployment means that production
+CD also creates the learning loop that makes Agile valuable. A two-week sprint is valuable
+because the team delivers and learns from real production use within the sprint. Those
+learnings then inform the next sprint. Sprint-boundary deployment means that production
 learning from sprint N does not begin until sprint N+1 has already started. The learning
 cycle that Agile promises is delayed by the deployment cadence.
 
@@ -210,11 +215,11 @@ boundaries:
 
 1. Replace "sprint deliverables" reports with a continuous delivery report: what was deployed
    this week and what is the current production state?
-2. Establish a lightweight communication channel for production deployments - a Slack message,
-   an email notification, a release note entry - so stakeholders know when new work reaches
-   production without waiting for sprint review.
-3. Keep the sprint review as a team learning ceremony but frame it as reviewing what was
-   delivered and learned, not approving what is about to ship.
+2. Establish a lightweight communication channel for production deployments, such as a Slack
+   message, an email notification, or a release note entry. Stakeholders then know when new
+   work reaches production without waiting for sprint review.
+3. Keep the sprint review as a team learning ceremony. Frame it as a review of what was
+   delivered and learned, not an approval of what is about to ship.
 
 | Objection | Response |
 |-----------|----------|

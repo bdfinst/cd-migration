@@ -11,8 +11,8 @@ predict high software delivery performance. These practices are not tools or tec
 They are cultural conditions and behaviors that enable teams to deliver software quickly,
 reliably, and sustainably.
 
-This page organizes the DORA recommended practices by their relevance to each migration phase. Use it
-as a reference to understand which practices you are building at each stage of your journey
+This page organizes the DORA recommended practices by their relevance to each migration phase. Use the page
+as a reference for which practices you are building at each stage of your journey
 and which ones to focus on next.
 
 {{% alert title="Using This Table" %}}
@@ -57,13 +57,12 @@ They are the primary focus of Phases 1 and 2 of the migration.
 
 ### Version control
 
-All production [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) (application code, test code, infrastructure configuration,
-deployment scripts, and database schemas) are stored in version control and can be
-reproduced from a single source of truth.
+All production [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) live in version control: application code, test code, infrastructure configuration,
+deployment scripts, and database schemas. You can reproduce them from a single source of truth.
 
-**Migration relevance:** This is a prerequisite for Phase 1. If any part of your delivery
-process depends on files stored on a specific person's machine or a shared drive, address that
-before beginning the migration.
+**Migration relevance:** Version control is a prerequisite for Phase 1. Part of your delivery
+process might depend on files stored on a specific person's machine or a shared drive. If so,
+move those files into version control before beginning the migration.
 
 ### Continuous integration
 
@@ -90,7 +89,7 @@ Developers work in small batches and merge to trunk at least daily. Branches, if
 short-lived (less than one day). There are no long-lived feature branches.
 
 **Migration relevance:** [Phase 1: Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}).
-This is one of the first practices to establish because it enables CI.
+TBD is one of the first practices to establish because it enables CI.
 
 ### Test automation
 
@@ -139,9 +138,9 @@ These practices address how work is planned, prioritized, and delivered.
 Product decisions are informed by direct feedback from customers. Teams can observe how
 features are used in production and adjust accordingly.
 
-**Migration relevance:** Becomes fully enabled in [Phase 4: Deliver on Demand]({{< relref "/docs/continuous-deployment" >}})
-when every change reaches production quickly enough for real customer feedback to inform
-the next change.
+**Migration relevance:** Becomes fully enabled in [Phase 4: Deliver on Demand]({{< relref "/docs/continuous-deployment" >}}).
+In Phase 4, every change reaches production quickly enough for real customer feedback to
+inform the next change.
 
 ### Value stream visibility
 
@@ -149,7 +148,7 @@ The team has a clear view of the entire delivery process from request to product
 wait times, handoffs, and rework loops.
 
 **Migration relevance:** [Phase 0: Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}).
-This is the first activity in the migration because it informs every decision that follows.
+Value stream mapping is the first activity in the migration because it informs every decision that follows.
 
 ### Working in small batches
 
@@ -197,9 +196,9 @@ automated. Proactive notification is what makes [continuous deployment]({{< relr
 Development, operations, security, and product teams work together rather than in silos.
 Handoffs are minimized. Shared responsibility replaces blame.
 
-**Migration relevance:** All phases, but especially [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}})
-where the pipeline must encode the quality criteria from all disciplines (security, testing,
-operations) into automated gates.
+**Migration relevance:** All phases, but especially [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}).
+In Phase 2, the pipeline must encode the quality criteria from all disciplines (security,
+testing, operations) into automated gates.
 
 ## Practices relevant in every phase
 

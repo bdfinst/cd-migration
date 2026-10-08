@@ -11,12 +11,12 @@ aliases:
 {{% pageinfo %}}
 **Phase 1 - Foundations** | {{< scope-label "team" >}}
 
-This is a detailed companion to the [Trunk-Based Development]({{< relref "/docs/foundations" >}}) overview. It covers specific migration paths, regulated environment guidance, multi-team strategies, and concrete scenarios.
+This guide is a detailed companion to the [Trunk-Based Development]({{< relref "/docs/foundations" >}}) overview. The guide covers specific migration paths, regulated environment guidance, multi-team strategies, and concrete scenarios.
 {{% /pageinfo %}}
 
-This guide walks you through migrating from [GitFlow]({{< relref "/docs/reference/glossary#gitflow" >}}) or long-lived branches to [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}). It covers two paths (short-lived branches and direct trunk commits), essential practices, regulated-environment compliance, and common pitfalls.
+This guide walks you through migrating from [GitFlow]({{< relref "/docs/reference/glossary#gitflow" >}}) or long-lived branches to [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}). The guide covers two paths (short-lived branches and direct trunk commits), essential practices, regulated-environment compliance, and common pitfalls.
 
-Long-lived branches hide problems. TBD exposes them early, which is why it is the first step toward [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
+Long-lived branches hide problems. TBD exposes them early, which is why TBD is the first step toward [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}).
 
 ---
 
@@ -47,7 +47,7 @@ The first meaningful change is simple:
 
 Your first goal isn't true TBD. It's shorter-lived branches: changes that live for hours or a couple of days, not weeks.
 
-That alone exposes [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) issues, unclear requirements, and missing tests, which is exactly the point. The pain tells you where improvement is needed.
+Shorter branches alone expose [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) issues, unclear requirements, and missing tests. Exposing them is exactly the point. The pain tells you where improvement is needed.
 
 ---
 
@@ -71,7 +71,7 @@ Start with two or three of these. Don't let measurement become its own project.
 
 ## Path 1: Moving from long-lived branches to short-lived branches
 
-When GitFlow habits are deeply ingrained, this is usually the least-threatening first step.
+When GitFlow habits are deeply ingrained, short-lived branches are usually the least-threatening first step.
 
 ### 1. Collapse the branching model
 
@@ -109,7 +109,7 @@ Bring product, QA, and developers together *before coding*:
 
 You'll discover misunderstandings upfront instead of after a week of coding.
 
-This approach is called **[Behavior-Driven Development (BDD)]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}})**, a collaborative practice where teams define expected behavior in plain language before writing code. BDD bridges the gap between business requirements and technical implementation by using concrete examples that become executable tests.
+This approach is called **[Behavior-Driven Development (BDD)]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}})**. In BDD, teams collaborate to define expected behavior in plain language before writing code. BDD bridges the gap between business requirements and technical implementation. It uses concrete examples that become executable tests.
 
 **Key BDD resources:**
 
@@ -184,26 +184,26 @@ describe('Password Reset', () => {
 });
 {{< /card >}}
 
-Now you can write the minimum code to make these tests pass. This drives smaller, more focused changes.
+Now you can write the minimum code to make these tests pass. Writing only the minimum code drives smaller, more focused changes.
 
 ### 4. Invest in contract tests
 
 Most merge pain isn't from your code. It's from the *interfaces* between services.
 Define interface changes early and codify them with provider/consumer contract tests.
 
-This lets teams integrate frequently without surprises.
+Contract tests let teams integrate frequently without surprises.
 
 ---
 
 ## Path 2: Committing directly to the trunk
 
-This is the cleanest and most powerful version of TBD.
-It requires discipline, but it produces the most stable delivery [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) and the least drama.
+Direct trunk commits are the cleanest and most powerful version of TBD.
+This path requires discipline, but it produces the most stable delivery [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) and the least drama.
 
 If the idea of committing straight to `main` makes people panic, that's a signal about your current testing process, not a problem with TBD.
 
 {{< alert title="Note on regulated environments" >}}
-If you work in a regulated industry with compliance requirements (SOX, HIPAA, FedRAMP, etc.), **Path 1 with short-lived branches** is usually the better choice. Short-lived branches provide the audit trails, separation of duties, and documented approval workflows that regulators expect, while still enabling daily integration. See [TBD in Regulated Environments](#tbd-in-regulated-environments) for detailed guidance on meeting compliance requirements, and [Address Code Review Concerns](#address-code-review-concerns) for how to maintain fast review cycles with short-lived branches.
+If you work in a regulated industry with compliance requirements (SOX, HIPAA, FedRAMP, etc.), **Path 1 with short-lived branches** is usually the better choice. Short-lived branches provide the audit trails, separation of duties, and documented approval workflows that regulators expect. They still enable daily integration. See [TBD in Regulated Environments](#tbd-in-regulated-environments) for detailed guidance on meeting compliance requirements. See [Address Code Review Concerns](#address-code-review-concerns) for how to maintain fast review cycles with short-lived branches.
 {{< /alert >}}
 
 ---
@@ -233,7 +233,7 @@ These practices apply to **both paths**, whether you're using short-lived branch
 
 ### Use feature flags the right way
 
-[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are one of several **[evolutionary coding techniques]({{< relref "/docs/foundations/evolutionary-coding" >}})** that allow you to integrate incomplete work safely, and the one to reach for last. See [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) for the full decision hierarchy, including dark code, branch by abstraction, parallel run, and expand and contract.
+[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are one of several **[evolutionary coding techniques]({{< relref "/docs/foundations/evolutionary-coding" >}})** that allow you to integrate incomplete work safely. Feature flags are the technique to reach for last. See [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) for the full decision hierarchy, including dark code, branch by abstraction, parallel run, and expand and contract.
 
 Feature flags are not a testing strategy.
 They are a **release** strategy.
@@ -270,7 +270,7 @@ app.get('/checkout', (req, res) => {
 });
 {{< /card >}}
 
-This is enough for most TBD use cases.
+Simple boolean flags are enough for most TBD use cases.
 
 #### Testing code behind flags
 
@@ -304,7 +304,7 @@ If you only test with the flag on, you'll break production when the flag is off.
 
 #### Keep flags short-lived
 
-For TBD, most flags are temporary release flags: they hide incomplete work during integration and get removed once the feature is stable (typically 1-4 weeks). Set a removal date when you create each flag, assign an owner, and treat unremoved flags as technical debt.
+For TBD, most flags are temporary release flags. Release flags hide incomplete work during integration. Remove them once the feature is stable (typically 1-4 weeks). Set a removal date when you create each flag, assign an owner, and treat unremoved flags as technical debt.
 
 For a deeper taxonomy of flag types (release flags vs. permanent configuration flags) and lifecycle management practices, see the [feature flag glossary entry]({{< relref "/docs/reference/glossary#feature-flag" >}}).
 
@@ -317,7 +317,7 @@ Large commits are failed design upstream, not failed integration downstream.
 ### Use TDD and ATDD to keep refactors safe
 
 Refactoring must not break tests.
-If it does, you're testing implementation, not behavior. Behavioral tests are what keep trunk commits safe.
+If a refactor breaks tests, you're testing implementation, not behavior. Behavioral tests are what keep trunk commits safe.
 
 ### Prioritize interfaces first
 
@@ -356,7 +356,7 @@ The initial phase sets the tone. Focus on establishing new habits, not perfectio
   - Integration tests that could be contract tests
   - Flaky tests masking real issues
 
-Fix or isolate the worst offenders. You don't need a perfect test suite to start, only one fast enough to not punish frequent integration.
+Fix or isolate the worst offenders. You don't need a perfect test suite to start. You need one fast enough that it does not punish frequent integration.
 
 ### Step 3: First integrated change
 
@@ -462,9 +462,9 @@ Knowledge transfer through pairing works better than documentation.
 The goal is **fast feedback**, not zero review.
 
 {{< alert title="Important" color="warning" >}}
-If you are using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays: the reviewer reads code, leaves comments, the author reads comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
+If you are using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays. The reviewer reads code and leaves comments. The author reads the comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
 
-Instead, use **synchronous code reviews** where the reviewer and author work together in real-time (screen share, pair at a workstation, or mob). This eliminates communication delays through review comments. Questions get answered immediately, changes happen on the spot, and the code merges the same day.
+Instead, use **synchronous code reviews** where the reviewer and author work together in real-time (screen share, pair at a workstation, or mob). Synchronous review eliminates the delays of communicating through review comments. Questions get answered immediately, changes happen on the spot, and the code merges the same day.
 
 If your team cannot commit to synchronous reviews or pair/mob programming, you will struggle to maintain short branch lifetimes.
 {{< /alert >}}
@@ -546,7 +546,7 @@ describe('User Service Contract', () => {
 });
 {{< /card >}}
 
-This test runs against your expectations of the API, not the actual service. When the upstream team changes their API, your contract test fails *before* you integrate their changes.
+The contract test runs against your expectations of the API, not the actual service. When the upstream team changes their API, your contract test fails *before* you integrate their changes.
 
 **Share the contract:**
 
@@ -623,7 +623,7 @@ When multiple teams need to coordinate a release:
 3. Features remain disabled until coordination point
 4. Enable flags in coordinated sequence
 
-This decouples development velocity from release coordination.
+Flags decouple development velocity from release coordination.
 
 ### When you can't integrate with dependencies
 
@@ -647,7 +647,7 @@ You can't force other teams to change. But you can demonstrate a better way and 
 
 ## TBD in regulated environments
 
-Regulated industries face legitimate compliance requirements: audit trails, change traceability, separation of duties, and documented approval processes. These requirements often lead teams to believe trunk-based development is incompatible with compliance. This is a misconception.
+Regulated industries face legitimate compliance requirements: audit trails, change traceability, separation of duties, and documented approval processes. These requirements often lead teams to believe trunk-based development is incompatible with compliance. That belief is a misconception.
 
 TBD is about **integration frequency**, not about eliminating controls. You can meet compliance requirements while still integrating at least daily.
 
@@ -690,7 +690,7 @@ Short-lived branches mean:
 - Pull requests are **small, focused, and fast to review**
 - Review and approval happen **within the branch lifetime**
 
-This approach satisfies both regulatory requirements and continuous integration principles.
+Short-lived branches satisfy both regulatory requirements and continuous integration principles.
 
 ### How short-lived branches meet compliance requirements
 
@@ -724,7 +724,7 @@ Use pull request workflows:
 5. Merge to trunk after approval
 6. Automated deployment with gates
 
-This provides stronger separation of duties than long-lived branches because:
+This workflow provides stronger separation of duties than long-lived branches because:
 
 - Reviews happen while context is fresh
 - Reviewers can actually understand the small changeset
@@ -745,7 +745,7 @@ dismiss_stale_reviews: true
 require_code_owner_review: true
 {{< /card >}}
 
-This ensures:
+Branch protection rules ensure:
 
 - No direct commits to trunk (except in documented break-glass scenarios)
 - Required approvals before merge
@@ -919,8 +919,8 @@ When you migrate to TBD, you'll expose every weakness you've been avoiding:
 - Gaps in automated validation
 - Long manual processes in the [value stream]({{< relref "/docs/reference/glossary#value-stream-map" >}})
 
-This is not a regression.
-This is the **point**.
+Exposing these weaknesses is not a regression.
+Exposing them is the **point**.
 
 Problems you discover early are problems you can fix cheaply.
 
@@ -980,7 +980,7 @@ Set a removal date when creating each flag. Track flags like technical debt. Rem
 
 ## When to pause or pivot
 
-Sometimes TBD migration stalls or causes more problems than it solves. Here's how to tell if you need to pause and what to do about it.
+Sometimes TBD migration stalls or causes more problems than it solves. Use these signs to decide whether to pause and what to do next.
 
 ### Signs you're not ready yet
 
@@ -1003,7 +1003,7 @@ If TBD caused a spike in production issues, something is wrong with your safety 
 Revert to short-lived branches (48-72 hours) temporarily. Analyze what's escaping to production. Add tests or checks to catch those issues. Resume direct-to-trunk when the safety net is stronger.
 
 **Red flag 4: The team is in constant conflict**
-If people are fighting about the process, frustrated daily, or actively working around it, you've lost the team.
+People might fight about the process, feel frustrated daily, or actively work around it. If so, you've lost the team.
 
 **What to do:**
 Hold a retrospective. Listen to concerns without defending TBD. Identify the top 3 pain points. Address those first. Resume TBD migration when the team agrees to try again.
@@ -1011,7 +1011,7 @@ Hold a retrospective. Listen to concerns without defending TBD. Identify the top
 ### Signs you're doing it wrong (but can fix it)
 
 **Yellow flag 1: Daily commits, but monthly integration**
-You're committing to trunk, but your code doesn't connect to the rest of the system until the end.
+You're committing to trunk. But your code doesn't connect to the rest of the system until the end.
 
 **What to fix:**
 Focus on interface-level integration. Ensure your tests exercise boundaries between components. Use contract tests.
@@ -1059,14 +1059,14 @@ You know TBD is working when:
 - Deployments are boring
 - You can fix production issues with the same process you use for normal work
 
-When your deployment process enables emergency fixes without special exceptions, you've reached the real payoff:
-**lower cost of change**, which makes everything else faster, safer, and more sustainable.
+Your deployment process might handle emergency fixes without special exceptions. Then you've reached the real payoff:
+**lower cost of change**. Lower cost of change makes everything else faster, safer, and more sustainable.
 
 ---
 
 ## Concrete examples and scenarios
 
-Theory is useful. Examples make it real. Here are practical scenarios showing how to apply TBD principles.
+Theory is useful. Examples make it real. These practical scenarios show how to apply TBD principles.
 
 ### Scenario 1: Breaking down a large feature
 
@@ -1078,7 +1078,7 @@ Create a `feature/notifications` branch. Work for three weeks. Submit a massive 
 
 **TBD approach:**
 
-The interface and its implementations are new code with no existing caller, so they ship as [dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}) first. Only the final send behavior, which has a real user-facing effect, needs a feature flag.
+The interface and its implementations are new code with no existing caller. They ship as [dark code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}) first. Only the final send behavior, which has a real user-facing effect, needs a feature flag.
 
 **First commit:** Define notification interface, commit to trunk
 
@@ -1094,7 +1094,7 @@ class NotificationService {
 }
 {{< /card >}}
 
-This compiles but doesn't do anything yet. That's fine.
+The interface compiles but doesn't do anything yet. That's fine.
 
 **Next commit:** Add in-memory implementation for testing
 
@@ -1189,7 +1189,7 @@ async function backfillNames() {
 }
 {{< /card >}}
 
-Run this as a background job. Commit and deploy.
+Run the backfill as a background job. Commit and deploy.
 
 **Step 4: Read from new columns**
 Update read path behind a feature flag:
@@ -1283,7 +1283,7 @@ if (features.modernAuth && endpoint === '/api/users') {
 Commit daily. Monitor each endpoint.
 
 **Remove old code**
-Once all endpoints use modern auth and it has been stable:
+Once all endpoints use modern auth and modern auth has been stable:
 
 {{< card code=true header="**Remove the legacy implementation**" lang="javascript" >}}
 class AuthService {
@@ -1376,4 +1376,4 @@ Start optimizing for feedback.
 Small, tested, integrated changes, delivered continuously, will always outperform big batches delivered occasionally.
 
 That's why teams migrate to TBD.
-Not because it's trendy, but because it's the only path to real continuous integration and [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).
+Not because TBD is trendy, but because TBD is the only path to real continuous integration and [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).

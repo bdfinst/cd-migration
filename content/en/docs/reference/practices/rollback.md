@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-Rollback on-demand means the ability to quickly and safely revert to a previous working version of your application at any time, without requiring special approval, manual intervention, or complex procedures. It should be as simple and reliable as deploying forward.
+Rollback on-demand means you can quickly and safely revert to a previous working version of your application at any time. Rollback requires no special approval, manual intervention, or complex procedures. Rolling back is as simple and reliable as deploying forward.
 
 ## Key principles
 

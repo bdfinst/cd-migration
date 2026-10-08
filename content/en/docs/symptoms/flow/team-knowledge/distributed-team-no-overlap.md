@@ -12,9 +12,11 @@ tags:
 
 ## What you are seeing
 
-A developer in London finishes a piece of work at 5 PM and creates a pull request. The reviewer in San Francisco is starting their day but has morning meetings and gets to the review at 2 PM Pacific - which is 10 PM London time, the next day. The author is offline. The reviewer leaves comments. The author responds the following morning. The review cycle takes four days for a change that would have taken 20 minutes with any overlap.
+A developer in London finishes a piece of work at 5 PM and creates a pull request. The reviewer in San Francisco is starting their day but has morning meetings. The reviewer gets to the review at 2 PM Pacific, which is 10 PM London time.
 
-Integration conflicts sit unresolved for hours. The developer who could resolve the conflict is asleep when it is discovered. By the time they wake up, the main branch has moved further. Resolving the conflict now requires understanding changes made by multiple people across multiple time zones, none of whom are available simultaneously to sort it out.
+The author is offline. The reviewer leaves comments. The author responds the following morning. The review cycle takes four days for a change that would have taken 20 minutes with any overlap.
+
+Integration conflicts sit unresolved for hours. The developer who could resolve the conflict is asleep when someone discovers the conflict. By the time they wake up, the main branch has moved further. Resolving the conflict now requires understanding changes made by multiple people across multiple time zones, none of whom are available simultaneously to sort it out.
 
 The team has adapted with async-first practices: detailed PR descriptions, recorded demos, comprehensive written documentation. These adaptations reduce the cost of asynchrony but do not eliminate it. The team's throughput is bounded by communication latency, and the work items that require back-and-forth are the most expensive.
 
@@ -22,7 +24,7 @@ The team has adapted with async-first practices: detailed PR descriptions, recor
 
 ### Long-lived feature branches
 
-Long-lived branches mean that integration conflicts are larger and more complex when they finally surface. Resolving a small conflict asynchronously is tolerable. Resolving a three-day branch merge asynchronously is genuinely difficult - the changes are large, the context for each change is spread across people in different time zones, and the resolution requires understanding decisions made by people who are not available.
+Long-lived branches mean that integration conflicts are larger and more complex when they finally surface. Resolving a small conflict asynchronously is tolerable. Resolving a three-day branch merge asynchronously is genuinely difficult. The changes are large, and the context for each change is spread across people in different time zones. The resolution requires understanding decisions made by people who are not available.
 
 Frequent, small integrations to trunk reduce conflict size. A conflict that would have been 500 lines with a week-old branch is 30 lines when branches are integrated daily.
 

@@ -14,24 +14,23 @@ description: >
 The 10-minute [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) target and the preference for sub-second unit tests are not arbitrary. They are
 long-standing conventions in CD practice, and they align with how human cognition handles
 interrupted work. When a developer makes a change and waits for
-test results, three things determine whether that feedback is useful: whether the developer still
-holds the mental model of the change, whether they can act on the result immediately, and whether
-the wait is short enough that they do not context-switch to something else.
+test results, three things determine whether that feedback is useful. Does the developer still
+hold the mental model of the change? Can they act on the result immediately? Is the wait short
+enough that they do not context-switch to something else?
 
 Research on task interruption and working memory consistently shows that context switches are
-expensive. Gloria Mark's research at UC Irvine found that it takes an average of 23 minutes for
-a person to fully regain deep focus after being interrupted during a task, and that interrupted
+expensive. Gloria Mark's research at UC Irvine found that a person needs an average of 23 minutes
+to fully regain deep focus after an interruption. The research also found that interrupted
 tasks take twice as long and contain twice as many errors as uninterrupted
-ones.[^mark-2008] If the test suite itself takes 30 minutes, the total cost of a single
-feedback cycle approaches an hour - and most of that time is spent re-loading context, not fixing
-code.
+ones.[^mark-2008] If the test suite itself takes 30 minutes, a single feedback cycle costs
+nearly an hour. Most of that time goes to re-loading context, not fixing code.
 
 ## The cognitive breakpoints
 
 Jakob Nielsen's foundational research on response times identified three thresholds that govern
-how users perceive and respond to system delays: 0.1 seconds (feels instantaneous), 1 second
-(noticeable but flow is maintained), and 10 seconds (attention limit - the user starts thinking
-about other things).[^nielsen-1993] These thresholds, rooted in human perceptual and
+how users perceive and respond to system delays. At 0.1 seconds, a response feels instantaneous.
+At 1 second, the delay is noticeable but flow is maintained. At 10 seconds, attention hits its
+limit, and the user starts thinking about other things.[^nielsen-1993] These thresholds, rooted in human perceptual and
 cognitive limits, apply directly to developer tooling.
 
 Different feedback speeds produce fundamentally different developer behaviors:
@@ -44,12 +43,12 @@ Different feedback speeds produce fundamentally different developer behaviors:
 | **2 to 10 minutes** | The developer context-switches. They check email, review a PR, or start thinking about a different problem. When the result arrives, they must actively return to the original task. | Working memory is partially lost. Rebuilding context takes several minutes depending on the complexity of the change.[^mark-2008] |
 | **Over 10 minutes** | The developer fully disengages and starts a different task. The test result arrives as an interruption to whatever they are now doing. | Working memory of the original change is gone. Rebuilding it takes upward of 23 minutes.[^mark-2008] Investigating a failure means re-reading code they wrote an hour ago. |
 
-The conventional 10-minute CI target lines up with the boundary between "developer waits and acts
-on the result" and "developer starts something else and pays a full context-switch penalty."
+The conventional 10-minute CI target marks a boundary. Below it, the "developer waits and acts
+on the result." Above it, the "developer starts something else and pays a full context-switch penalty."
 Below 10 minutes, feedback is actionable. Above 10 minutes, feedback becomes an interruption. The
-number itself is an established CD convention rather than a figure the cognitive research
-produces directly, but [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}})'s research on
-continuous integration converges on the same target: tests should complete in under 10 minutes to
+number itself is an established CD convention, not a figure the cognitive research
+produces directly. [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}})'s research on
+continuous integration converges on the same target. Tests should complete in under 10 minutes to
 support the fast feedback loops that high-performing teams depend on.[^dora-ci]
 
 ## What this means for test architecture
@@ -81,8 +80,8 @@ execution, and move non-deterministic tests out of the gating path.
 ## Impact on application architecture
 
 Test feedback speed is not only a testing concern - it puts pressure on how you design your
-systems. A monolithic application with a single test suite that takes 40 minutes to run forces
-every developer to pay the full context-switch penalty on every change, regardless of which
+systems. Consider a monolithic application with a single test suite that takes 40 minutes to run. Every
+developer pays the full context-switch penalty on every change, regardless of which
 module they touched.
 
 Breaking a system into smaller, independently testable components is often motivated as much by
@@ -90,10 +89,10 @@ test speed as by deployment independence. When a component has its own focused t
 runs in under 2 minutes, the developer working on that component gets fast, relevant feedback.
 They do not wait for tests in unrelated modules to finish.
 
-This creates a virtuous cycle: smaller components with clear boundaries produce faster test
-suites, which enable more frequent integration, which encourages smaller changes, which are
-easier to test. Conversely, a tightly coupled monolith produces a slow, tangled test suite that
-discourages frequent integration, which leads to larger changes, which are harder to test and
+Component focus creates a virtuous cycle. Smaller components with clear boundaries produce faster test
+suites. Faster suites enable more frequent integration, which encourages smaller, easier-to-test changes.
+Conversely, a tightly coupled monolith produces a slow, tangled test suite that
+discourages frequent integration. Infrequent integration leads to larger changes, which are harder to test and
 more likely to fail.
 
 Architecture decisions that improve test feedback speed include:
@@ -120,7 +119,7 @@ developers adapt:
   commits.
 - They stop running tests locally because the wait is unacceptable during active development.
 - They push to CI and context-switch, paying the full rebuild penalty on every cycle.
-- They rerun failures instead of investigating, because re-reading the code they wrote an hour
+- They rerun failures instead of investigating. Re-reading the code they wrote an hour
   ago is expensive enough that "maybe it was flaky" feels like a reasonable bet.
 
 Each of these behaviors degrades quality independently. Together, they make continuous integration

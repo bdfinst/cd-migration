@@ -11,21 +11,21 @@ description: >
 ### Why does this migration guide exist?
 
 Many teams say they want to adopt [continuous delivery](../glossary/#cd-continuous-delivery) but do not know where to start. The CD
-landscape is full of tools, frameworks, and advice, but there is no clear, sequenced path from
+landscape is full of tools, frameworks, and advice. It lacks a clear, sequenced path from
 "we deploy monthly" to "we can deploy any change at any time." This guide provides that path.
 
 It is built on the [MinimumCD](https://minimumcd.org) definition of continuous delivery and
 draws on practices from the [Dojo Consortium](https://dojoconsortium.org) and the
-[DORA research](https://dora.dev). The content is organized as a phased migration journey
-from your current state to continuous delivery rather than as a description of what CD looks
-like when you are already there.
+[DORA research](https://dora.dev). The content is a phased migration journey from your
+current state to continuous delivery. It does not describe what CD looks like once you are
+already there.
 
 ### Who is this guide for?
 
 This guide is for development teams, tech leads, and engineering managers who want to improve
-their software delivery practices. It is designed for teams that are currently deploying
-infrequently (monthly, quarterly, or less) and want to reach a state where any change can be
-deployed to production at any time.
+their software delivery practices. It is designed for teams that deploy infrequently
+(monthly, quarterly, or less). These teams want to reach a state where they can deploy any
+change to production at any time.
 
 You do not need to be starting from zero. If your team already has [CI](../glossary/#ci-continuous-integration) in place, you can begin
 with [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}). If you have a pipeline but deploy infrequently, start
@@ -39,9 +39,9 @@ without waiting for organizational consensus. Once one team demonstrates results
 times](../glossary/#lead-time-for-changes), lower [change failure rate](../glossary/#change-failure-rate-cfr), more frequent deployments), other teams will have a concrete
 example to follow.
 
-Organizational adoption comes after team adoption, not before. The role of organizational
-leadership is to create the conditions for teams to succeed: stable team composition, tool
-funding, policy flexibility for deployment processes, and protection from pressure to cut
+Organizational adoption comes after team adoption, not before. Organizational leadership
+creates the conditions for teams to succeed. Those conditions include stable team composition,
+tool funding, policy flexibility for deployment processes, and protection from pressure to cut
 corners on quality.
 
 ### How do we use this guide for improvement?
@@ -62,9 +62,9 @@ give you a framework for addressing them.
 
 ### What is the difference between continuous delivery and continuous deployment?
 
-**Continuous delivery** means every change to the codebase is always in a [deployable](../glossary/#deployable) state and
-can be released to production at any time through a fully automated [pipeline](../glossary/#pipeline). The decision to
-deploy may still be made by a human, but the capability to deploy is always present.
+**Continuous delivery** means every change to the codebase is always in a [deployable](../glossary/#deployable) state.
+You can release the change to production at any time through a fully automated [pipeline](../glossary/#pipeline). A human
+might still decide when to deploy, but the capability to deploy is always present.
 
 **[Continuous deployment](../glossary/#continuous-deployment)** is an extension of continuous delivery where every change that passes
 the automated pipeline is deployed to production without manual intervention.
@@ -79,20 +79,21 @@ No. Many teams have a CD pipeline tool (Jenkins, GitHub Actions, GitLab CI, etc.
 not practicing continuous delivery. A pipeline tool is necessary but not sufficient.
 Continuous delivery also requires [trunk-based development](../glossary/#tbd-trunk-based-development), comprehensive test automation, a
 single path to production, [immutable artifacts](../glossary/#immutable-artifact), and the ability to deploy any green build.
-If your team has a pipeline but uses long-lived feature branches, deploys only at the end of a
-sprint, or requires manual testing before a release, you have a pipeline tool but you are not
-practicing continuous delivery. The [current-state checklist]({{< relref "/docs/assess/current-state-checklist" >}})
+
+Your team might have a pipeline but use long-lived feature branches, deploy only at sprint end,
+or require manual testing before a release. In that case, you have a pipeline tool but
+you are not practicing continuous delivery. The [current-state checklist]({{< relref "/docs/assess/current-state-checklist" >}})
 in Phase 0 helps you assess the gap.
 
 ### What does "the pipeline is the only path to production" mean?
 
-It means there is exactly one way for any change to reach production: through the automated
+The phrase means there is exactly one way for any change to reach production: through the automated
 pipeline. No one can SSH into a server and make a change. No one can skip the test suite for
 an "urgent" fix. No one can deploy from their local machine.
 
-This constraint is what gives you confidence. If every change in production has been through
+The single path is what gives you confidence. If every change in production has been through
 the same build, test, and deployment process, you know what is running and how it got there.
-If exceptions are allowed, you lose that guarantee, and your ability to reason about production
+If you allow exceptions, you lose that guarantee, and your ability to reason about production
 state degrades.
 
 During your migration, establishing this single path is a key milestone in
@@ -101,29 +102,29 @@ During your migration, establishing this single path is a key milestone in
 ### What does "application configuration" mean in the context of CD?
 
 Application configuration refers to values that change between environments but are not part of
-the application code: database connection strings, API endpoints, [feature flag](../glossary/#feature-flag) states, logging
-levels, and similar settings.
+the application code. Examples include database connection strings, API endpoints, [feature flag](../glossary/#feature-flag) states,
+logging levels, and similar settings.
 
-In a CD pipeline, configuration is externalized. It lives outside the artifact and is injected
-at deployment time. This is what makes [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}})
+In a CD pipeline, configuration is externalized. It lives outside the artifact, and the pipeline
+injects it at deployment time. Externalized configuration is what makes [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}})
 possible. You build the [artifact](../glossary/#artifact) once and deploy it to any environment by providing the
 appropriate configuration.
 
-If configuration is embedded in the artifact (for example, hardcoded URLs or environment-specific
-config files baked into a container image), you must rebuild the artifact for each environment,
-which means the artifact you tested is not the artifact you deploy. This breaks the immutability
+Configuration can be embedded in the artifact, for example as hardcoded URLs or environment-specific
+config files baked into a container image. Then you must rebuild the artifact for each environment,
+so the artifact you tested is not the artifact you deploy. Rebuilding breaks the immutability
 guarantee. See [Application Config]({{< relref "/docs/pipeline/application-config" >}}).
 
 ### What is an "immutable artifact" and why does it matter?
 
 An immutable artifact is a build output (container image, binary, package) that is never
 modified after it is created. The exact artifact that passes your test suite is the exact
-artifact that is deployed to staging, and then to production. Nothing is recompiled, repackaged,
+artifact you deploy to staging, and then to production. Nothing is recompiled, repackaged,
 or patched between environments.
 
-This matters because it eliminates an entire category of deployment failures: "it worked in
-staging but not in production" caused by differences in the build. If the same bytes are
-deployed everywhere, build-related discrepancies are impossible.
+Immutability matters because it eliminates an entire category of deployment failures: "it worked in
+staging but not in production" caused by differences in the build. If you deploy the same bytes
+everywhere, build-related discrepancies are impossible.
 
 Immutability requires externalizing configuration (see above) and storing artifacts in a
 registry or repository. See [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}).
@@ -152,12 +153,12 @@ automatically and consistently. See [Deployable Definition]({{< relref "/docs/pi
 
 **Release** is the act of making functionality available to users.
 
-These are different events, and decoupling them is one of the most powerful techniques in CD.
+Deployment and release are different events. Decoupling them is one of the most powerful techniques in CD.
 You can deploy code to production without releasing it to users by using
 [feature flags]({{< relref "/docs/optimize/feature-flags" >}}). The code is running in production, but the new
 functionality is disabled. When you are ready, you enable the flag and the feature is released.
 
-This decoupling is important because it separates the technical risk (will the deployment
+Decoupling is important because it separates the technical risk (will the deployment
 succeed?) from the business risk (will users like the feature?). You can manage each risk
 independently. Deployments become routine technical events. Releases become deliberate business
 decisions.
@@ -166,7 +167,7 @@ decisions.
 
 ### How long does the migration take?
 
-It depends on where you start and how much organizational support you have. As a rough guide:
+The duration depends on where you start and how much organizational support you have. As a rough guide:
 
 - **Phase 0 (Assess):** 1-2 weeks
 - **Phase 1 (Foundations):** 1-6 months, depending on current testing and [TBD](../glossary/#tbd-trunk-based-development) maturity
@@ -175,16 +176,16 @@ It depends on where you start and how much organizational support you have. As a
 - **Phase 4 (Deliver on Demand):** 1-3 months
 
 These ranges assume a single team working on the migration alongside regular delivery work.
-The biggest variable is Phase 1: teams with no test automation or TBD practice will spend
-longer building foundations than teams that already have these in place.
+The biggest variable is Phase 1. Teams with no test automation or TBD practice spend
+longer building foundations than teams that already have these practices.
 
 Do not treat these timelines as commitments. The migration is an iterative improvement process,
 not a project with a deadline.
 
 ### Do we stop delivering features during the migration?
 
-No. The migration is done alongside regular delivery work, not instead of it. Each migration
-practice is adopted incrementally: you do not stop the world to rewrite your test suite or
+No. You do the migration alongside regular delivery work, not instead of it. You adopt each migration
+practice incrementally: you do not stop the world to rewrite your test suite or
 redesign your pipeline.
 
 For example, in Phase 1 you adopt trunk-based development by reducing [branch lifetimes](../glossary/#branch-lifetime)
@@ -199,11 +200,12 @@ before, not slower.
 ### What if our organization requires manual change approval (CAB)?
 
 Many organizations have Change Advisory Board (CAB) processes that require manual approval
-before production deployments. This is one of the most common organizational blockers for CD.
-The path forward is to replace the manual approval with automated evidence: a mature CD
+before production deployments. CAB approval is one of the most common organizational blockers for CD.
+
+The path forward is to replace the manual approval with automated evidence. A mature CD
 pipeline provides stronger safety guarantees than a committee meeting, and your [DORA metrics](../glossary/#dora-metrics)
-can demonstrate this. Most CAB processes were designed for monthly releases with hundreds of
-changes per batch; when you deploy daily with one or two changes, the risk profile is
+can demonstrate that. Most CAB processes were designed for monthly releases with hundreds of
+changes per batch. When you deploy daily with one or two changes, the risk profile is
 fundamentally different. See [CAB Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}})
 for a detailed approach to this transition.
 
@@ -218,15 +220,15 @@ well-structured monolith with a comprehensive test suite and a reliable pipeline
 CD. A poorly structured collection of microservices with shared databases and coordinated
 releases cannot.
 
-Architecture decoupling is addressed in [Phase 3]({{< relref "/docs/optimize/architecture-decoupling" >}}), but
-it is about enabling independent deployment and reducing coordination costs, not about adopting
+[Phase 3]({{< relref "/docs/optimize/architecture-decoupling" >}}) addresses architecture decoupling.
+Decoupling is about enabling independent deployment and reducing coordination costs, not about adopting
 any particular architectural style.
 
 ### What if our tests are slow or unreliable?
 
-This is one of the most common starting conditions. A slow or flaky test suite undermines
-every CD practice: developers stop trusting the tests, broken builds are ignored, and the
-pipeline becomes a bottleneck rather than an enabler. The fix is incremental: quarantine
+Slow or unreliable tests are one of the most common starting conditions. A slow or flaky test
+suite undermines every CD practice. Developers stop trusting the tests, teams ignore broken builds,
+and the pipeline becomes a bottleneck rather than an enabler. The fix is incremental: quarantine
 flaky tests, parallelize execution, rebalance toward fast unit tests, and set a pipeline
 time budget (under 10 minutes). See
 [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) and the
@@ -244,19 +246,21 @@ If you do not have time for a full assessment, ask yourself these questions:
 
 - **Do all developers integrate to trunk at least daily?** If no, start with [Phase 1]({{< relref "/docs/foundations" >}}).
 - **Do you have a single automated pipeline that every change goes through?** If no, start with [Phase 2]({{< relref "/docs/pipeline" >}}).
-- **Can you deploy any green build to production on demand?** If no, focus on the gap between your current state and [Phase 2]({{< relref "/docs/pipeline" >}}) completion criteria.
+- **Can you deploy any green build to production on demand?** If no, focus on the gap to the [Phase 2]({{< relref "/docs/pipeline" >}}) completion criteria.
 - **Do you deploy at least weekly?** If no, look at [Phase 3]({{< relref "/docs/optimize" >}}) for [batch size](../glossary/#batch-size) and flow optimization.
 
 ### Is CD about speed or quality?
 
 Quality. The purpose of the pipeline is to validate that an artifact is production-worthy or
 reject it. Do not chase daily deployments without first building confidence in your ability to
-detect failure. Move validation as close to the developer as possible: run it on the desktop,
-run it again on merge to trunk, run it again when the trunk changes.
+detect failure. Move validation as close to the developer as possible. Run it on the desktop,
+on merge to trunk, and again when the trunk changes.
 
 Testing is not limited to component tests. You need to test for security, compliance,
 performance, and everything else required in your context. Set error budgets and do not exceed
 them. When your error budget is spent, stop shipping features and invest in pipeline
-hardening. When something breaks in production, harden the pipeline. When exploratory testing
+hardening.
+
+When something breaks in production, harden the pipeline. When exploratory testing
 uncovers an edge case, harden the pipeline. The primary goal is to build efficient and
 effective quality gates. Only then can you move quickly.

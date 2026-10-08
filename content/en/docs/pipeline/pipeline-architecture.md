@@ -14,11 +14,10 @@ aliases:
 
 ## Definition
 
-[Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) architecture is the structural design of your delivery pipeline - how stages are
+[Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) architecture is the structural design of your delivery pipeline. It covers how stages are
 organized, how quality gates are sequenced, how feedback loops operate, and how the
-pipeline evolves over time. It encompasses both the technical design of the pipeline and
-the improvement journey that a team follows from an initial, fragile pipeline to a mature,
-resilient delivery system.
+pipeline evolves over time. The term also covers the improvement journey a team follows
+from an initial, fragile pipeline to a mature, resilient delivery system.
 
 Good pipeline architecture is not achieved in a single step. Teams progress through
 recognizable states, applying the Theory of Constraints to systematically identify and
@@ -29,13 +28,13 @@ can be built, tested, and deployed independently through their own pipelines.
 
 Most teams beginning a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration have a pipeline that is somewhere between "barely
 functional" and "works most of the time." The pipeline may be slow, fragile, or tightly
-coupled to other systems. Improving it requires a deliberate architectural approach - not
-only adding more stages or more tests, but designing the pipeline for the flow
+coupled to other systems. Improving the pipeline requires a deliberate architectural
+approach. Adding more stages or more tests is not enough. Design the pipeline for the flow
 characteristics that [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) demands.
 
-Understanding where your pipeline architecture currently stands, and what the next
-improvement looks like, prevents teams from either stalling at a "good enough" state or
-attempting to jump directly to a target state that their context cannot support.
+Know where your pipeline architecture stands today and what the next improvement looks
+like. That knowledge keeps teams from stalling at a "good enough" state. It also keeps them
+from jumping directly to a target state that their context cannot support.
 
 ## Three architecture states
 
@@ -73,8 +72,8 @@ reliable delivery:
 In the tightly coupled state, each application has its own pipeline, but pipelines depend
 on each other or on shared resources:
 
-- **Integration tests span multiple services** - a pipeline for service A runs integration
-  tests that require service B, C, and D to be deployed in a specific state
+- **Integration tests span multiple services** - service A's pipeline runs integration tests
+  that need services B, C, and D deployed in a specific state
 - **Shared test environments** - multiple pipelines deploy to the same staging environment,
   creating contention and sequencing constraints
 - **Coordinated deployments** - deploying service A requires simultaneously deploying
@@ -156,7 +155,7 @@ If exploiting the constraint is not sufficient, invest in removing it:
 
 ### Step 5: Repeat
 
-Once a constraint is resolved, a new constraint will emerge. This is expected. The
+When you resolve a constraint, a new constraint emerges. Expect it. The
 pipeline improves through continuous iteration, not through a single redesign.
 
 ## Key design principles
@@ -183,8 +182,8 @@ most effective way to reduce pipeline duration without removing checks.
 ### Pipeline as code
 
 The pipeline definition lives in the same repository as the application it builds and
-deploys. This gives the team full ownership and allows the pipeline to evolve alongside
-the application.
+deploys. Keeping the definition there gives the team full ownership and lets the
+pipeline evolve alongside the application.
 
 ### Observability
 
@@ -237,8 +236,8 @@ bottlenecks. You cannot improve what you do not measure.
 
 ### Step 3: Identify the top constraint
 
-Using your measurements, identify the single biggest bottleneck in your pipeline. This is
-where you focus first.
+Using your measurements, identify the single biggest bottleneck in your pipeline. Focus
+there first.
 
 ### Step 4: Apply the Theory of Constraints cycle
 
@@ -248,8 +247,8 @@ identify the next constraint.
 ### Step 5: Evolve toward loose coupling
 
 With each improvement cycle, move toward independent, team-owned pipelines that can
-build, test, and deploy services independently. This is a journey of months or years,
-not days.
+build, test, and deploy services independently. Reaching loose coupling takes months or
+years, not days.
 
 ## Connection to the pipeline phase
 

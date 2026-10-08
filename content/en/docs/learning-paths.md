@@ -18,7 +18,7 @@ self-contained - you do not need to read the whole guide to follow one.
 
 Your test suite is costing you more than it helps. Runs are slow, failures are random, and bugs
 still reach production despite high coverage. This path takes you from recognizing the symptoms
-to understanding the root causes, then gives you the fix guide and the structural changes that
+to understanding the root causes. It then gives you the fix guide and the structural changes that
 prevent recurrence.
 
 1. [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - confirm the symptom
@@ -37,8 +37,8 @@ prevent recurrence.
 
 You suspect the team has a delivery problem but need to name it clearly and connect it to
 evidence before proposing changes. This path helps you identify which symptoms apply to your
-situation, attach a cost to them, find the root cause in your process, and then point to
-research-backed capabilities and a concrete starting step.
+situation and attach a cost to them. It then helps you find the root cause in your process and
+points you to research-backed capabilities and a concrete starting step.
 
 1. [For Managers]({{< relref "/docs/triage/for-managers" >}}) - identify your team's symptoms
 2. [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - quantify the cost
@@ -55,8 +55,8 @@ research-backed capabilities and a concrete starting step.
 **Audience:** Tech Lead | **Time investment:** Ongoing over the migration
 
 Your team has an existing system, existing habits, and real [constraints]({{< relref "/docs/reference/glossary#constraint" >}}). A greenfield guide
-will not help you here. This path starts with diagnostic framing, walks through the full
-phased migration from assess through optimize, and closes with the defect source catalog so
+will not help you here. This path starts with diagnostic framing and walks through the full
+phased migration from assess through optimize. It closes with the defect source catalog, so
 you understand what you are structurally preventing as you build each capability.
 
 1. [Start Here]({{< relref "/docs/start-here" >}}) - diagnostic framing
@@ -75,9 +75,9 @@ you understand what you are structurally preventing as you build each capability
 **Audience:** Developer or Tech Lead | **Time investment:** 2-4 hours of reading, then ongoing practice
 
 AI [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) writing and submitting code are a new kind of contributor with a different failure
-profile. This path explains what changes with agents in the loop, walks through the constraint
-model and workflow architecture, and then covers the concrete setup, session discipline, and
-quality gates needed to keep agent output safe to ship.
+profile. This path explains what changes with agents in the loop and walks through the constraint
+model and workflow architecture. It then covers the concrete setup, session discipline, and
+quality gates that keep agent output safe to ship.
 
 1. [Agentic CD Overview]({{< relref "/docs/agentic-cd" >}}) - what changes with AI agents
 2. [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the constraint model

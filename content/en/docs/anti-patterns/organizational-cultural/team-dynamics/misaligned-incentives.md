@@ -19,7 +19,9 @@ tags:
 
 Performance reviews ask about features delivered. OKRs are written as "ship X, Y, and Z by end of
 quarter." Bonuses are tied to project completions. The team is recognized in all-hands meetings
-for delivering the annual release on time. Nobody is ever recognized for reducing the mean time to
+for delivering the annual release on time.
+
+Nobody is ever recognized for reducing the mean time to
 repair an incident. Nobody has a goal that says "increase deployment frequency from monthly to
 weekly." Nobody's review mentions the change fail rate.
 
@@ -38,15 +40,15 @@ Common variations:
 
 - **The ops-dev split.** Development is rewarded for shipping features. Operations is rewarded for
   system stability. These goals conflict: every feature deployment is a stability risk from
-  operations' perspective. The result is that operations resists deployments and development
-  resists operational feedback. Neither team has an incentive to collaborate on making deployment
-  safer.
-- **The quantity over quality trap.** Velocity is tracked. Story points per sprint are reported to
-  leadership as a productivity metric. The team maximizes story points by cutting quality. A
+  operations' perspective. Operations resists deployments, and development resists operational
+  feedback. Neither team has an incentive to collaborate on making deployment safer.
+- **The quantity over quality trap.** Velocity is tracked, and story points per sprint are reported
+  to leadership as a productivity metric. The team maximizes story points by cutting quality. A
   2-point story completed quickly beats a 5-point story done right, from a velocity standpoint.
   Defects show up later, in someone else's sprint.
-- **The project success illusion.** A project "shipped on time and on budget" is labeled a success
-  even when the system it built is slow to change, prone to incidents, and unpopular with users.
+- **The project success illusion.** A project "shipped on time and on budget" is labeled a success.
+  The label sticks even when the system it built is slow to change, prone to incidents, and
+  unpopular with users.
   The project metrics rewarded are decoupled from the product outcomes that matter.
 - **The hero recognition pattern.** The engineer who stays late to fix the production incident is
   recognized. The engineer who spent three weeks preventing the class of defects that caused
@@ -91,13 +93,15 @@ investing in automation that would eliminate it.
 
 A project closes. The team disperses to new work. Six months later, the next project starts with
 a codebase that has accumulated unaddressed debt and a pipeline nobody maintained. The first sprint
-is slower than expected. The delivery timeline slips. Nobody is surprised - but nobody is
+is slower than expected, and the delivery timeline slips. Nobody is surprised - but nobody is
 accountable either, because the gap between projects was invisible to the incentive system.
 
 Each project delivery becomes a heroic effort because the delivery system was not kept healthy
-between projects. Timelines are unpredictable because the team's actual current capability is
-unknown - they know what they delivered on the last project under heroic conditions, not what they
-can deliver routinely. Teams with continuous delivery incentives keep their systems healthy
+between projects. Timelines are unpredictable because nobody knows the team's actual current
+capability. The team knows what it delivered on the last project under heroic conditions. It does
+not know what it can deliver routinely.
+
+Teams with continuous delivery incentives keep their systems healthy
 continuously and have much more reliable throughput.
 
 ### Impact on continuous delivery
@@ -137,9 +141,9 @@ conversations. It legitimizes the investment of time in CD improvement work.
 
 ### Step 3: Make prevention visible alongside recovery (weeks 2-4)
 
-Change recognition patterns. When the on-call engineer's fix is recognized in a team meeting, also
-recognize the engineer who spent time the previous week improving test coverage in the area that
-failed. When a deployment goes smoothly because a developer took care to add deployment
+Change recognition patterns. When you recognize the on-call engineer's fix in a team meeting, also
+recognize prevention. Name the engineer who spent time the previous week improving test coverage
+in the area that failed. When a deployment goes smoothly because a developer took care to add deployment
 verification, note it explicitly. Visible recognition of prevention behavior - not only heroic
 recovery - changes the cost-benefit calculation for investing in quality.
 
@@ -154,7 +158,7 @@ to collaborate rather than negotiate.
 
 Every planning cycle, include a review of delivery health metrics alongside product metrics. "Our
 deployment frequency is monthly; we want it to be weekly" should have the same status in a
-planning conversation as "we want to ship Feature X by Q2." This frames delivery system
+planning conversation as "we want to ship Feature X by Q2." That parity frames delivery system
 improvement as legitimate work, not as optional infrastructure overhead.
 
 | Objection | Response |

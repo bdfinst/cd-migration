@@ -64,9 +64,9 @@ metric.
 
 ### It increases rework
 
-Tests written to satisfy a mandate tend to be tightly coupled to implementation. When the team
-writes a test for a private method only to cover it, any refactoring of that method breaks the
-test even if the public behavior is unchanged. The team spends time updating tests that were never
+Tests written to satisfy a mandate tend to be tightly coupled to implementation. Suppose the
+team tests a private method only to cover it. Any refactoring of that method breaks the test,
+even when public behavior is unchanged. The team spends time updating tests that were never
 catching bugs in the first place.
 
 Retroactive coverage efforts are especially wasteful. A developer spends a day writing tests for
@@ -74,7 +74,7 @@ code someone else wrote months ago. They do not fully understand the intent, so 
 current behavior as correct. When a bug is later found in that code, the test passes - it asserts
 on the buggy behavior.
 
-Teams that write tests alongside the code they are developing avoid this. The test reflects the
+Teams that write tests alongside the code they are developing avoid this trap. The test reflects the
 developer's intent at the moment of writing. It verifies the behavior they designed, not the
 behavior they observed after the fact.
 
@@ -130,14 +130,14 @@ tests for real changes.
 
 ### Step 3: Introduce mutation testing on high-risk code (weeks 3-4)
 
-Mutation testing measures test effectiveness, not test coverage. A mutation testing tool modifies
-your code in small ways (changing `>` to `>=`, flipping a boolean, removing a statement) and
-checks whether your tests detect the change. If a mutation survives - the code changed but all
+Mutation testing measures test effectiveness, not test coverage. A mutation testing tool
+modifies your code in small ways and checks whether your tests detect the change. Typical
+changes include `>` to `>=`, flipping a boolean, or removing a statement. If a mutation survives - the code changed but all
 tests still pass - you have a gap in your test suite.
 
 Start with the modules that have the highest defect rate. Run mutation testing on those modules
 and use the surviving mutants to identify where tests are weak. Write targeted tests to kill
-surviving mutants. This focuses testing effort where it matters most.
+surviving mutants. Targeted tests focus testing effort where it matters most.
 
 ### Step 4: Shift the metric to defect detection (weeks 4-6)
 
@@ -149,8 +149,8 @@ Replace coverage as the primary quality metric with metrics that measure outcome
 | Coverage trend | Mutation score on high-risk modules |
 | Tests added per sprint | Defects caught by tests per sprint |
 
-Report both sets of metrics for a transition period. As the team sees that mutation scores and
-escaped defect rates are better indicators of test suite health, the coverage number becomes
+Report both sets of metrics for a transition period. The team will see that mutation scores and
+escaped defect rates better indicate test suite health. The coverage number then becomes
 informational rather than a gate.
 
 ### Step 5: Address the objections

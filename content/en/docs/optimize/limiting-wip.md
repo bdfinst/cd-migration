@@ -46,11 +46,11 @@ A practical starting WIP limit for a team is **N+2**, where N is the number of t
 The N+2 formula is a starting point, not a destination. Once the team is comfortable with the initial limit, reduce it:
 
 1. **Start at N+2.** Run for 2-4 weeks. Observe where work gets stuck.
-2. **Reduce to N+1.** Tighten the limit. Some team members will occasionally be "idle" - this is a feature, not a bug. They should swarm on blocked items.
+2. **Reduce to N+1.** Tighten the limit. Some team members will occasionally be "idle." Idle time is a feature, not a bug. Idle team members swarm on blocked items.
 3. **Reduce to N.** At this point, every team member is working on exactly one thing. Blocked work gets immediate attention because someone is always available to help.
 4. **Consider going below N.** Some teams find that pairing (two people, one item) further reduces cycle time. A team of 6 with a WIP limit of 3 means everyone is pairing.
 
-Each reduction will feel uncomfortable. That discomfort is the point - it exposes problems in your workflow that were previously hidden by excess WIP.
+Each reduction will feel uncomfortable. That discomfort is the point. It exposes workflow problems that excess WIP previously hid.
 
 ## What happens when you hit the limit
 
@@ -61,13 +61,13 @@ When the team reaches its WIP limit and someone finishes a task, they have two o
 
 When the WIP limit is reached and no items are complete:
 
-- **Do not start new work.** This is the hardest part and the most important.
+- **Do not start new work.** Holding back is the hardest part and the most important.
 - **Help unblock existing work.** Pair with someone. Review a pull request. Write a missing test. Talk to the person who has the answer to the blocking question.
-- **Improve the process.** If nothing is blocked but everything is slow, this is the time to work on automation, tooling, or documentation.
+- **Improve the process.** If nothing is blocked but everything is slow, use the time to work on automation, tooling, or documentation.
 
 ## Swarming
 
-Swarming is the practice of multiple team members working together on a single item to get it finished faster. It is the natural complement to WIP limits.
+Swarming is the practice of multiple team members working together on a single item to get it finished faster. Swarming is the natural complement to WIP limits.
 
 ### When to swarm
 
@@ -87,7 +87,7 @@ Swarming is the practice of multiple team members working together on a single i
 
 ### Why teams resist swarming
 
-The most common objection: "It's inefficient to have two people on one task." This is only true if you measure efficiency as "percentage of time each person is writing new code." If you measure efficiency as "how quickly value reaches production," swarming is almost always faster because it reduces handoffs, wait time, and rework.
+The most common objection: "It's inefficient to have two people on one task." The objection holds only if you measure efficiency as "percentage of time each person is writing new code." If you measure efficiency as "how quickly value reaches production," swarming is almost always faster. Swarming reduces handoffs, wait time, and rework.
 
 ## How limiting WIP exposes workflow issues
 
@@ -111,7 +111,7 @@ Before setting limits, make current WIP visible:
 
 - Count the number of items currently "in progress" for the team
 - Write this number on the board (physical or digital) every day
-- Most teams are shocked by how high it is. A team of 5 often has 15-20 items in progress.
+- Most teams are shocked by how high the number is. A team of 5 often has 15-20 items in progress.
 
 ### Step 2: Set the initial limit
 
@@ -128,18 +128,18 @@ Before setting limits, make current WIP visible:
 ### Step 4: Reduce the limit (monthly)
 
 - Every month, consider reducing the limit by 1
-- Each reduction will expose new bottlenecks - this is the intended effect
+- Each reduction will expose new bottlenecks, which is the intended effect
 - Stop reducing when the team reaches a sustainable flow where items move from start to done predictably
 
 ## Key pitfalls
 
 ### 1. "We set a WIP limit but nobody enforces it"
 
-A WIP limit that is not enforced is not a WIP limit. Enforcement requires a team agreement and a visible mechanism. If the board shows 10 items in progress and the limit is 7, the team should stop and address it immediately. This is a [working agreement]({{< relref "/docs/reference/glossary#working-agreement" >}}), not a suggestion.
+A WIP limit that is not enforced is not a WIP limit. Enforcement requires a team agreement and a visible mechanism. If the board shows 10 items in progress and the limit is 7, the team should stop and address the overage immediately. The WIP limit is a [working agreement]({{< relref "/docs/reference/glossary#working-agreement" >}}), not a suggestion.
 
 ### 2. "Developers are idle and management is uncomfortable"
 
-This is the most common failure mode. Management sees "idle" developers and concludes WIP limits are wasteful. In reality, those "idle" developers are either swarming on existing work (which is productive) or the team has hit a genuine bottleneck that needs to be addressed. The discomfort is a signal that the system needs improvement.
+Management discomfort is the most common failure mode. Management sees "idle" developers and concludes WIP limits are wasteful. In reality, those "idle" developers are swarming on existing work, which is productive. Otherwise, the team has hit a genuine bottleneck that needs attention. The discomfort is a signal that the system needs improvement.
 
 ### 3. "We have WIP limits but we also have expedite lanes for everything"
 

@@ -12,7 +12,7 @@ tags:
 
 ## What you are seeing
 
-Deploying a schema change is a stressful event. The team schedules a maintenance window, notifies users, and runs the migration hoping nothing goes wrong. Some migrations take minutes; others run for hours and lock tables the application needs. When a migration fails halfway through, the database is in an intermediate state that neither the old nor the new version of the application can handle correctly.
+Deploying a schema change is a stressful event. The team schedules a maintenance window, notifies users, and runs the migration hoping nothing goes wrong. Some migrations take minutes; others run for hours and lock tables the application needs. When a migration fails halfway through, the database is left in an intermediate state. Neither the old nor the new version of the application handles that state correctly.
 
 The team has developed rituals to cope. Migrations are reviewed by the entire team before running. Someone sits at the database console during the deployment ready to intervene. A migration runbook exists listing each migration and its estimated run time. New features requiring schema changes get batched with the migration to minimize the number of deployment events.
 
@@ -22,9 +22,9 @@ Feature development is constrained by when migrations can safely run. The team a
 
 ### Manual deployments
 
-When deployments are manual, migration execution is manual too. There is no standardized approach to handling migration failures, [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), or state verification. Each migration is a custom operation executed by whoever is available that day, following a procedure remembered from the last time rather than codified in an automated step.
+When deployments are manual, migration execution is manual too. There is no standardized approach to handling migration failures, [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), or state verification. Each migration is a custom operation run by whoever is available that day. That person follows a procedure remembered from the last time rather than codified in an automated step.
 
-Automated [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) that run migrations as a defined step - with pre-migration backups, health checks after migration, and defined rollback procedures - replace the maintenance window ritual with a repeatable process. Failures trigger automated alerts rather than requiring someone to sit at the console. When migrations run the same way every time, the team stops batching them to minimize deployment events because each one is no longer a high-stakes manual operation.
+Automated [pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) run migrations as a defined step with pre-migration backups, health checks after migration, and defined rollback procedures. That step replaces the maintenance window ritual with a repeatable process. Failures trigger automated alerts rather than requiring someone to sit at the console. When migrations run the same way every time, each one stops being a high-stakes manual operation. The team then stops batching migrations to minimize deployment events.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
@@ -40,7 +40,7 @@ Environments that match production in structure and configuration allow migratio
 
 A pipeline can enforce migration ordering and safety practices as part of every deployment. Expand-contract patterns - adding new columns before removing old ones - can be built into the pipeline structure. Pre-migration schema checks and post-migration application health verification become automatic steps.
 
-Without a pipeline, migration ordering is left to whoever is executing the deployment. The right sequence is known by the person who thought through the migration, but that knowledge is not enforced at deployment time - which is why the team schedules reviews and sits someone at the console. The pipeline encodes that knowledge so it runs correctly without anyone needing to supervise it.
+Without a pipeline, migration ordering is left to whoever is executing the deployment. The person who thought through the migration knows the right sequence, but nothing enforces that knowledge at deployment time. That gap is why the team schedules reviews and sits someone at the console. The pipeline encodes that knowledge so it runs correctly without anyone needing to supervise it.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
@@ -48,7 +48,7 @@ Without a pipeline, migration ordering is left to whoever is executing the deplo
 
 When a large application shares a single database schema, any migration affects the entire system simultaneously. There is no safe way to migrate incrementally because all code runs against the same schema at the same time. A column rename requires updating every query in every module before the migration runs.
 
-Decomposed services with separate databases can migrate their own schema independently. A migration to the payment service schema does not require coordinating with the user service, scheduling a shared maintenance window, or batching with unrelated changes to amortize the disruption. Each service manages its own schema on its own schedule.
+Decomposed services with separate databases can migrate their own schema independently. A migration to the payment service schema does not require coordinating with the user service or scheduling a shared maintenance window. It also does not require batching with unrelated changes to amortize the disruption. Each service manages its own schema on its own schedule.
 
 **Read more:** [Tightly coupled monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 

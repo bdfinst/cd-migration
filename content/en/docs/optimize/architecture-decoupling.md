@@ -11,12 +11,12 @@ aliases:
 {{% pageinfo %}}
 **Phase 3 - Optimize** | {{< scope-label "team-org" >}} | Original content based on Dojo Consortium delivery journey patterns
 
-You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) and provides practical strategies for moving from entangled to loosely coupled.
+You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}). It also provides practical strategies for moving from entangled to loosely coupled.
 {{% /pageinfo %}}
 
 ## Why architecture matters for CD
 
-Every practice in this guide - small batches, [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits - assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
+Every practice in this guide - small batches, [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits - assumes that your team can deploy its changes independently. Your application might be a monolith where changing one module requires retesting everything. It might be a set of microservices with tightly coupled APIs. Either way, independent deployment is impossible, however good your practices are.
 
 Architecture is either an enabler or a blocker for continuous deployment. There is no neutral.
 
@@ -46,7 +46,7 @@ In an entangled architecture, everything is connected to everything. Changes in 
 | [Change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}) | High (because big releases mean big risk) |
 | [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) | Long (because failures cascade across boundaries) |
 
-**How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. It is not a failure - it is a stage that almost every system passes through.
+**How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. Entanglement is not a failure. It is a stage that almost every system passes through.
 
 ### State 2: Tightly coupled
 
@@ -93,7 +93,7 @@ In a loosely coupled architecture, components communicate through well-defined i
 
 ## Moving from entangled to tightly coupled
 
-This is the first and most difficult transition. It requires establishing boundaries where none existed before.
+The move from entangled to tightly coupled is the first and most difficult transition. It requires establishing boundaries where none existed before.
 
 ### Strategy 1: Identify natural seams
 
@@ -117,7 +117,7 @@ Step 5: Route all traffic to the new component
 Step 6: Remove the old code
 {{< /card >}}
 
-**Key rule:** The strangler fig pattern must be done incrementally. If you try to extract everything at once, you are doing a rewrite, not a strangler fig.
+**Key rule:** Apply the strangler fig pattern incrementally. If you try to extract everything at once, you are doing a rewrite, not a strangler fig.
 
 ### Strategy 3: Define ownership boundaries
 
@@ -132,7 +132,7 @@ Assign clear ownership of each module or component to a single team. Ownership m
 
 - **The "big rewrite":** Rewriting a monolith from scratch almost always fails. Use the strangler fig pattern instead.
 - **Premature microservices:** Do not split into microservices until you have clear domain boundaries and team ownership. Microservices with unclear boundaries are a distributed monolith - the worst of both worlds.
-- **Shared databases across services:** This is the most common coupling mechanism. If two services share a database, they cannot be deployed independently because a schema change in one service can break the other.
+- **Shared databases across services:** Shared databases are the most common coupling mechanism. If two services share a database, they cannot be deployed independently because a schema change in one service can break the other.
 
 ## Moving from tightly coupled to loosely coupled
 
@@ -169,7 +169,7 @@ API versioning allows consumers and producers to evolve independently.
 **Rules for API versioning:**
 
 - **Never make a breaking change without a new version.** Adding fields is non-breaking. Removing fields is breaking. Changing field types is breaking.
-- **Support at least two versions simultaneously.** This gives consumers time to migrate.
+- **Support at least two versions simultaneously.** Two versions give consumers time to migrate.
 - **Deprecate old versions with a timeline.** "Version 1 will be removed on date X."
 - **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}).
 
@@ -187,7 +187,7 @@ Prefer asynchronous communication wherever the business requirements allow it. N
 
 ### Strategy 4: Design for failure
 
-In a loosely coupled system, dependencies will be unavailable sometimes. Design for this:
+In a loosely coupled system, dependencies will be unavailable sometimes. Design for unavailability:
 
 - **Circuit breakers:** Stop calling a failing dependency after N failures. Return a degraded response instead.
 - **Timeouts:** Set aggressive timeouts on all external calls. A 30-second timeout on a service that should respond in 100ms is not a timeout - it is a hang.
@@ -208,13 +208,13 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 
 - **Team structure:** Moving from State 1 (entangled) to State 3 (loosely coupled) at
   organizational scale requires aligning team ownership to domain boundaries. Individual teams
-  cannot reorganize themselves - this is a management decision. See
+  cannot reorganize themselves - team structure is a management decision. See
   [Team Alignment]({{< relref "/docs/optimize/team-alignment" >}}) for how to make that case.
 - **Shared infrastructure ownership:** If your team depends on a shared platform or shared
-  services team for deployment, storage, or networking, full decoupling requires either
-  migrating to self-service infrastructure or renegotiating ownership boundaries with those teams.
-- **Legacy integration contracts:** When you own one side of a tightly coupled contract but
-  another team owns the other side, migrating to an event-based or versioned API model requires
+  services team for deployment, storage, or networking, full decoupling needs more. You either
+  migrate to self-service infrastructure or renegotiate ownership boundaries with those teams.
+- **Legacy integration contracts:** Sometimes you own one side of a tightly coupled contract and
+  another team owns the other side. Migrating to an event-based or versioned API model then requires
   coordinated agreement and migration planning with that team.
 
 Start with the decoupling work within your own boundary. Use measured improvements in deployment
@@ -255,7 +255,7 @@ Microservices add operational complexity (more services to deploy, monitor, and 
 
 ### 3. "Teams keep adding new dependencies that recouple the system"
 
-Architecture decoupling requires governance. Establish architectural principles (for example, "no shared databases") and enforce them through automated checks (for example, dependency analysis in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})) and architecture reviews for cross-boundary changes.
+Architecture decoupling requires governance. Establish architectural principles (for example, "no shared databases"). Enforce them through automated checks (for example, dependency analysis in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})) and architecture reviews for cross-boundary changes.
 
 ### 4. "We can't afford the time to decouple"
 

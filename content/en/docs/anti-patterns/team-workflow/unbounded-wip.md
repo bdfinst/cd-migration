@@ -70,8 +70,8 @@ throughput. If throughput is roughly constant, the only way to reduce cycle time
 WIP. A team with no WIP limit has no control over cycle time. Items take as long as they take
 because nothing constrains the queue.
 
-When leadership asks "when will this be done?" the team cannot give a reliable answer because
-their cycle time varies wildly based on how many items happen to be in flight.
+When leadership asks "when will this be done?" the team cannot give a reliable answer. Their cycle
+time varies wildly based on how many items happen to be in flight.
 
 ### Impact on continuous delivery
 
@@ -81,14 +81,14 @@ merge conflicts, and stall in review queues. The pipeline is either idle (nothin
 overwhelmed (everything lands at once).
 
 WIP limits create the flow that CD depends on: a small number of items moving quickly from start
-to production, each fully attended to, each integrated before the next begins.
+to production. Each item gets full attention and is integrated before the next begins.
 
 ## How to fix it
 
 ### Step 1: Make WIP visible
 
 Count every item currently in progress for the team, including hidden work like production bugs,
-support questions, and unofficial side projects. Write this number on the board. Update it daily.
+support questions, and unofficial side projects. Write the count on the board. Update it daily.
 The goal is awareness, not action.
 
 ### Step 2: Set an initial WIP limit
@@ -99,9 +99,12 @@ nobody starts new work. Instead, they help finish something already in progress.
 
 ### Step 3: Enforce with swarming
 
-When the WIP limit is hit, developers who finish an item have two choices: pull the next
-highest-priority item if WIP is below the limit, or swarm on an existing item if WIP is at the
-limit. Swarming means pairing, reviewing, testing, or unblocking - whatever helps the most
+When developers finish an item, they have two choices:
+
+- If WIP is below the limit, pull the next highest-priority item.
+- If WIP is at the limit, swarm on an existing item.
+
+Swarming means pairing, reviewing, testing, or unblocking - whatever helps the most
 important item finish.
 
 ### Step 4: Lower the limit over time (monthly)

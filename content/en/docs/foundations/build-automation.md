@@ -47,7 +47,7 @@ Without build automation, every other practice in this guide breaks down. You ca
 
 ### 1. Version-controlled build scripts
 
-Your build configuration lives in the same repository as your code. It is versioned, reviewed, and tested alongside the application.
+Your build configuration lives in the same repository as your code. Version, review, and test the build configuration alongside the application.
 
 **What belongs in version control:**
 
@@ -66,13 +66,13 @@ Your build configuration lives in the same repository as your code. It is versio
 
 ### 2. Dependency management
 
-All dependencies must be declared explicitly and resolved deterministically.
+Declare every dependency explicitly and resolve dependencies deterministically.
 
 **Practices:**
 
 - **Lock files:** Use lock files (package-lock.json, Pipfile.lock, go.sum) to pin exact dependency versions. Check lock files into version control.
 - **Reproducible resolution:** Running the dependency install twice should produce identical results.
-- **No undeclared dependencies:** Your build should not rely on tools or libraries that happen to be installed on the build machine. If you need it, declare it.
+- **No undeclared dependencies:** Your build should not rely on tools or libraries that happen to be installed on the build machine. If the build needs a tool or library, declare it.
 - **Dependency scanning:** Automate vulnerability scanning of dependencies as part of the build. Do not wait for a separate security review.
 
 **Anti-pattern:** "It builds on Jenkins because Jenkins has Java 11 installed, but the Dockerfile uses Java 17." The build must declare and control its own runtime.
@@ -85,7 +85,7 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 
 - **Dependencies:** Download once, reuse across builds. Most build tools (npm, Maven, Gradle, pip) support a local cache.
 - **Compilation outputs:** Incremental compilation avoids rebuilding unchanged modules.
-- **Docker layers:** Structure your Dockerfile so that rarely-changing layers (OS, dependencies) are cached and only the application code layer is rebuilt.
+- **Docker layers:** Structure your Dockerfile so the build caches rarely-changing layers (OS, dependencies) and rebuilds only the application code layer.
 - **Test fixtures:** Prebuilt test data or container images used by tests.
 
 **Guidelines:**
@@ -119,7 +119,7 @@ clean:
 	docker rmi myapp:$(GIT_SHA) || true
 {{< /card >}}
 
-The CI server runs `make all`. A developer runs `make all`. The result is the same. There is no separate "CI build script" that diverges from what developers run locally.
+The CI server runs `make all`. A developer runs `make all`. Both get the same result. There is no separate "CI build script" that diverges from what developers run locally.
 
 ### 5. Artifact versioning
 
@@ -131,7 +131,7 @@ Every build artifact must be traceable to the exact commit that produced it.
 - Store build metadata (commit, branch, timestamp, builder) in the artifact or alongside it
 - Never overwrite an existing artifact. If the version exists, the artifact is immutable
 
-This becomes critical in [Phase 2]({{< relref "/docs/pipeline/immutable-artifacts" >}}) when you establish [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) practices.
+Artifact traceability becomes critical in [Phase 2]({{< relref "/docs/pipeline/immutable-artifacts" >}}) when you establish [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) practices.
 
 ## CI server setup basics
 

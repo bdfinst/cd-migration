@@ -11,14 +11,14 @@ aliases:
 {{% pageinfo %}}
 **Phase 4 - Deliver on Demand** | {{< scope-label "org" >}}
 
-Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) at scale, including the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
+Theory is necessary but insufficient. This page collects experience reports from organizations that have adopted [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) at scale. The reports cover the challenges they faced, the approaches they took, and the results they achieved. These reports demonstrate that [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is not limited to startups or greenfield projects - it works in large, complex, regulated environments.
 {{% /pageinfo %}}
 
 ## Why experience reports matter
 
 Every team considering continuous deployment faces the same objection: "That works for [Google / Netflix / small startups], but our situation is different." Experience reports counter this objection with evidence. They show that organizations of every size, in every industry, with every kind of legacy system, have found a path to continuous deployment.
 
-No experience report will match your situation exactly. That is not the point. The point is to extract patterns: what obstacles did these teams encounter, and how did they overcome them?
+No experience report will match your situation exactly. A perfect match is not the point. The point is to extract patterns: what obstacles did these teams encounter, and how did they overcome them?
 
 ## Walmart: CD at retail scale
 
@@ -124,7 +124,7 @@ Amazon's transformation to service-oriented architecture and team ownership is o
 
 1. **Ownership drives quality.** When the team that writes the code also operates it in production, they write better code and build better monitoring.
 2. **Small teams move faster.** Two-pizza teams (6-10 people) can make decisions without bureaucratic overhead.
-3. **Automation eliminates [toil]({{< relref "/docs/reference/glossary#toil" >}}).** Amazon's internal deployment tooling means that deploying is not a skilled activity - any team member can deploy (and the pipeline usually deploys automatically).
+3. **Automation eliminates [toil]({{< relref "/docs/reference/glossary#toil" >}}).** Amazon's internal deployment tooling means that deploying is not a skilled activity. Any team member can deploy, and the pipeline usually deploys automatically.
 
 ## HP: CD in hardware-adjacent software
 
@@ -149,7 +149,7 @@ HP's LaserJet firmware team demonstrated that [continuous delivery]({{< relref "
 ### Key lessons
 
 1. **CD principles are universal.** Even embedded firmware can benefit from small batches, automated testing, and continuous integration.
-2. **Build time is a critical [constraint]({{< relref "/docs/reference/glossary#constraint" >}}).** Reducing build time from days to under an hour unlocked the ability to test frequently, which enabled frequent integration, which enabled frequent delivery.
+2. **Build time is a critical [constraint]({{< relref "/docs/reference/glossary#constraint" >}}).** Reducing build time from days to under an hour unlocked frequent testing. Frequent testing enabled frequent integration, which enabled frequent delivery.
 3. **Results were dramatic:** Development costs reduced by approximately 40%, programs delivered on schedule increased by roughly 140%.
 
 ## Flickr: "10+ Deploys Per Day"
@@ -174,7 +174,7 @@ Flickr's 2009 presentation "10+ Deploys Per Day: Dev and Ops Cooperation" is cre
 
 ### Key lessons
 
-1. **Culture is the enabler.** Flickr's technical practices were important, but the cultural shift - developers and operations working together, shared responsibility, mutual respect - was what made frequent deployment possible.
+1. **Culture is the enabler.** Flickr's technical practices were important, but the cultural shift made frequent deployment possible. That shift meant developers and operations working together, with shared responsibility and mutual respect.
 2. **Tooling should reduce friction.** Flickr's deployment tools were designed to make deploying as easy as possible. The easier it is to deploy, the more often people deploy, and the smaller each deployment becomes.
 3. **Transparency builds trust.** Logging every deployment in a shared channel let everyone see what was deploying, who deployed it, and whether it caused problems. This transparency built organizational trust in frequent deployment.
 
@@ -182,8 +182,8 @@ Flickr's 2009 presentation "10+ Deploys Per Day: Dev and Ops Cooperation" is cre
 
 ### Context
 
-VXS Decision is a startup like thousands of others: founder-led vision, under-funded, time crunch, resource crunch, but when targeting Enterprise customers: *How do you deliver reliable, Enterprise-grade software without the resources of an Enterprise?*
-This led to the discovery of the framework of principles and patterns now formulated as “Agentic CD.”
+VXS Decision is a startup like thousands of others: founder-led vision, under-funded, time crunch, resource crunch. Targeting Enterprise customers raised a question: *How do you deliver reliable, Enterprise-grade software without the resources of an Enterprise?*
+That question led to the discovery of the framework of principles and patterns now formulated as “Agentic CD.”
 
 ### The challenge
 
@@ -204,9 +204,9 @@ This led to the discovery of the framework of principles and patterns now formul
 ### Key lessons
 
 1. **Agents Drift.** Documentation on top of the codebases provides containment for inconsistency and duplication.
-2. **You need to extend your definition of 'deliverable'.** Code must not merely exist and pass the tests, it must be consistent with documented architecture and descriptions.
+2. **You need to extend your definition of 'deliverable'.** Code must not merely exist and pass the tests. The code must also be consistent with documented architecture and descriptions.
 3. **First-class artifacts are the true product.** These include intent, behaviour, design, and decisions. With these, an LLM can reconstruct the product even without having access to the code itself.
-4. **You need a third folder in your repo.** Where formally, /src and /test did the entire work, the /docs folder becomes your lifeline.
+4. **You need a third folder in your repo.** Where /src and /test once did the entire work, the /docs folder becomes your lifeline.
 
 ## Agentic CD additions
 
@@ -215,8 +215,8 @@ Additional practices required for LLM-assisted development:
 1. **Intent-first workflow.** Anchor the implementation with a proper intent statement: *what, why, for whom.*
 2. **Delta & overlap analysis.** Agents can compare new features against the existing system, detect redundancy, conflict, structural drift. The most interesting question becomes: “How does this relate to what we currently do?”
 3. **Structured documentation layers.** User guides, feature descriptions, architectural decision records (ADRs) and system structure documentation become the glue of your system.
-4. **Human In the Loop.** Key artifacts can be generated by Agents, but HITL is necessary to capture drift. Intent and decisions are human territory, behaviour and design must be actively guided by humans.
-5. **The docs are for the machine, not for humans.** Documentation artifacts must be structured to guide Agents in implementation with minimal [context windows]({{< relref "/docs/reference/glossary#context-window" >}}), not to “read nicely” for humans.
+4. **Human In the Loop.** Agents can generate key artifacts, but HITL is necessary to capture drift. Intent and decisions are human territory, behaviour and design must be actively guided by humans.
+5. **The docs are for the machine, not for humans.** Structure documentation artifacts to guide Agents in implementation with minimal [context windows]({{< relref "/docs/reference/glossary#context-window" >}}), not to “read nicely” for humans.
    - ASCII art beats photos, illustrations or doodles.
    - Short paragraphs, no filler words. Consistent language.
    - Optimize documentation to reference paragraphs to the Agents quickly and effectively.
@@ -238,13 +238,13 @@ Additional practices required for LLM-assisted development:
 1. **LLMs without CD discipline create entropy:** speed without structure degrades system integrity
 2. **Agentic CD principles are scale-independent:** the same patterns apply in a startup as in an enterprise. The startup even benefits more, because it can scale/pivot within hours.
 3. **Agentic development requires additional artifacts:** those documents you thought you can skip to speed things up? They *become* your product!
-4. **The bottleneck moves from typing code to maintaining coherence:** You will be investing more time keeping your first-class documents correct and consistent than into writing code. Referencing the right document sections becomes your steering panel.
+4. **The bottleneck moves from typing code to maintaining coherence:** You will invest more time keeping your first-class documents correct and consistent than writing code. Referencing the right document sections becomes your steering panel.
 
 ### The VXS journey to discover Agentic CD
 
 In 2023, early experiments with LLM-generated code looked promising but quickly broke down in practice. The models produced working code, but integration was tedious, structure drifted, and quality was inconsistent. Available tooling accelerated output but also amplified architectural chaos. Attempts to adopt community conventions created additional noise and documentation bloat rather than clarity. The result was a clear pattern: without structure, AI increases speed but destroys coherence.
 
-The breakthrough came from systematically applying Continuous Delivery principles directly to agentic development. Every feature began with an explicit intent, aligned against existing system structure, documented, tested, and only then implemented. Documentation, ADRs, and tests became first-class artifacts in the repository, acting as control surfaces for the AI. With a single pipeline and strict definition of “deployable,” the system stabilized. The outcome was sustained 10x-30x delivery performance with consistent quality. This showed that Continuous Delivery is not dependent on scale or large platform teams - its principles hold even in a startup using agentic development.
+The breakthrough came from systematically applying Continuous Delivery principles directly to agentic development. Every feature began with an explicit intent, aligned against existing system structure, documented, tested, and only then implemented. Documentation, ADRs, and tests became first-class artifacts in the repository, acting as control surfaces for the AI. With a single pipeline and strict definition of “deployable,” the system stabilized and sustained 10x-30x delivery performance with consistent quality. The lesson: Continuous Delivery does not depend on scale or large platform teams, and its principles hold even in a startup using agentic development.
 
 ## Common patterns across reports
 
@@ -264,7 +264,7 @@ Organizations that gave teams ownership of their deployments (build it, run it) 
 
 ### 4. Feature flags are universal
 
-Every organization in these reports uses feature flags to decouple deployment from release. This is not optional for continuous deployment - it is foundational.
+Every organization in these reports uses feature flags to decouple deployment from release. Feature flags are not optional for continuous deployment. They are foundational.
 
 ### 5. The results are consistent
 
@@ -286,7 +286,7 @@ You do not need to be Google-sized to benefit from these patterns. Extract what 
 4. **Use feature flags.** Decouple deployment from release.
 5. **Measure and improve.** Track [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}). Run experiments. Use retrospectives.
 
-These are the practices covered throughout this migration guide. The experience reports confirm that they work - not in theory, but in production, at scale, in the real world.
+These are the practices covered throughout this migration guide. The experience reports confirm that the practices work - not in theory, but in production, at scale, in the real world.
 
 ## Additional experience reports
 

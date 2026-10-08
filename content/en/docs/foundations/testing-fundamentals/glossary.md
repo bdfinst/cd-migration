@@ -33,28 +33,28 @@ Referenced in:
 
 ### Adapter integration test
 
-A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. (Legacy name from Toby Clemson: "gateway integration test.")
+A narrow test of a single **boundary adapter**: the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar. The test exercises the adapter against the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in, like a testcontainer running the production engine. (Legacy name from Toby Clemson: "gateway integration test.")
 
 #### What the test is for
 
-The test asserts that **the adapter correctly speaks the protocol**: that it serializes the request the way the dependency expects, parses the response shape correctly, maps errors to the right exception types, propagates headers, enforces timeouts, and handles transactional semantics.
+The test asserts that **the adapter correctly speaks the protocol**. The adapter serializes the request the way the dependency expects and parses the response shape correctly. It also maps errors to the right exception types, propagates headers, enforces timeouts, and handles transactional semantics.
 
 #### What the test is *not* for
 
-It does **not** test the behavior of the dependency itself. If the adapter asks for a user, the test validates that the response parses into a valid `User` object - not *which* user comes back, not the dependency's own business rules, not anything that the dependency owns. The dependency's correctness is the dependency's problem; the adapter's job is to speak the protocol faithfully. Conflating the two produces brittle tests that fail on unrelated changes to the dependency's data or logic.
+It does **not** test the behavior of the dependency itself. If the adapter asks for a user, the test validates that the response parses into a valid `User` object. The test does not check *which* user comes back, the dependency's own business rules, or anything else the dependency owns. The dependency's correctness is the dependency's problem; the adapter's job is to speak the protocol faithfully. Conflating the two produces brittle tests that fail on unrelated changes to the dependency's data or logic.
 
 #### Pipeline placement
 
 Runs [in-band](#in-band-test) **only** when both conditions hold:
 
-1. The team has full control over the dependency - a database, broker, or service the team owns and can pin to a known version, typically via a per-test testcontainer.
+1. The team has full control over the dependency. The dependency is a database, broker, or service the team owns and can pin to a known version, typically via a per-test testcontainer.
 2. The test is fully deterministic against that controlled instance.
 
-For everything else - third-party APIs, services owned by another team, dependencies whose state the team can't reset between runs - the test runs [out-of-band](#out-of-band-test) on a schedule. Out-of-band placement is the default for any adapter test that touches a system outside the team's full control. Failures trigger review, not a build break. Pulling these tests in-band is the most common cause of flaky pipelines.
+Everything else runs [out-of-band](#out-of-band-test) on a schedule: third-party APIs, services owned by another team, and dependencies whose state the team can't reset between runs. Out-of-band placement is the default for any adapter test that touches a system outside the team's full control. Failures trigger review, not a build break. Pulling these tests in-band is the most common cause of flaky pipelines.
 
 #### Distinguishing from neighboring test types
 
-Different from a broader [end-to-end test]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}): an adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles in the pipeline; adapter integration tests pin protocol against the real dependency.
+Different from a broader [end-to-end test]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}): an adapter integration test isolates one boundary adapter, not a flow across multiple components. Different from a [contract test](#contract-test) at the same boundary: contract tests pin shape against doubles in the pipeline. Adapter integration tests pin protocol against the real dependency.
 
 Referenced in:
 [API Consumer]({{< relref "/docs/foundations/testing-fundamentals/patterns/api-consumer" >}}),
@@ -68,7 +68,7 @@ Referenced in:
 
 ### API surface test
 
-A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services; an API surface test pins the source-level boundary between a library and its callers.
+A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services. An API surface test pins the source-level boundary between a library and its callers.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}})
@@ -87,7 +87,7 @@ Referenced in:
 
 ### Cluster test
 
-A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behavior that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
+A test that exercises a stateful service across multiple nodes: replication, leader election, consensus, and partition tolerance. The test runs against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behavior that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/foundations/testing-fundamentals/patterns/stateful-service" >}})
@@ -122,7 +122,7 @@ Referenced in:
 
 ### Deployed-binary test
 
-A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behavior at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behavior is tested in component tests against an in-memory assembled app.
+A test that invokes the actual deployed artifact and asserts on observable behavior at startup or first invocation. The artifact is the same binary, container image, or package the scheduler, orchestrator, or operator invokes in production. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behavior is tested in component tests against an in-memory assembled app.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}}),
@@ -130,16 +130,16 @@ Referenced in:
 
 ### Doctest
 
-An executable test extracted from documentation - typically the README or inline code samples - that runs the documented examples against the real binary or library and fails the build if the examples are broken. Doctests close the gap between "the docs say X works" and "X actually works in the latest build". Most languages have framework support: Python's `doctest` module, Rust's `#[doc]` attribute, and Markdown-based runners for Node and Java.
+An executable test extracted from documentation, typically the README or inline code samples. A doctest runs the documented examples against the real binary or library and fails the build if the examples are broken. Doctests close the gap between "the docs say X works" and "X actually works in the latest build". Most languages have framework support: Python's `doctest` module, Rust's `#[doc]` attribute, and Markdown-based runners for Node and Java.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}})
 
 ### In-band test
 
-A test that runs **in the delivery pipeline** as part of the commit-to-deploy flow. In-band tests must be deterministic, which means [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) replace anything that crosses the component boundary - downstream services, message brokers, schedulers, browsers talking to real backends. Failures block the build or the deployment.
+A test that runs **in the delivery pipeline** as part of the commit-to-deploy flow. In-band tests must be deterministic. [Test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) replace anything that crosses the component boundary: downstream services, message brokers, schedulers, and browsers talking to real backends. Failures block the build or the deployment.
 
-The bulk of any project's test suite is in-band: unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}), and [adapter integration tests](#adapter-integration-test) against team-controlled dependencies (testcontainers running an engine the team pins). Adapter integration tests against third-party services or shared environments run [out-of-band](#out-of-band-test) on a schedule, not in-band. They give a deterministic go/no-go signal in minutes.
+The bulk of any project's test suite is in-band. That bulk includes unit tests, [component tests](#component-test), [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}), and [adapter integration tests](#adapter-integration-test) against team-controlled dependencies. Team-controlled dependencies are testcontainers running an engine the team pins. Adapter integration tests against third-party services or shared environments run [out-of-band](#out-of-band-test) on a schedule, not in-band. In-band tests give a deterministic go/no-go signal in minutes.
 
 Contrast with [out-of-band tests](#out-of-band-test), which run on a schedule against real systems and never gate the build.
 
@@ -160,7 +160,7 @@ Referenced in:
 
 ### Soak test
 
-A long-running test that exercises a deployed service for hours or days under representative load to catch behavior that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behavior over time.
+A long-running test that exercises a deployed service for hours or days under representative load. A soak test catches behavior that only appears with time: memory leaks, unbounded growth, replication-lag drift, and slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design because they don't fit a pre-merge budget, and failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behavior over time.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/foundations/testing-fundamentals/patterns/stateful-service" >}})
@@ -219,7 +219,7 @@ Referenced in:
 
 ### Test double
 
-A stand-in object that replaces a real production [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) during testing. The term comes from the film industry's "stunt double": as a stunt double replaces an actor for dangerous scenes, a test double replaces a costly or non-deterministic dependency to make tests fast, isolated, and reliable.
+A stand-in object that replaces a real production [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) during testing. The term comes from the film industry's "stunt double." A stunt double replaces an actor for dangerous scenes. A test double replaces a costly or non-deterministic dependency to make tests fast, isolated, and reliable.
 
 Test doubles let you:
 
@@ -246,7 +246,7 @@ Test doubles let you:
 - Use a **fake** when you need realistic behavior but can't use the real system.
 - Use a **dummy** when a parameter is required by the interface but irrelevant to the test.
 
-Test doubles are heaviest in the early [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) stages ([unit]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}), [component]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}), [contract]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) tests) where deterministic speed is the priority. They thin out as you move through the pipeline; [end-to-end tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}) use no doubles by design. The guiding principle from Justin Searls: "Don't poke too many holes in reality." Use a double when you must, and prefer the real implementation when it's fast and deterministic.
+Test doubles are heaviest in the early [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) stages ([unit]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}), [component]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}), [contract]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) tests) where deterministic speed is the priority. They thin out as you move through the pipeline; [end-to-end tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}) use no doubles by design. Justin Searls states the guiding principle: "Don't poke too many holes in reality." Use a double when you must. Prefer the real implementation when it's fast and deterministic.
 
 Doubles are only as good as the contract they encode. Every double in the suite should trace to a [contract test]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) pinning its claims and an [out-of-band](#out-of-band-test) check confirming the claims still hold. See the [Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}) page for the failure modes of unvalidated doubles.
 
@@ -261,9 +261,9 @@ Referenced in:
 
 A test double that simulates a real external service over the network, responding to HTTP
 requests with pre-configured or recorded responses. Unlike in-process stubs or mocks, a
-virtual service runs as a standalone process and is accessed via real network calls, making
-it suitable for component testing and end-to-end testing where your application needs to
-make actual HTTP requests against a dependency. Service virtualization tools can create
+virtual service runs as a standalone process that your application reaches via real network calls.
+That makes a virtual service suitable for component testing and end-to-end testing where your
+application needs to make actual HTTP requests against a dependency. Service virtualization tools can create
 virtual services from recorded traffic or API specifications. See
 [Test Doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}).
 

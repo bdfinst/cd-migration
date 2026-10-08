@@ -24,7 +24,7 @@ What neither side sees is that the conflict is a symptom of the current deployme
 
 Manual deployments are slow and error-prone, which makes the stability concern rational. When deployments require hours of careful manual execution, limiting their frequency does reduce overall human error exposure. The stability faction's instinct is correct given the current deployment mechanism.
 
-Automated deployments that execute the same steps identically every time eliminate most human error from the deployment process. When the deployment mechanism is no longer a variable, the speed-vs-stability argument shifts from "how often should we deploy" to "how good is the code we are deploying" - a question both sides can agree on.
+Automated deployments that execute the same steps identically every time eliminate most human error from the deployment process. When the deployment mechanism is no longer a variable, the speed-vs-stability argument shifts. The question changes from "how often should we deploy" to "how good is the code we are deploying." Both sides can agree on that question.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
@@ -38,13 +38,13 @@ When the team can deploy with high confidence and roll back automatically if som
 
 ### Pressure to skip testing
 
-When testing is perceived as an obstacle to shipping speed, teams cut tests to go faster. This worsens stability, which intensifies the stability faction's resistance to more frequent deployments. The speed-vs-stability tension is partly created by the belief that quality and speed are in opposition - a belief reinforced by the experience of shipping faster by skipping tests and then dealing with the resulting production incidents.
+When testing is perceived as an obstacle to shipping speed, teams cut tests to go faster. Cutting tests worsens stability, which intensifies the stability faction's resistance to more frequent deployments. Part of the speed-vs-stability tension comes from the belief that quality and speed are in opposition. Experience reinforces that belief: the team ships faster by skipping tests, then deals with the resulting production incidents.
 
 **Read more:** [Pressure to skip testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
 
 ### Deadline-driven development
 
-When velocity is measured by features shipped to a deadline, every hour spent on test infrastructure, deployment automation, or operational excellence is an hour not spent on the deadline. The incentive structure creates the tension by rewarding speed while penalizing the investment that would make speed safe.
+Some organizations measure velocity by features shipped to a deadline. Then every hour spent on test infrastructure, deployment automation, or operational excellence is an hour not spent on the deadline. The incentive structure creates the tension by rewarding speed while penalizing the investment that would make speed safe.
 
 **Read more:** [Deadline-driven development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}})
 

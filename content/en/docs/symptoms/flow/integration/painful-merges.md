@@ -15,7 +15,9 @@ tags:
 
 A developer has been working on a feature branch for two weeks. They open a pull request and
 discover dozens of conflicts across multiple files. Other developers have changed the same areas
-of the codebase. Resolving the conflicts takes a full day. Some conflicts are straightforward
+of the codebase. Resolving the conflicts takes a full day.
+
+Some conflicts are straightforward
 (two people edited adjacent lines), but others are semantic (two people changed the same
 function's behavior in different ways). The developer must understand both changes to merge
 correctly.

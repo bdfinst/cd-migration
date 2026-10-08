@@ -24,7 +24,7 @@ because components were built in isolation. Performance problems appear under re
 cases that nobody tested during development cause failures. The hardening sprint is not optional
 because skipping it means shipping broken software.
 
-The team treats this as normal. Planning includes hardening time by default. A project that takes
+The team treats hardening sprints as normal. Planning includes hardening time by default. A project that takes
 four sprints to build is planned as six: four for features, two for stabilization.
 
 ## Common causes

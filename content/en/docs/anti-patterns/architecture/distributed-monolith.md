@@ -19,7 +19,9 @@ tags:
 ## What this looks like
 
 The organization has services. The architecture diagram shows boxes with arrows between them. But
-deploying any one service without simultaneously deploying two others breaks production. A single
+deploying any one service without simultaneously deploying two others breaks production.
+
+A single
 user request passes through four services synchronously before returning a response. When one
 service in the chain is slow, the entire operation fails. The team has all the complexity of a
 distributed system and all the coupling of a monolith.
@@ -57,8 +59,8 @@ pays the cost of both and gets the benefits of neither.
 
 Incorrect service boundaries scatter related business logic across multiple services. A developer
 implementing a feature must understand how three or four services interact rather than reading one
-cohesive module. The mental model required to make a correct change is larger than it would be in
-either a well-structured monolith or a correctly decomposed service architecture.
+cohesive module. A correct change requires a larger mental model than it would in either a
+well-structured monolith or a correctly decomposed service architecture.
 
 Distributed failure modes compound this. Network calls between services can fail, time out, or
 return stale data. When business logic spans services, handling these failures correctly requires
@@ -69,7 +71,7 @@ in their service causes a cascade failure three services downstream.
 
 Every feature that touches a business domain crosses service boundaries because the boundaries do
 not align with domains. A change to how orders are discounted requires modifying the pricing
-service, the order service, and the invoice service because the discount logic is split across all
+service, the order service, and the invoice service. The discount logic is split across all
 three. The developer opens three PRs, coordinates three reviews, and sequences three deployments.
 
 When the team eventually recognizes the boundaries are wrong, correcting them is a second
@@ -142,8 +144,8 @@ backward compatibility.
 
 Pick the cluster with the worst coupling and address it:
 
-- **If the services are small and owned by the same team,** merge them into one service. This is
-  the fastest fix. A single service with clear internal modules is better than three coupled
+- **If the services are small and owned by the same team,** merge them into one service. Merging
+  is the fastest fix. A single service with clear internal modules is better than three coupled
   services that cannot operate independently.
 - **If the services are large or owned by different teams,** redraw the boundary along domain
   lines. Move the scattered business logic into the service that owns that domain. Extract shared
@@ -166,8 +168,8 @@ Each service should own its data. If two services need the same data, one of the
 and the other accesses it through an API. Shared database access is the most common source of
 hidden coupling and the most important to eliminate.
 
-This is a gradual process: add the API, migrate one consumer at a time, and remove direct table
-access when all consumers have migrated.
+Remove the shared database gradually: add the API, migrate one consumer at a time, and remove direct
+table access when all consumers have migrated.
 
 | Objection | Response |
 |-----------|----------|

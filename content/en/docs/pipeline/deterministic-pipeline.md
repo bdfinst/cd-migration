@@ -15,8 +15,8 @@ aliases:
 ## Definition
 
 A deterministic [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) produces consistent, repeatable results. Given the same commit,
-the same environment definition, and the same configuration, the pipeline will build the
-same [artifact]({{< relref "/docs/reference/glossary#artifact" >}}), run the same tests, and produce the same outcome - every time. There is no
+environment definition, and configuration, the pipeline builds the same
+[artifact]({{< relref "/docs/reference/glossary#artifact" >}}) and runs the same tests. The pipeline produces the same outcome every time. There is no
 variance introduced by uncontrolled dependencies, environmental drift, manual
 intervention, or non-deterministic test behavior.
 
@@ -76,8 +76,8 @@ run, deciding whether to skip a stage, or manually approving a step introduces
 non-determinism. The pipeline should run from commit to deployment without human
 decisions.
 
-This does not mean humans have no role - it means the pipeline's behavior is fully
-determined by its inputs, not by who is watching it run.
+Removing human intervention does not mean humans have no role. It means the pipeline's
+behavior is fully determined by its inputs, not by who is watching it run.
 
 ### Fix flaky tests immediately
 
@@ -85,7 +85,7 @@ A flaky test is a test that sometimes passes and sometimes fails for the same co
 tests are the most insidious form of non-determinism because they train teams to distrust
 the test suite.
 
-When a flaky test is detected, the response must be immediate:
+When you detect a flaky test, respond immediately:
 
 1. **Quarantine the test** - remove it from the pipeline so it does not block other changes
 2. **Fix it or delete it** - flaky tests provide negative value; they are worse than no test
@@ -161,7 +161,7 @@ reproducible.
 ### Unpinned dependencies
 
 Using version ranges like `^1.2.0` or `>=2.0` in dependency declarations without a
-lockfile means the build resolves different versions on different days. This applies to
+lockfile means the build resolves different versions on different days. The problem applies to
 application dependencies, build plugins, CI tool versions, and base container images.
 
 ### Shared, mutable build environments
@@ -185,16 +185,16 @@ your application - it is testing the clock.
 ### Manual retry culture
 
 Teams that routinely re-run failed pipelines without investigating the failure have
-accepted non-determinism as normal. This is a cultural anti-pattern that must be
-addressed alongside the technical ones.
+accepted non-determinism as normal. Retry culture is a cultural anti-pattern that you must
+address alongside the technical ones.
 
 ## Good patterns
 
 ### Containerized build environments
 
 Define your build environment as a container image. Pin the base image version. Install
-exact versions of all tools. Run every build in a fresh instance of this container. This
-eliminates variance from the build environment.
+exact versions of all tools. Run every build in a fresh instance of this container. A fresh
+container eliminates variance from the build environment.
 
 ### Hermetic builds
 
@@ -212,8 +212,8 @@ the service. Combine with service virtualization or test doubles for integration
 
 Run tests in a fixed, deterministic order - or better, ensure every test is independent
 and can run in any order. Many test frameworks default to random ordering to detect
-inter-test dependencies; use this during development but ensure no ordering dependencies
-exist.
+inter-test dependencies. Use random ordering during development, but ensure no ordering
+dependencies exist.
 
 ### Immutable CI infrastructure
 
@@ -244,7 +244,7 @@ Every build runs inside a fresh instance of this image. No drift, no accumulated
 
 ### Dependency lockfiles
 
-Always use dependency lockfiles. This is essential for deterministic builds:
+Always use dependency lockfiles. Lockfiles are essential for deterministic builds:
 
 {{< card code=true header="**Dependency lockfile: package-lock.json with pinned exact versions**" lang="json" >}}
 // package-lock.json (ALWAYS commit to version control)
@@ -268,7 +268,7 @@ Rules for lockfiles:
 
 ### Quarantine pattern for flaky tests
 
-When a flaky test is detected, move it to quarantine immediately. Do not leave it in the
+When you detect a flaky test, move it to quarantine immediately. Do not leave it in the
 main suite where it erodes trust in the pipeline:
 
 {{< card code=true header="**Quarantine pattern: skip and annotate flaky tests with tracking info**" lang="javascript" >}}
@@ -317,19 +317,18 @@ jobs:
 
 ### Step 1: Audit your pipeline inputs
 
-List every input to your pipeline that is not version controlled. This includes
+List every input to your pipeline that is not version controlled. Include
 dependency versions, tool versions, environment configurations, test data, and pipeline
 definitions themselves.
 
 ### Step 2: Add lockfiles and pin versions
 
-For every dependency manager in your project, ensure a lockfile is committed to version
-control. Pin CI tool versions explicitly. Pin base image versions in Dockerfiles.
+For every dependency manager in your project, commit a lockfile to version control. Pin CI tool versions explicitly. Pin base image versions in Dockerfiles.
 
 ### Step 3: Containerize the build
 
-Move your build steps into containers with explicitly defined environments. This is often
-the change that improves determinism the most.
+Move your build steps into containers with explicitly defined environments. Containerizing the
+build is often the change that improves determinism the most.
 
 ### Step 4: Identify and fix flaky tests
 
@@ -347,9 +346,9 @@ it to zero.
 
 ### What if a test is occasionally flaky but hard to reproduce?
 
-This is still a problem. Flaky tests indicate either a real bug in your code (race
-conditions, shared state) or a problem with your test (dependency on external state,
-timing sensitivity). Both need to be fixed. Quarantine the test, investigate thoroughly,
+A hard-to-reproduce flaky test is still a problem. Flaky tests indicate one of two things.
+Either your code has a real bug (race conditions, shared state), or your test has a problem
+(dependency on external state, timing sensitivity). You need to fix both. Quarantine the test, investigate thoroughly,
 and fix the root cause.
 
 ### Can we use retries to handle flaky tests?
@@ -401,8 +400,8 @@ A deterministic pipeline is also the prerequisite for a meaningful
 reliable as the pipeline that enforces them.
 
 When the pipeline is deterministic, [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) become
-trustworthy: you know that the artifact was built by a consistent, repeatable process, and
-its validation results are real.
+trustworthy. You know that a consistent, repeatable process built the artifact, and its
+validation results are real.
 
 ## Related content
 

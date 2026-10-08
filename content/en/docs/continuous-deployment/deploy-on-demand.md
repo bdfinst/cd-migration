@@ -11,7 +11,7 @@ aliases:
 {{% pageinfo %}}
 **Phase 4 - Deliver on Demand** | {{< scope-label "org" >}} | Original content
 
-Deploy on demand means that any change which passes the full automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can reach production without waiting for a human to press a button, open a ticket, or schedule a window. This page covers the prerequisites, the transition from [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}), and how to address the organizational concerns that are the real barriers.
+Deploy on demand means that any change which passes the full automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can reach production without waiting for a human. Nobody needs to press a button, open a ticket, or schedule a window. This page covers the prerequisites, the transition from [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}), and how to address the organizational concerns that are the real barriers.
 {{% /pageinfo %}}
 
 ## Continuous delivery vs. continuous deployment
@@ -25,7 +25,7 @@ If you have completed Phases 1-3 of this migration, you have continuous delivery
 
 ## Why remove the last gate?
 
-The manual deployment decision feels safe. It gives someone a chance to "eyeball" the change before it goes to production. In practice, it does the opposite.
+The manual deployment decision feels safe. It gives someone a chance to "eyeball" the change before it goes to production. In practice, the manual decision does the opposite.
 
 ### The problems with manual gates
 
@@ -39,13 +39,13 @@ The manual deployment decision feels safe. It gives someone a chance to "eyeball
 
 ### The paradox of manual safety
 
-The more you rely on manual deployment gates, the less safe your deployments become. This is because manual gates lead to batching, batching increases risk, and increased risk justifies more manual gates. It is a vicious cycle.
+The more you rely on manual deployment gates, the less safe your deployments become. Manual gates lead to batching, batching increases risk, and increased risk justifies more manual gates. The result is a vicious cycle.
 
 Continuous deployment breaks this cycle. Small, frequent, automated deployments are individually low-risk. If one fails, the blast radius is small and recovery is fast.
 
 ## Prerequisites for deploy on demand
 
-Before removing manual gates, verify that these conditions are met. Each one is covered in earlier phases of this migration.
+Before removing manual gates, verify these conditions. Earlier phases of this migration cover each one.
 
 ### Non-negotiable prerequisites
 
@@ -72,7 +72,7 @@ Answer these questions honestly:
 
 ### Approach 1: Shadow mode
 
-Run continuous deployment alongside manual deployment. Every change that passes the pipeline is automatically deployed to a shadow production environment (or a canary group). A human still approves the "real" production deployment.
+Run continuous deployment alongside manual deployment. The pipeline automatically deploys every passing change to a shadow production environment (or a canary group). A human still approves the "real" production deployment.
 
 **Duration:** 2-4 weeks.
 
@@ -82,17 +82,17 @@ Run continuous deployment alongside manual deployment. Every change that passes 
 
 ### Approach 2: Opt-in per team
 
-Allow individual teams to adopt continuous deployment while others continue with manual gates. This works well in organizations with multiple teams at different maturity levels.
+Allow individual teams to adopt continuous deployment while others continue with manual gates. Opt-in works well in organizations with multiple teams at different maturity levels.
 
 **Duration:** Ongoing. Teams opt in when they are ready.
 
 **What you learn:** Which teams are ready and which need more foundation work. Early adopters demonstrate the pattern for the rest of the organization.
 
-**Transition:** As more teams succeed, continuous deployment becomes the default. Remaining teams are supported in reaching readiness.
+**Transition:** As more teams succeed, continuous deployment becomes the default. Support the remaining teams in reaching readiness.
 
 ### Approach 3: Direct switchover
 
-Remove the manual gate for all teams at once. This is appropriate when the organization has high confidence in its pipeline and all teams have completed Phases 1-3.
+Remove the manual gate for all teams at once. Direct switchover fits when the organization has high confidence in its pipeline and all teams have completed Phases 1-3.
 
 **Duration:** Immediate.
 
@@ -113,7 +113,7 @@ Change management frameworks like ITIL define a "standard change" category: a pr
 - Reversible (automated rollback)
 - Well-tested (comprehensive automated tests)
 
-Work with your change management team to classify pipeline-passing deployments as standard changes. This preserves the governance framework while removing the bottleneck.
+Work with your change management team to classify pipeline-passing deployments as standard changes. Standard change classification preserves the governance framework while removing the bottleneck.
 
 ### "What about compliance and audit?"
 
@@ -124,7 +124,7 @@ Continuous deployment does not eliminate audit trails - it strengthens them. Eve
 - **Recorded:** Pipeline logs capture every test that passed, every approval that was automated
 - **Reversible:** Rollback history shows when and why a deployment was reverted
 
-Provide auditors with access to pipeline logs, deployment history, and the automated test suite. This is a more complete audit trail than a manual approval signature.
+Provide auditors with access to pipeline logs, deployment history, and the automated test suite. Together, these records form a more complete audit trail than a manual approval signature.
 
 ### "What about database migrations?"
 
@@ -139,7 +139,7 @@ Database migrations require special care in continuous deployment because they c
 
 ### "What if we deploy a breaking change?"
 
-This is why you have automated rollback and observability. The sequence is:
+Breaking changes are why you have automated rollback and observability. The sequence is:
 
 1. Deployment happens automatically
 2. Monitoring detects an issue (error rate spike, latency increase, health check failure)
@@ -147,7 +147,7 @@ This is why you have automated rollback and observability. The sequence is:
 4. The team investigates and fixes the issue
 5. The fix goes through the pipeline and deploys automatically
 
-The key insight: this sequence takes minutes with continuous deployment. With manual deployment on a weekly schedule, the same breaking change would take days to detect and fix.
+The key insight: the recovery sequence takes minutes with continuous deployment. With manual deployment on a weekly schedule, the same breaking change would take days to detect and fix.
 
 ## After the transition
 
@@ -171,7 +171,7 @@ The key insight: this sequence takes minutes with continuous deployment. With ma
 
 ### The first week
 
-The first week of continuous deployment will feel uncomfortable. This is normal. The team will instinctively want to "check" deployments that happen automatically. Resist the urge to add manual checks back. Instead:
+The first week of continuous deployment will feel uncomfortable. The discomfort is normal. The team will instinctively want to "check" deployments that happen automatically. Resist the urge to add manual checks back. Instead:
 
 - Watch the monitoring dashboards more closely than usual
 - Have the team discuss each automatic deployment in standup for the first week
@@ -181,7 +181,7 @@ The first week of continuous deployment will feel uncomfortable. This is normal.
 
 ### 1. "We adopted continuous deployment but kept the approval step 'just in case'"
 
-If the approval step exists, it will be used, and you have not actually adopted continuous deployment. Remove the gate completely. If something goes wrong, use rollback - do not use a pre-deployment gate.
+If the approval step exists, people will use it, and you have not actually adopted continuous deployment. Remove the gate completely. If something goes wrong, use rollback - do not use a pre-deployment gate.
 
 ### 2. "Our deploy cadence didn't actually increase"
 

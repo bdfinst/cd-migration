@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-The deployment pipeline is the single, standardized path for all changes to reach any environment - development, testing, staging, or production. No manual deployments, no side channels, no "quick fixes" bypassing the pipeline. If it is not deployed through the pipeline, it does not get deployed.
+The deployment pipeline is the single, standardized path for all changes to reach any environment - development, testing, staging, or production. No manual deployments, no side channels, no "quick fixes" bypassing the pipeline. If a change does not go through the pipeline, it does not get deployed.
 
 ## Key principles
 

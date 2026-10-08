@@ -18,7 +18,9 @@ The practices in Phase 1 ([trunk-based development]({{< relref "/docs/reference/
 
 A working agreement is a shared commitment that the team creates, owns, and enforces together. No one imposes it from outside. The team answers one question for itself: "How do we work together?"
 
-Without working agreements, [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound. Within weeks, the team is no longer practicing CD. They are practicing individual preferences.
+Without working agreements, [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices drift. One developer integrates daily; another keeps a branch for a week. One developer fixes a broken build immediately; another waits until after lunch. These inconsistencies compound.
+
+Within weeks, the team is no longer practicing CD. The team is practicing individual preferences.
 
 Working agreements prevent this drift by making expectations explicit. When everyone agrees on what "done" means, what "ready" means, and how [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) works, the team can hold each other accountable without conflict.
 
@@ -40,11 +42,11 @@ A work item is **done** when all of the following are true:
 
 ### Why "delivered to the end user" matters
 
-Many teams define "done" as "code is merged." This creates a gap between "done" and "delivered." Work accumulates in a staging environment, waiting for a release. Risk grows with each unreleased change.
+Many teams define "done" as "code is merged." That definition creates a gap between "done" and "delivered." Work accumulates in a staging environment, waiting for a release. Risk grows with each unreleased change.
 
-In a CD organization, "done" means the change has reached the end user (or is ready to reach them at any time). This is the ultimate test of completeness: the change works in the real environment, with real data, under real load.
+In a CD organization, "done" means the change has reached the end user (or is ready to reach them at any time). Delivery is the ultimate test of completeness: the change works in the real environment, with real data, under real load.
 
-In Phase 1, you may not yet have the pipeline to deliver every change automatically. That is fine. Your DoD should still include "delivered to the end user" as the standard, even if the delivery step is not yet automated. The pipeline work in [Phase 2]({{< relref "/docs/anti-patterns/pipeline" >}}) will close that gap.
+In Phase 1, you may not yet have the pipeline to deliver every change automatically. A manual delivery step is fine for now. Your DoD should still include "delivered to the end user" as the standard, even if the delivery step is not yet automated. The pipeline work in [Phase 2]({{< relref "/docs/anti-patterns/pipeline" >}}) will close that gap.
 
 ### Extending your Definition of Done
 
@@ -82,7 +84,7 @@ A work item is **ready** when all of the following are true:
 
 ## CI working agreement
 
-The CI working agreement codifies how the team practices continuous integration. Every other agreement depends on a working CI process, making this the foundation the rest builds on.
+The CI working agreement codifies how the team practices continuous integration. Every other agreement depends on a working CI process, so the CI agreement is the foundation the rest builds on.
 
 ### The CI agreement
 
@@ -102,7 +104,7 @@ The team agrees to the following practices:
 
 **Broken builds:**
 
-- [ ] A broken build is the team's top priority. It is fixed before any new work begins
+- [ ] A broken build is the team's top priority. The team fixes it before any new work begins
 - [ ] The developer(s) who broke the build are responsible for fixing it immediately
 - [ ] If the fix will take more than 10 minutes, revert the change and fix it offline
 - [ ] No one commits to a broken trunk (except to fix the break)
@@ -115,23 +117,23 @@ The team agrees to the following practices:
 
 ### Why "broken build = top priority"
 
-This is the single most important CI agreement. When the build is broken:
+"Broken build = top priority" is the single most important CI agreement. When the build is broken:
 
 - No one can integrate safely. Changes are stacking up.
 - Trunk is not releasable. The team has lost its safety net.
 - Every minute the build stays broken, the team accumulates risk.
 
-"Fix the build" is not a suggestion. It is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. This is not punitive. It is the team protecting its own ability to deliver.
+"Fix the build" is not a suggestion. "Fix the build" is an agreement that the team enforces collectively. If the build is broken and someone starts a new feature instead of fixing it, the team should call that out. Calling it out is not punitive. The team is protecting its own ability to deliver.
 
 #### Stop the line: why all work stops
 
-Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops**, not only merges. Every developer on the team shifts attention to restoring green.
+Some teams interpret "fix the build" as "stop merging until it is green." Stopping merges is not enough. When the build is red, **all feature work stops**, not only merges. Every developer on the team shifts attention to restoring green.
 
-This sounds extreme, but the reasoning is straightforward:
+Stopping all work sounds extreme, but the reasoning is straightforward:
 
 - **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-impact activity anyone on the team can do.
-- **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress. It is inventory.
-- **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not only the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
+- **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. That code may compile, but nobody has validated it. Unvalidated code is not progress. Unvalidated code is inventory.
+- **The team mindset matters more than the individual fix.** When everyone stops, the message is clear. The build belongs to the whole team, not only the person who broke it. Shared ownership is what separates teams that practice CI from teams that merely have a CI server.
 
 #### Two timelines: stop vs. do not stop
 
@@ -156,9 +158,11 @@ The team that stops immediately pays a small, predictable cost. The team that do
 
 ### The revert rule
 
-If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. This keeps trunk green and unblocks the rest of the team. The developer who made the change is not being punished. They are protecting the team's flow.
+If a broken build cannot be fixed within 10 minutes, revert the offending commit and fix the issue on a branch. The revert keeps trunk green and unblocks the rest of the team. The revert does not punish the developer who made the change. That developer is protecting the team's flow.
 
-Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost. The code is still in the Git history. The developer can re-apply their change after fixing the issue. The alternative, a broken trunk for hours while someone debugs, is far more costly.
+Reverting feels uncomfortable at first. Teams worry about "losing work." But a reverted commit is not lost. The code is still in the Git history.
+
+The developer can re-apply the change after fixing the issue. The alternative, a broken trunk for hours while someone debugs, is far more costly.
 
 #### When to forward fix vs. revert
 
@@ -253,7 +257,7 @@ All changes require team consensus.
 2. **Start simple.** Do not try to cover every scenario. Start with the essentials (DoD, DoR, CI) and add specifics as the team identifies gaps.
 3. **Make them visible.** Post the agreements where the team sees them daily: on a team wiki, in the team channel, or on a physical board.
 4. **Review regularly.** Agreements should evolve as the team matures. Review them monthly. **Remove agreements that are second nature.** Add agreements for new challenges.
-5. **Enforce collectively.** Working agreements are only effective if the team holds each other accountable. This is a team responsibility, not a manager responsibility.
+5. **Enforce collectively.** Working agreements are only effective if the team holds each other accountable. Enforcement is a team responsibility, not a manager responsibility.
 6. **Start with agreements you can keep.** If the team is currently integrating once a week, do not agree to integrate three times daily. Agree to integrate daily, practice for a month, then tighten.
 
 ## Measuring success
@@ -267,7 +271,7 @@ All changes require team consensus.
 
 ## Next step
 
-With working agreements in place, your team has established the foundations for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}): daily integration, reliable testing, automated builds, small work, fast review, and shared commitments.
+With working agreements in place, your team has the foundations for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). Those foundations are daily integration, reliable testing, automated builds, small work, fast review, and shared commitments.
 
 You are ready to move to [Phase 2: Pipeline]({{< relref "/docs/anti-patterns/pipeline" >}}), where you will build the automated path from commit to production.
 

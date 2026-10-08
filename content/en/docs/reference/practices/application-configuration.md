@@ -8,9 +8,9 @@ description: >
 
 ## Definition
 
-Application configuration defines the internal behavior of your application and is bundled with the artifact. It does not vary between environments. This is distinct from environment configuration (secrets, URLs, credentials) which varies by deployment.
+Application configuration defines the internal behavior of your application and is bundled with the artifact. It does not vary between environments. Application configuration is distinct from environment configuration (secrets, URLs, credentials) which varies by deployment.
 
-We embrace [The Twelve-Factor App config](https://12factor.net/config) definitions:
+This guide uses [The Twelve-Factor App config](https://12factor.net/config) definitions:
 
 - **Application Configuration**: Internal to the app, does NOT vary by environment (feature flags, business rules, UI themes, default settings)
 - **Environment Configuration**: Varies by deployment (database URLs, API keys, service endpoints, credentials)

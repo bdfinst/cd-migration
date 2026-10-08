@@ -25,7 +25,9 @@ about what columns exist, what values are valid, and what the foreign key relati
 
 A developer on the orders team needs to rename a column. It is a minor cleanup - the column was
 named `order_dt` and should be `ordered_at` for consistency. Before making the change, they post
-to the team channel: "Anyone else using the `order_dt` column?" Three other teams respond. Two are
+to the team channel: "Anyone else using the `order_dt` column?"
+
+Three other teams respond. Two are
 using it in reporting queries. One is using it in a scheduled job that nobody is sure anyone owns
 anymore. The rename is shelved. The inconsistency stays because the cost of fixing it is too high.
 
@@ -46,8 +48,8 @@ Common variations:
   domains - orders joined to user preferences joined to inventory levels. The query works, but it
   means the service depends on the internal structure of two other domains.
 
-The telltale sign: a developer needs to approve a database schema change in a channel that includes
-people from three or more different teams, none of whom own the code being changed.
+The telltale sign: a database schema change needs approval in a channel that includes people from
+three or more different teams. None of them own the code being changed.
 
 ## Why this is a problem
 
@@ -58,12 +60,14 @@ by shared mutable state.
 
 ### It reduces quality
 
-A column rename that takes one developer 20 minutes can break three other services in production before anyone realizes the change shipped. That is the normal cost of shared schema ownership. Each service that reads a table has implicit expectations about that table's structure. When one
-service changes the schema, those expectations break in other services. The breaks are not caught
-at compile time or in code review - they surface at runtime, often in production, when a different
+A column rename that takes one developer 20 minutes can break three other services in production before anyone realizes the change shipped. That is the normal cost of shared schema ownership.
+
+Each service that reads a table has implicit expectations about that table's structure. When one
+service changes the schema, those expectations break in other services. Compile-time checks and
+code review do not catch the breaks. They surface at runtime, often in production. A different
 service fails because a column it expected no longer exists or contains different values.
 
-This makes schema changes high-risk regardless of how simple they appear. A column rename,
+Shared ownership makes schema changes high-risk regardless of how simple they appear. A column rename,
 a constraint addition, a data type change - all can cascade into failures across services that
 were never in the same deployment. The safest response is to never change anything, which leads
 to schemas that grow stale, accumulate technical debt, and eventually become incomprehensible.
@@ -75,16 +79,18 @@ without coordinating with consumers who do not even know the schema exists.
 
 ### It increases rework
 
-A two-day schema change becomes a three-week coordination exercise when other teams must change their services before the old column can be removed. That overhead is not exceptional - it is the built-in cost of shared ownership. Database migrations in a shared-database system require a multi-phase process. The first phase
-deploys code that supports both the old and new schema simultaneously - the old column must stay
+A two-day schema change becomes a three-week coordination exercise when other teams must change their services before the old column can be removed. That overhead is not exceptional - it is the built-in cost of shared ownership.
+
+Database migrations in a shared-database system require a multi-phase process. The first phase
+deploys code that supports both the old and new schema simultaneously. The old column must stay
 while new code writes to both columns, because other services still read the old column. The second
 phase deploys all the consuming services to use the new column. The third phase removes the old
 column once all consumers have migrated.
 
 Each phase is a separate deployment. Between phases, the system is running in a mixed state that
 requires extra production code to maintain. That extra code is rework - it exists only to bridge
-the transition and will be deleted later. Any bug in the bridge code is also rework, because it
-needs to be diagnosed and fixed in a context that will not exist once the migration is complete.
+the transition and will be deleted later. Any bug in the bridge code is also rework. The team must
+diagnose and fix it in a context that will not exist once the migration is complete.
 
 With service-owned data, the same migration is a single deployment. The service updates its schema
 and its internal logic simultaneously. No other service needs to change because no other service
@@ -107,7 +113,9 @@ depends on the complexity of the change, not on the availability of other teams.
 
 ### It prevents independent deployment
 
-Teams that try to increase deployment frequency hit a wall: the pipeline is fast but every schema change requires coordinating three other teams before shipping. The limiting factor is not the code - it is the shared data. Services cannot deploy independently when they share a database.
+Teams that try to increase deployment frequency hit a wall: the pipeline is fast but every schema change requires coordinating three other teams before shipping. The limiting factor is not the code - it is the shared data.
+
+Services cannot deploy independently when they share a database.
 If Service A deploys a schema change that removes a column Service B depends on, Service B breaks.
 The only safe deployment strategy is to coordinate all consuming services and deploy them
 simultaneously or in a carefully managed sequence. Simultaneous deployment eliminates independent
@@ -118,11 +126,11 @@ sequence fails.
 
 CD requires that each service can be built, tested, and deployed independently. A shared database
 breaks that independence at the most fundamental level: data ownership. Services that share a
-database cannot have independent pipelines in a meaningful sense, because a passing pipeline on
-Service A does not guarantee that Service A's deployment is safe for Service B.
+database cannot have independent pipelines in a meaningful sense. A passing pipeline on Service A
+does not guarantee that Service A's deployment is safe for Service B.
 
-Contract testing and API versioning strategies - standard tools for managing service dependencies
-in CD - do not apply to a shared database, because there is no contract. Any service can read or
+Contract testing and API versioning are standard tools for managing service dependencies in CD.
+They do not apply to a shared database, because there is no contract. Any service can read or
 write any column at any time. The database is a global mutable namespace shared across all services
 and all environments. That pattern is incompatible with the independent deployment cadences that
 CD requires.
@@ -130,7 +138,7 @@ CD requires.
 ## How to fix it
 
 Eliminating a shared database is a long-term effort. The goal is data ownership: each service
-controls its own data and exposes it through explicit APIs. This does not happen overnight. The
+controls its own data and exposes it through explicit APIs. Data ownership does not happen overnight. The
 path is incremental, moving one domain at a time.
 
 ### Step 1: Map what reads and writes what
@@ -171,7 +179,7 @@ Before removing any direct database access, add an API endpoint that provides th
    [No Contract Testing]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) for specifics.
 3. Deploy the endpoint but do not switch consumers yet. Run it alongside the direct database access.
 
-This is the safest phase. If the API has a bug, consumers are still using the database directly.
+Running the API alongside direct access is the safest phase. If the API has a bug, consumers are still using the database directly.
 No service is broken.
 
 ### Step 4: Migrate consumers one at a time (weeks 4-8)
@@ -206,8 +214,8 @@ makes it a technical impossibility.
 
 Apply the same pattern to the next domain, working from easiest to hardest. Domains with a single
 clear writer and few readers migrate quickly. Domains that are written by multiple services require
-first resolving the ownership question - typically by choosing one service as the canonical source
-and making others write through that service's API.
+you to resolve the ownership question first. Typically, choose one service as the canonical source
+and make others write through that service's API.
 
 | Objection | Response |
 |-----------|----------|

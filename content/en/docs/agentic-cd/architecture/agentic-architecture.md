@@ -18,13 +18,13 @@ This page assumes familiarity with [Agent Delivery Contract]({{< relref "/docs/a
 
 ## Overview
 
-A multi-agent system that was not deliberately designed looks like a distributed monolith: everything depends on everything else, [context]({{< relref "/docs/reference/glossary#context-llm" >}}) passes unchecked through every boundary, and no component has clear ownership. The defense is the same set of principles that prevent spaghetti in application code: single responsibility, explicit interfaces, and separation of concerns applied to agent boundaries. Three failure patterns show what happens without them:
+A multi-agent system that was not deliberately designed looks like a distributed monolith. Everything depends on everything else, [context]({{< relref "/docs/reference/glossary#context-llm" >}}) passes unchecked through every boundary, and no component has clear ownership. The defense is the set of principles that prevent spaghetti in application code. Apply single responsibility, explicit interfaces, and separation of concerns to agent boundaries. Three failure patterns show what happens without them:
 
 **Token waste from undisciplined context.** Without explicit rules about what passes between components, agents accumulate context until the window fills or costs spike. An [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) that receives a 50,000-token context when its actual task requires 5,000 tokens wastes 90% of its input budget.
 
 **Cascading failures from missing error boundaries.** When one agent's unstructured prose output becomes another agent's input, parsing ambiguity becomes a failure source. A model that produces a slightly different output format than expected on one run can silently corrupt downstream agent behavior without triggering any explicit error.
 
-**Brittle workflows from model-coupled instructions.** Skills and commands written for one model's specific instruction style often degrade when run on a different model. Workflows that hard-code model-specific behaviors - Claude's particular handling of XML tags, Gemini's response to certain role descriptions - cannot be handed off or used in multi-model configurations without manual rewriting.
+**Brittle workflows from model-coupled instructions.** Skills and commands written for one model's specific instruction style often degrade when run on a different model. Some workflows hard-code model-specific behaviors, such as Claude's handling of XML tags or Gemini's response to certain role descriptions. You cannot hand off those workflows or use them in multi-model configurations without manual rewriting.
 
 Getting architecture right addresses all three. The sections below give patterns for each component type: skills, agents, commands, [hooks]({{< relref "/docs/reference/glossary#hook-agent" >}}), and the cross-cutting concerns that tie them together.
 
@@ -40,15 +40,15 @@ Getting architecture right addresses all three. The sections below give patterns
 
 ### What a skill is
 
-A skill is a named, reusable procedure that an agent can invoke by name. It encodes a sequence of steps, a set of rules, or a decision procedure that would otherwise need to be re-derived from scratch each time the agent encounters a given situation.
+A skill is a named, reusable procedure that an agent can invoke by name. It encodes a sequence of steps, a set of rules, or a decision procedure. Without the skill, the agent re-derives that procedure from scratch each time it meets the situation.
 
 Skills are not plugins or function calls in the API sense. They are instruction documents - typically markdown files - that are injected into an agent's context when invoked. The agent reads the skill, follows its instructions, and returns a result. The skill has no runtime; it is pure specification.
 
-This distinction matters. Because a skill is plain text, it works across models that can read and follow natural language instructions. Claude, Gemini, and any other capable model can follow the same skill document. This is the foundation of model-agnostic workflow design.
+This distinction matters. Because a skill is plain text, it works across models that can read and follow natural language instructions. Claude, Gemini, and any other capable model can follow the same skill document. Plain-text skills are the foundation of model-agnostic workflow design.
 
 ### Single responsibility
 
-A skill should do one thing. The temptation to combine related procedures into a single skill ("review code AND write the commit message AND update the changelog") produces a skill that is hard to test, hard to maintain, and hard to invoke selectively. When a multi-step procedure fails, a single-responsibility skill makes it obvious which step went wrong and where to look.
+A skill should do one thing. You might be tempted to combine related procedures into a single skill ("review code AND write the commit message AND update the changelog"). The result is hard to test, hard to maintain, and hard to invoke selectively. When a multi-step procedure fails, a single-responsibility skill makes it obvious which step went wrong and where to look.
 
 Signs a skill is doing too much:
 
@@ -64,7 +64,7 @@ Signs a skill should be extracted:
 
 ### When to inline vs. extract
 
-Inline instructions when a procedure is used exactly once, is tightly coupled to the specific agent's context, or is too short to justify its own file (under 5-6 lines of instruction). Extract to a skill file when a procedure is reused, when it will be maintained independently of the agent configuration, or when it is long enough that reading the agent's [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) requires scrolling past it.
+Inline a procedure when the agent uses it exactly once or when it is tightly coupled to that agent's context. Also inline it when it is too short for its own file (under 5-6 lines of instruction). Extract a procedure to a skill file when it is reused or maintained independently of the agent configuration. Also extract it when it is long enough that readers scroll past it to read the agent's [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}).
 
 A useful test: replace the inline instruction with a skill reference and check whether the agent system prompt reads more clearly. If it does, extract it.
 
@@ -101,7 +101,7 @@ Skills written to exploit one model's specific behaviors create lock-in. The fol
 
 **Avoid model-specific XML or [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) syntax.** Claude responds to `<instructions>` tags; Gemini does not require them. Skills that depend on XML delimiters need adaptation when moved between models. Use plain markdown structure instead.
 
-**State scope and early exit conditions.** Both models benefit from explicit scope limits ("analyze only the files in the staged diff") and early exit conditions ("if the diff contains only comments and whitespace, return an empty findings list immediately"). These reduce unnecessary processing and keep outputs predictable.
+**State scope and early exit conditions.** Both models benefit from explicit scope limits, such as "analyze only the files in the staged diff". They also benefit from early exit conditions, such as "if the diff contains only comments and whitespace, return an empty findings list immediately". Scope limits and early exits reduce unnecessary processing and keep outputs predictable.
 
 ### Claude implementation example
 
@@ -196,7 +196,9 @@ The differences are explicit: Gemini benefits from named input fields (`bdd_scen
 
 ## How skills and agents relate
 
-A [skill]({{< relref "/docs/reference/glossary#skill-agent" >}}) is what an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) knows how to do. An agent is the runtime that executes skills. Skills are stateless instruction documents; agents are stateful execution loops that read skills, invoke tools, and iterate toward a goal. One agent can invoke many skills. One skill can be invoked by different agents. Skills can be reviewed, tested, and versioned independently of the agent that runs them - changing a skill does not require changing the agent, and swapping the agent does not require rewriting the skills.
+A [skill]({{< relref "/docs/reference/glossary#skill-agent" >}}) is what an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) knows how to do. An agent is the runtime that executes skills. Skills are stateless instruction documents; agents are stateful execution loops that read skills, invoke tools, and iterate toward a goal. One agent can invoke many skills. One skill can be invoked by different agents.
+
+You can review, test, and version skills independently of the agent that runs them. Changing a skill does not require changing the agent. Swapping the agent does not require rewriting the skills.
 
 ---
 
@@ -228,7 +230,7 @@ Decompose when:
 - Parallel execution is possible and would meaningfully reduce latency (review [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) running concurrently instead of sequentially)
 - Different tasks within a workflow have different model tier requirements (routing cheap coordination to a small model, expensive reasoning to a frontier model)
 - A task has grown too large to fit in a single well-scoped context without degrading output quality
-- Separation of concerns requires that one agent not be able to see or influence another agent's domain (the implementation agent must not perform its own review)
+- Separation of concerns requires that one agent cannot see or influence another agent's domain (for example, the implementation agent must not review its own work)
 
 ### Passing context without bloat
 
@@ -249,9 +251,9 @@ Agent failures fall into three categories, each requiring a different response:
 
 **Hard failure (the agent returns an error or a malformed response).** Retry once with identical input. If the second attempt fails, escalate to the orchestrator with the raw error; do not attempt to interpret it in the calling agent.
 
-**Soft failure (the agent returns a valid response indicating a blocking issue).** This is not a failure of the agent - it is the agent doing its job. Route the finding to the appropriate handler (typically returning it to the implementation agent for resolution) without treating it as an error condition.
+**Soft failure (the agent returns a valid response indicating a blocking issue).** A soft failure is not a failure of the agent. The agent is doing its job. Route the finding to the appropriate handler (typically returning it to the implementation agent for resolution) without treating it as an error condition.
 
-**Silent degradation (the agent returns a valid-looking response that is subtly wrong).** This is the hardest failure mode to detect. Defend against it with output schemas and schema validation at every boundary. A response that does not conform to the expected schema should be treated as a hard failure, not silently accepted.
+**Silent degradation (the agent returns a valid-looking response that is subtly wrong).** Silent degradation is the hardest failure mode to detect. Defend against it with output schemas and schema validation at every boundary. A response that does not conform to the expected schema should be treated as a hard failure, not silently accepted.
 
 ### Declarative agents vs. programmatic agents
 
@@ -259,7 +261,7 @@ An agent can be defined in two fundamentally different ways. The choice shapes h
 
 **[Declarative agents]({{< relref "/docs/reference/glossary#declarative-agent" >}})** are markdown documents - [skills](#skills), [system prompts]({{< relref "/docs/reference/glossary#system-prompt" >}}), and rules files - that run inside an existing agent runtime (Claude Code, Cursor, Windsurf, Cline, or similar). The runtime provides the [agent loop]({{< relref "/docs/reference/glossary#agent-loop" >}}), tool execution, and context management. The developer writes only the instructions.
 
-**[Programmatic agents]({{< relref "/docs/reference/glossary#programmatic-agent" >}})** are standalone programs, typically written in JavaScript or Java, that call the LLM API directly and manage their own agent loop, tool definitions, error handling, and context assembly. The developer writes both the instructions and the execution infrastructure.
+**[Programmatic agents]({{< relref "/docs/reference/glossary#programmatic-agent" >}})** are standalone programs, typically written in JavaScript or Java, that call the LLM API directly. They manage their own agent loop, tool definitions, error handling, and context assembly. The developer writes both the instructions and the execution infrastructure.
 
 #### When to use declarative agents
 
@@ -270,7 +272,7 @@ Use declarative agents when a developer is present and the agent runs inside an 
 - **Rapid iteration.** Changing a declarative agent means editing a markdown file. No build step, no deployment, no dependency management.
 - **Cross-model portability.** A well-written markdown skill works across Claude, Gemini, and other capable models. Switching models means changing a configuration flag.
 
-**Trade-off:** Declarative agents depend on the runtime's capabilities. If the runtime does not support a tool you need (a specific API call, a database query, a custom binary), the declarative agent cannot use it unless the runtime is extensible via MCP or similar protocols.
+**Trade-off:** Declarative agents depend on the runtime's capabilities. The runtime might not support a tool you need, such as a specific API call, a database query, or a custom binary. In that case, the declarative agent cannot use the tool unless you extend the runtime through MCP or a similar protocol.
 
 #### When to use programmatic agents
 
@@ -480,7 +482,7 @@ Rules:
 - Format: "<ticket_id>: <imperative sentence describing the change>"
 {{< /card >}}
 
-The explicit instruction to treat inputs as data and the injection detection rule do not guarantee safety against a sophisticated adversary, but they reduce the attack surface compared to raw interpolation.
+The instruction to treat inputs as data and the injection detection rule do not guarantee safety against a sophisticated adversary. They do reduce the attack surface compared to raw interpolation.
 
 ### Well-structured vs. poorly-structured command comparison
 
@@ -551,7 +553,7 @@ A hook that fails should fail cleanly with a clear error message. A hook that ha
 
 **Hooks must be idempotent.** Running the same hook twice with the same inputs must produce the same result. A hook that writes a log file should append to an existing file, not fail if the file already exists. A hook that calls an external validation service must handle the case where the same call was already made.
 
-**Hooks must have bounded execution time.** A pre-hook that can run for an arbitrary duration blocks the agent invocation. Set timeouts. If the hook cannot complete within its timeout, fail fast and surface the timeout as the error - do not silently allow the invocation to proceed with unvalidated inputs.
+**Hooks must have bounded execution time.** A pre-hook that can run for an arbitrary duration blocks the agent invocation. Set timeouts. If the hook cannot complete within its timeout, fail fast and surface the timeout as the error. Do not let the invocation proceed silently with unvalidated inputs.
 
 ### Using hooks to enforce guardrails or inject context
 
@@ -684,9 +686,9 @@ Testing agentic workflows requires testing at multiple levels:
 
 **Skill unit tests.** Test each skill document in isolation by invoking it with controlled inputs and asserting on the output structure. Use a deterministic input set (a known diff, a known scenario) and verify that the output schema is correct and that the decision matches expectations.
 
-**Agent integration tests.** Test the full agent with a controlled context bundle. These tests will not be perfectly deterministic across model versions, but they should produce consistent structural outputs (valid JSON, correct schema, plausible decisions) for a given stable input.
+**Agent integration tests.** Test the full agent with a controlled context bundle. Agent integration tests are not perfectly deterministic across model versions. For a given stable input, they should still produce consistent structural outputs: valid JSON, correct schema, and plausible decisions.
 
-**Workflow end-to-end tests.** Test the full workflow path with a representative scenario. These are slower and more expensive but necessary to catch problems that only emerge at the orchestration layer, such as context assembly bugs or incorrect routing decisions.
+**Workflow end-to-end tests.** Test the full workflow path with a representative scenario. Workflow tests are slower and more expensive. You still need them to catch problems that only emerge at the orchestration layer, such as context assembly bugs or incorrect routing decisions.
 
 A useful heuristic: if a skill cannot be tested with a controlled input-output pair, it is not well-scoped enough. The ability to write a unit test for a skill is a signal that the skill has a clear responsibility and a defined contract.
 
@@ -769,7 +771,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 - **[System prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) placement.** Claude separates system content via the `system` parameter. Gemini uses `systemInstruction`. Your abstraction layer must handle this mapping.
 - **[Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}).** Claude's prompt caching uses cache-control annotations on specific message blocks. Gemini's implicit caching triggers automatically on long stable prefixes. Caching strategies differ and cannot be abstracted into a single identical interface - expose caching as an optional configuration, not a required behavior.
-- **Structured output support.** Claude returns structured outputs through its response format parameter (JSON mode). Gemini supports structured output through `responseMimeType` and `responseSchema` in the generation config. If your workflows require structured output enforcement at the API level (beyond instructing the model in the prompt), handle this in the concrete client implementations, not in the abstraction layer.
+- **Structured output support.** Claude returns structured outputs through its response format parameter (JSON mode). Gemini supports structured output through `responseMimeType` and `responseSchema` in the generation config. Your workflows might need the API to enforce structured output, beyond instructing the model in the prompt. Handle that enforcement in the concrete client implementations, not in the abstraction layer.
 - **Token counting.** The field names differ (noted in the Logging section above). Normalize in the abstraction layer.
 
 **Key takeaways:**
@@ -816,7 +818,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 **What it looks like:** Skills use Claude-specific XML delimiters (`<examples>`, `<context>`), or Gemini-specific role framing that other models do not respond to. The skill file has comments like "this only works on Claude Opus."
 
-**Why it fails:** Model-specific skills create lock-in. A skill library that cannot be used with a different model cannot survive a pricing change, a capability change, or an organizational decision to switch providers. Testing is harder because the skill cannot be validated against a cheaper model during development.
+**Why it fails:** Model-specific skills create lock-in. A skill library tied to one model cannot survive a pricing change, a capability change, or a decision to switch providers. Testing is harder because the skill cannot be validated against a cheaper model during development.
 
 **What to do instead:** Write skills using plain markdown structure. Numbered steps, explicit input/output schemas, and early exit conditions work consistently across capable models. When a model-specific variant is genuinely necessary, isolate it in a model-specific subdirectory and document why it differs.
 
@@ -836,9 +838,9 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 **What it looks like:** A pre-hook makes a network call to an external service to validate an input. The external service is occasionally slow or unavailable. On slow runs, the hook blocks the agent invocation for several minutes. On unavailability, the hook fails in a way that leaves partial state in the external service.
 
-**Why it fails:** Hooks with unconstrained side effects are unpredictable. A hook that can fail in an unclean way, block for an unbounded duration, or write partial state to an external system will be disabled by the team after the first time it causes a production incident or a corrupted workflow run.
+**Why it fails:** Hooks with unconstrained side effects are unpredictable. Some hooks can fail uncleanly, block for an unbounded duration, or write partial state to an external system. The team disables such a hook the first time it causes a production incident or a corrupted workflow run.
 
-**What to do instead:** Hooks must have explicit timeouts. All external calls in hooks must be idempotent. A hook that cannot complete idempotently within its timeout must fail fast and surface the timeout as a clear error, not silently allow the invocation to proceed.
+**What to do instead:** Hooks must have explicit timeouts. All external calls in hooks must be idempotent. If a hook cannot complete idempotently within its timeout, it must fail fast and surface the timeout as a clear error. It must not let the invocation proceed silently.
 
 ---
 

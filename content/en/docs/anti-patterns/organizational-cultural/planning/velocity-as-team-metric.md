@@ -19,13 +19,15 @@ tags:
 
 Every sprint, the team's velocity is reported to management. Leadership tracks velocity on a dashboard alongside other delivery metrics. When velocity drops, questions come. When velocity is high, the team is praised. The implicit message is clear: story points are the measure of whether the team is doing its job.
 
-Sprint planning shifts focus accordingly. Estimates creep upward as the team learns which guesses are rewarded. A story that might be a 3 gets estimated as a 5 to account for uncertainty - and because 5 points is worth more to the velocity metric than 3. Technical tasks with no story points get squeezed out of sprints because they contribute nothing to the number management is watching. Work items are split and combined not to reduce batch size but to maximize the point count in any given sprint.
+Sprint planning shifts focus accordingly. Estimates creep upward as the team learns which guesses are rewarded. A story that might be a 3 gets estimated as a 5. The padding accounts for uncertainty, and 5 points is worth more to the velocity metric than 3.
+
+Technical tasks with no story points get squeezed out of sprints because they contribute nothing to the number management is watching. Work items are split and combined not to reduce batch size but to maximize the point count in any given sprint.
 
 Conversations about whether to do things correctly versus doing things quickly become conversations about what yields more points. Refactoring that would improve long-term delivery speed has no points and therefore no advocates. Rushing a feature to get the points before the sprint closes is rational behavior when velocity is the goal.
 
 Common variations:
 
-- **Velocity as capacity planning.** Management uses last sprint's velocity to determine how much to commit in the next sprint, treating the estimate as a productivity floor to maintain rather than a rough planning tool.
+- **Velocity as capacity planning.** Management uses last sprint's velocity to set the next sprint's commitment. The estimate becomes a productivity floor to maintain rather than a rough planning tool.
 - **Velocity comparison across teams.** Teams are compared by velocity score, even though point values are not calibrated across teams and have no consistent meaning.
 - **Velocity as performance review input.** Individual or team velocity numbers appear in performance discussions, directly incentivizing point inflation.
 - **Velocity recovery pressure.** When velocity drops due to external factors (vacations, incidents, refactoring), pressure mounts to "get velocity back up" rather than understanding why it dropped.
@@ -43,9 +45,9 @@ The defect ships on Monday. It shows up in production two weeks later. Fixing it
 the review would have taken - but the velocity metric never records the cost, only the point.
 That calculation repeats sprint after sprint.
 
-Technical debt accumulates because work that does not yield points gets consistently deprioritized. The team is not negligent - they are responding rationally to the incentive structure. A high-velocity team with mounting technical debt will eventually slow down despite the good-looking numbers, but the measurement system gives no warning until the slowdown is already happening.
+Technical debt accumulates because work that does not yield points gets consistently deprioritized. The team is not negligent - they are responding rationally to the incentive structure. A high-velocity team with mounting technical debt eventually slows down despite the good-looking numbers. The measurement system gives no warning until the slowdown is already happening.
 
-Teams that measure quality indicators - defect escape rate, code coverage, lead time, change fail rate - rather than story output maintain quality as a first-class concern because it is explicitly measured. Velocity tracks effort, not quality.
+Some teams measure quality indicators rather than story output: defect escape rate, code coverage, lead time, and change fail rate. Those teams keep quality a first-class concern because they measure it explicitly. Velocity tracks effort, not quality.
 
 ### It increases rework
 
@@ -54,12 +56,13 @@ loosely to fit the inflated estimate. QA flags it as not meeting requirements. T
 reopened, refined, and completed again - generating more velocity points in the process.
 Rework that produces new points is a feature of the system, not a failure.
 
-When the team's incentive is to maximize points rather than to finish work that users value, the
-connection between what gets built and what is actually needed weakens. Vague scope produces
-stories that come back because the requirements were misunderstood, implementations that miss the
-mark because the acceptance criteria were written to fit the estimate rather than the need.
+Sometimes the team's incentive is to maximize points rather than to finish work that users value.
+Then the connection between what gets built and what is actually needed weakens. Vague scope produces
+stories that come back because the requirements were misunderstood. It also produces
+implementations that miss the mark because the acceptance criteria fit the estimate rather than
+the need.
 
-Teams that measure cycle time from commitment to done - rather than velocity - are incentivized to finish work correctly the first time, because rework delays the metric they are measured on.
+Some teams measure cycle time from commitment to done rather than velocity. Those teams have an incentive to finish work correctly the first time, because rework delays the metric they are measured on.
 
 ### It makes delivery timelines unpredictable
 
@@ -73,7 +76,7 @@ a single team's calibration. Using them to predict delivery dates or compare out
 requires them to be something they are not. Management decisions made on velocity data inherit all
 the noise and gaming that the metric has accumulated.
 
-Teams that use actual delivery metrics - lead time, throughput, cycle time - can make realistic forecasts because these measures track how long work actually takes from start to done. Velocity tracks how many points the team agreed to assign to work, which is a different and less useful thing.
+Teams that use actual delivery metrics, such as lead time, throughput, and cycle time, can make realistic forecasts. These metrics track how long work takes from start to done. Velocity tracks how many points the team agreed to assign to work, which is a different and less useful thing.
 
 ### Impact on continuous delivery
 

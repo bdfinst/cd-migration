@@ -15,7 +15,7 @@ description: >
 
 ## Definition
 
-Verification of a coherent structural unit (such as an entire microservice, UI component, or self-contained subsystem) against its specific contract and internal logic, while keeping interactions beyond that component's boundary mocked or stubbed.
+Verification of a coherent structural unit against its specific contract and internal logic. The unit can be an entire microservice, UI component, or self-contained subsystem. Interactions beyond that component's boundary stay mocked or stubbed.
 
 ## Scope & boundaries
 
@@ -27,7 +27,7 @@ Validates state management, internal workflows, data transformations, and edge-t
 
 ## Good practices
 
-- Mock only at boundary borders: Exercise the component's internal routing, controllers, domain models, and data mappers together; only mock external HTTP APIs, message brokers, or remote databases.
+- Mock only at boundary borders: Exercise the component's internal routing, controllers, domain models, and data mappers together. Only mock external HTTP APIs, message brokers, or remote databases.
 - Use ephemeral infrastructure: Use fast, disposable local resources (for example, local SQLite/Postgres in Docker, local WireMock) to mirror real component runtime characteristics.
 - Versioned, repeatable test data.
 - Verify contract-to-state workflows: Validate that boundary inputs result in the correct local state changes and expected outgoing network payloads.
@@ -42,11 +42,11 @@ Validates state management, internal workflows, data transformations, and edge-t
 
 They overlap heavily with other layers when the component is:
 
-- **Thin CRUD with no middleware to speak of.** Provider contract verification against a booted app plus sociable unit tests of the domain cover most of what a component test would. Keep one per critical flow as smoke coverage; skip exhaustive component coverage.
+- **Thin CRUD with no middleware to speak of.** Together, provider contract verification against a booted app and sociable unit tests of the domain cover most of what a component test would. Keep one per critical flow as smoke coverage; skip exhaustive component coverage.
 - **Utility libraries** are effectively multiple small components in as a single consumable dependency.
 - **Pure transformation logic.** Parsers, calculators, scheduling math. Unit tests give better coverage per unit of effort.
 
-If you're choosing between an extra component test and an extra unit test for the same behavior, the unit test is cheaper to write, run, and maintain. Component tests earn their keep at the seams between layers, not in repeating ground that unit tests already cover.
+Sometimes you must choose between an extra component test and an extra unit test for the same behavior. The unit test is cheaper to write, run, and maintain. Component tests earn their keep at the seams between layers, not in repeating ground that unit tests already cover.
 
 ## Examples
 
@@ -114,10 +114,10 @@ Component tests already exercise the UI from the actor's perspective, making the
 natural place to verify that interactions work for all users. Accessibility assertions
 fit alongside existing assertions rather than in a separate test suite.
 
-This is the second of three tiers in the
+Component testing is the second of three tiers in the
 [Accessibility testing]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}})
-strategy: static-analysis linting catches structural violations in source, component tests catch
-the rendered-only ones (computed contrast, focus order, keyboard operability), and manual audits
+strategy. Static-analysis linting catches structural violations in source. Component tests catch
+the rendered-only ones (computed contrast, focus order, keyboard operability). Manual audits
 cover the subjective remainder.
 
 {{< card code=true header="**Accessibility component test - keyboard navigation and WCAG assertions**" lang="javascript" >}}
@@ -146,8 +146,8 @@ describe("Checkout flow", () => {
 
 ## Connection to CD pipeline
 
-Component tests run after unit tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), but before longer running acceptance tests, and provide the broadest fast,
-deterministic feedback:
+Component tests run after unit tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), but before longer running acceptance tests.
+They provide the broadest fast, deterministic feedback:
 
 1. **Local development**: run before committing. Deterministic scope keeps them fast
    enough to run locally without slowing the development loop.

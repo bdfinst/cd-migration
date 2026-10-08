@@ -18,13 +18,13 @@ Progressive rollout strategies let you deploy to production without deploying to
 
 Even with comprehensive tests, [production-like environments]({{< relref "/docs/reference/glossary#production-like-environment" >}}), and small [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}), some issues only surface under real production traffic. Progressive rollout is the final safety layer: it limits the blast radius of any deployment by exposing the change to a small audience first.
 
-This is not a replacement for testing. It is an addition. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest - the issues that depend on real user behavior, real data volumes, or real infrastructure conditions that cannot be fully replicated in test environments.
+Progressive rollout does not replace testing. It adds to testing. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest: issues that depend on real user behavior, real data volumes, or real infrastructure conditions. Test environments cannot fully replicate those conditions.
 
 ## The three strategies
 
 ### Strategy 1: Canary deployment
 
-A [canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
+A [canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, you gradually shift more traffic to the new version.
 
 {{< card code=true header="**Canary deployment traffic split diagram**" lang="text" >}}
                         ┌─────────────────┐
@@ -137,7 +137,7 @@ Percentage-based rollout gradually increases the number of users who see the new
 - Backend infrastructure changes with no user-visible impact
 - Changes that affect all users equally (for example, API response format changes)
 
-**Implementation:** Percentage rollout is typically implemented through [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) (Level 2 or Level 3), using the user ID as the hash key to ensure consistent assignment.
+**Implementation:** Teams typically implement percentage rollout through [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) (Level 2 or Level 3). Use the user ID as the hash key to ensure consistent assignment.
 
 ## Choosing the right strategy
 

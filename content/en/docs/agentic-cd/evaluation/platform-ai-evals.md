@@ -244,8 +244,8 @@ full fixture portfolio:
 | `clean-repo-audit.md`        | `clean-repo/`          |
 
 The `clean-repo-audit.md` reference solution documents what the agent should say about
-well-structured code: acknowledge what is done well, note minor improvement
-opportunities without false alarm, and assign no critical or major findings.
+well-structured code. The agent should acknowledge what is done well and note minor improvement
+opportunities without false alarm. It should assign no critical or major findings.
 
 ## Meta-evaluation
 

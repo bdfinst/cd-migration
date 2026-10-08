@@ -102,7 +102,9 @@ Agents need explicit architectural context that human developers often carry in 
 
 **What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}). These are the authoritative source of truth for what the code should do.
 
-This artifact has two parts: the **done definition** (observable outcomes an independent observer could verify) and the **evaluation design** (test cases with known-good outputs that catch regressions). Together they **constrain** the agent. If the criteria are comprehensive, the agent cannot generate incorrect code that passes. If the criteria are shallow, the agent can generate code that passes tests but does not satisfy the intent.
+This artifact has two parts. The **done definition** lists observable outcomes an independent observer could verify. The **evaluation design** lists test cases with known-good outputs that catch regressions.
+
+Together they **constrain** the agent. If the criteria are comprehensive, the agent cannot generate incorrect code that passes. If the criteria are shallow, the agent can generate code that passes tests but does not satisfy the intent.
 
 ### Acceptance criteria
 
@@ -141,7 +143,12 @@ a request. Result: Client B receives 200.
 Result: Middleware adds less than 5ms.
 {{< /card >}}
 
-Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must be **decoupled from implementation** (verify observable behavior, not internal details) and **faithful to the specification** (actually exercise what the human defined, without quietly omitting edge cases or weakening assertions). The [test fidelity and implementation coupling agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) enforce these two properties at pipeline speed.
+Humans define the done definition and evaluation design. An agent can generate the test code, but the resulting tests must have two properties:
+
+- **Decoupled from implementation** - they verify observable behavior, not internal details.
+- **Faithful to the specification** - they exercise what the human defined, without quietly omitting edge cases or weakening assertions.
+
+The [test fidelity and implementation coupling agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) enforce these two properties at pipeline speed.
 
 ### Connecting acceptance criteria to hypothesis validation
 
@@ -151,7 +158,7 @@ Acceptance criteria run in the pipeline on every commit. Hypothesis validation h
 
 This connection matters because a change can pass all acceptance criteria and still fail its hypothesis. Rate limiting might work perfectly and yet not reduce latency because the root cause was something else entirely. When that happens, the team has learned something valuable: the problem is not what they thought it was. That learning feeds back into the next intent description.
 
-The [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle - every deployed change either confirms or refutes a prediction, producing a feedback signal whether it "succeeds" or not.
+The [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) page describes the full post-deployment validation loop. Hypothesis framing in the specification connects each individual change to the team's continuous improvement cycle. Every deployed change either confirms or refutes a prediction, so it produces a feedback signal whether it "succeeds" or not.
 
 **Key property:** The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) enforces these tests on every commit. If they fail, the agent's implementation is rejected regardless of how plausible the code looks.
 
@@ -249,7 +256,7 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 
 **The pipeline and agents consume these artifacts as inputs. They are not outputs for humans to read after the fact.**
 
-Without them, an agent that detects a conflict between what the acceptance criteria expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
+Without them, an agent might detect a conflict between what the acceptance criteria expect and what the feature description says. It has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
 These artifacts are valuable in any project. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), they become mandatory because the pipeline and agents consume them as inputs, not only as reference for humans.
 

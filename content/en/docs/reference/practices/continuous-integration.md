@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-Continuous Integration (CI) is the activity of each developer integrating work to the trunk of version control at least daily and verifying that the work is, to the best of our knowledge, releasable.
+Continuous Integration (CI) is the activity of each developer integrating work to the trunk of version control at least daily. Each integration verifies that the work is, to the best of the team's knowledge, releasable.
 
 CI is not only about tooling - it is fundamentally about team workflow and working agreements.
 

@@ -12,8 +12,8 @@ Each play targets a common delivery challenge. You can run any play in isolation
 
 ## Baseline your delivery metrics
 
-**What:** Capture two sets of numbers before making any other changes: CI health metrics
-([integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), build success rate, time to fix a broken build) and the four
+**What:** Capture two sets of numbers before making any other changes. The first set is CI health metrics
+([integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), build success rate, time to fix a broken build). The second set is the four
 [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) ([deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), [lead time for changes]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), [change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), [mean time to restore]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}})).
 
 **Why:** CI health metrics are leading indicators - they move immediately when team behaviors change
@@ -21,8 +21,8 @@ and surface problems while they are still small. DORA metrics are lagging outcom
 that improvement is compounding into better delivery performance. You need both.
 
 **How to measure success:** You have numbers for all seven metrics written down and dated. The team
-tracks CI health metrics weekly to drive improvement experiments. DORA metrics are reviewed monthly
-to confirm progress.
+tracks CI health metrics weekly to drive improvement experiments. The team reviews DORA metrics
+monthly to confirm progress.
 
 **Resources:** [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - [DORA Metrics Reference]({{< relref "/docs/reference/metrics" >}})
 
@@ -30,9 +30,9 @@ to confirm progress.
 
 ## Run a story slicing workshop
 
-**What:** In one sprint planning session, take every story estimated at more than 2 days and break it into vertical slices that each deliver testable behavior. Do not start any story that fails this check.
+**What:** In one sprint planning session, take every story estimated at more than 2 days. Break each story into vertical slices that each deliver testable behavior. Do not start any story that fails this check.
 
-**Why:** Large stories are the hidden root cause of delayed integration, painful code reviews, and long lead times. A team that cannot slice stories cannot do CD. This is the foundational skill.
+**Why:** Large stories are the hidden root cause of delayed integration, painful code reviews, and long lead times. A team that cannot slice stories cannot do CD. Story slicing is the foundational skill.
 
 **How to measure success:** Average story cycle time drops below 2 days within two sprints. [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) count decreases.
 
@@ -42,7 +42,7 @@ to confirm progress.
 
 ## Stop the line on a broken pipeline
 
-**What:** For one sprint, enforce a team rule: nothing moves forward when the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is red. The whole team stops and fixes it before picking up new work.
+**What:** For one sprint, enforce a team rule: nothing moves forward when the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is red. The whole team stops and fixes the pipeline before picking up new work.
 
 **Why:** A pipeline that is sometimes broken is untrustworthy. Teams learn to ignore failures, which means they learn to ignore feedback. A consistently green pipeline is the foundation [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) depends on.
 
@@ -56,7 +56,7 @@ to confirm progress.
 
 **What:** Identify every branch that has been open for more than 3 days. Merge or delete each one this week. Going forward, set a team rule that no branch lives longer than one day before integrating to trunk.
 
-**Why:** Long-lived branches are integration debt. Every day a branch stays open, merging it back gets more expensive. The pain is not caused by merging - it is caused by waiting to merge.
+**Why:** Long-lived branches are integration debt. Every day a branch stays open, merging it back gets more expensive. Merging does not cause the pain. Waiting to merge does.
 
 **How to measure success:** No branches older than 1 day. Merge conflict time drops to near zero. [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) decreases.
 
@@ -68,7 +68,7 @@ to confirm progress.
 
 **What:** Before fixing any bug, write a failing automated test that reproduces it first. Then make the test pass. Apply this rule to every bug fixed from this point forward.
 
-**Why:** Bugs without tests get reintroduced. This builds test coverage organically where it matters most - in the failure modes your system has already demonstrated. It requires no upfront investment and delivers immediate value.
+**Why:** Bugs without tests get reintroduced. This practice builds test coverage organically where it matters most - in the failure modes your system has already demonstrated. It requires no upfront investment and delivers immediate value.
 
 **How to measure success:** Defect recurrence rate drops. The team can point to a test for every recent bug fix. Coverage grows on critical paths without a dedicated "write tests" project.
 
@@ -103,8 +103,8 @@ to confirm progress.
 ## Switch from assigning work to pulling work
 
 **What:** Stop pre-assigning stories to individuals at sprint planning. Instead, order the backlog
-by priority, leave all items unassigned, and have developers pull the top available item whenever
-they need work - swarming to help finish in-progress items before starting anything new.
+by priority and leave all items unassigned. Have developers pull the top available item whenever
+they need work. Before starting anything new, developers swarm to help finish in-progress items.
 
 **Why:** Push-based assignment optimizes for keeping individuals busy, not for finishing work.
 It creates knowledge silos, hides bottlenecks, and makes code review feel like a distraction
@@ -123,8 +123,8 @@ swarming increases. Knowledge of the codebase broadens across the team over time
 
 **What:** As a team, decide and document exactly what "ready to deploy to production" means. List every criterion. Automate as many as possible as pipeline gates.
 
-**Why:** Without a shared definition, "deployable" means whatever the most risk-averse person in the room decides at the moment. This creates deployment anxiety and inconsistency that blocks CD. A written, automated definition removes the ambiguity.
+**Why:** Without a shared definition, "deployable" means whatever the most risk-averse person in the room decides at the moment. That ambiguity creates deployment anxiety and inconsistency that blocks CD. A written, automated definition removes the ambiguity.
 
-**How to measure success:** Deployment decisions are consistent across team members. No deployment is blocked by a subjective manual checklist. The criteria are enforced in the pipeline, not in a meeting.
+**How to measure success:** Deployment decisions are consistent across team members. No subjective manual checklist blocks a deployment. The pipeline enforces the criteria, not a meeting.
 
 **Resources:** [Definition of Deployable]({{< relref "/docs/reference/practices/definition-of-deployable" >}}) - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}})

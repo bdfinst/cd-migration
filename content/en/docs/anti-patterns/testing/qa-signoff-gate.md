@@ -24,9 +24,9 @@ exploratory testing, and using their personal judgment about whether the system 
 release cannot proceed until that person says so.
 
 The process seems reasonable until the blocking effects become visible. The QA lead has three
-releases queued for approval simultaneously. One is straightforward - a minor config change.
-One is a large feature that requires two days of testing. One is a hotfix for a production issue
-that is costing the company money every hour it is unresolved. All three are waiting in line for
+releases queued for approval at once. One is a straightforward minor config change, and one is
+a large feature that requires two days of testing. The third is a hotfix for a production issue
+that costs the company money every hour it stays unresolved. All three are waiting in line for
 the same person.
 
 Common variations:
@@ -57,17 +57,19 @@ manual gates are a bottleneck that provides marginal additional safety at high t
 
 ### It reduces quality
 
-When three releases are queued and the QA lead has two days, each release gets a fraction of the attention it would receive if reviewed alone. The scenarios that do not get covered are exactly where the next production incident will come from. Manual testing at the end of a release cycle is inherently incomplete. A skilled tester can
+Suppose three releases are queued and the QA lead has two days. Each release gets a fraction of the attention it would receive alone. The scenarios that do not get covered are exactly where the next production incident will come from.
+
+Manual testing at the end of a release cycle is inherently incomplete. A skilled tester can
 exercise a subset of the system's behavior in the time available. They bring experience and
 judgment, but they cannot replicate the coverage of a well-built automated suite. An automated
 regression suite runs the same hundreds of scenarios every time. A manual tester prioritizes
 based on what seems most important and what they have time for.
 
 The bounded time for manual testing means that when there is a large change set to test, each
-scenario gets less attention. Testers are under pressure to approve or reject quickly because
-there are queued releases waiting. Rushed testing finds fewer bugs than thorough testing. The
-gate that appears to protect quality is actually reducing the quality of the safety check because
-of the throughput pressure it creates.
+scenario gets less attention. Queued releases pressure testers to approve or reject quickly,
+and rushed testing finds fewer bugs than thorough testing. The
+gate appears to protect quality, but its throughput pressure reduces the quality of the safety
+check.
 
 When the automated test suite is the gate, it runs the same scenarios every time regardless of
 load or time pressure. It does not get rushed. Adding more coverage requires writing tests, not
@@ -75,16 +77,22 @@ extending someone's working hours.
 
 ### It increases rework
 
-A bug that a developer would fix in 30 minutes if caught immediately consumes three hours of combined developer and tester time when it cycles through a gate review. Multiply that by the number of releases in the queue. Manual testing as a gate produces a batch of bug reports at the end of the development cycle.
+A developer would fix a bug in 30 minutes if caught immediately. Cycled through a gate review, the same bug consumes three hours of combined developer and tester time. Multiply that by the number of releases in the queue.
+
+Manual testing as a gate produces a batch of bug reports at the end of the development cycle.
 The developer whose code is blocked must context-switch from their current work to fix the
 reported bugs. The fixes then go back through the gate. If the QA lead finds new issues in
 the fix, the cycle repeats.
 
-Each round of the manual gate cycle adds overhead: the tester's time, the developer's context
-switch, the communication overhead of the bug report and fix exchange, and the calendar time
-waiting for the next gate review. A bug that a developer would fix in 30 minutes if discovered
-immediately may consume three hours of combined developer and tester time when caught through a
-gate cycle.
+Each round of the manual gate cycle adds overhead:
+
+- The tester's time.
+- The developer's context switch.
+- The back-and-forth of the bug report and fix.
+- The calendar time waiting for the next gate review.
+
+A 30-minute fix for a bug discovered immediately can become three hours of combined developer
+and tester time through a gate cycle.
 
 The rework also affects other developers indirectly. If one release is blocked at the gate,
 other releases that depend on it are also blocked. A blocked release holds back the testing
@@ -94,13 +102,13 @@ of dependent work that cannot be approved without the preceding release.
 
 The time a release spends at the manual gate is determined by the QA lead's schedule, not by
 the release's complexity. A simple change might wait days because the QA lead is occupied with
-a complex one. A complex change that requires two days of testing may wait an additional two
-days because the QA lead is unavailable when testing is complete.
+a complex one. A complex change that requires two days of testing might wait two more days
+because the QA lead is unavailable when testing is complete.
 
 This gate time is entirely invisible in development estimates. Developers estimate how long it
-takes to build a feature. They do not estimate QA lead availability. When a feature that took
-three days to develop sits at the gate for a week, the total time from start to deployment is
-ten days. Stakeholders experience the release as late even though development finished on time.
+takes to build a feature, not QA lead availability. A feature that took three
+days to develop sits at the gate for a week. The total time from start to deployment is ten
+days. Stakeholders experience the release as late even though development finished on time.
 
 Sprint velocity metrics are also distorted. The team shows high velocity because they count
 tickets as complete when development finishes. But from a user perspective, nothing is done
@@ -110,13 +118,12 @@ until it is deployed and in production. The manual gate disconnects "done" from 
 
 When one person controls deployment, the deployment frequency is capped by that person's
 capacity and availability. Vacation, illness, and competing priorities all stop deployments.
-This is not a hypothetical risk - it is a pattern every team with a manual gate experiences
-repeatedly.
+The risk is not hypothetical. Every team with a manual gate experiences the pattern repeatedly.
 
 The concentration of authority also makes that person's judgment a variable in every release.
 Their threshold for approval changes based on context: how tired they are, how much pressure
-they feel, how risk-tolerant they are on any given day. Two identical releases may receive
-different treatment. This inconsistency is not a criticism of the individual - it is a
+they feel, how risk-tolerant they are on any given day. Two identical releases might receive
+different treatment. This inconsistency is not a criticism of the individual. It is a
 structural consequence of encoding quality standards in a human judgment call rather than in
 explicit, automated criteria.
 
@@ -128,7 +135,7 @@ A human gate that overrides or supplements the pipeline signal inserts a manual 
 pipeline cannot automate around.
 
 Teams with manual gates are limited to deploying as often as a human can review and approve
-releases. Realistically, this is once or twice a week per approver. CD targets multiple
+releases. Realistically, that limit is once or twice a week per approver. CD targets multiple
 deployments per day. The gap is not closable by optimizing the manual process - it requires
 replacing the manual gate with automated criteria that the pipeline can evaluate.
 
@@ -155,9 +162,9 @@ replaced with something equivalent rather than removed.
 4. Identify which bugs required human judgment that no automated test could replicate.
 
 Most teams find that 80-90% of gate rejections are for bugs that an automated test would have
-caught. The remaining cases requiring genuine human judgment are usually exploratory findings
-about usability or edge cases in new features - a much smaller scope for manual review than
-a full regression pass.
+caught. The remaining cases that require genuine human judgment are usually exploratory
+findings about usability or edge cases in new features. That scope is much smaller than a full
+regression pass.
 
 ### Step 2: Automate the regression checks that the gate is compensating for (weeks 2-6)
 
@@ -200,9 +207,9 @@ Each case where manual review finds something automation missed is an opportunit
 automated test. Each case where automated criteria caught everything is evidence that the manual
 gate is redundant.
 
-After four to eight weeks of parallel operation, the data either confirms that the manual gate
-is providing significant additional value (rare) or shows that it is confirming what the pipeline
-already knows (common). The data makes the decision about removing the gate defensible.
+After four to eight weeks of parallel operation, the data answers the question. Rarely, it
+confirms that the manual gate provides significant additional value. Commonly, it shows that
+the gate confirms what the pipeline already knows. The data makes the decision about removing the gate defensible.
 
 ### Step 5: Replace the gate with risk-scoped manual testing
 
@@ -216,9 +223,9 @@ the manual review scope.
 3. Exploratory testing continues on a scheduled cadence - not as a gate but as a proactive
    quality activity.
 
-This gives the QA lead a role proportional to the actual value they provide: focused expert
-review of high-risk changes and exploratory quality work, not rubber-stamping releases that
-the pipeline has already validated.
+Risk-scoped testing gives the QA lead a role proportional to the actual value they provide.
+That role is focused expert review of high-risk changes and exploratory quality work. It is not
+rubber-stamping releases the pipeline has already validated.
 
 ### Step 6: Document and distribute deployment authority (ongoing)
 

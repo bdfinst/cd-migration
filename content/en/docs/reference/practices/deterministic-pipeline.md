@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-A deterministic pipeline produces consistent, repeatable results. Given the same inputs (code, configuration, dependencies), the pipeline will always produce the same outputs and reach the same pass/fail verdict. The pipeline's decision on whether a change is releasable is definitive - if it passes, deploy it; if it fails, fix it.
+A deterministic pipeline produces consistent, repeatable results. Given the same inputs (code, configuration, dependencies), the pipeline always produces the same outputs and reach the same pass/fail verdict. The pipeline's decision on whether a change is releasable is definitive - if it passes, deploy it; if it fails, fix it.
 
 ## Key principles
 

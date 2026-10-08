@@ -45,11 +45,11 @@ The separation also creates a perverse incentive around bug severity. When bug r
 
 ### It increases rework
 
-A logic error caught 10 minutes after writing takes 5 minutes to fix. The same defect reported by a QA team three days later takes 30 to 90 minutes - the developer must re-read the code, reconstruct the intent, and verify the fix does not break surrounding logic. The defect discovered in production costs even more.
+A logic error caught 10 minutes after writing takes 5 minutes to fix. The same defect reported by a QA team three days later takes 30 to 90 minutes. The developer must re-read the code, reconstruct the intent, and verify the fix does not break surrounding logic. The defect discovered in production costs even more.
 
-Siloed QA maximizes defect age. A bug report that arrives in the developer's queue a week after the code was written is the most expensive version of that bug. Multiply across a team of 8 developers generating 20 stories per sprint, and the rework overhead is substantial - often accounting for 20 to 40 percent of development capacity.
+Siloed QA maximizes defect age. A bug report that arrives in the developer's queue a week after the code was written is the most expensive version of that bug. Multiply that cost across a team of 8 developers generating 20 stories per sprint. The rework overhead is substantial, often 20 to 40 percent of development capacity.
 
-Context loss makes rework particularly painful. Developers who must revisit old code frequently introduce new defects in the process of fixing the old one, because they are working from incomplete memory of what the code is supposed to do. Rework is not only slow; it is risky.
+Context loss makes rework particularly painful. Developers who revisit old code often introduce new defects while fixing the old one. They work from incomplete memory of what the code is supposed to do. Rework is not only slow; it is risky.
 
 ### It makes delivery timelines unpredictable
 
@@ -57,7 +57,7 @@ The QA queue introduces variance that makes delivery timelines unreliable. Devel
 
 This leads teams to pad estimates unpredictably. Developers finish work early and start new stories rather than reporting "done" because they know the feature will sit in QA anyway. The board shows everything in progress simultaneously because neither development nor QA has a reliable throughput the other can plan around.
 
-Stakeholders experience this as the team not knowing when things will be ready. The honest answer - "development is done but QA hasn't started" - sounds like an excuse. The team's credibility erodes, and pressure increases to skip testing to hit dates, which causes production incidents, which confirms to management that QA is necessary, which entrenches the bottleneck.
+Stakeholders experience this as the team not knowing when things will be ready. The honest answer - "development is done but QA hasn't started" - sounds like an excuse. The team's credibility erodes, and pressure increases to skip testing to hit dates. Skipped testing causes production incidents. The incidents confirm to management that QA is necessary, which entrenches the bottleneck.
 
 ### Impact on continuous delivery
 
@@ -87,7 +87,7 @@ Expect pushback and address it directly:
 ### Step 2: Shift test ownership to the development team (weeks 2-6)
 
 1. Embed QA engineers into development teams rather than maintaining a separate QA team. One QA engineer per team is a reasonable starting ratio.
-2. Require developers to write unit and integration tests as part of each story - not as a separate task, but as part of the definition of done.
+2. Require developers to write unit and integration tests as part of each story. Make the tests part of the definition of done, not a separate task.
 3. Establish a team-level automation coverage target (for example, 80% of acceptance criteria covered by automated tests before a story is considered done).
 4. Add automated test execution to the CI pipeline so every commit is verified without human intervention.
 5. Redirect QA engineer effort from manual verification to test strategy, automation framework maintenance, and exploratory testing of new features.

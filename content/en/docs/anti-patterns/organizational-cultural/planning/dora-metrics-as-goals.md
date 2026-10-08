@@ -25,15 +25,17 @@ thresholds as goals should produce elite performance. Engineering teams receive 
 reviews ask whether the numbers are moving.
 
 Teams respond to the incentive in front of them. Deployment frequency becomes the number to
-optimize. The team finds ways to deploy more often without reducing actual batch size: splitting
-releases artificially, counting hotfixes, or deploying to staging environments that count as
-production for reporting purposes. The metric improves. The underlying problem does not. In some
-cases, the push for faster deployments without the quality practices to support them causes
+optimize. The team finds ways to deploy more often without reducing actual batch size. It splits
+releases artificially, counts hotfixes, or deploys to staging environments that count as
+production for reporting purposes. The metric improves, but the underlying problem does not.
+
+In some cases, the push for faster deployments without the quality practices to support them causes
 defect rates to climb. When that happens, teams declare that continuous delivery does not work
 and revert to longer release cycles.
 
-Meanwhile, the metrics that would catch this early (how often code integrates to trunk, how long
-branches live, how quickly the team finishes a story) are not on the dashboard. They are not
+Meanwhile, the metrics that would catch the problem early are not on the dashboard. Those
+metrics are how often code integrates to trunk, how long branches live, and how quickly the team
+finishes a story. They are not
 in OKRs. They are not in the conversation. By the time DORA numbers drift, the causes have
 been accumulating for weeks.
 
@@ -47,11 +49,11 @@ Common variations:
   against each other. Teams optimize to look better than peers rather than to improve their own
   capability.
 - **Transformation theater.** The organization acquires a DORA metrics tool, populates the
-  dashboard, and declares it is "measuring delivery performance", without connecting the
+  dashboard, and declares it is "measuring delivery performance". Nobody connects the
   measurements to any improvement experiments or behavior changes.
 
-The telltale sign: teams know their DORA metric numbers and actively manage them toward targets,
-but cannot describe the specific behaviors they are working to change.
+The telltale sign: teams know their DORA metric numbers and actively manage them toward targets.
+But they cannot describe the specific behaviors they are working to change.
 
 ## Why this is a problem
 
@@ -62,11 +64,13 @@ Using them as targets treats a correlation tool as a causation engine.
 ### It reduces quality
 
 Deployment frequency is a proxy for batch size. Smaller batches of work are easier to verify,
-fail smaller, and amplify feedback loops. That is why high-performing teams deploy often, not
-because they have a target to hit, but because they have solved the problems that made deploying
-infrequently safer. When a team optimizes for deploy frequency without the supporting practices,
-quality suffers. Defects ship more often because each batch has not been adequately verified.
-Change failure rates rise. Some organizations respond to this outcome by abandoning [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})
+fail smaller, and amplify feedback loops. High-performing teams do not deploy often to hit a
+target. They deploy often because they have solved the problems that made deploying infrequently
+safer.
+
+When a team optimizes for deploy frequency without the supporting practices, quality suffers.
+Defects ship more often because each batch has not been adequately verified. Change failure
+rates rise. Some organizations respond to this outcome by abandoning [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})
 entirely, treating the deteriorating metrics as evidence that the approach does not work.
 
 Teams that improve quality practices first (building automated tests, reducing story size,
@@ -77,9 +81,10 @@ as a goal.
 ### It increases rework
 
 Counting releasable but undelivered changes as "deployments" is a form of moving the goal. A
-change that passed the pipeline but is sitting in a feature branch, waiting behind a release
-train, or hidden by a feature flag has not delivered value. Treating it as throughput flatters
+change might pass the pipeline and then sit in a feature branch, wait behind a release train, or
+hide behind a feature flag. That change has not delivered value. Treating it as throughput flatters
 the metric while actual inventory (and the waste that comes with it) continues to accumulate.
+
 Undelivered change is never an asset. It is a liability that degrades and becomes more expensive
 to deliver the longer it sits.
 
@@ -90,9 +95,11 @@ to actually remove those constraints rather than find creative ways to count aro
 ### It makes delivery timelines unpredictable
 
 DORA metrics are lagging indicators. They reflect the cumulative effect of many upstream behaviors.
-By the time deployment frequency drops or change failure rate climbs, the causes (growing branch
-durations, slipping story cycle times, accumulating test debt) have been in place for weeks or
-months. Setting DORA metrics as goals does not create an early warning system; it creates a
+By the time deployment frequency drops or change failure rate climbs, the causes have been in
+place for weeks or months. Those causes include growing branch durations, slipping story cycle
+times, and accumulating test debt.
+
+Setting DORA metrics as goals does not create an early warning system; it creates a
 delayed one. The team receives feedback that something is wrong long after the window to address
 it cheaply has closed.
 
@@ -105,13 +112,14 @@ DORA metric problem.
 
 ### Impact on continuous delivery
 
-CD depends on a specific set of behaviors: code integrated to trunk at least daily, branches
-short-lived, stories small enough to finish in a day or two, quality gates automated and fast,
-the pipeline the only path to production. DORA metrics reflect whether those behaviors are
-working, but they do not cause them. Setting DORA numbers as targets creates pressure to appear
-to exhibit those behaviors without actually exhibiting them. The result is a delivery system
-that looks healthy on the dashboard while the underlying capability either stagnates or degrades.
-Real improvement requires focusing improvement energy on the behaviors, then observing the DORA
+CD depends on a specific set of behaviors. Code integrates to trunk at least daily, and branches
+are short-lived. Stories are small enough to finish in a day or two. Quality gates are automated
+and fast, and the pipeline is the only path to production.
+
+DORA metrics reflect whether those behaviors are working, but they do not cause them. Setting
+DORA numbers as targets creates pressure to appear to exhibit those behaviors without actually
+exhibiting them. The result is a delivery system that looks healthy on the dashboard while the
+underlying capability either stagnates or degrades. Real improvement requires focusing improvement energy on the behaviors, then observing the DORA
 metrics to confirm that the behaviors are having the expected effect.
 
 ## How to fix it
@@ -145,11 +153,11 @@ metrics exposes and removes constraints directly, rather than waiting for a lagg
 ### Step 3: Connect improvement experiments to behaviors, not numbers
 
 Use the [improvement kata]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) to
-run improvement experiments against the leading indicators. A hypothesis like "if we decompose
-stories to a one-day target, integration frequency will increase because less work will be
-batched before integrating" is testable within a week. A hypothesis like "if we improve our
-practices, DORA metrics will improve" is testable in months at the earliest and provides no
-useful feedback in the interim.
+run improvement experiments against the leading indicators. Consider this hypothesis: "if we
+decompose stories to a one-day target, integration frequency will increase because less work
+will be batched before integrating." You can test it within a week. Now consider "if we improve
+our practices, DORA metrics will improve." You can test that one in months at the earliest, and
+it provides no useful feedback in the interim.
 
 DORA metrics confirm that improvement work is having the right effect at the system level. Use
 them as a quarterly health check, not a weekly driver.

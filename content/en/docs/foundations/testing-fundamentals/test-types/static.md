@@ -12,7 +12,7 @@ description: >
 
 ## Definition
 
-Static analysis (also called static testing) evaluates non-running code against rules for known good practices, inspecting source, configuration, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to catch errors, complexity, and security issues before the code ever runs.
+Static analysis (also called static testing) evaluates non-running code against rules for known good practices. It inspects source, configuration, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to catch errors, complexity, and security issues before the code ever runs.
 
 ## Scope & boundaries
 
@@ -20,7 +20,7 @@ Analysis runs against source code, configuration files, and dependency manifests
 
 ## Characteristics
 
-Seconds-scale execution (the fastest test category), fully deterministic, and codebase-wide scope, with no external dependencies except the network calls a dependency scanner makes to a vulnerability database.
+Seconds-scale execution (the fastest test category), fully deterministic, and codebase-wide scope. Static analysis has no external dependencies except the network calls a dependency scanner makes to a vulnerability database.
 
 ## Good practices
 
@@ -32,7 +32,7 @@ Seconds-scale execution (the fastest test category), fully deterministic, and co
 
 - Disabling rules instead of fixing code: suppressing linter warnings or ignoring security findings erodes the value of static analysis over time.
 - Skipping ruleset customization: default rules are a starting point, not a ceiling, for patterns specific to the codebase.
-- Running static analysis only in CI: by the time CI reports a formatting error, the developer has context-switched; IDE and pre-commit feedback catch it sooner.
+- Running static analysis only in CI: by the time CI reports a formatting error, the developer has context-switched. IDE and pre-commit feedback catch the error sooner.
 - Ignoring dependency vulnerabilities: known CVEs in dependencies are a direct attack vector and should break the build.
 - Treating static analysis as optional: if developers can bypass the checks, they will.
 
@@ -107,13 +107,13 @@ found 2 vulnerabilities (1 moderate, 1 high)
 ### Accessibility linting
 
 Accessibility linting catches deterministic WCAG violations the same way a security scanner
-catches known vulnerability patterns. Automated checks cover structural issues (missing alt
-text, invalid ARIA attributes, insufficient contrast ratios, broken heading hierarchy) while
-manual review covers subjective aspects like whether alt text is actually meaningful.
+catches known vulnerability patterns. Automated checks cover structural issues: missing alt
+text, invalid ARIA attributes, insufficient contrast ratios, and broken heading hierarchy.
+Manual review covers subjective aspects, like whether alt text is actually meaningful.
 
-Linting is the first of three tiers. For how it fits with component-test DOM scans and manual
-audits across the pipeline - and the caveat that automated checks catch only a fraction of WCAG
-criteria - see [Accessibility testing]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}}).
+Linting is the first of three tiers. Component-test DOM scans and manual audits make up the
+other two. Automated checks catch only a fraction of WCAG criteria. For how the tiers fit across
+the pipeline, see [Accessibility testing]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}}).
 
 An accessibility checker configuration running WCAG 2.1 AA checks against rendered pages:
 

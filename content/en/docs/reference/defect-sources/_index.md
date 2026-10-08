@@ -8,10 +8,10 @@ description: >
 
 {{% pageinfo %}}
 Defects do not appear randomly. They originate from specific, predictable sources in the delivery
-value stream. This reference catalogs those sources so teams can shift detection left, automate
-where possible, and apply AI where it adds real value to the feedback loop.
+value stream. This reference catalogs those sources so teams can shift detection left and automate
+where possible. It also shows where AI adds real value to the feedback loop.
 
-The goal is systems thinking: detect issues as early as possible in the value stream so feedback informs continuous improvement in how we work, not only reactive fixes to individual defects.
+The goal is systems thinking: detect issues as early as possible in the value stream. Use that feedback to continuously improve how you work, not only to fix individual defects.
 
 - <span class="ai-high">&#9650;</span> AI shifts detection earlier than current automation alone
 - Dark cells = current automation is sufficient; AI adds no additional value
@@ -55,8 +55,8 @@ The goal is systems thinking: detect issues as early as possible in the value st
 
 {{% alert title="Where AI helps - and where it does not" %}}
 AI adds the most value where detection requires reasoning across multiple signals that existing
-tools cannot correlate: ambiguous requirements, undocumented assumptions, semantic code impact,
-and knowledge gaps. Where deterministic tools already solve the problem (infrastructure drift,
+tools cannot correlate. Examples are ambiguous requirements, undocumented assumptions, semantic
+code impact, and knowledge gaps. Where deterministic tools already solve the problem (infrastructure drift,
 null safety, branch age), AI adds cost without benefit. Look for the <span class="ai-high">&#9650;</span> markers to find the highest-value AI opportunities.
 {{% /alert %}}
 

@@ -34,8 +34,8 @@ validating any of them in detail.
 ### Pressure to skip testing
 
 When teams face pressure to hit a coverage target, testing becomes theater. Developers write
-tests with trivial assertions - checking that a function returns without throwing, or that a
-value is not null - to get the number up. The coverage metric looks healthy, but the tests
+tests with trivial assertions to get the number up. These tests check only that a function
+returns without throwing, or that a value is not null. The coverage metric looks healthy, but the tests
 do not actually verify behavior. They exist to satisfy a gate, not to catch defects.
 
 **Read more:** [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
@@ -51,8 +51,8 @@ coverage metric rises while the tests remain unable to catch meaningful defects.
 
 ### Manual testing only
 
-When test automation is absent or minimal, teams sometimes generate superficial tests or rely on
-coverage from integration-level runs that touch many lines without asserting meaningful outcomes.
+When test automation is absent or minimal, teams sometimes generate superficial tests. Others rely
+on coverage from integration-level runs that touch many lines without asserting meaningful outcomes.
 The coverage tool counts every line that executes, regardless of whether any test validates the
 result.
 
@@ -70,9 +70,8 @@ result.
 3. **Does the pipeline gate on a specific coverage percentage?** If the team writes tests
    primarily to keep coverage above a mandated threshold, start with
    [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}).
-4. **Were tests added retroactively to meet a coverage target?** If the bulk of tests were
-   written after the code to satisfy a coverage gate rather than to verify design decisions,
-   start with
+4. **Were tests added retroactively to meet a coverage target?** If the team wrote most tests
+   after the code to satisfy a coverage gate rather than to verify design decisions, start with
    [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}).
 
 **Ready to fix this?** The most common cause is [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates#how-to-fix-it" >}}) section for week-by-week steps.

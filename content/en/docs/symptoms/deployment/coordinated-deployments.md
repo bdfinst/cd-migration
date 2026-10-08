@@ -13,9 +13,10 @@ tags:
 
 ## What you are seeing
 
-A developer finishes a change to one service. It is tested, reviewed, and ready to deploy. But it
-cannot go out alone. The change depends on a schema migration in a shared database, a new endpoint
-in another service, and a UI update in a third. All three teams coordinate a release window.
+A developer finishes a change to one service. The change is tested, reviewed, and ready to deploy,
+but it cannot go out alone. The change depends on a schema migration in a shared database, a new
+endpoint in another service, and a UI update in a third. All three teams coordinate a release window.
+
 Someone writes a deployment runbook with numbered steps. If step four fails, steps one through
 three need to be rolled back manually.
 
@@ -44,7 +45,7 @@ request on their own. Every user-facing operation requires a synchronous chain o
 multiple services. If one service in the chain is unavailable or deploying, the entire operation
 fails.
 
-This is a monolith distributed across the network. It has all the operational complexity of
+The result is a monolith distributed across the network. It has all the operational complexity of
 microservices (network latency, partial failures, distributed debugging) with none of the
 benefits (independent deployment, team autonomy, fault isolation). Deploying one service still
 requires deploying the others because the boundaries do not correspond to independent units of
@@ -54,8 +55,8 @@ business functionality.
 
 ### Horizontal slicing
 
-When work for a feature is decomposed by service ("Team A builds the API, Team B updates the UI,
-Team C modifies the processor"), each team's change is incomplete on its own. Nothing is
+Sometimes work for a feature is decomposed by service: "Team A builds the API, Team B updates the UI,
+Team C modifies the processor." Each team's change is then incomplete on its own. Nothing is
 [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) until all teams finish their part. The decomposition created the coordination
 requirement. Vertical slicing within each team's domain, with stable contracts between services,
 allows each team to deploy when their slice is ready.
@@ -87,8 +88,8 @@ independent changes into a single release event.
    sliced horizontally. Start with
    [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}).
 4. **Could each service technically be deployed on its own, but process or policy prevents it?**
-   If the coupling is in the release process (shared release window, cross-team sign-off, manual
-   integration test gate) rather than in the code, the [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) is organizational. Start with
+   The coupling might be in the release process rather than in the code. Examples include a shared
+   release window, cross-team sign-off, or a manual integration test gate. If so, the [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) is organizational. Start with
    [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}) and examine whether the definition
    of done requires unnecessary coordination.
 

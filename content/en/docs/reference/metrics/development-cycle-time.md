@@ -8,8 +8,8 @@ description: >
 
 ## Definition
 
-Development Cycle Time measures the elapsed time from when a developer begins work
-on a story or task until that work is deployed to production and available to users.
+Development Cycle Time measures the elapsed time from when a developer starts a story
+or task until that work is live in production for users.
 It captures the full construction phase of delivery: coding, code review, testing,
 integration, and deployment.
 
@@ -17,20 +17,20 @@ integration, and deployment.
 developmentCycleTime = productionDeployTimestamp - workStartedTimestamp
 {{< /card >}}
 
-This is distinct from [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}), which includes the time a request
+Development Cycle Time is distinct from [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}), which includes the time a request
 spends waiting in the backlog before work begins. Development Cycle Time focuses
 exclusively on the active delivery phase.
 
 The *Accelerate* research uses "[lead time for changes]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}})" (measured from commit to
-production) as a key [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) metric. Development Cycle Time extends this slightly
-further back to when work starts, capturing the full development process including
+production) as a key [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) metric. Development Cycle Time extends that window slightly
+further back to when work starts. It captures the full development process, including
 any time between starting work and the first commit.
 
 ## How to measure
 
 1. **Record when work starts.** Capture the timestamp when a story moves to
-   "In Progress" in your issue tracker, or when the first commit for the story
-   appears.
+   "In Progress" in your issue tracker. If you do not track that status, use the
+   first commit for the story.
 2. **Record when work reaches production.** Capture the timestamp of the
    production deployment that includes the completed story.
 3. **Calculate the difference.** Subtract the start time from the production
@@ -59,7 +59,7 @@ story IDs in commit messages) or deployment metadata to create this connection.
 | Elite  | Less than 2 days       |
 
 Elite teams deliver completed work to production within one to two days of starting
-it. This is achievable only when work is decomposed into small increments, the
+it. That speed is achievable only when work is decomposed into small increments, the
 [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is fast, and deployment is automated.
 
 ## Common pitfalls
@@ -85,11 +85,11 @@ it. This is achievable only when work is decomposed into small increments, the
 Development Cycle Time is the most comprehensive measure of delivery flow and sits
 at the heart of [Continuous Delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}):
 
-- **Exposes bottlenecks.** A long cycle time reveals where work gets stuck:
-  waiting for code review, queued for testing, blocked by a manual approval, or
-  delayed by a slow pipeline. Each bottleneck is a target for improvement.
+- **Exposes bottlenecks.** A long cycle time reveals where work gets stuck. Work
+  might wait for code review, sit in a testing queue, be blocked by a manual approval,
+  or be delayed by a slow pipeline. Each bottleneck is a target for improvement.
 - **Drives smaller batches.** The only way to achieve a cycle time under two days
-  is to decompose work into very small increments. This naturally leads to smaller
+  is to decompose work into very small increments. Small increments lead to smaller
   changes, less risk, and faster feedback.
 - **Reduces waste from changing priorities.** Long cycle times mean [work in progress]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}})
   is exposed to priority changes, context switches, and scope creep. Shorter cycles

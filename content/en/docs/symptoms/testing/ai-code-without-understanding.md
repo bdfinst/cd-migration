@@ -12,20 +12,22 @@ tags:
 ## What you are seeing
 
 A developer asks an AI assistant to implement a feature. The generated code looks plausible.
-The tests pass. The developer commits it. Two weeks later, a security review finds the code
-accepts unsanitized input in a path nobody specified as an acceptance criterion. When asked
-what the change was supposed to do, the developer says, "It implements the feature." When
-asked how they validated it, they say, "The tests passed."
+The tests pass. The developer commits it.
 
-This is not an occasional gap. It is a pattern. Developers use AI to produce code faster, but
-they do not define what "correct" means before generating code, verify the output against
-specific [acceptance criteria](../../reference/glossary/#acceptance-criteria), or consider how they would detect a failure in production. The
-code compiles. The tests pass. Nobody validated it against the actual requirements.
+Two weeks later, a security review finds the code accepts unsanitized input in a path nobody
+specified as an acceptance criterion. Asked what the change was supposed to do, the developer
+says, "It implements the feature." Asked how they validated it, they say, "The tests passed."
+
+This is not an occasional gap. It is a pattern. Developers use AI to produce code faster.
+But they do not define what "correct" means before generating code. They do not verify the
+output against specific [acceptance criteria](../../reference/glossary/#acceptance-criteria), or consider how they would detect a failure in production.
+
+The code compiles. The tests pass. Nobody validated the code against the actual requirements.
 
 The symptoms compound over time. Defects appear in AI-generated code that the team cannot
-diagnose quickly because nobody defined what the code was supposed to do beyond "implement
-the feature." Fixes are made by asking the AI to fix its own output without re-examining the
-original acceptance criteria. Security vulnerabilities - injection flaws, broken access
+diagnose quickly. Nobody defined what the code was supposed to do beyond "implement
+the feature." Developers fix defects by asking the AI to fix its own output, without
+re-examining the original acceptance criteria. Security vulnerabilities - injection flaws, broken access
 controls, exposed credentials - ship because nobody asked "what are the security constraints
 for this change?" before or after generation.
 
@@ -33,18 +35,18 @@ for this change?" before or after generation.
 
 ### Rubber-stamping AI-generated code
 
-When there is no expectation that developers own what a change does and how they validated it -
-regardless of who or what wrote the code - AI output gets the same cursory glance as a trivial
-formatting change. The team treats "AI wrote it and the tests pass" as sufficient evidence of
-correctness. It is not. Passing tests prove the code satisfies the test cases. They do not
+Some teams do not expect developers to own what a change does and how they validated it,
+regardless of who or what wrote the code. On those teams, AI output gets the same cursory
+glance as a trivial formatting change. The team treats "AI wrote it and the tests pass" as
+sufficient evidence of correctness. That evidence is not sufficient. Passing tests prove the code satisfies the test cases. They do not
 prove the code meets the actual requirements or handles the constraints the team cares about.
 
 **Read more:** [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}})
 
 ### Missing acceptance criteria
 
-When the work item lacks concrete [acceptance criteria](../../reference/glossary/#acceptance-criteria) - specific inputs, expected outputs,
-security constraints, edge cases - neither the developer nor the AI has a clear target. The AI
+A work item can lack concrete [acceptance criteria](../../reference/glossary/#acceptance-criteria): specific inputs, expected outputs,
+security constraints, and edge cases. Then neither the developer nor the AI has a clear target. The AI
 generates something that looks right. The developer has no checklist to verify it against. The
 review is a subjective "does this seem okay?" rather than an objective "does this satisfy every
 stated requirement?"
@@ -53,19 +55,19 @@ stated requirement?"
 
 ### Inverted test pyramid
 
-When the test suite relies heavily on end-to-end tests and lacks targeted unit and component
-tests, AI-generated code can pass the suite without its internal logic being verified. A
+Some test suites rely heavily on end-to-end tests and lack targeted unit and component tests.
+AI-generated code can pass such a suite without anyone verifying its internal logic. A
 comprehensive component test suite would catch the cases where the AI's implementation
-diverges from the domain rules. Without it, "tests pass" is a weak signal.
+diverges from the domain rules. Without component tests, "tests pass" is a weak signal.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
 ## How to narrow it down
 
 1. **Can developers explain what their recent changes do and how they validated them?** Pick
-   three recent AI-assisted commits at random and ask the committing developer: what does this
-   change accomplish, what acceptance criteria did you verify, and how would you detect if it
-   were wrong? If they cannot answer, the review process is not catching unexamined code.
+   three recent AI-assisted commits at random. Ask the committing developer three questions.
+   What does this change accomplish? What acceptance criteria did you verify? How would you
+   detect if the change were wrong? If they cannot answer, the review process is not catching unexamined code.
    Start with
    [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}).
 2. **Do your work items include specific, testable acceptance criteria before implementation
@@ -74,7 +76,7 @@ diverges from the domain rules. Without it, "tests pass" is a weak signal.
    [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}).
 3. **Does your test suite include component tests that verify business rules with specific
    inputs and outputs?** If the suite is mostly end-to-end or integration tests, AI-generated
-   code can satisfy them without being correct at the rule level. Start with
+   code can pass those tests and still break business rules. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 
 ---

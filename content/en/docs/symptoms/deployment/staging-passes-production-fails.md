@@ -13,7 +13,7 @@ tags:
 ## What you are seeing
 
 Code passes tests, QA signs off, staging looks fine. Then the release
-hits production and something breaks: a feature behaves differently, a dependent service times
+hits production and something breaks. A feature behaves differently, a dependent service times
 out, or data that never appeared in staging triggers an unhandled edge case.
 
 The team scrambles to roll back or hotfix. Confidence in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) drops. People start adding
@@ -33,7 +33,7 @@ another because the environments are only superficially similar.
 
 ### Blind operations
 
-Sometimes the problem is not that staging passes and production fails. It is that production
+Sometimes the problem is not that staging passes and production fails. The problem is that production
 failures go undetected until a customer reports them. Without monitoring and alerting, the team
 has no way to verify production health after a deploy. "It works in staging" becomes the only
 signal, and production problems surface hours or days late.

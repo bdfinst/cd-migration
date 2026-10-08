@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-07 - Style rollout phase 3
+
+Phase 3 of the style rollout: rewrote all content for sentence length, paragraph length, voice, precision, and consistent glossary terms (#99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110). Long sentences and paragraphs are split, passive wording is now active and addressed to "you", and unclear "it" and "this" references name their noun.
+
 ## 2026-10-07 - Style rollout phase 2
 
 Phase 2 of the style rollout: converted headings to sentence case across all content and updated anchor links (#86, #87, #88, #89, #90, #91, #92, #93, #94, #95, #96, #97). Template headings now read "What this looks like", "How to fix it", "Related content", and so on. Acronyms and proper nouns keep their capitals.
@@ -16,7 +20,7 @@ Phase 2 of the style rollout: converted headings to sentence case across all con
 Phase 1 of the style rollout, applied across all content:
 
 - Replaced "e.g." and "i.e." with plain wording (#42, #43, #44, #45, #46, #47, #48, #49).
-- Replaced inflated words such as "leverage", "utilize", "initiate", and "in order to" (#51, #53, #54, #56, #57, #59, #60).
+- Replaced inflated words such as "leverage", "utilize", "initiate", and "in order to" (#50, #51, #53, #54, #55, #56, #57, #58, #59, #60).
 - Removed filler words such as "just", "simply", and "easily" (#62, #63, #64, #65, #66, #67, #68, #69, #70, #71, #72, #73).
 - Expanded contractions in numbered procedures and warnings (#74, #78, #80, #81, #84).
 

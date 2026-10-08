@@ -21,12 +21,12 @@ The team makes a practical decision: run the full regression suite nightly, or b
 but not on every change. Individual changes get a subset of tests against a partially reset
 environment. Bugs that depend on data state - stale records, unexpected reference data, leftover
 test artifacts - slip through because the partial reset does not catch them. The full suite
-catches them later, but by then several changes have been merged and isolating which one
-introduced the regression takes a multi-person investigation.
+catches these bugs later. By then, the team has merged several changes, and finding the one
+that introduced the regression takes a multi-person investigation.
 
 Some teams stop running the full suite entirely. The reset time is so long that the suite
 becomes a release gate rather than a development tool. Developers lose confidence in the
-suite because they rarely see it run and the failures they do see are often environment
+suite because they rarely see it run. The failures they do see are often environment
 artifacts rather than real bugs.
 
 ## Common causes
@@ -56,8 +56,8 @@ never intended to run on every change.
 
 ### Too many hard dependencies in the test suite
 
-When tests require live databases, running services, and real network connections for every
-assertion, the environment reset is slow because every dependency must be restored to a known
+Some tests require live databases, running services, and real network connections for every
+assertion. The environment reset is then slow because every dependency must return to a known
 state. A test that validates billing logic should not need a running payment gateway. A test
 that checks order validation should not need a populated product catalog database.
 
@@ -65,8 +65,8 @@ The fix is to match each test to the right layer. [Component tests]({{< relref "
 use in-memory databases or controlled fixtures - no environment reset needed. Contract tests
 verify service boundaries with [virtual services](../../reference/glossary/#virtual-service) instead of live instances. Only a small number
 of end-to-end tests need the fully assembled environment, and those run outside the pipeline's
-critical path. When the pipeline's critical path depends on heavyweight integration for every
-assertion, the reset time is a direct consequence of testing at the wrong layer.
+critical path. If the pipeline's critical path depends on heavyweight integration for every
+assertion, the long reset time comes directly from testing at the wrong layer.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
@@ -89,12 +89,12 @@ services - do not need environment resets. They run in isolation with their own 
    single environment, the reset time is compounded by coordination. Start with
    [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}).
 2. **Does the reset process involve restoring a large database from backup?** If the database
-   restore is the bottleneck, the tests depend on global data state rather than controlling
+   restore is the bottleneck, the tests depend on global data state. They do not control
    their own data. Start with
    [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
    and refactor tests to use isolated data fixtures.
 3. **Do most tests require live databases, running services, or network connections?** If the
-   majority of tests need the fully assembled environment, the suite is testing at the wrong
+   majority of tests need the fully assembled environment, the suite tests at the wrong
    layer. Component tests with in-memory databases and virtual services for
    [external dependencies](../../reference/glossary/#external-dependency) would eliminate the reset bottleneck for most assertions. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).

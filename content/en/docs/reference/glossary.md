@@ -7,7 +7,7 @@ description: >
 ---
 
 This glossary defines the terms used across every phase of the CD migration guide. Where a term
-has a specific meaning within a migration phase, the relevant phase is noted.
+has a specific meaning within a migration phase, the entry names the relevant phase.
 
 For terms related to agentic continuous delivery, AI agents, and LLMs, see the
 [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary" >}}).
@@ -16,11 +16,11 @@ For terms related to agentic continuous delivery, AI agents, and LLMs, see the
 
 ### Acceptance criteria
 
-Concrete expectations for a change, expressed as observable outcomes that can be used as fitness
-functions - executed as deterministic tests or evaluated by review [agents](#agent-ai). In
+Concrete expectations for a change, expressed as observable outcomes. Teams use them as fitness
+functions, executed as deterministic tests or evaluated by review [agents](#agent-ai). In
 [ACD](#acd-agentic-continuous-delivery), acceptance criteria include a done definition (what
 "done" looks like from an observer's perspective) and an evaluation design (test cases with
-known-good outputs). They constrain the agent: comprehensive criteria prevent incorrect code
+known-good outputs). Acceptance criteria constrain the agent: comprehensive criteria prevent incorrect code
 from passing, while shallow criteria allow code that passes tests but violates intent. See
 [Acceptance Criteria]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
 
@@ -173,9 +173,9 @@ Referenced in:
 ### Branch by abstraction
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
-that introduces an interface over an existing implementation, builds a new implementation
-behind it, and switches the binding once the new implementation is ready, all in small commits
-on trunk. It replaces a long-lived branch with an abstraction layer that has two implementations,
+that introduces an interface over an existing implementation and builds a new implementation
+behind it. When the new implementation is ready, you switch the binding. All of the work happens
+in small commits on trunk. Branch by abstraction replaces a long-lived branch with an abstraction layer that has two implementations,
 one of which is live. See
 [Branch by Abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}).
 
@@ -220,11 +220,11 @@ Referenced in:
 
 ### CD (continuous delivery)
 
-The practice of ensuring that every change to the codebase is always in a deployable state and
-can be released to production at any time through a fully automated pipeline. Continuous
+The practice of keeping every change to the codebase in a deployable state. You can release any
+change to production at any time through a fully automated pipeline. Continuous
 delivery does not require that every change is deployed automatically, but it requires that
-every change *could be* deployed automatically. This is the primary goal of this migration
-guide.
+every change *could be* deployed automatically. Continuous delivery is the primary goal of this
+migration guide.
 
 Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
@@ -288,8 +288,8 @@ Referenced in:
 
 ### CI (continuous integration)
 
-The practice of integrating code changes to a shared trunk at least once per day, where each
-integration is verified by an automated build and test suite. CI is a prerequisite for CD, not
+The practice of integrating code changes to a shared trunk at least once per day. An automated
+build and test suite verifies each integration. CI is a prerequisite for CD, not
 a synonym. A team that runs automated builds on feature branches but merges weekly is not doing
 CI. See [Build Automation]({{< relref "/docs/foundations/build-automation" >}}).
 
@@ -402,8 +402,8 @@ Referenced in:
 ### Dark code
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
-where new logic is built, tested, and deployed to production before anything calls it: no route,
-UI trigger, or message consumer references it yet. It carries zero release risk because it is
+where you build, test, and deploy new logic to production before anything calls it. No route,
+UI trigger, or message consumer references the new logic yet. Dark code carries zero release risk because it is
 unreachable until a final commit wires it in. Also called "connect tests last" or a dark launch
 of code. See
 [Dark Code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}).
@@ -417,7 +417,7 @@ Referenced in:
 ### Deployable
 
 A change that has passed all automated quality gates defined by the team and is ready for
-production deployment. The definition of deployable is codified in the pipeline, not decided
+production deployment. The pipeline codifies the definition of deployable, not decided
 by a person at deployment time. See [Deployable Definition]({{< relref "/docs/pipeline/deployable-definition" >}}).
 
 Referenced in:
@@ -472,8 +472,8 @@ Referenced in:
 
 ### Development cycle time
 
-The elapsed time from the first commit on a change to that change being deployable. This
-measures the efficiency of your development and pipeline process, excluding upstream wait times.
+The elapsed time from the first commit on a change to that change being deployable. Development
+cycle time measures the efficiency of your development and pipeline process, excluding upstream wait times.
 See [Metrics - Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}).
 
 ### Dependency
@@ -524,9 +524,9 @@ Referenced in:
 
 ### DORA metrics
 
-The four key metrics identified by the DORA (DevOps Research and Assessment) research program
-as predictive of software delivery performance: deployment frequency, lead time for changes,
-change failure rate, and mean time to restore service. See [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}).
+The four key metrics that the DORA (DevOps Research and Assessment) research program
+identified as predictive of software delivery performance. The metrics are deployment frequency,
+lead time for changes, change failure rate, and mean time to restore service. See [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}).
 
 Referenced in:
 [CD for Greenfield Projects]({{< relref "/docs/greenfield" >}}),
@@ -550,9 +550,9 @@ Referenced in:
 ### Expand and contract
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
-for evolving a shared database schema or API contract across non-breaking phases: expand the
-contract to support both the old and new shape, dual-write and backfill, switch reads to the
-new shape, then contract by removing the old shape. Also called parallel change. See
+for evolving a shared database schema or API contract across non-breaking phases. First, expand
+the contract to support both the old and new shape. Next, dual-write and backfill, and switch
+reads to the new shape. Finally, contract by removing the old shape (also called parallel change). See
 [Expand and Contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}).
 
 Referenced in:
@@ -567,13 +567,13 @@ resource whose release cycle and availability your team cannot influence.
 
 External dependencies are the primary case where test doubles add value. A test double for an
 external API verifies your integration logic without relying on network availability or
-third-party rate limits. By contrast, mocking internal code - another class in the same
-repository or a module your team owns - creates fragile tests that break whenever the internal
-implementation changes, even when the behavior is correct.
+third-party rate limits. By contrast, mocking internal code creates fragile tests. Internal
+code is another class in the same repository or a module your team owns. Tests that mock it
+break whenever the internal implementation changes, even when the behavior is correct.
 
-When evaluating whether to mock something, ask: "Can my team change this code and release it
-in our pipeline?" If yes, it is an internal dependency and should be tested through real code
-paths. If no, it is an external dependency and a test double is appropriate.
+To decide whether to mock something, ask: "Can my team change this code and release it
+in our pipeline?" If yes, the code is an internal dependency. Test it through real code
+paths. If no, the code is an external dependency and a test double is appropriate.
 
 See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
 
@@ -593,16 +593,15 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#expert-agent" >}
 ### Feature team
 
 A team organized around user-facing features or customer journeys rather than owned product
-subdomains. A feature team is cross-functional - it contains the skills to deliver a feature
-end-to-end - but it does not own a stable domain of code. Multiple feature teams may modify
+subdomains. A feature team is cross-functional and has the skills to deliver a feature
+end-to-end. It does not own a stable domain of code. Multiple feature teams may modify
 the same components, with no single team accountable for quality or consistency within them.
 
-In practice: feature teams must re-orient on code they do not continuously maintain each time
-a feature requires it; quality agreements cannot be enforced within the team because other
-teams also modify the same code; and while feature teams appear to minimize inter-team
-dependencies, they produce the opposite - everyone who can change a component is effectively
-on the same large, loosely communicating team. Feature teams are structurally equivalent to
-long-lived project teams.
+In practice, feature teams must re-orient on code they do not continuously maintain each time
+a feature requires it. The team cannot enforce quality agreements because other teams also
+modify the same code. Feature teams appear to minimize inter-team dependencies, but they produce
+the opposite. Everyone who can change a component is effectively on the same large, loosely
+communicating team. Feature teams are structurally equivalent to long-lived project teams.
 
 Contrast with [full-stack product team](#full-stack-product-team) and
 [subdomain product team](#subdomain-product-team), which achieve cross-functional delivery
@@ -665,7 +664,7 @@ Referenced in:
 
 ### Full-stack product team
 
-A team that owns every layer of a user-facing capability - UI, API, and data store - and whose
+A team that owns every layer of a user-facing capability: UI, API, and data store. Its
 public interface is designed for human users. A vertical slice for a full-stack product team
 delivers one observable behavior from the user interface through to the database. The slice is
 done when a user can observe the behavior through that interface. Contrast with
@@ -682,9 +681,11 @@ Referenced in:
 
 A safety constraint encoded in a [pipeline](#pipeline), [system prompt](#system-prompt), or
 [hook](#hook-agent) that limits what an [agent](#agent-ai) can do. Guardrails are deterministic
-boundaries, not suggestions. Examples include pre-commit hooks that block secrets from being
-committed, pipeline gates that reject changes exceeding a complexity threshold, and system
-prompt rules that prevent an agent from modifying test specifications. Guardrails protect
+boundaries, not suggestions.
+
+Examples include pre-commit hooks that block secrets from being committed and pipeline gates
+that reject changes exceeding a complexity threshold. System prompt rules that stop an agent
+from modifying test specifications are guardrails too. Guardrails protect
 against both agent errors and [hallucinations](#hallucination) without requiring human
 intervention on every change. See
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
@@ -699,7 +700,7 @@ Referenced in:
 
 A branching model created by Vincent Driessen in 2010 that uses multiple long-lived branches
 (`main`, `develop`, `release/*`, `hotfix/*`, `feature/*`) with specific merge rules and
-directions. GitFlow was designed for infrequent, scheduled releases and is fundamentally
+directions. GitFlow was designed for infrequent, scheduled releases. It is fundamentally
 incompatible with continuous delivery because it defers integration, creates multiple paths
 to production, and adds merge complexity. See the
 [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}})
@@ -729,9 +730,8 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hallucination" >
 
 ### Hardening sprint
 
-A sprint dedicated to stabilizing and fixing defects before a release. The existence of
-hardening sprints is a strong signal that quality is not being built in during regular
-development. Teams practicing CD do not need hardening sprints because every commit is
+A sprint dedicated to stabilizing and fixing defects before a release. Hardening sprints are a
+strong signal that the team does not build quality in during regular development. Teams practicing CD do not need hardening sprints because every commit is
 deployable. See [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}).
 
 Referenced in:
@@ -743,12 +743,13 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hook-agent" >}})
 
 ### Hypothesis-driven development
 
-An approach that frames every change as an experiment with a predicted outcome. Instead of
-specifying a change as a requirement to implement, the team states a hypothesis: "We believe
+An approach that frames every change as an experiment with a predicted outcome. The team does
+not specify a change as a requirement to implement. Instead, it states a hypothesis: "We believe
 [this change] will produce [this outcome] because [this reason]." After deployment, the team
 validates whether the predicted outcome occurred. Changes that confirm the hypothesis build
-confidence. Changes that refute it produce learning that informs the next hypothesis. This
-creates a feedback loop where every deployed change generates a signal, whether it "succeeds"
+confidence. Changes that refute it produce learning that informs the next hypothesis.
+
+The result is a feedback loop where every deployed change generates a signal, whether it "succeeds"
 or not. See [Hypothesis-Driven Development]({{< relref "/docs/optimize/hypothesis-driven-development" >}})
 for the full lifecycle and
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}})
@@ -763,9 +764,9 @@ Referenced in:
 
 ### Immutable artifact
 
-A build artifact that is never modified after creation. The same artifact that is tested in the
-pipeline is the exact artifact that is deployed to production. Configuration differences between
-environments are handled externally. See [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}).
+A build artifact that is never modified after creation. The artifact the pipeline tests is the
+exact artifact you deploy to production. Configuration differences between environments live
+outside the artifact. See [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}).
 
 Referenced in:
 [CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
@@ -788,7 +789,7 @@ Referenced in:
 
 ### Lead time for changes
 
-The elapsed time from when a commit is made to when it is successfully running in production.
+The elapsed time from when a developer makes a commit to when that commit is successfully running in production.
 One of the four DORA metrics. See [Metrics - Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}).
 
 Referenced in:
@@ -827,7 +828,7 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#model-routing" >
 ### Modular monolith
 
 A single deployable application whose codebase is organized into well-defined modules with
-explicit boundaries. Each module encapsulates a bounded domain and communicates with other
+explicit boundaries. Each module encapsulates a bounded domain. It communicates with other
 modules through defined interfaces, not by reaching into shared database tables or calling
 internal methods directly. The application deploys as one unit, but its internal structure
 allows teams to reason about, test, and change one module independently. See
@@ -851,9 +852,9 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#orchestrator" >}
 ### Parallel run
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
-where a new implementation runs alongside the current one against the same production input,
-without its result ever being returned to the caller, so mismatches can be measured before the
-new implementation is trusted. Also called shadowing or a dark launch of logic. See
+where a new implementation runs alongside the current one against the same production input.
+The caller never receives the new implementation's result. You measure mismatches before you
+trust the new implementation. Also called shadowing or a dark launch of logic. See
 [Parallel Run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}).
 
 Referenced in:
@@ -1066,10 +1067,12 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#sub-agent" >}}).
 
 ### Subdomain product team
 
-A team that owns a bounded subdomain within a larger distributed system - full-stack within
-their service (API, business logic, data store) but not directly user-facing. Their public
+A team that owns a bounded subdomain within a larger distributed system. The team is full-stack
+within its service (API, business logic, data store) but not directly user-facing. Its public
 interface is designed for machines: other services or teams consume it through a defined API
-contract. A vertical slice for a subdomain product team delivers one observable behavior
+contract.
+
+A vertical slice for a subdomain product team delivers one observable behavior
 through that contract. The slice is done when the API satisfies the agreed behavior for its
 service consumers. Contrast with [full-stack product team](#full-stack-product-team).
 
@@ -1182,8 +1185,8 @@ Referenced in:
 
 ### Value stream map
 
-A visual representation of every step required to deliver a change from request to production,
-showing process time, wait time, and percent complete and accurate at each step. The
+A visual representation of every step required to deliver a change from request to production.
+The map shows process time, wait time, and percent complete and accurate at each step. The
 foundational tool for [Phase 0 - Assess]({{< relref "/docs/assess/value-stream-mapping" >}}).
 
 Referenced in:
@@ -1193,7 +1196,7 @@ Referenced in:
 ### Vertical sliced story
 
 A user story that delivers a thin slice of functionality across all layers of the system
-(UI, API, database, etc.) rather than a horizontal slice that implements one layer completely.
+(UI, API, database, etc.). A horizontal slice, by contrast, implements one layer completely.
 Vertical slices are independently deployable and testable, which is essential for CD. Vertical
 slicing is a core technique in [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}).
 

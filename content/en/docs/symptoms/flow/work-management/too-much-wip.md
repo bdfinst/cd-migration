@@ -14,8 +14,9 @@ tags:
 ## What you are seeing
 
 Open the team's board on any given day. Count the items in progress. Count the team members. If
-the first number is significantly higher than the second, the team has a [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) problem. Every
-developer is working on a different story. Eight items in progress, zero done. Nothing gets the
+the first number is significantly higher than the second, the team has a [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) problem.
+
+Every developer is working on a different story. Eight items in progress, zero done. Nothing gets the
 focused attention needed to finish.
 
 At the end of the sprint, there is a scramble to close anything. Stories that were "almost done"
@@ -26,8 +27,8 @@ the time but finishes very little.
 
 ### Push-based work assignment
 
-When managers assign work to individuals rather than letting the team pull from a prioritized
-backlog, each person ends up with their own queue of assigned items. WIP grows because work is
+Some managers assign work to individuals rather than letting the team pull from a prioritized
+backlog. Then each person ends up with their own queue of assigned items. WIP grows because work is
 distributed across individuals rather than flowing through the team. Nobody swarms on blocked
 items because everyone is busy with "their" assigned work.
 
@@ -35,8 +36,8 @@ items because everyone is busy with "their" assigned work.
 
 ### Horizontal slicing
 
-When work is split by technical layer ("build the database schema," "build the API," "build the
-UI"), each layer must be completed before anything is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}). Multiple developers work on
+Some teams split work by technical layer ("build the database schema," "build the API," "build the
+UI"). Then each layer must be complete before anything is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}). Multiple developers work on
 different layers of the same feature simultaneously, all "in progress," none independently done.
 WIP is high because the decomposition prevents any single item from reaching completion quickly.
 

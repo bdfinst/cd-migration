@@ -31,8 +31,8 @@ more releases feels like adding more pain.
 
 ### Manual deployments
 
-When deployment requires a human to execute steps (SSH into servers, run scripts, click through a
-console), the process is slow, error-prone, and dependent on specific people being available. The
+Sometimes deployment requires a human to execute steps: SSH into servers, run scripts, click through a
+console. That process is slow, error-prone, and dependent on specific people being available. The
 cost of each deployment is high enough that the team batches changes to amortize it. The batch
 grows, the risk grows, and the release becomes an event rather than a routine.
 

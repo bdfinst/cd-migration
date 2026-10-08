@@ -18,24 +18,28 @@ tags:
 ## What this looks like
 
 The sprint plan has a pattern that everyone on the team knows. There are feature sprints, and
-then there is the hardening sprint. After the team has finished building what they were asked
-to build, they spend one or two more sprints fixing bugs, addressing tech debt they deferred,
-and "stabilizing" the codebase before it is safe to release. The hardening sprint is not planned
-with specific goals - it is planned with a hope that the code will somehow become good enough
-to ship if the team spends extra time with it.
+then there is the hardening sprint. The team finishes building what they were asked to build.
+Then they spend one or two more sprints fixing bugs, addressing deferred tech debt, and
+"stabilizing" the codebase until it is safe to release.
+
+The hardening sprint has no specific goals. The team plans it with a hope that extra time will somehow make the code good enough to
+ship.
 
 The hardening sprint is treated as a buffer. It absorbs the quality problems that accumulated
 during the feature sprints. Developers defer bug fixes with "we'll handle that in hardening."
 Test failures that would take two days to investigate properly get filed and set aside for the
-same reason. The hardening sprint exists because the team has learned, through experience, that
-their code is not ready to ship at the end of a feature cycle. The hardening sprint is the
-acknowledgment of that fact, built permanently into the schedule.
+same reason.
+
+The team has learned through experience that their code is not ready to ship at the end of a
+feature cycle. The hardening sprint is the acknowledgment of that fact, built permanently into
+the schedule.
 
 Product managers and stakeholders are frustrated by hardening sprints but accept them as
 necessary. "That's just how software works." The team is frustrated too - hardening sprints
 are demoralizing because the work is reactive and unglamorous. Nobody wants to spend two weeks
-chasing bugs that should have been prevented. But the alternative - shipping without hardening -
-has proven unacceptable. So the cycle continues: feature sprints, hardening sprint, release,
+chasing bugs that should have been prevented.
+
+But the alternative, shipping without hardening, has proven unacceptable. So the cycle continues: feature sprints, hardening sprint, release,
 repeat.
 
 Common variations:
@@ -50,15 +54,15 @@ Common variations:
 - **The "20% time" debt paydown.** Quarterly, the team spends 20% of a sprint on tech debt.
   The debt accumulation is treated as a fact of life rather than a process problem.
 
-The telltale sign: the team can tell you, without hesitation, exactly when the next hardening
-sprint is and what category of problems it will be fixing.
+The telltale sign: the team can tell you without hesitation when the next hardening sprint is
+and what category of problems it will fix.
 
 ## Why this is a problem
 
 Bugs deferred to hardening have been accumulating for weeks while the team kept adding
 features on top of them. When quality is deferred to a dedicated phase, that phase becomes
-a catch basin for all the deferred quality work, and the quality of the product at any moment
-outside the hardening sprint is systematically lower than it should be.
+a catch basin for all the deferred quality work. Outside the hardening sprint, the product's
+quality is always lower than it should be.
 
 ### It reduces quality
 
@@ -68,15 +72,14 @@ discovered in a hardening sprint two or three weeks after they were introduced a
 more expensive. The developer must reconstruct context, the code has changed since the bug was
 introduced, and fixes are harder to verify against a changed codebase.
 
-Deferred bug fixing also produces lower-quality fixes. A developer under pressure to clear
-a hardening sprint backlog in two weeks will take a different approach than a developer fixing
-a bug they recently introduced. Quick fixes accumulate. Some problems that require deeper
+Deferred bug fixing also produces lower-quality fixes. A developer clearing a hardening
+sprint backlog in two weeks works differently than a developer fixing a recent bug. Quick fixes accumulate. Some problems that require deeper
 investigation get addressed at the surface level because the sprint must end. The hardening
 sprint appears to address the quality backlog, but some fraction of the fixes introduce new
 problems or leave root causes unaddressed.
 
-The quality signal during feature sprints is also distorted. If the team knows there is a
-hardening sprint coming, test failures during feature development are seen as "hardening sprint
+The quality signal during feature sprints is also distorted. The team knows a hardening sprint
+is coming. So the team treats test failures during feature development as "hardening sprint
 work" rather than as problems to fix immediately. The signal that something is wrong is
 acknowledged and filed rather than acted on. The pipeline provides feedback; the feedback is
 noted and deferred.
@@ -85,29 +88,29 @@ noted and deferred.
 
 The hardening sprint is, by definition, rework. Every bug fixed during hardening is code that
 was written once and must be revisited because it was wrong. The cost of that rework includes
-the original implementation time, the time to discover the bug (testing, QA, stakeholder
-review), and the time to fix it during hardening. Triple the original cost is common.
+the original implementation time and the time to fix the bug during hardening. It also includes
+the time to discover the bug (testing, QA, stakeholder review). Triple the original cost is common.
 
 The pattern of deferral also trains developers to cut corners during feature development.
-If a developer knows there is a safety net called the hardening sprint, they are more likely
-to defer edge case handling, skip the difficult-to-write test, and defer the investigation
-of a test failure. "We'll handle that in hardening" is a rational response to a system where
+A developer who knows the hardening sprint is a safety net is more likely to defer edge case
+handling. The same developer is more likely to skip the difficult-to-write test and defer the
+investigation of a test failure. "We'll handle that in hardening" is a rational response to a system where
 hardening is always coming. The result is more bugs deferred to hardening, which makes
 hardening longer, which further reinforces the pattern.
 
-Integration bugs are especially expensive to find in hardening. When components are built
-separately during feature sprints and only integrated during the stabilization phase, interface
-mismatches discovered in hardening require changes to both sides of the interface, re-testing
-of both components, and re-integration testing. These bugs would have been caught in a week
+Integration bugs are especially expensive to find in hardening. Sometimes teams build
+components separately during feature sprints and integrate them only during the stabilization
+phase. An interface mismatch discovered in hardening then requires changes to both sides of the
+interface. It also requires re-testing both components and re-running integration tests. These bugs would have been caught in a week
 if integration had been continuous rather than deferred to a phase.
 
 ### It makes delivery timelines unpredictable
 
 The hardening sprint adds a fixed delay to every release cycle, but the actual duration of
 hardening is highly variable. Teams plan for a two-week hardening sprint based on hope, not
-evidence. When the hardening sprint begins, the actual backlog of bugs and stability issues
-is unknown - it was hidden behind the "we'll fix that in hardening" deferral during feature
-development.
+evidence. When the hardening sprint begins, nobody knows the actual backlog of bugs and
+stability issues. The "we'll fix that in hardening" deferral during feature development hid
+that backlog.
 
 Some hardening sprints run over. A critical bug discovered in the first week of hardening
 might require architectural investigation and a fix that takes the full two weeks. With only
@@ -117,15 +120,15 @@ sprint ran out of time.
 
 Stakeholders making plans around the release date are exposed to this variability. A release
 planned for end of Q2 slips into Q3 because hardening surfaced more problems than expected.
-The "feature complete" milestone - which seemed like reliable signal that the release was
-almost ready - turned out not to be a meaningful quality checkpoint at all.
+The "feature complete" milestone seemed like a reliable signal that the release was almost
+ready. It turned out not to be a meaningful quality checkpoint at all.
 
 ### Impact on continuous delivery
 
 Continuous delivery requires that the codebase be releasable at any point. A development
 process with hardening sprints produces a codebase that is releasable only after the hardening
-sprint - and releasable with less confidence than a codebase where quality is maintained
-continuously.
+sprint. Even then, you release it with less confidence than a codebase where the team maintains
+quality continuously.
 
 The hardening sprint is also an explicit acknowledgment that integration is not continuous.
 CD requires integrating frequently enough that bugs are caught when they are introduced, not
@@ -134,8 +137,8 @@ addressed is a process running in the opposite direction from CD.
 
 Eliminating hardening sprints does not mean shipping bugs. It means investing the hardening
 effort continuously throughout the development cycle, so that the codebase is always in a
-releasable state. This is harder because it requires discipline in every sprint, but it is
-the foundation of a delivery process that can actually deliver continuously.
+releasable state. Continuous quality work is harder because it requires discipline in every
+sprint. But it is the foundation of a delivery process that can actually deliver continuously.
 
 ## How to fix it
 

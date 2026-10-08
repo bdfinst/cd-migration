@@ -23,7 +23,9 @@ on the team's capacity or the scope of the feature. It is based on a business ev
 commitment, or a competitor announcement. The team is told to "just make it happen."
 
 The team scrambles. Tests are skipped. Code reviews become rubber stamps. Shortcuts are taken with
-the promise of "cleaning it up after launch." Launch day arrives. The feature ships with known
+the promise of "cleaning it up after launch."
+
+Launch day arrives. The feature ships with known
 defects. The cleanup never happens because the next arbitrary deadline is already in play.
 
 Common variations:
@@ -47,8 +49,8 @@ someone else's date.
 
 ## Why this is a problem
 
-Arbitrary deadlines create a cycle where cutting corners today makes the team slower tomorrow,
-which makes the next deadline even harder to meet, which requires more corners to be cut. Each
+Arbitrary deadlines create a cycle. Cutting corners today makes the team slower tomorrow. That
+makes the next deadline even harder to meet, which requires cutting more corners. Each
 iteration degrades the codebase, the team's morale, and the organization's delivery capacity.
 
 ### It reduces quality
@@ -90,6 +92,7 @@ rather than wishes.
 The team stops believing that deadlines are real because so many of them are arbitrary. Management
 stops believing the team's estimates because the team has been meeting impossible deadlines
 through overtime (proving the estimates were "wrong"). Both sides lose confidence in the other.
+
 The team pads estimates defensively. Management sets earlier deadlines to compensate. The gap
 between stated dates and reality widens.
 
@@ -107,8 +110,9 @@ protected time that deadline-driven organizations never provide.
 
 ### Step 1: Make the cost visible
 
-Track two things: the shortcuts taken to meet each deadline (skipped tests, deferred refactoring,
-known defects shipped) and the time spent in subsequent sprints on rework from those shortcuts.
+Track two things. First, track the shortcuts taken to meet each deadline (skipped tests, deferred
+refactoring, known defects shipped). Second, track the time spent in later sprints on rework from
+those shortcuts.
 Present this data as the "deadline tax" that the organization is paying.
 
 ### Step 2: Establish the iron triangle explicitly
