@@ -29,27 +29,27 @@ Determine page type from file path:
 ### Required heading structure (in order)
 
 ```
-## What This Looks Like
-## Why This Is a Problem
+## What this looks like
+## Why this is a problem
 ### It reduces quality
 ### It increases rework
 ### It makes delivery timelines unpredictable
 ### [Optional additional subsections]
 ### Impact on continuous delivery
-## How to Fix It
+## How to fix it
 ### Step 1: ... (Week ...)
 [Additional steps]
-## Measuring Progress
-## Related Content
+## Measuring progress
+## Related content
 ```
 
 ### Validation rules
 
-- "Why This Is a Problem" MUST have exactly three required H3 subsections plus "Impact on continuous delivery" as the final H3
+- "Why this is a problem" MUST have exactly three required H3 subsections plus "Impact on continuous delivery" as the final H3
 - Additional H3 subsections between "It makes delivery timelines unpredictable" and "Impact on continuous delivery" are allowed
-- "How to Fix It" steps MUST include week numbers in parentheses
-- "Measuring Progress" MUST contain a table
-- "Related Content" MUST contain at least one link
+- "How to fix it" steps MUST include week numbers in parentheses
+- "Measuring progress" MUST contain a table
+- "Related content" MUST contain at least one link
 - The pageinfo block with Category and risk-indicator is required after front matter
 
 ## Symptom Page Structure
@@ -69,9 +69,9 @@ Determine page type from file path:
 ```
 ## What you are seeing
 ## Common causes
-### [Cause Name 1]
+### [Cause name 1]
 **Read more:** [link to anti-pattern page]
-### [Cause Name 2]
+### [Cause name 2]
 **Read more:** [link to anti-pattern page]
 [2-5 cause subsections total]
 ## How to narrow it down
