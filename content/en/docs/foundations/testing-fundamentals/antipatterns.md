@@ -109,7 +109,7 @@ The right first move depends on what the suite looks like now. Five common start
 
 The pattern across all five: don't try to convert the whole suite at once. Move flow by flow, module by module. The test that matters next is the one for the change you're about to make.
 
-## Related Content
+## Related content
 
 - [Applied Testing Strategies]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies" >}}) - the patterns this page is helping teams migrate toward.
 - [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - the section overview, with the do/do-not list this page expands on.

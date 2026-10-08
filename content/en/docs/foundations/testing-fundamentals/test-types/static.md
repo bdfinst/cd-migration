@@ -14,7 +14,7 @@ description: >
 
 Static analysis (also called static testing) evaluates non-running code against rules for known good practices, inspecting source, configuration, and [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) manifests to catch errors, complexity, and security issues before the code ever runs.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Analysis runs against source code, configuration files, and dependency manifests at rest - no application starts and no [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) are needed. Scope is the entire codebase, not a single unit, component, or transaction.
 
@@ -22,13 +22,13 @@ Analysis runs against source code, configuration files, and dependency manifests
 
 Seconds-scale execution (the fastest test category), fully deterministic, and codebase-wide scope, with no external dependencies except the network calls a dependency scanner makes to a vulnerability database.
 
-## Good Practices
+## Good practices
 
 - Run it everywhere feedback is possible: IDE plugins, pre-commit hooks, and CI each catch issues before the next stage makes them more expensive to fix.
 - Customize the ruleset: default rules are a starting point; add rules for patterns that keep coming up in code review.
 - Enforce it as a gate: treat lint, type, and security findings as build-breaking, the same as a failing test.
 
-## Anti-Patterns
+## Anti-patterns
 
 - Disabling rules instead of fixing code: suppressing linter warnings or ignoring security findings erodes the value of static analysis over time.
 - Skipping ruleset customization: default rules are a starting point, not a ceiling, for patterns specific to the codebase.
@@ -36,7 +36,7 @@ Seconds-scale execution (the fastest test category), fully deterministic, and co
 - Ignoring dependency vulnerabilities: known CVEs in dependencies are a direct attack vector and should break the build.
 - Treating static analysis as optional: if developers can bypass the checks, they will.
 
-## When to Run It
+## When to run it
 
 - **In the IDE**: real-time feedback as developers type, via editor plugins and language
   server integrations.
@@ -67,7 +67,7 @@ A `.eslintrc.json` configuration enforcing test quality rules:
 }
 {{< /card >}}
 
-### Type Checking
+### Type checking
 
 Statically typed languages catch type mismatches at compile time, eliminating entire classes
 of runtime errors. Java, for example, rejects incompatible argument types before the code runs:
@@ -81,7 +81,7 @@ public static double calculateTotal(double price, int quantity) {
 calculateTotal("19.99", 3);
 {{< /card >}}
 
-### Dependency Scanning
+### Dependency scanning
 
 Dependency scanning tools scan for known vulnerabilities:
 
@@ -92,7 +92,7 @@ found 2 vulnerabilities (1 moderate, 1 high)
   high:     Remote Code Execution in log4j < 2.17.1
 {{< /card >}}
 
-### Types of Static Analysis
+### Types of static analysis
 
 | Type                    | Purpose                                                      |
 |-------------------------|--------------------------------------------------------------|
@@ -104,7 +104,7 @@ found 2 vulnerabilities (1 moderate, 1 high)
 | **Dependency scanning** | Checks for outdated, hijacked, or insecurely licensed deps   |
 | **Accessibility linting**| Detects missing alt text, ARIA violations, contrast failures, semantic HTML issues |
 
-### Accessibility Linting
+### Accessibility linting
 
 Accessibility linting catches deterministic WCAG violations the same way a security scanner
 catches known vulnerability patterns. Automated checks cover structural issues (missing alt
@@ -143,7 +143,7 @@ it("should have no accessibility violations", async () => {
 });
 {{< /card >}}
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Static analysis is the **first gate** in the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), providing the fastest feedback:
 

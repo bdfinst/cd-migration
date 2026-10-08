@@ -16,7 +16,7 @@ description: >
 
 Verification of the smallest testable piece of code—typically a single function, method, or class—in complete isolation from the rest of the application, network, file system, or external services. [Test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) are used where needed.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Execution runs entirely in-memory. All external dependencies (databases, APIs, message brokers, system clocks) are replaced with test doubles (stubs, mocks, or fakes).
 
@@ -24,12 +24,12 @@ Execution runs entirely in-memory. All external dependencies (databases, APIs, m
 
 Millisecond execution speeds, highly deterministic (zero flakiness), and pinpoint failure localization.
 
-## Good Practices:
+## Good practices:
 - Test public behavior, not implementation details: Assert on return values and visible side effects rather than internal private state or execution paths.
 - Strict isolation: Keep all tests in-memory; mock or stub out network, disk I/O, database, and system time to ensure sub-millisecond execution.
 - Single assertion concept: Each test should verify one specific behavior or edge case to maintain pinpoint failure localization.
 
-## Anti-Patterns
+## Anti-patterns
 
 - Over-mocking: Mocking domain entities, data transfer objects, or language primitives instead of purely external/infrastructure boundaries.
 - Testing private methods: Forcing visibility or coupling tests to internal helper methods, which causes refactoring resistance without increasing behavioral confidence.
@@ -39,7 +39,7 @@ Millisecond execution speeds, highly deterministic (zero flakiness), and pinpoin
 
 A [solitary unit test]({{< relref "/docs/foundations/testing-fundamentals/glossary#solitary-unit-test" >}}) replaces all collaborators with test doubles. A [sociable unit test]({{< relref "/docs/foundations/testing-fundamentals/glossary#sociable-unit-test" >}}) allows real in-process collaborators while still replacing any external I/O. Both styles are unit tests as long as no real external dependency is involved.
 
-## When to Run Them
+## When to run them
 
 - **During development**: run the relevant subset of unit tests continuously while writing
   code. [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) (Red-Green-Refactor) is the most effective workflow.
@@ -104,7 +104,7 @@ public void chargesFullPriceBelowTheThreshold() {
 }
 {{< /card >}}
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Unit tests run in the earliest stages of the
 [CD pipeline]({{< relref "/docs/pipeline" >}}) and provide the fastest feedback loop:

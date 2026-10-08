@@ -16,7 +16,7 @@ description: >
 
 Verification that two separate systems (such as an API provider and its consumers, or a message publisher and subscriber) adhere to a shared, agreed-upon formal specification, the "contract", without requiring both services to run simultaneously in an integrated environment.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Targets only the boundary interface: request payloads, query parameters, HTTP headers, response schemas, status codes, or message formats. It does not test internal business logic, database state, or deep end-to-end user journeys; it solely verifies compatibility with the interface schema (for example, OpenAPI/Swagger, AsyncAPI, Protobuf).
 
@@ -24,30 +24,30 @@ Targets only the boundary interface: request payloads, query parameters, HTTP he
 
 Fast, independent execution across pipelines, prevents breaking schema changes before deployment, and eliminates the need for expensive, flaky end-to-end integration environments in applications with proper domain separation.
 
-## Good Practices:
+## Good practices:
 
 - Strict schema adherence: Explicitly define nullability, enums, required fields, and format constraints rather than relying on loose, open schemas.
 - Automated breaking-change detection: Integrate tools like oasdiff or buf breaking into CI to catch backwards-incompatible schema changes on pull requests.
 - Generate stubs directly from contracts: Use contract-driven mock engines (for example, Prism, Microcks) so mock behavior automatically updates whenever the contract changes.
 
-## Anti-Patterns:
+## Anti-patterns:
 
 - Testing business logic via contracts: Attempting to verify authorization rules, complex workflows, or algorithmic computations inside a contract test.
   - Example: testing that a request for a user return a specific user instead of the expected user object.
 - Hand-crafted, unverified mock fixtures: Manually updating JSON response stubs in consumer code repos without validating them against the live contract artifact.
 - All-or-nothing megaspecs: Coupling unrelated domains or multiple service interfaces into a single monolithic contract document that cannot be versioned or evolved independently.
 
-## Validating the Contract
+## Validating the contract
 
 A contract test only proves your code matches the contract - not that the contract still matches the real system. [Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) close that gap by running against the real dependency. How tightly that loop closes depends on collaboration level: low collaboration means scheduled integration tests against the real system with no shared tooling; high collaboration adds a hosted specification server ([Pact](https://pact.io/), [Pacto](https://thoughtworks.github.io/pacto/)), a specification fetched from a shared or provider repository at build time, or a provider webhook that triggers the consumer's CI when the contract changes.
 
-## Consumer and Provider Perspectives
+## Consumer and provider perspectives
 
 A contract has two sides asking different questions. The **consumer** asks whether the fields, types, and status codes it depends on still exist. Consumer tests assert only on the subset of the API the consumer actually uses, not the whole response - following Postel's Law, be liberal in what you accept and conservative in what you send.
 
 The **provider** asks whether its changes will break any consumer. A provider test runs every published consumer expectation against the real implementation, catching a removed field, a changed type, or altered error behavior before a consumer deploys and discovers the break.
 
-## Contract-First Development
+## Contract-first development
 
 The interface is defined as a formal artifact - an OpenAPI, Protobuf, or AsyncAPI spec - before either side writes an implementation. Consumer and provider teams build independently against that artifact, then verify conformance to the spec rather than to each other's code. Works best for new APIs and parallel development, where there's no existing implementation to write consumer-driven contracts against.
 
@@ -118,7 +118,7 @@ describe("GET /stock/:id - OpenAPI contract", () => {
 });
 {{< /card >}}
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Contract tests run after unit tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}):
 

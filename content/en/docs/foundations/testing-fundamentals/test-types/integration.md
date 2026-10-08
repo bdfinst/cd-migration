@@ -14,27 +14,27 @@ description: >
 
 Verification that two or more distinct architectural subsystems or external dependencies interact correctly across their transport layer and data boundaries.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Broader than a component test because it explicitly validates communication with real external systems (such as a database, message queue, cache, or filesystem), but narrower than a full end-to-end test because it targets a specific integration boundary rather than complete multi-service user workflows.
 
-## Core Characteristics
+## Core characteristics
 
 Detects driver/dialect mismatches, schema serialization issues, connection pooling misconfigurations, and ORM/SQL query errors that mock-heavy tests overlook.
 
-## Good Practices
+## Good practices
 
 - Use disposable, ephemeral infrastructure: Spin up real databases and queues using container tooling (for example, Testcontainers) rather than using shared, persistent static environments.
 - Verify transport-level error handling: Intentionally test connection timeouts, pool exhaustion, network blips, and transaction rollbacks.
 - Run tests against clean boundary state: Truncate tables, flush caches, and clear queues between test runs to guarantee deterministic execution.
 
-## Anti-Patterns
+## Anti-patterns
 
 -	Using shared remote environments: Pointing integration test suites to shared dev/staging databases, causing data collisions and race conditions between concurrent CI jobs.
 -	Testing business permutations: Testing dozens of conditional logic branches through real databases instead of pushing that logic down to fast unit tests or using component tests.
 -	Ignoring production parity: Testing against an SQLite in-memory database locally when production runs Postgres, masking dialect, constraint, and indexing differences.
 
-## Weaknesses & Challenges
+## Weaknesses & challenges
 
 -	Infrastructure Orchestration Overhead: Requires managing real databases, message brokers, and caches inside the test execution context. Maintaining container definitions (for example, Docker/Testcontainers) and keeping schema migrations up to date adds operational burden to developers.
 -	Test Isolation and State Contamination: When tests write real rows to a database or publish messages to an active broker, dirty state from one test can bleed into another. Cleaning, truncating, or rolling back transactions between runs adds latency and complexity.
@@ -61,6 +61,6 @@ def test_order_repository_persists_and_retrieves_roundtrip(real_pg_session):
     assert retrieved.total == 49.99
 {{< /card >}}
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Integration tests should only run in the pipeline as part of the longer running acceptance tests if they can be made dependable and deterministic. Otherwise, they should be run on a schedule and not act as a delivery decision.

@@ -22,7 +22,7 @@ Two questions sharpen this thinking:
    where only human review was previously possible, shifting detection left without adding
    manual effort.
 
-## Trace Every Defect to Its Origin
+## Trace every defect to its origin
 
 When a test catches a defect (or worse, when a defect escapes to production) ask: **where was
 this defect introduced, and what would have prevented it from being created?**
@@ -47,7 +47,7 @@ For the complete catalog covering all defect categories (including product and d
 dependency and infrastructure, testing and observability gaps, and more) see the
 [CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/).
 
-## Build a Defect Feedback Loop
+## Build a defect feedback loop
 
 You need a process that systematically connects test
 failures to root causes and root causes to systemic fixes.
@@ -66,7 +66,7 @@ failures to root causes and root causes to systemic fixes.
    applied a systemic fix for integration boundary defects and the count does not drop, the fix
    is not working and you need a different approach.
 
-## The Test-for-Every-Bug-Fix Rule
+## The test-for-every-bug-fix rule
 
 **Every bug fix must include a test that reproduces the bug before the fix and passes after.**
 This is non-negotiable for [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) because:
@@ -78,7 +78,7 @@ This is non-negotiable for [CD]({{< relref "/docs/reference/glossary#cd-continuo
 - Over time, it shifts your test suite from "tests we thought to write" to "tests that cover
   real failure modes."
 
-## Advanced Detection Techniques
+## Advanced detection techniques
 
 As your test architecture matures, add techniques that catch defects before manual review:
 
@@ -94,7 +94,7 @@ the [CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-p
 
 ---
 
-## Related Content
+## Related content
 
 - [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) - Detailed reference for each defect category
 - [High Coverage, Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - When tests pass but do not catch real defects

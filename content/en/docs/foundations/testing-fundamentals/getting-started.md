@@ -8,7 +8,7 @@ aliases:
   - /docs/migrate-to-cd/foundations/testing-fundamentals/getting-started/
 ---
 
-## Starting Without Full Coverage
+## Starting without full coverage
 
 Teams often delay adopting [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) because their existing code lacks tests. This is backwards. You do
 not need tests for existing code to begin. You need one rule applied without exception:
@@ -24,7 +24,7 @@ Do not attempt to retrofit tests across the entire codebase before starting CI. 
 takes months and delivers no incremental value. It also produces low-quality tests written by
 developers who are testing code they did not write and do not fully understand.
 
-## Quick-Start Action Plan
+## Quick-start action plan
 
 If your test suite is not yet ready to support [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}), use this focused action plan to make immediate
 progress.
@@ -148,7 +148,7 @@ entire codebase. Apply TDD to new code and to any code you modify.
 
 ---
 
-## Related Content
+## Related content
 
 - [Pipeline Test Strategy]({{< relref "/docs/foundations/testing-fundamentals/pipeline-test-strategy" >}}) - Where these tests fit in your pipeline
 - [Flaky Tests]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Symptom of non-deterministic tests
