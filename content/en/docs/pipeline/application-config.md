@@ -15,8 +15,8 @@ aliases:
 ## Definition
 
 Application configuration is the practice of correctly separating what varies between
-environments from what does not, so that a single [immutable artifact]({{< relref "/docs/pipeline/immutable-artifacts" >}})
-can run in any environment. This distinction - drawn from the
+environments from what does not. Correct separation lets a single [immutable artifact]({{< relref "/docs/pipeline/immutable-artifacts" >}})
+run in any environment. The distinction - drawn from the
 [Twelve-Factor App](https://12factor.net/config) methodology - is essential for
 [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).
 
@@ -38,13 +38,13 @@ unnecessary complexity and fragility.
 
 Configuration is where many CD migrations stall. Teams that have been deploying manually
 often have configuration tangled with code - hardcoded URLs, environment-specific build
-profiles, configuration files that are manually edited during deployment. Untangling this
-is a prerequisite for immutable artifacts and automated deployments.
+profiles, configuration files that are manually edited during deployment. Untangling configuration
+from code is a prerequisite for immutable artifacts and automated deployments.
 
-When configuration is handled correctly, the same artifact flows through every environment
-without modification, environment-specific values are injected at deployment time, and
-feature behavior can be changed without redeploying. This enables the deployment speed and
-safety that continuous delivery requires.
+When you handle configuration correctly, the same artifact flows through every environment
+without modification. You inject environment-specific values at deployment time, and you can
+change feature behavior without redeploying. Correct configuration enables the deployment speed
+and safety that continuous delivery requires.
 
 ## Key principles
 
@@ -103,8 +103,8 @@ environment and makes secrets visible in version control.
 
 Moving all configuration to an external service - including values that never change
 between environments - creates unnecessary runtime dependencies. If the configuration
-service is down and a value that is identical in every environment cannot be read, the
-application fails to start for no good reason.
+service is down, the application cannot read even values that are identical in every
+environment. The application then fails to start for no good reason.
 
 ### Environment-specific build profiles
 
@@ -130,8 +130,8 @@ deployment time.
 ### Environment variables for environment config
 
 Following the Twelve-Factor App approach, inject environment-specific values as
-environment variables. This is universally supported across languages and platforms, works
-with containers and [orchestrators]({{< relref "/docs/reference/glossary#orchestrator" >}}), and keeps the artifact clean.
+environment variables. Environment variables work across all languages and platforms, work
+with containers and [orchestrators]({{< relref "/docs/reference/glossary#orchestrator" >}}), and keep the artifact clean.
 
 ### Layered configuration
 
@@ -160,8 +160,8 @@ and the secrets manager handles rotation without requiring redeployment.
 ### Configuration validation at startup
 
 The application should validate its configuration at startup and fail fast with a clear
-error message if required configuration is missing or invalid. This catches configuration
-errors immediately rather than allowing the application to start in a broken state.
+error message if required configuration is missing or invalid. Failing fast catches
+configuration errors immediately rather than allowing the application to start in a broken state.
 
 ## How to get started
 
@@ -173,15 +173,15 @@ application config.
 
 ### Step 2: Move environment config out of the artifact
 
-For every environment-specific value currently bundled in the artifact (hardcoded URLs,
-build profiles, environment-specific property files), extract it and inject it via
+Find every environment-specific value currently bundled in the artifact (hardcoded URLs,
+build profiles, environment-specific property files). Extract each value and inject it via
 environment variable, config map, or secrets manager.
 
 ### Step 3: Bundle application config with the code
 
-For every value that does not vary between environments, ensure it is committed to version
-control alongside the source code and included in the artifact at build time. Remove it
-from any external configuration system where it adds unnecessary complexity.
+Commit every value that does not vary between environments to version control alongside the
+source code. Include each value in the artifact at build time. Remove these values from any
+external configuration system where they add unnecessary complexity.
 
 ### Step 4: Implement feature flags properly
 
@@ -210,7 +210,7 @@ Application configuration is the same everywhere by definition.
 
 ### What if I need to hotfix a config value in production?
 
-If it is truly application configuration, make the change in code, commit it, let the
+If the value is truly application configuration, make the change in code, commit it, let the
 pipeline validate it, and deploy the new artifact. Hotfixing config outside the pipeline
 defeats the purpose of immutable artifacts.
 
@@ -240,9 +240,9 @@ immutable if it does not contain environment-specific values that would need to 
 between deployments.
 
 Correct configuration separation also supports
-[production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - because the same
+[production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}}). Because the same
 artifact runs everywhere, the only difference between environments is the injected
-configuration, which is itself version controlled and automated.
+configuration. That configuration is itself version controlled and automated.
 
 When configuration is externalized correctly, [rollback]({{< relref "/docs/pipeline/rollback" >}}) becomes
 straightforward: deploy the previous artifact with the appropriate configuration, and the

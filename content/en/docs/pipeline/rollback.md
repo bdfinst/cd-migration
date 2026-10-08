@@ -42,8 +42,8 @@ system improves.
 Rollback must complete in minutes, not hours. A rollback that takes an hour to execute
 is not a rollback - it is a prolonged outage with a recovery plan. Target rollback times
 of 5 minutes or less for the deployment mechanism itself. If the previous [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is
-already in the artifact repository and the deployment mechanism is automated, there is
-no reason rollback should take longer than a fresh deployment.
+already in the artifact repository and deployment is automated, rollback should take no
+longer than a fresh deployment.
 
 ### Automated
 
@@ -66,13 +66,13 @@ Rollback must not make things worse. This means:
 
 ### Simple
 
-The rollback procedure should be understandable by any team member, including those who
-did not perform the original deployment. It should not require specialized knowledge, deep
+Any team member should be able to understand the rollback procedure, including those who
+did not perform the original deployment. The procedure should not require specialized knowledge, deep
 system understanding, or heroic troubleshooting.
 
 ### Tested
 
-Rollback must be tested regularly, not only documented. A rollback procedure that has
+You must test rollback regularly, not only document it. A rollback procedure that has
 never been exercised is a rollback procedure that will fail when you need it most. Include
 rollback verification in your [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}}) and
 practice rollback as part of routine deployment validation.
@@ -141,7 +141,7 @@ Issue contained, minimal user impact
 
 When a deployment introduces new behavior behind a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}), rollback can be as
 simple as turning off the flag. The code remains deployed, but the new behavior is
-disabled. This is the fastest possible rollback - it requires no deployment at all.
+disabled. Turning off a flag is the fastest possible rollback. It requires no deployment at all.
 
 {{< card code=true header="**Feature flag rollback: disable new behavior without redeploying**" lang="javascript" >}}
 // Feature flag controls new behavior
@@ -164,7 +164,7 @@ return renderOldCheckout()
 
 - Requires a feature flag system with runtime toggle capability
 - Only works for changes that are behind flags
-- Feature flag debt (old flags that are never cleaned up) must be managed
+- You must manage feature flag debt (old flags that are never cleaned up)
 
 ### Database-safe rollback with expand-contract
 
@@ -172,7 +172,7 @@ Database schema changes are the most common obstacle to rollback. If a deploymen
 the database schema, rolling back the application code may fail if the old code is
 incompatible with the new schema.
 
-The expand-contract pattern (also called parallel change) solves this:
+The expand-contract pattern (also called parallel change) solves the problem:
 
 1. **Expand** - add new columns, tables, or structures alongside the existing ones. The
    old application code continues to work. Deploy this change.
@@ -199,7 +199,7 @@ ALTER TABLE users DROP COLUMN email;
 
 **Anti-pattern:** Destructive schema changes (dropping columns, renaming tables,
 changing types) deployed simultaneously with the application code change that requires
-them. This makes rollback impossible because the old code cannot work with the new schema.
+them. Coupling the two makes rollback impossible because the old code cannot work with the new schema.
 
 ## Anti-patterns
 
@@ -229,8 +229,8 @@ Always use the expand-contract pattern for schema changes.
 
 ### Manual rollback requiring specialized knowledge
 
-If only one person on the team knows how to perform a rollback, the team does not have a
-rollback capability - it has a single point of failure. Rollback must be simple enough
+If only one person on the team knows how to perform a rollback, the team has a single
+point of failure, not a rollback capability. Rollback must be simple enough
 for any team member to execute.
 
 ## Good patterns
@@ -238,13 +238,13 @@ for any team member to execute.
 ### Automated rollback on health check failure
 
 Configure the deployment system to automatically roll back if the new version fails
-health checks within a defined window after deployment. This removes the need for a human
-to detect the problem and start the rollback.
+health checks within a defined window after deployment. Automatic rollback removes the need
+for a human to detect the problem and start the rollback.
 
 ### Rollback testing in staging
 
 As part of every deployment to staging, deploy the new version, verify it, then roll it
-back and verify the rollback. This ensures that rollback works for every release, not
+back and verify the rollback. The drill ensures that rollback works for every release, not
 only in theory.
 
 ### Artifact retention
@@ -262,7 +262,7 @@ verify that the rollback was successful.
 ### Rollback runbook exercises
 
 Regularly practice rollback as a team exercise - not only as part of automated testing,
-but as a deliberate drill. This builds team confidence and identifies gaps in the process.
+but as a deliberate drill. Drills build team confidence and identify gaps in the process.
 
 ## How to get started
 
@@ -275,12 +275,12 @@ Who would need to be involved? What could go wrong? Be honest about the answers.
 
 Start with the simplest mechanism available for your deployment platform - redeploying the
 previous container image, switching a load balancer target, or reverting a Kubernetes
-deployment. Automate this as a single command.
+deployment. Automate the mechanism as a single command.
 
 ### Step 3: Test the rollback
 
 Deploy a change to staging, then roll it back. Verify that the system returns to its
-previous state. Make this a standard part of your deployment validation.
+previous state. Make the rollback test a standard part of your deployment validation.
 
 ### Step 4: Address database compatibility
 
@@ -301,7 +301,7 @@ trust deployment.
 
 ## Connection to the pipeline phase
 
-Rollback is the capstone of the [Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) phase. It is what makes the rest of the phase
+Rollback is the capstone of the [Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) phase. Rollback makes the rest of the phase
 safe:
 
 - The [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) is how rollback is
@@ -342,7 +342,7 @@ back the database:
 
 1. Design schema changes to support application rollback (backward compatibility)
 2. Use feature flags to disable code that depends on the new schema
-3. If absolutely necessary, maintain tested database rollback scripts - but treat this as a last resort
+3. If absolutely necessary, maintain tested database rollback scripts - but treat these scripts as a last resort
 
 ### Should rollback require approval?
 
@@ -381,7 +381,7 @@ Typical breakdown:
 
 Configuration should be versioned and separated from the application artifact. Rolling
 back the artifact should not require separately rolling back environment configuration.
-See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how to achieve this.
+See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how to achieve that separation.
 
 ## Related content
 

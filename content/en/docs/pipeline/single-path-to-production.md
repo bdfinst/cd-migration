@@ -14,22 +14,21 @@ aliases:
 
 ## Definition
 
-A single path to production means that every change - whether it is a feature, a bug fix,
-a configuration update, or an infrastructure change - follows the same automated pipeline
-to reach production. There is exactly one route from a developer's commit to a running
-production system. No side doors. No emergency shortcuts. No "just this once" manual
-deployments.
+A single path to production means that every change follows the same automated pipeline
+to reach production. That includes features, bug fixes, configuration updates, and
+infrastructure changes. There is exactly one route from a developer's commit to production:
+no side doors, no emergency shortcuts, and no "just this once" manual deployments.
 
-This is the most fundamental constraint of a [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). If you allow
+A single path is the most fundamental constraint of a [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). If you allow
 multiple paths, you cannot reason about the state of production. You lose the ability to
 guarantee that every change has been validated, and you undermine every other practice in
 this phase.
 
 ## Why it matters for CD migration
 
-Teams migrating to continuous delivery often carry legacy deployment processes - a manual
-runbook for "emergency" fixes, a separate path for database changes, or a distinct
-workflow for infrastructure updates. Each additional path is a source of unvalidated risk.
+Teams migrating to continuous delivery often carry legacy deployment processes. Examples
+include a manual runbook for "emergency" fixes, a separate path for database changes, or a
+distinct workflow for infrastructure updates. Each additional path is a source of unvalidated risk.
 
 Establishing a single path to production is the first pipeline practice because every
 subsequent practice depends on it. A [deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}})
@@ -60,7 +59,7 @@ deployment, you are not testing the deployment process itself.
 ### No manual deployments
 
 If a human can bypass the pipeline and push a change directly to production, the single
-path is broken. This includes:
+path is broken. Bypasses include:
 
 - SSH access to production servers for ad-hoc changes
 - Direct container image pushes outside the pipeline
@@ -82,12 +81,12 @@ cannot be confident that the hotfix has undergone the same validation.
 trunk -> integration <- features
 {{< /card >}}
 
-This creates two merge structures instead of one. When trunk changes, you merge to the
-integration branch immediately. When features change, you merge to integration at least
-daily. The integration branch lives a parallel life to trunk, acting as a temporary
-container for partially finished features. This attempts to mimic feature flags to keep
-inactive features out of production but adds complexity and accumulates abandoned features
-that stay unfinished forever.
+An integration branch creates two merge structures instead of one. You merge trunk changes
+to the integration branch immediately and feature changes at least daily. The integration
+branch lives a parallel life to trunk, acting as a temporary container for partially
+finished features. The pattern tries to mimic feature flags by keeping inactive features out
+of production. Instead, it adds complexity and accumulates abandoned features that stay
+unfinished forever.
 
 **GitFlow (multiple long-lived branches):**
 
@@ -125,29 +124,28 @@ trunk <- hotfixes
 
 ### Environment-specific pipelines
 
-Building a separate pipeline for staging versus production - or worse, manually deploying
-to staging and only using automation for production - means you are not testing your
+Some teams build a separate pipeline for staging versus production. Others deploy to
+staging manually and automate only production. Either way, you are not testing your
 deployment process in lower environments.
 
 ### "Emergency" manual deployments
 
 The most dangerous anti-pattern is the manual deployment reserved for emergencies. Under
 pressure, teams bypass the pipeline "just this once," introducing an unvalidated change
-into production. The fix for this is not to allow exceptions - it is to make the pipeline
-fast enough that it is always the fastest path to production.
+into production. The fix is not to allow exceptions. Make the pipeline fast enough that
+it is always the fastest path to production.
 
 ### Separate pipelines for different change types
 
-Having one pipeline for application code, another for infrastructure, and yet another for
-database changes means that coordinated changes across these layers are never validated
-together.
+With one pipeline for application code, another for infrastructure, and another for
+database changes, you never validate coordinated changes across these layers together.
 
 ## Good patterns
 
 ### Feature flags
 
 Use [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) to decouple deployment from release. Code can be merged and deployed
-through the pipeline while the feature remains hidden behind a flag. This eliminates the
+through the pipeline while the feature remains hidden behind a flag. Flags eliminate the
 need for long-lived branches and separate deployment paths for "not-ready" features.
 
 {{< card code=true header="**Feature flag: deploy code to trunk while hiding it from users**" lang="javascript" >}}
@@ -178,7 +176,7 @@ class PaymentProcessor {
 
 Deploy new functionality to production without exposing it to users. The code runs in
 production, processes real data, and generates real metrics - but its output is not shown
-to users. This validates the change under production conditions while managing risk.
+to users. Dark launching validates the change under production conditions while managing risk.
 
 {{< card code=true header="**Dark launching: deploy new API route without exposing it to users**" lang="javascript" >}}
 // New API route exists but isn't exposed to users
@@ -191,8 +189,8 @@ router.post('/api/v2/checkout', newCheckoutHandler)
 
 When building a new integration, start by deploying the code without connecting it to the
 live dependency. Validate the deployment, the configuration, and the basic behavior first.
-Connect to the real dependency as the final step. This keeps the change deployable through
-the pipeline at every stage of development.
+Connect to the real dependency as the final step. Connecting last keeps the change deployable
+through the pipeline at every stage of development.
 
 {{< card code=true header="**Connect tests last: build and validate before wiring to UI**" lang="javascript" >}}
 // Build new feature code, integrate to trunk
@@ -219,10 +217,10 @@ function newCheckoutFlow() {
 
 - **Revoking direct production access:** Removing SSH access and console-based deployment
   rights requires coordination with security, operations, and often management. Build trust in
-  your pipeline before asking for access to be revoked - prove it is reliable first.
+  your pipeline before asking for access to be revoked - prove the pipeline is reliable first.
 - **Compliance-required manual gates:** If an audit or regulatory requirement mandates a human
-  sign-off before production deployment, removing that gate requires engaging your compliance or
-  security team to find an automated equivalent that satisfies the same requirement.
+  sign-off before production deployment, removing that gate requires an automated equivalent.
+  Work with your compliance or security team to find one that satisfies the same requirement.
 - **Emergency procedures:** "Break glass" runbooks that allow bypassing the pipeline in
   incidents are usually owned by operations or SRE teams. Work with them to make your pipeline
   the fastest path, so the break-glass procedure is genuinely a last resort.
@@ -325,9 +323,9 @@ fixes, that is a pipeline problem, not a process problem. Invest in pipeline rel
 
 ### What about emergency hotfixes that cannot wait for the full pipeline?
 
-The pipeline should be fast enough to handle emergencies. If it is not, optimize the
-pipeline. A "fast-track" mode that skips some tests is acceptable, but it must still be
-the same pipeline, not a separate manual process.
+The pipeline should be fast enough to handle emergencies. If the pipeline is not fast
+enough, optimize it. A "fast-track" mode that skips some tests is acceptable, but the fast
+track must use the same pipeline, not a separate manual process.
 
 ### Can we manually patch production "just this once"?
 

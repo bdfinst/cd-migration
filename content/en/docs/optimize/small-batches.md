@@ -18,7 +18,7 @@ aliases:
 
 Large batches create large risks. When you deploy 50 changes at once, any failure could be caused by any of those 50 changes. When you deploy 1 change, the cause of any failure is obvious.
 
-This is not a theory. The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes this possible.
+The benefit is not theoretical. The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research consistently shows that elite teams deploy more frequently, with smaller changes, and have **both** higher throughput **and** lower failure rates. Small batches are the mechanism that makes both possible.
 
 > "If it hurts, do it more often, and bring the pain forward."
 >
@@ -43,8 +43,8 @@ How often you push changes to production.
 
 **Common objections to deploying more often:**
 
-- **"Incomplete features have no value."** Value is not limited to end-user features. Every deployment provides value to other stakeholders: operations verifies that the change is safe, QA confirms quality gates pass, and the team reduces inventory waste by keeping unintegrated work near zero. A partially built feature deployed behind a flag validates the deployment pipeline and reduces the risk of the final release.
-- **"Our customers don't want changes that frequently."** [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is not about shipping user-visible changes every hour. It is about maintaining the ability to deploy at any time. That ability is what lets you ship an emergency fix in minutes instead of days, roll out a security patch without a war room, and support production without heroics.
+- **"Incomplete features have no value."** Value is not limited to end-user features. Every deployment provides value to other stakeholders. Operations verifies that the change is safe, and QA confirms quality gates pass. The team also reduces inventory waste by keeping unintegrated work near zero. A partially built feature deployed behind a flag validates the deployment pipeline and reduces the risk of the final release.
+- **"Our customers don't want changes that frequently."** [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is not about shipping user-visible changes every hour. CD is about maintaining the ability to deploy at any time. That ability lets you ship an emergency fix in minutes instead of days. It also lets you roll out a security patch without a war room and support production without heroics.
 
 ### Level 2: Commit size
 
@@ -64,15 +64,15 @@ How much code changes in each commit to trunk.
 
 How much scope each user story or work item contains.
 
-A story that takes a week to complete is a large batch. It means a week of work piles up before integration, a week of assumptions go untested, and a week of inventory sits in progress.
+A story that takes a week to complete is a large batch. A week-long story means a week of work piles up before integration and a week of assumptions go untested. A week of inventory also sits in progress.
 
-**Target:** Every story should be completable - coded, tested, reviewed, and integrated - in two days or less. If it cannot be, it needs to be decomposed further.
+**Target:** Every story should be completable - coded, tested, reviewed, and integrated - in two days or less. If a story cannot be, decompose it further.
 
 > "If a story is going to take more than a day to complete, it is too big."
 >
 > - Paul Hammant
 
-This target is not aspirational. Teams that adopt hyper-sprints - iterations as short as 2.5 days - find that the discipline of writing one-day stories forces better decomposition and faster feedback. Teams that make this shift routinely see throughput double, not because people work faster, but because smaller stories flow through the system with less wait time, fewer handoffs, and fewer defects.
+The two-day target is not aspirational. Teams that adopt hyper-sprints - iterations as short as 2.5 days - find that the discipline of writing one-day stories forces better decomposition and faster feedback. Teams that make this shift routinely see throughput double. The gain does not come from people working faster. Smaller stories flow through the system with less wait time, fewer handoffs, and fewer defects.
 
 ## Behavior-driven development for decomposition
 
@@ -100,11 +100,11 @@ Feature: Shopping cart discount
     Then the cart total should be $95
 {{< /card >}}
 
-Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. This is how you turn a "discount feature" (large batch) into three independent, [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) changes (small batches).
+Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. Scenario-by-scenario delivery is how you turn a "discount feature" (large batch) into three independent, [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) changes (small batches).
 
 ### Decomposing stories using scenarios
 
-When a story has too many scenarios, it is too large. Use this process:
+When a story has too many scenarios, the story is too large. Use this process:
 
 1. **Write all the scenarios first.** Before any code, enumerate every Given-When-Then for the story.
 2. **Group scenarios into deliverable slices.** Each slice should be independently valuable or at least independently deployable.
@@ -122,17 +122,17 @@ When a story has too many scenarios, it is too large. Use this process:
 BDD scenarios define *what* to build. Acceptance Test-Driven Development (ATDD) defines *how* to build it in small, integrated steps. The workflow is:
 
 1. **Pick one scenario.** Choose the next Given-When-Then from your story.
-2. **Write the acceptance test first.** Automate the scenario so it runs against the real system (or a close approximation). It will fail - this is the RED state.
+2. **Write the acceptance test first.** Automate the scenario so it runs against the real system (or a close approximation). The test fails at first. That failure is the RED state.
 3. **Write just enough code to pass.** Implement the minimum production code to make the acceptance test pass - the GREEN state.
 4. **Refactor.** Clean up the code while the test stays green.
 5. **Commit and integrate.** Push to trunk. The pipeline verifies the change.
 6. **Repeat.** Pick the next scenario.
 
-Each cycle produces a commit that is independently deployable and verified by an automated test. This is how BDD scenarios translate directly into a stream of small, safe integrations rather than a batch of changes delivered at the end of a story.
+Each cycle produces a commit that is independently deployable and verified by an automated test. ATDD cycles turn BDD scenarios directly into a stream of small, safe integrations. The alternative is a batch of changes delivered at the end of a story.
 
 **Key benefits:**
 
-- Every commit has a corresponding acceptance test, so you know exactly what it does and that it works.
+- Every commit has a corresponding acceptance test, so you know exactly what the commit does and that it works.
 - You never go more than a few hours without integrating to trunk.
 - The acceptance tests accumulate into a regression suite that protects future changes.
 - If a commit breaks something, the scope of the change is small enough to diagnose quickly.
@@ -178,7 +178,7 @@ Each day produces a deployable change. The endpoint is usable (though minimal) a
 
 ## Vertical slicing
 
-A [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) cuts through all layers of the system to deliver a thin piece of end-to-end functionality. This is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
+A [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) cuts through all layers of the system to deliver a thin piece of end-to-end functionality. Vertical slicing is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
 
 ### Horizontal vs. vertical slicing
 
@@ -219,7 +219,7 @@ The principle is the same. A [subdomain product team]({{< relref "/docs/referenc
 
 The key difference is whether the public interface is designed for humans or machines. A [full-stack product team]({{< relref "/docs/reference/glossary#full-stack-product-team" >}}) owns a human-facing surface - the slice is done when a user can observe the behavior through that interface. A subdomain product team owns a machine-facing surface - the slice is done when the API contract satisfies the agreed behavior for its service consumers.
 
-See [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for diagrams of both contexts, and [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) for the failure mode that emerges when distributed teams split work by layer instead of by behavior.
+See [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for diagrams of both contexts. See [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) for the failure mode that emerges when distributed teams split work by layer instead of by behavior.
 
 ### Story slicing anti-patterns
 
@@ -274,7 +274,7 @@ Before changing anything, measure where you are:
 
 ### 1. "Small stories take more overhead to manage"
 
-This is true only if your process adds overhead per story (for example, heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
+The overhead is real only if your process adds overhead per story (for example, heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
 
 ### 2. "Some things can't be done in small batches"
 
@@ -282,7 +282,7 @@ Almost anything can be decomposed further. Database migrations can be done in ba
 
 ### 3. "We tried small stories but our throughput dropped"
 
-This usually means the team is still working sequentially. Small stories require limiting [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) and swarming - see [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
+A throughput drop usually means the team is still working sequentially. Small stories require limiting [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) and swarming - see [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
 
 ## Measuring success
 
@@ -295,7 +295,7 @@ This usually means the team is still working sequentially. Small stories require
 
 ## Next step
 
-Small batches often require deploying incomplete features to production. [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) provide the mechanism to do this safely.
+Small batches often require deploying incomplete features to production. [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) provide the mechanism to deploy them safely.
 
 ## Related content
 

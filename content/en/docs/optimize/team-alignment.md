@@ -24,12 +24,12 @@ Layer teams produce layered architectures. The layers are coupled not because th
 to couple them but because every feature requires coordination across team boundaries. The coupling
 is structural, not accidental.
 
-Domain teams produce domain boundaries. When one team owns everything inside a business domain -
-the user interface, the business logic, the data store, and the deployment [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) - they can
+Domain teams produce domain boundaries. Suppose one team owns everything inside a business domain:
+the user interface, the business logic, the data store, and the deployment [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). That team can
 make changes within that domain without coordinating with other teams. The interfaces between
 domains are explicit and stable because that is how the teams communicate.
 
-This is not a coincidence. Architecture reflects the ownership structure of the people who built
+The match is not a coincidence. Architecture reflects the ownership structure of the people who built
 it.
 
 ## What aligned ownership looks like
@@ -43,18 +43,19 @@ A team with aligned ownership can answer yes to all of the following:
 
 Two team patterns achieve aligned ownership in practice.
 
-A [full-stack product team]({{< relref "/docs/reference/glossary#full-stack-product-team" >}}) owns the complete user-facing surface for a feature area - from
-the UI components a user interacts with down through the business logic and the database. The team
+A [full-stack product team]({{< relref "/docs/reference/glossary#full-stack-product-team" >}}) owns the complete user-facing surface for a feature area. That surface runs
+from the UI components a user interacts with down through the business logic and the database. The team
 has no [hard dependency]({{< relref "/docs/reference/glossary#hard-dependency" >}}) on a separate frontend or backend team. One team ships the entire vertical
 slice.
 
 A [subdomain product team]({{< relref "/docs/reference/glossary#subdomain-product-team" >}}) owns a service or set of services representing a bounded business
-capability. Some subdomain teams own a user-facing surface alongside their backend logic. Others -
-a tax calculation service, a shipping rates engine, an identity provider - have no UI at all.
+capability. Some subdomain teams own a user-facing surface alongside their backend logic. Others
+have no UI at all: a tax calculation service, a shipping rates engine, an identity provider.
 Their consumer interface is entirely an API, consumed by other teams rather than by end users
-directly. Both are fully aligned: the team owns everything within the boundary, and the boundary
-is what its consumers depend on - whether that is a UI, an API, or both. A slice is done when the
-consumer interface satisfies the agreed behavior for its callers.
+directly. Both kinds are fully aligned: the team owns everything within the boundary that
+consumers depend on, whether UI, API, or both.
+
+A slice is done when the consumer interface satisfies the agreed behavior for its callers.
 
 Both patterns share the same structure: **one team, one [deployable]({{< relref "/docs/reference/glossary#deployable" >}}), full ownership**. The team
 owns all layers within its boundary, the authority to deploy that boundary independently, and
@@ -78,8 +79,8 @@ cross-cutting concerns. Product teams own the business logic but depend on the o
 deployment. A change that touches infrastructure or shared services requires the product team to
 file a ticket and wait.
 
-The telltale sign in all three cases: a team cannot estimate their own delivery date because it
-depends on other teams' schedules.
+The telltale sign in all three cases: a team cannot estimate their own delivery date because the
+date depends on other teams' schedules.
 
 ## The relationship between team alignment and architecture
 
@@ -92,9 +93,9 @@ When team boundaries and code boundaries match:
 - Each team's pipeline validates only their domain. Shared pipeline queues disappear.
 - Each team deploys on their own schedule. Release trains disappear.
 
-When they do not match, architecture and ownership drift together. A team that technically "owns"
-a service but in practice coordinates with three other teams for every change is not an independent
-deployment unit regardless of what the org chart says.
+When team and code boundaries do not match, architecture and ownership drift together. Consider a
+team that technically "owns" a service but coordinates with three other teams for every change.
+That team is not an independent deployment unit, whatever the org chart says.
 
 See [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) for the technical strategies to establish
 independent service boundaries. See [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
@@ -144,7 +145,7 @@ diverge significantly.
 
 ### Step 2: Identify natural domain boundaries
 
-Natural domain boundaries exist in most codebases - they are not enforced by team structure.
+Natural domain boundaries exist in most codebases, even when team structure does not enforce them.
 Look for:
 
 - **Business capabilities.** What does this system do? Separate business functions - billing,
@@ -167,7 +168,7 @@ For each candidate domain identified in Step 2, assign a single team. The rules:
 - **One team per domain.** Shared ownership produces neither ownership. If a domain has two owners,
   pick one.
 - **Full stack.** The owning team is responsible for all layers within the domain - UI, logic, data.
-  If the current team lacks skills at some layer, plan for cross-training or re-staffing, but do
+  If the current team lacks skills at some layer, plan for cross-training or re-staffing. Do
   not address the skill gap by keeping a separate layer team.
 - **Deployment authority.** The owning team merges to trunk and controls the deployment pipeline for
   their domain. No other team can block their deployment.
@@ -179,24 +180,24 @@ each team.
 
 ### Step 4: Define contracts at boundaries
 
-Once teams own their domains, the interfaces between domains must be made explicit. Implicit
+Once teams own their domains, make the interfaces between domains explicit. Implicit
 interfaces - shared databases, undocumented internal calls, assumed response shapes - break
 independent deployment.
 
 For each boundary between domains:
 
 1. **API contracts.** Define the request and response shapes the consuming team depends on.
-   Use OpenAPI or an equivalent schema. Commit it to the producer's repository.
+   Use OpenAPI or an equivalent schema. Commit the schema to the producer's repository.
 2. **Event contracts.** For asynchronous communication, define the event schema and the guarantees
    the producer makes (ordering, at-least-once vs. exactly-once, schema evolution rules).
 3. **Versioning.** Establish a versioning policy. Additive changes are non-breaking. Removing or
-   changing field semantics requires a new version. Both old and new versions are supported for a
+   changing field semantics requires a new version. Support both old and new versions for a
    defined deprecation period.
 4. **Contract tests.** Write tests that verify the producer honors the contract. Write tests that
    verify the consumer handles the contract correctly. See [Contract Testing]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}})
    for implementation guidance.
 
-Teams should not proceed to separate deployment pipelines until contracts are explicit and tested.
+Do not move to separate deployment pipelines until contracts are explicit and tested.
 An implicit contract that breaks silently is worse than a coordinated deployment.
 
 ### Step 5: Separate deployment pipelines

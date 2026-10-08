@@ -14,7 +14,7 @@ aliases:
 [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are the mechanism that makes [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) and small batches safe. They let you deploy code to production without exposing it to users, enabling dark launches, gradual rollouts, and instant [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) of features without redeploying.
 {{% /pageinfo %}}
 
-Feature flags are one technique among several for integrating incomplete work safely, and the most expensive one to maintain. Before reaching for a flag, work through the [evolutionary coding techniques hierarchy]({{< relref "/docs/foundations/evolutionary-coding" >}}): dark code, branch by abstraction, parallel run, and expand and contract each solve part of what a flag solves, without the lifecycle overhead. This page assumes you've already ruled those out.
+Feature flags are one technique among several for integrating incomplete work safely, and the most expensive one to maintain. Before reaching for a flag, work through the [evolutionary coding techniques hierarchy]({{< relref "/docs/foundations/evolutionary-coding" >}}). Dark code, branch by abstraction, parallel run, and expand and contract each solve part of what a flag solves, without the lifecycle overhead. This page assumes you've already ruled those out.
 
 ## Why feature flags?
 
@@ -23,7 +23,7 @@ In [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-deli
 - **Deployment** is pushing code to production.
 - **Release** is making a feature available to users.
 
-Feature flags are the bridge between these two events. They let you deploy frequently (even multiple times a day) without worrying about exposing incomplete or untested features. This separation is what makes [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) possible for teams that ship real products to real users.
+Feature flags are the bridge between these two events. They let you deploy frequently (even multiple times a day) without worrying about exposing incomplete or untested features. Separating deployment from release is what makes [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) possible for teams that ship real products to real users.
 
 ## When you need feature flags (and when you don't)
 
@@ -241,7 +241,7 @@ Before writing any code, define the flag:
 
 #### Stage 2: Deploy OFF
 
-The first deployment includes the flag check but the flag is disabled. This verifies that:
+The first deployment includes the flag check, but the flag is disabled. This first deployment verifies that:
 
 - The flag infrastructure works
 - The default (off) path is unaffected
@@ -261,7 +261,7 @@ def test_checkout_with_flag(flag_enabled, monkeypatch):
 
 #### Stage 4: Dark launch
 
-Enable the flag for internal users or a specific test group. This is your first validation with real production data and real traffic patterns. Monitor:
+Enable the flag for internal users or a specific test group. The dark launch is your first validation with real production data and real traffic patterns. Monitor:
 
 - Error rates for the flagged group vs. control
 - Performance metrics (latency, throughput)
@@ -283,7 +283,7 @@ At any step, if metrics degrade, roll back by disabling the flag. No redeploymen
 
 #### Stage 6: Remove
 
-This is the most commonly skipped step, and skipping it creates significant technical debt.
+Removal is the most commonly skipped step, and skipping it creates significant technical debt.
 
 Once the feature has been stable at 100% for an agreed period (for example, 2 weeks):
 
@@ -378,7 +378,7 @@ Long-lived flags need different discipline than temporary ones:
 
 ### 1. "We have 200 feature flags and nobody knows what they all do"
 
-This is flag debt, and it is as damaging as any other technical debt. Prevent it by enforcing the lifecycle: every flag has an owner, a purpose, and a removal date. Run a monthly flag audit.
+Unmanaged flags are flag debt, as damaging as any other technical debt. Prevent it by enforcing the lifecycle: every flag has an owner, a purpose, and a removal date. Run a monthly flag audit.
 
 ### 2. "We use flags for everything, including configuration"
 
@@ -386,7 +386,7 @@ Feature flags and configuration are different concerns. Flags are temporary (the
 
 ### 3. "Testing both paths doubles our test burden"
 
-It does increase test effort, but this is a temporary cost. When the flag is removed, the extra tests go away too. The alternative - deploying untested code paths - is far more expensive.
+Testing both paths does increase test effort, but the cost is temporary. When the flag is removed, the extra tests go away too. The alternative - deploying untested code paths - is far more expensive.
 
 ### 4. "Nested flags create combinatorial complexity"
 

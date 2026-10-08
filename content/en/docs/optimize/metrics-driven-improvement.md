@@ -18,7 +18,7 @@ Improvement without measurement is guesswork. This page covers two types of metr
 
 Not all delivery metrics are equally useful for driving improvement. Understanding the difference prevents a common trap: tracking the wrong metrics and wondering why nothing changes.
 
-**Leading indicators** reflect the current state of team behaviors. They move immediately when those behaviors change and surface problems while they are still small. [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), [development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}), branch duration, and build success rate are leading indicators. When these are unhealthy, the cause is visible and addressable today.
+**Leading indicators** reflect the current state of team behaviors. They move immediately when those behaviors change and surface problems while they are still small. [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), [development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}), branch duration, and build success rate are leading indicators. When leading indicators are unhealthy, the cause is visible and addressable today.
 
 **DORA outcome metrics** reflect the cumulative effect of many upstream behaviors. They confirm that improvement work is having the expected systemic effect, but they move slowly. A team can work diligently on CI practices for weeks before those improvements appear in deployment frequency or lead time numbers. Setting DORA metrics as improvement targets produces pressure to optimize the number rather than the behaviors that generate it. See [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 
@@ -26,9 +26,9 @@ Use leading indicators to drive improvement experiments. Use DORA metrics to con
 
 ## The problem with ad hoc improvement
 
-Most teams improve accidentally. Someone reads a blog post, suggests a change at standup, and the team tries it for a week before forgetting about it. This produces sporadic, unmeasurable progress that is impossible to sustain.
+Most teams improve accidentally. Someone reads a blog post, suggests a change at standup, and the team tries it for a week before forgetting about it. Ad hoc changes produce sporadic, unmeasurable progress that is impossible to sustain.
 
-Metrics-driven improvement replaces this with a disciplined cycle: measure where you are, define where you want to be, run a small experiment, measure the result, and repeat. The improvement kata provides the structure. Leading indicators drive the experiments. DORA metrics confirm the system-level effect.
+Metrics-driven improvement replaces ad hoc change with a disciplined cycle. Measure where you are, define where you want to be, run a small experiment, measure the result, and repeat. The improvement kata provides the structure. Leading indicators drive the experiments. DORA metrics confirm the system-level effect.
 
 ## CI health metrics
 
@@ -45,7 +45,7 @@ Track these as your primary improvement signal during the migration. Run experim
 | **Good target** | 2 or more per developer per day |
 | **Why it matters** | Low commit frequency indicates large batch sizes, long-lived branches, or developers waiting to integrate. All of these increase merge risk and slow feedback. |
 
-**If the number is low:** Developers may be working on branches for too long, bundling unrelated changes into single commits, or facing barriers to integration (slow builds, complex merge processes). Investigate [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}) and work decomposition.
+**If the number is low:** Developers may be working on branches for too long or bundling unrelated changes into single commits. They may also face barriers to integration (slow builds, complex merge processes). Investigate [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}) and work decomposition.
 
 **If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
 
@@ -60,7 +60,7 @@ Track these as your primary improvement signal during the migration. Run experim
 
 **If the number is low:** Common causes include flaky tests, insufficient local validation before committing, or environmental inconsistencies between developer machines and CI. Start by identifying and quarantining flaky tests, then ensure developers can run a representative build locally before pushing.
 
-**If the number is high but DORA metrics are still lagging:** The build may pass but take too long, or the build may not cover enough to catch real problems. Check build duration and test coverage.
+**If the number is high but DORA metrics are still lagging:** The build may pass but take too long. The build may also not cover enough to catch real problems. Check build duration and test coverage.
 
 ### Time to fix a broken build
 
@@ -75,7 +75,7 @@ Track these as your primary improvement signal during the migration. Run experim
 
 ## The four DORA metrics
 
-The DORA research program (now part of Google Cloud) identified four key metrics that correlate with software delivery performance and organizational outcomes. These are lagging outcome metrics: they reflect the cumulative effect of many upstream behaviors. Track them to confirm that your improvement work is having the expected systemic effect, and to establish a baseline for reporting progress to leadership.
+The DORA research program (now part of Google Cloud) identified four key metrics that correlate with software delivery performance and organizational outcomes. These are lagging outcome metrics: they reflect the cumulative effect of many upstream behaviors. Track them to confirm that your improvement work has the expected systemic effect. They also give you a baseline for reporting progress to leadership.
 
 Do not set these as improvement targets or OKRs. See [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 
@@ -141,7 +141,7 @@ How long it takes to recover from a failure in production.
 
 ## The DORA recommended practices
 
-Behind these four metrics are 24 practices that the DORA research has shown to drive performance. They organize into five categories. Use this as a diagnostic tool: when a metric is lagging, look at the related practices to identify what to improve.
+Behind these four metrics are 24 practices that the DORA research has shown to drive performance. They organize into five categories. Use the practice list as a diagnostic tool: when a metric is lagging, look at the related practices to identify what to improve.
 
 ### Continuous delivery practices
 
@@ -203,7 +203,7 @@ The improvement kata is a four-step pattern from lean manufacturing adapted for 
 
 Where does your CD migration need to go?
 
-This is already defined by the phases of this migration guide. In Phase 3, your direction is: smaller batches, faster flow, and higher confidence in every deployment.
+The phases of this migration guide already define the direction. In Phase 3, your direction is: smaller batches, faster flow, and higher confidence in every deployment.
 
 ### Step 2: Grasp the current condition
 
@@ -268,7 +268,7 @@ After each experiment:
 3. If the target is met, pick the next metric to improve
 4. If the target is not met, design another experiment
 
-This creates a continuous improvement loop. Each cycle takes 1-2 weeks. Over months, the cumulative effect is dramatic.
+The cycle creates a continuous improvement loop. Each cycle takes 1-2 weeks. Over months, the cumulative effect is dramatic.
 
 ## Connecting metrics to action
 
@@ -320,9 +320,9 @@ The most effective teams use ambient visibility - information that is passively 
 
 **Build radiators:** A large monitor in the team area showing the current pipeline status. Green means the build is passing. Red means it is broken. The radiator should be visible from every desk in the team space. For remote teams, a persistent widget in the team chat channel serves the same purpose.
 
-**Browser extensions and desktop notifications:** Tools like CCTray, BuildNotify, or CI server plugins can display build status in the system tray or browser toolbar. These provide individual-level ambient awareness without requiring a shared physical space.
+**Browser extensions and desktop notifications:** Tools like CCTray, BuildNotify, or CI server plugins can display build status in the system tray or browser toolbar. These tools provide individual-level ambient awareness without requiring a shared physical space.
 
-**Chat integrations:** Post build results to the team channel automatically. Keep these concise - a green checkmark or red alert with a link to the build is enough. Verbose build logs in chat become noise.
+**Chat integrations:** Post build results to the team channel automatically. Keep the messages concise - a green checkmark or red alert with a link to the build is enough. Verbose build logs in chat become noise.
 
 ### Notification good practices
 
@@ -331,7 +331,7 @@ Notifications are powerful when used well and destructive when overused. The goa
 **When to notify:**
 
 - Build breaks on trunk - notify the whole team immediately
-- Build is fixed - notify the whole team (this is a positive signal worth reinforcing)
+- Build is fixed - notify the whole team (a fix is a positive signal worth reinforcing)
 - Deployment succeeds - notify the team channel (low urgency)
 - Deployment fails - notify the on-call and the person who triggered it
 
@@ -371,13 +371,13 @@ Organize your dashboard around three categories:
 
 ### Dashboard anti-patterns
 
-**The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, it is not useful. Include metrics that challenge the team, not only ones that reassure management.
+**The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, the dashboard is not useful. Include metrics that challenge the team, not only ones that reassure management.
 
 **The everything dashboard:** Crams dozens of metrics, charts, and tables onto one screen. Nobody can parse it at a glance, so nobody looks at it. Limit your dashboard to 6-8 key indicators. If you need more detail, put it on a drill-down page.
 
 **The stale dashboard:** Data is updated manually and falls behind. Automate data collection wherever possible. A dashboard showing last month's numbers is worse than no dashboard - it creates false confidence.
 
-**The blame dashboard:** Ties metrics to individual developers rather than teams. This creates fear and gaming rather than improvement. Always present metrics at the team level.
+**The blame dashboard:** Ties metrics to individual developers rather than teams. Individual metrics create fear and gaming rather than improvement. Always present metrics at the team level.
 
 **Keep it simple.** A spreadsheet updated weekly is better than a sophisticated dashboard that nobody maintains. The goal is visibility, not tooling sophistication.
 
