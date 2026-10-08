@@ -26,7 +26,7 @@ Generate a new anti-pattern page for the "Quality and Delivery Anti-Patterns" se
 5. **Validate before finishing:**
    - Run `/grammar-check` on the generated file to catch and fix any prohibited punctuation.
    - Verify all internal links point to existing pages.
-   - Confirm the "Why This Is a Problem" section has all three required subsections plus the CD impact closing subsection.
+   - Confirm the "Why this is a problem" section has all three required subsections plus the CD impact closing subsection.
 
 ## Template
 
@@ -43,7 +43,7 @@ description: >
 **Category:** [Category Name] | {{% risk-indicator level="[critical|high|medium|low]" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 [2-3 paragraphs describing observable symptoms. Be specific and concrete - describe what a team
 member would actually see, hear, or experience. Use present tense.]
@@ -55,7 +55,7 @@ Common variations:
 
 [Telltale sign paragraph: "The telltale sign: ..."]
 
-## Why This Is a Problem
+## Why this is a problem
 
 [1-2 sentence framing paragraph that sets up the subsections below.]
 
@@ -85,7 +85,7 @@ already cover the key impacts.]
 Connect back to the core CD requirements: steady flow of small changes, fast feedback, predictable
 delivery.]
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: [Action verb]
 
@@ -107,13 +107,13 @@ delivery.]
 |--------|-------|
 | [Old behavior] | [New behavior] |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
 | [Metric name] | [What improvement looks like] |
 
-## Related Content
+## Related content
 
 - [Links to relevant guide pages in the site]
 ```
@@ -127,11 +127,11 @@ delivery.]
 - Use "you" and "the team" naturally
 
 ### Depth per section
-- **What This Looks Like:** 2-3 paragraphs plus variations. Enough detail that a reader says "that's us."
-- **Why This Is a Problem subsections:** 2-4 paragraphs each. Each subsection should have a clear mechanism (how the anti-pattern causes this effect) and a contrast with the healthier alternative.
-- **How to Fix It steps:** 3-6 steps, each with a week number. Concrete enough to start Monday morning.
-- **Measuring Progress:** 4-6 metrics. Link to reference metric pages where one exists.
-- **Related Content:** 3-5 links to existing guide pages.
+- **What this looks like:** 2-3 paragraphs plus variations. Enough detail that a reader says "that's us."
+- **Why this is a problem subsections:** 2-4 paragraphs each. Each subsection should have a clear mechanism (how the anti-pattern causes this effect) and a contrast with the healthier alternative.
+- **How to fix it steps:** 3-6 steps, each with a week number. Concrete enough to start Monday morning.
+- **Measuring progress:** 4-6 metrics. Link to reference metric pages where one exists.
+- **Related content:** 3-5 links to existing guide pages.
 
 ### Style rules
 - Use sentence-style capitalization in headings (only capitalize the first word and proper nouns).
@@ -140,11 +140,11 @@ delivery.]
 - Run `/grammar-check` before finishing to catch prohibited punctuation (endashes, emdashes, hyphens used as dashes).
 
 ### Subsection conventions
-- "Why This Is a Problem" always has three required subsections: "It reduces quality", "It increases rework", "It makes delivery timelines unpredictable"
+- "Why this is a problem" always has three required subsections: "It reduces quality", "It increases rework", "It makes delivery timelines unpredictable"
 - Optional extra subsections go between "delivery timelines" and "Impact on continuous delivery"
 - "Impact on continuous delivery" is always the final subsection
 - Each subsection contrasts the anti-pattern with the healthier alternative
-- "How to Fix It" uses time-boxed weekly steps
+- "How to fix it" uses time-boxed weekly steps
 
 ## Quality Impact Levels
 

@@ -7,6 +7,13 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-07 - Style rollout phase 0
+
+Phase 0 of the style rollout:
+
+- Added an advisory style-check script (`npm run style-check`) that reports style rule hits across content without failing the build (#39).
+- Switched the page-template and audit skills to sentence-case headings (#40).
+
 ## 2026-09-30 - SEO and llms.txt fixes
 
 - Fixed robots.txt not being generated, added more AI crawler user agents.

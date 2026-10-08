@@ -32,17 +32,19 @@ Validate content pages for structural compliance, front matter correctness, tone
 
 Compare the file's heading structure against the required template for its page type.
 
+**Temporary: match required headings without regard to case.** During the style rollout (epic #38), pages may use either title case (`## What This Looks Like`) or sentence case (`## What this looks like`). Treat both as matching. Do not report a heading as missing or wrong because of case alone. This tolerance is removed when phase 2 is complete.
+
 **Anti-pattern pages:**
-- `## What This Looks Like` exists
-- `## Why This Is a Problem` exists with required H3 subsections in order:
+- `## What this looks like` exists
+- `## Why this is a problem` exists with required H3 subsections in order:
   - `### It reduces quality`
   - `### It increases rework`
   - `### It makes delivery timelines unpredictable`
   - Zero or more optional H3 subsections
   - `### Impact on continuous delivery` (must be last H3 under this H2)
-- `## How to Fix It` exists with at least one `### Step N:` subsection containing a week number
-- `## Measuring Progress` exists and contains a table
-- `## Related Content` exists and contains at least one link
+- `## How to fix it` exists with at least one `### Step N:` subsection containing a week number
+- `## Measuring progress` exists and contains a table
+- `## Related content` exists and contains at least one link
 - `{{% pageinfo %}}` block exists after front matter
 
 **Symptom pages:**
@@ -86,7 +88,7 @@ Compare the file's heading structure against the required template for its page 
 
 - **Relative links** - For each relative link in the body, check that the target file exists. Severity: `ERROR` if target does not exist.
 - **"Read more" links** (symptom pages) - Verify they point to files under `anti-patterns/`. Severity: `ERROR` if pointing elsewhere.
-- **"Related Content" links** (anti-pattern pages) - Verify they point to guide pages under the phase sections (`assess/`, `foundations/`, `pipeline/`, `optimize/`, `continuous-deployment/`) or `reference/`. Severity: `WARNING` if pointing to other anti-pattern or symptom pages (these are not wrong but may indicate a missed guide link).
+- **"Related content" links** (anti-pattern pages) - Verify they point to guide pages under the phase sections (`assess/`, `foundations/`, `pipeline/`, `optimize/`, `continuous-deployment/`) or `reference/`. Severity: `WARNING` if pointing to other anti-pattern or symptom pages (these are not wrong but may indicate a missed guide link).
 - **Under-construction links** - Flag any link to `under-construction/`. Severity: `INFO` (these are intentional drafts, just surface them).
 - **External links** - Do not validate external URLs, just note their presence. Severity: none.
 
