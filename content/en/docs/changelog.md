@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-07 - Style rollout phase 3
+
+Phase 3 of the style rollout: rewrote all content for sentence length, paragraph length, voice, precision, and consistent glossary terms (#101, #106, #107, #108, #109, #110). Long sentences and paragraphs are split, passive wording is now active and addressed to "you", and unclear "it" and "this" references name their noun.
+
 ## 2026-10-07 - Style rollout phase 2
 
 Phase 2 of the style rollout: converted headings to sentence case across all content and updated anchor links (#86, #87, #88, #89, #90, #91, #92, #93, #94, #95, #96, #97). Template headings now read "What this looks like", "How to fix it", "Related content", and so on. Acronyms and proper nouns keep their capitals.
