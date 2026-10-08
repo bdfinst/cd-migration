@@ -21,7 +21,7 @@ The organizational pattern treats individual contributors as interchangeable res
 
 ### Knowledge silos
 
-When knowledge lives in individuals rather than in team practices, documentation, and code, departures create immediate gaps. The cost of reassignment is higher when the departing person carries critical knowledge that was never externalized. Losing one person does not just reduce capacity by one; it can reduce effective capability by much more if that person was the only one who understood a critical system or practice.
+When knowledge lives in individuals rather than in team practices, documentation, and code, departures create immediate gaps. The cost of reassignment is higher when the departing person carries critical knowledge that was never externalized. Losing one person does not only reduce capacity by one; it can reduce effective capability by much more if that person was the only one who understood a critical system or practice.
 
 Teams that externalize knowledge into runbooks, architectural decision records, and documented practices distribute the cost of any individual departure. No single person's absence leaves a critical gap. When a new cohort joins, the documented decisions and rationale are already there - the team stops relitigating trunk-based development and WIP limits because the record of why those choices were made is readable, not verbal.
 

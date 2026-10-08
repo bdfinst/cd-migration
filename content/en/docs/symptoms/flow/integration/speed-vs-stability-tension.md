@@ -50,7 +50,7 @@ When velocity is measured by features shipped to a deadline, every hour spent on
 
 ## How to narrow it down
 
-1. **Is the deployment process automated and consistent?** If deployments are manual and variable, the stability concern is about process risk, not just code risk. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
+1. **Is the deployment process automated and consistent?** If deployments are manual and variable, the stability concern is about process risk, not only code risk. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 2. **Does the team have automated testing and fast rollback?** Without these, deploying frequently is genuinely riskier than deploying infrequently. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 3. **Does management pressure the team to ship faster by cutting testing?** If yes, the tension is being created from above rather than within the team. Start with [Pressure to skip testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}).
 

@@ -14,7 +14,7 @@ tags:
 
 A new developer spends two days troubleshooting before the system runs locally. The wiki setup page was last updated 18 months ago. Step 7 refers to a tool that has been replaced. Step 12 requires access to a system that needs a separate ticket to provision. Step 19 assumes an operating system version that is three versions behind. Getting unstuck requires finding a teammate who has memorized the real procedure from experience.
 
-The setup problem is not just a new-hire experience. It affects the entire team whenever someone gets a new machine, switches between projects, or tries to set up a second environment for a specific debugging purpose. The environment is fragile because it was assembled by hand and the assembly process was never made reproducible.
+The setup problem is not only a new-hire experience. It affects the entire team whenever someone gets a new machine, switches between projects, or tries to set up a second environment for a specific debugging purpose. The environment is fragile because it was assembled by hand and the assembly process was never made reproducible.
 
 The business cost is usually invisible. Two days of new-hire setup is charged to onboarding. Senior engineers spending half a day helping unblock new hires is charged to sprint work. Developers who avoid setting up new environments and work around the problem are charged to productivity. None of these costs appear on a dashboard that anyone monitors.
 
