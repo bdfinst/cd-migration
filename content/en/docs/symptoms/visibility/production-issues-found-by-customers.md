@@ -15,8 +15,8 @@ The team deploys a change. Someone asks "is it working?" Nobody knows. There is 
 check. There are no metrics to compare before and after. The team waits. If nobody complains
 within an hour, they assume the deployment was successful.
 
-When something does go wrong, the team finds out from a customer support ticket, a Slack message
-from another team, or an executive asking why the site is slow. The investigation starts with
+When something does go wrong, the team finds out from someone else. A customer files a support
+ticket, another team sends a Slack message, or an executive asks why the site is slow. The investigation starts with
 SSH-ing into a server and reading raw log files. Hours pass before anyone understands what
 happened, what caused it, or how many users were affected.
 
@@ -35,7 +35,7 @@ wait for someone to experience it and report it.
 
 When deployments involve human steps (running scripts by hand, clicking through a console),
 there is no automated verification step. The deployment process ends when the human finishes the
-steps, not when the system confirms it is healthy. Without an automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that checks
+steps, not when the system confirms the deployment is healthy. Without an automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that checks
 health metrics after deploying, verification falls to manual spot-checking or waiting for
 complaints.
 

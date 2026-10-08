@@ -14,14 +14,14 @@ tags:
 ## What you are seeing
 
 A developer runs the tests locally and they pass. They push to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) and the same tests fail. Or the
-CI [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is green but the tests fail in the staging environment. The failures are not caused by
-a code defect. They are caused by differences between environments: a different OS version, a
-different database version, a different timezone setting, a missing environment variable, or a
-service that is available locally but not in CI.
+CI [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is green but the tests fail in the staging environment. A code defect does not cause
+these failures. Differences between environments cause them: a different OS version, database
+version, or timezone setting. A missing environment variable or a service that is available
+locally but not in CI has the same effect.
 
 The developer spends time debugging the failure and discovers the root cause is environmental, not
 logical. They add a workaround (skip the test in CI, add an environment check, adjust a timeout)
-and move on. The workaround accumulates over time. The test suite becomes littered with
+and move on. These workarounds accumulate over time. The test suite becomes littered with
 environment-specific conditionals and skipped tests.
 
 The team loses confidence in the test suite because results depend on where the tests run rather
@@ -31,29 +31,31 @@ than whether the code is correct.
 
 ### Snowflake environments
 
-When each environment is configured by hand and maintained independently, they drift apart over
-time. The developer's laptop has one version of a database driver. The CI server has another. The
-staging environment has a third. These differences are invisible until a test exercises a code
-path that behaves differently across versions. The fix is not to harmonize configurations manually
-(they will drift again) but to provision all environments from the same infrastructure code.
+When people configure each environment by hand and maintain it independently, the environments
+drift apart over time. The developer's laptop has one version of a database driver. The CI server
+has another. The staging environment has a third. These differences stay invisible until a test
+exercises a code path that behaves differently across versions.
+
+Do not harmonize configurations manually, because they will drift again. Provision all
+environments from the same infrastructure code.
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ### Manual deployments
 
 When deployment and environment setup are manual processes, subtle differences creep in. One
-developer installed a dependency a particular way. The CI server was configured by a different
-person with slightly different settings. The staging environment was set up months ago and has not
-been updated. Manual processes are never identical twice, and the variance causes environment-
+developer installed a dependency a particular way. A different person configured the CI server
+with slightly different settings. Someone set up the staging environment months ago and nobody
+has updated it. Manual processes are never identical twice, and the variance causes environment-
 dependent behavior.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
 ### Tightly coupled monolith
 
-When the application has hidden dependencies on external state (filesystem paths, network
-services, system configuration), tests that work in one environment fail in another because the
-external state differs. Well-isolated code with explicit dependencies is portable across
+Some applications have hidden dependencies on external state, such as filesystem paths, network
+services, or system configuration. Tests for these applications work in one environment and fail
+in another because the external state differs. Well-isolated code with explicit dependencies is portable across
 environments. Tightly coupled code that reaches into its environment for implicit dependencies is
 fragile.
 

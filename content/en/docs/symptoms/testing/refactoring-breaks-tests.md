@@ -24,11 +24,10 @@ they spend more time fixing tests than improving the code.
 
 ### Inverted test pyramid
 
-When the test suite is dominated by end-to-end and integration tests, those tests tend to be
-tightly coupled to implementation details - CSS selectors, API response shapes, DOM structure,
-or specific sequences of internal calls. A refactoring that changes none of the observable
-behavior still breaks these tests because they assert on how the system works rather than what
-it does.
+When end-to-end and integration tests dominate the test suite, those tests tend to couple
+tightly to implementation details. Examples include CSS selectors, API response shapes, DOM
+structure, or specific sequences of internal calls. A refactoring that changes no observable
+behavior still breaks these tests. They assert on how the system works rather than what it does.
 
 Unit tests focused on behavior ("given this input, expect this output") survive refactoring.
 Tests coupled to implementation ("this method was called with these arguments") do not.
@@ -47,11 +46,11 @@ every internal change ripples across the test suite.
 ## How to narrow it down
 
 1. **Do the broken tests assert on internal method calls, mock interactions, or DOM structure?**
-   If yes, the tests are coupled to implementation rather than behavior. This is a test design
-   issue - start with [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) for guidance
+   If yes, the tests are coupled to implementation rather than behavior. The problem is test
+   design. Start with [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) for guidance
    on building a behavior-focused test suite.
 2. **Are the broken tests end-to-end or UI tests that fail because of layout or selector
-   changes?** If yes, you have too many tests at the wrong level of the pyramid. Start with
+   changes?** If yes, too many tests sit at the wrong level of the pyramid. Start with
    [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}).
 3. **Do the broken tests span multiple modules - testing code in one area but breaking because
    of changes in another?** If yes, the problem is missing boundaries between components. Start

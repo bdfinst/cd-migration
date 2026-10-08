@@ -13,8 +13,8 @@ tags:
 ## What you are seeing
 
 A deployment goes out on Tuesday. On Thursday, a support ticket comes in: a feature is broken for
-a subset of users. The team investigates and discovers the problem was introduced in Tuesday's
-deploy. For two days, users experienced the issue while the team had no idea.
+a subset of users. The team investigates and discovers that Tuesday's deploy introduced the
+problem. For two days, users experienced the issue while the team had no idea.
 
 Or a performance degradation appears gradually. Response times creep up over a week. Nobody
 notices until a customer complains or a business metric drops. The team checks the dashboards and
@@ -23,7 +23,7 @@ cold.
 
 The team deploys carefully and then "watches for a while." Watching means checking a few URLs
 manually or refreshing a dashboard for 15 minutes. If nothing visibly breaks in that window, the
-deployment is declared successful. Problems that manifest slowly, affect a subset of users, or
+team declares the deployment successful. Problems that manifest slowly, affect a subset of users, or
 appear under specific conditions go undetected.
 
 ## Common causes
@@ -42,7 +42,7 @@ production.
 
 When the team's definition of done does not include post-deployment verification, nobody is
 responsible for confirming that the deployment is healthy. The story is "done" when the code is
-merged or deployed, not when it is verified in production. Health checks, smoke tests, and canary
+merged or deployed, not when someone verifies the change in production. Health checks, smoke tests, and canary
 analysis are not part of the workflow because the workflow ends before production.
 
 **Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})

@@ -13,19 +13,20 @@ tags:
 ## What you are seeing
 
 A developer pushes a change. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) fails on a test they did not touch, in a module they
-did not change. They click rerun. It passes. They merge. This happens multiple times a day across
-the team. Nobody investigates failures on the first occurrence because the odds favor flakiness
+did not change. They click rerun. The pipeline passes. They merge.
+
+This cycle repeats multiple times a day across the team. Nobody investigates failures on the first occurrence because the odds favor flakiness
 over a real problem.
 
-The team has adapted: retry-until-green is a routine step, not an exception. Some pipelines are
-configured to automatically rerun failed tests. Tests are tagged as "known flaky" and skipped.
+The team has adapted: retry-until-green is a routine step, not an exception. Some pipelines
+automatically rerun failed tests. The team tags tests as "known flaky" and skips them.
 Real regressions hide behind the noise because the team has been trained to ignore failures.
 
 ## Common causes
 
 ### Inverted test pyramid
 
-When the test suite is dominated by end-to-end tests, flakiness is structural. E2E tests depend
+When end-to-end tests dominate the test suite, flakiness is structural. E2E tests depend
 on network connectivity, shared test environments, external service availability, and browser
 rendering timing. Any of these can produce a different result on each run. A suite built mostly
 on E2E tests will always be flaky because it is built on non-deterministic foundations.
@@ -38,7 +39,7 @@ controls all its inputs.
 
 ### Snowflake environments
 
-When the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) environment is configured differently from other environments - or drifts over time -
+The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) environment might differ from other environments or drift over time. Then
 tests pass locally but fail in CI, or pass in CI on Tuesday but fail on Wednesday. The
 inconsistency is not in the test or the code but in the environment the test runs in.
 
@@ -50,12 +51,12 @@ class of flakiness by ensuring environments are identical and reproducible.
 
 ### Tightly coupled monolith
 
-When components share mutable state - a database, a cache, a filesystem directory - tests that
-run concurrently or in a specific order can interfere with each other. Test A writes to a shared
+Components can share mutable state, such as a database, a cache, or a filesystem directory.
+Then tests that run concurrently or in a specific order can interfere with each other. Test A writes to a shared
 table. Test B reads from the same table and gets unexpected data. The tests pass individually
 but fail together, or pass in one order but fail in another.
 
-Without clear component boundaries, tests cannot be isolated. The flakiness is a symptom of
+Without clear component boundaries, you cannot isolate tests. The flakiness is a symptom of
 architectural coupling, not a testing problem.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
