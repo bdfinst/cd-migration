@@ -16,7 +16,7 @@ This page covers the **first practical step** - documenting what actually happen
 developer finishing a change and that change running in production.
 {{% /pageinfo %}}
 
-## Why Document Before Mapping
+## Why document before mapping
 
 [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) is a powerful tool for systemic improvement. It requires measurement, cross-team
 coordination, and careful analysis. That takes time to do well, and it should not be rushed.
@@ -36,7 +36,7 @@ Document your current process first. This gives you two things:
 Quick wins build momentum. Teams that see immediate improvements are more willing to invest in
 the deeper systemic work that value stream mapping reveals.
 
-## How to Do It
+## How to do it
 
 Get the team together. Pick a recent change that went through the full process from "ready to
 push" to "running in production." Walk through every step that happened, in order.
@@ -55,7 +55,7 @@ The rules:
 - **Write it down as an ordered list.** Not a flowchart, not a diagram, not a wiki page with
   sections. A simple numbered list of steps in the order they actually happen.
 
-## What to Capture for Each Step
+## What to capture for each step
 
 For every step in the process, capture these details:
 
@@ -72,7 +72,7 @@ The wait time column is usually more revealing than the duration column. A deplo
 minutes but only happens on Tuesdays has up to 7 days of wait time. The step itself is not the
 problem - the batching is.
 
-## Example: A Typical Brownfield Process
+## Example: A typical brownfield process
 
 This is a realistic example of what a brownfield team's process might look like before any CD
 practices are adopted. Your process will differ, but the pattern of manual steps and wait times
@@ -102,7 +102,7 @@ Even before measurement or analysis, patterns jump out:
 - Step 10 is artificial batching - deploys happen on a schedule, not on demand.
 - Step 9 might be a rubber-stamp approval that adds delay without adding safety.
 
-## Spotting Quick Wins
+## Spotting quick wins
 
 Once the process is documented, look for these patterns. Each one is a potential quick win that
 the team can fix without a formal improvement initiative.
@@ -152,7 +152,7 @@ Steps that exist because of historical reasons and no longer serve a purpose:
 - **Approvals for low-risk changes.** Not every change needs the same level of scrutiny. A
   typo fix in documentation does not need a CAB review.
 
-## Quick Wins vs. Value Stream Improvements
+## Quick wins vs. value stream improvements
 
 Not everything you find in the documented process is a quick win. Distinguish between the two:
 
@@ -173,7 +173,7 @@ aligned on what actually happens, removed the obvious waste, and built some mome
 stream mapping session can focus on the systemic issues that require measurement, cross-team
 coordination, and deeper analysis.
 
-## What Comes Next
+## What comes next
 
 1. **Fix the quick wins.** Assign each one to someone with a target of this week or next week.
    Do not create a backlog of improvements that sits untouched.
@@ -183,7 +183,7 @@ coordination, and deeper analysis.
    [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) cycle to systematically
    automate and remove them.
 
-## Related Content
+## Related content
 
 - [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - The formal analysis tool for systemic improvements
 - [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - The cycle for automating and removing manual steps

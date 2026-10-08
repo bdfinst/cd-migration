@@ -10,7 +10,7 @@ description: >
 Each play targets a common delivery challenge. You can run any play in isolation or stack several as part of a broader improvement push. Most take one sprint or less to get the first results.
 {{% /pageinfo %}}
 
-## Baseline Your Delivery Metrics
+## Baseline your delivery metrics
 
 **What:** Capture two sets of numbers before making any other changes: CI health metrics
 ([integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), build success rate, time to fix a broken build) and the four
@@ -28,7 +28,7 @@ to confirm progress.
 
 ---
 
-## Run a Story Slicing Workshop
+## Run a story slicing workshop
 
 **What:** In one sprint planning session, take every story estimated at more than 2 days and break it into vertical slices that each deliver testable behavior. Do not start any story that fails this check.
 
@@ -40,7 +40,7 @@ to confirm progress.
 
 ---
 
-## Stop the Line on a Broken Pipeline
+## Stop the line on a broken pipeline
 
 **What:** For one sprint, enforce a team rule: nothing moves forward when the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is red. The whole team stops and fixes it before picking up new work.
 
@@ -52,7 +52,7 @@ to confirm progress.
 
 ---
 
-## Delete Your Long-Lived Branches
+## Delete your long-lived branches
 
 **What:** Identify every branch that has been open for more than 3 days. Merge or delete each one this week. Going forward, set a team rule that no branch lives longer than one day before integrating to trunk.
 
@@ -64,7 +64,7 @@ to confirm progress.
 
 ---
 
-## Add a Test Before Fixing the Next Bug
+## Add a test before fixing the next bug
 
 **What:** Before fixing any bug, write a failing automated test that reproduces it first. Then make the test pass. Apply this rule to every bug fixed from this point forward.
 
@@ -76,7 +76,7 @@ to confirm progress.
 
 ---
 
-## Remove One Manual Step from Your Pipeline
+## Remove one manual step from your pipeline
 
 **What:** Map every step in your deployment process. Pick the one manual step that takes the most time or requires the most coordination. Automate it this sprint.
 
@@ -88,7 +88,7 @@ to confirm progress.
 
 ---
 
-## Limit Work in Progress
+## Limit work in progress
 
 **What:** For one sprint, enforce a rule: each developer works on one story at a time to completion before starting another. No story is in progress unless someone is actively working on it right now.
 
@@ -100,7 +100,7 @@ to confirm progress.
 
 ---
 
-## Switch from Assigning Work to Pulling Work
+## Switch from assigning work to pulling work
 
 **What:** Stop pre-assigning stories to individuals at sprint planning. Instead, order the backlog
 by priority, leave all items unassigned, and have developers pull the top available item whenever
@@ -119,7 +119,7 @@ swarming increases. Knowledge of the codebase broadens across the team over time
 
 ---
 
-## Write Your Definition of Deployable
+## Write your definition of deployable
 
 **What:** As a team, decide and document exactly what "ready to deploy to production" means. List every criterion. Automate as many as possible as pipeline gates.
 

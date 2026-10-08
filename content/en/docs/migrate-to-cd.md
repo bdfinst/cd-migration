@@ -16,7 +16,7 @@ phases below provide the roadmap both approaches follow. CD adoption involves th
 team: product, development, operations, and leadership.
 {{% /pageinfo %}}
 
-## The Phases
+## The phases
 
 | Phase | Focus | Key Question |
 |-------|-------|-------------|
@@ -32,7 +32,7 @@ Most teams work across multiple phases at once - beginning Phase 2 pipeline work
 maturing Phase 1 foundations is normal and expected. The phases describe what to prioritize, not
 a strict sequence to complete before advancing.
 
-## Why CD Adoption Stalls
+## Why CD adoption stalls
 
 The most important thing to understand before starting: infrequent deployment is self-reinforcing.
 When teams deploy rarely, each deployment is large. Large deployments are risky. Risky deployments
@@ -44,7 +44,7 @@ and the deployment path more reliable. But the loop explains why the early phase
 are working against the momentum of a system that has been running in the opposite direction.
 Expect friction. It is evidence you are changing the right thing.
 
-## Conditions for Success
+## Conditions for success
 
 Technical practices alone are not enough. CD adoption succeeds when leaders understand that the
 practices in this guide are the investment, not the delay. Specifically:
@@ -58,14 +58,14 @@ practices in this guide are the investment, not the delay. Specifically:
   results without waiting for organizational consensus. Give that team cover to move slower on
   features while building the capability.
 
-## Where to Start
+## Where to start
 
 If you are unsure where to begin, start with [Phase 0: Assess]({{< relref "/docs/assess" >}}) to understand your
 current state and identify the [constraints]({{< relref "/docs/reference/glossary#constraint" >}}) holding you back.
 
 ---
 
-## Related Content
+## Related content
 
 - [For Developers]({{< relref "/docs/triage/for-developers" >}}) - Common pain points developers face before CD adoption
 - [For Managers]({{< relref "/docs/triage/for-managers" >}}) - How delivery problems appear from a management perspective
