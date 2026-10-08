@@ -77,7 +77,7 @@ cd-migration/
   layouts/                  Hugo template overrides and custom shortcodes
   _vendor/                  Vendored Hugo modules (Docsy theme)
   .github/workflows/        CI/CD pipeline definitions
-  .husky/                   Git hooks (pre-commit runs npm test)
+  .husky/                   Git hooks (pre-commit runs lint-staged, then npm test and other checks)
   hugo.toml                 Hugo configuration
   netlify.toml              Netlify deployment settings
 ```
@@ -149,12 +149,14 @@ When removing `draft: true` from a page:
 
 ### Quality Checks
 
-A pre-commit hook runs `npm test` automatically, which includes:
+A pre-commit hook runs these checks in order:
 
-1. **Markdown linting** - Enforces consistent style via markdownlint
-2. **Internal link checking** - Builds the site and validates all internal links with htmltest
+1. **Markdown auto-fix** - `lint-staged` runs `markdownlint --fix` on staged `content/**/*.md` files and re-stages the fixes. Violations it cannot fix block the commit.
+2. **`npm test`** - Markdown linting across the full content tree, plus internal link checking (builds the site and validates links with htmltest)
+3. **Layout check** - `npm run layout-check`
+4. **Triage data tests** - Playwright tests for `tests/triage-data.spec.js`
 
-Both checks must pass before a commit is accepted.
+All checks must pass before a commit is accepted.
 
 To run checks manually:
 
