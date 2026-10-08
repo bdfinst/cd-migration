@@ -45,7 +45,7 @@ Determine the mode (`review`, `rewrite`, or `draft`) and target files.
 
 ### 2. Read principles
 
-Read `principles.md` in this skill directory for the full set of writing principles.
+Read `principles.md` in this skill directory for the full set of writing principles. Read `style-rules.md` for the documentation style rules (Google style, ASD-STE100-derived precision, and Zinsser). Apply both files in every mode.
 
 ### 3. Read target files
 
@@ -55,7 +55,7 @@ Read each target file completely. For `draft` mode, read any outline or notes th
 
 #### Review mode
 
-For each file, evaluate against all principles in `principles.md`. Prioritize high-impact findings.
+For each file, evaluate against all principles in `principles.md` and all rules in `style-rules.md`. Prioritize high-impact findings.
 
 Report using this format:
 
@@ -97,7 +97,7 @@ After all files:
 
 For each file:
 
-1. Identify passages that violate the principles in `principles.md`.
+1. Identify passages that violate the principles in `principles.md` or the rules in `style-rules.md`.
 2. Rewrite those passages in place. Apply changes using Edit tool.
 3. Do not restructure sections or change heading hierarchy unless a section clearly serves two different reader moments.
 4. Preserve all front matter, shortcodes, links, and code blocks exactly.
@@ -116,7 +116,7 @@ Changes: N passages rewritten
 
 1. Determine the page type from the target path or user input (guide, anti-pattern, symptom, standalone).
 2. Read a canonical example of that page type for tone and structure.
-3. Write the full page following the appropriate template and the principles in `principles.md`.
+3. Write the full page following the appropriate template, the principles in `principles.md`, and the rules in `style-rules.md`.
 4. Write the file using the Write tool.
 5. Run `/grammar-check` on the new file.
 
@@ -144,7 +144,7 @@ This skill applies to any `.md` content file under `content/en/`. It covers:
 
 ## Notes
 
-- Focus on changes that improve the reader's experience, not on enforcing a style guide. A technically "wrong" construction that reads clearly is better than a technically "correct" construction that reads stiffly.
+- `style-rules.md` is the required baseline. Within it, focus on changes that improve the reader's experience. When a rule makes a passage read stiffly without making it clearer, prefer the clearer version and say why.
 - When reviewing tables, check whether the table format helps the reader or whether prose or a list would be clearer.
 - Do not flag things that are already working well.
 - Quote specific passages when flagging issues. "This section is unclear" is not helpful. "The sentence 'ACD treats semantic artifacts as first-class...' buries the point in abstraction" is helpful.
