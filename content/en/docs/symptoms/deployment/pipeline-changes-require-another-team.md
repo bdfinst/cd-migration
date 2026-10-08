@@ -24,7 +24,7 @@ fixed.
 
 ## Common causes
 
-### Separate Ops/Release Team
+### Separate ops/release team
 
 When a dedicated team owns the pipeline infrastructure, delivery teams have no path to change
 it themselves. The platform team controls who can modify pipeline definitions, which environments
@@ -35,7 +35,7 @@ which means most improvements never happen.
 
 **Read more:** [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}})
 
-### Pipeline Definitions Not in Version Control
+### Pipeline definitions not in version control
 
 When pipeline configurations are managed through a GUI, a proprietary tool, or some other
 mechanism outside version control, delivery teams cannot own them in the same way they own their
@@ -46,7 +46,7 @@ delivery team.
 
 **Read more:** [Pipeline Definitions Not in Version Control]({{< relref "/docs/anti-patterns/pipeline/pipeline-not-versioned" >}})
 
-### No Infrastructure as Code
+### No infrastructure as code
 
 When infrastructure is configured manually rather than defined as code, changes require access
 to systems and knowledge that delivery teams typically do not have. A delivery team cannot
@@ -73,7 +73,7 @@ team for every modification.
 
 ---
 
-## Related Content
+## Related content
 
 - [Waiting on Platform Team]({{< relref "/docs/symptoms/flow/work-management/waiting-on-platform-team" >}}) - Broader pattern of infrastructure blocked by a separate team
 - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}) - Approval processes that slow pipeline changes further

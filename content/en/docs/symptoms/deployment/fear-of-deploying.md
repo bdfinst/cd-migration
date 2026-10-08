@@ -30,7 +30,7 @@ likely to fail. The fear becomes self-reinforcing.
 
 ## Common causes
 
-### Manual Deployments
+### Manual deployments
 
 When deployment requires human execution of steps, each deployment carries human error risk. The
 team has experienced deployments where a step was missed, a script was run in the wrong order, or
@@ -40,7 +40,7 @@ process-level risk.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Missing Deployment Pipeline
+### Missing deployment pipeline
 
 When there is no automated path from commit to production, the team has no confidence that the
 deployed [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has been properly built and tested. Did someone run the tests? Are we deploying
@@ -49,7 +49,7 @@ enforces these checks, every deployment requires the team to manually verify the
 
 **Read more:** [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
-### Blind Operations
+### Blind operations
 
 When the team cannot observe production health after a deployment, they have no way to know
 quickly whether the deploy succeeded or failed. The fear is not only that something will break but
@@ -58,7 +58,7 @@ checks transform deployment from "deploy and hope" to "deploy and verify."
 
 **Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
-### Manual Testing Only
+### Manual testing only
 
 When the team has no automated tests, they have no confidence that the code works before
 deploying it. Manual testing provides some coverage, but it is never exhaustive, and the team
@@ -68,7 +68,7 @@ with confidence.
 
 **Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
-### Monolithic Work Items
+### Monolithic work items
 
 When changes are large, each deployment carries more risk because more code is changing at
 once. A deployment with 200 lines changed across 3 files is easy to reason about and easy to roll
@@ -99,7 +99,7 @@ deployments reduce risk per deployment rather than accumulating it.
 
 **Ready to fix this?** The most common cause is [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Fear of deploying leads to batching, which increases risk further
 - [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - Teams afraid to deploy often need stabilization periods

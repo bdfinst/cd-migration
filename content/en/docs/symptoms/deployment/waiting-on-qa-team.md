@@ -23,7 +23,7 @@ team's release dates become determined by QA queue depth, not by development com
 
 ## Common causes
 
-### Siloed QA Team
+### Siloed QA team
 
 When quality assurance is a separate team rather than a shared practice embedded in development,
 testing becomes a handoff rather than a continuous activity. Developers write code and hand it
@@ -34,7 +34,7 @@ than an avoidable outcome.
 
 **Read more:** [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}})
 
-### QA Signoff as a Release Gate
+### QA signoff as a release gate
 
 When QA sign-off is a formal gate that must be passed before any release, the gate creates a
 queue. Features arrive at the gate in batches. QA must process all of them before anything
@@ -58,7 +58,7 @@ disruptive to release schedules.
 
 ---
 
-## Related Content
+## Related content
 
 - [Security Review Bottleneck]({{< relref "/docs/symptoms/deployment/security-review-bottleneck" >}}) - Same structural pattern with a security team gate
 - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}) - Additional approval gates that accumulate before release

@@ -28,7 +28,7 @@ work.
 
 ## Common causes
 
-### Manual Deployments
+### Manual deployments
 
 When deployment is a manual process (running scripts, clicking through UIs, executing a runbook),
 the person deploying needs the environment to hold still. Any change to main during the deployment
@@ -38,7 +38,7 @@ sequence without requiring a stable pause.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Integration Deferred
+### Integration deferred
 
 When the team does not have a reliable [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) process, merging to main is itself risky. If the build
 breaks after a merge, the deployment is blocked. The team freezes merges not only to protect the
@@ -47,7 +47,7 @@ reliable, merging and deploying could happen concurrently because main would alw
 
 **Read more:** [Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}})
 
-### Missing Deployment Pipeline
+### Missing deployment pipeline
 
 When there is no pipeline that takes a specific commit through build, test, and deploy as a single
 atomic operation, the team must manually coordinate which commit gets deployed. A pipeline pins
@@ -73,7 +73,7 @@ freeze merges to prevent the target from moving while they deploy.
 
 **Ready to fix this?** The most common cause is [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - Freezes and hardening sprints often go together
 - [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Freezes are a symptom of high-risk release processes
