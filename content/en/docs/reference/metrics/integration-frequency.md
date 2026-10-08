@@ -51,13 +51,13 @@ Alternatively, count commits to the default branch if pull requests are not used
 | High   | Once per day                                  |
 | Elite  | Multiple times per day                        |
 
-The elite target aligns with [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), where developers push small
+The elite target aligns with [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}). Developers push small
 changes to the trunk multiple times daily and rely on automated testing and feature
 flags to manage risk.
 
 ## Common pitfalls
 
-- **Meaningless commits.** Teams may inflate the count by integrating trivial or
+- **Meaningless commits.** Teams might inflate the count by integrating trivial or
   empty changes. Pair this metric with code review quality and defect rate.
 - **Breaking the trunk.** Pushing faster without adequate test coverage leads to a
   red build and slows the entire team. Always pair Integration Frequency with build

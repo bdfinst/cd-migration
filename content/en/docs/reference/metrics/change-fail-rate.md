@@ -8,9 +8,9 @@ description: >
 
 ## Definition
 
-Change Fail Rate measures the percentage of deployments to production that result
-in degraded service, negative customer impact, or require immediate remediation
-such as a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), hotfix, or patch.
+Change Fail Rate measures the percentage of production deployments that cause
+degraded service or negative customer impact. It also counts deployments that need
+immediate remediation such as a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}), hotfix, or patch.
 
 {{< card code=true header="**Change Fail Rate formula**" lang="text" >}}
 changeFailRate = failedChangeCount / totalChangeCount * 100
@@ -23,7 +23,7 @@ A "failed change" includes any deployment that:
 - Triggers a production incident attributed to the change.
 - Requires manual intervention to restore service.
 
-This is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics. It measures the stability side of
+Change Fail Rate is one of the four [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) key metrics. It measures the stability side of
 delivery performance, complementing the throughput metrics of
 [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}).
 Change Fail Rate is a lagging outcome metric: it reflects the cumulative quality of your
@@ -46,9 +46,9 @@ Data sources:
   automated rollback.
 - **Hotfix tracking:** deployments tagged as hotfixes or emergency changes.
 
-Automate the classification where possible. For example, if a deployment is
+Automate the classification where possible. For example, a deployment might be
 followed by another deployment of the same service within a defined window, such as
-one hour, flag the original as a potential failure for review.
+one hour. Flag the original as a potential failure for review.
 
 ## Targets
 
@@ -84,9 +84,9 @@ a problem.
 
 Change Fail Rate is the primary quality signal in a Continuous Delivery [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}):
 
-- **Validates pipeline quality gates.** A rising change fail rate indicates that
-  the automated tests, security scans, and quality checks in the pipeline are not
-  catching enough defects. Each failure is an opportunity to add or improve a
+- **Validates pipeline quality gates.** A rising change fail rate shows that the
+  pipeline's automated tests, security scans, and quality checks miss too many
+  defects. Each failure is an opportunity to add or improve a
   quality gate.
 - **Enables confidence in frequent releases.** Teams will only deploy frequently
   if they trust the pipeline. A low change fail rate builds this trust and
@@ -96,7 +96,7 @@ Change Fail Rate is the primary quality signal in a Continuous Delivery [pipelin
   releases. Improving [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) naturally
   improves this metric.
 - **Drives root cause analysis.** Each failed change should trigger a blameless
-  investigation: what automated check could have caught this? The answers feed
+  investigation: what automated check could have caught the failure? The answers feed
   directly into pipeline improvements.
 - **Balances throughput metrics.** Change Fail Rate is the essential guardrail for
   [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}). If

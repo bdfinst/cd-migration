@@ -8,9 +8,9 @@ description: >
 
 ## Definition
 
-Build Duration measures the elapsed time from when a developer pushes a commit
+Build Duration measures the elapsed time from a developer's commit push
 until the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) produces a deployable [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) and all automated quality
-gates have passed. This includes compilation, unit tests, integration tests, static
+gates pass. Build Duration includes compilation, unit tests, integration tests, static
 analysis, security scans, and artifact packaging.
 
 Build Duration represents the minimum possible time between deciding to make a
@@ -22,8 +22,8 @@ respond to production incidents.
 buildDuration = artifactReadyTimestamp - commitPushTimestamp
 {{< /card >}}
 
-This metric is sometimes referred to as "pipeline cycle time" or "CI cycle time."
-The book *Accelerate* references it as part of "hard lead time."
+Some teams call this metric "pipeline cycle time" or "CI cycle time."
+The book *Accelerate* treats it as part of "hard lead time."
 
 ## How to measure
 
@@ -64,8 +64,8 @@ cost of fixing failures.
 - **Removing tests to hit targets.** Reducing test count or skipping test types
   (integration, security) lowers build duration but degrades quality. Always pair
   this metric with [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) and defect rate.
-- **Ignoring queue time.** If builds wait in a queue before execution, the
-  developer experiences the queue time as part of the feedback delay even though it
+- **Ignoring queue time.** Builds might wait in a queue before execution. The
+  developer experiences queue time as part of the feedback delay, even though it
   is not technically "build" time. Measure wall-clock time from commit to result.
 - **Optimizing the wrong stage.** Profile the pipeline before optimizing. Often a
   single slow test suite or a sequential step that could run in parallel dominates
@@ -103,4 +103,4 @@ To improve Build Duration:
 - **Cache aggressively.** Cache dependencies, Docker layers, and compilation
   artifacts between builds.
 - **Set a build time budget.** Alert the team whenever a new test or step pushes
-  the build past your target, so test efficiency is continuously maintained.
+  the build past your target. The alert keeps test efficiency high over time.

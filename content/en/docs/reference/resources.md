@@ -7,7 +7,7 @@ description: >
 ---
 
 This page collects the books, websites, and videos that inform the practices in this migration
-guide. Resources are organized by topic and annotated with which migration phase they are most
+guide. The page groups resources by topic and notes the migration phase each one is most
 relevant to.
 
 ## Books
@@ -16,8 +16,8 @@ relevant to.
 
 **Modern Software Engineering** by Dave Farley
 : Farley's broader take on what it means to do software engineering well. Covers the principles
-  behind CD - iterating toward a goal, getting fast feedback, working in small steps - and
-  connects them to test-driven development, managing complexity, and designing for testability.
+  behind CD: iterating toward a goal, getting fast feedback, and working in small steps. Connects
+  these principles to test-driven development, managing complexity, and designing for testability.
   Useful for teams that want to understand the why behind CD practices, not only the how.
 : *Most relevant to: All phases*
 
@@ -204,7 +204,7 @@ If you are starting your migration and want to read in the most useful order:
 
 {{% alert title="Migration Tip" %}}
 You do not need to read all of these before starting your migration. Start with the practices
-in Phase 1, read *Accelerate* for the business case, and refer to the other resources as you
+in Phase 1 and read *Accelerate* for the business case. Refer to the other resources as you
 reach the relevant migration phase. The most important thing is to start delivering
 improvements, not to finish a reading list.
 {{% /alert %}}

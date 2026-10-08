@@ -6,14 +6,14 @@ description: >
   A fully independent pipeline pattern for teams deploying their own services in any order, with API contract verification replacing integration testing.
 ---
 
-This is the target architecture for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) at scale. Each team owns an
+Independent teams with independent deployables is the target architecture for [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) at scale. Each team owns an
 independently [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) service with its own [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), its own release cadence, and
 its own path to production. No team waits for another team to deploy. No integration
 pipeline serializes their work. The only shared infrastructure is the API contract
 layer that defines how services communicate.
 
-This architecture demands disciplined API management. Without it, independent deployment
-is an illusion - teams deploy whenever they want, but they break each other constantly.
+This architecture demands disciplined API management. Without API management, independent
+deployment is an illusion. Teams deploy whenever they want, but they break each other constantly.
 
 ```mermaid
 graph TD
@@ -86,7 +86,7 @@ graph TD
 - **Fully independent deployment**: Each team deploys on its own schedule. Team A can
   deploy ten times a day while Team C deploys once a week. No coordination is required.
 - **No shared integration pipeline**: There is no fan-in step. Each pipeline goes
-  straight from [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) creation to production. This eliminates the integration bottleneck
+  straight from [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) creation to production, which eliminates the integration bottleneck
   entirely.
 - **Contract tests replace integration tests**: Instead of testing all services together,
   each team verifies its API contracts independently. The level of contract verification
@@ -98,13 +98,13 @@ graph TD
 ## Why API management is critical
 
 Independent deployment only works when teams can change their service without breaking
-others. This requires a shared understanding of API boundaries that is enforced
-automatically, not through meetings or documents that drift.
+others. Teams need a shared understanding of API boundaries, enforced automatically, not
+through meetings or documents that drift.
 
 **Without API management, independent pipelines create independent failures.** Teams
 deploy incompatible changes, discover the breakage in production, and revert to
-coordinated releases to stop the bleeding. This is worse than the multi-team architecture
-because it creates the illusion of independence while delivering the reliability of chaos.
+coordinated releases to stop the bleeding. The result is worse than the multi-team architecture.
+It creates the illusion of independence while delivering the reliability of chaos.
 
 ### What API management requires
 
@@ -124,15 +124,15 @@ because it creates the illusion of independence while delivering the reliability
    - Migrate consumers to the new version
    - Remove the old version only after all consumers have migrated
 
-4. **Schema registry**: A central registry (Confluent Schema Registry, a simple artifact
-   repository, or a Pact Broker where consumer-driven contracts are used) stores published
-   schemas. Pipelines pull from this registry to run compatibility checks. The registry is
-   shared infrastructure, but it does not gate deployments - it provides data that each
-   team's pipeline uses to make its own go/no-go decision.
+4. **Schema registry**: A central registry stores published schemas. Examples include
+   Confluent Schema Registry, a simple artifact repository, or a Pact Broker where teams use
+   consumer-driven contracts. Pipelines pull from this registry to run compatibility checks.
+   The registry is shared infrastructure, but it does not gate deployments. It provides data
+   that each team's pipeline uses to make its own go/no-go decision.
 
-5. **API versioning strategy**: Teams agree on a versioning convention (URL path versioning,
-   header versioning, or semantic versioning for message schemas) and enforce it through
-   pipeline gates. The convention must be simple enough that every team follows it without
+5. **API versioning strategy**: Teams agree on a versioning convention and enforce it
+   through pipeline gates. Common conventions are URL path versioning, header versioning,
+   or semantic versioning for message schemas. The convention must be simple enough that every team follows it without
    deliberation.
 
 ### Contract verification approaches
@@ -151,9 +151,9 @@ Most organizations use a mix. Internal teams with shared tooling can adopt consu
 contracts. Teams consuming third-party or cross-organization APIs use provider schema
 compatibility checks and provider-maintained consumer tests.
 
-The critical requirement is not which approach you use but that **every provider pipeline
+The approach you use matters less than one critical requirement: **every provider pipeline
 verifies backward compatibility before deployment**. The minimum viable contract
-verification is an automated schema diff against the published API - if the diff contains
+verification is an automated schema diff against the published API. If the diff contains
 a breaking change, the pipeline fails.
 
 ### Additional quality gates for distributed architectures
@@ -179,22 +179,22 @@ This architecture is the goal for organizations with:
 ## When this architecture fails
 
 - **Shared database schemas**: Multiple services can share a database engine without
-  problems. The failure mode is shared schemas - when Service A and Service B both read
-  from and write to the same tables, a schema migration by one service can break the
+  problems. The failure mode is shared schemas. Service A and Service B might both read
+  from and write to the same tables. Then a schema migration by one service can break the
   other's queries. Each service must own its own schema. If two services need the same
   data, expose it through an API or event, not through direct table access.
-- **Synchronous dependency chains**: If Service A calls Service B which calls Service C
-  in the request path, a deployment of C can break A through B. Circuit breakers and
-  fallbacks are required at every boundary, and contract tests must cover failure modes,
+- **Synchronous dependency chains**: Service A might call Service B, which calls Service C
+  in the request path. A deployment of C can then break A through B. Circuit breakers and
+  fallbacks are required at every boundary. Contract tests must cover failure modes,
   not only success paths.
-- **No contract verification discipline**: If teams skip backward compatibility checks
-  or let contract test failures slide, breakage shifts from the pipeline to production.
+- **No contract verification discipline**: Teams might skip backward compatibility checks
+  or let contract test failures slide. Then breakage shifts from the pipeline to production.
   The architecture degrades into uncoordinated deployments with production as the
   integration environment. At minimum, every provider must run automated schema
   compatibility checks - even without consumer-driven contracts.
 - **Missing observability**: When services deploy independently, debugging production
   issues requires distributed tracing, correlated logging, and SLO monitoring across
-  service boundaries. Without this, independent deployment means independent
+  service boundaries. Without that observability, independent deployment means independent
   troubleshooting with no way to trace cause and effect.
 
 ## Relationship to the other architectures
@@ -207,10 +207,11 @@ Architecture 3 is where Architecture 2 teams evolve to. The progression is:
 3. **Independent teams, independent deployables** - multiple teams, fully independent
    pipelines, contract-based integration
 
-The move from 2 to 3 happens incrementally. Extract one service at a time. Give it
-its own pipeline. Establish contract tests between it and the monolith. When the contract
-tests are reliable, stop running the extracted service's code through the integration
-pipeline. Repeat until the integration pipeline is empty.
+The move from 2 to 3 happens incrementally. Extract one service at a time. Give the
+extracted service its own pipeline. Establish contract tests between the service and the monolith.
+
+When the contract tests are reliable, stop running the extracted service's code through the
+integration pipeline. Repeat until the integration pipeline is empty.
 
 ## Related content
 

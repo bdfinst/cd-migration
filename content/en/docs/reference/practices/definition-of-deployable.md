@@ -8,7 +8,7 @@ description: >
 
 ## Definition
 
-The "definition of deployable" is your organization's agreed-upon set of non-negotiable quality criteria that every artifact must pass before it can be deployed to any environment. This definition should be automated, enforced by the pipeline, and treated as the authoritative verdict on whether a change is ready for deployment.
+The "definition of deployable" is your organization's agreed-upon set of non-negotiable quality criteria. Every artifact must pass these criteria before you deploy it to any environment. Automate the definition, enforce it in the pipeline, and treat it as the authoritative verdict on whether a change is ready for deployment.
 
 ## Key principles
 
