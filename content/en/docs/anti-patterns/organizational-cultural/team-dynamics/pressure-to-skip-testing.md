@@ -93,7 +93,7 @@ The pipeline runs, tests pass, the change ships. When the test suite has been ho
 months of skipped tests, that step becomes unpredictable. Some changes pass cleanly. Others
 trigger production incidents that take days to resolve.
 
-The manager who pressured the team to skip tests in order to hit a deadline ends up with less
+The manager who pressured the team to skip tests to hit a deadline ends up with less
 predictable timelines, not more. Each skipped test is a small increase in the probability that a
 future change will cause an unexpected failure. Over months, the cumulative probability climbs
 until production incidents become a regular occurrence rather than an exception.
