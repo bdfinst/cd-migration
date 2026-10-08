@@ -226,7 +226,7 @@ to decompose, tests that are slow, reviews that are bottlenecked - and each prob
 solving because it blocks the flow of work.
 
 The goal is continuous integration: every developer integrates to trunk at least once per day.
-At that point, "branches" are just short-lived workspaces that exist for hours, and merging is
+At that point, "branches" are short-lived workspaces that exist for hours, and merging is
 a non-event.
 
 ## Measuring Progress

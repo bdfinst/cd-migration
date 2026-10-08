@@ -96,7 +96,7 @@ little, with no clear pattern.
 
 In a pull system, workloads self-balance: whoever finishes first pulls the next item. Bottlenecks
 are visible. WIP limits actually work because the team collectively decides what to start. The team
-automatically adapts to priority changes because the next person who finishes simply pulls whatever
+automatically adapts to priority changes because the next person who finishes pulls whatever
 is now most important.
 
 ### It removes team ownership
@@ -119,7 +119,7 @@ another developer starts over - rereading requirements, reverse-engineering half
 rediscovering decisions that were never shared. In a pull system, the team maintains context on
 in-progress work because anyone might have pulled it, standups focus on the work rather than
 individual status, and pairing spreads knowledge continuously. When someone is unavailable, the
-next person simply picks up the item with enough shared context to continue.
+next person picks up the item with enough shared context to continue.
 
 ### Impact on continuous delivery
 

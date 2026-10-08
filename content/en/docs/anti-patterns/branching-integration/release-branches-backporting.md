@@ -181,7 +181,7 @@ Reducing upgrade friction reduces the business pressure to maintain old versions
    contract while the implementation moves forward.
 
 The goal is that upgrading from N-1 to N is low-risk and well-supported. Customers who can
-upgrade easily will, which reduces the population on old versions.
+upgrade with little effort will, which reduces the population on old versions.
 
 ### Step 4: Replace backporting with forward-only fixes on supported versions (Weeks 4-8)
 
@@ -217,7 +217,7 @@ pass.
 
 | Objection | Response |
 |-----------|----------|
-| "Enterprise customers need version stability" | Stability comes from reliable software and good testing, not from freezing the codebase. A customer on a fixed version still gets bugs and security vulnerabilities - they just do not get the fixes either. Feature flags provide stability for individual features without freezing the entire release. |
+| "Enterprise customers need version stability" | Stability comes from reliable software and good testing, not from freezing the codebase. A customer on a fixed version still gets bugs and security vulnerabilities - they do not get the fixes either. Feature flags provide stability for individual features without freezing the entire release. |
 | "We are contractually obligated to support version N" | A defined support window does not mean unlimited support. Work with legal and sales to scope support commitments to a finite window. Open-ended support obligations grow into maintenance traps. |
 | "Merging branches forward creates conflicts too" | Forward merges are lower-risk than backports because the merge direction follows the chronological development. The conflicts that exist reflect genuine code evolution. Invest the effort in forward merges and retire branches on schedule rather than maintaining an ever-growing backward-facing merge burden. |
 | "Customers won't upgrade even if we ask them to" | Some will not. That is why the support policy must have teeth. After the policy window, the supported upgrade path is to the current version. Continued support for unsupported versions is a separate, charged engagement, not a default obligation. |

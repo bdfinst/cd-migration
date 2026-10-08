@@ -18,7 +18,7 @@ tags:
 
 ## What This Looks Like
 
-When a release is approaching, the team does not simply deploy trunk. Instead, someone - usually
+When a release is approaching, the team does not deploy trunk as it stands. Instead, someone - usually
 a release engineer or a senior developer - reviews the commits that have landed since the last
 release and selects which ones should go out. Some commits are approved. Others are held back
 because the feature is not ready, the ticket was not signed off, or there is uncertainty about
@@ -68,7 +68,7 @@ a shared utility function that Commit C also uses. Commit B was excluded. Withou
 utility function behaves differently than it does on trunk. The release branch has a combination
 of code that never existed as a coherent state during development.
 
-When trunk is always deployable, the release is simply a promotion of a tested, coherent state.
+When trunk is always deployable, the release is a promotion of a tested, coherent state.
 Every commit on trunk was tested in the context of all previous commits. There are no cherry-pick
 combinations to reason about.
 
@@ -79,7 +79,7 @@ manually. When the release branch needs a fix, the fix must often be applied to 
 branch and trunk, a process known as backporting. Backporting is frequently forgotten, which means
 the same bug reappears in the next release.
 
-The rework is not just the cherry-pick operations themselves. It includes the review cycles: the
+The rework goes beyond the cherry-pick operations themselves. It includes the review cycles: the
 meeting to decide which commits are included, the re-testing of the release branch as a distinct
 artifact, the investigation of bugs that appear only on the release branch, and the backport work.
 All of that effort is overhead that produces no new functionality.

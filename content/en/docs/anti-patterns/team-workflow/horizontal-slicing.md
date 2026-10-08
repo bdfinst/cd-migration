@@ -176,7 +176,7 @@ Pick one upcoming feature and practice reslicing it:
 
 Each slice is independently deployable within the team's domain. The UI service (item 4) treats the
 order service's discount response as a contract. It can be built and deployed separately once the
-contract is defined, just like any other service integration.
+contract is defined, like any other service integration.
 
 ### Step 4: Treat the UI as a service
 
