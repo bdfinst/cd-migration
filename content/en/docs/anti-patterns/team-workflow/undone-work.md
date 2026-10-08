@@ -18,10 +18,10 @@ tags:
 
 ## What this looks like
 
-A developer moves a story to "Done." The code is merged. The pull request is closed. But the
-feature is not actually in production. It is waiting for a downstream team to validate. Or it is
-waiting for a manual deployment. Or it is waiting for a QA sign-off that happens next week. The
-board says "Done." The software says otherwise.
+A developer moves a story to "Done." The code is merged and the pull request is closed. But the
+feature is not actually in production. It is waiting for a downstream team to validate it, for a
+manual deployment, or for a QA sign-off that happens next week. The board says "Done," but the
+software says otherwise.
 
 Common variations:
 
@@ -51,9 +51,9 @@ This gap hides risk, delays feedback, and erodes trust in the team's metrics.
 
 When the definition of done does not include validation and deployment, those steps are treated
 as afterthoughts. Testing that happens days after the code was written is less effective because
-the developer's context has faded. Validation by an external team that did not participate in the
-development catches surface issues but misses the subtle defects that only someone with full
-context would spot.
+the developer's context has faded. An external team that did not participate in the development
+often does the validation. That team catches surface issues but misses the subtle defects that
+only someone with full context would spot.
 
 When done means "in production and verified," the team builds validation into their workflow
 rather than deferring it. Quality checks happen while context is fresh, and the team owns the full
@@ -82,7 +82,7 @@ deployment. True cycle time (from start to production) is much longer than repor
 
 ### Impact on continuous delivery
 
-CD requires that every change the team completes is genuinely deployable. Undone work breaks this
+CD requires that every change the team completes is genuinely deployable. Undone work breaks that requirement
 by creating a backlog of changes that are "finished" but not deployed. The pipeline may be
 technically capable of deploying at any time, but the changes in it have not been validated. The
 team cannot confidently deploy because they do not know if the "done" code actually works.
@@ -109,8 +109,8 @@ is actually stuck.
 ### Step 3: Pull validation into the team
 
 If external validation is a bottleneck, bring the validators onto the team or teach the team to
-do the validation themselves. The goal is to eliminate the handoff. When the developer who wrote
-the code also validates it (or pairs with someone who can), the feedback loop is immediate and
+do the validation themselves. The goal is to eliminate the handoff. Suppose the developer who wrote
+the code also validates it (or pairs with someone who can). The feedback loop is immediate and
 the hidden queue disappears.
 
 If the external team cannot be embedded, negotiate a service-level agreement for validation

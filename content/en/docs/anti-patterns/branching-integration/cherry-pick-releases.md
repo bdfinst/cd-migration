@@ -18,16 +18,20 @@ tags:
 
 ## What this looks like
 
-When a release is approaching, the team does not deploy trunk as it stands. Instead, someone - usually
-a release engineer or a senior developer - reviews the commits that have landed since the last
-release and selects which ones should go out. Some commits are approved. Others are held back
-because the feature is not ready, the ticket was not signed off, or there is uncertainty about
-whether the code is safe. The selected commits are cherry-picked onto a release branch and tested
+When a release is approaching, the team does not deploy trunk as it stands. Instead, someone
+reviews the commits that have landed since the last release and selects which ones should go out.
+That person is usually a release engineer or a senior developer. Some commits are approved. Others
+are held back because the feature is not ready, the ticket was not signed off, or nobody is sure
+the code is safe.
+
+The selected commits are cherry-picked onto a release branch and tested
 there before deployment.
 
 The decision meeting runs long. People argue about which commits are safe to include. The release
 engineer needs to understand the implications of including Commit A without Commit B, which it
-might depend on. Sometimes a cherry-pick causes a conflict because the selected commits assumed
+might depend on.
+
+Sometimes a cherry-pick causes a conflict because the selected commits assumed
 an ordering that is now violated. The release branch needs its own fixes. By the time the release
 is ready, the release branch has diverged from trunk, and the next release cycle starts with the
 same conversation.
@@ -57,7 +61,9 @@ around it while making it more expensive and harder to fix.
 
 ### It reduces quality
 
-Bugs that never existed on trunk appear on the release branch because the cherry-picked combination of commits was never tested as a coherent system. That is a class of defect the team creates by doing the cherry-pick. Cherry-picking changes the context in which code is tested. Trunk has commits in the order they
+Bugs that never existed on trunk appear on the release branch because the cherry-picked combination of commits was never tested as a coherent system. That is a class of defect the team creates by doing the cherry-pick.
+
+Cherry-picking changes the context in which code is tested. Trunk has commits in the order they
 were written, with all their dependencies. A cherry-picked release branch has a subset of those
 commits in a different order, possibly with conflicts and manual resolutions layered on top. The
 release branch is a different artifact than trunk. Tests that pass on trunk may not pass - or may
@@ -79,9 +85,10 @@ manually. When the release branch needs a fix, the fix must often be applied to 
 branch and trunk, a process known as backporting. Backporting is frequently forgotten, which means
 the same bug reappears in the next release.
 
-The rework goes beyond the cherry-pick operations themselves. It includes the review cycles: the
-meeting to decide which commits are included, the re-testing of the release branch as a distinct
-artifact, the investigation of bugs that appear only on the release branch, and the backport work.
+The rework goes beyond the cherry-pick operations themselves. It includes the meeting to decide
+which commits are included and the re-testing of the release branch as a distinct artifact. It
+also includes the investigation of bugs that appear only on the release branch, and the backport
+work.
 All of that effort is overhead that produces no new functionality.
 
 When trunk is always deployable, the release process is promotion and verification - testing a
@@ -91,26 +98,32 @@ is no branch.
 ### It makes delivery timelines unpredictable
 
 The cherry-pick decision process cannot be time-boxed reliably. The release engineering team does
-not know in advance how many commits will need review, how many conflicts will arise, or how much
-the release branch will diverge from trunk. The release date slips not because development is
+not know in advance how many commits will need review or how many conflicts will arise. Nor does it
+know how much the release branch will diverge from trunk. The release date slips not because development is
 late but because the release process itself takes longer than expected.
 
-Product managers and stakeholders experience this as "the release is ready, so why isn't it
+Product managers and stakeholders experience the delay as "the release is ready, so why isn't it
 deployed?" The code is complete. The features are tested. But the team is still in the cherry-pick
 and release-branch-testing phase, which can add days to what appears complete from the outside.
 
 The process also creates a queuing effect. When the release branch diverges far enough from trunk,
-the divergence blocks new development on trunk because developers are unsure whether their changes
-will conflict with the release branch activity. Work pauses while the release is sorted out. The
+the divergence blocks new development on trunk. Developers are unsure whether their changes will
+conflict with the release branch activity. Work pauses while the release is sorted out. The
 pause is unplanned and difficult to budget in advance.
 
 ### It signals a broken relationship with trunk
 
-Each release cycle spent cherry-picking is a cycle not spent fixing the underlying problem. The process contains the damage while the root cause grows more expensive to address. Cherry-pick releases are a symptom, not a root cause. The reason the team cherry-picks is that
-trunk is not trusted. Trunk is not trusted because incomplete features are merged before they are
-safe to deploy, because the automated test suite does not provide sufficient confidence, or because
-the team has no mechanism for hiding partially complete work from users. The cherry-pick process
-is a compensating control that addresses the symptom while the root cause persists.
+Each release cycle spent cherry-picking is a cycle not spent fixing the underlying problem. The process contains the damage while the root cause grows more expensive to address.
+
+Cherry-pick releases are a symptom, not a root cause. The team cherry-picks because trunk is not
+trusted. Trunk is not trusted for one of three reasons:
+
+- Incomplete features are merged before they are safe to deploy.
+- The automated test suite does not provide sufficient confidence.
+- The team has no mechanism for hiding partially complete work from users.
+
+The cherry-pick process is a compensating control that addresses the symptom while the root cause
+persists.
 
 The cherry-pick process grows more expensive as more code is held back from trunk. Eventually
 the team has a de-facto release branch strategy indistinguishable from the anti-patterns described
@@ -126,8 +139,8 @@ The cherry-pick process also makes deployment frequency a discrete, expensive ev
 routine operation. CD requires that deployment is cheap enough to do many times per day. If the
 deployment process includes a review meeting, a branch creation, a targeted test cycle, and a
 backport operation, it is not cheap. Teams with cherry-pick releases are typically limited to
-weekly or monthly releases, which means bugs take weeks to reach users and business value is
-delayed proportionally.
+weekly or monthly releases. Bugs take weeks to reach users, and business value is delayed
+proportionally.
 
 ## How to fix it
 
@@ -189,8 +202,9 @@ the wrong place. Move it to before trunk integration.
 2. Once approved, the branch is merged to trunk.
 3. Trunk is always in an approved state.
 
-This is a workflow change, not a technical change. It requires that product managers review work
-in progress rather than waiting for a release candidate. Most find this easier, not harder, because
+Moving approval is a workflow change, not a technical change. It requires that product managers
+review work in progress rather than waiting for a release candidate. Most find early review easier,
+not harder, because
 they can give feedback while the developer is still working rather than after everything is frozen.
 
 ### Step 5: Deploy trunk directly on a fixed cadence (weeks 4-6)

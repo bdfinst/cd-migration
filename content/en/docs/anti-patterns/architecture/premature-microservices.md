@@ -20,7 +20,9 @@ tags:
 
 The team split their application into services because "microservices are how you do DevOps." The
 boundaries might even be reasonable. Each service owns its domain. Contracts are versioned. The
-architecture diagrams look clean. But the team is six developers, the application handles modest
+architecture diagrams look clean.
+
+But the team is six developers, the application handles modest
 traffic, and nobody has ever needed to scale one component independently of the others.
 
 The team now maintains a dozen repositories, a dozen pipelines, a dozen deployment configurations,
@@ -47,24 +49,25 @@ Common variations:
   files manually. The operational maturity does not match the architectural complexity.
 
 The telltale sign: the team spends more time on service infrastructure, cross-service debugging,
-and pipeline maintenance than on delivering features, and nobody can name the specific problem
-that microservices solved.
+and pipeline maintenance than on delivering features. Nobody can name the specific problem that
+microservices solved.
 
 ## Why this is a problem
 
-Microservices solve specific problems at specific scales: enabling independent deployment for
-large organizations, allowing components to scale independently under different load profiles, and
-letting autonomous teams own their domain end-to-end. When none of these problems exist, every
+Microservices solve specific problems at specific scales. They enable independent deployment for
+large organizations and let components scale independently under different load profiles. They
+also let autonomous teams own their domain end-to-end. When none of these problems exist, every
 service boundary is pure overhead.
 
 ### It reduces quality
 
-A distributed system introduces failure modes that do not exist in a monolith: network partitions,
-partial failures, message ordering issues, and data consistency challenges across service
-boundaries. Each requires deliberate engineering to handle correctly. A team that adopted
-microservices without distributed-systems experience will get these wrong. Services will fail
-silently when a dependency is slow. Data will become inconsistent because transactions do not span
-service boundaries. Retry logic will be missing or incorrect.
+A distributed system introduces failure modes that do not exist in a monolith. These include
+network partitions, partial failures, message ordering issues, and data consistency challenges
+across service boundaries. Each failure mode requires deliberate engineering to handle correctly. A
+team that adopted microservices without distributed-systems experience will get these wrong.
+
+Services will fail silently when a dependency is slow. Data will become inconsistent because
+transactions do not span service boundaries. Retry logic will be missing or incorrect.
 
 A well-structured monolith avoids all of these failure modes. Function calls within a process are
 reliable, fast, and transactional. The quality bar for a monolith is achievable by any team. The
@@ -73,10 +76,10 @@ quality bar for a distributed system requires specific expertise.
 ### It increases rework
 
 The operational tax of microservices is proportional to the number of services. Updating a shared
-library means updating it in every repository. A framework upgrade requires running every pipeline.
+library means updating it in every repository, and a framework upgrade requires running every pipeline.
 A cross-cutting concern (logging format change, authentication update, error handling convention)
-means touching every service. In a monolith, these are single changes. In a microservices
-architecture, they are multiplied by the service count.
+means touching every service. In a monolith, each of these is a single change. In a microservices
+architecture, each is multiplied by the service count.
 
 This tax is worth paying when the benefits are real (independent scaling, team autonomy). When the
 benefits are theoretical, the tax is pure waste.
@@ -84,9 +87,8 @@ benefits are theoretical, the tax is pure waste.
 ### It makes delivery timelines unpredictable
 
 Distributed-system problems are hard to diagnose. A latency spike in one service causes timeouts
-in three others. The developer investigating the issue traces the request across services, reads
-logs from multiple systems, and eventually finds a connection pool exhausted in a downstream
-service. This investigation takes hours. In a monolith, the same issue would have been a stack
+in three others. The developer traces the request across services, reads logs from multiple
+systems, and eventually finds an exhausted connection pool in a downstream service. The investigation takes hours. In a monolith, the same issue would have been a stack
 trace in a single process.
 
 Feature delivery is also slower. A change that spans two services requires coordinating two PRs,
@@ -137,7 +139,7 @@ deliver faster with less operational overhead.
 
 Merge services that are always deployed together. If Service A and Service B have never been
 deployed independently, they are not independent services. They are modules that should share a
-deployment. This is not a failure. It is a course correction based on evidence.
+deployment. Merging them is not a failure. It is a course correction based on evidence.
 
 Prioritize merging services owned by the same team. A single team running six services gets the
 same team autonomy benefit from one well-structured deployable.

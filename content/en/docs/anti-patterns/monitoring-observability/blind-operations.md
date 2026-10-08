@@ -18,12 +18,12 @@ tags:
 
 ## What this looks like
 
-The team deploys a change. Someone asks "is it working?" Nobody knows. There is no dashboard to
-check. There are no metrics to compare before and after. The team waits. If nobody complains
+The team deploys a change. Someone asks "is it working?" Nobody knows, because there is no dashboard
+to check and no metrics to compare before and after. The team waits. If nobody complains
 within an hour, they assume the deployment was successful.
 
-When something does go wrong, the team finds out from a customer support ticket, a Slack message
-from another team, or an executive asking why the site is slow. The investigation starts with
+When something does go wrong, the team finds out from someone else. It might be a customer support
+ticket, a Slack message from another team, or an executive asking why the site is slow. The investigation starts with
 SSH-ing into a server and reading raw log files. Hours pass before anyone understands what
 happened, what caused it, or how many users were affected.
 
@@ -42,7 +42,7 @@ Common variations:
   monitoring tools. The development team does not have access, does not know what is monitored,
   and does not add instrumentation to their code.
 - **Post-deployment verification is manual.** After every deployment, someone clicks through the
-  application to check if it works. This takes 15 minutes per deployment. It catches obvious
+  application to check if it works. The check takes 15 minutes per deployment. It catches obvious
   failures but misses performance degradation, error rate increases, and partial outages.
 
 The telltale sign: the team's primary method for detecting production problems is waiting for
@@ -79,10 +79,10 @@ Each phase of the incident lifecycle is extended because the team is working bli
 Detection takes hours or days instead of minutes because the team relies on external reports.
 Diagnosis takes hours instead of minutes because there are no traces, no correlated logs, and no
 metrics to narrow the search. The team resorts to reading code and guessing. Resolution takes
-longer because without metrics, the team cannot verify that their fix actually worked - they
+longer because, without metrics, the team cannot verify that their fix actually worked. They
 deploy the fix and wait to see if the complaints stop.
 
-A team with observability detects problems in minutes through automated alerts, diagnoses them
+A team with observability detects problems in minutes through automated alerts. It diagnoses them
 in minutes by following traces and examining metrics, and verifies fixes instantly by watching
 dashboards. The total incident lifecycle drops from hours to minutes.
 
@@ -112,7 +112,7 @@ there is no verification step - only hope.
 Specifically, CD requires:
 
 - **Automated deployment verification.** After every deployment, the pipeline must verify that the
-  new version is healthy before routing traffic to it. This requires health checks, metric
+  new version is healthy before routing traffic to it. Verification requires health checks, metric
   comparisons, and automated rollback triggers - all of which require observability.
 - **Fast incident detection.** If a deployment causes a problem, the team must know within
   minutes, not hours. Automated alerts based on error rates, latency, and business metrics
@@ -121,8 +121,8 @@ Specifically, CD requires:
   compare current metrics to the baseline and make a data-driven rollback decision. Without
   metrics, rollback decisions are based on gut feeling and anecdote.
 
-A team without observability can automate deployment, but they cannot automate verification. That
-means every deployment requires manual checking, which caps deployment frequency at whatever pace
+A team without observability can automate deployment, but they cannot automate verification. Every
+deployment then requires manual checking, which caps deployment frequency at whatever pace
 the team can manually verify.
 
 ## How to fix it
@@ -189,10 +189,10 @@ Close the loop between deployment and verification:
 1. After deploying, the pipeline waits and checks health metrics automatically. If error rates
    spike or latency degrades beyond the threshold, the pipeline triggers an automatic rollback.
 2. Add smoke tests that run against the live deployment and report results to the dashboard.
-3. Implement canary deployments or progressive rollouts that route a small percentage of traffic
-   to the new version and compare its metrics against the baseline before promoting.
+3. Implement canary deployments or progressive rollouts. Route a small percentage of traffic to
+   the new version. Compare its metrics against the baseline before promoting.
 
-This is the point where observability enables continuous delivery. The pipeline can deploy with
+Automated verification is the point where observability enables continuous delivery. The pipeline can deploy with
 confidence because it can verify health automatically.
 
 | Objection | Response |

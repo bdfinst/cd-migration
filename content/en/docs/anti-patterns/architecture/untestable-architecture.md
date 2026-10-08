@@ -19,17 +19,20 @@ tags:
 ## What this looks like
 
 A developer wants to write a unit test for a business rule in the order processing module. They open
-the class and find that it instantiates a database connection directly in the constructor, calls an
-external payment service with a hardcoded URL, and writes to a global logger that connects to
-a cloud logging service. There is no way to run this class in a test without a database, a payment
-sandbox account, and a live logging endpoint. Writing a test for the 10-line discount calculation
-buried inside this class requires either setting up all of that infrastructure or doing major
-surgery on the code first.
+the class and find three problems. It instantiates a database connection directly in the
+constructor. It calls an external payment service with a hardcoded URL. It writes to a global logger
+that connects to a cloud logging service.
+
+There is no way to run this class in a test without a database, a payment sandbox account, and a
+live logging endpoint. The 10-line discount calculation is buried inside this class. Testing it
+requires either setting up all of that infrastructure or doing major surgery on the code first.
 
 The team has tried. Some tests exist, but they are integration tests that depend on a shared test
 database. When the database is unavailable, the tests fail. When two developers run the suite
 simultaneously, tests interfere with each other. The suite is slow - 40 minutes for a full run -
-because every test touches real infrastructure. Developers have learned to run only the tests
+because every test touches real infrastructure.
+
+Developers have learned to run only the tests
 related to their specific change, because running the full suite is impractical. That selection is
 also unreliable, because they cannot know which tests cover the code they are changing.
 
@@ -47,12 +50,12 @@ Common variations:
 - **God classes with mixed concerns.** A class that handles HTTP request parsing, business
   logic, database writes, and email sending in the same methods. You cannot test the business logic
   without triggering all the other concerns.
-- **Framework entanglement.** Business logic written directly inside framework callbacks or
-  lifecycle hooks - a Rails `before_action`, a Spring `@Scheduled` method, a serverless function
-  handler - with no extraction into a callable function or class.
+- **Framework entanglement.** Business logic lives directly inside framework callbacks or
+  lifecycle hooks, such as a Rails `before_action`, a Spring `@Scheduled` method, or a serverless
+  function handler. Nobody extracts it into a callable function or class.
 
-The telltale sign: when a developer asks "how do I write a test for this?" and the honest answer
-is "you would have to refactor it first."
+The telltale sign: a developer asks "how do I write a test for this?" The honest answer is "you
+would have to refactor it first."
 
 ## Why this is a problem
 
@@ -61,11 +64,13 @@ is entangled with infrastructure, which makes every change harder and every defe
 
 ### It reduces quality
 
-A bug caught in a 30-second unit test costs minutes to fix. The same bug caught in production costs hours of debugging, a support incident, and a postmortem. Untestable code shifts that cost toward production. When code cannot be tested in isolation, the only way to verify behavior is end-to-end. End-to-end
+A bug caught in a 30-second unit test costs minutes to fix. The same bug caught in production costs hours of debugging, a support incident, and a postmortem. Untestable code shifts that cost toward production.
+
+When code cannot be tested in isolation, the only way to verify behavior is end-to-end. End-to-end
 tests run slowly, are sensitive to environmental conditions, and often cannot cover all the
-branches and edge cases in business logic. A developer who cannot write a fast, isolated test for
-a discount calculation instead relies on deploying to a staging environment and manually walking
-through a checkout. This is slow, incomplete, and rarely catches all the edge cases.
+branches and edge cases in business logic. Consider a developer who cannot write a fast, isolated
+test for a discount calculation. They deploy to a staging environment and manually walk through a
+checkout instead. Manual verification is slow, incomplete, and rarely catches all the edge cases.
 
 The quality impact compounds over time. Without a fast test suite, developers do not run tests
 frequently. Without frequent test runs, bugs survive for longer before being caught. The further a
@@ -78,14 +83,16 @@ immediate feedback every time the code is changed.
 
 ### It increases rework
 
-A developer who cannot safely verify a change ships it and hopes. Bugs discovered later require returning to code the developer thought was done - often days or weeks after the context is gone. When a developer needs to
-modify behavior in a class that has no tests and is hard to test, they make the change and
-then verify it by running the application manually or relying on end-to-end tests. They cannot be
-confident that the change did not break a code path they did not exercise.
+A developer who cannot safely verify a change ships it and hopes. Bugs discovered later require returning to code the developer thought was done - often days or weeks after the context is gone.
 
-Refactoring untestable code is doubly expensive. To refactor safely, you need tests. To write
+Consider a developer who needs to modify behavior in a class that has no tests and is hard to test.
+They make the change and then verify it by running the application manually or relying on
+end-to-end tests. They cannot be confident that the change did not break a code path they did not
+exercise.
+
+Refactoring untestable code is doubly expensive. To refactor safely, you need tests, but to write
 tests, you need to refactor. Teams caught in this loop often choose not to refactor at all, because
-both paths carry high risk. Complexity accumulates. Workarounds are added rather than fixing
+both paths carry high risk. Complexity accumulates, and workarounds pile up instead of fixes to
 the underlying structure. The codebase grows harder to change with every feature added.
 
 When dependencies are injected, refactoring is safe. Write the tests first, or write them alongside
@@ -94,8 +101,9 @@ the refactor can be verified quickly and cheaply.
 
 ### It makes delivery timelines unpredictable
 
-A three-day estimate becomes seven when the module turns out to have no tests and deep coupling to external services. That hidden cost is structural, not exceptional. Every change carries
-unknown risk. The response is more process: more manual QA cycles, more sign-off steps, more
+A three-day estimate becomes seven when the module turns out to have no tests and deep coupling to external services. That hidden cost is structural, not exceptional.
+
+Every change carries unknown risk. The response is more process: more manual QA cycles, more sign-off steps, more
 careful coordination before releases. All of that process adds time, and the amount of time added
 is unpredictable because it depends on how many issues the manual process finds.
 
@@ -252,8 +260,8 @@ code grows without requiring a big-bang rewrite.
 
 As business logic becomes unit-testable, the integration tests that were previously the only
 coverage can be simplified or removed. Integration tests that verify business logic are slow and
-brittle - now that the logic has fast unit tests, the integration test can focus on the seam
-between components, not the business rules inside each one.
+brittle. Now that the logic has fast unit tests, the integration test can focus on the seam between
+components, not the business rules inside each one.
 
 | Objection | Response |
 |-----------|----------|
