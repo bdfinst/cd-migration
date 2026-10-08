@@ -30,7 +30,7 @@ to address first are [Build Duration]({{< relref "/docs/reference/metrics/build-
 on how fast a fix can be deployed) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}})
 (teams that deploy often have well-rehearsed recovery procedures).
 
-## How to Measure
+## How to measure
 
 1. **Record the detection timestamp.** This is when the team first becomes aware of
    the incident, typically when an alert fires, a customer reports an issue, or
@@ -66,7 +66,7 @@ Elite performers restore service in under one hour. This requires automated
 rollback or roll-forward capability, fast build pipelines, and well-practiced
 incident response processes.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Closing incidents prematurely.** Marking an incident as resolved before the
   customer impact has actually ended artificially deflates MTTR. Define "resolved"

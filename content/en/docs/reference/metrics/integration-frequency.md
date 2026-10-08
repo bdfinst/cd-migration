@@ -25,7 +25,7 @@ integrationFrequency = mergedPullRequests / day / numberOfDevelopers
 A value of 1.0 or higher per developer per day indicates that work is being
 decomposed into small, independently deliverable increments.
 
-## How to Measure
+## How to measure
 
 1. **Count trunk merges.** Track the number of pull requests (or direct commits)
    merged to `main` or `trunk` each day.
@@ -55,7 +55,7 @@ The elite target aligns with [trunk-based development]({{< relref "/docs/referen
 changes to the trunk multiple times daily and rely on automated testing and feature
 flags to manage risk.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Meaningless commits.** Teams may inflate the count by integrating trivial or
   empty changes. Pair this metric with code review quality and defect rate.

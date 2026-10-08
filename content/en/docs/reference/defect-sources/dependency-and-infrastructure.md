@@ -15,7 +15,7 @@ external dependencies as untrusted boundaries.
 | Infrastructure differences across environments | CI | Infrastructure-as-code drift detection, config comparison, environment parity scoring | <span class="ai-blocked">IaC and GitOps, not AI</span> | Single source of truth for all environments; containerization |
 | Network partitions and partial failures handled wrong | Acceptance Tests | Chaos engineering platforms, synthetic transaction monitoring | Review architectures for missing failure handling patterns | Circuit breakers; retries; bulkheads as defaults; test failure modes explicitly |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

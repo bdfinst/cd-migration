@@ -19,7 +19,7 @@ budgets, and automated enforcement - not periodic manual testing.
 | Slow user-facing response times | CI | Real user monitoring, synthetic transaction baselines, web vitals tracking | Correlate frontend and backend telemetry to pinpoint latency sources | Response time SLOs per user-facing path; performance budgets for page weight and API latency |
 | Missing graceful degradation | Design | Chaos engineering platforms, failure injection, circuit breaker verification | <span class="ai-high">&#9650;</span> Review architectures for single points of failure and missing fallback paths | Design for partial failure; circuit breakers and fallbacks as defaults; game day exercises |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

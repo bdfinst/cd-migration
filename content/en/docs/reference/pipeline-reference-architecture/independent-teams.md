@@ -81,7 +81,7 @@ graph TD
   <span class="pipeline-legend__item pipeline-legend__item--prod">Production</span>
 </div>
 
-## Key Characteristics
+## Key characteristics
 
 - **Fully independent deployment**: Each team deploys on its own schedule. Team A can
   deploy ten times a day while Team C deploys once a week. No coordination is required.
@@ -95,7 +95,7 @@ graph TD
 - **Each team owns its full pipeline**: From pre-commit to production monitoring. No
   shared pipeline definitions, no central platform team gating deployments.
 
-## Why API Management Is Critical
+## Why API management is critical
 
 Independent deployment only works when teams can change their service without breaking
 others. This requires a shared understanding of API boundaries that is enforced
@@ -106,7 +106,7 @@ deploy incompatible changes, discover the breakage in production, and revert to
 coordinated releases to stop the bleeding. This is worse than the multi-team architecture
 because it creates the illusion of independence while delivering the reliability of chaos.
 
-### What API Management Requires
+### What API management requires
 
 1. **Published API schemas**: Every service publishes its API contract (OpenAPI, AsyncAPI,
    Protobuf, or equivalent) as a versioned artifact. The schema is the source of truth for
@@ -135,7 +135,7 @@ because it creates the illusion of independence while delivering the reliability
    pipeline gates. The convention must be simple enough that every team follows it without
    deliberation.
 
-### Contract Verification Approaches
+### Contract verification approaches
 
 Not all teams can coordinate on shared contract tooling. The right approach depends on
 the relationship between provider and consumer teams. These approaches are listed from
@@ -156,7 +156,7 @@ verifies backward compatibility before deployment**. The minimum viable contract
 verification is an automated schema diff against the published API - if the diff contains
 a breaking change, the pipeline fails.
 
-### Additional Quality Gates for Distributed Architectures
+### Additional quality gates for distributed architectures
 
 | Gate | Defect Sources Addressed | Catalog Section |
 |------|--------------------------|-----------------|
@@ -167,7 +167,7 @@ a breaking change, the pipeline fails.
 | **Circuit breaker and fallback verification** | Network partitions and partial failures handled wrong | [Dependency & Infrastructure]({{< relref "/docs/reference/defect-sources/dependency-and-infrastructure" >}}) |
 | **Distributed tracing validation** | Missing observability across service boundaries | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) |
 
-## When This Architecture Works
+## When this architecture works
 
 This architecture is the goal for organizations with:
 
@@ -176,7 +176,7 @@ This architecture is the goal for organizations with:
 - Teams mature enough to own their full delivery pipeline
 - Investment in contract testing tooling and API governance
 
-## When This Architecture Fails
+## When this architecture fails
 
 - **Shared database schemas**: Multiple services can share a database engine without
   problems. The failure mode is shared schemas - when Service A and Service B both read
@@ -197,7 +197,7 @@ This architecture is the goal for organizations with:
   service boundaries. Without this, independent deployment means independent
   troubleshooting with no way to trace cause and effect.
 
-## Relationship to the Other Architectures
+## Relationship to the other architectures
 
 Architecture 3 is where Architecture 2 teams evolve to. The progression is:
 
@@ -212,7 +212,7 @@ its own pipeline. Establish contract tests between it and the monolith. When the
 tests are reliable, stop running the extracted service's code through the integration
 pipeline. Repeat until the integration pipeline is empty.
 
-## Related Content
+## Related content
 
 - [Quality Gates]({{< relref "/docs" >}}) - the full gate sequence this pipeline applies
 - [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}) - the pattern teams evolve from

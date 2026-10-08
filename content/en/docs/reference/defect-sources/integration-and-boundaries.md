@@ -15,7 +15,7 @@ Contract testing and deliberate boundary design are the primary defenses.
 | Wrong assumptions about upstream/downstream | Design | Chaos engineering platforms, synthetic transactions, fault injection | <span class="ai-high">&#9650;</span> Review code and docs to identify undocumented behavioral assumptions | Document behavioral contracts; defensive coding at boundaries |
 | Race conditions | Pre-commit | Thread sanitizers, race detectors, formal verification tools, fuzz testing | Flag concurrency anti-patterns but cannot replace formal detection tools | Idempotent design; queues over shared mutable state |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

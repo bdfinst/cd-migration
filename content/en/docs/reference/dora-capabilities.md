@@ -23,7 +23,7 @@ phase. No entry means the practice is not a primary concern in that phase, thoug
 still be relevant.
 {{% /alert %}}
 
-## Practice Maturity by Phase
+## Practice maturity by phase
 
 | Practice | Phase 0 | Phase 1 | Phase 2 | Phase 3 | Phase 4 |
 |----------|---------|---------|---------|---------|---------|
@@ -50,12 +50,12 @@ still be relevant.
 | Job satisfaction | Ongoing | Ongoing | Ongoing | Ongoing | Ongoing |
 | Transformational leadership | Ongoing | Ongoing | Ongoing | Ongoing | Ongoing |
 
-## Continuous Delivery Practices
+## Continuous delivery practices
 
 These practices directly support the mechanics of getting software from commit to production.
 They are the primary focus of Phases 1 and 2 of the migration.
 
-### Version Control
+### Version control
 
 All production [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) (application code, test code, infrastructure configuration,
 deployment scripts, and database schemas) are stored in version control and can be
@@ -65,7 +65,7 @@ reproduced from a single source of truth.
 process depends on files stored on a specific person's machine or a shared drive, address that
 before beginning the migration.
 
-### Continuous Integration
+### Continuous integration
 
 Developers integrate their work to trunk at least daily. Each integration triggers an
 automated build and test process. Broken builds are fixed within minutes.
@@ -75,7 +75,7 @@ practice. Without it, none of the [pipeline]({{< relref "/docs/reference/glossar
 [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) and
 [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}).
 
-### Deployment Automation
+### Deployment automation
 
 Deployments are fully automated and can be triggered by anyone on the team. No manual steps
 are required between a green pipeline and production.
@@ -84,7 +84,7 @@ are required between a green pipeline and production.
 [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) and
 [Rollback]({{< relref "/docs/pipeline/rollback" >}}).
 
-### Trunk-Based Development
+### Trunk-based development
 
 Developers work in small batches and merge to trunk at least daily. Branches, if used, are
 short-lived (less than one day). There are no long-lived feature branches.
@@ -92,7 +92,7 @@ short-lived (less than one day). There are no long-lived feature branches.
 **Migration relevance:** [Phase 1: Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}).
 This is one of the first practices to establish because it enables CI.
 
-### Test Automation
+### Test automation
 
 A comprehensive suite of automated tests provides confidence that the software is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}).
 Tests are reliable, fast, and maintained as carefully as production code.
@@ -100,7 +100,7 @@ Tests are reliable, fast, and maintained as carefully as production code.
 **Migration relevance:** [Phase 1: Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}).
 Also see the [Testing reference section]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) for guidance on specific test types.
 
-### Test Data Management
+### Test data management
 
 Test data is managed in a way that allows automated tests to run independently, repeatably,
 and without relying on shared mutable state. Tests can create and clean up their own data.
@@ -108,7 +108,7 @@ and without relying on shared mutable state. Tests can create and clean up their
 **Migration relevance:** Becomes critical during [Phase 2]({{< relref "/docs/pipeline" >}}) when you need
 [production-like environments]({{< relref "/docs/reference/glossary#production-like-environment" >}}) and deterministic pipeline results.
 
-### Shift Left on Security
+### Shift left on security
 
 Security is integrated into the development process rather than added as a gate at the end.
 Automated security checks run in the pipeline. Security requirements are part of the
@@ -117,12 +117,12 @@ definition of deployable.
 **Migration relevance:** Integrated during [Phase 2: Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})
 as automated quality gates rather than manual review steps.
 
-## Architecture Practices
+## Architecture practices
 
 These practices address the structural characteristics of your system that enable or prevent
 independent, frequent deployment.
 
-### Loosely Coupled Architecture
+### Loosely coupled architecture
 
 Teams can deploy their services independently without coordinating with other teams. Changes
 to one service do not require changes to other services. APIs have well-defined contracts.
@@ -130,11 +130,11 @@ to one service do not require changes to other services. APIs have well-defined 
 **Migration relevance:** [Phase 3: Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}).
 This practice becomes critical when optimizing for [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) and small [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}).
 
-## Product and Process Practices
+## Product and process practices
 
 These practices address how work is planned, prioritized, and delivered.
 
-### Customer Feedback
+### Customer feedback
 
 Product decisions are informed by direct feedback from customers. Teams can observe how
 features are used in production and adjust accordingly.
@@ -143,7 +143,7 @@ features are used in production and adjust accordingly.
 when every change reaches production quickly enough for real customer feedback to inform
 the next change.
 
-### Value Stream Visibility
+### Value stream visibility
 
 The team has a clear view of the entire delivery process from request to production, including
 wait times, handoffs, and rework loops.
@@ -151,7 +151,7 @@ wait times, handoffs, and rework loops.
 **Migration relevance:** [Phase 0: Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}).
 This is the first activity in the migration because it informs every decision that follows.
 
-### Working in Small Batches
+### Working in small batches
 
 Work is broken down into small increments that can be completed, tested, and deployed
 independently. Each increment delivers measurable value or validated learning.
@@ -159,7 +159,7 @@ independently. Each increment delivers measurable value or validated learning.
 **Migration relevance:** Begins in [Phase 1: Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 and is optimized in [Phase 3: Small Batches]({{< relref "/docs/optimize/small-batches" >}}).
 
-### Limit Work in Progress
+### Limit work in progress
 
 Teams have explicit WIP limits that constrain the number of items in any stage of the delivery
 process. WIP limits are enforced and respected.
@@ -167,7 +167,7 @@ process. WIP limits are enforced and respected.
 **Migration relevance:** [Phase 3: Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}). Reducing WIP
 is one of the most effective ways to improve lead time and delivery predictability.
 
-### Visual Management
+### Visual management
 
 The state of all work is visible to the entire team through dashboards, boards, or other
 visual tools. Anyone can see what is in progress, what is blocked, and what has been deployed.
@@ -175,7 +175,7 @@ visual tools. Anyone can see what is in progress, what is blocked, and what has 
 **Migration relevance:** All phases. Visual management supports the identification of
 [constraints]({{< relref "/docs/reference/glossary#constraint" >}}) in Phase 0 and the enforcement of WIP limits in Phase 3.
 
-### Monitoring and Observability
+### Monitoring and observability
 
 Teams have access to production metrics, logs, and traces that allow them to understand system
 behavior, detect issues, and diagnose problems quickly.
@@ -184,7 +184,7 @@ behavior, detect issues, and diagnose problems quickly.
 where automated health checks determine whether a deployment proceeds or rolls back. Also
 supports fast [mean time to restore]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}).
 
-### Proactive Notification
+### Proactive notification
 
 Teams are alerted to problems before customers are affected. Monitoring thresholds and
 anomaly detection trigger notifications that enable rapid response.
@@ -192,7 +192,7 @@ anomaly detection trigger notifications that enable rapid response.
 **Migration relevance:** Becomes critical in Phase 4 when deployments are continuous and
 automated. Proactive notification is what makes [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) safe.
 
-### Collaboration Among Teams
+### Collaboration among teams
 
 Development, operations, security, and product teams work together rather than in silos.
 Handoffs are minimized. Shared responsibility replaces blame.
@@ -201,7 +201,7 @@ Handoffs are minimized. Shared responsibility replaces blame.
 where the pipeline must encode the quality criteria from all disciplines (security, testing,
 operations) into automated gates.
 
-## Practices Relevant in Every Phase
+## Practices relevant in every phase
 
 The following practices are not tied to a specific migration phase. They are conditions
 that support every phase and should be cultivated continuously throughout the migration.

@@ -15,7 +15,7 @@ We embrace [The Twelve-Factor App config](https://12factor.net/config) definitio
 - **Application Configuration**: Internal to the app, does NOT vary by environment (feature flags, business rules, UI themes, default settings)
 - **Environment Configuration**: Varies by deployment (database URLs, API keys, service endpoints, credentials)
 
-## Key Principles
+## Key principles
 
 Application configuration should be:
 
@@ -24,7 +24,7 @@ Application configuration should be:
 3. **Testable** in the CI pipeline
 4. **Unchangeable** after the artifact is built
 
-## What Is Improved
+## What is improved
 
 - **Immutability**: The artifact tested in staging is identical to what runs in production
 - **Traceability**: You can trace any behavior back to a specific commit
@@ -32,13 +32,13 @@ Application configuration should be:
 - **Reliability**: No configuration drift between environments caused by manual changes
 - **Faster rollback**: Rolling back an artifact rolls back all application configuration changes
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on managing application configuration, see:
 
 - [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) - Phase 2 pipeline practice with static vs dynamic feature flag patterns and getting started steps
 
-## Additional Resources
+## Additional resources
 
 - [The Twelve-Factor App: Config](https://12factor.net/config)
 - [Continuous Delivery: Configuration Management](https://continuousdelivery.com/foundations/configuration-management/)

@@ -10,7 +10,7 @@ These pages define the minimum practices required for [continuous delivery](../g
 what the practice is, why it matters, and what the minimum criteria are. For migration
 guidance and tactical how-to content, follow the links to the corresponding phase pages.
 
-## Core Practices
+## Core practices
 
 - **[Continuous Integration]({{< relref "/docs/reference/practices/continuous-integration" >}})** - Integrate work to trunk at least daily with automated testing
 - **[Trunk-Based Development]({{< relref "/docs/reference/practices/trunk-based-development" >}})** - All changes integrate into a single shared trunk
