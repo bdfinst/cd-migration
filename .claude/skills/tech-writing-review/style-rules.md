@@ -1,4 +1,4 @@
-# Documentation Style Rules
+# Documentation style rules
 
 Reference for the tech-writing-review skill. These rules apply to prose the skill writes or reviews. They sit alongside `principles.md`, which covers page structure and scannability.
 
@@ -10,7 +10,7 @@ Reference for the tech-writing-review skill. These rules apply to prose the skil
 
 When they conflict, the Google guide decides formatting and mechanics, the STE-derived rules decide how precise an instruction is, and Zinsser decides how the prose reads. The project content style rules in `CLAUDE.md` (no endashes, no emdashes, no emojis, "CD" means continuous delivery) override all three.
 
-## Google style - mechanics
+## Google style mechanics
 
 - Address the reader as "you". Use active voice and present tense.
 - Use sentence case for headings. Make link text describe the target, never "here".

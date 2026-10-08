@@ -71,7 +71,7 @@ Example PR title: `style(S1): replace e.g. and i.e. in symptoms/flow`.
 Steps 2.1 to 2.12 cover one batch each. Step 2.13 removes the audit tolerance from step 0.3.
 
 - Keep proper nouns, acronyms, and product names capitalized: CD, CI, DORA, Kubernetes, Agentic CD.
-- When a heading changes, its anchor changes too. Search all of `content/` for `#old-anchor` links to the page and update them in the same PR. `npm test` runs htmltest, which catches missed anchors.
+- A change of case alone does not change the anchor, because Hugo generates lowercase heading IDs. If you change a heading's wording, search all of `content/` for `#old-anchor` links to the page and update them in the same PR. `npm test` catches missed anchors.
 - Do not change heading levels or order.
 
 ## Phase 3: judgment rewrites (12 PRs, one per batch, split further if needed)
