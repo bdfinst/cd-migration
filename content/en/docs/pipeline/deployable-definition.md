@@ -66,7 +66,7 @@ production readiness:
 #### Compliance
 
 - **Audit trail** - the pipeline itself produces the compliance artifact: who changed what, when, and what validations it passed
-- **Policy as code** - organizational policies (e.g., "no deployments on Friday") encoded as pipeline logic
+- **Policy as code** - organizational policies (for example, "no deployments on Friday") encoded as pipeline logic
 - **Change documentation** - automatically generated from commit metadata and pipeline results
 
 #### Performance

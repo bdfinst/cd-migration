@@ -234,7 +234,7 @@ Every feature flag has a lifecycle. Flags that are not actively managed become t
 
 Before writing any code, define the flag:
 
-- **Name:** Use a consistent naming convention (e.g., `enable-new-checkout`, `feature.discount-engine`)
+- **Name:** Use a consistent naming convention (for example, `enable-new-checkout`, `feature.discount-engine`)
 - **Owner:** Who is responsible for this flag through its lifecycle?
 - **Purpose:** One sentence describing what the flag controls
 - **Planned removal date:** Set this at creation time. Flags without removal dates become permanent.
@@ -285,7 +285,7 @@ At any step, if metrics degrade, roll back by disabling the flag. No redeploymen
 
 This is the most commonly skipped step, and skipping it creates significant technical debt.
 
-Once the feature has been stable at 100% for an agreed period (e.g., 2 weeks):
+Once the feature has been stable at 100% for an agreed period (for example, 2 weeks):
 
 1. Remove the flag check from code
 2. Remove the old code path
@@ -369,7 +369,7 @@ else:
 
 Long-lived flags need different discipline than temporary ones:
 
-- **Use a separate naming convention** (e.g., `KILL_SWITCH_*`, `ENTITLEMENT_*`) to distinguish them from temporary release flags
+- **Use a separate naming convention** (for example, `KILL_SWITCH_*`, `ENTITLEMENT_*`) to distinguish them from temporary release flags
 - **Document why each flag is permanent** so future team members understand the intent
 - **Store them separately** from temporary flags in your management system
 - **Review regularly** to confirm they are still needed

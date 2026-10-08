@@ -96,7 +96,7 @@ Remove the manual gate for all teams at once. This is appropriate when the organ
 
 **Duration:** Immediate.
 
-**What you learn:** Quickly reveals any hidden dependencies on the manual gate (e.g., deploy coordination between teams, configuration changes that ride along with deployments).
+**What you learn:** Quickly reveals any hidden dependencies on the manual gate (for example, deploy coordination between teams, configuration changes that ride along with deployments).
 
 **Transition:** Be prepared to temporarily revert if unforeseen issues arise. Have a clear rollback plan for the process change itself.
 

@@ -135,7 +135,7 @@ Percentage-based rollout gradually increases the number of users who see the new
 **When percentage rollout is not ideal:**
 
 - Backend infrastructure changes with no user-visible impact
-- Changes that affect all users equally (e.g., API response format changes)
+- Changes that affect all users equally (for example, API response format changes)
 
 **Implementation:** Percentage rollout is typically implemented through [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) (Level 2 or Level 3), using the user ID as the hash key to ensure consistent assignment.
 
