@@ -32,6 +32,8 @@ Validate content pages for structural compliance, front matter correctness, tone
 
 Compare the file's heading structure against the required template for its page type.
 
+**Temporary: match required headings without regard to case.** During the style rollout (epic #38), pages may use either title case (`## What This Looks Like`) or sentence case (`## What this looks like`). Treat both as matching. Do not report a heading as missing or wrong because of case alone. This tolerance is removed when phase 2 is complete.
+
 **Anti-pattern pages:**
 - `## What this looks like` exists
 - `## Why this is a problem` exists with required H3 subsections in order:
