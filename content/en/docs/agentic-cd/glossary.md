@@ -11,7 +11,7 @@ continuous delivery terms, see the [main glossary]({{< relref "/docs/reference/g
 
 ## A
 
-### ACD (Agentic Continuous Delivery)
+### ACD (agentic continuous delivery)
 
 The application of continuous delivery in environments where software changes are proposed by
 AI agents. ACD extends CD with additional constraints, delivery artifacts, and pipeline
@@ -56,7 +56,7 @@ Referenced in:
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Agent Loop
+### Agent loop
 
 The iterative cycle an [agent](#agent-ai) follows during execution: receive a goal, invoke a
 tool, observe the result, decide the next action, repeat until done or a stopping condition is
@@ -71,7 +71,7 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Agent Session
+### Agent session
 
 A bounded [agent](#agent-ai) invocation scoped to a single, well-defined task. Each session
 starts with a curated context load, produces a tested change, and closes with a context summary
@@ -87,7 +87,7 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### AI Enablement Properties
+### AI enablement properties
 
 The five ways AI removes a dependency, each ending a specific wait: **Knowledge** (the wait for the
 person who knows), **Capability** (the wait for another role or skill), **Capacity** (the wait for
@@ -100,7 +100,7 @@ Referenced in:
 [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}),
 [The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}})
 
-### AI Process Engineering
+### AI process engineering
 
 Using AI to remove the coordination cost around building software - the dependencies, handoffs, and
 missing context that dominate lead time - rather than to generate more code. It aims AI at Layers 2
@@ -112,7 +112,7 @@ Referenced in:
 [The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}),
 [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}})
 
-### AI Product Engineering
+### AI product engineering
 
 Using AI to help build the thing: generate code, tests, and prototypes at Layer 1, the code. This is
 the reflexive use of AI. It is valuable but lands on roughly 12% of lead time, so it should follow
@@ -124,7 +124,7 @@ Referenced in:
 
 ## B
 
-### Bottleneck Removal Loop
+### Bottleneck removal loop
 
 A four-phase operating rhythm for removing delivery friction: Identify and Diagnose, Re-engineer the
 Bottleneck, Document and Share, then Iterate to the Next Constraint. Phase 1 uses two diagnostic
@@ -182,7 +182,7 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Context Window
+### Context window
 
 The maximum number of tokens an LLM can process in a single call, spanning both input and
 output. The context window is a hard limit; exceeding it requires truncation or a redesigned
@@ -195,7 +195,7 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Context Engineering
+### Context engineering
 
 The practice of curating the complete information environment an [agent](#agent-ai) operates
 within. Context engineering goes beyond writing better [prompts](#prompt) - it means assembling
@@ -210,7 +210,7 @@ Referenced in:
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Coordination Cost
+### Coordination cost
 
 The cost of work waiting on people, tools, and decisions rather than the cost of doing the work
 itself. It is the dominant share of delivery [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}})
@@ -239,7 +239,7 @@ Referenced in:
 
 ## D
 
-### Declarative Agent
+### Declarative agent
 
 An [agent](#agent-ai) defined entirely as markdown documents - [skills](#skill-agent),
 [system prompts](#system-prompt), and rules files - that runs inside an existing agent runtime
@@ -253,7 +253,7 @@ Referenced in:
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}})
 
-### Delivery Contract
+### Delivery contract
 
 The set of structured specification documents that anchor an [ACD](#acd-agentic-continuous-delivery)
 workflow. A delivery contract typically includes four artifacts arranged in an authority hierarchy:
@@ -270,13 +270,13 @@ Referenced in:
 [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}),
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
-### Done Definition
+### Done definition
 
 See [Reference Glossary]({{< relref "/docs/reference/glossary#done-definition" >}}).
 
 ## E
 
-### Evaluation Design
+### Evaluation design
 
 The test-cases-with-known-good-outputs portion of [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}).
 An evaluation design specifies concrete inputs and their expected outputs so that both humans
@@ -291,7 +291,7 @@ Referenced in:
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}),
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
-### Expert Agent
+### Expert agent
 
 A specialized [agent](#agent-ai) that runs as a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) gate to validate a
 specific concern such as test fidelity, security patterns, architectural compliance, or intent
@@ -308,7 +308,7 @@ Referenced in:
 
 ## G
 
-### Golden Rule
+### Golden rule
 
 The single lever against [coordination cost](#coordination-cost): removing a
 [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) roughly doubles your odds of
@@ -343,7 +343,7 @@ Referenced in:
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})
 
-### Hook (Agent)
+### Hook (agent)
 
 A deterministic, automated action that runs in response to a specific event during an
 [agent session](#agent-session). Pre-hooks validate inputs before the agent acts (for example, lint,
@@ -360,7 +360,7 @@ Referenced in:
 
 ## I
 
-### Intent Engineering
+### Intent engineering
 
 The practice of encoding organizational purpose, values, and trade-off hierarchies into an
 [agent's](#agent-ai) operating environment. An agent given [context](#context-llm) but no intent
@@ -377,7 +377,7 @@ Referenced in:
 
 ## M
 
-### Model Routing
+### Model routing
 
 Assigning tasks to appropriately-sized LLMs based on task complexity rather than using a single
 frontier model for everything. Routing, context assembly, and aggregation tasks require minimal
@@ -410,7 +410,7 @@ Referenced in:
 
 ## P
 
-### PDLC (Product Delivery Lifecycle)
+### PDLC (product delivery lifecycle)
 
 The path every change travels from a raw idea to value running in production and sustained over
 time, in seven phases: Discovery, Design, Build, Verify, Deploy, Operate, Support - and then back to
@@ -444,7 +444,7 @@ Referenced in:
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Prompt Caching
+### Prompt caching
 
 A server-side optimization where stable portions of a prompt are stored and reused across
 repeated calls instead of being processed as new input each time. Effective caching requires
@@ -458,7 +458,7 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Prompt Craft
+### Prompt craft
 
 Synchronous, session-based instruction writing in a chat window. Prompt craft is the foundation
 of the four [prompting disciplines](#prompting-discipline) - writing clear, structured
@@ -474,7 +474,7 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
-### Prompting Discipline
+### Prompting discipline
 
 The four-layer skill framework developers master as AI moves from a chat partner to a
 long-running worker. The four disciplines, in order from foundation to ceiling:
@@ -489,7 +489,7 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})
 
-### Programmatic Agent
+### Programmatic agent
 
 An [agent](#agent-ai) implemented as a standalone program (typically JavaScript or Java) that
 calls the LLM API directly and manages its own [agent loop](#agent-loop), tool definitions,
@@ -506,7 +506,7 @@ Referenced in:
 
 ## R
 
-### Repository Readiness
+### Repository readiness
 
 The degree to which a repository is prepared for [agent](#agent-ai)-driven development. A
 repository scores high on readiness when an agent can clone it, install dependencies, build,
@@ -524,7 +524,7 @@ Referenced in:
 
 ## S
 
-### Skill (Agent)
+### Skill (agent)
 
 A reusable, named session procedure defined as a markdown document that an [agent](#agent-ai)
 or [orchestrator](#orchestrator) invokes by name (for example, `/start-session`, `/review`,
@@ -538,7 +538,7 @@ Referenced in:
 [Getting Started: Where to Put What]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}),
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}})
 
-### Specification Engineering
+### Specification engineering
 
 The practice of writing structured documents that [agents](#agent-ai) can execute against over
 extended timelines. Specification engineering is the skill that separates developers at Stage
@@ -569,7 +569,7 @@ Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### System Prompt
+### System prompt
 
 The static, stable instruction block placed at the start of a [prompt](#prompt) that establishes
 the model's role, constraints, output format requirements, and tool definitions. Unlike the
@@ -626,7 +626,7 @@ Referenced in:
 [Small-Batch Agent Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
-### Tool Use
+### Tool use
 
 The mechanism by which an [agent](#agent-ai) interacts with external systems during its
 [agent loop](#agent-loop). On each iteration, the agent can invoke a tool (read a file, run a

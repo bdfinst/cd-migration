@@ -12,7 +12,7 @@ Platform teams build reusable AI coding tools for multiple teams. Shared eval in
 
 > **Reference implementation:** The [dev-plugins](https://github.com/bailejl/dev-plugins) repository demonstrates these patterns with Promptfoo, Claude Code, and custom graders.
 
-## What is an AI Enablement Platform
+## What is an AI enablement platform
 
 An AI enablement platform is the team that builds reusable AI coding tools ([prompts]({{< relref "/docs/reference/glossary#prompt" >}}),
 [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}), plugins, skills) for multiple teams in an organization. Instead of every team
@@ -27,7 +27,7 @@ The eval challenge compounds this: each tool in your portfolio needs its own eva
 suite, and those suites share common infrastructure. Without shared eval patterns, you
 duplicate graders, rubrics, and fixture conventions across every plugin.
 
-## Multi-Plugin Eval Architecture
+## Multi-plugin eval architecture
 
 The [dev-plugins](https://github.com/bailejl/dev-plugins) reference implementation demonstrates a monorepo structure that separates shipping artifacts from eval infrastructure. This example uses Claude Code plugins, but the same pattern applies to any collection of reusable AI tools:
 
@@ -65,7 +65,7 @@ eval-infra/                    # Shared across all plugins
   scripts/
 ```
 
-### Running Evals Across the Portfolio
+### Running evals across the portfolio
 
 Run evals for a single plugin or the entire portfolio:
 
@@ -78,7 +78,7 @@ npm run eval:all               # All plugins
 The `eval-infra/scripts/run-plugin-evals.sh` script iterates over a `KNOWN_PLUGINS`
 list, running each plugin's eval suite and aggregating results.
 
-### Plugin Validation
+### Plugin validation
 
 Before running evals, validate that a plugin has the required structure:
 
@@ -90,12 +90,12 @@ This checks for required directories, manifest fields, at least one command, at 
 one eval suite, and proper naming conventions. Validation catches structural problems
 before they cause confusing eval failures.
 
-## Shared Eval Infrastructure
+## Shared eval infrastructure
 
 Platform teams need a shared foundation that every plugin eval builds on. This
 eliminates duplication and enforces consistency.
 
-### Base Configuration
+### Base configuration
 
 A single base config defines the provider, timeout, output format, and universal
 assertions. From `eval-infra/promptfoo-base.yaml` in the reference implementation:
@@ -130,7 +130,7 @@ Every plugin config replicates these defaults and adds plugin-specific variables
 (`evalInfraRoot`, `graderLibRoot`, `rubricRoot`) point back to the central
 infrastructure.
 
-### Shared Grader Library
+### Shared grader library
 
 The grader library (`eval-infra/grader-lib/`) provides reusable grading functions
 that any plugin can use:
@@ -149,7 +149,7 @@ grader in `evals/ai-readiness/graders/transcript/evidence-gathering.js` loads
 `transcript-utils.js` from the shared `graderLibRoot` path to parse transcripts
 and count tool calls.
 
-### Shared Rubric Templates
+### Shared rubric templates
 
 LLM rubric templates in `eval-infra/rubric-templates/` provide consistent judging
 criteria across plugins:
@@ -163,7 +163,7 @@ criteria across plugins:
 Plugin-specific rubrics extend or reference these templates. This prevents each
 plugin team from inventing their own quality criteria.
 
-### The Extend and Specialize Pattern
+### The extend and specialize pattern
 
 The shared infrastructure provides the foundation. Each plugin specializes it:
 
@@ -179,12 +179,12 @@ This layering means a new plugin gets structural validation, hallucination detec
 and transcript analysis for free. The plugin author only writes graders for the
 domain-specific checks their tool needs.
 
-## Fixture Diversity
+## Fixture diversity
 
 Platform tools must handle diverse codebases. Your fixture portfolio should cover the
 range of code your tools will encounter in production.
 
-### Building a Fixture Matrix
+### Building a fixture matrix
 
 From `evals/ai-readiness/fixtures/` in the reference implementation, seven fixture types exercise different tool
 capabilities:
@@ -203,7 +203,7 @@ Each positive fixture has documented, planted issues. The `clean-repo/` fixture
 follows best practices (clear naming, proper structure, tests, documentation) and
 drives negative tests across multiple suites.
 
-### Coverage Dimensions
+### Coverage dimensions
 
 Design fixtures to cover these dimensions:
 
@@ -217,7 +217,7 @@ Design fixtures to cover these dimensions:
 - **Clean examples**: At least one fixture per problem domain should be clean to
   drive negative tests.
 
-## Reference Solutions as Platform Artifacts
+## Reference solutions as platform artifacts
 
 Reference solutions serve double duty on a platform team:
 
@@ -247,13 +247,13 @@ The `clean-repo-audit.md` reference solution documents what the agent should say
 well-structured code: acknowledge what is done well, note minor improvement
 opportunities without false alarm, and assign no critical or major findings.
 
-## Meta-Evaluation
+## Meta-evaluation
 
 Platform teams face a second-order problem: how do you evaluate your eval
 infrastructure itself? If your graders are miscalibrated or your fixtures are
 unrealistic, your evals give false confidence.
 
-### The Eval-Rubric Pattern
+### The eval-rubric pattern
 
 The eval-rubric pattern uses a structured assessment against known best practices.
 This repo's `/eval-rubric` command scores the eval infrastructure against 12 dimensions
@@ -279,7 +279,7 @@ The eval-rubric runs against the actual repo contents, reading suite files, grad
 implementations, fixture directories, and CI configuration before scoring. It produces
 evidence-based assessments, not opinions.
 
-### Running Meta-Evaluation Periodically
+### Running meta-evaluation periodically
 
 Run the eval-rubric after significant infrastructure changes:
 
@@ -291,7 +291,7 @@ Run the eval-rubric after significant infrastructure changes:
 Track scores over time. A dimension that drops below 3 after an infrastructure
 change indicates a regression in eval quality.
 
-## Expert Validation Agents
+## Expert validation agents
 
 [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) defines [expert validation agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement#expert-validation-agents" >}})
 that validate agent output at runtime, the production counterpart to offline
@@ -318,9 +318,9 @@ clean inputs to verify they do not fabricate issues.
 during prompt engineering. Expert agents validate during execution. They run
 alongside the agent in production. A mature platform uses both.
 
-## The Eval Lifecycle at Scale
+## The eval lifecycle at scale
 
-### Adding New Plugins
+### Adding new plugins
 
 When adding a new plugin to the platform, follow this checklist (detailed in
 `docs/ADDING_A_PLUGIN.md`):
@@ -338,7 +338,7 @@ When adding a new plugin to the platform, follow this checklist (detailed in
 The checklist ensures every plugin ships with evals from day one. A plugin without
 evals does not ship.
 
-### Monitoring Capability Saturation
+### Monitoring capability saturation
 
 Track pass@k metrics over time for each plugin. When pass@5 consistently exceeds 95%
 across all capability suites, the current eval suite is saturated. The tool handles
@@ -350,7 +350,7 @@ everything you test for. Either:
 
 Saturation is a signal to expand the eval suite, not to stop evaluating.
 
-### Baseline Management
+### Baseline management
 
 Record baselines after significant prompt or eval changes:
 
@@ -365,7 +365,7 @@ with pass@k metrics, git commit, and branch. Use the history to:
 - Measure the impact of model migrations
 - Report capability improvement over time to stakeholders
 
-### Eval Maintenance and Retirement
+### Eval maintenance and retirement
 
 Eval suites require ongoing maintenance. Without a retirement policy, suites
 accumulate stale tests that slow runs and obscure signal.
@@ -392,7 +392,7 @@ accumulate stale tests that slow runs and obscure signal.
 pass@k trends, retire saturated cases, split oversized suites, and recalibrate
 graders against updated reference solutions.
 
-## Common Platform Pitfalls
+## Common platform pitfalls
 
 **Building tools without evals first.** The platform team ships a new plugin, gets
 user complaints, and then scrambles to build evals. Write the eval suite alongside
@@ -420,7 +420,7 @@ run in CI.
 over-report issues because they optimize for "finding things." Negative test suites
 with clean fixtures are the only defense against false positive drift.
 
-## Related Content
+## Related content
 
 - [AI Eval Methodology]({{< relref "ai-eval-methodology" >}}) - Three-layer grading framework
   and core eval concepts

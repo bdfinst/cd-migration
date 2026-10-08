@@ -31,7 +31,7 @@ shared AI enablement infrastructure. For team-specific eval setup, see
 **In the [dev-plugins](https://github.com/bailejl/dev-plugins) reference implementation:** Promptfoo is the evaluation harness. Claude Code is the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}})
 harness. YAML files in `evals/<plugin>/suites/` are evaluation suites.
 
-## What Are AI Evals
+## What are AI evals
 
 AI coding tools produce non-deterministic output. The same prompt run twice can yield
 different code, different explanations, and different tool-use sequences. Traditional
@@ -51,7 +51,7 @@ code, produce findings, and generate or modify source files. Conversational agen
 and research agents have different evaluation needs and may require adapted
 approaches.
 
-## What Evals Validate: ACD Artifacts
+## What evals validate: ACD artifacts
 
 In the [Agentic Continuous Delivery]({{< relref "/docs/agentic-cd" >}}) framework, software
 delivery is organized around six
@@ -77,7 +77,7 @@ the [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) that require
 This mapping guides grader selection: when you know which artifact type your eval
 targets, the table tells you which grading layer is the primary fit.
 
-## The Eval Development Cycle
+## The eval development cycle
 
 Evals are a development tool, not a post-hoc quality gate. The cycle looks like this:
 
@@ -95,14 +95,14 @@ The key insight: you write the eval _before_ you consider the prompt done. Runni
 eval, reading the full agent transcript, and understanding _why_ it failed teaches you
 more about your prompt than any amount of manual testing. The eval is your feedback loop.
 
-## Three-Layer Grading
+## Three-layer grading
 
 A single grading approach cannot cover the full range of AI tool behaviors. Deterministic
 checks are fast but shallow. LLM judges catch nuance but are slow and expensive. Transcript
 analysis validates the agent's process independent of its output. Combining all three
 layers gives you coverage, speed, and accuracy.
 
-### Layer 1: Deterministic Graders
+### Layer 1: Deterministic graders
 
 Deterministic graders run fast, produce binary pass/fail results, and have near-zero
 false positive rates. They check structural properties of the output.
@@ -118,7 +118,7 @@ A score arithmetic grader parses category scores and weights from agent output, 
 
 A report structure grader validates that the output contains required headings at the correct level, that headings match expected patterns, that required sections have non-empty content, and that the output falls within length bounds.
 
-### Layer 2: Transcript Graders
+### Layer 2: Transcript graders
 
 Transcript graders validate _how_ the agent worked, not only what it produced. They parse
 the agent's tool-call sequence and conversation turns to verify sound process.
@@ -131,7 +131,7 @@ the agent's tool-call sequence and conversation turns to verify sound process.
 
 An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (for example, at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
 
-### Layer 3: LLM Rubrics
+### Layer 3: LLM rubrics
 
 LLM rubrics use a language model as judge to evaluate qualities that resist
 deterministic checking: accuracy of findings, quality of recommendations, appropriate
@@ -142,7 +142,7 @@ A typical code quality rubric defines weighted criteria such as correctness, rea
 LLM rubrics are the slowest and most expensive grading layer. Use them for qualities
 that the other layers cannot check.
 
-### Human Review as Calibration
+### Human review as calibration
 
 Human review is a calibration tool, not a fourth runtime layer. You do not include
 human review in the automated eval pipeline. Instead, you use human review
@@ -155,7 +155,7 @@ that do not exist.
 For the hands-on calibration process and recalibration triggers, see
 [Calibrating Graders]({{< relref "team-ai-evals#calibrating-graders" >}}).
 
-### Decision Table: When to Use Each Layer
+### Decision table: when to use each layer
 
 | Question                                    | Layer         |
 | ------------------------------------------- | ------------- |
@@ -168,7 +168,7 @@ For the hands-on calibration process and recalibration triggers, see
 | Are the recommendations actionable?         | LLM Rubric    |
 | Is the severity rating appropriate?         | LLM Rubric    |
 
-### Worked Example: Three Layers Combined
+### Worked example: three layers combined
 
 Consider a code review eval that sends a messy codebase to the agent (mixed naming conventions, duplicated logic, dead code, a god class). A single test case uses all three layers:
 
@@ -180,7 +180,7 @@ Consider a code review eval that sends a messy codebase to the agent (mixed nami
 
 The deterministic graders run in milliseconds and catch structural failures. The transcript grader catches agents that skip evidence gathering. The LLM rubrics evaluate the subjective quality that only another language model can assess. Together, they cover structure, process, and quality.
 
-## Positive and Negative Test Pairs
+## Positive and negative test pairs
 
 Every eval suite needs two types of tests:
 
@@ -200,7 +200,7 @@ positive tests, you have no idea whether the tool actually works.
 For a step-by-step walkthrough of building positive and negative test pairs, see
 [Writing Your First Eval]({{< relref "team-ai-evals#writing-your-first-eval" >}}).
 
-## Fixture Design
+## Fixture design
 
 Fixtures are the codebases your agent evaluates during testing. Their quality
 determines your eval quality.
@@ -226,7 +226,7 @@ determines your eval quality.
 For a fixture portfolio example, see
 [Building a Fixture Matrix]({{< relref "platform-ai-evals#building-a-fixture-matrix" >}}).
 
-## Task Quality
+## Task quality
 
 Ambiguous task specifications are the primary source of eval noise. If two domain
 experts would disagree on whether an agent's output passes or fails, the task is
@@ -282,7 +282,7 @@ Computed as `C(c, k) / C(n, k)`. This tells you how consistently the agent succe
 
 Most eval frameworks support computing both metrics from multi-trial output, with optional grouping by suite or eval type.
 
-## Reference Solutions
+## Reference solutions
 
 Reference solutions are gold-standard outputs that document what a correct response
 looks like for each fixture. They serve two purposes:
@@ -297,7 +297,7 @@ looks like for each fixture. They serve two purposes:
 Each reference solution covers one fixture and documents the expected findings, their
 severities, and the evidence that supports them.
 
-## Common Pitfalls
+## Common pitfalls
 
 **Only positive tests.** The agent gets rewarded for finding issues everywhere,
 including in clean code. Add negative test suites.
@@ -317,7 +317,7 @@ reliability.
 only _that_ it failed. Read transcripts after every eval run. They are the primary
 debugging tool.
 
-## Related Content
+## Related content
 
 - [Team AI Evals for Coding Tools]({{< relref "team-ai-evals" >}}) - Setting up evals for your team's AI coding tools
 - [AI Evals for AI Enablement Platforms]({{< relref "platform-ai-evals" >}}) - Building shared eval infrastructure for reusable AI tools

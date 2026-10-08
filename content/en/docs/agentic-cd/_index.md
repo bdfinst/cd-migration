@@ -12,7 +12,7 @@ Agentic continuous delivery ([ACD]({{< relref "/docs/reference/glossary#acd-agen
 
 {{< figure src="/images/CI_before_AI.png" alt="Don't put the AI cart before the CI horse - Integrating AI is software engineering. To be great at this, you need to be great at DevOps and CI." >}}
 
-## Diagnose Before You Accelerate
+## Diagnose before you accelerate
 
 When coding is nearly free, the constraint moves to the work around the code: the coordination,
 safety, and delivery architecture that decides whether faster creation becomes faster value. AI's
@@ -22,7 +22,7 @@ bottleneck, a map of where it moves, and a repeatable loop for removing it. **Im
 around development first; then accelerate.** This page covers the engineering half of that work, the
 constraints that keep agent-generated changes safe.
 
-## What Is ACD?
+## What is ACD?
 
 **An agent-generated change must meet or exceed the same quality bar as a human-generated change.** The pipeline does not care who wrote the code. It cares whether the code is correct, tested, and safe to deploy.
 
@@ -53,9 +53,9 @@ ACD extends continuous delivery. These practices must be working before agents c
 
 Without these foundations, adding agents amplifies existing problems rather than accelerating delivery.
 
-## What You'll Find in This Section
+## What you'll find in this section
 
-### [Getting Started]({{< relref "/docs/agentic-cd/getting-started" >}})
+### [Getting started]({{< relref "/docs/agentic-cd/getting-started" >}})
 
 - **[Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}})** - where to put what: project context file, rules, skills, and hooks mapped to their purpose and time horizon
 - **[The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}})** - how developers progress from autocomplete to multi-agent architecture and what bottleneck drives each transition
@@ -63,24 +63,24 @@ Without these foundations, adding agents amplifies existing problems rather than
 - **[The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}})** - the four layers of skill developers must master as AI moves from chat partner to long-running worker
 - **[AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}})** - covers organizational prerequisites before adopting agentic workflows
 
-### [Specification & Contracts]({{< relref "/docs/agentic-cd/specification" >}})
+### [Specification & contracts]({{< relref "/docs/agentic-cd/specification" >}})
 
 - **[Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}})** - defines the artifacts that anchor the ACD workflow and their authority hierarchy
 - **[Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})** - how agents help sharpen intent, draft [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios, and surface gaps before any code is written
 
-### [Agent Architecture]({{< relref "/docs/agentic-cd/architecture" >}})
+### [Agent architecture]({{< relref "/docs/agentic-cd/architecture" >}})
 
 - **[Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}})** - how to structure skills, agents, commands, and hooks in multi-agent systems
 - **[Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}})** - provides a concrete [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}), coder, and reviewer agent configuration
 - **[Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}})** - how to structure agent sessions so [context]({{< relref "/docs/reference/glossary#context-llm" >}}) stays manageable and commits stay small
 
-### [Operations & Governance]({{< relref "/docs/agentic-cd/operations" >}})
+### [Operations & governance]({{< relref "/docs/agentic-cd/operations" >}})
 
 - **[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}})** - how quality gates and expert validation agents enforce ACD constraints automatically
 - **[Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})** - how to architect agents and code to minimize unnecessary [token]({{< relref "/docs/reference/glossary#token" >}}) consumption without sacrificing quality
 - **[Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}})** - covers common failure modes and how to measure whether ACD is working
 
-## ACD Extensions to MinimumCD
+## ACD extensions to MinimumCD
 
 ACD *extends* MinimumCD by the following constraints:
 
@@ -95,13 +95,13 @@ ACD *extends* MinimumCD by the following constraints:
 
 These constraints are **not mandatory practices.** They describe the *minimum conditions required to sustain delivery pace once agents are making changes* to the system.
 
-## Agent Delivery Contract
+## Agent delivery contract
 
 Every ACD change is anchored by [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - structured documents that define intent, behavior, constraints, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}), and system-level rules. Agents may read and generate artifacts. Agents may **not** redefine the authority of any artifact. Humans own the accountability.
 
 See [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) for the authority hierarchy, detailed definitions, and examples.
 
-## The ACD Workflow
+## The ACD workflow
 
 Humans own the specifications. Agents collaborate during specification and own test generation and implementation. The pipeline enforces correctness. At every specification stage, the [four-step cycle]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-pattern" >}}) applies: human drafts, agent critiques, human decides, agent refines.
 
@@ -121,7 +121,7 @@ Humans own the specifications. Agents collaborate during specification and own t
 
 Human review at Test Validation and Code Review is an interim state. Replace it using the same [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) used throughout the CD migration. See [Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) for the full set of expert agents and how to adopt them.
 
-## Related Content
+## Related content
 
 - [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) - quality gates sequenced by defect detection priority
 - [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the replacement cycle for adopting expert validation agents

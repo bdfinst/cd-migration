@@ -12,7 +12,7 @@ aliases:
 Each pitfall below has a root cause in the same two gaps: skipped [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) and absent [pipeline enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}). Fix those two things and most of these failures become impossible.
 {{% /pageinfo %}}
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. Agent defines its own test scenarios
 
@@ -90,7 +90,7 @@ Teams jump to [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-
 
 **What to do:** Follow the [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) sequence. The first four stages (Quality Tools, Clarify Work, Harden Guardrails, Reduce Delivery Friction) are prerequisites, not optional. Do not expand AI to code generation until the pipeline is deterministic and fast.
 
-## After Adoption: Sustaining Quality Over Time
+## After adoption: sustaining quality over time
 
 Agents generate code faster than humans refactor it. Without deliberate maintenance practice, the codebase drifts toward entropy faster than it would with human-paced development.
 
@@ -135,7 +135,7 @@ Agent sessions accumulate context over time: outdated summaries, resolved TODOs,
 
 Review the context documents for each active workstream quarterly. Archive or delete summaries for completed work. Update the "current state" description to reflect what is actually true about the codebase, not what was true when the session was first created.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | How to Measure |
 |--------|--------|----------------|
@@ -144,7 +144,7 @@ Review the context documents for each active workstream quarterly. Archive or de
 | Test coverage for agent-generated code | Higher than baseline | Run coverage reports filtered by agent-generated files. Compare against team baseline. If agent code coverage is lower, the test generation step is not working. |
 | Agent-generated changes with complete artifacts | 100% | Audit a sample of recent agent-generated changes monthly. Check whether each has an intent description, test specification, feature description, and provenance metadata. |
 
-## Related Content
+## Related content
 
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - the artifacts that prevent these pitfalls

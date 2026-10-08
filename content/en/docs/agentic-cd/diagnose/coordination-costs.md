@@ -13,7 +13,7 @@ system is governed not by how fast anyone writes code but by how long work waits
 coordination, not creation. This page is the physics behind that claim.
 {{% /pageinfo %}}
 
-## Three Forces Set the Speed of Any Flow
+## Three forces set the speed of any flow
 
 Coordination cost is not a vague complaint. When work crosses people and teams, three forces govern
 how long it takes.
@@ -46,7 +46,7 @@ The unwritten knowledge surviving `n` handoffs is about 1 / 2ⁿ. Half is lost a
 three-quarters by the second. The intent in someone's head does not travel cleanly across an email,
 a ticket, and a standup. What arrives at the far end is a lossy copy.
 
-## The Three C's of Coordination Cost
+## The three C's of coordination cost
 
 Those forces surface as three recurring problems. Name them and you can attack them.
 
@@ -59,7 +59,7 @@ Those forces surface as three recurring problems. Name them and you can attack t
 They conspire to make it unlikely you arrive on time, with quality. Contention and Coupling create
 the queues. Coherence is the knowledge that decays on the way.
 
-### Underneath the Three C's: Knowledge
+### Underneath the three C's: knowledge
 
 Look closely and the three C's are one constraint wearing three coats. Contention is waiting for the
 person who *knows*. Coupling is needing knowledge or output that lives with someone else. Coherence
@@ -69,7 +69,7 @@ constraint in delivery: remove a knowledge dependency - make the understanding d
 than locked in a person - and you drain a queue, decouple a team, and restore coherence at once. The
 rest of this subsection is, at root, about finding and removing knowledge dependencies.
 
-## The Golden Rule
+## The golden rule
 
 From the same math comes the single lever that matters.
 
@@ -80,7 +80,7 @@ It is the inverse of the 1-in-2ⁿ curve. Go from four dependencies to three and
 local acceleration. You do not win by making one step faster. You win by deleting a step you used to
 wait on.
 
-## Where the Dependencies Live
+## Where the dependencies live
 
 If coordination is the constraint, where in the organization does it sit? In *Wiring the Winning
 Organization*, Steven Spear and Gene Kim describe any organization as three layers.
@@ -100,7 +100,7 @@ graph TD
 Most AI effort lands on Layer 1, the code. The coordination cost lives in Layers 2 and 3, the tools
 and the social circuitry. That is the mismatch this whole subsection exists to correct.
 
-## The Numbers Make the Misdiagnosis Unmistakable
+## The numbers make the misdiagnosis unmistakable
 
 Map a typical enterprise [value stream]({{< relref "/docs/reference/glossary#value-stream-map" >}})
 and the [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}) runs about 281
@@ -128,7 +128,7 @@ remove the dependencies that dominate the other 88%.
 - Troy Magennis - modeling of how each added dependency compounds delivery-schedule risk.
 - Mary and Tom Poppendieck, *Lean Software Development* - tacit-knowledge loss across handoffs.
 
-## Related Content
+## Related content
 
 - [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}) - the stance and the five properties that turn the Golden Rule into action
 - [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - which dependencies surface where, as agent speed rises

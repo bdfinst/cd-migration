@@ -16,7 +16,7 @@ recommended sequence for incorporating AI safely, mirroring the
 [brownfield migration phases]({{< relref "/docs/brownfield" >}}).
 {{% /pageinfo %}}
 
-## Before You Add AI: A Decision Framework
+## Before you add AI: a decision framework
 
 Not every problem warrants an AI-based solution. The decision tree below is a gate, not a funnel. Work through each question in order. If you can resolve the need at an earlier step, stop there.
 
@@ -35,11 +35,11 @@ graph TD
 
 If steps 1-3 were skipped, step 4 is not available. An AI solution applied to a process that could be simplified, handled by existing capabilities, or replaced by a deterministic component is complexity in place of clarity.
 
-## The Key Insight
+## The key insight
 
 **The sequence matters:** remove friction and add safety before you accelerate. AI amplifies whatever system it is applied to - strong process gets faster, broken process gets more broken, faster.
 
-## The Progression
+## The progression
 
 ```mermaid
 graph LR
@@ -57,7 +57,7 @@ graph LR
 
 Quality Tools, Clarify Work, Harden Guardrails, Remove Friction, then Accelerate with AI.
 
-## Quality Tools
+## Quality tools
 
 **Brownfield phase:** Assess
 
@@ -76,7 +76,7 @@ more work than it saves.
 **What this enables:** AI tooling that generates correct output more often than not. Subsequent
 steps build on working code rather than compensating for broken code.
 
-## Clarify Work
+## Clarify work
 
 **Brownfield phase:** Assess / Foundations
 
@@ -99,7 +99,7 @@ start with clear, testable specifications rather than ambiguous descriptions tha
 ambiguous code. The [four prompting disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) describe the skill
 progression that makes this work at scale.
 
-## Harden Guardrails
+## Harden guardrails
 
 **Brownfield phase:** Foundations / [Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})
 
@@ -133,7 +133,7 @@ The pipeline becomes the authority on code quality, not human reviewers. See
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) for how these guardrails
 extend to [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}).
 
-## Reduce Delivery Friction
+## Reduce delivery friction
 
 **Brownfield phase:** Pipeline / Optimize
 
@@ -185,7 +185,7 @@ delivery, not faster defect generation. The pipeline enforces the same quality b
 the author. See [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) for what to watch for and how
 to measure progress.
 
-## Mapping to Brownfield Phases
+## Mapping to brownfield phases
 
 | AI Adoption Stage | Brownfield Phase | Key Connection |
 |-------------------|-----------------|----------------|
@@ -195,7 +195,7 @@ to measure progress.
 | Reduce Delivery Friction | Pipeline / Optimize | [Replacing manual validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) unblocks AI-speed delivery |
 | Accelerate with AI | Optimize / CD | The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) become the delivery contract once the pipeline is deterministic and fast |
 
-## Related Content
+## Related content
 
 - [Brownfield CD Overview]({{< relref "/docs/brownfield" >}}) - the phased migration approach this roadmap parallels
 - [Replacing Manual Validations]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) - the core mechanical cycle for Reduce Delivery Friction
