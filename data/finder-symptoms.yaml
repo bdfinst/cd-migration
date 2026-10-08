@@ -75,6 +75,14 @@
   anti_patterns: [snowflake-environments, blind-operations, tightly-coupled-monolith,
     manual-deployments]
   impact: high
+- id: environments-run-different-code
+  title: Different environments run different code
+  path: /docs/symptoms/deployment/environments-run-different-code/
+  category: deployment
+  category_label: Deployment and Release
+  personas: [developer, manager]
+  anti_patterns: [environment-branches, missing-deployment-pipeline]
+  impact: high
 - id: regressions-on-release
   title: New releases introduce regressions
   path: /docs/symptoms/deployment/regressions-on-release/
@@ -122,7 +130,7 @@
   category: deployment
   category_label: Deployment and Release
   personas: [developer]
-  anti_patterns: [snowflake-environments, missing-deployment-pipeline]
+  anti_patterns: [snowflake-environments, missing-deployment-pipeline, environment-branches]
   impact: medium
 - id: database-migrations-block-deploys
   title: Database migrations block or break deployments

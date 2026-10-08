@@ -22,6 +22,9 @@
 - id: dora-metrics-as-goals
   title: "DORA Metrics as Goals"
   path: /docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals/
+- id: environment-branches
+  title: "Environment Branches"
+  path: /docs/anti-patterns/branching-integration/environment-branches/
 - id: estimation-theater
   title: "Estimation Theater"
   path: /docs/anti-patterns/organizational-cultural/planning/estimation-theater/
