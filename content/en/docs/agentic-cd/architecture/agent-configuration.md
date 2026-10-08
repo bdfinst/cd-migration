@@ -651,7 +651,7 @@ decisions have the most impact on cost per session.
 
 ### Model routing
 
-Matching model tier to task complexity is the highest-leverage cost decision. Applied to
+Matching model tier to task complexity is the highest-impact cost decision. Applied to
 this configuration:
 
 | Agent | Recommended Tier | Claude | Gemini | Why |

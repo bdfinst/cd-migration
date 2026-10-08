@@ -20,7 +20,7 @@ A token is roughly three-quarters of a word in English. Billing, latency, and co
 
 - **Input vs. output pricing** - Output tokens cost 2-5x more than input tokens because generating tokens is computationally more expensive than reading them. Instructions to "be concise" yield higher returns than most other optimizations because they directly reduce the expensive side of the equation.
 - **[Context window]({{< relref "/docs/reference/glossary#context-window" >}}) size** - Large context windows (150,000+ tokens) create false confidence. Extended contexts increase latency, increase costs, and can degrade model performance when relevant information is buried mid-context.
-- **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-leverage cost decisions.
+- **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-impact cost decisions.
 
 ## How Agentic Systems Multiply Token Costs
 
@@ -146,7 +146,7 @@ Refactoring for human readability and refactoring for token efficiency are the s
 - Define explicit interfaces at module boundaries. An agent working inside a module needs only the interface contract for its dependencies, not the implementation.
 - Consolidate duplicate logic into one authoritative location. One definition is one context load; ten copies are ten opportunities for inconsistency.
 
-Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest leverage.
+Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest impact.
 
 **Enforcing these improvements through the [pipeline](../../reference/glossary/#pipeline):**
 

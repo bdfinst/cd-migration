@@ -66,7 +66,7 @@ The order matters. Most AI effort lands on the code, but the code was rarely the
 typical enterprise [value stream]({{< relref "/docs/reference/glossary#value-stream-map" >}}) and
 coding is a small fraction of [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}).
 Make coding 50% faster and you save about 6%. Take coding to zero and roughly 88% of lead time is
-untouched. The leverage is in the 88%, not the 12%. Aim AI there.
+untouched. The biggest gains are in the 88%, not the 12%. Aim AI there.
 ([Coordination Costs]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) has the
 value-stream breakdown and the source behind these figures.)
 
