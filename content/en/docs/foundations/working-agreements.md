@@ -129,7 +129,7 @@ Some teams interpret "fix the build" as "stop merging until it is green." That i
 
 This sounds extreme, but the reasoning is straightforward:
 
-- **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-leverage activity anyone on the team can do.
+- **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-impact activity anyone on the team can do.
 - **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress. It is inventory.
 - **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not just the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
 
