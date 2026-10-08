@@ -14,7 +14,7 @@ description: >
 
 ## Definition
 
-Verification of the smallest testable piece of code—typically a single function, method, or class—in complete isolation from the rest of the application, network, file system, or external services. [Test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) are used where needed.
+Verification of the smallest testable piece of code, typically a single function, method, or class. The test runs in complete isolation from the rest of the application, network, file system, or external services. [Test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) are used where needed.
 
 ## Scope & boundaries
 
@@ -75,8 +75,8 @@ describe("castArray", () => {
 {{< /card >}}
 
 A Java sociable unit test exercising real domain logic through its public interface. The
-collaborators (the pricing policy and the order model) are real objects, not mocks, and the test
-asserts on the observable outcome - the computed total - rather than on which methods were called:
+collaborators (the pricing policy and the order model) are real objects, not mocks. The test
+asserts on the observable outcome, the computed total, not on which methods were called:
 
 {{< card code=true header="**Java sociable unit test for a bulk-discount pricing rule**" lang="java" >}}
 @Test

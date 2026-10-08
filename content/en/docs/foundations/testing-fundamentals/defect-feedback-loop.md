@@ -43,8 +43,8 @@ opportunities, and systemic fixes for each.
 | **Process and deployment** | Long-lived branches, manual [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) steps, excessive batching | Pre-commit for branch age; CI for pipeline and batching issues | Trunk-based development, automate every step, [blue/green]({{< relref "/docs/reference/glossary#blue-green-deployment" >}}) or [canary]({{< relref "/docs/reference/glossary#canary-deployment" >}}) deploys |
 | **Data and state** | Null pointer exceptions, schema migration failures, concurrency issues | Pre-commit for null safety; CI for schema compatibility | Null-safe types, expand-then-contract for schema changes, design for idempotency |
 
-For the complete catalog covering all defect categories (including product and discovery,
-dependency and infrastructure, testing and observability gaps, and more) see the
+The complete catalog covers all defect categories, including product and discovery,
+dependency and infrastructure, testing and observability gaps, and more. See the
 [CD Defect Detection and Remediation Catalog](https://bdfinst.github.io/ai-patterns/defect-detection-and-fixes/).
 
 ## Build a defect feedback loop
@@ -62,9 +62,9 @@ failures to root causes and root causes to systemic fixes.
    tests mandatory for every new boundary." If most defects come from untested edge cases, the
    fix is not "increase code coverage." It is "adopt property-based testing as a standard
    practice."
-4. **Measure whether the fix works.** Track defect counts by category over time. If you
-   applied a systemic fix for integration boundary defects and the count does not drop, the fix
-   is not working and you need a different approach.
+4. **Measure whether the fix works.** Track defect counts by category over time. Suppose you
+   applied a systemic fix for integration boundary defects and the count does not drop. Then the fix
+   is not working, and you need a different approach.
 
 ## The test-for-every-bug-fix rule
 

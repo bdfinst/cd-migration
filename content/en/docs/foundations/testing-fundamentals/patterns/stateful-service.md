@@ -47,8 +47,8 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 ## Test double validation
 
-Persistence doubles validated by [adapter integration tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#adapter-integration-test" >}}) against the real production engine. Consensus library doubles validated by cluster tests against a multi-node testcontainer setup. Soak tests run out of [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against a deployed instance to catch slow leaks and unbounded growth.
+[Adapter integration tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#adapter-integration-test" >}}) validate persistence doubles against the real production engine. Cluster tests validate consensus library doubles against a multi-node testcontainer setup. Soak tests run out of [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) against a deployed instance to catch slow leaks and unbounded growth.
 
 ## Pipeline placement
 
-State machine unit tests, recovery component tests, and single-node concurrency tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1; cluster tests with real consensus library in CI Stage 2; soak and chaos tests out of pipeline.
+State machine unit tests, recovery component tests, and single-node concurrency tests run in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) Stage 1. Cluster tests with the real consensus library run in CI Stage 2. Soak and chaos tests run out of pipeline.

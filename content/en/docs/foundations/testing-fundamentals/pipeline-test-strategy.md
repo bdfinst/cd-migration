@@ -9,7 +9,7 @@ aliases:
 ---
 
 **Everything that blocks deployment must be deterministic and under your control.** Everything
-that involves external systems runs asynchronously or post-deployment. This gives you the
+that involves external systems runs asynchronously or post-deployment. This split gives you the
 independence to deploy any time, regardless of the state of the world around you.
 
 ## Tests inside the pipeline
@@ -20,10 +20,10 @@ deterministic, and free of [external dependencies]({{< relref "/docs/reference/g
 {{< figure src="/images/pipeline-tests-inside.svg" alt="Tests inside the pipeline: pre-merge stage runs static analysis, unit tests, contract tests, and component tests in under 10 minutes. Post-merge re-runs the full deterministic suite. Systems the team does not control are replaced by test doubles." >}}
 
 Every test in this [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) uses [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) for
-anything that crosses the component boundary into a system the team does not control: third-party
-APIs, downstream services owned by other teams, message brokers. No in-band test calls a shared
-or external service. A real engine the team owns and isolates per test - a database in a per-test
-testcontainer, for example - is permitted in-band because it stays deterministic. This means:
+anything that crosses the component boundary into a system the team does not control. Examples are third-party
+APIs, downstream services owned by other teams, and message brokers. No in-band test calls a shared
+or external service. A real engine the team owns and isolates per test is permitted in-band because it
+stays deterministic. A database in a per-test testcontainer is one example. As a result:
 
 - **A downstream outage cannot block your deployment.** Your pipeline runs the same whether
   external systems are healthy or down.
@@ -82,7 +82,7 @@ share a contract specification (using a tool like [Pact](https://pact.io/)):
 - **Your test doubles are generated from the contract**, guaranteeing they match what the
   provider actually delivers.
 
-This shifts contract validation from "detect and react" to "prevent." See
+Consumer-driven contracts shift contract validation from "detect and react" to "prevent." See
 [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) for implementation details.
 
 ## Summary: all stages at a glance

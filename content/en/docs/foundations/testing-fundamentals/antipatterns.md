@@ -13,25 +13,25 @@ Most teams arrive at this section with a test suite that doesn't match the [Appl
 
 ## Common testing anti-patterns
 
-Each entry below is a smell that the suite is testing the wrong thing, will erode trust over time, or will block refactoring instead of enabling it.
+Each entry below is a smell. It signals that the suite tests the wrong thing, erodes trust over time, or blocks refactoring instead of enabling it.
 
 ### Reflection to reach private members
 
-Using reflection (or language-equivalent escape hatches: `@VisibleForTesting`-only public access, friend classes, `internal` exposed only for tests) to read or invoke private members from a test. This couples the test to the exact internal structure of the class, breaks every time the implementation is refactored, and tests something the caller cannot observe, meaning the test can pass while the actual public behavior is broken.
+Using reflection (or language-equivalent escape hatches: `@VisibleForTesting`-only public access, friend classes, `internal` exposed only for tests) to read or invoke private members from a test. Reflection couples the test to the exact internal structure of the class and breaks every time you refactor the implementation. It also tests something the caller cannot observe, so the test can pass while the actual public behavior is broken.
 
-If a private behavior is worth testing, it's reachable through a public method that exercises it. If no public method exercises it, the private code is dead and should be deleted. Reflection in tests is a signal that either the design needs adjustment (the class is too large and a collaborator wants to come out) or the test is aimed at the wrong abstraction level.
+If a private behavior is worth testing, it's reachable through a public method that exercises it. If no public method exercises it, the private code is dead and should be deleted. Reflection in tests signals one of two problems. Either the design needs adjustment, or the test aims at the wrong abstraction level. A design problem usually means the class is too large and a collaborator wants to come out.
 
 ### Testing private methods directly
 
-Same root cause as the reflection anti-pattern, but achieved by making methods package-private, `protected`, or otherwise reachable through a side door specifically so tests can call them. The method's accessibility is now distorted by the test, not by the design. Drive private logic through the public method that uses it, or extract it into a collaborator with its own public surface and test that collaborator through *its* public interface.
+This anti-pattern has the same root cause as reflection. The difference is that methods become package-private, `protected`, or otherwise reachable through a side door so tests can call them. The method's accessibility is now distorted by the test, not by the design. Drive private logic through the public method that uses it. Alternatively, extract the logic into a collaborator with its own public surface, and test that collaborator through *its* public interface.
 
 ### One test class per production class, one test per method
 
-Tests organized as a mirror of the production code structure, such as `OrderServiceTest` with `testProcessPayment`, `testValidateOrder`, `testEmitEvent`, produce a suite that documents the implementation and dies on contact with refactoring. Organize tests by behavior. An `OrderPlacement` test class with `places_order_with_valid_payment`, `rejects_order_when_payment_declined`, `holds_order_when_inventory_unavailable` is what survives, what reads well, and what catches integration bugs between methods.
+Some suites mirror the production code structure, such as `OrderServiceTest` with `testProcessPayment`, `testValidateOrder`, `testEmitEvent`. Such a suite documents the implementation and dies on contact with refactoring. Organize tests by behavior. An `OrderPlacement` test class with `places_order_with_valid_payment`, `rejects_order_when_payment_declined`, `holds_order_when_inventory_unavailable` is what survives, what reads well, and what catches integration bugs between methods.
 
 ### Tests that mirror the implementation
 
-A test that asserts "method A is called, then method B is called, then method C is called with these arguments" is testing the implementation, not the behavior. The same outcome could be achieved by a different sequence of calls, and if the test fails when the sequence changes but the outcome doesn't, the test is wrong, not the code. Assert on observable outcomes (returned value, persisted state, emitted event, response status) and use mocks/spies sparingly, only for outbound interactions that are themselves part of the contract.
+Some tests assert "method A is called, then method B is called, then method C is called with these arguments." Such a test checks the implementation, not the behavior, because a different sequence of calls could produce the same outcome. If the test fails when the sequence changes but the outcome doesn't, the test is wrong, not the code. Assert on observable outcomes (returned value, persisted state, emitted event, response status). Use mocks/spies sparingly, only for outbound interactions that are themselves part of the contract.
 
 ### Mocking what you don't own
 
@@ -39,7 +39,7 @@ Stubbing a third-party SDK, ORM, HTTP client, or cloud SDK directly in tests. Th
 
 ### Doubles without validating tests
 
-Any [test double]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) that has no corresponding mechanism (contract test, adapter integration test, post-deploy integration check) keeping it honest is a lie waiting to be discovered in production. If a double exists and there's no traceable answer to "how would we know if this stopped matching reality?" that double is a known risk and should be tracked as one.
+A [test double]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) needs a mechanism that keeps it honest: a contract test, an adapter integration test, or a post-deploy integration check. Without one, the double is a lie waiting to be discovered in production. Ask "how would we know if this double stopped matching reality?" If there's no traceable answer, the double is a known risk. Track it as one.
 
 ### Over-mocking
 
@@ -47,7 +47,7 @@ Replacing every collaborator with a mock so the test sees only the system under 
 
 ### Complex mock setup
 
-If a single test needs dozens of lines to set up its mocks, the system under test probably has too many dependencies for one unit of behavior. Setup complexity is a smell pointing at the production design, not at the test. Refactor the production code (extract a collaborator, narrow the interface, push concerns into separate classes) before adding more mocks.
+When a single test needs dozens of lines of mock setup, the system under test probably has too many dependencies. One unit of behavior should not need that many. Setup complexity is a smell pointing at the production design, not at the test. Refactor the production code (extract a collaborator, narrow the interface, push concerns into separate classes) before adding more mocks.
 
 ### Sleeping in tests
 
@@ -67,11 +67,11 @@ Copy-pasted setup blocks, string-typed assertions on JSON fragments, magic numbe
 
 ### Testing through the UI when the same behavior is testable lower in the stack
 
-UI tests are the slowest and most fragile layer. Pushing logic-only assertions into UI tests because "that's where we're set up to test" produces a brittle, slow suite that becomes a tax on every change. Test logic where the logic lives. Reserve UI tests for things that can only be observed at the UI layer.
+UI tests are the slowest and most fragile layer. Teams sometimes push logic-only assertions into UI tests because "that's where we're set up to test." The result is a brittle, slow suite that taxes every change. Test logic where the logic lives. Reserve UI tests for things that can only be observed at the UI layer.
 
 ### "We'll add tests later"
 
-Tests added after the code is already in production, written by someone who didn't write the code, asserting only what the code currently does, are not tests of the system's intended behavior. They're a snapshot of the current implementation, including its bugs. The team learns nothing from them and refactoring becomes risky in exactly the way tests are supposed to prevent. Tests written alongside the code (or before it, [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})-style) are the only ones that document intent.
+Consider tests added after the code is in production, written by someone who didn't write the code. They assert only what the code currently does. They do not test the system's intended behavior. They're a snapshot of the current implementation, including its bugs. The team learns nothing from them. Refactoring becomes risky in exactly the way tests are supposed to prevent. Tests written alongside the code (or before it, [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}})-style) are the only ones that document intent.
 
 ## Migrating an existing suite
 
@@ -81,7 +81,7 @@ The right first move depends on what the suite looks like now. Five common start
 
 1. Inventory the flows the E2E suite exercises. Pick the top five that fail most often.
 2. Build [component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) for those flows. Double the backend through the gateway the team owns.
-3. Once those component tests are green *and* the doubles they rely on are backed by a [contract test]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) plus an [out-of-band check]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) that is actually running and watched, delete the corresponding E2E tests. Do not keep both: duplicated coverage doubles the maintenance cost without doubling the confidence. Until that out-of-band validation is in place and monitored, keep one real-integration smoke test per flow - the component test's confidence rests on doubles, and deleting the last real-integration signal before anything proves those doubles still match reality moves the risk somewhere you cannot see it.
+3. Delete the corresponding E2E tests once two conditions hold. The component tests are green, *and* their doubles are backed by a [contract test]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) plus an [out-of-band check]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) that is running and watched. Do not keep both: duplicated coverage doubles the maintenance cost without doubling the confidence. Until that out-of-band validation is in place and monitored, keep one real-integration smoke test per flow. The component test's confidence rests on doubles. If you delete the last real-integration signal before anything proves those doubles match reality, you move the risk somewhere you cannot see it.
 
 ### If most "unit" tests mock third-party SDKs
 
