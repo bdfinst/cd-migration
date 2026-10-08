@@ -16,9 +16,9 @@ A developer runs the application locally and everything works. They push to [CI]
 fails. Or a teammate pulls the same branch and gets a different result. Or a bug report comes in
 that nobody can reproduce locally.
 
-The team spends hours debugging only to discover the issue is environmental: a different Node
-version, a missing system library, a different database encoding, or a service running on the
-developer's machine that is not available in CI. The code is correct. The environments are
+The team spends hours debugging only to discover the issue is environmental. The cause is a
+different Node version, a missing system library, or a different database encoding. Or a service
+runs on the developer's machine but is not available in CI. The code is correct. The environments are
 different.
 
 New team members experience this acutely. Setting up a development environment takes days of
@@ -40,8 +40,8 @@ developer works in an identical setup.
 
 ### Manual deployments
 
-When environment setup is a manual process documented in a wiki or README, it is never followed
-identically. Each developer interprets the instructions slightly differently, installs a slightly
+When environment setup is a manual process documented in a wiki or README, no two developers
+follow the process identically. Each developer interprets the instructions slightly differently, installs a slightly
 different version, or skips a step that seems optional. The manual process guarantees divergence
 over time. Infrastructure as code and automated setup scripts ensure consistency.
 
@@ -50,8 +50,8 @@ over time. Infrastructure as code and automated setup scripts ensure consistency
 ### Tightly coupled monolith
 
 When the application has implicit dependencies on its environment (specific file paths, locally
-running services, system-level configuration), it is inherently sensitive to environmental
-differences. Well-designed code with explicit, declared dependencies works the same way
+running services, system-level configuration), the application is inherently sensitive to
+environmental differences. Well-designed code with explicit, declared dependencies works the same way
 everywhere. Code that reaches into its runtime environment for undeclared dependencies works only
 where those dependencies happen to exist.
 
@@ -62,12 +62,12 @@ where those dependencies happen to exist.
 1. **Do all developers use the same OS, runtime versions, and dependency versions?** If not,
    environment divergence is the most likely cause. Start with
    [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
-2. **Is the development environment setup automated or manual?** If it is a wiki page that takes
+2. **Is the development environment setup automated or manual?** If setup is a wiki page that takes
    a day to follow, the manual process creates the divergence. Start with
    [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 3. **Does the application depend on local services, file paths, or system configuration that is
    not declared in the codebase?** If the application has implicit environmental dependencies,
-   it will behave differently wherever those dependencies differ. Start with
+   the application behaves differently wherever those dependencies differ. Start with
    [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 
 ---

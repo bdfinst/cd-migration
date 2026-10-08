@@ -35,7 +35,7 @@ Shifting automation earlier requires treating automated tests as a delivery requ
 
 ### Siloed QA team
 
-When a separate QA team owns both manual testing and test automation, developers have no role in either. Developers write code; QA writes tests. The division feels natural (testing is QA's job), but it means the team most familiar with implementation details is not writing the tests. QA automation engineers are translating manual test results into code rather than working from source knowledge of the system.
+When a separate QA team owns both manual testing and test automation, developers have no role in either. Developers write code; QA writes tests. The division feels natural (testing is QA's job), but the division means the team most familiar with implementation details is not writing the tests. QA automation engineers are translating manual test results into code rather than working from source knowledge of the system.
 
 When developers share responsibility for automated tests, automation can be written as code is written. A QA engineer reviewing a story during development can identify what needs automated coverage. A developer finishing a feature can write the corresponding unit and integration tests. The handoff that creates the lag disappears because there is no handoff.
 
@@ -43,16 +43,16 @@ When developers share responsibility for automated tests, automation can be writ
 
 ### Manual testing only
 
-When manual testing is the established quality gate, automated testing is treated as an enhancement rather than a requirement. Automation is written when time permits, which means it is written after the work that is required. The team talks about eliminating manual testing but the delivery process does not enforce automated test coverage, so manual testing remains the gate and automation remains optional.
+When manual testing is the established quality gate, automated testing is treated as an enhancement rather than a requirement. Automation is written when time permits, which means it is written after the work that is required. The team talks about eliminating manual testing, but the delivery process does not enforce automated test coverage. Manual testing remains the gate, and automation remains optional.
 
-Making automated test coverage a hard requirement (nothing ships without it) reorders the priorities. The question changes from "will we have time to automate this?" to "what automated tests does this story require?" Manual testing does not disappear, but it becomes the secondary layer rather than the primary one.
+Making automated test coverage a hard requirement (nothing ships without it) reorders the priorities. The question changes from "will we have time to automate this?" to "what automated tests does this story require?" Manual testing does not disappear. It becomes the secondary layer rather than the primary one.
 
 **Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
 ## How to narrow it down
 
-1. **Is there a step in your workflow where a story moves from "dev complete" to "QA"?** If work travels from developers to a separate QA queue before automated tests are written, the process is sequencing automation after manual testing by design. Start with [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}).
-2. **Do developers write automated tests for their own stories, or does a separate team write them?** If automation is QA's responsibility, developers are structurally excluded from the activity that could close the lag. Start with [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}}).
-3. **Can a story ship without automated test coverage?** If manual QA sign-off is sufficient to release, automation will be deferred whenever time is short, which is often. Start with [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
+1. **Is there a step in your workflow where a story moves from "dev complete" to "QA"?** If work moves to a separate QA queue before anyone writes automated tests, the process puts automation after manual testing by design. Start with [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}).
+2. **Do developers write automated tests for their own stories, or does a separate team write them?** If automation is QA's responsibility, the structure excludes developers from the work that could close the lag. Start with [Siloed QA Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/siloed-qa-team" >}}).
+3. **Can a story ship without automated test coverage?** If manual QA sign-off is enough to release, the team defers automation whenever time is short. Time is often short. Start with [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
 
 **Ready to fix this?** The most common cause is [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end#how-to-fix-it" >}}) section for week-by-week steps.

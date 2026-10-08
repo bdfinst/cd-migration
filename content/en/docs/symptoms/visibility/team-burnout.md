@@ -19,7 +19,7 @@ buffer for [unplanned work]({{< relref "/docs/reference/glossary#unplanned-work"
 plan.
 
 Nobody has time for learning, experimentation, or process improvement. Suggestions like "let's
-improve our test suite" or "let's automate that deployment" are met with "we don't have time."
+improve our test suite" or "let's automate that deployment" get the same answer: "we don't have time."
 The irony is that the manual work those improvements would eliminate is part of what keeps the
 team too busy.
 
@@ -57,7 +57,7 @@ working hard on everything and completing nothing.
 
 ### Push-based work assignment
 
-When work is assigned to individuals, asking for help carries a cost: it pulls a teammate away
+When managers assign work to individuals, asking for help carries a cost: it pulls a teammate away
 from their own assigned stories. So developers struggle alone rather than swarming. Workloads are
 also uneven because managers cannot precisely predict how long work will take at assignment time.
 Some people finish early and wait for reassignment; others are chronically overloaded. The
@@ -68,7 +68,7 @@ becomes unsustainable for the people carrying the heaviest loads.
 
 ### Velocity as individual metric
 
-When individual [story points]({{< relref "/docs/reference/glossary#story-points" >}}) are tracked, developers cannot afford to help each other, take time
+When the organization tracks individual [story points]({{< relref "/docs/reference/glossary#story-points" >}}), developers cannot afford to help each other, take time
 to learn, or invest in quality. Every hour must produce measurable output. The pressure to perform
 individually eliminates the slack that teams need to stay healthy. Helping a teammate, mentoring
 a junior developer, or improving a build script all become career risks because they do not

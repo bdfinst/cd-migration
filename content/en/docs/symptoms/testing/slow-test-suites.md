@@ -33,9 +33,9 @@ suite itself.
 
 When the majority of tests are end-to-end or integration tests, the suite is inherently slow. E2E
 tests launch browsers, start services, make network calls, and wait for responses. Each test takes
-seconds or minutes instead of milliseconds. A suite of 500 E2E tests will always be slower than a
-suite of 5,000 unit tests that verify the same logic at a lower level. The fix is not faster
-hardware. It is moving test coverage down the pyramid.
+seconds or minutes instead of milliseconds. A suite of 500 E2E tests is always slower than
+5,000 unit tests that verify the same logic at a lower level. Faster hardware does not fix the
+problem. Moving test coverage down the pyramid does.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
@@ -50,10 +50,10 @@ system under test.
 
 ### Manual testing only
 
-Sometimes the test suite is slow because the team added automated tests as an afterthought, using
-E2E tests to backfill coverage for code that was not designed for unit testing. The resulting suite
-is a collection of heavyweight tests that exercise the full stack for every scenario because the
-code provides no lower-level testing seams.
+Sometimes the test suite is slow because the team added automated tests as an afterthought. The
+team used E2E tests to backfill coverage for code that was not designed for unit testing. The
+resulting suite is a collection of heavyweight tests that exercise the full stack for every
+scenario, because the code provides no lower-level testing seams.
 
 **Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
@@ -65,9 +65,9 @@ code provides no lower-level testing seams.
 2. **Can tests be run for a single module in isolation?** If running one module's tests requires
    starting the entire application, the architecture prevents test isolation. Start with
    [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
-3. **Were the automated tests added retroactively to a codebase with no testing seams?** If tests
-   were bolted on after the fact using E2E tests because the code cannot be unit-tested, the
-   codebase needs refactoring for testability. Start with
+3. **Were the automated tests added retroactively to a codebase with no testing seams?** If the
+   team bolted on E2E tests after the fact because the code cannot be unit-tested, the codebase
+   needs refactoring for testability. Start with
    [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}).
 
 ---

@@ -21,15 +21,15 @@ The team knows this is a problem but treats it as "we need to add a log aggregat
 
 ### Blind operations
 
-Unstructured, unaggregated logs are one form of not having instrumented a system for observability. Logs that cannot be searched or correlated are only marginally more useful than no logs at all. Observability requires structured logs with consistent field names, aggregated into a searchable store, with the ability to correlate log events across services by request ID or trace context.
+Unstructured, unaggregated logs are one form of not having instrumented a system for observability. Logs that cannot be searched or correlated are only marginally more useful than no logs at all. Observability requires structured logs with consistent field names, aggregated into a searchable store. Observability also requires correlating log events across services by request ID or trace context.
 
-Structured logging requires deliberate adoption: a standard log format, consistent field names, correlation identifiers on every log entry. When these are in place, a query that previously required thirty minutes of manual grepping across servers runs in seconds from a single interface.
+Structured logging requires deliberate adoption: a standard log format, consistent field names, correlation identifiers on every log entry. When these practices are in place, a query that previously required thirty minutes of manual grepping across servers runs in seconds from a single interface.
 
 **Read more:** [Blind operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
 ### Knowledge silos
 
-Understanding how to navigate the logging infrastructure - which servers hold which logs, what the rotation schedule is, which grep patterns produce useful results - is knowledge that concentrates in the people who have done enough debugging to learn it. New team members cannot effectively debug production issues independently because they do not know the informal map of where things are.
+Navigating the logging infrastructure takes knowledge: which servers hold which logs, what the rotation schedule is, and which grep patterns produce useful results. That knowledge concentrates in the people who have done enough debugging to learn it. New team members cannot effectively debug production issues independently because they do not know the informal map of where things are.
 
 When logs are aggregated into a centralized, searchable system, the knowledge of where to look is built into the tooling. Any team member can write a query without knowing the physical location of log files.
 
