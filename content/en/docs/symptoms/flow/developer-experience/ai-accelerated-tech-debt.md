@@ -14,12 +14,13 @@ tags:
 The team adopted AI coding tools six months ago. Feature velocity increased. But the codebase
 is getting harder to work in. Each AI-assisted session produces code that works - it passes
 tests, it satisfies the [acceptance criteria](../../../reference/glossary/#acceptance-criteria) - but it does not account for what already exists.
+
 The AI generates a new utility function that duplicates one three files away. It introduces a
 third pattern for error handling in a module that already has two. It copies a data access
 approach that the team decided to move away from last quarter.
 
 Nobody catches these issues in review because the review standard is "does it do what it
-should and how do we validate it" - which is the right standard for correctness, but it does
+should and how do we validate it." That standard is right for correctness, but it does
 not address structural fitness. The acceptance criteria say what the change should do. They do
 not say "and it should use the existing error handling pattern" or "and it should not duplicate
 the date formatting utility."
@@ -36,11 +37,11 @@ generated code in patterns the team did not choose and would not have written.
 AI generates code faster than humans refactor it. Without deliberate maintenance sessions
 scoped to cleaning up recently touched files, the codebase drifts toward entropy faster than
 it would with human-paced development. The team treats refactoring as something that happens
-organically during feature work, but AI-assisted feature sessions are scoped to their
+organically during feature work. But AI-assisted feature sessions are scoped to their
 acceptance criteria and do not include cleanup.
 
 The fix is not to allow AI to refactor during feature sessions - that mixes concerns and
-makes commits unreviewable. It is to schedule explicit refactoring sessions with their own
+makes commits unreviewable. The fix is to schedule explicit refactoring sessions with their own
 intent, [constraints](../../../reference/glossary/#constraint), and acceptance criteria (all existing tests still pass, no behavior
 changes).
 
@@ -49,8 +50,8 @@ changes).
 ### No review gate for structural quality
 
 The team's review process validates correctness (does it satisfy acceptance criteria?) and
-security (does it introduce vulnerabilities?) but not structural fitness (does it fit the
-existing codebase?). Standard review [agents](../../../reference/glossary/#agent-ai) check for logic errors, security defects, and
+security (does it introduce vulnerabilities?). The process does not validate structural fitness
+(does it fit the existing codebase?). Standard review [agents](../../../reference/glossary/#agent-ai) check for logic errors, security defects, and
 performance issues. None of them check whether the change duplicates existing code, introduces
 a third pattern where one already exists, or violates the team's architectural decisions.
 
@@ -69,17 +70,17 @@ code. Add them to the pre-commit hook sequence alongside lint and type checking:
   a cyclomatic complexity limit. AI-generated code tends toward deeply nested conditionals when
   the [prompt](../../../reference/glossary/#prompt) does not specify a complexity budget.
 - **Dependency and architecture rules** (for example, dependency-cruiser, ArchUnit) - encode module
-  boundary constraints as code. When the team decided to move away from a direct database access
-  pattern, architecture rules make violations a build failure rather than a code review comment.
+  boundary constraints as code. Suppose the team decided to move away from a direct database access
+  pattern. Architecture rules make violations a build failure rather than a code review comment.
 
 These tools encode decisions the team has already made. Each one removes a category of
 structural drift from the review queue entirely.
 
 **Layer 2: Semantic review agent with architectural constraints**
 
-The semantic review agent can catch structural drift that deterministic tools cannot detect -
-like a third error-handling approach in a module that already has two - but only if the feature
-description includes architectural constraints. If the feature description covers only functional
+The semantic review agent can catch structural drift that deterministic tools cannot detect,
+like a third error-handling approach in a module that already has two. The agent catches that
+drift only if the feature description includes architectural constraints. If the feature description covers only functional
 requirements, the agent has no basis for evaluating structural fit.
 
 Add a constraints section to the feature description for every change:
@@ -100,9 +101,9 @@ where the feature description defines what those patterns are.
 
 ### Rubber-stamping AI-generated code
 
-When developers do not own the change - cannot articulate what it does, what criteria they
-verified, or how they would detect a failure - they also do not evaluate whether the change
-fits the codebase. Structural quality requires someone to notice that the AI reinvented
+Some developers do not own the change. They cannot articulate what it does, what criteria they
+verified, or how they would detect a failure. Those developers also do not evaluate whether the
+change fits the codebase. Structural quality requires someone to notice that the AI reinvented
 something that already exists. That noticing only happens when a human is engaged enough with
 the change to compare it against their knowledge of the existing system.
 
@@ -116,18 +117,18 @@ the change to compare it against their knowledge of the existing system.
    sequence described in
    [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration#hooks" >}}).
 2. **Do feature descriptions include architectural constraints, not only functional
-   requirements?** If the feature description only says what the change should do but not how
-   it should fit structurally, the semantic review agent has no basis for checking pattern
-   conformance. Start by adding constraints to the
+   requirements?** The feature description might say what the change should do but not how
+   the change should fit structurally. Then the semantic review agent has no basis for checking
+   pattern conformance. Start by adding constraints to the
    [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#3-feature-description-constraint-architecture" >}}).
 3. **Is the team scheduling explicit refactoring sessions after feature work?** If cleanup
    only happens incidentally during feature sessions, debt accumulates with every AI-assisted
    change. Start with the
    [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics#after-adoption-sustaining-quality-over-time" >}})
    guidance on scheduling maintenance sessions after every three to five feature sessions.
-4. **Can developers identify where a new change duplicates existing code?** If nobody in the
-   review process is comparing the AI's output against existing utilities and patterns, the
-   team is not engaged enough with the change to catch structural drift. Start with
+4. **Can developers identify where a new change duplicates existing code?** Check whether anyone in the
+   review process compares the AI's output against existing utilities and patterns. If nobody
+   does, the team is not engaged enough with the change to catch structural drift. Start with
    [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}).
 
 ---

@@ -12,7 +12,9 @@ tags:
 
 ## What you are seeing
 
-The Java service has a Jenkins [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) set up four years ago. The Python service has a GitHub Actions workflow written by a consultant. The Go service has a Makefile. The Node.js service deploys from a developer's laptop. The Ruby service has no deployment automation at all. Each service is a different discipline, maintained by whoever last touched it.
+The Java service has a Jenkins [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) set up four years ago. The Python service has a GitHub Actions workflow written by a consultant. The Go service has a Makefile. The Node.js service deploys from a developer's laptop. The Ruby service has no deployment automation at all.
+
+Each service is a different discipline, maintained by whoever last touched it.
 
 Onboarding a new engineer requires learning five different deployment systems. Fixing a security vulnerability in the dependency scanning step requires five separate changes across five pipeline definitions, each with different syntax. A compliance requirement that all services log deployment events requires five separate implementations, each time reinventing the pattern.
 

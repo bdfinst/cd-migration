@@ -11,8 +11,8 @@ tags:
 
 A post-mortem reveals that the payments module failed in the same way it failed eighteen months
 ago. The fix applied then was not documented, and the developer who applied it is no longer on
-the team. A retrospective surfaces a proposal to split the monolith into services - a direction
-the team two rotations ago evaluated and rejected for reasons nobody on the current team knows.
+the team. A retrospective surfaces a proposal to split the monolith into services. The team two rotations
+ago evaluated and rejected that direction, for reasons nobody on the current team knows.
 
 The same conversations happen repeatedly. The same edge cases get missed. The same architectural
 directions get proposed, piloted, and quietly abandoned without any record of why. Each new group
@@ -22,11 +22,11 @@ treats the domain as a fresh problem rather than building on what was learned be
 
 ### Thin-spread teams
 
-When engineers are rotated through a domain based on capacity rather than staying long enough to
-build expertise, institutional memory does not accumulate. The decisions, experiments, and hard
+Engineers often rotate through a domain based on capacity rather than staying long enough to
+build expertise. Then institutional memory does not accumulate. The decisions, experiments, and hard
 lessons from previous rotations leave with those developers. The next group inherits the code but
-not the understanding of why it is structured the way it is, what was tried before, or what the
-failure modes are. They are likely to repeat the same exploration, reach the same dead ends, and
+not the understanding behind the code. They do not know why it is structured the way it is, what
+was tried before, or what the failure modes are. They are likely to repeat the same exploration, reach the same dead ends, and
 make the same mistakes.
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})

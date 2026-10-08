@@ -12,9 +12,9 @@ tags:
 
 ## What you are seeing
 
-The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) build takes 45 minutes for every commit because the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) rebuilds every application and runs every test regardless of what changed. The team chose a monorepo for good reasons - code sharing is simpler, cross-cutting changes are atomic, and dependency management is more coherent - but the pipeline has no awareness of what actually changed. Changing a comment in Service A triggers a full rebuild of Services B, C, D, and E.
+The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) build takes 45 minutes for every commit because the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) rebuilds every application and runs every test regardless of what changed. The team chose a monorepo for good reasons: code sharing is simpler, cross-cutting changes are atomic, and dependency management is more coherent. But the pipeline has no awareness of what actually changed. Changing a comment in Service A triggers a full rebuild of Services B, C, D, and E.
 
-Developers have adapted by batching changes to reduce the number of CI runs they wait through. One CI run per hour instead of one per commit. The batching reintroduces the integration problems the monorepo was supposed to solve: multiple changes combined in a single commit lose the ability to bisect failures to any individual change.
+Developers have adapted by batching changes to reduce the number of CI runs they wait through. One CI run per hour instead of one per commit. The batching reintroduces the integration problems the monorepo was supposed to solve. When multiple changes share a single commit, you cannot bisect a failure to any individual change.
 
 The build system treats the entire repository as a single unit. Service owners have added scripts to skip unmodified services, but the scripts are fragile and not consistently maintained. The CI system was not designed for selective builds, so every workaround is an unsupported hack on top of an ill-fitting tool.
 
@@ -22,7 +22,7 @@ The build system treats the entire repository as a single unit. Service owners h
 
 ### Missing deployment pipeline
 
-Pipelines that understand which services changed - using build tools that model the dependency graph or change detection based on file paths - can selectively build and test only what was affected by a commit. Without this investment, pipelines treat the monorepo as a single unit and rebuild everything.
+Some pipelines understand which services changed. They use build tools that model the dependency graph or detect changes by file path. Those pipelines build and test only what a commit affected. Without this investment, pipelines treat the monorepo as a single unit and rebuild everything.
 
 Tools like Nx, Bazel, or Turborepo provide dependency graph awareness for monorepos. A pipeline built on these tools builds only what needs to be rebuilt and runs only the tests that could be affected by the change. Feedback loops shorten from 45 minutes to 5.
 

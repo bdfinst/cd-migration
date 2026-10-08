@@ -32,7 +32,7 @@ An adapter that isolates the team's code from vendor-specific details can handle
 
 When the team's services must be deployed in coordination with other systems - whether internal or external - the coupling forces joint releases. Each deployment event becomes a multi-party coordination exercise. The team cannot ship independently because their services are not actually independent.
 
-Services that expose stable interfaces and handle both old and new protocol versions simultaneously can be deployed and upgraded without coordinating with consumers. That interface stability is what removes the external constraint: the team can ship on their own schedule because changing one side no longer requires the other side to change at the same time.
+Services that expose stable interfaces and handle both old and new protocol versions simultaneously can be deployed and upgraded without coordinating with consumers. That interface stability removes the external constraint. The team can ship on their own schedule because changing one side no longer requires the other side to change at the same time.
 
 **Read more:** [Distributed monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}})
 
@@ -40,7 +40,7 @@ Services that expose stable interfaces and handle both old and new protocol vers
 
 Without a pipeline, there is no mechanism for gradual migrations - running old and new integration paths simultaneously during a transition period. Switching to a new vendor API requires deploying new code that breaks old behavior unless both paths are maintained in parallel.
 
-A pipeline with [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) support can activate the new vendor integration for a subset of traffic, validate it against real load, and then complete the migration when confidence is established. This decouples the team's deployment from the vendor's release schedule.
+A pipeline with [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) support can activate the new vendor integration for a subset of traffic. The team validates the integration against real load, then completes the migration when confidence is established. That gradual migration decouples the team's deployment from the vendor's release schedule.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 

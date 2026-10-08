@@ -32,7 +32,7 @@ When environments can be created in minutes from code, they stop being scarce. A
 
 [Pipelines]({{< relref "/docs/reference/glossary#pipeline" >}}) that include environment provisioning steps can spin up, run tests against, and tear down ephemeral environments as part of every run. The environment is created fresh for each test run and destroyed when the run completes. Without this capability, environments are managed manually outside the pipeline and must be shared.
 
-A pipeline with environment provisioning gives every commit its own isolated environment. There is no ticket to file, no queue to wait in, no contention with other teams - the environment exists for the duration of the run and is gone when the run completes.
+A pipeline with environment provisioning gives every commit its own isolated environment. There is no ticket to file, no queue to wait in, and no contention with other teams. The environment exists for the duration of the run and is gone when the run completes.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
