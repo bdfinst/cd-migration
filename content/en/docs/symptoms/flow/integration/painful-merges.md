@@ -31,7 +31,7 @@ an entire day resolving accumulated drift.
 
 ## Common causes
 
-### Long-Lived Feature Branches
+### Long-lived feature branches
 
 When branches live for weeks or months, they accumulate divergence from the main line. The longer
 the branch lives, the more changes happen on main that the branch does not include. At merge time,
@@ -40,7 +40,7 @@ conflicts. A branch that is two weeks old may have dozens.
 
 **Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
-### Integration Deferred
+### Integration deferred
 
 When the team does not practice [continuous integration]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) (integrating to main at least daily), each
 developer's work diverges independently. The build may be green on each branch but broken when
@@ -49,7 +49,7 @@ integration, merge pain is inevitable.
 
 **Read more:** [Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}})
 
-### Monolithic Work Items
+### Monolithic work items
 
 When work items are too large to complete in a day or two, developers must stay on a branch for
 the duration. A story that takes a week forces a week-long branch. Breaking work into smaller
@@ -75,7 +75,7 @@ merges.
 
 **Ready to fix this?** The most common cause is [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Long-lived work creates the divergence that makes merges painful
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Merge pain discourages frequent integration

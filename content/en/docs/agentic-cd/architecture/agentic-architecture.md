@@ -38,7 +38,7 @@ Getting architecture right addresses all three. The sections below give patterns
 
 ## Skills
 
-### What a Skill Is
+### What a skill is
 
 A skill is a named, reusable procedure that an agent can invoke by name. It encodes a sequence of steps, a set of rules, or a decision procedure that would otherwise need to be re-derived from scratch each time the agent encounters a given situation.
 
@@ -46,7 +46,7 @@ Skills are not plugins or function calls in the API sense. They are instruction 
 
 This distinction matters. Because a skill is plain text, it works across models that can read and follow natural language instructions. Claude, Gemini, and any other capable model can follow the same skill document. This is the foundation of model-agnostic workflow design.
 
-### Single Responsibility
+### Single responsibility
 
 A skill should do one thing. The temptation to combine related procedures into a single skill ("review code AND write the commit message AND update the changelog") produces a skill that is hard to test, hard to maintain, and hard to invoke selectively. When a multi-step procedure fails, a single-responsibility skill makes it obvious which step went wrong and where to look.
 
@@ -62,13 +62,13 @@ Signs a skill should be extracted:
 - A step in a skill has grown to match the complexity of the skill itself
 - A sub-agent needs only part of a skill's behavior but must receive all of it
 
-### When to Inline vs. Extract
+### When to inline vs. extract
 
 Inline instructions when a procedure is used exactly once, is tightly coupled to the specific agent's context, or is too short to justify its own file (under 5-6 lines of instruction). Extract to a skill file when a procedure is reused, when it will be maintained independently of the agent configuration, or when it is long enough that reading the agent's [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) requires scrolling past it.
 
 A useful test: replace the inline instruction with a skill reference and check whether the agent system prompt reads more clearly. If it does, extract it.
 
-### File and Folder Structure
+### File and folder structure
 
 Organize skills in a flat or two-level hierarchy within a `skills/` directory. Avoid deeply nested skill trees - when an agent needs to invoke a skill, it should be obvious where to find it.
 
@@ -91,7 +91,7 @@ Organize skills in a flat or two-level hierarchy within a `skills/` directory. A
 
 Separate `skills/` directories per model are justified when the skills genuinely differ in ways specific to that model's behavior. They are a problem when the skills differ only because they were written at different times by different people without a shared template. The goal is model-agnostic skills that live in a shared location; model-specific variants should be the exception and should be explicitly labeled as such.
 
-### Writing Model-Agnostic Skill Instructions
+### Writing model-agnostic skill instructions
 
 Skills written to exploit one model's specific behaviors create lock-in. The following practices produce skills that transfer well:
 
@@ -103,7 +103,7 @@ Skills written to exploit one model's specific behaviors create lock-in. The fol
 
 **State scope and early exit conditions.** Both models benefit from explicit scope limits ("analyze only the files in the staged diff") and early exit conditions ("if the diff contains only comments and whitespace, return an empty findings list immediately"). These reduce unnecessary processing and keep outputs predictable.
 
-### Claude Implementation Example
+### Claude implementation example
 
 {{< card code=true header="**Claude: /validate-test-spec skill**" lang="markdown" >}}
 ## /validate-test-spec
@@ -138,7 +138,7 @@ Return this JSON and nothing else:
 }
 {{< /card >}}
 
-### Gemini Implementation Example
+### Gemini implementation example
 
 The same skill for Gemini. The task logic is identical. The structural differences
 reflect Gemini's preference for explicit role framing and its handling of early exit
@@ -194,7 +194,7 @@ The differences are explicit: Gemini benefits from named input fields (`bdd_scen
 
 ---
 
-## How Skills and Agents Relate
+## How skills and agents relate
 
 A [skill]({{< relref "/docs/reference/glossary#skill-agent" >}}) is what an [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) knows how to do. An agent is the runtime that executes skills. Skills are stateless instruction documents; agents are stateful execution loops that read skills, invoke tools, and iterate toward a goal. One agent can invoke many skills. One skill can be invoked by different agents. Skills can be reviewed, tested, and versioned independently of the agent that runs them - changing a skill does not require changing the agent, and swapping the agent does not require rewriting the skills.
 
@@ -202,7 +202,7 @@ A [skill]({{< relref "/docs/reference/glossary#skill-agent" >}}) is what an [age
 
 ## Agents
 
-### Defining Agent Boundaries
+### Defining agent boundaries
 
 An agent boundary is a context boundary and a responsibility boundary. What an agent knows, what it can do, and what it must return are determined by what crosses the boundary.
 
@@ -210,7 +210,7 @@ Define boundaries by asking: what is the smallest coherent unit of work this age
 
 Responsibility and context are coupled. An agent with a narrow responsibility needs a small context. An agent with a broad responsibility needs a large context and likely should be decomposed.
 
-### When One Agent Is Enough
+### When one agent is enough
 
 Use a single agent when:
 
@@ -221,7 +221,7 @@ Use a single agent when:
 
 Decomposing into multiple agents introduces latency, context assembly overhead, and additional failure surfaces. Do not decompose for the sake of architectural elegance. Decompose when there is a concrete benefit: parallelism, context budget enforcement, or specialized [model routing]({{< relref "/docs/reference/glossary#model-routing" >}}).
 
-### When to Decompose
+### When to decompose
 
 Decompose when:
 
@@ -230,7 +230,7 @@ Decompose when:
 - A task has grown too large to fit in a single well-scoped context without degrading output quality
 - Separation of concerns requires that one agent not be able to see or influence another agent's domain (the implementation agent must not perform its own review)
 
-### Passing Context Without Bloat
+### Passing context without bloat
 
 ![Agent context boundary: orchestrator passes only the relevant subset of context to each sub-agent as structured JSON](/images/agentic-cd/agent-context-boundary.svg)
 
@@ -243,7 +243,7 @@ Rules for inter-agent context:
 - Strip conversation history at every boundary. The receiving agent needs the result of prior work, not the reasoning that produced it.
 - Send diffs, not full file contents, when the agent's task is about changes.
 
-### Handling Failure Modes
+### Handling failure modes
 
 Agent failures fall into three categories, each requiring a different response:
 
@@ -253,7 +253,7 @@ Agent failures fall into three categories, each requiring a different response:
 
 **Silent degradation (the agent returns a valid-looking response that is subtly wrong).** This is the hardest failure mode to detect. Defend against it with output schemas and schema validation at every boundary. A response that does not conform to the expected schema should be treated as a hard failure, not silently accepted.
 
-### Declarative Agents vs. Programmatic Agents
+### Declarative agents vs. programmatic agents
 
 An agent can be defined in two fundamentally different ways. The choice shapes how it is authored, deployed, and maintained.
 
@@ -296,7 +296,7 @@ Most teams start declarative and migrate specific agents to programmatic as auto
 
 The boundary is not a quality boundary. Declarative agents are the right tool when a runtime is available. Programmatic agents are the right tool when one is not.
 
-### Multi-Agent Pipeline Example: Release Readiness Checks
+### Multi-agent pipeline example: release readiness checks
 
 ![Multi-agent pipeline: Claude orchestrator routes staged diff to three parallel sub-agents and aggregates their structured JSON results](/images/agentic-cd/multi-agent-pipeline.svg)
 
@@ -391,7 +391,7 @@ For a concrete application of this pattern to coding and pre-commit review - inc
 
 ## Commands
 
-### Designing Unambiguous Commands
+### Designing unambiguous commands
 
 A command is an instruction that triggers a defined workflow. The distinction between a command and a general [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) is that a command's behavior should be predictable and consistent across invocations with the same inputs.
 
@@ -404,7 +404,7 @@ An unambiguous command has:
 
 The failure mode of an ambiguous command is that the model interprets it differently on different runs. "Review the changes" is ambiguous. `/review staged-diff` with a defined schema for what "review" means and what the output looks like is not.
 
-### Parameterization Strategies
+### Parameterization strategies
 
 Commands should accept parameters rather than embedding specific values in the command text. This makes commands reusable across contexts without modification.
 
@@ -437,7 +437,7 @@ Return the results as JSON.
 
 The second version cannot be extended without creating new commands. The first version handles new target types and output formats through parameterization.
 
-### Avoiding Prompt Injection Through Command Structure
+### Avoiding prompt injection through command structure
 
 Prompt injection attacks against agentic systems typically exploit unstructured inputs that the model treats as additional instructions. The command structure itself is the primary defense.
 
@@ -482,7 +482,7 @@ Rules:
 
 The explicit instruction to treat inputs as data and the injection detection rule do not guarantee safety against a sophisticated adversary, but they reduce the attack surface compared to raw interpolation.
 
-### Well-Structured vs. Poorly-Structured Command Comparison
+### Well-structured vs. poorly-structured command comparison
 
 {{< card code=true header="**Well-structured vs poorly-structured command**" lang="markdown" >}}
 # Poorly-structured: no clear inputs, no output schema, no scope limit
@@ -527,7 +527,7 @@ Output (JSON only):
 
 ## Hooks
 
-### When to Use Pre/Post Hooks
+### When to use pre/post hooks
 
 ![Hook lifecycle: pre-hooks validate inputs before model invocation, post-hooks validate outputs after, with fail-fast blocking on violations](/images/agentic-cd/hook-lifecycle.svg)
 
@@ -545,7 +545,7 @@ Post-hooks are appropriate for:
 - Logging invocation metadata (model, token count, duration, decision)
 - Triggering downstream steps conditionally based on the model's output
 
-### Keeping Hooks Lightweight and Side-Effect-Safe
+### Keeping hooks lightweight and side-effect-safe
 
 A hook that fails should fail cleanly with a clear error message. A hook that has unexpected side effects will be disabled by frustrated developers the first time it causes a problem. Two rules:
 
@@ -553,7 +553,7 @@ A hook that fails should fail cleanly with a clear error message. A hook that ha
 
 **Hooks must have bounded execution time.** A pre-hook that can run for an arbitrary duration blocks the agent invocation. Set timeouts. If the hook cannot complete within its timeout, fail fast and surface the timeout as the error - do not silently allow the invocation to proceed with unvalidated inputs.
 
-### Using Hooks to Enforce Guardrails or Inject Context
+### Using hooks to enforce guardrails or inject context
 
 Pre-hooks are the right place for [guardrails]({{< relref "/docs/reference/glossary#guardrail" >}}) that must apply regardless of the skill being invoked. Rather than duplicating a guardrail across every skill document, implement it once as a pre-hook:
 
@@ -588,7 +588,7 @@ pre-invoke:
 
 The `inject-system-constraints` hook demonstrates the context injection pattern. Rather than including system constraints in every skill document, the hook injects them at invocation time. This guarantees they are always present without creating maintenance risk from outdated copies embedded in individual skill files.
 
-### A Cross-Model Hook Example
+### A cross-model hook example
 
 The following hook works identically regardless of whether Claude or Gemini is being invoked. It validates that the agent's output conforms to the expected JSON schema before the orchestrator processes it.
 
@@ -639,9 +639,9 @@ This hook exits with a non-zero code if the output is malformed, which causes th
 
 ---
 
-## Cross-Cutting Concerns
+## Cross-cutting concerns
 
-### Logging and Observability
+### Logging and observability
 
 Every agent invocation should produce a structured log record. Debugging an agentic workflow without structured logs is impractical - invocations are non-deterministic, inputs vary, and failures manifest differently across runs.
 
@@ -678,7 +678,7 @@ Rules for idempotent agent workflows:
 - Agent invocations that produce the same output for the same input are naturally idempotent. State-changing side effects (writing files, calling external APIs) require explicit deduplication.
 - Write-once outputs (session summaries, review findings written to a file) should check for existing output before writing. A retry that overwrites a passing review finding with a new failing one has broken idempotency.
 
-### Testing Agentic Workflows
+### Testing agentic workflows
 
 Testing agentic workflows requires testing at multiple levels:
 
@@ -690,7 +690,7 @@ Testing agentic workflows requires testing at multiple levels:
 
 A useful heuristic: if a skill cannot be tested with a controlled input-output pair, it is not well-scoped enough. The ability to write a unit test for a skill is a signal that the skill has a clear responsibility and a defined contract.
 
-### Model-Agnostic Abstraction Layer
+### Model-agnostic abstraction layer
 
 ![Model-agnostic abstraction layer: orchestration logic calls a ModelClient interface; ClaudeClient and GeminiClient implement the interface and handle API differences](/images/agentic-cd/model-abstraction-layer.svg)
 
@@ -782,7 +782,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ## Anti-patterns
 
-### 1. The Monolithic Orchestrator
+### 1. The monolithic orchestrator
 
 **What it looks like:** One agent handles orchestration, implementation, review, and summarization. It receives the full project context on every invocation and runs to completion in a single long-running session.
 
@@ -792,7 +792,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 2. Natural Language Agent Interfaces
+### 2. Natural language agent interfaces
 
 **What it looks like:** Agents communicate by passing prose summaries to each other. "The implementation agent completed the login feature. The tests pass and the code looks good. Please proceed with the review."
 
@@ -802,7 +802,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 3. Context That Does Not Expire
+### 3. Context that does not expire
 
 **What it looks like:** Session context grows continuously. Prior session conversations are appended rather than summarized. The implementation agent receives the full history of all prior sessions because "it might need it."
 
@@ -812,7 +812,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 4. Skills Written for One Model's Idiosyncrasies
+### 4. Skills written for one model's idiosyncrasies
 
 **What it looks like:** Skills use Claude-specific XML delimiters (`<examples>`, `<context>`), or Gemini-specific role framing that other models do not respond to. The skill file has comments like "this only works on Claude Opus."
 
@@ -822,7 +822,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 5. Missing Output Schema Validation
+### 5. Missing output schema validation
 
 **What it looks like:** The orchestrator passes an agent's response directly to the next step without validating that the response conforms to the expected schema. If the model produces a slightly malformed JSON object, the downstream step either fails with an opaque error or silently processes incorrect data.
 
@@ -832,7 +832,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 6. Hooks With Unconstrained Side Effects
+### 6. Hooks with unconstrained side effects
 
 **What it looks like:** A pre-hook makes a network call to an external service to validate an input. The external service is occasionally slow or unavailable. On slow runs, the hook blocks the agent invocation for several minutes. On unavailability, the hook fails in a way that leaves partial state in the external service.
 
@@ -842,7 +842,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-### 7. Swapping Models Without Adjusting Context Structure
+### 7. Swapping models without adjusting context structure
 
 **What it looks like:** A workflow designed for Claude is migrated to Gemini by changing only the API call. The skill documents, context assembly order, and prompt structure remain unchanged.
 
@@ -852,7 +852,7 @@ With this layer in place, the orchestrator does not reference Claude or Gemini d
 
 ---
 
-## Related Content
+## Related content
 
 - [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) - a concrete orchestrator and sub-agent configuration applying these patterns
 - [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - the full optimization framework for token cost management

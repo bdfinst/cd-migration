@@ -16,7 +16,7 @@ They are the hardest to detect with automated tools and the easiest to prevent w
 | Tribal knowledge loss | Coding | Bus factor analysis from commit history, single-author concentration alerts | <span class="ai-high">&#9650;</span> Generate documentation from code and tests; flag documentation drift from implementation | Pair/mob programming as default; rotate on-call; living docs |
 | Divergent mental models across teams | Design | Divergent naming detection, contract test failures | <span class="ai-high">&#9650;</span> Compare terminology and domain models across codebases to detect semantic mismatches | Shared domain models; explicit bounded contexts |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}) - patterns that undermine delivery performance

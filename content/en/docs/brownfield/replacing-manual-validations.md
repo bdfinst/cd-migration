@@ -16,7 +16,7 @@ This page covers the **core mechanical process** - the specific, repeating cycle
 manual validations with automation that drives every phase forward.
 {{% /pageinfo %}}
 
-## The Replacement Cycle
+## The replacement cycle
 
 Every brownfield CD migration follows the same four-step cycle, repeated until no manual
 validations remain between commit and production:
@@ -37,7 +37,7 @@ Two rules make this cycle work:
   removing it. The goal is replacement, not duplication. Once the automated check is proven,
   retire the manual step explicitly.
 
-## Inventory Your Manual Validations
+## Inventory your manual validations
 
 Before you can replace manual validations, you need to know what they are. A
 [value stream map]({{< relref "/docs/assess/value-stream-mapping" >}}) is the fastest way to find them. Walk the
@@ -59,7 +59,7 @@ Common manual validations and where they typically live:
 Your inventory will include items not on this list. That is expected. The list above covers the
 most common ones, but every team has process-specific manual steps that accumulated over time.
 
-## Prioritize by Effort and Friction
+## Prioritize by effort and friction
 
 Not all manual validations are equal. Some cause significant delay on every release. Others are
 quick and infrequent. Prioritize by mapping each validation on two axes:
@@ -87,7 +87,7 @@ momentum for harder automations later. This is the same constraint-based thinkin
 | **High Friction** | Start here - fastest return | Plan these - high value but need investment |
 | **Low Friction** | Do these opportunistically | Defer - low return for high cost |
 
-## Walkthrough: Replacing Manual Regression Testing
+## Walkthrough: Replacing manual regression testing
 
 A concrete example of the full cycle applied to a common brownfield problem.
 
@@ -149,7 +149,7 @@ For more on structuring automated tests effectively, see
 [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) and
 [Component Testing]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}).
 
-## When Refactoring Is a Prerequisite
+## When refactoring is a prerequisite
 
 Sometimes you cannot automate a validation because the code is not structured for it. In these
 cases, refactoring is a prerequisite step within the replacement cycle - not a separate initiative.
@@ -169,7 +169,7 @@ the refactoring small, low-risk, and tied to a concrete outcome.
 For more on decoupling strategies, see
 [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}).
 
-## The Compounding Effect
+## The compounding effect
 
 Each completed replacement cycle frees time that was previously spent on manual validation. That
 freed time becomes available for the next automation cycle. The pace of migration accelerates as
@@ -191,7 +191,7 @@ The same compounding dynamic applies to
 [small batches]({{< relref "/docs/optimize/small-batches" >}}) - smaller changes are easier to validate, which
 makes each cycle faster, which enables even smaller changes.
 
-## Small Steps in Everything
+## Small steps in everything
 
 The replacement cycle embodies the same small-batch discipline that CD itself requires. The
 principle applies at every level of the migration:
@@ -216,7 +216,7 @@ iteration, not only at the end.
 For more on decomposing work into small steps, see
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}).
 
-## Measuring Progress
+## Measuring progress
 
 Track these metrics to gauge migration progress. Start collecting them from
 [baseline]({{< relref "/docs/assess/baseline-metrics" >}}) before you begin replacing validations.
@@ -233,7 +233,7 @@ If manual validations remaining is decreasing but deployment frequency is not in
 be automating low-friction validations that are not on the critical path. Revisit your
 prioritization and focus on the validations that are actually blocking faster delivery.
 
-## Related Content
+## Related content
 
 - [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - Find your manual validations
 - [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - Prioritize which validation to replace first

@@ -43,7 +43,7 @@ Teams with focused, overlapping responsibilities can absorb turnover because mul
 
 **Read more:** [Thin-spread teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work is assigned by specialty - "you're the database person, so you take the database stories" - knowledge concentrates in individuals rather than spreading across the team. The same person always works the same area, so only they understand it deeply. When that person is reassigned or leaves, no one else can continue their work without starting over. Push-based assignment continuously deepens the knowledge silos that make every roster change more disruptive.
 

@@ -14,7 +14,7 @@ For terms related to agentic continuous delivery, AI agents, and LLMs, see the
 
 ## A
 
-### Acceptance Criteria
+### Acceptance criteria
 
 Concrete expectations for a change, expressed as observable outcomes that can be used as fitness
 functions - executed as deterministic tests or evaluated by review [agents](#agent-ai). In
@@ -51,11 +51,11 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#acd-agentic-cont
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-ai" >}}).
 
-### Agent Loop
+### Agent loop
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-loop" >}}).
 
-### Agent Session
+### Agent session
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-session" >}}).
 
@@ -106,11 +106,11 @@ Referenced in:
 
 ## B
 
-### Black Box Testing
+### Black box testing
 
 See [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary#black-box-testing" >}}).
 
-### Baseline Metrics
+### Baseline metrics
 
 The set of delivery measurements taken before beginning a migration, used as the benchmark
 against which improvement is tracked. See [Phase 0 - Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}).
@@ -118,7 +118,7 @@ against which improvement is tracked. See [Phase 0 - Baseline Metrics]({{< relre
 Referenced in:
 [Phase 0: Assess]({{< relref "/docs/assess" >}})
 
-### Batch Size
+### Batch size
 
 The amount of change included in a single deployment. Smaller batches reduce risk, simplify
 debugging, and shorten feedback loops. Reducing batch size is a core focus of
@@ -136,7 +136,7 @@ Referenced in:
 [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}),
 [Small Batches]({{< relref "/docs/optimize/small-batches" >}})
 
-### BDD (Behavior-Driven Development)
+### BDD (behavior-driven development)
 
 A collaboration practice where developers, testers, and product representatives define expected
 behavior using structured examples before code is written. BDD produces executable
@@ -160,7 +160,7 @@ Referenced in:
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
-### Blue-Green Deployment
+### Blue-green deployment
 
 A deployment strategy that maintains two identical production environments. New code is deployed
 to the inactive environment, verified, and then traffic is switched. See
@@ -170,7 +170,7 @@ Referenced in:
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
 [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}})
 
-### Branch by Abstraction
+### Branch by abstraction
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
 that introduces an interface over an existing implementation, builds a new implementation
@@ -189,7 +189,7 @@ Referenced in:
 [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}}),
 [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}})
 
-### Branch Lifetime
+### Branch lifetime
 
 The elapsed time between creating a branch and merging it to trunk. CD requires branch lifetimes
 measured in hours, not days or weeks. Long branch lifetimes are a symptom of poor work
@@ -206,7 +206,7 @@ Referenced in:
 
 ## C
 
-### Canary Deployment
+### Canary deployment
 
 A deployment strategy where a new version is rolled out to a small subset of users or servers
 before full rollout. If the canary shows no issues, the deployment proceeds to 100%. See
@@ -218,7 +218,7 @@ Referenced in:
 [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}),
 [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}})
 
-### CD (Continuous Delivery)
+### CD (continuous delivery)
 
 The practice of ensuring that every change to the codebase is always in a deployable state and
 can be released to production at any time through a fully automated pipeline. Continuous
@@ -269,7 +269,7 @@ Referenced in:
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}),
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
-### Change Failure Rate (CFR)
+### Change failure rate (CFR)
 
 The percentage of deployments to production that result in a degraded service and require
 remediation (for example, rollback, hotfix, or patch). One of the four DORA metrics. See
@@ -286,7 +286,7 @@ Referenced in:
 [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}),
 [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}})
 
-### CI (Continuous Integration)
+### CI (continuous integration)
 
 The practice of integrating code changes to a shared trunk at least once per day, where each
 integration is verified by an automated build and test suite. CI is a prerequisite for CD, not
@@ -372,15 +372,15 @@ Referenced in:
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-llm" >}}).
 
-### Context Window
+### Context window
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-window" >}}).
 
-### Context Engineering
+### Context engineering
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#context-engineering" >}}).
 
-### Continuous Deployment
+### Continuous deployment
 
 An extension of continuous delivery where every change that passes the automated pipeline is
 deployed to production without manual intervention. Continuous delivery ensures every change
@@ -399,7 +399,7 @@ Referenced in:
 
 ## D
 
-### Dark Code
+### Dark code
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
 where new logic is built, tested, and deployed to production before anything calls it: no route,
@@ -444,7 +444,7 @@ Referenced in:
 [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}),
 [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}})
 
-### Deployment Frequency
+### Deployment frequency
 
 How often an organization successfully deploys to production. One of the four DORA metrics.
 See [Metrics - Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}).
@@ -470,7 +470,7 @@ Referenced in:
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
 [Untestable Architecture]({{< relref "/docs/anti-patterns/architecture/untestable-architecture" >}})
 
-### Development Cycle Time
+### Development cycle time
 
 The elapsed time from the first commit on a change to that change being deployable. This
 measures the efficiency of your development and pipeline process, excluding upstream wait times.
@@ -502,15 +502,15 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
-### Declarative Agent
+### Declarative agent
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#declarative-agent" >}}).
 
-### Delivery Contract
+### Delivery contract
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#delivery-contract" >}}).
 
-### Done Definition
+### Done definition
 
 The observable outcomes portion of [acceptance criteria](#acceptance-criteria). A done definition
 describes what "done" looks like from an independent observer's perspective - someone who was
@@ -522,7 +522,7 @@ Referenced in:
 [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}),
 [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
 
-### DORA Metrics
+### DORA metrics
 
 The four key metrics identified by the DORA (DevOps Research and Assessment) research program
 as predictive of software delivery performance: deployment frequency, lead time for changes,
@@ -547,7 +547,7 @@ Referenced in:
 
 ## E
 
-### Expand and Contract
+### Expand and contract
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
 for evolving a shared database schema or API contract across non-breaking phases: expand the
@@ -559,7 +559,7 @@ Referenced in:
 [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}),
 [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}})
 
-### External Dependency
+### External dependency
 
 A [dependency](#dependency) on code or services outside your team's direct control. External
 dependencies include third-party libraries, public APIs, managed cloud services, and any
@@ -580,17 +580,17 @@ See also: [Dependency](#dependency), [Hard Dependency](#hard-dependency).
 Referenced in:
 [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})
 
-### Evaluation Design
+### Evaluation design
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#evaluation-design" >}}).
 
-### Expert Agent
+### Expert agent
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#expert-agent" >}}).
 
 ## F
 
-### Feature Team
+### Feature team
 
 A team organized around user-facing features or customer journeys rather than owned product
 subdomains. A feature team is cross-functional - it contains the skills to deliver a feature
@@ -611,7 +611,7 @@ through stable domain ownership rather than feature-by-feature assembly.
 Referenced in:
 [Team Alignment to Code]({{< relref "/docs/optimize/team-alignment" >}})
 
-### Feature Flag
+### Feature flag
 
 A mechanism that allows code to be deployed to production with new functionality disabled,
 then selectively enabled for specific users, percentages of traffic, or environments. Feature
@@ -654,7 +654,7 @@ Referenced in:
 [Work Requires Sign-Off from Teams Not Involved in Delivery]({{< relref "/docs/symptoms/deployment/waiting-for-cross-team-approval" >}}),
 [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}})
 
-### Flow Efficiency
+### Flow efficiency
 
 The ratio of active work time to total elapsed time in a delivery process. A flow efficiency of
 15% means that for every hour of actual work, roughly 5.7 hours are spent waiting. Value stream
@@ -663,7 +663,7 @@ mapping reveals your flow efficiency. See [Value Stream Mapping]({{< relref "/do
 Referenced in:
 [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}})
 
-### Full-Stack Product Team
+### Full-stack product team
 
 A team that owns every layer of a user-facing capability - UI, API, and data store - and whose
 public interface is designed for human users. A vertical slice for a full-stack product team
@@ -712,7 +712,7 @@ Referenced in:
 
 ## H
 
-### Hard Dependency
+### Hard dependency
 
 A dependency that must be resolved before work can proceed. In delivery, hard dependencies
 include things like waiting for another team's API, a shared database migration, or an
@@ -727,7 +727,7 @@ Referenced in:
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hallucination" >}}).
 
-### Hardening Sprint
+### Hardening sprint
 
 A sprint dedicated to stabilizing and fixing defects before a release. The existence of
 hardening sprints is a strong signal that quality is not being built in during regular
@@ -737,11 +737,11 @@ deployable. See [Testing Fundamentals]({{< relref "/docs/foundations/testing-fun
 Referenced in:
 [Hardening Sprints Are Needed Before Every Release]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}})
 
-### Hook (Agent)
+### Hook (agent)
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#hook-agent" >}}).
 
-### Hypothesis-Driven Development
+### Hypothesis-driven development
 
 An approach that frames every change as an experiment with a predicted outcome. Instead of
 specifying a change as a requirement to implement, the team states a hypothesis: "We believe
@@ -761,7 +761,7 @@ Referenced in:
 
 ## I
 
-### Immutable Artifact
+### Immutable artifact
 
 A build artifact that is never modified after creation. The same artifact that is tested in the
 pipeline is the exact artifact that is deployed to production. Configuration differences between
@@ -772,11 +772,11 @@ Referenced in:
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})
 
-### Intent Engineering
+### Intent engineering
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#intent-engineering" >}}).
 
-### Integration Frequency
+### Integration frequency
 
 How often a developer integrates code to the shared trunk. CD requires at least daily
 integration. See [Metrics - Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}).
@@ -786,7 +786,7 @@ Referenced in:
 
 ## L
 
-### Lead Time for Changes
+### Lead time for changes
 
 The elapsed time from when a commit is made to when it is successfully running in production.
 One of the four DORA metrics. See [Metrics - Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}).
@@ -807,7 +807,7 @@ Referenced in:
 
 ## M
 
-### Mean Time to Restore (MTTR)
+### Mean time to restore (MTTR)
 
 The elapsed time from when a production incident is detected to when service is restored. One
 of the four DORA metrics. Teams practicing CD have short MTTR because deployments are small,
@@ -820,11 +820,11 @@ Referenced in:
 [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}),
 [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}})
 
-### Model Routing
+### Model routing
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#model-routing" >}}).
 
-### Modular Monolith
+### Modular monolith
 
 A single deployable application whose codebase is organized into well-defined modules with
 explicit boundaries. Each module encapsulates a bounded domain and communicates with other
@@ -848,7 +848,7 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#orchestrator" >}
 
 ## P
 
-### Parallel Run
+### Parallel run
 
 An [evolutionary coding technique]({{< relref "/docs/foundations/evolutionary-coding" >}})
 where a new implementation runs alongside the current one against the same production input,
@@ -949,7 +949,7 @@ Referenced in:
 [Work Requires Sign-Off from Teams Not Involved in Delivery]({{< relref "/docs/symptoms/deployment/waiting-for-cross-team-approval" >}}),
 [Your Migration Journey]({{< relref "/docs" >}})
 
-### Production-Like Environment
+### Production-like environment
 
 A test or staging environment that matches production in configuration, infrastructure, and
 data characteristics. Testing in environments that differ from production is a common source
@@ -970,19 +970,19 @@ Referenced in:
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt" >}}).
 
-### Prompt Caching
+### Prompt caching
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt-caching" >}}).
 
-### Prompt Craft
+### Prompt craft
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompt-craft" >}}).
 
-### Prompting Discipline
+### Prompting discipline
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#prompting-discipline" >}}).
 
-### Programmatic Agent
+### Programmatic agent
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#programmatic-agent" >}}).
 
@@ -1026,28 +1026,28 @@ Referenced in:
 [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}),
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}})
 
-### Repository Readiness
+### Repository readiness
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#repository-readiness" >}}).
 
 ## S
 
-### Skill (Agent)
+### Skill (agent)
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#skill-agent" >}}).
 
-### Soft Dependency
+### Soft dependency
 
 A dependency that can be worked around or deferred. Unlike hard dependencies, soft dependencies
 do not block work but may influence sequencing or design decisions. Feature flags can turn many
 hard dependencies into soft dependencies by allowing incomplete integrations to be deployed in
 a disabled state.
 
-### Specification Engineering
+### Specification engineering
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#specification-engineering" >}}).
 
-### Story Points
+### Story points
 
 A relative estimation unit used by some teams to forecast effort. Story points are frequently
 misused as a productivity metric, which creates perverse incentives to inflate estimates and
@@ -1064,7 +1064,7 @@ Referenced in:
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#sub-agent" >}}).
 
-### Subdomain Product Team
+### Subdomain product team
 
 A team that owns a bounded subdomain within a larger distributed system - full-stack within
 their service (API, business logic, data store) but not directly user-facing. Their public
@@ -1078,13 +1078,13 @@ Referenced in:
 [Small Batches]({{< relref "/docs/optimize/small-batches#vertical-slicing-in-distributed-systems" >}}),
 [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}})
 
-### System Prompt
+### System prompt
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#system-prompt" >}}).
 
 ## T
 
-### TBD (Trunk-Based Development)
+### TBD (trunk-based development)
 
 A source-control branching model where all developers integrate to a single shared branch
 (trunk) at least once per day. Short-lived feature branches (less than a day) are acceptable.
@@ -1116,7 +1116,7 @@ Referenced in:
 [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}),
 [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}})
 
-### TDD (Test-Driven Development)
+### TDD (test-driven development)
 
 See [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary#tdd-test-driven-development" >}}).
 
@@ -1131,7 +1131,7 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#token" >}}).
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#tokenomics" >}}).
 
-### Tool Use
+### Tool use
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#tool-use" >}}).
 
@@ -1159,7 +1159,7 @@ Referenced in:
 
 ## U
 
-### Unplanned Work
+### Unplanned work
 
 Work that arrives outside the planned backlog - production incidents, urgent bug fixes,
 ad hoc requests. High levels of unplanned work indicate systemic quality or operational
@@ -1173,14 +1173,14 @@ Referenced in:
 
 ## V
 
-### Virtual Service
+### Virtual service
 
 See [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary#virtual-service" >}}).
 
 Referenced in:
 [Test Environments Take Too Long to Reset Between Runs]({{< relref "/docs/symptoms/testing/slow-test-environment-reset" >}})
 
-### Value Stream Map
+### Value stream map
 
 A visual representation of every step required to deliver a change from request to production,
 showing process time, wait time, and percent complete and accurate at each step. The
@@ -1190,7 +1190,7 @@ Referenced in:
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Phase 0: Assess]({{< relref "/docs/assess" >}})
 
-### Vertical Sliced Story
+### Vertical sliced story
 
 A user story that delivers a thin slice of functionality across all layers of the system
 (UI, API, database, etc.) rather than a horizontal slice that implements one layer completely.
@@ -1211,7 +1211,7 @@ Referenced in:
 
 ## W
 
-### WIP (Work in Progress)
+### WIP (work in progress)
 
 The number of work items that have been started but not yet completed. High WIP increases lead
 time, reduces focus, and increases context-switching overhead. Limiting WIP is a key practice
@@ -1242,11 +1242,11 @@ Referenced in:
 [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}),
 [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}})
 
-### White Box Testing
+### White box testing
 
 See [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary#white-box-testing" >}}).
 
-### Working Agreement
+### Working agreement
 
 An explicit, documented set of team norms covering how work is defined, reviewed, tested, and
 deployed. Working agreements create shared expectations and reduce friction. See

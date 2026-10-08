@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team's board has no column limits. Developers pull new items whenever they feel ready -
 when they are blocked, waiting for review, or between tasks. Nobody stops to ask whether
@@ -37,7 +37,7 @@ Common variations:
 
 The telltale sign: nobody on the team can say what the WIP limit is, because there is not one.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Without an explicit WIP constraint, there is no mechanism to expose bottlenecks, force
 collaboration, or keep cycle times short.
@@ -83,7 +83,7 @@ overwhelmed (everything lands at once).
 WIP limits create the flow that CD depends on: a small number of items moving quickly from start
 to production, each fully attended to, each integrated before the next begins.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Make WIP visible
 
@@ -104,7 +104,7 @@ highest-priority item if WIP is below the limit, or swarm on an existing item if
 limit. Swarming means pairing, reviewing, testing, or unblocking - whatever helps the most
 important item finish.
 
-### Step 4: Lower the limit over time (Monthly)
+### Step 4: Lower the limit over time (monthly)
 
 Each month, consider reducing the limit by one. Each reduction exposes constraints that excess
 WIP was hiding - slow reviews, environment contention, unclear requirements. Fix those
@@ -116,7 +116,7 @@ constraints, then lower again.
 | "Management will think we're not working" | Track cycle time and throughput. Both improve with lower WIP. The data speaks for itself. |
 | "We have too many priorities to limit WIP" | Having many priorities is exactly why you need a limit. Without one, nothing gets the focus needed to finish. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -125,7 +125,7 @@ constraints, then lower again.
 | Items completed per week | Should stabilize or increase despite starting fewer |
 | Time items spend blocked | Should decrease as the team swarms on blockers |
 
-## Related Content
+## Related content
 
 - [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) - The practice guide for implementing WIP limits
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Reducing batch size reinforces low WIP

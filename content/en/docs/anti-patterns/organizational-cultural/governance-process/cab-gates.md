@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Before any change can reach production, it must be submitted to the Change Advisory Board. The
 developer fills out a change request form: description of the change, impact assessment, [rollback]({{< relref "/docs/reference/glossary#rollback" >}})
@@ -52,7 +52,7 @@ Common variations:
 The telltale sign: a developer finishes a change and says "now I need to submit it to the CAB"
 with the same tone they would use for "now I need to go to the dentist."
 
-## Why This Is a Problem
+## Why this is a problem
 
 CAB gates exist to reduce risk. In practice, they increase risk by creating delay, encouraging
 batching, and providing a false sense of security. The review is too shallow to catch real
@@ -143,7 +143,7 @@ are better quality gates because they are faster, more consistent, and more thor
 incompatible philosophies. A team practicing CD replaces the CAB with pipeline-embedded controls
 that provide equivalent (or superior) risk management without the delay.
 
-## How to Fix It
+## How to fix it
 
 Eliminating the CAB outright is rarely possible because it exists to satisfy regulatory or
 organizational governance requirements. The path forward is to replace the manual ceremony with
@@ -162,7 +162,7 @@ Not all changes carry the same risk. Introduce a risk classification:
 The goal is to route 80-90% of changes through the standard process, which requires no CAB
 involvement at all.
 
-### Step 2: Define pipeline controls that replace CAB review (Weeks 2-3)
+### Step 2: Define pipeline controls that replace CAB review (weeks 2-3)
 
 For each concern the CAB currently addresses, implement an automated alternative:
 
@@ -190,7 +190,7 @@ entirely if they meet the automated criteria:
 Track the results: deployment frequency, [change fail rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), and incident count. Compare with the
 CAB-gated process.
 
-### Step 4: Present the data and expand (Weeks 4-8)
+### Step 4: Present the data and expand (weeks 4-8)
 
 After a month of pilot data, present the results to the CAB and organizational leadership:
 
@@ -220,7 +220,7 @@ changes that actually benefit from human review rather than rubber-stamping rout
 | "We've always done it this way" | The CAB was designed for a world of monthly releases. In that world, reviewing 10 changes per month made sense. In a CD world with 10 changes per day, the same process becomes a bottleneck that adds risk instead of reducing it. |
 | "What if an auto-approved change causes an incident?" | What if a CAB-approved change causes an incident? (They do.) The question is not whether incidents happen but how quickly you detect and recover. Automated deployment verification and rollback detect and recover faster than any manual process. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -231,7 +231,7 @@ changes that actually benefit from human review rather than rubber-stamping rout
 | CAB meeting frequency | Should decrease from weekly to as-needed |
 | Time from "ready to deploy" to "deployed" | Should drop from days to hours or minutes |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -239,7 +239,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - Have we ever had a change approved by CAB that still caused a production incident? What did the CAB review actually catch?
 - What would we need to trust a pipeline gate as much as we trust a CAB reviewer?
 
-## Related Content
+## Related content
 
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - The pipeline replaces manual gates
 - [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Automated controls that provide consistent quality checks

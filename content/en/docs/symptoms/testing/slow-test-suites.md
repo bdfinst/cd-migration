@@ -29,7 +29,7 @@ suite itself.
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When the majority of tests are end-to-end or integration tests, the suite is inherently slow. E2E
 tests launch browsers, start services, make network calls, and wait for responses. Each test takes
@@ -39,7 +39,7 @@ hardware. It is moving test coverage down the pyramid.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When the codebase has no clear module boundaries, tests cannot be scoped to individual components.
 A test for one feature must set up the entire application because the feature depends on
@@ -48,7 +48,7 @@ system under test.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
-### Manual Testing Only
+### Manual testing only
 
 Sometimes the test suite is slow because the team added automated tests as an afterthought, using
 E2E tests to backfill coverage for code that was not designed for unit testing. The resulting suite
@@ -74,7 +74,7 @@ code provides no lower-level testing seams.
 
 **Ready to fix this?** The most common cause is [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Slow tests are the most common cause of slow pipelines
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Slow suites force developers into long feedback loops

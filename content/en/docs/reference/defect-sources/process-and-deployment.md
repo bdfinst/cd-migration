@@ -19,7 +19,7 @@ slow feedback loops create the conditions for failure.
 | Manual review of risks and compliance (CAB) | Design | Change lead time analysis, CAB effectiveness metrics | <span class="ai-high">&#9650;</span> Automated change risk scoring from change diff and deployment history; blast radius analysis | Replace CAB with automated progressive delivery |
 | Work stacking on individuals; [everything started, nothing finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}); [PRs waiting days for review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}); [uneven workloads]({{< relref "/docs/symptoms/flow/work-management/uneven-workloads" >}}); [blocked work sits idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}); [completed work misses the intent]({{< relref "/docs/symptoms/flow/work-management/completed-work-misses-intent" >}}) | CI | Issue tracker reports where individuals have multiple items assigned simultaneously | <span class="ai-blocked">Process change, not AI</span> | [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}) anti-pattern |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Deployment Symptoms]({{< relref "/docs/symptoms/deployment" >}}) - symptoms caused by deployment process problems

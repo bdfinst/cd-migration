@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 When a new environment is needed, someone files a ticket to a platform or operations team. The ticket describes the server size, the operating system, and the software that needs to be installed. The operations engineer logs into a cloud console or a physical rack, clicks through a series of forms, runs some installation commands, and emails back when the environment is ready. The turnaround is measured in days, sometimes weeks.
 
@@ -32,7 +32,7 @@ Common variations:
 
 The telltale sign: the team cannot destroy an environment and recreate it from source control in a repeatable, automated way.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual infrastructure provisioning turns every environment into a unique artifact. That uniqueness undermines every guarantee the rest of the delivery pipeline tries to make.
 
@@ -66,17 +66,17 @@ CD requires that any commit be deployable to production at any time. Achieving t
 
 Infrastructure as code is a prerequisite for the production-like environments that give pipeline test results their meaning. Without it, the team cannot know whether a passing pipeline run reflects passing behavior in an environment that resembles production. CD confidence comes from automated, reproducible environments, not from careful human assembly.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document what exists
 
 Before writing any code, inventory the environments you have and what is in each one. For each environment, record the OS, the installed software and versions, the network configuration, and any environment-specific variables. This inventory is both the starting point for writing infrastructure code and a record of the configuration drift you need to close.
 
-### Step 2: Choose a tooling approach and write code for one environment (Weeks 2-3)
+### Step 2: Choose a tooling approach and write code for one environment (weeks 2-3)
 
 Pick an infrastructure-as-code tool that fits your stack - Terraform for cloud resources, Ansible or Chef for configuration management, Pulumi if your team prefers a general-purpose language. Write the code to describe one non-production environment completely. Run it against a fresh account or namespace to verify it produces the correct result from a blank state. Commit the code to source control.
 
-### Step 3: Extend to all environments using parameterization (Weeks 4-5)
+### Step 3: Extend to all environments using parameterization (weeks 4-5)
 
 Use the same codebase to describe all environments, with environment-specific values (region, instance size, external endpoints) as parameters or variable files. Environments should be instances of the same template, not separate scripts. Run the code against each environment and reconcile any differences you find - each difference is a configuration drift that needs to be either codified or corrected.
 
@@ -84,7 +84,7 @@ Use the same codebase to describe all environments, with environment-specific va
 
 Establish a policy that all infrastructure changes go through a pull request process. No engineer makes manual changes to any environment without a corresponding code change merged first. For emergency changes made under incident pressure, require a follow-up PR within 24 hours that captures what was changed and why. This closes the feedback loop that allows drift to accumulate.
 
-### Step 5: Automate environment creation in the pipeline (Weeks 7-8)
+### Step 5: Automate environment creation in the pipeline (weeks 7-8)
 
 Wire the infrastructure code into your deployment pipeline so that environment creation and configuration are pipeline steps rather than manual preconditions. Ephemeral test environments should be created at pipeline start and destroyed at pipeline end. Production deployments should apply the infrastructure code as a step before deploying the application, ensuring the environment is always in the expected state.
 
@@ -99,7 +99,7 @@ Delete an environment entirely and recreate it from source control alone, with n
 | "The operations team owns infrastructure, not us." | Infrastructure as code does not eliminate the operations team - it changes their work from manual provisioning to reviewing and merging code. Bring them into the process as authors and reviewers. |
 | "We have pet servers with years of state on them." | Start with new environments and new services. You do not have to migrate everything at once. Expand coverage as services are updated or replaced. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -109,7 +109,7 @@ Delete an environment entirely and recreate it from source control alone, with n
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increased deployment frequency as environment availability stops being a blocking constraint |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time developers spend waiting for environment provisioning tickets to be fulfilled |
 
-## Related Content
+## Related content
 
 - [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
 - [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})

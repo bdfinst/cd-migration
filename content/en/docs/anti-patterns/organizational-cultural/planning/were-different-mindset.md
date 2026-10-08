@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A team attends a conference talk about CD. The speaker describes deploying dozens of times per day,
 automated pipelines catching defects before they reach users, developers committing directly to
@@ -58,7 +58,7 @@ Common variations:
 The telltale sign: the conversation about CD always ends with a "but" - and the team reaches the
 "but" faster each time the topic comes up.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The "we're different" mindset is self-reinforcing. Each time a reason not to start is accepted, the
 organization's delivery problems persist, which produces more evidence that the system is too hard
@@ -117,7 +117,7 @@ and audited, not how frequently software is tested and deployed. The teams that 
 did not have a different regulatory environment - they had a different starting assumption about
 whether starting was possible.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit the objections for specificity
 
@@ -139,7 +139,7 @@ most autonomy over their deployment process. Start there. Apply one practice - a
 trunk-based development, automated deployment to a non-production environment. Generate evidence
 that it works in this organization, with this technology, under these constraints.
 
-### Step 3: Document the actual regulatory constraints (Weeks 2-4)
+### Step 3: Document the actual regulatory constraints (weeks 2-4)
 
 Engage the compliance or legal team directly with a specific question: "Here is a practice we want
 to adopt. Does our regulatory framework prohibit it?" In most cases the answer is "no" or "yes,
@@ -150,7 +150,7 @@ Bring the regulatory analysis back to the engineering conversation. "We checked.
 requires an audit trail for deployments, not a human approval gate. Our pipeline can generate the
 audit trail automatically." Specificity defuses the objection.
 
-### Step 4: Run a structured constraint analysis (Weeks 3-6)
+### Step 4: Run a structured constraint analysis (weeks 3-6)
 
 For each genuine technical constraint identified in Step 1, assess:
 
@@ -162,7 +162,7 @@ This produces a prioritized improvement backlog grounded in real constraints rat
 impossibility. The framing shifts from "we can't do CD" to "here are the specific things we need
 to address before we can adopt this specific practice."
 
-### Step 5: Build the internal case with evidence (Ongoing)
+### Step 5: Build the internal case with evidence (ongoing)
 
 Each successful improvement creates evidence that contradicts the "we're different" position. A
 team that automated their deployment in a regulated environment has demonstrated that automation
@@ -177,7 +177,7 @@ explicitly and share them. The "we're different" mindset is defeated by examples
 | "We're too large and too integrated" | Size and integration complexity are the symptoms that CD addresses. The path through them is incremental decoupling, starting with the highest-value seams. Large integrated systems benefit from CD more than small systems do - the pain of manual releases scales with size. |
 | "Our customers require formal release announcements" | Check whether this is a stated customer requirement or an assumed one. Many "customer requirements" for quarterly releases are internal assumptions that have never been tested with actual customers. Feature flags can provide customers the stability of a formal release while the team deploys continuously. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -187,7 +187,7 @@ explicitly and share them. The "we're different" mindset is defeated by examples
 | Number of teams practicing at least one CD-adjacent practice | Should grow as the pilot demonstrates viability |
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should remain stable or improve as automation replaces manual processes |
 
-## Related Content
+## Related content
 
 - [Assess: Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) - A structured method for distinguishing real constraints from assumed ones
 - [Value Stream Mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - Making the current delivery process visible so improvement areas can be identified

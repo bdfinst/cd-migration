@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Before every release, the team enters a testing phase. Testers open a spreadsheet or test
 management tool containing hundreds of scripted test cases. They walk through each one by hand:
@@ -54,7 +54,7 @@ Common variations:
 The telltale sign: if the question "can we release today?" is always answered with "not until QA
 finishes," manual regression testing is gating your delivery.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual regression testing feels responsible. It feels thorough. But it creates a bottleneck that
 grows worse with every feature the team builds, and the thoroughness it promises is an illusion.
@@ -153,7 +153,7 @@ fast feedback with a slow, batched, human process that cannot keep up with the p
 You cannot have continuous delivery with a manual regression gate. The two are mutually exclusive.
 The gate must be automated before CD is possible.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Catalog your manual test cases and categorize them
 
@@ -170,7 +170,7 @@ Most teams discover that a large percentage of their manual test cases are eithe
 same behavior is tested multiple times), outdated (the feature has changed), or automatable at a
 lower level.
 
-### Step 2: Automate the highest-value cases first (Weeks 2-4)
+### Step 2: Automate the highest-value cases first (weeks 2-4)
 
 Pick the 20 test cases that cover the most critical paths - the ones that would cause the most
 damage if they regressed. Automate them:
@@ -192,7 +192,7 @@ with every change.
 Every commit now gets immediate feedback on the critical paths. If a regression is introduced, the
 developer knows within minutes - not weeks.
 
-### Step 4: Shrink the manual suite as automation grows (Weeks 4-8)
+### Step 4: Shrink the manual suite as automation grows (weeks 4-8)
 
 Each week, pick another batch of manual test cases and either automate or retire them:
 
@@ -205,7 +205,7 @@ Each week, pick another batch of manual test cases and either automate or retire
 Track the shrinkage. If the manual suite had 800 cases and now has 400, that is progress. If the
 manual testing phase took five days and now takes two, that is measurable improvement.
 
-### Step 5: Replace the testing phase with continuous testing (Weeks 6-8+)
+### Step 5: Replace the testing phase with continuous testing (weeks 6-8+)
 
 The goal is to eliminate the dedicated testing phase entirely:
 
@@ -218,7 +218,7 @@ The goal is to eliminate the dedicated testing phase entirely:
 | QA sign-off required | Pipeline pass is the sign-off |
 | Testers do manual regression | Testers do exploratory testing, write automated tests, and improve test infrastructure |
 
-### Step 6: Address the objections (Ongoing)
+### Step 6: Address the objections (ongoing)
 
 | Objection | Response |
 |-----------|----------|
@@ -228,7 +228,7 @@ The goal is to eliminate the dedicated testing phase entirely:
 | "We can't automate tests for our legacy system" | Start with new code. Every new feature gets automated tests. For legacy code, automate the most critical paths first and expand coverage as you touch each area. The legacy system does not need 100% automation overnight. |
 | "What if we automate a test wrong and miss a real bug?" | Manual tests miss real bugs too - consistently. An automated test that is wrong can be fixed once and stays fixed. A manual tester who skips a step makes the same mistake next time. Automation is not perfect, but it is more reliable and more improvable than manual execution. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -239,7 +239,7 @@ The goal is to eliminate the dedicated testing phase entirely:
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as the testing phase is eliminated |
 | Time from code complete to release | Should converge toward pipeline duration, not testing phase duration |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - The test architecture that replaces manual regression suites
 - [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Automated tests in the pipeline replace manual gates

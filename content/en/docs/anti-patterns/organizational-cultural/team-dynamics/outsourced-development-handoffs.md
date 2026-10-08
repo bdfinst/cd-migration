@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A feature is developed by an offshore team that works in a different time zone. When the code is
 complete, a build is packaged and handed to a separate QA team, who test against a documented
@@ -60,7 +60,7 @@ The telltale sign: when a production defect is discovered, tracking down the per
 the code requires a trail of tickets across three organizations, and that person no longer
 remembers the relevant context.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A bug found in production gets routed to a ticket queue. By the time it reaches the developer
 who wrote the code, the context is gone and the fix takes three times as long as it would have
@@ -127,7 +127,7 @@ control the test environment. The operations team controls the deployment proces
 know the application well enough to automate its deployment safely. The gap between the two is
 where CD improvement efforts go to die.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the current handoffs and their costs
 
@@ -137,7 +137,7 @@ percentage of total elapsed time is queue time versus actual work time. In most 
 multi-team models, queue time is 60-80% of total time. Making this visible creates the business
 case for reducing handoffs.
 
-### Step 2: Embed testing earlier in the development process (Weeks 2-4)
+### Step 2: Embed testing earlier in the development process (weeks 2-4)
 
 The highest-value handoff to eliminate is the gap between development and testing. Two paths forward:
 
@@ -152,7 +152,7 @@ tests to designing test strategies and exploratory testing.
 
 Both options reduce the handoff delay without eliminating the QA function.
 
-### Step 3: Create a deployment pipeline that the development team owns (Weeks 3-6)
+### Step 3: Create a deployment pipeline that the development team owns (weeks 3-6)
 
 Negotiate with the operations team for the development team to own deployments to non-production
 environments. Production deployment can remain with operations initially, but the deployment
@@ -160,7 +160,7 @@ process should be automated so that operations is executing a pipeline, not manu
 a deployment runbook. This removes the manual operations bottleneck while preserving the
 access control that operations legitimately owns.
 
-### Step 4: Introduce a shared responsibility model for production (Weeks 6-12)
+### Step 4: Introduce a shared responsibility model for production (weeks 6-12)
 
 The goal is a model where the team that builds the service has a defined role in running it.
 This does not require eliminating the operations team - it requires redefining the boundary.
@@ -169,7 +169,7 @@ operations team is on call for infrastructure-level incidents. Both teams are in
 incident channel. The development team gets paged when their service has a production problem.
 This feedback loop is the foundation of operational quality.
 
-### Step 5: Renegotiate contract or team structures based on evidence (Months 3-6)
+### Step 5: Renegotiate contract or team structures based on evidence (months 3-6)
 
 After generating evidence that reduced-handoff delivery produces better quality and shorter
 lead times, use that evidence to renegotiate. If the current model involves a contracted
@@ -183,7 +183,7 @@ to align contract boundaries with value delivery rather than functional speciali
 | "Our outsourcing contract specifies this delivery model" | Contracts are renegotiated based on business results. If you can demonstrate that reducing handoffs shortens delivery timelines by two weeks, the business case for renegotiating the contract scope is clear. Start with a pilot under a change order before seeking full contract revision. |
 | "Operations needs to control production for stability" | Operations controlling access is different from operations controlling deployment timing. Automated deployment pipelines with proper access controls give operations visibility and auditability without requiring them to manually execute every deployment. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -194,7 +194,7 @@ to align contract boundaries with value delivery rather than functional speciali
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as time spent waiting for handoffs is removed |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should decrease as fewer items are waiting in queues between teams |
 
-## Related Content
+## Related content
 
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - The pipeline model that replaces multi-team handoff chains
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated test layer that replaces manual QA handoffs

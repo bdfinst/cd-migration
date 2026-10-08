@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A roadmap is published. It lists features with target quarters attached: Feature A in Q2, Feature B
 in Q3, Feature C by year-end. The estimates were rough - assembled by combining gut feel and
@@ -52,7 +52,7 @@ Common variations:
 The telltale sign: when a team member asks "can we adjust scope?" the answer is "the date was
 already communicated externally" - and nobody remembers whether that was actually true.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A team discovers in week six that the feature requires a dependency that does not yet exist. The date was committed four months ago. There is no mechanism to surface this as a planning input, so quality absorbs the gap. Distant date commitments break the feedback loop between discovery and planning. When the gap between commitment and delivery is measured in months, the organization has no mechanism to incorporate what is learned during development. The plan is frozen at the moment of maximum ignorance.
 
@@ -109,7 +109,7 @@ as more reliable than the evidence. They make the discipline of continuous deliv
 justify because they frame "we need to reduce scope to maintain quality" as a failure rather than
 a normal response to new information.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map current commitments and their basis
 
@@ -131,7 +131,7 @@ This does not eliminate planning - it reframes what planning produces. The outpu
 investing in X this quarter" rather than "we will ship feature Y with this exact scope by this
 exact date."
 
-### Step 3: Establish a regular scope-negotiation cadence (Weeks 2-4)
+### Step 3: Establish a regular scope-negotiation cadence (weeks 2-4)
 
 Create a monthly review for any active commitment more than four weeks out. Ask: Is the scope
 still accurate? Has the estimate changed? What is the latest realistic delivery range? Make scope
@@ -139,14 +139,14 @@ adjustment a normal part of the process rather than an admission of failure. Sta
 participate in regular scope conversations are less surprised than those who receive a quarterly
 "we need to slip" announcement.
 
-### Step 4: Practice breaking features into independently valuable pieces (Weeks 3-6)
+### Step 4: Practice breaking features into independently valuable pieces (weeks 3-6)
 
 Work with product ownership to decompose large features into pieces that can ship and provide value
 independently. Features designed as all-or-nothing deliveries are the root cause of most distant
 date pressure. When the first slice ships in week four, the conversation shifts from "are we on
 track for the full feature in Q3?" to "here is what users have now; what should we build next?"
 
-### Step 5: Build the history that enables better forecasts (Ongoing)
+### Step 5: Build the history that enables better forecasts (ongoing)
 
 Track the gap between initial commitments and actual delivery. Over time, this history becomes the
 basis for realistic planning. "Our Q-length features take on average 1.4x the initial estimate" is
@@ -159,7 +159,7 @@ to leadership as evidence that the current commitment model carries hidden inacc
 | "If we don't commit, nothing will get prioritized" | Prioritization does not require date-locked scope commitments. Replace the next date-locked roadmap item with an investment theme and an ordered backlog. Show stakeholders the top five items and ask them to confirm the order rather than the date. |
 | "We already announced this externally" | External announcements of future features are a separate risk-management problem. Going forward, work with marketing and sales to communicate directional roadmaps rather than specific feature-and-date commitments. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -169,7 +169,7 @@ to leadership as evidence that the current commitment model carries hidden inacc
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as the pressure to rush incomplete work to a committed date is reduced |
 | Time from feature start to first user value | Should decrease as features are broken into smaller independently shippable pieces |
 
-## Related Content
+## Related content
 
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - The sprint-level version of the same pressure
 - [Missing Product Ownership]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/missing-product-ownership" >}}) - Without a product owner, there is nobody to renegotiate scope as understanding develops

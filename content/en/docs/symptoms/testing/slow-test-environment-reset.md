@@ -31,7 +31,7 @@ artifacts rather than real bugs.
 
 ## Common causes
 
-### Shared Test Environments
+### Shared test environments
 
 When multiple teams share a single test environment, the environment is never in a clean state.
 One team's tests leave data behind. Another team's tests depend on data that was deleted moments earlier.
@@ -44,7 +44,7 @@ starting their own.
 
 **Read more:** [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}})
 
-### Manual Regression Testing Gates
+### Manual regression testing gates
 
 When the regression suite is treated as a manual checkpoint rather than an automated [pipeline](../../reference/glossary/#pipeline)
 stage, the environment setup is also manual or semi-automated. Scripts that restore the
@@ -54,7 +54,7 @@ never intended to run on every change.
 
 **Read more:** [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
 
-### Too Many Hard Dependencies in the Test Suite
+### Too many hard dependencies in the test suite
 
 When tests require live databases, running services, and real network connections for every
 assertion, the environment reset is slow because every dependency must be restored to a known
@@ -70,7 +70,7 @@ assertion, the reset time is a direct consequence of testing at the wrong layer.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Testing Only at the End
+### Testing only at the end
 
 When testing is deferred to a late stage - after development, after integration, before release
 - the tests assume a fully assembled system with a production-like database. Resetting that
@@ -108,7 +108,7 @@ services - do not need environment resets. They run in isolation with their own 
 
 **Ready to fix this?** The most common cause is [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Related symptom caused by environment inconsistency
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not only the reset

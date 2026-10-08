@@ -12,7 +12,7 @@ aliases:
 The specification stages of the [ACD workflow]({{< relref "/docs/agentic-cd" >}}) (Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
-## The Pattern
+## The pattern
 
 Every use of an agent in the specification stages follows the same four-step cycle:
 
@@ -23,7 +23,7 @@ Every use of an agent in the specification stages follows the same four-step cyc
 
 This is not the agent doing specification for you. It is the agent making your specification more thorough than it would be without help, in less time than it would take without help. The sections below show how this cycle applies at each specification stage.
 
-## This Is Not Big Upfront Design
+## This is not big upfront design
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
@@ -31,7 +31,7 @@ The specification stages look heavy if you imagine writing them for an entire fe
 
 If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
-## How Agents Help with the Intent Description
+## How agents help with the intent description
 
 The intent description does not need to be perfect on the first draft. Write a rough version and use an agent to sharpen it.
 
@@ -69,7 +69,7 @@ A weak hypothesis - one with an unmeasurable outcome or implausible causal link 
 
 The human still owns the intent. The agent is a sounding board that catches gaps before they become defects.
 
-## How Agents Help with User-Facing Behavior
+## How agents help with user-facing behavior
 
 Writing [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios from scratch is slow. Agents can draft them and surface gaps you would otherwise miss.
 
@@ -103,7 +103,7 @@ modes, and interactions with existing behavior.
 
 The human decides which scenarios to keep. The agent ensures you considered more scenarios than you would have on your own.
 
-## How Agents Help with the Feature Description and Acceptance Criteria
+## How agents help with the feature description and acceptance criteria
 
 The Feature Description and Acceptance Criteria stages define the technical boundaries: where the change fits in the system, what constraints apply, and what non-functional requirements must be met.
 
@@ -137,7 +137,7 @@ explain why it matters for this specific change.
 
 The human makes the architectural decisions and sets the thresholds. The agent makes sure you did not leave anything out.
 
-## Validating the Complete Specification Set
+## Validating the complete specification set
 
 The four specification stages produce four [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}): intent description, user-facing behavior (BDD scenarios), feature description (constraint architecture), and [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). Each can look reasonable in isolation but still conflict with the others. Before moving to test generation and implementation, validate them as a set.
 
@@ -163,13 +163,13 @@ before implementation begins. Check:
 
 This review is not a bureaucratic checkpoint. It is the last moment where the cost of a change is near zero. After this gate, every issue becomes more expensive to fix.
 
-## The Discovery Loop: From Conversation to Specification
+## The discovery loop: from conversation to specification
 
 The prompts above work well when you already know what to specify. When you do not, you need a different starting point. Instead of writing a draft and asking the agent to critique it, treat the agent as a principal architect who interviews you to extract context you did not know was missing.
 
 This is the shift from "order taker" to "architectural interview." The sections above describe what to do at each specification stage. The discovery loop describes how to get there through conversation when you are starting from a vague idea.
 
-### Phase 1: Initial Framing (Intent)
+### Phase 1: Initial framing (intent)
 
 Describe the outcome, not the application. Set the agent's role and the goal of the conversation explicitly.
 
@@ -186,7 +186,7 @@ This prompt does three things: it states intent, it assigns a role that produces
 
 Even at this early stage, include a rough hypothesis about what outcome you expect: "I believe this tool will reduce the time teams spend on manual value stream analysis by 80%." The hypothesis does not need to be precise yet - the discovery interview will sharpen it - but stating one early forces you to think about measurable outcomes from the start.
 
-### Phase 2: Deep-Dive Interview (Context)
+### Phase 2: Deep-dive interview (context)
 
 Let the agent ask three to five high-signal questions at a time. The goal is to surface the implicit knowledge in your head: domain definitions, data schemas, failure modes, and trade-off preferences.
 
@@ -196,7 +196,7 @@ Let the agent ask three to five high-signal questions at a time. The goal is to 
 
 This is [context engineering]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#2-context-engineering" >}}) in practice: you are building the information environment the specification will formalize.
 
-### Phase 3: Drafting (Specification)
+### Phase 3: Drafting (specification)
 
 Once the agent has enough context, ask it to synthesize the conversation into a structured specification.
 
@@ -211,7 +211,7 @@ planner-worker pattern where tasks are broken into sub-two-hour chunks.
 
 The sections map to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) and the [specification engineering]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#4-specification-engineering-the-new-ceiling" >}}) skill set. The agent drafts. You review using the same [four-step cycle](#the-pattern) described at the top of this page.
 
-### Phase 4: Stress-Test Review
+### Phase 4: Stress-test review
 
 Before finalizing, ask the agent to find gaps in its own output.
 
@@ -223,7 +223,7 @@ What edge cases are missing from the evaluation design?
 
 This is the same validation step as the [specification consistency check](#validating-the-complete-specification-set), applied to the discovery loop's output.
 
-### How This Differs from Turn-by-Turn Prompting
+### How this differs from turn-by-turn prompting
 
 | Step | Turn-by-turn prompting | Discovery loop |
 |------|----------------------|----------------|
@@ -240,7 +240,7 @@ During long discovery conversations, ask the agent to maintain a running context
 
 The [complete specification example](#complete-specification-example) below shows the output this workflow produces.
 
-## Complete Specification Example
+## Complete specification example
 
 The four specification stages produce concise, structured documents. The example below shows what a complete specification looks like when all four disciplines from [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) are applied. This is a real-scale example, not a simplified illustration.
 
@@ -342,7 +342,7 @@ displays a graceful "No Data Found" state rather than crashing.
 - **Acceptance criteria are observable:** Each criterion describes a user-visible outcome, not an internal implementation detail. These map directly to [Acceptance Criteria]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#4-acceptance-criteria" >}}).
 - **Test cases include expected outputs:** The evaluation design gives the agent known-good results to verify against, which is the [specification engineering]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#4-specification-engineering-the-new-ceiling" >}}) skill of evaluation design.
 
-## Related Content
+## Related content
 
 - [The ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these tips support
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - detailed definitions of each artifact

@@ -31,7 +31,7 @@ test coverage, change size practices, and pipeline gates. The leading indicator 
 first is [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}), since smaller batches
 fail less often and are easier to diagnose.
 
-## How to Measure
+## How to measure
 
 1. **Count total production deployments** over a defined period (weekly, monthly).
 2. **Count deployments classified as failures** using the criteria above.
@@ -63,7 +63,7 @@ These levels are drawn from the DORA *State of DevOps* research. Elite performer
 maintain a change fail rate below 5%, meaning fewer than 1 in 20 deployments causes
 a problem.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Not recording failures.** Deploying fixes without logging the original failure
   understates the true rate. Ensure every incident and rollback is tracked.

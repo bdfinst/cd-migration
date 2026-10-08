@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Every time a developer pushes a commit, the pipeline downloads the entire dependency tree from
 scratch. Maven pulls every JAR from the repository. npm fetches every package from the registry.
@@ -54,7 +54,7 @@ Common variations:
 The telltale sign: a developer asks "is the build done yet?" and the honest answer is "it's been
 running for twenty minutes but we should have results in another ten or fifteen."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Slow pipelines are not merely inconvenient. They change behavior in ways that accumulate into
 serious delivery problems. When feedback is slow, developers adapt by reducing how often they
@@ -133,7 +133,7 @@ rather than forty-five, deploying frequently becomes practical rather than painf
 pipeline is often not the only barrier to CD, but it is frequently the most visible one and
 the one that yields the most immediate improvement when addressed.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure current build times by stage
 
@@ -168,7 +168,7 @@ Dependency caching is typically the highest-return optimization and the easiest 
 A build that downloads 200 MB of packages on every run can drop to downloading nothing on
 cache hits.
 
-### Step 3: Enable incremental compilation (Weeks 2-3)
+### Step 3: Enable incremental compilation (weeks 2-3)
 
 If compilation is a major time sink, ensure the build tool is configured for incremental builds:
 
@@ -182,7 +182,7 @@ If compilation is a major time sink, ensure the build tool is configured for inc
 Verify that incremental compilation is actually working by pushing a trivial change (a comment
 edit) and checking whether the build is faster than a full build.
 
-### Step 4: Parallelize independent pipeline stages (Weeks 2-3)
+### Step 4: Parallelize independent pipeline stages (weeks 2-3)
 
 Review the pipeline for stages that are currently sequential but could run in parallel:
 
@@ -195,7 +195,7 @@ Most modern pipeline tools support parallel stage execution. The improvement dep
 many independent stages exist, but it is common to cut total pipeline time by 30-50% by
 parallelizing work that was previously serialized by default.
 
-### Step 5: Move slow tests to a later pipeline stage (Weeks 3-4)
+### Step 5: Move slow tests to a later pipeline stage (weeks 3-4)
 
 Not all tests need to run before every deployment decision. Reorganize tests by speed:
 
@@ -209,7 +209,7 @@ This does not eliminate slow tests - it moves them to a position where they are 
 the developer feedback loop. The developer gets fast results from the fast tests within
 minutes, while the slow tests run asynchronously.
 
-### Step 6: Set a pipeline duration budget and enforce it (Ongoing)
+### Step 6: Set a pipeline duration budget and enforce it (ongoing)
 
 Establish an agreed-upon maximum pipeline duration for the developer feedback stage - ten
 minutes is a common target - and treat any build that exceeds it as a defect to be fixed:
@@ -227,7 +227,7 @@ Expect pushback and address it directly:
 | "The pipeline runs in Docker containers so there is no persistent cache" | Most CI platforms support external cache storage (S3 buckets, GCS buckets, NFS mounts) that persists across container-based builds. Docker BuildKit can pull layer cache from a registry. |
 | "We tried parallelizing and it caused intermittent failures" | Intermittent failures from parallelization usually indicate tests that share state (a database, a filesystem path, a port). Fix the test isolation rather than abandoning parallelization. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -238,7 +238,7 @@ Expect pushback and address it directly:
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as pipeline bottlenecks are removed |
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as the cost of each integration drops |
 
-## Related Content
+## Related content
 
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Structuring the pipeline so slow stages do not block fast feedback
 - [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Caching and parallelism must not introduce non-determinism

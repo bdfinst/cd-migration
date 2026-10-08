@@ -12,7 +12,7 @@ lifecycle itself, bottleneck removal is not a project with an end state. It is a
 keep running, because every constraint you remove exposes the next one. This page is the playbook.
 {{% /pageinfo %}}
 
-## The Loop
+## The loop
 
 ```mermaid
 graph LR
@@ -29,13 +29,13 @@ graph LR
 
 Use AI in every phase, not only to write code, but to solve old coordination problems in new ways.
 
-## Phase 1: Identify and Diagnose
+## Phase 1: Identify and diagnose
 
 You cannot remove a bottleneck you have not named. This phase produces a bottleneck map and a
 [classification]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}), and it starts with
 the real system rather than a maturity model. Use two techniques that work together.
 
-### Technique 1: Walk the Value Stream (the Litmus Test)
+### Technique 1: Walk the value stream (the litmus test)
 
 Take something from your backlog that is small, predictable, and meaningful enough to touch the
 real delivery system. Observe a developer, and where appropriate an agent, work the change from idea
@@ -55,7 +55,7 @@ system. Ask where the work waited, where it required tribal knowledge, where saf
 manual judgment, where security or compliance entered too late, and where the pipeline gave a clear
 next action instead of only saying no. The output is a map of exactly where the value stream stops.
 
-### Technique 2: Context Harvesting (Read the Process Exhaust with AI)
+### Technique 2: Context harvesting (read the process exhaust with AI)
 
 Walking the value stream shows you where work stops. Context harvesting shows you why. Most of the
 knowledge about how work really flows is not in a process diagram. It is scattered across emails,
@@ -74,7 +74,7 @@ agent era, the context you harvest here becomes infrastructure later.
 
 The output of Phase 1 is a named, classified constraint, mapped to where it lives in the lifecycle.
 
-## Phase 2: Re-engineer the Bottleneck
+## Phase 2: Re-engineer the bottleneck
 
 Once the constraint is named, resist the reflex to add another meeting, dashboard, or escalation
 path. Those preserve the underlying dependency. The better question is: what dependency can we
@@ -104,7 +104,7 @@ architecture constraints as enforceable rules, traceability from request to depl
 production behavior, rollback, and a named owner for every service and evidence source. See
 [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
-## Phase 3: Document and Share
+## Phase 3: Document and share
 
 A local improvement no one else can find becomes another silo. The work is not done when the
 bottleneck is gone. It is done when the next team, and the next agent, can remove the same class of
@@ -126,7 +126,7 @@ In the agent era, context is infrastructure. Documentation is not the tax at the
 is the mechanism that converts a one-time fix into organizational capability, readable by the next
 teammate and the next agent alike.
 
-## Phase 4: Iterate to the Next Constraint
+## Phase 4: Iterate to the next constraint
 
 Removing one constraint does not finish the system. It reveals the next one. That is not failure. It
 is the loop working as designed.
@@ -140,7 +140,7 @@ rather than a one-time initiative. When the whole organization runs the loop, co
 compound downward: every dependency removed improves the odds for every team that touches the same
 flow.
 
-## What to Do Next
+## What to do next
 
 Start small, but start with the real system. Choose one backlog item, one audit evidence flow, one
 capacity request, one design approval, or one deployment gate. Then:
@@ -158,7 +158,7 @@ work moves faster because the system has become clearer, safer, more automated, 
 on hidden human coordination. The teams that become fast will not be the teams that chase speed
 directly. They will be the teams that remove friction, improve quality, and make safety executable.
 
-## Related Content
+## Related content
 
 - [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}) - the classification Phase 1 produces
 - [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}) - the properties you apply in Phase 2

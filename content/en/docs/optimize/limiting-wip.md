@@ -14,7 +14,7 @@ aliases:
 Work in progress ([WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}})) is inventory. Like physical inventory, it loses value the longer it sits unfinished. Limiting WIP is the most counterintuitive and most impactful practice in this entire migration: doing less work at once makes you deliver more.
 {{% /pageinfo %}}
 
-## Why Limiting WIP Matters
+## Why limiting WIP matters
 
 Every item of work in progress has a cost:
 
@@ -27,9 +27,9 @@ Every item of work in progress has a cost:
 >
 > - Lean saying
 
-## How to Set Your WIP Limit
+## How to set your WIP limit
 
-### The N+2 Starting Point
+### The N+2 starting point
 
 A practical starting WIP limit for a team is **N+2**, where N is the number of team members actively working on delivery.
 
@@ -41,7 +41,7 @@ A practical starting WIP limit for a team is **N+2**, where N is the number of t
 
 **Why N+2 and not N?** Because some items will be blocked waiting for review, testing, or external dependencies. A small buffer prevents team members from being idle when their primary task is blocked. But the buffer should be small - two items, not ten.
 
-### Continuously Lower the Limit
+### Continuously lower the limit
 
 The N+2 formula is a starting point, not a destination. Once the team is comfortable with the initial limit, reduce it:
 
@@ -52,7 +52,7 @@ The N+2 formula is a starting point, not a destination. Once the team is comfort
 
 Each reduction will feel uncomfortable. That discomfort is the point - it exposes problems in your workflow that were previously hidden by excess WIP.
 
-## What Happens When You Hit the Limit
+## What happens when you hit the limit
 
 When the team reaches its WIP limit and someone finishes a task, they have two options:
 
@@ -69,14 +69,14 @@ When the WIP limit is reached and no items are complete:
 
 Swarming is the practice of multiple team members working together on a single item to get it finished faster. It is the natural complement to WIP limits.
 
-### When to Swarm
+### When to swarm
 
 - An item has been in progress for longer than the team's cycle time target (for example, more than 2 days)
 - An item is blocked and the blocker can be resolved by another team member
 - The WIP limit is reached and someone needs work to do
 - A critical defect needs to be fixed immediately
 
-### How to Swarm Effectively
+### How to swarm effectively
 
 | Approach | How It Works | Best For |
 |----------|-------------|----------|
@@ -85,11 +85,11 @@ Swarming is the practice of multiple team members working together on a single i
 | **Divide and conquer** | Break the item into sub-tasks and assign them | Items that can be parallelized (for example, frontend + backend + tests) |
 | **Unblock and return** | One person resolves the blocker, then hands back | External dependencies, environment issues, access requests |
 
-### Why Teams Resist Swarming
+### Why teams resist swarming
 
 The most common objection: "It's inefficient to have two people on one task." This is only true if you measure efficiency as "percentage of time each person is writing new code." If you measure efficiency as "how quickly value reaches production," swarming is almost always faster because it reduces handoffs, wait time, and rework.
 
-## How Limiting WIP Exposes Workflow Issues
+## How limiting WIP exposes workflow issues
 
 One of the most valuable effects of WIP limits is that they make hidden problems visible. When you cannot start new work, you are forced to confront the problems that slow existing work down.
 
@@ -103,9 +103,9 @@ One of the most valuable effects of WIP limits is that they make hidden problems
 
 Each of these is a bottleneck that was previously invisible because the team could always start something else. With WIP limits, these bottlenecks become obvious and demand attention.
 
-## Implementing WIP Limits
+## Implementing WIP limits
 
-### Step 1: Make WIP Visible
+### Step 1: Make WIP visible
 
 Before setting limits, make current WIP visible:
 
@@ -113,25 +113,25 @@ Before setting limits, make current WIP visible:
 - Write this number on the board (physical or digital) every day
 - Most teams are shocked by how high it is. A team of 5 often has 15-20 items in progress.
 
-### Step 2: Set the Initial Limit
+### Step 2: Set the initial limit
 
 - Calculate N+2 for your team
 - Add the limit to your board (for example, a column header that says "In Progress (limit: 7)")
 - Agree as a team that when the limit is reached, no new work starts
 
-### Step 3: Enforce the Limit
+### Step 3: Enforce the limit
 
 - When someone tries to pull new work and the limit is reached, the team helps them find an existing item to work on
 - Track violations: how often does the team exceed the limit? What causes it?
 - Discuss in [retrospectives]({{< relref "/docs/optimize/retrospectives" >}}): Is the limit too high? Too low? What bottlenecks are exposed?
 
-### Step 4: Reduce the Limit (Monthly)
+### Step 4: Reduce the limit (monthly)
 
 - Every month, consider reducing the limit by 1
 - Each reduction will expose new bottlenecks - this is the intended effect
 - Stop reducing when the team reaches a sustainable flow where items move from start to done predictably
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We set a WIP limit but nobody enforces it"
 
@@ -149,7 +149,7 @@ If every urgent request bypasses the WIP limit, you do not have a WIP limit. Exp
 
 Per-person WIP limits miss the point. The goal is to limit team WIP so that team members are incentivized to help each other. A per-person limit of 1 with no team limit still allows the team to have 8 items in progress simultaneously with no swarming.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -158,13 +158,13 @@ Per-person WIP limits miss the point. The goal is to limit team WIP so that team
 | Items completed per week | Stable or increasing | Confirms that finishing more, starting less works |
 | Time items spend blocked | Decreasing | Confirms bottlenecks are being addressed |
 
-## Next Step
+## Next step
 
 WIP limits expose problems. [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) provides the framework for systematically addressing them.
 
 ---
 
-## Related Content
+## Related content
 
 - [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - the primary symptom that WIP limits address
 - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - a symptom caused by excess work in progress

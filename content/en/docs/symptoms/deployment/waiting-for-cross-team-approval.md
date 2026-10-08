@@ -25,7 +25,7 @@ cycles.
 
 ## Common causes
 
-### Compliance Interpreted as Manual Approval
+### Compliance interpreted as manual approval
 
 Compliance requirements - security controls, audit trails, regulatory evidence - are real and
 necessary. The problem is when compliance is operationalized as manual sign-off rather than as
@@ -36,7 +36,7 @@ added and old ones are never removed.
 
 **Read more:** [Compliance Interpreted as Manual Approval]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval" >}})
 
-### Separation of Duties as Separate Teams
+### Separation of duties as separate teams
 
 Separation of duties is a legitimate control for high-risk changes. It becomes an anti-pattern
 when it is implemented as a structural requirement that every change go through a different team
@@ -61,7 +61,7 @@ rather than focusing on changes that actually warrant scrutiny.
 
 ---
 
-## Related Content
+## Related content
 
 - [Change Management Overhead]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}) - CAB and change advisory processes with similar dynamics
 - [Security Review Bottleneck]({{< relref "/docs/symptoms/deployment/security-review-bottleneck" >}}) - Security-specific approval gate

@@ -14,7 +14,7 @@ processes, existing habits, and existing pain. This section provides the phased 
 from where you are today to continuous delivery, without stopping feature delivery along the way.
 {{% /pageinfo %}}
 
-## The Reality of Brownfield Migration
+## The reality of brownfield migration
 
 Migrating an existing system to CD is harder than building CD into a greenfield project. You are
 working against inertia: existing branching strategies, existing test suites (or lack thereof),
@@ -24,7 +24,7 @@ alongside regular delivery work.
 The good news: every team that has successfully adopted CD has done it this way. The practices in
 this guide are designed for incremental adoption, not big-bang transformation.
 
-## What to Expect
+## What to expect
 
 Brownfield CD adoption is predictably difficult in ways that catch teams off guard. Knowing what
 is coming makes it less likely you will interpret normal friction as evidence that the approach
@@ -49,7 +49,7 @@ through the long period when foundations are being built but delivery feels slow
 become the business case for continued investment. Without this data, leadership will pull the
 team back to feature work at the first sign of difficulty.
 
-## The Migration Phases
+## The migration phases
 
 The migration is organized into five phases. Each phase builds on the previous one. Start with
 Phase 0 to understand where you are, then work through the phases in order.
@@ -62,7 +62,7 @@ Phase 0 to understand where you are, then work through the phases in order.
 | 3 | [Optimize]({{< relref "/docs/optimize" >}}) | Improve flow, reduce [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) | "Can we deliver small changes quickly?" |
 | 4 | [Deliver on Demand]({{< relref "/docs/continuous-deployment" >}}) | Deploy any change when needed | "Can we deliver any change to production when needed?" |
 
-## Where to Start
+## Where to start
 
 ### If you don't know where you stand
 
@@ -88,7 +88,7 @@ If you don't have time for a full assessment, answer these questions:
 - **Do you deploy at least weekly?** If no, look at [Phase 3]({{< relref "/docs/optimize" >}}) for batch size and
   flow optimization.
 
-## Principles for Brownfield Migration
+## Principles for brownfield migration
 
 ### Do not stop delivering features
 
@@ -116,7 +116,7 @@ CD adoption works best when a single team can experiment, learn, and iterate wit
 organizational consensus. Once one team demonstrates results, other teams have a concrete example
 to follow.
 
-## What Your Team Controls vs. What Requires Broader Change
+## What your team controls vs. what requires broader change
 
 Not all brownfield challenges are yours to solve alone. Knowing the difference helps you
 prioritize what to start now and what to bring to management.
@@ -142,7 +142,7 @@ prioritize what to start now and what to bring to management.
   alongside feature delivery. If leadership expects the same feature throughput during the
   migration, the migration will stall. Building this case with data is part of the work.
 
-## Common Brownfield Challenges
+## Common brownfield challenges
 
 These challenges are specific to migrating existing systems. For the full catalog of problems
 teams face, see [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}).
@@ -156,7 +156,7 @@ teams face, see [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}).
 | Tightly coupled architecture | Changing one module breaks others unpredictably | You do not need microservices. You need clear boundaries. Start by identifying and enforcing module boundaries within the monolith. |
 | Organizational resistance | "We've always done it this way" | Start small, show results, build the case with data. One team deploying daily with lower failure rates is more persuasive than any slide deck. |
 
-## Related Content
+## Related content
 
 - [Anti-Patterns]({{< relref "/docs/anti-patterns" >}}) - Start with the problem you feel most
 - [Phase 0 - Assess]({{< relref "/docs/assess" >}}) - Understand your current state

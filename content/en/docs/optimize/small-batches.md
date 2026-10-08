@@ -14,7 +14,7 @@ aliases:
 [Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is the single biggest lever for improving delivery performance. This page covers what batch size means at every level - deploy frequency, commit size, and story size - and provides concrete techniques for reducing it.
 {{% /pageinfo %}}
 
-## Why Batch Size Matters
+## Why batch size matters
 
 Large batches create large risks. When you deploy 50 changes at once, any failure could be caused by any of those 50 changes. When you deploy 1 change, the cause of any failure is obvious.
 
@@ -24,11 +24,11 @@ This is not a theory. The [DORA]({{< relref "/docs/reference/glossary#dora-metri
 >
 > - Jez Humble, *Continuous Delivery*
 
-## Three Levels of Batch Size
+## Three levels of batch size
 
 [Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is not only about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
 
-### Level 1: Deploy Frequency
+### Level 1: Deploy frequency
 
 How often you push changes to production.
 
@@ -46,7 +46,7 @@ How often you push changes to production.
 - **"Incomplete features have no value."** Value is not limited to end-user features. Every deployment provides value to other stakeholders: operations verifies that the change is safe, QA confirms quality gates pass, and the team reduces inventory waste by keeping unintegrated work near zero. A partially built feature deployed behind a flag validates the deployment pipeline and reduces the risk of the final release.
 - **"Our customers don't want changes that frequently."** [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) is not about shipping user-visible changes every hour. It is about maintaining the ability to deploy at any time. That ability is what lets you ship an emergency fix in minutes instead of days, roll out a security patch without a war room, and support production without heroics.
 
-### Level 2: Commit Size
+### Level 2: Commit size
 
 How much code changes in each commit to trunk.
 
@@ -60,7 +60,7 @@ How much code changes in each commit to trunk.
 
 **How to reduce:** Practice [TDD]({{< relref "/docs/reference/glossary#tdd-test-driven-development" >}}) (write one test, make it pass, commit). Use [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) to merge incomplete work. Pair program so review happens in real time.
 
-### Level 3: Story Size
+### Level 3: Story size
 
 How much scope each user story or work item contains.
 
@@ -74,11 +74,11 @@ A story that takes a week to complete is a large batch. It means a week of work 
 
 This target is not aspirational. Teams that adopt hyper-sprints - iterations as short as 2.5 days - find that the discipline of writing one-day stories forces better decomposition and faster feedback. Teams that make this shift routinely see throughput double, not because people work faster, but because smaller stories flow through the system with less wait time, fewer handoffs, and fewer defects.
 
-## Behavior-Driven Development for Decomposition
+## Behavior-driven development for decomposition
 
 [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) provides a concrete technique for breaking stories into small, testable increments. The Given-When-Then format forces clarity about scope.
 
-### The Given-When-Then Pattern
+### The given-when-then pattern
 
 {{< card code=true header="**BDD scenarios for shopping cart discount feature**" lang="gherkin" >}}
 Feature: Shopping cart discount
@@ -102,7 +102,7 @@ Feature: Shopping cart discount
 
 Each scenario becomes a deliverable increment. You can implement and deploy the first scenario before starting the second. This is how you turn a "discount feature" (large batch) into three independent, [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) changes (small batches).
 
-### Decomposing Stories Using Scenarios
+### Decomposing stories using scenarios
 
 When a story has too many scenarios, it is too large. Use this process:
 
@@ -117,7 +117,7 @@ When a story has too many scenarios, it is too large. Use this process:
 |----------------|-----------|-------------|
 | "As a user, I can manage my profile" | 12 scenarios covering name, email, password, avatar, notifications, privacy, deactivation | 5 stories: basic info (2 scenarios), password (2), avatar (2), notifications (3), deactivation (3) |
 
-## ATDD: Connecting Scenarios to Daily Integration
+## ATDD: Connecting scenarios to daily integration
 
 BDD scenarios define *what* to build. Acceptance Test-Driven Development (ATDD) defines *how* to build it in small, integrated steps. The workflow is:
 
@@ -137,7 +137,7 @@ Each cycle produces a commit that is independently deployable and verified by an
 - The acceptance tests accumulate into a regression suite that protects future changes.
 - If a commit breaks something, the scope of the change is small enough to diagnose quickly.
 
-## Service-Level Decomposition Example
+## Service-level decomposition example
 
 ATDD works at the API and service level, not only at the UI level. Here is an example of building an order history endpoint day by day:
 
@@ -176,11 +176,11 @@ Commit: Add sorting logic and pagination. All three tests pass.
 
 Each day produces a deployable change. The endpoint is usable (though minimal) after day 1. No day requires more than a few hours of coding because the scope is constrained by a single scenario.
 
-## Vertical Slicing
+## Vertical slicing
 
 A [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) cuts through all layers of the system to deliver a thin piece of end-to-end functionality. This is the opposite of horizontal slicing, where you build all the database changes, then all the API changes, then all the UI changes.
 
-### Horizontal vs. Vertical Slicing
+### Horizontal vs. vertical slicing
 
 **Horizontal (avoid):**
 
@@ -202,7 +202,7 @@ Story 3: Apply discounts only to eligible items (DB + API + UI for one scenario)
 
 Benefits: Every story delivers testable, deployable functionality. Integration happens with each story, not at the end. You can ship story 1 and get feedback before building story 2.
 
-### How to Slice Vertically
+### How to slice vertically
 
 Ask these questions about each proposed story:
 
@@ -221,7 +221,7 @@ The key difference is whether the public interface is designed for humans or mac
 
 See [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for diagrams of both contexts, and [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) for the failure mode that emerges when distributed teams split work by layer instead of by behavior.
 
-### Story Slicing Anti-Patterns
+### Story slicing anti-patterns
 
 These are common ways teams slice stories that undermine the benefits of small batches:
 
@@ -241,9 +241,9 @@ These are common ways teams slice stories that undermine the benefits of small b
 "This story just sets up infrastructure - there is nothing to test yet."
 **Right:** Every story has at least one automated test that verifies its behavior. If you cannot write a test, the slice does not deliver observable value.
 
-## Practical Steps for Reducing Batch Size
+## Practical steps for reducing batch size
 
-### Step 1: Measure Current State
+### Step 1: Measure current state
 
 Before changing anything, measure where you are:
 
@@ -252,25 +252,25 @@ Before changing anything, measure where you are:
 - **Deploy frequency** (how often changes reach production)
 - **Average changes per deploy** (how many commits per deployment)
 
-### Step 2: Introduce Story Decomposition
+### Step 2: Introduce story decomposition
 
 - Start writing BDD scenarios before implementation
 - Split any story estimated at more than 2 days
 - Track the number of stories completed per week (expect this to increase as stories get smaller)
 
-### Step 3: Tighten Commit Size
+### Step 3: Tighten commit size
 
 - Adopt the discipline of "one logical change per commit"
 - Use TDD to create a natural commit rhythm: write test, make it pass, commit
 - Track average commit size and set a team target (for example, under 100 lines)
 
-### Ongoing: Increase Deploy Frequency
+### Ongoing: Increase deploy frequency
 
 - Deploy at least once per day, then work toward multiple times per day
 - Remove any batch-oriented processes (for example, "we deploy on Tuesdays")
 - Make deployment a non-event
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "Small stories take more overhead to manage"
 
@@ -284,7 +284,7 @@ Almost anything can be decomposed further. Database migrations can be done in ba
 
 This usually means the team is still working sequentially. Small stories require limiting [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) and swarming - see [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}). If the team starts 10 small stories instead of 2 large ones, they have not actually reduced batch size; they have increased WIP.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -293,11 +293,11 @@ This usually means the team is still working sequentially. Small stories require
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Daily or more | Confirms deploys are routine |
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Decreasing | Confirms small changes reduce failure risk |
 
-## Next Step
+## Next step
 
 Small batches often require deploying incomplete features to production. [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) provide the mechanism to do this safely.
 
-## Related Content
+## Related content
 
 - [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - the symptom of deploying too rarely that small batches directly address
 - [Hardening Sprints]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - a symptom caused by large batch sizes requiring stabilization periods

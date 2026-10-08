@@ -28,7 +28,7 @@ which increases the surface area for the next regression.
 
 ## Common causes
 
-### Large Release Batches
+### Large release batches
 
 When releases contain many changes - dozens of commits, multiple features, several bug fixes -
 the surface area for regressions grows with the batch size. Each change is a potential source
@@ -39,7 +39,7 @@ few changes, and when one does occur, the cause is obvious.
 
 **Read more:** [Infrequent, Painful Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}})
 
-### Testing Only at the End
+### Testing only at the end
 
 When tests run only immediately before a release rather than continuously throughout development,
 regressions accumulate silently between test runs. A change that breaks existing behavior is not
@@ -49,7 +49,7 @@ found, the more expensive it is to fix.
 
 **Read more:** [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}})
 
-### Long-Lived Feature Branches
+### Long-lived feature branches
 
 When developers work on branches that diverge from the main codebase for days or weeks, merging
 creates interactions that were never tested. Each branch was developed and tested independently.
@@ -59,7 +59,7 @@ in previously working functionality.
 
 **Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
-### Fixes Applied to the Release Branch but Not to Trunk
+### Fixes applied to the release branch but not to trunk
 
 When a defect is found in a released version, the team branches from the release tag and
 applies a fix to that branch to ship a patch quickly. If the fix is never ported back to
@@ -96,7 +96,7 @@ affected.
 
 ---
 
-## Related Content
+## Related content
 
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Regressions are a primary driver of deployment anxiety
 - [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Related pattern where environment differences cause post-deploy failures

@@ -14,7 +14,7 @@ aliases:
 [Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires that trunk always be releasable, which means testing it automatically on every change. A collection of tests is not enough. You need a **test architecture**: different test types working together so the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can confidently deploy any change, even when external systems are unavailable.
 {{% /pageinfo %}}
 
-## Testing Goals for CD
+## Testing goals for CD
 
 Your test suite must meet these goals before it can support continuous delivery.
 
@@ -27,7 +27,7 @@ Your test suite must meet these goals before it can support continuous delivery.
 | **Test doubles stay current** | Contract tests confirm test doubles match reality | All contract tests passing within last 24 hours |
 | **Coverage trends up** | Every new change gets a test | Coverage percentage increasing over time |
 
-## In This Section
+## In this section
 
 | Page | What You'll Learn |
 |------|-------------------|
@@ -43,7 +43,7 @@ Your test suite must meet these goals before it can support continuous delivery.
 | [Testing Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}) | Common testing antipatterns and how to get an existing suite back on track |
 | [Testing Glossary]({{< relref "/docs/foundations/testing-fundamentals/glossary" >}}) | Definitions for testing terms as this site uses them |
 
-## The Ice Cream Cone: What to Avoid
+## The ice cream cone: what to avoid
 
 An inverted test distribution, with too many slow end-to-end tests and too few fast unit tests, is the most common testing barrier to CD.
 
@@ -54,7 +54,7 @@ take hours, fail randomly, and depend on external systems being healthy. For the
 that replaces this, see [Pipeline Test Strategy]({{< relref "/docs/foundations/testing-fundamentals/pipeline-test-strategy" >}})
 and the [Testing reference]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}).
 
-## Next Step
+## Next step
 
 Automate your build process so that building, testing, and packaging happen with a single command. Continue to [Build Automation]({{< relref "/docs/foundations/build-automation" >}}).
 
@@ -64,7 +64,7 @@ Content contributed by [Dojo Consortium](https://dojoconsortium.org), licensed u
 
 ---
 
-## Related Content
+## Related content
 
 - [Flaky Tests]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Symptom of non-deterministic tests that destroy pipeline trust
 - [High Coverage, Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - Symptom where coverage metrics mask poor test quality

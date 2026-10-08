@@ -9,7 +9,7 @@ description: >
 These metrics help you assess your current delivery performance and track improvement
 over time. Not all metrics are equally useful at every stage of a CD migration.
 
-## Leading Indicators
+## Leading indicators
 
 Leading indicators reflect the current state of team behaviors. They move immediately
 when those behaviors change, making them the most useful metrics for driving improvement
@@ -23,7 +23,7 @@ addressable today.
 | [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Time from starting work to delivery |
 | [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Amount of started but unfinished work |
 
-## DORA Outcome Metrics
+## DORA outcome metrics
 
 The four DORA key metrics are lagging indicators drawn from the DORA research program.
 They reflect the cumulative effect of many upstream behaviors and confirm that improvement

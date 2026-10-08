@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team deploys a change. Someone asks "is it working?" Nobody knows. There is no dashboard to
 check. There are no metrics to compare before and after. The team waits. If nobody complains
@@ -48,7 +48,7 @@ Common variations:
 The telltale sign: the team's primary method for detecting production problems is waiting for
 someone outside the team to report them.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Without observability, the team is deploying into a void. They cannot verify that deployments
 are healthy, cannot detect problems quickly, and cannot diagnose issues when they arise. Every
@@ -125,7 +125,7 @@ A team without observability can automate deployment, but they cannot automate v
 means every deployment requires manual checking, which caps deployment frequency at whatever pace
 the team can manually verify.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Add structured logging
 
@@ -202,7 +202,7 @@ confidence because it can verify health automatically.
 | "The ops team handles monitoring" | Observability is a development concern, not only an operations concern. Developers write the code that generates the telemetry. They need access to the dashboards and alerts. |
 | "We'll add observability after we stabilize" | You cannot stabilize what you cannot see. Observability is how you find stability problems. Adding it later means flying blind longer. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -213,7 +213,7 @@ confidence because it can verify health automatically.
 | Alert noise ratio | Percentage of alerts that are actionable - should be above 80% |
 | Incidents discovered by customers vs. by the team | Ratio should shift toward team detection |
 
-## Related Content
+## Related content
 
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Where deployment verification fits in the pipeline
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Observability enables data-driven rollback decisions

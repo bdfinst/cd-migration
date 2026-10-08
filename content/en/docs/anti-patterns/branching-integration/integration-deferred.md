@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team has a build server. It runs after every push. There is a dashboard somewhere that shows
 build status. But the build has been red for three weeks and nobody has mentioned it. Developers
@@ -55,7 +55,7 @@ Common variations:
 The telltale sign: if you can ask "how long has the build been red?" and nobody knows the answer,
 continuous integration is not happening.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Continuous integration is not a tool - it is a practice. The practice requires that every developer
 integrates to a shared trunk at least once per day and that the team treats a broken build as the
@@ -143,7 +143,7 @@ can be adopted in any order. CI is the prerequisite. Every hour that the build s
 hour during which the team has no automated confidence that the software works. Continuous delivery
 requires that confidence to exist at all times.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Fix the build and agree it stays green
 
@@ -190,7 +190,7 @@ is too slow. That is a pipeline problem. Each problem is worth solving. See
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) for techniques to break large work
 into daily integrations.
 
-### Step 4: Make the build fast enough to provide useful feedback (Weeks 2-3)
+### Step 4: Make the build fast enough to provide useful feedback (weeks 2-3)
 
 A build that takes 45 minutes is a build that developers will not wait for. Target under 10
 minutes for the primary feedback loop:
@@ -204,7 +204,7 @@ The goal is a fast feedback loop: the developer pushes, waits a few minutes, and
 their change works with everything else. If they have to wait 30 minutes, they will context-switch,
 and the feedback loop breaks.
 
-### Step 5: Address the objections (Weeks 3-4)
+### Step 5: Address the objections (weeks 3-4)
 
 | Objection | Response |
 |-----------|----------|
@@ -229,7 +229,7 @@ The goal is a team culture where a red build feels wrong - like an alarm that de
 attention. When that instinct is in place, CI is no longer a process being followed. It is how
 the team works.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -240,7 +240,7 @@ the team works.
 | Longest period with a red build | Should be measured in minutes, not hours or days |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as integration overhead drops and stabilization periods disappear |
 
-## Related Content
+## Related content
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - CI requires integrating to a shared trunk, not only building branches
 - [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - The pipeline infrastructure that CI depends on

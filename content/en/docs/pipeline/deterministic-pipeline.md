@@ -24,7 +24,7 @@ Determinism is what transforms a pipeline from "a script that usually works" int
 reliable delivery system. When the pipeline is deterministic, a green build means
 something. A failed build points to a real problem. Teams can trust the signal.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Non-deterministic pipelines are the single largest source of wasted time in delivery
 organizations. When builds fail randomly, teams learn to ignore failures. When the same
@@ -36,7 +36,7 @@ During a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) 
 trust. A deterministic pipeline is what earns the team's confidence that automation can
 replace manual verification.
 
-## Key Principles
+## Key principles
 
 ### Version control everything
 
@@ -93,11 +93,11 @@ When a flaky test is detected, the response must be immediate:
 
 Never allow a culture of "just re-run it" to take hold. Every re-run masks a real problem.
 
-## Example: Non-Deterministic vs Deterministic Pipeline
+## Example: Non-deterministic vs deterministic pipeline
 
 Seeing anti-patterns and good patterns side by side makes the difference concrete.
 
-### Anti-Pattern: Non-Deterministic Pipeline
+### Anti-pattern: Non-deterministic pipeline
 
 {{< card code=true header="**Anti-pattern: non-deterministic pipeline with floating versions and manual steps**" lang="yaml" >}}
 # Bad: Uses floating versions
@@ -124,7 +124,7 @@ deploy:
 Results vary based on when the pipeline runs, what is in production, which dependency
 versions are "latest," and human availability.
 
-### Good Pattern: Deterministic Pipeline
+### Good pattern: Deterministic pipeline
 
 {{< card code=true header="**Good pattern: deterministic pipeline with pinned versions and automated verification**" lang="yaml" >}}
 # Good: Pinned versions
@@ -156,7 +156,7 @@ deploy:
 Same inputs always produce same outputs. Pipeline results are trustworthy and
 reproducible.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Unpinned dependencies
 
@@ -188,7 +188,7 @@ Teams that routinely re-run failed pipelines without investigating the failure h
 accepted non-determinism as normal. This is a cultural anti-pattern that must be
 addressed alongside the technical ones.
 
-## Good Patterns
+## Good patterns
 
 ### Containerized build environments
 
@@ -221,9 +221,9 @@ Treat CI build agents as cattle, not pets. Provision them from images. Replace t
 rather than updating them. Never allow state to accumulate on a build agent between
 pipeline runs.
 
-## Tactical Patterns
+## Tactical patterns
 
-### Immutable Build Containers
+### Immutable build containers
 
 Define your build environment as a versioned container image with every dependency pinned:
 
@@ -242,7 +242,7 @@ RUN npm ci --frozen-lockfile
 
 Every build runs inside a fresh instance of this image. No drift, no accumulated state.
 
-### Dependency Lockfiles
+### Dependency lockfiles
 
 Always use dependency lockfiles. This is essential for deterministic builds:
 
@@ -266,7 +266,7 @@ Rules for lockfiles:
 - **Avoid version ranges in production dependencies** - no `^`, `~`, or `>=` without a lockfile enforcing exact resolution
 - **Never rely on "latest" tags** for any dependency, base image, or tool
 
-### Quarantine Pattern for Flaky Tests
+### Quarantine pattern for flaky tests
 
 When a flaky test is detected, move it to quarantine immediately. Do not leave it in the
 main suite where it erodes trust in the pipeline:
@@ -291,7 +291,7 @@ Quarantine is not a permanent home. Every quarantined test must have:
 
 If a quarantined test cannot be fixed by the deadline, delete it and write a better test.
 
-### Hermetic Test Environments
+### Hermetic test environments
 
 Give each pipeline run a fresh, isolated environment with no shared state:
 
@@ -313,7 +313,7 @@ jobs:
       # Each workflow run gets a fresh database
 {{< /card >}}
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Audit your pipeline inputs
 
@@ -383,7 +383,7 @@ testing), but these should be:
 2. Separate from the core deployment pipeline
 3. Reproducible via saved seeds or recorded inputs
 
-## Health Metrics
+## Health metrics
 
 Track these metrics to measure your pipeline's determinism:
 
@@ -392,7 +392,7 @@ Track these metrics to measure your pipeline's determinism:
 - **Time to fix flaky tests** - elapsed time from detection to resolution. Target less than one day.
 - **Manual override rate** - how often someone manually approves, skips, or re-runs a stage. Target near zero.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Determinism is what gives the [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}})
 its authority. If the pipeline produces inconsistent results, teams will work around it.
@@ -404,7 +404,7 @@ When the pipeline is deterministic, [immutable artifacts]({{< relref "/docs/pipe
 trustworthy: you know that the artifact was built by a consistent, repeatable process, and
 its validation results are real.
 
-## Related Content
+## Related content
 
 - [Flaky Tests]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - the most common source of non-determinism in pipelines
 - [Environment-Dependent Failures]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - failures caused by uncontrolled environmental variance

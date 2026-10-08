@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Every sprint, the team's velocity is reported to management. Leadership tracks velocity on a dashboard alongside other delivery metrics. When velocity drops, questions come. When velocity is high, the team is praised. The implicit message is clear: story points are the measure of whether the team is doing its job.
 
@@ -32,7 +32,7 @@ Common variations:
 
 The telltale sign: the team knows their average velocity and actively manages toward it, rather than managing toward finishing valuable work.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Velocity is a planning tool, not a productivity measure. When it becomes a KPI, the measurement changes the system it was meant to measure.
 
@@ -81,7 +81,7 @@ Continuous delivery depends on small, frequent, high-quality changes flowing ste
 
 CD metrics - deployment frequency, lead time, change fail rate, mean time to restore - measure the actual delivery system rather than team activity. Replacing velocity with CD metrics aligns team behavior with delivery outcomes. Teams measured on deployment frequency and lead time invest in the practices that improve those measures: automation, small batches, fast feedback, and continuous integration.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Stop reporting velocity externally
 
@@ -89,7 +89,7 @@ Remove velocity from management dashboards and stakeholder reports. It is an int
 
 Explain the change: velocity measures team effort in made-up units. Lead time and release frequency measure actual delivery outcomes.
 
-### Step 2: Introduce delivery metrics alongside velocity (Weeks 2-3)
+### Step 2: Introduce delivery metrics alongside velocity (weeks 2-3)
 
 While stopping velocity reporting, start tracking:
 
@@ -123,7 +123,7 @@ Remove velocity from any performance review or team health conversation. Replace
 
 These conversations produce different behavior than velocity conversations. They reward investment in automation, testing, and reducing batch size - all of which improve actual delivery speed.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -134,7 +134,7 @@ These conversations produce different behavior than velocity conversations. They
 | Technical debt items in backlog | Should reduce as non-pointed work can be prioritized on its merits |
 | Rework rate | Stories requiring revision after completion should decrease |
 
-## Related Content
+## Related content
 
 - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - CD metrics that replace velocity as delivery indicators
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Right-sizing work for fast delivery rather than high velocity

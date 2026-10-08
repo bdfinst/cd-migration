@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team has a CI server. Code is built and tested automatically on every push. The pipeline
 dashboard is green. But between "pipeline passed" and "code running in production," there is a
@@ -56,7 +56,7 @@ Common variations:
 The telltale sign: if the pipeline is green but the team still needs to "do a deploy" as a
 separate activity, deployment is manual.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A manual deployment negates much of the value that an automated build and test pipeline provides.
 The pipeline can validate code in minutes, but if the last mile to production requires a human,
@@ -161,7 +161,7 @@ The pipeline is only half the delivery system. Automating the build and tests wi
 the deployment is like paving a highway that ends in a dirt road. The speed of the paved section
 is irrelevant if every journey ends with a slow, bumpy last mile.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Script the current manual process
 
@@ -187,7 +187,7 @@ tests pass. Start with a non-production environment:
 The team now gets automatic deployments to a non-production environment on every commit. This
 builds confidence in the automation and surfaces problems early.
 
-### Step 3: Externalize configuration and secrets (Weeks 2-3)
+### Step 3: Externalize configuration and secrets (weeks 2-3)
 
 Manual deployments often involve editing config files on servers or passing environment-specific
 values by hand. Move these out of the manual process:
@@ -202,7 +202,7 @@ values by hand. Move these out of the manual process:
 This step is critical because manual configuration is one of the most common sources of deployment
 failures. Automating deployment without automating configuration only moves the manual step.
 
-### Step 4: Automate production deployment with a gate (Weeks 3-4)
+### Step 4: Automate production deployment with a gate (weeks 3-4)
 
 Extend the pipeline to deploy to production using the same script and process:
 
@@ -215,7 +215,7 @@ Extend the pipeline to deploy to production using the same script and process:
 The approval gate means a human still decides when to deploy, but the deployment itself is fully
 automated. No SSHing. No manual steps. No watching logs scroll by.
 
-### Step 5: Remove the manual gate (Weeks 6-8)
+### Step 5: Remove the manual gate (weeks 6-8)
 
 Once the team has seen the automated production deployment succeed repeatedly, remove the manual
 approval gate. The pipeline now deploys to production automatically when all checks pass.
@@ -230,7 +230,7 @@ This is the hardest step emotionally. The team will resist. Expect these objecti
 | "Compliance requires manual approval" | Review the actual compliance requirement. Most require evidence of approval, not a human clicking a button at deployment time. A code review approval, an automated policy check, or an audit log of the pipeline run often satisfies the requirement. |
 | "Our deployments require coordination with other teams" | Automate the coordination. Use API contracts, deployment dependencies in the pipeline, or event-based triggers. If another team must deploy first, encode that dependency rather than coordinating in Slack. |
 
-### Step 6: Add deployment observability (Ongoing)
+### Step 6: Add deployment observability (ongoing)
 
 Once deployments are automated, invest in knowing whether they worked:
 
@@ -240,7 +240,7 @@ Once deployments are automated, invest in knowing whether they worked:
 
 The team should be able to deploy without watching. The monitoring watches for them.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -251,7 +251,7 @@ The team should be able to deploy without watching. The monitoring watches for t
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as rollback becomes automated |
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the deployment bottleneck is removed |
 
-## Related Content
+## Related content
 
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - How to structure a pipeline that includes deployment
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Every change follows the same automated path through the same pipeline

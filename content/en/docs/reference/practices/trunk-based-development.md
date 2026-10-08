@@ -16,7 +16,7 @@ Trunk-based development (TBD) is a team workflow where changes are integrated in
 
 Release branches are an intermediate step that some choose on their path to continuous delivery while improving their quality processes in the pipeline. True CD releases from the trunk.
 
-## Minimum Activities Required
+## Minimum activities required
 
 - All changes integrate into the trunk
 - If branches from the trunk are used:
@@ -24,7 +24,7 @@ Release branches are an intermediate step that some choose on their path to cont
   - They re-integrate to the trunk
   - They are short-lived and removed after the merge
 
-## What Is Improved
+## What is improved
 
 - **Smaller changes**: TBD emphasizes small, frequent changes that are easier for the team to review and more resistant to impactful merge conflicts. Conflicts become rare and trivial.
 - **We must test**: TBD requires us to implement tests as part of the development process.
@@ -33,14 +33,14 @@ Release branches are an intermediate step that some choose on their path to cont
 - **Replaces process with engineering**: Instead of creating a process where we control the release of features with branches, we can control the release of features with engineering techniques called evolutionary coding methods. These techniques have additional benefits related to stability that cannot be found when replaced by process.
 - **Reduces risk**: Long-lived branches carry two common risks. First, the change will not integrate cleanly and the merge conflicts result in broken or lost features. Second, the branch will be abandoned, usually because of the first reason.
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on adopting TBD during your CD migration, see:
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - Phase 1 foundation with two migration paths
 - [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}}) - Detailed tactical guide for moving from [GitFlow]({{< relref "/docs/reference/glossary#gitflow" >}}) to TBD
 
-## Additional Resources
+## Additional resources
 
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) - Comprehensive reference by Paul Hammant
 - [Continuous Delivery](https://continuousdelivery.com) - Jez Humble and David Farley

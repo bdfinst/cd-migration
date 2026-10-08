@@ -13,9 +13,9 @@ to work, and the five properties that turn the [Golden Rule]({{< relref "/docs/a
 into specific moves.
 {{% /pageinfo %}}
 
-## Four Principles
+## Four principles
 
-### Principle 1: Treat AI as a Diagnostic Before an Accelerator
+### Principle 1: Treat AI as a diagnostic before an accelerator
 
 The first capability AI gives an enterprise is not speed; it's visibility. When an
 [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) struggles to make a small change, it
@@ -33,7 +33,7 @@ knowledge gap**: the system depended on something nobody wrote down, and now you
 [Start Here]({{< relref "/docs/start-here" >}}) makes the same point - an agent exposing a gap "is
 not a flaw in the agents, it is the diagnostic working as intended."
 
-### Principle 2: Measure Dependencies Removed and Value Acceleration, Not Adoption
+### Principle 2: Measure dependencies removed and value acceleration, not adoption
 
 High usage is not high value. A team can roll out copilots to everyone and leave the delivery system
 exactly as coupled as before. Two measures matter, and neither is adoption.
@@ -48,7 +48,7 @@ exactly as coupled as before. Two measures matter, and neither is adoption.
 Count the dependencies you removed and the time saved. But judge yourself on whether the system got
 faster at turning ideas into value. Output is abundant. Accelerated flow is scarce.
 
-### Principle 3: Use the AI Enablement Properties to Accelerate
+### Principle 3: Use the AI enablement properties to accelerate
 
 Once you have named the dependency, the [five properties](#the-five-ai-enablement-properties)
 are how you remove it. Point them at Layers 2 and 3, the process and the organization, not only at
@@ -62,7 +62,7 @@ signs it off, AI speeds up the front and leaves the back untouched, and the bott
 where automation cannot help. So the move has two halves: aim the properties at the dependencies they
 can remove, and deliberately fund the human judgment they cannot.
 
-### Principle 4: Build Intent, Safety, and Control Into the Flow
+### Principle 4: Build intent, safety, and control into the flow
 
 Agents are fast and literal. They act safely only inside boundaries they can see. Everything a
 human used to carry in their head - the requirement's real intent, the architecture rule no one
@@ -78,7 +78,7 @@ implementation, not less. What must change is their location.
 > A control built into the path every change travels is an accelerator. The same control bolted on
 > at the end is a bottleneck.
 
-## The Five AI Enablement Properties
+## The five AI enablement properties
 
 Five properties describe how AI removes a dependency. Each one, applied, is a dependency removed.
 
@@ -107,7 +107,7 @@ improvements in lead time and quality. Applied to real coordination-heavy work, 
 dependencies has compressed multi-week analyses into days and lifted on-time odds from single digits
 to coin-flip or better. Every win came from removing dependencies, not from typing faster.
 
-## One Guardrail
+## One guardrail
 
 AI Process Engineering is not permission to skip engineering discipline. Integrating AI **is**
 software engineering. To be great at it you must be great at DevOps and
@@ -121,7 +121,7 @@ This is the same point the [Agentic CD]({{< relref "/docs/agentic-cd" >}}) secti
 engineering side: an agent-generated change must meet or exceed the same quality bar as a
 human-generated change. The pipeline does not care who wrote the code.
 
-## Related Content
+## Related content
 
 - [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) - the physics these principles act on
 - [The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}) - where you apply the properties, repeatedly

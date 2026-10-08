@@ -16,27 +16,27 @@ description: >
 
 Verification of a complete end-to-end user or business transaction through the entire deployed application stack, matching the perspective and experience of an actual user or external consumer.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Encompasses the entire system topology—from the frontend UI or external API gateway through all internal microservices, asynchronous workers, live queues, databases, and necessary third-party sandbox integrations.
 
-## Core Characteristics
+## Core characteristics
 
 Highest real-world confidence, highest execution cost, slowest run time, and highest vulnerability to environment or network-induced flakiness.
 
-## Good Practices
+## Good practices
 
 -	Restrict to critical revenue/operational paths: Focus E2E coverage strictly on non-negotiable user journeys (for example, user registration, primary checkout, key ingest pipelines).
 -	Automate environment provisioning: Deploy ephemeral, on-demand preview environments to run E2E suites and tear them down immediately upon completion.
 -	Implement resilient element selection: Select UI elements using accessibility roles or stable data attributes (for example, data-testid) rather than fragile CSS classes or absolute XPath selectors.
 
-## Anti-Patterns
+## Anti-patterns
 
 -	Using E2E tests for regression safety nets: Relying on E2E suites to catch regressions that could have been detected upstream in unit, component, or contract stages (the "inverted testing pyramid").
 -	Arbitrary thread sleeps: Adding fixed pauses (for example, sleep(5)) to wait for asynchronous events rather than using explicit, condition-driven polling.
 -	Accepting flaky tests: Rerunning failing E2E tests until they turn green rather than quarantining and fixing the underlying timing or state issues immediately.
 
-## Weaknesses & Challenges
+## Weaknesses & challenges
 
 -	High Flakiness and Low Signal-to-Noise Ratio: Non-deterministic failures are common. Network blips, browser rendering lag, race conditions in asynchronous frontend frameworks, and transient third-party service outages often cause false-negative test failures that erode developer trust.
 -	Poor Root-Cause Localization: When an E2E test fails with a generic error (for example, TimeoutError: Element #confirmation-banner not found), finding the source of the issue requires combing through client logs, gateway routes, backend microservice traces, and database state to determine what actually broke.
@@ -67,7 +67,7 @@ test('user can complete entire purchase flow', async ({ page }) => {
 });
 {{< /card >}}
 
-## When to Use / Avoid
+## When to use / avoid
 
 ### Use them for:
 
@@ -83,6 +83,6 @@ They are the most expensive test type to write, run, and maintain. Use them spar
 - Edge cases, error handling, or input validation. Those scenarios belong in [unit]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) or
 [component]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}) tests.
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 E2E tests should only run in the pipeline as part of the longer running acceptance tests if they can be made dependable and deterministic. Otherwise, they should be run on a schedule and not act as a delivery decision.

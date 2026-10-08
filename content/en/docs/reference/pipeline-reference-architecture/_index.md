@@ -21,13 +21,13 @@ detection earlier or catches issues that rule-based tools miss. See the
 [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) catalog for details.
 {{% /pageinfo %}}
 
-## Quality Gates in Priority Sequence
+## Quality gates in priority sequence
 
 The gate sequence follows a single principle: **fail fast, fail cheap**. Gates that catch
 the most common defects with the least execution time run first. Each gate listed below
 maps to one or more defect sources from the catalog.
 
-### Pre-commit Gates
+### Pre-commit gates
 
 These run on the developer's machine before code leaves the workstation. They provide
 sub-second to sub-minute feedback.
@@ -45,7 +45,7 @@ sub-second to sub-minute feedback.
 | **Timeout enforcement checks** | Missing timeout and deadline enforcement | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI semantic code review** | Logic errors, missing edge cases, subtle injection vectors beyond pattern matching | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}), [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 
-### CI Stage 1: Build and Fast Tests <span class="stage-time">< 5 min</span>
+### CI stage 1: Build and fast tests <span class="stage-time">< 5 min</span>
 
 These run on every commit to trunk.
 
@@ -60,7 +60,7 @@ These run on every commit to trunk.
 | <span class="ai-high">&#9650;</span> **AI vulnerability reachability analysis** | Correlate CVEs with actual code usage paths to prioritize exploitable risks over theoretical ones | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 | **Stage duration warning** | Warn if Stage 1 exceeds 10 minutes; slow fast-feedback loops mask defects and delay trunk integration | [Process & Deployment]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}) | |
 
-### CD Stage 1: Contract and Boundary Validation <span class="stage-time">< 10 min</span>
+### CD stage 1: Contract and boundary validation <span class="stage-time">< 10 min</span>
 
 These validate boundaries between components.
 
@@ -73,7 +73,7 @@ These validate boundaries between components.
 | <span class="ai-high">&#9650;</span> **AI boundary coverage analysis** | Integration boundaries missing contract tests; semantic service relationship mapping | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI behavioral assumption detection** | Undocumented assumptions at service boundaries that contract tests don't cover | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
 
-### CD Stage 2: Broader Automated Verification <span class="stage-time">< 15 min</span>
+### CD stage 2: Broader automated verification <span class="stage-time">< 15 min</span>
 
 These run in parallel where possible.
 
@@ -91,7 +91,7 @@ These run in parallel where possible.
 | <span class="ai-high">&#9650;</span> **AI resilience review** | Single points of failure and missing fallback paths in architecture | [Performance & Resilience]({{< relref "/docs/reference/defect-sources/performance-and-resilience" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI regulatory mapping** | Map regulatory requirements to implementation artifacts; flag uncovered controls | [Security & Compliance]({{< relref "/docs/reference/defect-sources/security-and-compliance" >}}) | |
 
-### Acceptance Tests <span class="stage-time">< 20 min</span>
+### Acceptance tests <span class="stage-time">< 20 min</span>
 
 These validate user-facing behavior in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}).
 
@@ -106,7 +106,7 @@ These validate user-facing behavior in a [production-like environment]({{< relre
 
 ---
 
-## Out-of-Pipeline Verification
+## Out-of-pipeline verification
 
 The following checks are non-deterministic - they depend on live environments, external
 systems, or real user behavior - and cannot be made into blocking pipeline gates without
@@ -115,7 +115,7 @@ or post-deployment and back up the deterministic pipeline with a continuous safe
 Failures trigger review, alerts, or [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) decisions. They never block a commit from
 reaching production.
 
-### Integration Tests (Post-Deploy)
+### Integration tests (post-deploy)
 
 [Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) validate that the
 [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) used in
@@ -132,7 +132,7 @@ pipeline block.
 | <span class="ai-high">&#9650;</span> **AI boundary coverage analysis** | Integration boundaries missing contract tests; semantic service relationship mapping | [Testing & Observability Gaps]({{< relref "/docs/reference/defect-sources/testing-and-observability-gaps" >}}) | |
 | <span class="ai-high">&#9650;</span> **AI behavioral assumption detection** | Undocumented assumptions at service boundaries that contract tests don't cover | [Integration & Boundaries]({{< relref "/docs/reference/defect-sources/integration-and-boundaries" >}}) | |
 
-### Production Verification
+### Production verification
 
 These run during and after deployment. They are not optional - they close the feedback loop.
 
@@ -146,7 +146,7 @@ These run during and after deployment. They are not optional - they close the fe
 
 ---
 
-## Pre-Feature Baseline
+## Pre-feature baseline
 
 {{% alert title="These gates must be active before starting feature work" color="warning" %}}
 Without these gates passing on every commit to trunk, defects accumulate faster than the
@@ -167,7 +167,7 @@ this baseline.
 
 ---
 
-## Pipeline Patterns
+## Pipeline patterns
 
 These three patterns apply the quality gates above to progressively more complex team
 and deployment topologies. Most organizations start with Pattern 1 and evolve toward
@@ -184,7 +184,7 @@ Pattern 3 as team count and deployment independence requirements grow.
 
 ---
 
-## Mapping to the Defect Sources Catalog
+## Mapping to the defect sources catalog
 
 Each quality gate above is derived from the [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}})
 catalog. The catalog organizes defects by origin - product and discovery, integration,
@@ -201,14 +201,14 @@ When adding or removing gates, consult the catalog to ensure that no defect cate
 its detection point. A gate that seems redundant may be the only automated check for a
 specific defect source.
 
-## Further Reading
+## Further reading
 
 For a deeper treatment of pipeline design, stage sequencing, and deployment strategies, see
 Dave Farley's
 [Continuous Delivery Pipelines](https://leanpub.com/cd-pipelines) which covers pipeline
 architecture patterns in detail.
 
-## Related Content
+## Related content
 
 - [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) - the defect source catalog that informs gate selection
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - how to evolve pipeline architecture from entangled to loosely coupled

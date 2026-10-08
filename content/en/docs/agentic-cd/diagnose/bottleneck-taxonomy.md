@@ -14,7 +14,7 @@ bottleneck that map onto it, each with its agent-speed signal and the interventi
 removes it.
 {{% /pageinfo %}}
 
-## The Product Delivery Lifecycle
+## The product delivery lifecycle
 
 To turn "where does work stop?" into a classification you can act on, you need a shared map of the
 journey, one stable enough that business, engineering, security, and audit can all point to the same
@@ -54,7 +54,7 @@ This is not a custom model. It lines up with the backbone of the major lifecycle
 classic SDLC, the DevOps loop, and ISO/IEC/IEEE 12207. We use plain verbs so every discipline can
 read the same map.
 
-## The Bottleneck Moves to the Ends
+## The bottleneck moves to the ends
 
 The reason a delivery leader should care about the map is what AI does to it. AI compresses the
 making phases hardest, **Design and Build** (shown in blue above), because that is the work AI is
@@ -71,7 +71,7 @@ This is the asymmetry from
 drawn onto the lifecycle: AI can do the work, but it cannot accept it. The
 bottleneck moves from the middle of the PDLC to its ends.
 
-## The Five Bottleneck Categories
+## The five bottleneck categories
 
 Most agent-speed delivery problems fall into five categories, each anchored to a phase of the PDLC.
 Name the category to know the intervention. Find it on the lifecycle to know where to look.
@@ -91,7 +91,7 @@ does not make cheaper. Architecture gatekeeping and deployment gates are the gat
 between: controls an organization survives at human speed but that turn into queues the moment
 implementation accelerates. Both kinds are coordination costs. The map tells you which is which.
 
-## Where Each Category Points on This Site
+## Where each category points on this site
 
 The interventions above are not abstract. Each category maps to existing guidance you can act on
 today.
@@ -107,7 +107,7 @@ today.
 The output of classification is a named, classified constraint, mapped to where it lives in the
 lifecycle, not a hunch. The next page turns that into a method.
 
-## Related Content
+## Related content
 
 - [The Bottleneck Removal Loop]({{< relref "/docs/agentic-cd/diagnose/bottleneck-removal-loop" >}}) - the four-phase method that identifies, classifies, and removes each constraint
 - [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) - why the constraint exists in the first place

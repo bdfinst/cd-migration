@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-07 - Style rollout phase 2
+
+Phase 2 of the style rollout: converted headings to sentence case across all content and updated anchor links (#86, #87, #88, #89, #90, #91, #92, #93, #94, #95, #96, #97). Template headings now read "What this looks like", "How to fix it", "Related content", and so on. Acronyms and proper nouns keep their capitals.
+
 ## 2026-10-07 - Style rollout phase 1
 
 Phase 1 of the style rollout, applied across all content:

@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The database password lives in `application.properties`, checked into the repository. The API key for the payment processor is in a `.env` file that gets copied manually to each server by whoever is doing the deploy. The SSH key for production access was generated two years ago, exists on three engineers' laptops and in a shared drive folder, and has never been rotated because nobody knows whether removing it from the shared drive would break something.
 
@@ -33,7 +33,7 @@ Common variations:
 
 The telltale sign: if a developer left the company today, the team could not confidently enumerate and rotate every credential that person had access to.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Unmanaged secrets create security exposure that compounds over time.
 
@@ -67,7 +67,7 @@ CD requires that deployment be a reliable, automated, repeatable process. Any st
 
 Automated secret injection is a prerequisite for fully automated deployment. The pipeline must be able to retrieve and inject the credentials it needs without human intervention. That requires a vault with machine-readable APIs, service account credentials for the pipeline itself (managed in the vault, not ad hoc), and application code that reads secrets from the injected environment rather than from hardcoded values.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit the current secret inventory
 
@@ -77,15 +77,15 @@ Enumerate every credential used by every application and every pipeline. For eac
 
 Scan all repositories for committed secrets using a tool such as `git-secrets`, `truffleHog`, or `detect-secrets`. For every credential found in git history, rotate it immediately - assume it is compromised. Removing the value from the repository does not protect it because git history is readable; only rotation makes the exposed credential useless. Add pre-commit hooks and CI checks to prevent new secrets from being committed.
 
-### Step 3: Deploy a secrets vault (Weeks 2-3)
+### Step 3: Deploy a secrets vault (weeks 2-3)
 
 Choose and deploy a centralized secrets management system appropriate for your infrastructure. HashiCorp Vault is a common choice for self-managed infrastructure. AWS Secrets Manager, Azure Key Vault, and Google Cloud Secret Manager are appropriate for teams already on those cloud platforms. Kubernetes Secret objects with encryption at rest plus external secrets operators are appropriate for Kubernetes-based deployments. The vault must support machine-readable API access so that pipelines and applications can retrieve secrets without human involvement.
 
-### Step 4: Migrate secrets to the vault and update applications to retrieve them (Weeks 3-6)
+### Step 4: Migrate secrets to the vault and update applications to retrieve them (weeks 3-6)
 
 Move secrets from their current locations into the vault. Update applications to retrieve secrets from the vault at startup - either by using the vault's SDK, by using a sidecar agent that writes secrets to a memory-only file, or by using an operator that injects secrets as environment variables at container startup from vault references. Remove secrets from configuration files, environment variable setup scripts, and CI UI configurations. Replace them with vault references that the pipeline resolves at deploy time.
 
-### Step 5: Establish rotation policies and automate rotation (Weeks 6-8)
+### Step 5: Establish rotation policies and automate rotation (weeks 6-8)
 
 Define a rotation schedule for each credential type: database passwords every 90 days, API keys every 30 days, certificates before expiry. Configure automated rotation where the vault or a scheduled pipeline job can rotate the credential and update all dependent systems. For credentials that cannot be automatically rotated, create a calendar-based reminder process and document the rotation procedure in the repository.
 
@@ -100,7 +100,7 @@ Configure the vault so that each application and each pipeline role can access o
 | "We do not know which secrets are in the git history." | Scanning tools like `truffleHog` or `gitleaks` can scan the full git history across all branches. Run the scan, compile the list, rotate everything found, and set up pre-commit prevention to stop recurrence. |
 | "Rotating credentials will break things." | This is accurate in ad hoc secret management environments where secrets are scattered across many systems. The solution is not to avoid rotation but to fix the scatter by centralizing secrets in a vault, after which rotation becomes a single-system operation. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -110,7 +110,7 @@ Configure the vault so that each application and each pipeline role can access o
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often when credential management is not a manual bottleneck on each deploy |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time new environments take to become operational when credential injection is automated |
 
-## Related Content
+## Related content
 
 - [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
 - [Application configuration management]({{< relref "/docs/pipeline/application-config" >}})

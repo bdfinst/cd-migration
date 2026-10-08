@@ -12,7 +12,7 @@ aliases:
 **Phase 3 - Optimize** | {{< scope-label "org" >}} | Teams that own a domain end-to-end can deploy independently. Teams organized around technical layers cannot.
 {{% /pageinfo %}}
 
-## How Team Structure Shapes Code
+## How team structure shapes code
 
 The way an organization communicates produces the architecture it builds. When communication flows
 between layers - frontend team talks to backend team, backend team talks to database team - the
@@ -32,7 +32,7 @@ domains are explicit and stable because that is how the teams communicate.
 This is not a coincidence. Architecture reflects the ownership structure of the people who built
 it.
 
-## What Aligned Ownership Looks Like
+## What aligned ownership looks like
 
 A team with aligned ownership can answer yes to all of the following:
 
@@ -60,7 +60,7 @@ Both patterns share the same structure: **one team, one [deployable]({{< relref 
 owns all layers within its boundary, the authority to deploy that boundary independently, and
 accountability for its operational behavior.
 
-## What Misalignment Looks Like
+## What misalignment looks like
 
 Three patterns consistently produce deployment coupling.
 
@@ -81,7 +81,7 @@ file a ticket and wait.
 The telltale sign in all three cases: a team cannot estimate their own delivery date because it
 depends on other teams' schedules.
 
-## The Relationship Between Team Alignment and Architecture
+## The relationship between team alignment and architecture
 
 Team alignment and architecture reinforce each other. A decoupled architecture makes it possible
 to draw clean team boundaries. Clean team boundaries prevent the architecture from recoupling.
@@ -127,7 +127,7 @@ graph TD
     end
 ```
 
-## How to Align Teams to Code
+## How to align teams to code
 
 ### Step 1: Map who modifies what
 
@@ -220,7 +220,7 @@ for a worked example of this pattern when teams share a [modular monolith]({{< r
 | "Business stakeholders are used to requesting work from the layer teams." | Stakeholders adapt quickly when domain teams ship faster and with less coordination. Reframe the conversation: stakeholders talk to the team that owns the outcome, not the team that owns the layer. |
 | "Our architecture doesn't have clean domain boundaries yet." | Start with the organizational change anyway. Teams aligned to emerging domain boundaries will drive the architectural cleanup faster than a centralized architecture effort without aligned ownership. The two reinforce each other. |
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -230,7 +230,7 @@ for a worked example of this pattern when teams share a [modular monolith]({{< r
 | Production incidents attributed to another team's change | Decreasing | Confirms ownership boundaries match deployment boundaries |
 | Teams blocked on a release window they did not control | Decreasing toward zero | The primary organizational symptom of misalignment |
 
-## Related Content
+## Related content
 
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - the technical counterpart to team alignment; both must move together
 - [Multiple Teams, Single Deployable]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}}) - pipeline pattern for teams sharing a modular monolith before full service separation

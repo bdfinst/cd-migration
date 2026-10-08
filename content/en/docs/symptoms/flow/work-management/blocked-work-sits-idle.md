@@ -20,7 +20,7 @@ stalled at a different blocker that a teammate could have resolved quickly.
 
 ## Common causes
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work belongs to an assigned individual, nobody else feels authorized to touch it. Other team
 members see the blocked item but do not pick it up because it is "someone else's story." The
@@ -30,7 +30,7 @@ response to a blocker - never happens.
 
 **Read more:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When only the assigned developer understands the relevant area of the codebase, other team
 members cannot help even when they want to. The blocker persists until the assigned person
@@ -53,7 +53,7 @@ the knowledge needed to continue the work lives in one person.
 
 ---
 
-## Related Content
+## Related content
 
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Idle blocked work drives up cycle time
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Blocked items accumulate as excess WIP

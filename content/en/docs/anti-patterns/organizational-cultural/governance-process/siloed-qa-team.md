@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer finishes a story, marks it done, and drops it into a QA queue. The QA team - a separate group with its own manager, its own metrics, and its own backlog - picks it up when capacity allows. By the time a tester sits down with the feature, the developer is two stories further along. When the bug report arrives, the developer must mentally reconstruct what they were thinking when they wrote the code.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the QA team's queue is always longer than its capacity, and releases regularly wait for testing to "catch up."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Separating testing from development treats quality as a property you inspect for rather than a property you build in. Inspection finds defects late; building in prevents them from forming.
 
@@ -65,7 +65,7 @@ CD requires that quality be verified automatically in the pipeline on every comm
 
 The cultural dimension matters as much as the structural one. CD requires every developer to feel responsible for the quality of what they ship. When testing is "someone else's job," developers externalize quality responsibility. They do not write tests, do not think about testability when designing code, and do not treat a test failure as their problem to solve. This mindset must change before CD practices can take hold.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure the QA queue and its impact
 
@@ -84,7 +84,7 @@ Expect pushback and address it directly:
 | "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to use their expertise better, not eliminate it. |
 | "The numbers don't tell the whole story." | They rarely do. Use them to start a conversation, not to win an argument. |
 
-### Step 2: Shift test ownership to the development team (Weeks 2-6)
+### Step 2: Shift test ownership to the development team (weeks 2-6)
 
 1. Embed QA engineers into development teams rather than maintaining a separate QA team. One QA engineer per team is a reasonable starting ratio.
 2. Require developers to write unit and integration tests as part of each story - not as a separate task, but as part of the definition of done.
@@ -100,7 +100,7 @@ Expect pushback and address it directly:
 | "Developers can't write good tests." | Most cannot yet, because they were never expected to. Start with one pair this sprint - a QA engineer and a developer writing tests together for a single story. Track defect rates on that story versus unpairing stories. The data will make the case for expanding. |
 | "We don't have time to write tests and features." | You are already spending that time fixing bugs QA finds. Count the hours your team spent on bug fixes last sprint. That number is the time budget for writing the automated tests that would have prevented them. |
 
-### Step 3: Build the quality feedback loop into the pipeline (Weeks 6-12)
+### Step 3: Build the quality feedback loop into the pipeline (weeks 6-12)
 
 1. Configure the CI pipeline to run the full automated test suite on every pull request and block merging on test failure.
 2. Add test failure notification directly to the developer who wrote the failing code, not to a QA queue.
@@ -115,7 +115,7 @@ Expect pushback and address it directly:
 | "The pipeline will be too slow if we run all tests on every commit." | Structure tests in layers: fast unit tests on every commit, slower integration tests on merge, full end-to-end on release candidate. Measure current pipeline time, apply the layered structure, and re-measure - most teams cut commit-stage feedback time to under five minutes. |
 | "Automated tests miss things humans catch." | Yes. Automated tests catch regressions reliably at low cost. Humans catch novel edge cases. Both are needed. Free your QA engineers from regression work so they can focus on the exploratory testing only humans can do. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in stories stuck in the QA queue |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Improvement as defects are caught earlier when they are cheaper to fix |
 
-## Related Content
+## Related content
 
 - [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - how to build an effective automated test suite
 - [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared quality expectations across the team

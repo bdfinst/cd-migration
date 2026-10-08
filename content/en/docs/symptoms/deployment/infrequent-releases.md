@@ -29,7 +29,7 @@ more releases feels like adding more pain.
 
 ## Common causes
 
-### Manual Deployments
+### Manual deployments
 
 When deployment requires a human to execute steps (SSH into servers, run scripts, click through a
 console), the process is slow, error-prone, and dependent on specific people being available. The
@@ -38,7 +38,7 @@ grows, the risk grows, and the release becomes an event rather than a routine.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Missing Deployment Pipeline
+### Missing deployment pipeline
 
 When there is no automated path from commit to production, every release requires manual
 coordination of builds, tests, and deployments. Without a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), the team cannot deploy on
@@ -46,7 +46,7 @@ demand because the process itself does not exist in a repeatable form.
 
 **Read more:** [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
-### CAB Gates
+### CAB gates
 
 When every production change requires committee approval, the approval cadence sets the release
 cadence. If the Change Advisory Board meets weekly, releases happen weekly at best. If the meeting
@@ -55,7 +55,7 @@ allows, regardless of technical capability.
 
 **Read more:** [CAB Gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}})
 
-### Monolithic Work Items
+### Monolithic work items
 
 When work is not decomposed into small, independently [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) increments, each "feature" is a
 large batch of changes that takes weeks to complete. The team cannot release until the feature is
@@ -64,7 +64,7 @@ frequent releases. Large batches force infrequent ones.
 
 **Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
-### Manual Regression Testing Gates
+### Manual regression testing gates
 
 When every release requires a manual test pass that takes days or weeks, the testing cadence
 limits the release cadence. The team cannot release until QA finishes, and QA cannot finish faster
@@ -94,7 +94,7 @@ because the test suite is manual and grows with every feature.
 
 **Ready to fix this?** The most common cause is [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Infrequent releases are often driven by deployment fear
 - [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Stabilization overhead that accompanies large releases

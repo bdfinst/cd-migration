@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The pipeline that builds, tests, and deploys your application is configured through a web interface. Someone with admin access to the CI system logs in, navigates through a series of forms, sets values in text fields, and clicks save. The pipeline definition lives in the CI tool's internal database. There is no file in the source repository that describes what the pipeline does.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: if the CI system's database were deleted tonight, it would be impossible to recreate the pipeline from source control alone.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A pipeline that exists only in a UI is infrastructure that cannot be reviewed, audited, rolled back, or reproduced.
 
@@ -63,13 +63,13 @@ CD requires that the delivery process itself be reliable and reproducible. The p
 
 Infrastructure-as-code principles apply to the pipeline as much as to the application infrastructure. A Jenkinsfile or a GitHub Actions workflow file committed to the repository, subject to the same review and versioning practices as application code, is the CD-compatible approach. The pipeline definition should travel with the code it builds and be subject to the same rigor.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Export and document the current pipeline configuration
 
 Capture the current pipeline state before making any changes. Most CI tools have an export or configuration-as-code option. For Jenkins, the Job DSL or Configuration as Code plugin can export job definitions. For other systems, document the pipeline stages, parameters, environment variables, and credentials references manually. This export becomes the starting point for the source-controlled version.
 
-### Step 2: Write the pipeline definition as code (Weeks 2-3)
+### Step 2: Write the pipeline definition as code (weeks 2-3)
 
 Translate the exported configuration into a pipeline-as-code format appropriate for your CI system. Jenkins uses Jenkinsfiles with declarative or scripted pipeline syntax. GitHub Actions uses YAML workflow files in `.github/workflows/`. GitLab CI uses `.gitlab-ci.yml`. The goal is a file in the repository that completely describes the pipeline behavior, such that the CI system can execute it with no additional UI configuration required.
 
@@ -77,7 +77,7 @@ Translate the exported configuration into a pipeline-as-code format appropriate 
 
 Run both pipelines on the same commit and compare outputs. The code-defined pipeline should produce the same artifacts, run the same tests, and execute the same deployment steps as the UI-defined pipeline. Investigate and reconcile any differences. This validation step is important - subtle behavioral differences between the old and new pipelines can introduce regressions.
 
-### Step 4: Migrate CI system configuration to infrastructure as code (Weeks 4-5)
+### Step 4: Migrate CI system configuration to infrastructure as code (weeks 4-5)
 
 Beyond the pipeline definition itself, the CI system has configuration: installed plugins, credential stores, agent definitions, and folder structures. Where the CI system supports it, bring this configuration under infrastructure-as-code management as well. Jenkins Configuration as Code (JCasC), Terraform providers for CI systems, or the CI system's own CLI can automate configuration management. Document what cannot be automated as explicit setup steps in a runbook committed to the repository.
 
@@ -92,7 +92,7 @@ Establish a policy that pipeline definitions are changed only through the source
 | "We do not know how to write pipeline code for our CI system." | All major CI systems have documentation and community examples for their pipeline-as-code formats. The learning curve is typically a few hours for basic pipelines. Start with a simple pipeline and expand incrementally. |
 | "We use proprietary plugins that do not have code equivalents." | Document plugin dependencies in the repository even if the plugin itself must be installed manually. The dependency is then visible, reviewable, and reproducible - which is most of the value. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -101,7 +101,7 @@ Establish a policy that pipeline definitions are changed only through the source
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster pipeline recovery when the pipeline can be recreated from source control rather than reconstructed from memory |
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Reduction in pipeline downtime contribution to delivery lead time |
 
-## Related Content
+## Related content
 
 - [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
 - [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}})

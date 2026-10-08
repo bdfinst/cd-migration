@@ -21,7 +21,7 @@ across a quarter looks flat even though the team is working as hard as ever.
 
 ## Common causes
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When engineers are treated as interchangeable capacity and moved to where utilization is needed,
 the team never develops stable domain expertise. Each rotation brings someone who knows the
@@ -31,7 +31,7 @@ quickly in a domain cannot be acquired in days. It accumulates over months of wo
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When domain knowledge lives in individuals rather than in documentation, runbooks, and code
 structure, it is not available to the next person who joins. The new team member must reconstruct
@@ -54,7 +54,7 @@ reconstruction from scratch.
 
 ---
 
-## Related Content
+## Related content
 
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Frequent roster changes that trigger repeated ramp-up cycles
 - [Blocked Work Sits Idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}) - Knowledge gaps that prevent anyone else from picking up stuck work

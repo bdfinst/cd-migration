@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The sprint plan has a pattern that everyone on the team knows. There are feature sprints, and
 then there is the hardening sprint. After the team has finished building what they were asked
@@ -53,7 +53,7 @@ Common variations:
 The telltale sign: the team can tell you, without hesitation, exactly when the next hardening
 sprint is and what category of problems it will be fixing.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Bugs deferred to hardening have been accumulating for weeks while the team kept adding
 features on top of them. When quality is deferred to a dedicated phase, that phase becomes
@@ -137,7 +137,7 @@ effort continuously throughout the development cycle, so that the codebase is al
 releasable state. This is harder because it requires discipline in every sprint, but it is
 the foundation of a delivery process that can actually deliver continuously.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Catalog what the hardening sprint actually fixes
 
@@ -153,7 +153,7 @@ it will do:
 Count items in each category and estimate their cost in hours. This data reveals where the
 quality problems are coming from and provides a basis for targeting prevention efforts.
 
-### Step 2: Introduce a Definition of Done that prevents deferral (Weeks 1-2)
+### Step 2: Introduce a Definition of Done that prevents deferral (weeks 1-2)
 
 Change the Definition of Done so that stories cannot be closed while deferring quality
 problems. Stories declared "done" before meeting quality standards are the root cause of
@@ -170,7 +170,7 @@ A story is done when:
 This definition eliminates "we'll handle that in hardening" as a valid response to a test
 failure or bug discovery. The story is not done until the quality problem is resolved.
 
-### Step 3: Move quality activities into the feature sprint (Weeks 2-4)
+### Step 3: Move quality activities into the feature sprint (weeks 2-4)
 
 Identify quality activities currently concentrated in hardening and distribute them across
 feature sprints:
@@ -200,7 +200,7 @@ This norm will feel painful initially because the team is used to deferring. It 
 normal within a few sprints, and the accumulation that previously required a hardening sprint
 will stop occurring.
 
-### Step 5: Replace the hardening sprint with a quality metric (Weeks 4-8)
+### Step 5: Replace the hardening sprint with a quality metric (weeks 4-8)
 
 Set a measurable quality gate that the product must pass before release, and track it
 continuously rather than concentrating it in a phase:
@@ -221,7 +221,7 @@ sprint is unnecessary because the product is always within the release criteria.
 | "Our architecture makes integration testing during feature sprints impractical" | This is an architecture problem masquerading as a process problem. Services that cannot be integration-tested continuously have interface contracts that are not enforced continuously. That is the architecture problem to solve, not the hardening sprint to accept. |
 | "We have tried quality gates in each sprint before and it just slows us down" | Slow in which measurement? Velocity per sprint may drop temporarily. Total cycle time from feature start to production delivery almost always improves because rework in hardening is eliminated. Measure the full pipeline, not only the sprint velocity. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -232,7 +232,7 @@ sprint is unnecessary because the product is always within the release criteria.
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as the team is no longer blocked by a mandatory quality catch-up phase |
 | Deferred bugs per sprint | Should reach zero as the Definition of Done prevents deferral |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building automated quality checks that prevent hardening sprint accumulation
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Small stories with clear acceptance criteria are less likely to accumulate bugs

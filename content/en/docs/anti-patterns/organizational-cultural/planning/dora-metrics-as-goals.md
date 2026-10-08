@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Leadership discovers the DORA research and adds deployment frequency, lead time, change failure
 rate, and mean time to restore to the quarterly OKR dashboard. The framing is straightforward:
@@ -53,7 +53,7 @@ Common variations:
 The telltale sign: teams know their DORA metric numbers and actively manage them toward targets,
 but cannot describe the specific behaviors they are working to change.
 
-## Why This Is a Problem
+## Why this is a problem
 
 DORA's four key metrics were designed for statistical survey research to identify correlations
 between organizational behaviors and outcomes. They were not designed as direct improvement levers.
@@ -114,7 +114,7 @@ that looks healthy on the dashboard while the underlying capability either stagn
 Real improvement requires focusing improvement energy on the behaviors, then observing the DORA
 metrics to confirm that the behaviors are having the expected effect.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Reclassify DORA metrics as health checks, not goals
 
@@ -172,7 +172,7 @@ working to remove, not side-by-side metric tables.
 | "We need measurable goals to drive accountability" | Set goals on behaviors: "every developer integrates to trunk daily," "no branches older than one day," "stories average one day of development." These are measurable, actionable, and directly within the team's control. |
 | "We already have a DORA dashboard. Do we throw it away?" | Keep it as a confirmation layer. Stop using it as an accountability tool. It tells you whether your improvement work is having the right long-term effect. That is a useful signal. It is not a useful target. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -183,7 +183,7 @@ working to remove, not side-by-side metric tables.
 | Improvement experiments completed | 2-4 per month, each with a defined hypothesis tied to a leading indicator |
 | DORA metrics (confirmation) | Gradual improvement over 3-6 months as the leading indicator improvements compound |
 
-## Related Content
+## Related content
 
 - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - using leading and lagging metrics together in an improvement kata
 - [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) - capturing DORA metrics as a starting point, not a target

@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 There is one staging environment. Every team that needs to test a deploy before releasing to production uses it. A Slack channel called `#staging-deploys` or a shared calendar manages access: teams announce when they are deploying, other teams wait, and everyone hopes the sequence holds.
 
@@ -34,7 +34,7 @@ Common variations:
 
 The telltale sign: when a staging test run fails, the first question is "who else is deploying to staging right now?" rather than "what is wrong with the code?"
 
-## Why This Is a Problem
+## Why this is a problem
 
 A shared environment is a shared resource, and shared resources become bottlenecks. When the environment is also stateful and mutable, every team that uses it has the ability to disrupt every other team that uses it.
 
@@ -68,21 +68,21 @@ CD requires the ability to deploy at any time, not at the time when staging happ
 
 The CD goal of continuous, low-batch deployment requires that each team be able to verify and deploy their changes independently and on demand. Independent pipelines with isolated environments are the infrastructure that makes that independence possible.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the current usage and contention patterns
 
 Before changing anything, understand how the shared environment is currently being used. How many teams use it? How often does each team deploy? What is the average wait time for a staging slot? How frequently do test runs fail due to environment contention rather than application bugs? This data establishes the cost of the current state and provides a baseline for measuring improvement.
 
-### Step 2: Adopt infrastructure as code to enable on-demand environments (Weeks 2-4)
+### Step 2: Adopt infrastructure as code to enable on-demand environments (weeks 2-4)
 
 Automate environment creation before attempting to isolate pipelines. Isolated environments are only practical if they can be created and destroyed quickly without manual intervention, which requires the infrastructure to be defined as code. If your team has not yet invested in infrastructure as code, this is the prerequisite step. A staging environment that takes two weeks to provision by hand cannot be created per-pipeline-run - one that takes three minutes to provision from Terraform can.
 
-### Step 3: Introduce ephemeral environments for each pipeline run (Weeks 5-7)
+### Step 3: Introduce ephemeral environments for each pipeline run (weeks 5-7)
 
 Configure the CI/CD pipeline to create a fresh, isolated environment at the start of each pipeline run, run all tests in that environment, and destroy it when the run completes. The environment name should include an identifier for the branch or pipeline run so it is uniquely identifiable. Many cloud platforms and Kubernetes-based systems make this pattern straightforward - each environment is a namespace or an isolated set of resources that can be created and deleted in minutes.
 
-### Step 4: Migrate data setup into pipeline fixtures (Weeks 6-8)
+### Step 4: Migrate data setup into pipeline fixtures (weeks 6-8)
 
 Tests that rely on a pre-seeded shared database need to be refactored to set up and tear down their own data. This is often the most labor-intensive part of the transition. Start with the test suites that most frequently fail due to data contamination. Add setup steps that create required data at test start and teardown steps that remove it at test end, or use a database that is seeded fresh for each pipeline run from a version-controlled seed script.
 
@@ -101,7 +101,7 @@ Some organizations need a single shared environment as a final integration check
 | "Setting up and tearing down data for every test run is too much work." | This work pays for itself quickly in reduced debugging time. Tests that rely on shared state are fragile regardless of the environment - the investment in proper test data management improves test quality across the board. |
 | "We need to test all services together before releasing." | Retain a shared integration environment as the final pipeline stage, deployed to automatically by CI rather than manually by teams. Reserve it for final integration checks, not for development-time testing. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -111,7 +111,7 @@ Some organizations need a single shared environment as a final integration check
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in changes queued waiting for staging, as teams no longer serialize on a shared resource |
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often once the shared environment bottleneck is removed |
 
-## Related Content
+## Related content
 
 - [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})

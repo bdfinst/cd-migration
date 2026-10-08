@@ -21,7 +21,7 @@ In the context of a [CD]({{< relref "/docs/reference/glossary#cd-continuous-deli
 foundation for every decision you will make in the phases ahead. It tells you where your time
 goes, where quality breaks down, and which [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) to attack first.
 
-## What Is a Value Stream Map?
+## What is a value stream map?
 
 A value stream map is a visual representation of every step required to deliver a change from
 request to production. For each step, you capture:
@@ -48,13 +48,13 @@ Before running a value stream mapping session, make sure you have:
   time is when someone is actively working. A code review that takes "two days" but involves 30
   minutes of actual review has 30 minutes of process time and roughly 15.5 hours of wait time.
 
-## Choose Your Mapping Approach
+## Choose your mapping approach
 
 Value stream maps can be built from two directions. Most organizations benefit from starting
 bottom-up and then combining into a top-down view, but the right choice depends on where your
 delivery pain is concentrated.
 
-### Bottom-Up: Map at the Team Level First
+### Bottom-up: Map at the team level first
 
 Each delivery team maps its own process independently - from the moment a developer is ready to
 push a change to the moment that change is running in production. This is the approach described
@@ -87,7 +87,7 @@ downstream teams for weeks.
 a high-level map would miss. Teams see results quickly, which builds momentum for the
 harder cross-team work.
 
-### Top-Down: Map Across Dependent Teams
+### Top-down: Map across dependent teams
 
 Start with the full flow from a customer request (or business initiative) entering the system
 to the delivered outcome in production, mapping across every team the work touches. This
@@ -117,7 +117,7 @@ shared queues, and organizational boundaries.
 Shows the true end-to-end lead time including inter-team wait times. Essential for
 changes that require coordinated delivery across multiple teams.
 
-### Combining Both Approaches
+### Combining both approaches
 
 The most effective strategy for large organizations:
 
@@ -134,9 +134,9 @@ This layered approach prevents two common failure modes: mapping at too high a l
 misses team-specific friction) and mapping only at the team level (which misses the
 organizational constraints that dominate end-to-end lead time).
 
-## How to Run the Session
+## How to run the session
 
-### Step 1: Start From Delivery, Work Backward
+### Step 1: Start from delivery, work backward
 
 Begin at the right side of your map - the moment a change reaches production. Then work backward
 through every step until you reach the point where a request enters the system. This prevents teams
@@ -159,7 +159,7 @@ Typical steps you will uncover include:
 - Production deployment
 - Production verification
 
-### Step 2: Capture Process Time and Wait Time for Each Step
+### Step 2: Capture process time and wait time for each step
 
 For each step on the map, record the process time and the wait time. Use averages if exact numbers
 are not available, but prefer real data from your issue tracker, [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) system, or deployment logs
@@ -179,7 +179,7 @@ Pay close attention to these migration-critical delays:
   percentage of times this happens. These loops are destroying your cycle time.
 {{% /alert %}}
 
-### Step 3: Calculate %C/A at Each Step
+### Step 3: Calculate %C/A at each step
 
 Percent Complete and Accurate measures the quality of the handoff. Ask each person: "What
 percentage of the work you receive from the previous step is usable without needing clarification,
@@ -189,7 +189,7 @@ A low %C/A at a step means the upstream step is producing defective output. This
 information for your migration plan because it tells you where quality needs to be built in
 rather than inspected after the fact.
 
-### Step 4: Identify Constraints (Kaizen Bursts)
+### Step 4: Identify constraints (kaizen bursts)
 
 Mark the steps with the largest wait times and the lowest %C/A with a "kaizen burst" - a starburst
 symbol indicating an improvement opportunity. These are your constraints. They will become the
@@ -206,7 +206,7 @@ Common constraints teams discover during their first value stream map:
 | Manual deployment process | Hours of process time, high error rate | Phase 2 (Single Path to Production) |
 | Large batch releases | Weeks of accumulation, high failure rate | Phase 3 (Small Batches) |
 
-## Reading the Results
+## Reading the results
 
 Once your map is complete, calculate these summary numbers:
 
@@ -219,7 +219,7 @@ Once your map is complete, calculate these summary numbers:
 These numbers become part of your [baseline metrics]({{< relref "/docs/assess/baseline-metrics" >}}) and feed directly into
 your work to [identify constraints]({{< relref "/docs/assess/identify-constraints" >}}).
 
-## What Good Looks Like
+## What good looks like
 
 You are not aiming for a perfect value stream map. You are aiming for a shared, honest picture of
 reality that the whole team agrees on. The map should be:
@@ -231,14 +231,14 @@ reality that the whole team agrees on. The map should be:
 You will revisit and update this map as you progress through each migration phase. It is a living
 document, not a one-time exercise.
 
-## Next Step
+## Next step
 
 With your value stream map in hand, proceed to [Baseline Metrics]({{< relref "/docs/assess/baseline-metrics" >}}) to
 quantify your current delivery performance.
 
 ---
 
-## Related Content
+## Related content
 
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - a flow symptom that value stream mapping often quantifies
 - [No Fast Feedback]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - a symptom frequently revealed by long wait times on the map

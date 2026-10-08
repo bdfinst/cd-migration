@@ -16,7 +16,7 @@ better-targeted testing and observability that closes the specific gaps.
 | Insufficient monitoring | Design | Observability coverage scoring, health endpoint checks, structured logging verification | <span class="ai-blocked">Current tooling sufficient</span> | Observability as non-functional requirement; SLOs for every user-facing path |
 | Test environments don't reflect production | CI | Automated environment parity checks, synthetic transaction comparison, infrastructure-as-code diff tools | <span class="ai-blocked">Current tooling sufficient</span> | Production-like data in staging; test in production with flags |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

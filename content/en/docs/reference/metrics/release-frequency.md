@@ -26,7 +26,7 @@ improving, not a lever to pull directly. To improve release frequency, improve
 Each deployment should deliver a meaningful change. Re-deploying the same artifact
 or deploying empty changes does not count.
 
-## How to Measure
+## How to measure
 
 1. **Count production deployments.** Record each successful deployment to the
    production environment over a defined period.
@@ -61,7 +61,7 @@ These levels are drawn from the DORA *State of DevOps* research. Elite performer
 deploy on demand, multiple times per day, with each deployment containing a small
 set of changes.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Counting empty deployments.** Re-deploying the same artifact or building
   artifacts that contain no changes inflates the metric without delivering value.

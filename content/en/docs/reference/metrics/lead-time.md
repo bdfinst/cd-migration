@@ -32,7 +32,7 @@ verification. It is a superset of build time and a subset of
 [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}), which also includes the
 coding phase before the first commit.
 
-## How to Measure
+## How to measure
 
 1. **Record the commit timestamp.** Use the timestamp of the commit as recorded in
    source control (not the local author timestamp, but the time it was pushed or
@@ -68,7 +68,7 @@ These levels are drawn from the DORA *State of DevOps* research. Elite performer
 deliver changes to production in under an hour from commit, enabled by fully
 automated pipelines and continuous deployment.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Measuring only build time.** Lead time includes everything after the commit,
   not only the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline. Manual approval gates, scheduled deployment windows,

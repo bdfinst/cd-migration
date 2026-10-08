@@ -24,7 +24,7 @@ too late.
 
 ## Common causes
 
-### Separate Ops/Release Team
+### Separate ops/release team
 
 When infrastructure and platform work is owned by a separate team, developers have no path to
 self-service. Every infrastructure need becomes a cross-team request. The platform team is
@@ -34,7 +34,7 @@ different schedules, different priorities, and different definitions of urgency.
 
 **Read more:** [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}})
 
-### No On-Call or Operational Ownership
+### No on-call or operational ownership
 
 When delivery teams do not own their infrastructure and operational concerns, they have no
 incentive or capability to build self-service tooling. The platform team owns the infrastructure
@@ -59,7 +59,7 @@ accept the ticket queue because there is no alternative.
 
 ---
 
-## Related Content
+## Related content
 
 - [Lack of Self-Service Environments]({{< relref "/docs/symptoms/flow/developer-experience/lack-of-self-service-environments" >}}) - Environments that require tickets to provision
 - [Pipeline Changes Require Another Team]({{< relref "/docs/symptoms/deployment/pipeline-changes-require-another-team" >}}) - Pipeline config changes blocked by the same structural separation

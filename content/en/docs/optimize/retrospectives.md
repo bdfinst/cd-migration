@@ -14,17 +14,17 @@ aliases:
 A retrospective is the team's primary mechanism for turning observations into improvements. Without effective retrospectives, [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits expose problems that nobody addresses, metrics trend in the wrong direction with no response, and the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration stalls.
 {{% /pageinfo %}}
 
-## Why Retrospectives Matter for CD Migration
+## Why retrospectives matter for CD migration
 
 Every practice in this guide - [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), small batches, WIP limits, metrics-driven improvement - generates signals about what is working and what is not. Retrospectives are where the team processes those signals and decides what to change.
 
 Teams that skip retrospectives or treat them as a checkbox exercise consistently stall at whatever maturity level they first reach. Teams that run effective retrospectives continuously improve, week after week, month after month.
 
-## The Five-Part Structure
+## The five-part structure
 
 An effective retrospective follows a structured format that prevents it from devolving into a venting session or a status meeting. This five-part structure ensures the team moves from observation to action.
 
-### Part 1: Review the Mission (5 minutes)
+### Part 1: Review the mission (5 minutes)
 
 Start by reminding the team of the larger goal. In the context of a CD migration, this might be:
 
@@ -48,7 +48,7 @@ Present the team's current metrics. For a CD migration, these are typically the 
 
 **Do not skip this step.** Without data, the retrospective becomes a subjective debate where the loudest voice wins. With data, the conversation focuses on what the numbers show and what to do about them.
 
-### Part 3: Review Experiments (10 minutes)
+### Part 3: Review experiments (10 minutes)
 
 Review the outcomes of any experiments the team ran since the last retrospective.
 
@@ -69,7 +69,7 @@ For each experiment:
 >
 > Decision: Keep the parallelization. New experiment: investigate self-service test environments.
 
-### Part 4: Check Goals (10 minutes)
+### Part 4: Check goals (10 minutes)
 
 Review any improvement goals or action items from the previous retrospective.
 
@@ -77,7 +77,7 @@ Review any improvement goals or action items from the previous retrospective.
 - **In progress:** Check for blockers. Does the team need to adjust the approach?
 - **Not started:** Why not? Was it deprioritized, blocked, or forgotten? If improvement work is consistently not started, the team is not treating improvement as a deliverable (see below).
 
-### Part 5: Open Conversation (25 minutes)
+### Part 5: Open conversation (25 minutes)
 
 This is the core of the retrospective. The team discusses:
 
@@ -94,7 +94,7 @@ This is the core of the retrospective. The team discusses:
 | **Timeline** | Plot events on a timeline and discuss turning points | After a particularly eventful sprint or incident |
 | **Dot voting** | Everyone gets 3 votes to prioritize discussion topics | When there are many items and limited time |
 
-### From Conversation to Commitment
+### From conversation to commitment
 
 The open conversation must produce concrete action items. Vague commitments like "we should communicate better" are worthless. Good action items are:
 
@@ -105,11 +105,11 @@ The open conversation must produce concrete action items. Vague commitments like
 
 **Limit action items to 1-3 per retrospective.** More than three means nothing gets done. One well-executed improvement is worth more than five abandoned ones.
 
-## Psychological Safety Is a Prerequisite
+## Psychological safety is a prerequisite
 
 A retrospective only works if team members feel safe to speak honestly about what is not working. Without psychological safety, retrospectives produce sanitized, non-actionable discussion.
 
-### Signs of Low Psychological Safety
+### Signs of low psychological safety
 
 - Only senior team members speak
 - Nobody mentions problems - everything is "fine"
@@ -117,7 +117,7 @@ A retrospective only works if team members feel safe to speak honestly about wha
 - Team members vent privately after the retrospective instead of during it
 - Action items are always about tools or processes, never about behaviors
 
-### Building Psychological Safety
+### Building psychological safety
 
 | Practice | Why It Helps |
 |----------|-------------|
@@ -128,17 +128,17 @@ A retrospective only works if team members feel safe to speak honestly about wha
 | **Acknowledge mistakes openly** | Leaders who admit their own mistakes make it safe for others to do the same |
 | **Separate retrospective from performance review** | If retro content affects reviews, people will not be honest |
 
-## Treat Improvement as a Deliverable
+## Treat improvement as a deliverable
 
 The most common failure mode for retrospectives is producing action items that never get done. This happens when improvement work is treated as something to do "when we have time" - which means never.
 
-### Make Improvement Visible
+### Make improvement visible
 
 - Add improvement items to the same board as feature work
 - Include improvement items in WIP limits
 - Track improvement items through the same workflow as any other deliverable
 
-### Allocate Capacity
+### Allocate capacity
 
 Reserve a percentage of team capacity for improvement work. Common allocations:
 
@@ -150,7 +150,7 @@ Reserve a percentage of team capacity for improvement work. Common allocations:
 
 The specific allocation matters less than having one. A team that explicitly budgets 10% for improvement will improve more than a team that aspires to 20% but never protects the time.
 
-## Retrospective Cadence
+## Retrospective cadence
 
 | Cadence | Best For | Caution |
 |---------|----------|---------|
@@ -161,17 +161,17 @@ The specific allocation matters less than having one. A team that explicitly bud
 
 During active phases of a CD migration (Phases 1-3), weekly retrospectives are recommended. Once the team reaches Phase 4, bi-weekly is usually sufficient.
 
-## Running Your First CD Migration Retrospective
+## Running your first CD migration retrospective
 
 If your team has not been running effective retrospectives, start here:
 
-### Before the Retrospective
+### Before the retrospective
 
 1. Collect your DORA metrics for the past two weeks
 2. Review any action items from the previous retrospective (if applicable)
 3. Prepare a shared document or board with the five-part structure
 
-### During the Retrospective (60 minutes)
+### During the retrospective (60 minutes)
 
 1. **Review mission** (5 min): State your CD migration goal for this phase
 2. **Review KPIs** (10 min): Present the DORA metrics. Ask: "What do you notice?"
@@ -179,14 +179,14 @@ If your team has not been running effective retrospectives, start here:
 4. **Check goals** (10 min): Review action items from last time
 5. **Open conversation** (25 min): Use Start/Stop/Continue for the first time - it is the simplest format
 
-### After the Retrospective
+### After the retrospective
 
 1. Publish the action items where the team will see them daily
 2. Assign owners and due dates
 3. Add improvement items to the team board
 4. Schedule the next retrospective
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "Our retrospectives always produce the same complaints"
 
@@ -204,7 +204,7 @@ The facilitator must enforce blame-free language. Redirect "You did X wrong" to 
 
 A team that does not have time to improve will never improve. A 60-minute retrospective that produces one executed improvement is the most valuable hour of the entire sprint.
 
-## Measuring Success
+## Measuring success
 
 | Indicator | Target | Why It Matters |
 |-----------|--------|----------------|
@@ -213,13 +213,13 @@ A team that does not have time to improve will never improve. A 60-minute retros
 | DORA metrics trend | Improving quarter over quarter | Confirms retrospectives lead to real improvement |
 | Team engagement | Voluntary contributions increasing | Confirms psychological safety is present |
 
-## Next Step
+## Next step
 
 With metrics-driven improvement and effective retrospectives, you have the engine for continuous improvement. The final optimization step is [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - ensuring your system's architecture does not prevent you from deploying independently.
 
 ---
 
-## Related Content
+## Related content
 
 - [Team Burnout]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - a symptom that effective retrospectives help detect and address early
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - an anti-pattern that retrospectives can surface and challenge

@@ -12,7 +12,7 @@ aliases:
 that involves external systems runs asynchronously or post-deployment. This gives you the
 independence to deploy any time, regardless of the state of the world around you.
 
-## Tests Inside the Pipeline
+## Tests inside the pipeline
 
 These tests run on every commit and **block deployment if they fail**. They must be fast,
 deterministic, and free of [external dependencies]({{< relref "/docs/reference/glossary#external-dependency" >}}).
@@ -36,7 +36,7 @@ Two changes can each pass pre-merge independently but conflict when combined on 
 post-merge run catches these integration effects. If a post-merge failure occurs, the team
 fixes it immediately. Trunk must always be releasable.
 
-## Tests Outside the Pipeline
+## Tests outside the pipeline
 
 These tests involve real external systems and are therefore **non-deterministic**. They never
 block deployment. Instead, they validate assumptions and monitor production health.
@@ -49,7 +49,7 @@ block deployment. Instead, they validate assumptions and monitor production heal
 | **E2E smoke tests** | After each deployment | Triggers [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) if critical path is broken |
 | **Synthetic monitoring** | Continuously in production | Triggers alerts for operations |
 
-## How Contract Tests Validate Test Doubles
+## How contract tests validate test doubles
 
 The pipeline's deterministic tests depend on test doubles to represent external systems. But
 test doubles can drift from reality. An API adds a required field, changes a response format,
@@ -85,7 +85,7 @@ share a contract specification (using a tool like [Pact](https://pact.io/)):
 This shifts contract validation from "detect and react" to "prevent." See
 [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) for implementation details.
 
-## Summary: All Stages at a Glance
+## Summary: all stages at a glance
 
 | Stage | Blocks Deployment? | Uses Test Doubles? | Deterministic? |
 |-------|-------------------|-------------------|----------------|
@@ -100,7 +100,7 @@ for each test type, including code examples and anti-patterns.
 
 ---
 
-## Related Content
+## Related content
 
 - [Testing Reference]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - Full reference for each test type
 - [Test Doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) - Patterns for stubs, mocks, fakes, spies, and dummies

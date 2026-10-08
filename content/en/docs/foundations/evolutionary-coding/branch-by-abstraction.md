@@ -12,19 +12,19 @@ description: >
 Branch by abstraction lets you replace an internal implementation, algorithm, or library on trunk, without a long-lived branch and without disrupting the code that already depends on it.
 {{% /pageinfo %}}
 
-## What Is Branch by Abstraction?
+## What is branch by abstraction?
 
 Branch by abstraction introduces an interface over an existing implementation, redirects callers to that interface, then builds and switches in a new implementation behind it, all as small commits on trunk. The "branching" happens in the abstraction layer, not in version control.
 
 > The technique gets its name because it replaces a source-control branch with a branch in the code itself: an interface with two implementations, one of which is live.
 
-### What Branch by Abstraction Is Not
+### What branch by abstraction is not
 
 - It is not a long-lived feature branch with an interface added to justify it. If the work still takes weeks on a branch, the abstraction hasn't replaced anything.
 - It is not the [strangler fig pattern]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}). Branch by abstraction swaps an implementation behind an in-process interface. Strangler fig replaces a whole subsystem or service by routing traffic to it at a system boundary. Use branch by abstraction inside a codebase you own; use strangler fig when the thing being replaced is bigger than one component.
 - It is not a permanent abstraction layer. Once the swap is complete, remove the old implementation, and remove the interface too if nothing else needs it.
 
-## What Branch by Abstraction Improves
+## What branch by abstraction improves
 
 | Problem | How Branch by Abstraction Helps |
 |---------|----------------------------------|
@@ -33,7 +33,7 @@ Branch by abstraction introduces an interface over an existing implementation, r
 | "Big bang" cutover risk | The switch is a single dependency-injection change, easy to revert |
 | Dead code left behind after a migration | The interface makes the old implementation easy to find and delete |
 
-## Making the Swap
+## Making the swap
 
 ### Step 1: Abstract
 
@@ -93,7 +93,7 @@ class AuthService {
 
 Cleanup here is a straightforward deletion of a class. There is no scattered `if/else` logic to search for, because the old and new implementations were never in the same function.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We built the new implementation and the interface in the same commit"
 
@@ -107,7 +107,7 @@ The switch commit is not the finish line. If the old class is still in the codeb
 
 If the replacement spans multiple components, teams, or a system boundary, that's a [strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) problem, not an in-process interface swap.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -115,11 +115,11 @@ If the replacement spans multiple components, teams, or a system boundary, that'
 | Legacy implementations still in the codebase after switch | Zero after the agreed cleanup window | Confirms pruning actually happens |
 | Commits per swap | Many small commits, no single large diff | Confirms the refactor stayed on trunk in small pieces |
 
-## Next Step
+## Next step
 
 If you need to prove the new implementation matches production behavior before switching the binding, use [Parallel Run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}).
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - the full decision hierarchy
 - [Dark Code]({{< relref "/docs/foundations/evolutionary-coding/dark-code" >}}) - the simpler technique for new, unreferenced logic

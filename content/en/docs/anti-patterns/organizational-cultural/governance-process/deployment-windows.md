@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The policy is clear: production deployments happen on Tuesday and Thursday between 2 AM and
 4 AM. Outside of those windows, no code may be deployed to production except through an
@@ -60,7 +60,7 @@ The telltale sign: when a developer asks when their change will be in production
 involves a day of the week and a time of day that has nothing to do with when the change
 was ready.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Deployment windows were designed to reduce risk by controlling when deployments happen. In
 practice, they increase risk by forcing changes to accumulate, creating larger and more complex
@@ -146,7 +146,7 @@ from rapid deployment cycles if rapid deployment is prohibited. The feedback loo
 CD competence - deploy, observe, fix, deploy again - are stretched to day-scale rather than
 hour-scale. The learning that CD produces is delayed proportionally.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document the actual risk model for deployment windows
 
@@ -165,7 +165,7 @@ Present this data to the stakeholders who maintain the deployment window policy.
 the data shows that deployment windows do not reduce incidents - they concentrate them and
 make them harder to diagnose.
 
-### Step 2: Make the deployment process safe enough to run during business hours (Weeks 1-3)
+### Step 2: Make the deployment process safe enough to run during business hours (weeks 1-3)
 
 Reduce deployment risk so that the 2 AM window becomes unnecessary. The window exists because
 deployments are believed to be risky enough to require low traffic and dedicated attention -
@@ -180,7 +180,7 @@ address the risk directly:
 When deployment is automated, health-checked, and limited to small blast radius, the argument
 that it can only happen at 2 AM with low traffic evaporates.
 
-### Step 3: Reduce batch size by increasing deployment frequency (Weeks 2-4)
+### Step 3: Reduce batch size by increasing deployment frequency (weeks 2-4)
 
 Deploy more frequently to reduce batch size - batch size is the greatest source of deployment
 risk:
@@ -195,7 +195,7 @@ risk:
 Track change fail rate and incident rate at each frequency increase. The data will show
 that higher frequency with smaller batches produces fewer incidents, not more.
 
-### Step 4: Establish a path for urgent changes outside the window (Weeks 2-4)
+### Step 4: Establish a path for urgent changes outside the window (weeks 2-4)
 
 Replace the bureaucratic emergency process with a technical solution. The emergency process
 exists because the deployment window policy is recognized as inflexible for genuine urgencies
@@ -210,7 +210,7 @@ but the overhead discourages its use:
 3. Track out-of-window deployments and their outcomes. Use this data to expand the criteria
    as confidence grows.
 
-### Step 5: Pilot window-free deployment for a low-risk service (Weeks 3-6)
+### Step 5: Pilot window-free deployment for a low-risk service (weeks 3-6)
 
 Choose a service that:
 
@@ -235,7 +235,7 @@ than windowed, large-batch deployment.
 | "We tried deploying more often and had more incidents" | More frequent deployment of the same batch sizes would produce more incidents. More frequent deployment of smaller batch sizes produces fewer incidents. The frequency and the batch size must change together. |
 | "Compliance requires documented change windows" | Most compliance frameworks (ITIL, SOX, PCI-DSS) require documented change management and audit trails, not specific deployment hours. An automated pipeline that records every deployment with test evidence and approval trails satisfies the same requirements more thoroughly than a time-based window policy. Engage the compliance team to confirm. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -246,7 +246,7 @@ than windowed, large-batch deployment.
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as changes deploy when ready rather than at scheduled windows |
 | Emergency change requests | Should decrease as the on-demand deployment process becomes available for all changes |
 
-## Related Content
+## Related content
 
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback is what makes deployment safe enough to do at any time
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - One consistent automated path replaces manually staffed deployment events

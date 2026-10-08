@@ -14,7 +14,7 @@ aliases:
 
 **Every [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) boundary is a token budget boundary.** What passes between components represents a cost decision. Designing agent interfaces means deciding what information transfers and what gets left behind.
 
-## What Is a Token?
+## What is a token?
 
 A token is roughly three-quarters of a word in English. Billing, latency, and context limits all depend on token consumption rather than word counts or API call counts. Three factors determine your costs:
 
@@ -22,15 +22,15 @@ A token is roughly three-quarters of a word in English. Billing, latency, and co
 - **[Context window]({{< relref "/docs/reference/glossary#context-window" >}}) size** - Large context windows (150,000+ tokens) create false confidence. Extended contexts increase latency, increase costs, and can degrade model performance when relevant information is buried mid-context.
 - **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-impact cost decisions.
 
-## How Agentic Systems Multiply Token Costs
+## How agentic systems multiply token costs
 
 Single-turn interactions have predictable, bounded token usage. Agentic systems do not.
 
 [Context]({{< relref "/docs/reference/glossary#context-llm" >}}) grows across [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) steps. [Sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) receive oversized context bundles containing everything the orchestrator knows, not only what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
 
-## Optimization Strategies
+## Optimization strategies
 
-### 1. Context Hygiene
+### 1. Context hygiene
 
 Strip context that does not change agent behavior. Common sources of dead weight:
 
@@ -41,7 +41,7 @@ Strip context that does not change agent behavior. Common sources of dead weight
 
 Test whether removing content changes outputs. If behavior is identical with less context, the removed content was not contributing.
 
-### 2. Target Output Verbosity
+### 2. Target output verbosity
 
 Output costs more than input, so reducing output verbosity has compounding returns. Instructions to agents should specify:
 
@@ -51,7 +51,7 @@ Output costs more than input, so reducing output verbosity has compounding retur
 
 A code generation agent that returns code plus explanation plus rationale plus alternatives costs significantly more than one that returns only code. Add the explanation when needed; do not add it by default.
 
-### 3. Structured Outputs for Inter-Agent Communication
+### 3. Structured outputs for inter-agent communication
 
 Natural language prose between agents is expensive and imprecise. JSON or other structured formats reduce token count and eliminate ambiguity in parsing. Compare the two representations of the same finding:
 
@@ -68,7 +68,7 @@ The JSON version conveys the same information in a fraction of the tokens and re
 
 This applies directly to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}): intent descriptions, feature descriptions, test specifications, and other [artifacts](../../reference/glossary/#artifact) passed between agents should be structured documents with defined fields, not open-ended prose.
 
-### 4. Strategic Prompt Caching
+### 4. Strategic prompt caching
 
 [Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) stores stable [prompt]({{< relref "/docs/reference/glossary#prompt" >}}) sections server-side, reducing input costs on repeated requests. To maximize cache effectiveness:
 
@@ -78,7 +78,7 @@ This applies directly to the [agent delivery contract]({{< relref "/docs/agentic
 
 For agents that run repeatedly against the same codebase or documentation, caching the shared context can reduce effective input costs substantially.
 
-### 5. Model Routing by Task Complexity
+### 5. Model routing by task complexity
 
 Not every task requires a frontier model. Match model tier to task requirements:
 
@@ -91,7 +91,7 @@ Not every task requires a frontier model. Match model tier to task requirements:
 
 An orchestrator using a frontier model to decide which sub-agent to call, when a small classifier would suffice, wastes tokens on both the decision and the overhead of a larger model.
 
-### 6. Summarization Cadence
+### 6. Summarization cadence
 
 Long-running agents accumulate conversation history. Rather than passing the full transcript to each step, replace completed work with a compact summary:
 
@@ -101,7 +101,7 @@ Long-running agents accumulate conversation history. Rather than passing the ful
 
 This limits context growth without losing the information needed for the next step. Apply this pattern whenever an agent session spans more than a few turns.
 
-### 7. Workflow-Level Measurement
+### 7. Workflow-level measurement
 
 Per-call token counts hide the true cost drivers. Measure token spend at the workflow level - aggregate consumption for a complete execution from trigger to completion.
 
@@ -114,7 +114,7 @@ Workflow-level metrics expose:
 
 Track cost per workflow execution the same way you track latency and error rates. Set budgets and alert when executions exceed them. A workflow that occasionally costs 10x the average is a design problem, not a billing detail.
 
-### 8. Code Quality as a Token Cost Driver
+### 8. Code quality as a token cost driver
 
 Poorly structured or poorly named code is expensive in both token cost and output quality. When code does not express intent, agents must infer it from surrounding code, comments, and call sites - all of which consume context budget. The worse the naming and structure, the more context must load before the agent can do useful work.
 
@@ -178,7 +178,7 @@ standards require, one correction at a time. Over repeated cycles, the correctio
 rate drops as the agent internalizes the constraints, reducing both rework tokens and
 review burden.
 
-## Applying Tokenomics to ACD Architecture
+## Applying tokenomics to ACD architecture
 
 Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}})) creates predictable token cost patterns because the workflow is structured. Apply optimization at each stage:
 
@@ -192,7 +192,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 
 **Review queues:** Agent-generated change volume can inflate review-time token costs when reviewers use AI-assisted review tools. [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits on the agent's change queue ([see Pitfalls]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics#2-review-queue-backs-up-from-agent-generated-volume" >}})) also function as a cost control on downstream AI review consumption.
 
-## The Constraint Framing
+## The constraint framing
 
 **Tokenomics is a design constraint, not a post-hoc optimization.** Teams that treat it as a constraint make different architectural decisions:
 
@@ -203,7 +203,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 
 **Ignoring tokenomics produces the same class of problems as ignoring latency:** systems that work in development but fail under production load, accumulate costs that outpace value delivered, and require expensive rewrites to fix architectural mistakes.
 
-## Related Content
+## Related content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - cross-cutting concerns including idempotency, model-agnostic abstraction, and structured inter-agent communication
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, constraints, and workflow

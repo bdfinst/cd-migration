@@ -34,7 +34,7 @@ Getting this distinction right is critical. Bundling environment config into the
 breaks immutability. Externalizing application config that does not vary creates
 unnecessary complexity and fragility.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Configuration is where many CD migrations stall. Teams that have been deploying manually
 often have configuration tangled with code - hardcoded URLs, environment-specific build
@@ -46,7 +46,7 @@ without modification, environment-specific values are injected at deployment tim
 feature behavior can be changed without redeploying. This enables the deployment speed and
 safety that continuous delivery requires.
 
-## Key Principles
+## Key principles
 
 ### Bundle what does not vary
 
@@ -91,7 +91,7 @@ be overridden by a dynamic source (external flag service). If the flag service i
 unavailable, the application falls back to its static defaults - a safe, predictable
 behavior.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Hardcoded environment-specific values
 
@@ -125,7 +125,7 @@ not even in "private" repositories, not even encrypted with simple mechanisms. U
 secrets manager (Vault, AWS Secrets Manager, Azure Key Vault) and inject secrets at
 deployment time.
 
-## Good Patterns
+## Good patterns
 
 ### Environment variables for environment config
 
@@ -163,7 +163,7 @@ The application should validate its configuration at startup and fail fast with 
 error message if required configuration is missing or invalid. This catches configuration
 errors immediately rather than allowing the application to start in a broken state.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Inventory your configuration
 
@@ -200,7 +200,7 @@ Ensure that configuration injection is fully automated in the deployment pipelin
 human should manually set environment variables or edit configuration files during
 deployment.
 
-## Common Questions
+## Common questions
 
 ### How do I change application config for a specific environment?
 
@@ -221,7 +221,7 @@ not configuration. Consider whether it belongs in a database or content manageme
 instead. Configuration should be relatively stable - it defines how the application
 behaves, not what content it serves.
 
-## Measuring Progress
+## Measuring progress
 
 Track these metrics to confirm that configuration is being handled correctly:
 
@@ -232,7 +232,7 @@ Track these metrics to confirm that configuration is being handled correctly:
 - **Time from config commit to production** - should match your normal deployment cycle
   time, confirming that config changes flow through the same pipeline as code changes
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Application configuration is the enabler that makes
 [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) practical. An artifact can only be truly
@@ -248,7 +248,7 @@ When configuration is externalized correctly, [rollback]({{< relref "/docs/pipel
 straightforward: deploy the previous artifact with the appropriate configuration, and the
 system returns to its prior state.
 
-## Related Content
+## Related content
 
 - ["Works on My Machine"]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - a symptom caused by configuration that is not externalized or consistent across environments
 - [Environment-Dependent Failures]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - failures often rooted in configuration differences between environments

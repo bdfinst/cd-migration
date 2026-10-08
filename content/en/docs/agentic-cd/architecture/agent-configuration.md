@@ -20,7 +20,7 @@ For the defect sources each gate addresses, see the
 [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) catalog.
 {{% /pageinfo %}}
 
-## System Architecture
+## System architecture
 
 The coding agent system has two tiers. The [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) manages sessions and routes work.
 Specialized agents execute within a session's boundaries. Review [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) run in parallel
@@ -62,7 +62,7 @@ This page defines the configuration for each component in order: [Orchestrator](
 
 ---
 
-## The Orchestrator
+## The orchestrator
 
 The orchestrator manages session lifecycle and controls what context each agent receives.
 It does not generate implementation code. Its job is routing and context hygiene.
@@ -124,7 +124,7 @@ On commit:
 
 ---
 
-## The Implementation Agent
+## The implementation agent
 
 The implementation agent generates test code and production code for the current [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario.
 It operates within the context the orchestrator provides and does not reach outside that context.
@@ -172,7 +172,7 @@ still pass, and you have staged the changes.
 
 ---
 
-## The Review Orchestrator
+## The review orchestrator
 
 The review orchestrator runs between implementation complete and commit. It invokes all
 four review sub-agents in parallel against the staged diff, collects their findings, and
@@ -250,13 +250,13 @@ Return this JSON and nothing else:
 
 ---
 
-## Review Sub-Agents
+## Review sub-agents
 
 Each sub-agent covers exactly one defect concern from the
 [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) catalog. They receive only the diff and the
 [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) relevant to their specific check - not the full session context.
 
-### Semantic Review Agent
+### Semantic review agent
 
 **Recommended model tier:** Mid to frontier. Logic correctness and intent alignment require
 genuine reasoning - a model that can follow execution paths, infer edge cases, and compare
@@ -312,7 +312,7 @@ Return this JSON and nothing else:
 }
 {{< /card >}}
 
-### Security Review Agent
+### Security review agent
 
 **Recommended model tier:** Mid to frontier. Identifying second-order injection, subtle
 authorization gaps, and missing audit events requires understanding data flow semantics,
@@ -375,7 +375,7 @@ Return this JSON and nothing else:
 }
 {{< /card >}}
 
-### Performance Review Agent
+### Performance review agent
 
 **Recommended model tier:** Small to mid. Timeout and resource leak detection is primarily
 structural pattern recognition: find external calls, check for timeout configuration, trace
@@ -437,7 +437,7 @@ Return this JSON and nothing else:
 }
 {{< /card >}}
 
-### Concurrency Review Agent
+### Concurrency review agent
 
 **Recommended model tier:** Mid. Concurrency defects require reasoning about execution
 ordering and shared state - more than pattern matching but less open-ended than security
@@ -642,7 +642,7 @@ the baseline mechanical checks.
 
 ---
 
-## Token Budget
+## Token budget
 
 **A rising per-session cost with a stable block rate means context is growing unnecessarily. A rising block rate without rising cost means the review agents are finding real issues without accumulating noise.** Track these two signals and the cause of any cost increase becomes immediately clear.
 
@@ -700,7 +700,7 @@ See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) for th
 
 ---
 
-## Defect Source Coverage
+## Defect source coverage
 
 This table maps each pre-commit defect source to the mechanism that covers it.
 
@@ -730,7 +730,7 @@ for the full gate sequence.
 
 ---
 
-## Related Content
+## Related content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - how to
   structure skills, agents, commands, and hooks for multi-agent systems

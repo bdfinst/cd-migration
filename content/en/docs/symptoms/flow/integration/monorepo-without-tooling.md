@@ -39,7 +39,7 @@ Automated deployment pipelines with change detection deploy exactly the services
 ## How to narrow it down
 
 1. **Does the pipeline build and test only the services affected by a change?** If every commit triggers a full rebuild, change detection is not implemented. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
-2. **How long does a typical CI run take?** If it takes more than 10 minutes regardless of what changed, the pipeline is not leveraging the monorepo's dependency information. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+2. **How long does a typical CI run take?** If it takes more than 10 minutes regardless of what changed, the pipeline is not using the monorepo's dependency information. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 3. **Can the team deploy a single service from the monorepo without triggering deployments of all services?** If not, deployment automation does not understand the monorepo structure. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
 
 **Ready to fix this?** The most common cause is [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline#how-to-fix-it" >}}) section for week-by-week steps.

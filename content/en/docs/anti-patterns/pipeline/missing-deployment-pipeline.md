@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Deploying to production requires a person. Someone opens a terminal, SSHs into a server, pulls the
 latest code, runs a build command, and restarts a service. Or they download an [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) from a
@@ -54,7 +54,7 @@ Common variations:
 The telltale sign: if deploying requires a specific person, a specific machine, or a specific
 document that must be followed step by step, no [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) exists.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The absence of a pipeline means every deployment is a unique event. No two deployments are
 identical because human hands are involved in every step. This creates risk, waste, and
@@ -146,7 +146,7 @@ without a pipeline cannot practice CD any more than a team without source contro
 version management. The pipeline is the foundation. Everything else - automated testing, deployment
 strategies, progressive rollouts, fast rollback - depends on it existing.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document the current manual process exactly
 
@@ -184,7 +184,7 @@ starts up is more valuable than zero tests.
 The pipeline should now fail if the build fails or if any test fails. This is the first automated
 quality gate. No artifact is produced unless the code compiles and the tests pass.
 
-### Step 4: Automate the deployment to a non-production environment (Weeks 3-4)
+### Step 4: Automate the deployment to a non-production environment (weeks 3-4)
 
 Take the manual deployment steps from Step 1 and encode them in a script or pipeline stage that
 deploys the tested artifact to a staging or test environment:
@@ -196,7 +196,7 @@ deploys the tested artifact to a staging or test environment:
 The team now has a pipeline that builds, tests, and deploys to a non-production environment on
 every commit. Deployments to this environment should happen without any human intervention.
 
-### Step 5: Extend the pipeline to production (Weeks 5-6)
+### Step 5: Extend the pipeline to production (weeks 5-6)
 
 Once the team trusts the automated deployment to non-production environments, extend it to
 production:
@@ -212,7 +212,7 @@ The first automated production deployment will be nerve-wracking. That is normal
 the manual process the first few times: deploy automatically, then verify manually. As confidence
 grows, drop the manual verification.
 
-### Step 6: Address the objections (Ongoing)
+### Step 6: Address the objections (ongoing)
 
 | Objection | Response |
 |-----------|----------|
@@ -222,7 +222,7 @@ grows, drop the manual verification.
 | "What if the pipeline deploys something broken?" | The pipeline includes automated tests and can include approval gates. A broken deployment from a pipeline is no worse than a broken deployment from a human - and the pipeline can roll back automatically. |
 | "Our infrastructure doesn't support modern pipeline tools" | Start with a shell script triggered by a cron job or a webhook. A pipeline does not require Kubernetes or cloud-native infrastructure. It requires automation of the steps you already perform manually. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -233,7 +233,7 @@ grows, drop the manual verification.
 | People who can deploy to production | Should increase from one or two to the entire team |
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the manual deployment bottleneck is eliminated |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -241,7 +241,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - What was the last deployment incident we had? Would a pipeline have caught it earlier?
 - If we automated the next deployment step today, what would we automate first?
 
-## Related Content
+## Related content
 
 - [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - The first step in building a pipeline
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - How to structure a pipeline from commit to production

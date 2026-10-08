@@ -14,7 +14,7 @@ aliases:
 Build automation is the single-command loop that makes [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) possible. If you cannot build, test, and package with one command, you cannot automate your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
 {{% /pageinfo %}}
 
-## What Build Automation Means
+## What build automation means
 
 A single command (or CI trigger) executes the entire sequence from source code to [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) [artifact]({{< relref "/docs/reference/glossary#artifact" >}}):
 
@@ -25,13 +25,13 @@ A single command (or CI trigger) executes the entire sequence from source code t
 
 No manual steps. No "run this script, then do that." No tribal knowledge about which flags to set or which order to run things. One command, every time, same result.
 
-### The Litmus Test
+### The litmus test
 
 Ask yourself: *"Can a new team member clone the repository and produce a deployable artifact with a single command within 15 minutes?"*
 
 If the answer is no, your build is not fully automated.
 
-## Why Build Automation Matters for CD
+## Why build automation matters for CD
 
 Without build automation, every other practice in this guide breaks down. You cannot have continuous integration if the build requires manual intervention. You cannot have a deterministic pipeline if the build produces different results depending on who runs it.
 
@@ -43,9 +43,9 @@ Without build automation, every other practice in this guide breaks down. You ca
 | **Developer experience** | Developers run the same build locally that CI runs, eliminating "works on my machine" |
 | **Pipeline foundation** | The CD pipeline is the build running automatically on every commit |
 
-## Key Practices
+## Key practices
 
-### 1. Version-Controlled Build Scripts
+### 1. Version-controlled build scripts
 
 Your build configuration lives in the same repository as your code. It is versioned, reviewed, and tested alongside the application.
 
@@ -64,7 +64,7 @@ Your build configuration lives in the same repository as your code. It is versio
 
 **Anti-pattern:** Build instructions that exist only in a wiki, a Confluence page, or one developer's head. If the build steps are not in the repository, they will drift from reality.
 
-### 2. Dependency Management
+### 2. Dependency management
 
 All dependencies must be declared explicitly and resolved deterministically.
 
@@ -77,7 +77,7 @@ All dependencies must be declared explicitly and resolved deterministically.
 
 **Anti-pattern:** "It builds on Jenkins because Jenkins has Java 11 installed, but the Dockerfile uses Java 17." The build must declare and control its own runtime.
 
-### 3. Build Caching
+### 3. Build caching
 
 Fast builds keep developers in flow. Caching is the primary mechanism for build speed.
 
@@ -94,7 +94,7 @@ Fast builds keep developers in flow. Caching is the primary mechanism for build 
 - **Invalidate caches** when dependencies or build configuration change
 - **Never cache test results.** Tests must always run
 
-### 4. Single Build Script Entry Point
+### 4. Single build script entry point
 
 Developers, CI, and CD should all use the same entry point.
 
@@ -121,7 +121,7 @@ clean:
 
 The CI server runs `make all`. A developer runs `make all`. The result is the same. There is no separate "CI build script" that diverges from what developers run locally.
 
-### 5. Artifact Versioning
+### 5. Artifact versioning
 
 Every build artifact must be traceable to the exact commit that produced it.
 
@@ -133,18 +133,18 @@ Every build artifact must be traceable to the exact commit that produced it.
 
 This becomes critical in [Phase 2]({{< relref "/docs/pipeline/immutable-artifacts" >}}) when you establish [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) practices.
 
-## CI Server Setup Basics
+## CI server setup basics
 
 The CI server is the mechanism that runs your build automatically.
 
-### What the CI Server Does
+### What the CI server does
 
 1. **Watches the trunk** for new commits
 2. **Runs the build** (the same command a developer would run locally)
 3. **Reports the result** (pass/fail, test results, build duration)
 4. **Notifies the team** if the build fails
 
-### Minimum CI Configuration
+### Minimum CI configuration
 
 Regardless of which CI tool you use (GitHub Actions, GitLab CI, Jenkins, CircleCI), the configuration follows the same pattern:
 
@@ -162,14 +162,14 @@ steps:
   - report: test results and build status
 {{< /card >}}
 
-### CI Principles for Phase 1
+### CI principles for phase 1
 
 - **Run on every commit.** Not nightly, not weekly, not "when someone remembers." Every commit to trunk triggers a build.
 - **Treat a failing build as the team's top priority.** Stop work until trunk is green again. (See [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}).)
 - **Run the same build everywhere.** Use the same script in CI and local development. No CI-only steps that developers cannot reproduce.
 - **Fail fast.** Run the fastest checks first (compilation, unit tests) before the slower ones (integration tests, packaging).
 
-## Build Time Targets
+## Build time targets
 
 Build speed directly affects developer productivity and [integration frequency]({{< relref "/docs/reference/glossary#integration-frequency" >}}). If the build takes 30 minutes, developers will not integrate multiple times per day.
 
@@ -180,7 +180,7 @@ Build speed directly affects developer productivity and [integration frequency](
 | Integration tests | < 5 minutes | Must complete before the developer context-switches |
 | Full build (compile + test + package) | < 10 minutes | The outer bound for fast feedback |
 
-### If Your Build Is Too Slow
+### If your build is too slow
 
 Slow builds are a common [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) that blocks CD adoption. Address them systematically:
 
@@ -190,7 +190,7 @@ Slow builds are a common [constraint]({{< relref "/docs/reference/glossary#const
 4. **Split the build.** Run fast checks (lint, compile, unit tests) as a "fast feedback" stage. Run slower checks (integration tests, security scans) as a second stage.
 5. **Upgrade build hardware.** Sometimes the fastest optimization is more CPU and RAM.
 
-## Common Anti-Patterns
+## Common anti-patterns
 
 | Anti-pattern | Impact | Fix |
 |---|---|---|
@@ -200,7 +200,7 @@ Slow builds are a common [constraint]({{< relref "/docs/reference/glossary#const
 | **Missing dependency pinning** | The build is non-deterministic; the same code can produce different results on different days. | Use lock files and pin all dependency versions. |
 | **Long build queues** | Delayed feedback defeats the purpose of CI because developers context-switch before seeing results. | Ensure CI infrastructure can handle your commit frequency with parallel build agents. |
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -209,13 +209,13 @@ Slow builds are a common [constraint]({{< relref "/docs/reference/glossary#const
 | Time from commit to build result | < 15 minutes (including queue time) | Measures the full feedback loop |
 | Developer ability to build locally | 100% of team | Confirms the build is portable and documented |
 
-## Next Step
+## Next step
 
 With build automation in place, you can build, test, and package your application reliably. The next foundation is ensuring that the work you integrate daily is small enough to be safe. Continue to [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}).
 
 ---
 
-## Related Content
+## Related content
 
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}): symptom caused by unoptimized or missing build automation
 - [Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}): symptom eliminated when the build runs the same everywhere

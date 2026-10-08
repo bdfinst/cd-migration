@@ -20,7 +20,7 @@ needs to establish.
 Work through each category with your team. Be honest - checking a box you have not earned gives
 you a migration plan that skips steps you actually need.
 
-## How to Use This Checklist
+## How to use this checklist
 
 For each item, mark it with an `[x]` if your team consistently does this today - not occasionally,
 not aspirationally, but as a default practice. If you do it sometimes but not reliably, leave it
@@ -28,7 +28,7 @@ unchecked.
 
 ---
 
-## Trunk-Based Development
+## Trunk-based development
 
 - [ ] All developers integrate their work to the trunk (main branch) at least once every 24 hours
 - [ ] No branch lives longer than 24 hours before being integrated
@@ -44,7 +44,7 @@ continuous integration, [continuous delivery]({{< relref "/docs/reference/glossa
 
 ---
 
-## Continuous Integration
+## Continuous integration
 
 - [ ] Every commit to trunk triggers an automated build
 - [ ] The automated build includes running the full unit test suite
@@ -59,7 +59,7 @@ something else has not broken in the meantime.
 
 ---
 
-## Pipeline Practices
+## Pipeline practices
 
 - [ ] There is a single, defined path that every change follows to reach production (no side doors, no manual deployments, no exceptions)
 - [ ] The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is deterministic: given the same input commit, it produces the same output every time
@@ -106,7 +106,7 @@ it is ready for production.
 
 ---
 
-## Scoring Guide
+## Scoring guide
 
 Count the number of items you checked across all categories.
 
@@ -127,7 +127,7 @@ gaps are specific and targeted.
 The only wrong answer is a dishonest one.
 {{% /alert %}}
 
-## Putting It All Together
+## Putting it all together
 
 You now have four pieces of information from Phase 0:
 
@@ -139,14 +139,14 @@ You now have four pieces of information from Phase 0:
 Together, these give you a clear, data-informed starting point for your migration. You know where
 you are, you know what is slowing you down, and you know which practices to establish first.
 
-## Next Step
+## Next step
 
 You are ready to begin [Phase 1 - Foundations]({{< relref "/docs/foundations" >}}). Start with the practice area
 that addresses your top constraint.
 
 ---
 
-## Related Content
+## Related content
 
 - [Painful Merges]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}}) - a symptom indicating trunk-based development practices are missing
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - a symptom that often correlates with unchecked deployment practices

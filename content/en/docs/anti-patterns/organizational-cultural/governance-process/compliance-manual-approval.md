@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The change advisory board convenes every Tuesday at 2 PM. Every deployment request - whether a one-line config fix or a multi-service architectural overhaul - is presented to a room of reviewers who read a summary, ask a handful of questions, and vote to approve or defer. The review is documented in a spreadsheet. The spreadsheet is the audit trail. This process exists because, someone decided years ago, the regulations require it.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the compliance team cannot tell you which specific regulatory requirement mandates the current manual approval process, only that "that's how we've always done it."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual compliance controls feel safe because they are visible. Auditors can see the spreadsheet, the meeting minutes, the approval signatures. What they cannot see - and what the controls do not measure - is whether the reviews are effective, whether the documentation matches reality, or whether the process is generating the risk reduction it claims to provide.
 
@@ -67,7 +67,7 @@ More fundamentally, CD requires that the pipeline be the control - that approval
 
 The path to CD in regulated environments requires reframing compliance with the compliance team: the question is not "how do we get exempted from the controls?" but "how do we implement controls that are more effective and auditable than the current manual process?"
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Read the actual regulatory requirements
 
@@ -86,7 +86,7 @@ Expect pushback and address it directly:
 | "Our auditors said we need a CAB." | Ask your auditors to cite the specific requirement. Most will describe the evidence they need, not the mechanism. Automated pipeline controls with immutable audit logs satisfy most regulatory evidence requirements. |
 | "We can't risk an audit finding." | The risk of an audit finding from automation is lower than you think if the controls are well-designed. Add automated security scanning to the pipeline first. Then bring the audit log evidence to your compliance officer and ask them to review it against the specific regulatory requirements. |
 
-### Step 2: Design automated controls that satisfy regulatory requirements (Weeks 2-6)
+### Step 2: Design automated controls that satisfy regulatory requirements (weeks 2-6)
 
 1. Identify the specific controls the regulation requires (for example, segregation of duties, change documentation, rollback capability) and implement each as a pipeline stage.
 2. Require code review by at least one person who did not write the change, enforced by the source control system, not by a meeting.
@@ -101,7 +101,7 @@ Expect pushback and address it directly:
 | "Automated evidence might not satisfy auditors." | Engage your auditors in the design process. Show them what the pipeline audit log captures. Most auditors prefer machine-generated evidence to manually assembled spreadsheets because it is harder to falsify. |
 | "We need a human to review every change." | For what purpose? If the purpose is catching errors, automated testing catches more errors than a human reading a change summary. If the purpose is authorization evidence, a pull request approval recorded in your source control system is a more reliable record than a meeting vote. |
 
-### Step 3: Transition the CAB to a risk advisory function (Weeks 6-12)
+### Step 3: Transition the CAB to a risk advisory function (weeks 6-12)
 
 1. Propose to the compliance team that the CAB shifts from approving individual changes to reviewing pipeline controls quarterly. The quarterly review should verify that automated controls are functioning, access is appropriately restricted, and audit logs are complete.
 2. Implement a risk-based exception process: changes to high-risk systems or during high-risk periods can still require human review, but the review is focused and the criteria are explicit.
@@ -115,7 +115,7 @@ Expect pushback and address it directly:
 |-----------|----------|
 | "The compliance team owns this process and won't change it." | Compliance teams are often more flexible than they appear when approached with evidence rather than requests. Show them the automated control design, the audit evidence format, and a regulatory mapping. Make their job easier, not harder. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Automated compliance checks added to the pipeline should be monitored for speed impact |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in changes waiting for approval |
 
-## Related Content
+## Related content
 
 - [Separation of duties as separate teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) - closely related pattern where compliance requirements are implemented as organizational walls
 - [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - automated pipeline controls are the mechanism for replacing manual approval gates

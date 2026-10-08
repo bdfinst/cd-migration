@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The sprint planning meeting begins. The product manager presents the list of features and fixes that need to be delivered this sprint. The team estimates them. They fill to capacity. Someone mentions the flaky test suite that takes 45 minutes to run and fails 20% of the time for non-code reasons. "We'll get to that," someone says. It goes on the backlog. The backlog item is a year old.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the team can identify specific improvements that would meaningfully accelerate delivery but cannot point to any sprint in the last three months where those improvements were prioritized.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The test suite that takes 45 minutes and fails 20% of the time for non-code reasons costs each developer hours of wasted time every week - time that compounds sprint after sprint because the fix was never prioritized. A team operating at 100% utilization has zero capacity to improve. Every hour spent on features at the expense of improvement is an hour that makes the next hour of feature development slower.
 
@@ -67,7 +67,7 @@ The teams that achieve and sustain CD are not the ones that got lucky with an ea
 
 Teams that allocate zero time to improvement typically never begin the CD journey, or begin it and stall when the initial improvements erode under feature pressure.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Quantify the cost of not improving
 
@@ -86,7 +86,7 @@ Expect pushback and address it directly:
 | "We don't have time to measure this." | You already spend the time on the symptoms. The measurement is about making that cost visible so it can be managed. Block 4 hours for one sprint to capture the data. |
 | "Product won't accept reduced feature velocity." | Present the data showing that deferred improvement is already reducing feature velocity. The choice is not "features vs. improvement" - it is "slow features now with no improvement" versus "slightly slower features now with accelerating velocity later." |
 
-### Step 2: Protect a regular improvement allocation (Weeks 2-4)
+### Step 2: Protect a regular improvement allocation (weeks 2-4)
 
 1. Negotiate a standing allocation of improvement time: the standard recommendation is 20% of team capacity per sprint, but even 10% is better than zero. This is not a one-time improvement sprint - it is a permanent budget.
 2. Add improvement items to the sprint backlog alongside features with the same status as user stories: estimated, prioritized, owned, and reviewed at the sprint retrospective.
@@ -101,7 +101,7 @@ Expect pushback and address it directly:
 | "20% sounds like a lot. Can we start smaller?" | Yes. Start with 10% and measure the impact. As velocity improves, the argument for maintaining or expanding the allocation makes itself. |
 | "The improvement backlog is too large to know where to start." | Prioritize by impact on the most painful daily friction: the slow test that every developer runs ten times a day, the manual step that every deployment requires, the alert that fires every night. |
 
-### Step 3: Make improvement outcomes visible and accountable (Weeks 4-8)
+### Step 3: Make improvement outcomes visible and accountable (weeks 4-8)
 
 1. Set quarterly improvement goals with measurable outcomes: "Test suite run time below 10 minutes," "Zero manual deployment steps for service X," "Change fail rate below 5%."
 2. Report pipeline and delivery metrics to stakeholders monthly: build duration, change fail rate, deployment frequency. Make the connection between improvement investment and metric improvement explicit.
@@ -117,7 +117,7 @@ Expect pushback and address it directly:
 | "This sounds like a lot of overhead for 'fixing stuff.'" | The overhead is the visibility that protects the improvement allocation from being displaced by feature pressure. Without visibility, improvement time is the first thing cut when a sprint gets tight. |
 | "Developers should just do this as part of their normal work." | They cannot, because "normal work" is 100% features. The allocation makes improvement legitimate, scheduled, and protected. That is the structural change needed. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -128,7 +128,7 @@ Expect pushback and address it directly:
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction as tech debt reduction and test automation make features faster to build and verify |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Improvement items in progress alongside features, demonstrating the allocation is real |
 
-## Related Content
+## Related content
 
 - [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - use delivery metrics to identify where improvement investment has the highest return
 - [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - retrospectives are the forum where improvement items should be identified and prioritized

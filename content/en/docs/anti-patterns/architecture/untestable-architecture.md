@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer wants to write a unit test for a business rule in the order processing module. They open
 the class and find that it instantiates a database connection directly in the constructor, calls an
@@ -54,7 +54,7 @@ Common variations:
 The telltale sign: when a developer asks "how do I write a test for this?" and the honest answer
 is "you would have to refactor it first."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Untestable architecture does more than make tests hard to write. It is a symptom that business logic
 is entangled with infrastructure, which makes every change harder and every defect costlier.
@@ -120,7 +120,7 @@ Untestable architecture is often the root cause when teams say "we can't go fast
 QA time." The real [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) is not QA capacity. It is the absence of a test suite that can verify
 changes quickly and automatically.
 
-## How to Fix It
+## How to fix it
 
 Making an untestable codebase testable is an incremental process. The goal is not to rewrite
 everything before writing the first test. The goal is to create seams - places where test doubles
@@ -140,7 +140,7 @@ Do not try to fix the entire codebase. Start where the pain is highest.
 Document the list. It is your refactoring backlog. Treat each item as a first-class task, not
 something that happens "when we have time."
 
-### Step 2: Introduce dependency injection at the seam (Weeks 2-3)
+### Step 2: Introduce dependency injection at the seam (weeks 2-3)
 
 For each candidate class, apply the simplest refactor that creates a testable seam without
 changing behavior.
@@ -188,7 +188,7 @@ function processOrder(order, { repository, paymentGateway }) {
 The interface or abstraction is the key. Production code passes real implementations. Tests pass
 fast, in-memory doubles that return predictable results.
 
-### Step 3: Write the tests that are now possible (Weeks 2-3)
+### Step 3: Write the tests that are now possible (weeks 2-3)
 
 Immediately after creating a seam, write tests for the business logic that is now accessible.
 Do not defer this step.
@@ -201,7 +201,7 @@ Use fast doubles - in-memory fakes or simple stubs - for every external dependen
 should run in milliseconds without any network or database access. If a test requires more than
 a second to run, something is still coupling it to real infrastructure.
 
-### Step 4: Extract business logic from framework boundaries (Weeks 3-5)
+### Step 4: Extract business logic from framework boundaries (weeks 3-5)
 
 Framework entanglement requires a different approach. The fix is extraction: move business logic
 out of framework callbacks and into plain functions or classes that can be called from anywhere,
@@ -248,7 +248,7 @@ Once a module is testable, add controls that prevent it from becoming untestable
 Apply the same process to each new module as it is touched. Over time, the proportion of testable
 code grows without requiring a big-bang rewrite.
 
-### Step 6: Track and retire the integration test workarounds (Ongoing)
+### Step 6: Track and retire the integration test workarounds (ongoing)
 
 As business logic becomes unit-testable, the integration tests that were previously the only
 coverage can be simplified or removed. Integration tests that verify business logic are slow and
@@ -262,7 +262,7 @@ between components, not the business rules inside each one.
 | "Dependency injection adds complexity" | A constructor that accepts interfaces is not complex. The complexity it removes - hidden coupling to external systems, inability to test in isolation, cascading failures from unavailable services - far exceeds the added boilerplate. |
 | "Our framework doesn't support dependency injection" | Every mainstream framework supports some form of injection. The extraction technique (move logic into plain functions) works for any framework. The framework boundary becomes a thin shell around testable business logic. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -273,7 +273,7 @@ between components, not the business rules inside each one.
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as developers get faster feedback from the test suite |
 | Files with test coverage | Should increase as refactoring progresses; track by module |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the test suite that testable architecture enables
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Module boundaries that make injection points natural

@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 When a release is approaching, the team does not deploy trunk as it stands. Instead, someone - usually
 a release engineer or a senior developer - reviews the commits that have landed since the last
@@ -49,7 +49,7 @@ Common variations:
 The telltale sign: the team has a meeting or a process to decide which commits go into a release.
 If you have to decide, trunk is not deployable.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Cherry-pick releases are a workaround for a more fundamental problem: trunk is not trusted to be
 in a deployable state at all times. The cherry-pick process does not solve that problem - it works
@@ -129,7 +129,7 @@ backport operation, it is not cheap. Teams with cherry-pick releases are typical
 weekly or monthly releases, which means bugs take weeks to reach users and business value is
 delayed proportionally.
 
-## How to Fix It
+## How to fix it
 
 Eliminating cherry-pick releases requires making trunk trustworthy. The practices that do this -
 feature flags, comprehensive automated testing, small batches, trunk-based development - are the
@@ -150,7 +150,7 @@ excluded from releases.
 Document the findings. Share them with the team and get agreement on which root cause to address
 first.
 
-### Step 2: Introduce feature flags for incomplete work (Weeks 2-4)
+### Step 2: Introduce feature flags for incomplete work (weeks 2-4)
 
 The most common reason commits are held back is that the feature is not ready for users. Feature
 flags decouple deployment from release. Incomplete work can merge to trunk and be deployed to
@@ -166,7 +166,7 @@ production while remaining invisible to users.
 Once the team sees that incomplete features do not require cherry-picking, the pull toward feature
 flags grows naturally. Each held-back commit is a candidate for the flag treatment.
 
-### Step 3: Strengthen the automated test suite (Weeks 2-5)
+### Step 3: Strengthen the automated test suite (weeks 2-5)
 
 Commits are also held back because of uncertainty about their safety. That uncertainty is a
 signal that the automated test suite is not providing sufficient confidence.
@@ -193,7 +193,7 @@ This is a workflow change, not a technical change. It requires that product mana
 in progress rather than waiting for a release candidate. Most find this easier, not harder, because
 they can give feedback while the developer is still working rather than after everything is frozen.
 
-### Step 5: Deploy trunk directly on a fixed cadence (Weeks 4-6)
+### Step 5: Deploy trunk directly on a fixed cadence (weeks 4-6)
 
 Once the holds are addressed - features flagged, tests strengthened, approvals moved earlier - run
 an experiment: deploy trunk directly without a cherry-pick step.
@@ -219,7 +219,7 @@ process.
 | "What if a cherry-picked commit breaks the release branch?" | It will. Repeatedly. That is the cost of the process you are describing. The alternative is to make trunk deployable so you never need the release branch. |
 | "Our release process requires auditing which commits went out" | Deploy trunk and record the commit hash. The audit trail is a git log, not a cherry-pick selection record. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -230,7 +230,7 @@ process.
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should remain stable or improve as trunk becomes reliably deployable |
 | Deployment process duration | Should decrease as manual cherry-pick steps are removed |
 
-## Related Content
+## Related content
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The branching model that makes trunk deployable by default
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Breaking work into units small enough to merge complete

@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer moves a story to "Done." The code is merged. The pull request is closed. But the
 feature is not actually in production. It is waiting for a downstream team to validate. Or it is
@@ -42,7 +42,7 @@ Common variations:
 The telltale sign: the team's velocity (stories closed per sprint) looks healthy, but the number
 of features actually reaching users is much lower.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Undone work creates a gap between what the team reports and what the team has actually delivered.
 This gap hides risk, delays feedback, and erodes trust in the team's metrics.
@@ -91,7 +91,7 @@ CD also requires that done means done. If the team's definition of done does not
 deployment and verification, the team is practicing continuous integration at best, not continuous
 delivery.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Define done to include production
 
@@ -132,7 +132,7 @@ Each step that is automated eliminates a hidden queue and brings "developer done
 | "Our velocity will drop if we include deployment in done" | Your velocity has been inflated by excluding deployment. The real throughput (features reaching users) has always been lower. Honest velocity enables honest planning. |
 | "The deployment schedule is outside our control" | Measure the wait time and make it visible. If a story waits five days for deployment after the code is ready, that is five days of lead time the team is absorbing silently. Making it visible creates pressure to fix the process. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -141,7 +141,7 @@ Each step that is automated eliminates a hidden queue and brings "developer done
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the full path from commit to production shortens |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should become more accurate as it measures the real end-to-end time |
 
-## Related Content
+## Related content
 
 - [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}) - Large items are more likely to have undone work because they take longer to validate
 - [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}) - Manual deployment processes create the deployment gap

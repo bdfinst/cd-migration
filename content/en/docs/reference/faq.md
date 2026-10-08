@@ -6,7 +6,7 @@ description: >
   Frequently asked questions about continuous delivery and this migration guide.
 ---
 
-## About This Guide
+## About this guide
 
 ### Why does this migration guide exist?
 
@@ -58,7 +58,7 @@ Your [value stream map](../glossary/#value-stream-map) and metrics tell you wher
 Revisit your assessment periodically. As you improve, new constraints will emerge. The phases
 give you a framework for addressing them.
 
-## Continuous Delivery Concepts
+## Continuous delivery concepts
 
 ### What is the difference between continuous delivery and continuous deployment?
 
@@ -162,7 +162,7 @@ succeed?) from the business risk (will users like the feature?). You can manage 
 independently. Deployments become routine technical events. Releases become deliberate business
 decisions.
 
-## Migration Questions
+## Migration questions
 
 ### How long does the migration take?
 

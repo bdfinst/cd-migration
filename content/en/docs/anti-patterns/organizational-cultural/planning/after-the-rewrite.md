@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The engineering team has a plan. The current system is a fifteen-year-old monolith: undocumented,
 tightly coupled, slow to build, and painful to deploy. Everyone agrees it needs to be replaced.
@@ -52,7 +52,7 @@ Common variations:
 The telltale sign: the phrase "once we finish the rewrite" has appeared in planning conversations
 for more than a year, and the completion date has moved at least twice.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Deferral is a form of compounding debt. Each month the existing system continues to be deployed
 manually is a month of manual deployment effort that automation would have eliminated. Each month
@@ -110,7 +110,7 @@ the legacy system, however imperfect, is experience that informs how tests are w
 system. Deployment automation for the legacy system is practice for deployment automation on the
 new system. Deferring CD defers not only the benefits but the organizational learning.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Identify what can improve now, without the rewrite
 
@@ -122,7 +122,7 @@ In most legacy systems, there are areas with lower coupling that can be tested t
 a deployment process that can be automated even if the application architecture is not ideal.
 There is a build process that can be made faster. Not everything is blocked by the rewrite.
 
-### Step 2: Start the "strangler fig" for at least one CD practice (Weeks 2-4)
+### Step 2: Start the "strangler fig" for at least one CD practice (weeks 2-4)
 
 The strangler fig pattern - wrapping old behavior with new - applies to practices as well as
 architecture. Choose one CD practice and apply it to the new code being added to the existing
@@ -133,7 +133,7 @@ injected dependencies). Old untestable classes are not rewritten, but no new unt
 added. Over time, the testable fraction of the codebase grows. The rewrite is not a prerequisite
 for this improvement - a team agreement is.
 
-### Step 3: Automate the deployment of the existing system (Weeks 3-8)
+### Step 3: Automate the deployment of the existing system (weeks 3-8)
 
 Manual deployment of the existing system is a cost paid on every deployment. Deployment automation
 does not require a new architecture. Even a monolith with a complex deployment process can have
@@ -141,7 +141,7 @@ that process codified in a pipeline script. The benefit is immediate. The organi
 experience of running an automated deployment pipeline transfers directly to the new system when
 it is ready.
 
-### Step 4: Set a "both systems healthy" standard for the rewrite (Weeks 4-8)
+### Step 4: Set a "both systems healthy" standard for the rewrite (weeks 4-8)
 
 Reframing the rewrite as a migration rather than an escape hatch changes the team's relationship
 to the existing system. The standard: both systems should be healthy. The existing system receives
@@ -152,7 +152,7 @@ This creates two benefits. First, the existing system is better cared for. Secon
 stops treating the rewrite as the only path to quality improvement, which reduces the urgency
 that has been artificially attached to the rewrite timeline.
 
-### Step 5: Establish criteria for declaring the rewrite "done" (Ongoing)
+### Step 5: Establish criteria for declaring the rewrite "done" (ongoing)
 
 Rewrites without completion criteria never end. Define explicitly what the rewrite achieves:
 what functionality must be migrated, what performance targets must be met, what CD practices
@@ -165,7 +165,7 @@ horizon from receding indefinitely.
 | "We don't want to invest in automation for code we're about to throw away" | You are not about to throw it away - you have been about to throw it away for two years. The expected duration of the investment is the duration of the rewrite, which is already longer than estimated. A year of automated deployment benefit is real return. |
 | "The new system will be built with CD from the start, so we'll get the benefits there" | That is true, but it ignores that the existing system is what your users depend on today. Defects escaping from the existing system cost real money, regardless of how clean the new system's practices will be. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -175,7 +175,7 @@ horizon from receding indefinitely.
 | Rewrite completion percentage vs. original estimate | Tracking this honestly surfaces how much the horizon has moved |
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease for the existing system as test coverage increases |
 
-## Related Content
+## Related content
 
 - [The "We're Different" Mindset]({{< relref "/docs/anti-patterns/organizational-cultural/planning/were-different-mindset" >}}) - The related pattern of using context as a reason not to start
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Incremental approaches to improving an existing system's architecture

@@ -25,7 +25,7 @@ buildDuration = artifactReadyTimestamp - commitPushTimestamp
 This metric is sometimes referred to as "pipeline cycle time" or "CI cycle time."
 The book *Accelerate* references it as part of "hard lead time."
 
-## How to Measure
+## How to measure
 
 1. **Record the commit timestamp.** Capture when the commit arrives at the CI
    server (webhook receipt or pipeline trigger time).
@@ -59,7 +59,7 @@ The ten-minute threshold is a widely recognized guideline. Builds longer than te
 minutes break developer flow, discourage frequent integration, and increase the
 cost of fixing failures.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Removing tests to hit targets.** Reducing test count or skipping test types
   (integration, security) lowers build duration but degrades quality. Always pair

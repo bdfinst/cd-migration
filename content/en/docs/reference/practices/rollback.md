@@ -10,7 +10,7 @@ description: >
 
 Rollback on-demand means the ability to quickly and safely revert to a previous working version of your application at any time, without requiring special approval, manual intervention, or complex procedures. It should be as simple and reliable as deploying forward.
 
-## Key Principles
+## Key principles
 
 1. **Fast**: Rollback completes in minutes, not hours. Target < 5 minutes.
 2. **Automated**: No manual steps or special procedures. Single command or click.
@@ -18,7 +18,7 @@ Rollback on-demand means the ability to quickly and safely revert to a previous 
 4. **Simple**: Any team member can execute it without specialized knowledge.
 5. **Tested**: Rollback mechanism is regularly tested, not only used in emergencies.
 
-## What Is Improved
+## What is improved
 
 - **Mean Time To Recovery (MTTR)**: Drops from hours to minutes
 - **Deployment frequency**: Increases due to reduced risk
@@ -26,13 +26,13 @@ Rollback on-demand means the ability to quickly and safely revert to a previous 
 - **Customer satisfaction**: Faster incident resolution
 - **On-call burden**: Reduced stress for on-call engineers
 
-## Migration Guidance
+## Migration guidance
 
 For detailed guidance on implementing rollback capability, see:
 
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Phase 2 pipeline practice with blue-green, canary, feature flag, and database-safe rollback patterns
 
-## Additional Resources
+## Additional resources
 
 - [Site Reliability Engineering: Release Engineering](https://sre.google/sre-book/release-engineering/)
 - [Martin Fowler: Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html)

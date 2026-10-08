@@ -26,7 +26,7 @@ production) as a key [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >
 further back to when work starts, capturing the full development process including
 any time between starting work and the first commit.
 
-## How to Measure
+## How to measure
 
 1. **Record when work starts.** Capture the timestamp when a story moves to
    "In Progress" in your issue tracker, or when the first commit for the story
@@ -62,7 +62,7 @@ Elite teams deliver completed work to production within one to two days of start
 it. This is achievable only when work is decomposed into small increments, the
 [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is fast, and deployment is automated.
 
-## Common Pitfalls
+## Common pitfalls
 
 - **Marking work "Done" before it reaches production.** If "Done" means "code
   complete" rather than "deployed," the metric understates actual cycle time. The

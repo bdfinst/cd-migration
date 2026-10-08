@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Performance reviews ask about features delivered. OKRs are written as "ship X, Y, and Z by end of
 quarter." Bonuses are tied to project completions. The team is recognized in all-hands meetings
@@ -56,7 +56,7 @@ Common variations:
 The telltale sign: when asked about delivery speed or deployment frequency, the team lead says
 "I don't know, that's not one of our goals."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Incentive systems define what people optimize for. When the incentive system rewards feature volume,
 people optimize for feature volume. When delivery health metrics are absent from the incentive
@@ -114,7 +114,7 @@ engineers are measured on features, every hour spent on pipeline work is an hour
 failing their OKR. The adoption effort will stall because the incentive system is working
 against it.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit current metrics and OKRs against delivery health
 
@@ -123,7 +123,7 @@ features/output, or does it measure delivery system health? In most organization
 be almost entirely output measures. Making this visible is the first step - it is hard to argue
 for change when people do not see the gap.
 
-### Step 2: Propose adding one delivery health metric per team (Weeks 2-3)
+### Step 2: Propose adding one delivery health metric per team (weeks 2-3)
 
 Do not attempt to overhaul the entire incentive system at once. Propose adding one delivery health
 metric to each team's OKRs. Good starting options:
@@ -135,7 +135,7 @@ metric to each team's OKRs. Good starting options:
 Even one metric creates a reason to discuss delivery system health in planning and review
 conversations. It legitimizes the investment of time in CD improvement work.
 
-### Step 3: Make prevention visible alongside recovery (Weeks 2-4)
+### Step 3: Make prevention visible alongside recovery (weeks 2-4)
 
 Change recognition patterns. When the on-call engineer's fix is recognized in a team meeting, also
 recognize the engineer who spent time the previous week improving test coverage in the area that
@@ -143,14 +143,14 @@ failed. When a deployment goes smoothly because a developer took care to add dep
 verification, note it explicitly. Visible recognition of prevention behavior - not only heroic
 recovery - changes the cost-benefit calculation for investing in quality.
 
-### Step 4: Align operations and development incentives (Weeks 4-8)
+### Step 4: Align operations and development incentives (weeks 4-8)
 
 If development and operations are separate teams with separate OKRs, introduce a shared metric that
 both teams own. Change fail rate is a good candidate: development owns the change quality,
 operations owns the deployment process, both affect the outcome. A shared metric creates a reason
 to collaborate rather than negotiate.
 
-### Step 5: Include delivery system health in planning conversations (Ongoing)
+### Step 5: Include delivery system health in planning conversations (ongoing)
 
 Every planning cycle, include a review of delivery health metrics alongside product metrics. "Our
 deployment frequency is monthly; we want it to be weekly" should have the same status in a
@@ -163,7 +163,7 @@ improvement as legitimate work, not as optional infrastructure overhead.
 | "Measuring deployment frequency doesn't help the business understand what we delivered" | Both matter. Deployment frequency is a leading indicator of delivery capability. A team that deploys daily can respond to business needs faster than one that deploys monthly. The business benefits from both knowing what was delivered and knowing how quickly future needs can be addressed. |
 | "Our OKR process is set at the company level, we can't change it" | You may not control the formal OKR system, but you can control what the team tracks and discusses informally. Start with team-level tracking of delivery health metrics. When those metrics improve, the results are evidence for incorporating them in the formal system. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -173,7 +173,7 @@ improvement as legitimate work, not as optional infrastructure overhead.
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as prevention is rewarded alongside recovery |
 | Ratio of feature work to delivery system investment | Should move toward including measurable delivery improvement time each sprint |
 
-## Related Content
+## Related content
 
 - [Deadline-Driven Development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}}) - Deadline incentives are a specific form of misaligned incentives
 - [Velocity as Individual Metric]({{< relref "/docs/anti-patterns/organizational-cultural/planning/velocity-as-individual-metric" >}}) - Using velocity as a performance metric creates its own misalignment

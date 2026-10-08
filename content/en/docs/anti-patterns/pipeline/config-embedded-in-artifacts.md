@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The build process pulls a configuration file that includes the database hostname, the API base URL for downstream services, the S3 bucket name, and a handful of feature flag values. These values are different for each environment - development, staging, and production each have their own database and their own service endpoints. To handle this, the build system accepts an environment name as a parameter and selects the corresponding configuration file before compiling or packaging.
 
@@ -32,7 +32,7 @@ Common variations:
 
 The telltale sign: the build pipeline accepts an environment name as an input parameter, and changing that parameter produces a different artifact.
 
-## Why This Is a Problem
+## Why this is a problem
 
 An artifact that is rebuilt for each environment is not the same artifact that was tested.
 
@@ -64,7 +64,7 @@ CD is built on the principle of build once, deploy many times. The artifact prod
 
 Immutable artifacts are a foundational CD practice. Externalizing configuration is what makes immutable artifacts possible. Without it, the pipeline can verify a specific artifact but cannot guarantee that the artifact reaching production is the one that was verified.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Identify all embedded configuration values
 
@@ -74,11 +74,11 @@ Audit the build process to find every place where an environment-specific value 
 
 Separate configuration values into categories: non-sensitive application configuration (URLs, feature flags, pool sizes), sensitive credentials (database passwords, API keys, certificates), and runtime-computed values (hostnames assigned at deploy time). Each category calls for a different externalization approach - application config files, a secrets vault, and deployment-time injection, respectively.
 
-### Step 3: Externalize non-sensitive configuration (Weeks 2-3)
+### Step 3: Externalize non-sensitive configuration (weeks 2-3)
 
 Move non-sensitive configuration values out of the build and into externally-managed configuration files, environment variables injected at runtime, or a configuration service. The application should read these values at startup from the environment, not from values baked in at build time. Refactor the application code to expect external configuration rather than compiled-in defaults. Test by running the same artifact against multiple configuration sets.
 
-### Step 4: Move secrets to a vault (Weeks 3-4)
+### Step 4: Move secrets to a vault (weeks 3-4)
 
 Credentials should never live in config files or be passed as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
 
@@ -97,7 +97,7 @@ Add a pipeline step that records the artifact checksum after the build and verif
 | "Feature flags need to be in the build to avoid dead code." | Feature flags are the canonical example of configuration that should be external. External feature flag systems exist precisely to allow behavior changes without rebuilds. |
 | "Our secrets team controls configuration and we cannot change their process." | Start by externalizing non-sensitive configuration, which you likely do control. The secrets externalization can follow once you have demonstrated the pattern. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -107,7 +107,7 @@ Add a pipeline step that records the artifact checksum after the build and verif
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Faster recovery from configuration-related incidents when a config change no longer requires a full rebuild |
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increased deployment frequency as the pipeline no longer multiplies build time across environments |
 
-## Related Content
+## Related content
 
 - [Application configuration management]({{< relref "/docs/pipeline/application-config" >}})
 - [Immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}})

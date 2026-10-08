@@ -12,7 +12,7 @@ aliases:
 Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context]({{< relref "/docs/reference/glossary#context-llm" >}}) cost: it determines what every [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) pays on every invocation, and what must be loaded only when needed.
 {{% /pageinfo %}}
 
-## Configuration Mechanisms
+## Configuration mechanisms
 
 | Mechanism | Purpose | When loaded |
 |-----------|---------|-------------|
@@ -24,7 +24,7 @@ Each configuration mechanism serves a different purpose. Placing information in 
 
 ---
 
-## Project Context File
+## Project context file
 
 The project context file is a markdown document that every agent reads at the start of every session. Put here anything that every agent always needs to know about the project. The filename differs by tool - Claude Code uses `CLAUDE.md`, Gemini CLI uses `GEMINI.md`, OpenAI Codex uses `AGENTS.md`, and GitHub Copilot uses `.github/copilot-instructions.md` - but the purpose does not.
 
@@ -123,7 +123,7 @@ Test class names mirror source class names with a Test suffix
 
 ---
 
-## Rules (System Prompts)
+## Rules (system prompts)
 
 Rules define how a specific agent behaves. Each agent has its own rules document, injected at the top of that agent's context on every invocation. Rules are stable across sessions - they define the agent's operating constraints, not what it is doing right now.
 
@@ -388,7 +388,7 @@ The AI review step (`/review`) runs after these pass. It is invoked by the agent
 
 ---
 
-## Decision Framework
+## Decision framework
 
 For any piece of information or procedure, apply this sequence:
 
@@ -400,7 +400,7 @@ For any piece of information or procedure, apply this sequence:
 
 ---
 
-## Context Loading Order
+## Context loading order
 
 Within each agent invocation, load context in this order:
 
@@ -416,7 +416,7 @@ Stable content at the top. Volatile content at the bottom. Rules and the project
 
 ---
 
-## File Layout
+## File layout
 
 The examples below show how the configuration mechanisms map to Claude Code, Gemini CLI,
 OpenAI Codex CLI, and GitHub Copilot. The file names and locations differ; the purpose
@@ -477,7 +477,7 @@ agent composition, see [Agentic Architecture Patterns]({{< relref "/docs/agentic
 
 ---
 
-## Decomposed Context by Code Area
+## Decomposed context by code area
 
 A single project context file at the repo root works for small codebases. For larger
 ones with distinct bounded contexts, split the project context file by code area.
@@ -544,7 +544,7 @@ already in the root file.
 
 ---
 
-## Related Content
+## Related content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - the design principles behind skills, agents, hooks, and multi-agent composition
 - [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) - the complete rules, skills, and hooks for a coding and pre-commit review configuration

@@ -22,7 +22,7 @@ happened, what caused it, or how many users were affected.
 
 ## Common causes
 
-### Blind Operations
+### Blind operations
 
 The team has no application-level metrics, no centralized logging, and no alerting. The
 infrastructure may report that servers are running, but nobody can tell whether the application
@@ -31,7 +31,7 @@ wait for someone to experience it and report it.
 
 **Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
-### Manual Deployments
+### Manual deployments
 
 When deployments involve human steps (running scripts by hand, clicking through a console),
 there is no automated verification step. The deployment process ends when the human finishes the
@@ -41,7 +41,7 @@ complaints.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Missing Deployment Pipeline
+### Missing deployment pipeline
 
 When there is no automated path from commit to production, there is nowhere to integrate
 automated health checks. A deployment pipeline can include post-deploy verification that
@@ -68,7 +68,7 @@ usually skipped under time pressure.
 
 **Ready to fix this?** The most common cause is [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}}) - Both symptoms indicate missing observability
 - [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Staging does not catch what monitoring would

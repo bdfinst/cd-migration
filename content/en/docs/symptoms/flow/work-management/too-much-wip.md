@@ -24,7 +24,7 @@ the time but finishes very little.
 
 ## Common causes
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When managers assign work to individuals rather than letting the team pull from a prioritized
 backlog, each person ends up with their own queue of assigned items. WIP grows because work is
@@ -33,7 +33,7 @@ items because everyone is busy with "their" assigned work.
 
 **Read more:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 
-### Horizontal Slicing
+### Horizontal slicing
 
 When work is split by technical layer ("build the database schema," "build the API," "build the
 UI"), each layer must be completed before anything is [deployable]({{< relref "/docs/reference/glossary#deployable" >}}). Multiple developers work on
@@ -67,7 +67,7 @@ busy by starting things rather than finishing them.
 
 **Ready to fix this?** The most common cause is [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - High WIP directly increases cycle time
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Review queues are a common source of excess WIP

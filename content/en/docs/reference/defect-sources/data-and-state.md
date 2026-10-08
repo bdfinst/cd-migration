@@ -16,7 +16,7 @@ defects, data corruption often cannot be fixed by deploying a new version.
 | Concurrency and ordering issues | CI | Thread sanitizers, load tests with randomized timing | <span class="ai-blocked">Design patterns, not AI</span> | Design for out-of-order delivery; idempotent consumers |
 | Cache invalidation errors | Acceptance Tests | Cache consistency monitoring, TTL verification, stale data detection | Review cache invalidation logic for incomplete paths or mismatches | Short TTLs; event-driven invalidation |
 
-## Related Content
+## Related content
 
 - [Defect Sources]({{< relref "/docs" >}}) - full catalog overview and how to use it
 - [Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - testing types and good practices

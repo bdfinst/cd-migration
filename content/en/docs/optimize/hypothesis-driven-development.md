@@ -14,7 +14,7 @@ aliases:
 Hypothesis-driven development treats every change as an experiment. Instead of building features because someone asked for them and hoping they help, teams state a predicted outcome before writing code, measure the result after deployment, and use the evidence to decide what to do next. Combined with [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [small batches]({{< relref "/docs/reference/glossary#batch-size" >}}), and [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}), this practice closes the loop between shipping and learning.
 {{% /pageinfo %}}
 
-## Why Hypothesis-Driven Development
+## Why hypothesis-driven development
 
 Most teams ship features without stating what outcome they expect. A product manager requests a feature, developers build it, and everyone moves on to the next item. Weeks later, nobody checks whether the feature actually helped.
 
@@ -22,11 +22,11 @@ This is waste. Teams accumulate features without knowing their impact, backlogs 
 
 Hypothesis-driven development fixes this by making every change answer a question. If the answer is "yes, it helped," the team invests further. If the answer is "no," the team reverts or pivots before sinking more effort into the wrong direction. Over time, this produces a product shaped by evidence rather than assumptions.
 
-## The Lifecycle
+## The lifecycle
 
 The hypothesis-driven development lifecycle has five stages. Each stage has a specific purpose and a clear output that feeds the next stage.
 
-### 1. Form the Hypothesis
+### 1. Form the hypothesis
 
 A hypothesis is a falsifiable prediction about what a change will accomplish. It follows a specific format:
 
@@ -60,7 +60,7 @@ The "because" clause is critical. Without it, you have a wish, not a hypothesis.
 | Falsifiable | Is it possible for the experiment to fail? | Yes - abandonment could stay the same or increase |
 | Connected to business value | Does the outcome matter to the business? | Reduced abandonment directly increases revenue |
 
-### 2. Design the Experiment
+### 2. Design the experiment
 
 Once the hypothesis is formed, design an experiment that can confirm or reject it.
 
@@ -90,7 +90,7 @@ Once the hypothesis is formed, design an experiment that can confirm or reject i
 | Before/after | Low traffic or infrastructure changes that affect everyone | Simpler, but confounding factors are harder to control |
 | Cohort comparison | Targeting a specific user segment | Good for segment-specific changes, harder to generalize |
 
-### 3. Implement and Deploy
+### 3. Implement and deploy
 
 Build the change using the same [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices you use for any other work.
 
@@ -129,7 +129,7 @@ public class CheckoutController {
 }
 {{< /card >}}
 
-### 4. Measure Results
+### 4. Measure results
 
 After the time box expires or the sample size is reached, compare the results against the predefined success criteria.
 
@@ -163,7 +163,7 @@ The final stage closes the loop. Based on the results, the team takes one of thr
 
 **If inconclusive:** Decide whether to extend the experiment (more time, more traffic) or abandon it. If confounding factors were identified, consider rerunning the experiment under cleaner conditions. Set a hard limit on reruns to avoid indefinite experimentation.
 
-## Common Pitfalls
+## Common pitfalls
 
 | Pitfall | What Happens | How to Avoid It |
 |---------|-------------|-----------------|
@@ -175,7 +175,7 @@ The final stage closes the loop. Based on the results, the team takes one of thr
 | Hypothesis disconnected from business outcomes | Team optimizes technical metrics nobody cares about | Every hypothesis must connect to a metric the business tracks |
 | Experiments that are too large | Weeks of development before any measurement | Apply [small batch]({{< relref "/docs/optimize/small-batches" >}}) discipline to experiments too |
 
-## Measuring Success
+## Measuring success
 
 | Indicator | Target | Why It Matters |
 |-----------|--------|----------------|
@@ -185,13 +185,13 @@ The final stage closes the loop. Based on the results, the team takes one of thr
 | Time from hypothesis to result | 2-4 weeks | Confirms experiments are scoped small enough to get fast answers |
 | Decisions changed by experiment results | Increasing | Confirms experiments actually influence product direction |
 
-## Next Step
+## Next step
 
 Experiments generate learnings, but learnings only turn into improvements when the team discusses them. [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) provide the forum where the team reviews experiment results, decides what to do next, and adjusts the process itself.
 
 ---
 
-## Related Content
+## Related content
 
 - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - the measurement infrastructure that hypothesis-driven development depends on
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - the practice that keeps experiments small enough to measure

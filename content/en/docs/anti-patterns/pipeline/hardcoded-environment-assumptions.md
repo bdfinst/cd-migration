@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Search the codebase for the string "production" and dozens of matches come back from inside
 application logic. Some are safety guards: `if (environment != 'production') { runSlowMigration(); }`.
@@ -59,7 +59,7 @@ The telltale sign: "it works in staging" and "it works in production" are consid
 different statements rather than synonyms, because the code genuinely behaves differently
 in each.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Environment-specific code branches create a fragmented codebase where no environment runs
 exactly the same software as any other. Testing in staging validates one version of the code.
@@ -136,7 +136,7 @@ deployment introduces not only the changes the developer made, but also all the 
 production-specific code paths that happen to be active. The team cannot deploy frequently
 with confidence when they cannot trust that staging behavior predicts production behavior.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit the codebase for environment-name checks
 
@@ -152,7 +152,7 @@ Find every location where environment-specific logic is embedded in code:
 4. Create a list ordered by risk: code paths that are production-only and have no test
    coverage are highest risk.
 
-### Step 2: Externalize URL and endpoint selection to configuration (Weeks 1-2)
+### Step 2: Externalize URL and endpoint selection to configuration (weeks 1-2)
 
 Start with hardcoded URLs and connection strings - they are the easiest environment assumptions to eliminate:
 
@@ -173,7 +173,7 @@ The URL is now injected at deployment time from environment-specific configurati
 a configuration management system. The code is identical in every environment. Adding a new
 environment requires no code changes, only a new configuration entry.
 
-### Step 3: Replace hand-rolled feature flags with a proper mechanism (Weeks 2-3)
+### Step 3: Replace hand-rolled feature flags with a proper mechanism (weeks 2-3)
 
 Introduce a proper feature flag mechanism wherever environment-name checks are implementing
 feature toggles:
@@ -198,7 +198,7 @@ appropriately.
 Start with a simple in-process feature flag backed by a configuration file. Migrate to a
 dedicated feature flag service as the pattern matures.
 
-### Step 4: Remove behavior suppression by environment (Weeks 3-4)
+### Step 4: Remove behavior suppression by environment (weeks 3-4)
 
 Replace environment-aware suppression of email sending, external API calls, and notification
 firing with proper test doubles:
@@ -225,7 +225,7 @@ The production code now runs in every environment. Tests use a recording double 
 what emails would have been sent, allowing tests to verify the notification logic. The
 environment check is gone.
 
-### Step 5: Add integration tests for previously-untested production paths (Weeks 4-6)
+### Step 5: Add integration tests for previously-untested production paths (weeks 4-6)
 
 Add tests for every production-only code path that is now testable:
 
@@ -237,7 +237,7 @@ Add tests for every production-only code path that is now testable:
 This step converts previously-untested production-specific logic into well-tested shared logic.
 Each test added reduces the population of latent production-only defects.
 
-### Step 6: Enforce the no-environment-name-in-code rule (Ongoing)
+### Step 6: Enforce the no-environment-name-in-code rule (ongoing)
 
 Add a static analysis check that fails the pipeline if environment name literals appear in
 application logic (as opposed to configuration loading):
@@ -254,7 +254,7 @@ application logic (as opposed to configuration loading):
 | "Replacing our hand-rolled feature flags is a big project" | Start with the highest-risk checks first - the ones where production runs code that tests never execute. A simple configuration-based feature flag is ten lines of code. Replace one high-risk check this sprint and add the test that was previously impossible to write. |
 | "Our staging environment intentionally limits some external calls to control cost" | Limit the external calls at the infrastructure level (mock endpoints, sandbox accounts, rate limiting), not by removing code paths. Move the first cost-driven environment check to an infrastructure-level mock this sprint and delete the code branch. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -265,7 +265,7 @@ application logic (as opposed to configuration loading):
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as production-only debugging cycles are eliminated |
 | Time to reproduce production bugs locally | Should decrease as code paths become environment-agnostic |
 
-## Related Content
+## Related content
 
 - [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) - The right way to vary behavior between environments is through configuration
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Environments should differ only in scale and configuration, not in behavior

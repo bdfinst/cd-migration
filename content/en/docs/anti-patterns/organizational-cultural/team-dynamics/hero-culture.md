@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Every team has that one person - the one you call when the production deployment goes sideways at 11 PM, the one who knows which config file to change to fix the mysterious startup failure, the one whose vacation gets cancelled when the quarterly release hits a snag. This person is praised, rewarded, and promoted for their heroics. They are also a single point of failure quietly accumulating more irreplaceable knowledge with every incident they solo.
 
@@ -30,7 +30,7 @@ Common variations:
 
 The telltale sign: there is at least one person on the team whose absence would cause a visible degradation in the team's ability to deploy or respond to incidents.
 
-## Why This Is a Problem
+## Why this is a problem
 
 When your hero is on vacation, critical deployments stall. When they leave the company, institutional knowledge leaves with them. The system appears robust because problems get solved, but the problem-solving capacity is concentrated in people rather than distributed across the team and encoded in systems.
 
@@ -66,7 +66,7 @@ CD also requires that every team member be able to see a failing build, understa
 
 More subtly, hero culture prevents the team from building the automation that makes CD possible. Automating a process requires understanding it well enough to encode it. Heroes understand the process but have no time to automate. Other team members have time but not understanding. The gap persists.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map knowledge concentration
 
@@ -85,7 +85,7 @@ Expect pushback and address it directly:
 | "The hero is fine with the workload." | The hero's experience of the work is not the only risk. A team that cannot function without one person cannot grow, cannot rotate the hero off the team, and cannot survive the hero leaving. |
 | "This sounds like we're punishing people for being good." | Heroes are not the problem. A system that creates and depends on heroes is the problem. The goal is to let the hero do harder, more interesting work by distributing the things they currently do alone. |
 
-### Step 2: Begin systematic knowledge transfer (Weeks 2-6)
+### Step 2: Begin systematic knowledge transfer (weeks 2-6)
 
 1. Require pair programming or pairing on all incidents and deployments for the next sprint, with the hero as the driver and a different team member as the navigator each time.
 2. Create runbooks collaboratively: after each incident, the hero and at least one other team member co-author the post-mortem and write the runbook for the class of problem, not only the instance.
@@ -100,7 +100,7 @@ Expect pushback and address it directly:
 | "We don't have time for pairing - we have deliverables." | Pair programming overhead is typically 15% of development time. The time lost to hero dependencies is typically 20-40% of team capacity. The math favors pairing. |
 | "Runbooks get outdated immediately." | An outdated runbook is better than no runbook. Add runbook review to the incident checklist. |
 
-### Step 3: Encode knowledge in systems instead of people (Weeks 6-12)
+### Step 3: Encode knowledge in systems instead of people (weeks 6-12)
 
 1. Automate the deployments the hero currently performs manually. If the hero is the only one who knows the deployment steps, that is the first automation target.
 2. Add observability - logs, metrics, and alerts - to the systems only the hero currently understands. If a system cannot be diagnosed without the hero's intuition, it needs more instrumentation.
@@ -116,7 +116,7 @@ Expect pushback and address it directly:
 | "Customers will suffer if we rotate on-call before everyone is ready." | Define "ready" with a shadow rotation rather than waiting for readiness that never arrives. Shadow first, escalation path second, independent third. |
 | "The hero doesn't want to give up control." | Frame it as opportunity. When the hero's routine work is distributed, they can take on the architectural and strategic work they do not currently have time for. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Track carefully: may temporarily increase as less-experienced team members take ownership, then should improve |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction as the hero bottleneck clears and work stops waiting for one person |
 
-## Related Content
+## Related content
 
 - [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared ownership expectations that prevent hero dependencies from forming
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - automated rollback reduces the need for a hero to manually recover from bad deployments
