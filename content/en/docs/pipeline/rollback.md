@@ -239,7 +239,7 @@ for any team member to execute.
 
 Configure the deployment system to automatically roll back if the new version fails
 health checks within a defined window after deployment. This removes the need for a human
-to detect the problem and initiate the rollback.
+to detect the problem and start the rollback.
 
 ### Rollback testing in staging
 

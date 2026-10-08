@@ -329,7 +329,7 @@ control. Pin CI tool versions explicitly. Pin base image versions in Dockerfiles
 ### Step 3: Containerize the build
 
 Move your build steps into containers with explicitly defined environments. This is often
-the highest-leverage change for improving determinism.
+the change that improves determinism the most.
 
 ### Step 4: Identify and fix flaky tests
 
