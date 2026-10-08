@@ -88,7 +88,7 @@ Expect pushback and address it directly:
 
 ### Step 2: Design automated controls that satisfy regulatory requirements (Weeks 2-6)
 
-1. Identify the specific controls the regulation requires (e.g., segregation of duties, change documentation, rollback capability) and implement each as a pipeline stage.
+1. Identify the specific controls the regulation requires (for example, segregation of duties, change documentation, rollback capability) and implement each as a pipeline stage.
 2. Require code review by at least one person who did not write the change, enforced by the source control system, not by a meeting.
 3. Implement automated security scanning in the pipeline and configure it to block deployment of changes with high-severity findings.
 4. Generate deployment records automatically from the pipeline: who approved the pull request, what tests ran, what artifact was deployed, to which environment, at what time. This is the audit evidence.

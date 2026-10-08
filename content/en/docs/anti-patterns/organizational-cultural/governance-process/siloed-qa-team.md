@@ -88,7 +88,7 @@ Expect pushback and address it directly:
 
 1. Embed QA engineers into development teams rather than maintaining a separate QA team. One QA engineer per team is a reasonable starting ratio.
 2. Require developers to write unit and integration tests as part of each story - not as a separate task, but as part of the definition of done.
-3. Establish a team-level automation coverage target (e.g., 80% of acceptance criteria covered by automated tests before a story is considered done).
+3. Establish a team-level automation coverage target (for example, 80% of acceptance criteria covered by automated tests before a story is considered done).
 4. Add automated test execution to the CI pipeline so every commit is verified without human intervention.
 5. Redirect QA engineer effort from manual verification to test strategy, automation framework maintenance, and exploratory testing of new features.
 6. Remove the separate QA queue from the board and replace it with a "verified done" column that requires automated test passage.
