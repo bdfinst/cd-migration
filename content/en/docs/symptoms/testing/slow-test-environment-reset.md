@@ -34,7 +34,7 @@ artifacts rather than real bugs.
 ### Shared Test Environments
 
 When multiple teams share a single test environment, the environment is never in a clean state.
-One team's tests leave data behind. Another team's tests depend on data that was just deleted.
+One team's tests leave data behind. Another team's tests depend on data that was deleted moments earlier.
 Resetting the environment means restoring it to a state that works for all teams, which
 requires coordination and takes longer than resetting a single-team environment.
 
@@ -111,7 +111,7 @@ services - do not need environment resets. They run in isolation with their own 
 ## Related Content
 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Related symptom caused by environment inconsistency
-- [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not just the reset
+- [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Companion symptom where the tests themselves are slow, not only the reset
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Too many tests at the E2E layer requiring full environment setup
 - [Test Doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) - Virtual services and in-memory replacements for external dependencies
 - [Shared Test Environments]({{< relref "/docs/anti-patterns/pipeline/shared-test-environments" >}}) - The most common root cause of long reset times
