@@ -255,7 +255,7 @@ Microservices add operational complexity (more services to deploy, monitor, and 
 
 ### 3. "Teams keep adding new dependencies that recouple the system"
 
-Architecture decoupling requires governance. Establish architectural principles (e.g., "no shared databases") and enforce them through automated checks (e.g., dependency analysis in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})) and architecture reviews for cross-boundary changes.
+Architecture decoupling requires governance. Establish architectural principles (for example, "no shared databases") and enforce them through automated checks (for example, dependency analysis in [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})) and architecture reviews for cross-boundary changes.
 
 ### 4. "We can't afford the time to decouple"
 

@@ -71,7 +71,7 @@ Swarming is the practice of multiple team members working together on a single i
 
 ### When to Swarm
 
-- An item has been in progress for longer than the team's cycle time target (e.g., more than 2 days)
+- An item has been in progress for longer than the team's cycle time target (for example, more than 2 days)
 - An item is blocked and the blocker can be resolved by another team member
 - The WIP limit is reached and someone needs work to do
 - A critical defect needs to be fixed immediately
@@ -82,7 +82,7 @@ Swarming is the practice of multiple team members working together on a single i
 |----------|-------------|----------|
 | **Pair programming** | Two developers work on the same item at the same machine | Complex logic, knowledge transfer, code that needs review |
 | **Mob programming** | The whole team works on one item together | Critical path items, complex architectural decisions |
-| **Divide and conquer** | Break the item into sub-tasks and assign them | Items that can be parallelized (e.g., frontend + backend + tests) |
+| **Divide and conquer** | Break the item into sub-tasks and assign them | Items that can be parallelized (for example, frontend + backend + tests) |
 | **Unblock and return** | One person resolves the blocker, then hands back | External dependencies, environment issues, access requests |
 
 ### Why Teams Resist Swarming
@@ -116,7 +116,7 @@ Before setting limits, make current WIP visible:
 ### Step 2: Set the Initial Limit
 
 - Calculate N+2 for your team
-- Add the limit to your board (e.g., a column header that says "In Progress (limit: 7)")
+- Add the limit to your board (for example, a column header that says "In Progress (limit: 7)")
 - Agree as a team that when the limit is reached, no new work starts
 
 ### Step 3: Enforce the Limit

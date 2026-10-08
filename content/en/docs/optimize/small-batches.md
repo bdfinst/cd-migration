@@ -262,19 +262,19 @@ Before changing anything, measure where you are:
 
 - Adopt the discipline of "one logical change per commit"
 - Use TDD to create a natural commit rhythm: write test, make it pass, commit
-- Track average commit size and set a team target (e.g., under 100 lines)
+- Track average commit size and set a team target (for example, under 100 lines)
 
 ### Ongoing: Increase Deploy Frequency
 
 - Deploy at least once per day, then work toward multiple times per day
-- Remove any batch-oriented processes (e.g., "we deploy on Tuesdays")
+- Remove any batch-oriented processes (for example, "we deploy on Tuesdays")
 - Make deployment a non-event
 
 ## Key Pitfalls
 
 ### 1. "Small stories take more overhead to manage"
 
-This is true only if your process adds overhead per story (e.g., heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
+This is true only if your process adds overhead per story (for example, heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
 
 ### 2. "Some things can't be done in small batches"
 
