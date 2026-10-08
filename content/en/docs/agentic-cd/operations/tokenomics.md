@@ -66,7 +66,7 @@ querying the database, which could allow unauthorized access."
 
 The JSON version conveys the same information in a fraction of the tokens and requires no natural language parsing step. When one agent's output becomes another agent's input, define a schema for that interface the same way you would define an API contract.
 
-This applies directly to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}): intent descriptions, feature descriptions, test specifications, and other [artifacts](../../reference/glossary/#artifact) passed between agents should be structured documents with defined fields, not open-ended prose.
+Schema discipline applies directly to the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}). Intent descriptions, feature descriptions, test specifications, and other [artifacts](../../reference/glossary/#artifact) passed between agents should be structured documents. Give them defined fields, not open-ended prose.
 
 ### 4. Strategic prompt caching
 
@@ -89,7 +89,7 @@ Not every task requires a frontier model. Match model tier to task requirements:
 | Code generation, complex reasoning | Mid to frontier | 10-20x |
 | Architecture review, novel problem solving | Frontier | 15-30x |
 
-An orchestrator using a frontier model to decide which sub-agent to call, when a small classifier would suffice, wastes tokens on both the decision and the overhead of a larger model.
+Consider an orchestrator that uses a frontier model to decide which sub-agent to call when a small classifier would suffice. It wastes tokens on both the decision and the overhead of a larger model.
 
 ### 6. Summarization cadence
 
@@ -122,7 +122,7 @@ Poorly structured or poorly named code is expensive in both token cost and outpu
 
 - A function named `processData` requires surrounding code, comments, and call sites before an agent can understand its purpose. A function named `calculateOrderTax` is self-documenting - intent is resolved by the name, not from the context budget.
 - Generic names (`temp`, `result`, `data`) and single-letter variables shift the cost of understanding from the identifier to the surrounding code. That surrounding code must load into every prompt that touches the function.
-- Inconsistent terminology across a codebase - the same concept called `user`, `account`, `member`, or `customer` in different files - forces agents to spend tokens reconciling vocabulary before applying logic.
+- Inconsistent terminology forces agents to spend tokens reconciling vocabulary before applying logic. For example, different files might call the same concept `user`, `account`, `member`, or `customer`.
 
 **Structure as context scope:**
 
@@ -146,7 +146,7 @@ Refactoring for human readability and refactoring for token efficiency are the s
 - Define explicit interfaces at module boundaries. An agent working inside a module needs only the interface contract for its dependencies, not the implementation.
 - Consolidate duplicate logic into one authoritative location. One definition is one context load; ten copies are ten opportunities for inconsistency.
 
-Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest impact.
+Treat AI interaction quality as feedback on code quality. An interaction might require more context than expected or produce worse output than expected. Treat either as a signal that the code needs better naming or structure. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest impact.
 
 **Enforcing these improvements through the [pipeline](../../reference/glossary/#pipeline):**
 
@@ -173,7 +173,7 @@ architectural conformance agent or linting checks become structured feedback the
 can act on directly. Rather than routing violations to a human reviewer, the pipeline
 returns the failure reason to the agent, which corrects the violation and resubmits.
 This self-correction cycle keeps naming and structure improvements in place without
-human intervention on each change - the pipeline teaches the agent what the codebase
+human intervention on each change. The pipeline teaches the agent what the codebase
 standards require, one correction at a time. Over repeated cycles, the correction
 rate drops as the agent internalizes the constraints, reducing both rework tokens and
 review burden.
@@ -188,7 +188,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 
 **Implementation:** The implementation agent receives the test specification and feature description. It does not need the intent description (that informed the specification). Pass what the agent needs for this step only.
 
-**Expert validation agents:** Validation agents running in parallel as [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) gates should receive the artifact being validated plus the specification it must conform to - not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history. For a concrete application of model routing, structured outputs, prompt caching, and per-session measurement to a specific agent configuration, see [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}).
+**Expert validation agents:** Validation agents run in parallel as [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) gates. Give each one the artifact being validated plus the specification it must conform to, not the complete pipeline context. A test fidelity agent checking whether generated tests match the specification does not need the implementation or deployment history. For a concrete application of model routing, structured outputs, prompt caching, and per-session measurement to a specific agent configuration, see [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}).
 
 **Review queues:** Agent-generated change volume can inflate review-time token costs when reviewers use AI-assisted review tools. [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits on the agent's change queue ([see Pitfalls]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics#2-review-queue-backs-up-from-agent-generated-volume" >}})) also function as a cost control on downstream AI review consumption.
 
@@ -201,7 +201,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 - Model selection is part of the architecture decision, not the implementation detail
 - Cost per workflow execution is a metric with an owner, not a line item on a cloud bill
 
-**Ignoring tokenomics produces the same class of problems as ignoring latency:** systems that work in development but fail under production load, accumulate costs that outpace value delivered, and require expensive rewrites to fix architectural mistakes.
+**Ignoring tokenomics produces the same class of problems as ignoring latency.** Systems work in development but fail under production load. Costs accumulate faster than value delivered, and fixing the architectural mistakes takes expensive rewrites.
 
 ## Related content
 

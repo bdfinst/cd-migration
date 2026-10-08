@@ -31,7 +31,7 @@ Prompt craft is now considered table stakes, the equivalent of fluent typing. It
 
 Curating the entire information environment (the [tokens]({{< relref "/docs/reference/glossary#token" >}})) the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) operates within.
 
-Context engineering is the difference between a developer who writes better [prompts]({{< relref "/docs/reference/glossary#prompt" >}}) and a developer who builds better scaffolding so the agent starts with everything it needs. The 10x performers are not writing cleverer instructions. They are assembling better [context]({{< relref "/docs/reference/glossary#context-llm" >}}).
+One developer writes better [prompts]({{< relref "/docs/reference/glossary#prompt" >}}). Another builds better scaffolding so the agent starts with everything it needs. Context engineering is the difference between them. The 10x performers are not writing cleverer instructions. They are assembling better [context]({{< relref "/docs/reference/glossary#context-llm" >}}).
 
 **Key skills:**
 
@@ -74,7 +74,7 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 
 **Where it maps on the learning curve:** [Stage 5-6]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-5-spec-first-agentic-development" >}}). Specification engineering is what makes spec-first agentic development and multi-agent architecture possible.
 
-**Where it shows up in ACD:** The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the output of specification engineering. The [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) workflow is how agents help produce them. The [discovery loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}}) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}}) shows what the finished output looks like.
+**Where it shows up in ACD:** The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the output of specification engineering. The [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) workflow is how agents help produce them. The [discovery loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}}) shows how to get from a vague idea to a structured specification through conversation. The [complete specification example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}}) shows what the finished output looks like.
 
 ## From synchronous to autonomous
 
@@ -101,7 +101,7 @@ If the rewritten request still makes sense and can be acted on, it is ready for 
 
 ### The planner-worker architecture
 
-Modern agents use a planner model to decompose your specification into a task log, and worker models to execute each task. Your job is to provide the decomposition logic - the rules for how to split work - so the planner can function reliably. This is the [orchestrator pattern]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}}) at its core: the orchestrator routes work to specialized agents, but it can only route well when the specification is structured enough to decompose.
+Modern agents use a planner model to decompose your specification into a task log, and worker models to execute each task. Your job is to provide the decomposition logic - the rules for how to split work - so the planner can function reliably. This split is the [orchestrator pattern]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}}) at its core. The orchestrator routes work to specialized agents, but it routes well only when the specification is structured enough to decompose.
 
 ### Organizational impact
 

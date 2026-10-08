@@ -61,7 +61,7 @@ An agent that cannot build the project cannot verify any change it makes. Every 
 Unreliable tests destroy the agent's feedback loop. An agent that cannot trust test results cannot distinguish between its own mistakes and test noise, producing incorrect fixes at scale.
 {{% /alert %}}
 
-**What makes agents unreliable:** flaky tests, tests that require manual setup, tests that depend on external services without mocking, tests that pass in one environment but fail in another.
+**What makes agents unreliable:** flaky tests and tests that require manual setup. Also tests that depend on external services without mocking, or that pass in one environment but fail in another.
 
 - Fix or quarantine flaky tests. A test suite that randomly fails teaches agents to ignore failures.
 - Remove external service dependencies from unit tests. Use [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) for anything outside the process boundary.
@@ -70,7 +70,7 @@ Unreliable tests destroy the agent's feedback loop. An agent that cannot trust t
 
 See [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) for the test architecture that supports this.
 
-**How AI can help:** Use an agent to run the test suite repeatedly and flag tests that produce different results across runs. Agents can also analyze test code to identify external service calls that should be replaced with test doubles, find shared mutable state between tests, and generate the stub or mock implementations needed to isolate unit tests from external dependencies.
+**How AI can help:** Use an agent to run the test suite repeatedly and flag tests that produce different results across runs. Agents can also analyze test code to find external service calls to replace with test doubles and shared mutable state between tests. They can then generate the stubs or mocks that isolate unit tests from external dependencies.
 
 ### Step 3: Improve feedback signal quality
 
@@ -78,14 +78,14 @@ See [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >
 Clear, fast feedback is the difference between an agent that self-corrects on the first retry and one that burns tokens guessing. This step directly reduces correction loop frequency and cost.
 {{% /alert %}}
 
-**What makes agents less effective:** broad integration tests with ambiguous failure messages, tests that report "assertion failed" without indicating what was expected versus what was received, slow test suites that delay feedback.
+**What makes agents less effective:** broad integration tests with ambiguous failure messages and slow test suites that delay feedback. Also tests that report "assertion failed" without saying what was expected versus what was received.
 
 - Ensure every test failure message includes what was expected, what was received, and where the failure occurred
 - Separate fast unit tests (seconds) from slower integration tests (minutes). Agents should be able to run the fast suite on every iteration.
 - Reduce total test suite time. Agents iterate faster with faster feedback. A ten-minute suite means ten minutes per attempt; a thirty-second unit suite means thirty seconds.
 - Structure test output so pass/fail is unambiguous. A test runner that exits with code 0 on success and non-zero on failure, with failure details on stdout, gives agents a clear signal.
 
-**How AI can help:** Use an agent to scan test assertions and rewrite bare assertions (for example, `assertTrue(result)`) into descriptive ones that include expected and actual values. Agents can also analyze test suite timing to identify the slowest tests, suggest which integration tests can be replaced with faster unit tests, and split a monolithic test suite into fast and slow tiers with separate run commands.
+**How AI can help:** Use an agent to scan test assertions. Have it rewrite bare assertions (for example, `assertTrue(result)`) into descriptive ones that include expected and actual values. Agents can also analyze test suite timing to find the slowest tests and suggest which integration tests to replace with faster unit tests. They can split a monolithic test suite into fast and slow tiers with separate run commands.
 
 ### Step 4: Document for agents
 
@@ -100,7 +100,7 @@ Undocumented conventions force agents to infer intent from code patterns, which 
 - Document architecture constraints that affect how changes should be made
 - Document test file naming conventions and directory structure
 
-**How AI can help:** Use an agent to generate the initial project context file. Point it at the codebase and ask it to document the build command, test command, directory structure, key conventions, and architecture constraints it can infer from the code. Have a developer review and correct the output. An agent reading the codebase will miss implicit knowledge that lives only in developers' heads, but it will capture the structural facts accurately and surface gaps where documentation is needed.
+**How AI can help:** Point an agent at the codebase to generate the initial project context file. Ask it to document the build command, test command, directory structure, key conventions, and architecture constraints it can infer. Have a developer review and correct the output. The agent misses implicit knowledge that lives only in developers' heads. It does capture the structural facts accurately and surfaces gaps that need documentation.
 
 ### Step 5: Improve code modularity
 
@@ -110,11 +110,11 @@ Modularity controls how much code an agent must load to make a single change. Ti
 
 **What increases token cost and reduces accuracy:** large files that mix multiple concerns, tight coupling between modules, no clear boundaries between components.
 
-Modularity determines how much code an agent must load into context to make a single change. A loosely coupled module with an explicit interface can be passed to an agent as self-contained context. A tightly coupled module forces the agent to load its dependencies, their dependencies, and so on until the context budget is consumed by code unrelated to the task.
+Modularity determines how much code an agent must load into context to make a single change. A loosely coupled module with an explicit interface can be passed to an agent as self-contained context. A tightly coupled module forces the agent to load its dependencies, then their dependencies, and so on. Eventually code unrelated to the task consumes the context budget.
 
 - Extract large files into smaller, single-responsibility modules. A file an agent can read in full is a file it can reason about completely.
 - Define explicit interfaces at module boundaries. An agent working inside a module needs only the interface contract for its dependencies, not the implementation.
-- Reduce coupling between modules. When a change to module A requires loading modules B, C, and D to understand the impact, the agent's effective context budget for the actual task shrinks with every additional file.
+- Reduce coupling between modules. Sometimes a change to module A requires loading modules B, C, and D to understand the impact. Every additional file shrinks the context budget left for the actual task.
 - Consolidate duplicate logic. One definition is one context load; ten scattered copies are ten opportunities for the agent to produce inconsistent changes.
 
 See [Tokenomics: Code Quality as a Token Cost Driver]({{< relref "/docs/agentic-cd/operations/tokenomics#8-code-quality-as-a-token-cost-driver" >}}) for how naming, structure, and coupling compound into token cost.
@@ -152,7 +152,7 @@ Formatting issues do not block agents, but they create noise in every diff and w
 
 When formatting is automated, agents produce code that matches the surrounding style without any per-task instruction. Diffs contain only logic changes, making review faster and more accurate.
 
-**How AI can help:** Use an agent to configure the formatter and linter for the project, generate the pre-commit hook configuration, and run the initial full-codebase format pass. Agents can also identify files where formatting is most inconsistent to prioritize the rollout if a full-codebase pass is too large for a single change.
+**How AI can help:** Use an agent to configure the formatter and linter for the project and generate the pre-commit hook configuration. Have it run the initial full-codebase format pass. Agents can also identify files where formatting is most inconsistent to prioritize the rollout if a full-codebase pass is too large for a single change.
 
 ### Step 8: Remove dead code and noise
 
@@ -160,7 +160,7 @@ When formatting is automated, agents produce code that matches the surrounding s
 Dead code misleads agents. They cannot distinguish active patterns from abandoned ones, so they model new code after whatever they find - including code that was left behind intentionally.
 {{% /alert %}}
 
-**What confuses agents:** commented-out code blocks that look like alternative implementations, unused functions that appear to be part of the active API, abandoned modules that still import and export, unused imports that suggest dependencies that do not actually exist.
+**What confuses agents:** commented-out code blocks that look like alternative implementations, and unused functions that appear to be part of the active API. Also abandoned modules that still import and export, and unused imports that suggest dependencies that do not actually exist.
 
 - Remove commented-out code. If it is needed later, it is in version control history.
 - Delete unused functions, classes, and modules. An agent that encounters an unused function may call it, extend it, or model new code after it.
@@ -182,7 +182,7 @@ Types are machine-readable documentation. They tell agents what a function expec
 - Enable strict type checking where the language supports it. Compiler-caught type errors are faster and cheaper than test-caught type errors.
 - Prioritize typing at the boundaries agents interact with most: service interfaces, repository methods, and API contracts
 
-**How AI can help:** Use an agent to add type annotations incrementally, starting with public interfaces and working inward. Agents can infer types from usage patterns across the codebase and generate type definitions that a developer reviews and approves. Prioritize by module boundary: typing the interfaces between modules gives agents the most value per annotation because those are the contracts agents must understand to work in any module that depends on them.
+**How AI can help:** Use an agent to add type annotations incrementally, starting with public interfaces and working inward. Agents can infer types from usage patterns across the codebase and generate type definitions that a developer reviews and approves. Prioritize by module boundary. Typed interfaces between modules give agents the most value per annotation. Agents must understand those contracts to work in any module that depends on them.
 
 ### Step 10: Standardize error handling
 
@@ -197,7 +197,7 @@ Inconsistent error handling is a slow leak. It does not block agents, but it cau
 - Refactor the most frequently changed modules to use the chosen pattern first
 - Document where exceptions to the pattern are intentional (for example, a different pattern at the framework boundary)
 
-**How AI can help:** Use an agent to survey the codebase and categorize the error handling patterns in use, including how many files use each pattern. This gives you a data-driven baseline for choosing the dominant pattern. Agents can then refactor modules to the chosen pattern incrementally, starting with the highest-churn files. They can also generate linter rules that flag deviations from the chosen pattern in new code.
+**How AI can help:** Use an agent to survey the codebase and categorize the error handling patterns in use. Have it count how many files use each pattern. The survey gives you a data-driven baseline for choosing the dominant pattern. Agents can then refactor modules to the chosen pattern incrementally, starting with the highest-churn files. They can also generate linter rules that flag deviations from the chosen pattern in new code.
 
 ## Test structure for agentic workflows
 
@@ -211,10 +211,10 @@ Agents rely most on tests that are fast, deterministic, and produce clear failur
 
 **What makes tests hard for agents to use:**
 
-- **Broad integration tests with ambiguous failures.** A test that spins up three services, runs a scenario, and reports "connection refused" gives the agent no actionable signal about what to fix.
+- **Broad integration tests with ambiguous failures.** Consider a test that spins up three services, runs a scenario, and reports "connection refused." It gives the agent no actionable signal about what to fix.
 - **Tests that require manual setup.** Seeding a database, starting a Docker container, or configuring a VPN before tests run breaks the agent's feedback loop.
 - **Tests with shared mutable state.** Tests that interfere with each other produce different results depending on execution order. Agents cannot distinguish between "my change broke this" and "this test is order-dependent."
-- **Slow test suites used as the primary feedback mechanism.** If the only way to verify a change is a twenty-minute end-to-end suite, agents either skip verification or consume excessive tokens waiting and retrying.
+- **Slow test suites used as the primary feedback mechanism.** Sometimes the only way to verify a change is a twenty-minute end-to-end suite. Then agents either skip verification or consume excessive tokens waiting and retrying.
 
 **How to refactor toward agent-friendly test design:**
 
@@ -230,7 +230,7 @@ A repository ready for agentic development has two commands an agent needs to kn
 1. **Build:** a single command that installs dependencies and compiles the project (for example, `make build`, `./gradlew build`, `npm run build`)
 2. **Test:** a single command that runs the test suite (for example, `make test`, `./gradlew test`, `npm test`)
 
-An agent should be able to clone the repository, run the build command, run the test command, and see a clear pass/fail result without any human intervention. Everything between "clone" and "tests pass" must be automated.
+An agent should be able to clone the repository, run the build and test commands, and see a clear pass/fail result without human intervention. Everything between "clone" and "tests pass" must be automated.
 
 **Dependency installation:** All dependencies must resolve from the install command. No manual downloads, no system-level package installations, no credentials required for the build itself.
 
@@ -244,7 +244,7 @@ See [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) for 
 
 Agents operate on feedback loops: they propose a change, run the build or tests, read the output, and iterate. The quality of each loop iteration determines both the accuracy of the final result and the total cost to reach it.
 
-**Tight feedback loops improve accuracy.** When tests run in seconds, produce clear pass/fail signals, and report exactly what failed, agents correct errors on the first retry. The agent reads the failure, understands what went wrong, and generates a targeted fix.
+**Tight feedback loops improve accuracy.** Fast tests with clear pass/fail signals that report exactly what failed let agents correct errors on the first retry. The agent reads the failure, understands what went wrong, and generates a targeted fix.
 
 **Loose feedback loops degrade accuracy and multiply cost.** When tests are slow, noisy, or require manual steps:
 
@@ -253,9 +253,9 @@ Agents operate on feedback loops: they propose a change, run the build or tests,
 - Agents consume excessive tokens retrying and re-reading unclear output
 - Each retry iteration costs tokens for both the re-read (input) and the new attempt (output)
 
-**The cost multiplier is real.** A correction loop where the agent's first output is wrong, reviewed, and re-prompted uses roughly three times the tokens of a successful first attempt (see [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics#8-code-quality-as-a-token-cost-driver" >}})). A repository with flaky tests, ambiguous failure messages, or manual setup steps increases the probability of entering correction loops on every task the agent attempts.
+**The cost multiplier is real.** In a correction loop, the agent's first output is wrong, reviewed, and re-prompted. That loop uses roughly three times the tokens of a successful first attempt (see [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics#8-code-quality-as-a-token-cost-driver" >}})). A repository with flaky tests, ambiguous failure messages, or manual setup steps increases the probability of entering correction loops on every task the agent attempts.
 
-**Poorly structured repositories shift the cost of ambiguity from the developer to the agent, multiplying it across every task.** A developer encountering a flaky test knows to re-run it. A developer seeing "assertion failed" checks the test code to understand the expectation. An agent does not have this implicit knowledge. It treats every failure as a signal that its change was wrong and attempts to fix code that was never broken, generating incorrect changes that require further correction.
+**Poorly structured repositories shift the cost of ambiguity from the developer to the agent and multiply it across every task.** A developer encountering a flaky test knows to re-run it. A developer seeing "assertion failed" checks the test code to understand the expectation. An agent lacks that implicit knowledge, so it treats every failure as a sign that its change was wrong. It tries to fix code that was never broken and generates incorrect changes that need further correction.
 
 Investing in repository readiness is not only preparation for agentic development. It is the single highest-impact action for reducing ongoing agent cost and improving agent output quality.
 

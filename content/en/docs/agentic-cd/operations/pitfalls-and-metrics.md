@@ -16,7 +16,7 @@ Each pitfall below has a root cause in the same two gaps: skipped [agent deliver
 
 ### 1. Agent defines its own test scenarios
 
-**The failure is not the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, the tests are shaped to pass the code rather than verify the intent.
+**The failure is not the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) writing test code. It is the agent deciding what to test.** When the agent defines both the test scenarios and the implementation, it shapes the tests to pass the code rather than verify the intent.
 
 **Humans define the test specifications before implementation begins.** Scenarios, edge cases, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). The agent generates the test code from those specifications.
 
@@ -46,7 +46,7 @@ Without provenance tracking, you cannot learn from agent-generated failures, aud
 
 Agents trained to write good code will opportunistically refactor, rename, or improve things they encounter while implementing a scenario. The intent is not wrong. The scope is.
 
-A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit that cannot be cleanly reviewed. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering, but applying it within a feature session conflicts with the small-batch discipline that makes agent-generated work reviewable.
+A session implementing Scenario 2 that also cleans up the module from Scenario 1 produces a commit nobody can review cleanly. The scenario change and the cleanup are mixed. If the cleanup introduces a regression, the bisect trail is contaminated. The Boy Scout Rule (leave the code better than you found it) is sound engineering. Applying it within a feature session conflicts with the small-batch discipline that makes agent-generated work reviewable.
 
 **What to do:** Define scope boundaries explicitly in the [system prompt]({{< relref "/docs/reference/glossary#system-prompt" >}}) and context. Cleanup is valid work - but as a separate, explicitly scoped session with its own intent description and commit.
 
@@ -61,28 +61,28 @@ in a separate session with its own commit. The only code that may change
 in this session is the code required to make the acceptance test pass.
 {{< /card >}}
 
-When cleanup is warranted, schedule it explicitly: create a session scoped
-to that specific cleanup, commit it separately, and include the cleanup
-rationale in the intent description. This keeps the bisect trail clean
+When cleanup is warranted, schedule it explicitly. Create a session scoped
+to that specific cleanup and commit it separately. Include the cleanup
+rationale in the intent description. A separate cleanup session keeps the bisect trail clean
 and the review scope bounded.
 
 ### 6. Agent resumes mid-feature without a context reset
 
-When a session is interrupted - by a pipeline failure, a context limit, or an agent timeout - there is a temptation to continue the session rather than close it out. The agent "already knows" what it was doing.
+A pipeline failure, a context limit, or an agent timeout can interrupt a session. You might be tempted to continue the session rather than close it out. The agent "already knows" what it was doing.
 
-This is a reliability trap. Agent state is not durable in the way a commit is durable. A session that continues past an interruption carries implicit assumptions about what was completed that may not match the actual committed state. The next session should always start from the committed state, not from the memory of a previous session.
+Continuing is a reliability trap. Agent state is not durable in the way a commit is durable. A session that continues past an interruption carries implicit assumptions about what was completed that may not match the actual committed state. The next session should always start from the committed state, not from the memory of a previous session.
 
 **What to do:** Treat any interruption as a session boundary. Before the next session begins, write the [context summary]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions#the-context-summary" >}}) based on what is actually committed, not what the agent believed it completed. If nothing was committed, the session produced nothing - start fresh from the last green state.
 
 ### 7. Review agent precision is miscalibrated
 
-**Miscalibration is not visible until an incident reveals it.** The team does not know the review agent is generating false positives until developers stop reading its output. They do not know it is missing issues until a production failure traces back to something the agent approved. Miscalibration breaks in both directions:
+**Miscalibration is not visible until an incident reveals it.** The team learns the review agent generates false positives only when developers stop reading its output. The team learns the agent misses issues only when a production failure traces back to something the agent approved. Miscalibration breaks in both directions:
 
 **Too many false positives:** the review agent flags issues that are not real problems. Developers learn to dismiss the agent's output without reading it. Real issues get dismissed alongside noise. The agent becomes a checkbox rather than a check.
 
 **Too few flags:** the review agent misses issues that human reviewers would catch. The team gains confidence in the agent and reduces human review depth. Issues that should have been caught are not caught.
 
-**What to do:** During the [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) for review agents, track disagreements between the agent and human reviewers, not only agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
+**What to do:** During the [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) for review agents, track disagreements between the agent and human reviewers, not only agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both, and set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
 
 ### 8. Skipped the prerequisite delivery practices
 

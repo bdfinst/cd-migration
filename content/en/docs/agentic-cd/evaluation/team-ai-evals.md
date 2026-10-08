@@ -239,13 +239,12 @@ module.exports = function (output) {
 };
 ```
 
-**Add transcript graders for agent behavior.** When your tool involves multi-step agent
-workflows (reading files, running tools, composing output), add transcript graders to
-verify the agent followed a sound process.
+**Add transcript graders for agent behavior.** Your tool might involve multi-step agent
+workflows such as reading files, running tools, and composing output. In that case, add
+transcript graders to verify the agent followed a sound process.
 
-**Add LLM rubrics for quality.** When you need to evaluate subjective qualities like
-"are the recommendations actionable?" or "is the severity rating appropriate?", use
-an LLM rubric.
+**Add LLM rubrics for quality.** Use an LLM rubric to evaluate subjective qualities, such as
+"are the recommendations actionable?" or "is the severity rating appropriate?"
 
 Minimal LLM rubric:
 
@@ -300,8 +299,8 @@ Good fixtures determine good evals. Follow these principles:
 - **Build clean counterparts.** For every fixture with planted issues, build a clean
   version that follows best practices. The clean fixture drives your negative tests.
 
-- **Keep them small but realistic.** A fixture with 3-5 files covering 100-300 lines
-  total is enough to test most agent behaviors without making eval runs slow.
+- **Keep them small but realistic.** A fixture with 3-5 files and 100-300 lines
+  total can test most agent behaviors. It also keeps eval runs fast.
 
 ## Running and interpreting results
 

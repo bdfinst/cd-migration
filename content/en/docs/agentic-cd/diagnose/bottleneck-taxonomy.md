@@ -10,15 +10,15 @@ description: >
 AI compresses the making phases of delivery hardest and barely touches the rest. So as creation
 cost falls, the constraint does not disappear. It moves outward to the phases AI does not
 cheapen. This page gives you a shared map of the delivery lifecycle and the five categories of
-bottleneck that map onto it, each with its agent-speed signal and the intervention pattern that
-removes it.
+bottleneck that map onto it. Each category comes with its agent-speed signal and the intervention
+pattern that removes it.
 {{% /pageinfo %}}
 
 ## The product delivery lifecycle
 
 To turn "where does work stop?" into a classification you can act on, you need a shared map of the
-journey, one stable enough that business, engineering, security, and audit can all point to the same
-place and mean the same thing. Stripped to its spine, the product delivery lifecycle (PDLC) has
+journey. The map must be stable enough that business, engineering, security, and audit can all point
+to the same place and mean the same thing. Stripped to its spine, the product delivery lifecycle (PDLC) has
 seven phases, and it loops, because delivery is a cycle, not a line.
 
 ```mermaid
@@ -85,11 +85,13 @@ Name the category to know the intervention. Find it on the lifecycle to know whe
 | **Knowledge Silos & Team Coupling** | Operate / Support | The agent stalls without the human who knows where the tool lives or who owns the service | Create discoverable ownership records, runbooks, service catalogs, and agent-accessible knowledge bases |
 
 Read the categories against the migration and the pattern is plain. The bottlenecks AI pressures
-cluster at the ends of the lifecycle - requirements churn at Discovery, testing and quality friction
-across Build and Verify, and knowledge silos at Operate and Support - exactly the phases generation
-does not make cheaper. Architecture gatekeeping and deployment gates are the gate problems in
-between: controls an organization survives at human speed but that turn into queues the moment
-implementation accelerates. Both kinds are coordination costs. The map tells you which is which.
+cluster at the ends of the lifecycle, exactly the phases generation does not make cheaper. They are
+requirements churn at Discovery, testing and quality friction across Build and Verify, and knowledge
+silos at Operate and Support.
+
+Architecture gatekeeping and deployment gates are the gate problems in
+between. An organization survives these controls at human speed, but they turn into queues the moment
+implementation accelerates. Both kinds are coordination costs, and the map tells you which is which.
 
 ## Where each category points on this site
 

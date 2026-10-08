@@ -14,10 +14,11 @@ Agentic continuous delivery ([ACD]({{< relref "/docs/reference/glossary#acd-agen
 
 ## Diagnose before you accelerate
 
-When coding is nearly free, the constraint moves to the work around the code: the coordination,
-safety, and delivery architecture that decides whether faster creation becomes faster value. AI's
-first gift is not speed. It is visibility into where that work waits. Before extending CD for agents,
-read [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}): it gives the physics of the new
+When coding is nearly free, the constraint moves to the work around the code. Coordination,
+safety, and delivery architecture decide whether faster creation becomes faster value. AI's
+first gift is not speed. It is visibility into where that work waits.
+
+Before you extend CD for agents, read [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}). That page gives the physics of the new
 bottleneck, a map of where it moves, and a repeatable loop for removing it. **Improve everything
 around development first; then accelerate.** This page covers the engineering half of that work, the
 constraints that keep agent-generated changes safe.
@@ -26,7 +27,7 @@ constraints that keep agent-generated changes safe.
 
 **An agent-generated change must meet or exceed the same quality bar as a human-generated change.** The pipeline does not care who wrote the code. It cares whether the code is correct, tested, and safe to deploy.
 
-ACD is the application of continuous delivery in environments where software changes are proposed by agents. It exists to reliably constrain agent autonomy without slowing delivery.
+ACD applies continuous delivery to environments where agents propose software changes. ACD exists to reliably constrain agent autonomy without slowing delivery.
 
 Without additional artifacts beyond what human-driven [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires, agent-generated code accumulates drift and technical debt faster than teams can detect it. The delivery artifacts and constraints in the [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) address this.
 

@@ -7,9 +7,9 @@ description: >
 ---
 
 {{% pageinfo %}}
-AI changed the economics of creating software. It did not touch the physics of delivering it.
-Value still flows through a system of people, tools, and decisions, and in most enterprises that
-system is governed not by how fast anyone writes code but by how long work waits. The constraint is
+AI changed the economics of creating software, but it did not touch the physics of delivering it.
+Value still flows through a system of people, tools, and decisions. In most enterprises, how long
+work waits governs that system, not how fast anyone writes code. The constraint is
 coordination, not creation. This page is the physics behind that claim.
 {{% /pageinfo %}}
 
@@ -64,10 +64,12 @@ the queues. Coherence is the knowledge that decays on the way.
 Look closely and the three C's are one constraint wearing three coats. Contention is waiting for the
 person who *knows*. Coupling is needing knowledge or output that lives with someone else. Coherence
 *is* shared knowledge, decaying at every handoff. The dependency you wait on is almost always a
-dependency on something someone else knows and you do not. That is why knowledge is the deepest
-constraint in delivery: remove a knowledge dependency - make the understanding discoverable rather
-than locked in a person - and you drain a queue, decouple a team, and restore coherence at once. The
-rest of this subsection is, at root, about finding and removing knowledge dependencies.
+dependency on something someone else knows and you do not.
+
+That is why knowledge is the deepest constraint in delivery. Remove a knowledge dependency by making
+the understanding discoverable rather than locked in a person. You drain a queue, decouple a team,
+and restore coherence at once. The rest of this subsection is, at root, about finding and removing
+knowledge dependencies.
 
 ## The golden rule
 
@@ -76,8 +78,8 @@ From the same math comes the single lever that matters.
 > **Removing a dependency roughly doubles your odds of arriving on time with quality.**
 
 It is the inverse of the 1-in-2ⁿ curve. Go from four dependencies to three and your odds rise from
-6% to 12%. From three to two, 12% to 25%. This is why the leadership move is dependency removal, not
-local acceleration. You do not win by making one step faster. You win by deleting a step you used to
+6% to 12%. From three to two, 12% to 25%. That curve is why the leadership move is dependency removal, not
+local acceleration. You do not win by making one step faster; you win by deleting a step you used to
 wait on.
 
 ## Where the dependencies live
@@ -117,7 +119,7 @@ So the reflex "developers are slow, let's add AI" aims at the wrong target:
 - Take coding all the way to zero and roughly 88% of lead time is untouched.
 
 The constraint was never the typing. It is everything around it. That is the physics, and the rest
-of this subsection follows from it: the highest-impact use of AI is not to write more code, but to
+of this subsection follows from it. The highest-impact use of AI is not to write more code. It is to
 remove the dependencies that dominate the other 88%.
 
 ## Sources
