@@ -47,7 +47,7 @@ Over time both teams optimize for their own metrics rather than shared outcomes.
 
 The handoff from development to operations is a point where information is lost. By the time an ops engineer picks up a deployment ticket, the developer who wrote the code may be three sprints ahead. When a problem surfaces - a missing environment variable, an undocumented database migration, a hard-coded hostname - the developer must context-switch back to work they mentally closed weeks ago.
 
-Rework is expensive not just because of the time lost. It is expensive because the delay means the feedback cycle is measured in weeks rather than hours. A bug that would take 20 minutes to fix if caught the same day it was introduced takes 4 hours to diagnose two weeks later, because the developer must reconstruct the intent of code they no longer remember writing.
+Rework is expensive not only because of the time lost. It is expensive because the delay means the feedback cycle is measured in weeks rather than hours. A bug that would take 20 minutes to fix if caught the same day it was introduced takes 4 hours to diagnose two weeks later, because the developer must reconstruct the intent of code they no longer remember writing.
 
 Post-deployment failures compound this. An ops team that cannot ask the original developer for help - because the developer is unavailable, or because the culture discourages bothering developers with "ops problems" - will apply workarounds rather than fixes. Workarounds accumulate as technical debt that eventually makes the system unmaintainable.
 

@@ -125,7 +125,7 @@ holes. Changes pass through it not because they are safe but because the tests t
 caught the problems were never written.
 
 A team cannot deploy continuously if they cannot verify continuously. When the manager says "skip
-the tests, we need to ship," they are not just deferring quality work. They are dismantling the
+the tests, we need to ship," they are not only deferring quality work. They are dismantling the
 infrastructure that makes frequent, safe deployment possible.
 
 ## How to Fix It

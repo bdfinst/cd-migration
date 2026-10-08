@@ -179,7 +179,7 @@ working to remove, not side-by-side metric tables.
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Increasing trend as branches shorten and story size decreases |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Stories completing in one to two days rather than one to two weeks |
 | Build success rate | Stable at 90% or higher as the team treats broken builds as stop-the-line events |
-| Time to fix a broken build | Under 10 minutes as a team norm, not just an average |
+| Time to fix a broken build | Under 10 minutes as a team norm, not only an average |
 | Improvement experiments completed | 2-4 per month, each with a defined hypothesis tied to a leading indicator |
 | DORA metrics (confirmation) | Gradual improvement over 3-6 months as the leading indicator improvements compound |
 

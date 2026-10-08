@@ -90,7 +90,7 @@ QA files a defect. The developer reviews it and responds that the code matches t
 QA disagrees. Both are right. The specification was ambiguous. Resolving the disagreement requires
 going back to the original requirements, which may themselves be ambiguous. The round trip from
 QA report to developer response to QA acceptance takes days - and the feature was not actually
-broken, just misunderstood.
+broken, only misunderstood.
 
 These misunderstanding defects multiply wherever the specification is the only link between two
 teams that never spoke directly. The QA team tests against what was intended; the developer

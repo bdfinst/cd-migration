@@ -49,7 +49,7 @@ A logic error caught 10 minutes after writing takes 5 minutes to fix. The same d
 
 Siloed QA maximizes defect age. A bug report that arrives in the developer's queue a week after the code was written is the most expensive version of that bug. Multiply across a team of 8 developers generating 20 stories per sprint, and the rework overhead is substantial - often accounting for 20 to 40 percent of development capacity.
 
-Context loss makes rework particularly painful. Developers who must revisit old code frequently introduce new defects in the process of fixing the old one, because they are working from incomplete memory of what the code is supposed to do. Rework is not just slow; it is risky.
+Context loss makes rework particularly painful. Developers who must revisit old code frequently introduce new defects in the process of fixing the old one, because they are working from incomplete memory of what the code is supposed to do. Rework is not only slow; it is risky.
 
 ### It makes delivery timelines unpredictable
 
