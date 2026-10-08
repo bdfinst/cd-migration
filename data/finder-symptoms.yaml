@@ -73,10 +73,10 @@
   category_label: Deployment and Release
   personas: [manager, developer]
   anti_patterns: [snowflake-environments, blind-operations, tightly-coupled-monolith,
-    manual-deployments]
+    manual-deployments, environment-branches]
   impact: high
 - id: environments-run-different-code
-  title: Different environments run different code
+  title: Environments run different code
   path: /docs/symptoms/deployment/environments-run-different-code/
   category: deployment
   category_label: Deployment and Release
@@ -220,7 +220,8 @@
   category: testing
   category_label: Testing
   personas: [developer]
-  anti_patterns: [snowflake-environments, manual-deployments, tightly-coupled-monolith]
+  anti_patterns: [snowflake-environments, manual-deployments, tightly-coupled-monolith,
+    environment-branches]
   impact: high
 - id: legacy-system-no-tests
   title: A large codebase has no automated tests

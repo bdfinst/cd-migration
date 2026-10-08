@@ -91,4 +91,5 @@ These techniques are what make [trunk-based development]({{< relref "/docs/found
 - [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - full lifecycle guidance for when a flag is the right tool
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - the strangler fig pattern for replacing whole subsystems
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - the anti-pattern these techniques replace
+- [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}) - another anti-pattern these techniques replace
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - the batch-sizing discipline these techniques support

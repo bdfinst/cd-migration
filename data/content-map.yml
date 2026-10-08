@@ -808,7 +808,7 @@ standalone_pages:
 totals:
   top_level_sections: 13  # triage, symptoms, anti-patterns, assess, foundations, pipeline, optimize, continuous-deployment, brownfield, greenfield, playbook, agentic-cd, reference
   subsections: 25  # symptoms(4 + 4 flow subs) + anti-patterns(6 + 3 org-cultural subs) + migrate-to-cd(6 + 1 tbd sub) + agentic-cd(5: diagnose, getting-started, specification, architecture, operations, evaluation) + reference(5)
-  symptom_pages: 66  # 9 testing + 22 deployment + 34 flow(8+10+10+6) + 10 visibility - note: persona pages moved to triage section
+  symptom_pages: 76  # 10 testing + 22 deployment + 34 flow(8+10+10+6) + 10 visibility - note: persona pages moved to triage section
   anti_pattern_pages: 65  # 7 team-workflow + 5 branching + 9 testing + 12 pipeline + 26 org-cultural(10+9+7) + 1 monitoring + 5 architecture
   migration_guide_pages: 60  # non-index pages across the phase and path sections, including foundations/testing-fundamentals
   agentic_cd_pages: 18

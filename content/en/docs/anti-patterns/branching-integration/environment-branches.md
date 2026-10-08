@@ -81,8 +81,8 @@ Rework also comes from failures that only appear in one environment. A defect th
 fails in UAT" takes time to diagnose because the cause could be the code, the config, or the set
 of features merged into that branch. Developers diff branches to find which of the three it is.
 
-When every environment runs the same artifact, the only difference is configuration supplied at
-runtime. A failure in one environment points to the config or the infrastructure, not to a different
+When every environment runs the same artifact, the only difference is configuration injected at
+deployment time. A failure in one environment points to the config or the infrastructure, not to a different
 build.
 
 ### It makes delivery timelines unpredictable
@@ -139,8 +139,8 @@ sort each into one of three groups:
 3. **Accidental drift.** Fixes applied to one branch and never carried over. Decide which version
    is correct and keep only that one.
 
-Move the environment values out of the repository's branches and into configuration supplied at
-runtime. See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how
+Move the environment values out of the repository's branches and into configuration injected at
+deployment time. See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how
 to separate config from the build.
 
 ### Step 2: Build one release candidate from trunk and promote it (weeks 2-4)
@@ -178,6 +178,9 @@ choose.
   old and new implementations side by side and compare results before trusting the new one.
 - **[Expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}).**
   Add the new structure next to the old, migrate consumers, then remove the old structure.
+- **[Strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}).**
+  Route traffic to a new subsystem piece by piece when you are replacing a whole subsystem, not a
+  single implementation.
 
 ### Step 4: Use feature flags as the last resort (weeks 4-6)
 
@@ -224,6 +227,8 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 ## Related content
 
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - the same deferred integration problem, at the feature level
+- [Cherry-Pick Releases]({{< relref "/docs/anti-patterns/branching-integration/cherry-pick-releases" >}}) - the same selective promotion, applied to release branches
+- [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}) - another long-lived branch per target, with the same merge overhead
 - [Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}}) - why late integration concentrates risk near the release
 - [Artifacts Rebuilt per Environment]({{< relref "/docs/symptoms/deployment/artifacts-rebuilt-per-environment" >}}) - the symptom of building again for each environment
 - [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}) - build once and promote the same artifact
