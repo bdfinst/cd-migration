@@ -75,11 +75,11 @@ Create a side-by-side comparison of every environment. Include OS version, runti
 
 Not all differences matter equally. Rank the gaps from the audit by how likely each is to hide production bugs. Version differences in core runtime or database components rank highest. Topology differences rank high. Scale differences rank medium unless the application has known performance sensitivity. Tooling and monitoring differences rank low. Work down the prioritized list.
 
-### Step 3: Align critical versions and topology (Weeks 3-6)
+### Step 3: Align critical versions and topology (weeks 3-6)
 
 Close the highest-priority gaps first. For version differences, upgrade the lagging environment. For topology differences, add the missing components to staging - a second application node behind a load balancer, a read replica for the database, a CDN layer. These changes may require infrastructure-as-code investment (see [No Infrastructure as Code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})) to make them sustainable.
 
-### Step 4: Replace mocks with realistic integration patterns (Weeks 5-8)
+### Step 4: Replace mocks with realistic integration patterns (weeks 5-8)
 
 Where staging uses mocks for external services, evaluate whether a sandbox or test account for the real service is available. For services that do not offer sandboxes, invest in contract tests that verify the mock's behavior matches the real service. The goal is not to replace all mocks with live calls, but to ensure that the mock faithfully represents the latency, error rates, and API behavior of the real endpoint.
 
@@ -87,7 +87,7 @@ Where staging uses mocks for external services, evaluate whether a sandbox or te
 
 Create a policy that any change applied to production must also be applied to staging before the next release cycle. Include environment parity checks as part of your release checklist. Automate what you can: tools like Terraform allow you to compare the planned state of staging and production against a common module, flagging differences. Review the side-by-side comparison document at the start of each sprint and update it after any infrastructure change.
 
-### Step 6: Use infrastructure as code to codify parity (Ongoing)
+### Step 6: Use infrastructure as code to codify parity (ongoing)
 
 Define both environments as instances of the same infrastructure code, with only intentional parameters differing between them. When staging and production are created from the same Terraform module with different parameter files, any unintentional configuration difference requires an explicit code change, which can be caught in review.
 

@@ -159,7 +159,7 @@ caught. The remaining cases requiring genuine human judgment are usually explora
 about usability or edge cases in new features - a much smaller scope for manual review than
 a full regression pass.
 
-### Step 2: Automate the regression checks that the gate is compensating for (Weeks 2-6)
+### Step 2: Automate the regression checks that the gate is compensating for (weeks 2-6)
 
 For every bug category from Step 1 that an automated test would have caught, write the test.
 
@@ -188,7 +188,7 @@ Typical automated approval criteria:
 These criteria are not opinions. They are executable. When all criteria pass, deployment is
 authorized without manual review.
 
-### Step 4: Run manual and automated gates in parallel (Weeks 4-8)
+### Step 4: Run manual and automated gates in parallel (weeks 4-8)
 
 Do not remove the manual gate immediately. Run both processes simultaneously for a period.
 
@@ -220,7 +220,7 @@ This gives the QA lead a role proportional to the actual value they provide: foc
 review of high-risk changes and exploratory quality work, not rubber-stamping releases that
 the pipeline has already validated.
 
-### Step 6: Document and distribute deployment authority (Ongoing)
+### Step 6: Document and distribute deployment authority (ongoing)
 
 A single approver is a fragility regardless of whether the approval is automated or manual.
 Distribute deployment authority explicitly.

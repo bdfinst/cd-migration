@@ -137,7 +137,7 @@ percentage of total elapsed time is queue time versus actual work time. In most 
 multi-team models, queue time is 60-80% of total time. Making this visible creates the business
 case for reducing handoffs.
 
-### Step 2: Embed testing earlier in the development process (Weeks 2-4)
+### Step 2: Embed testing earlier in the development process (weeks 2-4)
 
 The highest-value handoff to eliminate is the gap between development and testing. Two paths forward:
 
@@ -152,7 +152,7 @@ tests to designing test strategies and exploratory testing.
 
 Both options reduce the handoff delay without eliminating the QA function.
 
-### Step 3: Create a deployment pipeline that the development team owns (Weeks 3-6)
+### Step 3: Create a deployment pipeline that the development team owns (weeks 3-6)
 
 Negotiate with the operations team for the development team to own deployments to non-production
 environments. Production deployment can remain with operations initially, but the deployment
@@ -160,7 +160,7 @@ process should be automated so that operations is executing a pipeline, not manu
 a deployment runbook. This removes the manual operations bottleneck while preserving the
 access control that operations legitimately owns.
 
-### Step 4: Introduce a shared responsibility model for production (Weeks 6-12)
+### Step 4: Introduce a shared responsibility model for production (weeks 6-12)
 
 The goal is a model where the team that builds the service has a defined role in running it.
 This does not require eliminating the operations team - it requires redefining the boundary.
@@ -169,7 +169,7 @@ operations team is on call for infrastructure-level incidents. Both teams are in
 incident channel. The development team gets paged when their service has a production problem.
 This feedback loop is the foundation of operational quality.
 
-### Step 5: Renegotiate contract or team structures based on evidence (Months 3-6)
+### Step 5: Renegotiate contract or team structures based on evidence (months 3-6)
 
 After generating evidence that reduced-handoff delivery produces better quality and shorter
 lead times, use that evidence to renegotiate. If the current model involves a contracted

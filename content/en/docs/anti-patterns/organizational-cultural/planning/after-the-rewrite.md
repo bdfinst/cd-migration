@@ -122,7 +122,7 @@ In most legacy systems, there are areas with lower coupling that can be tested t
 a deployment process that can be automated even if the application architecture is not ideal.
 There is a build process that can be made faster. Not everything is blocked by the rewrite.
 
-### Step 2: Start the "strangler fig" for at least one CD practice (Weeks 2-4)
+### Step 2: Start the "strangler fig" for at least one CD practice (weeks 2-4)
 
 The strangler fig pattern - wrapping old behavior with new - applies to practices as well as
 architecture. Choose one CD practice and apply it to the new code being added to the existing
@@ -133,7 +133,7 @@ injected dependencies). Old untestable classes are not rewritten, but no new unt
 added. Over time, the testable fraction of the codebase grows. The rewrite is not a prerequisite
 for this improvement - a team agreement is.
 
-### Step 3: Automate the deployment of the existing system (Weeks 3-8)
+### Step 3: Automate the deployment of the existing system (weeks 3-8)
 
 Manual deployment of the existing system is a cost paid on every deployment. Deployment automation
 does not require a new architecture. Even a monolith with a complex deployment process can have
@@ -141,7 +141,7 @@ that process codified in a pipeline script. The benefit is immediate. The organi
 experience of running an automated deployment pipeline transfers directly to the new system when
 it is ready.
 
-### Step 4: Set a "both systems healthy" standard for the rewrite (Weeks 4-8)
+### Step 4: Set a "both systems healthy" standard for the rewrite (weeks 4-8)
 
 Reframing the rewrite as a migration rather than an escape hatch changes the team's relationship
 to the existing system. The standard: both systems should be healthy. The existing system receives
@@ -152,7 +152,7 @@ This creates two benefits. First, the existing system is better cared for. Secon
 stops treating the rewrite as the only path to quality improvement, which reduces the urgency
 that has been artificially attached to the rewrite timeline.
 
-### Step 5: Establish criteria for declaring the rewrite "done" (Ongoing)
+### Step 5: Establish criteria for declaring the rewrite "done" (ongoing)
 
 Rewrites without completion criteria never end. Define explicitly what the rewrite achieves:
 what functionality must be migrated, what performance targets must be met, what CD practices

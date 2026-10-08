@@ -158,7 +158,7 @@ This single change improves quality in two ways. Testers catch ambiguities and e
 definition, before the code is written. And developers have a clear, testable definition of done
 that does not depend on the tester's interpretation after the fact.
 
-### Step 2: Write automated tests alongside the code (Weeks 2-3)
+### Step 2: Write automated tests alongside the code (weeks 2-3)
 
 For each story, require that automated tests be written as part of the development work.
 
@@ -170,7 +170,7 @@ The tests do not replace the tester's judgment - they capture the acceptance cri
 executable specifications. The tester's role shifts from manual execution to test strategy and
 exploratory testing for behaviors not covered by the automated suite.
 
-### Step 3: Give developers a production-like environment for self-testing (Weeks 2-4)
+### Step 3: Give developers a production-like environment for self-testing (weeks 2-4)
 
 If developers test only on their local machines and testers test on a shared environment, the
 testing conditions diverge. Bugs that appear only in integrated environments surface during QA,
@@ -195,7 +195,7 @@ tests, the incentive to write tests is weak. Change the definition.
 
 This makes quality a shared gate, not a downstream handoff.
 
-### Step 5: Shift the QA function toward quality engineering (Weeks 4-8)
+### Step 5: Shift the QA function toward quality engineering (weeks 4-8)
 
 As automated testing takes over the verification function that manual QA was performing, the
 tester's role evolves. This transition requires explicit support and re-skilling.
@@ -210,7 +210,7 @@ Testers who build automation for the pipeline provide more value than testers wh
 execute scripts. They also find more bugs, because they work earlier in the process when bugs
 are cheaper to fix.
 
-### Step 6: Measure bug escape rate and shift the metric forward (Ongoing)
+### Step 6: Measure bug escape rate and shift the metric forward (ongoing)
 
 Teams that test only at the end measure quality by the number of bugs found in QA. That metric
 rewards QA effort, not quality outcomes. Change what is measured.

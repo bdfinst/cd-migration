@@ -85,7 +85,7 @@ Expect pushback and address it directly:
 | "The hero is fine with the workload." | The hero's experience of the work is not the only risk. A team that cannot function without one person cannot grow, cannot rotate the hero off the team, and cannot survive the hero leaving. |
 | "This sounds like we're punishing people for being good." | Heroes are not the problem. A system that creates and depends on heroes is the problem. The goal is to let the hero do harder, more interesting work by distributing the things they currently do alone. |
 
-### Step 2: Begin systematic knowledge transfer (Weeks 2-6)
+### Step 2: Begin systematic knowledge transfer (weeks 2-6)
 
 1. Require pair programming or pairing on all incidents and deployments for the next sprint, with the hero as the driver and a different team member as the navigator each time.
 2. Create runbooks collaboratively: after each incident, the hero and at least one other team member co-author the post-mortem and write the runbook for the class of problem, not only the instance.
@@ -100,7 +100,7 @@ Expect pushback and address it directly:
 | "We don't have time for pairing - we have deliverables." | Pair programming overhead is typically 15% of development time. The time lost to hero dependencies is typically 20-40% of team capacity. The math favors pairing. |
 | "Runbooks get outdated immediately." | An outdated runbook is better than no runbook. Add runbook review to the incident checklist. |
 
-### Step 3: Encode knowledge in systems instead of people (Weeks 6-12)
+### Step 3: Encode knowledge in systems instead of people (weeks 6-12)
 
 1. Automate the deployments the hero currently performs manually. If the hero is the only one who knows the deployment steps, that is the first automation target.
 2. Add observability - logs, metrics, and alerts - to the systems only the hero currently understands. If a system cannot be diagnosed without the hero's intuition, it needs more instrumentation.

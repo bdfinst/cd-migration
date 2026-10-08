@@ -77,15 +77,15 @@ Enumerate every credential used by every application and every pipeline. For eac
 
 Scan all repositories for committed secrets using a tool such as `git-secrets`, `truffleHog`, or `detect-secrets`. For every credential found in git history, rotate it immediately - assume it is compromised. Removing the value from the repository does not protect it because git history is readable; only rotation makes the exposed credential useless. Add pre-commit hooks and CI checks to prevent new secrets from being committed.
 
-### Step 3: Deploy a secrets vault (Weeks 2-3)
+### Step 3: Deploy a secrets vault (weeks 2-3)
 
 Choose and deploy a centralized secrets management system appropriate for your infrastructure. HashiCorp Vault is a common choice for self-managed infrastructure. AWS Secrets Manager, Azure Key Vault, and Google Cloud Secret Manager are appropriate for teams already on those cloud platforms. Kubernetes Secret objects with encryption at rest plus external secrets operators are appropriate for Kubernetes-based deployments. The vault must support machine-readable API access so that pipelines and applications can retrieve secrets without human involvement.
 
-### Step 4: Migrate secrets to the vault and update applications to retrieve them (Weeks 3-6)
+### Step 4: Migrate secrets to the vault and update applications to retrieve them (weeks 3-6)
 
 Move secrets from their current locations into the vault. Update applications to retrieve secrets from the vault at startup - either by using the vault's SDK, by using a sidecar agent that writes secrets to a memory-only file, or by using an operator that injects secrets as environment variables at container startup from vault references. Remove secrets from configuration files, environment variable setup scripts, and CI UI configurations. Replace them with vault references that the pipeline resolves at deploy time.
 
-### Step 5: Establish rotation policies and automate rotation (Weeks 6-8)
+### Step 5: Establish rotation policies and automate rotation (weeks 6-8)
 
 Define a rotation schedule for each credential type: database passwords every 90 days, API keys every 30 days, certificates before expiry. Configure automated rotation where the vault or a scheduled pipeline job can rotate the credential and update all dependent systems. For credentials that cannot be automatically rotated, create a calendar-based reminder process and document the rotation procedure in the repository.
 

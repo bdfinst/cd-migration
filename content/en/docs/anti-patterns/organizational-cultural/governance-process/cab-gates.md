@@ -162,7 +162,7 @@ Not all changes carry the same risk. Introduce a risk classification:
 The goal is to route 80-90% of changes through the standard process, which requires no CAB
 involvement at all.
 
-### Step 2: Define pipeline controls that replace CAB review (Weeks 2-3)
+### Step 2: Define pipeline controls that replace CAB review (weeks 2-3)
 
 For each concern the CAB currently addresses, implement an automated alternative:
 
@@ -190,7 +190,7 @@ entirely if they meet the automated criteria:
 Track the results: deployment frequency, [change fail rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), and incident count. Compare with the
 CAB-gated process.
 
-### Step 4: Present the data and expand (Weeks 4-8)
+### Step 4: Present the data and expand (weeks 4-8)
 
 After a month of pilot data, present the results to the CAB and organizational leadership:
 

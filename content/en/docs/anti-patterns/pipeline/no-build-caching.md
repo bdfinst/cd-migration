@@ -168,7 +168,7 @@ Dependency caching is typically the highest-return optimization and the easiest 
 A build that downloads 200 MB of packages on every run can drop to downloading nothing on
 cache hits.
 
-### Step 3: Enable incremental compilation (Weeks 2-3)
+### Step 3: Enable incremental compilation (weeks 2-3)
 
 If compilation is a major time sink, ensure the build tool is configured for incremental builds:
 
@@ -182,7 +182,7 @@ If compilation is a major time sink, ensure the build tool is configured for inc
 Verify that incremental compilation is actually working by pushing a trivial change (a comment
 edit) and checking whether the build is faster than a full build.
 
-### Step 4: Parallelize independent pipeline stages (Weeks 2-3)
+### Step 4: Parallelize independent pipeline stages (weeks 2-3)
 
 Review the pipeline for stages that are currently sequential but could run in parallel:
 
@@ -195,7 +195,7 @@ Most modern pipeline tools support parallel stage execution. The improvement dep
 many independent stages exist, but it is common to cut total pipeline time by 30-50% by
 parallelizing work that was previously serialized by default.
 
-### Step 5: Move slow tests to a later pipeline stage (Weeks 3-4)
+### Step 5: Move slow tests to a later pipeline stage (weeks 3-4)
 
 Not all tests need to run before every deployment decision. Reorganize tests by speed:
 
@@ -209,7 +209,7 @@ This does not eliminate slow tests - it moves them to a position where they are 
 the developer feedback loop. The developer gets fast results from the fast tests within
 minutes, while the slow tests run asynchronously.
 
-### Step 6: Set a pipeline duration budget and enforce it (Ongoing)
+### Step 6: Set a pipeline duration budget and enforce it (ongoing)
 
 Establish an agreed-upon maximum pipeline duration for the developer feedback stage - ten
 minutes is a common target - and treat any build that exceeds it as a defect to be fixed:

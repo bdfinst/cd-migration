@@ -128,7 +128,7 @@ pipeline enhancements, and operational stability. Protect this allocation from s
 pressure. Frame it as investment: "This 20 percent is what makes the other 80 percent faster
 next quarter."
 
-### Step 4: Demonstrate the sustainable pace advantage (Month 2+)
+### Step 4: Demonstrate the sustainable pace advantage (month 2+)
 
 After a few sprints of protected sustainability work, compare delivery metrics to the
 deadline-driven period. Development cycle time should be shorter. Rework should be lower. Sprint

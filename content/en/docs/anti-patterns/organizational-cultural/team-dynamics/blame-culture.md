@@ -83,7 +83,7 @@ Expect pushback and address it directly:
 | "Blameless doesn't mean consequence-free. People need to be accountable." | Accountability means owning the action items to improve the system, not absorbing personal consequences for operating within a system that made the failure possible. |
 | "But some mistakes really are individual negligence." | Even negligent behavior is a signal that the system permits it. The systemic question is: what would prevent negligent behavior from causing production harm? That question has answers. "Don't be negligent" does not. |
 
-### Step 2: Change how incidents are communicated upward (Weeks 2-4)
+### Step 2: Change how incidents are communicated upward (weeks 2-4)
 
 1. Agree with leadership that incident communications will focus on impact, timeline, and systemic improvement - not on who was involved.
 2. Remove names from incident reports that go to stakeholders. Identify the systems and conditions involved, not the engineers.
@@ -97,7 +97,7 @@ Expect pushback and address it directly:
 |-----------|----------|
 | "Leadership wants to know who is responsible." | Leadership should want to know what will prevent the next incident. Frame your post-mortem in terms of what leadership can change - process, tooling, resourcing - not what an individual should do differently. |
 
-### Step 3: Institutionalize learning from failure (Weeks 4-8)
+### Step 3: Institutionalize learning from failure (weeks 4-8)
 
 1. Schedule a monthly "failure forum" - a safe space for engineers to share mistakes and near-misses with the explicit goal of systemic learning, not evaluation.
 2. Track systemic improvements generated from post-mortems. The measure of post-mortem quality is the quality of the action items, not the quality of the root cause narrative.

@@ -131,7 +131,7 @@ This does not eliminate planning - it reframes what planning produces. The outpu
 investing in X this quarter" rather than "we will ship feature Y with this exact scope by this
 exact date."
 
-### Step 3: Establish a regular scope-negotiation cadence (Weeks 2-4)
+### Step 3: Establish a regular scope-negotiation cadence (weeks 2-4)
 
 Create a monthly review for any active commitment more than four weeks out. Ask: Is the scope
 still accurate? Has the estimate changed? What is the latest realistic delivery range? Make scope
@@ -139,14 +139,14 @@ adjustment a normal part of the process rather than an admission of failure. Sta
 participate in regular scope conversations are less surprised than those who receive a quarterly
 "we need to slip" announcement.
 
-### Step 4: Practice breaking features into independently valuable pieces (Weeks 3-6)
+### Step 4: Practice breaking features into independently valuable pieces (weeks 3-6)
 
 Work with product ownership to decompose large features into pieces that can ship and provide value
 independently. Features designed as all-or-nothing deliveries are the root cause of most distant
 date pressure. When the first slice ships in week four, the conversation shifts from "are we on
 track for the full feature in Q3?" to "here is what users have now; what should we build next?"
 
-### Step 5: Build the history that enables better forecasts (Ongoing)
+### Step 5: Build the history that enables better forecasts (ongoing)
 
 Track the gap between initial commitments and actual delivery. Over time, this history becomes the
 basis for realistic planning. "Our Q-length features take on average 1.4x the initial estimate" is

@@ -177,7 +177,7 @@ public ResponseEntity<Map<String, String>> readiness() {
 The pipeline uses the readiness endpoint to confirm that the new version is accepting traffic
 before declaring the deployment complete.
 
-### Step 3: Add automated post-deployment smoke tests (Weeks 2-3)
+### Step 3: Add automated post-deployment smoke tests (weeks 2-3)
 
 After the readiness check confirms the service is up, run a suite of lightweight functional
 smoke tests:
@@ -191,7 +191,7 @@ smoke tests:
 Smoke tests should run in under two minutes. They are not a substitute for the full test
 suite - they are a fast deployment-specific verification layer.
 
-### Step 4: Add metric-based deployment gates (Weeks 3-4)
+### Step 4: Add metric-based deployment gates (weeks 3-4)
 
 Connect the deployment pipeline to the monitoring system so that real traffic metrics can
 determine deployment success:
@@ -205,7 +205,7 @@ by custom metrics. Deployment tools like Spinnaker, Argo Rollouts, and Flagger h
 support for metric-based promotion and rollback. Cloud provider deployment services often
 include built-in alarm-based rollback.
 
-### Step 5: Implement automated rollback (Weeks 3-5)
+### Step 5: Implement automated rollback (weeks 3-5)
 
 Wire automated rollback directly into the health check mechanism. If the health check fails
 but the team must manually decide to roll back and then execute the rollback, the benefit is
@@ -222,7 +222,7 @@ limited. The rollback trigger and the health check must be part of the same auto
 The team should be notified of the rollback immediately, with the health check failure that
 triggered it included in the notification.
 
-### Step 6: Extend to progressive delivery (Weeks 6-8)
+### Step 6: Extend to progressive delivery (weeks 6-8)
 
 Once automated health checks and rollback are established, consider progressive delivery to
 further reduce deployment risk:

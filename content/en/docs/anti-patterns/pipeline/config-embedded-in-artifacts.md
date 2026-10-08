@@ -74,11 +74,11 @@ Audit the build process to find every place where an environment-specific value 
 
 Separate configuration values into categories: non-sensitive application configuration (URLs, feature flags, pool sizes), sensitive credentials (database passwords, API keys, certificates), and runtime-computed values (hostnames assigned at deploy time). Each category calls for a different externalization approach - application config files, a secrets vault, and deployment-time injection, respectively.
 
-### Step 3: Externalize non-sensitive configuration (Weeks 2-3)
+### Step 3: Externalize non-sensitive configuration (weeks 2-3)
 
 Move non-sensitive configuration values out of the build and into externally-managed configuration files, environment variables injected at runtime, or a configuration service. The application should read these values at startup from the environment, not from values baked in at build time. Refactor the application code to expect external configuration rather than compiled-in defaults. Test by running the same artifact against multiple configuration sets.
 
-### Step 4: Move secrets to a vault (Weeks 3-4)
+### Step 4: Move secrets to a vault (weeks 3-4)
 
 Credentials should never live in config files or be passed as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
 

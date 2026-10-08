@@ -139,7 +139,7 @@ most autonomy over their deployment process. Start there. Apply one practice - a
 trunk-based development, automated deployment to a non-production environment. Generate evidence
 that it works in this organization, with this technology, under these constraints.
 
-### Step 3: Document the actual regulatory constraints (Weeks 2-4)
+### Step 3: Document the actual regulatory constraints (weeks 2-4)
 
 Engage the compliance or legal team directly with a specific question: "Here is a practice we want
 to adopt. Does our regulatory framework prohibit it?" In most cases the answer is "no" or "yes,
@@ -150,7 +150,7 @@ Bring the regulatory analysis back to the engineering conversation. "We checked.
 requires an audit trail for deployments, not a human approval gate. Our pipeline can generate the
 audit trail automatically." Specificity defuses the objection.
 
-### Step 4: Run a structured constraint analysis (Weeks 3-6)
+### Step 4: Run a structured constraint analysis (weeks 3-6)
 
 For each genuine technical constraint identified in Step 1, assess:
 
@@ -162,7 +162,7 @@ This produces a prioritized improvement backlog grounded in real constraints rat
 impossibility. The framing shifts from "we can't do CD" to "here are the specific things we need
 to address before we can adopt this specific practice."
 
-### Step 5: Build the internal case with evidence (Ongoing)
+### Step 5: Build the internal case with evidence (ongoing)
 
 Each successful improvement creates evidence that contradicts the "we're different" position. A
 team that automated their deployment in a regulated environment has demonstrated that automation

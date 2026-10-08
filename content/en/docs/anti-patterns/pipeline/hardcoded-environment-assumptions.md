@@ -152,7 +152,7 @@ Find every location where environment-specific logic is embedded in code:
 4. Create a list ordered by risk: code paths that are production-only and have no test
    coverage are highest risk.
 
-### Step 2: Externalize URL and endpoint selection to configuration (Weeks 1-2)
+### Step 2: Externalize URL and endpoint selection to configuration (weeks 1-2)
 
 Start with hardcoded URLs and connection strings - they are the easiest environment assumptions to eliminate:
 
@@ -173,7 +173,7 @@ The URL is now injected at deployment time from environment-specific configurati
 a configuration management system. The code is identical in every environment. Adding a new
 environment requires no code changes, only a new configuration entry.
 
-### Step 3: Replace hand-rolled feature flags with a proper mechanism (Weeks 2-3)
+### Step 3: Replace hand-rolled feature flags with a proper mechanism (weeks 2-3)
 
 Introduce a proper feature flag mechanism wherever environment-name checks are implementing
 feature toggles:
@@ -198,7 +198,7 @@ appropriately.
 Start with a simple in-process feature flag backed by a configuration file. Migrate to a
 dedicated feature flag service as the pattern matures.
 
-### Step 4: Remove behavior suppression by environment (Weeks 3-4)
+### Step 4: Remove behavior suppression by environment (weeks 3-4)
 
 Replace environment-aware suppression of email sending, external API calls, and notification
 firing with proper test doubles:
@@ -225,7 +225,7 @@ The production code now runs in every environment. Tests use a recording double 
 what emails would have been sent, allowing tests to verify the notification logic. The
 environment check is gone.
 
-### Step 5: Add integration tests for previously-untested production paths (Weeks 4-6)
+### Step 5: Add integration tests for previously-untested production paths (weeks 4-6)
 
 Add tests for every production-only code path that is now testable:
 
@@ -237,7 +237,7 @@ Add tests for every production-only code path that is now testable:
 This step converts previously-untested production-specific logic into well-tested shared logic.
 Each test added reduces the population of latent production-only defects.
 
-### Step 6: Enforce the no-environment-name-in-code rule (Ongoing)
+### Step 6: Enforce the no-environment-name-in-code rule (ongoing)
 
 Add a static analysis check that fails the pipeline if environment name literals appear in
 application logic (as opposed to configuration loading):

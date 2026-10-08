@@ -89,7 +89,7 @@ Remove velocity from management dashboards and stakeholder reports. It is an int
 
 Explain the change: velocity measures team effort in made-up units. Lead time and release frequency measure actual delivery outcomes.
 
-### Step 2: Introduce delivery metrics alongside velocity (Weeks 2-3)
+### Step 2: Introduce delivery metrics alongside velocity (weeks 2-3)
 
 While stopping velocity reporting, start tracking:
 
