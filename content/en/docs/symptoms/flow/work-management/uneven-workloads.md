@@ -22,7 +22,7 @@ capacity.
 
 ## Common causes
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When managers distribute work at sprint planning, they are estimating in advance how long each
 item will take and who is the right person for it. Those estimates are routinely wrong. Some
@@ -35,7 +35,7 @@ highest-priority item. No manager needs to predict durations or redistribute wor
 
 **Read more:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When a team is responsible for too many products or codebases, workload spikes in one area
 cannot be absorbed by people working in another. Each developer is already committed to their
@@ -60,7 +60,7 @@ flowing to whoever has capacity.
 
 ---
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP and uneven workloads reinforce each other
 - [Burnout and Unsustainable Pace]({{< relref "/docs/symptoms/visibility/team-burnout" >}}) - Chronically overloaded developers burn out

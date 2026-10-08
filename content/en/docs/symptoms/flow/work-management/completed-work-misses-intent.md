@@ -22,7 +22,7 @@ meaningful fraction of that work is being done twice.
 
 ## Common causes
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work is assigned rather than pulled, the developer receives a ticket without the context
 behind it. They were not in the conversation where the need was identified, the priority was
@@ -36,7 +36,7 @@ at the top of the backlog and what outcome it is trying to achieve.
 
 **Read more:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 
-### Ambiguous Requirements
+### Ambiguous requirements
 
 When acceptance criteria are written as checklists rather than as descriptions of user outcomes,
 they can be satisfied without delivering value. A story that specifies "add a confirmation dialog"
@@ -61,7 +61,7 @@ that do not express the user's goal leave room for implementations that miss the
 
 ---
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Rework adds unplanned items that inflate WIP
 - [Work Items Take Days or Weeks to Complete]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Rework loops extend cycle time

@@ -22,7 +22,7 @@ violated.
 
 ## Common causes
 
-### Knowledge Silos
+### Knowledge silos
 
 When only a few people understand a domain deeply, defects in that domain can only be resolved
 quickly by those people. When they are unavailable - on leave, on another team, or gone - the
@@ -32,7 +32,7 @@ developer discovers only after the fact.
 
 **Read more:** [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When engineers are rotated through a domain based on capacity, the person available to fix a bug
 is often not the person who knows the domain. They are familiar with the tech stack but not with
@@ -57,7 +57,7 @@ not accurately reflect the original intent.
 
 ---
 
-## Related Content
+## Related content
 
 - [Domain Model Erosion]({{< relref "/docs/symptoms/flow/developer-experience/domain-model-erosion" >}}) - An eroded domain model makes every bug harder to reason about
 - [Repeated Domain Mistakes]({{< relref "/docs/symptoms/flow/team-knowledge/repeated-domain-mistakes" >}}) - Fixes that do not stick because root causes are not understood

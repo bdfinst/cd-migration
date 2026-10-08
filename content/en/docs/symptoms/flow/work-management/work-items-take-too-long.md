@@ -23,7 +23,7 @@ that only surface mid-implementation.
 
 ## Common causes
 
-### Horizontal Slicing
+### Horizontal slicing
 
 When work is split by technical layer rather than by user-visible behavior, each item spans an
 entire layer and takes days to complete. "Build the database schema," "build the API," "build the
@@ -33,7 +33,7 @@ can be finished in one to two days.
 
 **Read more:** [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}})
 
-### Monolithic Work Items
+### Monolithic work items
 
 When the team takes requirements as they arrive without breaking them into smaller pieces, work
 items are as large as the feature they describe. A ticket titled "Add user profile page" hides
@@ -43,7 +43,7 @@ to flow.
 
 **Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
-### Long-Lived Feature Branches
+### Long-lived feature branches
 
 When developers work on branches for days or weeks, the branch and the work item are the same
 size: large. The branching model reinforces large items because there is no integration pressure
@@ -52,7 +52,7 @@ integrate daily.
 
 **Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work is assigned to individuals, swarming is not possible. If the assigned developer hits a
 blocker - a dependency, an unclear requirement, a missing skill - they work around it alone rather
@@ -82,7 +82,7 @@ than the team collectively resolving the blocker.
 
 ---
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP and long cycle times reinforce each other
 - [Merging Is Painful and Time-Consuming]({{< relref "/docs/symptoms/flow/integration/painful-merges" >}}) - Long-lived work creates merge pain that further slows delivery

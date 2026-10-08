@@ -28,7 +28,7 @@ detail by detail - which is often harder than writing the code from scratch.
 
 ## Common causes
 
-### Skipping Specification and Prompting Directly
+### Skipping specification and prompting directly
 
 The most common cause of AI slowdown is jumping straight to code generation without
 defining what the change should do. Instead of writing an intent description, [BDD](../../../reference/glossary/#bdd-behavior-driven-development) scenarios,
@@ -53,7 +53,7 @@ conversation, not in implementation review.
 
 **Read more:** [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}})
 
-### Missing Working Agreements on AI Usage
+### Missing working agreements on AI usage
 
 When the team has no shared understanding of which tasks benefit from AI and which do not,
 developers default to using AI on everything. Some tasks - writing a parser for a well-defined
@@ -67,7 +67,7 @@ time.
 
 **Read more:** [No Shared Workflow Expectations]({{< relref "/docs/symptoms/flow/team-knowledge/no-shared-workflow-expectations" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When domain knowledge is concentrated in a few people, the acceptance criteria for domain-heavy
 work exist only in those people's heads. They can implement the feature faster than they can
@@ -100,7 +100,7 @@ that has not been made explicit.
 
 **Ready to fix this?** Start with [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) to learn the specification workflow that front-loads clarity before code generation.
 
-## Related Content
+## Related content
 
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - Using agents to define intent, scenarios, and criteria before generating code
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - The six artifacts that constrain AI-generated code

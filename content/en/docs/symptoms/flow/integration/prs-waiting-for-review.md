@@ -23,7 +23,7 @@ further.
 
 ## Common causes
 
-### Long-Lived Feature Branches
+### Long-lived feature branches
 
 When developers work on branches for days, the resulting PRs are large. Large PRs take longer to
 review because reviewers need more time to understand the scope of the change. A 300-line PR is
@@ -32,7 +32,7 @@ review delay.
 
 **Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When only specific individuals can review certain areas of the codebase, those individuals become
 bottlenecks. Their review queue grows while other team members who could review are not
@@ -41,7 +41,7 @@ specific code areas concentrated in too few people.
 
 **Read more:** [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work is assigned to individuals, reviewing someone else's code feels like a distraction
 from "my work." Every developer has their own assigned stories to protect. Helping a teammate
@@ -68,7 +68,7 @@ incentive structure deprioritizes collaboration.
 
 **Ready to fix this?** The most common cause is [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Blocked PRs drive up work in progress
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Review delays are a form of slow feedback

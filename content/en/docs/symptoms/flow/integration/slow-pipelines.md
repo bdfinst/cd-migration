@@ -28,7 +28,7 @@ developers work around rather than rely on.
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When most of the test suite consists of end-to-end or integration tests rather than unit tests,
 the pipeline is dominated by slow, resource-intensive test execution. E2E tests launch browsers,
@@ -38,7 +38,7 @@ tests and few unit tests is slow by construction.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Snowflake Environments
+### Snowflake environments
 
 When pipeline environments are not standardized or reproducible, builds include extra time for
 environment setup, dependency installation, and configuration. Caching is unreliable because the
@@ -47,7 +47,7 @@ because there is no reliable cache layer is slow for infrastructure reasons, not
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When the codebase has no clear module boundaries, every change triggers a full rebuild and a full
 test run. The pipeline cannot selectively build or test only the affected components because the
@@ -56,7 +56,7 @@ must verify everything.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
-### Manual Regression Testing Gates
+### Manual regression testing gates
 
 When the pipeline includes a manual testing phase, the wall-clock time from push to green
 includes human wait time. A pipeline that takes 10 minutes to build and test but then waits two
@@ -85,7 +85,7 @@ automated prefix.
 
 **Ready to fix this?** The most common cause is [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}) - Slow pipelines are the primary cause of slow feedback
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Slow tests are the most common cause of slow pipelines
