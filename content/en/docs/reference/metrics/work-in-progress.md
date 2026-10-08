@@ -101,7 +101,7 @@ WIP is the most actionable flow metric and directly impacts every aspect of
   item in progress reduces effective productivity. Low WIP means more focus and
   faster completion.
 - **Exposes blockers.** When WIP limits are in place and an item gets blocked, the
-  team cannot simply start something new. They must resolve the blocker first. This
+  team cannot start something new. They must resolve the blocker first. This
   forces the team to address systemic problems rather than working around them.
 - **Enables continuous flow.** CD depends on a steady flow of small changes moving
   through the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). High WIP creates irregular, bursty delivery. Low WIP

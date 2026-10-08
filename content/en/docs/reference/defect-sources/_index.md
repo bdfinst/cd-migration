@@ -11,7 +11,7 @@ Defects do not appear randomly. They originate from specific, predictable source
 value stream. This reference catalogs those sources so teams can shift detection left, automate
 where possible, and apply AI where it adds real value to the feedback loop.
 
-The goal is systems thinking: detect issues as early as possible in the value stream so feedback informs continuous improvement in how we work, not just reactive fixes to individual defects.
+The goal is systems thinking: detect issues as early as possible in the value stream so feedback informs continuous improvement in how we work, not only reactive fixes to individual defects.
 
 - <span class="ai-high">&#9650;</span> AI shifts detection earlier than current automation alone
 - Dark cells = current automation is sufficient; AI adds no additional value

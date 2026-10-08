@@ -18,7 +18,7 @@ relevant to.
 : Farley's broader take on what it means to do software engineering well. Covers the principles
   behind CD - iterating toward a goal, getting fast feedback, working in small steps - and
   connects them to test-driven development, managing complexity, and designing for testability.
-  Useful for teams that want to understand the why behind CD practices, not just the how.
+  Useful for teams that want to understand the why behind CD practices, not only the how.
 : *Most relevant to: All phases*
 
 **Continuous Delivery Pipelines** by Dave Farley
