@@ -14,7 +14,7 @@ aliases:
 Code review is essential for quality, but it is also the most common bottleneck in teams adopting [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}). If reviews take days, daily integration is impossible. This page covers review techniques that maintain quality while enabling the flow that [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires.
 {{% /pageinfo %}}
 
-## Why Code Review Matters for CD
+## Why code review matters for CD
 
 Automated tools catch syntax errors, style violations, and known vulnerability patterns. Code review exists for the things automation cannot evaluate.
 
@@ -27,7 +27,7 @@ These are real benefits. The challenge is that traditional code review - open a 
 
 In a CD workflow, code review must happen **within minutes or hours, not days**. The review is still rigorous, but the process is designed for speed.
 
-## The Core Tension: Quality vs. Flow
+## The core tension: quality vs. flow
 
 Traditional teams optimize review for thoroughness: detailed comments, multiple reviewers, extensive back-and-forth. This produces high-quality reviews but blocks flow.
 
@@ -42,9 +42,9 @@ CD teams optimize review for speed without sacrificing the quality that matters.
 | Review is asynchronous by default | Review is synchronous by preference |
 | 2+ reviewers required | 1 reviewer (or pairing as the review) |
 
-## Synchronous vs. Asynchronous Review
+## Synchronous vs. asynchronous review
 
-### Synchronous Review (Preferred for CD)
+### Synchronous review (preferred for CD)
 
 In synchronous review, the reviewer and author are engaged at the same time. Feedback is immediate. Questions are answered in real time. The review is done when the conversation ends.
 
@@ -61,7 +61,7 @@ In synchronous review, the reviewer and author are engaged at the same time. Fee
 - Immediate resolution of questions - no async back-and-forth
 - Knowledge transfer happens naturally through the shared work
 
-### Asynchronous Review (When Necessary)
+### Asynchronous review (when necessary)
 
 Sometimes synchronous review is not possible - time zones, schedules, or team preferences may require asynchronous review. This is fine, but it must be fast.
 
@@ -72,9 +72,9 @@ Sometimes synchronous review is not possible - time zones, schedules, or team pr
 - **Use draft PRs for early feedback.** If you want feedback on an approach before the code is complete, open a draft PR. Do not wait until the change is "perfect."
 - **Avoid back-and-forth.** If a comment requires discussion, move to a synchronous channel (call, chat). Async comment threads that go 5 rounds deep are a sign the change is too large or the design was not discussed upfront.
 
-## Review Techniques Compatible with TBD
+## Review techniques compatible with TBD
 
-### Pair Programming as Review
+### Pair programming as review
 
 When two developers pair on a change, the code is reviewed as it is written. There is no separate review step, no pull request waiting for approval, and no delay to integration.
 
@@ -94,7 +94,7 @@ When two developers pair on a change, the code is reviewed as it is written. The
 
 Pair programming satisfies most organizations' code review requirements because two developers have actively reviewed and approved the code.
 
-### Mob Programming as Review
+### Mob programming as review
 
 Mob programming extends pairing to the whole team. One person drives (types), one person navigates (directs), and the rest observe and contribute.
 
@@ -107,7 +107,7 @@ Mob programming extends pairing to the whole team. One person drives (types), on
 
 Mob programming is intensive but highly effective. Every team member understands the code, the design decisions, and the trade-offs.
 
-### Rapid Async Review
+### Rapid async review
 
 For teams that use pull requests, rapid async review adapts the pull request workflow for CD speed.
 
@@ -119,11 +119,11 @@ For teams that use pull requests, rapid async review adapts the pull request wor
 - **Use automated checks.** Run linting, formatting, and tests before the human review. The reviewer should focus on logic and design, not style.
 - **Approve and merge quickly.** If the change looks correct, approve it. Do not hold it for nitpicks. Nitpicks can be addressed in a follow-up commit.
 
-## What to Review
+## What to review
 
 Not everything in a code change deserves the same level of scrutiny. Focus reviewer attention where it matters most.
 
-### High Priority (Reviewer Should Focus Here)
+### High priority (reviewer should focus here)
 
 - **Behavior correctness:** Does the code do what it is supposed to do? Are edge cases handled?
 - **Security:** Does the change introduce vulnerabilities? Are inputs validated? Are secrets handled properly?
@@ -132,7 +132,7 @@ Not everything in a code change deserves the same level of scrutiny. Focus revie
 - **API contracts:** Do changes to public interfaces maintain backward compatibility? Are they documented?
 - **Error handling:** What happens when things go wrong? Are errors caught, logged, and surfaced appropriately?
 
-### Low Priority (Automate Instead of Reviewing)
+### Low priority (automate instead of reviewing)
 
 - **Code style and formatting:** Use automated formatters (Prettier, Black, gofmt). Do not waste reviewer time on indentation and bracket placement.
 - **Import ordering:** Automate with linting rules.
@@ -142,7 +142,7 @@ Not everything in a code change deserves the same level of scrutiny. Focus revie
 
 **Rule of thumb:** If a style or convention issue can be caught by a machine, do not ask a human to catch it. Reserve human attention for the things machines cannot evaluate: correctness, design, clarity, and security.
 
-## Review Scope for Small Changes
+## Review scope for small changes
 
 In a CD workflow, most changes are small - tens of lines, not hundreds. This changes the economics of review.
 
@@ -155,11 +155,11 @@ In a CD workflow, most changes are small - tens of lines, not hundreds. This cha
 
 Research consistently shows that reviewer effectiveness drops sharply after 200-400 lines. If you are regularly reviewing changes larger than 200 lines, the problem is not the review process - it is the [work decomposition]({{< relref "/docs/foundations/work-decomposition" >}}).
 
-## Working Agreements for Review SLAs
+## Working agreements for review SLAs
 
 Establish clear team agreements about review expectations. Without explicit agreements, review latency will drift based on individual habits.
 
-### Recommended Review Agreements
+### Recommended review agreements
 
 | Agreement | Target |
 |-----------|--------|
@@ -171,14 +171,14 @@ Establish clear team agreements about review expectations. Without explicit agre
 | **Stale PRs** | PRs open for > 24 hours are escalated to the team |
 | **Self-review** | Author reviews their own diff before requesting review |
 
-### How to Enforce Review SLAs
+### How to enforce review SLAs
 
 - Track review turnaround time. If it consistently exceeds 2 hours, discuss it in retrospectives.
 - Make review a first-class responsibility, not something developers do "when they have time."
 - If a reviewer is unavailable, any other team member can review. Do not create single-reviewer dependencies.
 - Consider pairing as the default and async review as the exception. This eliminates the review bottleneck entirely.
 
-## Code Review and Trunk-Based Development
+## Code review and trunk-based development
 
 Code review and TBD work together, but only if review does not block integration. Here is how to reconcile them:
 
@@ -191,7 +191,7 @@ Code review and TBD work together, but only if review does not block integration
 
 If your team finds that review is the bottleneck preventing daily integration, the most effective solution is to adopt pair programming. It eliminates the review step entirely by making review continuous.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -200,13 +200,13 @@ If your team finds that review is the bottleneck preventing daily integration, t
 | PR age at merge | < 24 hours | Aligns with TBD branch age constraint |
 | Review rework cycles | < 2 rounds | Multiple rounds indicate the change is too large or design was not discussed upfront |
 
-## Next Step
+## Next step
 
 Code review practices need to be codified in team agreements alongside other shared commitments. Continue to [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) to establish your team's definitions of done, ready, and [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) practice.
 
 ---
 
-## Related Content
+## Related content
 
 - [PRs Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Symptom that slow review practices cause
 - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Symptom worsened when review blocks flow

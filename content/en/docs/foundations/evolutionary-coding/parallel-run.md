@@ -12,19 +12,19 @@ description: >
 A parallel run executes the old and new code paths against the same production input, but only returns the old result to the caller. It proves correctness with real traffic before anyone depends on the new path.
 {{% /pageinfo %}}
 
-## What Is a Parallel Run?
+## What is a parallel run?
 
 A parallel run, sometimes called shadowing or a dark launch of logic, wraps a call so both the current implementation and a candidate replacement execute against identical production input. The caller always receives the current implementation's result. The candidate's result is captured and compared, never returned.
 
 This technique is best known from GitHub's open-source Scientist library, which formalized the pattern for verifying refactors of high-risk code paths.
 
-### What a Parallel Run Is Not
+### What a parallel run is not
 
 - It is not a percentage rollout. Every request runs through both implementations; nothing is split between them. Percentage rollout is a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}) concern that comes after a parallel run has already established parity.
 - It is not A/B testing or [hypothesis-driven development]({{< relref "/docs/optimize/hypothesis-driven-development" >}}). Users never see the candidate's output during a parallel run, so it measures technical correctness, not user response.
 - It is not a permanent architecture. The comparison harness is temporary scaffolding, removed once the candidate becomes the primary path.
 
-## What a Parallel Run Improves
+## What a parallel run improves
 
 | Problem | How a Parallel Run Helps |
 |---------|---------------------------|
@@ -33,7 +33,7 @@ This technique is best known from GitHub's open-source Scientist library, which 
 | Regressions that only show up on rare production inputs | Every production request exercises both paths, including edge cases test suites miss |
 | Risky migrations with no rollback story | The old path stays authoritative until the data proves the new one is safe |
 
-## Running the Comparison
+## Running the comparison
 
 ### Step 1: Wrap the call
 
@@ -79,12 +79,12 @@ Track mismatch rate, candidate error rate, and performance delta over a statisti
 
 Once the mismatch rate holds at zero for the agreed period, switch the candidate to the primary path, typically with [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}), and delete the comparison harness. Leaving it in place after cutover is unnecessary runtime cost with no further benefit.
 
-## When a Parallel Run Is Not Enough
+## When a parallel run is not enough
 
 - **The old and new implementations must not both execute**, for example when the operation has side effects like sending an email or charging a card. Idempotent, side-effect-free logic (pricing, scoring, routing decisions) is what parallel run is for. For operations with side effects, use [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) with a smaller, monitored rollout instead.
 - **You are changing a shared schema or contract, not only an implementation.** Use [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) instead.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We let the candidate's exceptions bubble up to the caller"
 
@@ -98,7 +98,7 @@ A parallel run needs enough volume and enough time to cover the input space that
 
 The harness is temporary. Once the candidate is primary and stable, remove the shadow call entirely. Running both implementations forever doubles compute cost for no ongoing benefit.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -106,11 +106,11 @@ The harness is temporary. Once the candidate is primary and stable, remove the s
 | Candidate error rate | Zero, independent of the legacy path | Confirms the candidate doesn't crash on real production input |
 | Time from shadow start to harness removal | Weeks, not indefinite | Confirms the harness is treated as temporary scaffolding |
 
-## Next Step
+## Next step
 
 If the change touches a shared database schema or an API contract rather than a single implementation, use [Expand and Contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}).
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - the full decision hierarchy
 - [Branch by Abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) - the technique that typically performs the eventual cutover

@@ -20,7 +20,7 @@ Long-lived branches hide problems. TBD exposes them early, which is why it is th
 
 ---
 
-## Why Move to Trunk-Based Development?
+## Why move to trunk-based development?
 
 Long-lived branches hide problems. TBD exposes them early, when they are cheap to fix.
 
@@ -37,7 +37,7 @@ integration at best. True CI requires at least daily integration to the trunk.
 
 ---
 
-## The First Step: Stop Letting Work Age
+## The first step: stop letting work age
 
 The biggest barrier isn't tooling. It's habits.
 
@@ -51,11 +51,11 @@ That alone exposes [dependency]({{< relref "/docs/reference/glossary#dependency"
 
 ---
 
-## Before You Start: What to Measure
+## Before you start: what to measure
 
 You cannot improve what you don't measure. Before changing anything, establish [baseline metrics]({{< relref "/docs/reference/glossary#baseline-metrics" >}}), so you can track actual progress.
 
-### Essential Metrics to Track Weekly
+### Essential metrics to track weekly
 
 | Metric | What to Track | Target |
 |--------|--------------|--------|
@@ -69,11 +69,11 @@ Start with two or three of these. Don't let measurement become its own project.
 
 ---
 
-## Path 1: Moving from Long-Lived Branches to Short-Lived Branches
+## Path 1: Moving from long-lived branches to short-lived branches
 
 When GitFlow habits are deeply ingrained, this is usually the least-threatening first step.
 
-### 1. Collapse the Branching Model
+### 1. Collapse the branching model
 
 Stop using:
 
@@ -86,7 +86,7 @@ Move toward:
 - A single `main` (or `trunk`)
 - Temporary branches measured in hours or days
 
-### 2. Integrate Every Few Days, Then Every Day
+### 2. Integrate every few days, then every day
 
 Set an explicit [working agreement]({{< relref "/docs/reference/glossary#working-agreement" >}}):
 
@@ -98,7 +98,7 @@ Once this feels normal, shorten it:
 
 If a change is too large to merge within a day or two, the problem isn't the branching model. The problem is the decomposition of work.
 
-### 3. Test Before You Code
+### 3. Test before you code
 
 Branch lifetime shortens when you stop guessing about expected behavior.
 Bring product, QA, and developers together *before coding*:
@@ -116,7 +116,7 @@ This approach is called **[Behavior-Driven Development (BDD)]({{< relref "/docs/
 - [Behavior-Driven Development - Dojo Consortium](https://dojoconsortium.org/docs/work-decomposition/behavior-driven-development/) - Comprehensive guide to BDD practices
 - ["Specification by Example"](https://gojko.net/books/specification-by-example/) by Gojko Adzic - Foundational text on collaborative specification
 
-#### How to Run a Three Amigos Session
+#### How to run a Three Amigos session
 
 **Participants:** Product Owner, Developer, Tester (15-30 minutes per story)
 
@@ -153,7 +153,7 @@ Scenario: Expired link
 
 These scenarios become your automated acceptance tests *before* you write any implementation code.
 
-#### From Acceptance Criteria to Tests
+#### From acceptance criteria to tests
 
 Turn those scenarios into executable tests in your framework of choice:
 
@@ -186,7 +186,7 @@ describe('Password Reset', () => {
 
 Now you can write the minimum code to make these tests pass. This drives smaller, more focused changes.
 
-### 4. Invest in Contract Tests
+### 4. Invest in contract tests
 
 Most merge pain isn't from your code. It's from the *interfaces* between services.
 Define interface changes early and codify them with provider/consumer contract tests.
@@ -195,7 +195,7 @@ This lets teams integrate frequently without surprises.
 
 ---
 
-## Path 2: Committing Directly to the Trunk
+## Path 2: Committing directly to the trunk
 
 This is the cleanest and most powerful version of TBD.
 It requires discipline, but it produces the most stable delivery [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) and the least drama.
@@ -208,7 +208,7 @@ If you work in a regulated industry with compliance requirements (SOX, HIPAA, Fe
 
 ---
 
-## How to Choose Your Path
+## How to choose your path
 
 Use this rule of thumb:
 
@@ -227,11 +227,11 @@ The difference is pace.
 
 ---
 
-## Essential TBD Practices
+## Essential TBD practices
 
 These practices apply to **both paths**, whether you're using short-lived branches or committing directly to trunk.
 
-### Use Feature Flags the Right Way
+### Use feature flags the right way
 
 [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) are one of several **[evolutionary coding techniques]({{< relref "/docs/foundations/evolutionary-coding" >}})** that allow you to integrate incomplete work safely, and the one to reach for last. See [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) for the full decision hierarchy, including dark code, branch by abstraction, parallel run, and expand and contract.
 
@@ -246,7 +246,7 @@ Every commit to trunk must:
 
 Flags let you deploy incomplete work without exposing it prematurely. They don't excuse poor test discipline.
 
-#### Start Simple: Boolean Flags
+#### Start simple: boolean flags
 
 You don't need a sophisticated feature flag system to start. Begin with environment variables or simple config files.
 
@@ -272,7 +272,7 @@ app.get('/checkout', (req, res) => {
 
 This is enough for most TBD use cases.
 
-#### Testing Code Behind Flags
+#### Testing code behind flags
 
 Critical: You must test **both** code paths, flag on and flag off.
 
@@ -302,24 +302,24 @@ describe('Checkout flow', () => {
 
 If you only test with the flag on, you'll break production when the flag is off.
 
-#### Keep Flags Short-Lived
+#### Keep flags short-lived
 
 For TBD, most flags are temporary release flags: they hide incomplete work during integration and get removed once the feature is stable (typically 1-4 weeks). Set a removal date when you create each flag, assign an owner, and treat unremoved flags as technical debt.
 
 For a deeper taxonomy of flag types (release flags vs. permanent configuration flags) and lifecycle management practices, see the [feature flag glossary entry]({{< relref "/docs/reference/glossary#feature-flag" >}}).
 
-### Commit Small and Commit Often
+### Commit small and commit often
 
 If a change is too large to commit today, split it.
 
 Large commits are failed design upstream, not failed integration downstream.
 
-### Use TDD and ATDD to Keep Refactors Safe
+### Use TDD and ATDD to keep refactors safe
 
 Refactoring must not break tests.
 If it does, you're testing implementation, not behavior. Behavioral tests are what keep trunk commits safe.
 
-### Prioritize Interfaces First
+### Prioritize interfaces first
 
 Always start by defining and codifying the contract:
 
@@ -331,11 +331,11 @@ Interfaces are the highest-risk area. Drive them with tests first. Then work inw
 
 ---
 
-## Getting Started: A Tactical Guide
+## Getting started: a tactical guide
 
 The initial phase sets the tone. Focus on establishing new habits, not perfection.
 
-### Step 1: Team Agreement and Baseline
+### Step 1: Team agreement and baseline
 
 - Hold a team meeting to discuss the migration
 - Agree on initial [branch lifetime]({{< relref "/docs/reference/glossary#branch-lifetime" >}}) limit (start with 48 hours if unsure)
@@ -344,7 +344,7 @@ The initial phase sets the tone. Focus on establishing new habits, not perfectio
 - Create a list of known integration pain points
 - Set up a visible tracker (physical board or digital dashboard) for metrics
 
-### Step 2: Test Infrastructure Audit
+### Step 2: Test infrastructure audit
 
 **Focus:** Find and fix what will slow you down.
 
@@ -358,7 +358,7 @@ The initial phase sets the tone. Focus on establishing new habits, not perfectio
 
 Fix or isolate the worst offenders. You don't need a perfect test suite to start, only one fast enough to not punish frequent integration.
 
-### Step 3: First Integrated Change
+### Step 3: First integrated change
 
 **Pick the smallest possible change:**
 
@@ -403,11 +403,11 @@ The initial phase won't feel smooth. That's expected. You're learning what needs
 
 ---
 
-## Getting Your Team On Board
+## Getting your team on board
 
 Technical changes are easy compared to changing habits and mindsets. Here's how to build buy-in.
 
-### Acknowledge the Fear
+### Acknowledge the fear
 
 When you propose TBD, you'll hear:
 
@@ -420,7 +420,7 @@ These concerns are valid signals about your current system. Don't dismiss them.
 
 Instead: "You're right that committing directly to trunk *with our current test coverage* would be risky. That's why we need to improve our tests first."
 
-### Start with an Experiment
+### Start with an experiment
 
 Don't mandate TBD for the whole team immediately. Propose a time-boxed experiment:
 
@@ -437,7 +437,7 @@ Don't mandate TBD for the whole team immediately. Propose a time-boxed experimen
 **After two weeks:**
 Hold a retrospective. Let the data and experience guide the decision.
 
-### Pair on the First Changes
+### Pair on the first changes
 
 Don't expect everyone to adopt TBD simultaneously. Instead:
 
@@ -448,7 +448,7 @@ Don't expect everyone to adopt TBD simultaneously. Instead:
 
 Knowledge transfer through pairing works better than documentation.
 
-### Address Code Review Concerns
+### Address code review concerns
 
 "But we need code review!" Yes. TBD doesn't eliminate code review.
 
@@ -469,7 +469,7 @@ Instead, use **synchronous code reviews** where the reviewer and author work tog
 If your team cannot commit to synchronous reviews or pair/mob programming, you will struggle to maintain short branch lifetimes.
 {{< /alert >}}
 
-### Handle Skeptics and Blockers
+### Handle skeptics and blockers
 
 You'll encounter people who don't want to change. Don't force it.
 
@@ -482,7 +482,7 @@ You'll encounter people who don't want to change. Don't force it.
 
 Some people need to see it working before they believe it.
 
-### Get Management Support
+### Get management support
 
 Managers often worry about:
 
@@ -501,17 +501,17 @@ Frame TBD as a risk *reduction* strategy, not a risky experiment.
 
 ---
 
-## Working in a Multi-Team Environment
+## Working in a multi-team environment
 
 Migrating to TBD gets complicated when you depend on teams still using long-lived branches. Here's how to handle it.
 
-### The Core Problem
+### The core problem
 
 You want to integrate daily. Your dependency team integrates weekly or monthly. Their API changes surprise you during their big-bang merge.
 
 You can't force other teams to change. But you can protect yourself.
 
-### Strategy 1: Consumer-Driven Contract Tests
+### Strategy 1: Consumer-driven contract tests
 
 Define the contract you need from the upstream service and codify it in tests that run in *your* pipeline.
 
@@ -554,7 +554,7 @@ This test runs against your expectations of the API, not the actual service. Whe
 - Upstream team runs provider verification against your contract
 - If they break your contract, they know before merging
 
-### Strategy 2: API Versioning with Backwards Compatibility
+### Strategy 2: API versioning with backwards compatibility
 
 If you control the shared service:
 
@@ -580,7 +580,7 @@ app.get('/api/users/:id', (req, res) => {
 3. After all consumers migrated, deprecate old version
 4. Remove old version after deprecation period
 
-### Strategy 3: Strangler Fig Pattern
+### Strategy 3: Strangler fig pattern
 
 When you depend on a team that won't change:
 
@@ -614,7 +614,7 @@ class LegacyUserServiceAdapter extends UserRepository {
 
 Now your code depends on *your* interface, not theirs. When they change, you only update the adapter.
 
-### Strategy 4: Feature Toggles for Cross-Team Coordination
+### Strategy 4: Feature toggles for cross-team coordination
 
 When multiple teams need to coordinate a release:
 
@@ -625,7 +625,7 @@ When multiple teams need to coordinate a release:
 
 This decouples development velocity from release coordination.
 
-### When You Can't Integrate with Dependencies
+### When you can't integrate with dependencies
 
 If upstream dependencies block you from integrating daily:
 
@@ -645,41 +645,41 @@ You can't force other teams to change. But you can demonstrate a better way and 
 
 ---
 
-## TBD in Regulated Environments
+## TBD in regulated environments
 
 Regulated industries face legitimate compliance requirements: audit trails, change traceability, separation of duties, and documented approval processes. These requirements often lead teams to believe trunk-based development is incompatible with compliance. This is a misconception.
 
 TBD is about **integration frequency**, not about eliminating controls. You can meet compliance requirements while still integrating at least daily.
 
-### The Compliance Concerns
+### The compliance concerns
 
 Common regulatory requirements that seem to conflict with TBD:
 
-#### Audit Trail and Traceability
+#### Audit trail and traceability
 
 - Every change must be traceable to a requirement, ticket, or change request
 - Changes must be attributable to specific individuals
 - History of what changed, when, and why must be preserved
 
-#### Separation of Duties
+#### Separation of duties
 
 - The person who writes code shouldn't be the person who approves it
 - Changes must be reviewed before reaching production
 - No single person should have unchecked commit access
 
-#### Change Control Process
+#### Change control process
 
 - Changes must follow a documented approval workflow
 - Risk assessment before deployment
 - [Rollback]({{< relref "/docs/reference/glossary#rollback" >}}) capability for failed changes
 
-#### Documentation Requirements
+#### Documentation requirements
 
 - Changes must be documented before implementation
 - Testing evidence must be retained
 - Deployment procedures must be repeatable and auditable
 
-### Short-Lived Branches: The Compliant Path to TBD
+### Short-lived branches: the compliant path to TBD
 
 **Path 1 from this guide (short-lived branches) directly addresses compliance concerns while maintaining the benefits of TBD.**
 
@@ -692,7 +692,7 @@ Short-lived branches mean:
 
 This approach satisfies both regulatory requirements and continuous integration principles.
 
-### How Short-Lived Branches Meet Compliance Requirements
+### How short-lived branches meet compliance requirements
 
 **Audit Trail:**
 
@@ -775,7 +775,7 @@ Pull request templates enforce documentation:
 [How to rollback if this causes issues in production]
 {{< /card >}}
 
-### What "Short-Lived" Means in Practice
+### What "short-lived" means in practice
 
 **Hours, not days:**
 
@@ -793,7 +793,7 @@ Even if the feature isn't complete, integrate what you have:
 - As internal APIs not yet exposed
 - As tests and interfaces before implementation
 
-### Compliance-Friendly Tooling
+### Compliance-friendly tooling
 
 **Modern platforms provide compliance features built-in:**
 
@@ -826,7 +826,7 @@ Even if the feature isn't complete, integrate what you have:
 - Rotation policies
 - Environment isolation
 
-### Example: Compliant Short-Lived Branch Workflow
+### Example: compliant short-lived branch workflow
 
 **Monday 9 AM:**
 Developer creates branch `feature/JIRA-1234-add-audit-logging` from trunk.
@@ -864,7 +864,7 @@ Automated deployment to production. Audit log captures: what deployed, who appro
 
 Full compliance maintained. Full audit trail captured. Daily integration achieved.
 
-### When Long-Lived Branches Hide Compliance Problems
+### When long-lived branches hide compliance problems
 
 Ironically, long-lived branches often create compliance risks:
 
@@ -880,7 +880,7 @@ Problems discovered weeks after code was written are expensive to fix and hard t
 **Audit Trail Gaps:**
 Long-lived branches often have messy commit history, force pushes, and unclear attribution. The audit trail is polluted.
 
-### Regulatory Examples Where Short-Lived Branches Work
+### Regulatory examples where short-lived branches work
 
 **Financial Services (SOX, PCI-DSS):**
 
@@ -908,7 +908,7 @@ Long-lived branches often have messy commit history, force pushes, and unclear a
 
 ---
 
-## What Will Hurt (At First)
+## What will hurt (at first)
 
 When you migrate to TBD, you'll expose every weakness you've been avoiding:
 
@@ -926,7 +926,7 @@ Problems you discover early are problems you can fix cheaply.
 
 ---
 
-## Common Pitfalls to Avoid
+## Common pitfalls to avoid
 
 Teams migrating to TBD often make predictable mistakes. The table below summarizes all ten; the three most critical are expanded afterward.
 
@@ -943,7 +943,7 @@ Teams migrating to TBD often make predictable mistakes. The table below summariz
 | Treating trunk as unstable | Process | Trunk must always be production-ready; fix broken builds immediately |
 | Forgetting TBD is a means, not an end | Outcomes | Measure cycle time, defect rates, and deployment frequency, not only commit counts |
 
-### Pitfall 1: Treating TBD as a Branch Renaming Exercise
+### Pitfall 1: Treating TBD as a branch renaming exercise
 
 **The mistake:**
 Renaming `develop` to `main` and calling it TBD.
@@ -954,7 +954,7 @@ You're still doing long-lived feature branches with different names. The fundame
 **What to do instead:**
 Focus on integration frequency, not branch names. Measure time-to-merge, not what you call your branches.
 
-### Pitfall 2: Merging Daily Without Actually Integrating
+### Pitfall 2: Merging daily without actually integrating
 
 **The mistake:**
 Committing to trunk every day, but your code doesn't interact with anyone else's work. Your tests don't cover integration points.
@@ -965,7 +965,7 @@ You're batching integration for later. When you finally connect your component t
 **What to do instead:**
 Ensure your tests exercise the boundaries between components. Use contract tests for service interfaces. Integrate at the interface level, not only at the source control level.
 
-### Pitfall 5: Keeping Flags Forever
+### Pitfall 5: Keeping flags forever
 
 **The mistake:**
 Creating feature flags and never removing them. Your codebase becomes a maze of conditionals.
@@ -978,11 +978,11 @@ Set a removal date when creating each flag. Track flags like technical debt. Rem
 
 ---
 
-## When to Pause or Pivot
+## When to pause or pivot
 
 Sometimes TBD migration stalls or causes more problems than it solves. Here's how to tell if you need to pause and what to do about it.
 
-### Signs You're Not Ready Yet
+### Signs you're not ready yet
 
 **Red flag 1: Your test suite takes hours to run**
 If developers can't get feedback in minutes, they can't integrate frequently. Forcing TBD now will slow everyone down.
@@ -1008,7 +1008,7 @@ If people are fighting about the process, frustrated daily, or actively working 
 **What to do:**
 Hold a retrospective. Listen to concerns without defending TBD. Identify the top 3 pain points. Address those first. Resume TBD migration when the team agrees to try again.
 
-### Signs You're Doing It Wrong (But Can Fix It)
+### Signs you're doing it wrong (but can fix it)
 
 **Yellow flag 1: Daily commits, but monthly integration**
 You're committing to trunk, but your code doesn't connect to the rest of the system until the end.
@@ -1028,7 +1028,7 @@ If you have more than 5 active flags, you're not cleaning up after yourself.
 **What to fix:**
 Set a team rule: "For every new flag created, remove an old one." Dedicate time each sprint to flag cleanup.
 
-### How to Pause Gracefully
+### How to pause gracefully
 
 If you need to pause:
 
@@ -1048,7 +1048,7 @@ Pausing isn't failure. Pausing to fix the foundation is smart.
 
 ---
 
-## What "Good" Looks Like
+## What "good" looks like
 
 You know TBD is working when:
 
@@ -1064,11 +1064,11 @@ When your deployment process enables emergency fixes without special exceptions,
 
 ---
 
-## Concrete Examples and Scenarios
+## Concrete examples and scenarios
 
 Theory is useful. Examples make it real. Here are practical scenarios showing how to apply TBD principles.
 
-### Scenario 1: Breaking Down a Large Feature
+### Scenario 1: Breaking down a large feature
 
 **Problem:**
 You need to build a user notification system with email, SMS, and in-app notifications. Estimated: 3 weeks of work.
@@ -1138,7 +1138,7 @@ Commit daily. Deploy. Flag is off in production.
 
 **Result:** Integrated 12-15 times instead of once. Each integration was small and low-risk.
 
-### Scenario 2: Database Schema Change
+### Scenario 2: Database schema change
 
 **Problem:**
 You need to split the `users.name` column into `first_name` and `last_name`.
@@ -1218,7 +1218,7 @@ ALTER TABLE users DROP COLUMN name;
 
 **Result:** Five deployments instead of one big-bang change. Each step was reversible. Zero downtime.
 
-### Scenario 3: Refactoring Without Breaking the World
+### Scenario 3: Refactoring without breaking the world
 
 **Problem:**
 Your authentication code is a mess. You want to refactor it without breaking production.
@@ -1297,7 +1297,7 @@ Delete the legacy code entirely.
 
 **Result:** Continuous refactoring without a "big rewrite" branch. Production was never at risk.
 
-### Scenario 4: Working with External API Changes
+### Scenario 4: Working with external API changes
 
 **Problem:**
 A third-party API you depend on is changing their response format next month.
@@ -1351,7 +1351,7 @@ async getPaymentStatus(orderId) {
 
 ---
 
-## References and Further Reading
+## References and further reading
 
 - [trunkbaseddevelopment.com](https://trunkbaseddevelopment.com/) - Comprehensive guide by Paul Hammant
 - ["Continuous Delivery"](https://continuousdelivery.com) by Jez Humble and David Farley - Foundational text on CD practices
@@ -1365,7 +1365,7 @@ async getPaymentStatus(orderId) {
 
 ---
 
-## Final Thought
+## Final thought
 
 Migrating from GitFlow to TBD isn't a matter of changing your branching strategy.
 It's a matter of changing your *thinking*.

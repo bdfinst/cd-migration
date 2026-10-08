@@ -127,7 +127,7 @@ blockers for CD. When security controls are defined as code and enforced by the 
 prove to auditors that every change passed security checks automatically. This is stronger
 evidence than a manual review, and it does not slow down delivery.
 
-## The "One Change, One Process" Test
+## The "one change, one process" test
 
 For every type of artifact in your system, ask:
 
@@ -149,7 +149,7 @@ ticket to another team, or a manual step, it is not.
 **The goal is for every row in this table to be "yes."** You will not get there overnight, but every
 artifact you move from manual to code-managed removes a bottleneck and a risk.
 
-## What Your Team Controls vs. What Requires Broader Change
+## What your team controls vs. what requires broader change
 
 Some artifact types your team can move to code-managed delivery without involving anyone
 outside your boundary. Others depend on access, budget, or policy decisions beyond the team.
@@ -177,7 +177,7 @@ outside your boundary. Others depend on access, budget, or policy decisions beyo
 Start with what you control, then make the case for organizational support using the reliability
 you have already demonstrated.
 
-## How to Get There
+## How to get there
 
 ### Start with what blocks you most
 
@@ -211,7 +211,7 @@ for application code: the pipeline is the only way any change reaches production
 infrastructure, configuration, schemas, monitoring, and policies as much as it applies to
 application code.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -220,7 +220,7 @@ application code.
 | Environment recreation time | Time to recreate a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) from scratch; should shrink steadily |
 | Mean time to recovery | [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) drops when recovery means "re-run the pipeline" |
 
-## Related Content
+## Related content
 
 - [Build Automation]({{< relref "/docs/foundations/build-automation" >}}): The build itself must be a single, version-controlled command
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}): The pipeline is the only way changes reach production

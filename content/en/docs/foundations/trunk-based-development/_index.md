@@ -14,7 +14,7 @@ aliases:
 [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) is the first foundation to establish. Without daily integration to a shared trunk, the rest of the [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration cannot succeed. This page covers the core practice, two migration paths, and a tactical guide for getting started.
 {{% /pageinfo %}}
 
-## What Is Trunk-Based Development?
+## What is trunk-based development?
 
 Trunk-based development (TBD) is a branching strategy where all developers integrate their work into a single shared branch - the trunk - at least once per day. The trunk is always kept in a releasable state.
 
@@ -24,13 +24,13 @@ This is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/d
 >
 > - Jez Humble, *Continuous Delivery*
 
-### What TBD Is Not
+### What TBD is not
 
 - It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work - you do it in small increments.
 - It is **not** incompatible with code review. It requires review to happen quickly.
 - It is **not** reckless. It is the opposite: small, frequent integrations are far safer than large, infrequent merges.
 
-## What Trunk-Based Development Improves
+## What trunk-based development improves
 
 | Problem | How TBD Helps |
 |---------|---------------|
@@ -42,11 +42,11 @@ This is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/d
 | Large batch deployments | Small changes are individually [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) |
 | Fear of deployment | Each change is small enough to reason about |
 
-## Two Migration Paths
+## Two migration paths
 
 There are two valid approaches to trunk-based development. Both satisfy the minimum CD requirement of daily integration. Choose the one that fits your team's current maturity and constraints.
 
-### Path 1: Short-Lived Branches
+### Path 1: Short-lived branches
 
 Developers create branches that live for **less than 24 hours**. Work is done on the branch, reviewed quickly, and merged to trunk within a single day.
 
@@ -68,7 +68,7 @@ Developers create branches that live for **less than 24 hours**. Work is done on
 
 **Key constraint:** The branch must merge to trunk within 24 hours. If it does not, you have a long-lived branch and you have lost the benefit of TBD.
 
-### Path 2: Direct Trunk Commits
+### Path 2: Direct trunk commits
 
 Developers commit directly to trunk. Quality is ensured through pre-commit checks, pair programming, and strong automated testing.
 
@@ -89,7 +89,7 @@ Developers commit directly to trunk. Quality is ensured through pre-commit check
 
 **Key constraint:** This requires excellent test coverage and a culture where the team owns quality collectively. Without these, direct trunk commits become reckless.
 
-## How to Choose Your Path
+## How to choose your path
 
 Ask these questions:
 
@@ -100,7 +100,7 @@ Ask these questions:
 
 Both paths are valid. The important thing is **daily integration to trunk**. Do not spend weeks debating which path to use. Pick one, start today, and adjust.
 
-## Essential Supporting Practices
+## Essential supporting practices
 
 Trunk-based development does not work in isolation. These practices make daily integration safe:
 
@@ -111,15 +111,15 @@ Trunk-based development does not work in isolation. These practices make daily i
 
 The [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) section and the [TBD Migration Guide]({{< relref "tbd-migration" >}}) cover each practice in detail with code examples.
 
-## Getting Started
+## Getting started
 
 Start by shortening [branch lifetimes]({{< relref "/docs/reference/glossary#branch-lifetime" >}}), then tighten to daily integration. The [TBD Migration Guide]({{< relref "tbd-migration" >}}) walks through each step with team agreements, metrics, and retrospective checkpoints.
 
-## Common Pitfalls
+## Common pitfalls
 
 Teams migrating to TBD commonly stumble on slow CI builds, incomplete feature flags, and treating branch renaming as real integration. See [Common Pitfalls to Avoid]({{< relref "tbd-migration#common-pitfalls-to-avoid" >}}) for detailed guidance and fixes.
 
-## Measuring Success
+## Measuring success
 
 Track these metrics to verify your TBD adoption:
 
@@ -130,11 +130,11 @@ Track these metrics to verify your TBD adoption:
 | [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | < 10 minutes | Enables frequent integration without frustration |
 | Merge conflict frequency | Decreasing over time | Confirms small changes reduce conflicts |
 
-## Next Step
+## Next step
 
 Once your team is integrating to trunk daily, build the test suite that makes that integration trustworthy. Continue to [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}).
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - Dark code, branch by abstraction, parallel run, and expand and contract, ordered from least to most costly to maintain
 - [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}}) - Detailed scenarios including regulated environments, multi-team environments, and advanced pitfalls
