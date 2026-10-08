@@ -55,7 +55,7 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 Backend doubles in component tests must match the real backends. Same mechanism as the [API consumer pattern]({{< relref "/docs/foundations/testing-fundamentals/patterns/api-consumer" >}}): the UI is a consumer, every backend it talks to is a provider. Consumer-driven contracts run on every commit; provider verification runs in the backend's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). Post-deploy E2E smoke tests against the real backend close the loop on drift the contract didn't pin.
 
-Because UI component tests run in a real browser engine, there is no renderer-level double to validate. The browser **is** the production renderer, just headless. The remaining gap is between the stubbed backend and the real backend, which the [out-of-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) E2E suite covers. Out-of-band failures trigger review, not a build break.
+Because UI component tests run in a real browser engine, there is no renderer-level double to validate. The browser **is** the production renderer, running headless. The remaining gap is between the stubbed backend and the real backend, which the [out-of-band]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) E2E suite covers. Out-of-band failures trigger review, not a build break.
 
 ## Pipeline placement
 

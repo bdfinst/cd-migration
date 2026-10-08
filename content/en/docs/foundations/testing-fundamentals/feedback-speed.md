@@ -80,7 +80,7 @@ execution, and move non-deterministic tests out of the gating path.
 
 ## Impact on application architecture
 
-Test feedback speed is not just a testing concern - it puts pressure on how you design your
+Test feedback speed is not only a testing concern - it puts pressure on how you design your
 systems. A monolithic application with a single test suite that takes 40 minutes to run forces
 every developer to pay the full context-switch penalty on every change, regardless of which
 module they touched.
@@ -113,7 +113,7 @@ change safely - and both problems have the same root cause.
 
 ## The compounding cost of slow feedback
 
-Slow feedback does not just waste time - it changes behavior. When the suite takes 40 minutes,
+Slow feedback does more than waste time - it changes behavior. When the suite takes 40 minutes,
 developers adapt:
 
 - They batch changes to avoid running the suite more than necessary, creating larger and riskier

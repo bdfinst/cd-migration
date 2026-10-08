@@ -219,7 +219,7 @@ Referenced in:
 
 ### Test Double
 
-A stand-in object that replaces a real production [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) during testing. The term comes from the film industry's "stunt double": just as a stunt double replaces an actor for dangerous scenes, a test double replaces a costly or non-deterministic dependency to make tests fast, isolated, and reliable.
+A stand-in object that replaces a real production [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) during testing. The term comes from the film industry's "stunt double": as a stunt double replaces an actor for dangerous scenes, a test double replaces a costly or non-deterministic dependency to make tests fast, isolated, and reliable.
 
 Test doubles let you:
 
