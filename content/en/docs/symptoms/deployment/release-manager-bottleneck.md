@@ -24,7 +24,7 @@ The bottleneck is rarely a single person's fault. It reflects a deployment proce
 
 Manual deployments require human expertise. When the steps are not automated, a deployment is only as reliable as the person executing it. Over time, the most experienced person becomes the de-facto release manager by default - not because anyone decided this, but because they have done it the most times and accumulated the most context.
 
-Automated deployments remove the dependency on individual skill. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) executes the same steps identically every time, regardless of who triggers it. Any team member can initiate a deployment by running the pipeline; the expertise is encoded in the automation rather than in a person.
+Automated deployments remove the dependency on individual skill. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) executes the same steps identically every time, regardless of who triggers it. Any team member can start a deployment by running the pipeline; the expertise is encoded in the automation rather than in a person.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
