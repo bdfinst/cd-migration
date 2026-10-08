@@ -12,11 +12,13 @@ tags:
 
 ## What you are seeing
 
-An auditor asks a simple question: what version of the payment service is currently running in production, when was it deployed, who authorized it, and what tests did it pass? The team opens a spreadsheet, checks Slack history, and pieces together an answer from memory and partial records. The spreadsheet was last updated two months ago. The Slack message that mentioned the deployment contains a commit hash but not a build number. The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) system shows jobs that ran, but the logs have been pruned.
+An auditor asks a simple question about the payment service. What version is running in production, when was it deployed, who authorized it, and what tests did it pass? The team opens a spreadsheet, checks Slack history, and pieces together an answer from memory and partial records.
 
-Each deployment was treated as a one-time event. Records were not kept because nobody expected to need them. The process that makes deployments auditable is the same process that makes them reliable: a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that creates a versioned [artifact]({{< relref "/docs/reference/glossary#artifact" >}}), records its provenance, and logs each promotion through environments.
+The spreadsheet was last updated two months ago. The Slack message that mentioned the deployment contains a commit hash but not a build number. The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) system shows jobs that ran, but the logs have been pruned.
 
-Outside of formal audit requirements, the same problem shows up as operational confusion. The team is not sure what is running in production because deployments happen at different times by different people without a centralized record. Debugging a production issue requires determining which version introduced the behavior, which requires reconstructing the deployment history from whatever partial records exist.
+Each deployment was treated as a one-time event. Records were not kept because nobody expected to need them. The process that makes deployments auditable also makes them reliable. That process is a [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that creates a versioned [artifact]({{< relref "/docs/reference/glossary#artifact" >}}), records its provenance, and logs each promotion through environments.
+
+Outside of formal audit requirements, the same problem shows up as operational confusion. The team is not sure what is running in production because deployments happen at different times by different people without a centralized record. Debugging a production issue requires finding which version introduced the behavior. Finding that version means reconstructing the deployment history from whatever partial records exist.
 
 ## Common causes
 
@@ -38,16 +40,16 @@ When auditors require evidence of deployment controls, a pipeline makes complian
 
 ### Snowflake environments
 
-When environments are hand-configured, the concept of "what version is deployed" becomes ambiguous. A snowflake environment may have been modified in place after the last deployment - a config file edited directly, a package updated on the server, a manual hotfix applied. The artifact version in the deployment log may not accurately reflect the current state of the environment.
+When environments are hand-configured, the concept of "what version is deployed" becomes ambiguous. Someone may have modified a snowflake environment in place after the last deployment. They might have edited a config file directly, updated a package on the server, or applied a manual hotfix. The artifact version in the deployment log may not accurately reflect the current state of the environment.
 
-Environments defined as code have their state recorded in version control. The current state of an environment is the current state of the infrastructure code that defines it. When the auditor asks whether production was modified since the last deployment, the answer is in the git log - not in a manual check of whether someone may have edited a config file on the server.
+Environments defined as code have their state recorded in version control. The current state of an environment is the current state of the infrastructure code that defines it. When the auditor asks whether production changed since the last deployment, the answer is in the git log. Nobody has to check manually whether someone edited a config file on the server.
 
 **Read more:** [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
 ## How to narrow it down
 
 1. **Can the team identify the exact artifact version currently in production?** If not, there is no artifact tracking. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
-2. **Is there a complete log of who deployed what and when?** If deployment records depend on engineers remembering to write Slack messages, the record will have gaps. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
-3. **Could the environment have been modified since the last deployment?** If production servers can be changed outside the deployment process, the deployment log does not represent the current state. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
+2. **Is there a complete log of who deployed what and when?** If deployment records depend on engineers remembering to write Slack messages, the record has gaps. Start with [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
+3. **Could the environment have changed since the last deployment?** If people can change production servers outside the deployment process, the deployment log does not show the current state. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 
 **Ready to fix this?** The most common cause is [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/manual-deployments#how-to-fix-it" >}}) section for week-by-week steps.

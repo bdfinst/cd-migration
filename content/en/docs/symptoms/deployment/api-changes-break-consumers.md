@@ -16,15 +16,15 @@ The team renames a field in an API response and a half-dozen consuming services 
 
 The harder problem is that the team does not know who depends on their API. Internal consumers are spread across teams and may not have registered their dependency anywhere. External consumers may have been added by third-party integrators years ago. Changing the API requires identifying every consumer and coordinating their migration - a process so expensive that the team stops evolving the API. It calcifies around its original design.
 
-This leads to two failure modes: teams break APIs and cause incidents because they underestimate consumer impact, or teams freeze APIs and accumulate technical debt because the coordination cost of changing anything is too high.
+This leads to two failure modes. Teams break APIs and cause incidents because they underestimate consumer impact. Or teams freeze APIs and accumulate technical debt because coordinating any change costs too much.
 
 ## Common causes
 
 ### Distributed monolith
 
-When services that are nominally independent must be coordinated in practice, API changes require simultaneous updates across multiple services. The consuming service cannot be deployed until the providing service is deployed, which requires coordinating deployment timing, which turns an API change into a coordinated release event.
+When services that are nominally independent must be coordinated in practice, API changes require simultaneous updates across multiple services. The consuming service cannot be deployed until the providing service is deployed. That dependency forces the teams to coordinate deployment timing, which turns an API change into a coordinated release event.
 
-Services that are truly independent can manage API compatibility through versioning or parallel versions: the old endpoint stays available while consumers migrate to the new one at their own pace. Consumers stop breaking on deployment day because they were never forced to migrate simultaneously - they adopt the new interface on their own schedule.
+Services that are truly independent can manage API compatibility through versioning or parallel versions. The old endpoint stays available while consumers migrate to the new one at their own pace. Consumers stop breaking on deployment day because they never have to migrate simultaneously. They adopt the new interface on their own schedule.
 
 **Read more:** [Distributed monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}})
 
@@ -40,7 +40,7 @@ Services with well-defined interface contracts - stable public APIs backed by fl
 
 When knowledge of who consumes which API lives in one person's head or in nobody's head, the team cannot assess the impact of a change. The inventory of consumers is a prerequisite for safe API evolution. Without it, every API change is a known unknown: the team cannot know what they are breaking until it is broken.
 
-Maintaining a service catalog, using contract testing, or even an informal registry of consumer relationships gives the team the ability to evaluate change impact before deploying. The half-dozen services that used to fail within minutes of a deployment now have owners who were notified and prepared in advance - because the team finally knew they existed.
+A service catalog, contract testing, or even an informal registry of consumer relationships lets the team evaluate change impact before deploying. The half-dozen services that used to fail within minutes of a deployment now have owners who were notified in advance. Those owners can prepare because the team finally knows the services exist.
 
 **Read more:** [Knowledge silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}})
 

@@ -13,8 +13,8 @@ you are seeing and links to the anti-patterns most likely causing it.
 ## How to use this section
 
 Start with the symptom that matches what your team experiences. Each symptom page explains what
-you are seeing, identifies the most likely root causes (anti-patterns), and provides diagnostic
-questions to narrow down which cause applies to your situation. Follow the anti-pattern link to
+you are seeing and identifies the most likely root causes (anti-patterns). Diagnostic questions
+help you narrow down which cause applies to your situation. Follow the anti-pattern link to
 find concrete fix steps.
 
 **Related anti-pattern categories:** [Pipeline Anti-Patterns]({{< relref "/docs/anti-patterns/pipeline" >}}),

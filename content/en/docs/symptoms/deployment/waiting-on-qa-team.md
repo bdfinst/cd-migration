@@ -10,8 +10,10 @@ tags:
 
 ## What you are seeing
 
-Development marks a story done. It moves to a "ready for QA" column and waits. The QA team
-has its own sprint, its own backlog, and its own capacity constraints. The feature sits for
+Development marks a story done. The story moves to a "ready for QA" column and waits. The QA team
+has its own sprint, its own backlog, and its own capacity constraints.
+
+The feature sits for
 three days before a QA engineer picks it up. Testing takes another two days. Feedback arrives
 a week after development completed. The developer has moved on to other work and has to reload
 context to address the comments.
@@ -27,7 +29,7 @@ team's release dates become determined by QA queue depth, not by development com
 
 When quality assurance is a separate team rather than a shared practice embedded in development,
 testing becomes a handoff rather than a continuous activity. Developers write code and hand it
-to QA. QA tests it and hands defects back. The two teams operate on different cadences. Because
+to QA, and QA tests the code and hands defects back. The two teams operate on different cadences. Because
 quality is seen as QA's responsibility, developers write less thorough tests of their own -
 why duplicate the effort? The siloed structure makes late testing the structural default rather
 than an avoidable outcome.
@@ -38,7 +40,7 @@ than an avoidable outcome.
 
 When QA sign-off is a formal gate that must be passed before any release, the gate creates a
 queue. Features arrive at the gate in batches. QA must process all of them before anything
-ships. If QA finds a defect, the release waits while it is fixed and retested. The gate structure
+ships. If QA finds a defect, the release waits while the defect is fixed and retested. The gate structure
 means quality problems are found late, in large batches, making them expensive to fix and
 disruptive to release schedules.
 

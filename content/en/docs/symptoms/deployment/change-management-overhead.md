@@ -16,7 +16,7 @@ The team has a change management process. Every production change requires a cha
 
 The change board meets once a week. If a change misses the cutoff, it waits until next week. Urgent changes require emergency approval, which means tracking down the right people and interrupting them at unpredictable hours. The overhead for a critical security patch is the same as for a feature release. The team has learned to batch changes together to amortize the approval cost, which makes each deployment larger and riskier.
 
-The intent of change management - reducing the risk of production changes - is accomplished here by slowing everything down rather than by increasing confidence in individual changes. The process treats all changes as equally risky regardless of their actual scope or the automated evidence available about their safety.
+Change management aims to reduce the risk of production changes. Here, the process achieves that aim by slowing everything down rather than by increasing confidence in individual changes. The process treats all changes as equally risky regardless of their actual scope or the automated evidence available about their safety.
 
 ## Common causes
 
@@ -32,7 +32,7 @@ Automated deployment systems with pipeline-generated evidence - test results, co
 
 When deployments are manual, the change management process exists partly as a compensating control. Since the deployment itself is not automated or auditable, the team adds process before and after to create accountability. Manual processes require manual oversight.
 
-Automated deployments with pipeline logs create a built-in audit trail: which artifact was deployed, which tests it passed, who triggered the deployment, and what the environment state was before and after. This evidence replaces the need for pre-approval documentation for routine changes.
+Automated deployments with pipeline logs create a built-in audit trail. The logs record which artifact was deployed, which tests it passed, who triggered the deployment, and the environment state before and after. This evidence replaces the need for pre-approval documentation for routine changes.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
@@ -47,7 +47,7 @@ Without a pipeline, teams substitute documentation for evidence. The change tick
 ## How to narrow it down
 
 1. **Does a committee approve individual production changes?** Manual approval boards add calendar-driven delays independent of change risk. Start with [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}).
-2. **Is the deployment process automated with pipeline-generated audit logs?** If deployment requires manual documentation because there is no automated record, the pipeline is the missing foundation. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
-3. **Do small, low-risk changes go through the same process as major changes?** If the process is uniform regardless of risk, the classification mechanism - not only the process - needs to change. Start with [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}).
+2. **Is the deployment process automated with pipeline-generated audit logs?** If deployment requires manual documentation because no automated record exists, the pipeline is the missing foundation. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+3. **Do small, low-risk changes go through the same process as major changes?** If the process is uniform regardless of risk, change the classification mechanism, not only the process. Start with [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}).
 
 **Ready to fix this?** The most common cause is [CAB gates]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/cab-gates#how-to-fix-it" >}}) section for week-by-week steps.
