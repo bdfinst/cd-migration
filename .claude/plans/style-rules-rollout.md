@@ -7,6 +7,7 @@ Bring every page under `content/en/` in line with `.claude/skills/tech-writing-r
 ## Ground rules for every PR
 
 - One rule, one section. Do not mix rules in a PR. Do not touch files outside the batch.
+- Exception: a PR that keeps a term or proper noun on purpose also adds it to the allowlist in `scripts/check-style.sh`.
 - Do not change meaning. Leave front matter, shortcodes, code blocks, links, and quoted text alone.
 - Skip `docs/changelog.md`, because entries are history.
 - Before you open the PR, run `npm test`. Then scan the changed files for endashes, emdashes, and emojis.

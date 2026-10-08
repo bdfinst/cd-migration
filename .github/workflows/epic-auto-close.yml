@@ -8,8 +8,8 @@ permissions:
   issues: write
 
 # No concurrency group: a shared group keeps only one pending run and cancels
-# the rest, which would drop close events. Each run is idempotent, so
-# overlapping runs are safe.
+# the rest, which would drop close events. Overlapping runs can at worst
+# post a duplicate close comment; they never close an epic wrongly.
 
 jobs:
   auto-close-epic:
@@ -36,7 +36,7 @@ jobs:
               exit 0
             fi
             case "$PARENT_URL" in
-              "https://api.github.com/repos/$REPO/issues/"*) ;;
+              "$GITHUB_API_URL/repos/$REPO/issues/"*) ;;
               *)
                 echo "Parent $PARENT_URL is outside $REPO. Skipping."
                 exit 0
