@@ -178,7 +178,7 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
 3. Replace external dependencies with [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}).
    Use in-memory databases or testcontainers for data stores, HTTP stubs (WireMock, nock, MSW)
    for external APIs, and fakes or spies for message queues. Prefer running a dependency locally
-   over mocking it entirely - don't poke more holes in reality than you need to stay
+   over mocking it entirely - do not poke more holes in reality than you need to stay
    deterministic.
 4. Add [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) to validate that your test doubles
    still match the real services. Contract tests verify format, not specific data. Run them
