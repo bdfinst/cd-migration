@@ -33,7 +33,7 @@ The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putt
 
 The trophy also makes static analysis explicit as the foundation. Linting, type checking, and formatting catch entire categories of defects for free - no test code to write or maintain.
 
-Both models agree on the principle: **keep end-to-end tests few and focused, and maximize fast, deterministic coverage.** The trophy simply shifts where that coverage concentrates. For teams building component-heavy applications, the trophy distribution often produces better results than a strict pyramid.
+Both models agree on the principle: **keep end-to-end tests few and focused, and maximize fast, deterministic coverage.** The trophy shifts where that coverage concentrates. For teams building component-heavy applications, the trophy distribution often produces better results than a strict pyramid.
 
 Teams often miss this underlying principle and treat either shape as a metric. They count tests by type and debate ratios - "do we have enough unit tests?" or "are our integration tests too many?" - when the real question is:
 

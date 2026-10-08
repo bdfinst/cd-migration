@@ -48,7 +48,7 @@ Building once and injecting configuration at deploy time eliminates this class o
 
 When every environment requires its own build, the build step multiplies. A pipeline that builds for three environments runs the build three times, spending compute and time on work that produces no additional quality signal. More significantly, a failed production deployment that requires a rollback and rebuild means the team must go through the full build-for-production cycle again, even though the source code has not changed.
 
-Configuration bugs discovered in production often require not just a configuration change but a full rebuild and redeployment cycle, because the configuration is baked into the artifact. A corrected connection string that could be a one-line change in an external config file instead requires committing a changed config file, triggering a new build, waiting for the build to complete, and redeploying. Each cycle takes time that extends the duration of the production incident.
+Configuration bugs discovered in production often require not only a configuration change but a full rebuild and redeployment cycle, because the configuration is baked into the artifact. A corrected connection string that could be a one-line change in an external config file instead requires committing a changed config file, triggering a new build, waiting for the build to complete, and redeploying. Each cycle takes time that extends the duration of the production incident.
 
 Externalizing configuration reduces this rework to a configuration change and a redeploy, with no rebuild required.
 

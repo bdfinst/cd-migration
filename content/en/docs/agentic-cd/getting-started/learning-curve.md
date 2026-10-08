@@ -26,7 +26,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What works:** Low friction, no [context]({{< relref "/docs/reference/glossary#context-llm" >}}) management, passive. Excellent for boilerplate, repetitive patterns, argument completion, and common idioms. Speed gains are real, especially for code that follows well-known patterns.
 
-**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. There is no obvious failure that signals a ceiling has been hit - developers just accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
+**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. There is no obvious failure that signals a ceiling has been hit - developers accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
 
 **What drives the move forward:** Deliberate curiosity, or an incident traced to an accepted suggestion the developer did not scrutinize. Developers who move forward are usually ones who encountered a demonstration of a higher stage and wanted to replicate it - not ones who naturally outgrew autocomplete.
 
@@ -136,9 +136,9 @@ Three questions locate you on the curve:
 
 Many developers using AI coding tools are at Stage 1 or 2. Many concluded from an early Stage 2 failure that the ceiling is low and moved on. If you are at Stage 1 or 2 and feel like AI is only useful for simple work, the problem is almost certainly the workflow, not the technology.
 
-**If you are at Stage 1 or 2:** The highest-leverage move is hands-on exposure to an agentic tool at Stage 4. Give the agent access to your codebase - let it read files, run tests, and produce a diff for a small task. The experience of watching an agent navigate a codebase is qualitatively different from receiving function output in a chat window. See [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) for how to structure small, low-risk tasks that demonstrate what is possible without exposing the full codebase to an unguided agent.
+**If you are at Stage 1 or 2:** The highest-impact move is hands-on exposure to an agentic tool at Stage 4. Give the agent access to your codebase - let it read files, run tests, and produce a diff for a small task. The experience of watching an agent navigate a codebase is qualitatively different from receiving function output in a chat window. See [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) for how to structure small, low-risk tasks that demonstrate what is possible without exposing the full codebase to an unguided agent.
 
-**If you are at Stage 3 or 4:** The highest-leverage move is writing a specification before giving any task to an agent. One paragraph describing intent, one scenario describing the expected behavior, and one constraint listing what must not change. Even an informal spec at this level produces dramatically better output and easier review than a vague task description.
+**If you are at Stage 3 or 4:** The highest-impact move is writing a specification before giving any task to an agent. One paragraph describing intent, one scenario describing the expected behavior, and one constraint listing what must not change. Even an informal spec at this level produces dramatically better output and easier review than a vague task description.
 
 **If you are at Stage 5:** Measure your review queue. If agent-generated changes accumulate faster than they are reviewed, you have hit the throughput ceiling. Expert reviewer agents are the next step.
 

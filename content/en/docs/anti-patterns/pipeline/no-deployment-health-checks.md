@@ -240,7 +240,7 @@ window.
 |-----------|----------|
 | "Our application is stateful - rollback is complicated" | Start with manual rollback alerts. Define backward-compatible migration and dual-write strategies, then automate rollback once those patterns are in place. |
 | "We do not have access to production metrics from the pipeline" | This is a tooling gap to fix. The monitoring system should have an API. Most observability platforms (Datadog, New Relic, Prometheus, CloudWatch) expose query APIs. Pipeline tools can call these APIs post-deployment. |
-| "Our smoke tests will be unreliable in production" | Tests that are unreliable in production are unreliable in staging too - they are just failing quietly. Fix the test reliability problem. A flaky smoke test that occasionally triggers false rollbacks is better than no smoke test that misses real failures. |
+| "Our smoke tests will be unreliable in production" | Tests that are unreliable in production are unreliable in staging too - they are failing quietly. Fix the test reliability problem. A flaky smoke test that occasionally triggers false rollbacks is better than no smoke test that misses real failures. |
 | "We cannot afford the development time to write smoke tests" | The cost of writing smoke tests is far less than the cost of even one undetected bad deployment that causes a lengthy incident. Estimate the cost of the last three production incidents that a post-deployment health check would have caught, and compare. |
 
 ## Measuring Progress

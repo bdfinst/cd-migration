@@ -65,7 +65,7 @@ metric.
 ### It increases rework
 
 Tests written to satisfy a mandate tend to be tightly coupled to implementation. When the team
-writes a test for a private method just to cover it, any refactoring of that method breaks the
+writes a test for a private method only to cover it, any refactoring of that method breaks the
 test even if the public behavior is unchanged. The team spends time updating tests that were never
 catching bugs in the first place.
 

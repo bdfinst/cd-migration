@@ -46,7 +46,7 @@ Every input to the pipeline must be version controlled:
 - **Infrastructure as Code** - the environment definitions themselves
 - **Pipeline definitions** - the pipeline configuration files
 - **Test data and fixtures** - the data used by automated tests
-- **Dependency lockfiles** - exact versions of every dependency (e.g., `package-lock.json`, `Pipfile.lock`, `go.sum`)
+- **Dependency lockfiles** - exact versions of every dependency (for example, `package-lock.json`, `Pipfile.lock`, `go.sum`)
 - **Tool versions** - the versions of compilers, runtimes, linters, and build tools
 
 If an input to the pipeline is not version controlled, it can change without notice, and
@@ -329,7 +329,7 @@ control. Pin CI tool versions explicitly. Pin base image versions in Dockerfiles
 ### Step 3: Containerize the build
 
 Move your build steps into containers with explicitly defined environments. This is often
-the highest-leverage change for improving determinism.
+the change that improves determinism the most.
 
 ### Step 4: Identify and fix flaky tests
 

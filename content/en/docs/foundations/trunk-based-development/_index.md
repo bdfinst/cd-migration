@@ -26,7 +26,7 @@ This is a **non-negotiable prerequisite for [continuous delivery]({{< relref "/d
 
 ### What TBD Is Not
 
-- It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work - you just do it in small increments.
+- It is **not** "everyone commits directly to `main` with no guardrails." You still test, review, and validate work - you do it in small increments.
 - It is **not** incompatible with code review. It requires review to happen quickly.
 - It is **not** reckless. It is the opposite: small, frequent integrations are far safer than large, infrequent merges.
 

@@ -44,7 +44,7 @@ A skill is a named, reusable procedure that an agent can invoke by name. It enco
 
 Skills are not plugins or function calls in the API sense. They are instruction documents - typically markdown files - that are injected into an agent's context when invoked. The agent reads the skill, follows its instructions, and returns a result. The skill has no runtime; it is pure specification.
 
-This distinction matters. Because a skill is just text, it works across models that can read and follow natural language instructions. Claude, Gemini, and any other capable model can follow the same skill document. This is the foundation of model-agnostic workflow design.
+This distinction matters. Because a skill is plain text, it works across models that can read and follow natural language instructions. Claude, Gemini, and any other capable model can follow the same skill document. This is the foundation of model-agnostic workflow design.
 
 ### Single Responsibility
 

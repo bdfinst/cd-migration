@@ -65,7 +65,7 @@ You cannot improve what you don't measure. Before changing anything, establish [
 | Quality Indicators | Build/test execution time, test failure rate, incidents per deployment | Fast, reliable tests and stable deployments |
 | Work Decomposition | Average pull request size (lines changed) | Smaller, more focused changes |
 
-Start with just two or three of these. Don't let measurement become its own project.
+Start with two or three of these. Don't let measurement become its own project.
 
 ---
 
@@ -356,7 +356,7 @@ The initial phase sets the tone. Focus on establishing new habits, not perfectio
   - Integration tests that could be contract tests
   - Flaky tests masking real issues
 
-Fix or isolate the worst offenders. You don't need a perfect test suite to start, just one fast enough to not punish frequent integration.
+Fix or isolate the worst offenders. You don't need a perfect test suite to start, only one fast enough to not punish frequent integration.
 
 ### Step 3: First Integrated Change
 
@@ -462,11 +462,11 @@ Knowledge transfer through pairing works better than documentation.
 The goal is **fast feedback**, not zero review.
 
 {{< alert title="Important" color="warning" >}}
-If you're using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays: the reviewer reads code, leaves comments, the author reads comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
+If you are using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays: the reviewer reads code, leaves comments, the author reads comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
 
 Instead, use **synchronous code reviews** where the reviewer and author work together in real-time (screen share, pair at a workstation, or mob). This eliminates communication delays through review comments. Questions get answered immediately, changes happen on the spot, and the code merges the same day.
 
-If your team can't commit to synchronous reviews or pair/mob programming, you'll struggle to maintain short branch lifetimes.
+If your team cannot commit to synchronous reviews or pair/mob programming, you will struggle to maintain short branch lifetimes.
 {{< /alert >}}
 
 ### Handle Skeptics and Blockers
@@ -933,7 +933,7 @@ Teams migrating to TBD often make predictable mistakes. The table below summariz
 | Pitfall | Category | What to Do Instead |
 |---------|----------|-------------------|
 | Renaming branches without changing habits | Process | Focus on integration frequency, not branch names |
-| Merging daily without testing integration points | Testing | Use contract tests; integrate at the interface level, not just source control |
+| Merging daily without testing integration points | Testing | Use contract tests; integrate at the interface level, not only source control |
 | Skipping test investment | Testing | Invest in test infrastructure *before* increasing integration frequency |
 | Using flags as a testing escape hatch | Feature Flags | Test both flag states; flags hide features from users, not from your test suite |
 | Keeping flags forever | Feature Flags | Set a removal date at creation; track flags like technical debt |
@@ -941,15 +941,15 @@ Teams migrating to TBD often make predictable mistakes. The table below summariz
 | Ignoring [work decomposition]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) | Process | Decompose work into smaller, independently valuable increments |
 | No clear definition of "done" | Process | Define "integrated" as deployed to a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}) and validated |
 | Treating trunk as unstable | Process | Trunk must always be production-ready; fix broken builds immediately |
-| Forgetting TBD is a means, not an end | Outcomes | Measure cycle time, defect rates, and deployment frequency, not just commit counts |
+| Forgetting TBD is a means, not an end | Outcomes | Measure cycle time, defect rates, and deployment frequency, not only commit counts |
 
-### Pitfall 1: Treating TBD as Just a Branch Renaming Exercise
+### Pitfall 1: Treating TBD as a Branch Renaming Exercise
 
 **The mistake:**
 Renaming `develop` to `main` and calling it TBD.
 
 **Why it fails:**
-You're still doing long-lived feature branches, just with different names. The fundamental integration problems remain.
+You're still doing long-lived feature branches with different names. The fundamental integration problems remain.
 
 **What to do instead:**
 Focus on integration frequency, not branch names. Measure time-to-merge, not what you call your branches.
@@ -963,7 +963,7 @@ Committing to trunk every day, but your code doesn't interact with anyone else's
 You're batching integration for later. When you finally connect your component to the rest of the system, you discover incompatibilities.
 
 **What to do instead:**
-Ensure your tests exercise the boundaries between components. Use contract tests for service interfaces. Integrate at the interface level, not just at the source control level.
+Ensure your tests exercise the boundaries between components. Use contract tests for service interfaces. Integrate at the interface level, not only at the source control level.
 
 ### Pitfall 5: Keeping Flags Forever
 
@@ -985,7 +985,7 @@ Sometimes TBD migration stalls or causes more problems than it solves. Here's ho
 ### Signs You're Not Ready Yet
 
 **Red flag 1: Your test suite takes hours to run**
-If developers can't get feedback in minutes, they can't integrate frequently. Forcing TBD now will just slow everyone down.
+If developers can't get feedback in minutes, they can't integrate frequently. Forcing TBD now will slow everyone down.
 
 **What to do:**
 Pause the TBD migration. Invest 2-4 weeks in making tests faster. Parallelize test execution. Remove or optimize the slowest tests. Resume TBD when feedback takes less than 10 minutes.
@@ -1036,7 +1036,7 @@ If you need to pause:
    "We're pausing TBD migration for two weeks to fix our test infrastructure. This isn't abandoning the goal."
 
 2. **Set a specific resumption date:**
-   Don't let "pause" become "quit." Schedule a date to revisit.
+   Do not let "pause" become "quit." Schedule a date to revisit.
 
 3. **Fix the blockers:**
    Use the pause to address the specific problems preventing success.
@@ -1054,7 +1054,7 @@ You know TBD is working when:
 
 - Branches live for hours, not days
 - Developers collaborate early instead of merging late
-- Product participates in defining behaviors, not just writing stories
+- Product participates in defining behaviors, not only writing stories
 - Tests run fast enough to integrate frequently
 - Deployments are boring
 - You can fix production issues with the same process you use for normal work

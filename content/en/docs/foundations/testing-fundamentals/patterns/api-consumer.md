@@ -37,7 +37,7 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 
 Common cases to consider, not an exhaustive list. The bulk of the negative testing happens here, and it's where most production incidents originate. Drive each failure mode through a client double that simulates it.
 
-- **Timeout** (downstream exceeds configured deadline): the deadline enforces; the upstream caller gets the documented response (e.g., 504); no partial state is committed. Use a client double that delays past the deadline.
+- **Timeout** (downstream exceeds configured deadline): the deadline enforces; the upstream caller gets the documented response (for example, 504); no partial state is committed. Use a client double that delays past the deadline.
 - **Connection refused**: retry policy executes the documented count and backoff; falls over to fallback or returns an error. Use a client double that rejects the connection.
 - **5xx responses** (500, 502, 503): retry only on retryable codes. Use a client double that returns 5xx.
 - **4xx responses** (400, 401, 403, 404, 409, 422, 429): each maps to documented behavior; 4xx generally not retried; 429 respects `Retry-After`. Use a client double that returns each code.

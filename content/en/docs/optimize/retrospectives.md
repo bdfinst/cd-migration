@@ -154,7 +154,7 @@ The specific allocation matters less than having one. A team that explicitly bud
 
 | Cadence | Best For | Caution |
 |---------|----------|---------|
-| Weekly | Teams in active CD migration, teams working through major changes | Can feel like too many meetings if not well-facilitated |
+| Weekly | Teams in active CD migration, teams working through major changes | Can feel like too many meetings if not well run |
 | Bi-weekly | Teams in steady state with ongoing improvement | Most common cadence |
 | After incidents | Any team | Incident retrospectives (postmortems) are separate from regular retrospectives |
 | Monthly | Mature teams with well-established improvement habits | Too infrequent for teams early in their migration |
@@ -202,7 +202,7 @@ The facilitator must enforce blame-free language. Redirect "You did X wrong" to 
 
 ### 4. "We don't have time for retrospectives"
 
-A team that does not have time to improve will never improve. A 60-minute retrospective that produces one executed improvement is the highest-leverage hour of the entire sprint.
+A team that does not have time to improve will never improve. A 60-minute retrospective that produces one executed improvement is the most valuable hour of the entire sprint.
 
 ## Measuring Success
 

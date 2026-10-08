@@ -24,7 +24,7 @@ The team compensates by delaying deployments, adding more manual verification be
 
 When deployment is a manual process, there is no corresponding automated rollback procedure. The operator who ran the deployment must figure out how to reverse each step under pressure, without having practiced the reversal. The steps that were run forward must be recalled and undone in the right order, often by someone who was not the original operator.
 
-With automated deployments, rollback is the same procedure as a deployment - just pointed at the previous artifact. The team practices rollback every time they deploy, so when they need it, the steps are known and the process works. There is no scramble to reconstruct what the previous state was.
+With automated deployments, rollback is the same procedure as a deployment - pointed at the previous artifact. The team practices rollback every time they deploy, so when they need it, the steps are known and the process works. There is no scramble to reconstruct what the previous state was.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 

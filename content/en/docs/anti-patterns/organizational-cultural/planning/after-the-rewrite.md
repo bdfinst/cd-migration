@@ -108,7 +108,7 @@ Teams that introduce CD practices to existing systems - even painful, legacy sys
 organizational muscle memory and tooling that transfers to the new system. Automated testing on
 the legacy system, however imperfect, is experience that informs how tests are written on the new
 system. Deployment automation for the legacy system is practice for deployment automation on the
-new system. Deferring CD defers not just the benefits but the organizational learning.
+new system. Deferring CD defers not only the benefits but the organizational learning.
 
 ## How to Fix It
 

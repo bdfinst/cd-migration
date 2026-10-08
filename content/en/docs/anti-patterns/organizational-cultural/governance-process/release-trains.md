@@ -76,7 +76,7 @@ which change caused the problem requires analysis of all changes in the batch, c
 with timing, and often a process of elimination.
 
 Compare this to deploying changes individually. When a single change is deployed and something
-goes wrong, the investigation starts and ends in one place: the change that just deployed.
+goes wrong, the investigation starts and ends in one place: the most recently deployed change.
 The cause is obvious. The fix is fast. The quality signal is precise.
 
 The batching effect also obscures problems that interact. Two individually safe changes can
@@ -87,7 +87,7 @@ should be a five-minute diagnosis.
 
 ### It increases rework
 
-The release train schedule forces developers to estimate not just development time but train
+The release train schedule forces developers to estimate not only development time but train
 timing. If a feature looks like it will take ten days and the train departs in nine days,
 the developer faces a choice: rush to make the train, or let the feature catch the next one.
 Rushing to make a scheduled release is one of the oldest sources of quality-reducing shortcuts
@@ -111,7 +111,7 @@ delivers the illusion of predictability at the release level while making indivi
 delivery timelines highly variable.
 
 A feature completed on Wednesday afternoon may reach users in one day (if Thursday's train is
-the next departure) or in nine days (if Wednesday's code freeze just passed). The feature's
+the next departure) or in nine days (if Wednesday's code freeze has passed). The feature's
 delivery timeline is not determined by the quality of the feature or the effectiveness of the
 team - it is determined by a calendar. Stakeholders who ask "when will this be available?"
 receive an answer that has nothing to do with the work itself.
@@ -162,7 +162,7 @@ Find the problem the train schedule was created to solve:
   requirement and find automation-based alternatives.)
 
 Addressing the underlying problem allows the train schedule to be relaxed. Relaxing the
-schedule without addressing the underlying problem will simply re-create the pressure that
+schedule without addressing the underlying problem will re-create the pressure that
 led to the schedule in the first place.
 
 ### Step 3: Decouple service deployments (Weeks 2-4)
@@ -188,7 +188,7 @@ time without human involvement:
 1. Automate the deployment steps (see the Manual Deployments anti-pattern for guidance).
 2. Add post-deployment health checks and automated rollback.
 3. Once deployment is automated and includes health checks, there is no reason it cannot
-   run whenever a change is ready, not just on Thursday.
+   run whenever a change is ready, not only on Thursday.
 
 The release train schedule exists partly because deployment feels like an event that requires
 planning and presence. Automated deployment with automated rollback makes deployment routine.

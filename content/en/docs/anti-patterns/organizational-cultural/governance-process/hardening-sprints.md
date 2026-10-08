@@ -70,7 +70,7 @@ introduced, and fixes are harder to verify against a changed codebase.
 
 Deferred bug fixing also produces lower-quality fixes. A developer under pressure to clear
 a hardening sprint backlog in two weeks will take a different approach than a developer fixing
-a bug they just introduced. Quick fixes accumulate. Some problems that require deeper
+a bug they recently introduced. Quick fixes accumulate. Some problems that require deeper
 investigation get addressed at the surface level because the sprint must end. The hardening
 sprint appears to address the quality backlog, but some fraction of the fixes introduce new
 problems or leave root causes unaddressed.
@@ -219,7 +219,7 @@ sprint is unnecessary because the product is always within the release criteria.
 | "We need hardening because our QA team does manual testing that takes time" | Manual testing that takes a dedicated sprint is too slow to be a quality gate in a CD pipeline. The goal is to move quality checks earlier and automate them. Manual exploratory testing is valuable but should be continuous, not concentrated in a phase. |
 | "Feature pressure from leadership means we cannot spend sprint time on bugs" | Track and report the total cost of the hardening sprint - developer hours, delayed releases, stakeholder frustration. Compare this to the time spent preventing those bugs during feature development. Bring that comparison to your next sprint planning and propose shifting one story slot to bug prevention. The data will make the case. |
 | "Our architecture makes integration testing during feature sprints impractical" | This is an architecture problem masquerading as a process problem. Services that cannot be integration-tested continuously have interface contracts that are not enforced continuously. That is the architecture problem to solve, not the hardening sprint to accept. |
-| "We have tried quality gates in each sprint before and it just slows us down" | Slow in which measurement? Velocity per sprint may drop temporarily. Total cycle time from feature start to production delivery almost always improves because rework in hardening is eliminated. Measure the full pipeline, not just the sprint velocity. |
+| "We have tried quality gates in each sprint before and it just slows us down" | Slow in which measurement? Velocity per sprint may drop temporarily. Total cycle time from feature start to production delivery almost always improves because rework in hardening is eliminated. Measure the full pipeline, not only the sprint velocity. |
 
 ## Measuring Progress
 

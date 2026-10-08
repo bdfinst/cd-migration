@@ -12,7 +12,7 @@ aliases:
 **Key question:** "Can we integrate safely every day?"
 
 This phase establishes the development practices that make [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) possible.
-Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation just speeds up a broken process.
+Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation speeds up a broken process.
 {{% /pageinfo %}}
 
 ## What You'll Do
@@ -21,7 +21,7 @@ Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipel
 2. **[Build testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})** - Create a fast, reliable test suite
 3. **[Automate your build]({{< relref "/docs/foundations/build-automation" >}})** - One command to build, test, and package
 4. **[Decompose work]({{< relref "/docs/foundations/work-decomposition" >}})** - Break features into small, deliverable increments
-5. **[Streamline code review]({{< relref "/docs/foundations/code-review" >}})** - Fast, effective review that doesn't block flow
+5. **[Streamline code review]({{< relref "/docs/foundations/code-review" >}})** - Fast, effective review that does not block flow
 6. **[Establish working agreements]({{< relref "/docs/foundations/working-agreements" >}})** - Shared definitions of done and ready
 7. **[Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})** - Version-control everything that defines your system: infrastructure, pipelines, schemas, monitoring, and security policies
 

@@ -79,7 +79,7 @@ instead of modifying what exists.
 
 Over time, the codebase becomes a patchwork of workarounds layered on workarounds. Each change
 takes longer because the code is harder to understand and more fragile. The absence of tests is
-not just a testing problem - it is a design problem that compounds with every change.
+not only a testing problem - it is a design problem that compounds with every change.
 
 Teams with automated tests refactor confidently. They rename functions, extract modules, and
 simplify logic knowing that the test suite will catch regressions. The codebase stays clean
@@ -116,14 +116,14 @@ you get value - you need to test something and keep going.
 
 ### Step 1: Set up the test infrastructure
 
-Before writing a single test, make it trivially easy to run tests:
+Before writing a single test, make it trivial to run tests:
 
 1. Choose a test framework for your primary language. Pick the most popular one - do not
    deliberate.
 2. Add the framework to the project. Configure it. Write a single test that asserts `true == true`
    and verify it passes.
 3. Add a `test` script or command to the project so that anyone can run the suite with a single
-   command (e.g., `npm test`, `pytest`, `mvn test`).
+   command (for example, `npm test`, `pytest`, `mvn test`).
 4. Add the test command to the CI pipeline so that tests run on every push.
 
 The goal for week one is not coverage. It is infrastructure: a working test runner in the pipeline

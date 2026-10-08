@@ -134,7 +134,7 @@ prioritize what to start now and what to bring to management.
 
 - **Process handoffs to other teams:** If your deployment requires sign-off from a separate QA
   or ops team, improving your deployment frequency requires changing how those teams engage with
-  your delivery pipeline - not just improving the pipeline itself.
+  your delivery pipeline - not only improving the pipeline itself.
 - **Shared environment access:** When your team competes with others for a shared staging
   environment, resolving that bottleneck requires organizational action (dedicated environments,
   self-service provisioning, or explicit time-slicing agreements).

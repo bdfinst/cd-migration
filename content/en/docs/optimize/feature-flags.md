@@ -234,7 +234,7 @@ Every feature flag has a lifecycle. Flags that are not actively managed become t
 
 Before writing any code, define the flag:
 
-- **Name:** Use a consistent naming convention (e.g., `enable-new-checkout`, `feature.discount-engine`)
+- **Name:** Use a consistent naming convention (for example, `enable-new-checkout`, `feature.discount-engine`)
 - **Owner:** Who is responsible for this flag through its lifecycle?
 - **Purpose:** One sentence describing what the flag controls
 - **Planned removal date:** Set this at creation time. Flags without removal dates become permanent.
@@ -285,7 +285,7 @@ At any step, if metrics degrade, roll back by disabling the flag. No redeploymen
 
 This is the most commonly skipped step, and skipping it creates significant technical debt.
 
-Once the feature has been stable at 100% for an agreed period (e.g., 2 weeks):
+Once the feature has been stable at 100% for an agreed period (for example, 2 weeks):
 
 1. Remove the flag check from code
 2. Remove the old code path
@@ -369,7 +369,7 @@ else:
 
 Long-lived flags need different discipline than temporary ones:
 
-- **Use a separate naming convention** (e.g., `KILL_SWITCH_*`, `ENTITLEMENT_*`) to distinguish them from temporary release flags
+- **Use a separate naming convention** (for example, `KILL_SWITCH_*`, `ENTITLEMENT_*`) to distinguish them from temporary release flags
 - **Document why each flag is permanent** so future team members understand the intent
 - **Store them separately** from temporary flags in your management system
 - **Review regularly** to confirm they are still needed
@@ -396,22 +396,22 @@ Avoid nesting flags whenever possible. If feature B depends on feature A, do not
 
 These specific patterns are the most common ways teams fail at flag cleanup.
 
-**Don't skip the removal ticket:**
+**Do not skip the removal ticket:**
 
 - WRONG: "We'll remove it later when we have time"
 - RIGHT: Create a removal ticket at the same time you create the flag
 
-**Don't leave flags after full rollout:**
+**Do not leave flags after full rollout:**
 
 - WRONG: Flag still in code 6 months after 100% rollout
 - RIGHT: Remove within 2-4 weeks of full rollout
 
-**Don't forget to remove the old code path:**
+**Do not forget to remove the old code path:**
 
 - WRONG: Flag removed but old implementation still in the codebase
 - RIGHT: Remove the flag check AND the old implementation together
 
-**Don't keep flags "just in case":**
+**Do not keep flags "just in case":**
 
 - WRONG: "Let's keep it in case we need to roll back in the future"
 - RIGHT: After the stability period, rollback is handled by deployment, not by re-enabling a flag

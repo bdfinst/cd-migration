@@ -117,7 +117,7 @@ So the reflex "developers are slow, let's add AI" aims at the wrong target:
 - Take coding all the way to zero and roughly 88% of lead time is untouched.
 
 The constraint was never the typing. It is everything around it. That is the physics, and the rest
-of this subsection follows from it: the highest-leverage use of AI is not to write more code, but to
+of this subsection follows from it: the highest-impact use of AI is not to write more code, but to
 remove the dependencies that dominate the other 88%.
 
 ## Sources

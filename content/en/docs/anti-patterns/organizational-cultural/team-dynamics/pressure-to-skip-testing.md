@@ -93,7 +93,7 @@ The pipeline runs, tests pass, the change ships. When the test suite has been ho
 months of skipped tests, that step becomes unpredictable. Some changes pass cleanly. Others
 trigger production incidents that take days to resolve.
 
-The manager who pressured the team to skip tests in order to hit a deadline ends up with less
+The manager who pressured the team to skip tests to hit a deadline ends up with less
 predictable timelines, not more. Each skipped test is a small increase in the probability that a
 future change will cause an unexpected failure. Over months, the cumulative probability climbs
 until production incidents become a regular occurrence rather than an exception.
@@ -125,7 +125,7 @@ holes. Changes pass through it not because they are safe but because the tests t
 caught the problems were never written.
 
 A team cannot deploy continuously if they cannot verify continuously. When the manager says "skip
-the tests, we need to ship," they are not just deferring quality work. They are dismantling the
+the tests, we need to ship," they are not only deferring quality work. They are dismantling the
 infrastructure that makes frequent, safe deployment possible.
 
 ## How to Fix It
@@ -179,7 +179,7 @@ You cannot test everything retroactively. Prioritize the areas that matter most:
    These are the highest-risk areas.
 2. For each high-risk file, write tests for the core behavior - the functions that other code
    depends on.
-3. Allocate a fixed percentage of each sprint (e.g., 20%) to writing tests for existing code.
+3. Allocate a fixed percentage of each sprint (for example, 20%) to writing tests for existing code.
    This is not optional and not deferrable.
 
 ### Step 5: Address the management pressure directly (Ongoing)

@@ -199,7 +199,7 @@ confidence because it can verify health automatically.
 |-----------|----------|
 | "We don't have budget for monitoring tools" | Open-source stacks (Prometheus, Grafana, Loki, Jaeger) provide full observability at zero license cost. The investment is setup time, not money. |
 | "We don't have time to add instrumentation" | Start with the deployment health dashboard. One afternoon of work gives the team more production visibility than they have ever had. Build from there. |
-| "The ops team handles monitoring" | Observability is a development concern, not just an operations concern. Developers write the code that generates the telemetry. They need access to the dashboards and alerts. |
+| "The ops team handles monitoring" | Observability is a development concern, not only an operations concern. Developers write the code that generates the telemetry. They need access to the dashboards and alerts. |
 | "We'll add observability after we stabilize" | You cannot stabilize what you cannot see. Observability is how you find stability problems. Adding it later means flying blind longer. |
 
 ## Measuring Progress

@@ -14,9 +14,9 @@ Rollback on-demand means the ability to quickly and safely revert to a previous 
 
 1. **Fast**: Rollback completes in minutes, not hours. Target < 5 minutes.
 2. **Automated**: No manual steps or special procedures. Single command or click.
-3. **Safe**: Rollback is validated just like forward deployment.
+3. **Safe**: Rollback is validated the same way as forward deployment.
 4. **Simple**: Any team member can execute it without specialized knowledge.
-5. **Tested**: Rollback mechanism is regularly tested, not just used in emergencies.
+5. **Tested**: Rollback mechanism is regularly tested, not only used in emergencies.
 
 ## What Is Improved
 

@@ -47,7 +47,7 @@ tests fail, they rerun before investigating. When a test is red for days, nobody
 
 ## Why This Is a Problem
 
-An inverted test pyramid does not just slow the team down. It actively undermines every benefit
+An inverted test pyramid does more than slow the team down. It actively undermines every benefit
 that testing is supposed to provide.
 
 ### The suite is too slow to give useful feedback
@@ -152,7 +152,7 @@ refactoring because they assert on outcomes, not method calls.
 
 Unit tests complement component tests for code with high cyclomatic complexity where you need to
 exercise many permutations quickly - branching business rules, validation logic, calculations
-with boundary conditions. Do not write unit tests for trivial code just to increase coverage.
+with boundary conditions. Do not write unit tests for trivial code only to increase coverage.
 
 E2E tests exist only for the small number of critical paths that genuinely require a fully
 integrated environment to validate. A typical application needs fewer than a dozen.
@@ -178,7 +178,7 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
 3. Replace external dependencies with [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}).
    Use in-memory databases or testcontainers for data stores, HTTP stubs (WireMock, nock, MSW)
    for external APIs, and fakes or spies for message queues. Prefer running a dependency locally
-   over mocking it entirely - don't poke more holes in reality than you need to stay
+   over mocking it entirely - do not poke more holes in reality than you need to stay
    deterministic.
 4. Add [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) to validate that your test doubles
    still match the real services. Contract tests verify format, not specific data. Run them

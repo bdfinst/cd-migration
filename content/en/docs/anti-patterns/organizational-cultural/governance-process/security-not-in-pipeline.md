@@ -45,11 +45,11 @@ Dependency vulnerabilities compound over time. A team that does not continuously
 
 ### It increases rework
 
-Late-discovered security issues are expensive to remediate. A cross-site scripting vulnerability found in a release review requires not just fixing the specific instance but auditing the entire codebase for the same pattern. An authentication flaw found at the end of a six-month project may require rearchitecting a component that was built with the flawed assumption as its foundation.
+Late-discovered security issues are expensive to remediate. A cross-site scripting vulnerability found in a release review requires not only fixing the specific instance but auditing the entire codebase for the same pattern. An authentication flaw found at the end of a six-month project may require rearchitecting a component that was built with the flawed assumption as its foundation.
 
 The rework overhead is not limited to the development team. Security findings found at release time require security engineers to re-review the fix, project managers to reschedule release dates, and sometimes legal or compliance teams to assess exposure. A finding that takes two hours to fix may require 10 hours of coordination overhead.
 
-The batching effect amplifies rework. Teams that do security review at release time tend to release infrequently in order to minimize the number of security review cycles. Infrequent releases mean large batches. Large batches mean more findings per review. More findings mean longer delays. The delay causes more batching. The cycle is self-reinforcing.
+The batching effect amplifies rework. Teams that do security review at release time tend to release infrequently to minimize the number of security review cycles. Infrequent releases mean large batches. Large batches mean more findings per review. More findings mean longer delays. The delay causes more batching. The cycle is self-reinforcing.
 
 ### It makes delivery timelines unpredictable
 

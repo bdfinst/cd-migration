@@ -51,7 +51,7 @@ Before removing manual gates, verify that these conditions are met. Each one is 
 
 | Prerequisite | What It Means | Where to Build It |
 |-------------|---------------|-------------------|
-| **Comprehensive automated tests** | The test suite catches real defects, not just trivial cases | [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) |
+| **Comprehensive automated tests** | The test suite catches real defects, not only trivial cases | [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) |
 | **Fast, reliable pipeline** | The pipeline completes in under 15 minutes and rarely fails for non-code reasons | [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) |
 | **Automated rollback** | You can roll back a bad deployment in minutes without manual intervention | [Rollback]({{< relref "/docs/pipeline/rollback" >}}) |
 | **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}})** | Incomplete features are hidden from users via flags, not deployment timing | [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) |
@@ -96,7 +96,7 @@ Remove the manual gate for all teams at once. This is appropriate when the organ
 
 **Duration:** Immediate.
 
-**What you learn:** Quickly reveals any hidden dependencies on the manual gate (e.g., deploy coordination between teams, configuration changes that ride along with deployments).
+**What you learn:** Quickly reveals any hidden dependencies on the manual gate (for example, deploy coordination between teams, configuration changes that ride along with deployments).
 
 **Transition:** Be prepared to temporarily revert if unforeseen issues arise. Have a clear rollback plan for the process change itself.
 

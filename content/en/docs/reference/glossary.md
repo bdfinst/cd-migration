@@ -61,7 +61,7 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-session" >
 
 ### Artifact
 
-A packaged, versioned output of a build process (e.g., a container image, JAR file, or binary).
+A packaged, versioned output of a build process (for example, a container image, JAR file, or binary).
 In a CD pipeline, artifacts are built once and promoted through environments without
 modification. See [Immutable Artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}).
 
@@ -272,7 +272,7 @@ Referenced in:
 ### Change Failure Rate (CFR)
 
 The percentage of deployments to production that result in a degraded service and require
-remediation (e.g., rollback, hotfix, or patch). One of the four DORA metrics. See
+remediation (for example, rollback, hotfix, or patch). One of the four DORA metrics. See
 [Metrics - Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}).
 
 Referenced in:

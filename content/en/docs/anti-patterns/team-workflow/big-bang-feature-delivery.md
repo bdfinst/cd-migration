@@ -204,7 +204,7 @@ decomposition workshops using the feature in Step 2 as practice material.
 
 ### Step 5: Change the definition of "done" for a story
 
-Redefine "done" to require deployment, not just code completion. A story is done when:
+Redefine "done" to require deployment, not only code completion. A story is done when:
 
 1. The code is merged to main.
 2. The CI pipeline passes.

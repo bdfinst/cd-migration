@@ -143,7 +143,7 @@ least to most coordination required. Use the strongest approach your context sup
 
 | Approach | How It Works | Coordination Required | Best When |
 |----------|-------------|----------------------|-----------|
-| **Provider schema compatibility** | Provider's pipeline checks every change for backward compatibility against its own published schema (e.g., OpenAPI diff). No consumer involvement needed. | None between teams | Teams are in different organizations, or consumers are external/unknown |
+| **Provider schema compatibility** | Provider's pipeline checks every change for backward compatibility against its own published schema (for example, OpenAPI diff). No consumer involvement needed. | None between teams | Teams are in different organizations, or consumers are external/unknown |
 | **Provider-maintained consumer tests** | Provider team writes tests that exercise known consumer usage patterns based on API analytics, documentation, or past breakage. | Minimal - provider observes consumers | Provider can see consumer traffic patterns but cannot require consumer participation |
 | **Consumer-driven contracts** | Consumers publish pacts describing the subset of the provider API they depend on. Provider runs these pacts in its pipeline. See [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}). | High - shared tooling, broker, and agreement to maintain pacts | Teams are in the same organization with shared tooling and willingness to maintain pacts |
 
@@ -186,7 +186,7 @@ This architecture is the goal for organizations with:
 - **Synchronous dependency chains**: If Service A calls Service B which calls Service C
   in the request path, a deployment of C can break A through B. Circuit breakers and
   fallbacks are required at every boundary, and contract tests must cover failure modes,
-  not just success paths.
+  not only success paths.
 - **No contract verification discipline**: If teams skip backward compatibility checks
   or let contract test failures slide, breakage shifts from the pipeline to production.
   The architecture degrades into uncoordinated deployments with production as the

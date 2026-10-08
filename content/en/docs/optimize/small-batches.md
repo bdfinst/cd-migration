@@ -26,7 +26,7 @@ This is not a theory. The [DORA]({{< relref "/docs/reference/glossary#dora-metri
 
 ## Three Levels of Batch Size
 
-[Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is not just about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
+[Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is not only about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
 
 ### Level 1: Deploy Frequency
 
@@ -139,7 +139,7 @@ Each cycle produces a commit that is independently deployable and verified by an
 
 ## Service-Level Decomposition Example
 
-ATDD works at the API and service level, not just at the UI level. Here is an example of building an order history endpoint day by day:
+ATDD works at the API and service level, not only at the UI level. Here is an example of building an order history endpoint day by day:
 
 **Day 1 - Return an empty list for a customer with no orders:**
 
@@ -262,19 +262,19 @@ Before changing anything, measure where you are:
 
 - Adopt the discipline of "one logical change per commit"
 - Use TDD to create a natural commit rhythm: write test, make it pass, commit
-- Track average commit size and set a team target (e.g., under 100 lines)
+- Track average commit size and set a team target (for example, under 100 lines)
 
 ### Ongoing: Increase Deploy Frequency
 
 - Deploy at least once per day, then work toward multiple times per day
-- Remove any batch-oriented processes (e.g., "we deploy on Tuesdays")
+- Remove any batch-oriented processes (for example, "we deploy on Tuesdays")
 - Make deployment a non-event
 
 ## Key Pitfalls
 
 ### 1. "Small stories take more overhead to manage"
 
-This is true only if your process adds overhead per story (e.g., heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
+This is true only if your process adds overhead per story (for example, heavyweight estimation ceremonies, multi-level approval). The solution is to simplify the process, not to keep stories large. Overhead per story should be near zero for a well-decomposed story.
 
 ### 2. "Some things can't be done in small batches"
 

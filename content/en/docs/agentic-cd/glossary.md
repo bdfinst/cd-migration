@@ -346,8 +346,8 @@ Referenced in:
 ### Hook (Agent)
 
 A deterministic, automated action that runs in response to a specific event during an
-[agent session](#agent-session). Pre-hooks validate inputs before the agent acts (e.g., lint,
-type-check, secret scan). Post-hooks validate outputs after the agent finishes (e.g., SAST,
+[agent session](#agent-session). Pre-hooks validate inputs before the agent acts (for example, lint,
+type-check, secret scan). Post-hooks validate outputs after the agent finishes (for example, SAST,
 test execution). Hooks execute standard tooling - fast, free of AI cost, and repeatable. They
 run before the [review orchestrator](#orchestrator), so AI review tokens are spent only on
 changes that already pass mechanical checks. See
@@ -527,7 +527,7 @@ Referenced in:
 ### Skill (Agent)
 
 A reusable, named session procedure defined as a markdown document that an [agent](#agent-ai)
-or [orchestrator](#orchestrator) invokes by name (e.g., `/start-session`, `/review`,
+or [orchestrator](#orchestrator) invokes by name (for example, `/start-session`, `/review`,
 `/end-session`). Skills encode the session discipline from
 [agent sessions](#agent-session) so the orchestrator does not re-derive the workflow each time.
 Skills are not executable code; they are structured instructions. See
@@ -632,7 +632,7 @@ The mechanism by which an [agent](#agent-ai) interacts with external systems dur
 [agent loop](#agent-loop). On each iteration, the agent can invoke a tool (read a file, run a
 test, execute a shell command, call an API), observe the result, and decide its next action.
 Tool use is what distinguishes an agent from a single LLM call - the ability to act on the
-environment, not just generate text. Each tool call adds [tokens](#token) to the context
+environment, not only generate text. Each tool call adds [tokens](#token) to the context
 (the call itself plus the result), which is why [context engineering](#context-engineering)
 and [tokenomics](#tokenomics) account for tool-call overhead.
 

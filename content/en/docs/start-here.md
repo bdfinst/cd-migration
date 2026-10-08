@@ -13,7 +13,7 @@ to production today?" and "How do I make sure I can still sleep at night?"
 
 ## Why Continuous Delivery
 
-Continuous delivery is not just deploying frequently. It is not even just a workflow that keeps
+Continuous delivery is more than deploying frequently. It is even more than a workflow that keeps
 your system always deployable so you can deliver the latest change on demand. CD becomes a
 diagnostic tool when a team takes it seriously and holds two offsetting questions as constraints:
 

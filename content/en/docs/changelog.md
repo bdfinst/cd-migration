@@ -7,6 +7,15 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-07 - Style rollout phase 1
+
+Phase 1 of the style rollout, applied across all content:
+
+- Replaced "e.g." and "i.e." with plain wording (#42, #43, #44, #45, #46, #47, #48, #49).
+- Replaced inflated words such as "leverage", "utilize", "initiate", and "in order to" (#51, #53, #54, #56, #57, #59, #60).
+- Removed filler words such as "just", "simply", and "easily" (#62, #63, #64, #65, #66, #67, #68, #69, #70, #71, #72, #73).
+- Expanded contractions in numbered procedures and warnings (#74, #78, #80, #81, #84).
+
 ## 2026-10-07 - Style rollout phase 0
 
 Phase 0 of the style rollout:

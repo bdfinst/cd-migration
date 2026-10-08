@@ -66,13 +66,13 @@ The order matters. Most AI effort lands on the code, but the code was rarely the
 typical enterprise [value stream]({{< relref "/docs/reference/glossary#value-stream-map" >}}) and
 coding is a small fraction of [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}).
 Make coding 50% faster and you save about 6%. Take coding to zero and roughly 88% of lead time is
-untouched. The leverage is in the 88%, not the 12%. Aim AI there.
+untouched. The biggest gains are in the 88%, not the 12%. Aim AI there.
 ([Coordination Costs]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) has the
 value-stream breakdown and the source behind these figures.)
 
 ### Accelerating Creation First Backfires
 
-The order is not just a question of where the gains are. Accelerating creation before you clear the
+The order is not only a question of where the gains are. Accelerating creation before you clear the
 friction is actively harmful. AI raises the rate at which work *enters* the
 system - more pull requests, more changes, more proposed fixes - without touching the rate at which
 the system can review, test, deploy, validate, and accept that work. When input outruns downstream

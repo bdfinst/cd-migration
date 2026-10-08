@@ -35,7 +35,7 @@ validating any of them in detail.
 
 When teams face pressure to hit a coverage target, testing becomes theater. Developers write
 tests with trivial assertions - checking that a function returns without throwing, or that a
-value is not null - just to get the number up. The coverage metric looks healthy, but the tests
+value is not null - to get the number up. The coverage metric looks healthy, but the tests
 do not actually verify behavior. They exist to satisfy a gate, not to catch defects.
 
 **Read more:** [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
@@ -60,7 +60,7 @@ result.
 
 ## How to narrow it down
 
-1. **Do most tests assert on behavior and expected outcomes, or do they just verify that code
+1. **Do most tests assert on behavior and expected outcomes, or do they only verify that code
    runs without errors?** If tests mostly check for no-exceptions or non-null returns, the
    problem is testing theater - tests written to hit a number, not to catch defects. Start with
    [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}).

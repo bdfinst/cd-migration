@@ -141,7 +141,7 @@ Rules define how a specific agent behaves. Each agent has its own rules document
 - Session-specific information - that is loaded dynamically by the [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}})
 - Multi-step procedures - those go in skills
 
-Rules are placed first in every agent's context. This placement is a caching decision, not just convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) for how caching interacts with context order.
+Rules are placed first in every agent's context. This placement is a caching decision, not only convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) for how caching interacts with context order.
 
 Rules are plain markdown, injected at session start. The content is the same regardless of tool; where it lives differs.
 

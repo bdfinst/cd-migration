@@ -179,7 +179,7 @@ The final stage closes the loop. Based on the results, the team takes one of thr
 
 | Indicator | Target | Why It Matters |
 |-----------|--------|----------------|
-| Experiments completed per quarter | 4 or more | Confirms the team is running experiments, not just shipping features |
+| Experiments completed per quarter | 4 or more | Confirms the team is running experiments, not only shipping features |
 | Percentage of experiments with predefined success criteria | 100% | Confirms rigor - no experiment should start without criteria |
 | Ratio of validated to invalidated hypotheses | Between 40-70% validated | Too high means hypotheses are not bold enough; too low means the team is guessing |
 | Time from hypothesis to result | 2-4 weeks | Confirms experiments are scoped small enough to get fast answers |

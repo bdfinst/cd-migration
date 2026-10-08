@@ -249,7 +249,7 @@ A reviewer can look at Session 2's commit and understand exactly what it does an
 
 ## The Commit as Context Boundary
 
-The commit is not just a version control operation. In an agent workflow, it is the context boundary.
+The commit is not only a version control operation. In an agent workflow, it is the context boundary.
 
 Before the commit: the agent is building toward a green state. The session context is open.
 

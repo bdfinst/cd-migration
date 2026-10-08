@@ -98,8 +98,8 @@ Mutation testing is too slow to run on every commit. Run it nightly or weekly on
 
 A flaky test is a known unknown. Three rules keep flakes from rotting the suite:
 
-1. **Quarantine on detection.** First flake gets the test moved to a quarantine lane that doesn't block the build. Don't ignore it; don't keep failing builds for unrelated reasons.
-2. **Time-boxed remediation.** Quarantined tests have a deadline (e.g., five business days) and an owner. After the deadline, fix or delete. No silent quarantine.
+1. **Quarantine on detection.** First flake gets the test moved to a quarantine lane that does not block the build. Do not ignore it; do not keep failing builds for unrelated reasons.
+2. **Time-boxed remediation.** Quarantined tests have a deadline (for example, five business days) and an owner. After the deadline, fix or delete. No silent quarantine.
 3. **Track the cause.** Most flakes share root causes: timing, shared state, network, ordering. The fix is usually structural (eliminate the timing dependency) rather than local (add a longer sleep).
 
 A suite with a permanent quarantine list has lost its [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}})-ready quality. See also [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}).

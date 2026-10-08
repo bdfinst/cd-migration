@@ -30,7 +30,7 @@ can be built, tested, and deployed independently through their own pipelines.
 Most teams beginning a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration have a pipeline that is somewhere between "barely
 functional" and "works most of the time." The pipeline may be slow, fragile, or tightly
 coupled to other systems. Improving it requires a deliberate architectural approach - not
-just adding more stages or more tests, but designing the pipeline for the flow
+only adding more stages or more tests, but designing the pipeline for the flow
 characteristics that [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) demands.
 
 Understanding where your pipeline architecture currently stands, and what the next

@@ -41,7 +41,7 @@ sequence without requiring a stable pause.
 ### Integration Deferred
 
 When the team does not have a reliable [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) process, merging to main is itself risky. If the build
-breaks after a merge, the deployment is blocked. The team freezes merges not just to protect the
+breaks after a merge, the deployment is blocked. The team freezes merges not only to protect the
 deployment but because they lack confidence that any given merge will keep main green. If CI were
 reliable, merging and deploying could happen concurrently because main would always be [deployable]({{< relref "/docs/reference/glossary#deployable" >}}).
 

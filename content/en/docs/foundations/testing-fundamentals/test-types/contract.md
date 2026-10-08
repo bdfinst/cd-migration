@@ -18,7 +18,7 @@ Verification that two separate systems (such as an API provider and its consumer
 
 ## Scope & Boundaries
 
-Targets only the boundary interface: request payloads, query parameters, HTTP headers, response schemas, status codes, or message formats. It does not test internal business logic, database state, or deep end-to-end user journeys; it solely verifies compatibility with the interface schema (e.g., OpenAPI/Swagger, AsyncAPI, Protobuf).
+Targets only the boundary interface: request payloads, query parameters, HTTP headers, response schemas, status codes, or message formats. It does not test internal business logic, database state, or deep end-to-end user journeys; it solely verifies compatibility with the interface schema (for example, OpenAPI/Swagger, AsyncAPI, Protobuf).
 
 ## Characteristics
 
@@ -28,7 +28,7 @@ Fast, independent execution across pipelines, prevents breaking schema changes b
 
 - Strict schema adherence: Explicitly define nullability, enums, required fields, and format constraints rather than relying on loose, open schemas.
 - Automated breaking-change detection: Integrate tools like oasdiff or buf breaking into CI to catch backwards-incompatible schema changes on pull requests.
-- Generate stubs directly from contracts: Use contract-driven mock engines (e.g., Prism, Microcks) so mock behavior automatically updates whenever the contract changes.
+- Generate stubs directly from contracts: Use contract-driven mock engines (for example, Prism, Microcks) so mock behavior automatically updates whenever the contract changes.
 
 ## Anti-Patterns:
 

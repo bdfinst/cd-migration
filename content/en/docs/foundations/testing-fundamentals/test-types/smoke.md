@@ -81,7 +81,7 @@ public void chargesFullPriceBelowTheThreshold() {
 Good Practices
 -	Design for idempotency and read-only behavior: Keep smoke tests non-destructive so they can run safely against live production environments without corrupting customer data, charging credit cards, or sending false operational emails.
 -	Target deep health endpoints: Use application endpoints that actively verify connectivity to backend resources (database reads, Redis caches, downstream dependency reachability) rather than shallow /ping endpoints that only return 200 OK from the web server process.
--	Automate immediate rollback gates: Tie smoke test outcomes directly into your CD pipeline (e.g., progressive delivery, canary, or blue/green deployments). If the smoke suite fails, the deployment halts and rolls back automatically without human intervention.
+-	Automate immediate rollback gates: Tie smoke test outcomes directly into your CD pipeline (for example, progressive delivery, canary, or blue/green deployments). If the smoke suite fails, the deployment halts and rolls back automatically without human intervention.
 -	Verify deployment identity: Assert that the deployed system is serving the exact build artifact, tag, or Git commit hash intended for the deployment to catch caching or orchestration misconfigurations.
 Anti-Patterns
 -	Mutating real production data: Creating synthetic test users, modifying real records, or generating phantom financial transactions without rigorous isolation or synthetic-data isolation strategies.

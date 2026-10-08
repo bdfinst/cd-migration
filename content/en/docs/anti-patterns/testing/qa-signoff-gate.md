@@ -35,7 +35,7 @@ Common variations:
   must all sign off. Any one member can block or delay the release. Scheduling the committee
   meeting is itself a multi-day coordination exercise.
 - **The inherited process.** The QA signoff gate was established years ago after a serious
-  production incident. The specific person who initiated the process has left the company. The
+  production incident. The specific person who started the process has left the company. The
   process remains, enforced by institutional memory and change-aversion, even though the team's
   test automation has grown significantly since then.
 - **The scope creep gate.** The signoff was originally limited to major releases. Over time, it
@@ -146,7 +146,7 @@ automation earns trust.
 ### Step 1: Audit what the gate is actually catching
 
 The goal of this step is to understand what value the manual gate provides so it can be
-replaced with something equivalent, not just removed.
+replaced with something equivalent rather than removed.
 
 1. Review the last six months of QA signoff outcomes. How many releases were rejected and why?
 2. For the rejections, categorize the bugs found: what type were they, how severe, what was

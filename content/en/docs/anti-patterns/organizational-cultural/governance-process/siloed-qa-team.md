@@ -49,7 +49,7 @@ A logic error caught 10 minutes after writing takes 5 minutes to fix. The same d
 
 Siloed QA maximizes defect age. A bug report that arrives in the developer's queue a week after the code was written is the most expensive version of that bug. Multiply across a team of 8 developers generating 20 stories per sprint, and the rework overhead is substantial - often accounting for 20 to 40 percent of development capacity.
 
-Context loss makes rework particularly painful. Developers who must revisit old code frequently introduce new defects in the process of fixing the old one, because they are working from incomplete memory of what the code is supposed to do. Rework is not just slow; it is risky.
+Context loss makes rework particularly painful. Developers who must revisit old code frequently introduce new defects in the process of fixing the old one, because they are working from incomplete memory of what the code is supposed to do. Rework is not only slow; it is risky.
 
 ### It makes delivery timelines unpredictable
 
@@ -81,14 +81,14 @@ Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|
-| "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to leverage their expertise better, not eliminate it. |
+| "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to use their expertise better, not eliminate it. |
 | "The numbers don't tell the whole story." | They rarely do. Use them to start a conversation, not to win an argument. |
 
 ### Step 2: Shift test ownership to the development team (Weeks 2-6)
 
 1. Embed QA engineers into development teams rather than maintaining a separate QA team. One QA engineer per team is a reasonable starting ratio.
 2. Require developers to write unit and integration tests as part of each story - not as a separate task, but as part of the definition of done.
-3. Establish a team-level automation coverage target (e.g., 80% of acceptance criteria covered by automated tests before a story is considered done).
+3. Establish a team-level automation coverage target (for example, 80% of acceptance criteria covered by automated tests before a story is considered done).
 4. Add automated test execution to the CI pipeline so every commit is verified without human intervention.
 5. Redirect QA engineer effort from manual verification to test strategy, automation framework maintenance, and exploratory testing of new features.
 6. Remove the separate QA queue from the board and replace it with a "verified done" column that requires automated test passage.

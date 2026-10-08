@@ -16,7 +16,7 @@ create a clear picture of your delivery process, establish [baseline metrics]({{
 the [constraints]({{< relref "/docs/reference/glossary#constraint" >}}) that will guide your improvement roadmap.
 {{% /pageinfo %}}
 
-**Team activity:** The pages in this phase work as a facilitated team exercise. Run [Current State Checklist]({{< relref "/docs/assess/current-state-checklist" >}}) as a retrospective to align on where your delivery process stands today before measuring baselines.
+**Team activity:** The pages in this phase work as a guided team exercise. Run [Current State Checklist]({{< relref "/docs/assess/current-state-checklist" >}}) as a retrospective to align on where your delivery process stands today before measuring baselines.
 
 ## What You'll Do
 

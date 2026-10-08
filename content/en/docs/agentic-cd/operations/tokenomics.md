@@ -20,13 +20,13 @@ A token is roughly three-quarters of a word in English. Billing, latency, and co
 
 - **Input vs. output pricing** - Output tokens cost 2-5x more than input tokens because generating tokens is computationally more expensive than reading them. Instructions to "be concise" yield higher returns than most other optimizations because they directly reduce the expensive side of the equation.
 - **[Context window]({{< relref "/docs/reference/glossary#context-window" >}}) size** - Large context windows (150,000+ tokens) create false confidence. Extended contexts increase latency, increase costs, and can degrade model performance when relevant information is buried mid-context.
-- **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-leverage cost decisions.
+- **Model tier** - Frontier models cost 10-20x more per token than smaller alternatives. Routing tasks to appropriately sized models is one of the highest-impact cost decisions.
 
 ## How Agentic Systems Multiply Token Costs
 
 Single-turn interactions have predictable, bounded token usage. Agentic systems do not.
 
-[Context]({{< relref "/docs/reference/glossary#context-llm" >}}) grows across [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) steps. [Sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) receive oversized context bundles containing everything the orchestrator knows, not just what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
+[Context]({{< relref "/docs/reference/glossary#context-llm" >}}) grows across [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) steps. [Sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) receive oversized context bundles containing everything the orchestrator knows, not only what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
 
 ## Optimization Strategies
 
@@ -146,7 +146,7 @@ Refactoring for human readability and refactoring for token efficiency are the s
 - Define explicit interfaces at module boundaries. An agent working inside a module needs only the interface contract for its dependencies, not the implementation.
 - Consolidate duplicate logic into one authoritative location. One definition is one context load; ten copies are ten opportunities for inconsistency.
 
-Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest leverage.
+Treat AI interaction quality as feedback on code quality. When an interaction requires more context than expected or produces worse output than expected, treat that as a signal that the code needs naming or structure improvement. Prioritize the most frequently changed files - use code churn data to identify where structural investment has the highest impact.
 
 **Enforcing these improvements through the [pipeline](../../reference/glossary/#pipeline):**
 
@@ -156,7 +156,7 @@ keep them from slipping back:
 - The [architectural conformance agent]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement#expert-validation-agents" >}})
   catches code that crosses module boundaries or introduces prohibited dependencies.
   Running it as a pipeline gate means architecture decisions made during refactoring
-  are protected on every subsequent change, not just until the next deadline.
+  are protected on every subsequent change, not only until the next deadline.
 - Pre-commit linting and style enforcement (part of the
   [pre-feature baseline]({{< relref "/docs/reference/pipeline-reference-architecture#pre-feature-baseline" >}}))
   catches naming violations before they reach review. Rules can encode domain language
@@ -184,7 +184,7 @@ Agentic CD ([ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-de
 
 **Specification stages (Intent Description through [Acceptance Criteria](../../reference/glossary/#acceptance-criteria)):** These are human-authored. Keep them concise and structured. Verbose intent descriptions do not produce better agent outputs - they produce more expensive ones. A bloated intent description that takes 2,000 tokens to say what 200 tokens would cover costs 10x more at every downstream stage that receives it.
 
-**Test Generation:** The agent receives the user-facing behavior, feature description, and acceptance criteria. Pass only these three [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of just the three specification artifacts consumes 3-5x more tokens with no quality improvement.
+**Test Generation:** The agent receives the user-facing behavior, feature description, and acceptance criteria. Pass only these three [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}), not the full conversation history or unrelated system context. An agent that receives the full conversation history instead of only the three specification artifacts consumes 3-5x more tokens with no quality improvement.
 
 **Implementation:** The implementation agent receives the test specification and feature description. It does not need the intent description (that informed the specification). Pass what the agent needs for this step only.
 

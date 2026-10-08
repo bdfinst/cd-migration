@@ -339,7 +339,7 @@ The transcript viewer shows you the full agent conversation for failed tests:
 
 Options:
 
-- `-a` / `--all`: Show all transcripts, not just failures
+- `-a` / `--all`: Show all transcripts, not only failures
 - `-s` / `--short`: Abbreviated view (first/last 3 lines)
 - `-t` / `--test <name>`: Filter by test description
 - `-c` / `--count`: Print pass/fail counts only
@@ -400,7 +400,7 @@ and detect regressions across prompt changes.
 
 ## Model Migration Testing
 
-When upgrading the underlying model (e.g., from Claude Sonnet 4 to a newer
+When upgrading the underlying model (for example, from Claude Sonnet 4 to a newer
 version), use your eval suite to validate the migration systematically.
 
 1. **Run the full suite on the current model.** Record baselines for all metrics.
@@ -415,7 +415,7 @@ version), use your eval suite to validate the migration systematically.
    different output structure.
 
 **Watch for masked regressions:** Aggregate pass rates can improve while
-individual tasks regress. Compare per-task results, not just suite-level metrics.
+individual tasks regress. Compare per-task results, not only suite-level metrics.
 A model that scores 85% overall but drops three previously-passing tasks may be
 worse for your users than the old model at 80%.
 
