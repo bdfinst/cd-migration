@@ -23,7 +23,7 @@ Real regressions hide behind the noise because the team has been trained to igno
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When the test suite is dominated by end-to-end tests, flakiness is structural. E2E tests depend
 on network connectivity, shared test environments, external service availability, and browser
@@ -36,7 +36,7 @@ controls all its inputs.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Snowflake Environments
+### Snowflake environments
 
 When the [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) environment is configured differently from other environments - or drifts over time -
 tests pass locally but fail in CI, or pass in CI on Tuesday but fail on Wednesday. The
@@ -48,7 +48,7 @@ class of flakiness by ensuring environments are identical and reproducible.
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When components share mutable state - a database, a cache, a filesystem directory - tests that
 run concurrently or in a specific order can interfere with each other. Test A writes to a shared
@@ -77,7 +77,7 @@ architectural coupling, not a testing problem.
 
 **Ready to fix this?** The most common cause is [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment differences cause similar non-determinism
 - [Test Suite Is Too Slow to Run]({{< relref "/docs/symptoms/testing/slow-test-suites" >}}) - Flaky tests compound slow feedback loops

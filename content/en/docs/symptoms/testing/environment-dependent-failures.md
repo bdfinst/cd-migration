@@ -29,7 +29,7 @@ than whether the code is correct.
 
 ## Common causes
 
-### Snowflake Environments
+### Snowflake environments
 
 When each environment is configured by hand and maintained independently, they drift apart over
 time. The developer's laptop has one version of a database driver. The CI server has another. The
@@ -39,7 +39,7 @@ path that behaves differently across versions. The fix is not to harmonize confi
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
-### Manual Deployments
+### Manual deployments
 
 When deployment and environment setup are manual processes, subtle differences creep in. One
 developer installed a dependency a particular way. The CI server was configured by a different
@@ -49,7 +49,7 @@ dependent behavior.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When the application has hidden dependencies on external state (filesystem paths, network
 services, system configuration), tests that work in one environment fail in another because the
@@ -76,7 +76,7 @@ fragile.
 
 **Ready to fix this?** The most common cause is [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}) - Environment differences are a common cause of flaky tests
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same root cause affects both testing and development

@@ -31,7 +31,7 @@ for this change?" before or after generation.
 
 ## Common causes
 
-### Rubber-Stamping AI-Generated Code
+### Rubber-stamping AI-generated code
 
 When there is no expectation that developers own what a change does and how they validated it -
 regardless of who or what wrote the code - AI output gets the same cursory glance as a trivial
@@ -41,7 +41,7 @@ prove the code meets the actual requirements or handles the constraints the team
 
 **Read more:** [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}})
 
-### Missing Acceptance Criteria
+### Missing acceptance criteria
 
 When the work item lacks concrete [acceptance criteria](../../reference/glossary/#acceptance-criteria) - specific inputs, expected outputs,
 security constraints, edge cases - neither the developer nor the AI has a clear target. The AI
@@ -51,7 +51,7 @@ stated requirement?"
 
 **Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When the test suite relies heavily on end-to-end tests and lacks targeted unit and component
 tests, AI-generated code can pass the suite without its internal logic being verified. A
@@ -81,7 +81,7 @@ diverges from the domain rules. Without it, "tests pass" is a weak signal.
 
 **Ready to fix this?** The most common cause is [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Rubber-Stamping AI-Generated Code]({{< relref "/docs/anti-patterns/testing/rubber-stamping-ai-code" >}}) - The anti-pattern of accepting AI output without critical review
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Common failure modes when teams adopt AI coding tools

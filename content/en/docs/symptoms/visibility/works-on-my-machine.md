@@ -28,7 +28,7 @@ on my machine" a common refrain and a useless debugging signal.
 
 ## Common causes
 
-### Snowflake Environments
+### Snowflake environments
 
 When development environments are set up manually and maintained individually, each developer's
 machine becomes unique. One developer installed Python 3.9, another has 3.11. One has PostgreSQL
@@ -38,7 +38,7 @@ developer works in an identical setup.
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
-### Manual Deployments
+### Manual deployments
 
 When environment setup is a manual process documented in a wiki or README, it is never followed
 identically. Each developer interprets the instructions slightly differently, installs a slightly
@@ -47,7 +47,7 @@ over time. Infrastructure as code and automated setup scripts ensure consistency
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When the application has implicit dependencies on its environment (specific file paths, locally
 running services, system-level configuration), it is inherently sensitive to environmental
@@ -74,7 +74,7 @@ where those dependencies happen to exist.
 
 **Ready to fix this?** The most common cause is [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - The same root cause manifests in both development and testing
 - [Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - Environment inconsistency at the deployment stage
