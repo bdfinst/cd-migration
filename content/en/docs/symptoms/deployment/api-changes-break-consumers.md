@@ -14,7 +14,7 @@ tags:
 
 The team renames a field in an API response and a half-dozen consuming services start failing within minutes of deployment. Some consumers had documentation saying the API might change. Most assumed stability because the API had not changed in two years. The team spends the afternoon rolling back, notifying downstream owners, and coordinating a migration plan that will take weeks.
 
-The harder problem is that the team does not know who depends on their API. Internal consumers are spread across teams and may not have registered their dependency anywhere. External consumers may have been added by third-party integrators years ago. Changing the API requires identifying every consumer and coordinating their migration - a process so expensive that the team simply stops evolving the API. It calcifies around its original design.
+The harder problem is that the team does not know who depends on their API. Internal consumers are spread across teams and may not have registered their dependency anywhere. External consumers may have been added by third-party integrators years ago. Changing the API requires identifying every consumer and coordinating their migration - a process so expensive that the team stops evolving the API. It calcifies around its original design.
 
 This leads to two failure modes: teams break APIs and cause incidents because they underestimate consumer impact, or teams freeze APIs and accumulate technical debt because the coordination cost of changing anything is too high.
 
