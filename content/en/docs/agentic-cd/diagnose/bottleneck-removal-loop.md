@@ -46,30 +46,32 @@ to production readiness, and record four things:
   manual step, recover from tool friction, or interpret unclear feedback.
 - **Handoffs and approvals** - how many people must touch or sign off on the change.
 - **Agentic friction** - the quieter signal: where an agent can act, but not efficiently or safely.
-  It searches for knowledge that should be discoverable, writes a test that does not reflect business
-  behavior, waits on an environment that is hard to start, or makes a plausible change that violates
-  an implicit standard.
+  The agent searches for knowledge that should be discoverable or writes a test that does not reflect
+  business behavior. It waits on an environment that is hard to start, or makes a plausible change
+  that violates an implicit standard.
 
-This is not a performance review of the developer or the agent. It is a performance review of the
-system. Ask where the work waited, where it required tribal knowledge, where safety depended on
-manual judgment, where security or compliance entered too late, and where the pipeline gave a clear
+The walk is not a performance review of the developer or the agent. It is a performance review of the
+system. Ask where the work waited, where it required tribal knowledge, and where safety depended on
+manual judgment. Ask where security or compliance entered too late, and where the pipeline gave a clear
 next action instead of only saying no. The output is a map of exactly where the value stream stops.
 
 ### Technique 2: Context harvesting (read the process exhaust with AI)
 
-Walking the value stream shows you where work stops. Context harvesting shows you why. Most of the
+Walking the value stream shows you where work stops; context harvesting shows you why. Most of the
 knowledge about how work really flows is not in a process diagram. It is scattered across emails,
 chat threads, wiki pages, tickets, runbooks, meeting transcripts, and architecture decision records.
 People navigate it by knowing whom to ask. An agent cannot, and neither can a new teammate.
 
-Point AI at that exhaust. Have it read the chat history around a stuck request, the wikis and
-runbooks for a service, the ticket trail of a recurring delay, and the transcripts of the meetings
-where decisions were actually made. Then ask it to piece together the real process: who is involved,
-what each handoff waits on, where the same questions get re-asked, and which knowledge lives in a
-single person's head. What once took weeks of interviews now takes an agent a few hours.
+Point AI at that exhaust. Have it read the chat history around a stuck request and the wikis and
+runbooks for a service. Add the ticket trail of a recurring delay and the transcripts of the meetings
+where decisions were actually made.
 
-Context harvesting does double duty. It speeds up the diagnosis, and it produces the first durable
-artifact, a written account of how the process actually works, that Phase 3 will build on. In the
+Then ask it to piece together the real process. Who is involved,
+and what does each handoff wait on? Where do the same questions get re-asked, and which knowledge lives in a
+single person's head? What once took weeks of interviews now takes an agent a few hours.
+
+Context harvesting does double duty. It speeds up the diagnosis. It also produces the first durable
+artifact for Phase 3 to build on: a written account of how the process actually works. In the
 agent era, the context you harvest here becomes infrastructure later.
 
 The output of Phase 1 is a named, classified constraint, mapped to where it lives in the lifecycle.
@@ -88,21 +90,32 @@ remove?
   architecture guidance teams and agents can apply without waiting.
 
 Re-engineer by applying the
-[five AI Enablement Properties]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic#the-five-ai-enablement-properties" >}})
-and aim them at Layers 2 and 3, the process and the organization, not only Layer 1, the code. The
-three levers from *Wiring the Winning Organization* are how you rewire the architecture:
-slowification (slow down to design the work before you run it), simplification (break the work into
-smaller, independent, more linear steps), and amplification (make problems visible the moment they
-appear). The leadership move is choosing which dependency to remove. AI is how you remove it.
+[five AI Enablement Properties]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic#the-five-ai-enablement-properties" >}}).
+Aim them at Layers 2 and 3, the process and the organization, not only Layer 1, the code.
+Rewire the architecture with the three levers from *Wiring the Winning Organization*:
+
+- **Slowification** - slow down to design the work before you run it.
+- **Simplification** - break the work into smaller, independent, more linear steps.
+- **Amplification** - make problems visible the moment they appear.
+
+The leadership move is choosing which dependency to remove. AI is how you remove it.
 
 **Put safety and security on the same path as speed.** Re-engineering is not a permission slip for
 uncontrolled change. It is the opposite. If agents produce more change, the organization needs
-stronger proof that change is acceptable, and that proof must live in the path every change travels,
-not in late human review. A re-engineered bottleneck carries its safety with it: clear intent and
-acceptance criteria, behavioral tests tied to outcomes, security and policy checks in the pipeline,
-architecture constraints as enforceable rules, traceability from request to deployment, observable
-production behavior, rollback, and a named owner for every service and evidence source. See
-[Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
+stronger proof that change is acceptable. That proof must live in the path every change travels,
+not in late human review.
+
+A re-engineered bottleneck carries its safety with it:
+
+- Clear intent and acceptance criteria
+- Behavioral tests tied to outcomes
+- Security and policy checks in the pipeline
+- Architecture constraints as enforceable rules
+- Traceability from request to deployment
+- Observable production behavior and rollback
+- A named owner for every service and evidence source
+
+See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
 ## Phase 3: Document and share
 
@@ -113,12 +126,12 @@ constraint without rediscovering how.
 The best operators do not only solve problems where they occur. They deliberately spread the
 knowledge throughout the organization. One without the other stalls.
 
-- **Local learning** - capture the solution where the work happened, in durable form: a prompt, a
+- **Local learning** - capture the solution in durable form where the work happened. Use a prompt, a
   runbook, a pipeline check, an architecture decision record, a service-ownership record, a
   test-generator pattern, an evidence template. The test is simple: can the next team apply this
   without asking the original team to explain it?
-- **Global learning** - make the pattern travel. Publish it where humans and agents discover it in
-  the flow of work: a living system of examples, prompts, artifacts, and outcomes, not a portal of
+- **Global learning** - make the pattern travel. Publish the pattern where humans and agents discover it in
+  the flow of work. Build a living system of examples, prompts, artifacts, and outcomes, not a portal of
   stale documents. The question shifts from "did one team improve?" to "can the improvement move
   across the org?"
 
@@ -153,7 +166,9 @@ capacity request, one design approval, or one deployment gate. Then:
 6. Document the pattern and share it.
 
 Then repeat. Do not wait for an enterprise AI operating model to be perfect. Do not wait for every
-team to agree on a maturity framework. Do not measure success by adoption alone. Measure whether
+team to agree on a maturity framework. Do not measure success by adoption alone.
+
+Measure whether
 work moves faster because the system has become clearer, safer, more automated, and less dependent
 on hidden human coordination. The teams that become fast will not be the teams that chase speed
 directly. They will be the teams that remove friction, improve quality, and make safety executable.

@@ -9,7 +9,7 @@ aliases:
 ---
 
 {{% pageinfo %}}
-The specification stages of the [ACD workflow]({{< relref "/docs/agentic-cd" >}}) (Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}})) ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) accelerate that work and why the effort stays small.
+The [ACD workflow]({{< relref "/docs/agentic-cd" >}}) has four specification stages: Intent Description, User-Facing Behavior, Feature Description, and [Acceptance Criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}). These stages ask humans to define intent, behavior, constraints, and acceptance criteria before any code generation begins. This page explains how [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}) accelerate that work and why the effort stays small.
 {{% /pageinfo %}}
 
 ## The pattern
@@ -21,13 +21,15 @@ Every use of an agent in the specification stages follows the same four-step cyc
 3. **Human decides** - accept, reject, or modify the agent's suggestions
 4. **Agent refines** - generate an updated version incorporating your decisions
 
-This is not the agent doing specification for you. It is the agent making your specification more thorough than it would be without help, in less time than it would take without help. The sections below show how this cycle applies at each specification stage.
+The agent does not write the specification for you. It makes your specification more thorough than it would be without help, in less time. The sections below show how this cycle applies at each specification stage.
 
 ## This is not big upfront design
 
 The specification stages look heavy if you imagine writing them for an entire feature set. That is not what happens.
 
-**You specify the next single unit of work.** One thin [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires it: every change must be small enough to deploy safely and frequently. A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
+**You specify the next single unit of work.** One thin [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) of functionality - a single scenario, a single behavior. A user story may decompose into multiple such units worked in parallel across services. The scope of each unit stays small because [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires it: every change must be small enough to deploy safely and frequently.
+
+A detailed specification for three months of work does not reduce risk - it amplifies it. Small-scope specification front-loads clarity on *one* change and gets production feedback before specifying the next.
 
 If your specification effort for a single change takes more than 15 minutes, the change is too large. Split it.
 
@@ -35,7 +37,7 @@ If your specification effort for a single change takes more than 15 minutes, the
 
 The intent description does not need to be perfect on the first draft. Write a rough version and use an agent to sharpen it.
 
-**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague, any assumption that a developer might interpret differently than you intended, or any unstated [constraint]({{< relref "/docs/reference/glossary#constraint" >}}).
+**Ask the agent to find ambiguity.** Give it your draft intent and ask it to identify anything vague. Also ask for assumptions a developer might read differently than you intended, and for any unstated [constraint]({{< relref "/docs/reference/glossary#constraint" >}}).
 
 Example [prompt]({{< relref "/docs/reference/glossary#prompt" >}}):
 
@@ -48,11 +50,11 @@ but does not match what I actually want.
 [paste intent description]
 {{< /card >}}
 
-**Ask the agent to suggest edge cases.** Agents are good at generating boundary conditions you might not think of, because they can quickly reason through combinations.
+**Ask the agent to suggest edge cases.** Agents quickly reason through combinations, so they generate boundary conditions you might not think of.
 
-**Ask the agent to simplify.** If the intent covers too much ground, ask the agent to suggest how to split it into smaller, independently deliverable changes.
+**Ask the agent to simplify.** If the intent covers too much ground, ask the agent how to split it into smaller, independently deliverable changes.
 
-**Ask the agent to sharpen the hypothesis.** If the intent includes a [hypothesis]({{< relref "/docs/reference/glossary#hypothesis-driven-development" >}}) ("We believe X will produce Y because Z"), the agent can pressure-test it before any code is written.
+**Ask the agent to sharpen the hypothesis.** The intent might include a [hypothesis]({{< relref "/docs/reference/glossary#hypothesis-driven-development" >}}) such as "We believe X will produce Y because Z." The agent can pressure-test that hypothesis before anyone writes code.
 
 Example prompt:
 
@@ -105,7 +107,7 @@ The human decides which scenarios to keep. The agent ensures you considered more
 
 ## How agents help with the feature description and acceptance criteria
 
-The Feature Description and Acceptance Criteria stages define the technical boundaries: where the change fits in the system, what constraints apply, and what non-functional requirements must be met.
+The Feature Description and Acceptance Criteria stages define the technical boundaries. They set where the change fits in the system, what constraints apply, and what non-functional requirements it must meet.
 
 **Ask the agent to suggest architectural considerations.** Give it the intent, the BDD scenarios, and a description of the current system architecture. Ask what integration points, dependencies, or constraints you should document.
 
@@ -120,7 +122,7 @@ touches, and what constraints an implementer needs to know.
 Current system context: [brief architecture description]
 {{< /card >}}
 
-**Ask the agent to draft non-functional acceptance criteria.** Agents can suggest performance thresholds, security requirements, and resource limits based on the type of change and its context.
+**Ask the agent to draft non-functional acceptance criteria.** Based on the type of change and its context, agents can suggest performance thresholds, security requirements, and resource limits.
 
 Example prompt:
 
@@ -165,9 +167,9 @@ This review is not a bureaucratic checkpoint. It is the last moment where the co
 
 ## The discovery loop: from conversation to specification
 
-The prompts above work well when you already know what to specify. When you do not, you need a different starting point. Instead of writing a draft and asking the agent to critique it, treat the agent as a principal architect who interviews you to extract context you did not know was missing.
+The prompts above work well when you already know what to specify. When you do not, you need a different starting point. Do not write a draft for the agent to critique. Instead, treat the agent as a principal architect who interviews you to extract context you did not know was missing.
 
-This is the shift from "order taker" to "architectural interview." The sections above describe what to do at each specification stage. The discovery loop describes how to get there through conversation when you are starting from a vague idea.
+The discovery loop shifts the agent from "order taker" to "architectural interview." The sections above describe what to do at each specification stage. The discovery loop describes how to get there through conversation when you are starting from a vague idea.
 
 ### Phase 1: Initial framing (intent)
 
@@ -182,9 +184,9 @@ interview me to uncover the technical implementation details, edge cases,
 and trade-offs I have not considered.
 {{< /card >}}
 
-This prompt does three things: it states intent, it assigns a role that produces the right kind of questions, and it prevents the agent from jumping to implementation.
+This prompt does three things. It states intent, it assigns a role that produces the right kind of questions, and it keeps the agent from jumping to implementation.
 
-Even at this early stage, include a rough hypothesis about what outcome you expect: "I believe this tool will reduce the time teams spend on manual value stream analysis by 80%." The hypothesis does not need to be precise yet - the discovery interview will sharpen it - but stating one early forces you to think about measurable outcomes from the start.
+Even at this early stage, include a rough hypothesis about the outcome you expect. For example: "I believe this tool will reduce the time teams spend on manual value stream analysis by 80%." The hypothesis does not need to be precise yet, because the discovery interview sharpens it. Stating one early forces you to think about measurable outcomes from the start.
 
 ### Phase 2: Deep-dive interview (context)
 
@@ -244,7 +246,12 @@ The [complete specification example](#complete-specification-example) below show
 
 The four specification stages produce concise, structured documents. The example below shows what a complete specification looks like when all four disciplines from [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) are applied. This is a real-scale example, not a simplified illustration.
 
-Notice what makes this specification agent-executable: every section is self-contained, acceptance criteria are verifiable by an independent observer, the decomposition defines clear module boundaries, and test cases include known-good outputs.
+Notice what makes this specification agent-executable:
+
+- Every section is self-contained.
+- An independent observer can verify the acceptance criteria.
+- The decomposition defines clear module boundaries.
+- Test cases include known-good outputs.
 
 {{< alert title="Full specification: VSM-Automator (Alpha)" color="info" >}}
 {{< card code=true header="**Complete specification example: VSM-Automator**" lang="markdown" >}}

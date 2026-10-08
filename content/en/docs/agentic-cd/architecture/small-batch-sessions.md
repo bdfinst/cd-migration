@@ -9,7 +9,9 @@ aliases:
 ---
 
 {{% pageinfo %}}
-One [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario. One [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) session. One commit. This is the same discipline [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) demands of humans, applied to agents. The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
+One [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario. One [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) session. One commit. This is the same discipline [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) demands of humans, applied to agents.
+
+The broad understanding of the feature is established before any session begins. Each session implements exactly one behavior from that understanding.
 {{% /pageinfo %}}
 
 **Stop optimizing your [prompts]({{< relref "/docs/reference/glossary#prompt" >}}). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) will outperform a better model given a vague, large-scope instruction.
@@ -23,9 +25,9 @@ Before any implementation session begins, establish the complete understanding o
 3. **Feature description** - architectural constraints, performance budgets, integration boundaries
 4. **Scenario order** - the sequence in which you will implement the scenarios
 
-The [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) workflow is the right tool here - use the agent to sharpen intent, surface missing scenarios, identify architectural gaps, and validate consistency across all four [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) before any code is written.
+The [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) workflow is the right tool here. Use the agent to sharpen intent, surface missing scenarios, and identify architectural gaps. Then have it validate consistency across all four [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) before anyone writes code.
 
-**Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your complete scenario list and ask it to suggest an implementation order that minimizes the rework cost of each step.
+**Scenario ordering is not optional.** Each scenario builds on the state left by the previous one. An agent implementing Scenario 3 depends on the contracts and data structures Scenario 1 and 2 established. Order scenarios so that each one can be implemented cleanly given what came before. Use an agent for this too: give it your scenario list and ask for an order that minimizes the rework cost of each step.
 
 This ordering step also has a human gate. Review the proposed slice sequence before any implementation begins. The ordering determines the shape of every session that follows.
 
@@ -255,7 +257,7 @@ Before the commit: the agent is building toward a green state. The session conte
 
 After the commit: the state is known, captured, and stable. The next session starts from this stable state - not from the middle of an in-progress conversation.
 
-This has a practical implication: **do not let an agent session span a commit boundary**. A session that starts implementing Scenario 1 and then continues into Scenario 2 accumulates context from both, mixes the conversation history of two distinct units, and produces a commit that cannot be reviewed cleanly. Stop the session at the commit. Start a new session for the next scenario.
+This has a practical implication: **do not let an agent session span a commit boundary**. A session that implements Scenario 1 and then continues into Scenario 2 accumulates context from both. It mixes the conversation history of two distinct units and produces a commit that nobody can review cleanly. Stop the session at the commit. Start a new session for the next scenario.
 
 ## When the pipeline fails
 

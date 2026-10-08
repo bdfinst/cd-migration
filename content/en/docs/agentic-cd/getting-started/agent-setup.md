@@ -9,7 +9,7 @@ aliases:
 ---
 
 {{% pageinfo %}}
-Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context]({{< relref "/docs/reference/glossary#context-llm" >}}) cost: it determines what every [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) pays on every invocation, and what must be loaded only when needed.
+Each configuration mechanism serves a different purpose. Placing information in the right mechanism controls [context]({{< relref "/docs/reference/glossary#context-llm" >}}) cost. The mechanism determines what every [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) pays on every invocation, and what loads only when needed.
 {{% /pageinfo %}}
 
 ## Configuration mechanisms
@@ -26,7 +26,7 @@ Each configuration mechanism serves a different purpose. Placing information in 
 
 ## Project context file
 
-The project context file is a markdown document that every agent reads at the start of every session. Put here anything that every agent always needs to know about the project. The filename differs by tool - Claude Code uses `CLAUDE.md`, Gemini CLI uses `GEMINI.md`, OpenAI Codex uses `AGENTS.md`, and GitHub Copilot uses `.github/copilot-instructions.md` - but the purpose does not.
+The project context file is a markdown document that every agent reads at the start of every session. Put here anything that every agent always needs to know about the project. The filename differs by tool, but the purpose does not. Claude Code uses `CLAUDE.md`, Gemini CLI uses `GEMINI.md`, OpenAI Codex uses `AGENTS.md`, and GitHub Copilot uses `.github/copilot-instructions.md`.
 
 **Put in the project context file:**
 
@@ -141,7 +141,7 @@ Rules define how a specific agent behaves. Each agent has its own rules document
 - Session-specific information - that is loaded dynamically by the [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}})
 - Multi-step procedures - those go in skills
 
-Rules are placed first in every agent's context. This placement is a caching decision, not only convention. Stable content at the top of context allows the model's server to cache the rules prefix and reuse it across calls, which reduces the effective input cost of every invocation. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) for how caching interacts with context order.
+Rules are placed first in every agent's context. This placement is a caching decision, not only convention. Stable content at the top of context lets the model's server cache the rules prefix and reuse it across calls. Caching reduces the effective input cost of every invocation. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) for how caching interacts with context order.
 
 Rules are plain markdown, injected at session start. The content is the same regardless of tool; where it lives differs.
 
@@ -208,7 +208,7 @@ Done when: the acceptance test for this scenario passes and all prior tests stil
 
 ## Skills
 
-A skill is a named session procedure - a markdown document describing a multi-step workflow that an agent invokes by name. The agent reads the skill document, follows its instructions, and returns a result. A skill has no runtime; it is pure specification in text. Claude Code calls these commands and stores them in `.claude/commands/`; Gemini CLI uses `.gemini/skills/`; OpenAI Codex supports procedure definitions in `AGENTS.md`; GitHub Copilot reads procedure markdown from `.github/`.
+A skill is a named session procedure - a markdown document describing a multi-step workflow that an agent invokes by name. The agent reads the skill document, follows its instructions, and returns a result. A skill has no runtime; it is pure specification in text. Claude Code calls skills commands and stores them in `.claude/commands/`. Gemini CLI uses `.gemini/skills/`; OpenAI Codex supports procedure definitions in `AGENTS.md`; GitHub Copilot reads procedure markdown from `.github/`.
 
 **Put in skills:**
 
@@ -225,7 +225,13 @@ A skill is a named session procedure - a markdown document describing a multi-st
 
 Each skill should do one thing. A skill named `review-and-commit` is doing two things. Split it. When a procedure fails mid-execution, a single-responsibility skill makes it obvious which step failed and where to look.
 
-A normal session runs three skills in sequence: `/start-session` (assembles context and prepares the implementation agent), `/review` (invokes the pre-commit review gate), and `/end-session` (validates all gates, writes the session summary, and commits). Add `/fix` for pipeline-restore mode. See [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration#skills" >}}) for the complete definition of each skill.
+A normal session runs three skills in sequence:
+
+1. `/start-session` assembles context and prepares the implementation agent.
+2. `/review` invokes the pre-commit review gate.
+3. `/end-session` validates all gates, writes the session summary, and commits.
+
+Add `/fix` for pipeline-restore mode. See [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration#skills" >}}) for the complete definition of each skill.
 
 The skill text is identical across tools. Where the file lives differs:
 
@@ -319,7 +325,7 @@ Hooks are automated actions triggered by events - pre-commit, file-save, post-te
 
 Hooks run before the review agent. If the linter fails, there is no reason to invoke the review orchestrator. Deterministic checks fail fast; the AI review gate runs only on changes that pass the baseline mechanical checks.
 
-Git pre-commit hooks are independent of the AI tool - they run via git regardless of which model you use. Claude Code and Gemini CLI additionally support tool-use hooks in their `settings.json`, which trigger shell commands in response to agent events (for example, running linters automatically when the agent stops). OpenAI Codex and GitHub Copilot do not have an equivalent built-in hook system; use git hooks directly with those tools.
+Git pre-commit hooks are independent of the AI tool - they run via git regardless of which model you use. Claude Code and Gemini CLI also support tool-use hooks in their `settings.json`. These hooks trigger shell commands in response to agent events, for example, running linters automatically when the agent stops. OpenAI Codex and GitHub Copilot do not have an equivalent built-in hook system; use git hooks directly with those tools.
 
 {{< tabpane persist="disabled" >}}
 {{< tab header="Git hooks (all tools)" lang="yaml" >}}
@@ -481,8 +487,8 @@ agent composition, see [Agentic Architecture Patterns]({{< relref "/docs/agentic
 
 A single project context file at the repo root works for small codebases. For larger
 ones with distinct bounded contexts, split the project context file by code area.
-Claude Code, Gemini CLI, and OpenAI Codex load context files hierarchically: when an
-agent works in a subdirectory, it reads the context file there in addition to the
+Claude Code, Gemini CLI, and OpenAI Codex load context files hierarchically. When an
+agent works in a subdirectory, it reads the context file there as well as the
 root-level file. Area-specific facts stay out of the root file and load only when
 relevant, which reduces per-session token cost for agents working in unrelated areas.
 
@@ -537,8 +543,8 @@ src/
 {{< /tab >}}
 {{< /tabpane >}}
 
-**What goes in area-specific files:** Facts that apply only to that area - domain rules,
-local naming conventions, area-specific architecture constraints, and non-obvious
+**What goes in area-specific files:** Facts that apply only to that area. Include domain rules,
+local naming conventions, and area-specific architecture constraints. Also include non-obvious
 business rules that govern changes in that part of the codebase. Do not repeat content
 already in the root file.
 

@@ -33,9 +33,9 @@ Referenced in:
 
 ### Agent (AI)
 
-An AI system that uses tool calls in a loop to complete multi-step tasks autonomously. Unlike a
-single LLM call that returns a response, an agent can invoke tools, observe results, and decide
-what to do next until a goal is met or a stopping condition is reached. An agent's behavior is
+An AI system that uses tool calls in a loop to complete multi-step tasks autonomously. A single
+LLM call only returns a response. An agent can invoke tools, observe results, and decide what to
+do next until it meets a goal or reaches a stopping condition. An agent's behavior is
 shaped by its prompt - the complete set of instructions, context, and constraints it receives at
 the start of a session. See [Agentic CD]({{< relref "/docs/agentic-cd" >}}).
 
@@ -58,9 +58,8 @@ Referenced in:
 
 ### Agent loop
 
-The iterative cycle an [agent](#agent-ai) follows during execution: receive a goal, invoke a
-tool, observe the result, decide the next action, repeat until done or a stopping condition is
-reached. Each iteration consumes [tokens](#token) for both the accumulated context and the new
+The iterative cycle an [agent](#agent-ai) follows during execution. The agent receives a goal, invokes a
+tool, observes the result, and decides the next action until it hits a stopping condition. Each iteration consumes [tokens](#token) for both the accumulated context and the new
 output. Long agent loops increase cost and latency, which is why [small-batch sessions](#agent-session)
 bound each loop to a single
 [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}})
@@ -74,7 +73,7 @@ Referenced in:
 ### Agent session
 
 A bounded [agent](#agent-ai) invocation scoped to a single, well-defined task. Each session
-starts with a curated context load, produces a tested change, and closes with a context summary
+starts with a curated context load and produces a tested change. It closes with a context summary
 that replaces the full conversation for future sessions. The task might be a
 [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenario, a bug
 fix, a refactoring step, or any other change small enough to review in one pass. Bounding
@@ -89,11 +88,16 @@ Referenced in:
 
 ### AI enablement properties
 
-The five ways AI removes a dependency, each ending a specific wait: **Knowledge** (the wait for the
-person who knows), **Capability** (the wait for another role or skill), **Capacity** (the wait for
-more hands), **Parallelism** (serializing through a shared resource), and **Optionality** (committing
-early because exploring is expensive). Each property applied is a dependency removed, and by the
-[Golden Rule](#golden-rule) your odds of arriving on time with quality roughly double. See
+The five ways AI removes a dependency, each ending a specific wait:
+
+- **Knowledge** - the wait for the person who knows
+- **Capability** - the wait for another role or skill
+- **Capacity** - the wait for more hands
+- **Parallelism** - serializing through a shared resource
+- **Optionality** - committing early because exploring is expensive
+
+Each property applied is a dependency removed. By the
+[Golden Rule](#golden-rule), each removal roughly doubles your odds of arriving on time with quality. See
 [Use AI to Find Friction Before You Use It to Go Faster]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic" >}}).
 
 Referenced in:
@@ -102,8 +106,8 @@ Referenced in:
 
 ### AI process engineering
 
-Using AI to remove the coordination cost around building software - the dependencies, handoffs, and
-missing context that dominate lead time - rather than to generate more code. It aims AI at Layers 2
+Using AI to remove the coordination cost around building software rather than to generate more
+code. That cost is the dependencies, handoffs, and missing context that dominate lead time. It aims AI at Layers 2
 and 3 (tools and social circuitry), where the constraint lives, not at Layer 1 (the code). Contrast
 with [AI Product Engineering](#ai-product-engineering). The order matters: Process before Product. See
 [The New Bottleneck]({{< relref "/docs/agentic-cd/diagnose" >}}).
@@ -141,10 +145,10 @@ Referenced in:
 ### Coherence
 
 One of the three C's of [coordination cost](#coordination-cost): everyone needs the same current
-understanding - the requirement's real intent, the architecture rule no one wrote down, the
-unspoken definition of "done." Coherence is the knowledge that decays across handoffs. Making it
-executable - testable intent, constraints as rules, checks in the pipeline - is how shared
-understanding stops being something a teammate or an agent has to wait for. See
+understanding. That understanding includes the requirement's real intent, the architecture rule no
+one wrote down, and the unspoken definition of "done." Coherence is the knowledge that decays across
+handoffs. Make coherence executable with testable intent, constraints as rules, and checks in the
+pipeline. Then teammates and agents no longer wait for shared understanding. See
 [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-three-cs-of-coordination-cost" >}}).
 
 Referenced in:
@@ -166,11 +170,11 @@ Referenced in:
 
 The complete assembled input provided to an LLM for a single inference call. Context includes
 the system prompt, tool definitions, any reference material or documents, conversation history,
-and the current user request. "Context" and "prompt" are often used interchangeably; the
-distinction is that "context" emphasizes what information is present, while "prompt" emphasizes
-the structured input as a whole. Context is measured in [tokens](#token). As context grows, costs
-and latency increase and performance can degrade when relevant information is buried far from
-the end of the context. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+and the current user request. People often use "context" and "prompt" interchangeably. "Context" emphasizes what information
+is present, while "prompt" emphasizes the structured input as a whole.
+
+Context is measured in [tokens](#token). As context grows, costs and latency increase. Performance
+can degrade when relevant information is buried far from the end of the context. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
 Referenced in:
 [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}),
@@ -198,9 +202,9 @@ Referenced in:
 ### Context engineering
 
 The practice of curating the complete information environment an [agent](#agent-ai) operates
-within. Context engineering goes beyond writing better [prompts](#prompt) - it means assembling
-the right project files, conventions, [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), and prior session state so
-the agent starts each [session](#agent-session) with everything it needs and nothing it does
+within. Context engineering goes beyond writing better [prompts](#prompt). It assembles
+the right project files, conventions, [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), and prior session state. The
+agent then starts each [session](#agent-session) with everything it needs and nothing it does
 not. See
 [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#2-context-engineering" >}}).
 
@@ -213,10 +217,12 @@ Referenced in:
 ### Coordination cost
 
 The cost of work waiting on people, tools, and decisions rather than the cost of doing the work
-itself. It is the dominant share of delivery [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}})
-- coding is only about 12% - and it follows rules: wait time rises with utilization, each
+itself. Coordination cost is the dominant share of delivery [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}});
+coding is only about 12%. Coordination cost follows rules. Wait time rises with utilization, each
 [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) roughly halves your odds of
-arriving on time with quality, and knowledge decays across handoffs. It surfaces as the three C's:
+arriving on time with quality, and knowledge decays across handoffs.
+
+Coordination cost surfaces as the three C's:
 [Contention](#contention), [Coupling](#coupling), and [Coherence](#coherence). The lever against it
 is the [Golden Rule](#golden-rule). See
 [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}).
@@ -229,8 +235,8 @@ Referenced in:
 ### Coupling
 
 One of the three C's of [coordination cost](#coordination-cost): your work cannot finish until
-someone else's does - a cross-team dependency, a shared release train, a sign-off you do not
-control. Coupling is why coordination risk compounds: with `n` dependencies, a clean on-time pass
+someone else's does. Examples are a cross-team dependency, a shared release train, or a sign-off
+you do not control. Coupling is why coordination risk compounds: with `n` dependencies, a clean on-time pass
 is about 1 in 2ⁿ. See
 [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-three-cs-of-coordination-cost" >}}).
 
@@ -257,11 +263,14 @@ Referenced in:
 
 The set of structured specification documents that anchor an [ACD](#acd-agentic-continuous-delivery)
 workflow. A delivery contract typically includes four artifacts arranged in an authority hierarchy:
-an intent description (what and why), user-facing behavior expressed as
-[BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios (observable
-outcomes), a feature description (architectural constraints, musts, must-nots), and
-[acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) (done definition and evaluation design). When an
-[agent](#agent-ai) detects a conflict between artifacts, the higher-authority artifact wins.
+
+1. An intent description (what and why)
+2. User-facing behavior expressed as
+   [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios (observable outcomes)
+3. A feature description (architectural constraints, musts, must-nots)
+4. [Acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) (done definition and evaluation design)
+
+When an [agent](#agent-ai) detects a conflict between artifacts, the higher-authority artifact wins.
 See [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
 
 Referenced in:
@@ -312,9 +321,9 @@ Referenced in:
 
 The single lever against [coordination cost](#coordination-cost): removing a
 [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) roughly doubles your odds of
-arriving on time with quality. It is the inverse of the 1-in-2ⁿ curve - go from four dependencies to
-three and your odds rise from 6% to 12%. It is why the leadership move is dependency removal, not
-local acceleration, and why each turn of the [Bottleneck Removal Loop](#bottleneck-removal-loop)
+arriving on time with quality. The Golden Rule is the inverse of the 1-in-2ⁿ curve: go from four
+dependencies to three and your odds rise from 6% to 12%. That is why the leadership move is
+dependency removal, not local acceleration, and why each turn of the [Bottleneck Removal Loop](#bottleneck-removal-loop)
 compounds the last. See
 [Why Coordination, Not Coding, Sets the Pace]({{< relref "/docs/agentic-cd/diagnose/coordination-costs#the-golden-rule" >}}).
 
@@ -327,11 +336,11 @@ Referenced in:
 
 ### Hallucination
 
-A predictable defect mode - not a rare failure - where an LLM generates plausible-looking but
-incorrect output: code that references APIs that do not exist, tests that assert the wrong
-behavior, or architectural claims that contradict the actual codebase. Hallucinations are more
-likely when the [agent](#agent-ai) lacks sufficient [context](#context-llm) about the project,
-which is why [context engineering](#context-engineering) and
+A predictable defect mode, not a rare failure, where an LLM generates plausible-looking but
+incorrect output. Examples include code that references APIs that do not exist, tests that assert
+the wrong behavior, or architectural claims that contradict the actual codebase. Hallucinations are
+more likely when the [agent](#agent-ai) lacks sufficient [context](#context-llm) about the project.
+That is why [context engineering](#context-engineering) and
 [repository readiness](#repository-readiness) reduce hallucination rates. Pipeline
 [guardrails]({{< relref "/docs/reference/glossary#guardrail" >}}) and [review sub-agents](#sub-agent) catch hallucinations that slip
 past the implementation agent. See
@@ -397,7 +406,7 @@ Referenced in:
 An agent that coordinates the work of other agents. The orchestrator receives a high-level goal,
 breaks it into sub-tasks, delegates those sub-tasks to specialized [sub-agents](#sub-agent), and
 assembles the results. Because orchestrators accumulate context across multiple steps, context
-hygiene at agent boundaries is especially important - what the orchestrator passes to each
+hygiene at agent boundaries is especially important. What the orchestrator passes to each
 sub-agent is a cost and quality decision. See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
 Referenced in:
@@ -413,10 +422,12 @@ Referenced in:
 ### PDLC (product delivery lifecycle)
 
 The path every change travels from a raw idea to value running in production and sustained over
-time, in seven phases: Discovery, Design, Build, Verify, Deploy, Operate, Support - and then back to
-Discovery, because delivery is a loop, not a line. It is the consensus spine of the major lifecycle
-frameworks (SDLC, the DevOps loop, Stage-Gate, ISO/IEC/IEEE 12207), stated in plain verbs so
-business, engineering, security, and audit read the same map. AI compresses the making phases
+time. It has seven phases: Discovery, Design, Build, Verify, Deploy, Operate, and Support. Then it
+returns to Discovery, because delivery is a loop, not a line. The PDLC is the consensus spine of the
+major lifecycle frameworks (SDLC, the DevOps loop, Stage-Gate, ISO/IEC/IEEE 12207). It uses plain
+verbs so business, engineering, security, and audit read the same map.
+
+AI compresses the making phases
 (Design and Build) hardest, so the bottleneck migrates to the ends. See
 [Where the Bottleneck Moves]({{< relref "/docs/agentic-cd/diagnose/bottleneck-taxonomy" >}}).
 
@@ -428,11 +439,16 @@ Referenced in:
 
 The complete structured input provided to an LLM for a single inference call. A prompt is not
 a one- or two-sentence question. In production agentic systems, a prompt is a composed document
-that typically includes: a system instruction block (role definition, constraints, output format
-requirements), tool definitions, relevant context (documents, code, conversation history), and
-the user's request or task description. The system instruction block and tool definitions alone
-can consume thousands of tokens before any user content is included. Understanding what a prompt
-actually contains is a prerequisite for effective tokenomics. See
+that typically includes:
+
+- A system instruction block (role definition, constraints, output format requirements)
+- Tool definitions
+- Relevant context (documents, code, conversation history)
+- The user's request or task description
+
+The system instruction block and tool definitions alone can consume thousands of tokens before
+any user content is included. Understanding what a prompt actually contains is a prerequisite for
+effective tokenomics. See
 [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
 Referenced in:
@@ -447,9 +463,9 @@ Referenced in:
 ### Prompt caching
 
 A server-side optimization where stable portions of a prompt are stored and reused across
-repeated calls instead of being processed as new input each time. Effective caching requires
-placing static content (system instructions, tool definitions, reference documents) at the
-beginning of the prompt so cache hits cover the maximum token span. Dynamic content (user
+repeated calls instead of being processed as new input each time. For effective caching, place
+static content (system instructions, tool definitions, reference documents) at the
+beginning of the prompt. Cache hits then cover the maximum token span. Dynamic content (user
 request, current state) goes at the end where it does not invalidate the cached prefix.
 See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
@@ -463,7 +479,7 @@ Referenced in:
 Synchronous, session-based instruction writing in a chat window. Prompt craft is the foundation
 of the four [prompting disciplines](#prompting-discipline) - writing clear, structured
 instructions with examples, counter-examples, explicit output formats, and rules for resolving
-ambiguity. It is now considered table stakes, equivalent to fluent typing. Every developer
+ambiguity. Prompt craft is now table stakes, equivalent to fluent typing, and every developer
 using AI tools reaches baseline proficiency here. The skill is necessary but insufficient for
 agentic workflows, which require [context engineering](#context-engineering),
 [intent engineering](#intent-engineering), and
@@ -492,7 +508,7 @@ Referenced in:
 ### Programmatic agent
 
 An [agent](#agent-ai) implemented as a standalone program (typically JavaScript or Java) that
-calls the LLM API directly and manages its own [agent loop](#agent-loop), tool definitions,
+calls the LLM API directly. It manages its own [agent loop](#agent-loop), tool definitions,
 error handling, and context assembly. Unlike a [declarative agent](#declarative-agent), a
 programmatic agent does not depend on an interactive runtime. Use programmatic agents when the
 agent must run without a developer present: CI/CD pipeline gates, scheduled audits, event-driven
@@ -512,8 +528,8 @@ The degree to which a repository is prepared for [agent](#agent-ai)-driven devel
 repository scores high on readiness when an agent can clone it, install dependencies, build,
 run tests, and iterate without human intervention. Key factors include deterministic builds,
 fast test suites, clear naming conventions, consistent project structure, and machine-readable
-documentation. Low repository readiness is the most common reason agents produce poor results,
-because the agent spends its [context](#context-llm) and [tokens](#token) navigating ambiguity
+documentation. Low repository readiness is the most common reason agents produce poor results.
+The agent spends its [context](#context-llm) and [tokens](#token) navigating ambiguity
 instead of solving the problem. See
 [Repository Readiness]({{< relref "/docs/agentic-cd/getting-started/repo-readiness" >}}).
 
@@ -543,8 +559,10 @@ Referenced in:
 The practice of writing structured documents that [agents](#agent-ai) can execute against over
 extended timelines. Specification engineering is the skill that separates developers at Stage
 5-6 of the agentic learning curve from everyone else. When agents run autonomously for hours,
-you cannot course-correct in real time - the specification must be complete enough that an
-independent executor reaches the right outcome without asking questions. Key skills include
+you cannot course-correct in real time. The specification must be complete enough that an
+independent executor reaches the right outcome without asking questions.
+
+Key skills include
 writing self-contained problem statements, [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) with
 [done definitions]({{< relref "/docs/reference/glossary#done-definition" >}}), [evaluation designs](#evaluation-design), and
 decomposing large projects into small, bounded subtasks. The output of specification
@@ -593,7 +611,9 @@ The billing and capacity unit for LLMs. A token is roughly three-quarters of an 
 All LLM costs, latency, and context limits are measured in tokens, not words, sentences, or
 API calls. Input and output tokens are priced and counted separately. Output tokens typically
 cost 2-5x more than input tokens because generating tokens is computationally more expensive
-than reading them. Frontier models cost 10-20x more per token than smaller alternatives.
+than reading them.
+
+Frontier models cost 10-20x more per token than smaller alternatives.
 See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
 Referenced in:
@@ -629,11 +649,13 @@ Referenced in:
 ### Tool use
 
 The mechanism by which an [agent](#agent-ai) interacts with external systems during its
-[agent loop](#agent-loop). On each iteration, the agent can invoke a tool (read a file, run a
-test, execute a shell command, call an API), observe the result, and decide its next action.
-Tool use is what distinguishes an agent from a single LLM call - the ability to act on the
-environment, not only generate text. Each tool call adds [tokens](#token) to the context
-(the call itself plus the result), which is why [context engineering](#context-engineering)
+[agent loop](#agent-loop). On each iteration, the agent can invoke a tool, observe the result, and decide its next action.
+A tool call might read a file, run a test, execute a shell command, or call an API.
+Tool use is what distinguishes an agent from a single LLM call: the ability to act on the
+environment, not only generate text.
+
+Each tool call adds [tokens](#token) to the context
+(the call itself plus the result). That is why [context engineering](#context-engineering)
 and [tokenomics](#tokenomics) account for tool-call overhead.
 
 Referenced in:

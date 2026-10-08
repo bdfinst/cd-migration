@@ -10,8 +10,8 @@ aliases:
 
 {{% pageinfo %}}
 AI adoption stress-tests your organization. AI does not create new problems. It reveals
-existing ones faster. Teams that try to accelerate with AI before fixing their delivery process get the
-same result as putting a bigger engine in a car with no brakes. This page provides the
+existing ones faster. Accelerating with AI before you fix your delivery process is like putting a bigger
+engine in a car with no brakes. This page provides the
 recommended sequence for incorporating AI safely, mirroring the
 [brownfield migration phases]({{< relref "/docs/brownfield" >}}).
 {{% /pageinfo %}}
@@ -33,7 +33,7 @@ graph TD
     H -->|No| J["Do not automate this yet"]
 ```
 
-If steps 1-3 were skipped, step 4 is not available. An AI solution applied to a process that could be simplified, handled by existing capabilities, or replaced by a deterministic component is complexity in place of clarity.
+If steps 1-3 were skipped, step 4 is not available. Some processes could be simplified, handled by existing capabilities, or replaced by a deterministic component. Applying an AI solution to such a process adds complexity in place of clarity.
 
 ## The key insight
 
