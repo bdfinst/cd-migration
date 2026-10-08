@@ -72,7 +72,7 @@ value-stream breakdown and the source behind these figures.)
 
 ### Accelerating Creation First Backfires
 
-The order is not just a question of where the gains are. Accelerating creation before you clear the
+The order is not only a question of where the gains are. Accelerating creation before you clear the
 friction is actively harmful. AI raises the rate at which work *enters* the
 system - more pull requests, more changes, more proposed fixes - without touching the rate at which
 the system can review, test, deploy, validate, and accept that work. When input outruns downstream

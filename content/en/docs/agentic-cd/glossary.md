@@ -632,7 +632,7 @@ The mechanism by which an [agent](#agent-ai) interacts with external systems dur
 [agent loop](#agent-loop). On each iteration, the agent can invoke a tool (read a file, run a
 test, execute a shell command, call an API), observe the result, and decide its next action.
 Tool use is what distinguishes an agent from a single LLM call - the ability to act on the
-environment, not just generate text. Each tool call adds [tokens](#token) to the context
+environment, not only generate text. Each tool call adds [tokens](#token) to the context
 (the call itself plus the result), which is why [context engineering](#context-engineering)
 and [tokenomics](#tokenomics) account for tool-call overhead.
 

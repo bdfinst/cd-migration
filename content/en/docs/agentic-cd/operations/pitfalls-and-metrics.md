@@ -82,7 +82,7 @@ This is a reliability trap. Agent state is not durable in the way a commit is du
 
 **Too few flags:** the review agent misses issues that human reviewers would catch. The team gains confidence in the agent and reduces human review depth. Issues that should have been caught are not caught.
 
-**What to do:** During the [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) for review agents, track disagreements between the agent and human reviewers, not just agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
+**What to do:** During the [replacement cycle]({{< relref "/docs/brownfield/replacing-manual-validations" >}}) for review agents, track disagreements between the agent and human reviewers, not only agreement. When the agent flags something the human dismisses as noise, that is a false positive. When the human catches something the agent missed, that is a false negative. Track both. Set a threshold for acceptable false positive and false negative rates before reducing human review coverage. Review these rates monthly.
 
 ### 8. Skipped the prerequisite delivery practices
 

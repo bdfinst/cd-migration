@@ -53,7 +53,7 @@ to production readiness, and record four things:
 This is not a performance review of the developer or the agent. It is a performance review of the
 system. Ask where the work waited, where it required tribal knowledge, where safety depended on
 manual judgment, where security or compliance entered too late, and where the pipeline gave a clear
-next action instead of just saying no. The output is a map of exactly where the value stream stops.
+next action instead of only saying no. The output is a map of exactly where the value stream stops.
 
 ### Technique 2: Context Harvesting (Read the Process Exhaust with AI)
 
@@ -89,7 +89,7 @@ remove?
 
 Re-engineer by applying the
 [five AI Enablement Properties]({{< relref "/docs/agentic-cd/diagnose/ai-as-diagnostic#the-five-ai-enablement-properties" >}})
-and aim them at Layers 2 and 3, the process and the organization, not just Layer 1, the code. The
+and aim them at Layers 2 and 3, the process and the organization, not only Layer 1, the code. The
 three levers from *Wiring the Winning Organization* are how you rewire the architecture:
 slowification (slow down to design the work before you run it), simplification (break the work into
 smaller, independent, more linear steps), and amplification (make problems visible the moment they
@@ -110,7 +110,7 @@ A local improvement no one else can find becomes another silo. The work is not d
 bottleneck is gone. It is done when the next team, and the next agent, can remove the same class of
 constraint without rediscovering how.
 
-The best operators do not just solve problems where they occur. They deliberately spread the
+The best operators do not only solve problems where they occur. They deliberately spread the
 knowledge throughout the organization. One without the other stalls.
 
 - **Local learning** - capture the solution where the work happened, in durable form: a prompt, a
