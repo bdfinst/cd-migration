@@ -58,6 +58,14 @@ becomes a source of variance between environments.
 
 **Read more:** [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
+### Environment branches
+
+When each environment deploys from its own long-lived branch, what passed in staging is not what reaches production. Merging the staging branch into the production branch brings in production's config and possibly different features, which produces a combination nobody tested. The staging result applied to the staging branch, not to the code that was released.
+
+Testing one artifact in every environment means the production release is the exact artifact that passed staging.
+
+**Read more:** [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}})
+
 ## How to narrow it down
 
 1. **Are your environments provisioned from the same infrastructure code?** If not, or if you
@@ -70,6 +78,9 @@ becomes a source of variance between environments.
    [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
 4. **Is the deployment process identical and automated across all environments?** If not, start
    with [Manual Deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}}).
+5. **Does each environment deploy from its own long-lived branch?** If production is updated by
+   merging a branch that staging never ran, start with
+   [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}).
 
 **Ready to fix this?** The most common cause is [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments#how-to-fix-it" >}}) section for week-by-week steps.
 
@@ -80,5 +91,6 @@ becomes a source of variance between environments.
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same environment inconsistency pattern at a different stage
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment-dependent behavior is the common root
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Unique environments that diverge from production
+- [Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}) - When the code differs between environments, not just configuration
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Making staging match production
 - [Change Fail Rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) - Track deployment failures that staging should have caught

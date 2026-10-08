@@ -36,10 +36,25 @@ Without a pipeline with artifact promotion, rebuilding per environment is the na
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
+### Environment branches
+
+When each environment deploys from its own long-lived branch, each branch gets its own build. The dev, staging, and production artifacts come from different branch histories, so the rebuild is built into the workflow. Merging to the next branch triggers a new build of code that was never combined this way before, and the earlier test results do not carry over.
+
+Building once from trunk and promoting that artifact removes the reason to rebuild. Each environment receives the same artifact and differs only in configuration supplied at deploy time.
+
+**Read more:** [Environment branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}})
+
 ## How to narrow it down
 
 1. **Is a separate build triggered for each environment?** If staging and production builds run independently, the artifacts are not guaranteed to be equivalent. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
 2. **Are the build environments for each stage identical?** If dev, staging, and production builds run on differently configured machines, the same source produces different artifacts. Start with [Snowflake environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}).
 3. **Can the team trace the exact artifact version in production back to a specific test run?** If not, there is no artifact provenance and no guarantee of what was tested. Start with [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}).
+4. **Does each environment deploy from its own long-lived branch?** If dev, staging, and production each have a branch that changes are merged into, each merge triggers a new build. Start with [Environment branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}).
 
 **Ready to fix this?** The most common cause is [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline#how-to-fix-it" >}}) section for week-by-week steps.
+
+---
+
+## Related content
+
+- [Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}) - Code differs between environments, often because each deploys from its own branch
