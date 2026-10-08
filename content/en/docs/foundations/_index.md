@@ -12,7 +12,7 @@ aliases:
 **Key question:** "Can we integrate safely every day?"
 
 This phase establishes the development practices that make [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) possible.
-Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation just speeds up a broken process.
+Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation speeds up a broken process.
 {{% /pageinfo %}}
 
 ## What You'll Do

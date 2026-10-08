@@ -82,7 +82,7 @@ Once the mismatch rate holds at zero for the agreed period, switch the candidate
 ## When a Parallel Run Is Not Enough
 
 - **The old and new implementations must not both execute**, for example when the operation has side effects like sending an email or charging a card. Idempotent, side-effect-free logic (pricing, scoring, routing decisions) is what parallel run is for. For operations with side effects, use [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) with a smaller, monitored rollout instead.
-- **You are changing a shared schema or contract, not just an implementation.** Use [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) instead.
+- **You are changing a shared schema or contract, not only an implementation.** Use [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) instead.
 
 ## Key Pitfalls
 
