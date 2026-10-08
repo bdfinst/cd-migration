@@ -14,7 +14,7 @@ aliases:
 Improvement without measurement is guesswork. This page covers two types of metrics, how they relate, and how to use them together in a systematic improvement cycle.
 {{% /pageinfo %}}
 
-## Two Types of Metrics
+## Two types of metrics
 
 Not all delivery metrics are equally useful for driving improvement. Understanding the difference prevents a common trap: tracking the wrong metrics and wondering why nothing changes.
 
@@ -24,19 +24,19 @@ Not all delivery metrics are equally useful for driving improvement. Understandi
 
 Use leading indicators to drive improvement experiments. Use DORA metrics to confirm that the improvements are compounding into better delivery outcomes.
 
-## The Problem with Ad Hoc Improvement
+## The problem with ad hoc improvement
 
 Most teams improve accidentally. Someone reads a blog post, suggests a change at standup, and the team tries it for a week before forgetting about it. This produces sporadic, unmeasurable progress that is impossible to sustain.
 
 Metrics-driven improvement replaces this with a disciplined cycle: measure where you are, define where you want to be, run a small experiment, measure the result, and repeat. The improvement kata provides the structure. Leading indicators drive the experiments. DORA metrics confirm the system-level effect.
 
-## CI Health Metrics
+## CI health metrics
 
 [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) health metrics are leading indicators. They reflect the current state of the behaviors that CD depends on and move immediately when those behaviors change. Problems in these metrics are visible and addressable today, weeks before they surface in DORA outcome numbers.
 
 Track these as your primary improvement signal during the migration. Run experiments against them. Use DORA metrics to confirm that the improvements are compounding.
 
-### Commits Per Day Per Developer
+### Commits per day per developer
 
 | Aspect | Detail |
 |--------|--------|
@@ -49,7 +49,7 @@ Track these as your primary improvement signal during the migration. Run experim
 
 **If the number is unusually high:** Verify that commits represent meaningful work rather than trivial fixes to pass a metric. Commit frequency is a means to smaller batches, not a goal in itself.
 
-### Build Success Rate
+### Build success rate
 
 | Aspect | Detail |
 |--------|--------|
@@ -62,7 +62,7 @@ Track these as your primary improvement signal during the migration. Run experim
 
 **If the number is high but DORA metrics are still lagging:** The build may pass but take too long, or the build may not cover enough to catch real problems. Check build duration and test coverage.
 
-### Time to Fix a Broken Build
+### Time to fix a broken build
 
 | Aspect | Detail |
 |--------|--------|
@@ -73,13 +73,13 @@ Track these as your primary improvement signal during the migration. Run experim
 
 **If the number is high:** The team may not be treating broken builds as a stop-the-line event. Establish a team agreement: when the build breaks, fixing it takes priority over all other work. If builds break frequently and take long to fix, reduce change size so failures are easier to diagnose.
 
-## The Four DORA Metrics
+## The four DORA metrics
 
 The DORA research program (now part of Google Cloud) identified four key metrics that correlate with software delivery performance and organizational outcomes. These are lagging outcome metrics: they reflect the cumulative effect of many upstream behaviors. Track them to confirm that your improvement work is having the expected systemic effect, and to establish a baseline for reporting progress to leadership.
 
 Do not set these as improvement targets or OKRs. See [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 
-### 1. Deployment Frequency
+### 1. Deployment frequency
 
 How often your team deploys to production.
 
@@ -94,7 +94,7 @@ How often your team deploys to production.
 
 **How to measure:** Count the number of successful deployments to production per unit of time. Automated deploys count. Hotfixes count. [Rollbacks]({{< relref "/docs/reference/glossary#rollback" >}}) do not.
 
-### 2. Lead Time for Changes
+### 2. Lead time for changes
 
 The time from a commit being pushed to trunk to that commit running in production.
 
@@ -109,7 +109,7 @@ The time from a commit being pushed to trunk to that commit running in productio
 
 **How to measure:** Record the timestamp when a commit merges to trunk and the timestamp when that commit is running in production. The difference is lead time. Track the median, not the mean (outliers distort the mean).
 
-### 3. Change Failure Rate
+### 3. Change failure rate
 
 The percentage of deployments that cause a failure in production requiring remediation ([rollback]({{< relref "/docs/reference/glossary#rollback" >}}), hotfix, or patch).
 
@@ -124,7 +124,7 @@ The percentage of deployments that cause a failure in production requiring remed
 
 **How to measure:** Track deployments that result in a degraded service, require rollback, or need a hotfix. Divide by total deployments. A "failure" is defined by the team (typically any incident that requires immediate human intervention).
 
-### 4. Mean Time to Restore (MTTR)
+### 4. Mean time to restore (MTTR)
 
 How long it takes to recover from a failure in production.
 
@@ -139,11 +139,11 @@ How long it takes to recover from a failure in production.
 
 **How to measure:** Record the timestamp when a production failure is detected and the timestamp when service is fully restored. Track the median.
 
-## The DORA Recommended Practices
+## The DORA recommended practices
 
 Behind these four metrics are 24 practices that the DORA research has shown to drive performance. They organize into five categories. Use this as a diagnostic tool: when a metric is lagging, look at the related practices to identify what to improve.
 
-### Continuous Delivery Practices
+### Continuous delivery practices
 
 These directly affect your pipeline and deployment practices:
 
@@ -156,7 +156,7 @@ These directly affect your pipeline and deployment practices:
 - Shift-left security
 - Continuous delivery (the ability to deploy at any time)
 
-### Architecture Practices
+### Architecture practices
 
 These affect how easily your system can be changed and deployed:
 
@@ -164,7 +164,7 @@ These affect how easily your system can be changed and deployed:
 - Empowered teams that can choose their own tools
 - Teams that can test, deploy, and release independently
 
-### Product and Process Practices
+### Product and process practices
 
 These affect how work flows through the team:
 
@@ -173,7 +173,7 @@ These affect how work flows through the team:
 - Working in small batches
 - Team experimentation
 
-### Lean Management Practices
+### Lean management practices
 
 These affect how the organization supports delivery:
 
@@ -183,7 +183,7 @@ These affect how the organization supports delivery:
 - [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits
 - Visual management of workflow
 
-### Cultural Practices
+### Cultural practices
 
 These affect the environment in which teams operate:
 
@@ -195,17 +195,17 @@ These affect the environment in which teams operate:
 
 For a detailed breakdown, see the [DORA Recommended Practices reference]({{< relref "/docs/reference/dora-capabilities" >}}).
 
-## The Improvement Kata
+## The improvement kata
 
 The improvement kata is a four-step pattern from lean manufacturing adapted for software delivery. It provides the structure for turning DORA measurements into concrete improvements.
 
-### Step 1: Understand the Direction
+### Step 1: Understand the direction
 
 Where does your CD migration need to go?
 
 This is already defined by the phases of this migration guide. In Phase 3, your direction is: smaller batches, faster flow, and higher confidence in every deployment.
 
-### Step 2: Grasp the Current Condition
+### Step 2: Grasp the current condition
 
 Measure your current DORA metrics. Be honest - the point is to understand reality, not to look good.
 
@@ -225,7 +225,7 @@ Measure your current DORA metrics. Be honest - the point is to understand realit
 | [Change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}) | 25% | < 15% | Test coverage or change size issue |
 | [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}) | 4 hours | < 1 hour | Rollback is manual |
 
-### Step 3: Establish the Next Target Condition
+### Step 3: Establish the next target condition
 
 Do not try to fix everything at once. Pick one metric and define a specific, measurable, time-bound target.
 
@@ -233,7 +233,7 @@ Do not try to fix everything at once. Pick one metric and define a specific, mea
 
 **Bad target:** "Improve our deployment pipeline." (Too vague, no measure, no deadline.)
 
-### Step 4: Experiment Toward the Target
+### Step 4: Experiment toward the target
 
 Design a small experiment that you believe will move the metric toward the target. Run it. Measure the result. Adjust.
 
@@ -259,7 +259,7 @@ Design a small experiment that you believe will move the metric toward the targe
 >
 > **Decision criteria:** Keep if lead time drops below 2 days. Modify if it drops but not enough. Abandon if it has no effect or introduces flakiness.
 
-### The Cycle Repeats
+### The cycle repeats
 
 After each experiment:
 
@@ -270,11 +270,11 @@ After each experiment:
 
 This creates a continuous improvement loop. Each cycle takes 1-2 weeks. Over months, the cumulative effect is dramatic.
 
-## Connecting Metrics to Action
+## Connecting metrics to action
 
 When a metric is lagging, use this guide to identify where to focus.
 
-### Low Deployment Frequency
+### Low deployment frequency
 
 | Possible Cause | Investigation | Action |
 |----------------|--------------|--------|
@@ -283,7 +283,7 @@ When a metric is lagging, use this guide to identify where to focus.
 | Large batch size | Measure changes per deploy | Implement [small batches]({{< relref "/docs/optimize/small-batches" >}}) practices |
 | Deploy process is manual | Time the deploy process | Automate the deployment pipeline |
 
-### Long Lead Time
+### Long lead time
 
 | Possible Cause | Investigation | Action |
 |----------------|--------------|--------|
@@ -292,7 +292,7 @@ When a metric is lagging, use this guide to identify where to focus.
 | Waiting for approval | Track approval wait time | Reduce approval scope or automate |
 | Large changes | Measure commit size | Reduce batch size |
 
-### High Change Failure Rate
+### High change failure rate
 
 | Possible Cause | Investigation | Action |
 |----------------|--------------|--------|
@@ -310,11 +310,11 @@ When a metric is lagging, use this guide to identify where to focus.
 | Hard to deploy fixes quickly | Measure fix lead time | Ensure pipeline supports rapid hotfix deployment |
 | Dependencies fail in cascade | Map failure domains | Improve [architecture decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) |
 
-## Pipeline Visibility
+## Pipeline visibility
 
 Metrics only drive improvement when people see them. Pipeline visibility means making the current state of your build and deployment pipeline impossible to ignore. When the build is red, everyone should know immediately - not when someone checks a dashboard twenty minutes later.
 
-### Making Build Status Visible
+### Making build status visible
 
 The most effective teams use ambient visibility - information that is passively available without anyone needing to seek it out.
 
@@ -343,11 +343,11 @@ Notifications are powerful when used well and destructive when overused. The goa
 
 **Avoiding notification fatigue:** If your team ignores notifications, you have too many of them. Audit your notification channels quarterly. Remove any notification that the team consistently ignores. A notification that nobody reads is worse than no notification at all - it trains people to tune out the channel entirely.
 
-## Building a Metrics Dashboard
+## Building a metrics dashboard
 
 Make your DORA metrics and CI health metrics visible to the team at all times. A dashboard on a wall monitor or a shared link is ideal.
 
-### Essential Information
+### Essential information
 
 Organize your dashboard around three categories:
 
@@ -369,7 +369,7 @@ Organize your dashboard around three categories:
 - Days since last production incident
 - Number of experiments completed this quarter
 
-### Dashboard Anti-Patterns
+### Dashboard anti-patterns
 
 **The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, it is not useful. Include metrics that challenge the team, not only ones that reassure management.
 
@@ -381,7 +381,7 @@ Organize your dashboard around three categories:
 
 **Keep it simple.** A spreadsheet updated weekly is better than a sophisticated dashboard that nobody maintains. The goal is visibility, not tooling sophistication.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We measure but don't act"
 
@@ -399,7 +399,7 @@ Focus on one metric at a time. Improving deployment frequency and change failure
 
 Most experiments need at least two weeks to show results. One bad day is not a reason to abandon an experiment. Set the duration up front and commit to it.
 
-## Measuring Success
+## Measuring success
 
 | Indicator | Target | Why It Matters |
 |-----------|--------|----------------|
@@ -408,13 +408,13 @@ Most experiments need at least two weeks to show results. One bad day is not a r
 | Team can articulate current condition and target | Everyone on the team knows | Confirms improvement is a shared concern |
 | Improvement items in backlog | Always present | Confirms improvement is treated as a deliverable |
 
-## Next Step
+## Next step
 
 Metrics tell you what to improve. [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) provide the team forum for deciding how to improve it.
 
 ---
 
-## Related Content
+## Related content
 
 - [Deployment Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) - one of the four key DORA metrics
 - [Lead Time]({{< relref "/docs/reference/metrics/lead-time" >}}) - one of the four key DORA metrics

@@ -24,7 +24,7 @@ time. Configuration is injected at deployment time (see
 [Application Configuration]({{< relref "/docs/pipeline/application-config" >}})), but the artifact itself never
 changes.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 If you build a separate artifact for each environment - or worse, make manual adjustments
 to artifacts at deployment time - you can never be certain that what you tested is what
@@ -39,7 +39,7 @@ For teams migrating to [CD]({{< relref "/docs/reference/glossary#cd-continuous-d
 immediate trust. Once the team sees that the same container image flows from [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) to
 staging to production, the deployment process becomes verifiable instead of hopeful.
 
-## Key Principles
+## Key principles
 
 ### Build once
 
@@ -73,7 +73,7 @@ Every artifact must be traceable back to the exact commit, pipeline run, and set
 that produced it. Use content-addressable identifiers (such as container image digests),
 semantic version tags, or build metadata that links the artifact to its source.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Rebuilding per environment
 
@@ -111,7 +111,7 @@ Applications that write to their own deployment directory, modify their own conf
 files at runtime, or store state alongside the application binary are not truly immutable.
 Runtime state must be stored externally.
 
-## Good Patterns
+## Good patterns
 
 ### Container images as immutable artifacts
 
@@ -145,7 +145,7 @@ Strive for builds where the same source input produces a bit-for-bit identical a
 While not always achievable (timestamps, non-deterministic linkers), getting close makes
 it possible to verify that an artifact was produced from its claimed source.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Separate build from deployment
 
@@ -184,7 +184,7 @@ Periodically verify that what is running in production matches what the pipeline
 Compare image digests, checksums, or signatures. This catches any manual modifications
 that may have bypassed the pipeline.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Immutable artifacts are the physical manifestation of trust in the pipeline. The
 [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) ensures all changes flow
@@ -197,7 +197,7 @@ This practice also directly supports [rollback]({{< relref "/docs/pipeline/rollb
 are stored unchanged in the artifact repository, rolling back means deploying a
 previous known-good artifact.
 
-## Related Content
+## Related content
 
 - [Staging Passes, Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - a symptom eliminated when the same artifact is deployed to every environment
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - an anti-pattern that undermines artifact immutability through environment-specific builds

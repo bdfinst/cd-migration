@@ -23,7 +23,7 @@ operational capability that should be exercised regularly and trusted completely
 deployment to production should be accompanied by a tested, automated, fast rollback
 mechanism.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Fear of deployment is the single biggest cultural barrier to continuous delivery. Teams
 that have experienced painful, irreversible deployments develop a natural aversion to
@@ -35,7 +35,7 @@ reversed in minutes, the perceived risk of deployment drops dramatically. Smalle
 frequent deployments become possible. The feedback loop tightens. The entire delivery
 system improves.
 
-## Key Principles
+## Key principles
 
 ### Fast
 
@@ -77,9 +77,9 @@ never been exercised is a rollback procedure that will fail when you need it mos
 rollback verification in your [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}}) and
 practice rollback as part of routine deployment validation.
 
-## Rollback Strategies
+## Rollback strategies
 
-### Blue-Green Deployment
+### Blue-green deployment
 
 Maintain two identical production environments - blue and green. At any time, one is live
 (serving traffic) and the other is idle. To deploy, deploy to the idle environment, verify
@@ -108,7 +108,7 @@ Instant rollback (< 30 seconds)
 - Database changes must be backward-compatible across both versions
 - Session state must be externalized so it survives the switch
 
-### Canary Deployment
+### Canary deployment
 
 Deploy the new version to a small subset of production infrastructure (the "canary") and
 route a percentage of traffic to it. Monitor the canary for errors, latency, and business
@@ -137,7 +137,7 @@ Issue contained, minimal user impact
 - Both versions must be able to run simultaneously
 - Monitoring must be sophisticated enough to detect subtle problems in the canary
 
-### Feature Flag Rollback
+### Feature flag rollback
 
 When a deployment introduces new behavior behind a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}), rollback can be as
 simple as turning off the flag. The code remains deployed, but the new behavior is
@@ -166,7 +166,7 @@ return renderOldCheckout()
 - Only works for changes that are behind flags
 - Feature flag debt (old flags that are never cleaned up) must be managed
 
-### Database-Safe Rollback with Expand-Contract
+### Database-safe rollback with expand-contract
 
 Database schema changes are the most common obstacle to rollback. If a deployment changes
 the database schema, rolling back the application code may fail if the old code is
@@ -201,7 +201,7 @@ ALTER TABLE users DROP COLUMN email;
 changing types) deployed simultaneously with the application code change that requires
 them. This makes rollback impossible because the old code cannot work with the new schema.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### "We'll fix forward"
 
@@ -233,7 +233,7 @@ If only one person on the team knows how to perform a rollback, the team does no
 rollback capability - it has a single point of failure. Rollback must be simple enough
 for any team member to execute.
 
-## Good Patterns
+## Good patterns
 
 ### Automated rollback on health check failure
 
@@ -264,7 +264,7 @@ verify that the rollback was successful.
 Regularly practice rollback as a team exercise - not only as part of automated testing,
 but as a deliberate drill. This builds team confidence and identifies gaps in the process.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Document your current rollback capability
 
@@ -299,7 +299,7 @@ Practice rollback regularly. Demonstrate it during deployment reviews. Make it a
 part of operations, not an emergency procedure. When the team trusts rollback, they will
 trust deployment.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Rollback is the capstone of the [Pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) phase. It is what makes the rest of the phase
 safe:
@@ -383,7 +383,7 @@ Configuration should be versioned and separated from the application artifact. R
 back the artifact should not require separately rolling back environment configuration.
 See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how to achieve this.
 
-## Related Content
+## Related content
 
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - the symptom that reliable rollback capability directly resolves
 - [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - a symptom driven by deployment risk that rollback mitigates

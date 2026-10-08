@@ -23,7 +23,7 @@ validations built into the pipeline - that every change must pass. If the pipeli
 green, the artifact is deployable. If the pipeline is red, it is not. There is no
 ambiguity, no judgment call, and no "looks good enough."
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Without a clear, automated deployable definition, teams rely on human judgment to decide
 when something is ready to ship. This creates bottlenecks (waiting for approval), variance
@@ -34,7 +34,7 @@ During a CD migration, the deployable definition replaces manual approval proces
 automated confidence. It is what allows a team to say "any green build can go to
 production" - which is the prerequisite for [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}).
 
-## Key Principles
+## Key principles
 
 ### The definition must be automated
 
@@ -81,7 +81,7 @@ production readiness:
 - **Graceful degradation tests** - verify that the system behaves acceptably when dependencies fail
 - **[Rollback]({{< relref "/docs/reference/glossary#rollback" >}}) verification** - verify that the deployment can be rolled back (see [Rollback]({{< relref "/docs/pipeline/rollback" >}}))
 
-#### Code Quality
+#### Code quality
 
 - **Linting and static analysis** - enforce code style and detect common errors
 - **Code coverage thresholds** - not as a target, but as a safety net to detect large untested areas
@@ -102,7 +102,7 @@ emerge, and the definition should be updated to catch them. When a production in
 occurs, the team should ask: "What automated check could have caught this?" and add it to
 the definition.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Manual approval gates
 
@@ -130,7 +130,7 @@ When different teams have different deployable definitions, organizational confi
 in deployment varies. While the specific checks may differ by service, the categories of
 validation (security, functionality, performance, compliance) should be consistent.
 
-## Good Patterns
+## Good patterns
 
 ### Pipeline gates as policy
 
@@ -228,7 +228,7 @@ status on dashboards. When a check fails, provide clear, actionable feedback abo
 failed and why. The definition should be understood by everyone, not hidden in pipeline
 configuration.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Document your current "definition of done"
 
@@ -259,7 +259,7 @@ Once the automated definition is comprehensive enough that a green build genuine
 "safe to deploy," remove manual approval gates. This is often the most culturally
 challenging step.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 The deployable definition is the contract between the pipeline and the organization. It is
 what makes the [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) trustworthy -
@@ -272,7 +272,7 @@ definition ensures that green means green and red means red. Combined with
 is the artifact you deploy. It is the bridge between automated process and organizational
 confidence.
 
-## Health Metrics
+## Health metrics
 
 Track these metrics to evaluate whether your deployable definition is well-calibrated:
 
@@ -325,7 +325,7 @@ fully. For these:
 2. Make remaining manual checks lightweight and concurrent, not deployment blockers
 3. Continuously work to automate more as tooling improves
 
-## Related Content
+## Related content
 
 - [Hardening Sprints]({{< relref "/docs/symptoms/deployment/hardening-sprints" >}}) - a symptom indicating the deployable definition is incomplete, forcing manual quality efforts before release
 - [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - often caused by unclear or manual criteria for what is ready to ship
