@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The organization has services. The architecture diagram shows boxes with arrows between them. But
 deploying any one service without simultaneously deploying two others breaks production. A single
@@ -46,7 +46,7 @@ Common variations:
 The telltale sign: services cannot be deployed, scaled, or failed independently. A problem in any
 one service cascades to all the others.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A distributed monolith combines the worst properties of both architectures. It has the operational
 complexity of microservices (network communication, partial failures, distributed debugging) with
@@ -114,7 +114,7 @@ together, deploy them together. The batch grows over time because each release w
 to coordinate. Larger batches mean higher risk, longer rollbacks, and less frequent delivery. The
 architecture that was supposed to enable faster delivery actively prevents it.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the actual dependencies
 
@@ -138,7 +138,7 @@ service can handle its business operations without synchronous calls to other do
 Cross-domain communication happens through asynchronous events or well-versioned APIs with
 backward compatibility.
 
-### Step 3: Consolidate or redraw one boundary (Weeks 3-8)
+### Step 3: Consolidate or redraw one boundary (weeks 3-8)
 
 Pick the cluster with the worst coupling and address it:
 
@@ -149,7 +149,7 @@ Pick the cluster with the worst coupling and address it:
   lines. Move the scattered business logic into the service that owns that domain. Extract shared
   database tables into the owning service and replace direct table access with API calls.
 
-### Step 4: Break synchronous chains (Weeks 6+)
+### Step 4: Break synchronous chains (weeks 6+)
 
 For cross-domain communication that remains after boundary correction:
 
@@ -160,7 +160,7 @@ For cross-domain communication that remains after boundary correction:
   service can deploy on its own schedule.
 - Add circuit breakers and timeouts so that a failure in one service does not cascade to callers.
 
-### Step 5: Eliminate the shared database (Weeks 8+)
+### Step 5: Eliminate the shared database (weeks 8+)
 
 Each service should own its data. If two services need the same data, one of them owns the table
 and the other accesses it through an API. Shared database access is the most common source of
@@ -175,7 +175,7 @@ access when all consumers have migrated.
 | "Asynchronous communication is too complex" | Synchronous chains across services are already complex and fragile. Asynchronous events are more resilient and allow each service to operate independently. The complexity is different, not greater, and it pays for itself in deployment independence. |
 | "We can't change the database schema without breaking everything" | That is exactly the problem. The shared database is the coupling. Eliminating it is the fix, not an obstacle. Use the Strangler Fig pattern: add the API alongside the direct access, migrate consumers gradually, and remove the old path. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -186,7 +186,7 @@ access when all consumers have migrated.
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as cascading failures are eliminated |
 | Deployment coordination events per month | Should decrease toward zero |
 
-## Related Content
+## Related content
 
 - [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}) - The same coupling problem in a single codebase
 - [Premature Microservices]({{< relref "/docs/anti-patterns/architecture/premature-microservices" >}}) - When the problem is not wrong boundaries but unnecessary decomposition

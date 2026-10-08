@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team breaks a feature into work items by technical layer. One item for the database schema. One
 for the API. One for the UI. Maybe one for "integration testing" at the end. Each item lives in a
@@ -51,7 +51,7 @@ Common variations:
 The telltale sign: a team cannot deploy their changes until another team deploys theirs first, or
 until a coordinated release window.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Horizontal slicing feels natural because it matches how developers think about the system's
 architecture. But it optimizes for how the code is organized, not for how value is delivered. The
@@ -126,7 +126,7 @@ Vertical slicing is what makes independent deployment possible. Each slice deliv
 behavior within the team's domain, exercises real contracts with other services, and can move
 through the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) on its own.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Learn to recognize horizontal slices
 
@@ -223,7 +223,7 @@ enter the sprint.
 | "Vertical slices create duplicate work across layers" | They create less total work because integration problems are caught immediately instead of accumulating. The "duplicate" concern usually means the team is building more infrastructure than the current slice requires. |
 | "Our architecture makes vertical slicing hard" | That is a signal about the architecture. Services that cannot be changed independently are a deployment risk. Vertical slicing exposes this coupling early, which is better than discovering it during a high-stakes coordinated release. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -233,7 +233,7 @@ enter the sprint.
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as items no longer wait for other layers or teams |
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as deployable slices are completed and merged daily |
 
-## Related Content
+## Related content
 
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice guide for vertical slicing techniques, including how the approach differs for full-stack product teams versus subdomain product teams in distributed systems
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Vertical slicing is how you achieve small batch size at the story level

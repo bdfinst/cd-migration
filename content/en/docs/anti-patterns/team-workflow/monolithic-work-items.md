@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The product owner describes a feature. The team discusses it briefly. Someone creates a ticket
 with the feature title - "Add user profile page" - and it goes into the backlog. When a
@@ -41,7 +41,7 @@ Common variations:
 The telltale sign: items regularly take five or more days from start to done, and the team treats
 this as normal.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Without decomposition, work items are too large to flow through the delivery system efficiently.
 Every downstream practice - integration, review, testing, deployment - suffers.
@@ -82,7 +82,7 @@ team working on five large items has zero [deployable]({{< relref "/docs/referen
 
 Work decomposition is the practice that creates the small units of work that CD needs to flow.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Establish the 2-day rule
 
@@ -130,7 +130,7 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 | "Some things can't be done in two days" | Almost anything can be decomposed further. Database migrations can be backward-compatible steps. UI changes can hide behind [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}). |
 | "Product doesn't want partial features" | Feature flags let you deploy incomplete features without exposing them. The code is integrated continuously, but the feature is toggled on when all slices are done. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -139,7 +139,7 @@ functionality. A decomposed, vertically sliced item is independently deployable 
 | Items completed per week | Should increase |
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as developers integrate daily |
 
-## Related Content
+## Related content
 
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice guide for breaking work into small increments
 - [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) - Decomposition without vertical slicing still produces items that cannot flow independently

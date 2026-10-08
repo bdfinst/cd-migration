@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A manager, tech lead, or project manager decides who works on what. Assignments happen during
 sprint planning, in one-on-ones, or through tickets pre-assigned before the sprint starts. Each
@@ -36,7 +36,7 @@ Common variations:
 The telltale sign: if you ask a developer "what should you work on next?" and the answer is "I
 don't know, I need to ask my manager," work is being pushed.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Push-based assignment is one of the most quietly destructive practices a team can have. It
 undermines nearly every [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practice by breaking the connection between the team and the flow of
@@ -130,7 +130,7 @@ because the assigned person is busy with something else, and no team-level mecha
 throughput. You cannot build a continuous flow of work when the assignment model is batch-based and
 individually scoped.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Order the backlog by priority
 
@@ -167,7 +167,7 @@ The developer picks up the highest-priority available item, not the item that ma
 specialty. This is intentional - it spreads knowledge, reduces bus factor, and keeps the team
 focused on priority rather than comfort.
 
-### Step 4: Address the discomfort (Weeks 3-4)
+### Step 4: Address the discomfort (weeks 3-4)
 
 Expect these objections and plan for them:
 
@@ -201,7 +201,7 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 | Reassign work when priorities change | Update backlog priority and let the team adapt |
 | Manage individual utilization | Remove systemic blockers the team cannot resolve |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -212,7 +212,7 @@ Moving to a pull model does not eliminate the need for leadership. It changes th
 | Rework rate | Stories returned for rework or reopened after completion - should decrease |
 | Knowledge distribution | Track who works on which parts of the system - should broaden over time |
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP caused by individual assignment queues
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Reviews deprioritized when everyone has their own assigned work

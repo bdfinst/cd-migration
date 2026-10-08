@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team split their application into services because "microservices are how you do DevOps." The
 boundaries might even be reasonable. Each service owns its domain. Contracts are versioned. The
@@ -50,7 +50,7 @@ The telltale sign: the team spends more time on service infrastructure, cross-se
 and pipeline maintenance than on delivering features, and nobody can name the specific problem
 that microservices solved.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Microservices solve specific problems at specific scales: enabling independent deployment for
 large organizations, allowing components to scale independently under different load profiles, and
@@ -117,7 +117,7 @@ with automated deployment. A modular monolith with clear internal boundaries and
 can achieve deployment frequencies that most premature microservices architectures struggle to
 match.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Assess whether microservices are solving a real problem
 
@@ -133,7 +133,7 @@ Answer these questions honestly:
 If the answer to all three is no, the team does not need microservices. A modular monolith will
 deliver faster with less operational overhead.
 
-### Step 2: Consolidate services that do not need independence (Weeks 2-6)
+### Step 2: Consolidate services that do not need independence (weeks 2-6)
 
 Merge services that are always deployed together. If Service A and Service B have never been
 deployed independently, they are not independent services. They are modules that should share a
@@ -142,7 +142,7 @@ deployment. This is not a failure. It is a course correction based on evidence.
 Prioritize merging services owned by the same team. A single team running six services gets the
 same team autonomy benefit from one well-structured deployable.
 
-### Step 3: Build operational maturity for what remains (Weeks 4-8)
+### Step 3: Build operational maturity for what remains (weeks 4-8)
 
 For services that genuinely benefit from separation, ensure the team has the operational
 capabilities to manage them:
@@ -156,7 +156,7 @@ capabilities to manage them:
 Each missing capability is a reason to pause and invest in the platform before adding more
 services.
 
-### Step 4: Establish a service extraction checklist (Ongoing)
+### Step 4: Establish a service extraction checklist (ongoing)
 
 Before extracting any new service, require answers to:
 
@@ -174,7 +174,7 @@ If any answer is unsatisfactory, keep it as a module.
 | "We need microservices for CD" | CD requires automated testing, a reliable pipeline, and small deployable changes. A modular monolith provides all three. Microservices are one way to achieve independent deployment, but they are not a prerequisite. |
 | "But we might need to scale later" | Design for today's constraints, not tomorrow's speculation. If scaling demands emerge, extract the specific component that needs to scale. Premature decomposition solves problems you do not have while creating problems you do. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -184,7 +184,7 @@ If any answer is unsatisfactory, keep it as a module.
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as operational overhead shrinks |
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as distributed-system failure modes are eliminated |
 
-## Related Content
+## Related content
 
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - When the boundaries are wrong, not only premature
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - How to create real boundaries, whether in a monolith or between services
