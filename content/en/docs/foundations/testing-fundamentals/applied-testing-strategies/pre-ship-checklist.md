@@ -27,7 +27,7 @@ Use this as a set of prompts for a quick self-audit, not a list of gates that mu
 - [ ] Authn and authz are tested across every protected endpoint, not as one-offs per feature.
 - [ ] Database migrations are tested forward, backward (where supported), and on representative data volume against the production engine.
 - [ ] Fixtures are generated from the schema or built through Object Mother / builder helpers, not inline literals.
-- [ ] Failure-path tests assert on observability (metric incremented, structured log emitted with correlation ID), not just the response.
+- [ ] Failure-path tests assert on observability (metric incremented, structured log emitted with correlation ID), not only the response.
 - [ ] Per-endpoint perf budgets exist for hot paths; load tests gate production promotion; [soak tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#soak-test" >}}) run out of pipeline.
 - [ ] Flaky tests are quarantined with a dated owner and time-boxed remediation. No permanent quarantine list.
 - [ ] The deterministic suite respects the pattern's time budget (under 5 to 8 minutes per component, under 10 minutes total).

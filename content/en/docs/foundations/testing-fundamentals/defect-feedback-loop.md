@@ -8,7 +8,7 @@ aliases:
   - /docs/migrate-to-cd/foundations/testing-fundamentals/defect-feedback-loop/
 ---
 
-Treat every test failure as diagnostic data about where your process breaks down, not just as
+Treat every test failure as diagnostic data about where your process breaks down, not only as
 something to fix. When you identify the systemic source of defects, you can prevent entire
 categories from recurring.
 
@@ -56,7 +56,7 @@ failures to root causes and root causes to systemic fixes.
    category from the tables above. This takes seconds and builds a dataset over time.
 2. **Look for patterns.** Monthly (or during retrospectives), review the defect
    classifications. Which categories appear most often? That is where your process is weakest.
-3. **Apply the systemic fix, not just the local fix.** When you fix a bug, also ask: what
+3. **Apply the systemic fix, not only the local fix.** When you fix a bug, also ask: what
    systemic change would prevent this entire category of bug? If most defects come from
    integration boundaries, the fix is not "write more integration tests." It is "make contract
    tests mandatory for every new boundary." If most defects come from untested edge cases, the
@@ -71,7 +71,7 @@ failures to root causes and root causes to systemic fixes.
 **Every bug fix must include a test that reproduces the bug before the fix and passes after.**
 This is non-negotiable for [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) because:
 
-- It proves the fix actually addresses the defect (not just the symptom).
+- It proves the fix actually addresses the defect (not only the symptom).
 - It prevents the same defect from recurring.
 - It builds test coverage exactly where the codebase is weakest: the places where bugs actually
   occur.
