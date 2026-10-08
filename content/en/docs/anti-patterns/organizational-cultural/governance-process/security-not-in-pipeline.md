@@ -49,7 +49,7 @@ Late-discovered security issues are expensive to remediate. A cross-site scripti
 
 The rework overhead is not limited to the development team. Security findings found at release time require security engineers to re-review the fix, project managers to reschedule release dates, and sometimes legal or compliance teams to assess exposure. A finding that takes two hours to fix may require 10 hours of coordination overhead.
 
-The batching effect amplifies rework. Teams that do security review at release time tend to release infrequently in order to minimize the number of security review cycles. Infrequent releases mean large batches. Large batches mean more findings per review. More findings mean longer delays. The delay causes more batching. The cycle is self-reinforcing.
+The batching effect amplifies rework. Teams that do security review at release time tend to release infrequently to minimize the number of security review cycles. Infrequent releases mean large batches. Large batches mean more findings per review. More findings mean longer delays. The delay causes more batching. The cycle is self-reinforcing.
 
 ### It makes delivery timelines unpredictable
 

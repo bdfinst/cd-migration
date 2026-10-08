@@ -107,7 +107,7 @@ Expect pushback and address it directly:
 3. Create a shared on-call rotation that includes developers, starting with a shadow rotation before full participation.
 4. Define a service ownership model where the team that builds a service is also responsible for its production health.
 5. Establish a weekly sync between development and operations focused on reducing toil rather than managing tickets.
-6. Set a six-month goal for the percentage of deployments that are fully developer-initiated through the automated pipeline.
+6. Set a six-month goal for the percentage of deployments that developers start entirely through the automated pipeline.
 
 Expect pushback and address it directly:
 

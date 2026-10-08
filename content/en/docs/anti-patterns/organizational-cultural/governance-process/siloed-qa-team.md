@@ -81,7 +81,7 @@ Expect pushback and address it directly:
 
 | Objection | Response |
 |-----------|----------|
-| "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to leverage their expertise better, not eliminate it. |
+| "Our QA team is highly skilled and adds real value." | Their skills are more valuable when applied to exploratory testing, test strategy, and automation - not manual regression. The goal is to use their expertise better, not eliminate it. |
 | "The numbers don't tell the whole story." | They rarely do. Use them to start a conversation, not to win an argument. |
 
 ### Step 2: Shift test ownership to the development team (Weeks 2-6)
