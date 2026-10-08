@@ -46,7 +46,7 @@ Sources for this data include:
 - **Source control:** first commit timestamp associated with a story.
 - **Deployment logs:** timestamp of production deployments linked to stories.
 
-Linking stories to deployments is essential. Use commit message conventions (e.g.,
+Linking stories to deployments is essential. Use commit message conventions (for example,
 story IDs in commit messages) or deployment metadata to create this connection.
 
 ## Targets
@@ -106,7 +106,7 @@ To improve Development Cycle Time:
 
 - Decompose work into stories that can be completed and deployed within one to two
   days.
-- Remove handoffs between teams (e.g., separate dev and QA teams).
+- Remove handoffs between teams (for example, separate dev and QA teams).
 - Automate the build and deploy pipeline to eliminate manual steps.
 - Improve test design so the pipeline runs faster without sacrificing coverage.
 - Limit [Work in Progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) so the team focuses on finishing

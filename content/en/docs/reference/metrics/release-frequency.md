@@ -104,7 +104,7 @@ To improve Release Frequency:
 
 - Reduce [Development Cycle Time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) by decomposing work
   into smaller increments.
-- Remove manual handoffs to other teams (e.g., ops, QA, change management).
+- Remove manual handoffs to other teams (for example, ops, QA, change management).
 - Automate every step of the deployment process, from build through production
   verification.
 - Replace manual change approval boards with automated policy checks and peer
