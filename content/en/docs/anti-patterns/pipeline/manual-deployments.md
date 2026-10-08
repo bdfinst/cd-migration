@@ -166,7 +166,7 @@ is irrelevant if every journey ends with a slow, bumpy last mile.
 ### Step 1: Script the current manual process
 
 Take the runbook, the checklist, or the knowledge in the deployer's head and turn it into a
-script. Do not redesign the process yet - just encode what the team already does.
+script. Do not redesign the process yet - encode what the team already does.
 
 1. Record a deployment from start to finish. Note every command, every server, every check.
 2. Write a script that executes those steps in order.
@@ -200,7 +200,7 @@ values by hand. Move these out of the manual process:
   values or manual input.
 
 This step is critical because manual configuration is one of the most common sources of deployment
-failures. Automating deployment without automating configuration just moves the manual step.
+failures. Automating deployment without automating configuration only moves the manual step.
 
 ### Step 4: Automate production deployment with a gate (Weeks 3-4)
 

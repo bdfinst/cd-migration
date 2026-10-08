@@ -79,7 +79,7 @@ instead of modifying what exists.
 
 Over time, the codebase becomes a patchwork of workarounds layered on workarounds. Each change
 takes longer because the code is harder to understand and more fragile. The absence of tests is
-not just a testing problem - it is a design problem that compounds with every change.
+not only a testing problem - it is a design problem that compounds with every change.
 
 Teams with automated tests refactor confidently. They rename functions, extract modules, and
 simplify logic knowing that the test suite will catch regressions. The codebase stays clean
@@ -116,7 +116,7 @@ you get value - you need to test something and keep going.
 
 ### Step 1: Set up the test infrastructure
 
-Before writing a single test, make it trivially easy to run tests:
+Before writing a single test, make it trivial to run tests:
 
 1. Choose a test framework for your primary language. Pick the most popular one - do not
    deliberate.

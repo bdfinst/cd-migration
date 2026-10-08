@@ -21,7 +21,7 @@ Search the codebase for the string "production" and dozens of matches come back 
 application logic. Some are safety guards: `if (environment != 'production') { runSlowMigration(); }`.
 Some are [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) implemented by hand: `if (environment == 'staging') { showDebugPanel(); }`.
 Some are notification suppressors: `if (env !== 'prod') { return; }` at the top of an alerting
-function. The production environment is not just a deployment target - it is a concept woven
+function. The production environment is not only a deployment target - it is a concept woven
 into the source code.
 
 These checks accumulate over years through a pattern of small compromises. A developer needs to
@@ -132,7 +132,7 @@ in staging, then staging validation is incomplete by design.
 
 CD also requires the ability to deploy frequently and safely. Deployments to a production
 environment that runs different code than staging are higher-risk than they should be. Each
-deployment introduces not just the changes the developer made, but also all the untested
+deployment introduces not only the changes the developer made, but also all the untested
 production-specific code paths that happen to be active. The team cannot deploy frequently
 with confidence when they cannot trust that staging behavior predicts production behavior.
 

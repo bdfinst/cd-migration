@@ -47,7 +47,7 @@ tests fail, they rerun before investigating. When a test is red for days, nobody
 
 ## Why This Is a Problem
 
-An inverted test pyramid does not just slow the team down. It actively undermines every benefit
+An inverted test pyramid does more than slow the team down. It actively undermines every benefit
 that testing is supposed to provide.
 
 ### The suite is too slow to give useful feedback
@@ -152,7 +152,7 @@ refactoring because they assert on outcomes, not method calls.
 
 Unit tests complement component tests for code with high cyclomatic complexity where you need to
 exercise many permutations quickly - branching business rules, validation logic, calculations
-with boundary conditions. Do not write unit tests for trivial code just to increase coverage.
+with boundary conditions. Do not write unit tests for trivial code only to increase coverage.
 
 E2E tests exist only for the small number of critical paths that genuinely require a fully
 integrated environment to validate. A typical application needs fewer than a dozen.

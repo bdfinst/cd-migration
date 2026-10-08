@@ -179,6 +179,6 @@ catch wrong behavior.
 - [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - The symptom this anti-pattern produces
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Failure modes when adopting AI coding tools
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - Prerequisites for safe AI-assisted development
-- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building tests that verify behavior, not just execution
+- [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building tests that verify behavior, not only execution
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - A test structure that lets incorrect AI code pass undetected
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Making review standards explicit and enforceable
