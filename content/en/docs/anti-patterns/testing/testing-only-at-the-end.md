@@ -18,17 +18,17 @@ tags:
 
 ## What this looks like
 
-The team works in two-week sprints. Development happens in the first week and a half. The last
-few days are "QA time," when testers receive the completed work and begin exercising it. Bugs
+The team works in two-week sprints. Development takes the first week and a half, and the last
+few days are "QA time." Testers then receive the completed work and begin exercising it. Bugs
 found during QA must either be fixed quickly before the deadline or pushed to the next sprint.
-Bugs found after the sprint closes are treated as defects and added to a bug backlog. The bug
-backlog grows faster than the team can clear it.
+Bugs found after the sprint closes become defects in a bug backlog that grows faster than the
+team can clear it.
 
 Developers consider a task "done" when their code review is merged. Testers receive the work
 without having been involved in defining what "tested" means. They write test cases after the
 fact based on the specification - if one exists - and their own judgment about what matters.
-The developers are already working on the next sprint by the time bugs are reported. Context has
-decayed. A bug found two weeks after the code was written is harder to diagnose than the same bug
+The developers are already working on the next sprint by the time bugs are reported, and
+context has decayed. A bug found two weeks after the code was written is harder to diagnose than the same bug
 found two hours after.
 
 Common variations:
@@ -55,17 +55,18 @@ one iteration.
 ## Why this is a problem
 
 Testing at the end of development is a legacy of the waterfall model, where phases were
-sequential by design. In that model, the cost of rework was assumed to be fixed, and the way to
-minimize it was to catch problems as late as possible in a structured way. Agile and CD have
+sequential by design. That model assumed a fixed cost of rework. It minimized that cost by
+catching problems as late as possible in a structured way. Agile and CD have
 changed those assumptions. Rework cost is lowest when defects are caught immediately, which
 requires testing to happen throughout development.
 
 ### It reduces quality
 
 Bugs caught late are more expensive to fix for two reasons. First, context decay: the developer
-who wrote the code is no longer in that code. They are working on something new. When a bug
-report arrives two weeks after the code was written, they must reconstruct their understanding
-of the code before they can understand the bug. This reconstruction is slow and error-prone.
+who wrote the code is no longer in that code. They are working on something new. A bug report
+arrives two weeks after the code was written. The developer must reconstruct their
+understanding of the code before they can understand the bug, and that reconstruction is slow
+and error-prone.
 
 Second, cascade effects: code written after the buggy code may depend on the bug. A calculation
 that produces incorrect results might be consumed by downstream logic that was written assuming
@@ -81,12 +82,13 @@ immediate. Nothing downstream has been built on the incorrect behavior yet.
 
 End-of-sprint testing consistently produces a volume of bugs that exceeds the team's capacity to
 fix them before the deadline. The backlog of unfixed bugs grows. Teams routinely carry a bug
-backlog of dozens or hundreds of issues. Each issue in that backlog represents work that was done,
-found to be wrong, and not yet corrected - work in progress that is neither done nor abandoned.
+backlog of dozens or hundreds of issues. Each issue in that backlog is work that was done,
+found to be wrong, and not yet corrected. It is work in progress that is neither done nor
+abandoned.
 
-The rework is compounded by the handoff model itself. A tester writes a bug report. A developer
-reads it, interprets it, fixes it, and marks it resolved. The tester verifies the fix. If the
-fix is wrong, another cycle begins. Each cycle includes the overhead of the handoff: context
+The handoff model itself compounds the rework. A tester writes a bug report, and a developer
+reads it, interprets it, fixes it, and marks it resolved. The tester verifies the fix, and if
+the fix is wrong, another cycle begins. Each cycle includes the overhead of the handoff: context
 switching, communication delays, and the cost of re-familiarizing with the problem. A bug that a
 developer could fix in 10 minutes if caught during development might take two hours across multiple
 handoff cycles.
@@ -107,17 +109,21 @@ because QA is a variable they cannot control. Developers cannot start new work c
 they may be pulled back to fix bugs from the previous sprint. Testers are under pressure to
 move faster, which leads to shallower testing and more bugs escaping to production.
 
-The further from development that testing occurs, the more the feedback cycle looks like a batch
-process: large batches of work go in one end, a variable quantity of bugs come out the other end,
-and the time to process the batch is unpredictable.
+The further from development that testing occurs, the more the feedback cycle looks like a
+batch process. Large batches of work go in one end, and a variable quantity of bugs come out
+the other. The time to process the batch is unpredictable.
 
 ### It creates organizational dysfunction
 
-Testers who could catch a bug in the design conversation instead spend their time writing bug reports two weeks after the code shipped - and then defending their findings to developers who have already moved on. The structure wastes both their time. When testing is a separate downstream phase, the relationship between developers and testers
-becomes adversarial by structure. Developers want to minimize the bug count that reaches QA.
-Testers want to find every bug. Both objectives are reasonable, but the structure sets them in
-opposition: developers feel reviewed and found wanting, testers feel their work is treated as
-an obstacle to release.
+Testers could catch a bug in the design conversation. Instead, they write bug reports two weeks
+after the code shipped. Then they defend their findings to developers who have already moved
+on. The structure wastes both their time.
+
+When testing is a separate downstream phase, the relationship between developers and testers
+becomes adversarial by structure. Developers want to minimize the bug count that reaches QA,
+and testers want to find every bug. Both objectives are reasonable, but the structure sets them
+in opposition. Developers feel reviewed and found wanting. Testers feel the team treats their
+work as an obstacle to release.
 
 This dysfunction persists even when individual developers and testers have good working
 relationships. The structure rewards developers for code that passes QA and testers for finding
@@ -132,8 +138,13 @@ testing phase sits outside it. The pipeline provides only partial safety. Deploy
 is limited to the frequency of QA cycles, not the frequency of pipeline runs.
 
 Moving to CD requires shifting the testing model fundamentally. Testing must happen at every
-stage: as code is written (unit tests), as it is integrated (integration tests run in CI), and
-as it is promoted toward production (acceptance tests in the pipeline). The QA function shifts
+stage:
+
+- As code is written: unit tests.
+- As code is integrated: integration tests run in CI.
+- As code is promoted toward production: acceptance tests in the pipeline.
+
+The QA function shifts
 from end-stage bug finding to quality engineering: designing test strategies, building
 automation, and ensuring coverage throughout the pipeline. That shift cannot happen incrementally
 within the existing end-of-development model - it requires changing what testing means.
@@ -193,7 +204,7 @@ tests, the incentive to write tests is weak. Change the definition.
 3. A story is not done unless the tester has reviewed the test coverage and agreed it is
    sufficient.
 
-This makes quality a shared gate, not a downstream handoff.
+That definition makes quality a shared gate, not a downstream handoff.
 
 ### Step 5: Shift the QA function toward quality engineering (weeks 4-8)
 

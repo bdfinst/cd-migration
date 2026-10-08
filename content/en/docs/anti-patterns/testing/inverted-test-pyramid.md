@@ -34,9 +34,9 @@ Common variations:
   depends on shared test environments. Tests are slow because they set up and tear down heavy
   infrastructure. They are flaky because they depend on network availability and shared mutable
   state.
-- **The UI test obsession.** The team writes tests exclusively through the UI layer. Business
-  logic that could be verified in milliseconds with a unit test is instead tested through a
-  full browser automation flow that takes seconds per assertion.
+- **The UI test obsession.** The team writes tests exclusively through the UI layer. A unit
+  test could verify business logic in milliseconds. Instead, the team tests it through a full
+  browser automation flow that takes seconds per assertion.
 - **The "we have coverage" illusion.** Code coverage is high because the E2E tests exercise most
   code paths. But the tests are so slow and brittle that developers do not run them locally. They
   push code and wait 40 minutes to learn if it works. If a test fails, they assume it is flaky
@@ -52,8 +52,8 @@ that testing is supposed to provide.
 
 ### The suite is too slow to give useful feedback
 
-The purpose of a test suite is to tell developers whether their change works - fast enough that
-they can act on the feedback while they still have context. A suite that runs in seconds gives
+A test suite tells developers whether their change works. It must do so fast enough that they
+can act on the feedback while they still have context. A suite that runs in seconds gives
 feedback during development. A suite that runs in minutes gives feedback before the developer
 moves on. A suite that runs in 30 or more minutes gives feedback after the developer has started
 something else entirely.
@@ -82,7 +82,7 @@ the flaky tests.
 
 Unit tests and component tests with test doubles are deterministic. They produce the same result
 every time. When a deterministic test fails, the developer knows with certainty that they broke
-something. There is no rerun. There is no "is that real?" The failure demands investigation.
+something. There is no rerun and no "is that real?" The failure demands investigation.
 
 ### Maintenance cost grows faster than value
 
@@ -105,13 +105,13 @@ logic changes, a handful of focused tests need updating - not thirty browser flo
 
 ### It couples your pipeline to external systems
 
-When most of your tests are end-to-end or integration tests that hit real services, your ability
-to deploy depends on every system in the chain being available and healthy. If the payment
+Suppose most of your tests are end-to-end or integration tests that hit real services. Your
+ability to deploy then depends on every system in the chain being available and healthy. If the payment
 provider's sandbox is down, your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) fails. If the shared staging database is slow, your
 tests time out. If another team deployed a breaking change to a shared service, your tests fail
 even though your code is correct.
 
-This is the opposite of what [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires. Continuous delivery demands that your team can deploy
+That coupling is the opposite of what [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) requires. Continuous delivery demands that your team can deploy
 independently, at any time, regardless of the state of external systems. A test architecture
 built on E2E tests makes your deployment hostage to every dependency in your ecosystem.
 
@@ -144,15 +144,15 @@ value it provides. The target architecture looks like this:
 | **Contract** | Validate that test doubles still match live external services | Asynchronously, does not gate | Yes |
 | **E2E** | Smoke-test critical business paths in a fully integrated environment | Post-deploy verification only | Yes |
 
-Component tests are the workhorse. They test what the system does for its actors - a user
-interacting with a UI, a service consuming an API - without coupling to internal implementation
-or external infrastructure. They are fast because they avoid real I/O. They are deterministic
+Component tests are the workhorse. They test what the system does for its actors, such as a UI
+user or API consumer, without coupling to internal implementation or external
+infrastructure. They are fast because they avoid real I/O. They are deterministic
 because they use test doubles for anything outside the component boundary. They survive
 refactoring because they assert on outcomes, not method calls.
 
-Unit tests complement component tests for code with high cyclomatic complexity where you need to
-exercise many permutations quickly - branching business rules, validation logic, calculations
-with boundary conditions. Do not write unit tests for trivial code only to increase coverage.
+Unit tests complement component tests for code with high cyclomatic complexity, where you need
+to exercise many permutations quickly. Examples include branching business rules, validation
+logic, and calculations with boundary conditions. Do not write unit tests for trivial code only to increase coverage.
 
 E2E tests exist only for the small number of critical paths that genuinely require a fully
 integrated environment to validate. A typical application needs fewer than a dozen.
@@ -162,10 +162,15 @@ integrated environment to validate. A typical application needs fewer than a doz
 Map your current test distribution. Count tests by type, measure total duration, and identify
 every test that requires a real external service or produces intermittent failures.
 
-Quarantine every flaky test immediately - move it out of the pipeline-gating suite. For each one,
-decide: fix it if the flakiness has a solvable cause, replace it with a deterministic component
-test, or delete it if the behavior is already covered elsewhere. Flaky tests erode confidence and
-train developers to ignore failures. Target zero flaky tests in the gating suite by end of week.
+Quarantine every flaky test immediately - move it out of the pipeline-gating suite. For each
+one, choose an action:
+
+- Fix it if the flakiness has a solvable cause.
+- Replace it with a deterministic component test.
+- Delete it if another test already covers the behavior.
+
+Flaky tests erode confidence and train developers to ignore failures. Target zero flaky tests
+in the gating suite by end of week.
 
 ### Step 2: Build component tests for your highest-risk components (weeks 2-4)
 
@@ -203,9 +208,9 @@ With component tests covering component behavior, most E2E tests are now redunda
 remaining E2E test, ask: "Does this test a scenario that component tests with test doubles
 already cover?" If yes, remove it.
 
-Keep E2E tests only for the critical business paths that require a fully integrated environment -
-paths where the interaction between independently deployed systems is the thing you need to
-verify. Horizontal E2E tests that span multiple teams should never block the pipeline due to
+Keep E2E tests only for the critical business paths that require a fully integrated
+environment. On those paths, you need to verify the interaction between independently deployed
+systems. Horizontal E2E tests that span multiple teams should never block the pipeline due to
 their failure surface area. Move surviving E2E tests to a post-deploy verification suite.
 
 ### Step 5: Set the standard for new code (ongoing)
@@ -228,7 +233,7 @@ the expense of clarity.
 
 | Objection | Response |
 |-----------|----------|
-| "Component tests with test doubles don't test anything real" | They test real behavior from the actor's perspective. A component test verifies the logic of order submission and that the component handles each possible response correctly - success, validation failure, timeout - without waiting on a live service. Contract tests running asynchronously validate that your test doubles still match the real service contracts. |
+| "Component tests with test doubles don't test anything real" | They test real behavior from the actor's perspective. A component test verifies the logic of order submission without waiting on a live service. It checks that the component handles each response correctly: success, validation failure, and timeout. Contract tests running asynchronously validate that your test doubles still match the real service contracts. |
 | "E2E tests catch bugs that other tests miss" | A small number of critical-path E2E tests catch bugs that cross system boundaries. But hundreds of E2E tests do not catch proportionally more - they add flakiness and wait time. Most integration bugs are caught by component tests with well-maintained test doubles validated by contract tests. |
 | "We can't delete E2E tests - they're our safety net" | A flaky safety net gives false confidence. Replace E2E tests with deterministic component tests that catch bugs reliably, then keep a small E2E smoke suite for post-deploy verification of critical paths. |
 | "Our code is too tightly coupled to test at the component level" | That is an architecture problem. Start by writing component tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) to wrap untestable code in a testable layer. |

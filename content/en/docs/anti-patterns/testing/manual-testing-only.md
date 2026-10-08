@@ -19,11 +19,11 @@ tags:
 ## What this looks like
 
 The team deploys by manually verifying things work. Someone clicks through the application, checks
-a few screens, and declares it good. There is no test suite. No test runner configured. No test
-directory in the repository. The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) server, if one exists, builds the code and stops there.
+a few screens, and declares it good. There is no test suite, no configured test runner, and no
+test directory in the repository. The [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) server, if one exists, builds the code and stops there.
 
-When a developer asks "how do I know if my change broke something?" the answer is either "you
-don't" or "someone from QA will check it." Bugs discovered in production are treated as inevitable.
+A developer asks "how do I know if my change broke something?" The answer is either "you don't"
+or "someone from QA will check it." Bugs discovered in production are treated as inevitable.
 Nobody connects the lack of automated tests to the frequency of production incidents because there
 is no baseline to compare against.
 
@@ -73,9 +73,9 @@ an edge case and never getting tired.
 Without tests, rework comes from two directions. First, bugs that reach production must be
 investigated, diagnosed, and fixed - work that an automated test would have prevented. Second,
 developers are afraid to change existing code because they have no way to verify they have not
-broken something. This fear leads to workarounds: copy-pasting code instead of refactoring,
-adding conditional branches instead of restructuring, and building new modules alongside old ones
-instead of modifying what exists.
+broken something. This fear leads to workarounds: developers copy-paste code instead of
+refactoring and add conditional branches instead of restructuring. They build new modules
+alongside old ones instead of modifying what exists.
 
 Over time, the codebase becomes a patchwork of workarounds layered on workarounds. Each change
 takes longer because the code is harder to understand and more fragile. The absence of tests is
@@ -102,9 +102,9 @@ source of variance has been removed.
 
 ### Impact on continuous delivery
 
-Automated tests are the foundation of [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). Without them, there is no automated
-quality gate. Without an automated quality gate, there is no safe way to deploy frequently.
-Without frequent deployment, there is no fast feedback from production. Every CD practice assumes
+Automated tests are the foundation of [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). Without
+them, there is no automated quality gate and no safe way to deploy frequently. Without frequent
+deployment, there is no fast feedback from production. Every CD practice assumes
 that the team can verify code quality automatically. A team with no test automation is not on a
 slow path to CD - they have not started.
 
@@ -149,7 +149,8 @@ where bugs are most likely and where tests provide the most value:
 2. For each file, write tests for its core public behavior. Do not try to test every line - test
    the functions that other code depends on.
 3. If the code is hard to test because of tight coupling, wrap it. Create a thin adapter around
-   the untestable code and test the adapter. This is the Strangler Fig pattern applied to testing.
+   the untestable code and test the adapter. That approach is the Strangler Fig pattern applied
+   to testing.
 
 ### Step 4: Make untestable code testable incrementally (weeks 4-8)
 

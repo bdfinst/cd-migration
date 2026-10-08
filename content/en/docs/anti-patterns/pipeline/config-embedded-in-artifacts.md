@@ -17,11 +17,11 @@ tags:
 
 ## What this looks like
 
-The build process pulls a configuration file that includes the database hostname, the API base URL for downstream services, the S3 bucket name, and a handful of feature flag values. These values are different for each environment - development, staging, and production each have their own database and their own service endpoints. To handle this, the build system accepts an environment name as a parameter and selects the corresponding configuration file before compiling or packaging.
+The build process pulls a configuration file. The file includes the database hostname, the API base URL for downstream services, the S3 bucket name, and a handful of feature flag values. These values are different for each environment - development, staging, and production each have their own database and their own service endpoints. To handle this, the build system accepts an environment name as a parameter and selects the corresponding configuration file before compiling or packaging.
 
 The result is three separate artifacts: one built for development, one for staging, one for production. The pipeline builds and tests the staging artifact, finds no problems, and then builds a new artifact for production using the production configuration. That production artifact has never been run through the test suite. The team deploys it anyway, reasoning that the code is the same even if the artifact is different.
 
-This reasoning fails regularly. Environment-specific configuration values change the behavior of the application in ways that are not always obvious. A connection string that points to a read-replica in staging but a primary database in production changes the write behavior. A feature flag that is enabled in staging but disabled in production activates code paths that the deployed artifact has never executed. An API URL that points to a mock service in testing but a live external service in production exposes latency and error handling behavior that was never exercised.
+This reasoning fails regularly, because environment-specific configuration values change application behavior in ways that are not always obvious. A connection string that points to a read-replica in staging but a primary database in production changes the write behavior. A feature flag that is enabled in staging but disabled in production activates code paths that the deployed artifact has never executed. An API URL can point to a mock service in testing but a live external service in production. In production, that URL exposes latency and error handling behavior that no test exercised.
 
 Common variations:
 
@@ -38,23 +38,23 @@ An artifact that is rebuilt for each environment is not the same artifact that w
 
 ### It reduces quality
 
-Configuration-dependent bugs reach production undetected because the artifact that arrives there was never run through the test suite. Testing provides meaningful quality assurance only when the thing being tested is the thing being deployed. When the production artifact is built separately from the tested artifact, even if the source code is identical, the production artifact has not been validated. Any configuration-dependent behavior - connection pooling, timeout values, feature flags, service endpoints - may behave differently in the production artifact than in the tested one.
+Configuration-dependent bugs reach production undetected because the artifact that arrives there was never run through the test suite. Testing provides meaningful quality assurance only when you deploy the thing you tested. When the production artifact is built separately from the tested artifact, even if the source code is identical, the production artifact has not been validated. Any configuration-dependent behavior - connection pooling, timeout values, feature flags, service endpoints - may behave differently in the production artifact than in the tested one.
 
-This gap is not theoretical. Configuration-dependent bugs are common and often subtle. An application that connects to a local mock service in testing and a real external service in production will exhibit different timeout behavior, different error rates, and different retry logic under load. If those behaviors have never been exercised by a test, the first time they are exercised is in production, by real users.
+This gap is not theoretical. Configuration-dependent bugs are common and often subtle. Consider an application that connects to a local mock service in testing and a real external service in production. Under load, it shows different timeout behavior, different error rates, and different retry logic. If no test has exercised those behaviors, real users exercise them first, in production.
 
 Building once and injecting configuration at deploy time eliminates this class of problem. The artifact that reaches production is byte-for-byte identical to the artifact that ran through the test suite. Any behavior the tests exercised is guaranteed to be present in the deployed system.
 
 ### It increases rework
 
-When every environment requires its own build, the build step multiplies. A pipeline that builds for three environments runs the build three times, spending compute and time on work that produces no additional quality signal. More significantly, a failed production deployment that requires a rollback and rebuild means the team must go through the full build-for-production cycle again, even though the source code has not changed.
+When every environment requires its own build, the build step multiplies. A pipeline that builds for three environments runs the build three times, spending compute and time on work that produces no additional quality signal. More significantly, a failed production deployment can require a rollback and rebuild. The team must then go through the full build-for-production cycle again, even though the source code has not changed.
 
-Configuration bugs discovered in production often require not only a configuration change but a full rebuild and redeployment cycle, because the configuration is baked into the artifact. A corrected connection string that could be a one-line change in an external config file instead requires committing a changed config file, triggering a new build, waiting for the build to complete, and redeploying. Each cycle takes time that extends the duration of the production incident.
+Because the configuration is baked into the artifact, a configuration bug found in production often needs more than a configuration change. It needs a full rebuild and redeployment cycle. A corrected connection string could be a one-line change in an external config file. Instead, the team must commit a changed config file, trigger a new build, wait for the build to complete, and redeploy. Each cycle takes time that extends the duration of the production incident.
 
 Externalizing configuration reduces this rework to a configuration change and a redeploy, with no rebuild required.
 
 ### It makes delivery timelines unpredictable
 
-Per-environment builds introduce additional pipeline stages and longer pipeline durations. A pipeline that would take 10 minutes to build once takes 30 minutes to build three times, blocking feedback at every stage. Teams that need to ship an urgent fix to production must wait through a full rebuild before they can deploy, even if the fix is a one-line change that has nothing to do with configuration.
+Per-environment builds introduce additional pipeline stages and longer pipeline durations. A pipeline that would take 10 minutes to build once takes 30 minutes to build three times, blocking feedback at every stage. A team that needs to ship an urgent fix must wait through a full rebuild before deploying. The wait applies even to a one-line fix that has nothing to do with configuration.
 
 Per-environment build requirements also create coupling between the delivery team and whoever manages the configuration files. A new environment cannot be created by the infrastructure team without coordinating with the application team to add a new build variant. That coupling creates a coordination overhead that slows down every environment-related change, from creating test environments to onboarding new services.
 
@@ -68,11 +68,15 @@ Immutable artifacts are a foundational CD practice. Externalizing configuration 
 
 ### Step 1: Identify all embedded configuration values
 
-Audit the build process to find every place where an environment-specific value is introduced at build time. This includes configuration files read during compilation, environment variables consumed by build scripts, template substitution steps, and any build parameter that affects what ends up in the artifact. Document the full list before changing anything.
+Audit the build process to find every place where an environment-specific value is introduced at build time. Check configuration files read during compilation, environment variables consumed by build scripts, and template substitution steps. Also check any build parameter that affects what ends up in the artifact. Document the full list before changing anything.
 
 ### Step 2: Classify values by sensitivity and access pattern
 
-Separate configuration values into categories: non-sensitive application configuration (URLs, feature flags, pool sizes), sensitive credentials (database passwords, API keys, certificates), and runtime-computed values (hostnames assigned at deploy time). Each category calls for a different externalization approach - application config files, a secrets vault, and deployment-time injection, respectively.
+Separate configuration values into three categories. Each category calls for a different externalization approach:
+
+- **Non-sensitive application configuration** (URLs, feature flags, pool sizes): use application config files.
+- **Sensitive credentials** (database passwords, API keys, certificates): use a secrets vault.
+- **Runtime-computed values** (hostnames assigned at deploy time): use deployment-time injection.
 
 ### Step 3: Externalize non-sensitive configuration (weeks 2-3)
 
@@ -80,15 +84,15 @@ Move non-sensitive configuration values out of the build and into externally-man
 
 ### Step 4: Move secrets to a vault (weeks 3-4)
 
-Credentials should never live in config files or be passed as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
+Do not store credentials in config files. Do not pass them as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
 
 ### Step 5: Modify the pipeline to build once
 
-Refactor the pipeline so it produces a single artifact regardless of target environment. The artifact is built once, stored in an artifact registry, and then deployed to each environment in sequence by injecting the appropriate configuration at deploy time. Remove per-environment build parameters. The pipeline now has the shape: build, store, deploy-to-staging (inject staging config), test, deploy-to-production (inject production config).
+Refactor the pipeline so it produces a single artifact regardless of target environment. Build the artifact once and store it in an artifact registry. Deploy it to each environment in sequence, injecting the appropriate configuration at deploy time. Remove per-environment build parameters. The pipeline now has the shape: build, store, deploy-to-staging (inject staging config), test, deploy-to-production (inject production config).
 
 ### Step 6: Verify artifact identity across environments
 
-Add a pipeline step that records the artifact checksum after the build and verifies that the same checksum is present in every environment where the artifact is deployed. This is the mechanical guarantee that what was tested is what was deployed. Alert on any mismatch.
+Add a pipeline step that records the artifact checksum after the build. Have the step verify the same checksum in every environment where the artifact is deployed. The checksum check is the mechanical guarantee that what was tested is what was deployed. Alert on any mismatch.
 
 | Objection | Response |
 |-----------|----------|

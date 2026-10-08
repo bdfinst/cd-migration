@@ -18,18 +18,19 @@ tags:
 
 ## What this looks like
 
-The orders service and the inventory service are developed and tested by separate teams. Each
-service has a comprehensive test suite. Both suites pass on every build. Then the teams deploy
-to the shared staging environment and run integration tests. The payment service call to the
+Separate teams develop and test the orders service and the inventory service. Each service has
+a comprehensive test suite, and both suites pass on every build. Then the teams deploy to the
+shared staging environment and run integration tests. The payment service call to the
 inventory service returns an unexpected response format. The field that the payment service
-expects as a string is now returned as a number. The deployment blocks. The two teams spend half
-a day in meetings tracing when the response format changed and which team is responsible for
+expects as a string is now returned as a number.
+
+The deployment blocks. The two teams spend half a day in meetings tracing when the response format changed and which team is responsible for
 fixing it.
 
 This happens because neither team tested the integration point. The inventory team tested that
-their service worked correctly. The payment team tested that their service worked correctly -
-but against a mock that reflected their own assumption about the response format, not the actual
-inventory service behavior. The services were tested in isolation against different assumptions,
+their service worked correctly. The payment team tested that their service worked correctly,
+but against a mock. The mock reflected their own assumption about the response format, not the
+actual inventory service behavior. The services were tested in isolation against different assumptions,
 and those assumptions diverged without anyone noticing.
 
 Common variations:
@@ -62,17 +63,17 @@ catches the problem too late - after both teams have completed their work and sc
 
 ### It reduces quality
 
-Integration bugs caught in a shared environment are expensive to diagnose. The failure is
-observed by both teams, but the cause could be in either service, in the environment, or in
+Integration bugs caught in a shared environment are expensive to diagnose. Both teams observe
+the failure, but the cause could be in either service, in the environment, or in
 the network between them. Diagnosing which change caused the regression requires both teams to
-investigate, correlate recent changes, and agree on root cause. This is time-consuming even when
-both teams cooperate - and the incentive to cooperate can be strained when one team's deployment
+investigate, correlate recent changes, and agree on root cause. That work is time-consuming
+even when both teams cooperate. The incentive to cooperate weakens when one team's deployment
 is blocking the other's.
 
 Without contract tests, the provider team has no automated feedback about whether their changes
-break consumers. They can refactor their internal structures freely because the only check is
-an integration test that runs in a shared environment, infrequently, and not on the provider's
-own pipeline. By the time the breakage is discovered, the provider team has moved on from the
+break consumers. They can refactor their internal structures freely. The only check is an
+integration test that runs infrequently in a shared environment, not in the provider's own
+pipeline. By the time the breakage is discovered, the provider team has moved on from the
 context of the change.
 
 With contract tests, the provider's pipeline runs consumer expectations against every build.
@@ -82,12 +83,20 @@ it leaves their pipeline.
 
 ### It increases rework
 
-Two teams spend half a day in meetings tracing when a response field changed from string to number - work that contract tests would have caught in the provider's pipeline before the consumer team was ever involved. When a contract incompatibility is discovered in a shared environment, the investigation and
-fix cycle involves multiple teams. Someone must diagnose the failure. Someone must determine
-which side of the interface needs to change. Someone must make the change. The change must be
-reviewed, tested, and deployed. If the provider team makes the fix, the consumer team must verify
-it. If the consumer team makes the fix, they may be building on incorrect assumptions about the
-provider's future behavior.
+Two teams spend half a day in meetings tracing when a response field changed from string to
+number. Contract tests would have caught the change in the provider's pipeline before the
+consumer team was ever involved.
+
+When a shared environment reveals a contract incompatibility, the investigation and fix cycle
+involves multiple teams:
+
+- Someone must diagnose the failure.
+- Someone must determine which side of the interface needs to change.
+- Someone must make the change, and the change must be reviewed, tested, and deployed.
+
+If the provider team makes the fix, the consumer team must verify it. If the consumer team
+makes the fix, they might be building on incorrect assumptions about the provider's future
+behavior.
 
 This multi-team rework cycle is expensive regardless of how well the teams communicate. It
 requires context switching from whatever both teams are working on, coordination overhead, and
@@ -102,8 +111,8 @@ as a one-team problem, before any consumer is affected.
 
 Teams that rely on a shared integration environment for contract verification must coordinate
 their deployments. Service A cannot deploy until it has been tested with the current version of
-Service B in the shared environment. If Service B is broken due to an unrelated issue, Service A
-is blocked even though Service A has nothing to do with Service B's problem.
+Service B in the shared environment. If Service B is broken by an unrelated issue, Service A is
+blocked, even though Service A has nothing to do with the problem.
 
 This coupling of deployment schedules eliminates the independent delivery cadences that a
 service architecture is supposed to provide. When one service's integration environment test
@@ -117,16 +126,16 @@ unplanned activity with no clear end date. The sprint commitments for both teams
 
 ### It defeats the independence benefit of a service architecture
 
-Service B is blocked from deploying because the shared integration environment is broken - not by a problem in Service B, but by an unrelated failure in Service C. Independent deployability in name is not independent deployability in practice. The primary operational benefit of a service architecture is independent deployability: each
+Service B cannot deploy because the shared integration environment is broken. The cause is not a problem in Service B, but an unrelated failure in Service C. Independent deployability in name is not independent deployability in practice. The primary operational benefit of a service architecture is independent deployability: each
 service can be deployed on its own schedule by its own team. That benefit is available only if
 each team can verify their service's correctness without depending on the availability of all
 other services.
 
 Without contract tests, the teams have built isolated development pipelines but must converge on
 a shared integration environment before deploying. The integration environment is the coupling
-point. It is the equivalent of a shared deployment step in a monolith, except less reliable
-because the environment involves real network calls, shared infrastructure, and the simultaneous
-states of multiple services.
+point. It is the equivalent of a shared deployment step in a monolith, but less reliable. The
+environment involves real network calls, shared infrastructure, and the simultaneous states of
+multiple services.
 
 Contract testing replaces the shared integration environment dependency with a fast, local, team-
 owned verification. Each team verifies their side of every contract in their own pipeline.
@@ -140,11 +149,12 @@ failures is neither fast nor reliable. It is slow because it requires all servic
 deployed to one place and exercised together. It is unreliable because any component failure
 degrades confidence in the whole environment.
 
-Without contract tests, teams must either wait for integration environment results before
-deploying - limiting frequency to the environment's availability and stability - or accept the
-risk that their deployment might break consumers when it reaches production. Neither option
-supports continuous delivery. The first caps [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) at integration test cadence.
-The second ships contract violations to production.
+Without contract tests, teams face two choices. They can wait for integration environment
+results before deploying, which limits frequency to the environment's availability and
+stability. Or they can accept the risk that their deployment might break consumers in
+production. Neither option
+supports continuous delivery. The first caps [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) at
+integration test cadence, and the second ships contract violations to production.
 
 ## How to fix it
 
@@ -243,16 +253,16 @@ public class InventoryServiceContractTest {
 }
 {{< /card >}}
 
-When the provider's pipeline runs this test, it fetches the consumer's contract file, sets up
-the required state, and verifies that the provider's real response matches the consumer's
-expectations. A change that would break the consumer fails the provider's pipeline.
+When the provider's pipeline runs this test, it fetches the consumer's contract file and sets
+up the required state. It then verifies that the provider's real response matches the
+consumer's expectations. A change that would break the consumer fails the provider's pipeline.
 
 ### Step 5: Integrate with a contract broker
 
 For the contract tests to work across team boundaries, contract files must be shared
 automatically.
 
-1. Deploy a Pact Broker or use PactFlow (hosted). This is a central store for contract files.
+1. Deploy a Pact Broker or use PactFlow (hosted) as a central store for contract files.
 2. Consumer pipelines publish contracts to the broker after tests pass.
 3. Provider pipelines fetch consumer contracts from the broker and run verification.
 4. The broker tracks which provider versions satisfy which consumer contracts.
@@ -263,13 +273,13 @@ consumer. The consumer knows when their version of the contract has been verifie
 
 ### Step 6: Use the "can I deploy?" check before every production deployment
 
-The broker provides a query: given the version of Service A I am about to deploy, and the
-versions of all other services currently in production, are all contracts satisfied?
+The broker answers a query. Given the version of Service A you are about to deploy, and the
+versions of all other services in production, are all contracts satisfied?
 
 Add this check as a pipeline gate before any production deployment. If the check fails, the
 service cannot deploy until the contract incompatibility is resolved.
 
-This replaces the shared integration environment as the final contract verification step. The
+The "can I deploy?" check replaces the shared integration environment as the final contract verification step. The
 check is fast, runs against data already collected by previous pipeline runs, and provides a
 definitive answer without requiring a live deployment.
 
