@@ -144,8 +144,8 @@ Before automating anything, capture the current state of each environment:
    configuration files, environment variables, external service connections, and any manual
    customizations.
 2. Diff the environments against each other. Note every difference.
-3. Classify each difference as intentional (e.g., production uses a larger instance size) or
-   accidental (e.g., staging has an old library version nobody updated).
+3. Classify each difference as intentional (for example, production uses a larger instance size) or
+   accidental (for example, staging has an old library version nobody updated).
 
 This audit surfaces the drift. Most teams are surprised by how many accidental differences exist.
 

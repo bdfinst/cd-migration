@@ -123,7 +123,7 @@ Before writing a single test, make it trivially easy to run tests:
 2. Add the framework to the project. Configure it. Write a single test that asserts `true == true`
    and verify it passes.
 3. Add a `test` script or command to the project so that anyone can run the suite with a single
-   command (e.g., `npm test`, `pytest`, `mvn test`).
+   command (for example, `npm test`, `pytest`, `mvn test`).
 4. Add the test command to the CI pipeline so that tests run on every push.
 
 The goal for week one is not coverage. It is infrastructure: a working test runner in the pipeline
