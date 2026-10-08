@@ -14,15 +14,15 @@ description: >
 
 ## Definition
 
-Verification that two separate systems (such as an API provider and its consumers, or a message publisher and subscriber) adhere to a shared, agreed-upon formal specification, the "contract", without requiring both services to run simultaneously in an integrated environment.
+Verification that two separate systems adhere to a shared, agreed-upon formal specification, the "contract". Examples are an API provider and its consumers, or a message publisher and subscriber. Contract tests do not require both services to run simultaneously in an integrated environment.
 
 ## Scope & boundaries
 
-Targets only the boundary interface: request payloads, query parameters, HTTP headers, response schemas, status codes, or message formats. It does not test internal business logic, database state, or deep end-to-end user journeys; it solely verifies compatibility with the interface schema (for example, OpenAPI/Swagger, AsyncAPI, Protobuf).
+Targets only the boundary interface: request payloads, query parameters, HTTP headers, response schemas, status codes, or message formats. A contract test does not test internal business logic, database state, or deep end-to-end user journeys. It solely verifies compatibility with the interface schema (for example, OpenAPI/Swagger, AsyncAPI, Protobuf).
 
 ## Characteristics
 
-Fast, independent execution across pipelines, prevents breaking schema changes before deployment, and eliminates the need for expensive, flaky end-to-end integration environments in applications with proper domain separation.
+Fast, independent execution across pipelines. Contract tests prevent breaking schema changes before deployment. In applications with proper domain separation, they eliminate the need for expensive, flaky end-to-end integration environments.
 
 ## Good practices:
 
@@ -39,13 +39,15 @@ Fast, independent execution across pipelines, prevents breaking schema changes b
 
 ## Validating the contract
 
-A contract test only proves your code matches the contract - not that the contract still matches the real system. [Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) close that gap by running against the real dependency. How tightly that loop closes depends on collaboration level: low collaboration means scheduled integration tests against the real system with no shared tooling; high collaboration adds a hosted specification server ([Pact](https://pact.io/), [Pacto](https://thoughtworks.github.io/pacto/)), a specification fetched from a shared or provider repository at build time, or a provider webhook that triggers the consumer's CI when the contract changes.
+A contract test only proves your code matches the contract - not that the contract still matches the real system. [Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) close that gap by running against the real dependency. How tightly that loop closes depends on collaboration level.
+
+Low collaboration means scheduled integration tests against the real system with no shared tooling. High collaboration adds one of three mechanisms. The first is a hosted specification server ([Pact](https://pact.io/), [Pacto](https://thoughtworks.github.io/pacto/)). The second is a specification fetched from a shared or provider repository at build time. The third is a provider webhook that triggers the consumer's CI when the contract changes.
 
 ## Consumer and provider perspectives
 
-A contract has two sides asking different questions. The **consumer** asks whether the fields, types, and status codes it depends on still exist. Consumer tests assert only on the subset of the API the consumer actually uses, not the whole response - following Postel's Law, be liberal in what you accept and conservative in what you send.
+A contract has two sides asking different questions. The **consumer** asks whether the fields, types, and status codes it depends on still exist. Consumer tests assert only on the subset of the API the consumer actually uses, not the whole response. Follow Postel's Law: be liberal in what you accept and conservative in what you send.
 
-The **provider** asks whether its changes will break any consumer. A provider test runs every published consumer expectation against the real implementation, catching a removed field, a changed type, or altered error behavior before a consumer deploys and discovers the break.
+The **provider** asks whether its changes will break any consumer. A provider test runs every published consumer expectation against the real implementation. The test catches a removed field, a changed type, or altered error behavior before a consumer deploys and discovers the break.
 
 ## Contract-first development
 

@@ -24,7 +24,9 @@ A UI that renders data and accepts user interaction. Talks to one or more backen
 
 {{< inline-svg src="/images/testing/patterns/user-interface-coverage.svg" alt="Layered diagram of a user interface with five architectural layers. The first four (pure rendering, component composition, feature behavior in the rendered DOM, backend HTTP client) are inside the component boundary. Below the dashed boundary, the external backend API is drawn with a dashed border. Solitary unit tests cover pure rendering. Sociable unit tests cover composition. Component tests driven by Playwright cover feature behavior with the backend doubled at the network layer. Consumer contract tests pin each backend boundary. End-to-end tests run post-deploy against the real backend." >}}
 
-UI component tests run in a real browser engine (Chromium, Firefox, WebKit) driven by Playwright, with the team's existing unit-testing framework (Vitest, Jest, or whatever is already in the project) as the runner. In-memory renderer shortcuts like JSDOM are rejected: they trade accuracy for speed and produce false greens around layout, focus, event timing, Intersection Observer, and animations - exactly the surface where UI bugs live. Playwright's headless Chromium starts in milliseconds and runs the suite fast enough to use as the default. Backends are stubbed at the network layer with `page.route` so the same fixtures drive component tests today and end-to-end smoke tests later.
+UI component tests run in a real browser engine (Chromium, Firefox, WebKit) driven by Playwright. The runner is the team's existing unit-testing framework (Vitest, Jest, or whatever is already in the project). Do not use in-memory renderer shortcuts like JSDOM. They trade accuracy for speed and produce false greens around layout, focus, event timing, Intersection Observer, and animations, exactly the surface where UI bugs live.
+
+Playwright's headless Chromium starts in milliseconds and runs the suite fast enough to use as the default. Backends are stubbed at the network layer with `page.route` so the same fixtures drive component tests today and end-to-end smoke tests later.
 
 ## Positive test cases
 
@@ -68,7 +70,7 @@ Because UI component tests run in a real browser engine, there is no renderer-le
 
 ## Example: UI component test for an error path
 
-A flow-oriented test for the checkout error path. Playwright drives a headless browser; the backend is stubbed at the network layer with `page.route`; the team's existing unit-testing framework (Vitest, JUnit, xUnit) runs the test. The assertion: the user sees a documented error message and the spinner does not get stuck.
+A flow-oriented test for the checkout error path. Playwright drives a headless browser, and `page.route` stubs the backend at the network layer. The team's existing unit-testing framework (Vitest, JUnit, xUnit) runs the test. The assertion: the user sees a documented error message and the spinner does not get stuck.
 
 {{< tabpane >}}
 {{< tab header="Java" lang="java" >}}
@@ -148,4 +150,4 @@ test("shows error and clears spinner when checkout fails with 500", async () => 
 {{< /tab >}}
 {{< /tabpane >}}
 
-The test exercises the rendered DOM the way a real user would. Intercepting at the network layer with `page.route` keeps the same fixtures reusable when the component test gets promoted to an end-to-end smoke test against the real backend.
+The test exercises the rendered DOM the way a real user would. Intercepting at the network layer with `page.route` keeps the fixtures reusable. The same fixtures work when the component test becomes an end-to-end smoke test against the real backend.

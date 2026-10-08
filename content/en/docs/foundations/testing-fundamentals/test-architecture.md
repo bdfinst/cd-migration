@@ -11,13 +11,13 @@ aliases:
 
 A test architecture that lets your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) deploy confidently, regardless of external system availability, is a core [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) capability. The [Test Types]({{< relref "/docs/foundations/testing-fundamentals/test-types" >}}) pages cover each type in depth.
 
-A CD pipeline's job is to force every [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) to prove it is worthy of delivery. That proof only works when **test changes ship with the code they validate.** If a developer adds a feature but the corresponding tests arrive in a later commit, the pipeline approved an artifact it never actually verified. That is not a CD pipeline. It is a [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline with a deploy step. Tests and production code must always travel together through the pipeline as a single unit of change.
+A CD pipeline's job is to force every [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) to prove it is worthy of delivery. That proof only works when **test changes ship with the code they validate.** Suppose a developer adds a feature but the corresponding tests arrive in a later commit. The pipeline then approved an artifact it never actually verified. That is not a CD pipeline but a [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline with a deploy step. Tests and production code must always travel together through the pipeline as a single unit of change.
 
 ## Beyond the test pyramid
 
 {{< figure src="/images/testing/test-pyramid.svg" class="figure-half" alt="The test pyramid: a triangle with Unit Tests at the wide base (fast, cheap, many), Integration/Component in the middle, and End-to-End at the narrow top (slow, expensive, few). Arrows on the sides indicate cost and speed increase toward the top." >}}
 
-The test pyramid says: write many fast unit tests at the base, fewer integration tests in the middle, and only a handful of end-to-end tests at the top. The underlying principle is sound - **lower-level tests are faster, more deterministic, and cheaper to maintain.**
+The test pyramid says to write many fast unit tests at the base and fewer integration tests in the middle. Only a handful of end-to-end tests sit at the top. The underlying principle is sound - **lower-level tests are faster, more deterministic, and cheaper to maintain.**
 
 ### The principle behind the shape
 
@@ -29,17 +29,17 @@ your control. The more weight you put at the base, the faster and more reliable 
 
 {{< figure src="/images/testing/testing-trophy.svg" class="figure-half" alt="The testing trophy: a trophy-shaped diagram where Component Tests form the large diamond-shaped body, Unit Tests form the narrow stem, Static Analysis forms the base pedestal, and End-to-End tests form a small triangle at the peak." >}}
 
-The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putting component tests at the center. Where the pyramid emphasizes unit tests at the base, the trophy argues that [component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) give you the most confidence per test because they exercise realistic user behavior through a component's public interface while still using [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) for external dependencies.
+The testing trophy, popularized by Kent C. Dodds, rebalances the pyramid by putting component tests at the center. Where the pyramid emphasizes unit tests at the base, the trophy argues that [component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) give you the most confidence per test. Component tests exercise realistic user behavior through a component's public interface. They still use [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) for external dependencies.
 
 The trophy also makes static analysis explicit as the foundation. Linting, type checking, and formatting catch entire categories of defects for free - no test code to write or maintain.
 
 Both models agree on the principle: **keep end-to-end tests few and focused, and maximize fast, deterministic coverage.** The trophy shifts where that coverage concentrates. For teams building component-heavy applications, the trophy distribution often produces better results than a strict pyramid.
 
-Teams often miss this underlying principle and treat either shape as a metric. They count tests by type and debate ratios - "do we have enough unit tests?" or "are our integration tests too many?" - when the real question is:
+Teams often miss this underlying principle and treat either shape as a metric. They count tests by type and debate ratios: "do we have enough unit tests?" or "are our integration tests too many?" The real question is:
 
 > **Can our pipeline determine that a change is safe to deploy without depending on any system we do not control?**
 
-A pipeline that answers yes can deploy at any time - even when a downstream service is down, a third-party API is slow, or a partner team hasn't shipped yet. That independence is what CD requires, and it is the reason the pyramid favors the base.
+A pipeline that answers yes can deploy at any time. It can deploy even when a downstream service is down, a third-party API is slow, or a partner team hasn't shipped yet. That independence is what CD requires, and it is the reason the pyramid favors the base.
 
 ### What this looks like in practice
 
@@ -82,14 +82,14 @@ for a complete quality gate sequence.
 
 The critical insight: **everything that blocks merge is deterministic and under your
 control.** Acceptance tests gate production promotion after verifying the deployed artifact.
-Everything that involves real external systems runs post-deployment. This is what gives you
+Everything that involves real external systems runs post-deployment. This split gives you
 the independence to deploy any time, regardless of the state of the world around you.
 
 Acceptance tests can include non-deterministic activities (load, chaos, resilience), but the
-gate decision is still deterministic: it fires on a documented pass/fail threshold - a
-performance budget, an error-rate ceiling, a required compliance check - not on the raw
-variability of the measurement. That is different from gating on a flaky test whose pass/fail
-flips for reasons unrelated to the change, which the Do Not list below warns against.
+gate decision is still deterministic. The gate fires on a documented pass/fail threshold, such as a
+performance budget, an error-rate ceiling, or a required compliance check. It does not fire on the raw
+variability of the measurement. A threshold gate differs from gating on a flaky test whose pass/fail
+flips for reasons unrelated to the change. The Do Not list below warns against the flaky-test gate.
 
 ### Pre-merge vs post-merge
 
@@ -112,7 +112,9 @@ conflict when combined on trunk. The post-merge run catches these integration ef
 
 > **If a post-merge failure occurs, the team fixes it immediately. Trunk must always be releasable.**
 
-This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. A green run means the artifact has been regression-tested against every behavior the suite encodes - no more and no less, which is why the suite's coverage of prior behavior is what makes the signal trustworthy.
+Teams traditionally call this post-merge re-run **regression testing**. Regression testing runs all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite, because every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge.
+
+A green run means the artifact passed regression testing against every behavior the suite encodes, no more and no less. That is why the suite's coverage of prior behavior makes the signal trustworthy.
 
 ## Good practices
 
@@ -147,7 +149,7 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
 - **Do not gate your pipeline on flaky, non-deterministic test signals.** E2E and integration
   test failures - pass/fail that flips for reasons unrelated to the change - should trigger
   review or alerts, not block deployment. (An acceptance gate that fires on a deterministic
-  threshold, like a performance budget, is not this: the gate decision is stable even when the
+  threshold, like a performance budget, is not a flaky gate. The gate decision is stable even when the
   underlying measurement varies.)
 - **Do not couple your deployment to external system availability.** If a third-party API being
   down prevents you from deploying, your test architecture has a critical gap.
@@ -160,10 +162,10 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
 - **Do not use sleep/wait for timing-dependent tests.** Use explicit waits, polling, or
   event-driven assertions.
 - **Do not let unit or component tests depend on a shared or external database or service.** A
-  real engine the team controls and isolates per test - a per-test testcontainer, or a
-  transaction that rolls back at teardown - is fine in-band and stays deterministic. A
-  *shared, mutable* database, or any service the team does not control, is not: that
-  reintroduces non-determinism, so categorize the test as integration or end-to-end and run it
+  real engine the team controls and isolates per test is fine in-band and stays deterministic.
+  Examples are a per-test testcontainer or a transaction that rolls back at teardown. A
+  *shared, mutable* database, or any service the team does not control, reintroduces
+  non-determinism. Categorize that test as integration or end-to-end, and run it
   post-deployment, not as a pre-merge gate.
 - **Do not make exploratory or usability testing a release gate.** These activities are
   continuous and inform product direction; they are not a pass/fail checkpoint before deployment.

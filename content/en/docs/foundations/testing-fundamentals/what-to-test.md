@@ -34,8 +34,8 @@ system on the other side.
 
 When you test an interface you consume, the question is: **"Can I understand the response and
 act accordingly?"** If you send a request for a user's information, you do not test that you
-get that specific user back. You test that you receive and understand the properties you need -
-that your code can parse the response structure and make correct decisions based on it. This
+get that specific user back. You test that you receive and understand the properties you need.
+Your code must parse the response structure and make correct decisions based on it. This
 distinction matters because it keeps your tests deterministic and focused on what you control.
 
 Use contract mocks, [virtual services]({{< relref "/docs/reference/glossary#virtual-service" >}}), or any
@@ -58,15 +58,14 @@ For a frontend:
   appear correctly. This is the equivalent of verifying your API returns the right response
   structure.
 - **Test behavior isolated from presentation.** Use your unit test framework to test the
-  logic that UI controls trigger, separated from the rendering layer. This gives you the same
+  logic that UI controls trigger, separated from the rendering layer. This separation gives you the same
   speed and control you get from testing backend logic in isolation.
 - **Verify that controls trigger the right logic.** Confirm that user actions invoke the
   correct behavior, without needing a running backend or browser-based E2E test.
 
-This approach gives you targeted testing with far more control. Testing exception flows -
-what happens when a service returns an error, when a network request times out, when data is
-malformed, becomes straightforward instead of requiring elaborate E2E setups that are hard
-to make fail on demand.
+This approach gives you targeted testing with far more control. Exception flows become
+straightforward to test: a service returns an error, a network request times out, or data is
+malformed. You no longer need elaborate E2E setups that are hard to make fail on demand.
 
 ## Test quality over coverage percentage
 
@@ -85,7 +84,7 @@ Better questions than "what is our coverage percentage?":
 ### Why coverage mandates are harmful
 
 When teams are required to hit a coverage target, they
-write tests to satisfy the metric rather than to verify behavior. This produces:
+write tests to satisfy the metric rather than to verify behavior. The result is:
 
 - Tests that exercise code paths without asserting outcomes
 - Tests that mirror implementation rather than specify behavior
@@ -95,8 +94,8 @@ The metric goes up while the defect escape rate stays the same. Worse, meaningle
 maintenance cost and slow down the suite.
 
 Instead of mandating a coverage number, set a coverage floor (see
-[Getting Started]({{< relref "/docs/foundations/testing-fundamentals/getting-started" >}}))
-and focus team attention on test quality: mutation testing scores, defect escape rates, and
+[Getting Started]({{< relref "/docs/foundations/testing-fundamentals/getting-started" >}})).
+Then focus team attention on test quality. Track mutation testing scores, defect escape rates, and
 whether developers actually trust the suite enough to deploy on green.
 
 ---

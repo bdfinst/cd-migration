@@ -14,11 +14,11 @@ description: >
 
 ## Definition
 
-Verification of a complete end-to-end user or business transaction through the entire deployed application stack, matching the perspective and experience of an actual user or external consumer.
+Verification of a complete end-to-end user or business transaction through the entire deployed application stack. The test matches the perspective and experience of an actual user or external consumer.
 
 ## Scope & boundaries
 
-Encompasses the entire system topology—from the frontend UI or external API gateway through all internal microservices, asynchronous workers, live queues, databases, and necessary third-party sandbox integrations.
+Encompasses the entire system topology. Scope runs from the frontend UI or external API gateway through all internal microservices and asynchronous workers. It also includes live queues, databases, and necessary third-party sandbox integrations.
 
 ## Core characteristics
 
@@ -28,21 +28,21 @@ Highest real-world confidence, highest execution cost, slowest run time, and hig
 
 -	Restrict to critical revenue/operational paths: Focus E2E coverage strictly on non-negotiable user journeys (for example, user registration, primary checkout, key ingest pipelines).
 -	Automate environment provisioning: Deploy ephemeral, on-demand preview environments to run E2E suites and tear them down immediately upon completion.
--	Implement resilient element selection: Select UI elements using accessibility roles or stable data attributes (for example, data-testid) rather than fragile CSS classes or absolute XPath selectors.
+-	Implement resilient element selection: Select UI elements using accessibility roles or stable data attributes (for example, data-testid). Avoid fragile CSS classes or absolute XPath selectors.
 
 ## Anti-patterns
 
--	Using E2E tests for regression safety nets: Relying on E2E suites to catch regressions that could have been detected upstream in unit, component, or contract stages (the "inverted testing pyramid").
+-	Using E2E tests for regression safety nets: Relying on E2E suites to catch regressions that upstream unit, component, or contract stages could have detected. This is the "inverted testing pyramid."
 -	Arbitrary thread sleeps: Adding fixed pauses (for example, sleep(5)) to wait for asynchronous events rather than using explicit, condition-driven polling.
 -	Accepting flaky tests: Rerunning failing E2E tests until they turn green rather than quarantining and fixing the underlying timing or state issues immediately.
 
 ## Weaknesses & challenges
 
--	High Flakiness and Low Signal-to-Noise Ratio: Non-deterministic failures are common. Network blips, browser rendering lag, race conditions in asynchronous frontend frameworks, and transient third-party service outages often cause false-negative test failures that erode developer trust.
--	Poor Root-Cause Localization: When an E2E test fails with a generic error (for example, TimeoutError: Element #confirmation-banner not found), finding the source of the issue requires combing through client logs, gateway routes, backend microservice traces, and database state to determine what actually broke.
--	Environment Maintenance & Resource Cost: E2E suites typically demand fully integrated staging or preview environments. Keeping these environments populated with realistic test data, configured with active credentials, and synchronized across dozens of microservices is notoriously resource-intensive.
--	Prohibitive Execution Times: Running full browser automation or multi-service distributed flows can take anywhere from tens of minutes to several hours. This latency breaks continuous delivery flow, encouraging teams to defer testing to late-stage, batch-processed pipelines rather than getting instant feedback on change.
--	Tight Coupling to Volatile UI/API Layouts: Small cosmetic changes (like modifying class names, reordering markup, or tweaking a multi-step user flow) often break brittle E2E tests even though the underlying business capability remains completely functional.
+-	High Flakiness and Low Signal-to-Noise Ratio: Non-deterministic failures are common. Common causes are network blips, browser rendering lag, race conditions in asynchronous frontend frameworks, and transient third-party service outages. These false-negative test failures erode developer trust.
+-	Poor Root-Cause Localization: An E2E test can fail with a generic error (for example, TimeoutError: Element #confirmation-banner not found). Finding the source then requires combing through client logs, gateway routes, backend microservice traces, and database state.
+-	Environment Maintenance & Resource Cost: E2E suites typically demand fully integrated staging or preview environments. These environments need realistic test data, active credentials, and synchronization across dozens of microservices. Maintaining all of that is notoriously resource-intensive.
+-	Prohibitive Execution Times: Running full browser automation or multi-service distributed flows can take anywhere from tens of minutes to several hours. This latency breaks continuous delivery flow. It encourages teams to defer testing to late-stage, batch-processed pipelines instead of getting instant feedback on change.
+-	Tight Coupling to Volatile UI/API Layouts: Small cosmetic changes often break brittle E2E tests. Examples are modifying class names, reordering markup, or tweaking a multi-step user flow. The tests break even though the underlying business capability remains completely functional.
 
 ## Examples
 
