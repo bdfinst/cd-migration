@@ -62,13 +62,13 @@ Deterministic tools run before any AI review and catch mechanical structural pro
 [token](../../../reference/glossary/#token) cost. These run in milliseconds and cannot be confused by plausible-looking but incorrect
 code. Add them to the pre-commit hook sequence alongside lint and type checking:
 
-- **Duplication detection** (e.g., jscpd) - flags when the same code block already exists
+- **Duplication detection** (for example, jscpd) - flags when the same code block already exists
   elsewhere in the codebase. When AI generates a utility that already exists three files away,
   this catches it before review.
-- **Complexity thresholds** (e.g., ESLint complexity rule, lizard) - flags functions that exceed
+- **Complexity thresholds** (for example, ESLint complexity rule, lizard) - flags functions that exceed
   a cyclomatic complexity limit. AI-generated code tends toward deeply nested conditionals when
   the [prompt](../../../reference/glossary/#prompt) does not specify a complexity budget.
-- **Dependency and architecture rules** (e.g., dependency-cruiser, ArchUnit) - encode module
+- **Dependency and architecture rules** (for example, dependency-cruiser, ArchUnit) - encode module
   boundary constraints as code. When the team decided to move away from a direct database access
   pattern, architecture rules make violations a build failure rather than a code review comment.
 
