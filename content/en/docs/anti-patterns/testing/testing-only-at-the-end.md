@@ -55,8 +55,8 @@ one iteration.
 ## Why this is a problem
 
 Testing at the end of development is a legacy of the waterfall model, where phases were
-sequential by design. That model assumed a fixed cost of rework. It minimized that cost by
-catching problems as late as possible in a structured way. Agile and CD have
+sequential by design. That model assumed a fixed cost of rework. It handled that cost by
+catching problems in a single, structured test phase at the end. Agile and CD have
 changed those assumptions. Rework cost is lowest when defects are caught immediately, which
 requires testing to happen throughout development.
 

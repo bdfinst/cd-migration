@@ -79,7 +79,7 @@ affected.
 ## How to narrow it down
 
 1. **How many changes does a typical release contain?** If a release contains more than a
-   handful of commits, the batch size is a risk factor. Reducing release frequency reduces the
+   handful of commits, the batch size is a risk factor. Releasing more often reduces the
    chance of interactions and makes regressions easier to diagnose. Start with
    [Infrequent, Painful Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}).
 2. **Do tests run on every commit or only before a release?** If the team discovers regressions
