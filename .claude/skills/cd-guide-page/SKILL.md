@@ -48,17 +48,17 @@ description: >
 migration path.]
 {{% /pageinfo %}}
 
-## What Is [Practice Name]?
+## What is [Practice Name]?
 
 [2-3 paragraphs defining the practice. Be precise about what it is and what it is not.
 Include a blockquote if there is an authoritative definition worth citing.]
 
-### What [Practice Name] Is Not
+### What [Practice Name] is not
 
 [Bullet list clarifying common misconceptions. This subsection is optional but
 recommended when the practice is frequently misunderstood.]
 
-## What [Practice Name] Improves
+## What [Practice Name] improves
 
 [Table showing problems and how the practice addresses them. Optional but effective
 for practices that address multiple symptoms.]
@@ -67,14 +67,14 @@ for practices that address multiple symptoms.]
 |---------|---------------------|
 | [Problem] | [How it helps] |
 
-## [Implementation Section - Title Varies by Topic]
+## [Implementation section - title varies by topic]
 
 [This is the core section. Structure depends on the topic. Options include:]
 
 [Option A: Migration paths - when there are multiple valid approaches]
 ### Path 1: [Approach Name]
 ### Path 2: [Approach Name]
-### How to Choose Your Path
+### How to choose your path
 
 [Option B: Step-by-step guide - when there is one clear approach]
 ### Step 1: [Action] (Week N)
@@ -84,21 +84,21 @@ for practices that address multiple symptoms.]
 ### [Facet 1]
 ### [Facet 2]
 
-## Essential Supporting Practices
+## Essential supporting practices
 
 [Describe practices that must be in place for this one to work. Link to their
 guide pages. Optional - include when dependencies are important.]
 
-## Getting Started: A Tactical Guide
+## Getting started: a tactical guide
 
-[Time-boxed weekly steps for adopting the practice. Similar to "How to Fix It"
+[Time-boxed weekly steps for adopting the practice. Similar to "How to fix it"
 in anti-pattern pages but framed positively as adoption rather than correction.]
 
 ### Step 1: [Action]
 ### Step 2: [Action]
 ### Step 3: [Action]
 
-## Key Pitfalls
+## Key pitfalls
 
 [Numbered list of common mistakes when adopting this practice. Each with a bold
 title and 1-2 paragraph explanation.]
@@ -106,7 +106,7 @@ title and 1-2 paragraph explanation.]
 ### 1. "[Common mistake in quotes]"
 ### 2. "[Common mistake in quotes]"
 
-## Measuring Success
+## Measuring success
 
 [Table of metrics with targets and rationale.]
 
@@ -114,11 +114,11 @@ title and 1-2 paragraph explanation.]
 |--------|--------|----------------|
 | [Metric] | [Target] | [Why] |
 
-## Further Reading
+## Further reading
 
 [Links to external authoritative sources. Include attribution if content is adapted.]
 
-## Next Step
+## Next step
 
 [One sentence pointing to the next logical practice in the migration path, with a link.]
 ```

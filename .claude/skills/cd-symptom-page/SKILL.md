@@ -54,7 +54,7 @@ The goal is for the reader to say "that's us."]
 
 ## Common causes
 
-### [Cause Name - Matches Anti-Pattern Title]
+### [Cause name - matches anti-pattern title]
 
 [2 paragraphs explaining how this anti-pattern produces the symptom the reader is
 experiencing. Be specific about the mechanism. First paragraph describes the cause,
@@ -63,7 +63,7 @@ anti-pattern is addressed.]
 
 **Read more:** [Anti-Pattern Title](../../anti-patterns/[category]/[slug]/)
 
-### [Cause Name 2]
+### [Cause name 2]
 
 [Same structure as above]
 
