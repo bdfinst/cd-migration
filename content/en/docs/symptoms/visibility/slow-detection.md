@@ -22,7 +22,7 @@ sees the degradation started after a specific deploy, but the deploy was days ag
 cold.
 
 The team deploys carefully and then "watches for a while." Watching means checking a few URLs
-manually or refreshing a dashboard for 15 minutes. If nothing obviously breaks in that window, the
+manually or refreshing a dashboard for 15 minutes. If nothing visibly breaks in that window, the
 deployment is declared successful. Problems that manifest slowly, affect a subset of users, or
 appear under specific conditions go undetected.
 
