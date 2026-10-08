@@ -25,7 +25,7 @@ multiple paths, you cannot reason about the state of production. You lose the ab
 guarantee that every change has been validated, and you undermine every other practice in
 this phase.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Teams migrating to continuous delivery often carry legacy deployment processes - a manual
 runbook for "emergency" fixes, a separate path for database changes, or a distinct
@@ -38,7 +38,7 @@ are only trustworthy if no other mechanism can alter what reaches production. Yo
 [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}}) is meaningless if changes can bypass
 the gates.
 
-## Key Principles
+## Key principles
 
 ### One pipeline for all changes
 
@@ -67,7 +67,7 @@ path is broken. This includes:
 - Console-based configuration changes that are not captured in version control
 - "Break glass" procedures that skip validation stages
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Integration branches and multi-branch deployment paths
 
@@ -142,7 +142,7 @@ Having one pipeline for application code, another for infrastructure, and yet an
 database changes means that coordinated changes across these layers are never validated
 together.
 
-## Good Patterns
+## Good patterns
 
 ### Feature flags
 
@@ -205,7 +205,7 @@ function newCheckoutFlow() {
 <button onClick={newCheckoutFlow}>Checkout</button>
 {{< /card >}}
 
-## What Your Team Controls vs. What Requires Broader Change
+## What your team controls vs. what requires broader change
 
 **Your team controls directly:**
 
@@ -230,7 +230,7 @@ function newCheckoutFlow() {
 The organizational steps are harder, but the technical steps - building a reliable, fast
 pipeline - are the prerequisite that makes the organizational conversation possible.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Map your current deployment paths
 
@@ -261,9 +261,9 @@ Once the pipeline is fast and reliable, remove the ability to deploy outside of 
 Revoke direct production access. Disable manual deployment scripts. Make the pipeline the
 only way.
 
-## Example Implementation
+## Example implementation
 
-### Single Pipeline for Everything
+### Single pipeline for everything
 
 {{< card code=true header="**Single pipeline for everything: GitHub Actions workflow from validate to production**" lang="yaml" >}}
 # .github/workflows/deploy.yml
@@ -352,7 +352,7 @@ Infrastructure maintenance (patching servers, scaling resources) is separate fro
 application deployment. However, application deployment must still only happen through the
 pipeline.
 
-## Health Metrics
+## Health metrics
 
 - **Pipeline deployment rate**: Should be 100% (all deployments go through pipeline)
 - **Manual override rate**: Should be 0%
@@ -360,7 +360,7 @@ pipeline.
 - **Rollback success rate**: Should be greater than 99%
 - **[Deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}})**: Should increase over time as confidence grows
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Single path to production is the foundation of Phase 2. Without it, every other pipeline
 practice is compromised:
@@ -373,7 +373,7 @@ practice is compromised:
 Establishing this practice first creates the constraint that makes the rest of the
 pipeline meaningful.
 
-## Related Content
+## Related content
 
 - [Coordinated Deployments]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - a symptom that emerges when multiple deployment paths exist
 - [Merge Freeze]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - a symptom of deployment processes that lack a single, trusted automated path

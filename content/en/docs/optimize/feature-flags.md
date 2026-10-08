@@ -16,7 +16,7 @@ aliases:
 
 Feature flags are one technique among several for integrating incomplete work safely, and the most expensive one to maintain. Before reaching for a flag, work through the [evolutionary coding techniques hierarchy]({{< relref "/docs/foundations/evolutionary-coding" >}}): dark code, branch by abstraction, parallel run, and expand and contract each solve part of what a flag solves, without the lifecycle overhead. This page assumes you've already ruled those out.
 
-## Why Feature Flags?
+## Why feature flags?
 
 In [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}), deployment and release are two separate events:
 
@@ -25,11 +25,11 @@ In [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-deli
 
 Feature flags are the bridge between these two events. They let you deploy frequently (even multiple times a day) without worrying about exposing incomplete or untested features. This separation is what makes [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) possible for teams that ship real products to real users.
 
-## When You Need Feature Flags (and When You Don't)
+## When you need feature flags (and when you don't)
 
 Not every change requires a feature flag. Flags add complexity, and unnecessary complexity slows you down. Use this decision tree to determine the right approach.
 
-### Decision Tree
+### Decision tree
 
 ```mermaid
 graph TD
@@ -79,7 +79,7 @@ graph TD
     style Start fill:#87CEEB
 ```
 
-### Alternatives to Feature Flags
+### Alternatives to feature flags
 
 | Technique | How It Works | When to Use |
 |-----------|-------------|-------------|
@@ -90,11 +90,11 @@ graph TD
 
 See [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) for the full decision hierarchy. These alternatives avoid the lifecycle overhead of feature flags while still enabling trunk-based development with incomplete work.
 
-## Implementation Approaches
+## Implementation approaches
 
 Feature flags can be implemented at different levels of sophistication. Start simple and add complexity only when needed.
 
-### Level 1: Static Code-Based Flags
+### Level 1: Static code-based flags
 
 The simplest approach: a boolean constant or configuration value checked in code.
 
@@ -118,7 +118,7 @@ def process_checkout(cart, user):
 
 **Best for:** Teams starting out. Internal tools. Changes that will be fully on or fully off.
 
-### Level 2: Dynamic In-Process Flags
+### Level 2: Dynamic in-process flags
 
 Flags stored in a configuration file, database, or environment variable that can be changed at runtime without redeploying.
 
@@ -159,7 +159,7 @@ class FeatureFlags:
 
 **Best for:** Teams that need gradual rollout but do not want to adopt a third-party service yet.
 
-### Level 3: Centralized Flag Service
+### Level 3: Centralized flag service
 
 A dedicated service (self-hosted or SaaS) that manages all flags, provides a dashboard, supports targeting rules, and tracks flag usage.
 
@@ -183,7 +183,7 @@ def process_checkout(cart, user):
 
 **Best for:** Teams at scale. Products with diverse user segments. Regulated environments needing audit trails.
 
-### Level 4: Infrastructure Routing
+### Level 4: Infrastructure routing
 
 Instead of checking flags in application code, route traffic at the infrastructure level (load balancer, service mesh, API gateway).
 
@@ -215,11 +215,11 @@ spec:
 
 **Best for:** Microservice architectures. Service-level rollouts. A/B testing at the infrastructure layer.
 
-## Feature Flag Lifecycle
+## Feature flag lifecycle
 
 Every feature flag has a lifecycle. Flags that are not actively managed become technical debt. Follow this lifecycle rigorously.
 
-### The Stages
+### The stages
 
 {{< card code=true header="**Feature flag lifecycle: the stages from create to remove**" >}}
 1. CREATE       → Define the flag, document its purpose and owner
@@ -247,7 +247,7 @@ The first deployment includes the flag check but the flag is disabled. This veri
 - The default (off) path is unaffected
 - The flag check does not introduce performance issues
 
-#### Stage 3: Build Incrementally
+#### Stage 3: Build incrementally
 
 Continue building the feature behind the flag over multiple deploys. Each deploy adds more functionality, but the flag remains off for users. Test both paths in your automated suite:
 
@@ -259,7 +259,7 @@ def test_checkout_with_flag(flag_enabled, monkeypatch):
     assert result.status == "success"
 {{< /card >}}
 
-#### Stage 4: Dark Launch
+#### Stage 4: Dark launch
 
 Enable the flag for internal users or a specific test group. This is your first validation with real production data and real traffic patterns. Monitor:
 
@@ -267,7 +267,7 @@ Enable the flag for internal users or a specific test group. This is your first 
 - Performance metrics (latency, throughput)
 - Business metrics (conversion, engagement)
 
-#### Stage 5: Gradual Rollout
+#### Stage 5: Gradual rollout
 
 Increase exposure systematically:
 
@@ -294,7 +294,7 @@ Once the feature has been stable at 100% for an agreed period (for example, 2 we
 
 **Set a maximum flag lifetime.** A common practice is 90 days. Any flag older than 90 days triggers an automatic review. Stale flags are a maintenance burden and a source of confusion.
 
-### Lifecycle Timeline Example
+### Lifecycle timeline example
 
 | Day | Action | Flag State |
 |-----|--------|------------|
@@ -311,11 +311,11 @@ Once the feature has been stable at 100% for an agreed period (for example, 2 we
 
 **Total lifecycle: approximately 3 weeks from creation to removal.**
 
-## Long-Lived Feature Flags
+## Long-lived feature flags
 
 Not all flags are temporary. Some flags are intentionally permanent and should be managed differently from release flags.
 
-### Operational Flags (Kill Switches)
+### Operational flags (kill switches)
 
 **Purpose:** Disable expensive or non-critical features under load during incidents.
 
@@ -332,7 +332,7 @@ else:
     recommendations = []  # Graceful degradation under load
 {{< /card >}}
 
-### Customer-Specific Toggles
+### Customer-specific toggles
 
 **Purpose:** Different customers receive different features based on their subscription or contract.
 
@@ -347,7 +347,7 @@ if customer.subscription.includes("analytics"):
     show_advanced_analytics(customer)
 {{< /card >}}
 
-### Experimentation Flags
+### Experimentation flags
 
 **Purpose:** A/B testing and experimentation.
 
@@ -365,7 +365,7 @@ else:
     return standard_checkout(cart, user)
 {{< /card >}}
 
-### Managing Long-Lived Flags
+### Managing long-lived flags
 
 Long-lived flags need different discipline than temporary ones:
 
@@ -374,7 +374,7 @@ Long-lived flags need different discipline than temporary ones:
 - **Store them separately** from temporary flags in your management system
 - **Review regularly** to confirm they are still needed
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We have 200 feature flags and nobody knows what they all do"
 
@@ -392,7 +392,7 @@ It does increase test effort, but this is a temporary cost. When the flag is rem
 
 Avoid nesting flags whenever possible. If feature B depends on feature A, do not create a separate flag for B. Instead, extend the behavior behind feature A's flag. If you must nest, document the dependency and test the specific combinations that matter.
 
-## Flag Removal Anti-Patterns
+## Flag removal anti-patterns
 
 These specific patterns are the most common ways teams fail at flag cleanup.
 
@@ -416,7 +416,7 @@ These specific patterns are the most common ways teams fail at flag cleanup.
 - WRONG: "Let's keep it in case we need to roll back in the future"
 - RIGHT: After the stability period, rollback is handled by deployment, not by re-enabling a flag
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -425,11 +425,11 @@ These specific patterns are the most common ways teams fail at flag cleanup.
 | Flag-related incidents | Near zero | Confirms flag management is not causing problems |
 | Time from deploy to release | Hours to days (not weeks) | Confirms flags enable fast, controlled releases |
 
-## Next Step
+## Next step
 
 Small batches and feature flags let you deploy more frequently, but deploying more means more [work in progress]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}). [Limiting WIP]({{< relref "/docs/optimize/limiting-wip" >}}) ensures that increased deploy frequency does not create chaos.
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - the decision hierarchy to work through before reaching for a flag
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - a symptom that feature flags help eliminate by making deployments reversible

@@ -14,7 +14,7 @@ aliases:
 Deploy on demand means that any change which passes the full automated [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can reach production without waiting for a human to press a button, open a ticket, or schedule a window. This page covers the prerequisites, the transition from [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}), and how to address the organizational concerns that are the real barriers.
 {{% /pageinfo %}}
 
-## Continuous Delivery vs. Continuous Deployment
+## Continuous delivery vs. continuous deployment
 
 These two terms are often confused. The distinction matters:
 
@@ -23,11 +23,11 @@ These two terms are often confused. The distinction matters:
 
 If you have completed Phases 1-3 of this migration, you have continuous delivery. This page is about removing that last manual decision and moving to continuous deployment.
 
-## Why Remove the Last Gate?
+## Why remove the last gate?
 
 The manual deployment decision feels safe. It gives someone a chance to "eyeball" the change before it goes to production. In practice, it does the opposite.
 
-### The Problems with Manual Gates
+### The problems with manual gates
 
 | Problem | Why It Happens | Impact |
 |---------|---------------|--------|
@@ -37,17 +37,17 @@ The manual deployment decision feels safe. It gives someone a chance to "eyeball
 | **Bottleneck** | One person or team becomes the deploy gatekeeper | Creates a single point of failure for the entire delivery flow |
 | **Deploy fear** | Infrequent deploys mean each deploy is higher stakes | Teams become more cautious, batches get larger, risk increases |
 
-### The Paradox of Manual Safety
+### The paradox of manual safety
 
 The more you rely on manual deployment gates, the less safe your deployments become. This is because manual gates lead to batching, batching increases risk, and increased risk justifies more manual gates. It is a vicious cycle.
 
 Continuous deployment breaks this cycle. Small, frequent, automated deployments are individually low-risk. If one fails, the blast radius is small and recovery is fast.
 
-## Prerequisites for Deploy on Demand
+## Prerequisites for deploy on demand
 
 Before removing manual gates, verify that these conditions are met. Each one is covered in earlier phases of this migration.
 
-### Non-Negotiable Prerequisites
+### Non-negotiable prerequisites
 
 | Prerequisite | What It Means | Where to Build It |
 |-------------|---------------|-------------------|
@@ -59,7 +59,7 @@ Before removing manual gates, verify that these conditions are met. Each one is 
 | [**Production-like environments**]({{< relref "/docs/reference/glossary#production-like-environment" >}}) | Test environments match production closely enough that test results are trustworthy | [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) |
 | **Observability** | You can detect production issues within minutes through monitoring and alerting | [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) |
 
-### Assessment: Are You Ready?
+### Assessment: Are you ready?
 
 Answer these questions honestly:
 
@@ -68,9 +68,9 @@ Answer these questions honestly:
 3. **Do deploys ever fail for non-code reasons?** (Environment issues, credential problems, network flakiness.) If yes, stabilize your pipeline first.
 4. **Does the team trust the pipeline?** If team members regularly say "let me check one more thing before we deploy," trust is not there yet. Build it through [retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) and transparent metrics.
 
-## The Transition: Three Approaches
+## The transition: Three approaches
 
-### Approach 1: Shadow Mode
+### Approach 1: Shadow mode
 
 Run continuous deployment alongside manual deployment. Every change that passes the pipeline is automatically deployed to a shadow production environment (or a canary group). A human still approves the "real" production deployment.
 
@@ -80,7 +80,7 @@ Run continuous deployment alongside manual deployment. Every change that passes 
 
 **Transition:** Once the team sees that the shadow deployments are consistently safe, remove the manual gate.
 
-### Approach 2: Opt-In per Team
+### Approach 2: Opt-in per team
 
 Allow individual teams to adopt continuous deployment while others continue with manual gates. This works well in organizations with multiple teams at different maturity levels.
 
@@ -90,7 +90,7 @@ Allow individual teams to adopt continuous deployment while others continue with
 
 **Transition:** As more teams succeed, continuous deployment becomes the default. Remaining teams are supported in reaching readiness.
 
-### Approach 3: Direct Switchover
+### Approach 3: Direct switchover
 
 Remove the manual gate for all teams at once. This is appropriate when the organization has high confidence in its pipeline and all teams have completed Phases 1-3.
 
@@ -100,7 +100,7 @@ Remove the manual gate for all teams at once. This is appropriate when the organ
 
 **Transition:** Be prepared to temporarily revert if unforeseen issues arise. Have a clear rollback plan for the process change itself.
 
-## Addressing Organizational Concerns
+## Addressing organizational concerns
 
 The technical prerequisites are usually met before the organizational ones. These are the conversations you will need to have.
 
@@ -149,9 +149,9 @@ This is why you have automated rollback and observability. The sequence is:
 
 The key insight: this sequence takes minutes with continuous deployment. With manual deployment on a weekly schedule, the same breaking change would take days to detect and fix.
 
-## After the Transition
+## After the transition
 
-### What Changes for the Team
+### What changes for the team
 
 | Before | After |
 |--------|-------|
@@ -161,7 +161,7 @@ The key insight: this sequence takes minutes with continuous deployment. With ma
 | "We need to coordinate the deploy with team X" | Teams deploy independently |
 | "Let's wait for the deploy window" | There are no deploy windows |
 
-### What Stays the Same
+### What stays the same
 
 - Code review still happens (before merge to trunk)
 - Automated tests still run (in the pipeline)
@@ -169,7 +169,7 @@ The key insight: this sequence takes minutes with continuous deployment. With ma
 - Monitoring still catches issues (but now recovery is faster)
 - The team still owns its deployments (but the manual step is gone)
 
-### The First Week
+### The first week
 
 The first week of continuous deployment will feel uncomfortable. This is normal. The team will instinctively want to "check" deployments that happen automatically. Resist the urge to add manual checks back. Instead:
 
@@ -177,7 +177,7 @@ The first week of continuous deployment will feel uncomfortable. This is normal.
 - Have the team discuss each automatic deployment in standup for the first week
 - Celebrate the first deployment that goes out without anyone noticing - that is the goal
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We adopted continuous deployment but kept the approval step 'just in case'"
 
@@ -191,7 +191,7 @@ Continuous deployment only increases deploy frequency if the team is integrating
 
 Partial continuous deployment creates a split experience: application changes flow freely but infrastructure changes still require manual coordination. Extend the pipeline to cover infrastructure as code, database migrations, and configuration changes.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -201,13 +201,13 @@ Partial continuous deployment creates a split experience: application changes fl
 | [Change failure rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Stable or improving | Confirms automation is not introducing new failures |
 | [MTTR]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | < 15 minutes | Confirms automated rollback is working |
 
-## Next Step
+## Next step
 
 Continuous deployment deploys every change, but not every change needs to go to every user at once. [Progressive Rollout]({{< relref "/docs/continuous-deployment/progressive-rollout" >}}) strategies let you control who sees a change and how quickly it spreads.
 
 ---
 
-## Related Content
+## Related content
 
 - [Infrequent Releases]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - the primary symptom that deploy on demand resolves
 - [Merge Freeze]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - a symptom caused by manual deployment gates that disappears with continuous deployment

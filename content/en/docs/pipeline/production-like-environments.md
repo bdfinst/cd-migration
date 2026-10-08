@@ -25,7 +25,7 @@ sufficiently to produce a valid signal. A unit test environment needs the right 
 version. An integration test environment needs the right service topology. A staging
 environment needs the right infrastructure, networking, and data characteristics.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 The gap between pre-production environments and production is where deployment failures
 hide. Teams that test in environments that differ significantly from production - in
@@ -37,7 +37,7 @@ from "we hope this works" to "we know this works." They close the gap between th
 [pipeline's]({{< relref "/docs/reference/glossary#pipeline" >}}) quality signal and the reality of production, making it safe to deploy
 automatically.
 
-## Key Principles
+## Key principles
 
 ### Staging reflects production infrastructure
 
@@ -106,7 +106,7 @@ structure, volume, and characteristics. This does not mean using production data
 - **Data is anonymized** - if production data is used as a seed, all personally
   identifiable information is removed or masked
 
-## Anti-Patterns
+## Anti-patterns
 
 ### Shared, long-lived staging environments
 
@@ -140,9 +140,9 @@ Using only hand-crafted test data with a few happy-path records misses the issue
 emerge with production-scale data: slow queries, missing indexes, encoding problems, and
 edge cases that only appear in real-world data distributions.
 
-## Good Patterns
+## Good patterns
 
-### Infrastructure as Code for all environments
+### Infrastructure as code for all environments
 
 Define every environment - from local development to production - using the same
 Infrastructure as Code templates. The differences between environments are captured in
@@ -180,7 +180,7 @@ In Kubernetes or similar platforms, use namespaces to create isolated environmen
 a shared cluster. Each namespace gets its own set of services, databases, and
 configuration, providing isolation without the cost of separate clusters.
 
-## What Your Team Controls vs. What Requires Broader Change
+## What your team controls vs. what requires broader change
 
 **Your team controls directly:**
 
@@ -205,7 +205,7 @@ configuration, providing isolation without the cost of separate clusters.
 Start with parity improvements within your control - matching database versions, fixing runtime
 mismatches - while building the case for organizational support on infrastructure ownership.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Audit environment parity
 
@@ -213,7 +213,7 @@ Compare your current pre-production environments against production across every
 dimension: infrastructure, configuration, data, service versions, network topology. List
 every difference.
 
-### Step 2: Infrastructure-as-Code your environments
+### Step 2: Infrastructure-as-code your environments
 
 If your environments are not yet defined in code, start here. Define your production
 environment in Terraform, CloudFormation, or equivalent. Then create pre-production
@@ -241,7 +241,7 @@ anonymization, schema validation, and data refresh on a regular schedule.
 Set up automated checks that compare pre-production environments to production and alert
 on drift. Make parity a continuous concern, not a one-time setup.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Production-like environments are where the pipeline's quality gates run. Without
 production-like environments, the [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}})
@@ -257,7 +257,7 @@ Production-like environments also support effective [rollback]({{< relref "/docs
 can validate that a rollback works correctly in a staging environment before relying on it
 in production.
 
-## Related Content
+## Related content
 
 - [Staging Passes, Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}}) - the symptom that production-like environments directly address
 - ["Works on My Machine"]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - a symptom caused by environments that differ from production

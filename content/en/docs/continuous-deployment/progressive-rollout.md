@@ -14,15 +14,15 @@ aliases:
 Progressive rollout strategies let you deploy to production without deploying to all users simultaneously. By exposing changes to a small group first and expanding gradually, you catch problems before they affect your entire user base. This page covers the three major strategies, when to use each, and how to implement automated [rollback]({{< relref "/docs/reference/glossary#rollback" >}}).
 {{% /pageinfo %}}
 
-## Why Progressive Rollout?
+## Why progressive rollout?
 
 Even with comprehensive tests, [production-like environments]({{< relref "/docs/reference/glossary#production-like-environment" >}}), and small [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}), some issues only surface under real production traffic. Progressive rollout is the final safety layer: it limits the blast radius of any deployment by exposing the change to a small audience first.
 
 This is not a replacement for testing. It is an addition. Your automated tests should catch the vast majority of issues. Progressive rollout catches the rest - the issues that depend on real user behavior, real data volumes, or real infrastructure conditions that cannot be fully replicated in test environments.
 
-## The Three Strategies
+## The three strategies
 
-### Strategy 1: Canary Deployment
+### Strategy 1: Canary deployment
 
 A [canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}) routes a small percentage of production traffic to the new version while the majority continues to hit the old version. If the canary shows no problems, traffic is gradually shifted.
 
@@ -67,7 +67,7 @@ A [canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}
 | CDN (CloudFront, Fastly) | Origin routing rules |
 | Application-level | [Feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) with percentage rollout |
 
-### Strategy 2: Blue-Green Deployment
+### Strategy 2: Blue-green deployment
 
 [Blue-green deployment]({{< relref "/docs/reference/glossary#blue-green-deployment" >}}) maintains two identical production environments. At any time, one (blue) serves live traffic and the other (green) is idle or staging.
 
@@ -107,7 +107,7 @@ A [canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}
 
 **Rollback speed:** Seconds. Switching the router back is the fastest rollback mechanism available.
 
-### Strategy 3: Percentage-Based Rollout
+### Strategy 3: Percentage-based rollout
 
 Percentage-based rollout gradually increases the number of users who see the new version. Unlike canary (which is traffic-based), percentage rollout is typically user-based - a specific user always sees the same version during the rollout period.
 
@@ -139,7 +139,7 @@ Percentage-based rollout gradually increases the number of users who see the new
 
 **Implementation:** Percentage rollout is typically implemented through [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) (Level 2 or Level 3), using the user ID as the hash key to ensure consistent assignment.
 
-## Choosing the Right Strategy
+## Choosing the right strategy
 
 | Factor | Canary | Blue-Green | Percentage |
 |--------|--------|------------|------------|
@@ -156,11 +156,11 @@ Many teams use more than one strategy. A common pattern:
 - **Canary** for service-level changes
 - **Percentage rollout** for user-facing feature changes
 
-## Automated Rollback
+## Automated rollback
 
 Progressive rollout is only effective if rollback is automated. A human noticing a problem at 3 AM is not a reliable rollback mechanism.
 
-### Metrics to Monitor
+### Metrics to monitor
 
 Define automated rollback triggers before deploying. Common triggers:
 
@@ -172,7 +172,7 @@ Define automated rollback triggers before deploying. Common triggers:
 | Business metric | Conversion rate drops > 5% for canary group | 10% conversion -> 4% conversion -> rollback |
 | Saturation | CPU or memory exceeds threshold | CPU > 90% for 5 minutes -> rollback |
 
-### Automated Rollback Flow
+### Automated rollback flow
 
 {{< card code=true header="**Automated rollback flow diagram**" lang="text" >}}
 Deploy new version
@@ -195,7 +195,7 @@ Monitor for 15 minutes
        └── Metrics degraded ─────► ROLLBACK
 {{< /card >}}
 
-### Implementation Tools
+### Implementation tools
 
 | Tool | How It Helps |
 |------|-------------|
@@ -206,9 +206,9 @@ Monitor for 15 minutes
 
 The specific tool matters less than the principle: define rollback criteria before deploying, monitor automatically, and roll back without human intervention.
 
-## Implementing Progressive Rollout
+## Implementing progressive rollout
 
-### Step 1: Choose Your First Strategy
+### Step 1: Choose your first strategy
 
 Pick the strategy that matches your infrastructure:
 
@@ -216,7 +216,7 @@ Pick the strategy that matches your infrastructure:
 - If you have Kubernetes with a service mesh: start with canary
 - If you have parallel environments: start with blue-green
 
-### Step 2: Define Rollback Criteria
+### Step 2: Define rollback criteria
 
 Before your first progressive deployment:
 
@@ -225,7 +225,7 @@ Before your first progressive deployment:
 3. Define the monitoring window (how long to wait before advancing)
 4. Document the rollback procedure (even if automated, document it for human understanding)
 
-### Step 3: Run a Manual Progressive Rollout
+### Step 3: Run a manual progressive rollout
 
 Before automating, run the process manually:
 
@@ -236,7 +236,7 @@ Before automating, run the process manually:
 
 This manual practice builds understanding of what the automation will do.
 
-### Step 4: Automate the Rollout
+### Step 4: Automate the rollout
 
 Replace the manual monitoring with automated checks:
 
@@ -245,7 +245,7 @@ Replace the manual monitoring with automated checks:
 3. Implement alerting so the team knows when a rollback occurs
 4. Test the automation by intentionally deploying a known-bad change (in a controlled way)
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "Our canary doesn't get enough traffic for meaningful metrics"
 
@@ -263,7 +263,7 @@ Progressive rollout is the last line of defense, not the first. If you are regul
 
 A rollout that takes a week negates the benefits of [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}). If your confidence in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is low enough to require a week-long rollout, the issue is pipeline quality, not rollout speed. Address the root cause through better testing and more production-like environments.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -272,13 +272,13 @@ A rollout that takes a week negates the benefits of [continuous deployment]({{< 
 | Incidents caught by progressive rollout | Tracked (any number) | Confirms the progressive rollout is providing value |
 | Manual interventions during rollout | Zero | Confirms the process is fully automated |
 
-## Next Step
+## Next step
 
 With deploy on demand and progressive rollout, your technical deployment infrastructure is complete. [ACD]({{< relref "/docs/agentic-cd" >}}) explores how AI-assisted patterns can extend these practices further.
 
 ---
 
-## Related Content
+## Related content
 
 - [Fear of Deploying]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - a symptom that progressive rollout eliminates by limiting blast radius
 - [Production Issues Found by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}}) - a visibility problem that automated canary analysis helps detect before users are affected

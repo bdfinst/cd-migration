@@ -14,13 +14,13 @@ aliases:
 You cannot deploy independently if your architecture requires coordinated releases. This page describes the three architecture states teams encounter on the journey to [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) and provides practical strategies for moving from entangled to loosely coupled.
 {{% /pageinfo %}}
 
-## Why Architecture Matters for CD
+## Why architecture matters for CD
 
 Every practice in this guide - small batches, [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [WIP]({{< relref "/docs/reference/glossary#wip-work-in-progress" >}}) limits - assumes that your team can deploy its changes independently. But if your application is a monolith where changing one module requires retesting everything, or a set of microservices with tightly coupled APIs, independent deployment is impossible regardless of how good your practices are.
 
 Architecture is either an enabler or a blocker for continuous deployment. There is no neutral.
 
-## Three Architecture States
+## Three architecture states
 
 The Delivery System Improvement Journey describes three states that teams move through. Most teams start entangled. The goal is to reach loosely coupled.
 
@@ -48,7 +48,7 @@ In an entangled architecture, everything is connected to everything. Changes in 
 
 **How you got here:** Entanglement is the natural result of building quickly without deliberate architectural boundaries. It is not a failure - it is a stage that almost every system passes through.
 
-### State 2: Tightly Coupled
+### State 2: Tightly coupled
 
 In a tightly coupled architecture, there are identifiable boundaries between components, but those boundaries are leaky. Teams have some independence, but coordination is still required for many changes.
 
@@ -69,7 +69,7 @@ In a tightly coupled architecture, there are identifiable boundaries between com
 | Change failure rate | Moderate (improving but still affected by coupling) |
 | MTTR | Hours (failures are more isolated but still cascade sometimes) |
 
-### State 3: Loosely Coupled
+### State 3: Loosely coupled
 
 In a loosely coupled architecture, components communicate through well-defined interfaces, own their own data, and can be deployed independently without coordinating with other teams.
 
@@ -91,11 +91,11 @@ In a loosely coupled architecture, components communicate through well-defined i
 | Change failure rate | Low (small, isolated changes) |
 | MTTR | Minutes (failures are contained within service boundaries) |
 
-## Moving from Entangled to Tightly Coupled
+## Moving from entangled to tightly coupled
 
 This is the first and most difficult transition. It requires establishing boundaries where none existed before.
 
-### Strategy 1: Identify Natural Seams
+### Strategy 1: Identify natural seams
 
 Look for places where the system already has natural boundaries, even if they are not enforced:
 
@@ -104,7 +104,7 @@ Look for places where the system already has natural boundaries, even if they ar
 - **Different scaling needs:** Components with different load profiles benefit from separate deployment.
 - **Different team ownership:** If different teams work on different parts of the codebase, those parts are candidates for separation.
 
-### Strategy 2: Strangler Fig Pattern
+### Strategy 2: Strangler fig pattern
 
 Instead of rewriting the system, incrementally extract components from the monolith.
 
@@ -119,7 +119,7 @@ Step 6: Remove the old code
 
 **Key rule:** The strangler fig pattern must be done incrementally. If you try to extract everything at once, you are doing a rewrite, not a strangler fig.
 
-### Strategy 3: Define Ownership Boundaries
+### Strategy 3: Define ownership boundaries
 
 Assign clear ownership of each module or component to a single team. Ownership means:
 
@@ -128,17 +128,17 @@ Assign clear ownership of each module or component to a single team. Ownership m
 - Other teams consume the API, not the internal implementation
 - Changes to the API contract require agreement from consumers (but not simultaneous deployment)
 
-### What to Avoid
+### What to avoid
 
 - **The "big rewrite":** Rewriting a monolith from scratch almost always fails. Use the strangler fig pattern instead.
 - **Premature microservices:** Do not split into microservices until you have clear domain boundaries and team ownership. Microservices with unclear boundaries are a distributed monolith - the worst of both worlds.
 - **Shared databases across services:** This is the most common coupling mechanism. If two services share a database, they cannot be deployed independently because a schema change in one service can break the other.
 
-## Moving from Tightly Coupled to Loosely Coupled
+## Moving from tightly coupled to loosely coupled
 
 This transition is about hardening the boundaries that were established in the previous step.
 
-### Strategy 1: Eliminate Shared Data Stores
+### Strategy 1: Eliminate shared data stores
 
 If two services share a database, one of three things needs to happen:
 
@@ -162,7 +162,7 @@ AFTER (option 3 - data service):
   Service B → Data Service → [DB]
 {{< /card >}}
 
-### Strategy 2: Version Your APIs
+### Strategy 2: Version your APIs
 
 API versioning allows consumers and producers to evolve independently.
 
@@ -173,7 +173,7 @@ API versioning allows consumers and producers to evolve independently.
 - **Deprecate old versions with a timeline.** "Version 1 will be removed on date X."
 - **Use consumer-driven contract tests** to verify compatibility. See [Contract Testing]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}).
 
-### Strategy 3: Prefer Asynchronous Communication
+### Strategy 3: Prefer asynchronous communication
 
 Synchronous calls (HTTP, gRPC) create temporal coupling: if the downstream service is slow or unavailable, the upstream service is also affected.
 
@@ -185,7 +185,7 @@ Synchronous calls (HTTP, gRPC) create temporal coupling: if the downstream servi
 
 Prefer asynchronous communication wherever the business requirements allow it. Not every interaction needs to be synchronous.
 
-### Strategy 4: Design for Failure
+### Strategy 4: Design for failure
 
 In a loosely coupled system, dependencies will be unavailable sometimes. Design for this:
 
@@ -194,7 +194,7 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 - **Bulkheads:** Isolate failures so that one failing dependency does not consume all resources.
 - **Graceful degradation:** Define what the user experience should be when a dependency is down. "Recommendations unavailable" is better than a 500 error.
 
-## What Your Team Controls vs. What Requires Broader Change
+## What your team controls vs. what requires broader change
 
 **Your team controls directly:**
 
@@ -220,9 +220,9 @@ In a loosely coupled system, dependencies will be unavailable sometimes. Design 
 Start with the decoupling work within your own boundary. Use measured improvements in deployment
 frequency and lead time to make the case for the organizational changes.
 
-## Practical Steps for Architecture Decoupling
+## Practical steps for architecture decoupling
 
-### Step 1: Map Dependencies
+### Step 1: Map dependencies
 
 Before changing anything, understand what you have:
 
@@ -230,7 +230,7 @@ Before changing anything, understand what you have:
 2. **Identify deployment coupling.** Which components must be deployed together? Why?
 3. **Identify the highest-impact coupling.** Which coupling most frequently blocks independent deployment?
 
-### Step 2: Establish the First Boundary
+### Step 2: Establish the first boundary
 
 Pick one component to decouple. Choose the one with the highest impact and lowest risk:
 
@@ -243,7 +243,7 @@ Pick one component to decouple. Choose the one with the highest impact and lowes
 
 Take the next highest-impact coupling and address it. Each decoupling makes the next one easier because the team learns the patterns and the remaining system is simpler.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We need to rewrite everything before we can deploy independently"
 
@@ -261,7 +261,7 @@ Architecture decoupling requires governance. Establish architectural principles 
 
 You cannot afford not to. Every week spent doing coordinated releases is a week of delivery capacity lost to coordination overhead. The investment in decoupling pays for itself quickly through increased deployment frequency and reduced coordination cost.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -270,13 +270,13 @@ You cannot afford not to. Every week spent doing coordinated releases is a week 
 | [Deployment frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) per team | Increasing independently | Confirms teams are not blocked by each other |
 | Cross-team dependencies per feature | Decreasing | Confirms architecture supports independent work |
 
-## Next Step
+## Next step
 
 With optimized flow, small batches, metrics-driven improvement, and a decoupled architecture, your team is ready for the final phase. Continue to [Phase 4: Deliver on Demand]({{< relref "/docs/continuous-deployment" >}}).
 
 ---
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - in-process techniques like branch by abstraction and expand and contract, for when the change doesn't need a full strangler fig
 - [Coordinated Deployments]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - the primary symptom that architecture coupling causes

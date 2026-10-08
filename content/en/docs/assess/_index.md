@@ -18,20 +18,20 @@ the [constraints]({{< relref "/docs/reference/glossary#constraint" >}}) that wil
 
 **Team activity:** The pages in this phase work as a guided team exercise. Run [Current State Checklist]({{< relref "/docs/assess/current-state-checklist" >}}) as a retrospective to align on where your delivery process stands today before measuring baselines.
 
-## What You'll Do
+## What you'll do
 
 1. **[Map your value stream]({{< relref "/docs/assess/value-stream-mapping" >}})** - Visualize the flow from idea to production
 2. **[Establish baseline metrics]({{< relref "/docs/assess/baseline-metrics" >}})** - Measure your current [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}): deployment frequency, lead time for changes, change failure rate, and mean time to restore. Track these throughout the migration - they are your evidence of progress and your case for continued investment.
 3. **[Identify constraints]({{< relref "/docs/assess/identify-constraints" >}})** - Find the bottlenecks limiting your flow
 4. **[Complete the current-state checklist]({{< relref "/docs/assess/current-state-checklist" >}})** - Self-assess against MinimumCD practices
 
-## Why This Phase Matters
+## Why this phase matters
 
 Teams that skip assessment often invest in the wrong improvements. A team with a 3-week manual
 testing cycle doesn't need better deployment automation first - they need testing fundamentals.
 Understanding your constraints ensures you invest effort where it will have the biggest impact.
 
-## When You're Ready to Move On
+## When you're ready to move on
 
 You're ready for [Phase 1: Foundations]({{< relref "/docs/foundations" >}}) when you can answer:
 
@@ -44,7 +44,7 @@ You're ready for [Phase 1: Foundations]({{< relref "/docs/foundations" >}}) when
 
 ---
 
-## Related Content
+## Related content
 
 - [For Managers]({{< relref "/docs/triage/for-managers" >}}) - how to recognize delivery problems from a leadership perspective
 - [Phase 1: Foundations]({{< relref "/docs/foundations" >}}) - the next phase after assessment is complete

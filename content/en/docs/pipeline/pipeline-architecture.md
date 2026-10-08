@@ -25,7 +25,7 @@ recognizable states, applying the Theory of Constraints to systematically identi
 resolve bottlenecks. The goal is a loosely coupled architecture where independent services
 can be built, tested, and deployed independently through their own pipelines.
 
-## Why It Matters for CD Migration
+## Why it matters for CD migration
 
 Most teams beginning a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration have a pipeline that is somewhere between "barely
 functional" and "works most of the time." The pipeline may be slow, fragile, or tightly
@@ -37,13 +37,13 @@ Understanding where your pipeline architecture currently stands, and what the ne
 improvement looks like, prevents teams from either stalling at a "good enough" state or
 attempting to jump directly to a target state that their context cannot support.
 
-## Three Architecture States
+## Three architecture states
 
 Teams typically progress through three recognizable states on their journey to mature
 pipeline architecture. Understanding which state you are in determines what improvements
 to prioritize.
 
-### Entangled (Requires Remediation)
+### Entangled (requires remediation)
 
 In the entangled state, the pipeline has significant structural problems that prevent
 reliable delivery:
@@ -68,7 +68,7 @@ reliable delivery:
 3. Fix or remove flaky tests
 4. Establish clear pipeline ownership with the application team
 
-### Tightly Coupled (Transitional)
+### Tightly coupled (transitional)
 
 In the tightly coupled state, each application has its own pipeline, but pipelines depend
 on each other or on shared resources:
@@ -92,7 +92,7 @@ on each other or on shared resources:
 4. Give teams ownership of their pipeline definitions
 5. Scale build infrastructure to eliminate queuing
 
-### Loosely Coupled (Goal)
+### Loosely coupled (goal)
 
 In the loosely coupled state, each service has an independent pipeline that can build,
 test, and deploy without depending on other services' pipelines:
@@ -159,7 +159,7 @@ If exploiting the constraint is not sufficient, invest in removing it:
 Once a constraint is resolved, a new constraint will emerge. This is expected. The
 pipeline improves through continuous iteration, not through a single redesign.
 
-## Key Design Principles
+## Key design principles
 
 ### Fast feedback first
 
@@ -198,7 +198,7 @@ Instrument the pipeline itself with metrics and monitoring. Track:
 
 These metrics identify bottlenecks and measure improvement over time.
 
-## Anti-Patterns
+## Anti-patterns
 
 ### The "grand redesign"
 
@@ -223,7 +223,7 @@ Running all microservices through a single pipeline that builds and deploys ever
 together defeats the purpose of a microservice architecture. Each service should have its
 own independent pipeline.
 
-## How to Get Started
+## How to get started
 
 ### Step 1: Assess your current state
 
@@ -251,7 +251,7 @@ With each improvement cycle, move toward independent, team-owned pipelines that 
 build, test, and deploy services independently. This is a journey of months or years,
 not days.
 
-## Connection to the Pipeline Phase
+## Connection to the pipeline phase
 
 Pipeline architecture is where all the other practices in this phase come together. The
 [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) defines the route. The
@@ -264,7 +264,7 @@ As teams mature their pipeline architecture toward loose coupling, they build th
 foundation for [Phase 3: Optimize]({{< relref "/docs/optimize" >}}) - where the focus shifts from building
 the pipeline to improving its speed and reliability.
 
-## Related Content
+## Related content
 
 - [Slow Pipelines]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - a symptom directly addressed by applying the Theory of Constraints to pipeline architecture
 - [Coordinated Deployments]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - a symptom of tightly coupled pipeline architecture

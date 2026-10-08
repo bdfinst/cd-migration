@@ -26,12 +26,12 @@ Without baselines, you cannot prove improvement, cannot detect regression, and d
 what is visible rather than what is the actual
 [constraint]({{< relref "/docs/reference/glossary#constraint" >}}).
 
-## CI Health Metrics
+## CI health metrics
 
 These three metrics tell you whether your team's integration practices are healthy. They surface
 problems immediately and are your primary signal during the migration.
 
-### Integration Frequency
+### Integration frequency
 
 **What it measures:** How often developers commit and integrate to trunk per day.
 
@@ -46,7 +46,7 @@ number of active developers and by 10.
 
 **Record your number:** ______ average commits to trunk per developer per day.
 
-### Build Success Rate
+### Build success rate
 
 **What it measures:** The percentage of CI builds that pass on the first attempt.
 
@@ -61,7 +61,7 @@ passing builds by total builds.
 
 **Record your number:** ______ % of CI builds that pass on first attempt.
 
-### Time to Fix a Broken Build
+### Time to fix a broken build
 
 **What it measures:** The elapsed time from a build breaking on trunk to the next green build.
 
@@ -76,7 +76,7 @@ record the time from first red build to next green build. Take the median.
 
 **Record your number:** ______ median time to fix a broken build.
 
-## DORA Metrics
+## DORA metrics
 
 The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research program (now part of Google Cloud) identified four metrics that predict
 software delivery performance and organizational outcomes. These are lagging indicators -
@@ -85,7 +85,7 @@ they confirm that improvement work is compounding into better delivery outcomes.
 Do not use these as improvement targets. See
 [DORA Metrics as Delivery Improvement Goals]({{< relref "/docs/anti-patterns/organizational-cultural/planning/dora-metrics-as-goals" >}}).
 
-### Deployment Frequency
+### Deployment frequency
 
 **What it measures:** How often your team deploys to production.
 
@@ -100,7 +100,7 @@ your pipeline system, deployment logs, or change management records.
 
 **Record your number:** ______ deployments in the last 30 days.
 
-### Lead Time for Changes
+### Lead time for changes
 
 **What it measures:** The elapsed time from when code is committed to trunk to when it is
 running in production.
@@ -118,7 +118,7 @@ the median.
 
 **Record your number:** ______ median lead time for changes.
 
-### Change Failure Rate
+### Change failure rate
 
 **What it measures:** The percentage of deployments to production that result in a degraded
 service requiring remediation ([rollback]({{< relref "/docs/reference/glossary#rollback" >}}), hotfix, or patch).
@@ -134,7 +134,7 @@ incident, required a rollback, or needed an immediate hotfix. Divide by total de
 
 **Record your number:** ______ % of deployments that required remediation.
 
-### Mean Time to Restore (MTTR)
+### Mean time to restore (MTTR)
 
 **What it measures:** How long it takes to restore service after a production failure caused by
 a deployment.
@@ -151,7 +151,7 @@ incident caused by a deployment, record the time from detection to resolution. T
 
 **Record your number:** ______ median time to restore service.
 
-## What Your Baselines Tell You
+## What your baselines tell you
 
 Your numbers point toward specific constraints:
 
@@ -173,14 +173,14 @@ These metrics are diagnostic tools, not performance targets. Use them within the
 team. Never use them to rank individuals or compare teams.
 {{% /alert %}}
 
-## Next Step
+## Next step
 
 With your baselines recorded, proceed to [Identify Constraints]({{< relref "/docs/assess/identify-constraints" >}}) to
 determine which bottleneck to address first.
 
 ---
 
-## Related Content
+## Related content
 
 - [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) - how often developers integrate to trunk
 - [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) - pipeline speed as a feedback signal

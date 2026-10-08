@@ -62,12 +62,12 @@ them requires engaging outside your boundary:
 
 Use the constraint analysis in this page to build a prioritized case for those conversations.
 
-## Common Constraint Categories
+## Common constraint categories
 
 Software delivery constraints tend to cluster into a few recurring categories. As you review your
 [value stream map]({{< relref "/docs/reference/glossary#value-stream-map" >}}), look for these patterns.
 
-### Testing Bottlenecks
+### Testing bottlenecks
 
 **Symptoms:** Large wait time between "code complete" and "verified." Manual regression test
 cycles measured in days or weeks. Low %C/A at the testing step, indicating frequent rework.
@@ -80,7 +80,7 @@ shared and frequently broken.
 
 **Migration path:** [Phase 1 - Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})
 
-### Deployment Gates
+### Deployment gates
 
 **Symptoms:** Wait times of days or weeks between "tested" and "deployed." Change Advisory Board
 (CAB) meetings that happen weekly or biweekly. Multiple sign-offs required from people who are
@@ -95,7 +95,7 @@ persist because removing them feels dangerous.
 **Migration path:** [Phase 2 - Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) and
 building the automated quality evidence that makes manual approvals unnecessary.
 
-### Environment Provisioning
+### Environment provisioning
 
 **Symptoms:** Developers waiting hours or days for a test or staging environment. "Works on my
 machine" failures when code reaches a shared environment. Environments that drift from production
@@ -108,7 +108,7 @@ production.
 
 **Migration path:** [Phase 2 - Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 
-### Code Review Delays
+### Code review delays
 
 **Symptoms:** Pull requests sitting open for more than a day. Review queues with 5 or more
 pending reviews. Developers context-switching because they are blocked waiting for review.
@@ -122,7 +122,7 @@ further.
 [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) to reduce [branch lifetime]({{< relref "/docs/reference/glossary#branch-lifetime" >}})
 and review size.
 
-### Manual Handoffs
+### Manual handoffs
 
 **Symptoms:** Multiple steps in your value stream map where work transitions from one team to
 another. Tickets being reassigned across teams. "Throwing it over the wall" language in how people
@@ -137,29 +137,29 @@ likely that information is lost.
 gradually through cross-functional team formation and by automating the specialist activities
 into the pipeline so that handoffs become automated checks rather than manual transfers.
 
-## Using Your Value Stream Map to Find the Constraint
+## Using your value stream map to find the constraint
 
 Pull out your [value stream map]({{< relref "/docs/reference/glossary#value-stream-map" >}}) and follow this process:
 
-### Step 1: Rank Steps by Wait Time
+### Step 1: Rank steps by wait time
 
 List every step in your value stream and sort them by wait time, longest first. Your biggest
 constraint is almost certainly in the top three. Wait time is more important than process time
 because wait time is pure waste - nothing is happening, no value is being created.
 
-### Step 2: Look for Rework Loops
+### Step 2: Look for rework loops
 
 Identify steps where work frequently loops back. A testing step with a 40% rework rate means
 that nearly half of all changes go through the development-to-test cycle twice. The effective
 wait time for that step is nearly doubled when you account for rework.
 
-### Step 3: Count Handoffs
+### Step 3: Count handoffs
 
 Each handoff between teams or roles is a queue point. If your value stream has 8 handoffs, you
 have 8 places where work waits. Look for handoffs that could be eliminated by automation or
 by reorganizing work within the team.
 
-### Step 4: Cross-Reference with Metrics
+### Step 4: Cross-reference with metrics
 
 Check your findings against your baseline metrics:
 
@@ -169,7 +169,7 @@ Check your findings against your baseline metrics:
 - **Low [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) with everything else reasonable** = the constraint is in the
   deployment process itself or in organizational policy
 
-## Prioritizing: Fix the Biggest One First
+## Prioritizing: Fix the biggest one first
 
 {{% alert title="One Constraint at a Time" %}}
 Resist the temptation to tackle multiple constraints simultaneously. The Theory of Constraints
@@ -194,7 +194,7 @@ Once you have identified your top constraint, map it to a migration phase:
 | Change approval processes | [Phase 2 - Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) |
 | Large [batch sizes]({{< relref "/docs/reference/glossary#batch-size" >}}) | [Phase 3 - Small Batches]({{< relref "/docs/optimize/small-batches" >}}) |
 
-## The Next Constraint
+## The next constraint
 
 Fixing your first constraint will improve your flow. It will also reveal the next constraint.
 This is expected and healthy. A delivery process is a chain, and strengthening the weakest link
@@ -209,14 +209,14 @@ Plan to revisit your value stream map and metrics after addressing each major co
 map from today will be outdated within weeks of starting your migration - and that is a sign of
 progress.
 
-## Next Step
+## Next step
 
 Complete the [Current State Checklist]({{< relref "/docs/assess/current-state-checklist" >}}) to assess your team against
 specific MinimumCD practices and confirm your migration starting point.
 
 ---
 
-## Related Content
+## Related content
 
 - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - a flow symptom often traced back to the constraints this guide helps identify
 - [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - a symptom that constraint analysis frequently uncovers

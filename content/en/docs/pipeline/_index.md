@@ -16,7 +16,7 @@ through build, test, and deployment stages. When done right, the pipeline is the
 way changes reach production.
 {{% /pageinfo %}}
 
-## What You'll Do
+## What you'll do
 
 1. **[Establish a single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}})** - One pipeline for all changes
 2. **[Make the pipeline deterministic]({{< relref "/docs/pipeline/deterministic-pipeline" >}})** - Same inputs always produce same outputs
@@ -28,13 +28,13 @@ way changes reach production.
 8. **[Enable rollback]({{< relref "/docs/pipeline/rollback" >}})** - Fast recovery from any deployment
 9. **Integrate security scanning** - Dependency checks, secret detection, and static analysis as pipeline quality gates
 
-## Why This Phase Matters
+## Why this phase matters
 
 The pipeline is the backbone of [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}). It replaces manual handoffs with
 automated quality gates, ensures every change goes through the same validation process,
 and makes deployment a routine, low-risk event.
 
-## When You're Ready to Move On
+## When you're ready to move on
 
 Start investing in [Phase 3: Optimize]({{< relref "/docs/optimize" >}}) when you are making
 consistent progress toward these - don't wait for every criterion to be perfect:
@@ -48,7 +48,7 @@ consistent progress toward these - don't wait for every criterion to be perfect:
 
 ---
 
-## Related Content
+## Related content
 
 - [Phase 1: Foundations]({{< relref "/docs/foundations" >}}) - prerequisites to complete before starting the Pipeline phase
 - [Phase 3: Optimize]({{< relref "/docs/optimize" >}}) - the next phase after Pipeline is established

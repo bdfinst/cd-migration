@@ -16,7 +16,7 @@ through it. Smaller batches, [feature flags]({{< relref "/docs/reference/glossar
 delivery frequency.
 {{% /pageinfo %}}
 
-## What You'll Do
+## What you'll do
 
 1. **[Reduce batch size]({{< relref "/docs/optimize/small-batches" >}})** - Deliver smaller, more frequent changes
 2. **[Use feature flags]({{< relref "/docs/optimize/feature-flags" >}})** - Decouple deployment from release
@@ -27,14 +27,14 @@ delivery frequency.
 7. **[Align teams to code]({{< relref "/docs/optimize/team-alignment" >}})** - Match team ownership to code boundaries for independent deployment
 8. **Build observability** - Structured logging, monitoring, and alerting so you can detect problems and recover quickly
 
-## Why This Phase Matters
+## Why this phase matters
 
 Having a pipeline isn't enough. You need to optimize the flow through it. Teams that
 deploy weekly with a [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) pipeline are missing most of the benefits. Small batches reduce
 risk, feature flags enable testing in production, and metrics-driven improvement creates
 a virtuous cycle of getting better at getting better.
 
-## When You're Ready to Move On
+## When you're ready to move on
 
 Start investing in [Phase 4: Deliver on Demand]({{< relref "/docs/continuous-deployment" >}}) when
 you are making consistent progress toward these - don't wait for every criterion to be perfect:
@@ -48,7 +48,7 @@ you are making consistent progress toward these - don't wait for every criterion
 
 ---
 
-## Related Content
+## Related content
 
 - [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) - the previous phase that establishes the deployment pipeline this phase optimizes
 - [Phase 4: Deliver on Demand]({{< relref "/docs/continuous-deployment" >}}) - the next phase after flow is optimized
