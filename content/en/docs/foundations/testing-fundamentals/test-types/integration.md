@@ -24,7 +24,7 @@ Detects driver/dialect mismatches, schema serialization issues, connection pooli
 
 ## Good Practices
 
-- Use disposable, ephemeral infrastructure: Spin up real databases and queues using container tooling (e.g., Testcontainers) rather than using shared, persistent static environments.
+- Use disposable, ephemeral infrastructure: Spin up real databases and queues using container tooling (for example, Testcontainers) rather than using shared, persistent static environments.
 - Verify transport-level error handling: Intentionally test connection timeouts, pool exhaustion, network blips, and transaction rollbacks.
 - Run tests against clean boundary state: Truncate tables, flush caches, and clear queues between test runs to guarantee deterministic execution.
 
@@ -36,7 +36,7 @@ Detects driver/dialect mismatches, schema serialization issues, connection pooli
 
 ## Weaknesses & Challenges
 
--	Infrastructure Orchestration Overhead: Requires managing real databases, message brokers, and caches inside the test execution context. Maintaining container definitions (e.g., Docker/Testcontainers) and keeping schema migrations up to date adds operational burden to developers.
+-	Infrastructure Orchestration Overhead: Requires managing real databases, message brokers, and caches inside the test execution context. Maintaining container definitions (for example, Docker/Testcontainers) and keeping schema migrations up to date adds operational burden to developers.
 -	Test Isolation and State Contamination: When tests write real rows to a database or publish messages to an active broker, dirty state from one test can bleed into another. Cleaning, truncating, or rolling back transactions between runs adds latency and complexity.
 -	Slow Pipeline Feedback Cycles: Because integration tests involve real I/O, network socket handshakes, and disk writes, they are orders of magnitude slower than in-memory unit tests. Over-relying on them severely bloats commit-stage feedback loops.
 -	Local vs. Production Discrepancies: Test-specific database configurations, lightweight containerized replicas, or local mocks often mask subtle production issues—such as database clustering behavior, regional latency, connection pool limits, or privilege boundaries.

@@ -19,7 +19,7 @@ Verification of a coherent structural unit (such as an entire microservice, UI c
 
 ## Scope & Boundaries
 
-Broader than a unit test, but strictly narrower than an end-to-end (E2E) integration test. It tests the interplay of multiple internal classes/modules working together within that component. Out-of-process network calls and external downstream services are replaced by API wire-level stubs or in-memory equivalents (e.g., WireMock, MSW, ephemeral test containers).
+Broader than a unit test, but strictly narrower than an end-to-end (E2E) integration test. It tests the interplay of multiple internal classes/modules working together within that component. Out-of-process network calls and external downstream services are replaced by API wire-level stubs or in-memory equivalents (for example, WireMock, MSW, ephemeral test containers).
 
 ## Core Characteristics
 
@@ -28,7 +28,7 @@ Validates state management, internal workflows, data transformations, and edge-t
 ## Good Practices
 
 - Mock only at boundary borders: Exercise the component's internal routing, controllers, domain models, and data mappers together; only mock external HTTP APIs, message brokers, or remote databases.
-- Use ephemeral infrastructure: Use fast, disposable local resources (e.g., local SQLite/Postgres in Docker, local WireMock) to mirror real component runtime characteristics.
+- Use ephemeral infrastructure: Use fast, disposable local resources (for example, local SQLite/Postgres in Docker, local WireMock) to mirror real component runtime characteristics.
 - Versioned, repeatable test data.
 - Verify contract-to-state workflows: Validate that boundary inputs result in the correct local state changes and expected outgoing network payloads.
 

@@ -70,13 +70,13 @@ and replace that dependency with a test double.
 - List every external service your tests depend on: databases, APIs, message queues, file
   storage, third-party services.
 - For each dependency, decide the right test double approach:
-  - **In-memory fakes** for databases (e.g., an in-memory repository, or SQLite/H2 standing in
+  - **In-memory fakes** for databases (for example, an in-memory repository, or SQLite/H2 standing in
     for the production engine). Fastest, but they do not exercise real SQL semantics.
   - **A team-controlled real engine in a per-test testcontainer** when the production query
     plan, constraints, or migrations matter. This is a real database, not a fake, but it stays
     deterministic because the team pins the version and isolates state per test, so it runs
     in-band.
-  - **HTTP stubs** for external APIs the team does not control (e.g., WireMock, nock, MSW).
+  - **HTTP stubs** for external APIs the team does not control (for example, WireMock, nock, MSW).
   - **Fakes** for message queues, email services, and other infrastructure.
 - Replace the dependencies in your unit and component tests.
 - Move the original tests that hit real services into a separate suite. These become your
@@ -110,7 +110,7 @@ issues. Set up a contract test for it.
 
 - Write a contract test that validates the response structure (types, required fields, status
   codes) of the dependency's API.
-- Run it on a schedule (e.g., every hour or daily), not on every commit.
+- Run it on a schedule (for example, every hour or daily), not on every commit.
 - When it fails, update your test doubles to match the new reality and re-verify your
   component tests.
 - If the dependency is owned by another team in your organization, explore consumer-driven

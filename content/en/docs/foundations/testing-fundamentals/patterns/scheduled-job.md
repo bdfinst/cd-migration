@@ -43,7 +43,7 @@ Common cases to consider, not an exhaustive list. Drop items that don't apply an
 Common cases to consider, not an exhaustive list. Drop items that don't apply and add ones the pattern doesn't mention but your component needs.
 
 - **Source unavailable**: DB down, source API returning 5xx. Verify the job fails cleanly with a documented exit code/status, doesn't write partial output, and is safely re-runnable.
-- **Sink unavailable**: destination DB or message broker rejects writes. Verify no source state changes (e.g., "marked as processed") happen if the sink fails.
+- **Sink unavailable**: destination DB or message broker rejects writes. Verify no source state changes (for example, "marked as processed") happen if the sink fails.
 - **Partial-write failure**: half the batch writes successfully, then the connection drops. Verify the next run reprocesses the failed half without duplicating the successful half. This is where idempotency keys, transactional outboxes, or compensating reads earn their keep.
 - **Slow job**: job exceeds its expected runtime. Verify it surfaces as alertable, doesn't silently overlap with the next scheduled run, and that the lock prevents concurrent execution.
 - **Malformed source data**: null where non-null was expected, wrong type, encoding issues. Verify the bad record is logged with enough context to investigate, and the job decides per its policy: skip, dead-letter, or fail the whole run. The choice is design; the test pins it.
