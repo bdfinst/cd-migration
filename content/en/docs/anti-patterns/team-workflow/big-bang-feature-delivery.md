@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The planning session produces a feature that will take four to six weeks to complete. The
 feature is assigned to two developers. For the next six weeks, they work in a shared branch,
@@ -56,7 +56,7 @@ The telltale sign: the word "feature" is synonymous with a unit of work that tak
 ships as a single deployment, and the team cannot describe how they would ship the same
 functionality in smaller pieces.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The size of a change determines its risk, its cost to review, its cost to debug, and its time
 in flight before reaching users. Big-bang feature delivery maximizes all of these costs
@@ -141,7 +141,7 @@ until complete. The code merges continuously to main behind a flag. The feature 
 to users until the flag is enabled. The delivery is continuous even though the user-visible
 release happens at a defined moment.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Distinguish delivery from release
 
@@ -233,7 +233,7 @@ guideline.
 | "Our system requires all components to be updated together" | This is an architectural constraint worth addressing. Backward-compatible changes, API versioning, and the expand-contract pattern allow components to be updated independently. Pick one tightly coupled interface, apply the expand-contract pattern this sprint, and measure whether the next change to that interface requires coordinated deployment. |
 | "Code review takes the same amount of time regardless of batch size" | This is not supported by evidence. Review quality and thoroughness decrease sharply with change size. Track actual review time and defect escape rate for your next five large reviews versus your next five small ones - the data will show the difference. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -244,7 +244,7 @@ guideline.
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as features in flight are smaller and complete faster |
 | Production incidents per deployment | Should decrease as smaller deployments carry less risk |
 
-## Related Content
+## Related content
 
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice of breaking large features into small, deliverable slices
 - [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - The mechanism that enables incremental delivery of user-invisible work

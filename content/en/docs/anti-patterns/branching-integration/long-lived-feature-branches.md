@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer creates a branch to build a feature. The feature is bigger than expected. Days pass,
 then weeks. Other developers are doing the same thing on their own branches. Trunk moves forward
@@ -50,7 +50,7 @@ Common variations:
 The telltale sign: if merging a branch requires scheduling a block of time, notifying the team, or
 hoping nothing goes wrong - branches are living too long.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Long-lived feature branches appear safe. Each developer works in isolation, free from interference.
 But that isolation is precisely the problem. It delays integration, hides conflicts, and creates
@@ -145,7 +145,7 @@ changes - only large merges separated by days or weeks of silence.
 Every other CD practice - automated testing, pipeline automation, small batches, fast feedback -
 is undermined when the branching model prevents frequent integration.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure your current branch lifetimes
 
@@ -174,7 +174,7 @@ Make the limit visible:
 The limit creates a forcing function. Developers must either integrate quickly or break their work
 into smaller pieces. Both outcomes are desirable.
 
-### Step 3: Break large features into small, integrable changes (Weeks 2-3)
+### Step 3: Break large features into small, integrable changes (weeks 2-3)
 
 The most common objection is "my feature is too big to merge in a day." This is true when the
 feature is designed as a monolithic unit. The fix is decomposition:
@@ -191,7 +191,7 @@ feature is designed as a monolithic unit. The fix is decomposition:
 Each technique lets developers merge daily without exposing incomplete functionality. The feature
 grows incrementally on trunk rather than in isolation on a branch.
 
-### Step 4: Adopt short-lived branches with daily integration (Weeks 3-4)
+### Step 4: Adopt short-lived branches with daily integration (weeks 3-4)
 
 Change the team's workflow:
 
@@ -208,7 +208,7 @@ above) or discard the branch and start smaller tomorrow.
 Pair this with the team's code review practice. Small changes enable fast reviews, and fast reviews
 enable short-lived branches. The two practices reinforce each other.
 
-### Step 5: Address the objections (Weeks 3-4)
+### Step 5: Address the objections (weeks 3-4)
 
 | Objection                                                      | Response                                                                                                                                                                                                                                              |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -229,7 +229,7 @@ The goal is continuous integration: every developer integrates to trunk at least
 At that point, "branches" are short-lived workspaces that exist for hours, and merging is
 a non-event.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -241,7 +241,7 @@ a non-event.
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as integration overhead drops |
 | Lines changed per merge | Should decrease as changes get smaller |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -249,7 +249,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - When was our last painful merge? What made it painful - time, conflicts, or broken tests?
 - If every branch had to merge within two days, what would we need to change about how we slice work?
 
-## Related Content
+## Related content
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The branching model that eliminates long-lived branches
 - [Code Review]({{< relref "/docs/foundations/code-review" >}}) - Small changes enable fast reviews, which enable short-lived branches

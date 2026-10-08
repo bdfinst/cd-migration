@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer changes a function in the order processing module. The test suite fails in the
 reporting module, the notification service, and a batch job that nobody knew existed. The
@@ -49,7 +49,7 @@ Common variations:
 The telltale sign: developers regularly say "I don't know what this change will affect" and
 mean it. Changes routinely break features that seem unrelated.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Tight coupling turns every change into a gamble. The cost of a change is not proportional to its
 size but to the number of hidden dependencies it touches. Small changes carry large risk, which
@@ -141,7 +141,7 @@ A team with a tightly coupled monolith can still practice CD, but they must inve
 first. Without boundaries, the feedback loops are too slow and the blast radius is too large for
 [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}) to be safe.
 
-## How to Fix It
+## How to fix it
 
 Decoupling a monolith is a long-term effort. The goal is not to rewrite the system or extract
 microservices on day one. The goal is to create boundaries that limit blast radius and enable
@@ -176,7 +176,7 @@ Before changing any code, define where boundaries should be:
 This is a design exercise, not an implementation. The output is a diagram showing target module
 boundaries with their interfaces.
 
-### Step 3: Enforce one boundary (Weeks 3-6)
+### Step 3: Enforce one boundary (weeks 3-6)
 
 Pick the boundary with the best ratio of pain-reduced to effort-required and enforce it in code:
 
@@ -203,7 +203,7 @@ Once a boundary exists, use it to scope testing:
 This immediately reduces pipeline duration for changes inside the bounded module. Developers get
 faster feedback. The pipeline is no longer "run everything for every change."
 
-### Step 5: Repeat for the next boundary (Ongoing)
+### Step 5: Repeat for the next boundary (ongoing)
 
 Each new boundary reduces blast radius, improves test scoping, and enables more independent
 ownership. Prioritize by pain:
@@ -225,7 +225,7 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 | "The coupling is too deep to untangle" | Start with the easiest boundary, not the hardest. Even one well-enforced boundary reduces blast radius and proves the approach works. |
 | "Module boundaries will slow us down" | Boundaries add a small cost to cross-module changes and remove a large cost from within-module changes. Since most changes are within a module, the net effect is faster delivery. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -236,7 +236,7 @@ is not a rewrite. It is incremental boundary enforcement applied where it matter
 | Cross-team coordination requests per sprint | Should decrease as module ownership becomes clearer |
 | Files changed per commit | Should decrease as changes become more localized |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -244,7 +244,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - What was the last time a change in one area broke something unrelated? How long did it take to find the connection?
 - If we were to draw the dependency graph of our system today, where would we see the most coupling?
 
-## Related Content
+## Related content
 
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Strategies for creating module boundaries
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Decoupling enables smaller, safer changes

@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 When a bug appears in the payments module, the team waits for Sarah. She wrote most of it. When
 the reporting service needs a change, it goes to Marcus. He is the only one who understands the
@@ -41,7 +41,7 @@ Common variations:
 The telltale sign: the team's capacity on any given area is limited to one person, regardless of
 team size.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Knowledge silos turn individual availability into a team [constraint]({{< relref "/docs/reference/glossary#constraint" >}}). The team's throughput is
 limited not by how many people are available but by whether the right person is available.
@@ -81,7 +81,7 @@ silos make delivery dependent on specific individuals. If the person who knows t
 process is out, the team cannot deploy. If the person who can review a critical change is in a
 meeting, the change waits.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the knowledge distribution
 
@@ -95,13 +95,13 @@ Stop routing PRs to the original author or designated expert. Configure auto-ass
 distribute reviews across the team. When a developer reviews unfamiliar code, they learn. The
 expert can answer questions, but the review itself is shared.
 
-### Step 3: Pair on siloed areas (Weeks 3-6)
+### Step 3: Pair on siloed areas (weeks 3-6)
 
 When work comes in for a siloed area, pair the expert with another developer. The expert drives
 the first session, the other developer drives the next. Within a few pairing sessions, the
 second developer can work in that area independently.
 
-### Step 4: Rotate assignments (Ongoing)
+### Step 4: Rotate assignments (ongoing)
 
 Stop assigning developers to the same areas repeatedly. When someone finishes work in one area,
 have them pick up work in an area they are less familiar with. The short-term slowdown is an
@@ -113,7 +113,7 @@ investment in long-term team capacity.
 | "Not everyone can learn every part of the system" | They do not need to be experts in everything. They need to be capable of reviewing and making changes with reasonable confidence. Two people who can work in an area is dramatically better than one. |
 | "We tried rotating and velocity dropped" | Velocity drops temporarily during cross-training. It recovers as the team builds shared knowledge, and it becomes more resilient because delivery no longer depends on individual availability. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -122,7 +122,7 @@ investment in long-term team capacity.
 | Bus factor per subsystem | Should increase from one to at least two |
 | Blocked time due to unavailable expert | Should decrease toward zero |
 
-## Related Content
+## Related content
 
 - [Slow Defect Resolution]({{< relref "/docs/symptoms/flow/developer-experience/slow-defect-resolution" >}}) - Bugs take disproportionately long when only one person understands the domain
 - [Blocked Work Sits Idle]({{< relref "/docs/symptoms/flow/work-management/blocked-work-sits-idle" >}}) - Blocked items that cannot be picked up because knowledge is too concentrated

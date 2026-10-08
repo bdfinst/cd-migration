@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team has branches named `release/2.1`, `release/2.2`, and `release/2.3`, each representing a
 version in active use. When a developer fixes a bug on trunk, the fix needs to go into all three
@@ -50,7 +50,7 @@ Common variations:
 The telltale sign: when a developer fixes a bug, the first question is "which branches does
 this need to go into?" - and the answer is usually more than one.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Release branches with backporting look like a reasonable support strategy. Customers want
 stability in the version they have deployed. But the branch strategy trades customer stability
@@ -133,7 +133,7 @@ all affected versions are patched. In CD, a fix from commit to production can ta
 multi-branch environment, the same fix might not reach all affected versions for days, because
 each branch has its own queue of testing and deployment.
 
-## How to Fix It
+## How to fix it
 
 Eliminating release branches requires changing how versioning and customer support commitments
 are handled. The technical changes are straightforward. The harder changes are organizational:
@@ -168,7 +168,7 @@ This is a business decision, not a technical one. Engineering leadership needs t
 product and customer success teams. But without a policy, the technical remediation of the
 branching problem cannot proceed.
 
-### Step 3: Invest in backward compatibility to reduce upgrade friction (Weeks 2-6)
+### Step 3: Invest in backward compatibility to reduce upgrade friction (weeks 2-6)
 
 Many customers stay on old versions because upgrades are painful. If every upgrade requires
 configuration changes, API updates, and re-testing, customers defer upgrades indefinitely.
@@ -183,7 +183,7 @@ Reducing upgrade friction reduces the business pressure to maintain old versions
 The goal is that upgrading from N-1 to N is low-risk and well-supported. Customers who can
 upgrade with little effort will, which reduces the population on old versions.
 
-### Step 4: Replace backporting with forward-only fixes on supported versions (Weeks 4-8)
+### Step 4: Replace backporting with forward-only fixes on supported versions (weeks 4-8)
 
 For versions within the support window, stop cherry-picking from trunk. Instead, fix on the oldest
 supported version and merge forward.
@@ -196,7 +196,7 @@ supported version and merge forward.
 This is still more work than a single fix on trunk, but it eliminates the class of bugs caused
 by backporting a trunk-context fix to incompatible older code.
 
-### Step 5: Reduce to one supported release branch alongside trunk (Weeks 6-12)
+### Step 5: Reduce to one supported release branch alongside trunk (weeks 6-12)
 
 Work toward a state where only the most recent release branch is maintained, with all others
 retired.
@@ -209,7 +209,7 @@ retired.
 Once the team is running trunk and at most one release branch, the maintenance overhead drops
 dramatically. Backporting one version is manageable. Backporting five is not.
 
-### Step 6: Move to trunk-only with feature flags and staged rollouts (Ongoing)
+### Step 6: Move to trunk-only with feature flags and staged rollouts (ongoing)
 
 The end state is trunk-only. Customers on "the current version" get staged access to new features
 through flags. There is one codebase to maintain, one pipeline to run, and one set of tests to
@@ -222,7 +222,7 @@ pass.
 | "Merging branches forward creates conflicts too" | Forward merges are lower-risk than backports because the merge direction follows the chronological development. The conflicts that exist reflect genuine code evolution. Invest the effort in forward merges and retire branches on schedule rather than maintaining an ever-growing backward-facing merge burden. |
 | "Customers won't upgrade even if we ask them to" | Some will not. That is why the support policy must have teeth. After the policy window, the supported upgrade path is to the current version. Continued support for unsupported versions is a separate, charged engagement, not a default obligation. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -233,7 +233,7 @@ pass.
 | Bug regression rate on release branches | Should decrease as backporting with conflict resolution is eliminated |
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as work consolidates on trunk |
 
-## Related Content
+## Related content
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The model that eliminates the need for release branches
 - [Cherry-Pick Releases]({{< relref "/docs/anti-patterns/branching-integration/cherry-pick-releases" >}}) - The earlier-stage pattern that often precedes extensive release branching

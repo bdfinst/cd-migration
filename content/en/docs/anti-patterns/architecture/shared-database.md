@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The orders service, the reporting service, the inventory service, and the notification service all
 connect to the same database. They each have their own credentials but they point at the same
@@ -49,7 +49,7 @@ Common variations:
 The telltale sign: a developer needs to approve a database schema change in a channel that includes
 people from three or more different teams, none of whom own the code being changed.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A shared database couples services together at the storage layer, where the coupling is invisible
 in service code and extremely difficult to untangle. Services that appear independent - separate
@@ -127,7 +127,7 @@ write any column at any time. The database is a global mutable namespace shared 
 and all environments. That pattern is incompatible with the independent deployment cadences that
 CD requires.
 
-## How to Fix It
+## How to fix it
 
 Eliminating a shared database is a long-term effort. The goal is data ownership: each service
 controls its own data and exposes it through explicit APIs. This does not happen overnight. The
@@ -160,7 +160,7 @@ Pick the domain with the cleanest data ownership to pilot the migration. The cri
 A domain like "notification preferences" or "user settings" is often a good candidate. A domain
 like "orders" that is read by everything is a poor starting point.
 
-### Step 3: Build the API for the chosen domain (Weeks 2-4)
+### Step 3: Build the API for the chosen domain (weeks 2-4)
 
 Before removing any direct database access, add an API endpoint that provides the same data.
 
@@ -174,7 +174,7 @@ Before removing any direct database access, add an API endpoint that provides th
 This is the safest phase. If the API has a bug, consumers are still using the database directly.
 No service is broken.
 
-### Step 4: Migrate consumers one at a time (Weeks 4-8)
+### Step 4: Migrate consumers one at a time (weeks 4-8)
 
 Switch consuming services from direct database queries to the new API, one service at a time.
 
@@ -202,7 +202,7 @@ Removing access grants is the only enforcement that actually holds over time. A 
 "don't access other services' databases" will be violated under pressure. Removing the credentials
 makes it a technical impossibility.
 
-### Step 6: Repeat for the next domain (Ongoing)
+### Step 6: Repeat for the next domain (ongoing)
 
 Apply the same pattern to the next domain, working from easiest to hardest. Domains with a single
 clear writer and few readers migrate quickly. Domains that are written by multiple services require
@@ -216,7 +216,7 @@ and making others write through that service's API.
 | "Our reporting needs cross-domain data" | Reporting is a legitimate cross-cutting concern. Build a dedicated reporting data store that receives data from each service via events or a replication mechanism. Reporting reads the reporting store, not production service databases. |
 | "It's too risky to change a working database" | The migration adds an API alongside the existing access - nothing is removed until consumers have moved over. The risk of each step is small. The risk of leaving the shared database in place is ongoing coordination overhead and surprise breakage. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -227,7 +227,7 @@ and making others write through that service's API.
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as schema migrations stop blocking delivery |
 | Failed deployments due to schema mismatch | Should decrease toward zero as direct cross-service database access is removed |
 
-## Related Content
+## Related content
 
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - The broader strategy for reducing service coupling
 - [No Contract Testing]({{< relref "/docs/anti-patterns/testing/no-contract-testing" >}}) - Verifying API boundaries between services
