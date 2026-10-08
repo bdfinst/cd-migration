@@ -239,7 +239,7 @@ A work item is ready when:
 ## Meeting Cadence
 - Standup: [time, frequency]
 - Retrospective: [frequency]
-- Working agreement review: [frequency, e.g., monthly]
+- Working agreement review: [frequency, for example monthly]
 
 ## Agreement Review
 This agreement is reviewed and updated [monthly / quarterly].
