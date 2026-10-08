@@ -396,22 +396,22 @@ Avoid nesting flags whenever possible. If feature B depends on feature A, do not
 
 These specific patterns are the most common ways teams fail at flag cleanup.
 
-**Don't skip the removal ticket:**
+**Do not skip the removal ticket:**
 
 - WRONG: "We'll remove it later when we have time"
 - RIGHT: Create a removal ticket at the same time you create the flag
 
-**Don't leave flags after full rollout:**
+**Do not leave flags after full rollout:**
 
 - WRONG: Flag still in code 6 months after 100% rollout
 - RIGHT: Remove within 2-4 weeks of full rollout
 
-**Don't forget to remove the old code path:**
+**Do not forget to remove the old code path:**
 
 - WRONG: Flag removed but old implementation still in the codebase
 - RIGHT: Remove the flag check AND the old implementation together
 
-**Don't keep flags "just in case":**
+**Do not keep flags "just in case":**
 
 - WRONG: "Let's keep it in case we need to roll back in the future"
 - RIGHT: After the stability period, rollback is handled by deployment, not by re-enabling a flag
