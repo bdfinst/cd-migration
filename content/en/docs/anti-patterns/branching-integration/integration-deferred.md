@@ -37,7 +37,7 @@ Common variations:
 - **The nightly build.** The build runs once per day, overnight. Developers find out the next
   morning whether yesterday's work broke something. By then they have moved on to new work and
   lost context on what they changed.
-- **The "CI" that is just compilation.** The build server compiles the code and nothing else. No
+- **The "CI" that only compiles.** The build server compiles the code and nothing else. No
   tests run. No static analysis. The build is green as long as the code compiles, which tells the
   team almost nothing about whether the software works.
 - **The manually triggered build.** The build server exists, but it does not run on push. After
@@ -59,7 +59,7 @@ continuous integration is not happening.
 
 Continuous integration is not a tool - it is a practice. The practice requires that every developer
 integrates to a shared trunk at least once per day and that the team treats a broken build as the
-highest-priority problem. Without the practice, the build server is just infrastructure generating
+highest-priority problem. Without the practice, the build server is only infrastructure generating
 notifications that nobody reads.
 
 ### It reduces quality
@@ -171,7 +171,7 @@ The build status must be impossible to ignore:
 
 Visibility creates accountability. When the whole team can see that the build broke at 2:15 PM
 and who broke it, social pressure keeps people attentive. When failures are buried in email
-notifications, they are easily ignored.
+notifications, people ignore them.
 
 ### Step 3: Require integration at least once per day
 
@@ -242,7 +242,7 @@ the team works.
 
 ## Related Content
 
-- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - CI requires integrating to a shared trunk, not just building branches
+- [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - CI requires integrating to a shared trunk, not only building branches
 - [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - The pipeline infrastructure that CI depends on
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Fast, reliable tests are essential for a CI build that teams trust
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - Long branches prevent daily integration and are both a cause and symptom of missing CI

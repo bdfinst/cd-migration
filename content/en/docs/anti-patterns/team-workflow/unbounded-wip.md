@@ -19,7 +19,7 @@ tags:
 ## What This Looks Like
 
 The team's board has no column limits. Developers pull new items whenever they feel ready -
-when they are blocked, waiting for review, or simply between tasks. Nobody stops to ask whether
+when they are blocked, waiting for review, or between tasks. Nobody stops to ask whether
 the team already has too much in flight. The number of items in progress grows without anyone
 noticing because there is no signal that says "stop starting, start finishing."
 

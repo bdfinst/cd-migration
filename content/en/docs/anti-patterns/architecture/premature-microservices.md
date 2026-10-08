@@ -186,7 +186,7 @@ If any answer is unsatisfactory, keep it as a module.
 
 ## Related Content
 
-- [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - When the boundaries are wrong, not just premature
+- [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - When the boundaries are wrong, not only premature
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - How to create real boundaries, whether in a monolith or between services
 - [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The operational maturity gap that makes microservices unmanageable
 - [Multiple Services Must Be Deployed Together]({{< relref "/docs/symptoms/deployment/coordinated-deployments" >}}) - The symptom that reveals unnecessary service coupling

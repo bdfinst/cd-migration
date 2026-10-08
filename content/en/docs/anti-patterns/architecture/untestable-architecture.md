@@ -42,7 +42,7 @@ Common variations:
   static methods, which eventually call external services. Static calls cannot be intercepted or
   mocked without bytecode manipulation.
 - **Hardcoded external dependencies.** Service URLs, API keys, and connection strings baked into
-  source code rather than injected as configuration. The code is not just untestable - it is also
+  source code rather than injected as configuration. The code is not only untestable - it is also
   not configurable across environments.
 - **God classes with mixed concerns.** A class that handles HTTP request parsing, business
   logic, database writes, and email sending in the same methods. You cannot test the business logic
@@ -56,7 +56,7 @@ is "you would have to refactor it first."
 
 ## Why This Is a Problem
 
-Untestable architecture does not just make tests hard to write. It is a symptom that business logic
+Untestable architecture does more than make tests hard to write. It is a symptom that business logic
 is entangled with infrastructure, which makes every change harder and every defect costlier.
 
 ### It reduces quality
@@ -79,7 +79,7 @@ immediate feedback every time the code is changed.
 ### It increases rework
 
 A developer who cannot safely verify a change ships it and hopes. Bugs discovered later require returning to code the developer thought was done - often days or weeks after the context is gone. When a developer needs to
-modify behavior in a class that has no tests and cannot easily be tested, they make the change and
+modify behavior in a class that has no tests and is hard to test, they make the change and
 then verify it by running the application manually or relying on end-to-end tests. They cannot be
 confident that the change did not break a code path they did not exercise.
 
