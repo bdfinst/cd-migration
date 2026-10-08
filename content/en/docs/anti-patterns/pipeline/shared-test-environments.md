@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 There is one staging environment. Every team that needs to test a deploy before releasing to production uses it. A Slack channel called `#staging-deploys` or a shared calendar manages access: teams announce when they are deploying, other teams wait, and everyone hopes the sequence holds.
 
@@ -34,7 +34,7 @@ Common variations:
 
 The telltale sign: when a staging test run fails, the first question is "who else is deploying to staging right now?" rather than "what is wrong with the code?"
 
-## Why This Is a Problem
+## Why this is a problem
 
 A shared environment is a shared resource, and shared resources become bottlenecks. When the environment is also stateful and mutable, every team that uses it has the ability to disrupt every other team that uses it.
 
@@ -68,7 +68,7 @@ CD requires the ability to deploy at any time, not at the time when staging happ
 
 The CD goal of continuous, low-batch deployment requires that each team be able to verify and deploy their changes independently and on demand. Independent pipelines with isolated environments are the infrastructure that makes that independence possible.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the current usage and contention patterns
 
@@ -101,7 +101,7 @@ Some organizations need a single shared environment as a final integration check
 | "Setting up and tearing down data for every test run is too much work." | This work pays for itself quickly in reduced debugging time. Tests that rely on shared state are fragile regardless of the environment - the investment in proper test data management improves test quality across the board. |
 | "We need to test all services together before releasing." | Retain a shared integration environment as the final pipeline stage, deployed to automatically by CI rather than manually by teams. Reserve it for final integration checks, not for development-time testing. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -111,7 +111,7 @@ Some organizations need a single shared environment as a final integration check
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in changes queued waiting for staging, as teams no longer serialize on a shared resource |
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often once the shared environment bottleneck is removed |
 
-## Related Content
+## Related content
 
 - [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})

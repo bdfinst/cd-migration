@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The deployment completes. The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) shows green. The release engineer posts in Slack: "Deploy
 done, watching for issues." For the next fifteen minutes, someone is refreshing the monitoring
@@ -57,7 +57,7 @@ Common variations:
 The telltale sign: the person who deployed cannot describe specifically what would need to happen
 in the monitoring system for them to declare the deployment failed and trigger a [rollback]({{< relref "/docs/reference/glossary#rollback" >}}).
 
-## Why This Is a Problem
+## Why this is a problem
 
 Without automated health checks, the deployment pipeline ends before the deployment is actually
 verified. The team is flying blind for a period after every deployment, relying on manual
@@ -136,7 +136,7 @@ criteria. If those criteria are not met, rollback is triggered automatically. Th
 the health check results, not the application itself. This is the difference between deploying
 with confidence and deploying with hope.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Define what "healthy" means for each service
 
@@ -243,7 +243,7 @@ window.
 | "Our smoke tests will be unreliable in production" | Tests that are unreliable in production are unreliable in staging too - they are failing quietly. Fix the test reliability problem. A flaky smoke test that occasionally triggers false rollbacks is better than no smoke test that misses real failures. |
 | "We cannot afford the development time to write smoke tests" | The cost of writing smoke tests is far less than the cost of even one undetected bad deployment that causes a lengthy incident. Estimate the cost of the last three production incidents that a post-deployment health check would have caught, and compare. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -254,7 +254,7 @@ window.
 | Rollback time | Should drop to under five minutes with automated rollback |
 | Post-deployment watching time (human hours) | Should reach zero as automated checks replace manual watching |
 
-## Related Content
+## Related content
 
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback is the other half of automated health checks
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Health checks must run in environments that reflect production behavior

@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Your team has tests. They are written, they pass when they run, and everyone agrees they are valuable. The problem is that no automated process runs them. Developers are expected to execute the test suite locally before pushing changes, but "expected to" and "actually do" diverge quickly under deadline pressure. A pipeline might exist, but triggering it requires navigating to a UI and clicking a button - something that gets skipped when the fix feels obvious or when the deploy is already late.
 
@@ -32,7 +32,7 @@ Common variations:
 
 The telltale sign: the team cannot point to a system that will refuse to deploy code if the tests have not passed within the last pipeline run.
 
-## Why This Is a Problem
+## Why this is a problem
 
 When test execution depends on human initiative, you lose the only property that makes tests useful as a safety net: consistency.
 
@@ -64,7 +64,7 @@ CD requires that the main branch be releasable at any time. That property cannot
 
 The feedback loop that CD depends on - commit, verify, fix, repeat - collapses when verification is optional. Developers lose the fast signal that automated tests provide, start making larger changes between test runs to amortize the manual effort, and the batch size of unverified work grows. CD requires small batches and fast feedback; manually triggered tests produce the opposite.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit what tests exist and where they live
 
@@ -93,7 +93,7 @@ Configure your deployment tooling to require a passing pipeline run before any d
 | "We do not have a CI system set up." | Most source control hosts (GitHub, GitLab, Bitbucket) include CI tooling at no additional cost. Setup time is typically under a day for basic pipelines. |
 | "Our tests are flaky and will block everyone if we make them required." | Flaky tests are a separate problem that needs fixing, but that does not mean tests should stay optional. Quarantine known flaky tests and fix them while running the stable ones automatically. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -103,7 +103,7 @@ Configure your deployment tooling to require a passing pipeline run before any d
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Shorter repair cycles because defects are caught earlier when the developer still has context |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduced waiting time between code complete and merge as manual QA handoff steps are eliminated |
 
-## Related Content
+## Related content
 
 - [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})
 - [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}})

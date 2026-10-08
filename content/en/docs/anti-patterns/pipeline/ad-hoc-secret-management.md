@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The database password lives in `application.properties`, checked into the repository. The API key for the payment processor is in a `.env` file that gets copied manually to each server by whoever is doing the deploy. The SSH key for production access was generated two years ago, exists on three engineers' laptops and in a shared drive folder, and has never been rotated because nobody knows whether removing it from the shared drive would break something.
 
@@ -33,7 +33,7 @@ Common variations:
 
 The telltale sign: if a developer left the company today, the team could not confidently enumerate and rotate every credential that person had access to.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Unmanaged secrets create security exposure that compounds over time.
 
@@ -67,7 +67,7 @@ CD requires that deployment be a reliable, automated, repeatable process. Any st
 
 Automated secret injection is a prerequisite for fully automated deployment. The pipeline must be able to retrieve and inject the credentials it needs without human intervention. That requires a vault with machine-readable APIs, service account credentials for the pipeline itself (managed in the vault, not ad hoc), and application code that reads secrets from the injected environment rather than from hardcoded values.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit the current secret inventory
 
@@ -100,7 +100,7 @@ Configure the vault so that each application and each pipeline role can access o
 | "We do not know which secrets are in the git history." | Scanning tools like `truffleHog` or `gitleaks` can scan the full git history across all branches. Run the scan, compile the list, rotate everything found, and set up pre-commit prevention to stop recurrence. |
 | "Rotating credentials will break things." | This is accurate in ad hoc secret management environments where secrets are scattered across many systems. The solution is not to avoid rotation but to fix the scatter by centralizing secrets in a vault, after which rotation becomes a single-system operation. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -110,7 +110,7 @@ Configure the vault so that each application and each pipeline role can access o
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams deploy more often when credential management is not a manual bottleneck on each deploy |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time new environments take to become operational when credential injection is automated |
 
-## Related Content
+## Related content
 
 - [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
 - [Application configuration management]({{< relref "/docs/pipeline/application-config" >}})

@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 When a new environment is needed, someone files a ticket to a platform or operations team. The ticket describes the server size, the operating system, and the software that needs to be installed. The operations engineer logs into a cloud console or a physical rack, clicks through a series of forms, runs some installation commands, and emails back when the environment is ready. The turnaround is measured in days, sometimes weeks.
 
@@ -32,7 +32,7 @@ Common variations:
 
 The telltale sign: the team cannot destroy an environment and recreate it from source control in a repeatable, automated way.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual infrastructure provisioning turns every environment into a unique artifact. That uniqueness undermines every guarantee the rest of the delivery pipeline tries to make.
 
@@ -66,7 +66,7 @@ CD requires that any commit be deployable to production at any time. Achieving t
 
 Infrastructure as code is a prerequisite for the production-like environments that give pipeline test results their meaning. Without it, the team cannot know whether a passing pipeline run reflects passing behavior in an environment that resembles production. CD confidence comes from automated, reproducible environments, not from careful human assembly.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document what exists
 
@@ -99,7 +99,7 @@ Delete an environment entirely and recreate it from source control alone, with n
 | "The operations team owns infrastructure, not us." | Infrastructure as code does not eliminate the operations team - it changes their work from manual provisioning to reviewing and merging code. Bring them into the process as authors and reviewers. |
 | "We have pet servers with years of state on them." | Start with new environments and new services. You do not have to migrate everything at once. Expand coverage as services are updated or replaced. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -109,7 +109,7 @@ Delete an environment entirely and recreate it from source control alone, with n
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increased deployment frequency as environment availability stops being a blocking constraint |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in time developers spend waiting for environment provisioning tickets to be fulfilled |
 
-## Related Content
+## Related content
 
 - [Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})
 - [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})

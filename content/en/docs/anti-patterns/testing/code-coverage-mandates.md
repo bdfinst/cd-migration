@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The organization sets a coverage target - 80%, 90%, sometimes 100% - and gates the pipeline on
 it. Teams scramble to meet the number. The dashboard turns green. Leadership points to the metric
@@ -41,7 +41,7 @@ Common variations:
 The telltale sign: coverage goes up and defect rates stay flat. The team has more tests but not
 more confidence.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A coverage mandate confuses activity with outcome. The goal is defect prevention, but the metric
 measures line execution. Teams optimize for the metric and the goal drifts out of focus.
@@ -102,7 +102,7 @@ supports CD. Every refactoring risks dropping coverage, triggering the gate, and
 pipeline. Teams avoid cleanup work because the coverage cost is too high. The codebase accumulates
 complexity that makes future changes slower and riskier.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit what the coverage number actually represents
 
@@ -162,7 +162,7 @@ informational rather than a gate.
 | "Coverage went up and we had fewer bugs - it's working" | Correlation is not causation. Check whether the coverage increase came from meaningful tests or from assertion-free line touching. If the mutation score did not also improve, the coverage increase is cosmetic. |
 | "We need a number to track improvement" | Track mutation score instead. It measures what coverage pretends to measure - whether your tests actually detect bugs. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -173,7 +173,7 @@ informational rather than a gate.
 | Time spent writing retroactive coverage tests | Should decrease toward zero |
 | Pipeline rejections due to coverage gate | Should drop to zero once gate is replaced with floor |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - When most tests are at the wrong level

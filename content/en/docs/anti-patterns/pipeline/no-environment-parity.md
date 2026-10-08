@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Your staging environment was built to be "close enough" to production. The application runs, the tests pass, and the deploy to staging completes without errors. Then the deploy to production fails, or succeeds but exhibits different behavior - slower response times, errors on specific code paths, or incorrect data handling that nobody saw in staging.
 
@@ -35,7 +35,7 @@ Common variations:
 
 The telltale sign: when a production failure is investigated, the first question is "what is different between staging and production?" and the answer requires manual comparison because nobody has documented the differences.
 
-## Why This Is a Problem
+## Why this is a problem
 
 An environment that does not match production is an environment that validates a system you do not run. Every passing test run in a mismatched environment overstates your confidence and understates your risk.
 
@@ -65,7 +65,7 @@ CD depends on the ability to verify that a change is safe before releasing it to
 
 Production-like environments are an explicit CD prerequisite. Without parity, the pipeline's quality gates are measuring the wrong thing. Passing the pipeline means the change works in the test environment, not that it will work in production. CD confidence requires that "passes the pipeline" and "works in production" be synonymous, which requires that the pipeline run in a production-like environment.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document the differences between all environments
 
@@ -98,7 +98,7 @@ Define both environments as instances of the same infrastructure code, with only
 | "The production environment has unique compliance configuration we cannot replicate." | Compliance configuration should itself be managed as code. If it cannot be replicated in staging, create a pre-production compliance environment and route the final pipeline stage through it. |
 | "Keeping them in sync requires constant coordination." | This is exactly the problem that infrastructure as code solves. When both environments are instances of the same code, keeping them in sync is the same as keeping the code consistent. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -108,7 +108,7 @@ Define both environments as instances of the same infrastructure code, with only
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Teams release more often when they trust that staging results predict production behavior |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Fewer debugging cycles that turn out to be environment problems rather than application problems |
 
-## Related Content
+## Related content
 
 - [Production-like environments]({{< relref "/docs/pipeline/production-like-environments" >}})
 - [No infrastructure as code]({{< relref "/docs/anti-patterns/pipeline/no-infrastructure-as-code" >}})

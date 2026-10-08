@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Staging has a different version of the database than production. The dev environment has a library
 installed that nobody remembers adding. Production has a configuration file that was edited by hand
@@ -50,7 +50,7 @@ Common variations:
 The telltale sign: deploying the same artifact to two environments produces different results,
 and the team's first instinct is to check environment configuration rather than application code.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Snowflake environments undermine the fundamental premise of testing: that the behavior you observe
 in one environment predicts the behavior you will see in another. When every environment is
@@ -134,7 +134,7 @@ because each deployment risks hitting an environment-specific issue. They cannot
 fully because the environments require manual intervention. The path from commit to production
 is neither continuous nor reliable.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document what exists today
 
@@ -215,7 +215,7 @@ loss and no human intervention:
 | "Our environments are managed by another team" | Work with them. Provide the specification. If they provision from your code, you both benefit: they have a reproducible process and you have predictable environments. |
 | "Containers solve this problem" | Containers solve application-level consistency. You still need infrastructure-as-code for the platform the containers run on - networking, storage, secrets, load balancers. Containers are part of the solution, not the whole solution. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -226,7 +226,7 @@ loss and no human intervention:
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as environments become reproducible |
 | Time spent debugging environment issues | Track informally - should approach zero |
 
-## Related Content
+## Related content
 
 - [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Infrastructure, configuration, and environments defined in source control
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Ensuring test environments match production

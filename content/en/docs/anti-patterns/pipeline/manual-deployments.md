@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team has a CI server. Code is built and tested automatically on every push. The pipeline
 dashboard is green. But between "pipeline passed" and "code running in production," there is a
@@ -56,7 +56,7 @@ Common variations:
 The telltale sign: if the pipeline is green but the team still needs to "do a deploy" as a
 separate activity, deployment is manual.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A manual deployment negates much of the value that an automated build and test pipeline provides.
 The pipeline can validate code in minutes, but if the last mile to production requires a human,
@@ -161,7 +161,7 @@ The pipeline is only half the delivery system. Automating the build and tests wi
 the deployment is like paving a highway that ends in a dirt road. The speed of the paved section
 is irrelevant if every journey ends with a slow, bumpy last mile.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Script the current manual process
 
@@ -240,7 +240,7 @@ Once deployments are automated, invest in knowing whether they worked:
 
 The team should be able to deploy without watching. The monitoring watches for them.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -251,7 +251,7 @@ The team should be able to deploy without watching. The monitoring watches for t
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as rollback becomes automated |
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as the deployment bottleneck is removed |
 
-## Related Content
+## Related content
 
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - How to structure a pipeline that includes deployment
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - Every change follows the same automated path through the same pipeline

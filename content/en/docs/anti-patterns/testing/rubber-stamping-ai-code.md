@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer uses an AI assistant to implement a feature. The AI produces working code. The
 developer glances at it, confirms the tests pass, and commits. In the code review, the
@@ -52,7 +52,7 @@ The telltale sign: when a bug appears in AI-generated code, the developer who co
 cannot describe what the change was supposed to do or what acceptance criteria it was verified
 against.
 
-## Why This Is a Problem
+## Why this is a problem
 
 ### It creates unverifiable code
 
@@ -101,7 +101,7 @@ the team's mean time to recovery increases because they have no documented inten
 against. When a requirement changes, the developers cannot assess the impact because there is
 no record of what the current behavior was supposed to be.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Establish the "own it or don't commit it" rule (Week 1)
 
@@ -164,7 +164,7 @@ catch wrong behavior.
 | "We have high test coverage already" | Coverage measures execution, not correctness. A test that executes a code path but does not assert on its behavior provides coverage without confidence. Mutation testing reveals whether the coverage is meaningful. |
 | "Requiring developers to explain everything is too much overhead" | The rule is not "trace every line." It is "explain what the change does and how you validated it." A developer who owns the change can answer those questions in two minutes. A developer who cannot answer them should not commit it. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -174,7 +174,7 @@ catch wrong behavior.
 | Mutation testing survival rate | Should decrease as test assertions become more specific |
 | Mean time to resolve defects in AI-generated code | Should decrease as documented intent and criteria make it faster to identify what went wrong |
 
-## Related Content
+## Related content
 
 - [AI-Generated Code Ships Without Developer Understanding]({{< relref "/docs/symptoms/testing/ai-code-without-understanding" >}}) - The symptom this anti-pattern produces
 - [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}) - Failure modes when adopting AI coding tools

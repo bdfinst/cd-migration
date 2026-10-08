@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Before any deployment to production, a specific person - often a QA lead or test manager -
 must give explicit approval. The approval is based on running a manual test script, performing
@@ -48,7 +48,7 @@ Common variations:
 The telltale sign: the deployment frequency ceiling is the QA lead's available hours per week.
 If they are on holiday, releases stop.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual release gates are a quality control mechanism designed for a world where testing
 automation did not exist. They made sense when the only way to know if a system worked was to
@@ -137,7 +137,7 @@ a review and obtaining sign-off, teams batch changes to make each deployment wor
 Batching increases risk, which makes the approval process feel more important, which increases
 the ceremony further. CD requires breaking this cycle by making deployment routine.
 
-## How to Fix It
+## How to fix it
 
 Replacing a manual release gate requires building the automated confidence to substitute for
 the manual judgment. The gate is not removed on day one - it is replaced incrementally as
@@ -238,7 +238,7 @@ Expect pushback and address it directly:
 | "Compliance requires a human approval before every production change" | Automated pipeline approvals with an audit log satisfy most compliance frameworks, including SOC 2 and ISO 27001. Review the specific compliance requirement with legal or a compliance specialist before assuming it requires manual gates. |
 | "Removing the gate will make the QA lead feel sidelined" | Shifting from gate-keeper to quality engineer is a broader and more impactful role. Work with the QA lead to design what their role looks like in a pipeline-first model. Quality engineering, test strategy, and exploratory testing are all high-value activities that do not require blocking every release. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -249,7 +249,7 @@ Expect pushback and address it directly:
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should remain stable or improve as automated criteria are strengthened |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as deployments, including hotfixes, are no longer queued behind a manual gate |
 
-## Related Content
+## Related content
 
 - [Testing Only at the End]({{< relref "/docs/anti-patterns/testing/testing-only-at-the-end" >}}) - The upstream pattern that makes the manual gate feel necessary
 - [Manual Regression Testing Gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}}) - The specific regression testing practice that often drives this gate
