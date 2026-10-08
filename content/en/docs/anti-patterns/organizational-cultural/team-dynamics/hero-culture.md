@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Every team has that one person - the one you call when the production deployment goes sideways at 11 PM, the one who knows which config file to change to fix the mysterious startup failure, the one whose vacation gets cancelled when the quarterly release hits a snag. This person is praised, rewarded, and promoted for their heroics. They are also a single point of failure quietly accumulating more irreplaceable knowledge with every incident they solo.
 
@@ -30,7 +30,7 @@ Common variations:
 
 The telltale sign: there is at least one person on the team whose absence would cause a visible degradation in the team's ability to deploy or respond to incidents.
 
-## Why This Is a Problem
+## Why this is a problem
 
 When your hero is on vacation, critical deployments stall. When they leave the company, institutional knowledge leaves with them. The system appears robust because problems get solved, but the problem-solving capacity is concentrated in people rather than distributed across the team and encoded in systems.
 
@@ -66,7 +66,7 @@ CD also requires that every team member be able to see a failing build, understa
 
 More subtly, hero culture prevents the team from building the automation that makes CD possible. Automating a process requires understanding it well enough to encode it. Heroes understand the process but have no time to automate. Other team members have time but not understanding. The gap persists.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map knowledge concentration
 
@@ -116,7 +116,7 @@ Expect pushback and address it directly:
 | "Customers will suffer if we rotate on-call before everyone is ready." | Define "ready" with a shadow rotation rather than waiting for readiness that never arrives. Shadow first, escalation path second, independent third. |
 | "The hero doesn't want to give up control." | Frame it as opportunity. When the hero's routine work is distributed, they can take on the architectural and strategic work they do not currently have time for. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Track carefully: may temporarily increase as less-experienced team members take ownership, then should improve |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction as the hero bottleneck clears and work stops waiting for one person |
 
-## Related Content
+## Related content
 
 - [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared ownership expectations that prevent hero dependencies from forming
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - automated rollback reduces the need for a hero to manually recover from bad deployments

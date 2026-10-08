@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A stakeholder announces a launch date. The team has not estimated the work. The date is not based
 on the team's capacity or the scope of the feature. It is based on a business event, an executive
@@ -45,7 +45,7 @@ Common variations:
 The telltale sign: the team cannot remember the last sprint where they were not rushing to meet
 someone else's date.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Arbitrary deadlines create a cycle where cutting corners today makes the team slower tomorrow,
 which makes the next deadline even harder to meet, which requires more corners to be cut. Each
@@ -103,7 +103,7 @@ CD also requires a sustainable pace. A team that is always in crunch cannot step
 automate a deployment, improve a test suite, or set up monitoring. These improvements require
 protected time that deadline-driven organizations never provide.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Make the cost visible
 
@@ -140,7 +140,7 @@ commitments should be more reliable. Use this data to make the case for continui
 | "We don't have time for sustainability work" | You are already paying for it in rework, production incidents, and slow delivery. The question is whether you pay proactively (20 percent reserved capacity) or reactively (40 percent lost to accumulated debt). |
 | "The team met the last deadline, so they can meet this one" | They met it by burning overtime and cutting quality. Check the defect rate, the rework in subsequent sprints, and the team's morale. The deadline was "met" by borrowing from the future. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -150,7 +150,7 @@ commitments should be more reliable. Use this data to make the case for continui
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as quality stops being sacrificed for deadlines |
 | Unplanned work percentage | Should decrease as accumulated debt is paid down |
 
-## Related Content
+## Related content
 
 - [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}}) - Deadline pressure is the most common reason teams skip tests
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing "quality is not negotiable" as a team norm

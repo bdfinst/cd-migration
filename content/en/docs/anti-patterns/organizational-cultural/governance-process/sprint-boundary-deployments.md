@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team runs two-week sprints. The sprint demo happens on Friday. Deployment to production
 happens on Friday after the demo, or sometimes the following Monday morning. Every story
@@ -59,7 +59,7 @@ Common variations:
 The telltale sign: a developer who finishes a story on day two is told to "mark it done for
 sprint review" rather than "deploy it now."
 
-## Why This Is a Problem
+## Why this is a problem
 
 The sprint is a planning and learning cadence. It is not a deployment cadence. When the
 sprint becomes the deployment cadence, the team inherits all of the problems of infrequent
@@ -140,7 +140,7 @@ The goal is to decouple the deployment cadence from the sprint cadence. Stories 
 when they are ready, not when the calendar says. The sprint remains a planning and review
 cadence. It is no longer a deployment cadence.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Separate the deployment conversation from the sprint conversation
 
@@ -223,7 +223,7 @@ boundaries:
 | "Our team is not confident enough to deploy without the sprint as a safety net" | The sprint boundary is not a safety net - it is a delay. The actual safety net is the test suite, the code review process, and the automated deployment with health checks. Invest in those rather than in the calendar. |
 | "We are a regulated industry and need approval before deployment" | Review the actual regulation. Most require documented approval of changes, not deployment gating. Code review plus a passing automated pipeline provides a documented approval trail. Schedule a meeting with your compliance team and walk them through what the automated pipeline records - most find it satisfies the requirement. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -234,7 +234,7 @@ boundaries:
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should decrease as "done but not deployed" stories are eliminated |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as production defects can be fixed and deployed immediately |
 
-## Related Content
+## Related content
 
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - The principle that reduces deployment risk by reducing deployment size
 - [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Decoupling deployment from user visibility for product owner approval workflows

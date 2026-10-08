@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 During sprint review, a manager pulls up a report showing how many [story points]({{< relref "/docs/reference/glossary#story-points" >}}) each developer
 completed. Sarah finished 21 points. Marcus finished 13. The manager asks Marcus what happened.
@@ -40,7 +40,7 @@ Common variations:
 The telltale sign: developers spend time managing how their work appears in Jira rather than
 managing the work itself.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Velocity was designed as a team planning tool. It helps the team forecast how much work they can
 take into a sprint. When management repurposes it as an individual performance metric, every
@@ -96,7 +96,7 @@ behaviors. Developers hoard work, avoid reviews, and resist pairing because none
 points. The team becomes a collection of individuals optimizing their own metrics rather than a
 unit delivering software together.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Stop reporting individual velocity
 
@@ -136,7 +136,7 @@ throughput.
 | "We need metrics for performance reviews" | Use qualitative signals: code review quality, mentoring, incident response, knowledge sharing. These measure what actually matters for team performance. |
 | "Developers will slack off without accountability" | Teams with shared ownership and clear sprint commitments create stronger accountability than individual tracking. Peer expectations are more motivating than management scorecards. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -145,7 +145,7 @@ throughput.
 | Team velocity variance | Should decrease as estimates become honest planning tools |
 | Collaboration indicators (pairing, review participation) | Should increase as helping others stops being a career risk |
 
-## Related Content
+## Related content
 
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Making "velocity is a team planning tool" an explicit norm
 - [Metrics-Driven Improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - Choosing metrics that drive the right behavior

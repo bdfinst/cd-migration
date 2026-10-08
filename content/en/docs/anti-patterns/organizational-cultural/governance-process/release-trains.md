@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The schedule is posted in the team wiki: releases go out every Thursday at 2 PM. There is
 a code freeze starting Wednesday at noon. If your change is not merged by Wednesday noon, it
@@ -59,7 +59,7 @@ The telltale sign: developers finishing their work on Thursday afternoon immedia
 whether they will make the Wednesday cutoff for the next week's train, or whether they are
 looking at a two-week wait.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The release train creates an artificial constraint on when software can reach users. The
 constraint is disconnected from the quality or readiness of the software. A change that is
@@ -138,7 +138,7 @@ practice, it provides the structure of safety without the substance. A train ful
 accumulated changes is more dangerous than a single change deployed on its own, regardless
 of how carefully the train departure was scheduled.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Make train departures more frequent
 
@@ -226,7 +226,7 @@ Expect pushback and address it directly:
 | "Missing the train means a two-week wait - that motivates people to hit their targets" | Motivating with artificial scarcity is a poor engineering practice. The motivation to ship on time should come from the value delivered to users, not from the threat of an arbitrary delay. Track how often changes miss the train due to circumstances outside the team's control, and bring that data to the next retrospective. |
 | "We have always done it this way and our release process is stable" | Stable does not mean optimal. A weekly release train that works reliably is still deploying twelve changes at once instead of one, and still adding up to a week of delay to every change. Double the departure frequency for one month and compare the change fail rate - the data will show whether stability depends on the schedule or on the quality of each change. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -237,7 +237,7 @@ Expect pushback and address it directly:
 | Maximum wait time for a ready change | Should decrease from days to hours |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as smaller deployments are faster to diagnose and roll back |
 
-## Related Content
+## Related content
 
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - A consistent automated path replaces manual coordination
 - [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Decoupling deployment from release removes the need for coordinated release windows

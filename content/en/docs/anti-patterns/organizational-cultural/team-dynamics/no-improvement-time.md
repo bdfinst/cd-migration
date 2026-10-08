@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The sprint planning meeting begins. The product manager presents the list of features and fixes that need to be delivered this sprint. The team estimates them. They fill to capacity. Someone mentions the flaky test suite that takes 45 minutes to run and fails 20% of the time for non-code reasons. "We'll get to that," someone says. It goes on the backlog. The backlog item is a year old.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the team can identify specific improvements that would meaningfully accelerate delivery but cannot point to any sprint in the last three months where those improvements were prioritized.
 
-## Why This Is a Problem
+## Why this is a problem
 
 The test suite that takes 45 minutes and fails 20% of the time for non-code reasons costs each developer hours of wasted time every week - time that compounds sprint after sprint because the fix was never prioritized. A team operating at 100% utilization has zero capacity to improve. Every hour spent on features at the expense of improvement is an hour that makes the next hour of feature development slower.
 
@@ -67,7 +67,7 @@ The teams that achieve and sustain CD are not the ones that got lucky with an ea
 
 Teams that allocate zero time to improvement typically never begin the CD journey, or begin it and stall when the initial improvements erode under feature pressure.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Quantify the cost of not improving
 
@@ -117,7 +117,7 @@ Expect pushback and address it directly:
 | "This sounds like a lot of overhead for 'fixing stuff.'" | The overhead is the visibility that protects the improvement allocation from being displaced by feature pressure. Without visibility, improvement time is the first thing cut when a sprint gets tight. |
 | "Developers should just do this as part of their normal work." | They cannot, because "normal work" is 100% features. The allocation makes improvement legitimate, scheduled, and protected. That is the structural change needed. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -128,7 +128,7 @@ Expect pushback and address it directly:
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction as tech debt reduction and test automation make features faster to build and verify |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Improvement items in progress alongside features, demonstrating the allocation is real |
 
-## Related Content
+## Related content
 
 - [Metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) - use delivery metrics to identify where improvement investment has the highest return
 - [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - retrospectives are the forum where improvement items should be identified and prioritized

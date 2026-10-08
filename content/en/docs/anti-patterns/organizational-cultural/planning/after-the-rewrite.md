@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The engineering team has a plan. The current system is a fifteen-year-old monolith: undocumented,
 tightly coupled, slow to build, and painful to deploy. Everyone agrees it needs to be replaced.
@@ -52,7 +52,7 @@ Common variations:
 The telltale sign: the phrase "once we finish the rewrite" has appeared in planning conversations
 for more than a year, and the completion date has moved at least twice.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Deferral is a form of compounding debt. Each month the existing system continues to be deployed
 manually is a month of manual deployment effort that automation would have eliminated. Each month
@@ -110,7 +110,7 @@ the legacy system, however imperfect, is experience that informs how tests are w
 system. Deployment automation for the legacy system is practice for deployment automation on the
 new system. Deferring CD defers not only the benefits but the organizational learning.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Identify what can improve now, without the rewrite
 
@@ -165,7 +165,7 @@ horizon from receding indefinitely.
 | "We don't want to invest in automation for code we're about to throw away" | You are not about to throw it away - you have been about to throw it away for two years. The expected duration of the investment is the duration of the rewrite, which is already longer than estimated. A year of automated deployment benefit is real return. |
 | "The new system will be built with CD from the start, so we'll get the benefits there" | That is true, but it ignores that the existing system is what your users depend on today. Defects escaping from the existing system cost real money, regardless of how clean the new system's practices will be. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -175,7 +175,7 @@ horizon from receding indefinitely.
 | Rewrite completion percentage vs. original estimate | Tracking this honestly surfaces how much the horizon has moved |
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease for the existing system as test coverage increases |
 
-## Related Content
+## Related content
 
 - [The "We're Different" Mindset]({{< relref "/docs/anti-patterns/organizational-cultural/planning/were-different-mindset" >}}) - The related pattern of using context as a reason not to start
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Incremental approaches to improving an existing system's architecture

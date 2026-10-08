@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A production incident occurs. The system recovers. And then the real damage begins: a meeting that starts with "who approved this change?" The person whose name is on the commit that preceded the outage is identified, questioned, and in some organizations disciplined. The post-mortem document names names. The follow-up email from leadership identifies the engineer who "caused" the incident.
 
@@ -30,7 +30,7 @@ Common variations:
 
 The telltale sign: engineers are reluctant to disclose incidents or near-misses to management, and problems are frequently discovered by monitoring rather than by the people who caused them.
 
-## Why This Is a Problem
+## Why this is a problem
 
 After a blame-heavy post-mortem, engineers stop disclosing problems early. The next incident grows larger than it needed to be because nobody surfaced the warning signs. Blame culture optimizes for the appearance of accountability while destroying the conditions needed for genuine improvement.
 
@@ -66,7 +66,7 @@ CD also depends on fast, honest feedback. A pipeline that detects a problem and 
 
 The improvement work that makes CD better over time - the retrospective that identifies a flawed process, the blameless post-mortem that finds a systemic gap, the engineer who speaks up about a near-miss before it becomes an incident - requires that people feel safe to be honest. Blame culture forecloses that safety.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Establish the blameless post-mortem as the standard
 
@@ -112,7 +112,7 @@ Expect pushback and address it directly:
 | "We don't have time for failure forums." | You are already spending the time - in incidents that recur because the last post-mortem was superficial. Systematic learning from failure is cheaper than repeated failure. |
 | "People will take advantage of blameless culture to be careless." | Blameless culture does not remove individual judgment or professionalism. It removes the fear that makes people hide problems. Carelessness is addressed through design, tooling, and process - not through blame after the fact. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -122,7 +122,7 @@ Expect pushback and address it directly:
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Increase as fear of blame stops suppressing deployment activity near release dates |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction as engineers stop deferring changes they are afraid to own |
 
-## Related Content
+## Related content
 
 - [Hero culture]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/hero-culture" >}}) - blame culture and hero culture reinforce each other; heroes are often exempt from blame, everyone else is not
 - [Retrospectives]({{< relref "/docs/optimize/retrospectives" >}}) - retrospectives that follow blameless principles build the same muscle as blameless post-mortems

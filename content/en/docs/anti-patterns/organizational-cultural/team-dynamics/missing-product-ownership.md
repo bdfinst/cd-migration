@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The tech lead is in a stakeholder meeting negotiating scope for a feature. Thirty minutes later,
 they are reviewing a pull request. An hour after that, they are on a call with a different
@@ -42,7 +42,7 @@ Common variations:
 The telltale sign: the team cannot answer "what is the most important thing to work on next?"
 without escalating to a meeting.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Product ownership is a full-time responsibility. When it is absorbed into a technical role or
 distributed across multiple stakeholders, the team lacks clear direction and the person filling
@@ -97,7 +97,7 @@ decisions, and scope negotiations. These waits break the flow that CD depends on
 may be technically capable of deploying continuously, but there is nothing ready to deploy
 because the team spent the sprint chasing shifting requirements.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Make the gap visible
 
@@ -130,7 +130,7 @@ having one.
 | "We can't justify a dedicated product owner for this team" | Calculate the cost of the tech lead's time on product work, the rework from requirements churn, and the delays from decision bottlenecks. That cost is being paid already. A dedicated product owner makes it explicit and more effective. |
 | "Stakeholders need direct access to developers" | Stakeholders need their problems solved, not direct access. A product owner who understands the business context can translate needs into well-defined work items more effectively than a developer interpreting requests mid-conversation. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -139,7 +139,7 @@ having one.
 | Mid-sprint requirements changes | Should decrease as the backlog owner shields the team from churn |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as the team stops waiting for decisions |
 
-## Related Content
+## Related content
 
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Establishing norms for how requirements enter the team
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Clear product ownership enables effective decomposition during refinement

@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A deadline is approaching. The manager asks the team how things are going. A developer says the
 feature is done but the tests still need to be written. The manager says "we'll come back to the
@@ -49,7 +49,7 @@ Common variations:
 The telltale sign: the team has a backlog of "write tests for X" tickets that are months old and
 have never been started, while production incidents keep increasing.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Skipping tests feels like it saves time in the moment. It does not. It borrows time from the
 future at a steep interest rate. The effects are invisible at first and catastrophic later.
@@ -128,7 +128,7 @@ A team cannot deploy continuously if they cannot verify continuously. When the m
 the tests, we need to ship," they are not only deferring quality work. They are dismantling the
 infrastructure that makes frequent, safe deployment possible.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Make the cost visible
 
@@ -197,7 +197,7 @@ If the manager continues to apply pressure after seeing the data, escalate. Test
 a technical risk that affects the entire organization's ability to deliver. It is appropriate to
 raise it with engineering leadership.
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -208,7 +208,7 @@ raise it with engineering leadership.
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should stabilize as manual verification decreases |
 | Sprint capacity spent on incident response | Should decrease as fewer untested changes reach production |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building a test strategy that becomes part of how the team works
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Making "done includes tests" an explicit team agreement

@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The development team builds a service and hands it to operations when it is "ready for production."
 From that point, operations owns it. When the service has an incident, the operations team is
@@ -58,7 +58,7 @@ The telltale sign: when asked "who is responsible if this service has an outage 
 is either silence or an answer that refers to a team that did not build the service and does not
 understand its code.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Operational ownership is a feedback loop. When the team that builds a service is also responsible
 for running it, every production problem becomes information that improves the next decision about
@@ -117,7 +117,7 @@ next service's retry logic is written. When that information lands in an operati
 than in the development team that wrote the retry logic, the design doesn't change. The next
 service is written with the same flaw.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Instrument the current services for observability (Weeks 1-3)
 
@@ -173,7 +173,7 @@ improvements explicitly.
 | "Our operations team is in a different country; we can't share on-call" | Time zone gaps make full integration harder, but they do not prevent partial feedback loops. Business-hours production ownership for the development team, shared incident post-mortems, and direct telemetry access all transfer production learning to developers without requiring globally distributed on-call rotations. |
 | "Our compliance framework requires operations to have exclusive production access" | Separation of duties for production access is compatible with shared operational accountability. Developers can review production telemetry, participate in incident investigations, and own service-level objectives without having direct production write access. The feedback loop can be established within the access control constraints. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -184,7 +184,7 @@ improvements explicitly.
 | Number of services with dashboards and runbooks owned by the development team | Should increase toward 100% of services |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should become more predictable as unplanned production interruptions decrease |
 
-## Related Content
+## Related content
 
 - [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}}) - The observability gap that makes operational ownership impossible to exercise effectively
 - [Outsourced Development with Handoffs]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/outsourced-development-handoffs" >}}) - The related pattern of separating builders from operators

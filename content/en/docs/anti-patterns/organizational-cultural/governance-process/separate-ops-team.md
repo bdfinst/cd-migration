@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer commits code, opens a ticket, and considers their work done. That ticket joins a queue managed by a separate operations or release team - a group that had no involvement in writing the code, no context on what changed, and no stake in whether the feature actually works in production. Days or weeks pass before anyone looks at the deployment request.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: developers do not know what is currently running in production or when their last change was deployed.
 
-## Why This Is a Problem
+## Why this is a problem
 
 When the people who build the software are disconnected from the people who operate it, both groups fail to do their jobs well.
 
@@ -65,7 +65,7 @@ CD requires that every change move from commit to production-ready in a single a
 
 More fundamentally, CD requires shared ownership of production outcomes. When developers are insulated from production, they have no incentive to write operationally excellent code. The discipline of infrastructure-as-code, runbook automation, thoughtful logging, and graceful degradation grows from direct experience with production. Separate teams prevent that experience from accumulating.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the handoff and quantify the wait
 
@@ -116,7 +116,7 @@ Expect pushback and address it directly:
 | "Developers don't want to be on call." | Developers on call write better code. Start with a shadow rotation and business-hours-only coverage to reduce the burden while building the habit. |
 | "Ops team will lose their jobs." | Ops engineers who are freed from manual deployment toil can focus on platform engineering, reliability work, and developer experience - higher-value work than running runbooks. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -127,7 +127,7 @@ Expect pushback and address it directly:
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction in overall time from story start to production, reflecting fewer handoff waits |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Decrease as the deployment bottleneck clears and work stops piling up waiting for ops |
 
-## Related Content
+## Related content
 
 - [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) - quantify where wait time accumulates in your current flow
 - [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design a pipeline that eliminates the ops handoff
