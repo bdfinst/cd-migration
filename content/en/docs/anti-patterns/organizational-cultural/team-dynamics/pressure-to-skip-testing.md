@@ -179,7 +179,7 @@ You cannot test everything retroactively. Prioritize the areas that matter most:
    These are the highest-risk areas.
 2. For each high-risk file, write tests for the core behavior - the functions that other code
    depends on.
-3. Allocate a fixed percentage of each sprint (e.g., 20%) to writing tests for existing code.
+3. Allocate a fixed percentage of each sprint (for example, 20%) to writing tests for existing code.
    This is not optional and not deferrable.
 
 ### Step 5: Address the management pressure directly (Ongoing)
