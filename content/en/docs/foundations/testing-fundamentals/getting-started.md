@@ -62,7 +62,7 @@ failures also get ignored.
 
 ### 3. Decouple your pipeline from external dependencies
 
-This is the highest-leverage change for CD. Identify every test that calls a real external service
+This is the highest-impact change for CD. Identify every test that calls a real external service
 and replace that dependency with a test double.
 
 **Actions:**
