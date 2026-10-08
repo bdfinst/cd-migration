@@ -24,7 +24,7 @@ The security team does not scale with development velocity. As the organization 
 
 Security tools can be integrated directly into the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}): dependency scanning, static analysis, secret detection, container image scanning. When these checks run automatically on every commit, they catch issues immediately - while the developer still has the code in mind and fixing is fast. The central security team can focus on policy and architecture rather than reviewing individual changes.
 
-A pipeline with automated security gates provides continuous, scalable security coverage. The coverage is consistent because it runs on every change, not just the ones that reach the security team's queue. Issues are caught in minutes rather than weeks.
+A pipeline with automated security gates provides continuous, scalable security coverage. The coverage is consistent because it runs on every change, not only the ones that reach the security team's queue. Issues are caught in minutes rather than weeks.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 

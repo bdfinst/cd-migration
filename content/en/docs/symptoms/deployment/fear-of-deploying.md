@@ -52,7 +52,7 @@ enforces these checks, every deployment requires the team to manually verify the
 ### Blind Operations
 
 When the team cannot observe production health after a deployment, they have no way to know
-quickly whether the deploy succeeded or failed. The fear is not just that something will break but
+quickly whether the deploy succeeded or failed. The fear is not only that something will break but
 that they will not know it broke until a customer reports it. Monitoring and automated health
 checks transform deployment from "deploy and hope" to "deploy and verify."
 
@@ -70,7 +70,7 @@ with confidence.
 
 ### Monolithic Work Items
 
-When changes are large, each deployment carries more risk simply because more code is changing at
+When changes are large, each deployment carries more risk because more code is changing at
 once. A deployment with 200 lines changed across 3 files is easy to reason about and easy to roll
 back. A deployment with 5,000 lines changed across 40 files is unpredictable. Small, frequent
 deployments reduce risk per deployment rather than accumulating it.
