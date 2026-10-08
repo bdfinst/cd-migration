@@ -8,15 +8,15 @@ description: >
 
 ## Definition
 
-It is crucial to leverage pre-production environments in your CD pipeline to run all of your tests (unit, integration, UAT, manual QA, E2E) early and often. Test environments increase interaction with new features and exposure to bugs - both of which are important prerequisites for reliable software.
+It is crucial to use pre-production environments in your CD pipeline to run all of your tests (unit, integration, UAT, manual QA, E2E) early and often. Test environments increase interaction with new features and exposure to bugs - both of which are important prerequisites for reliable software.
 
 ## Types of pre-production environments
 
-Most organizations employ both static and short-lived environments and utilize them for case-specific stages of the SDLC:
+Most organizations employ both static and short-lived environments and use them for case-specific stages of the SDLC:
 
 - **Staging environment**: The last environment that teams run automated tests against prior to deployment, particularly for testing interaction between all new features after a merge. Its infrastructure reflects production as closely as possible.
 
-- **Ephemeral environments**: Full-stack, on-demand environments spun up on every code change. Each ephemeral environment is leveraged in your pipeline to run E2E, unit, and integration tests on every code change. These environments are defined in version control, created and destroyed automatically on demand. They are short-lived by definition but should closely resemble production. They replace long-lived "static" environments and the maintenance required to keep those stable.
+- **Ephemeral environments**: Full-stack, on-demand environments spun up on every code change. Each ephemeral environment is used in your pipeline to run E2E, unit, and integration tests on every code change. These environments are defined in version control, created and destroyed automatically on demand. They are short-lived by definition but should closely resemble production. They replace long-lived "static" environments and the maintenance required to keep those stable.
 
 ## What is improved
 
