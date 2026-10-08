@@ -30,7 +30,7 @@ When something is defined as code:
 - It is **reproducible.** You can recreate any environment from scratch. Disaster recovery is
   "re-run the pipeline," not "find the person who knows how to configure the server."
 - It is **delivered through a pipeline.** No SSH, no clicking through UIs, no manual steps. The
-  pipeline is the only path to production for everything, not just application code.
+  pipeline is the only path to production for everything, not only application code.
 
 When something is not defined as code, it is a liability. It cannot be reviewed, tested, or
 reproduced. It exists only in someone's head, a wiki page that is already outdated, or a
@@ -208,7 +208,7 @@ from reality.
 
 The principle is the same as [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}})
 for application code: the pipeline is the only way any change reaches production. This applies to
-infrastructure, configuration, schemas, monitoring, and policies just as much as it applies to
+infrastructure, configuration, schemas, monitoring, and policies as much as it applies to
 application code.
 
 ## Measuring Progress

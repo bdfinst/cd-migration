@@ -41,7 +41,7 @@ Without build automation, every other practice in this guide breaks down. You ca
 | **Speed** | Automated builds can be optimized, cached, and parallelized |
 | **Confidence** | If the build passes, the artifact is trustworthy |
 | **Developer experience** | Developers run the same build locally that CI runs, eliminating "works on my machine" |
-| **Pipeline foundation** | The CD pipeline is just the build running automatically on every commit |
+| **Pipeline foundation** | The CD pipeline is the build running automatically on every commit |
 
 ## Key Practices
 

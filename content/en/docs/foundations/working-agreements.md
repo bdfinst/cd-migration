@@ -125,13 +125,13 @@ This is the single most important CI agreement. When the build is broken:
 
 #### Stop the Line: Why All Work Stops
 
-Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops**, not just merges. Every developer on the team shifts attention to restoring green.
+Some teams interpret "fix the build" as "stop merging until it is green." That is not enough. When the build is red, **all feature work stops**, not only merges. Every developer on the team shifts attention to restoring green.
 
 This sounds extreme, but the reasoning is straightforward:
 
 - **Work closer to production is more valuable than work further away.** A broken trunk means nothing in progress can ship. Fixing the build is the highest-leverage activity anyone on the team can do.
 - **Continuing feature work creates a false sense of progress.** Code written against a broken trunk is untested against the real baseline. It may compile, but it has not been validated. That is not progress. It is inventory.
-- **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not just the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
+- **The team mindset matters more than the individual fix.** When everyone stops, the message is clear: the build belongs to the whole team, not only the person who broke it. This shared ownership is what separates teams that practice CI from teams that merely have a CI server.
 
 #### Two Timelines: Stop vs. Do Not Stop
 

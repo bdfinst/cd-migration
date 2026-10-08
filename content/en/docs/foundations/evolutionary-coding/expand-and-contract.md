@@ -16,7 +16,7 @@ Expand and contract, also called parallel change, replaces a single breaking sch
 
 Expand and contract evolves a shared contract, a database schema, an event schema, or an API, without ever mutating it in place. Instead of replacing the old shape with the new one in a single change, you add the new shape alongside the old one, migrate consumers over incrementally, and only remove the old shape once nothing depends on it.
 
-The name comes from the two ends of the sequence: you expand the contract to support both shapes at once, then contract it back down to just the new shape.
+The name comes from the two ends of the sequence: you expand the contract to support both shapes at once, then contract it back down to only the new shape.
 
 ### What Expand and Contract Is Not
 
