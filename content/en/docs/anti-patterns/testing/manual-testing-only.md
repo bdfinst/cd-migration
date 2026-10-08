@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="critical" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team deploys by manually verifying things work. Someone clicks through the application, checks
 a few screens, and declares it good. There is no test suite. No test runner configured. No test
@@ -46,7 +46,7 @@ Common variations:
 The telltale sign: when a developer makes a change, the only way to verify it works is to deploy
 it and see what happens.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Without automated tests, every change is a leap of faith. The team has no fast, reliable way to
 know whether code works before it reaches users. Every downstream practice that depends on
@@ -108,7 +108,7 @@ Without frequent deployment, there is no fast feedback from production. Every CD
 that the team can verify code quality automatically. A team with no test automation is not on a
 slow path to CD - they have not started.
 
-## How to Fix It
+## How to fix it
 
 Starting test automation on an untested codebase feels overwhelming. The key is to start small,
 establish the habit, and expand coverage incrementally. You do not need to test everything before
@@ -184,7 +184,7 @@ coverage - they need to ensure that coverage only goes up.
 | "We need to test everything before it's useful" | One test that catches one regression is more useful than zero tests. The value is immediate and cumulative. You do not need full coverage to start getting value. |
 | "Developers don't know how to write tests" | Pair a developer who has testing experience with one who does not. If nobody on the team has experience, invest one day in a testing workshop. The skill is learnable in a week. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -195,7 +195,7 @@ coverage - they need to ensure that coverage only goes up.
 | [Change fail rate]({{< relref "/docs/reference/metrics/change-fail-rate" >}}) | Should decrease as test coverage catches regressions before deployment |
 | Manual testing effort per release | Should decrease as automated tests replace manual verification |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -203,7 +203,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - Which parts of the system are we most afraid to change? Is that fear connected to missing test coverage?
 - If we could automate one manual testing step this sprint, what would have the highest immediate impact?
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - How to build a test strategy for CD
 - [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) - Tests need a pipeline to run in

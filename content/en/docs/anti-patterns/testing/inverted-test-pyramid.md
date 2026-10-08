@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team has tests, but the wrong kind. Running the full suite takes 30 minutes or more. Tests
 fail randomly. Developers rerun the pipeline and hope for green. When a test fails, the first
@@ -45,7 +45,7 @@ Common variations:
 The telltale sign: developers do not trust the test suite. They push code and go get coffee. When
 tests fail, they rerun before investigating. When a test is red for days, nobody is alarmed.
 
-## Why This Is a Problem
+## Why this is a problem
 
 An inverted test pyramid does more than slow the team down. It actively undermines every benefit
 that testing is supposed to provide.
@@ -132,7 +132,7 @@ A team that deploys weekly with a 40-minute flaky suite cannot deploy daily with
 the test architecture or abandoning automated quality gates. Neither option is acceptable.
 Fixing the architecture is the only sustainable path.
 
-## How to Fix It
+## How to fix it
 
 The goal is a test suite that is fast, gives you confidence, and costs less to maintain than the
 value it provides. The target architecture looks like this:
@@ -234,7 +234,7 @@ the expense of clarity.
 | "Our code is too tightly coupled to test at the component level" | That is an architecture problem. Start by writing component tests for new code and refactoring existing code as you touch it. Use the [Strangler Fig pattern](https://martinfowler.com/bliki/StranglerFigApplication.html) to wrap untestable code in a testable layer. |
 | "We don't have time to redesign the test suite" | You are already paying the cost in slow feedback, flaky builds, and manual verification. The fix is incremental: replace one E2E test with a component test each day. After a month, the suite is measurably faster and more reliable. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -246,7 +246,7 @@ the expense of clarity.
 | Developers running tests locally | Should increase as the suite gets faster |
 | External dependencies in gating tests | Should reach zero (localhost only) |
 
-## Team Discussion
+## Team discussion
 
 Use these questions in a retrospective to explore how this anti-pattern affects your team:
 
@@ -254,7 +254,7 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - How long does our end-to-end test suite take to run? Would we be able to run it on every commit?
 - If we could only write one new test today, what is the riskiest untested behavior we would cover?
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - The test architecture guide for CD pipelines
 - [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) - Writing fast, deterministic tests for logic

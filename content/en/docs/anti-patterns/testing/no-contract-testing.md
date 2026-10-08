@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The orders service and the inventory service are developed and tested by separate teams. Each
 service has a comprehensive test suite. Both suites pass on every build. Then the teams deploy
@@ -53,7 +53,7 @@ The telltale sign: integration failures are discovered in a shared environment r
 each team's own [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}). The staging environment is the first place where the contract
 incompatibility becomes visible.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Services that test in isolation but break when integrated have defeated the purpose of both
 isolation and integration testing. The isolation provides confidence that each service is
@@ -146,7 +146,7 @@ risk that their deployment might break consumers when it reaches production. Nei
 supports continuous delivery. The first caps [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) at integration test cadence.
 The second ships contract violations to production.
 
-## How to Fix It
+## How to fix it
 
 Contract testing is the practice of making API expectations explicit and verifying them
 automatically on both the provider and consumer side. The most practical implementation for
@@ -280,7 +280,7 @@ definitive answer without requiring a live deployment.
 | "We use gRPC / GraphQL / event-based messaging - Pact doesn't support that" | Pact supports gRPC and message-based contracts. GraphQL has dedicated contract testing tools. The principle - publish expectations, verify them against the real service - applies to any protocol. |
 | "Our integration environment already catches these issues" | It catches them late, blocks multiple teams, and is expensive to diagnose. Contract tests catch the same issues in the provider's pipeline, before any other team is affected. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -291,7 +291,7 @@ definitive answer without requiring a live deployment.
 | Service-to-service integrations with contract coverage | Should increase as the practice scales from pilot integrations |
 | [Release frequency]({{< relref "/docs/reference/metrics/release-frequency" >}}) | Should increase as teams can deploy independently without waiting for integration environment slots |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the test strategy that includes contract testing
 - [Shared Database Across Services]({{< relref "/docs/anti-patterns/architecture/shared-database" >}}) - A common cause of implicit contracts that are hard to version

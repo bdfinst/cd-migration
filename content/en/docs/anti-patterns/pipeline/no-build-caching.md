@@ -14,7 +14,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Every time a developer pushes a commit, the pipeline downloads the entire dependency tree from
 scratch. Maven pulls every JAR from the repository. npm fetches every package from the registry.
@@ -54,7 +54,7 @@ Common variations:
 The telltale sign: a developer asks "is the build done yet?" and the honest answer is "it's been
 running for twenty minutes but we should have results in another ten or fifteen."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Slow pipelines are not merely inconvenient. They change behavior in ways that accumulate into
 serious delivery problems. When feedback is slow, developers adapt by reducing how often they
@@ -133,7 +133,7 @@ rather than forty-five, deploying frequently becomes practical rather than painf
 pipeline is often not the only barrier to CD, but it is frequently the most visible one and
 the one that yields the most immediate improvement when addressed.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure current build times by stage
 
@@ -227,7 +227,7 @@ Expect pushback and address it directly:
 | "The pipeline runs in Docker containers so there is no persistent cache" | Most CI platforms support external cache storage (S3 buckets, GCS buckets, NFS mounts) that persists across container-based builds. Docker BuildKit can pull layer cache from a registry. |
 | "We tried parallelizing and it caused intermittent failures" | Intermittent failures from parallelization usually indicate tests that share state (a database, a filesystem path, a port). Fix the test isolation rather than abandoning parallelization. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -238,7 +238,7 @@ Expect pushback and address it directly:
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as pipeline bottlenecks are removed |
 | [Integration frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}) | Should increase as the cost of each integration drops |
 
-## Related Content
+## Related content
 
 - [Pipeline Architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - Structuring the pipeline so slow stages do not block fast feedback
 - [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - Caching and parallelism must not introduce non-determinism

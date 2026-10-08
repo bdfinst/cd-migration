@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The team works in two-week sprints. Development happens in the first week and a half. The last
 few days are "QA time," when testers receive the completed work and begin exercising it. Bugs
@@ -52,7 +52,7 @@ The telltale sign: developers and testers work on the same sprint but testers ar
 work from a previous sprint. The team is running two development cycles in parallel, offset by
 one iteration.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Testing at the end of development is a legacy of the waterfall model, where phases were
 sequential by design. In that model, the cost of rework was assumed to be fixed, and the way to
@@ -138,7 +138,7 @@ from end-stage bug finding to quality engineering: designing test strategies, bu
 automation, and ensuring coverage throughout the pipeline. That shift cannot happen incrementally
 within the existing end-of-development model - it requires changing what testing means.
 
-## How to Fix It
+## How to fix it
 
 Shifting testing earlier is as much a cultural and organizational change as a technical one.
 The goal is shared ownership of quality between developers and testers, with testing happening
@@ -228,7 +228,7 @@ rewards QA effort, not quality outcomes. Change what is measured.
 | "We would need to slow down to write tests" | Teams that write tests as they go are faster overall. The time spent on tests is recovered in reduced debugging, reduced rework, and faster diagnosis when things break. The first sprint with tests is slower. The tenth sprint is faster. |
 | "Our testers do not know how to write automation" | Automation is a skill that is learnable. Start with the testers contributing acceptance criteria in plain language and developers automating them. Grow tester automation skills over time. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -239,7 +239,7 @@ rewards QA effort, not quality outcomes. Change what is measured.
 | Bug backlog size | Should decrease or stop growing as fewer bugs escape development |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Should decrease as bugs are caught closer to when the code was written |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated test suite that supports continuous testing
 - [QA Signoff as a Release Gate]({{< relref "/docs/anti-patterns/testing/qa-signoff-gate" >}}) - The downstream consequence of end-of-development testing

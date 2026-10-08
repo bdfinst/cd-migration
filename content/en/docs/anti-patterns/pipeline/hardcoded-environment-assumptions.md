@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Search the codebase for the string "production" and dozens of matches come back from inside
 application logic. Some are safety guards: `if (environment != 'production') { runSlowMigration(); }`.
@@ -59,7 +59,7 @@ The telltale sign: "it works in staging" and "it works in production" are consid
 different statements rather than synonyms, because the code genuinely behaves differently
 in each.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Environment-specific code branches create a fragmented codebase where no environment runs
 exactly the same software as any other. Testing in staging validates one version of the code.
@@ -136,7 +136,7 @@ deployment introduces not only the changes the developer made, but also all the 
 production-specific code paths that happen to be active. The team cannot deploy frequently
 with confidence when they cannot trust that staging behavior predicts production behavior.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Audit the codebase for environment-name checks
 
@@ -254,7 +254,7 @@ application logic (as opposed to configuration loading):
 | "Replacing our hand-rolled feature flags is a big project" | Start with the highest-risk checks first - the ones where production runs code that tests never execute. A simple configuration-based feature flag is ten lines of code. Replace one high-risk check this sprint and add the test that was previously impossible to write. |
 | "Our staging environment intentionally limits some external calls to control cost" | Limit the external calls at the infrastructure level (mock endpoints, sandbox accounts, rate limiting), not by removing code paths. Move the first cost-driven environment check to an infrastructure-level mock this sprint and delete the code branch. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -265,7 +265,7 @@ application logic (as opposed to configuration loading):
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as production-only debugging cycles are eliminated |
 | Time to reproduce production bugs locally | Should decrease as code paths become environment-agnostic |
 
-## Related Content
+## Related content
 
 - [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) - The right way to vary behavior between environments is through configuration
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Environments should differ only in scale and configuration, not in behavior
