@@ -9,14 +9,14 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations** | {{< scope-label "team" >}}
 
-Expand and contract, also called parallel change, replaces a single breaking schema or contract change with a sequence of small, backward-compatible deployments. Nothing outside your team has to be redeployed in lockstep.
+Expand and contract, also called parallel change, replaces a single breaking schema or contract change with a sequence of small, backward-compatible deployments. No one outside your team has to redeploy in lockstep.
 {{% /pageinfo %}}
 
 ## What is expand and contract?
 
-Expand and contract evolves a shared contract, a database schema, an event schema, or an API, without ever mutating it in place. Instead of replacing the old shape with the new one in a single change, you add the new shape alongside the old one, migrate consumers over incrementally, and only remove the old shape once nothing depends on it.
+Expand and contract evolves a shared contract, a database schema, an event schema, or an API, without ever mutating it in place. You do not replace the old shape with the new one in a single change. Instead, you add the new shape alongside the old one and migrate consumers over incrementally. You remove the old shape only once nothing depends on it.
 
-The name comes from the two ends of the sequence: you expand the contract to support both shapes at once, then contract it back down to only the new shape.
+The name comes from the two ends of the sequence. You expand the contract to support both shapes at once, then contract it back down to only the new shape.
 
 ### What expand and contract is not
 
@@ -44,7 +44,7 @@ ALTER TABLE users ADD COLUMN first_name VARCHAR(255);
 ALTER TABLE users ADD COLUMN last_name VARCHAR(255);
 {{< /card >}}
 
-Deploy this on its own. The application still reads and writes the `name` column exclusively. There is no behavior change.
+Deploy the schema change on its own. The application still reads and writes the `name` column exclusively. There is no behavior change.
 
 For an API, the equivalent is adding a new field or a new endpoint version without removing the old one.
 
@@ -77,7 +77,7 @@ async function backfillNames() {
 
 Deploy the dual-write change, then run the backfill as its own job. Both are independently reversible: if the backfill has a problem, the application still works off the old column.
 
-For an API, this phase is a tolerant reader: consumers ignore fields they don't recognize, and producers populate both the old and new field until every consumer has moved.
+For an API, this phase is a tolerant reader. Consumers ignore fields they don't recognize. Producers populate both the old and new field until every consumer has moved.
 
 ### Phase 3: Dual-read and cutover
 
@@ -93,7 +93,7 @@ async function getUser(id) {
 }
 {{< /card >}}
 
-Because Phase 2 guarantees the new columns are always populated, this switch has nothing to migrate; it's a straightforward read-path change deployed independently of the write-path change that came before it.
+Phase 2 guarantees the new columns are always populated, so the read switch has nothing to migrate. The read switch is a straightforward change, deployed independently of the earlier write-path change.
 
 ### Phase 4: Contract
 
@@ -109,7 +109,7 @@ For an API, this phase is deprecating and eventually removing the old field or v
 
 ## When expand and contract is not enough
 
-If the two shapes cannot coexist even briefly, for example a uniqueness constraint that the old and new schema can't both satisfy, you need a more deliberate migration plan with an explicit maintenance window. That is the exception, not the default: most schema and contract changes can be expressed as expand and contract if you're willing to take more, smaller steps.
+Sometimes the two shapes cannot coexist even briefly. For example, the old and new schema might not both satisfy a uniqueness constraint. In that case, you need a more deliberate migration plan with an explicit maintenance window. That case is the exception, not the default. You can express most schema and contract changes as expand and contract if you're willing to take more, smaller steps.
 
 ## Key pitfalls
 
@@ -119,7 +119,7 @@ Reads that assume the new column is populated will fail or return nulls for any 
 
 ### 2. "We dropped the old column right after the dual-write phase"
 
-The contract phase must wait until every writer and every reader has confirmed to use the new shape only. Removing the old column while any code, including code outside your immediate deploy, still references it turns a safe migration into an outage.
+The contract phase must wait until you confirm that every writer and every reader uses only the new shape. Removing the old column while any code, including code outside your immediate deploy, still references it turns a safe migration into an outage.
 
 ### 3. "We coordinated the four phases into one deployment"
 
@@ -136,7 +136,7 @@ Collapsing the phases back into a single deployment defeats the purpose. Each ph
 
 ## Next step
 
-Return to [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) to see when a broader [strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) migration, or a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}) for business release timing, is the more appropriate tool.
+Return to [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) to choose the right tool for larger changes. That page explains when a broader [strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) migration, or a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}) for business release timing, is the more appropriate tool.
 
 ## Related content
 

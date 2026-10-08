@@ -9,14 +9,14 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations** | {{< scope-label "team" >}}
 
-A parallel run executes the old and new code paths against the same production input, but only returns the old result to the caller. It proves correctness with real traffic before anyone depends on the new path.
+A parallel run executes the old and new code paths against the same production input, but only returns the old result to the caller. A parallel run proves correctness with real traffic before anyone depends on the new path.
 {{% /pageinfo %}}
 
 ## What is a parallel run?
 
-A parallel run, sometimes called shadowing or a dark launch of logic, wraps a call so both the current implementation and a candidate replacement execute against identical production input. The caller always receives the current implementation's result. The candidate's result is captured and compared, never returned.
+A parallel run wraps a call so both the current implementation and a candidate replacement execute against identical production input. Some teams call it shadowing or a dark launch of logic. The caller always receives the current implementation's result. The harness captures and compares the candidate's result, but never returns it.
 
-This technique is best known from GitHub's open-source Scientist library, which formalized the pattern for verifying refactors of high-risk code paths.
+The technique is best known from GitHub's open-source Scientist library, which formalized the pattern for verifying refactors of high-risk code paths.
 
 ### What a parallel run is not
 
@@ -73,11 +73,11 @@ async function shadowRun(candidateFn, legacyResult, order) {
 
 ### Step 3: Watch the telemetry
 
-Track mismatch rate, candidate error rate, and performance delta over a statistically meaningful window. Investigate every mismatch; each one is either a genuine bug in the candidate or a case where the legacy behavior was wrong and needs a deliberate decision.
+Track mismatch rate, candidate error rate, and performance delta over a statistically meaningful window. Investigate every mismatch. Each mismatch is either a genuine bug in the candidate or a case where the legacy behavior was wrong. A wrong legacy behavior needs a deliberate decision.
 
 ### Step 4: Cut over and remove the harness
 
-Once the mismatch rate holds at zero for the agreed period, switch the candidate to the primary path, typically with [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}), and delete the comparison harness. Leaving it in place after cutover is unnecessary runtime cost with no further benefit.
+Wait until the mismatch rate holds at zero for the agreed period. Then switch the candidate to the primary path, typically with [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}), and delete the comparison harness. Leaving the harness in place after cutover is unnecessary runtime cost with no further benefit.
 
 ## When a parallel run is not enough
 
@@ -92,7 +92,7 @@ The candidate's failures must never affect the response. Catch and log every exc
 
 ### 2. "We ran the comparison for a day and called it proven"
 
-A parallel run needs enough volume and enough time to cover the input space that matters, including rare edge cases and periodic patterns like end-of-month billing. Set the comparison window based on when those cases actually occur, not a fixed number of days.
+A parallel run needs enough volume and enough time to cover the input space that matters. That space includes rare edge cases and periodic patterns like end-of-month billing. Set the comparison window based on when those cases actually occur, not a fixed number of days.
 
 ### 3. "We kept the shadow harness running after cutover"
 

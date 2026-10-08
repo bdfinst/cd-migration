@@ -9,14 +9,14 @@ description: >
 {{% pageinfo %}}
 **Phase 1 - Foundations** | {{< scope-label "team" >}}
 
-Dark code is the default technique for integrating incomplete work. It costs nothing to maintain and requires no cleanup, because the code never runs until you decide to connect it.
+Dark code is the default technique for integrating incomplete work. Dark code costs nothing to maintain and requires no cleanup, because the code never runs until you decide to connect it.
 {{% /pageinfo %}}
 
 ## What is dark code?
 
-Dark code is new logic that is fully built, tested, and deployed to production, but not yet reachable. No route, UI trigger, or message consumer points to it. It sits inert in the running binary until the final commit connects it.
+Dark code is new logic that is fully built, tested, and deployed to production, but not yet reachable. No route, UI trigger, or message consumer points to it. The code sits inert in the running binary until the final commit connects it.
 
-This is sometimes called "connect tests last" or a "dark launch," because the implementation is complete; only the wiring is missing.
+Some teams call dark code "connect tests last" or a "dark launch," because the implementation is complete; only the wiring is missing.
 
 ### What dark code is not
 
@@ -71,11 +71,11 @@ app.post('/cart/checkout', (req, res) => {
 });
 {{< /card >}}
 
-This commit is small and easy to review, because all the risk was already tested and deployed in the commits before it.
+The wiring commit is small and easy to review, because the commits before it already tested and deployed all the risk.
 
 ## When dark code is not enough
 
-Dark code works when you control every caller and can wait to wire the last one in. It does not work when:
+Dark code works when you control every caller and can wait to wire the last one in. Dark code does not work when:
 
 - **You need to compare the new logic against production behavior before trusting it.** Use [parallel run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}) instead.
 - **You are replacing an implementation that already has live callers.** Use [branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) instead.

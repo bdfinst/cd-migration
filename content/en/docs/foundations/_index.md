@@ -27,12 +27,12 @@ Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipel
 
 ## Why this phase matters
 
-Teams that skip these foundations end up automating a broken process. A pipeline that deploys untested code from long-lived branches does not improve delivery. It amplifies risk. These practices ensure that what enters the pipeline is already safe to ship.
+Teams that skip these foundations end up automating a broken process. A pipeline that deploys untested code from long-lived branches does not improve delivery. That pipeline amplifies risk. These practices ensure that what enters the pipeline is already safe to ship.
 
 ## When you're ready to move on
 
 Start investing in [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) when you are making
-consistent progress toward these - don't wait for every criterion to be perfect:
+consistent progress toward these criteria - don't wait for every criterion to be perfect:
 
 - All developers integrate to trunk at least once per day
 - Your test suite catches real defects and runs in under 10 minutes
