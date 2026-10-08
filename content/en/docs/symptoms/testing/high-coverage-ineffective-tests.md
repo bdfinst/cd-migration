@@ -21,7 +21,7 @@ coverage higher, without the defect rate improving.
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When most of your tests are end-to-end or integration tests, they exercise many code paths in a
 single run - which inflates coverage numbers. But these tests often verify that a workflow
@@ -31,7 +31,7 @@ validating any of them in detail.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Pressure to Skip Testing
+### Pressure to skip testing
 
 When teams face pressure to hit a coverage target, testing becomes theater. Developers write
 tests with trivial assertions - checking that a function returns without throwing, or that a
@@ -40,7 +40,7 @@ do not actually verify behavior. They exist to satisfy a gate, not to catch defe
 
 **Read more:** [Pressure to Skip Testing]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/pressure-to-skip-testing" >}})
 
-### Code Coverage Mandates
+### Code coverage mandates
 
 When the organization gates the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) on a coverage target, teams optimize for the number
 rather than for defect detection. Developers write assertion-free tests, cover trivial code, or
@@ -49,7 +49,7 @@ coverage metric rises while the tests remain unable to catch meaningful defects.
 
 **Read more:** [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}})
 
-### Manual Testing Only
+### Manual testing only
 
 When test automation is absent or minimal, teams sometimes generate superficial tests or rely on
 coverage from integration-level runs that touch many lines without asserting meaningful outcomes.
@@ -79,7 +79,7 @@ result.
 
 ---
 
-## Related Content
+## Related content
 
 - [Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}}) - Another sign that tests verify implementation instead of behavior
 - [Code Coverage Mandates]({{< relref "/docs/anti-patterns/testing/code-coverage-mandates" >}}) - When coverage targets incentivize the wrong testing behavior

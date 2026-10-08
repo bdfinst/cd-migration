@@ -22,7 +22,7 @@ they spend more time fixing tests than improving the code.
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When the test suite is dominated by end-to-end and integration tests, those tests tend to be
 tightly coupled to implementation details - CSS selectors, API response shapes, DOM structure,
@@ -35,7 +35,7 @@ Tests coupled to implementation ("this method was called with these arguments") 
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 When components lack clear interfaces, tests reach into the internals of other modules. A
 refactoring in module A breaks tests for module B - not because B's behavior changed, but
@@ -61,7 +61,7 @@ every internal change ripples across the test suite.
 
 ---
 
-## Related Content
+## Related content
 
 - [High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - Tests that verify implementation often create high coverage without catching bugs
 - [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}}) - Over-reliance on integration and E2E tests amplifies this problem

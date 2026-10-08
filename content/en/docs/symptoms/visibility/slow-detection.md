@@ -28,7 +28,7 @@ appear under specific conditions go undetected.
 
 ## Common causes
 
-### Blind Operations
+### Blind operations
 
 When the team has no monitoring, no alerting, and no aggregated logging, production is a black
 box. The only signal that something is wrong comes from users, support staff, or business reports.
@@ -38,7 +38,7 @@ production.
 
 **Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
-### Undone Work
+### Undone work
 
 When the team's definition of done does not include post-deployment verification, nobody is
 responsible for confirming that the deployment is healthy. The story is "done" when the code is
@@ -47,7 +47,7 @@ analysis are not part of the workflow because the workflow ends before productio
 
 **Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})
 
-### Manual Deployments
+### Manual deployments
 
 When deployments are manual, there is no automated post-deploy verification step. An automated
 [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) can include health checks, smoke tests, and [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) triggers as part of the deployment
@@ -72,7 +72,7 @@ actually healthy is a separate question that may or may not get answered.
 
 ---
 
-## Related Content
+## Related content
 
 - [Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}}) - The next stage of the same problem: customers become the monitoring
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Slow detection makes deployments feel riskier

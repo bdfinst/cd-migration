@@ -28,7 +28,7 @@ Their departure increases the load on whoever remains, accelerating the cycle.
 
 ## Common causes
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When a small team owns too many products, every developer is stretched across multiple codebases.
 Context switching consumes 20 to 40 percent of their capacity. The team looks fully utilized but
@@ -37,7 +37,7 @@ the real problem: the team has more responsibilities than it can sustain.
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})
 
-### Deadline-Driven Development
+### Deadline-driven development
 
 When every sprint is driven by an arbitrary deadline, the team never operates at a sustainable
 pace. There is no recovery period after a crunch because the next deadline starts immediately.
@@ -55,7 +55,7 @@ working hard on everything and completing nothing.
 
 **Read more:** [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}})
 
-### Push-Based Work Assignment
+### Push-based work assignment
 
 When work is assigned to individuals, asking for help carries a cost: it pulls a teammate away
 from their own assigned stories. So developers struggle alone rather than swarming. Workloads are
@@ -66,7 +66,7 @@ becomes unsustainable for the people carrying the heaviest loads.
 
 **Read more:** [Push-Based Work Assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 
-### Velocity as Individual Metric
+### Velocity as individual metric
 
 When individual [story points]({{< relref "/docs/reference/glossary#story-points" >}}) are tracked, developers cannot afford to help each other, take time
 to learn, or invest in quality. Every hour must produce measurable output. The pressure to perform
@@ -101,7 +101,7 @@ produce points.
 
 ---
 
-## Related Content
+## Related content
 
 - [Everything Started, Nothing Finished]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - High WIP is a direct contributor to burnout
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Blocked work creates frustration and context switching
