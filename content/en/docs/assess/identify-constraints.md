@@ -26,14 +26,14 @@ Eliyahu Goldratt's Theory of Constraints offers a simple and powerful insight: e
 exactly one [constraint]({{< relref "/docs/reference/glossary#constraint" >}}) that limits its overall throughput. Improving anything other than that
 constraint does not improve the system.
 
-Consider a delivery process where code review takes 30 minutes but the queue to get a review
-takes 2 days, and manual regression testing takes 5 days after that. If you invest three months
+Consider a delivery process where code review takes 30 minutes, but the queue for a review
+takes 2 days. Manual regression testing then takes 5 days. If you invest three months
 building a faster build [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) that saves 10 minutes per build, you have improved something
 that is not the constraint. The 5-day regression testing cycle still dominates your [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}).
 You have made a non-bottleneck more efficient, which changes nothing about how fast you deliver.
 
 The implication for your [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) migration is direct: **you must find and address constraints in order
-of impact.** Fix the biggest one first. Then find the next one. Then fix that. This is how you
+of impact.** Fix the biggest one first. Then find and fix the next one. Working in order of impact is how you
 make sustained, measurable progress rather than spreading effort across improvements that do not
 move the needle.
 
@@ -133,9 +133,9 @@ security) rather than as a cross-functional flow. Each handoff introduces a queu
 loss, and a communication overhead. The more handoffs, the longer the lead time and the more
 likely that information is lost.
 
-**Migration path:** This is an organizational constraint, not a technical one. It is addressed
-gradually through cross-functional team formation and by automating the specialist activities
-into the pipeline so that handoffs become automated checks rather than manual transfers.
+**Migration path:** This is an organizational constraint, not a technical one. Address it
+gradually: form cross-functional teams and automate the specialist activities into the
+pipeline. Handoffs then become automated checks rather than manual transfers.
 
 ## Using your value stream map to find the constraint
 
@@ -174,7 +174,7 @@ Check your findings against your baseline metrics:
 {{% alert title="One Constraint at a Time" %}}
 Resist the temptation to tackle multiple constraints simultaneously. The Theory of Constraints
 is clear: improving a non-bottleneck does not improve the system. Identify the single biggest
-constraint, focus your migration effort there, and only move to the next constraint when the
+constraint and focus your migration effort there. Move to the next constraint only when the
 first one is no longer the bottleneck.
 
 This does not mean the entire team works on one thing. It means your improvement initiatives
@@ -197,10 +197,10 @@ Once you have identified your top constraint, map it to a migration phase:
 ## The next constraint
 
 Fixing your first constraint will improve your flow. It will also reveal the next constraint.
-This is expected and healthy. A delivery process is a chain, and strengthening the weakest link
+The new constraint is expected and healthy. A delivery process is a chain, and strengthening the weakest link
 means a different link becomes the weakest.
 
-This is why the migration is organized in phases. Phase 1 addresses the foundational constraints
+Constraints surface one after another, which is why the migration is organized in phases. Phase 1 addresses the foundational constraints
 that nearly every team has (integration practices, testing, small work). Phase 2 addresses
 pipeline constraints. Phase 3 optimizes flow. You will cycle through constraint identification
 and resolution throughout your migration.

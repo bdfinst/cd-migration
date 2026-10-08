@@ -101,8 +101,8 @@ ship, and that shipping is safe.
 **Why it matters:** Quality that depends on manual inspection does not scale and does not speed
 up. As your [deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}) increases through the migration, manual quality gates become
 the bottleneck. The goal is to build quality in through automation so that a green build means
-a deployable build. This is the foundation of continuous delivery: if it passes the pipeline,
-it is ready for production.
+a deployable build. Green-means-deployable is the foundation of continuous delivery: if a change
+passes the pipeline, it is ready for production.
 
 ---
 

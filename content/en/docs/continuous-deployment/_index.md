@@ -11,7 +11,7 @@ aliases:
 {{% pageinfo %}}
 **Key question:** "Can we deliver any change to production when the business needs it?"
 
-This is the destination: you can deploy any change that passes the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) to production
+Phase 4 is the destination: you can deploy any change that passes the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) to production
 whenever you choose. Some teams will auto-deploy every commit ([continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}})). Others
 will deploy on demand when the business is ready. Both are valid - the capability is what
 matters, not the trigger.
@@ -35,7 +35,7 @@ These terms are often confused. The distinction matters for this phase:
 
 Continuous delivery is the goal of this migration guide. Continuous deployment is one delivery
 strategy that works well for certain contexts - SaaS products, internal tools, services behind
-[feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}). It is not a higher level of maturity. A team that deploys on demand with a
+[feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}). Continuous deployment is not a higher level of maturity. A team that deploys on demand with a
 one-click deploy is as capable as a team that auto-deploys every commit.
 
 ## Why this phase matters

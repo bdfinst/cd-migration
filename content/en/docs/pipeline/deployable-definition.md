@@ -18,21 +18,21 @@ A [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) definition 
 satisfy before it is considered ready for production. It is the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})'s answer to the
 question: "How do we know this is safe to deploy?"
 
-This is not a checklist that a human reviews. It is a set of automated gates - executable
+The deployable definition is not a checklist that a human reviews. It is a set of automated gates - executable
 validations built into the pipeline - that every change must pass. If the pipeline is
-green, the artifact is deployable. If the pipeline is red, it is not. There is no
+green, the artifact is deployable. If the pipeline is red, the artifact is not. There is no
 ambiguity, no judgment call, and no "looks good enough."
 
 ## Why it matters for CD migration
 
 Without a clear, automated deployable definition, teams rely on human judgment to decide
-when something is ready to ship. This creates bottlenecks (waiting for approval), variance
+when something is ready to ship. Human judgment creates bottlenecks (waiting for approval), variance
 (different people apply different standards), and fear (nobody is confident the change is
 safe). All three are enemies of [continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}).
 
 During a CD migration, the deployable definition replaces manual approval processes with
-automated confidence. It is what allows a team to say "any green build can go to
-production" - which is the prerequisite for [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}).
+automated confidence. The definition is what lets a team say "any green build can go to
+production." That ability is the prerequisite for [continuous deployment]({{< relref "/docs/reference/glossary#continuous-deployment" >}}).
 
 ## Key principles
 
@@ -91,25 +91,25 @@ production readiness:
 
 A deployable definition that takes hours to evaluate will not support continuous delivery.
 The entire pipeline - including all deployable definition checks - should complete in
-minutes, not hours. This often requires running checks in parallel, investing in test
-infrastructure, and making hard choices about which slow checks provide enough value to
-keep.
+minutes, not hours. Meeting that target often requires running checks in parallel and investing in test
+infrastructure. It also requires hard choices about which slow checks provide enough value
+to keep.
 
 ### The definition must be maintained
 
 The deployable definition is a living document. As the system evolves, new failure modes
 emerge, and the definition should be updated to catch them. When a production incident
-occurs, the team should ask: "What automated check could have caught this?" and add it to
-the definition.
+occurs, the team should ask: "What automated check could have caught this?" and add that check
+to the definition.
 
 ## Anti-patterns
 
 ### Manual approval gates
 
 Requiring a human to review and approve a deployment after the pipeline has passed all
-automated checks is an anti-pattern. It adds latency, creates bottlenecks, and implies
-that the automated checks are not sufficient. If a human must approve, it means your
-automated definition is incomplete - fix the definition rather than adding a manual gate.
+automated checks is an anti-pattern. The manual gate adds latency, creates bottlenecks, and implies
+that the automated checks are not sufficient. If a human must approve, your automated
+definition is incomplete. Fix the definition rather than adding a manual gate.
 
 ### "Good enough" tolerance
 
@@ -142,7 +142,7 @@ passes completely. The pipeline enforces the definition; no human override is po
 
 Run the fastest, most frequently failing checks first. Unit tests and linting run before
 integration tests. Integration tests run before end-to-end tests. Security scans run in
-parallel with test stages. This gives developers the fastest possible feedback.
+parallel with test stages. This order gives developers the fastest possible feedback.
 
 ### Continuous definition improvement
 
@@ -153,7 +153,7 @@ everything the team has learned about quality.
 ### Progressive quality gates
 
 Structure the pipeline to fail fast on quick checks, then run progressively more expensive
-validations. This gives developers the fastest possible feedback while still running
+validations. Failing fast gives developers the fastest possible feedback while still running
 comprehensive checks:
 
 {{< card code=true header="**Progressive quality gates: three pipeline stages by speed**" lang="text" >}}
@@ -201,7 +201,7 @@ feature_deployable:
   - security_scan: no_critical
 {{< /card >}}
 
-This approach lets teams move fast during development while maintaining rigorous
+Context-specific definitions let teams move fast during development while maintaining rigorous
 standards for production deployments.
 
 ### Error budget approach
@@ -217,7 +217,7 @@ definition_of_deployable:
   recent_incidents: < 2 per week
 {{< /card >}}
 
-This creates a self-correcting system. Teams that ship changes causing incidents consume
+Error budgets create a self-correcting system. Teams that ship changes causing incidents consume
 their error budget, which automatically tightens the deployment criteria until reliability
 improves.
 
@@ -225,7 +225,7 @@ improves.
 
 Make the deployable definition visible to all team members. Display the current pipeline
 status on dashboards. When a check fails, provide clear, actionable feedback about what
-failed and why. The definition should be understood by everyone, not hidden in pipeline
+failed and why. Everyone should understand the definition. Do not hide it in pipeline
 configuration.
 
 ## How to get started
@@ -238,8 +238,8 @@ someone clicks through the UI).
 
 ### Step 2: Classify each check
 
-For each check, determine: Is it automated? Is it fast? Is it reliable? Is it actually
-catching real problems? This reveals which checks are already pipeline-ready and which
+For each check, determine whether it is automated, fast, reliable, and actually catching
+real problems. The answers reveal which checks are already pipeline-ready and which
 need work.
 
 ### Step 3: Automate the manual checks
@@ -250,27 +250,27 @@ A manager approving a deployment becomes a set of automated policy checks.
 
 ### Step 4: Build the pipeline gates
 
-Organize your automated checks into pipeline stages. Fast checks first, slower checks
-later. All checks must pass for the artifact to be considered deployable.
+Organize your automated checks into pipeline stages. Put fast checks first and slower
+checks later. All checks must pass for the artifact to be considered deployable.
 
 ### Step 5: Remove manual approvals
 
 Once the automated definition is comprehensive enough that a green build genuinely means
-"safe to deploy," remove manual approval gates. This is often the most culturally
-challenging step.
+"safe to deploy," remove manual approval gates. Removing approvals is often the most
+culturally challenging step.
 
 ## Connection to the pipeline phase
 
-The deployable definition is the contract between the pipeline and the organization. It is
-what makes the [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) trustworthy -
-because every change that passes through the path has been validated against a clear,
+The deployable definition is the contract between the pipeline and the organization. The definition
+makes the [single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) trustworthy.
+Every change that passes through the path has been validated against a clear,
 comprehensive standard.
 
 Combined with a [deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}), the deployable
 definition ensures that green means green and red means red. Combined with
 [immutable artifacts]({{< relref "/docs/pipeline/immutable-artifacts" >}}), it ensures that the artifact you validated
-is the artifact you deploy. It is the bridge between automated process and organizational
-confidence.
+is the artifact you deploy. The deployable definition is the bridge between automated process
+and organizational confidence.
 
 ## Health metrics
 
@@ -292,9 +292,9 @@ whether it belongs.
 
 ### What if the pipeline passes but a bug reaches production?
 
-This indicates a gap in the deployable definition. Add a test that catches that class of
+An escaped bug indicates a gap in the deployable definition. Add a test that catches that class of
 failure in the future. Over time, every production incident should result in a stronger
-definition. This is how the definition becomes a comprehensive record of everything the
+definition. Learning from each incident is how the definition becomes a comprehensive record of everything the
 team has learned about quality.
 
 ### Can we skip pipeline checks for urgent hotfixes?

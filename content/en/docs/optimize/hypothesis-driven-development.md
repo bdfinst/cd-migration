@@ -11,16 +11,16 @@ aliases:
 {{% pageinfo %}}
 **Phase 3 - Optimize** | {{< scope-label "team" >}}
 
-Hypothesis-driven development treats every change as an experiment. Instead of building features because someone asked for them and hoping they help, teams state a predicted outcome before writing code, measure the result after deployment, and use the evidence to decide what to do next. Combined with [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [small batches]({{< relref "/docs/reference/glossary#batch-size" >}}), and [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}), this practice closes the loop between shipping and learning.
+Hypothesis-driven development treats every change as an experiment. Teams do not build features only because someone asked for them and hope they help. Instead, teams state a predicted outcome before writing code and measure the result after deployment. They use the evidence to decide what to do next. Combined with [feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}), [small batches]({{< relref "/docs/reference/glossary#batch-size" >}}), and [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}), this practice closes the loop between shipping and learning.
 {{% /pageinfo %}}
 
 ## Why hypothesis-driven development
 
 Most teams ship features without stating what outcome they expect. A product manager requests a feature, developers build it, and everyone moves on to the next item. Weeks later, nobody checks whether the feature actually helped.
 
-This is waste. Teams accumulate features without knowing their impact, backlogs grow based on opinion rather than evidence, and the product drifts in whatever direction the loudest voice demands.
+Unmeasured features are waste. Teams accumulate features without knowing their impact, and backlogs grow based on opinion rather than evidence. The product drifts in whatever direction the loudest voice demands.
 
-Hypothesis-driven development fixes this by making every change answer a question. If the answer is "yes, it helped," the team invests further. If the answer is "no," the team reverts or pivots before sinking more effort into the wrong direction. Over time, this produces a product shaped by evidence rather than assumptions.
+Hypothesis-driven development fixes the problem by making every change answer a question. If the answer is "yes, it helped," the team invests further. If the answer is "no," the team reverts or pivots before sinking more effort into the wrong direction. Over time, the practice produces a product shaped by evidence rather than assumptions.
 
 ## The lifecycle
 
@@ -32,7 +32,7 @@ A hypothesis is a falsifiable prediction about what a change will accomplish. It
 
 **"We believe [change] will produce [outcome] because [reason]."**
 
-The "because" clause is critical. Without it, you have a wish, not a hypothesis. The reason forces the team to articulate the causal model behind the change, which makes it possible to learn even when the experiment fails.
+The "because" clause is critical. Without it, you have a wish, not a hypothesis. The reason forces the team to articulate the causal model behind the change. That model makes it possible to learn even when the experiment fails.
 
 {{< card header="**Good hypothesis vs. bad hypothesis**" >}}
 **Good:** "We believe adding a progress indicator to the checkout flow will reduce cart abandonment by 10% because users currently leave when they cannot tell how many steps remain."
@@ -64,9 +64,9 @@ The "because" clause is critical. Without it, you have a wish, not a hypothesis.
 
 Once the hypothesis is formed, design an experiment that can confirm or reject it.
 
-**Scope the change to one variable.** If you change the checkout layout and add a progress indicator and reduce the number of form fields at the same time, you cannot attribute the outcome to any single change. Change one thing at a time.
+**Scope the change to one variable.** Suppose you change the checkout layout, add a progress indicator, and reduce the number of form fields at once. You cannot attribute the outcome to any single change. Change one thing at a time.
 
-**Define success and failure criteria before writing code.** This prevents moving the goalposts after seeing the results. Write down what "success" looks like and what "failure" looks like before the first commit.
+**Define success and failure criteria before writing code.** Predefined criteria prevent moving the goalposts after seeing the results. Write down what "success" looks like and what "failure" looks like before the first commit.
 
 {{< card header="**Experiment design template**" >}}
 **Hypothesis:** Adding a progress indicator will reduce cart abandonment by 10%.
@@ -96,7 +96,7 @@ Build the change using the same [continuous delivery]({{< relref "/docs/referenc
 
 **Use feature flags to control exposure.** The [feature flag]({{< relref "/docs/optimize/feature-flags" >}}) infrastructure you built earlier in this phase is what makes experiments possible. Deploy the change behind a flag, then use the flag to control which users see the new behavior.
 
-**Deploy through the standard CD [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).** Experiments are not special. They go through the same build, test, and deployment process as every other change. This ensures the experiment code meets the same quality bar as production code.
+**Deploy through the standard CD [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).** Experiments are not special. They go through the same build, test, and deployment process as every other change. The shared pipeline ensures the experiment code meets the same quality bar as production code.
 
 **Keep the change small.** A hypothesis-driven change should follow the same [small batch]({{< relref "/docs/optimize/small-batches" >}}) discipline as any other work. If the experiment requires weeks of development, the scope is too large. Break it into smaller experiments that can each be measured independently.
 
@@ -133,7 +133,7 @@ public class CheckoutController {
 
 After the time box expires or the sample size is reached, compare the results against the predefined success criteria.
 
-**Compare against your criteria, not against your hopes.** If the success criterion was "8% reduction in abandonment" and you achieved 3%, that is a failure by your own definition, even if 3% sounds nice. Rigorous criteria prevent confirmation bias.
+**Compare against your criteria, not against your hopes.** Suppose the success criterion was "8% reduction in abandonment" and you achieved 3%. By your own definition, that result is a failure, even if 3% sounds nice. Rigorous criteria prevent confirmation bias.
 
 **Account for confounding factors.** Did a marketing campaign run during the experiment? Was there a holiday? Did another team ship a change that affects the same flow? Document anything that might have influenced the results.
 

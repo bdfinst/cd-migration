@@ -22,11 +22,11 @@ Teams that skip retrospectives or treat them as a checkbox exercise consistently
 
 ## The five-part structure
 
-An effective retrospective follows a structured format that prevents it from devolving into a venting session or a status meeting. This five-part structure ensures the team moves from observation to action.
+An effective retrospective follows a structured format that prevents the meeting from devolving into a venting session or a status meeting. This five-part structure ensures the team moves from observation to action.
 
 ### Part 1: Review the mission (5 minutes)
 
-Start by reminding the team of the larger goal. In the context of a CD migration, this might be:
+Start by reminding the team of the larger goal. In the context of a CD migration, the goal might be:
 
 - "Our mission this quarter is to deploy to production at least once per day."
 - "We are working toward eliminating manual gates in our [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}})."
@@ -73,13 +73,13 @@ For each experiment:
 
 Review any improvement goals or action items from the previous retrospective.
 
-- **Completed:** Acknowledge and celebrate. This is important - it reinforces that improvement work matters.
+- **Completed:** Acknowledge and celebrate. Celebrating reinforces that improvement work matters.
 - **In progress:** Check for blockers. Does the team need to adjust the approach?
 - **Not started:** Why not? Was it deprioritized, blocked, or forgotten? If improvement work is consistently not started, the team is not treating improvement as a deliverable (see below).
 
 ### Part 5: Open conversation (25 minutes)
 
-This is the core of the retrospective. The team discusses:
+The open conversation is the core of the retrospective. The team discusses:
 
 - What is working well that we should keep doing?
 - What is not working that we should change?
@@ -130,7 +130,7 @@ A retrospective only works if team members feel safe to speak honestly about wha
 
 ## Treat improvement as a deliverable
 
-The most common failure mode for retrospectives is producing action items that never get done. This happens when improvement work is treated as something to do "when we have time" - which means never.
+The most common failure mode for retrospectives is producing action items that never get done. Action items stall when the team treats improvement work as something to do "when we have time" - which means never.
 
 ### Make improvement visible
 
@@ -159,7 +159,7 @@ The specific allocation matters less than having one. A team that explicitly bud
 | After incidents | Any team | Incident retrospectives (postmortems) are separate from regular retrospectives |
 | Monthly | Mature teams with well-established improvement habits | Too infrequent for teams early in their migration |
 
-During active phases of a CD migration (Phases 1-3), weekly retrospectives are recommended. Once the team reaches Phase 4, bi-weekly is usually sufficient.
+During active phases of a CD migration (Phases 1-3), run weekly retrospectives. Once the team reaches Phase 4, bi-weekly is usually sufficient.
 
 ## Running your first CD migration retrospective
 
@@ -190,15 +190,15 @@ If your team has not been running effective retrospectives, start here:
 
 ### 1. "Our retrospectives always produce the same complaints"
 
-If the same issues surface repeatedly, the team is not executing on its action items. Check whether improvement work is being prioritized alongside feature work. If it is not, no amount of retrospective technique will help.
+If the same issues surface repeatedly, the team is not executing on its action items. Check whether improvement work is being prioritized alongside feature work. If improvement work is not prioritized, no amount of retrospective technique will help.
 
 ### 2. "People don't want to attend because nothing changes"
 
-This is a symptom of the same problem - action items are not executed. The fix is to start small: commit to one action item per retrospective, execute it completely, and demonstrate the result at the next retrospective. Success builds momentum.
+Low attendance is a symptom of the same problem: action items are not executed. The fix is to start small: commit to one action item per retrospective, execute it completely, and demonstrate the result at the next retrospective. Success builds momentum.
 
 ### 3. "The retrospective turns into a blame session"
 
-The facilitator must enforce blame-free language. Redirect "You did X wrong" to "When X happened, the impact was Y. How can we prevent Y?" If blame is persistent, the team has a psychological safety problem that needs to be addressed separately.
+The facilitator must enforce blame-free language. Redirect "You did X wrong" to "When X happened, the impact was Y. How can we prevent Y?" If blame is persistent, the team has a psychological safety problem that needs separate attention.
 
 ### 4. "We don't have time for retrospectives"
 

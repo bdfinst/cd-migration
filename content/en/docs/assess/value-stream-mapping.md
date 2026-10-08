@@ -31,8 +31,8 @@ request to production. For each step, you capture:
 - **Percent Complete and Accurate (%C/A)** - the percentage of work arriving at this step that is usable without rework
 
 The ratio of process time to total time (process time + wait time) is your **[flow efficiency]({{< relref "/docs/reference/glossary#flow-efficiency" >}})**.
-Most teams are shocked to discover that their flow efficiency is below 15%, meaning that for
-every hour of actual work, there are nearly six hours of waiting.
+Most teams are shocked to discover that their flow efficiency is below 15%. At that level, every
+hour of actual work comes with nearly six hours of waiting.
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ Before running a value stream mapping session, make sure you have:
   wait times and rework loops in their part of the stream that others cannot see.
 - **A shared understanding of wait time vs. process time.** Wait time is when work sits idle. Process
   time is when someone is actively working. A code review that takes "two days" but involves 30
-  minutes of actual review has 30 minutes of process time and roughly 15.5 hours of wait time.
+  minutes of actual review has 30 minutes of process time. It has roughly 15.5 hours of wait time.
 
 ## Choose your mapping approach
 
@@ -56,10 +56,10 @@ delivery pain is concentrated.
 
 ### Bottom-up: Map at the team level first
 
-Each delivery team maps its own process independently - from the moment a developer is ready to
-push a change to the moment that change is running in production. This is the approach described
-in [Document Your Current Process]({{< relref "/docs/brownfield/document-current-process" >}}), elevated to a
-formal value stream map with measured process times, wait times, and %C/A.
+Each delivery team maps its own process independently. The map runs from the moment a developer is
+ready to push a change to the moment that change is running in production. Bottom-up mapping builds
+on [Document Your Current Process]({{< relref "/docs/brownfield/document-current-process" >}}). It
+elevates that approach to a formal value stream map with measured process times, wait times, and %C/A.
 
 **When to use bottom-up:**
 
@@ -78,10 +78,11 @@ formal value stream map with measured process times, wait times, and %C/A.
    shared environments, shared libraries, shared approval processes, upstream/downstream
    dependencies.
 
-The combined view often reveals constraints that no single team can see: a shared staging
-environment that serializes deployments across five teams, a security review team that is
-the bottleneck for every release, or a shared library with a release cycle that blocks
-downstream teams for weeks.
+The combined view often reveals constraints that no single team can see:
+
+- A shared staging environment that serializes deployments across five teams
+- A security review team that is the bottleneck for every release
+- A shared library with a release cycle that blocks downstream teams for weeks
 
 **Advantages:** Fast to start, builds team ownership, surfaces team-specific friction that
 a high-level map would miss. Teams see results quickly, which builds momentum for the
@@ -90,9 +91,9 @@ harder cross-team work.
 ### Top-down: Map across dependent teams
 
 Start with the full flow from a customer request (or business initiative) entering the system
-to the delivered outcome in production, mapping across every team the work touches. This
-produces a single map that shows the end-to-end flow including all inter-team handoffs,
-shared queues, and organizational boundaries.
+to the delivered outcome in production. Map across every team the work touches. The result is
+a single map that shows the end-to-end flow, including all inter-team handoffs, shared queues,
+and organizational boundaries.
 
 **When to use top-down:**
 
@@ -109,9 +110,8 @@ shared queues, and organizational boundaries.
    a front-end update, and a database migration."
 2. Get representatives from every team in the room. Each person maps their team's portion
    of the flow, including the handoff to the next team.
-3. Connect the segments. The gaps between teams - where work queues, waits for
-   prioritization, or gets lost in a ticket system - are usually the largest sources of
-   delay.
+3. Connect the segments. The gaps between teams are usually the largest sources of delay.
+   In those gaps, work queues, waits for prioritization, or gets lost in a ticket system.
 
 **Advantages:** Reveals organizational constraints that team-level maps cannot see.
 Shows the true end-to-end lead time including inter-team wait times. Essential for
@@ -124,24 +124,24 @@ The most effective strategy for large organizations:
 1. **Start bottom-up.** Have each team [document its current process]({{< relref "/docs/brownfield/document-current-process" >}})
    and then run its own value stream mapping session. Fix team-level quick wins immediately.
 2. **Combine into a top-down view.** Once team-level maps exist, connect them to see the
-   full organizational flow. The team-level detail makes the top-down map more accurate
-   because each segment was mapped by the people who actually do the work.
-3. **Fix constraints at the right level.** Team-level constraints (flaky tests, manual
-   deploys) are fixed by the team. Cross-team constraints (shared environments, approval
-   bottlenecks, dependency coordination) are fixed at the organizational level.
+   full organizational flow. The team-level detail makes the top-down map more accurate.
+   The people who do the work mapped each segment.
+3. **Fix constraints at the right level.** The team fixes team-level constraints (flaky
+   tests, manual deploys). The organization fixes cross-team constraints (shared environments,
+   approval bottlenecks, dependency coordination).
 
-This layered approach prevents two common failure modes: mapping at too high a level (which
-misses team-specific friction) and mapping only at the team level (which misses the
-organizational constraints that dominate end-to-end lead time).
+Combining both approaches prevents two common failure modes. Mapping only at a high level misses
+team-specific friction. Mapping only at the team level misses the organizational constraints that
+dominate end-to-end lead time.
 
 ## How to run the session
 
 ### Step 1: Start from delivery, work backward
 
 Begin at the right side of your map - the moment a change reaches production. Then work backward
-through every step until you reach the point where a request enters the system. This prevents teams
-from getting bogged down in the early stages and never reaching the deployment process, which is
-often where the largest delays hide.
+through every step until you reach the point where a request enters the system. Working backward keeps
+teams from getting bogged down in the early stages. The deployment process is often where the
+largest delays hide, and teams that start at the front often never reach it.
 
 Typical steps you will uncover include:
 
@@ -162,21 +162,21 @@ Typical steps you will uncover include:
 ### Step 2: Capture process time and wait time for each step
 
 For each step on the map, record the process time and the wait time. Use averages if exact numbers
-are not available, but prefer real data from your issue tracker, [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) system, or deployment logs
+are not available. Prefer real data from your issue tracker, [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) system, or deployment logs
 when you can get it.
 
 {{% alert title="Migration Tip" %}}
 Pay close attention to these migration-critical delays:
 
-- **Handoffs that block flow** - Every time work passes from one team or role to another (dev to QA,
-  QA to ops, ops to security), there is a queue. Count the handoffs. Each one is a candidate for
+- **Handoffs that block flow** - Every handoff from one team or role to another (dev to QA, QA to
+  ops, ops to security) creates a queue. Count the handoffs. Each one is a candidate for
   elimination or automation.
 - **Manual gates** - CAB approvals, manual regression testing, sign-off meetings. These often add
   days of wait time for minutes of actual value.
 - **Environment provisioning delays** - If developers wait hours or days for a test environment,
   that is a constraint you will need to address in Phase 2.
-- **Rework loops** - Any step where work frequently bounces back to a previous step. Track the
-  percentage of times this happens. These loops are destroying your cycle time.
+- **Rework loops** - Any step where work frequently bounces back to a previous step. Track how
+  often work bounces back. These loops are destroying your cycle time.
 {{% /alert %}}
 
 ### Step 3: Calculate %C/A at each step
@@ -185,9 +185,9 @@ Percent Complete and Accurate measures the quality of the handoff. Ask each pers
 percentage of the work you receive from the previous step is usable without needing clarification,
 correction, or rework?"
 
-A low %C/A at a step means the upstream step is producing defective output. This is critical
-information for your migration plan because it tells you where quality needs to be built in
-rather than inspected after the fact.
+A low %C/A at a step means the upstream step is producing defective output. That signal is
+critical for your migration plan. It tells you where to build quality in rather than inspect
+it after the fact.
 
 ### Step 4: Identify constraints (kaizen bursts)
 
