@@ -12,19 +12,19 @@ description: >
 Expand and contract, also called parallel change, replaces a single breaking schema or contract change with a sequence of small, backward-compatible deployments. Nothing outside your team has to be redeployed in lockstep.
 {{% /pageinfo %}}
 
-## What Is Expand and Contract?
+## What is expand and contract?
 
 Expand and contract evolves a shared contract, a database schema, an event schema, or an API, without ever mutating it in place. Instead of replacing the old shape with the new one in a single change, you add the new shape alongside the old one, migrate consumers over incrementally, and only remove the old shape once nothing depends on it.
 
 The name comes from the two ends of the sequence: you expand the contract to support both shapes at once, then contract it back down to only the new shape.
 
-### What Expand and Contract Is Not
+### What expand and contract is not
 
 - It is not a single migration script run during a deployment window. Each phase is its own independent, reversible deployment.
 - It is not limited to databases. The same four phases apply to API fields, event schemas, and message formats: anything with more than one reader or writer.
 - It is not optional for shared contracts. [Branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) is enough when only your own code depends on the thing you're changing. Once another service, another team, or stored data depends on it, use expand and contract instead.
 
-## What Expand and Contract Improves
+## What expand and contract improves
 
 | Problem | How Expand and Contract Helps |
 |---------|--------------------------------|
@@ -33,7 +33,7 @@ The name comes from the two ends of the sequence: you expand the contract to sup
 | No rollback path for a breaking change | Every phase is reversible on its own; you can pause or back out at any step |
 | Consumers of an API broken by a field change | Old and new fields coexist until every consumer has migrated |
 
-## The Four Phases
+## The four phases
 
 ### Phase 1: Expand
 
@@ -107,11 +107,11 @@ For an API, this phase is deprecating and eventually removing the old field or v
 
 **Result:** four independent deployments instead of one big-bang change. Each one is reversible on its own, and none of them requires another team or service to redeploy in the same window.
 
-## When Expand and Contract Is Not Enough
+## When expand and contract is not enough
 
 If the two shapes cannot coexist even briefly, for example a uniqueness constraint that the old and new schema can't both satisfy, you need a more deliberate migration plan with an explicit maintenance window. That is the exception, not the default: most schema and contract changes can be expressed as expand and contract if you're willing to take more, smaller steps.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We skipped the backfill and just changed the read path"
 
@@ -125,7 +125,7 @@ The contract phase must wait until every writer and every reader has confirmed t
 
 Collapsing the phases back into a single deployment defeats the purpose. Each phase exists so it can be deployed, verified, and rolled back independently.
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -134,11 +134,11 @@ Collapsing the phases back into a single deployment defeats the purpose. Each ph
 | Time from expand to contract | Weeks, bounded by an agreed deadline | Confirms the old shape doesn't linger indefinitely |
 | Consumers still on the old shape at contract time | Zero | Confirms the contract phase is actually safe to run |
 
-## Next Step
+## Next step
 
 Return to [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) to see when a broader [strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) migration, or a [feature flag]({{< relref "/docs/optimize/feature-flags" >}}) for business release timing, is the more appropriate tool.
 
-## Related Content
+## Related content
 
 - [Evolutionary Coding Techniques]({{< relref "/docs/foundations/evolutionary-coding" >}}) - the full decision hierarchy
 - [Branch by Abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}) - the equivalent technique for implementations with no shared contract

@@ -15,7 +15,7 @@ This phase establishes the development practices that make [continuous delivery]
 Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) automation speeds up a broken process.
 {{% /pageinfo %}}
 
-## What You'll Do
+## What you'll do
 
 1. **[Adopt trunk-based development]({{< relref "/docs/foundations/trunk-based-development" >}})** - Integrate to trunk at least daily
 2. **[Build testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})** - Create a fast, reliable test suite
@@ -25,11 +25,11 @@ Without these foundations, [pipeline]({{< relref "/docs/reference/glossary#pipel
 6. **[Establish working agreements]({{< relref "/docs/foundations/working-agreements" >}})** - Shared definitions of done and ready
 7. **[Everything as code]({{< relref "/docs/foundations/everything-as-code" >}})** - Version-control everything that defines your system: infrastructure, pipelines, schemas, monitoring, and security policies
 
-## Why This Phase Matters
+## Why this phase matters
 
 Teams that skip these foundations end up automating a broken process. A pipeline that deploys untested code from long-lived branches does not improve delivery. It amplifies risk. These practices ensure that what enters the pipeline is already safe to ship.
 
-## When You're Ready to Move On
+## When you're ready to move on
 
 Start investing in [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) when you are making
 consistent progress toward these - don't wait for every criterion to be perfect:
@@ -43,7 +43,7 @@ consistent progress toward these - don't wait for every criterion to be perfect:
 
 ---
 
-## Related Content
+## Related content
 
 - [Phase 0: Assess]({{< relref "/docs/assess" >}}) - The assessment phase that precedes Foundations
 - [Phase 2: Pipeline]({{< relref "/docs/pipeline" >}}) - The next phase after establishing foundations

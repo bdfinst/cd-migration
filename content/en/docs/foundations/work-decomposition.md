@@ -14,7 +14,7 @@ aliases:
 [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) requires daily integration, and daily integration requires small work. This page covers the techniques for breaking work into small, deliverable increments that flow through your [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) continuously.
 {{% /pageinfo %}}
 
-## Why Small Work Matters for CD
+## Why small work matters for CD
 
 [Continuous delivery]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) depends on a core principle: **small changes, integrated frequently, are safer than large changes integrated rarely.**
 
@@ -31,7 +31,7 @@ The [DORA]({{< relref "/docs/reference/glossary#dora-metrics" >}}) research cons
 - **Easier [rollback]({{< relref "/docs/reference/glossary#rollback" >}}):** Rolling back a 50-line change is straightforward. Rolling back a 2,000-line change often requires a new deployment.
 - **Better flow:** Small work items move through the system predictably. Large work items block queues and create bottlenecks.
 
-## The 2-Day Rule
+## The 2-day rule
 
 **If a work item takes longer than 2 days to complete, it is too big.**
 
@@ -39,7 +39,7 @@ Two days gives you at least one integration to trunk per day (the minimum for [T
 
 When a developer says "this will take a week," the answer is not "go faster." The answer is "break it into smaller pieces."
 
-### What "Complete" Means
+### What "complete" means
 
 A work item is complete when it is:
 
@@ -50,9 +50,9 @@ A work item is complete when it is:
 
 If a story requires a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) to hide incomplete user-facing behavior, that is fine. The code is still integrated, tested, and deployable.
 
-## Story Slicing Techniques
+## Story slicing techniques
 
-### The INVEST Criteria
+### The INVEST criteria
 
 Good stories follow INVEST:
 
@@ -65,7 +65,7 @@ Good stories follow INVEST:
 | **S**mall | Completable within 2 days | Enables daily integration |
 | **T**estable | Has clear [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) that can be automated | Supports the testing foundation |
 
-### Vertical Slicing
+### Vertical slicing
 
 The most important slicing technique for CD is **[vertical slicing]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}})**: cutting through all layers of the application to deliver a thin but complete slice of functionality.
 
@@ -91,7 +91,7 @@ Not every team owns the full stack from UI to database. A [subdomain product tea
 
 See [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}) for how layer-by-layer splitting fails in distributed systems.
 
-### Slicing Strategies
+### Slicing strategies
 
 When a story feels too big, apply one of these strategies:
 
@@ -105,7 +105,7 @@ When a story feels too big, apply one of these strategies:
 | **By platform** | Support one platform first | "Works on desktop web" (before "works on mobile") |
 | **Happy path first** | Implement the success case first | "User completes checkout" (before "user sees error when payment fails") |
 
-### Example: Decomposing a Feature
+### Example: decomposing a feature
 
 **Original story (too big):**
 
@@ -144,7 +144,7 @@ Feature: User login
 
 Each scenario is a natural unit of work. Implement one scenario at a time, integrate to trunk after each one.
 
-## Task Decomposition Within Stories
+## Task decomposition within stories
 
 Even well-sliced stories may contain multiple tasks. Decompose stories into tasks that can be completed and integrated independently.
 
@@ -165,7 +165,7 @@ Each task delivers a thin vertical slice of behavior and results in a commit to 
 - Tasks should be ordered so that the simplest changes come first
 - If a task requires a feature flag or stub to be integrated safely, that is fine
 
-## Common Anti-Patterns
+## Common anti-patterns
 
 - **[Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}):** Stories organized by layer ("build the schema," "build the API," "build the UI"). No individual slice is deployable.
 - **[Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}):** Stories with 10+ acceptance criteria or multi-week estimates. Break them into smaller stories using the slicing strategies above.
@@ -173,7 +173,7 @@ Each task delivers a thin vertical slice of behavior and results in a commit to 
 - **Splitting by role instead of by behavior:** Separate stories for "frontend developer builds the UI" and "backend developer builds the API" create handoff dependencies and delay integration. Write stories from the user's perspective so the same developer (or pair) implements the full vertical slice.
 - **Deferring edge cases indefinitely:** Building the happy path and creating a backlog of "handle error case X" stories that never get prioritized. Error handling is not optional. Include the most important error cases in the initial decomposition and schedule them immediately after the happy path, not "someday."
 
-## Measuring Success
+## Measuring success
 
 | Metric | Target | Why It Matters |
 |--------|--------|----------------|
@@ -182,13 +182,13 @@ Each task delivers a thin vertical slice of behavior and results in a commit to 
 | Stories completed per week | Increasing (with same team size) | Indicates better decomposition and less rework |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Decreasing | Fewer large stories blocking the pipeline |
 
-## Next Step
+## Next step
 
 Continue to [Code Review]({{< relref "/docs/foundations/code-review" >}}) to learn how to keep review fast and effective without becoming a bottleneck.
 
 ---
 
-## Related Content
+## Related content
 
 - [Too Much WIP]({{< relref "/docs/symptoms/flow/work-management/too-much-wip" >}}) - Symptom caused by large work items that block the pipeline
 - [Work Items Take Too Long]({{< relref "/docs/symptoms/flow/work-management/work-items-take-too-long" >}}) - Symptom that smaller decomposition directly addresses

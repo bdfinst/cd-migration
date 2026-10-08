@@ -12,7 +12,7 @@ description: >
 [Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) requires integrating incomplete work daily without breaking trunk or exposing half-built features to users. This section covers the techniques that make that possible, ordered from least to most costly to maintain.
 {{% /pageinfo %}}
 
-## Deployment Is Not Release
+## Deployment is not release
 
 [Deployment]({{< relref "/docs/reference/glossary#deployable" >}}) is a technical action: pushing code to production. Release is a business decision: making a capability available to users. Evolutionary coding techniques are how you deploy continuously while controlling release independently.
 
@@ -20,7 +20,7 @@ description: >
 
 Use the least intrusive technique that solves the problem. Reach for a flag only when nothing simpler applies.
 
-## In This Section
+## In this section
 
 | Page | What You'll Learn |
 |------|-------------------|
@@ -29,7 +29,7 @@ Use the least intrusive technique that solves the problem. Reach for a flag only
 | [Parallel Run]({{< relref "/docs/foundations/evolutionary-coding/parallel-run" >}}) | Prove a new implementation matches production behavior before you trust it |
 | [Expand and Contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) | Evolve a shared database schema or API contract without a breaking change |
 
-## The Hierarchy of Techniques
+## The hierarchy of techniques
 
 Work down this list. Each technique carries more long-term maintenance cost than the one above it.
 
@@ -42,7 +42,7 @@ Work down this list. Each technique carries more long-term maintenance cost than
 | [Strangler fig]({{< relref "/docs/optimize/architecture-decoupling#strategy-2-strangler-fig-pattern" >}}) | A routing layer, but no branching inside the code it replaces. |
 | [Feature flags]({{< relref "/docs/optimize/feature-flags" >}}) | Ongoing lifecycle management: an owner, a removal date, and combinatorial test cases until it's deleted. |
 
-## How to Choose
+## How to choose
 
 Ask these questions in order. Stop at the first "yes."
 
@@ -55,7 +55,7 @@ Ask these questions in order. Stop at the first "yes."
 
 Reaching question 6 is a legitimate reason to flag. Reaching for a flag at question 1 is not.
 
-## Rules If You Do Reach for a Flag
+## Rules if you do reach for a flag
 
 - **Flag at the edge, not in domain logic.** Put the check in a controller, router, or top-level entry point, never buried inside business logic or a data-access layer.
 - **Give every flag an expiration date at creation time.** No date means the flag is permanent, and permanent release flags are debt.
@@ -64,7 +64,7 @@ Reaching question 6 is a legitimate reason to flag. Reaching for a flag at quest
 
 See [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) for the full flag lifecycle, from creation through removal.
 
-## Key Pitfalls
+## Key pitfalls
 
 ### 1. "We used a flag because it was the tool we already knew"
 
@@ -78,11 +78,11 @@ Extract the interface first, as its own zero-behavior-change commit, before star
 
 A shared schema or API is a contract other people's code depends on. Use [expand and contract]({{< relref "/docs/foundations/evolutionary-coding/expand-and-contract" >}}) rather than branch by abstraction for anything consumed outside your own codebase.
 
-## Next Step
+## Next step
 
 These techniques are what make [trunk-based development]({{< relref "/docs/foundations/trunk-based-development" >}}) safe for incomplete work. Once your team can integrate daily without flag sprawl, continue building the [test architecture]({{< relref "/docs/foundations/testing-fundamentals" >}}) that backs it.
 
-## Related Content
+## Related content
 
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - the practice these techniques make safe
 - [TBD Migration Guide]({{< relref "/docs/foundations/trunk-based-development/tbd-migration" >}}) - worked scenarios using these techniques
