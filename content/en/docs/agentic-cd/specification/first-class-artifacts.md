@@ -20,7 +20,7 @@ For the framework overview and the eight constraints, see [ACD]({{< relref "/doc
 
 An agent (or a new team member) receiving only this document should understand the problem without asking clarifying questions. It defines what the change should accomplish, not how. Without a clear intent description, the agent may generate technically correct code that does not match what was needed. See the [self-containment test]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#the-self-containment-test" >}}) for how to verify completeness.
 
-**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not just stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) cycle.
+**Include a hypothesis.** The intent should state what outcome the change is expected to produce and why. A useful format: "We believe [this change] will result in [this outcome] because [this reason]." The hypothesis makes the "why" testable, not only stated. After deployment, the team can check whether the predicted outcome actually occurred - connecting each change to the [metrics-driven improvement]({{< relref "/docs/optimize/metrics-driven-improvement" >}}) cycle.
 
 **Example:**
 
@@ -195,7 +195,7 @@ function rateLimitMiddleware(redisClient, config) {
 
 **Review requirements:** Agent-generated implementation must be reviewed by a human before merging to trunk. The review focuses on:
 
-- Does the implementation match the intent? (Not just "does it pass tests?")
+- Does the implementation match the intent? (Not only "does it pass tests?")
 - Does it follow the architectural constraints in the feature description?
 - Does it introduce unnecessary complexity, dependencies, or security risks?
 - Would a human developer on the team understand and maintain this code?
@@ -251,7 +251,7 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 
 Without them, an agent that detects a conflict between what the acceptance criteria expect and what the feature description says has no way to determine which is authoritative. It guesses, and it guesses wrong. With explicit authority on each artifact, the agent knows which artifact wins.
 
-These artifacts are valuable in any project. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), they become mandatory because the pipeline and agents consume them as inputs, not just as reference for humans.
+These artifacts are valuable in any project. In [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}), they become mandatory because the pipeline and agents consume them as inputs, not only as reference for humans.
 
 With the artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 

@@ -47,11 +47,11 @@ Context engineering is the difference between a developer who writes better [pro
 
 Encoding organizational purpose, values, and trade-off hierarchies into the agent's operating environment.
 
-Intent engineering tells the agent what to want, not just what to know. An agent given context but no intent will make technically defensible decisions that miss the point. Intent engineering defines the decision boundaries the agent operates within.
+Intent engineering tells the agent what to want, not only what to know. An agent given context but no intent will make technically defensible decisions that miss the point. Intent engineering defines the decision boundaries the agent operates within.
 
 **Key skills:**
 
-- Telling the agent what to optimize for, not just what to build
+- Telling the agent what to optimize for, not only what to build
 - Defining decision boundaries (for example: "Optimize for customer satisfaction over resolution speed")
 - Establishing escalation triggers: conditions under which the agent must stop and ask a human instead of deciding autonomously
 

@@ -26,7 +26,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What works:** Low friction, no [context]({{< relref "/docs/reference/glossary#context-llm" >}}) management, passive. Excellent for boilerplate, repetitive patterns, argument completion, and common idioms. Speed gains are real, especially for code that follows well-known patterns.
 
-**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. There is no obvious failure that signals a ceiling has been hit - developers just accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
+**Why developers stay here:** The gains at Stage 1 are real and visible. Autocomplete is faster than typing, requires no workflow change, and integrates invisibly into existing habits. There is no obvious failure that signals a ceiling has been hit - developers accept that AI is useful for simple things and not for complex ones. Without seeing what Stage 4 or Stage 5 looks like, there is no reason to assume a better approach exists.
 
 **What drives the move forward:** Deliberate curiosity, or an incident traced to an accepted suggestion the developer did not scrutinize. Developers who move forward are usually ones who encountered a demonstration of a higher stage and wanted to replicate it - not ones who naturally outgrew autocomplete.
 

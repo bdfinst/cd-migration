@@ -316,7 +316,7 @@ Return this JSON and nothing else:
 
 **Recommended model tier:** Mid to frontier. Identifying second-order injection, subtle
 authorization gaps, and missing audit events requires understanding data flow semantics,
-not just pattern matching. A smaller model will miss the cases that matter most. Claude:
+not only pattern matching. A smaller model will miss the cases that matter most. Claude:
 Sonnet or Opus. Gemini: Pro.
 
 **Defect sources addressed:**
@@ -735,7 +735,7 @@ for the full gate sequence.
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - how to
   structure skills, agents, commands, and hooks for multi-agent systems
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the same
-  review agents operate as CI pipeline gates, not just pre-commit
+  review agents operate as CI pipeline gates, not only pre-commit
 - [Small-Batch Sessions]({{< relref "/docs/agentic-cd/architecture/small-batch-sessions" >}}) - the session discipline the
   orchestrator and skills enforce
 - [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) - the full optimization framework: model routing, context

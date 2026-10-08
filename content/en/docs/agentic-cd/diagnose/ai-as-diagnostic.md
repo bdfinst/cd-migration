@@ -51,14 +51,14 @@ faster at turning ideas into value. Output is abundant. Accelerated flow is scar
 ### Principle 3: Use the AI Enablement Properties to Accelerate
 
 Once you have named the dependency, the [five properties](#the-five-ai-enablement-properties)
-are how you remove it. Point them at Layers 2 and 3, the process and the organization, not just at
+are how you remove it. Point them at Layers 2 and 3, the process and the organization, not only at
 Layer 1, the code. That is AI Process Engineering: every property applied is a dependency removed,
 and by the Golden Rule, your odds doubled.
 
 But the payoff is lopsided, and a leader has to respect the limit. **AI can do the work, but it
 cannot accept the work.** It can draft the requirement, the design, and the code, but only the real
 user can confirm a change matches their job. When the same scarce expert both takes in the work and
-signs it off, AI speeds up the front and leaves the back untouched, and the bottleneck just moves to
+signs it off, AI speeds up the front and leaves the back untouched, and the bottleneck moves to
 where automation cannot help. So the move has two halves: aim the properties at the dependencies they
 can remove, and deliberately fund the human judgment they cannot.
 

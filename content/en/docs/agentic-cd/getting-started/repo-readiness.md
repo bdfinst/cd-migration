@@ -257,7 +257,7 @@ Agents operate on feedback loops: they propose a change, run the build or tests,
 
 **Poorly structured repositories shift the cost of ambiguity from the developer to the agent, multiplying it across every task.** A developer encountering a flaky test knows to re-run it. A developer seeing "assertion failed" checks the test code to understand the expectation. An agent does not have this implicit knowledge. It treats every failure as a signal that its change was wrong and attempts to fix code that was never broken, generating incorrect changes that require further correction.
 
-Investing in repository readiness is not just preparation for agentic development. It is the single highest-impact action for reducing ongoing agent cost and improving agent output quality.
+Investing in repository readiness is not only preparation for agentic development. It is the single highest-impact action for reducing ongoing agent cost and improving agent output quality.
 
 ## Related Content
 

@@ -42,7 +42,7 @@ Without evals, teams face:
 
 - **Silent regressions**: A prompt change that improves one scenario quietly breaks three others. Nobody notices until a user reports it.
 - **Hallucination drift**: The agent starts citing files that do not exist or inventing issues that are not present. Without negative tests, fabrication goes undetected.
-- **Unmeasurable improvement**: Every change is a guess. You cannot tell whether a prompt edit actually improved capability or just shifted failure modes.
+- **Unmeasurable improvement**: Every change is a guess. You cannot tell whether a prompt edit actually improved capability or only shifted failure modes.
 
 Evals make AI tool quality observable and measurable.
 
@@ -120,13 +120,13 @@ A report structure grader validates that the output contains required headings a
 
 ### Layer 2: Transcript Graders
 
-Transcript graders validate _how_ the agent worked, not just what it produced. They parse
+Transcript graders validate _how_ the agent worked, not only what it produced. They parse
 the agent's tool-call sequence and conversation turns to verify sound process.
 
 **What they check:**
 
 - The agent gathered evidence (Read, Glob, Grep, Bash) before stating findings
-- The agent used multiple evidence sources, not just one
+- The agent used multiple evidence sources, not only one
 - Evidence-gathering actions make up a sufficient proportion of total actions
 
 An evidence gathering grader checks three things: whether evidence-gathering tools (Read, Glob, Grep) were used before the agent stated findings, whether at least two different evidence tools were used, and whether evidence-gathering actions make up a sufficient proportion of total actions (for example, at least 40%). This catches agents that jump to conclusions without reading the code, or that rely on a single tool without examining actual file contents.
@@ -314,7 +314,7 @@ multi-trial execution and pass@k/pass^k metrics to measure true capability and
 reliability.
 
 **Not reading transcripts.** The transcript shows you _why_ the agent failed, not
-just _that_ it failed. Read transcripts after every eval run. They are the primary
+only _that_ it failed. Read transcripts after every eval run. They are the primary
 debugging tool.
 
 ## Related Content
