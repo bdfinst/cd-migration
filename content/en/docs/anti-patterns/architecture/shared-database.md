@@ -95,7 +95,7 @@ has direct access to the storage.
 Coordinating a schema migration across three teams means aligning three independent deployment
 schedules. One team might be mid-sprint and unable to deploy a consuming-service change this week.
 Another team might have a release freeze in place. The migration sits in limbo, the bridge code
-stays in production, and the developer who initiated the change is blocked.
+stays in production, and the developer who started the change is blocked.
 
 The dependencies are also invisible in planning. A developer estimates a task that includes a
 schema change at two days. They do not account for the four-person coordination meeting, the
