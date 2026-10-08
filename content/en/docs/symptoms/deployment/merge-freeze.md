@@ -49,9 +49,9 @@ reliable, merging and deploying could happen concurrently because main would alw
 
 ### Missing deployment pipeline
 
-When there is no pipeline that takes a specific commit through build, test, and deploy as a single
-atomic operation, the team must manually coordinate which commit gets deployed. A pipeline pins
-the deployment to a specific artifact built from a specific commit. Without it, the team must
+Without a pipeline, no single atomic operation takes a specific commit through build, test, and
+deploy. The team must manually coordinate which commit gets deployed. A pipeline pins
+the deployment to a specific artifact built from a specific commit. Without a pipeline, the team must
 freeze merges to prevent the target from moving while they deploy.
 
 **Read more:** [Missing Deployment Pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})

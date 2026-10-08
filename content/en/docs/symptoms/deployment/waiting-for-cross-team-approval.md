@@ -10,17 +10,18 @@ tags:
 
 ## What you are seeing
 
-A change is ready to ship. Before it can go to production, it requires sign-off from an
-architecture review board, a legal review for data handling, a compliance team for regulatory
-requirements, or some combination of these. Each reviewing team has its own meeting cadence.
-The architecture board meets every two weeks. Legal responds when they have capacity. Compliance
+A change is ready to ship. Before the change can go to production, it needs sign-off from one or
+more reviewers. These can include an architecture review board, a legal review for data handling,
+and a compliance team for regulatory requirements.
+
+Each reviewing team has its own meeting cadence. The architecture board meets every two weeks. Legal responds when they have capacity. Compliance
 has a queue.
 
 The team submits the request and waits. In the meantime, the code sits in a branch or is
 merged behind a [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}), accumulating risk as the codebase moves around it. When approval
-finally arrives, the original context has faded. If the reviewer requests changes, the wait
-restarts. The team learns to front-load reviews by submitting for approval before development
-is complete, but the timing never aligns perfectly and changes after approval trigger new review
+finally arrives, the original context has faded, and any requested change restarts the
+wait. The team learns to front-load reviews by submitting for approval before development
+is complete. The timing never aligns perfectly, and changes after approval trigger new review
 cycles.
 
 ## Common causes
@@ -38,9 +39,8 @@ added and old ones are never removed.
 
 ### Separation of duties as separate teams
 
-Separation of duties is a legitimate control for high-risk changes. It becomes an anti-pattern
-when it is implemented as a structural requirement that every change go through a different team
-for approval, regardless of risk level. Low-risk routine changes get the same review overhead as
+Separation of duties is a legitimate control for high-risk changes. Separation of duties becomes an anti-pattern
+when every change must go through a different team for approval, regardless of risk level. Low-risk routine changes get the same review overhead as
 high-risk changes. The review team becomes a bottleneck because they are reviewing everything
 rather than focusing on changes that actually warrant scrutiny.
 

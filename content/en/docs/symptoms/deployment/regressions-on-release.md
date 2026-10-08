@@ -13,18 +13,20 @@ tags:
 
 The release goes out. Within hours, bug reports arrive for behavior that was working before the
 release. A calculation that was correct is now wrong. A form submission that was completing now
-errors. A feature that was visible is now missing. The team starts bisecting the release,
+errors. A feature that was visible is now missing.
+
+The team starts bisecting the release,
 searching through a large set of changes to find which one caused the regression.
 
-Post-mortems for regressions tend to follow the same pattern: the change that caused the problem
+Post-mortems for regressions tend to follow the same pattern. The change that caused the problem
 looked safe in isolation, but it interacted with another change in an unexpected way. Or the code
 path that broke was not covered by any automated test, so nobody saw the breakage until a user
 reported it. Or a configuration value changed alongside the code change, and the combination
 behaved differently than either change alone.
 
 Regressions erode trust in the team's ability to release safely. The team responds by adding
-more manual checks before releases, which slows the release cycle, which increases [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}),
-which increases the surface area for the next regression.
+more manual checks before releases. Those checks slow the release cycle, which increases [batch size]({{< relref "/docs/reference/glossary#batch-size" >}}).
+Larger batches increase the surface area for the next regression.
 
 ## Common causes
 
@@ -43,7 +45,7 @@ few changes, and when one does occur, the cause is obvious.
 
 When tests run only immediately before a release rather than continuously throughout development,
 regressions accumulate silently between test runs. A change that breaks existing behavior is not
-detected until the pre-release test cycle, by which time more code has been built on top of the
+detected until the pre-release test cycle. By then, more code has been built on top of the
 broken behavior. The longer the gap between when the regression was introduced and when it is
 found, the more expensive it is to fix.
 
@@ -61,8 +63,8 @@ in previously working functionality.
 
 ### Fixes applied to the release branch but not to trunk
 
-When a defect is found in a released version, the team branches from the release tag and
-applies a fix to that branch to ship a patch quickly. If the fix is never ported back to
+When someone finds a defect in a released version, the team branches from the release tag.
+The team applies a fix to that branch to ship a patch quickly. If the fix is never ported back to
 trunk, the next release from trunk still contains the defect. The patch branch and trunk have
 diverged: the patch has the fix, trunk does not.
 
@@ -87,8 +89,8 @@ affected.
 3. **Are developers working on branches that diverge from the main codebase for more than a
    day?** If yes, untested merge interactions are a likely source of regressions. Start with
    [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}).
-4. **Does the same regression appear in multiple releases?** If a bug that was fixed in a
-   patch release keeps coming back, the fix was applied to the release branch but never merged
+4. **Does the same regression appear in multiple releases?** If a bug fixed in a
+   patch release keeps coming back, the fix went to the release branch but never merged
    to trunk. Start with
    [Release Branches with Extensive Backporting]({{< relref "/docs/anti-patterns/branching-integration/release-branches-backporting" >}}).
 
