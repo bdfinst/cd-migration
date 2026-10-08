@@ -37,7 +37,7 @@ Common variations:
   the team owns.
 - **The divergent processes.** Because each product evolved independently, each has different
   build tools, deployment processes, and conventions. Switching between products means switching
-  mental models entirely. The cost of context switching is not just the product domain but the
+  mental models entirely. The cost of context switching is not only the product domain but the
   entire toolchain.
 
 The telltale sign: ask any developer what they are working on, and the answer involves three
@@ -155,7 +155,7 @@ different toolchain.
 - [Domain Model Erosion]({{< relref "/docs/symptoms/flow/developer-experience/domain-model-erosion" >}}) - Codebase degraded by successive teams without domain continuity
 - [Slow Defect Resolution]({{< relref "/docs/symptoms/flow/developer-experience/slow-defect-resolution" >}}) - Bugs take disproportionately long when debuggers don't know the domain
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Roster instability driven by treating engineers as interchangeable capacity
-- [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Thin-spread teams create silos at the product level, not just the subsystem level
+- [Knowledge Silos]({{< relref "/docs/anti-patterns/team-workflow/knowledge-silos" >}}) - Thin-spread teams create silos at the product level, not only the subsystem level
 - [Unbounded WIP]({{< relref "/docs/anti-patterns/team-workflow/unbounded-wip" >}}) - Too many products is WIP at the team level
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - Agreements on product scope and capacity allocation
 - [Architecture Decoupling]({{< relref "/docs/optimize/architecture-decoupling" >}}) - Reducing coupling between products makes ownership boundaries cleaner

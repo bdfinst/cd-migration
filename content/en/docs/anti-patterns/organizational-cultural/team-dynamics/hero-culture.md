@@ -88,7 +88,7 @@ Expect pushback and address it directly:
 ### Step 2: Begin systematic knowledge transfer (Weeks 2-6)
 
 1. Require pair programming or pairing on all incidents and deployments for the next sprint, with the hero as the driver and a different team member as the navigator each time.
-2. Create runbooks collaboratively: after each incident, the hero and at least one other team member co-author the post-mortem and write the runbook for the class of problem, not just the instance.
+2. Create runbooks collaboratively: after each incident, the hero and at least one other team member co-author the post-mortem and write the runbook for the class of problem, not only the instance.
 3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero for two weeks, then take primary ownership with the hero as backup.
 4. Add a "could someone else do this?" criterion to the definition of done. If a feature or operational change requires the hero to deploy or maintain it, it is not done.
 5. Schedule explicit knowledge transfer sessions - not all-hands training, but targeted 30-minute sessions where the hero explains one specific thing to two or three team members.
@@ -107,7 +107,7 @@ Expect pushback and address it directly:
 3. Rotate the on-call schedule so every team member takes primary on-call. Start with a shadow rotation where the hero is backup before moving to independent coverage.
 4. Remove the hero from informal escalation paths. When the hero gets a direct message asking about a system they are no longer the owner of, they respond with "ask the deputy owner" rather than answering.
 5. Measure and celebrate knowledge distribution: track how many team members have independently resolved incidents in each system over the quarter.
-6. Change recognition practices to reward documentation, runbook writing, and teaching - not just firefighting.
+6. Change recognition practices to reward documentation, runbook writing, and teaching - not only firefighting.
 
 Expect pushback and address it directly:
 

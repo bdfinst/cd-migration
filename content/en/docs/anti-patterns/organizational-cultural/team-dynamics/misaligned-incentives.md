@@ -102,7 +102,7 @@ continuously and have much more reliable throughput.
 
 ### Impact on continuous delivery
 
-CD is fundamentally about optimizing the delivery system, not just the products the system
+CD is fundamentally about optimizing the delivery system, not only the products the system
 produces. The four key metrics - deployment frequency, lead time, change fail rate, mean time to
 repair - are measurements of the delivery system's health. If none of these metrics appear in
 anyone's performance review, OKR, or team goal, there is no organizational will to improve them.
@@ -140,7 +140,7 @@ conversations. It legitimizes the investment of time in CD improvement work.
 Change recognition patterns. When the on-call engineer's fix is recognized in a team meeting, also
 recognize the engineer who spent time the previous week improving test coverage in the area that
 failed. When a deployment goes smoothly because a developer took care to add deployment
-verification, note it explicitly. Visible recognition of prevention behavior - not just heroic
+verification, note it explicitly. Visible recognition of prevention behavior - not only heroic
 recovery - changes the cost-benefit calculation for investing in quality.
 
 ### Step 4: Align operations and development incentives (Weeks 4-8)

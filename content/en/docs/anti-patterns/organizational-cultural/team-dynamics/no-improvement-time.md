@@ -55,7 +55,7 @@ Feature work built on a deteriorating foundation requires more rework per featur
 
 A team that does not invest in improvement is flying with degrading instruments. The test suite was reliable six months ago; now it is flaky. The build was fast last year; now it takes 35 minutes. The deployment runbook was accurate 18 months ago; now it is a starting point that requires improvisation. Each degradation adds unpredictability to delivery.
 
-The compounding effect means that improvement debt is not linear. A team that defers improvement for two years does not just have twice the problems of a team that deferred for one year - they have a codebase that is harder to change, a pipeline that is harder to fix, and a set of habits that resist improvement. The capacity needed to escape the treadmill grows over time.
+The compounding effect means that improvement debt is not linear. A team that defers improvement for two years does not merely have twice the problems of a team that deferred for one year - they have a codebase that is harder to change, a pipeline that is harder to fix, and a set of habits that resist improvement. The capacity needed to escape the treadmill grows over time.
 
 Unpredictability frustrates stakeholders and erodes trust. When the team cannot reliably forecast delivery timelines because their own systems are unpredictable, the credibility of every estimate suffers. The response is often more process - more planning, more status meetings, more checkpoints - which consumes more of the time that could go toward improvement.
 
