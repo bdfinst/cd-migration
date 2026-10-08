@@ -81,7 +81,7 @@ The right first move depends on what the suite looks like now. Five common start
 
 1. Inventory the flows the E2E suite exercises. Pick the top five that fail most often.
 2. Build [component tests]({{< relref "/docs/foundations/testing-fundamentals/glossary#component-test" >}}) for those flows. Double the backend through the gateway the team owns.
-3. Once those component tests are green *and* the doubles they rely on are backed by a [contract test]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) plus an [out-of-band check]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) that is actually running and watched, delete the corresponding E2E tests. Don't keep both: duplicated coverage doubles the maintenance cost without doubling the confidence. Until that out-of-band validation is in place and monitored, keep one real-integration smoke test per flow - the component test's confidence rests on doubles, and deleting the last real-integration signal before anything proves those doubles still match reality just moves the risk somewhere you can't see it.
+3. Once those component tests are green *and* the doubles they rely on are backed by a [contract test]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) plus an [out-of-band check]({{< relref "/docs/foundations/testing-fundamentals/glossary#out-of-band-test" >}}) that is actually running and watched, delete the corresponding E2E tests. Do not keep both: duplicated coverage doubles the maintenance cost without doubling the confidence. Until that out-of-band validation is in place and monitored, keep one real-integration smoke test per flow - the component test's confidence rests on doubles, and deleting the last real-integration signal before anything proves those doubles still match reality just moves the risk somewhere you cannot see it.
 
 ### If most "unit" tests mock third-party SDKs
 
@@ -91,19 +91,19 @@ The right first move depends on what the suite looks like now. Five common start
 
 ### If line coverage is high but production keeps breaking
 
-1. Run mutation testing on a high-traffic module. Most surviving mutants are tests that didn't catch the mutation.
-2. For each surviving mutant, add a flow-oriented test that would have caught it. Don't add a test of the specific mutation: add the test of the behavior the mutation breaks.
-3. Repeat module by module, prioritized by production incident frequency. Coverage % won't change much. Defect-finding will.
+1. Run mutation testing on a high-traffic module. Most surviving mutants are tests that did not catch the mutation.
+2. For each surviving mutant, add a flow-oriented test that would have caught it. Do not add a test of the specific mutation: add the test of the behavior the mutation breaks.
+3. Repeat module by module, prioritized by production incident frequency. Coverage % will not change much. Defect-finding will.
 
 ### If the suite has six figures of tests and runs for 90 minutes
 
 1. Move tests that need a database or downstream into an integration lane on a different cadence (post-merge or scheduled), not the pre-commit gate.
 2. Convert [sociable unit tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) to component tests where they exercise complete flows. Delete redundant unit-level duplicates.
-3. Set a budget: deterministic suite under 10 minutes. Non-conforming tests get reviewed; if they can't be made fast, they move to acceptance or get deleted.
+3. Set a budget: deterministic suite under 10 minutes. Non-conforming tests get reviewed; if they cannot be made fast, they move to acceptance or get deleted.
 
 ### If there are no tests at all
 
-1. Don't try to retrofit unit tests for existing code. You'll write tests that pin the current bugs.
+1. Do not try to retrofit unit tests for existing code. You will write tests that pin the current bugs.
 2. Start with a small set of component tests for the highest-value flows. They double as characterization tests for legacy behavior.
 3. As the team changes code, write tests for the change first. The test base grows organically with the change set, and the parts of the code that change most are the parts that get tests soonest.
 
