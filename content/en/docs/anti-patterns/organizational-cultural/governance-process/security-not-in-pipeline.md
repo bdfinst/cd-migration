@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A feature is developed, tested, and declared ready for release. Then someone files a security review request. The security team - typically a small, centralized group - reviews the change against their checklist, finds a SQL injection risk, two outdated dependencies with known CVEs, and a hardcoded credential that appears to have been committed six months ago and forgotten. The release is blocked. The developer who added the injection risk has moved on to a different team. The credential has been in the codebase long enough that no one is sure what it accesses.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the security team learns about new features from the release request, not from early design conversations or automated pipeline reports.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Security vulnerabilities follow the same cost curve as other defects: they are cheapest to fix when they are newest. A vulnerability caught at code commit takes minutes to fix. The same vulnerability caught at release takes hours - and sometimes weeks if the fix requires architectural changes. A vulnerability caught in production may never be fully fixed.
 
@@ -67,7 +67,7 @@ Moving security left - making it a property of every commit rather than a gate a
 
 The cultural shift matters as much as the technical one. Security must be a shared responsibility - every developer must understand the classes of vulnerability relevant to their domain and feel accountable for preventing them. A team that treats security as "the security team's job" cannot build secure software at CD pace, regardless of how good the automated tools are.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Inventory your current security posture and tooling
 
@@ -115,7 +115,7 @@ Expect pushback and address it directly:
 | "Security engineers don't have time to be embedded in every team." | They do not need to be in every sprint ceremony. Regular office hours, on-demand consultation, and automated scanning cover most of the ground. |
 | "Developers resist security requirements as scope creep." | Frame security as a quality property like performance or reliability - not an external imposition but a component of the feature being done correctly. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Reduction as security rework from late findings decreases |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Improvement as security issues are caught close to introduction rather than after deployment |
 
-## Related Content
+## Related content
 
 - [Pipeline architecture]({{< relref "/docs/pipeline/pipeline-architecture" >}}) - design the pipeline stages that include security scanning
 - [Deterministic pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - security scans must produce reliable, repeatable results to be trusted

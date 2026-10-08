@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 Ten developers are responsible for fifteen products. Each developer is the primary contact for
 two or three of them. When a production issue hits one product, the assigned developer drops
@@ -43,7 +43,7 @@ Common variations:
 The telltale sign: ask any developer what they are working on, and the answer involves three
 products and an apology for not making more progress on any of them.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Spreading a team across too many products is a team topology failure. It turns every developer
 into a single point of failure for their assigned products while preventing the team from
@@ -100,7 +100,7 @@ CD also requires investment in automation, testing, and pipeline infrastructure.
 across fifteen products cannot invest in improving the delivery practices for any one of them
 because there is no sustained focus to build momentum.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Count the real product load
 
@@ -139,7 +139,7 @@ different toolchain.
 | "Every product is critical" | If fifteen products are all critical and ten developers support them, none of them are getting the attention that "critical" requires. Prioritize ruthlessly or accept that "critical" means "at risk." |
 | "Developers should be flexible enough to work across products" | Flexibility and fragmentation are different things. A developer who rotates between two products per sprint is flexible. A developer who touches four products per day is fragmented. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------:|
@@ -148,7 +148,7 @@ different toolchain.
 | Single-point-of-failure count | Should decrease as shared knowledge grows within the reduced scope |
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as sustained focus replaces fragmented attention |
 
-## Related Content
+## Related content
 
 - [Rotation Ramp-Up Drag]({{< relref "/docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag" >}}) - Delivery slowdown that repeats with every team rotation
 - [Repeated Domain Mistakes]({{< relref "/docs/symptoms/flow/team-knowledge/repeated-domain-mistakes" >}}) - Institutional memory lost with each rotation, same errors recur

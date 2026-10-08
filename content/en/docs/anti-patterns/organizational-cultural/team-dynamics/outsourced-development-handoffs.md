@@ -16,7 +16,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A feature is developed by an offshore team that works in a different time zone. When the code is
 complete, a build is packaged and handed to a separate QA team, who test against a documented
@@ -60,7 +60,7 @@ The telltale sign: when a production defect is discovered, tracking down the per
 the code requires a trail of tickets across three organizations, and that person no longer
 remembers the relevant context.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A bug found in production gets routed to a ticket queue. By the time it reaches the developer
 who wrote the code, the context is gone and the fix takes three times as long as it would have
@@ -127,7 +127,7 @@ control the test environment. The operations team controls the deployment proces
 know the application well enough to automate its deployment safely. The gap between the two is
 where CD improvement efforts go to die.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Map the current handoffs and their costs
 
@@ -183,7 +183,7 @@ to align contract boundaries with value delivery rather than functional speciali
 | "Our outsourcing contract specifies this delivery model" | Contracts are renegotiated based on business results. If you can demonstrate that reducing handoffs shortens delivery timelines by two weeks, the business case for renegotiating the contract scope is clear. Start with a pilot under a change order before seeking full contract revision. |
 | "Operations needs to control production for stability" | Operations controlling access is different from operations controlling deployment timing. Automated deployment pipelines with proper access controls give operations visibility and auditability without requiring them to manually execute every deployment. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -194,7 +194,7 @@ to align contract boundaries with value delivery rather than functional speciali
 | [Development cycle time]({{< relref "/docs/reference/metrics/development-cycle-time" >}}) | Should decrease as time spent waiting for handoffs is removed |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Should decrease as fewer items are waiting in queues between teams |
 
-## Related Content
+## Related content
 
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - The pipeline model that replaces multi-team handoff chains
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Building the automated test layer that replaces manual QA handoffs

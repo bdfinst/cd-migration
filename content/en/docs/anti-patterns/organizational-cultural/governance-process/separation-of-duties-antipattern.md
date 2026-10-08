@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The compliance framework requires separation of duties (SoD): the person who writes code should not be the only person who can authorize deploying that code. This is a sensible control - it prevents a single individual from both introducing and concealing fraud or a critical error. The organization implements it by making a rule: developers cannot deploy to production. A separate team - operations, release management, or a dedicated deployment team - must perform the final step.
 
@@ -33,7 +33,7 @@ Common variations:
 
 The telltale sign: the deployment team's primary value-add is running a checklist, not performing independent technical verification of the change being deployed.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A developer's urgent hotfix sits in the deployment queue for two days while the deployment team works through a backlog. In the meantime, the bug is live in production. SoD implemented as an organizational wall creates a compliance control that is expensive to operate, slow to execute, and provides weaker assurance than the automated alternative.
 
@@ -69,7 +69,7 @@ SoD as a compliance requirement does not change this constraint - it only frames
 
 Most SoD frameworks in regulated industries - SOX ITGC, PCI DSS, HIPAA Security Rule - specify the control objective (no single individual controls the entire change lifecycle without oversight) rather than the mechanism (a separate team must deploy). The mechanism is an organizational choice, not a regulatory mandate.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Clarify the actual SoD requirement
 
@@ -117,7 +117,7 @@ Expect pushback and address it directly:
 | "The deployment team will resist losing their role." | The work they are freed from is low-value. The work available to them - platform engineering, SRE, developer experience - is higher-value and more interesting. Frame this as growth, not elimination. |
 | "Compliance will take too long to approve the change." | Start with a non-production service in scope for compliance. Build the track record while the formal approval process runs. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -128,7 +128,7 @@ Expect pushback and address it directly:
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction as the deployment bottleneck clears |
 | [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Monitor automated approval gates for speed; they should add minimal time to the pipeline |
 
-## Related Content
+## Related content
 
 - [Compliance interpreted as manual approval]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/compliance-manual-approval" >}}) - related pattern where compliance is used to justify other manual gates
 - [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}}) - the organizational pattern this anti-pattern creates

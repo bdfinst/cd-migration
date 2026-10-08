@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 A developer finishes a story, marks it done, and drops it into a QA queue. The QA team - a separate group with its own manager, its own metrics, and its own backlog - picks it up when capacity allows. By the time a tester sits down with the feature, the developer is two stories further along. When the bug report arrives, the developer must mentally reconstruct what they were thinking when they wrote the code.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the QA team's queue is always longer than its capacity, and releases regularly wait for testing to "catch up."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Separating testing from development treats quality as a property you inspect for rather than a property you build in. Inspection finds defects late; building in prevents them from forming.
 
@@ -65,7 +65,7 @@ CD requires that quality be verified automatically in the pipeline on every comm
 
 The cultural dimension matters as much as the structural one. CD requires every developer to feel responsible for the quality of what they ship. When testing is "someone else's job," developers externalize quality responsibility. They do not write tests, do not think about testability when designing code, and do not treat a test failure as their problem to solve. This mindset must change before CD practices can take hold.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure the QA queue and its impact
 
@@ -115,7 +115,7 @@ Expect pushback and address it directly:
 | "The pipeline will be too slow if we run all tests on every commit." | Structure tests in layers: fast unit tests on every commit, slower integration tests on merge, full end-to-end on release candidate. Measure current pipeline time, apply the layered structure, and re-measure - most teams cut commit-stage feedback time to under five minutes. |
 | "Automated tests miss things humans catch." | Yes. Automated tests catch regressions reliably at low cost. Humans catch novel edge cases. Both are needed. Free your QA engineers from regression work so they can focus on the exploratory testing only humans can do. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in stories stuck in the QA queue |
 | [Mean time to repair]({{< relref "/docs/reference/metrics/mean-time-to-repair" >}}) | Improvement as defects are caught earlier when they are cheaper to fix |
 
-## Related Content
+## Related content
 
 - [Testing fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - how to build an effective automated test suite
 - [Working agreements]({{< relref "/docs/foundations/working-agreements" >}}) - define shared quality expectations across the team

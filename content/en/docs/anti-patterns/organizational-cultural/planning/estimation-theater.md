@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="medium" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The sprint planning meeting has been running for three hours. The team is on story number six of
 fourteen. Each story follows the same ritual: a developer reads the description aloud, the team
@@ -56,7 +56,7 @@ The telltale sign: when a developer is asked how long something will take, they 
 say "maybe 5 points" - because the real unit has been replaced by a proxy that nobody knows how to
 interpret.
 
-## Why This Is a Problem
+## Why this is a problem
 
 A team spends three hours estimating fourteen stories. The following week, the first story takes
 three times longer than estimated because the acceptance criteria were never clarified. The three
@@ -119,7 +119,7 @@ estimation cultures punish surfacing surprises because surprises mean the estima
 The resulting silence - developers not raising problems because raising problems is culturally
 costly - is exactly the opposite of the fast feedback that CD requires.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Measure estimation accuracy for one sprint
 
@@ -165,7 +165,7 @@ ambiguous? Fix the root cause, not the estimate.
 | "How do we know what fits in a sprint without estimates?" | Apply a size rule: no story larger than two days. Multiply team capacity (people times working days per sprint) by that ceiling and you have your sprint limit. Try it for one sprint and compare predictability to the previous point-based approach. |
 | "We've been doing this for years; changing will be disruptive" | The disruption is one or two sprints of adjustment. The ongoing cost of estimation theater - hours per sprint of planning that does not improve predictability - is paid every sprint, indefinitely. One-time disruption to remove a recurring cost is a good trade. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -175,7 +175,7 @@ ambiguous? Fix the root cause, not the estimate.
 | Stories completed per sprint | Should increase and stabilize as stories become consistently small |
 | Re-estimate rate | Should drop toward zero as the process moves away from point estimation |
 
-## Related Content
+## Related content
 
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - The practice that makes small, consistent stories possible
 - [Small Batches]({{< relref "/docs/optimize/small-batches" >}}) - Why smaller work items improve delivery more than better estimates

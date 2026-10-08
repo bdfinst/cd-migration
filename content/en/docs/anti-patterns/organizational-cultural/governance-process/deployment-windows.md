@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The policy is clear: production deployments happen on Tuesday and Thursday between 2 AM and
 4 AM. Outside of those windows, no code may be deployed to production except through an
@@ -60,7 +60,7 @@ The telltale sign: when a developer asks when their change will be in production
 involves a day of the week and a time of day that has nothing to do with when the change
 was ready.
 
-## Why This Is a Problem
+## Why this is a problem
 
 Deployment windows were designed to reduce risk by controlling when deployments happen. In
 practice, they increase risk by forcing changes to accumulate, creating larger and more complex
@@ -146,7 +146,7 @@ from rapid deployment cycles if rapid deployment is prohibited. The feedback loo
 CD competence - deploy, observe, fix, deploy again - are stretched to day-scale rather than
 hour-scale. The learning that CD produces is delayed proportionally.
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Document the actual risk model for deployment windows
 
@@ -235,7 +235,7 @@ than windowed, large-batch deployment.
 | "We tried deploying more often and had more incidents" | More frequent deployment of the same batch sizes would produce more incidents. More frequent deployment of smaller batch sizes produces fewer incidents. The frequency and the batch size must change together. |
 | "Compliance requires documented change windows" | Most compliance frameworks (ITIL, SOX, PCI-DSS) require documented change management and audit trails, not specific deployment hours. An automated pipeline that records every deployment with test evidence and approval trails satisfies the same requirements more thoroughly than a time-based window policy. Engage the compliance team to confirm. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -246,7 +246,7 @@ than windowed, large-batch deployment.
 | [Lead time]({{< relref "/docs/reference/metrics/lead-time" >}}) | Should decrease as changes deploy when ready rather than at scheduled windows |
 | Emergency change requests | Should decrease as the on-demand deployment process becomes available for all changes |
 
-## Related Content
+## Related content
 
 - [Rollback]({{< relref "/docs/pipeline/rollback" >}}) - Automated rollback is what makes deployment safe enough to do at any time
 - [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - One consistent automated path replaces manually staffed deployment events

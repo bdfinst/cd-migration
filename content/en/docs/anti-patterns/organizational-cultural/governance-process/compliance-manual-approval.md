@@ -15,7 +15,7 @@ tags:
 **Category:** {{< param category >}} | {{% risk-indicator level="high" %}}
 {{% /pageinfo %}}
 
-## What This Looks Like
+## What this looks like
 
 The change advisory board convenes every Tuesday at 2 PM. Every deployment request - whether a one-line config fix or a multi-service architectural overhaul - is presented to a room of reviewers who read a summary, ask a handful of questions, and vote to approve or defer. The review is documented in a spreadsheet. The spreadsheet is the audit trail. This process exists because, someone decided years ago, the regulations require it.
 
@@ -31,7 +31,7 @@ Common variations:
 
 The telltale sign: the compliance team cannot tell you which specific regulatory requirement mandates the current manual approval process, only that "that's how we've always done it."
 
-## Why This Is a Problem
+## Why this is a problem
 
 Manual compliance controls feel safe because they are visible. Auditors can see the spreadsheet, the meeting minutes, the approval signatures. What they cannot see - and what the controls do not measure - is whether the reviews are effective, whether the documentation matches reality, or whether the process is generating the risk reduction it claims to provide.
 
@@ -67,7 +67,7 @@ More fundamentally, CD requires that the pipeline be the control - that approval
 
 The path to CD in regulated environments requires reframing compliance with the compliance team: the question is not "how do we get exempted from the controls?" but "how do we implement controls that are more effective and auditable than the current manual process?"
 
-## How to Fix It
+## How to fix it
 
 ### Step 1: Read the actual regulatory requirements
 
@@ -115,7 +115,7 @@ Expect pushback and address it directly:
 |-----------|----------|
 | "The compliance team owns this process and won't change it." | Compliance teams are often more flexible than they appear when approached with evidence rather than requests. Show them the automated control design, the audit evidence format, and a regulatory mapping. Make their job easier, not harder. |
 
-## Measuring Progress
+## Measuring progress
 
 | Metric | What to look for |
 |--------|-----------------|
@@ -126,7 +126,7 @@ Expect pushback and address it directly:
 | [Build duration]({{< relref "/docs/reference/metrics/build-duration" >}}) | Automated compliance checks added to the pipeline should be monitored for speed impact |
 | [Work in progress]({{< relref "/docs/reference/metrics/work-in-progress" >}}) | Reduction in changes waiting for approval |
 
-## Related Content
+## Related content
 
 - [Separation of duties as separate teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) - closely related pattern where compliance requirements are implemented as organizational walls
 - [Single path to production]({{< relref "/docs/pipeline/single-path-to-production" >}}) - automated pipeline controls are the mechanism for replacing manual approval gates
