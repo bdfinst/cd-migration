@@ -77,7 +77,7 @@ complete.
 Key characteristics of ephemeral environments:
 
 - **Full-stack** - they include the application and all of its dependencies (databases,
-  message queues, caches, downstream services), not just the application in isolation
+  message queues, caches, downstream services), not only the application in isolation
 - **On-demand** - any developer or pipeline can spin one up at any time without waiting
   for a shared resource
 - **Short-lived** - they exist for hours or days, not weeks or months. This prevents

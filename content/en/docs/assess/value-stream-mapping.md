@@ -211,7 +211,7 @@ Common constraints teams discover during their first value stream map:
 Once your map is complete, calculate these summary numbers:
 
 - **Total lead time** = sum of all process times + all wait times
-- **Total process time** = sum of just the process times
+- **Total process time** = sum of only the process times
 - **Flow efficiency** = total process time / total lead time * 100
 - **Number of handoffs** = count of transitions between different teams or roles
 - **Rework percentage** = percentage of changes that loop back to a previous step

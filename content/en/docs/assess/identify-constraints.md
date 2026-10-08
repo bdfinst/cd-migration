@@ -56,9 +56,9 @@ them requires engaging outside your boundary:
   decisions. Removing or automating them requires organizational consensus.
 - **Manual handoffs:** When work must pass through a separate test team, security review, or
   operations team, the constraint is in the process structure, not the pipeline. Resolving it
-  means changing how those teams engage, not just how your team works.
+  means changing how those teams engage, not only how your team works.
 - **Change windows:** Release schedules and deployment blackout periods are set by the
-  organization, not the team. Challenge them with data, not just intent.
+  organization, not the team. Challenge them with data, not only intent.
 
 Use the constraint analysis in this page to build a prioritized case for those conversations.
 

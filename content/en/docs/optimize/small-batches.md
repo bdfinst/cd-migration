@@ -26,7 +26,7 @@ This is not a theory. The [DORA]({{< relref "/docs/reference/glossary#dora-metri
 
 ## Three Levels of Batch Size
 
-[Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is not just about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
+[Batch size]({{< relref "/docs/reference/glossary#batch-size" >}}) is not only about deployments. It operates at three distinct levels, and optimizing only one while ignoring the others limits your improvement.
 
 ### Level 1: Deploy Frequency
 
@@ -139,7 +139,7 @@ Each cycle produces a commit that is independently deployable and verified by an
 
 ## Service-Level Decomposition Example
 
-ATDD works at the API and service level, not just at the UI level. Here is an example of building an order history endpoint day by day:
+ATDD works at the API and service level, not only at the UI level. Here is an example of building an order history endpoint day by day:
 
 **Day 1 - Return an empty list for a customer with no orders:**
 
