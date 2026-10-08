@@ -34,6 +34,7 @@
     "a11y": "bash scripts/a11y.sh",
     "layout-check": "bash scripts/layout-check.sh",
     "triage-check": "bash scripts/triage-check.sh",
+    "style-check": "bash scripts/check-style.sh",
     "test:seo": "bash scripts/check-seo-output.sh",
     "test": "npm run lint && npm run link-check:local",
     "sync-versions": "bash scripts/sync-versions.sh",
