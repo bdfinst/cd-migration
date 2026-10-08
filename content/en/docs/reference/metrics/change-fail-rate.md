@@ -47,8 +47,8 @@ Data sources:
 - **Hotfix tracking:** deployments tagged as hotfixes or emergency changes.
 
 Automate the classification where possible. For example, if a deployment is
-followed by another deployment of the same service within a defined window (e.g.,
-one hour), flag the original as a potential failure for review.
+followed by another deployment of the same service within a defined window, such as
+one hour, flag the original as a potential failure for review.
 
 ## Targets
 

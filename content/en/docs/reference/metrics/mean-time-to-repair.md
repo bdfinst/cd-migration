@@ -72,7 +72,7 @@ incident response processes.
   customer impact has actually ended artificially deflates MTTR. Define "resolved"
   clearly and verify that service is truly restored.
 - **Not counting detection time.** If the team discovers a problem informally
-  (e.g., a developer notices something odd) and fixes it before opening an
+  (for example, a developer notices something odd) and fixes it before opening an
   incident, the time is not captured. Encourage consistent incident reporting.
 - **Ignoring recurring incidents.** If the same issue keeps reappearing, each
   individual MTTR may be short, but the cumulative impact is high. Track recurrence
