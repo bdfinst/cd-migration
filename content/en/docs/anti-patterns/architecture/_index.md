@@ -8,6 +8,6 @@ description: >
 
 {{% pageinfo %}}
 These anti-patterns affect the structure of the software itself. They create coupling that
-makes independent deployment impossible, blast radii that make every change risky, and
-boundaries that force teams to coordinate instead of delivering independently.
+makes independent deployment impossible and blast radii that make every change risky. They
+also create boundaries that force teams to coordinate instead of delivering independently.
 {{% /pageinfo %}}

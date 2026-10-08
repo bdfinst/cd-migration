@@ -33,8 +33,8 @@ Common variations:
 - **Pre-loaded sprints.** Every team member enters the sprint with their work already assigned. The
   sprint board is fully allocated on day one.
 
-The telltale sign: if you ask a developer "what should you work on next?" and the answer is "I
-don't know, I need to ask my manager," work is being pushed.
+The telltale sign: you ask a developer "what should you work on next?" The answer is "I
+don't know, I need to ask my manager." That answer means work is being pushed.
 
 ## Why this is a problem
 
@@ -50,7 +50,7 @@ on your own assignment. Reviews sit for hours or days because the reviewer is bu
 work. The same dynamic discourages pairing: spending an hour helping a colleague means falling
 behind on your own assignments, so developers don't offer and don't ask.
 
-This means fewer eyes on every change. Defects that a second person would catch in minutes survive
+Push assignment means fewer eyes on every change. Defects that a second person would catch in minutes survive
 into production. Knowledge stays siloed because there is no reason to look at code outside your
 assignment. The team's collective understanding of the codebase narrows over time.
 
@@ -62,12 +62,12 @@ pick up any story, and asking for help is how the team moves its highest-priorit
 ### It increases rework
 
 Push assignment routes work by specialty: "You're the database person, so you take the database
-stories." This creates knowledge silos where only one person understands a part of the system.
+stories." Routing by specialty creates knowledge silos where only one person understands a part of the system.
 When the same person always works on the same area, mistakes go unreviewed by anyone with a fresh
 perspective. Assumptions go unchallenged because the reviewer lacks context to question them.
 
 Misinterpretation of requirements also increases. The assigned developer may not have context on why
-a story is high priority or what business outcome it serves - they received it as an assignment, not
+a story is high priority or what business outcome it serves. They received it as an assignment, not
 as a problem to solve. When the result doesn't match what was needed, the story comes back for
 rework.
 
@@ -106,28 +106,34 @@ order because they are collectively responsible for finishing work. Push systems
 ownership: "that's not my story." When a developer finishes their assigned work, they wait for more
 assignments instead of looking at what the team needs.
 
-This extends beyond task selection. In a push system, developers stop thinking about the team's
+Individual ownership extends beyond task selection. In a push system, developers stop thinking about the team's
 goals and start thinking about their own assignments. Swarming - multiple people collaborating to
 finish the highest-priority item - is impossible when everyone "has their own stuff." If a story is
 stuck, the assigned developer struggles alone while teammates work on their own assignments.
 
-The unavailability problem makes this worse. When each person works in isolation on "their" stories,
-the rest of the team has no context on what that person is doing, how the work is structured, or
-what decisions have been made. If the assigned person is out sick, on vacation, or leaves the
-company, nobody can pick up where they left off. The work either stalls until that person returns or
-another developer starts over - rereading requirements, reverse-engineering half-finished code, and
-rediscovering decisions that were never shared. In a pull system, the team maintains context on
-in-progress work because anyone might have pulled it, standups focus on the work rather than
-individual status, and pairing spreads knowledge continuously. When someone is unavailable, the
-next person picks up the item with enough shared context to continue.
+The unavailability problem makes individual ownership worse. When each person works in isolation
+on "their" stories, the rest of the team lacks context on that person's work, its structure, and
+its decisions. If the assigned person is out sick, on vacation, or leaves the company, nobody can
+pick up where they left off. The work either stalls until that person returns or another developer
+starts over. Starting over means rereading requirements, reverse-engineering half-finished code, and
+rediscovering decisions that were never shared.
+
+In a pull system, the team maintains context on in-progress work because anyone might have pulled
+it. Standups focus on the work rather than individual status, and pairing spreads knowledge
+continuously. When someone is unavailable, the next person picks up the item with enough shared
+context to continue.
 
 ### Impact on continuous delivery
 
 Continuous delivery depends on a steady, predictable flow of small changes through the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}).
-Push-based assignment produces the opposite: batch-based assignment at sprint planning, uneven
-bursts of activity as different developers finish at different times, blocked work sitting idle
-because the assigned person is busy with something else, and no team-level mechanism for optimizing
-throughput. You cannot build a continuous flow of work when the assignment model is batch-based and
+Push-based assignment produces the opposite:
+
+- Batch-based assignment at sprint planning.
+- Uneven bursts of activity as different developers finish at different times.
+- Blocked work sitting idle because the assigned person is busy with something else.
+- No team-level mechanism for optimizing throughput.
+
+You cannot build a continuous flow of work when the assignment model is batch-based and
 individually scoped.
 
 ## How to fix it
@@ -151,8 +157,8 @@ Change the sprint planning conversation. Instead of "who takes this story," the 
 2. Discusses each item enough for anyone on the team to start it.
 3. Leaves all items **unassigned**.
 
-The sprint begins with a list of prioritized work and no assignments. This will feel uncomfortable
-for the first sprint.
+The sprint begins with a list of prioritized work and no assignments. Unassigned work will feel
+uncomfortable for the first sprint.
 
 ### Step 3: Pull work daily
 
@@ -164,7 +170,7 @@ At the daily standup (or anytime during the day), a developer who needs work:
    themselves.
 
 The developer picks up the highest-priority available item, not the item that matches their
-specialty. This is intentional - it spreads knowledge, reduces bus factor, and keeps the team
+specialty. The choice is intentional. It spreads knowledge, reduces bus factor, and keeps the team
 focused on priority rather than comfort.
 
 ### Step 4: Address the discomfort (weeks 3-4)
@@ -174,7 +180,7 @@ Expect these objections and plan for them:
 | Objection | Response |
 |-----------|----------|
 | "But only Sarah knows the payment system" | That is a knowledge silo and a risk. Pairing Sarah with someone else on payment stories fixes the silo while delivering the work. |
-| "I assigned work because nobody was pulling it" | If nobody pulls high-priority work, that is a signal: either the team doesn't understand the priority, the item is poorly defined, or there is a skill gap. Assignment hides the signal instead of addressing it. |
+| "I assigned work because nobody was pulling it" | If nobody pulls high-priority work, that is a signal. Either the team doesn't understand the priority, the item is poorly defined, or there is a skill gap. Assignment hides the signal instead of addressing it. |
 | "Some developers are faster - I need to assign strategically" | Pull systems self-balance. Faster developers pull more items. Slower developers finish fewer but are never overloaded. The team throughput optimizes naturally. |
 | "Management expects me to know who's working on what" | The board shows who is working on what in real time. Pull systems provide more visibility than pre-assignment because assignments are always current, not a stale plan from sprint planning. |
 

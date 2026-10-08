@@ -24,11 +24,11 @@ release branches because customers are running all three versions. The developer
 then applies the same fix three times via cherry-pick, one branch at a time. Each cherry-pick
 requires a separate review, a separate CI run, and a separate deployment.
 
-If the bug fix applies cleanly, the process takes an afternoon. If any of the release branches
-has diverged enough that the cherry-pick conflicts, the developer must manually resolve the
-conflict in a version of the code they are not familiar with. When the conflict is non-trivial,
-the fix on the older branch may need to be reimplemented from scratch because the surrounding
-code is different enough that the original approach does not apply.
+If the bug fix applies cleanly, the process takes an afternoon. Sometimes a release branch has
+diverged enough that the cherry-pick conflicts. The developer must then manually resolve the
+conflict in a version of the code they do not know. A non-trivial conflict may force a rewrite of
+the fix on the older branch. The surrounding code differs enough that the original approach does
+not apply.
 
 Common variations:
 
@@ -39,40 +39,42 @@ Common variations:
 - **The parallel feature tracks.** Separate release branches carry different feature sets for
   different customer segments. A fix to a shared component must go into every feature track.
   The team has effectively built multiple products that share a codebase but diverge continuously.
-- **The release-then-hotfix cycle.** A release branch is created for stabilization, bugs are
-  found during stabilization, fixes are applied to the release branch, those fixes are then
-  backported to trunk. Then the next release branch is created, and the cycle repeats.
+- **The release-then-hotfix cycle.** The team creates a release branch for stabilization and finds
+  bugs there. Fixes go to the release branch and are then backported to trunk. Then the next release branch is created, and the cycle repeats.
 - **The version cemetery.** Branches for old versions are never officially retired. The team
   has vague commitments to "support" old versions. Backporting requests arrive sporadically.
   Developers fix bugs in version branches they have never worked in, without understanding the
   full context of why the code looked the way it did.
 
 The telltale sign: when a developer fixes a bug, the first question is "which branches does
-this need to go into?" - and the answer is usually more than one.
+this need to go into?" The answer is usually more than one.
 
 ## Why this is a problem
 
 Release branches with backporting look like a reasonable support strategy. Customers want
 stability in the version they have deployed. But the branch strategy trades customer stability
-for developer instability: the team can never move cleanly forward because they are always
+for developer instability. The team can never move cleanly forward because they are always
 partially living in the past.
 
 ### It reduces quality
 
-A fix that works on trunk introduces a new bug on the release branch because the surrounding code is different enough that the original approach no longer applies. That regression appears in a version the team tests less rigorously, and is reported by a customer weeks later. Backporting a fix to a different codebase version is not the same as applying the fix in context.
+A fix that works on trunk introduces a new bug on the release branch. The surrounding code is
+different enough that the original approach no longer applies. That regression appears in a
+version the team tests less rigorously, and a customer reports it weeks later.
+
+Backporting a fix to a different codebase version is not the same as applying the fix in context.
 The release branch may have a different version of the code surrounding the bug. The fix that
 correctly handles the problem on trunk may be incorrect, incomplete, or inapplicable on the
 release branch. The developer doing the backport must evaluate the fix in a context they did not
 write and may not fully understand.
 
-This creates a category of bugs unique to backporting: fixes that work on trunk but introduce
+Backporting creates its own category of bugs: fixes that work on trunk but introduce
 new problems on the release branch. By the time a customer reports the regression,
 the developer who did the backport has moved on and may not even remember the original fix.
 
 When a team runs a single releasable trunk, every fix is applied once, in context, by the developer
-who understands the change. The quality of the fix is limited only by that developer's understanding
-
-- not by the combinatorial complexity of applying it across multiple code states.
+who understands the change. The quality of the fix is limited only by that developer's understanding,
+not by the combinatorial complexity of applying it across multiple code states.
 
 ### It increases rework
 
@@ -87,9 +89,9 @@ these steps can be as expensive as the original fix. A one-hour bug fix can beco
 of backporting work, much of it spent reworking the fix in unfamiliar code.
 
 Backport tracking is also rework. Someone must maintain the record of which fixes have been
-applied to which branches. When the record is incomplete - which it always is - bugs that were
-fixed on trunk reappear in release branches, requiring diagnosis to confirm they were fixed and
-investigation to understand why the fix did not propagate.
+applied to which branches. The record is always incomplete, so bugs that were fixed on trunk
+reappear in release branches. The team must diagnose each one to confirm it was fixed and
+investigate why the fix did not propagate.
 
 ### It makes delivery timelines unpredictable
 
@@ -111,7 +113,11 @@ commitments cannot account for it.
 
 ### It creates maintenance debt that compounds over time
 
-New developers join and find release branches full of code that looks nothing like trunk, written by people who have left, with no tests and no documentation. That is not a warning sign of future problems - it is the current state of teams with five active release branches. Each additional release branch increases the maintenance surface. Two branches is twice the
+New developers join and find release branches full of code that looks nothing like trunk. People
+who have left wrote that code, with no tests and no documentation. That is not a warning sign of
+future problems - it is the current state of teams with five active release branches.
+
+Each additional release branch increases the maintenance surface. Two branches is twice the
 maintenance of one. Five branches is five times the maintenance. As branches age, the code on them
 diverges further from trunk, making future backports increasingly difficult. The team can never
 retire a branch safely because they do not know who is using it or what they would break.
@@ -130,8 +136,8 @@ multiple systems, each evolving independently.
 The backporting overhead also limits how fast the team can respond to production issues. When a
 bug is found in production, the fix must pass through multiple branch-specific pipelines before
 all affected versions are patched. In CD, a fix from commit to production can take minutes. In a
-multi-branch environment, the same fix might not reach all affected versions for days, because
-each branch has its own queue of testing and deployment.
+multi-branch environment, the same fix might not reach all affected versions for days. Each branch
+has its own queue of testing and deployment.
 
 ## How to fix it
 
@@ -158,13 +164,14 @@ Only a small number typically have consumers with genuine constraints on upgradi
 The underlying driver of branch proliferation is the absence of a clear policy on how long
 versions are supported. Without a policy, support obligations are open-ended.
 
-1. Define a maximum support window. Common choices are N-1 (only the previous major version
-   is supported alongside the current), a fixed time window (12 or 18 months), or a fixed number
-   of minor releases.
+1. Define a maximum support window. Common choices are:
+   - N-1 (only the previous major version is supported alongside the current).
+   - A fixed time window (12 or 18 months).
+   - A fixed number of minor releases.
 2. Communicate the policy to customers. Give them a migration timeline.
 3. Apply the policy retroactively: branches outside the support window are retired, with notice.
 
-This is a business decision, not a technical one. Engineering leadership needs to align with
+The support policy is a business decision, not a technical one. Engineering leadership needs to align with
 product and customer success teams. But without a policy, the technical remediation of the
 branching problem cannot proceed.
 
@@ -190,11 +197,11 @@ supported version and merge forward.
 
 1. When a bug is reported against version 2.1, fix it on the `release/2.1` branch.
 2. Merge the fix forward: 2.1 to 2.2 to 2.3 to trunk.
-3. Forward merges are less likely to conflict than backports because the forward merge builds
-   on the older fix rather than trying to apply a trunk-context fix to older code.
+3. Expect fewer conflicts than with backports. The forward merge builds on the older fix. It does
+   not try to apply a trunk-context fix to older code.
 
-This is still more work than a single fix on trunk, but it eliminates the class of bugs caused
-by backporting a trunk-context fix to incompatible older code.
+Forward merging is still more work than a single fix on trunk. It eliminates the class of bugs
+caused by backporting a trunk-context fix to incompatible older code.
 
 ### Step 5: Reduce to one supported release branch alongside trunk (weeks 6-12)
 
@@ -203,8 +210,8 @@ retired.
 
 1. Accelerate customer migrations for all versions outside the N-1 policy.
 2. Retire branches as their consumer count reaches zero.
-3. For the last remaining release branch, evaluate whether it can be eliminated by using
-   feature flags on trunk to manage staged rollouts instead of a separate branch.
+3. Evaluate whether feature flags on trunk can replace the last remaining release branch. Flags
+   can manage staged rollouts without a separate branch.
 
 Once the team is running trunk and at most one release branch, the maintenance overhead drops
 dramatically. Backporting one version is manageable. Backporting five is not.

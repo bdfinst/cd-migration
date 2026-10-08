@@ -18,23 +18,26 @@ tags:
 ## What this looks like
 
 The planning session produces a feature that will take four to six weeks to complete. The
-feature is assigned to two developers. For the next six weeks, they work in a shared branch,
-building the backend, the API layer, the UI, and the database migrations as one interconnected
-unit. The branch grows. The diff between their branch and main reaches 3,000 lines. Other
+feature is assigned to two developers. For the next six weeks, they work in a shared branch.
+They build the backend, the API layer, the UI, and the database migrations as one interconnected
+unit.
+
+The branch grows. The diff between their branch and main reaches 3,000 lines. Other
 developers cannot see their work because it is not merged until it is finished.
 
 On completion day, the branch merge is a major event. Reviewers receive a pull request with
-3,000 lines of changes across 40 files. The review takes two days. Conflicts with main branch
-changes have accumulated while the feature was in progress. Some of the code written in week
-one was made redundant by decisions made in week four, but nobody is quite sure which parts
-are now dead code. The merge happens. The feature ships. For a few hours, the team holds
-its breath.
+3,000 lines of changes across 40 files. The review takes two days.
 
-From the outside, this looks like normal development. The feature is done when it is done.
+Conflicts with main branch changes have accumulated while the feature was in progress. Some of
+the code written in week one was made redundant by decisions made in week four. Nobody is quite
+sure which parts are now dead code. The merge happens and the feature ships. For a few hours,
+the team holds its breath.
+
+From the outside, big-bang delivery looks like normal development. The feature is done when it is done.
 The alternative - delivering a feature in pieces - seems to require the feature to be "half
-shipped," which nobody wants. So the team ships features whole. And each whole feature takes
-longer to build, longer to review, longer to test, longer to merge, and produces more
-production surprises than smaller, incremental deliveries would.
+shipped," which nobody wants. So the team ships features whole. Each whole feature takes
+longer to build, review, test, and merge, and produces more production surprises than smaller,
+incremental deliveries would.
 
 Common variations:
 
@@ -53,7 +56,7 @@ Common variations:
   grows over weeks and is released in a single event.
 
 The telltale sign: the word "feature" is synonymous with a unit of work that takes weeks and
-ships as a single deployment, and the team cannot describe how they would ship the same
+ships as a single deployment. The team cannot describe how they would ship the same
 functionality in smaller pieces.
 
 ## Why this is a problem
@@ -88,17 +91,17 @@ are caught when the affected code is fresh and the context is clear.
 ### It increases rework
 
 When a large feature reveals a problem at integration time, the scope of rework is proportional
-to the size of the feature. A misunderstanding about how a backend API should structure its
-response, discovered at the end of a six-week feature, requires changes to the backend,
-updates to the API contract, changes to the UI components consuming the API, and updates to
-any tests written against the original API shape. All of this work was built on a faulty
+to the size of the feature. Consider a misunderstanding about how a backend API should
+structure its response, discovered at the end of a six-week feature. Fixing it requires backend
+changes and API contract updates. It also requires changes to the UI components that consume the
+API and to any tests written against the original API shape. All of this work was built on a faulty
 assumption that could have been caught much earlier.
 
 Large features also suffer from internal rework that never appears in the commit log. Code
 written in week one and refactored in week three represents work done twice. Approaches tried
 and abandoned in the middle of a large feature are invisible overhead. Teams underestimate the
-real cost of their large features because they do not account for the internal rework that
-happens before the feature is ever reviewed or tested.
+real cost of their large features. They do not account for the internal rework that happens
+before the feature is ever reviewed or tested.
 
 Merge conflicts compound rework further. A feature branch that lives for four weeks will
 accumulate conflicts with the changes that other developers made during those four weeks.
@@ -115,11 +118,11 @@ planning and early development phases.
 
 The "it's done when it's done" nature of big-bang delivery makes it impossible to give
 stakeholders accurate, current information. At three weeks into a six-week feature, the team
-may say they are "halfway done" - but "halfway done" for a large feature does not mean the
-first half is delivered and working. It means the second half is still entirely unknown risk.
+may say they are "halfway done." For a large feature, "halfway done" does not mean the first
+half is delivered and working. It means the second half is still entirely unknown risk.
 
-Incremental delivery provides genuinely useful progress signals. When a vertical slice of
-functionality is deployed and working in production after one week, the team has delivered
+Incremental delivery provides genuinely useful progress signals. Suppose a vertical slice of
+functionality is deployed and working in production after one week. The team has delivered
 real value and has real data about what works and what does not. The remaining work is scoped
 against actual production behavior, not against a specification written before any code existed.
 
@@ -146,15 +149,15 @@ release happens at a defined moment.
 ### Step 1: Distinguish delivery from release
 
 Separate the concept of deployment from the concept of release. The most common objection
-to incremental delivery is "we cannot ship a half-finished feature to users" - but this
-conflates the two:
+to incremental delivery is "we cannot ship a half-finished feature to users" - but that
+objection conflates the two:
 
 - Deployment means the code is running in production.
 - Release means users can see and use the feature.
 
 These are separable. Code can be deployed behind a feature flag, completely invisible to
 users, while the feature is built incrementally over several weeks. When the feature is
-complete, the flag is enabled. The release happens without a deployment. This resolves the
+complete, the flag is enabled. The release happens without a deployment. Separating them resolves the
 "half-finished" objection.
 
 Run a working session with the team and product stakeholders to explain this distinction.
@@ -167,13 +170,13 @@ slices:
 
 1. Identify the end state: what does the fully-delivered feature look like?
 2. Work backward: what is the smallest possible version of this feature that provides any
-   value at all? This is the first slice.
-3. What addition to that smallest version provides the next unit of value? This is the second
+   value at all? That version is the first slice.
+3. What addition to that smallest version provides the next unit of value? That addition is the second
    slice.
 4. Continue until the full feature is covered.
 
 A vertical slice cuts through all layers of the stack: it includes backend, API, UI, and tests
-for one small piece of end-to-end functionality. It is the opposite of "first we build all
+for one small piece of end-to-end functionality. A vertical slice is the opposite of "first we build all
 the backend, then all the frontend." Each slice is deployable independently.
 
 ### Step 3: Implement a feature flag for the current feature
@@ -186,8 +189,8 @@ For the feature being piloted, add a feature flag:
 4. The feature is invisible in production until the flag is enabled, even as components
    are deployed.
 
-This allows the team to merge small, reviewable changes to main continuously while maintaining
-the product constraint that the feature is not user-visible until complete.
+The flag lets the team merge small, reviewable changes to main continuously. The feature still
+stays invisible to users until complete, as the product constraint requires.
 
 ### Step 4: Set a maximum story size
 
@@ -195,7 +198,7 @@ Define a maximum size for individual work items that the team will carry at any 
 
 - A story should be completable within one or two days, not one or two weeks.
 - A story should result in a pull request that a reviewer can meaningfully review in under
-  an hour - typically under 400 lines of net new code.
+  an hour. That typically means under 400 lines of net new code.
 - A story should be mergeable to main independently without requiring other stories to ship
   first (with the feature flag pattern enabling this for user-visible work).
 
@@ -210,9 +213,9 @@ Redefine "done" to require deployment, not only code completion. A story is done
 2. The CI pipeline passes.
 3. The change is deployed to staging (or production behind a flag).
 
-"Code complete" in a branch is not done. "In review" is not done. "Waiting for merge" is
-not done. This definition forces small batches because a story that cannot be merged to main
-is not done, and a story that cannot be merged to main is probably too large.
+"Code complete" in a branch, "in review," and "waiting for merge" are not done. This definition
+forces small batches. A story that cannot be merged to main is not done, and such a story is
+probably too large.
 
 ### Step 6: Retrospect on the first feature delivered incrementally
 
@@ -228,10 +231,10 @@ guideline.
 
 | Objection | Response |
 |-----------|----------|
-| "Our features are too complex to decompose into small pieces" | Every feature that has ever been built was built one small piece at a time - the question is whether those pieces are integrated continuously or accumulated in a branch. Take your current most complex feature and run the vertical slice decomposition from Step 2 on it - most teams find at least three independently deliverable slices within the first hour. |
+| "Our features are too complex to decompose into small pieces" | Every feature that has ever been built was built one small piece at a time. The question is whether those pieces are integrated continuously or accumulated in a branch. Run the vertical slice decomposition from Step 2 on your current most complex feature. Most teams find at least three independently deliverable slices within the first hour. |
 | "Product management defines features, not the team - we cannot change the batch size" | Product management defines what users see, not how code is organized or deployed. Introduce the deployment-vs-release distinction in your next sprint planning. Product management can still plan user-visible features of any size; the team controls how those features are delivered underneath. |
-| "Our system requires all components to be updated together" | This is an architectural constraint worth addressing. Backward-compatible changes, API versioning, and the expand-contract pattern allow components to be updated independently. Pick one tightly coupled interface, apply the expand-contract pattern this sprint, and measure whether the next change to that interface requires coordinated deployment. |
-| "Code review takes the same amount of time regardless of batch size" | This is not supported by evidence. Review quality and thoroughness decrease sharply with change size. Track actual review time and defect escape rate for your next five large reviews versus your next five small ones - the data will show the difference. |
+| "Our system requires all components to be updated together" | That requirement is an architectural constraint worth addressing. Backward-compatible changes, API versioning, and the expand-contract pattern allow components to be updated independently. Pick one tightly coupled interface, apply the expand-contract pattern this sprint, and measure whether the next change to that interface requires coordinated deployment. |
+| "Code review takes the same amount of time regardless of batch size" | The evidence does not support that claim. Review quality and thoroughness decrease sharply with change size. Track actual review time and defect escape rate for your next five large reviews versus your next five small ones. The data will show the difference. |
 
 ## Measuring progress
 

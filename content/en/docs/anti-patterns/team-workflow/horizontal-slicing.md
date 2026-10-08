@@ -18,12 +18,12 @@ tags:
 
 ## What this looks like
 
-The team breaks a feature into work items by technical layer. One item for the database schema. One
-for the API. One for the UI. Maybe one for "integration testing" at the end. Each item lives in a
+The team breaks a feature into work items by technical layer. One item covers the database schema,
+one the API, and one the UI. Maybe one more covers "integration testing" at the end. Each item lives in a
 different lane or is assigned to a different specialist. Nothing reaches production until the last
 layer is finished and all the pieces are stitched together.
 
-In distributed systems this gets worse. A feature touches multiple services owned by different
+In distributed systems, horizontal slicing gets worse. A feature touches multiple services owned by different
 teams. Instead of slicing the work so each team can deliver their part independently, the teams
 plan a coordinated release. Team A builds the new API, Team B updates the UI, Team C modifies the
 downstream processor. All three deliver "at the same time" during a release window, and the
@@ -76,18 +76,18 @@ three.
 ### It increases rework
 
 A team that builds a complete API layer before any consumer touches it is guessing what the
-consumer needs. When the UI team (or the upstream service team) finally integrates, they discover
+consumer needs. Eventually the UI team (or the upstream service team) integrates. They discover
 the response format does not match, fields are missing, or the interaction model is wrong. The API
 team reworks what they built weeks ago.
 
-In a distributed system, this rework cascades. A contract mismatch between two services means both
-teams rework their code. If a third service depends on the same contract, it reworks too. A single
+In a distributed system, the rework cascades. A contract mismatch between two services means both
+teams rework their code. If a third service depends on the same contract, its team reworks too. A single
 misalignment discovered during a coordinated integration can send multiple teams back to revise
 work they considered done.
 
-Vertical slicing surfaces these mismatches immediately. Each slice forces the real contract to be
-exercised end-to-end, so misalignments are caught when the cost of change is low: one slice, not
-an entire layer.
+Vertical slicing surfaces these mismatches immediately. Each slice exercises the real contract
+end-to-end. Misalignments are caught when the cost of change is low: one slice, not an entire
+layer.
 
 ### It makes delivery timelines unpredictable
 
@@ -118,7 +118,7 @@ the opposite: batches of interdependent layer changes that can only be deployed 
 separate integration phase.
 
 A team that slices horizontally cannot deploy continuously because there is nothing to deploy until
-all layers converge. In distributed systems, this gets worse because the team cannot deploy until other
+all layers converge. In distributed systems, the problem gets worse because the team cannot deploy until other
 teams converge too. The deployment unit grows from "one team's layers" to "multiple teams' layers,"
 and the risk grows with it.
 
@@ -209,7 +209,7 @@ compatibility.
 
 ### Step 6: Make the deployability test a refinement habit
 
-For every proposed work item, ask: "Can the team deploy this item on its own, without waiting for
+Apply the deployability test to every proposed work item. Ask: "Can the team deploy this item on its own, without waiting for
 another team or another item to be finished?"
 
 If not, the item needs reslicing. This single question catches most horizontal slices before they
@@ -218,7 +218,7 @@ enter the sprint.
 | Objection | Response |
 |-----------|----------|
 | "Our developers are specialists. They can't work across layers." | That is a skill gap, not a constraint. Pairing a frontend developer with a backend developer on a vertical slice builds the missing skills while delivering the work. The short-term slowdown produces long-term flexibility. |
-| "The database schema needs to be designed holistically" | Design the schema incrementally. Add the columns and tables needed for the first slice. Extend them for the second. This is how trunk-based database evolution works - backward-compatible, incremental changes. |
+| "The database schema needs to be designed holistically" | Design the schema incrementally. Add the columns and tables needed for the first slice. Extend them for the second. Incremental schema design is how trunk-based database evolution works - backward-compatible, incremental changes. |
 | "We can't deploy without the other team" | That is a signal about your service contracts. If your deployment depends on another team's deployment, the interface between the services is not well defined. Invest in explicit, versioned contracts so each team can deploy on its own schedule. |
 | "Vertical slices create duplicate work across layers" | They create less total work because integration problems are caught immediately instead of accumulating. The "duplicate" concern usually means the team is building more infrastructure than the current slice requires. |
 | "Our architecture makes vertical slicing hard" | That is a signal about the architecture. Services that cannot be changed independently are a deployment risk. Vertical slicing exposes this coupling early, which is better than discovering it during a high-stakes coordinated release. |

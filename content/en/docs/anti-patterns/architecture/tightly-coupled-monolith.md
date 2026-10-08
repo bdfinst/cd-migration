@@ -74,9 +74,9 @@ reviewers can focus on the module itself and trust the boundary.
 ### It increases rework
 
 Tight coupling causes rework in two ways. First, unexpected breakage from seemingly safe changes
-sends developers back to fix things they did not intend to touch. A one-line change that breaks
-the notification system means the developer now needs to understand and fix the notification
-system before their original change can ship.
+sends developers back to fix things they did not intend to touch. A one-line change might break
+the notification system. The developer then has to understand and fix the notification system
+before their original change can ship.
 
 Second, developers working in different parts of the codebase step on each other. Two developers
 changing different modules unknowingly modify the same shared state. Both changes work
@@ -90,14 +90,15 @@ hidden conflict because there is no shared mutable state to conflict on.
 
 ### It makes delivery timelines unpredictable
 
-In a coupled system, the time to deliver a change includes the time to understand the impact,
-make the change, fix the unexpected breakage, and retest everything that might be affected. The
-first and third steps are unpredictable because no one knows the full dependency graph.
+In a coupled system, delivery time covers four steps: understand the impact, make the change, fix
+the unexpected breakage, and retest everything affected. The first and third steps are unpredictable because no one knows the full dependency graph.
 
 A developer estimates a task at two days. On day one, the change is made and tests are passing.
 On day two, a failing test in another module reveals a hidden dependency. Fixing the dependency
-takes two more days. The task that was estimated at two days takes four. This happens often enough
-that the team stops trusting estimates, and stakeholders stop trusting timelines.
+takes two more days. The task that was estimated at two days takes four.
+
+Hidden dependencies surface often enough that the team stops trusting estimates, and stakeholders
+stop trusting timelines.
 
 The testing cost is also unpredictable. In a modular system, changing Module A means running
 Module A's tests. In a coupled system, changing anything might mean running everything. If the
@@ -173,7 +174,7 @@ Before changing any code, define where boundaries should be:
    and in what format?
 3. Identify shared state that would need to be split or accessed through interfaces.
 
-This is a design exercise, not an implementation. The output is a diagram showing target module
+Defining boundaries is a design exercise, not an implementation. The output is a diagram showing target module
 boundaries with their interfaces.
 
 ### Step 3: Enforce one boundary (weeks 3-6)
@@ -187,9 +188,12 @@ Pick the boundary with the best ratio of pain-reduced to effort-required and enf
 3. Add a build-time or lint-time check that enforces the boundary. Fail the build if code outside
    the module imports internal code directly.
 
-This is the hardest step because it requires changing existing call sites. Use the Strangler Fig
-approach: create the new interface alongside the old coupling, migrate callers one at a time, and
-remove the old path when all callers have migrated.
+Enforcing a boundary is the hardest step because it requires changing existing call sites. Use the
+Strangler Fig approach:
+
+- Create the new interface alongside the old coupling.
+- Migrate callers one at a time.
+- Remove the old path when all callers have migrated.
 
 ### Step 4: Scope testing to module boundaries
 
@@ -200,7 +204,7 @@ Once a boundary exists, use it to scope testing:
    If the interface tests pass, nothing outside the module can break.
 3. Reserve the full integration suite for deployment validation, not developer feedback.
 
-This immediately reduces pipeline duration for changes inside the bounded module. Developers get
+Scoped testing immediately reduces pipeline duration for changes inside the bounded module. Developers get
 faster feedback. The pipeline is no longer "run everything for every change."
 
 ### Step 5: Repeat for the next boundary (ongoing)
@@ -215,8 +219,8 @@ ownership. Prioritize by pain:
 | Multiple teams needing to coordinate on changes | Ownership boundaries that do not match code boundaries |
 | Long pipeline duration from running all tests | No way to scope testing because boundaries do not exist |
 
-Over months, the system evolves from a tangle into a set of modules with defined interfaces. This
-is not a rewrite. It is incremental boundary enforcement applied where it matters most.
+Over months, the system evolves from a tangle into a set of modules with defined interfaces. The
+change is not a rewrite. It is incremental boundary enforcement applied where it matters most.
 
 | Objection | Response |
 |-----------|----------|

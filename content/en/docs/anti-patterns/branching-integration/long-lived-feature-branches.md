@@ -18,14 +18,13 @@ tags:
 
 ## What this looks like
 
-A developer creates a branch to build a feature. The feature is bigger than expected. Days pass,
+A developer creates a branch to build a feature that turns out bigger than expected. Days pass,
 then weeks. Other developers are doing the same thing on their own branches. Trunk moves forward
 while each branch diverges further from it. Nobody integrates until the feature is "done" - and
 by then, the branch is hundreds or thousands of lines different from where it started.
 
-When the merge finally happens, it is an event. The developer sets aside half a day - sometimes
-more - to resolve conflicts, re-test, and fix the subtle breakages that come from combining weeks
-of divergent work. Other developers delay their merges to avoid the chaos. The team's Slack channel
+When the merge finally happens, it is an event. The developer sets aside half a day or more to
+resolve conflicts, re-test, and fix subtle breakages from weeks of divergent work. Other developers delay their merges to avoid the chaos. The team's Slack channel
 lights up with "don't merge right now, I'm resolving conflicts." Every merge creates a window where
 trunk is unstable.
 
@@ -47,8 +46,8 @@ Common variations:
   the merge. It sits for weeks while the team debates how to proceed. Sometimes it is abandoned
   entirely and the work is restarted.
 
-The telltale sign: if merging a branch requires scheduling a block of time, notifying the team, or
-hoping nothing goes wrong - branches are living too long.
+The telltale sign: branches live too long when merging one requires scheduling a block of time,
+notifying the team, or hoping nothing goes wrong.
 
 ## Why this is a problem
 
@@ -79,11 +78,11 @@ as it happens.
 Long-lived branches guarantee merge conflicts. Two developers editing the same file on different
 branches will not discover the collision until one of them merges. The second developer must then
 reconcile their changes against an unfamiliar modification, often without understanding the intent
-behind it. This manual reconciliation is rework in its purest form - effort spent making code work
-together that would have been unnecessary if the developers had integrated daily.
+behind it. This manual reconciliation is rework in its purest form. Daily integration would have made the
+effort unnecessary.
 
 The rework compounds. A developer who rebases a three-week branch against trunk may introduce
-bugs during conflict resolution. Those bugs require debugging. The debugging reveals an assumption
+bugs during conflict resolution. Debugging those bugs reveals an assumption
 that was valid three weeks ago but is no longer true because trunk has changed. Now the developer
 must rethink and partially rewrite their approach. What should have been a day of work becomes a
 week.
@@ -95,14 +94,16 @@ rather than growing exponentially with branch age.
 ### It makes delivery timelines unpredictable
 
 A two-day feature on a long-lived branch takes two days to build and an unknown number of days
-to merge. The merge might take an hour. It might take two days. It might surface a design conflict
-that requires reworking the feature. Nobody knows until they try. This makes it impossible to
-predict when work will actually be done.
+to merge. The merge might take an hour or two days. It might surface a design conflict that requires
+reworking the feature. Nobody knows until they try, so nobody can predict when work will actually
+be done.
 
 The queuing effect makes it worse. When several branches need to merge, they form a queue. The
 first merge changes trunk, which means the second branch needs to rebase against the new trunk
 before merging. If the second merge is large, it changes trunk again, and the third branch must
-rebase. Each merge invalidates the work done to prepare the next one. Teams that "schedule" their
+rebase.
+
+Each merge invalidates the work done to prepare the next one. Teams that "schedule" their
 merges are admitting that integration is so costly it needs coordination.
 
 Project managers learn they cannot trust estimates. "The feature is code-complete" does not mean
@@ -120,12 +121,12 @@ each on its own branch. The features appear to be independent and on track. But 
 hidden: none of these features have been proven to work together. The branches may contain
 conflicting changes, incompatible assumptions, or integration bugs that only surface when combined.
 
-All of that hidden risk materializes at merge time - the moment closest to the planned release
-date, when the team has the least time to deal with it. A merge conflict discovered three weeks
+All of that hidden risk materializes at merge time. Merge time is the moment closest to the
+planned release date, when the team has the least time to deal with it. A merge conflict discovered three weeks
 before release is an inconvenience. A merge conflict discovered the day before release is a crisis.
 Long-lived branches systematically push risk discovery to the latest possible point.
 
-Continuous integration surfaces risk immediately. If two changes conflict, the team discovers it
+Continuous integration surfaces risk immediately. If two changes conflict, the team discovers the conflict
 within hours, while both changes are small and the authors still have full context. Risk is
 distributed evenly across the development cycle instead of concentrated at the end.
 
@@ -158,7 +159,7 @@ Before changing anything, understand the baseline. For every open branch:
 Most teams are shocked by their own numbers. A branch they think of as "a few days old" is often
 two or three weeks old. Making the data visible creates urgency.
 
-Set a target: no branch older than one day. This will feel aggressive. That is the point.
+Set a target: no branch older than one day. The target will feel aggressive. That is the point.
 
 ### Step 2: Set a branch lifetime limit and make it visible
 
@@ -176,7 +177,7 @@ into smaller pieces. Both outcomes are desirable.
 
 ### Step 3: Break large features into small, integrable changes (weeks 2-3)
 
-The most common objection is "my feature is too big to merge in a day." This is true when the
+The most common objection is "my feature is too big to merge in a day." The objection is true when the
 feature is designed as a monolithic unit. The fix is decomposition:
 
 - **[Branch by abstraction]({{< relref "/docs/foundations/evolutionary-coding/branch-by-abstraction" >}}).** Introduce a new code path alongside the old one. Merge the new code
@@ -221,9 +222,9 @@ enable short-lived branches. The two practices reinforce each other.
 ### Step 6: Continuously tighten the limit
 
 Once the team is comfortable with two-day branches, reduce the limit to one day. Then push toward
-integrating multiple times per day. Each reduction surfaces new problems - features that are hard
-to decompose, tests that are slow, reviews that are bottlenecked - and each problem is worth
-solving because it blocks the flow of work.
+integrating multiple times per day. Each reduction surfaces new problems, such as features that
+are hard to decompose, slow tests, or bottlenecked reviews. Each problem is worth solving because
+it blocks the flow of work.
 
 The goal is continuous integration: every developer integrates to trunk at least once per day.
 At that point, "branches" are short-lived workspaces that exist for hours, and merging is

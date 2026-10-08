@@ -18,7 +18,7 @@ tags:
 
 ## What this looks like
 
-The product owner describes a feature. The team discusses it briefly. Someone creates a ticket
+The product owner describes a feature, and the team discusses it briefly. Someone creates a ticket
 with the feature title - "Add user profile page" - and it goes into the backlog. When a
 developer pulls it, they discover it involves a login form, avatar upload, email verification,
 notification preferences, and password reset. The ticket is one item. The work is six items.
@@ -39,7 +39,7 @@ Common variations:
   product owner wrote them.
 
 The telltale sign: items regularly take five or more days from start to done, and the team treats
-this as normal.
+that duration as normal.
 
 ## Why this is a problem
 
@@ -61,8 +61,8 @@ hours. Fundamental design problems are caught early, before layers of code are b
 
 Large items create large pull requests. Large PRs get superficial reviews because reviewers do
 not have time to review 300 lines carefully. Defects that a thorough review would catch slip
-through. The defects are discovered later - in testing, in production, or by the next developer
-who touches the code - and the fix costs more than it would have if the work had been reviewed in
+through. The defects are discovered later: in testing, in production, or by the next developer
+who touches the code. The fix costs more than it would have if the work had been reviewed in
 small increments.
 
 ### It makes delivery timelines unpredictable
@@ -87,7 +87,7 @@ Work decomposition is the practice that creates the small units of work that CD 
 ### Step 1: Establish the 2-day rule
 
 Agree as a team: no work item should take longer than two days from start to integrated on
-trunk. This is a constraint on item size, not a velocity target. When an item cannot be completed
+trunk. The rule is a constraint on item size, not a velocity target. When an item cannot be completed
 in two days, decompose it before pulling it into the sprint.
 
 ### Step 2: Decompose during refinement
