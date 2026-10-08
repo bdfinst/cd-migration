@@ -27,8 +27,8 @@
     "format:fix": "prettier --write '**/*.{js,yml,yaml,json,toml,md}'",
     "link-check": "npm run build:clean && linkinator --recurse public/ --config ./linkinator.config.json",
     "link-check:local": "hugo --quiet --minify && htmltest",
-    "lint": "markdownlint ./content/**/*.md && bash scripts/check-absolute-links.sh",
-    "lint:fix": "markdownlint -f ./content/**/*.md",
+    "lint": "markdownlint './content/**/*.md' && bash scripts/check-absolute-links.sh",
+    "lint:fix": "markdownlint -f './content/**/*.md'",
     "prepare": "husky",
     "start": "rm -rf public && hugo serve --navigateToChanged",
     "a11y": "bash scripts/a11y.sh",
@@ -47,6 +47,7 @@
     "husky": "^9.1.7",
     "js-yaml": "^5.4.2",
     "linkinator": "^8.1.0",
+    "lint-staged": "^17.6.0",
     "markdownlint-cli": "^0.49.1",
     "pa11y-ci": "^4.1.1",
     "pagefind": "^1.5.2",
@@ -64,5 +65,8 @@
   },
   "workspaces": [
     "packages/hugoautogen"
-  ]
+  ],
+  "lint-staged": {
+    "content/**/*.md": "markdownlint --fix"
+  }
 }

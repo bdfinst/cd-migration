@@ -1,6 +1,7 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+npx lint-staged
 npm test
 npm run layout-check
 npx playwright test tests/triage-data.spec.js
