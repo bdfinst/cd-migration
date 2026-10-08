@@ -18,9 +18,9 @@ tags:
 ## What this looks like
 
 The policy is clear: production deployments happen on Tuesday and Thursday between 2 AM and
-4 AM. Outside of those windows, no code may be deployed to production except through an
-emergency change process that requires manager and director approval, a post-deployment
-review meeting, and a written incident report regardless of whether anything went wrong.
+4 AM. Outside of those windows, code reaches production only through an emergency change
+process. That process requires manager and director approval and a post-deployment review
+meeting. It also requires a written incident report, whether or not anything went wrong.
 
 The 2 AM window was chosen because user traffic is lowest. The twice-weekly schedule was
 chosen because it gives the operations team time to prepare. Emergency changes are expensive
@@ -28,15 +28,18 @@ by design - the bureaucratic overhead is meant to discourage teams from circumve
 process. The policy is documented, enforced, and has been in place for years.
 
 A developer merges a critical security patch on Monday at 9 AM. The patch is ready. The
-pipeline is green. The vulnerability it addresses is known and potentially exploitable. The
-fix will not reach production until 2 AM on Tuesday - sixteen hours later. An emergency change
+pipeline is green. The vulnerability it addresses is known and potentially exploitable.
+
+The fix will not reach production until 2 AM on Tuesday - sixteen hours later. An emergency change
 request is possible, but the cost is high and the developer's manager is reluctant to approve
 it for a "medium severity" vulnerability.
 
 Meanwhile, the deployment window fills. Every team has been accumulating changes since the
 Thursday window. Tuesday's 2 AM window will contain forty changes from six teams, touching
-three separate services and a shared database. The operations team running the deployment
-will have a checklist. They will execute it carefully. But forty changes deploying in a two-hour
+three separate services and a shared database.
+
+The operations team running the deployment will have a checklist. They will execute it
+carefully. But forty changes deploying in a two-hour
 window is inherently complex, and something will go wrong. When it does, the team will spend
 the rest of the night figuring out which of the forty changes caused the problem.
 
@@ -56,29 +59,28 @@ Common variations:
   configuration change that takes five minutes to apply waits three weeks for the maintenance
   window.
 
-The telltale sign: when a developer asks when their change will be in production, the answer
-involves a day of the week and a time of day that has nothing to do with when the change
-was ready.
+The telltale sign: a developer asks when their change will be in production. The answer is a
+day of the week and a time of day that have nothing to do with when the change was ready.
 
 ## Why this is a problem
 
 Deployment windows were designed to reduce risk by controlling when deployments happen. In
-practice, they increase risk by forcing changes to accumulate, creating larger and more complex
-deployments, and concentrating all delivery risk into a small number of high-stakes events.
+practice, they increase risk. They force changes to accumulate and create larger, more complex
+deployments. They concentrate all delivery risk into a small number of high-stakes events.
 The cure is worse than the disease it was intended to treat.
 
 ### It reduces quality
 
-When forty changes deploy in a two-hour window and something breaks, the team spends the rest
-of the night figuring out which of the forty changes is responsible. When a single change is
+Forty changes deploy in a two-hour window, and something breaks. The team spends the rest of
+the night figuring out which of the forty changes is responsible. When a single change is
 deployed, any problem that appears afterward is caused by that change. Investigation is fast,
 rollback is clean, and the fix is targeted.
 
 Deployment windows compress changes into batches. The larger the batch, the coarser the
 quality signal. Teams working under deployment window constraints learn to accept that
-post-deployment diagnosis will take hours, that some problems will not be diagnosed until
-days after deployment when the evidence has clarified, and that rollback is complex because
-it requires deciding which of the forty changes to revert.
+post-deployment diagnosis takes hours. Some problems go undiagnosed until days after
+deployment, when the evidence has clarified. Rollback is complex because the team must decide
+which of the forty changes to revert.
 
 The quality degradation compounds over time. As batch sizes grow, post-deployment incidents
 become harder to investigate and longer to resolve. The deployment window policy that was meant
@@ -96,15 +98,15 @@ last-minute rushes.
 Changes that miss a window face a different rework problem. A change that was tested and
 ready on Monday sits in staging until Tuesday's 2 AM window. During those sixteen hours,
 other changes may be merged to the main branch. The change that was "ready" is now behind
-other changes that might interact with it. When the window arrives, the deployer may need
-to verify compatibility between the ready change and the changes that accumulated after it.
+other changes that might interact with it.
+
+When the window arrives, the deployer might need to verify compatibility between the ready change and the changes that accumulated after it.
 A change that should have deployed immediately requires new testing.
 
 The 2 AM deployment time is itself a source of rework. Engineers are tired. They make
 mistakes that alert engineers would not make. Post-deployment monitoring is less attentive
-at 2 AM than at 2 PM. Problems that would have been caught immediately during business hours
-persist until morning because the team doing the monitoring is exhausted or asleep by the
-time the monitoring alerts trigger.
+at 2 AM than at 2 PM. Problems the team would catch immediately at 2 PM persist until morning,
+because the monitoring team is exhausted or asleep when the alerts trigger.
 
 ### It makes delivery timelines unpredictable
 
@@ -121,10 +123,11 @@ The throughput of the development process is capped by the throughput of the dep
 process, which is capped by the deployment window schedule.
 
 Emergency exceptions make the unpredictability worse. The emergency change process is slow,
-bureaucratic, and risky. Teams avoid it except in genuine crises. This means that urgent
-but non-critical changes - a significant bug affecting 10% of users, a performance degradation
-that is annoying but not catastrophic, a security patch for a medium-severity vulnerability -
-wait for the next scheduled window rather than deploying immediately. The delivery timeline
+bureaucratic, and risky. Teams avoid it except in genuine crises.
+
+As a result, urgent but non-critical changes wait for the next scheduled window rather than deploying immediately.
+Examples include a significant bug affecting 10% of users, an annoying but not catastrophic
+performance degradation, and a security patch for a medium-severity vulnerability. The delivery timeline
 for urgent work is the same as for routine work.
 
 ### Impact on continuous delivery
@@ -187,9 +190,9 @@ risk:
 
 1. Start by adding a second window within the current week. If deployments happen Tuesday
    at 2 AM, add Thursday at 2 AM. This halves the accumulation.
-2. Move the windows to business hours. A Tuesday morning deployment at 10 AM is lower risk
-   than a Tuesday morning deployment at 2 AM because the team is alert, monitoring is
-   staffed, and problems can be addressed immediately.
+2. Move the windows to business hours. A Tuesday deployment at 10 AM is lower risk than a
+   Tuesday deployment at 2 AM. At 10 AM the team is alert, monitoring is staffed, and the
+   team can address problems immediately.
 3. Continue increasing frequency as automation improves: daily, then on-demand.
 
 Track change fail rate and incident rate at each frequency increase. The data will show
@@ -201,9 +204,9 @@ Replace the bureaucratic emergency process with a technical solution. The emerge
 exists because the deployment window policy is recognized as inflexible for genuine urgencies
 but the overhead discourages its use:
 
-1. Define criteria for changes that can deploy outside the window without emergency approval:
-   security patches above a certain severity, bug fixes for issues affecting more than N
-   percent of users, rollbacks of previous deployments.
+1. Define criteria for changes that can deploy outside the window without emergency approval.
+   Include security patches above a certain severity and bug fixes for issues affecting more
+   than N percent of users. Include rollbacks of previous deployments.
 2. For changes meeting these criteria, the same automated pipeline that deploys within the
    window can deploy outside it. No emergency approval needed - the pipeline's automated
    checks are the approval.
@@ -223,8 +226,8 @@ Remove the deployment window constraint for this service. Deploy on demand whene
 are ready. Track the results for two months: incident rate, time to detect failures, time
 to restore service. Present the data.
 
-This pilot provides concrete evidence that deployment windows are not a safety mechanism -
-they are a risk transfer mechanism that moves risk from deployment timing to deployment
+This pilot provides concrete evidence that deployment windows are not a safety mechanism.
+They are a risk transfer mechanism that moves risk from deployment timing to deployment
 batch size. The pilot data typically shows that on-demand, small-batch deployment is safer
 than windowed, large-batch deployment.
 

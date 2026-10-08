@@ -40,13 +40,13 @@ Common variations:
   mental models entirely. The cost of context switching is not only the product domain but the
   entire toolchain.
 
-The telltale sign: ask any developer what they are working on, and the answer involves three
+The telltale sign: ask any developer what they are working on. The answer involves three
 products and an apology for not making more progress on any of them.
 
 ## Why this is a problem
 
 Spreading a team across too many products is a team topology failure. It turns every developer
-into a single point of failure for their assigned products while preventing the team from
+into a single point of failure for their assigned products. It also prevents the team from
 building shared knowledge or sustainable delivery practices.
 
 ### It reduces quality
@@ -62,9 +62,9 @@ design problems, and write code that accounts for the system's history and const
 ### It increases rework
 
 Context switching has a measurable cost. Research consistently shows that switching between tasks
-adds 20 to 40 percent overhead as the brain reloads the mental model of each project. A developer
-who spends an hour on Product A, two hours on Product B, and then returns to Product A has lost
-significant time to switching. The work they do in each window is lower quality because they never
+adds 20 to 40 percent overhead as the brain reloads the mental model of each project. Suppose a
+developer spends an hour on Product A, two hours on Product B, and then returns to Product A.
+That developer has lost significant time to switching. The work they do in each window is lower quality because they never
 fully loaded context.
 
 The shallow work that results from fragmented attention produces more bugs, more missed edge
@@ -97,8 +97,8 @@ do this because delivery capacity for each product is tied to a single person's 
 that person is busy with another product, the first product's [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is effectively blocked.
 
 CD also requires investment in automation, testing, and pipeline infrastructure. A team spread
-across fifteen products cannot invest in improving the delivery practices for any one of them
-because there is no sustained focus to build momentum.
+across fifteen products cannot improve the delivery practices for any one of them. There is no
+sustained focus to build momentum.
 
 ## How to fix it
 

@@ -20,7 +20,9 @@ tags:
 
 A deadline is approaching. The manager asks the team how things are going. A developer says the
 feature is done but the tests still need to be written. The manager says "we'll come back to the
-tests after the release." The tests are never written. Next sprint, the same thing happens. After
+tests after the release."
+
+The tests are never written. Next sprint, the same thing happens. After
 a few months, the team has a codebase with patches of coverage surrounded by growing deserts of
 untested code.
 
@@ -39,15 +41,15 @@ Common variations:
   tests for a specific release. The implicit message is that shipping matters and quality does
   not. Developers who push back are seen as slow or uncooperative.
 - **The coverage ratchet in reverse.** The team once had 70% test coverage. Each sprint, a few
-  untested changes slip through. Coverage drops to 60%, then 50%, then 40%. Nobody notices the
+  untested changes slip through, and coverage drops to 60%, then 50%, then 40%. Nobody notices the
   trend because each individual drop is small. By the time someone looks at the number, half the
   safety net is gone.
-- **Testing theater.** Developers write the minimum tests needed to pass a coverage gate - trivial
-  assertions, tests that verify getters and setters, tests that do not actually exercise
-  meaningful behavior. The coverage number looks healthy but the tests catch nothing.
+- **Testing theater.** Developers write the minimum tests needed to pass a coverage gate. These
+  tests make trivial assertions, verify getters and setters, or do not exercise meaningful
+  behavior. The coverage number looks healthy but the tests catch nothing.
 
 The telltale sign: the team has a backlog of "write tests for X" tickets that are months old and
-have never been started, while production incidents keep increasing.
+never started. Meanwhile, production incidents keep increasing.
 
 ## Why this is a problem
 
@@ -104,14 +106,14 @@ the largest source of variance - undetected defects.
 ### It creates a death spiral
 
 The most dangerous aspect of this anti-pattern is that it is self-reinforcing. Skipping tests
-leads to more bugs. More bugs lead to more time spent firefighting. More time firefighting means
+leads to more bugs, and more bugs lead to more time spent firefighting. More time firefighting means
 less time for testing. Less testing means more bugs. The cycle accelerates.
 
 At the same time, the codebase becomes harder to test. Code written without tests in mind tends
 to be tightly coupled, dependent on global state, and difficult to isolate. The longer testing is
 deferred, the more expensive it becomes to add tests later. The team's estimate for "catching up
-on testing" grows from days to weeks to months, making it even less likely that management will
-allocate the time.
+on testing" grows from days to weeks to months. Management becomes even less likely to allocate
+the time.
 
 Eventually, the team reaches a state where the test suite is so degraded that it provides no
 confidence. The team is effectively back to [manual testing only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})

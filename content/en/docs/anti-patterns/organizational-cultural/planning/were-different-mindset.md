@@ -24,16 +24,17 @@ with a greenfield codebase, but we have fifteen years of technical debt." Or: "W
 services - we have compliance requirements they don't deal with." Or: "Our system is too integrated;
 you can't just deploy one piece independently."
 
-Each statement contains a grain of truth. The organization is regulated. The codebase is old. The
-system is tightly coupled. But the grain of truth is used to dismiss the entire direction rather
+Each statement contains a grain of truth. The organization is regulated, the codebase is old, and
+the system is tightly coupled. But the grain of truth is used to dismiss the entire direction rather
 than to scope the starting point. "We cannot do it perfectly today" becomes "we should not start
 at all."
 
 This pattern is often invisible as a pattern. Each individual objection sounds reasonable. Regulators
-do impose constraints. Legacy codebases do create real friction. The problem is not any single
-objection but the pattern of always finding a reason why this organization is different from the
-ones that succeeded - and never finding a starting point small enough that the objection does not
-apply.
+do impose constraints. Legacy codebases do create real friction.
+
+The problem is not any single objection. The problem is the pattern of always finding a reason why
+this organization differs from the ones that succeeded. The organization never finds a starting
+point small enough that the objection does not apply.
 
 Common variations:
 
@@ -50,9 +51,9 @@ Common variations:
 - **"Our customers won't accept it."** The belief that customers require staged rollouts, formal
   release announcements, or quarterly update cycles - often without ever asking the customers.
   The assumed customer requirement substitutes for an actual customer requirement.
-- **"We tried it once and it didn't work."** A failed pilot - often underresourced, poorly
-  scoped, or abandoned after the first difficulty - is used as evidence that the approach does
-  not apply to this organization. A single unsuccessful attempt becomes generalized proof of
+- **"We tried it once and it didn't work."** A failed pilot becomes evidence that the approach
+  does not apply to this organization. The pilot was often underresourced, poorly scoped, or
+  abandoned after the first difficulty. A single unsuccessful attempt becomes generalized proof of
   impossibility.
 
 The telltale sign: the conversation about CD always ends with a "but" - and the team reaches the
@@ -60,16 +61,16 @@ The telltale sign: the conversation about CD always ends with a "but" - and the 
 
 ## Why this is a problem
 
-The "we're different" mindset is self-reinforcing. Each time a reason not to start is accepted, the
-organization's delivery problems persist, which produces more evidence that the system is too hard
-to change, which makes the next reason not to start feel more credible. The gap between the
+The "we're different" mindset is self-reinforcing. Each time the organization accepts a reason not
+to start, its delivery problems persist. That persistence produces more evidence that the system is
+too hard to change. The next reason not to start then feels more credible. The gap between the
 organization and its more capable peers widens over time.
 
 ### It reduces quality
 
-A defect introduced today will be found in manual regression testing three weeks from now, after
-batch changes have compounded it with a dozen other modifications. The developer has moved on,
-the context is gone, and the fix takes three times as long as it would have at the time of writing.
+A defect introduced today will be found in manual regression testing three weeks from now. By then,
+batch changes have compounded it with a dozen other modifications. The developer has moved on and
+the context is gone. The fix takes three times as long as it would have at the time of writing.
 That cost repeats on every release.
 
 Each release involves more manual testing, more coordination, more risk from large batches
@@ -80,16 +81,16 @@ had before.
 
 ### It increases rework
 
-An hour of manual regression testing on every release, run by people who did not write the code,
-is an hour that automation would eliminate - and it compounds with every release. Manual test
+Consider an hour of manual regression testing on every release, run by people who did not write
+the code. Automation would eliminate that hour, and the cost compounds with every release. Manual test
 execution, manual deployment processes, manual environment setup each represent repeated effort
 that the "we're different" mindset locks in permanently.
 
 Teams that do not practice CD tend to have longer feedback loops. A defect introduced today is
-discovered in integration testing three weeks from now, at which point the developer has to
-context-switch back to code they no longer remember clearly. The rework of late defect discovery
-is real, measurable, and avoidable - but only if the team is willing to build the testing and
-integration practices that catch defects earlier.
+discovered in integration testing three weeks from now. The developer must then context-switch
+back to code they no longer remember clearly. The rework of late defect discovery is real,
+measurable, and avoidable. But it is avoidable only if the team builds the testing and integration
+practices that catch defects earlier.
 
 ### It makes delivery timelines unpredictable
 
@@ -105,9 +106,9 @@ routinization - and the longest path to it, which the mindset ensures they never
 
 ### Impact on continuous delivery
 
-The "we're different" mindset prevents CD adoption not by identifying insurmountable barriers but
-by preventing the work of understanding which barriers are real, which are assumed, and which
-could be addressed with modest effort. Most organizations that have successfully adopted CD
+The "we're different" mindset does not prevent CD adoption by identifying insurmountable barriers.
+It prevents the work of understanding which barriers are real, which are assumed, and which modest
+effort could address. Most organizations that have successfully adopted CD
 started with systems and constraints that looked, from the outside, like the objections their
 peers were raising.
 
@@ -122,8 +123,9 @@ whether starting was possible.
 ### Step 1: Audit the objections for specificity
 
 List every reason currently cited for why CD is not applicable. For each reason, find the specific
-constraint: cite the regulation by name, identify the specific part of the legacy system that
-cannot be changed, describe the specific customer requirement that prevents frequent deployment.
+constraint. Cite the regulation by name. Identify the specific part of the legacy system that
+cannot be changed. Describe the specific customer requirement that prevents frequent deployment.
+
 Many objections do not survive the specificity test - they dissolve into "we assumed this was
 true but haven't checked."
 
