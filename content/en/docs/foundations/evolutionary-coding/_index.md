@@ -20,6 +20,8 @@ description: >
 
 Use the least intrusive technique that solves the problem. Reach for a flag only when nothing simpler applies.
 
+These techniques also replace [environment branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}), where unfinished work waits on per-environment branches instead of reaching trunk.
+
 ## In this section
 
 | Page | What You'll Learn |
