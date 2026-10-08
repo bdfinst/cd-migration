@@ -35,7 +35,7 @@ Common variations:
   must all sign off. Any one member can block or delay the release. Scheduling the committee
   meeting is itself a multi-day coordination exercise.
 - **The inherited process.** The QA signoff gate was established years ago after a serious
-  production incident. The specific person who initiated the process has left the company. The
+  production incident. The specific person who started the process has left the company. The
   process remains, enforced by institutional memory and change-aversion, even though the team's
   test automation has grown significantly since then.
 - **The scope creep gate.** The signoff was originally limited to major releases. Over time, it
