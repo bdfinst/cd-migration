@@ -146,7 +146,7 @@ automation earns trust.
 ### Step 1: Audit what the gate is actually catching
 
 The goal of this step is to understand what value the manual gate provides so it can be
-replaced with something equivalent, not just removed.
+replaced with something equivalent rather than removed.
 
 1. Review the last six months of QA signoff outcomes. How many releases were rejected and why?
 2. For the rejections, categorize the bugs found: what type were they, how severe, what was

@@ -101,7 +101,7 @@ reviewed, and tested like any other part of the system.
 
 A manual deployment takes an unpredictable amount of time. The optimistic case is 30 minutes. The
 realistic case includes troubleshooting unexpected errors, waiting for the right person to be
-available, and re-running steps that failed. A "quick deploy" can easily consume half a day.
+available, and re-running steps that failed. A "quick deploy" can consume half a day.
 
 The team cannot commit to release dates because the deployment itself is a variable. "We can deploy
 on Tuesday" becomes "we can start the deployment on Tuesday, and we'll know by Wednesday whether it
