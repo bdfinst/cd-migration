@@ -29,7 +29,7 @@ four sprints to build is planned as six: four for features, two for stabilizatio
 
 ## Common causes
 
-### Manual Testing Only
+### Manual testing only
 
 When the team has no automated test suite, quality verification happens manually at the end. The
 hardening sprint is where manual testers find the defects that automated tests would have caught
@@ -38,7 +38,7 @@ pass to verify nothing is broken.
 
 **Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When most tests are slow end-to-end tests and few are unit tests, defects in business logic go
 undetected until integration testing. The E2E tests are too slow to run continuously, so they run
@@ -46,7 +46,7 @@ at the end. The hardening sprint is when the team finally discovers what was bro
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Undone Work
+### Undone work
 
 When the team's definition of done does not include deployment and verification, stories are
 marked complete while hidden work remains. Testing, validation, and integration happen after the
@@ -54,7 +54,7 @@ story is "done." The hardening sprint is where all that undone work gets finishe
 
 **Read more:** [Undone Work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}})
 
-### Monolithic Work Items
+### Monolithic work items
 
 When features are built as large, indivisible units, integration risk accumulates silently. Each
 large feature is developed in relative isolation for weeks. The hardening sprint is the first time
@@ -62,7 +62,7 @@ all the pieces come together, and the integration pain is proportional to the [b
 
 **Read more:** [Monolithic Work Items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}})
 
-### Pressure to Skip Testing
+### Pressure to skip testing
 
 When management pressures the team to maximize feature output, testing is deferred to "later."
 The hardening sprint is that "later." Testing was not skipped; it was moved to the end where it is
@@ -93,7 +93,7 @@ less effective, more expensive, and blocks the release.
 
 **Ready to fix this?** The most common cause is [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}}). Start with its [How to Fix It]({{< relref "/docs/anti-patterns/testing/manual-testing-only#how-to-fix-it" >}}) section for week-by-week steps.
 
-## Related Content
+## Related content
 
 - [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}}) - Hardening and freezes are companion symptoms
 - [The Team Is Afraid to Deploy]({{< relref "/docs/symptoms/deployment/fear-of-deploying" >}}) - Hardening sprints reinforce the belief that deployment is risky

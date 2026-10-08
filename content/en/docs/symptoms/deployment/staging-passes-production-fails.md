@@ -22,7 +22,7 @@ surprise.
 
 ## Common causes
 
-### Snowflake Environments
+### Snowflake environments
 
 When each environment is configured by hand (or was set up once and has drifted since), staging
 and production are never truly the same. Different library versions, different environment
@@ -31,7 +31,7 @@ another because the environments are only superficially similar.
 
 **Read more:** [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}})
 
-### Blind Operations
+### Blind operations
 
 Sometimes the problem is not that staging passes and production fails. It is that production
 failures go undetected until a customer reports them. Without monitoring and alerting, the team
@@ -40,7 +40,7 @@ signal, and production problems surface hours or days late.
 
 **Read more:** [Blind Operations]({{< relref "/docs/anti-patterns/monitoring-observability/blind-operations" >}})
 
-### Tightly Coupled Monolith
+### Tightly coupled monolith
 
 Hidden dependencies between components mean that a change in one area affects behavior in
 another. In staging, these interactions may behave differently because the data is smaller, the
@@ -49,7 +49,7 @@ exposes coupling the team did not know existed.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
-### Manual Deployments
+### Manual deployments
 
 When deployment involves human steps (running scripts by hand, clicking through a console,
 copying files), the process is never identical twice. A step skipped in staging, an extra
@@ -75,7 +75,7 @@ becomes a source of variance between environments.
 
 ---
 
-## Related Content
+## Related content
 
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same environment inconsistency pattern at a different stage
 - [Tests Pass in One Environment but Fail in Another]({{< relref "/docs/symptoms/testing/environment-dependent-failures" >}}) - Environment-dependent behavior is the common root

@@ -25,7 +25,7 @@ next Thursday. By then, more changes have accumulated, making the release larger
 
 ## Common causes
 
-### Tightly Coupled Architecture
+### Tightly coupled architecture
 
 When services share a database, call each other without versioned contracts, or depend on
 deployment order, they cannot be deployed independently. A change to Service A's data model breaks
@@ -35,7 +35,7 @@ that leak across service lines.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
-### Distributed Monolith
+### Distributed monolith
 
 The organization moved from a monolith to services, but the service boundaries are wrong. Services
 were decomposed along technical lines (a "database service," an "auth service," a "notification
@@ -52,7 +52,7 @@ business functionality.
 
 **Read more:** [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}})
 
-### Horizontal Slicing
+### Horizontal slicing
 
 When work for a feature is decomposed by service ("Team A builds the API, Team B updates the UI,
 Team C modifies the processor"), each team's change is incomplete on its own. Nothing is
@@ -62,7 +62,7 @@ allows each team to deploy when their slice is ready.
 
 **Read more:** [Horizontal Slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}})
 
-### Undone Work
+### Undone work
 
 Sometimes the coordination requirement is artificial. The service could technically be deployed
 independently, but the team's definition of done requires a cross-service integration test that
@@ -96,7 +96,7 @@ independent changes into a single release event.
 
 ---
 
-## Related Content
+## Related content
 
 - [Releases Are Infrequent and Painful]({{< relref "/docs/symptoms/deployment/infrequent-releases" >}}) - Coordination overhead makes releases less frequent
 - [Distributed Monolith]({{< relref "/docs/anti-patterns/architecture/distributed-monolith" >}}) - Services that cannot deploy independently
