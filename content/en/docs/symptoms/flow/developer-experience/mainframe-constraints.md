@@ -13,7 +13,7 @@ tags:
 
 The deployment target is a z/OS mainframe, an AS/400, an embedded device firmware platform, or a proprietary industrial control system. The standard [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}})/[CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) tools the rest of the organization uses do not support this target. The vendor's deployment tooling is command-line based, requires a licensed runtime, and was designed around a workflow that predates modern software delivery practices.
 
-The team's modern application code lives in a standard git repository with a standard [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) for the web tier. But the batch processing layer, the financial calculation engine, or the device firmware is deployed through a completely separate process involving FTP, JCL job cards, and a deployment checklist that exists as a Word document on a shared drive.
+The team's modern application code lives in a standard git repository with a standard [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) for the web tier. But the batch processing layer, the financial calculation engine, or the device firmware goes through a completely separate deployment process. That process involves FTP, JCL job cards, and a deployment checklist that exists as a Word document on a shared drive.
 
 The organization's [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) practices stop at the boundary of the modern stack. The legacy platform exists in a different operational world with different tooling, different skills, different deployment cadence, and different risk models. Bridging the two worlds requires custom integration work that is unglamorous, expensive, and consistently deprioritized.
 
@@ -23,7 +23,7 @@ The organization's [CD]({{< relref "/docs/reference/glossary#cd-continuous-deliv
 
 Legacy platform deployments are almost always manual. The platform predates modern deployment automation. The deployment procedure exists in documentation and in the heads of the people who have done it. Without investment in custom tooling, mainframe deployments remain manual indefinitely.
 
-Building automation for a mainframe or proprietary platform requires understanding both the platform's native tools and modern automation principles. The result may not look like a standard pipeline, but it can provide the same benefits: consistent, repeatable, auditable deployments that do not require a specific person.
+Building automation for a mainframe or proprietary platform requires understanding both the platform's native tools and modern automation principles. The result may not look like a standard pipeline. But the result can provide the same benefits: consistent, repeatable, auditable deployments that do not require a specific person.
 
 **Read more:** [Manual deployments]({{< relref "/docs/anti-patterns/pipeline/manual-deployments" >}})
 
@@ -31,7 +31,7 @@ Building automation for a mainframe or proprietary platform requires understandi
 
 A pipeline that covers the full deployment surface - modern application code, database changes, and legacy platform components - requires platform-specific extensions. Standard pipeline tools do not ship with mainframe support, but they can be extended with custom steps that invoke platform-native tools. Without this investment, the pipeline covers only the modern stack.
 
-Building coverage incrementally - wrapping the most common deployment operations first, then expanding - is more achievable than trying to fully automate a complex legacy deployment in one effort.
+Build coverage incrementally: wrap the most common deployment operations first, then expand. That approach is more achievable than trying to fully automate a complex legacy deployment in one effort.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 

@@ -12,9 +12,11 @@ tags:
 
 ## What you are seeing
 
-Everyone still has long-lived feature branches. The team agreed to try [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), but three sprints later "merge to trunk when the feature is done" is the informal rule. Branches live for days or weeks. When developers finally merge, there are conflicts. The conflicts take hours to resolve. Everyone agrees this is a problem but nobody knows how to break the cycle.
+Everyone still has long-lived feature branches. The team agreed to try [trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}), but three sprints later "merge to trunk when the feature is done" is the informal rule. Branches live for days or weeks.
 
-The core objection is safety: "I'm not going to push half-finished code to main." This is a reasonable concern in the current environment. The main branch has no automated test suite that would catch regressions quickly. There is no [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) infrastructure to let partially-built features live in production in a dormant state. Trunk-based development feels reckless because the prerequisites for it are not in place.
+When developers finally merge, there are conflicts. The conflicts take hours to resolve. Everyone agrees the conflicts are a problem, but nobody knows how to break the cycle.
+
+The core objection is safety: "I'm not going to push half-finished code to main." That objection is a reasonable concern in the current environment. The main branch has no automated test suite that would catch regressions quickly. There is no [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) infrastructure to let partially-built features live in production in a dormant state. Trunk-based development feels reckless because the prerequisites for it are not in place.
 
 The team is not wrong to feel unsafe. They are wrong to believe long-lived branches are safer. The longer a branch lives, the larger the eventual merge, the more conflicts, and the more risk concentrated into the merge event. The fear of merging to trunk is rational, but the response makes the underlying problem worse.
 
@@ -28,9 +30,9 @@ Without a fast automated test suite, merging to trunk means accepting unknown ri
 
 ### Manual regression testing gates
 
-When a manual QA phase gates each release, trunk is never truly releasable. Merging to trunk does not mean the code is production-ready - it still has to pass manual testing. This reduces the psychological pressure to keep trunk releasable. The team does not feel the cost of a broken trunk immediately because it is not the signal they monitor.
+When a manual QA phase gates each release, trunk is never truly releasable. Merging to trunk does not mean the code is production-ready - the code still has to pass manual testing. The manual phase reduces the psychological pressure to keep trunk releasable. The team does not feel the cost of a broken trunk immediately because trunk is not the signal they monitor.
 
-When trunk is the thing that gates production, a broken trunk is a fire drill - every minute it is broken is a minute the team cannot ship. That urgency is what makes developers take frequent integration seriously. Without it, the resistance to committing to trunk has no natural counter-pressure.
+When trunk gates production, a broken trunk is a fire drill. Every minute trunk is broken is a minute the team cannot ship. That urgency makes developers take frequent integration seriously. Without that urgency, the resistance to committing to trunk has no natural counter-pressure.
 
 **Read more:** [Manual regression testing gates]({{< relref "/docs/anti-patterns/testing/manual-regression-testing-gates" >}})
 
@@ -38,13 +40,13 @@ When trunk is the thing that gates production, a broken trunk is a fire drill - 
 
 Feature branch habits are self-reinforcing. Teams with ingrained feature branch practices have calibrated their workflows, tools, and feedback loops to the batching model. Switching to trunk-based development requires changing all of those workflows simultaneously, which is disorienting.
 
-The habits that make long-lived branches feel safe - waiting to merge until the feature is complete, doing final testing on the branch, getting full review before touching trunk - are the same habits that keep the resistance alive. Small, deliberate workflow changes - reviewing smaller units, integrating while work is in progress, getting feedback from the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) rather than a gated review - reduce the resistance step by step rather than requiring an all-at-once mindset shift.
+Some habits make long-lived branches feel safe: merging only complete features, doing final testing on the branch, and getting full review before touching trunk. Those same habits keep the resistance alive. Small, deliberate workflow changes reduce the resistance step by step, without an all-at-once mindset shift. Examples include reviewing smaller units, integrating while work is in progress, and getting feedback from the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) rather than a gated review.
 
 **Read more:** [Long-lived feature branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
 ### Monolithic work items
 
-Large work items cannot be integrated to trunk incrementally without deliberate design. A story that takes three weeks requires either keeping a branch for three weeks, or learning to hide in-progress work behind feature flags, dark launch patterns, or abstraction layers. Without those techniques, large items force long-lived branches.
+Large work items cannot be integrated to trunk incrementally without deliberate design. A story that takes three weeks forces a choice. The team keeps a branch for three weeks, or learns to hide in-progress work behind feature flags, dark launch patterns, or abstraction layers. Without those techniques, large items force long-lived branches.
 
 Decomposing work into smaller items that can be integrated to trunk in a day or two makes trunk-based development natural rather than effortful.
 

@@ -46,7 +46,7 @@ Organizing teams around [vertical slices]({{< relref "/docs/reference/glossary#v
 
 ### Monolithic work items
 
-Large work items have more opportunities to intersect with other teams' work. A story that takes one week and touches the data layer, the API layer, and the UI layer requires coordination with three teams at three different times. Smaller items scoped to a single layer or component can often be completed within one team without external dependencies.
+Large work items have more opportunities to intersect with other teams' work. Consider a one-week story that touches the data layer, the API layer, and the UI layer. That story requires coordination with three teams at three different times. Smaller items scoped to a single layer or component can often be completed within one team without external dependencies.
 
 Decomposing large items into smaller, more self-contained pieces reduces the surface area of cross-team interaction. Even when teams remain organized by layer, smaller items spend less time in blocked states.
 

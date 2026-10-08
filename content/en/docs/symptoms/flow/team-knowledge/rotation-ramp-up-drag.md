@@ -25,8 +25,8 @@ across a quarter looks flat even though the team is working as hard as ever.
 
 When engineers are treated as interchangeable capacity and moved to where utilization is needed,
 the team never develops stable domain expertise. Each rotation brings someone who knows the
-technology but not the business rules, the data model quirks, the historical decisions, or the
-failure modes that prior members learned through experience. The knowledge required to deliver
+technology but not the domain. They lack the business rules, the data model quirks, the historical
+decisions, and the failure modes that prior members learned through experience. The knowledge required to deliver
 quickly in a domain cannot be acquired in days. It accumulates over months of working in it.
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})

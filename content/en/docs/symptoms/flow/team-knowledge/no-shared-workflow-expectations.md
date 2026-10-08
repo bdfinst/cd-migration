@@ -22,9 +22,9 @@ The problem compounds as the team grows or becomes more distributed. A two-perso
 
 ### Push-based work assignment
 
-When work is assigned to individuals by a manager or lead, team members operate as independent contributors rather than as a team managing flow together. Shared workflow norms only emerge meaningfully when the team experiences work as a shared responsibility - when they pull from a common queue, track shared flow metrics, and collectively own the delivery outcome.
+When work is assigned to individuals by a manager or lead, team members operate as independent contributors rather than as a team managing flow together. Shared workflow norms only emerge meaningfully when the team experiences work as a shared responsibility. That means the team pulls from a common queue, tracks shared flow metrics, and collectively owns the delivery outcome.
 
-Teams that pull work from a shared backlog develop shared norms because they need those norms to function - without agreement on review turnaround and WIP limits, pulling from the same queue becomes chaotic. When work is individually assigned, each person optimizes for their assigned items, not for team flow, and the shared agreements never form.
+Teams that pull work from a shared backlog develop shared norms because they need those norms to function. Without agreement on review turnaround and WIP limits, pulling from the same queue becomes chaotic. When work is individually assigned, each person optimizes for their assigned items, not for team flow. The shared agreements never form.
 
 **Read more:** [Push-based work assignment]({{< relref "/docs/anti-patterns/team-workflow/push-based-work-assignment" >}})
 

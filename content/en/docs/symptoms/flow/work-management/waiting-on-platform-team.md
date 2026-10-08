@@ -12,14 +12,16 @@ tags:
 
 A team needs a new environment for testing, a configuration value updated, a database instance
 provisioned, or a new service account created. They file a ticket. The platform team has its own
-backlog and prioritization process. The ticket sits for two days, then a week. The team's sprint
-work is blocked until it is resolved. When the platform team delivers, there is a round of
+backlog and prioritization process.
+
+The ticket sits for two days, then a week. The team's sprint
+work is blocked until the platform team resolves the ticket. When the platform team delivers, there is a round of
 back-and-forth because the request was not specific enough, and the team waits again.
 
-This happens repeatedly across different types of requests: compute resources, network access,
+The same delay repeats across different types of requests: compute resources, network access,
 environment variables, secrets, certificates, DNS entries. Each one is a separate ticket, a
 separate queue, a separate wait. Developers learn to front-load requests at the beginning of
-sprints to get ahead of the lead time, but the lead times shift and the requests still arrive
+sprints to get ahead of the lead time. But the lead times shift, and the requests still arrive
 too late.
 
 ## Common causes
@@ -28,9 +30,9 @@ too late.
 
 When infrastructure and platform work is owned by a separate team, developers have no path to
 self-service. Every infrastructure need becomes a cross-team request. The platform team is
-optimizing its own backlog, which may not align with the delivery team's priorities. The
-structural separation means that the team doing the work and the team enabling the work have
-different schedules, different priorities, and different definitions of urgency.
+optimizing its own backlog, which might not align with the delivery team's priorities. The
+structural separation splits the team doing the work from the team enabling the work. The two
+teams have different schedules, different priorities, and different definitions of urgency.
 
 **Read more:** [Separate Ops/Release Team]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separate-ops-team" >}})
 

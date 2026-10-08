@@ -15,8 +15,8 @@ back: "This isn't quite what I meant." The implementation is technically correct
 the acceptance criteria as written - but it misses the point of the work. The story re-enters
 the sprint as rework, consuming time that was not planned for.
 
-This happens repeatedly with the same pattern: the developer built exactly what was described
-in the ticket, but the ticket did not capture the underlying need. Stories that seemed clearly
+This rework happens repeatedly with the same pattern. The developer built exactly what the ticket
+described, but the ticket did not capture the underlying need. Stories that seemed clearly
 defined come back with significant revisions. The team's velocity looks reasonable but a
 meaningful fraction of that work is being done twice.
 

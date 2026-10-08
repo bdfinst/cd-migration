@@ -11,7 +11,9 @@ tags:
 
 ## What you are seeing
 
-The same themes come up every sprint: too much interruption, unclear requirements, flaky tests, blocked items. The retrospective runs every two weeks. Action items are assigned. Two weeks later, none of them were completed because sprint work took priority. The same themes come up again. Someone adds them to the growing backlog of process improvements.
+The same themes come up every sprint: too much interruption, unclear requirements, flaky tests, blocked items. The retrospective runs every two weeks. Action items are assigned.
+
+Two weeks later, none of them were completed because sprint work took priority. The same themes come up again. Someone adds them to the growing backlog of process improvements.
 
 The team goes through the motions because the meeting is scheduled, not because they believe it will produce change. Participation is minimal. The facilitator works harder each time to generate engagement. The conversation stays surface-level because raising real problems feels pointless - nothing changes anyway.
 
@@ -29,7 +31,7 @@ Creating and protecting capacity for improvement work is the prerequisite for re
 
 ### Push-based work assignment
 
-When work is assigned to the team from outside, the team has no authority over their own capacity allocation. They cannot protect time for improvement work because the queue is filled by someone else. Even if the team agrees in the retrospective that test automation is the priority, the next sprint's work arrives already planned with no room for it.
+When work is assigned to the team from outside, the team has no authority over their own capacity allocation. They cannot protect time for improvement work because the queue is filled by someone else. The team might agree in the retrospective that test automation is the priority. But the next sprint's work arrives already planned with no room for test automation.
 
 Teams that pull work from a prioritized backlog and control their own capacity can make and honor commitments to improvement work. The retrospective can produce action items that the team has the authority to complete.
 
@@ -37,7 +39,7 @@ Teams that pull work from a prioritized backlog and control their own capacity c
 
 ### Deadline-driven development
 
-When management drives to fixed deadlines, all available capacity goes toward meeting the deadline. Improvement work that does not advance the deadline has no chance. The retrospective can surface the same problems indefinitely, but if the team has no capacity to address them and no organizational support to get that capacity, improvement is structurally impossible.
+When management drives to fixed deadlines, all available capacity goes toward meeting the deadline. Improvement work that does not advance the deadline has no chance. The retrospective can surface the same problems indefinitely. If the team has no capacity to address those problems and no organizational support to get that capacity, improvement is structurally impossible.
 
 **Read more:** [Deadline-driven development]({{< relref "/docs/anti-patterns/organizational-cultural/planning/deadline-driven-development" >}})
 

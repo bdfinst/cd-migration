@@ -13,6 +13,7 @@ tags:
 ## What you are seeing
 
 A developer opens a pull request and waits. Hours pass. A day passes. They ping someone in chat.
+
 Eventually, comments arrive, but the author has moved on to something else and has to reload
 context to respond. Another round of comments. Another wait. The PR finally merges two or three
 days after it was opened.

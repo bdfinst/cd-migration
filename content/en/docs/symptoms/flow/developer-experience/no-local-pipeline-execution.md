@@ -12,11 +12,13 @@ tags:
 
 ## What you are seeing
 
-A developer makes a change, commits, and pushes to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}). Thirty minutes later, the build is red. A linting rule was violated. Or a test file was missing from the commit. Or the build script uses a different version of a dependency than the developer's local machine. The developer fixes the issue and pushes again. Another wait. Another failure - this time a test that only runs in CI and not in the local test suite.
+A developer makes a change, commits, and pushes to [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}). Thirty minutes later, the build is red.
 
-This cycle destroys focus. The developer cannot stay in flow waiting for CI results. They switch to something else, then switch back when the notification arrives. Each context switch adds recovery time. A change that took thirty minutes to write takes two hours from first commit to green build, and the developer was not thinking about it for most of that time.
+A linting rule was violated. Or a test file was missing from the commit. Or the build script uses a different version of a dependency than the developer's local machine. The developer fixes the issue and pushes again. Another wait. Another failure - this time a test that only runs in CI and not in the local test suite.
 
-The deeper issue is that CI and local development are different environments. Tests that pass locally fail in CI because of dependency version differences, missing environment variables, or test execution order differences. The developer cannot reproduce CI failures locally, which makes them much harder to debug and creates a pattern of "push and hope" rather than "validate locally and push with confidence."
+This cycle destroys focus. The developer cannot stay in flow waiting for CI results. They switch to something else, then switch back when the notification arrives. Each context switch adds recovery time. A change that took thirty minutes to write takes two hours from first commit to green build. The developer was not thinking about the change for most of that time.
+
+The deeper issue is that CI and local development are different environments. Tests that pass locally fail in CI because of dependency version differences, missing environment variables, or test execution order differences. The developer cannot reproduce CI failures locally, which makes those failures much harder to debug. The result is a pattern of "push and hope" rather than "validate locally and push with confidence."
 
 ## Common causes
 
@@ -30,7 +32,7 @@ Pipelines designed with local execution in mind use tools that run identically i
 
 ### Snowflake environments
 
-When the CI environment differs from the developer's local environment in ways that affect test outcomes, local and CI results diverge. Different OS versions, different dependency caches, different environment variables, different file system behaviors - any of these can cause tests to pass locally and fail in CI.
+When the CI environment differs from the developer's local environment in ways that affect test outcomes, local and CI results diverge. Any of these differences can cause tests to pass locally and fail in CI: OS versions, dependency caches, environment variables, or file system behaviors.
 
 Standardized, code-defined environments that run identically locally and in CI eliminate the divergence. If the build step runs inside the same container image locally and in CI, the results are the same.
 

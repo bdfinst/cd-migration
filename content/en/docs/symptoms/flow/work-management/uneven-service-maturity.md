@@ -16,7 +16,7 @@ Some services have full [pipelines]({{< relref "/docs/reference/glossary#pipelin
 
 Improving the legacy services feels impossible to prioritize. They are not blocking any immediate feature work. The incidents they cause are infrequent enough to accept. Adding tests, setting up a pipeline, and improving the deployment process are multi-week investments with no immediate visible output. They compete for sprint capacity against features that have product owners and deadlines.
 
-The maturity gap widens over time. The modern services get more capable as the team's CD practices improve. The legacy ones stay frozen. Eventually they represent a liability: they cannot benefit from any of the team's improved practices, they are too risky to touch, and they handle increasingly critical functionality as other services are modernized around them.
+The maturity gap widens over time. The modern services get more capable as the team's CD practices improve. The legacy ones stay frozen. Eventually the legacy services become a liability. They cannot benefit from any of the team's improved practices, and they are too risky to touch. They also handle increasingly critical functionality as other services are modernized around them.
 
 ## Common causes
 
@@ -24,7 +24,7 @@ The maturity gap widens over time. The modern services get more capable as the t
 
 Services without pipelines cannot participate in the team's CD practices. The pipeline is the foundation on which automated testing, deployment automation, and observability build. A service with no pipeline is a service that will always require manual attention for every change.
 
-Establishing a minimal viable pipeline for every service - even if it only runs existing tests and provides a deployment command - closes the gap between the modern services and the legacy ones. A service with even a basic pipeline can participate in the team's practices and improve from there; a service with no pipeline cannot improve at all.
+Establish a minimal viable pipeline for every service, even if the pipeline only runs existing tests and provides a deployment command. That pipeline closes the gap between the modern services and the legacy ones. A service with even a basic pipeline can participate in the team's practices and improve from there. A service with no pipeline cannot improve at all.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 
