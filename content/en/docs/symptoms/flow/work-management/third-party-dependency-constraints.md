@@ -16,7 +16,7 @@ The team is ready to deploy. But the upstream payment provider releases their AP
 
 The team adapts by aligning their release cadence with their most constraining external dependency. If one vendor deploys quarterly, the team deploys quarterly. Every advance the team makes in internal deployment speed is nullified by the external constraint. The most sophisticated internal [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) in the world still produces a team that ships four times per year.
 
-Some external constraints are genuinely fixed. A payment network's settlement schedule, regulatory reporting requirements, hardware firmware update cycles - these cannot be accelerated. But many "external" constraints turn out to be negotiable, workaroundable through abstraction, or simply assumed to be fixed without ever being tested.
+Some external constraints are genuinely fixed. A payment network's settlement schedule, regulatory reporting requirements, hardware firmware update cycles - these cannot be accelerated. But many "external" constraints turn out to be negotiable, workaroundable through abstraction, or assumed to be fixed without ever being tested.
 
 ## Common causes
 

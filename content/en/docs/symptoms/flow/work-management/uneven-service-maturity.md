@@ -24,7 +24,7 @@ The maturity gap widens over time. The modern services get more capable as the t
 
 Services without pipelines cannot participate in the team's CD practices. The pipeline is the foundation on which automated testing, deployment automation, and observability build. A service with no pipeline is a service that will always require manual attention for every change.
 
-Establishing a minimal viable pipeline for every service - even if it just runs existing tests and provides a deployment command - closes the gap between the modern services and the legacy ones. A service with even a basic pipeline can participate in the team's practices and improve from there; a service with no pipeline cannot improve at all.
+Establishing a minimal viable pipeline for every service - even if it only runs existing tests and provides a deployment command - closes the gap between the modern services and the legacy ones. A service with even a basic pipeline can participate in the team's practices and improve from there; a service with no pipeline cannot improve at all.
 
 **Read more:** [Missing deployment pipeline]({{< relref "/docs/anti-patterns/pipeline/missing-deployment-pipeline" >}})
 

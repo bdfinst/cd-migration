@@ -52,7 +52,7 @@ When delivery is organized around fixed dates rather than continuous value deliv
 
 ## How to narrow it down
 
-1. **Can the team demonstrate working software every sprint, not just at release?** If demos require a release, work is batched too long. Start with [Undone work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}).
+1. **Can the team demonstrate working software every sprint, not only at release?** If demos require a release, work is batched too long. Start with [Undone work]({{< relref "/docs/anti-patterns/team-workflow/undone-work" >}}).
 2. **Do stories regularly take more than one sprint to complete?** If features are too large to show incrementally, start with [Monolithic work items]({{< relref "/docs/anti-patterns/team-workflow/monolithic-work-items" >}}).
 3. **Are stories organized by technical layer?** If the UI team and the API team must both finish before anything can be demonstrated, start with [Horizontal slicing]({{< relref "/docs/anti-patterns/team-workflow/horizontal-slicing" >}}).
 

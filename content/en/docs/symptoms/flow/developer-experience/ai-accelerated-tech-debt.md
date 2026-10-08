@@ -115,7 +115,7 @@ the change to compare it against their knowledge of the existing system.
    style violations but not structural drift. Add deterministic structural tools to the hook
    sequence described in
    [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration#hooks" >}}).
-2. **Do feature descriptions include architectural constraints, not just functional
+2. **Do feature descriptions include architectural constraints, not only functional
    requirements?** If the feature description only says what the change should do but not how
    it should fit structurally, the semantic review agent has no basis for checking pattern
    conformance. Start by adding constraints to the
