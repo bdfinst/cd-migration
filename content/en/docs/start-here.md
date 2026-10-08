@@ -37,13 +37,13 @@ What CD typically reveals:
 
 The payoff comes when you fix what the diagnostic reveals. Teams that address these root causes
 consistently see shorter lead times, lower change failure rates, faster recovery, and higher
-deployment frequency - the four key metrics that predict both delivery performance and
+deployment frequency. These four key metrics predict both delivery performance and
 organizational performance.
 
 ## Why ACD amplifies the effect
 
-Apply the same two questions to AI agents generating and delivering changes through your
-pipeline, and every structural weakness surfaces faster - in days rather than months.
+Apply the same two questions to AI agents that generate and deliver changes through your
+pipeline. Every structural weakness then surfaces faster, in days rather than months.
 
 Agents are literal executors. They cannot rely on tribal knowledge or work around vague
 requirements the way experienced developers do. When a specification gap exists, an agent
@@ -51,7 +51,7 @@ exposes it immediately. When a test suite is unreliable, agents produce failures
 makes the problem impossible to ignore. When architecture is coupled, agent-generated changes
 cascade breakage across boundaries that humans had learned to navigate carefully.
 
-This is not a flaw in the agents. It is the diagnostic working as intended.
+This fast exposure is not a flaw in the agents. It is the diagnostic working as intended.
 
 For the full picture on ACD constraints and practices, see the
 [ACD]({{< relref "/docs/agentic-cd" >}}) section.
@@ -67,9 +67,10 @@ The teams that benefit most are the ones that treat pipeline failures, test brit
 deployment friction as signals - not noise. They invest in architectural discipline, automated
 quality gates they actually trust, and organizational structures that minimize handoffs.
 
-Reading the diagnostic is only half the work. For *how* to clear what it reveals - the physics of
-why work waits, and a repeatable loop that uses AI to remove the underlying knowledge dependencies -
-see [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) in the Agentic CD section.
+Reading the diagnostic is only half the work. For *how* to clear what the diagnostic reveals, see
+[Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) in the Agentic CD section. That page
+covers the physics of why work waits and a repeatable loop that uses AI to remove the underlying
+knowledge dependencies.
 
 For the full argument, see
 [ACD Is a Diagnostic Tool](https://bryanfinster.substack.com/p/acd-is-a-diagnostic-tool).
