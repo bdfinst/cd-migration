@@ -19,13 +19,13 @@ developer finishing a change and that change running in production.
 ## Why document before mapping
 
 [Value stream mapping]({{< relref "/docs/assess/value-stream-mapping" >}}) is a powerful tool for systemic improvement. It requires measurement, cross-team
-coordination, and careful analysis. That takes time to do well, and it should not be rushed.
+coordination, and careful analysis. That work takes time to do well, so do not rush it.
 
-But you do not need a value stream map to spot obvious friction. Manual steps that could be
-automated, wait times caused by batching, handoffs that exist only because of process - these
-are visible the moment you write the process down.
+But you do not need a value stream map to spot obvious friction. Some friction is visible the
+moment you write the process down. Look for manual steps you could automate, wait times caused
+by batching, and handoffs that exist only because of process.
 
-Document your current process first. This gives you two things:
+Document your current process first. Documenting first gives you two things:
 
 1. **Quick wins you can fix this week.** Obvious waste that requires no measurement or
    cross-team coordination to remove.
@@ -47,8 +47,8 @@ The rules:
   "automated deployment" but someone actually SSH-es into a server and runs a script, write
   down the SSH step.
 - **Include the invisible steps.** The Slack message asking for review. The email requesting
-  deploy approval. The wait for the Tuesday deploy window. These are often the biggest sources
-  of delay and they are usually missing from official process documentation.
+  deploy approval. The wait for the Tuesday deploy window. These invisible steps are often the biggest
+  sources of delay, and they are usually missing from official process documentation.
 - **Get the whole team in the room.** Different people see different parts of the process. The
   developer who writes the code may not know what happens after the merge. The ops person who
   runs the deploy may not know about the QA handoff. You need every perspective.
@@ -74,8 +74,8 @@ problem - the batching is.
 
 ## Example: A typical brownfield process
 
-This is a realistic example of what a brownfield team's process might look like before any CD
-practices are adopted. Your process will differ, but the pattern of manual steps and wait times
+The following realistic example shows what a brownfield team's process might look like before the
+team adopts any CD practices. Your process will differ, but the pattern of manual steps and wait times
 is common.
 
 | # | Step | Who | Manual/Auto | Duration | Wait Before | What Can Go Wrong |
@@ -98,13 +98,13 @@ is common.
 Even before measurement or analysis, patterns jump out:
 
 - Steps 3, 7, and 10 are pure wait time - nothing is happening to the change.
-- Steps 8 and 12 are manual testing that could potentially be automated.
+- Steps 8 and 12 are manual testing that you could potentially automate.
 - Step 10 is artificial batching - deploys happen on a schedule, not on demand.
 - Step 9 might be a rubber-stamp approval that adds delay without adding safety.
 
 ## Spotting quick wins
 
-Once the process is documented, look for these patterns. Each one is a potential quick win that
+Once you document the process, look for these patterns. Each one is a potential quick win that
 the team can fix without a formal improvement initiative.
 
 ### Automation targets
@@ -112,7 +112,7 @@ the team can fix without a formal improvement initiative.
 Steps that are purely manual but have well-known automation:
 
 - **Code formatting and linting.** If reviewers spend time on style issues, add a linter to CI.
-  This saves reviewer time on every single PR.
+  A linter saves reviewer time on every single PR.
 - **Running tests.** If someone manually runs tests before merging, make CI run them
   automatically on every push.
 - **Build and package.** If someone manually builds artifacts, automate the build in the
@@ -139,7 +139,7 @@ process:
 - **QA sign-off that is a rubber stamp.** If QA always approves and never finds issues, the
   sign-off is not adding value.
 - **Approval steps that are never rejected.** Track the rejection rate. If an approval step
-  has a 0% rejection rate over the last 6 months, it is ceremony, not a gate.
+  has a 0% rejection rate over the last 6 months, the step is ceremony, not a gate.
 - **Handoffs between people who sit next to each other.** If the developer could do the step
   themselves but "process says" someone else has to, question the process.
 

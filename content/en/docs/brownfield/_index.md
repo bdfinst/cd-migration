@@ -18,8 +18,8 @@ from where you are today to continuous delivery, without stopping feature delive
 
 Migrating an existing system to CD is harder than building CD into a greenfield project. You are
 working against inertia: existing branching strategies, existing test suites (or lack thereof),
-existing deployment processes, and existing team habits. Every change has to be made incrementally,
-alongside regular delivery work.
+existing deployment processes, and existing team habits. You have to make every change
+incrementally, alongside regular delivery work.
 
 The good news: every team that has successfully adopted CD has done it this way. The practices in
 this guide are designed for incremental adoption, not big-bang transformation.
@@ -32,26 +32,26 @@ is wrong.
 
 **Things will feel slower before they feel faster.** When you adopt trunk-based development and
 start building a real test suite, you are working against the grain of an existing codebase. Tests
-will reveal problems that were previously hidden. Integration friction will surface. Teams
-sometimes mistake this initial friction for regression. It is not - it is the system becoming
-visible. The slowdown is temporary. The improvement it enables is permanent.
+will reveal previously hidden problems, and integration friction will surface. Teams sometimes
+mistake this initial friction for regression, but the friction is the system becoming visible.
+The slowdown is temporary, and the improvement it enables is permanent.
 
 **The technical practices will be ready before the organization is.** You can complete Phases 1
 through 3 while approval processes, change windows, and release coordination overhead remain
 unchanged. The pipeline will be capable of deploying any green build long before the organization
-gives you permission to do it on demand. This organizational lag is the most common stall point
-in Phase 4. Plan for it early - start the conversation with leadership while you are still in
-Phase 2 so there is no surprise when you arrive at Phase 4 ready to remove the last gates.
+gives you permission to deploy on demand. This organizational lag is the most common stall point
+in Phase 4, so plan for it early. Start the conversation with leadership in Phase 2, so your request
+to remove the last gates is no surprise when you reach Phase 4.
 
 **Metrics are your evidence.** The hardest part of brownfield migration is sustaining investment
-through the long period when foundations are being built but delivery feels slow. Track your
+through the long period when you are building foundations but delivery feels slow. Track your
 [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) from Phase 0. Small improvements in lead time and deployment frequency
 become the business case for continued investment. Without this data, leadership will pull the
 team back to feature work at the first sign of difficulty.
 
 ## The migration phases
 
-The migration is organized into five phases. Each phase builds on the previous one. Start with
+The migration has five phases. Each phase builds on the previous one. Start with
 Phase 0 to understand where you are, then work through the phases in order.
 
 | Phase | Name | Goal | Key Question |
@@ -92,7 +92,7 @@ If you don't have time for a full assessment, answer these questions:
 
 ### Do not stop delivering features
 
-The migration is done alongside regular delivery work, not instead of it. Each practice is adopted
+You migrate alongside regular delivery work, not instead of it. You adopt each practice
 incrementally. You do not stop the world to rewrite your test suite or redesign your pipeline.
 
 ### Fix the biggest constraint first
@@ -133,11 +133,11 @@ prioritize what to start now and what to bring to management.
 **Requires broader change:**
 
 - **Process handoffs to other teams:** If your deployment requires sign-off from a separate QA
-  or ops team, improving your deployment frequency requires changing how those teams engage with
-  your delivery pipeline - not only improving the pipeline itself.
+  or ops team, improving the pipeline itself is not enough. Improving your deployment frequency
+  requires changing how those teams engage with your delivery pipeline.
 - **Shared environment access:** When your team competes with others for a shared staging
-  environment, resolving that bottleneck requires organizational action (dedicated environments,
-  self-service provisioning, or explicit time-slicing agreements).
+  environment, resolving that bottleneck requires organizational action. Options include dedicated
+  environments, self-service provisioning, or explicit time-slicing agreements.
 - **Management commitment to migration time:** Brownfield migration takes sustained investment
   alongside feature delivery. If leadership expects the same feature throughput during the
   migration, the migration will stall. Building this case with data is part of the work.

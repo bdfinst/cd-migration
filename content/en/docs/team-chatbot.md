@@ -8,7 +8,7 @@ weight: 41
 icon: "fas fa-robot"
 ---
 
-This is a pre-built facilitator chatbot for teams starting or stuck in their CD migration. Paste the system prompt into any LLM (Claude, ChatGPT, Gemini, or similar) and it becomes a conversation partner that asks your team the right questions, identifies what is holding you back, and points you to the right resources on this site.
+The team chatbot is a pre-built facilitator for teams starting or stuck in their CD migration. Paste the system prompt into any LLM (Claude, ChatGPT, Gemini, or similar) to start. The LLM then asks your team the right questions, identifies what is holding you back, and points you to the right resources on this site.
 
 ## Download the chatbot setup
 
@@ -27,7 +27,8 @@ The file is a plain text Markdown file. It contains three things: setup instruct
 ### ChatGPT (chat.openai.com)
 
 1. If you have access to **Custom GPTs**, create one and paste the system prompt into the **Instructions** field.
-2. For a quick session without a custom GPT: paste the system prompt as your first message, prefixed with `Act as the following for this entire conversation:`, then send the suggested opening message next.
+2. For a quick session without a custom GPT, paste the system prompt as your first message. Prefix it with `Act as the following for this entire conversation:`
+3. Send the suggested opening message next.
 
 ### Gemini (gemini.google.com)
 
@@ -38,11 +39,11 @@ The file is a plain text Markdown file. It contains three things: setup instruct
 
 - **Run it as a group.** Two or three people from the team together gives much better results than one person answering solo. Share your screen or use a shared workspace.
 - **Be specific.** "Releases are painful" is less useful than "we have four people running scripts for two days every six weeks." The more concrete the description, the more relevant the guidance.
-- **Let it ask first.** The chatbot is designed to diagnose before it advises. Answer its questions before asking your own.
+- **Let it ask first.** The chatbot diagnoses before it advises. Answer its questions before asking your own.
 - **End with one action.** At the close of the session, ask: "What is the single most important next step for us?" Take that one thing and act on it.
 
 ## What the chatbot knows
 
 The system prompt embeds the full structure of this site, including all symptom pages, anti-pattern categories, migration phases, and improvement plays. When it points you to a resource, it gives you a direct link to the relevant page.
 
-It is not a general-purpose assistant. It stays focused on continuous delivery and delivery improvement. If the conversation drifts, it redirects.
+The chatbot is not a general-purpose assistant. It stays focused on continuous delivery and delivery improvement. If the conversation drifts, it redirects.
