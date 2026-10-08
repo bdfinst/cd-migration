@@ -31,7 +31,7 @@ generated code in patterns the team did not choose and would not have written.
 
 ## Common causes
 
-### No Scheduled Refactoring Sessions
+### No scheduled refactoring sessions
 
 AI generates code faster than humans refactor it. Without deliberate maintenance sessions
 scoped to cleaning up recently touched files, the codebase drifts toward entropy faster than
@@ -46,7 +46,7 @@ changes).
 
 **Read more:** [Pitfalls and Metrics - Schedule refactoring as explicit sessions]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics#schedule-refactoring-as-explicit-sessions" >}})
 
-### No Review Gate for Structural Quality
+### No review gate for structural quality
 
 The team's review process validates correctness (does it satisfy acceptance criteria?) and
 security (does it introduce vulnerabilities?) but not structural fitness (does it fit the
@@ -98,7 +98,7 @@ where the feature description defines what those patterns are.
 
 **Read more:** [Coding and Review Agent Configuration - Semantic Review Agent]({{< relref "/docs/agentic-cd/architecture/agent-configuration#semantic-review-agent" >}})
 
-### Rubber-Stamping AI-Generated Code
+### Rubber-stamping AI-generated code
 
 When developers do not own the change - cannot articulate what it does, what criteria they
 verified, or how they would detect a failure - they also do not evaluate whether the change
@@ -137,7 +137,7 @@ rules to the hook sequence from [Coding and Review Agent Configuration]({{< relr
 then add architectural constraints to your feature description template. These two changes automate
 detection of the most common structural drift patterns on every change.
 
-## Related Content
+## Related content
 
 - [Coding and Review Agent Configuration]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) - Pre-commit hook sequence and semantic review agent setup
 - [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) - Including architectural constraints in feature descriptions

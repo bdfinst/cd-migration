@@ -29,7 +29,7 @@ developer must untangle which one caused the failure.
 
 ## Common causes
 
-### Inverted Test Pyramid
+### Inverted test pyramid
 
 When most tests are slow E2E tests, the test feedback loop is measured in tens of minutes rather
 than seconds. Unit tests provide feedback in seconds. E2E tests take minutes or hours. A team with
@@ -38,7 +38,7 @@ tests cannot get feedback faster than those tests can run.
 
 **Read more:** [Inverted Test Pyramid]({{< relref "/docs/anti-patterns/testing/inverted-test-pyramid" >}})
 
-### Integration Deferred
+### Integration deferred
 
 When the team does not integrate frequently (at least daily), the feedback loop for integration
 problems is as long as the [branch lifetime]({{< relref "/docs/reference/glossary#branch-lifetime" >}}). A developer working on a two-week branch does not
@@ -47,7 +47,7 @@ discover integration conflicts until they merge. Daily integration catches confl
 
 **Read more:** [Integration Deferred]({{< relref "/docs/anti-patterns/branching-integration/integration-deferred" >}})
 
-### Manual Testing Only
+### Manual testing only
 
 When there are no automated tests, the only feedback comes from manual verification. A developer
 makes a change and must either test it manually themselves (slow) or wait for someone else to test
@@ -56,7 +56,7 @@ scheduling.
 
 **Read more:** [Manual Testing Only]({{< relref "/docs/anti-patterns/testing/manual-testing-only" >}})
 
-### Long-Lived Feature Branches
+### Long-lived feature branches
 
 When pull requests wait days for review, the code review feedback loop dominates total cycle time.
 A developer finishes a change in two hours, then waits two days for review. The review feedback
@@ -66,7 +66,7 @@ which requires short-lived branches.
 
 **Read more:** [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}})
 
-### Manual Regression Testing Gates
+### Manual regression testing gates
 
 When every change must pass through a manual QA gate, the feedback loop includes human scheduling.
 The QA team has a queue. The change waits in line. When the tester gets to it, days have passed.
@@ -96,7 +96,7 @@ Automated testing in the pipeline replaces this queue with instant feedback.
 
 ---
 
-## Related Content
+## Related content
 
 - [Pipelines Take Too Long]({{< relref "/docs/symptoms/flow/integration/slow-pipelines" >}}) - Pipeline speed is the most common feedback bottleneck
 - [Pull Requests Sit for Days Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Review queues add days to the feedback loop

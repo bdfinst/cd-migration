@@ -20,7 +20,7 @@ treats the domain as a fresh problem rather than building on what was learned be
 
 ## Common causes
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When engineers are rotated through a domain based on capacity rather than staying long enough to
 build expertise, institutional memory does not accumulate. The decisions, experiments, and hard
@@ -31,7 +31,7 @@ make the same mistakes.
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When knowledge about a domain lives only in specific individuals, it evaporates when they leave.
 Architectural decision records, runbooks, and documented post-mortem outcomes are the
@@ -55,7 +55,7 @@ is what happened."
 
 ---
 
-## Related Content
+## Related content
 
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Roster changes that reset accumulated knowledge
 - [Rotation Ramp-Up Drag]({{< relref "/docs/symptoms/flow/team-knowledge/rotation-ramp-up-drag" >}}) - Delivery slowdown that accompanies each knowledge reset

@@ -22,7 +22,7 @@ particular constraint were removed.
 
 ## Common causes
 
-### Thin-Spread Teams
+### Thin-spread teams
 
 When engineers rotate through a domain without staying long enough to understand its business
 rules deeply, each rotation leaves its own layer of interpretation on the codebase. One team
@@ -33,7 +33,7 @@ of teams that worked in it rather than the business domain it is supposed to mod
 
 **Read more:** [Thin-Spread Teams]({{< relref "/docs/anti-patterns/organizational-cultural/team-dynamics/thin-spread-teams" >}})
 
-### Knowledge Silos
+### Knowledge silos
 
 When the canonical understanding of the domain lives in a few individuals, the code drifts from
 that understanding whenever those individuals are not involved in a change. Developers without
@@ -58,7 +58,7 @@ with each change made without them.
 
 ---
 
-## Related Content
+## Related content
 
 - [Repeated Domain Mistakes]({{< relref "/docs/symptoms/flow/team-knowledge/repeated-domain-mistakes" >}}) - Uninformed decisions that compound erosion over time
 - [Team Membership Changes Constantly]({{< relref "/docs/symptoms/flow/team-knowledge/team-instability" >}}) - Roster changes that bring independent domain interpretations
