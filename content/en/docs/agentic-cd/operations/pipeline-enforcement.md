@@ -14,7 +14,7 @@ The [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) is the enforc
 For the framework overview, see [ACD]({{< relref "/docs/agentic-cd" >}}). For the [artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) the pipeline enforces, see [Agent Delivery Contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}).
 {{% /pageinfo %}}
 
-## How Quality Gates Enforce ACD
+## How quality gates enforce ACD
 
 The Pipeline Verification and Deployment stages of the [ACD workflow]({{< relref "/docs/agentic-cd" >}}) are where the [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}}) does the heavy lifting. Each pipeline stage enforces a specific [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) constraint:
 
@@ -25,7 +25,7 @@ The Pipeline Verification and Deployment stages of the [ACD workflow]({{< relref
 - **Acceptance tests** validate the user-facing behavior artifact in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}). This is where the [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" >}}) scenarios become automated verification.
 - **Production verification** ([canary deployment]({{< relref "/docs/reference/glossary#canary-deployment" >}}), health checks, SLO monitors with auto-rollback) provides the final safety net. If agent-generated code degrades production metrics, it rolls back automatically.
 
-### The Pre-Feature Baseline
+### The pre-feature baseline
 
 The [pre-feature baseline]({{< relref "/docs/reference/pipeline-reference-architecture#pre-feature-baseline" >}}) lists the required baseline gates that must be active before any feature work begins. These are a prerequisite for ACD. Without them passing on every commit, agent-generated changes bypass the minimum safety net.
 
@@ -35,7 +35,7 @@ See the pipeline patterns for concrete architectures that implement these gates:
 - [Multi-team pipeline]({{< relref "/docs/reference/pipeline-reference-architecture/multi-team" >}})
 - [Independent-team pipeline]({{< relref "/docs/reference/pipeline-reference-architecture/independent-teams" >}})
 
-## Expert Validation Agents
+## Expert validation agents
 
 Standard quality gates cover what conventional tooling can verify: linting, type checking, test execution, vulnerability scanning. But ACD introduces validation needs that standard tools cannot address. No conventional tool can verify that test code faithfully implements a human-defined test specification. No conventional tool can verify that an agent-generated implementation matches the architectural intent in a feature description.
 
@@ -49,7 +49,7 @@ Expert validation agents fill this gap. These are AI agents dedicated to a speci
 | **Intent alignment agent** | The combined change addresses the problem stated in the intent description | Implementations that are technically correct but solve the wrong problem | Intent Description |
 | **Constraint compliance agent** | Code respects system constraints that static analysis cannot check | Violations of logging standards, [feature flag]({{< relref "/docs/reference/glossary#feature-flag" >}}) requirements, or audit rules | System Constraints |
 
-## Adopting Expert Agents: The Same Replacement Cycle
+## Adopting expert agents: the same replacement cycle
 
 **Do not deploy expert agents and immediately reduce human review.** Expert validation agents need calibration before they can replace human judgment. An agent that flags too many false positives trains the team to ignore it. An agent that misses real issues creates false confidence. Run expert agents in parallel with human review for at least 20 cycles before any reduction in human coverage.
 
@@ -64,7 +64,7 @@ Expert validation agents run on every change, immediately, eliminating the batch
 
 With the pipeline and expert agents in place, the next question is what goes wrong and how to measure progress. See [Pitfalls and Metrics]({{< relref "/docs/agentic-cd/operations/pitfalls-and-metrics" >}}).
 
-## Related Content
+## Related content
 
 - [Agentic Architecture Patterns]({{< relref "/docs/agentic-cd/architecture/agentic-architecture" >}}) - multi-agent pipeline patterns and hook design for enforcement workflows
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow

@@ -12,7 +12,7 @@ aliases:
 Most guidance on "prompting" describes Discipline 1: writing clear instructions in a chat window. That is table stakes. Developers working at [Stage 5 or 6]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-5-spec-first-agentic-development" >}}) of the agentic learning curve operate across all four disciplines simultaneously. Each discipline builds on the one below it.
 {{% /pageinfo %}}
 
-## 1. Prompt Craft (The Foundation)
+## 1. Prompt craft (the foundation)
 
 Synchronous, session-based instructions used in a chat window.
 
@@ -27,7 +27,7 @@ Prompt craft is now considered table stakes, the equivalent of fluent typing. It
 
 **Where it maps on the [learning curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}):** [Stages 1-2]({{< relref "/docs/agentic-cd/getting-started/learning-curve#stage-1-autocomplete" >}}). Developers at these stages optimize prompt craft and assume that is the ceiling. It is not.
 
-## 2. Context Engineering
+## 2. Context engineering
 
 Curating the entire information environment (the [tokens]({{< relref "/docs/reference/glossary#token" >}})) the [agent]({{< relref "/docs/reference/glossary#agent-ai" >}}) operates within.
 
@@ -43,7 +43,7 @@ Context engineering is the difference between a developer who writes better [pro
 
 **Where it shows up in [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}):** The [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) assembles context for each session ([Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}})). The `/start-session` skill encodes context assembly order. [Prompt caching]({{< relref "/docs/reference/glossary#prompt-caching" >}}) depends on placing stable context before dynamic content ([Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})).
 
-## 3. Intent Engineering
+## 3. Intent engineering
 
 Encoding organizational purpose, values, and trade-off hierarchies into the agent's operating environment.
 
@@ -59,7 +59,7 @@ Intent engineering tells the agent what to want, not only what to know. An agent
 
 **Where it shows up in ACD:** The [Intent Description]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#1-intent-description" >}}) [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) is the formalized version of intent engineering. It sits at the top of the [artifact authority hierarchy]({{< relref "/docs/agentic-cd/specification/first-class-artifacts#artifact-authority-hierarchy" >}}) because intent governs every downstream decision.
 
-## 4. Specification Engineering (The New Ceiling)
+## 4. Specification engineering (the new ceiling)
 
 Writing structured documents that agents can execute against over extended timelines.
 
@@ -76,7 +76,7 @@ Specification engineering is the skill that separates Stage 5-6 developers from 
 
 **Where it shows up in ACD:** The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the output of specification engineering. The [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) workflow is how agents help produce them. The [discovery loop]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#the-discovery-loop-from-conversation-to-specification" >}}) shows how to get from a vague idea to a structured specification through conversation, and the [complete specification example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}}) shows what the finished output looks like.
 
-## From Synchronous to Autonomous
+## From synchronous to autonomous
 
 Because you cannot course-correct an agent running for hours in real time, you must front-load your oversight. The skill shift looks like this:
 
@@ -89,7 +89,7 @@ Because you cannot course-correct an agent running for hours in real time, you m
 
 This is not a different toolset. It is the same work, front-loaded. Every minute spent on specification saves multiples in review and rework.
 
-### The Self-Containment Test
+### The self-containment test
 
 To practice the shift, take a request like "Update the dashboard" and rewrite it as if the recipient:
 
@@ -99,11 +99,11 @@ To practice the shift, take a request like "Update the dashboard" and rewrite it
 
 If the rewritten request still makes sense and can be acted on, it is ready for an autonomous agent. If it cannot, the missing information is the gap between your current prompt and a specification. This is the same test [agent-assisted specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) applies: can the agent implement this without asking a clarifying question?
 
-### The Planner-Worker Architecture
+### The planner-worker architecture
 
 Modern agents use a planner model to decompose your specification into a task log, and worker models to execute each task. Your job is to provide the decomposition logic - the rules for how to split work - so the planner can function reliably. This is the [orchestrator pattern]({{< relref "/docs/agentic-cd/architecture/agent-configuration#the-orchestrator" >}}) at its core: the orchestrator routes work to specialized agents, but it can only route well when the specification is structured enough to decompose.
 
-### Organizational Impact
+### Organizational impact
 
 Practicing specification engineering has effects beyond agent workflows:
 
@@ -111,7 +111,7 @@ Practicing specification engineering has effects beyond agent workflows:
 - **Reduced alignment issues.** When specifications are explicit enough for an agent to execute, they are explicit enough for human team members to align on. Ambiguity that would surface as a week-long misunderstanding surfaces during the specification review instead.
 - **Agent-readable documentation.** Documentation that is structured enough for an AI agent to consume is also more useful for human onboarding. Making your knowledge base agent-readable improves it for everyone.
 
-## Related Content
+## Related content
 
 - [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}) - the stages these disciplines map to
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how agents help produce specifications, including a [complete example]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification#complete-specification-example" >}})

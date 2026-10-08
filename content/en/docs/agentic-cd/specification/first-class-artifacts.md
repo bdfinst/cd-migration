@@ -14,7 +14,7 @@ Each [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) has a define
 For the framework overview and the eight constraints, see [ACD]({{< relref "/docs/agentic-cd" >}}).
 {{% /pageinfo %}}
 
-## 1. Intent Description
+## 1. Intent description
 
 **What it is:** A self-contained problem statement, written by a human, that defines what the change should accomplish and why.
 
@@ -40,7 +40,7 @@ well-behaved clients by 40% because abusive clients currently consume
 
 **Key property:** The intent description is authored and owned by a human. The agent does not write or modify it.
 
-## 2. User-Facing Behavior
+## 2. User-facing behavior
 
 **What it is:** A description of how the system should behave from the user's perspective, expressed as observable outcomes.
 
@@ -65,7 +65,7 @@ Scenario: Client within rate limit
 
 **Key property:** Humans define the scenarios. The agent generates code to satisfy them but does not decide what scenarios to include.
 
-## 3. Feature Description (Constraint Architecture)
+## 3. Feature description (constraint architecture)
 
 **What it is:** The architectural [constraints]({{< relref "/docs/reference/glossary#constraint" >}}), [dependencies](../../reference/glossary/#dependency), and trade-off boundaries that govern the implementation.
 
@@ -98,7 +98,7 @@ Agents need explicit architectural context that human developers often carry in 
 
 **Key property:** Engineering owns the architectural decisions. The agent implements within these constraints but does not change them. When the agent encounters a condition listed as an escalation trigger, it must stop and ask rather than deciding autonomously.
 
-## 4. Acceptance Criteria
+## 4. Acceptance criteria
 
 **What it is:** Concrete expectations that can be executed as deterministic tests or evaluated by review [agents]({{< relref "/docs/reference/glossary#agent-ai" >}}). These are the authoritative source of truth for what the code should do.
 
@@ -202,7 +202,7 @@ function rateLimitMiddleware(redisClient, config) {
 
 **Key property:** The implementation has the lowest authority of any artifact. When it conflicts with the feature description, tests, or intent, the implementation changes.
 
-## 6. System Constraints
+## 6. System constraints
 
 **What it is:** Non-functional requirements, security policies, performance budgets, and organizational rules that apply to all changes. Agents need these stated explicitly because they cannot infer organizational norms from context.
 
@@ -230,7 +230,7 @@ system_constraints:
 
 **Key property:** System constraints apply globally. Unlike other artifacts that are per-change, these rules apply to every change in the system.
 
-## Artifact Authority Hierarchy
+## Artifact authority hierarchy
 
 When an agent detects a conflict between artifacts, it must know which one wins. The hierarchy below defines precedence. A higher-priority artifact overrides a lower-priority one:
 
@@ -245,7 +245,7 @@ When an agent detects a conflict between artifacts, it must know which one wins.
 
 **Acceptance Criteria are derived from two sources.** User-Facing Behavior defines the functional expectations (BDD scenarios). Non-functional requirements (latency budgets, resilience, security) must be stated explicitly as architectural constraints in the Feature Description. Both feed into Acceptance Criteria, which the pipeline enforces.
 
-## These Artifacts Are Pipeline Inputs, Not Reference Documents
+## These artifacts are pipeline inputs, not reference documents
 
 **The pipeline and agents consume these artifacts as inputs. They are not outputs for humans to read after the fact.**
 
@@ -255,7 +255,7 @@ These artifacts are valuable in any project. In [ACD]({{< relref "/docs/referenc
 
 With the artifacts defined, the next question is how the pipeline enforces consistency between them. See [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
-## Related Content
+## Related content
 
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - the framework overview, eight constraints, and workflow
 - [Pipeline Enforcement and Expert Agents]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}) - how the pipeline enforces artifact consistency

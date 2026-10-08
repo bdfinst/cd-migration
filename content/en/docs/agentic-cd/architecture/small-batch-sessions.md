@@ -14,7 +14,7 @@ One [BDD]({{< relref "/docs/reference/glossary#bdd-behavior-driven-development" 
 
 **Stop optimizing your [prompts]({{< relref "/docs/reference/glossary#prompt" >}}). Start optimizing your decomposition.** The biggest variable in agentic development is not model selection or prompt quality. It is decomposition discipline. An agent given a well-scoped, ordered scenario with clear [acceptance criteria]({{< relref "/docs/reference/glossary#acceptance-criteria" >}}) will outperform a better model given a vague, large-scope instruction.
 
-## Establish the Broad Understanding First
+## Establish the broad understanding first
 
 Before any implementation session begins, establish the complete understanding of the feature:
 
@@ -33,7 +33,7 @@ The broad understanding is not in the implementation agent's [context]({{< relre
 
 **This is not big upfront design.** The feature scope is a small batch: one story, one thin [vertical slice]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}), completable in a day or two. What constitutes a complete slice depends on your team structure - see [Work Decomposition]({{< relref "/docs/foundations/work-decomposition#vertical-slicing-in-distributed-systems" >}}) for full-stack versus subdomain teams.
 
-## Session Structure
+## Session structure
 
 Each session follows the same structure:
 
@@ -80,7 +80,7 @@ All pipeline checks pass.
 
 This summary is the complete handoff from one session to the next. The next agent starts with this summary plus its own scenario - not with the full conversation that produced the code.
 
-## The Parallel with CI
+## The parallel with CI
 
 In continuous integration, the commit is the unit of integration. A developer does not write an entire feature and commit at the end. They write one small piece of tested functionality that can be deployed, commit to the trunk, then repeat. The commit creates a checkpoint: the pipeline is green, the change is reviewable, and the next unit can start cleanly.
 
@@ -88,7 +88,7 @@ Agent sessions follow the same discipline. The session is the unit of context. A
 
 The mechanics differ. The principle is identical: small batches, frequent integration, green pipeline as the definition of done.
 
-## Worked Example: Rate Limiting
+## Worked example: rate limiting
 
 The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) page establishes an intent description and two BDD scenarios for rate limiting the `/api/search` endpoint. Here is what the full session sequence looks like.
 
@@ -247,7 +247,7 @@ Four commits, each independently reviewable. Each commit corresponds to a named,
 
 A reviewer can look at Session 2's commit and understand exactly what it does and why without reading the full feature history. That is the same property CI produces for human-written code.
 
-## The Commit as Context Boundary
+## The commit as context boundary
 
 The commit is not only a version control operation. In an agent workflow, it is the context boundary.
 
@@ -257,13 +257,13 @@ After the commit: the state is known, captured, and stable. The next session sta
 
 This has a practical implication: **do not let an agent session span a commit boundary**. A session that starts implementing Scenario 1 and then continues into Scenario 2 accumulates context from both, mixes the conversation history of two distinct units, and produces a commit that cannot be reviewed cleanly. Stop the session at the commit. Start a new session for the next scenario.
 
-## When the Pipeline Fails
+## When the pipeline fails
 
 If the pipeline fails mid-session, the session is not done. Do not summarize completed work and do not start a new session. The agent's job in this session is to get the pipeline green.
 
 If the pipeline fails in a later session (a prior scenario breaks), the agent must restore the passing state before implementing the new scenario. This is the same discipline as the CI rule: while the pipeline is red, the only valid work is restoring green. See [ACD constraint 8]({{< relref "/docs/agentic-cd#acd-extensions-to-minimumcd" >}}).
 
-## Related Content
+## Related content
 
 - [ACD Workflow]({{< relref "/docs/agentic-cd" >}}) - the full workflow these sessions implement, including constraint 8 (pipeline red means restore-only work)
 - [Agent-Assisted Specification]({{< relref "/docs/agentic-cd/specification/agent-assisted-specification" >}}) - how to establish the broad understanding before sessions begin

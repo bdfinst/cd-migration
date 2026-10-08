@@ -10,7 +10,7 @@ description: >
 [Agents](../../reference/glossary/#agent-ai) operate on feedback loops: propose a change, run the build, read the output, iterate. Every gap in repository readiness - broken builds, flaky tests, unclear output, manual setup steps - widens the loop, wastes [tokens](../../reference/glossary/#token), and degrades accuracy. This page provides a scoring rubric, a prioritized upgrade sequence, and concrete guidance for making a repository agent-ready.
 {{% /pageinfo %}}
 
-## Readiness Scoring
+## Readiness scoring
 
 Use this rubric to assess how ready a repository is for agentic workflows. Score each criterion independently. A repository does not need a perfect score to start using agents, but anything scored 0 or 1 blocks agents entirely or makes them unreliable.
 
@@ -34,7 +34,7 @@ Use this rubric to assess how ready a repository is for agentic workflows. Score
 - **Any criterion at 1:** Agents will produce unreliable results. Expect high retry rates and wasted tokens.
 - **All criteria at 2 or above:** Agents can work effectively. Improvements from 2 to 3 reduce token cost and increase accuracy.
 
-## Recommended Order of Operations
+## Recommended order of operations
 
 Upgrade the repository in this order. Each step unblocks the next. Skipping ahead creates problems that are harder to diagnose because earlier foundations are missing.
 
@@ -199,7 +199,7 @@ Inconsistent error handling is a slow leak. It does not block agents, but it cau
 
 **How AI can help:** Use an agent to survey the codebase and categorize the error handling patterns in use, including how many files use each pattern. This gives you a data-driven baseline for choosing the dominant pattern. Agents can then refactor modules to the chosen pattern incrementally, starting with the highest-churn files. They can also generate linter rules that flag deviations from the chosen pattern in new code.
 
-## Test Structure for Agentic Workflows
+## Test structure for agentic workflows
 
 Agents rely most on tests that are fast, deterministic, and produce clear failure messages. The test architecture that supports human-driven [CD](../../reference/glossary/#cd-continuous-delivery) also supports agentic development, but some patterns matter more when agents are the primary consumer of test output.
 
@@ -223,7 +223,7 @@ Agents rely most on tests that are fast, deterministic, and produce clear failur
 3. Ensure every test is independent. No shared state, no required execution order, no external service dependencies in the fast suite.
 4. Write failure messages that answer three questions: what was expected, what happened, and where in the code the failure occurred.
 
-## Build and Validation Ergonomics
+## Build and validation ergonomics
 
 A repository ready for agentic development has two commands an agent needs to know:
 
@@ -240,7 +240,7 @@ An agent should be able to clone the repository, run the build command, run the 
 
 See [Build Automation]({{< relref "/docs/foundations/build-automation" >}}) for the broader build automation practices this builds on.
 
-## Why This Matters for Agent Accuracy and Token Efficiency
+## Why this matters for agent accuracy and token efficiency
 
 Agents operate on feedback loops: they propose a change, run the build or tests, read the output, and iterate. The quality of each loop iteration determines both the accuracy of the final result and the total cost to reach it.
 
@@ -259,7 +259,7 @@ Agents operate on feedback loops: they propose a change, run the build or tests,
 
 Investing in repository readiness is not only preparation for agentic development. It is the single highest-impact action for reducing ongoing agent cost and improving agent output quality.
 
-## Related Content
+## Related content
 
 - [Configuration Quick Start]({{< relref "/docs/agentic-cd/getting-started/agent-setup" >}}) - where to put project facts, rules, skills, and hooks so agents can find them
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the organizational prerequisite sequence, especially [Harden Guardrails]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap#harden-guardrails" >}}) and [Reduce Delivery Friction]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap#reduce-delivery-friction" >}}), which this page makes concrete at the repository level

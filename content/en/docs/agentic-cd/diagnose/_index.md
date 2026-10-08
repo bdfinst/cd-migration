@@ -14,7 +14,7 @@ accelerator second. It gives you the physics of why work waits, a map of where t
 moves, and a repeatable loop for removing it.
 {{% /pageinfo %}}
 
-## If Code Is Faster Now, Why Is Value Not Moving Faster?
+## If code is faster now, why is value not moving faster?
 
 Licenses have been purchased. Developers are using assistants, copilots, and agents. The demos are
 impressive. And yet, in many brownfield enterprises, the needle on business outcomes hasn't moved.
@@ -27,7 +27,7 @@ bounces between teams. Production readiness still depends on knowledge carried i
 
 AI made it obvious that coding was never the bottleneck. So the question is: where is it?
 
-## This Is a Diagnostic, Not a Failure
+## This is a diagnostic, not a failure
 
 The lag is not a failure of AI. It is a diagnostic. AI compressed the time spent writing code and,
 in doing so, exposed the real constraint: the work around the work. The real bottlenecks are the
@@ -53,7 +53,7 @@ theater. **Readiness for agent speed is readiness for safe speed.** The discipli
 deliver secure, reliable changes quickly are the same disciplines required to absorb
 agent-generated work safely.
 
-## Process Before Product
+## Process before product
 
 There are two ways to point AI at delivery:
 
@@ -70,7 +70,7 @@ untouched. The biggest gains are in the 88%, not the 12%. Aim AI there.
 ([Coordination Costs]({{< relref "/docs/agentic-cd/diagnose/coordination-costs" >}}) has the
 value-stream breakdown and the source behind these figures.)
 
-### Accelerating Creation First Backfires
+### Accelerating creation first backfires
 
 The order is not only a question of where the gains are. Accelerating creation before you clear the
 friction is actively harmful. AI raises the rate at which work *enters* the
@@ -108,7 +108,7 @@ carrying the baggage. That option gets dismissed too quickly. This
 subsection assumes you have weighed that path and chosen to rewire rather than replace.
 {{% /alert %}}
 
-## How to Read This Subsection
+## How to read this subsection
 
 Read the pages in order. Each rests on the one before it, moving from the physics that explains the
 bottleneck to the loop that removes it.
@@ -124,7 +124,7 @@ The rest of the [Agentic CD]({{< relref "/docs/agentic-cd" >}}) section is the t
 points into: how to make intent explicit, enforce constraints in the pipeline, and structure agent
 work so that faster creation produces faster value rather than faster defects.
 
-## Related Content
+## Related content
 
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - the practitioner sequence: remove friction and add safety before accelerating
 - [Agentic Continuous Delivery (ACD)]({{< relref "/docs/agentic-cd" >}}) - the constraints and artifacts that keep agent-generated work safe

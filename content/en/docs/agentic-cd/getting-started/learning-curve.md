@@ -30,7 +30,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What drives the move forward:** Deliberate curiosity, or an incident traced to an accepted suggestion the developer did not scrutinize. Developers who move forward are usually ones who encountered a demonstration of a higher stage and wanted to replicate it - not ones who naturally outgrew autocomplete.
 
-## Stage 2: Prompted Function Generation
+## Stage 2: Prompted function generation
 
 {{< figure src="/images/agentic-stage2-function-generation.svg" alt="Stage 2 workflow: Developer describes task, LLM generates function, developer manually integrates output into codebase. Bottleneck: scope ceiling and manual integration errors." >}}
 
@@ -44,7 +44,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What drives the move forward:** Frustration that AI is only useful for small tasks, combined with exposure to someone using it for larger ones. The realization that giving the AI more context - the surrounding files, the calling code, the data structures - would produce better output. This realization is the entry point to [context engineering]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines#2-context-engineering" >}}).
 
-## Stage 3: Chat-Driven Development
+## Stage 3: Chat-driven development
 
 {{< figure src="/images/agentic-stage3-chat-development.svg" alt="Stage 3 workflow: Developer and LLM exchange prompts and responses across many turns, context fills up, developer manually pastes output into editor. Bottleneck: context degradation and manual integration." >}}
 
@@ -56,7 +56,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What drives the move forward:** The integration overhead and context degradation become obvious. Developers want the AI to work directly in the codebase, not through a chat buffer.
 
-## Stage 4: Agentic Task Completion
+## Stage 4: Agentic task completion
 
 {{< figure src="/images/agentic-stage4-agentic-tasks.svg" alt="Stage 4 workflow: Developer gives vague task to agent, agent reads and edits multiple files, produces a large diff, developer manually reviews before merging. Bottleneck: vague requirements cause drift; reviewer must reconstruct intent." >}}
 
@@ -68,7 +68,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What drives the move forward:** Review burden. The developer spends more time validating the agent's output than they would have spent writing the code. The insight that emerges: the agent needs the same thing a new team member needs - explicit requirements, not vague descriptions.
 
-## Stage 5: Spec-First Agentic Development
+## Stage 5: Spec-first agentic development
 
 {{< figure src="/images/agentic-stage5-spec-first.svg" alt="Stage 5 workflow: Human writes spec, agent generates tests, agent generates implementation, pipeline enforces correctness. All output still routes to human review. Bottleneck: human review throughput cannot keep pace with generation rate." >}}
 
@@ -80,7 +80,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 **What drives the move forward:** The review queue. Agents generate changes at a pace that exceeds human review bandwidth. The next stage is not about the developer working harder - it is about replacing the human at the review stages that do not require human judgment.
 
-## Stage 6: Multi-Agent Architecture
+## Stage 6: Multi-agent architecture
 
 {{< figure src="/images/agentic-stage6-multi-agent.svg" alt="Stage 6 workflow: Human defines spec, orchestrator routes work to coding agent, parallel reviewer agents validate test fidelity, architecture, and intent, pipeline enforces gates, human reviews only flagged exceptions." >}}
 
@@ -99,7 +99,7 @@ Progress through these stages does not happen naturally or automatically. It req
 
 This is the [ACD]({{< relref "/docs/reference/glossary#acd-agentic-continuous-delivery" >}}) destination. The [ACD workflow]({{< relref "/docs/agentic-cd" >}}) defines the complete sequence. The [agent delivery contract]({{< relref "/docs/agentic-cd/specification/first-class-artifacts" >}}) are the structured documents the workflow runs on. [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) covers how to architect agents to keep costs in proportion to value. [Coding & Review Setup]({{< relref "/docs/agentic-cd/architecture/agent-configuration" >}}) shows a recommended orchestrator, coder, and reviewer configuration.
 
-## Why Progress Stalls
+## Why progress stalls
 
 Many developers do not advance past Stage 2 because the path forward is not visible from within Stage 1 or 2. The information gap is the dominant constraint, not motivation or skill.
 
@@ -113,7 +113,7 @@ Many developers do not advance past Stage 2 because the path forward is not visi
 
 This guide exists to close that gap. The [four prompting disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) describe the skill layers that correspond to these stages and what shifts when agents run autonomously.
 
-## How the Bottleneck Shifts Across Stages
+## How the bottleneck shifts across stages
 
 | Stage | Where value is generated | What limits it |
 |-------|--------------------------|----------------|
@@ -126,7 +126,7 @@ This guide exists to close that gap. The [four prompting disciplines]({{< relref
 
 Each stage resolves the previous stage's bottleneck and reveals the next one. Developers who skip stages - for example, moving straight from function generation to multi-agent architecture without spec-first discipline - find that automation amplifies the problems they skipped. An agent generating changes faster than specs can be written, or a reviewer agent validating against specifications that were never written, produces worse outcomes than a slower, more manual process. Skipping is tempting because the later tooling looks impressive. It does not work without the earlier discipline.
 
-## Starting from Where You Are
+## Starting from where you are
 
 Three questions locate you on the curve:
 
@@ -144,7 +144,7 @@ Many developers using AI coding tools are at Stage 1 or 2. Many concluded from a
 
 The [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) covers the organizational prerequisites that must be in place before accelerating through the later stages. The curve above describes an individual developer's progression; the roadmap describes what the team and pipeline need to support it.
 
-## Related Content
+## Related content
 
 - [The Four Prompting Disciplines]({{< relref "/docs/agentic-cd/getting-started/prompting-disciplines" >}}) - the skill layers that map to each stage of the learning curve
 - [AI Adoption Roadmap]({{< relref "/docs/agentic-cd/getting-started/adoption-roadmap" >}}) - organizational prerequisites for the later stages

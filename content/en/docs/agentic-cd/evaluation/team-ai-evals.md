@@ -12,7 +12,7 @@ If you would notice a regression, it needs an eval. This page covers setting up 
 
 > **Reference implementation:** The [dev-plugins](https://github.com/bailejl/dev-plugins) repository demonstrates these patterns with Promptfoo, Claude Code, and custom graders.
 
-## What Needs Evals
+## What needs evals
 
 Not every AI interaction needs an eval. Use this heuristic: **if you would notice a
 regression, it needs an eval.**
@@ -37,7 +37,7 @@ The decision comes down to blast radius. If a regression affects one developer o
 skip the eval. If it affects every developer every time they use the tool, write the
 eval.
 
-## Setting Up Eval Infrastructure
+## Setting up eval infrastructure
 
 **Prerequisites:** You need an eval framework (this guide uses Promptfoo), a
 working plugin to evaluate, and at least one realistic fixture. Start with a
@@ -47,7 +47,7 @@ This walkthrough uses [Promptfoo](https://www.promptfoo.dev/) as the eval runner
 patterns apply to any eval framework that supports custom assertions and multi-trial
 execution.
 
-### Directory Structure
+### Directory structure
 
 Mirror your plugin structure with an eval directory:
 
@@ -107,16 +107,16 @@ Key settings:
   length bounds. These catch complete failures without adding noise to individual test
   definitions.
 
-## Writing Your First Eval
+## Writing your first eval
 
 Start with a real failure, not a hypothetical one. Think of the last time your AI tool
 produced wrong output. That failure becomes your first eval.
 
-### Step 1: Pick a Real Failure
+### Step 1: Pick a real failure
 
 Example: your accessibility audit command missed missing `<label>` elements on a form.
 
-### Step 2: Build a Fixture That Reproduces It
+### Step 2: Build a fixture that reproduces it
 
 Create a realistic component with the issue planted:
 
@@ -135,7 +135,7 @@ export default function BadForm() {
 }
 ```
 
-### Step 3: Write a Positive Test
+### Step 3: Write a positive test
 
 ````yaml
 - description: "Accessibility audit detects missing labels and keyboard issues"
@@ -164,7 +164,7 @@ export default function BadForm() {
       weight: 2
 ````
 
-### Step 4: Build the Clean Counterpart
+### Step 4: Build the clean counterpart
 
 Create a component that does everything right:
 
@@ -182,7 +182,7 @@ export default function SearchBox() {
 }
 ```
 
-### Step 5: Write the Negative Test
+### Step 5: Write the negative test
 
 ````yaml
 - description: "Accessible form should not trigger false positives"
@@ -214,7 +214,7 @@ export default function SearchBox() {
 You now have a positive test proving the tool finds real issues and a negative test
 proving it does not fabricate issues on clean code.
 
-## Choosing Graders
+## Choosing graders
 
 The [AI Eval Methodology]({{< relref "ai-eval-methodology" >}}) page details the three-layer
 grading framework. Here is the practical guidance for choosing graders on your team.
@@ -259,7 +259,7 @@ Minimal LLM rubric:
   weight: 3
 ```
 
-### Calibrating Graders
+### Calibrating graders
 
 A grader that consistently returns the wrong verdict is worse than no grader. It
 gives false confidence. Calibrate every grader before relying on it.
@@ -287,7 +287,7 @@ along. The graders were miscalibrated. This is common and costly.
 - Before and after a model migration
 - When score distributions shift unexpectedly (sudden pass rate drop or spike)
 
-## Building Fixtures
+## Building fixtures
 
 Good fixtures determine good evals. Follow these principles:
 
@@ -303,9 +303,9 @@ Good fixtures determine good evals. Follow these principles:
 - **Keep them small but realistic.** A fixture with 3-5 files covering 100-300 lines
   total is enough to test most agent behaviors without making eval runs slow.
 
-## Running and Interpreting Results
+## Running and interpreting results
 
-### Single Run
+### Single run
 
 ```bash
 npm run eval:frontend
@@ -313,12 +313,12 @@ npm run eval:frontend
 
 This runs every test suite once and produces a scorecard.
 
-### Multi-Trial Execution
+### Multi-trial execution
 
 For pass@k metrics, run each test multiple times. Configure the `repeat` field in
 your promptfoo config or run the eval multiple times and aggregate results.
 
-### Reading the Scorecard
+### Reading the scorecard
 
 The scorecard shows each test case with its assertion results. Focus on:
 
@@ -329,7 +329,7 @@ The scorecard shows each test case with its assertion results. Focus on:
 - **Are failures consistent?** A test that fails the same way every run has a
   systematic problem. A test that fails intermittently has a variance problem.
 
-### The Transcript Viewer
+### The transcript viewer
 
 The transcript viewer shows you the full agent conversation for failed tests:
 
@@ -348,7 +348,7 @@ Reading transcripts is the single most valuable debugging activity. The transcri
 shows you which files the agent read, which tools it used, where it got confused, and
 why it produced wrong output.
 
-### pass@k Computation
+### pass@k computation
 
 After running evals, compute capability and reliability metrics:
 
@@ -362,7 +362,7 @@ python eval-infra/scripts/compute-pass-at-k.py \
 This groups results by `evalType` (capability vs. regression) and computes pass@k
 (capability ceiling) and pass^k (reliability floor) for k=1, 3, and 5.
 
-## The Eval-Driven Development Loop
+## The eval-driven development loop
 
 The eval is your development tool, not your release gate. The loop works like this:
 
@@ -398,7 +398,7 @@ This saves a timestamped record of pass@k metrics, git commit, and branch to
 `evals/frontend-dev/eval-history.jsonl`. Use baselines to track improvement over time
 and detect regressions across prompt changes.
 
-## Model Migration Testing
+## Model migration testing
 
 When upgrading the underlying model (for example, from Claude Sonnet 4 to a newer
 version), use your eval suite to validate the migration systematically.
@@ -419,11 +419,11 @@ individual tasks regress. Compare per-task results, not only suite-level metrics
 A model that scores 85% overall but drops three previously-passing tasks may be
 worse for your users than the old model at 80%.
 
-## CI Integration
+## CI integration
 
 Run evals automatically when prompt or agent files change.
 
-### What to Run in CI
+### What to run in CI
 
 - **Always run deterministic and transcript graders.** They are fast and cheap.
 - **Run LLM rubrics on pull requests only.** They are slow and cost real API tokens.
@@ -443,7 +443,7 @@ Run evals automatically when prompt or agent files change.
 Most commits get fast, cheap feedback. Expensive LLM rubric runs happen only at
 decision points where the full quality picture matters.
 
-### Gating Criteria
+### Gating criteria
 
 Gate on the regression (negative) suite:
 
@@ -457,7 +457,7 @@ shipping prompts that fabricate findings on clean code.
 Do not gate on capability suite pass rates during early development. Use capability
 metrics to track improvement, not to block merges.
 
-### Cost Management
+### Cost management
 
 | Grader Type      | Speed   | Cost     | When to Run    |
 | ---------------- | ------- | -------- | -------------- |
@@ -480,7 +480,7 @@ metrics to track improvement, not to block merges.
 For broader token optimization strategies, see
 [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
 
-## Evals in the Quality Feedback Loop
+## Evals in the quality feedback loop
 
 Evals catch regressions before deployment. Production monitoring catches
 unanticipated failures after deployment. Together, they form a complete quality
@@ -513,7 +513,7 @@ Evals --> Deploy --> Monitor --> User reports --> New eval cases --> Evals
 - **User satisfaction signals.** Track whether users accept, modify, or reject
   agent output. High rejection rates indicate undetected failure modes.
 
-## Related Content
+## Related content
 
 - [AI Eval Methodology]({{< relref "ai-eval-methodology" >}}) - Three-layer grading framework
   and core eval concepts
