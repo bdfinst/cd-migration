@@ -12,7 +12,7 @@ over time. Not all metrics are equally useful at every stage of a CD migration.
 ## Leading indicators
 
 Leading indicators reflect the current state of team behaviors. They move immediately
-when those behaviors change, making them the most useful metrics for driving improvement
+when those behaviors change, which makes them the most useful metrics for driving improvement
 during a CD migration. When a leading indicator is unhealthy, the cause is visible and
 addressable today.
 
@@ -27,8 +27,8 @@ addressable today.
 
 The four DORA key metrics are lagging indicators drawn from the DORA research program.
 They reflect the cumulative effect of many upstream behaviors and confirm that improvement
-work is having the expected systemic effect. Because they are outcome measures, they move
-slowly: changes in leading indicator behaviors take weeks or months to surface in these
+work is having the expected systemic effect. Because DORA metrics are outcome measures, they
+move slowly. Changes in leading indicator behaviors take weeks or months to surface in these
 numbers. Use them to validate the direction of improvement, not to drive it.
 
 | Metric | What It Measures |

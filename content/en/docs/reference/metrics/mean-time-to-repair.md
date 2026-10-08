@@ -8,9 +8,9 @@ description: >
 
 ## Definition
 
-Mean Time to Repair (MTTR) measures the average elapsed time between when a
-production incident is detected and when it is fully resolved and service is
-restored to normal operation.
+Mean Time to Repair (MTTR) measures the average elapsed time from detecting a
+production incident to fully resolving it. An incident is resolved when service
+returns to normal operation.
 
 {{< card code=true header="**Mean Time to Repair formula**" lang="text" >}}
 mttr = sum(resolvedTimestamp - detectedTimestamp) / incidentCount
@@ -21,21 +21,22 @@ detection, diagnosis, fix development, build, deployment, and verification. A
 short MTTR depends on the entire delivery system working well: fast builds,
 automated deployments, good observability, and practiced incident response.
 
-The *Accelerate* research identifies MTTR as one of the four key [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) and
-notes that "software delivery performance is a combination of lead time, release
-frequency, and MTTR." It is the stability counterpart to the throughput metrics.
+The *Accelerate* research identifies MTTR as one of the four key [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}).
+The research notes that "software delivery performance is a combination of lead time, release
+frequency, and MTTR." MTTR is the stability counterpart to the throughput metrics.
+
 MTTR is a lagging outcome metric: it reflects the combined effectiveness of observability,
-rollback capability, pipeline speed, and incident response practices. The leading indicators
-to address first are [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) (which sets the floor
-on how fast a fix can be deployed) and [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}})
-(teams that deploy often have well-rehearsed recovery procedures).
+rollback capability, pipeline speed, and incident response practices. Address two leading
+indicators first. [Build Duration]({{< relref "/docs/reference/metrics/build-duration" >}}) sets the floor
+on how fast you can deploy a fix. [Release Frequency]({{< relref "/docs/reference/metrics/release-frequency" >}})
+matters because teams that deploy often have well-rehearsed recovery procedures.
 
 ## How to measure
 
-1. **Record the detection timestamp.** This is when the team first becomes aware of
-   the incident, typically when an alert fires, a customer reports an issue, or
+1. **Record the detection timestamp.** Use the time the team first becomes aware of
+   the incident. Typically an alert fires, a customer reports an issue, or
    monitoring detects an anomaly.
-2. **Record the resolution timestamp.** This is when the incident is resolved and
+2. **Record the resolution timestamp.** Use the time the incident is resolved and
    service is confirmed to be operating normally. Resolution means the customer
    impact has ended, not merely that a fix has been deployed.
 3. **Calculate the duration** for each incident.
@@ -62,7 +63,7 @@ the maximum MTTR per period to highlight worst-case incidents.
 | High   | Less than 1 day     |
 | Elite  | Less than 1 hour    |
 
-Elite performers restore service in under one hour. This requires automated
+Elite performers restore service in under one hour. That speed requires automated
 rollback or roll-forward capability, fast build pipelines, and well-practiced
 incident response processes.
 
@@ -71,9 +72,9 @@ incident response processes.
 - **Closing incidents prematurely.** Marking an incident as resolved before the
   customer impact has actually ended artificially deflates MTTR. Define "resolved"
   clearly and verify that service is truly restored.
-- **Not counting detection time.** If the team discovers a problem informally
-  (for example, a developer notices something odd) and fixes it before opening an
-  incident, the time is not captured. Encourage consistent incident reporting.
+- **Not counting detection time.** The team might discover a problem informally,
+  for example when a developer notices something odd. If the team fixes it before
+  opening an incident, the time is not captured. Encourage consistent incident reporting.
 - **Ignoring recurring incidents.** If the same issue keeps reappearing, each
   individual MTTR may be short, but the cumulative impact is high. Track recurrence
   as a separate quality signal.
@@ -99,7 +100,7 @@ recovery:
   click or automatically can roll back or roll forward in minutes. Manual
   deployment processes add significant time to every incident.
 - **[Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) accelerate mitigation.** If a failing change is behind a feature
-  flag, the team can disable it in seconds without deploying new code. This can
+  flag, the team can disable it in seconds without deploying new code. Flags can
   reduce MTTR from minutes to seconds for flag-protected changes.
 - **Observability shortens detection and diagnosis.** Good logging, metrics, and
   tracing help the team identify the cause of an incident quickly. Without

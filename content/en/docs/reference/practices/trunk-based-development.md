@@ -12,9 +12,9 @@ description: >
 
 ## Definition
 
-Trunk-based development (TBD) is a team workflow where changes are integrated into the trunk with no intermediate integration (develop, test, etc.) branch. The two common workflows are [making changes directly to the trunk](https://trunkbaseddevelopment.com/#trunk-based-development-for-smaller-teams) or using [very short-lived branches](https://trunkbaseddevelopment.com/#scaled-trunk-based-development) that branch from the trunk and integrate back into the trunk.
+Trunk-based development (TBD) is a team workflow where you integrate changes into the trunk with no intermediate integration (develop, test, etc.) branch. The two common workflows are [making changes directly to the trunk](https://trunkbaseddevelopment.com/#trunk-based-development-for-smaller-teams) or using [very short-lived branches](https://trunkbaseddevelopment.com/#scaled-trunk-based-development). Short-lived branches start from the trunk and integrate back into the trunk.
 
-Release branches are an intermediate step that some choose on their path to continuous delivery while improving their quality processes in the pipeline. True CD releases from the trunk.
+Some teams choose release branches as an intermediate step on their path to continuous delivery while they improve the quality processes in their pipeline. True CD releases from the trunk.
 
 ## Minimum activities required
 
@@ -27,10 +27,10 @@ Release branches are an intermediate step that some choose on their path to cont
 ## What is improved
 
 - **Smaller changes**: TBD emphasizes small, frequent changes that are easier for the team to review and more resistant to impactful merge conflicts. Conflicts become rare and trivial.
-- **We must test**: TBD requires us to implement tests as part of the development process.
-- **Better teamwork**: We need to work more closely as a team. This has many positive impacts, not least we will be more focused on getting the team's highest priority done.
-- **Better work definition**: Small changes require us to decompose the work into a level of detail that helps uncover things that lack clarity or do not make sense. This provides much earlier feedback on potential quality issues.
-- **Replaces process with engineering**: Instead of creating a process where we control the release of features with branches, we can control the release of features with engineering techniques called evolutionary coding methods. These techniques have additional benefits related to stability that cannot be found when replaced by process.
+- **We must test**: TBD requires you to write tests as part of the development process.
+- **Better teamwork**: You need to work more closely as a team. Closer teamwork has many positive impacts, not least a stronger focus on getting the team's highest priority done.
+- **Better work definition**: Small changes require you to decompose the work into fine detail. That detail uncovers things that lack clarity or do not make sense, which gives much earlier feedback on potential quality issues.
+- **Replaces process with engineering**: Instead of a process that controls the release of features with branches, you control feature release with engineering techniques. These techniques are called evolutionary coding methods. They also improve stability in ways that a branching process cannot.
 - **Reduces risk**: Long-lived branches carry two common risks. First, the change will not integrate cleanly and the merge conflicts result in broken or lost features. Second, the branch will be abandoned, usually because of the first reason.
 
 ## Migration guidance

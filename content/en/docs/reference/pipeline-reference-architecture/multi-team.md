@@ -7,27 +7,28 @@ description: >
 ---
 
 This architecture suits organizations where multiple teams contribute to a single
-[deployable]({{< relref "/docs/reference/glossary#deployable" >}}) [modular monolith]({{< relref "/docs/reference/glossary#modular-monolith" >}}) - a common
-pattern for large applications, mobile apps, or platforms where the final [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) must
+[deployable]({{< relref "/docs/reference/glossary#deployable" >}}) [modular monolith]({{< relref "/docs/reference/glossary#modular-monolith" >}}). The pattern is common
+for large applications, mobile apps, or platforms where the final [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) must
 be assembled from team contributions.
 
 The modular monolith structure is what makes multi-team ownership possible. Each team
 owns a specific module representing a bounded sub-domain of the application. Team A
 might own checkout and payments, Team B owns inventory and fulfillment, Team C owns
 user accounts and authentication. Modules communicate through explicit internal APIs,
-not by reaching into each other's database tables or calling private methods. Each
-team's sub-pipeline validates only their module. A shared integration [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) assembles
+not by reaching into each other's database tables or calling private methods.
+
+Each team's sub-pipeline validates only its module. A shared integration [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}) assembles
 and verifies the combined result.
 
 This ownership model is critical. Without clear module boundaries, teams step on each
-other's code, sub-pipelines trigger on unrelated changes, and merge conflicts replace
-pipeline contention as the bottleneck. The module split must follow the application's
-domain boundaries, not its technical layers. A team that owns "the database layer" or
+other's code and sub-pipelines trigger on unrelated changes. Merge conflicts replace
+pipeline contention as the bottleneck.
+
+The module split must follow the application's domain boundaries, not its technical layers. A team that owns "the database layer" or
 "the API controllers" will always be coupled to every other team. A team that owns
 "payments" can change its database, API, and UI independently. If the codebase is not
-yet structured as a modular monolith, restructure it before adopting this architecture
-
-- otherwise the sub-pipelines will constantly interfere with each other.
+yet structured as a modular monolith, restructure it before adopting this architecture.
+Otherwise, the sub-pipelines constantly interfere with each other.
 
 ```mermaid
 graph TD
@@ -80,21 +81,21 @@ graph TD
 
 - **Module ownership by domain**: Each team owns a bounded module of the application's
   functionality. Ownership is defined by domain, not by technical layer. The team is
-  responsible for all code, tests, and pipeline configuration within their module.
-- **Team-owned sub-pipelines**: Each team runs their own pre-commit, build, unit test,
+  responsible for all code, tests, and pipeline configuration within its module.
+- **Team-owned sub-pipelines**: Each team runs its own pre-commit, build, unit test,
   contract test, and security gates independently. A team's sub-pipeline validates only
-  their module and is their fast feedback loop.
+  its module and is its fast feedback loop.
 - **Contract tests at both levels**: Teams run contract tests in their sub-pipeline to
   catch boundary issues at the module edges. The integration pipeline runs cross-module
   contract tests to verify the assembled result.
 - **Integration pipeline is thin**: The integration pipeline does not re-run each team's
   tests. It validates only what cannot be validated in isolation - cross-module
   integration, the assembled artifact, and end-to-end acceptance tests.
-- **Sub-pipeline target time**: Under 10 minutes. This is the team's primary feedback loop
-  and must stay fast.
-- **Integration pipeline target time**: Under 15 minutes. If it grows beyond this, the
-  integration test suite needs decomposition or the application needs architectural changes
-  to enable independent deployment.
+- **Sub-pipeline target time**: Under 10 minutes. The sub-pipeline is the team's primary
+  feedback loop and must stay fast.
+- **Integration pipeline target time**: Under 15 minutes. If the integration pipeline grows
+  beyond 15 minutes, decompose the integration test suite. Alternatively, change the
+  application architecture to enable independent deployment.
 - **[Trunk-based development]({{< relref "/docs/reference/glossary#tbd-trunk-based-development" >}}) with path filters**: All teams commit to the same trunk.
   Sub-pipelines trigger based on path filters aligned to module boundaries, so a
   change to the payments module does not trigger the inventory sub-pipeline.
@@ -114,8 +115,8 @@ architecture. To keep it fast:
    creates large changesets that are harder to debug when they fail.
 4. **Parallelize acceptance tests**: Group acceptance tests by feature area and run groups
    in parallel.
-5. **Monitor integration pipeline duration**: Set an alert if it exceeds 15 minutes. Treat
-   this the same as a failing test - fix it immediately.
+5. **Monitor integration pipeline duration**: Set an alert for runs over 15 minutes. Treat
+   a slow run the same as a failing test: fix it immediately.
 
 ## When to move away from this architecture
 

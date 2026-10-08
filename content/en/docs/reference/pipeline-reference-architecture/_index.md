@@ -16,7 +16,7 @@ Gates marked with **[Pre-Feature]** must be in place and passing before any new 
 work begins. They form the baseline safety net that every commit runs through. Adding
 features without these gates means defects accumulate faster than the team can detect them.
 
-Gates marked with <span class="ai-high">&#9650;</span> are enhanced by AI - the AI shifts
+AI enhances gates marked with <span class="ai-high">&#9650;</span>. The AI shifts
 detection earlier or catches issues that rule-based tools miss. See the
 [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}}) catalog for details.
 {{% /pageinfo %}}
@@ -29,7 +29,7 @@ maps to one or more defect sources from the catalog.
 
 ### Pre-commit gates
 
-These run on the developer's machine before code leaves the workstation. They provide
+Pre-commit gates run on the developer's machine before code leaves the workstation. They provide
 sub-second to sub-minute feedback.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
@@ -47,7 +47,7 @@ sub-second to sub-minute feedback.
 
 ### CI stage 1: Build and fast tests <span class="stage-time">< 5 min</span>
 
-These run on every commit to trunk.
+CI stage 1 gates run on every commit to trunk.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
@@ -62,7 +62,7 @@ These run on every commit to trunk.
 
 ### CD stage 1: Contract and boundary validation <span class="stage-time">< 10 min</span>
 
-These validate boundaries between components.
+CD stage 1 gates validate boundaries between components.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
@@ -75,7 +75,7 @@ These validate boundaries between components.
 
 ### CD stage 2: Broader automated verification <span class="stage-time">< 15 min</span>
 
-These run in parallel where possible.
+CD stage 2 gates run in parallel where possible.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
@@ -93,7 +93,7 @@ These run in parallel where possible.
 
 ### Acceptance tests <span class="stage-time">< 20 min</span>
 
-These validate user-facing behavior in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}).
+Acceptance tests validate user-facing behavior in a [production-like environment]({{< relref "/docs/reference/glossary#production-like-environment" >}}).
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
@@ -108,10 +108,11 @@ These validate user-facing behavior in a [production-like environment]({{< relre
 
 ## Out-of-pipeline verification
 
-The following checks are non-deterministic - they depend on live environments, external
-systems, or real user behavior - and cannot be made into blocking pipeline gates without
-coupling your ability to deploy to factors outside your control. They run asynchronously
-or post-deployment and back up the deterministic pipeline with a continuous safety net.
+The following checks are non-deterministic. They depend on live environments, external
+systems, or real user behavior. Making them blocking pipeline gates would couple your ability
+to deploy to factors outside your control. They run asynchronously or post-deployment and
+back up the deterministic pipeline with a continuous safety net.
+
 Failures trigger review, alerts, or [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) decisions. They never block a commit from
 reaching production.
 
@@ -120,9 +121,9 @@ reaching production.
 [Integration tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}}) validate that the
 [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) used in
 [contract tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}) still match the real services
-they simulate. They are non-deterministic because they exercise real service boundaries
-and their results depend on the current state of those services. They run on a schedule
-or post-deployment - not on every commit - and failures trigger review, not a
+they simulate. Integration tests are non-deterministic because they exercise real service
+boundaries, and their results depend on the current state of those services. They run on a
+schedule or post-deployment, not on every commit. Failures trigger review, not a
 pipeline block.
 
 | Check | Defect Sources Addressed | Catalog Section | Pre-Feature |
@@ -134,7 +135,7 @@ pipeline block.
 
 ### Production verification
 
-These run during and after deployment. They are not optional - they close the feedback loop.
+Production verification checks run during and after deployment. They are not optional: they close the feedback loop.
 
 | Gate | Defect Sources Addressed | Catalog Section | Pre-Feature |
 |------|--------------------------|-----------------|:-----------:|
@@ -187,7 +188,7 @@ Pattern 3 as team count and deployment independence requirements grow.
 ## Mapping to the defect sources catalog
 
 Each quality gate above is derived from the [Systemic Defect Fixes]({{< relref "/docs/reference/defect-sources" >}})
-catalog. The catalog organizes defects by origin - product and discovery, integration,
+catalog. The catalog organizes defects by origin: product and discovery, integration,
 knowledge, change and complexity, testing gaps, process, data, dependencies, security, and
 performance. The pipeline gates are the automated enforcement points for the systemic
 prevention strategies described in the catalog.
@@ -197,8 +198,8 @@ shifts detection earlier than current rule-based automation. For expert agent pa
 implement these gates in an agentic [CD]({{< relref "/docs/reference/glossary#cd-continuous-delivery" >}}) context, see
 [ACD Pipeline Enforcement]({{< relref "/docs/agentic-cd/operations/pipeline-enforcement" >}}).
 
-When adding or removing gates, consult the catalog to ensure that no defect category loses
-its detection point. A gate that seems redundant may be the only automated check for a
+When you add or remove gates, consult the catalog to ensure that no defect category loses
+its detection point. A gate that seems redundant might be the only automated check for a
 specific defect source.
 
 ## Further reading

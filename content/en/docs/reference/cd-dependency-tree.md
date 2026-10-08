@@ -40,14 +40,15 @@ practices.
 Look at team structure. Are teams organized around domains they can deliver independently, or
 around technical layers that force handoffs for every feature? If deploying a feature requires
 the frontend team, backend team, and DBA team to coordinate a release window, the team
-structure is preventing independent delivery. No amount of pipeline automation fixes this.
+structure is preventing independent delivery. No amount of pipeline automation fixes a team
+structure problem.
 The team boundaries need to change.
 
 {{% alert title="Migration Tip" %}}
 When you encounter a problem, resist the urge to fix the symptom. Use the
 [dependency tree](https://practices.minimumcd.org) to trace the problem to its root cause.
-Fixing the symptom (for example, adding more manual testing to catch deployment failures) will
-not solve the underlying issue and often adds [toil](../glossary/#toil) that makes things worse. Fix the dependency
+Fixing the symptom does not solve the underlying issue. For example, adding more manual testing
+to catch deployment failures often adds [toil](../glossary/#toil) that makes things worse. Fix the dependency
 that is broken, and the downstream problem resolves itself.
 {{% /alert %}}
 
@@ -68,7 +69,7 @@ The dependency tree directly informs the sequencing of migration phases:
 ### How dependencies work
 
 CD sits at the top of the tree. It depends directly on many practices, each of which has its own
-dependencies. When practice A depends on practice B, it means B is a prerequisite or enabler
+dependencies. When practice A depends on practice B, B is a prerequisite or enabler
 for A. You cannot reliably adopt A without B in place.
 
 For example, continuous delivery depends directly on:
@@ -106,14 +107,14 @@ runs. TBD is not optional for CD. It is a prerequisite.
 
 #### Cross-functional teams enable component ownership enables modular systems
 
-How teams are organized determines what they can deliver independently. A team organized around a
-domain (owning the services, data, and interfaces for that domain) can decompose work into
-[vertical slices]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) within their boundary and deploy without
+How teams are organized determines what they can deliver independently. Consider a team organized
+around a domain, owning the services, data, and interfaces for that domain. That team can decompose work into
+[vertical slices]({{< relref "/docs/reference/glossary#vertical-sliced-story" >}}) within its boundary and deploy without
 coordinating with other teams. A team organized around a technical layer (the "frontend team,"
 the "DBA team") cannot. Every feature requires handoffs across layer teams, and deployment
 requires coordinating all of them.
 
-Conway's Law makes this structural: the system's architecture will mirror the team structure.
+Conway's Law makes the link structural: the system's architecture mirrors the team structure.
 In the dependency tree, cross-functional product teams enable component ownership, which enables
 the modular system design that CD requires.
 
