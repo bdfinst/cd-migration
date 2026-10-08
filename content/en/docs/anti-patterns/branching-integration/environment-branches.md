@@ -65,9 +65,10 @@ hoping. Neither works. Re-testing every branch multiplies the cost of verificati
 ships untested combinations to production. Production incidents then trace to "a config difference
 we did not know about" or "a feature that was only in uat."
 
-With one [release candidate]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) (an
-immutable artifact that has not yet been released) tested in every environment, a passing result applies to the exact bytes that reach production. There is
-no merge between test and release to invalidate it.
+With one release candidate (an
+[immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) that has not
+yet been released) tested in every environment, a passing result applies to the exact bytes that
+reach production. There is no merge between test and release to invalidate it.
 
 ### It increases rework
 
@@ -144,8 +145,9 @@ to separate config from the build.
 
 ### Step 2: Build one release candidate from trunk and promote it (weeks 2-4)
 
-A [release candidate]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) is an
-immutable artifact that has not yet been released. Its lifecycle has three parts:
+A release candidate is an
+[immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) that has not
+yet been released. Its lifecycle has three parts:
 
 1. **Build once** from trunk. The pipeline produces a single artifact.
 2. **Test that same artifact** in every environment, in order, supplying each environment's config
