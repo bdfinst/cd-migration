@@ -14,7 +14,7 @@ no existing test suite to fix, and no entrenched habits to change, you can build
 practices from the first commit. This section shows you how.
 {{% /pageinfo %}}
 
-## Why Start with CD
+## Why start with CD
 
 Teams that build CD into a new project from the beginning avoid the most painful parts of the
 migration journey. There is no test suite to rewrite, no branching strategy to unwind, no
@@ -24,7 +24,7 @@ adopted on day one when there is no existing codebase to constrain you.
 The cost of adopting CD practices in a greenfield project is near zero. The cost of retrofitting
 them into a mature codebase can be months of work. The earlier you start, the less it costs.
 
-## What to Build from Day One
+## What to build from day one
 
 ### Pipeline first
 
@@ -133,11 +133,11 @@ of delivering thin [vertical slices]({{< relref "/docs/reference/glossary#vertic
 
 See [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) for slicing techniques.
 
-## Greenfield Checklist
+## Greenfield checklist
 
 Use this checklist to verify your new project is set up for CD from the start.
 
-### Pipeline Basics
+### Pipeline basics
 
 - [ ] CI pipeline runs on every push to trunk
 - [ ] Build, test, and package happen with a single command
@@ -145,7 +145,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] All work integrates to trunk at least daily
 - [ ] Deployment to at least one environment is automated
 
-### Quality Gates
+### Quality gates
 
 - [ ] Test architecture established (unit, integration, functional layers)
 - [ ] External dependencies use test doubles in the deterministic test suite
@@ -155,7 +155,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] Application configuration is externalized
 - [ ] [Artifacts]({{< relref "/docs/reference/glossary#artifact" >}}) are immutable (build once, deploy everywhere)
 
-### Production Readiness
+### Production readiness
 
 - [ ] Pipeline deploys to production
 - [ ] Every commit that passes the pipeline is a deployment candidate
@@ -163,7 +163,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 - [ ] [Feature flags]({{< relref "/docs/reference/glossary#feature-flag" >}}) decouple deployment from release
 - [ ] [DORA metrics]({{< relref "/docs/reference/glossary#dora-metrics" >}}) are tracked ([deployment frequency]({{< relref "/docs/reference/glossary#deployment-frequency" >}}), [lead time]({{< relref "/docs/reference/glossary#lead-time-for-changes" >}}), [change failure rate]({{< relref "/docs/reference/glossary#change-failure-rate-cfr" >}}), [MTTR]({{< relref "/docs/reference/glossary#mean-time-to-restore-mttr" >}}))
 
-## Common Mistakes in Greenfield Projects
+## Common mistakes in greenfield projects
 
 | Mistake | Why it happens | What to do instead |
 |---------|---------------|-------------------|
@@ -173,7 +173,7 @@ Use this checklist to verify your new project is set up for CD from the start.
 | Designing for scale before you have users | Over-engineering from the start | Build the simplest thing that works. Deploy frequently. Evolve the architecture based on real feedback. |
 | Skipping contract tests because "we own both services" | Feels redundant when one team owns everything | You will not own everything forever. Contract tests are cheap to add early and expensive to add later. |
 
-## Related Content
+## Related content
 
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Build the right test architecture from the start
 - [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}) - The branching model for CD

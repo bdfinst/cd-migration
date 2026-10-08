@@ -11,7 +11,7 @@ Two questions turn CD and agentic continuous delivery (ACD) into a diagnostic to
 to production today?" and "How do I make sure I can still sleep at night?"
 {{% /pageinfo %}}
 
-## Why Continuous Delivery
+## Why continuous delivery
 
 Continuous delivery is more than deploying frequently. It is even more than a workflow that keeps
 your system always deployable so you can deliver the latest change on demand. CD becomes a
@@ -40,7 +40,7 @@ consistently see shorter lead times, lower change failure rates, faster recovery
 deployment frequency - the four key metrics that predict both delivery performance and
 organizational performance.
 
-## Why ACD Amplifies the Effect
+## Why ACD amplifies the effect
 
 Apply the same two questions to AI agents generating and delivering changes through your
 pipeline, and every structural weakness surfaces faster - in days rather than months.
@@ -56,7 +56,7 @@ This is not a flaw in the agents. It is the diagnostic working as intended.
 For the full picture on ACD constraints and practices, see the
 [ACD]({{< relref "/docs/agentic-cd" >}}) section.
 
-## Fix the System, Not the Symptoms
+## Fix the system, not the symptoms
 
 The value of CD and ACD comes from fixing what the diagnostic reveals, not from the
 tool itself. Adding continuous delivery to a broken system does not make the system better. It
@@ -74,7 +74,7 @@ see [Diagnose First]({{< relref "/docs/agentic-cd/diagnose" >}}) in the Agentic 
 For the full argument, see
 [ACD Is a Diagnostic Tool](https://bryanfinster.substack.com/p/acd-is-a-diagnostic-tool).
 
-## Where to Go Next
+## Where to go next
 
 - **[Triage]({{< relref "/docs/triage" >}})** - Answer a few questions to identify your most likely dysfunction.
 - **[Dysfunction Symptoms]({{< relref "/docs/symptoms" >}})** - Browse observable delivery problems by category and trace them back to root causes.
