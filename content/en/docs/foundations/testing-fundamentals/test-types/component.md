@@ -17,28 +17,28 @@ description: >
 
 Verification of a coherent structural unit (such as an entire microservice, UI component, or self-contained subsystem) against its specific contract and internal logic, while keeping interactions beyond that component's boundary mocked or stubbed.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Broader than a unit test, but strictly narrower than an end-to-end (E2E) integration test. It tests the interplay of multiple internal classes/modules working together within that component. Out-of-process network calls and external downstream services are replaced by API wire-level stubs or in-memory equivalents (for example, WireMock, MSW, ephemeral test containers).
 
-## Core Characteristics
+## Core characteristics
 
 Validates state management, internal workflows, data transformations, and edge-to-edge behavior within a bounded context without taking dependencies on third-party uptime or network latency.
 
-## Good Practices
+## Good practices
 
 - Mock only at boundary borders: Exercise the component's internal routing, controllers, domain models, and data mappers together; only mock external HTTP APIs, message brokers, or remote databases.
 - Use ephemeral infrastructure: Use fast, disposable local resources (for example, local SQLite/Postgres in Docker, local WireMock) to mirror real component runtime characteristics.
 - Versioned, repeatable test data.
 - Verify contract-to-state workflows: Validate that boundary inputs result in the correct local state changes and expected outgoing network payloads.
 
-## Anti-Patterns
+## Anti-patterns
 
 - E2E scope creep: Allowing the test to call live third-party services or dependent microservices instead of wire-level stubs.
 - Re-testing granular unit logic: Writing dozens of micro-permutations of input edge cases at the component level instead of covering them in fast unit tests.
 - Leaky test harness state: Failing to purge in-memory databases or reset wire stubs between runs, leading to non-deterministic test flakiness.
 
-## When to Avoid
+## When to avoid
 
 They overlap heavily with other layers when the component is:
 
@@ -50,7 +50,7 @@ If you're choosing between an extra component test and an extra unit test for th
 
 ## Examples
 
-### Backend Service
+### Backend service
 
 A component test for a REST API, exercising the full application stack with the
 downstream inventory service replaced by a test double:
@@ -89,7 +89,7 @@ describe("POST /orders", () => {
 });
 {{< /card >}}
 
-### Frontend Component
+### Frontend component
 
 A component test exercising a login flow with a stubbed authentication service:
 
@@ -108,7 +108,7 @@ describe("Login page", () => {
 });
 {{< /card >}}
 
-### Accessibility Verification
+### Accessibility verification
 
 Component tests already exercise the UI from the actor's perspective, making them the
 natural place to verify that interactions work for all users. Accessibility assertions
@@ -144,7 +144,7 @@ describe("Checkout flow", () => {
 });
 {{< /card >}}
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Component tests run after unit tests in the [pipeline]({{< relref "/docs/reference/glossary#pipeline" >}}), but before longer running acceptance tests, and provide the broadest fast,
 deterministic feedback:

@@ -13,7 +13,7 @@ A test architecture that lets your [pipeline]({{< relref "/docs/reference/glossa
 
 A CD pipeline's job is to force every [artifact]({{< relref "/docs/reference/glossary#artifact" >}}) to prove it is worthy of delivery. That proof only works when **test changes ship with the code they validate.** If a developer adds a feature but the corresponding tests arrive in a later commit, the pipeline approved an artifact it never actually verified. That is not a CD pipeline. It is a [CI]({{< relref "/docs/reference/glossary#ci-continuous-integration" >}}) pipeline with a deploy step. Tests and production code must always travel together through the pipeline as a single unit of change.
 
-## Beyond the Test Pyramid
+## Beyond the test pyramid
 
 {{< figure src="/images/testing/test-pyramid.svg" class="figure-half" alt="The test pyramid: a triangle with Unit Tests at the wide base (fast, cheap, many), Integration/Component in the middle, and End-to-End at the narrow top (slow, expensive, few). Arrows on the sides indicate cost and speed increase toward the top." >}}
 
@@ -55,7 +55,7 @@ A test architecture that achieves this has three responsibilities:
 
 Most teams that struggle with CD have inverted the pyramid - too many slow, flaky end-to-end tests and too few fast, focused ones. Manual gates block every release. The pipeline cannot give a fast, reliable answer, so deployments become high-ceremony events.
 
-## Test Architecture
+## Test architecture
 
 A test architecture is the deliberate structure of how different test types work together across
 your pipeline to give you deployment confidence. Use the table below to decide what type of test
@@ -114,7 +114,7 @@ conflict when combined on trunk. The post-merge run catches these integration ef
 
 This post-merge re-run is what teams traditionally call **regression testing**: running all previous tests against the current artifact to confirm that existing behavior still works after a change. In CD, regression testing is not a separate test type or a special suite. Every test in the pipeline is a regression test. The deterministic suite runs on every commit, and the full suite runs post-merge. A green run means the artifact has been regression-tested against every behavior the suite encodes - no more and no less, which is why the suite's coverage of prior behavior is what makes the signal trustworthy.
 
-## good practices
+## Good practices
 
 ### Do
 
@@ -141,7 +141,7 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
   subjective judgment. See [Accessibility testing]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies/cross-cutting-concerns#accessibility-testing" >}})
   for the full three-tier strategy and pipeline placement.
 
-### Do Not
+### Do not
 
 - **Do not tolerate flaky tests.** Quarantine or delete them immediately.
 - **Do not gate your pipeline on flaky, non-deterministic test signals.** E2E and integration
@@ -168,7 +168,7 @@ This post-merge re-run is what teams traditionally call **regression testing**: 
 - **Do not make exploratory or usability testing a release gate.** These activities are
   continuous and inform product direction; they are not a pass/fail checkpoint before deployment.
 
-## Related Content
+## Related content
 
 - [ACD]({{< relref "/docs/agentic-cd" >}}) - How acceptance criteria make testing the constraint that governs agent-generated code
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Establishing testing practices as part of CD migration

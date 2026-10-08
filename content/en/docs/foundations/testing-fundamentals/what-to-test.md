@@ -68,7 +68,7 @@ what happens when a service returns an error, when a network request times out, 
 malformed, becomes straightforward instead of requiring elaborate E2E setups that are hard
 to make fail on demand.
 
-## Test Quality Over Coverage Percentage
+## Test quality over coverage percentage
 
 Code coverage tells you which lines executed during tests. It does not tell you whether the tests
 verified anything meaningful. A test suite with 90% coverage and no assertions has high coverage
@@ -101,7 +101,7 @@ whether developers actually trust the suite enough to deploy on green.
 
 ---
 
-## Related Content
+## Related content
 
 - [High Coverage, Ineffective Tests]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}}) - When coverage metrics mask poor test quality
 - [Refactoring Breaks Tests]({{< relref "/docs/symptoms/testing/refactoring-breaks-tests" >}}) - Tests that assert on implementation details instead of behavior

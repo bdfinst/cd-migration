@@ -66,7 +66,7 @@ For every "it works" test, ask: malformed input, dependency timeout, dependency 
 
 A test name is documentation. `places_order_with_valid_payment_creates_order_and_emits_OrderPlaced` survives refactoring; `OrderService.processPayment_returns_PaymentResult` does not. The translation rule: if the name only makes sense to someone who has read the code, rewrite it. Highest-ROI change a team can make to an existing suite without any new infrastructure. For more on what to avoid, see [Testing Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}).
 
-## Related Content
+## Related content
 
 - [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}) - the section overview, with the do/do-not list and the architecture diagram.
 - [Testing Antipatterns]({{< relref "/docs/foundations/testing-fundamentals/antipatterns" >}}) - common testing anti-patterns and a migration guide for teams whose suite needs rework.

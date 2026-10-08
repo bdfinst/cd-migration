@@ -14,7 +14,7 @@ description: >
 These definitions reflect how this site uses each term. They are not universal definitions -
 other communities may use the same words differently.
 
-### Acceptance Tests {#functional-acceptance-tests}
+### Acceptance tests {#functional-acceptance-tests}
 
 Automated tests that verify a system behaves as specified. Acceptance tests
 exercise user workflows in a
@@ -31,7 +31,7 @@ Referenced in:
 [CD Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}),
 [Pipeline Reference Architecture]({{< relref "/docs/reference/pipeline-reference-architecture" >}})
 
-### Adapter Integration Test
+### Adapter integration test
 
 A narrow test of a single **boundary adapter** - the team's own HTTP client, database query layer, message-broker client, file-system adapter, or similar - exercised against either the real [external dependency]({{< relref "/docs/reference/glossary#external-dependency" >}}) or a high-fidelity stand-in like a testcontainer running the production engine. (Legacy name from Toby Clemson: "gateway integration test.")
 
@@ -66,14 +66,14 @@ Referenced in:
 [Scheduled Job]({{< relref "/docs/foundations/testing-fundamentals/patterns/scheduled-job" >}}),
 [Stateful Service]({{< relref "/docs/foundations/testing-fundamentals/patterns/stateful-service" >}})
 
-### API Surface Test
+### API surface test
 
 A test that pins the public-facing API of a library or CLI - the exported symbols, their signatures, the documented arguments and exit codes. Typically a snapshot: the current public surface is captured to a file, and any diff fails the build. Catches accidental breaking changes (a renamed function, a removed flag, a tightened type) before they reach consumers. Distinct from a [contract test](#contract-test), which pins the wire boundary between two services; an API surface test pins the source-level boundary between a library and its callers.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}})
 
-### Black Box Testing
+### Black box testing
 
 A testing approach where the test exercises code through its public interface and asserts
 only on observable outputs - return values, state changes visible to consumers, or side
@@ -85,14 +85,14 @@ Referenced in:
 [CD Testing]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}),
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})
 
-### Cluster Test
+### Cluster test
 
 A test that exercises a stateful service across multiple nodes - replication, leader election, consensus, partition tolerance - against a real multi-node setup, typically via testcontainers running the production consensus library. Cluster tests catch behavior that only appears under a real cluster: split-brain, slow followers, leader transitions, partition reconciliation. Deterministic enough to run [in-band](#in-band-test) but slower than single-node [component tests](#component-test), so usually relegated to a later CI stage.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/foundations/testing-fundamentals/patterns/stateful-service" >}})
 
-### Component Test
+### Component test
 
 See [Component Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}).
 
@@ -102,7 +102,7 @@ Referenced in:
 [Tests Randomly Pass or Fail]({{< relref "/docs/symptoms/testing/flaky-tests" >}}),
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})
 
-### Contract Test
+### Contract test
 
 See [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}).
 
@@ -113,14 +113,14 @@ Referenced in:
 [Event Consumer]({{< relref "/docs/foundations/testing-fundamentals/patterns/event-consumer" >}}),
 [Event Producer]({{< relref "/docs/foundations/testing-fundamentals/patterns/event-producer" >}})
 
-### Cross-OS Test Matrix
+### Cross-OS test matrix
 
 A CI configuration that runs the existing test suite on each supported operating system rather than a separate test type. The matrix catches platform-specific behavior single-OS tests can't: path separators, line endings, signal-handling differences, locale defaults, file-system case sensitivity. Required for any [deployable]({{< relref "/docs/reference/glossary#deployable" >}}) consumed across multiple OSes - CLI tools, libraries, cross-platform desktop or mobile apps.
 
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}})
 
-### Deployed-binary Test
+### Deployed-binary test
 
 A test that invokes the actual deployed artifact - the same binary, container image, or package the scheduler, orchestrator, or operator will invoke in production - and asserts on observable behavior at startup or first invocation. Catches what in-process [component tests](#component-test) bypass: configuration loading, secret resolution, signal handling, exit codes, lock acquisition, dependency-version mismatches. Usually a small set; the bulk of behavior is tested in component tests against an in-memory assembled app.
 
@@ -135,7 +135,7 @@ An executable test extracted from documentation - typically the README or inline
 Referenced in:
 [CLI Tool or Library]({{< relref "/docs/foundations/testing-fundamentals/patterns/cli-library" >}})
 
-### In-Band Test
+### In-band test
 
 A test that runs **in the delivery pipeline** as part of the commit-to-deploy flow. In-band tests must be deterministic, which means [test doubles]({{< relref "/docs/foundations/testing-fundamentals/glossary#test-double" >}}) replace anything that crosses the component boundary - downstream services, message brokers, schedulers, browsers talking to real backends. Failures block the build or the deployment.
 
@@ -147,7 +147,7 @@ Referenced in:
 [Applied Testing Strategies]({{< relref "/docs/foundations/testing-fundamentals/applied-testing-strategies" >}}),
 [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}})
 
-### Out-of-Band Test
+### Out-of-band test
 
 A test that runs **outside the delivery pipeline** on a schedule or post-deploy, exercising real external systems. Out-of-band tests are non-deterministic by design (they depend on the real world) and never gate a commit or merge. Failures trigger review, alerts, or [rollback]({{< relref "/docs/reference/glossary#rollback" >}}) decisions.
 
@@ -158,14 +158,14 @@ Referenced in:
 [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}),
 [Integration Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/integration" >}})
 
-### Soak Test
+### Soak test
 
 A long-running test that exercises a deployed service for hours or days under representative load to catch behavior that only appears with time: memory leaks, unbounded growth, replication-lag drift, slow-burn resource exhaustion. Soak tests are [out-of-band](#out-of-band-test) by design - they don't fit a pre-merge budget. Failures trigger review, not a build break. Often paired with chaos testing (deliberate fault injection during the soak) to validate recovery behavior over time.
 
 Referenced in:
 [Stateful Service]({{< relref "/docs/foundations/testing-fundamentals/patterns/stateful-service" >}})
 
-### Sociable Unit Test
+### Sociable unit test
 
 A [unit test](#solitary-unit-test) that allows real collaborator objects to participate -
 for example, a service object calling a real domain model or value object - while still
@@ -178,7 +178,7 @@ Referenced in:
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}),
 [Component Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}})
 
-### Solitary Unit Test
+### Solitary unit test
 
 A [unit test]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}}) that replaces all collaborators with
 [test doubles](#test-double) and exercises a single class or function in complete isolation.
@@ -188,7 +188,7 @@ while still replacing external I/O.
 Referenced in:
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})
 
-### Synthetic Monitoring
+### Synthetic monitoring
 
 Automated scripts that continuously execute realistic user journeys or API calls against a
 live production (or production-like) environment and alert when those journeys fail or degrade.
@@ -201,7 +201,7 @@ Referenced in:
 [Architecting Tests for CD]({{< relref "/docs/foundations/testing-fundamentals/test-architecture" >}}),
 [End-to-End Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}})
 
-### TDD (Test-Driven Development)
+### TDD (test-driven development)
 
 A development practice where tests are written before the production code that makes them
 pass. TDD supports CD by ensuring high test coverage, driving simple design, and producing
@@ -217,7 +217,7 @@ Referenced in:
 [Trunk-Based Development]({{< relref "/docs/foundations/trunk-based-development" >}}),
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})
 
-### Test Double
+### Test double
 
 A stand-in object that replaces a real production [dependency]({{< relref "/docs/reference/glossary#dependency" >}}) during testing. The term comes from the film industry's "stunt double": as a stunt double replaces an actor for dangerous scenes, a test double replaces a costly or non-deterministic dependency to make tests fast, isolated, and reliable.
 
@@ -257,7 +257,7 @@ Referenced in:
 [Contract Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/contract" >}}),
 [Unit Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/unit" >}})
 
-### Virtual Service
+### Virtual service
 
 A test double that simulates a real external service over the network, responding to HTTP
 requests with pre-configured or recorded responses. Unlike in-process stubs or mocks, a
@@ -272,7 +272,7 @@ Referenced in:
 [End-to-End Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}),
 [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}})
 
-### White Box Testing
+### White box testing
 
 A testing approach where the test has knowledge of and asserts on internal implementation
 details - specific methods called, call order, internal state, or code paths taken. White

@@ -11,11 +11,11 @@ aliases:
 
 A lightweight, automated verification run executed immediately after code is deployed to a live target environment (staging, pre-production, or production) to verify that the environment is healthy, operational, and capable of handling traffic before fully shifting user load.
 
-## Scope & Boundaries
+## Scope & boundaries
 
 Strictly limited to high-level system vitality. It checks that critical infrastructure components (processes, routing, database connectivity, secret access, core endpoints) are alive and reachable. It explicitly avoids deep workflow testing, exhaustive edge-case permutations, or long-running operational flows.
 
-## Core Characteristics
+## Core characteristics
 
 Fast (seconds to 2–3 minutes max), strictly non-destructive/read-only, high criticality, and directly tied to deployment orchestration (triggers immediate automated rollback or stops traffic migration if it fails).
 
@@ -94,6 +94,6 @@ Weaknesses & Challenges
 -	Permissions and Security Boundaries: Probing internal services and operational health endpoints in locked-down production environments often requires elevated network routes or secure service tokens that must be strictly audited and maintained.
 -	Handling Transient Startup Latency: Newly launched containers, warm-up caches, or JIT compilation can cause false-positive smoke failures immediately following a rollout if proper readiness probes and retry loops are not configured.
 
-## Connection to CD Pipeline
+## Connection to CD pipeline
 
 Smoke tests are run after every deploy to validate the deploy. They are also used to trigger auto-rollback in the pipeline if they don't pass.
