@@ -462,11 +462,11 @@ Knowledge transfer through pairing works better than documentation.
 The goal is **fast feedback**, not zero review.
 
 {{< alert title="Important" color="warning" >}}
-If you're using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays: the reviewer reads code, leaves comments, the author reads comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
+If you are using short-lived branches that must merge within a day or two, asynchronous code review becomes a bottleneck. Even "fast" async reviews with 2-4 hour turnaround create delays: the reviewer reads code, leaves comments, the author reads comments later, makes changes, and the cycle repeats. Each round trip adds hours or days.
 
 Instead, use **synchronous code reviews** where the reviewer and author work together in real-time (screen share, pair at a workstation, or mob). This eliminates communication delays through review comments. Questions get answered immediately, changes happen on the spot, and the code merges the same day.
 
-If your team can't commit to synchronous reviews or pair/mob programming, you'll struggle to maintain short branch lifetimes.
+If your team cannot commit to synchronous reviews or pair/mob programming, you will struggle to maintain short branch lifetimes.
 {{< /alert >}}
 
 ### Handle Skeptics and Blockers
@@ -1036,7 +1036,7 @@ If you need to pause:
    "We're pausing TBD migration for two weeks to fix our test infrastructure. This isn't abandoning the goal."
 
 2. **Set a specific resumption date:**
-   Don't let "pause" become "quit." Schedule a date to revisit.
+   Do not let "pause" become "quit." Schedule a date to revisit.
 
 3. **Fix the blockers:**
    Use the pause to address the specific problems preventing success.
