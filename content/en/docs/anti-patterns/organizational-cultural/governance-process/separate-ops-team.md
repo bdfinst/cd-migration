@@ -17,9 +17,9 @@ tags:
 
 ## What this looks like
 
-A developer commits code, opens a ticket, and considers their work done. That ticket joins a queue managed by a separate operations or release team - a group that had no involvement in writing the code, no context on what changed, and no stake in whether the feature actually works in production. Days or weeks pass before anyone looks at the deployment request.
+A developer commits code, opens a ticket, and considers their work done. That ticket joins a queue managed by a separate operations or release team. That team had no involvement in writing the code and has no context on what changed. It has no stake in whether the feature works in production. Days or weeks pass before anyone looks at the deployment request.
 
-When the ops team finally picks up the ticket, they must reverse-engineer what the developer intended. They run through a manual runbook, discover undocumented dependencies or configuration changes the developer forgot to mention, and either delay the deployment waiting for answers or push it forward and hope for the best. Incidents are frequent, and when they occur the blame flows in both directions: ops says dev didn't document it, dev says ops deployed it wrong.
+When the ops team finally picks up the ticket, they must reverse-engineer what the developer intended. They run through a manual runbook and discover undocumented dependencies or configuration changes the developer forgot to mention. Then they either delay the deployment to wait for answers or push it forward and hope for the best. Incidents are frequent, and when they occur the blame flows in both directions: ops says dev didn't document it, dev says ops deployed it wrong.
 
 This structure is often defended as a control mechanism - keeping inexperienced developers away from production. In practice it removes the feedback that makes developers better. A developer who never sees their code in production never learns how to write code that behaves well in production.
 
@@ -37,7 +37,9 @@ When the people who build the software are disconnected from the people who oper
 
 ### It reduces quality
 
-A configuration error that a developer would fix in minutes takes days to surface when it must travel through a deployment queue, an ops runbook, and a post-incident review before the original author hears about it. A subtle performance regression under real load, or a dependency conflict only discovered at deploy time - these are learning opportunities that evaporate when ops absorbs the blast and developers move on to the next story.
+A developer could fix a configuration error in minutes. Instead, the error takes days to surface because it travels through a deployment queue, an ops runbook, and a post-incident review. Only then does the original author hear about it.
+
+A subtle performance regression under real load is a learning opportunity. So is a dependency conflict discovered only at deploy time. These opportunities evaporate when ops absorbs the blast and developers move on to the next story.
 
 The ops team, meanwhile, is flying blind. They are deploying software they did not write, against a production environment that may differ from what development intended. Every deployment requires manual steps because the ops team cannot trust that the developer thought through the operational requirements. Manual steps introduce human error. Human error causes incidents.
 
@@ -45,17 +47,17 @@ Over time both teams optimize for their own metrics rather than shared outcomes.
 
 ### It increases rework
 
-The handoff from development to operations is a point where information is lost. By the time an ops engineer picks up a deployment ticket, the developer who wrote the code may be three sprints ahead. When a problem surfaces - a missing environment variable, an undocumented database migration, a hard-coded hostname - the developer must context-switch back to work they mentally closed weeks ago.
+The handoff from development to operations is a point where information is lost. By the time an ops engineer picks up a deployment ticket, the developer who wrote the code may be three sprints ahead. A problem might surface, such as a missing environment variable, an undocumented database migration, or a hard-coded hostname. Then the developer must context-switch back to work they mentally closed weeks ago.
 
-Rework is expensive not only because of the time lost. It is expensive because the delay means the feedback cycle is measured in weeks rather than hours. A bug that would take 20 minutes to fix if caught the same day it was introduced takes 4 hours to diagnose two weeks later, because the developer must reconstruct the intent of code they no longer remember writing.
+Rework is expensive not only because of the time lost. It is expensive because the delay means the feedback cycle is measured in weeks rather than hours. A bug caught the same day it was introduced takes 20 minutes to fix. Two weeks later, the same bug takes 4 hours to diagnose, because the developer must reconstruct the intent of code they no longer remember writing.
 
-Post-deployment failures compound this. An ops team that cannot ask the original developer for help - because the developer is unavailable, or because the culture discourages bothering developers with "ops problems" - will apply workarounds rather than fixes. Workarounds accumulate as technical debt that eventually makes the system unmaintainable.
+Post-deployment failures compound the rework. Sometimes the ops team cannot ask the original developer for help. The developer might be unavailable, or the culture might discourage bothering developers with "ops problems." Then the ops team applies workarounds rather than fixes. Workarounds accumulate as technical debt that eventually makes the system unmaintainable.
 
 ### It makes delivery timelines unpredictable
 
 Every handoff is a waiting step. Development queues, change advisory board meeting schedules, release train windows, deployment slots - each one adds latency and variance to delivery time. A feature that takes three days to build may take three weeks to reach production because it is waiting for a queue to move.
 
-This latency makes planning impossible. A product manager cannot commit to a delivery date when the last 20% of the timeline is controlled by a team with a different priority queue. Teams respond to this unpredictability by padding estimates, creating larger batches to amortize the wait, and building even more work in progress - all of which make the problem worse.
+This latency makes planning impossible. A product manager cannot commit to a delivery date when a team with a different priority queue controls the last 20% of the timeline. Teams respond by padding estimates, creating larger batches to amortize the wait, and building more work in progress. All of these responses make the problem worse.
 
 Customers and stakeholders lose trust in the team's ability to deliver because the team cannot explain why a change takes so long. The explanation - "it is in the ops queue" - is unsatisfying because it sounds like an excuse rather than a system constraint.
 

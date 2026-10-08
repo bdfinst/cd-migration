@@ -21,7 +21,9 @@ tags:
 A feature is developed by an offshore team that works in a different time zone. When the code is
 complete, a build is packaged and handed to a separate QA team, who test against a documented
 requirements list. The QA team finds defects and files tickets. The offshore team receives the
-tickets the next morning, fixes the defects, and sends another build. After QA signs off, a
+tickets the next morning, fixes the defects, and sends another build.
+
+After QA signs off, a
 deployment request is submitted to the operations team. Operations schedules the deployment
 for the next maintenance window.
 
@@ -33,15 +35,15 @@ engineer deploying the code has never seen the application before.
 Each handoff has a communication cost, a delay cost, and a context cost. The communication
 cost is the effort of documenting what is being passed and why. The delay cost is the latency
 between the handoff and the next person picking up the work. The context cost is what is lost
-in the transfer - the knowledge that lives in the developer's head and does not make it into
-any artifact.
+in the transfer. That loss is the knowledge that lives in the developer's head and never makes
+it into any artifact.
 
 Common variations:
 
 - **The time zone gap.** Development and testing are in different time zones. A question from
   QA arrives at 3pm local time. The developer sees it at 9am the next day. The answer enables
   a fix that goes to QA the following day. A two-minute conversation took 48 hours.
-- **The contract boundary.** The outsourced team is contractually defined. They deliver
+- **The contract boundary.** The outsourced team is contractually defined and delivers
   to a specification. They are not empowered to question the specification or surface
   ambiguity. Problems discovered during development are documented and passed back through
   a formal change request process.
@@ -56,22 +58,23 @@ Common variations:
   requirements document is four months old and several things have changed, but the document
   has not been updated.
 
-The telltale sign: when a production defect is discovered, tracking down the person who wrote
-the code requires a trail of tickets across three organizations, and that person no longer
-remembers the relevant context.
+The telltale sign: when a production defect is discovered, finding the person who wrote the
+code requires a trail of tickets across three organizations. That person no longer remembers the
+relevant context.
 
 ## Why this is a problem
 
 A bug found in production gets routed to a ticket queue. By the time it reaches the developer
-who wrote the code, the context is gone and the fix takes three times as long as it would have
-taken when the code was fresh. That delay is baked into every defect, every clarification, every
+who wrote the code, the context is gone. The fix takes three times as long as it would have when
+the code was fresh. That delay is baked into every defect, every clarification, every
 deployment in a multi-team handoff model.
 
 ### It reduces quality
 
-A defect found in the hour after the code was written is fixed in minutes with full context. The
-same defect found by a separate QA team a week later requires reconstructing context, writing a
-reproduction case, and waiting for the developer to return to code they no longer remember clearly.
+A defect found in the hour after the code was written is fixed in minutes with full context.
+Suppose a separate QA team finds the same defect a week later. Someone must reconstruct context
+and write a reproduction case. Then the developer must return to code they no longer remember
+clearly.
 The quality of the fix suffers because the context has degraded - and the cost is paid on every
 defect, across every handoff.
 
@@ -87,7 +90,9 @@ also the person best positioned to test it thoroughly.
 ### It increases rework
 
 QA files a defect. The developer reviews it and responds that the code matches the specification.
-QA disagrees. Both are right. The specification was ambiguous. Resolving the disagreement requires
+QA disagrees. Both are right, because the specification was ambiguous.
+
+Resolving the disagreement requires
 going back to the original requirements, which may themselves be ambiguous. The round trip from
 QA report to developer response to QA acceptance takes days - and the feature was not actually
 broken, only misunderstood.
@@ -109,20 +114,22 @@ developer can estimate the development time. They cannot estimate how long the Q
 three weeks from now, or when the next operations maintenance window will be scheduled. The
 delivery date is hostage to a series of handoff delays that compound in unpredictable ways.
 
-Queue times are the majority of elapsed time in most outsourced handoff models - often 60-80% of
-total time - and they are largely outside the development team's control. Forecasting is guessing
+Queue times are the majority of elapsed time in most outsourced handoff models, often 60-80% of
+total time. They are largely outside the development team's control. Forecasting is guessing
 at queue depths, not estimating actual work.
 
 ### Impact on continuous delivery
 
 CD requires a team that owns the full delivery path: from code to production. Multi-team handoff
 models fragment this ownership deliberately. The developer is responsible for code correctness.
-QA is responsible for verified functionality. Operations is responsible for production stability.
-No one is responsible for the whole.
+QA is responsible for verified functionality, and operations for production stability. No one is
+responsible for the whole.
 
 CD practices - automated testing, deployment pipelines, continuous integration - require investment
 and iteration. With fragmented ownership, nobody has both the knowledge and the authority to
-invest in the pipeline. The development team knows what tests would be valuable but does not
+invest in the pipeline.
+
+The development team knows what tests would be valuable but does not
 control the test environment. The operations team controls the deployment process but does not
 know the application well enough to automate its deployment safely. The gap between the two is
 where CD improvement efforts go to die.
@@ -155,15 +162,16 @@ Both options reduce the handoff delay without eliminating the QA function.
 ### Step 3: Create a deployment pipeline that the development team owns (weeks 3-6)
 
 Negotiate with the operations team for the development team to own deployments to non-production
-environments. Production deployment can remain with operations initially, but the deployment
-process should be automated so that operations is executing a pipeline, not manually following
-a deployment runbook. This removes the manual operations bottleneck while preserving the
+environments. Production deployment can remain with operations initially. But automate the
+deployment process so that operations runs a pipeline rather than manually following a
+deployment runbook. Automation removes the manual operations bottleneck while preserving the
 access control that operations legitimately owns.
 
 ### Step 4: Introduce a shared responsibility model for production (weeks 6-12)
 
 The goal is a model where the team that builds the service has a defined role in running it.
-This does not require eliminating the operations team - it requires redefining the boundary.
+This model does not require eliminating the operations team - it requires redefining the boundary.
+
 A starting position: the development team is on call for application-level incidents. The
 operations team is on call for infrastructure-level incidents. Both teams are in the same
 incident channel. The development team gets paged when their service has a production problem.
@@ -172,8 +180,8 @@ This feedback loop is the foundation of operational quality.
 ### Step 5: Renegotiate contract or team structures based on evidence (months 3-6)
 
 After generating evidence that reduced-handoff delivery produces better quality and shorter
-lead times, use that evidence to renegotiate. If the current model involves a contracted
-outsourced team, propose expanding their scope to include testing, or propose bringing
+lead times, use that evidence to renegotiate. The current model might involve a contracted
+outsourced team. If so, propose expanding their scope to include testing. Or propose bringing
 automated pipeline work in-house while keeping feature development outsourced. The goal is
 to align contract boundaries with value delivery rather than functional specialization.
 

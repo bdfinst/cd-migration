@@ -21,16 +21,17 @@ The schedule is posted in the team wiki: releases go out every Thursday at 2 PM.
 a code freeze starting Wednesday at noon. If your change is not merged by Wednesday noon, it
 catches the next train. The next train leaves Thursday in one week.
 
-A developer finishes a bug fix on Wednesday at 1 PM - one hour after code freeze. The fix is
-ready. The tests pass. The change is reviewed. But it will not reach production until the
-following Thursday, because it missed the train. A critical customer-facing bug sits in a
+A developer finishes a bug fix on Wednesday at 1 PM, one hour after code freeze. The fix is
+ready, the tests pass, and the change is reviewed. But the fix will not reach production until
+the following Thursday, because it missed the train. A critical customer-facing bug sits in a
 merged, tested, deployable state for eight days while the release train idles at the station.
 
 The release train schedule was created for good reasons. Coordinating deployments across
 multiple teams is hard. Having a fixed schedule gives everyone a shared target to build toward.
-Operations knows when to expect deployments and can staff accordingly. The train provides
-predictability. The cost - delay for any change that misses the window - is accepted as the
-price of coordination.
+Operations knows when to expect deployments and can staff accordingly.
+
+The train provides predictability. The cost is delay for any change that misses the window.
+Teams accept that cost as the price of coordination.
 
 Over time, the costs compound in ways that are not obvious. Changes accumulate between
 train departures, so each train carries more changes than it would if deployment were more
@@ -52,26 +53,26 @@ Common variations:
   months away.
 - **The change freeze.** No production changes during certain periods - end of quarter, major
   holidays, "busy seasons." Changes pile up before the freeze and deploy in a large batch
-  when the freeze ends, creating exactly the risky deployment event the freeze was designed
-  to avoid.
+  when the freeze ends. The result is exactly the risky deployment event the freeze was
+  designed to avoid.
 
-The telltale sign: developers finishing their work on Thursday afternoon immediately calculate
-whether they will make the Wednesday cutoff for the next week's train, or whether they are
-looking at a two-week wait.
+The telltale sign: developers who finish work on Thursday afternoon immediately do the math.
+Will they make the Wednesday cutoff for next week's train, or are they looking at a two-week
+wait?
 
 ## Why this is a problem
 
 The release train creates an artificial constraint on when software can reach users. The
 constraint is disconnected from the quality or readiness of the software. A change that is
-fully tested and ready to deploy on Monday waits until Thursday not because it needs more
-time, but because the schedule says Thursday. The delay creates no value and adds risk.
+fully tested and ready on Monday waits until Thursday, not because it needs more time, but
+because the schedule says Thursday. The delay creates no value and adds risk.
 
 ### It reduces quality
 
 A deployment carrying twelve accumulated changes takes hours to diagnose when something goes
-wrong - any of the dozen changes could be the cause. When a dozen changes accumulate between
-train departures and are deployed together, the post-deployment quality signal is aggregated:
-if something goes wrong, it went wrong because of one of these dozen changes. Identifying
+wrong, because any of the dozen changes could be the cause. When a dozen changes deploy
+together, the post-deployment quality signal is aggregated. If something goes wrong, one of
+these dozen changes caused it. Identifying
 which change caused the problem requires analysis of all changes in the batch, correlation
 with timing, and often a process of elimination.
 
@@ -80,16 +81,17 @@ goes wrong, the investigation starts and ends in one place: the most recently de
 The cause is obvious. The fix is fast. The quality signal is precise.
 
 The batching effect also obscures problems that interact. Two individually safe changes can
-combine to cause a problem that neither would cause alone. In a release train deployment where
-twelve changes deploy simultaneously, an interaction problem between changes three and eight
-may not be identifiable as an interaction at all. The team spends hours investigating what
+combine to cause a problem that neither would cause alone. Suppose twelve changes deploy
+together on a release train. An interaction problem between changes three and eight might
+not look like an interaction at all. The team spends hours investigating what
 should be a five-minute diagnosis.
 
 ### It increases rework
 
 The release train schedule forces developers to estimate not only development time but train
-timing. If a feature looks like it will take ten days and the train departs in nine days,
-the developer faces a choice: rush to make the train, or let the feature catch the next one.
+timing. Suppose a feature looks like it will take ten days and the train departs in nine days.
+The developer must choose: rush to make the train, or let the feature catch the next one.
+
 Rushing to make a scheduled release is one of the oldest sources of quality-reducing shortcuts
 in software development. Developers skip the thorough test, defer the edge case, and merge
 work that is "close enough" because missing the train means two weeks of delay.
@@ -100,9 +102,9 @@ creates pressure to rush again. The pattern reinforces itself.
 
 When a release train deployment fails, recovery is more complex than recovery from an
 individual deployment. A single-change deployment that causes a problem rolls back cleanly.
-A twelve-change release train deployment that causes a problem requires deciding which of
-the twelve changes to roll back - and whether rolling back some changes while keeping others
-is even possible, given how changes may interact.
+When a twelve-change release train deployment causes a problem, the team must decide which
+changes to roll back. The team must also decide whether a partial rollback is even possible,
+given how the changes might interact.
 
 ### It makes delivery timelines unpredictable
 
@@ -110,16 +112,15 @@ The release train promises predictability: releases happen on a schedule. In pra
 delivers the illusion of predictability at the release level while making individual feature
 delivery timelines highly variable.
 
-A feature completed on Wednesday afternoon may reach users in one day (if Thursday's train is
-the next departure) or in nine days (if Wednesday's code freeze has passed). The feature's
-delivery timeline is not determined by the quality of the feature or the effectiveness of the
-team - it is determined by a calendar. Stakeholders who ask "when will this be available?"
+A feature completed on Wednesday afternoon might reach users in one day, if Thursday's train is
+the next departure. If Wednesday's code freeze has passed, the feature takes nine days. The
+calendar determines the feature's delivery timeline, not the quality of the feature or the
+effectiveness of the team. Stakeholders who ask "when will this be available?"
 receive an answer that has nothing to do with the work itself.
 
-The train schedule also creates sprint-end pressure. Teams working in two-week sprints aligned
-to a weekly release train must either plan to have all sprint work complete by Wednesday noon
-(cutting the sprint short effectively) or accept that end-of-sprint work will catch the
-following week's train. This planning friction recurs every cycle.
+The train schedule also creates sprint-end pressure for teams in two-week sprints aligned to a
+weekly release train. They can plan to finish all sprint work by Wednesday noon, which cuts the
+sprint short. Or they can accept that end-of-sprint work will catch the following week's train. This planning friction recurs every cycle.
 
 ### Impact on continuous delivery
 
@@ -129,14 +130,13 @@ only be deployed at scheduled times, regardless of its readiness.
 
 The release train also prevents teams from learning the fast-feedback lessons that CD
 produces. CD teams deploy frequently and learn quickly from production. Release train teams
-deploy infrequently and learn slowly. A bug that a CD team would discover and fix within
-hours might take a release train team two weeks to even deploy the fix for, once the bug
-is discovered.
+deploy infrequently and learn slowly. A CD team discovers and fixes a bug within hours. A
+release train team might take two weeks even to deploy the fix after discovering the bug.
 
 The train schedule can feel like safety - a known quantity in an uncertain process. In
 practice, it provides the structure of safety without the substance. A train full of a dozen
-accumulated changes is more dangerous than a single change deployed on its own, regardless
-of how carefully the train departure was scheduled.
+accumulated changes is more dangerous than a single change deployed on its own. Careful
+scheduling of the departure does not change that.
 
 ## How to fix it
 
@@ -197,7 +197,8 @@ Routine processes do not need special windows.
 ### Step 5: Introduce feature flags for high-risk or coordinated changes (weeks 3-6)
 
 Use feature flags to decouple deployment from release for changes that genuinely need
-coordination - for example, a new API endpoint and the marketing campaign that announces it:
+coordination. For example, consider a new API endpoint and the marketing campaign that
+announces it:
 
 1. Deploy the new API endpoint behind a feature flag.
 2. The endpoint is deployed but inactive. No coordination with marketing is needed for

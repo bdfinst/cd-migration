@@ -20,7 +20,9 @@ tags:
 
 Before any change can reach production, it must be submitted to the Change Advisory Board. The
 developer fills out a change request form: description of the change, impact assessment, [rollback]({{< relref "/docs/reference/glossary#rollback" >}})
-plan, testing evidence, and approval signatures. The form goes into a queue. The CAB meets once
+plan, testing evidence, and approval signatures. The form goes into a queue.
+
+The CAB meets once
 a week - sometimes every two weeks - to review the queue. Each change gets a few minutes of
 discussion. The board approves, rejects, or requests more information.
 
@@ -49,8 +51,8 @@ Common variations:
   irrelevant for small changes. Developers spend more time filling out the form than making the
   change. Some fields require information the developer does not have, so they make something up.
 
-The telltale sign: a developer finishes a change and says "now I need to submit it to the CAB"
-with the same tone they would use for "now I need to go to the dentist."
+The telltale sign: a developer finishes a change and says "now I need to submit it to the CAB."
+The tone is the same one they would use for "now I need to go to the dentist."
 
 ## Why this is a problem
 
@@ -60,15 +62,15 @@ problems and too slow to enable fast delivery.
 
 ### It reduces quality
 
-A CAB review is a review by people who did not write the code, did not test it, and often do not
-understand the system it affects. A board member scanning a change request form for five minutes
+The people in a CAB review did not write the code and did not test the code. They often do not
+understand the system the code affects. A board member scanning a change request form for five minutes
 cannot assess the quality of a code change. They can check that the form is filled out. They
 cannot check that the change is safe.
 
 The real quality checks - automated tests, code review by peers, deployment verification - happen
 before the CAB sees the change. The CAB adds nothing to quality because it reviews paperwork, not
-code. The developer who wrote the tests and the reviewer who read the diff know far more about
-the change's risk than a board member reading a summary.
+code. The developer who wrote the tests knows far more about the change's risk than a board
+member reading a summary. So does the reviewer who read the diff.
 
 Meanwhile, the delay the CAB introduces actively harms quality. A bug fix that is ready on Monday
 but cannot deploy until Thursday means users experience the bug for three extra days. A security
@@ -97,8 +99,8 @@ occurs, it is harder to identify which change in the batch caused it.
 ### It makes delivery timelines unpredictable
 
 The CAB introduces a fixed delay into every deployment. If the board meets weekly, the minimum
-time from "change ready" to "change deployed" is up to a week, depending on when the change
-was finished relative to the meeting schedule. This delay is independent of the change's size,
+time from "change ready" to "change deployed" is up to a week. The exact wait depends on when the
+change was finished relative to the meeting schedule. This delay is independent of the change's size,
 risk, or urgency.
 
 The delay is also variable. A change submitted on Monday might be approved Thursday. A change
@@ -114,19 +116,21 @@ two hours to build.
 ### It creates a false sense of security
 
 The most dangerous effect of the CAB is the belief that it prevents incidents. It does not. The
-board reviews paperwork, not running systems. A well-written change request for a dangerous
+board reviews paperwork, not running systems.
+
+A well-written change request for a dangerous
 change will be approved. A poorly written request for a safe change will be questioned. The
 correlation between CAB approval and deployment safety is weak at best.
 
 Studies of high-performing delivery organizations consistently show that external change approval
-processes do not reduce failure rates. The 2019 Accelerate State of DevOps Report found that
-teams with external change approval had higher failure rates than teams using peer review and
+processes do not reduce failure rates. The 2019 Accelerate State of DevOps Report compared two groups.
+Teams with external change approval had higher failure rates than teams using peer review and
 automated checks. The CAB provides a feeling of control without the substance.
 
 This false sense of security is harmful because it displaces investment in controls that
 actually work. If the organization believes the CAB prevents incidents, there is less pressure
-to invest in automated testing, deployment verification, and progressive rollout - the controls
-that actually reduce deployment risk.
+to invest in the controls that reduce deployment risk. Those controls are automated testing,
+deployment verification, and progressive rollout.
 
 ### Impact on continuous delivery
 
@@ -199,8 +203,8 @@ After a month of pilot data, present the results to the CAB and organizational l
 - How much faster did auto-approved changes reach production?
 - How many incidents were caused by auto-approved changes?
 
-If the data shows that auto-approved changes are as safe or safer than CAB-reviewed changes
-(which is the typical outcome), expand the auto-approval process to more teams and more change
+The data typically shows that auto-approved changes are as safe as or safer than CAB-reviewed
+changes. If your data shows that, expand the auto-approval process to more teams and more change
 types.
 
 ### Step 5: Reduce the CAB to high-risk changes only

@@ -25,7 +25,9 @@ marketing campaigns, sales conversations, and partner timelines around these dat
 
 Months later, the team is three weeks from the committed quarter and the feature is 60 percent done.
 The scope was more complex than the estimate assumed. Dependencies were discovered. The team makes a
-familiar choice: ship what exists, skip the remaining testing, and call it done. The feature ships
+familiar choice: ship what exists, skip the remaining testing, and call it done.
+
+The feature ships
 incomplete. The marketing campaign runs. Support tickets arrive.
 
 What makes this pattern distinctive from ordinary deadline pressure is the time horizon. The
@@ -50,18 +52,22 @@ Common variations:
   delivering something that was never a real commitment in the first place.
 
 The telltale sign: when a team member asks "can we adjust scope?" the answer is "the date was
-already communicated externally" - and nobody remembers whether that was actually true.
+already communicated externally." Nobody remembers whether that was actually true.
 
 ## Why this is a problem
 
-A team discovers in week six that the feature requires a dependency that does not yet exist. The date was committed four months ago. There is no mechanism to surface this as a planning input, so quality absorbs the gap. Distant date commitments break the feedback loop between discovery and planning. When the gap between commitment and delivery is measured in months, the organization has no mechanism to incorporate what is learned during development. The plan is frozen at the moment of maximum ignorance.
+A team discovers in week six that the feature requires a dependency that does not yet exist. The date was committed four months ago. There is no mechanism to surface the missing dependency as a planning input, so quality absorbs the gap.
+
+Distant date commitments break the feedback loop between discovery and planning. When the gap between commitment and delivery is measured in months, the organization has no mechanism to incorporate what is learned during development. The plan is frozen at the moment of maximum ignorance.
 
 ### It reduces quality
 
 When scope is locked months before delivery and reality diverges from the plan, quality absorbs the
 gap. The team cannot reduce scope because the commitment was made at the feature level. They cannot
 move the date because it was communicated to stakeholders. The only remaining variable is how
-thoroughly the work is done. Tests get skipped. Edge cases are deferred to a future release. Known
+thoroughly the work is done.
+
+Tests get skipped. Edge cases are deferred to a future release. Known
 defects ship with "will fix in the next version" attached.
 
 This is not a failure of discipline - it is the rational response to an impossible constraint. A
@@ -76,25 +82,26 @@ natural response is to plan a quarter or more of work to fill the window. Large 
 integrations. Large integrations mean complex merges, late-discovered conflicts, and rework that
 compounds.
 
-The commitment also creates sunk-cost pressure. When a team has spent two months building toward a
-committed feature and discovers the approach is wrong, they face pressure to continue rather than
-pivot. The commitment was based on an approach; changing the approach feels like abandoning the
+The commitment also creates sunk-cost pressure. Suppose a team spends two months building toward a
+committed feature and then discovers the approach is wrong. The team faces pressure to continue
+rather than pivot. The commitment was based on an approach; changing the approach feels like abandoning the
 commitment. Teams hide or work around fundamental problems rather than surface them, accumulating
 rework that eventually has to be paid.
 
 ### It makes delivery timelines unpredictable
 
-There is a paradox here: commitments made months in advance feel like they increase predictability
+There is a paradox here. Commitments made months in advance feel like they increase predictability,
+because the dates are known. In fact, they decrease it.
 
-- because dates are known - but they actually decrease it. The dates are not based on actual work
+The dates are not based on actual work
 understanding; they are based on early guesses. When the guesses prove wrong, the team has two
-choices: slip visibly (missing the committed date) or slip invisibly (shipping incomplete or
-defect-laden work on time). Both outcomes undermine trust in delivery timelines.
+choices. It can slip visibly by missing the committed date. Or it can slip invisibly by shipping
+incomplete or defect-laden work on time.
 
-Teams that commit to shorter horizons and iterate deliver more predictably because their commitments
-are based on what they actually understand. A two-week commitment made at the start of a sprint has
-a fundamentally different information basis than a six-month commitment made at an annual planning
-session.
+Both outcomes undermine trust in delivery timelines. Teams that commit to shorter horizons and
+iterate deliver more predictably because their commitments are based on what they actually
+understand. A two-week commitment made at the start of a sprint rests on far better information.
+A six-month commitment made at an annual planning session does not.
 
 ### Impact on continuous delivery
 
@@ -106,15 +113,15 @@ problem to manage rather than information to act on.
 
 CD depends on the team's ability to adapt as they learn. Fixed distant commitments treat the plan
 as more reliable than the evidence. They make the discipline of continuous delivery harder to
-justify because they frame "we need to reduce scope to maintain quality" as a failure rather than
-a normal response to new information.
+justify. They frame "we need to reduce scope to maintain quality" as a failure rather than a
+normal response to new information.
 
 ## How to fix it
 
 ### Step 1: Map current commitments and their basis
 
 List every active commitment with a date attached. For each one, note when the commitment was made,
-what information existed at the time, and how much has changed since. This makes visible how far
+what information existed at the time, and how much has changed since. The list shows how far
 the original estimate has drifted from current reality. Share the analysis with leadership - not as
 an indictment, but as a calibration conversation about how accurate distant commitments tend to be.
 
@@ -134,7 +141,9 @@ exact date."
 ### Step 3: Establish a regular scope-negotiation cadence (weeks 2-4)
 
 Create a monthly review for any active commitment more than four weeks out. Ask: Is the scope
-still accurate? Has the estimate changed? What is the latest realistic delivery range? Make scope
+still accurate? Has the estimate changed? What is the latest realistic delivery range?
+
+Make scope
 adjustment a normal part of the process rather than an admission of failure. Stakeholders who
 participate in regular scope conversations are less surprised than those who receive a quarterly
 "we need to slip" announcement.
@@ -143,7 +152,7 @@ participate in regular scope conversations are less surprised than those who rec
 
 Work with product ownership to decompose large features into pieces that can ship and provide value
 independently. Features designed as all-or-nothing deliveries are the root cause of most distant
-date pressure. When the first slice ships in week four, the conversation shifts from "are we on
+date pressure. Suppose the first slice ships in week four. The conversation shifts from "are we on
 track for the full feature in Q3?" to "here is what users have now; what should we build next?"
 
 ### Step 5: Build the history that enables better forecasts (ongoing)

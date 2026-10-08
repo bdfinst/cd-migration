@@ -23,7 +23,9 @@ The new architecture is planned: microservices, event-driven, cloud-native, prop
 the start. When the new system is ready, the team will practice CD properly.
 
 The rewrite was scoped two years ago. The first service was delivered. The second is in progress.
-The third has been descoped twice. The monolith continues to receive new features because business
+The third has been descoped twice.
+
+The monolith continues to receive new features because business
 cannot wait for the rewrite. The old system is as painful to deploy as ever. New features are
 being added to the system that was supposed to be abandoned. The rewrite horizon has moved from
 "Q4 this year" to "sometime next year" to "when we get the migration budget approved."
@@ -50,7 +52,7 @@ Common variations:
   not start when the tool arrives because by then a new prerequisite has emerged.
 
 The telltale sign: the phrase "once we finish the rewrite" has appeared in planning conversations
-for more than a year, and the completion date has moved at least twice.
+for more than a year. The completion date has moved at least twice.
 
 ## Why this is a problem
 
@@ -63,27 +65,26 @@ benefit.
 ### It reduces quality
 
 A user hits a bug in the existing system today. The fix is delayed because the team is focused
-on the rewrite. "We'll get it right in the new system" is not comfort to the user affected now -
-or to the users who will be affected by the next bug from a codebase with no automated tests.
+on the rewrite. "We'll get it right in the new system" is no comfort to the user affected now.
+Nor does it comfort the users who will hit the next bug from a codebase with no automated tests.
 
 There is also a structural risk: the existing system continues to receive features. Features
 added to the "soon to be replaced" system are written without the quality discipline the team
 plans to apply to the new system. The technical debt accelerates because everyone knows the
-system is temporary. By the time the rewrite is complete - if it ever is - the existing system
-has accumulated years of change made under the assumption that quality does not matter because
-the system will be replaced.
+system is temporary. If the rewrite ever finishes, the old system will carry years of change
+built on one assumption: quality does not matter, since replacement is coming.
 
 ### It increases rework
 
 The new system goes live. Within two weeks, the business discovers it does not handle a particular
 edge case that the old system handled silently for years. Nobody wrote it down. The team spends a
 sprint reverse-engineering and replicating behavior that a test suite on the old system would have
-documented automatically. This happens not once but repeatedly throughout the migration.
+documented automatically. This rework happens not once but repeatedly throughout the migration.
 
-Deferring test automation also defers the discovery of architectural problems. In teams that write
-tests, untestable code is discovered immediately when trying to write the first test. In teams
-that defer testing to the new system, the architectural problems that make testing hard are
-discovered only during the rewrite - when they are significantly more expensive to address.
+Deferring test automation also defers the discovery of architectural problems. Teams that write
+tests discover untestable code as soon as they try to write the first test. Teams that defer
+testing to the new system discover the architectural problems only during the rewrite. By then,
+those problems are significantly more expensive to address.
 
 ### It makes delivery timelines unpredictable
 
@@ -92,17 +93,19 @@ integrations nobody documented. The timeline moves to nine months. At month seve
 because the business added new requirements. The horizon is always receding.
 
 When the rewrite slips, the CD adoption it was supposed to unlock also slips. The team is
-delivering against two roadmaps: the existing system's features (which the business needs now)
-and the new system's construction (which nobody is willing to slow down). Both slip. The existing
+delivering against two roadmaps. One is the existing system's features, which the business needs
+now. The other is the new system's construction, which nobody is willing to slow down.
+
+Both slip. The existing
 system's delivery timeline remains painful. The new system's delivery timeline is aspirational
 and usually wrong.
 
 ### Impact on continuous delivery
 
-CD is a set of practices that can be applied incrementally to existing systems. Waiting for a
-rewrite to start those practices means not benefiting from them for the duration of the rewrite
-and then having to build them fresh on the new system without the organizational experience of
-having used them on anything real.
+CD is a set of practices that you can apply incrementally to existing systems. If you wait for a
+rewrite to start those practices, you get no benefit from them for the duration of the rewrite.
+Then you must build them fresh on the new system, with no organizational experience of using
+them on anything real.
 
 Teams that introduce CD practices to existing systems - even painful, legacy systems - build the
 organizational muscle memory and tooling that transfers to the new system. Automated testing on
@@ -148,15 +151,15 @@ to the existing system. The standard: both systems should be healthy. The existi
 the same deployment pipeline investment as the new system. Tests are written for new features
 on the existing system. Operational monitoring is maintained on the existing system.
 
-This creates two benefits. First, the existing system is better cared for. Second, the team
-stops treating the rewrite as the only path to quality improvement, which reduces the urgency
-that has been artificially attached to the rewrite timeline.
+This standard creates two benefits. First, the existing system is better cared for. Second, the
+team stops treating the rewrite as the only path to quality improvement. That shift reduces the
+artificial urgency attached to the rewrite timeline.
 
 ### Step 5: Establish criteria for declaring the rewrite "done" (ongoing)
 
 Rewrites without completion criteria never end. Define explicitly what the rewrite achieves:
 what functionality must be migrated, what performance targets must be met, what CD practices
-must be operational. When those criteria are met, the rewrite is done. This prevents the
+must be operational. When those criteria are met, the rewrite is done. Explicit criteria keep the
 horizon from receding indefinitely.
 
 | Objection | Response |

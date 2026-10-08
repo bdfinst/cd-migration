@@ -18,17 +18,20 @@ tags:
 ## What this looks like
 
 The sprint planning meeting has been running for three hours. The team is on story number six of
-fourteen. Each story follows the same ritual: a developer reads the description aloud, the team
-discusses what might be involved, someone raises a concern that leads to a five-minute tangent, and
-eventually everyone holds up planning poker cards. The cards show a spread from 2 to 13. The team
-debates until they converge on 5. The number is recorded. Nobody will look at it again except to
+fourteen. Each story follows the same ritual. A developer reads the description aloud, and the team
+discusses what might be involved. Someone raises a concern that leads to a five-minute tangent,
+and eventually everyone holds up planning poker cards.
+
+The cards show a spread from 2 to 13. The team debates until they converge on 5. The number is
+recorded. Nobody will look at it again except to
 calculate velocity.
 
-The following week, development starts. The developer working on story six discovers that the
-acceptance criteria assumed a database table that does not exist, the API the feature depends on
-behaves differently than the description implied, and the 5-point estimate was derived from a
-misunderstanding of what the feature actually does. The work takes three times as long as estimated.
-The number 5 in the backlog does not change.
+The following week, development starts. The developer working on story six discovers three
+problems. The acceptance criteria assumed a database table that does not exist. The API the
+feature depends on behaves differently than the description implied. The 5-point estimate came
+from a misunderstanding of what the feature actually does.
+
+The work takes three times as long as estimated. The number 5 in the backlog does not change.
 
 Estimation theater is the full ceremony of estimation without the predictive value. The organization
 invests heavily in producing numbers that are rarely accurate and rarely used to improve future
@@ -53,14 +56,15 @@ Common variations:
   numbers produced are guesses dressed as estimates.
 
 The telltale sign: when a developer is asked how long something will take, they think "two days" but
-say "maybe 5 points" - because the real unit has been replaced by a proxy that nobody knows how to
-interpret.
+say "maybe 5 points." A proxy that nobody knows how to interpret has replaced the real unit.
 
 ## Why this is a problem
 
 A team spends three hours estimating fourteen stories. The following week, the first story takes
 three times longer than estimated because the acceptance criteria were never clarified. The three
-hours produced a number; they did not produce understanding. Estimation theater does not eliminate
+hours produced a number; they did not produce understanding.
+
+Estimation theater does not eliminate
 uncertainty - it papers over it with numbers that feel precise but are not. Organizations that
 invest heavily in estimation tend to invest less in the practices that actually reduce uncertainty:
 small batches, fast feedback, and iterative delivery.
@@ -68,17 +72,17 @@ small batches, fast feedback, and iterative delivery.
 ### It reduces quality
 
 Heavy estimation processes create pressure to stick to the agreed scope of a story, even when
-development reveals that the agreed scope is wrong. If a developer discovers during implementation
-that the feature needs additional work not covered in the original estimate, raising that
-information feels like failure - "it was supposed to be 5 points." The team either ships the
+development reveals that the agreed scope is wrong. A developer might discover during
+implementation that the feature needs work the original estimate did not cover. Raising that
+information feels like failure: "it was supposed to be 5 points." The team either ships the
 incomplete version that fits the estimate or absorbs the extra work invisibly and misses the sprint
 commitment.
 
 Both outcomes hurt quality. Shipping to the estimate when the implementation is incomplete produces
 defects. Absorbing undisclosed work produces false velocity data and makes the next sprint plan
-inaccurate. Teams that use lightweight forecasting and frequent scope negotiation can surface
-"this turned out to be bigger than expected" as normal information rather than an admission of
-planning failure.
+inaccurate. Some teams use lightweight forecasting and frequent scope negotiation. Those teams
+can surface "this turned out to be bigger than expected" as normal information rather than an
+admission of planning failure.
 
 ### It increases rework
 
@@ -89,29 +93,29 @@ that would have been resolved during real refinement remains in the work.
 
 When development starts and the ambiguity surfaces - as it always does - the developer has to stop,
 seek clarification, wait for answers, and restart. This interruption is rework in the sense that it
-was preventable. The time spent generating the estimate produced no information that helped; the
-time not spent on genuine acceptance criteria clarification creates a real gap that costs more later.
+was preventable. The time spent generating the estimate produced no useful information. The time
+not spent clarifying acceptance criteria creates a real gap that costs more later.
 
 ### It makes delivery timelines unpredictable
 
-The primary justification for estimation is predictability: if we know how many points of work we
-have and our velocity, we can forecast when we will finish. This math works only when points
+The primary justification for estimation is predictability. If you know how many points of work
+you have and your velocity, you can forecast when you will finish. This math works only when points
 translate consistently to time, and they rarely do. Story points are affected by team composition,
 story quality, technical uncertainty, dependencies, and the hidden work that did not make it into
 the description.
 
 Teams that rely on point-based velocity for forecasting end up with wide confidence intervals they
-do not acknowledge. "We'll finish in 6 sprints" sounds precise, but the underlying data is
-noisy enough that "sometime in the next 4 to 10 sprints" would be more honest. Teams that use
-empirical throughput - counting the number of stories completed per period regardless of size -
+do not acknowledge. "We'll finish in 6 sprints" sounds precise. But the underlying data is noisy
+enough that "sometime in the next 4 to 10 sprints" would be more honest. Some teams use empirical
+throughput, which counts the stories completed per period regardless of size. Teams that do so
 and deliberately keep stories small tend to forecast more accurately with less ceremony.
 
 ### Impact on continuous delivery
 
 CD depends on small, frequent changes moving through the pipeline. Estimation theater is
 symptomatically linked to large, complex stories - the kind of work that is hard to estimate and
-hard to integrate. The ceremony of estimation discourages decomposition: if every story requires
-a full planning poker ritual, there is pressure to keep the number of stories low, which means
+hard to integrate. The ceremony of estimation discourages decomposition. If every story requires
+a full planning poker ritual, teams feel pressure to keep the number of stories low. That means
 keeping stories large.
 
 CD also benefits from a team culture where surprises are surfaced quickly and plans adjust. Heavy
@@ -126,8 +130,9 @@ costly - is exactly the opposite of the fast feedback that CD requires.
 Collect data before changing anything. For every story in the current sprint, record the estimate
 in points and the actual time in days or hours. At the end of the sprint, calculate the average
 error. Present the results without judgment. In most teams, estimates are off by a factor of two
-or more on a per-story basis even when the sprint "hits velocity." This data creates the opening
-for a different approach.
+or more on a per-story basis even when the sprint "hits velocity."
+
+This data creates the opening for a different approach.
 
 ### Step 2: Experiment with #NoEstimates for one sprint
 
@@ -139,9 +144,11 @@ approaches.
 
 ### Step 3: Replace story points with size categories if estimation continues (weeks 2-3)
 
-Replace point-scale estimation with a simple three-category system if the team is not ready to
-drop estimation entirely: small (one to two days), medium (three to four days), large (needs
-splitting). Stories tagged "large" do not enter the sprint until they are split. The goal is to
+If the team is not ready to drop estimation entirely, replace point-scale estimation with three
+size categories. Use small (one to two days), medium (three to four days), and large (needs
+splitting). Stories tagged "large" do not enter the sprint until they are split.
+
+The goal is to
 get all stories to small or medium. Size categories take five minutes to assign; point estimation
 takes hours. The predictive value is similar.
 

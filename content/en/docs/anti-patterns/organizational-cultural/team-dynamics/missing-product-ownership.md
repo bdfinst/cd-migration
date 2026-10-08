@@ -36,17 +36,17 @@ Common variations:
   frequently. A developer is midway through implementing a feature when the requirements shift
   because a different stakeholder weighed in. Work already done is discarded or reworked.
 - **The absent product owner.** The role exists on paper, but the person is shared across multiple
-  teams, unavailable for daily questions, or does not understand the product well enough to make
-  decisions. The tech lead fills the gap by default.
+  teams and unavailable for daily questions. Or the person does not understand the product well
+  enough to make decisions. The tech lead fills the gap by default.
 
 The telltale sign: the team cannot answer "what is the most important thing to work on next?"
 without escalating to a meeting.
 
 ## Why this is a problem
 
-Product ownership is a full-time responsibility. When it is absorbed into a technical role or
-distributed across multiple stakeholders, the team lacks clear direction and the person filling
-the gap burns out from an impossible workload.
+Product ownership is a full-time responsibility. Sometimes it is absorbed into a technical role or
+distributed across multiple stakeholders. Then the team lacks clear direction, and the person
+filling the gap burns out from an impossible workload.
 
 ### It reduces quality
 
@@ -56,8 +56,8 @@ uninformed because the tech lead has not had time to research the user need. The
 features based on incomplete or shifting requirements, and the result is software that does not
 quite solve the problem.
 
-A dedicated product owner can invest the time to understand user needs deeply, write clear
-acceptance criteria, and be available to answer questions as developers work. The resulting
+A dedicated product owner can invest the time to understand user needs deeply and write clear
+acceptance criteria. That person is also available to answer questions as developers work. The resulting
 software is better because the requirements were better.
 
 ### It increases rework
@@ -84,7 +84,7 @@ can plan, commit, and deliver with confidence because the priorities do not shif
 ### It burns out technical leaders
 
 A tech lead handling product ownership, technical leadership, and individual contribution is
-doing three jobs. They work longer hours to keep up. They become the bottleneck for every
+doing three jobs. They work longer hours to keep up and become the bottleneck for every
 decision. They cannot delegate because there is nobody to delegate the product work to. Over
 time, they either burn out and leave, or they drop one of the responsibilities silently. Usually
 the one that drops is their own coding or the quality of their code reviews.
