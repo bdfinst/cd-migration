@@ -31,7 +31,7 @@ Detects driver/dialect mismatches, schema serialization issues, connection pooli
 ## Anti-Patterns
 
 -	Using shared remote environments: Pointing integration test suites to shared dev/staging databases, causing data collisions and race conditions between concurrent CI jobs.
--	Testing business permutations: Testing dozens of conditional logic branches through real databases instead of pushing that logic down to fast unit tests or leveraging component tests.
+-	Testing business permutations: Testing dozens of conditional logic branches through real databases instead of pushing that logic down to fast unit tests or using component tests.
 -	Ignoring production parity: Testing against an SQLite in-memory database locally when production runs Postgres, masking dialect, constraint, and indexing differences.
 
 ## Weaknesses & Challenges
