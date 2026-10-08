@@ -194,7 +194,7 @@ artifact meets quality criteria. Immutability ensures that the validated artifac
 only that artifact - reaches production.
 
 This practice also directly supports [rollback]({{< relref "/docs/pipeline/rollback" >}}): because previous artifacts
-are stored unchanged in the artifact repository, rolling back is simply deploying a
+are stored unchanged in the artifact repository, rolling back means deploying a
 previous known-good artifact.
 
 ## Related Content

@@ -212,7 +212,7 @@ Measure your current DORA metrics. Be honest - the point is to understand realit
 **Practical approach:**
 
 1. Collect two weeks of data for all four DORA metrics
-2. Plot the data - do not just calculate averages. Look at the distribution.
+2. Plot the data - do not stop at averages. Look at the distribution.
 3. Identify which metric is furthest from your target
 4. Investigate the related practices to understand why
 
@@ -371,7 +371,7 @@ Organize your dashboard around three categories:
 
 ### Dashboard Anti-Patterns
 
-**The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, it is not useful. Include metrics that challenge the team, not just ones that reassure management.
+**The vanity dashboard:** Displays only metrics that look good. If your dashboard never shows anything concerning, it is not useful. Include metrics that challenge the team, not only ones that reassure management.
 
 **The everything dashboard:** Crams dozens of metrics, charts, and tables onto one screen. Nobody can parse it at a glance, so nobody looks at it. Limit your dashboard to 6-8 key indicators. If you need more detail, put it on a drill-down page.
 

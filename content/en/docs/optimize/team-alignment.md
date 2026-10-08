@@ -144,7 +144,7 @@ diverge significantly.
 
 ### Step 2: Identify natural domain boundaries
 
-Natural domain boundaries exist in most codebases - they are just not enforced by team structure.
+Natural domain boundaries exist in most codebases - they are not enforced by team structure.
 Look for:
 
 - **Business capabilities.** What does this system do? Separate business functions - billing,

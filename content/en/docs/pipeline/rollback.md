@@ -72,7 +72,7 @@ system understanding, or heroic troubleshooting.
 
 ### Tested
 
-Rollback must be tested regularly, not just documented. A rollback procedure that has
+Rollback must be tested regularly, not only documented. A rollback procedure that has
 never been exercised is a rollback procedure that will fail when you need it most. Include
 rollback verification in your [deployable definition]({{< relref "/docs/pipeline/deployable-definition" >}}) and
 practice rollback as part of routine deployment validation.
@@ -98,7 +98,7 @@ Instant rollback (< 30 seconds)
 
 **Advantages:**
 
-- Rollback is instantaneous - just a traffic switch
+- Rollback is instantaneous - a traffic switch
 - The previous version remains running and warm
 - Zero-downtime deployment and rollback
 
@@ -245,7 +245,7 @@ to detect the problem and initiate the rollback.
 
 As part of every deployment to staging, deploy the new version, verify it, then roll it
 back and verify the rollback. This ensures that rollback works for every release, not
-just in theory.
+only in theory.
 
 ### Artifact retention
 
@@ -256,12 +256,12 @@ versions) and ensure that rollback targets are always available.
 ### Deployment log and audit trail
 
 Maintain a clear record of what is currently deployed, what was previously deployed, and
-when changes occurred. This makes it easy to identify the correct rollback target and
+when changes occurred. This record identifies the correct rollback target and helps you
 verify that the rollback was successful.
 
 ### Rollback runbook exercises
 
-Regularly practice rollback as a team exercise - not just as part of automated testing,
+Regularly practice rollback as a team exercise - not only as part of automated testing,
 but as a deliberate drill. This builds team confidence and identifies gaps in the process.
 
 ## How to Get Started
