@@ -7,6 +7,10 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-09 - Removed timelines from anti-pattern fix steps
+
+Removed week and month durations from the "How to fix it" steps on every anti-pattern page. Steps keep their order and content, but no longer prescribe a schedule, since the right pace depends on the team.
+
 ## 2026-10-08 - Environment branches
 
 Added guidance on long-lived branches per environment (#21):
