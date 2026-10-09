@@ -37,7 +37,7 @@ Determine page type from file path:
 ### [Optional additional subsections]
 ### Impact on continuous delivery
 ## How to fix it
-### Step 1: ... (Week ...)
+### Step 1: ...
 [Additional steps]
 ## Measuring progress
 ## Related content
@@ -47,7 +47,7 @@ Determine page type from file path:
 
 - "Why this is a problem" MUST have exactly three required H3 subsections plus "Impact on continuous delivery" as the final H3
 - Additional H3 subsections between "It makes delivery timelines unpredictable" and "Impact on continuous delivery" are allowed
-- "How to fix it" steps MUST include week numbers in parentheses
+- "How to fix it" step headings MUST NOT include durations such as week or month labels
 - "Measuring progress" MUST contain a table
 - "Related content" MUST contain at least one link
 - The pageinfo block with Category and risk-indicator is required after front matter

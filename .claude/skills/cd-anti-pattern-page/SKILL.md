@@ -129,7 +129,7 @@ delivery.]
 ### Depth per section
 - **What this looks like:** 2-3 paragraphs plus variations. Enough detail that a reader says "that's us."
 - **Why this is a problem subsections:** 2-4 paragraphs each. Each subsection should have a clear mechanism (how the anti-pattern causes this effect) and a contrast with the healthier alternative.
-- **How to fix it steps:** 3-6 ordered steps. Step headings must not include durations (week, month, or similar labels). Concrete enough to start Monday morning.
+- **How to fix it steps:** 3-6 ordered steps. Step headings must not include durations such as week or month labels. Concrete enough to start Monday morning.
 - **Measuring progress:** 4-6 metrics. Link to reference metric pages where one exists.
 - **Related content:** 3-5 links to existing guide pages.
 
