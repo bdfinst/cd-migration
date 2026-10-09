@@ -204,7 +204,8 @@ test.describe("finder page paths", () => {
     const bad = linkedEntries()
       .filter(
         ({ entry }) =>
-          typeof entry?.path === "string" && !entry.path.startsWith("/"),
+          !isBlank(entry?.path) &&
+          !(typeof entry.path === "string" && entry.path.startsWith("/")),
       )
       .map(({ dataset, entry }) => `${dataset} "${entry.id}": "${entry.path}"`);
     expect(bad, `Paths not starting with /:\n${bad.join("\n")}`).toHaveLength(
@@ -216,8 +217,8 @@ test.describe("finder page paths", () => {
     const bad = linkedEntries()
       .filter(
         ({ entry }) =>
-          typeof entry?.path === "string" &&
-          !isPublishedPage(contentIndex, entry.path),
+          !isBlank(entry?.path) &&
+          !isPublishedPage(contentIndex, String(entry.path)),
       )
       .map(({ dataset, entry }) => `${dataset} "${entry.id}": "${entry.path}"`);
     expect(
