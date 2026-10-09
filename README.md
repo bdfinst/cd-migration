@@ -48,7 +48,8 @@ The site will be available at `http://localhost:1313/`.
 | `npm start` | Start local dev server with live reload |
 | `npm run build` | Production build with minification |
 | `npm run build:clean` | Clean `public/` and rebuild |
-| `npm test` | Run markdown lint and internal link check |
+| `npm test` | Run markdown lint, data integrity tests, and internal link check |
+| `npm run test:data` | Validate triage and finder data files and their link targets (no browser) |
 | `npm run lint` | Check markdown style only |
 | `npm run lint:fix` | Auto-fix markdown style issues |
 | `npm run link-check` | Build and check external links (slow) |
@@ -87,7 +88,7 @@ cd-migration/
 - **Static site generator:** [Hugo](https://gohugo.io/) with [Docsy](https://www.docsy.dev/) theme
 - **CSS:** SCSS with PostCSS and Autoprefixer
 - **Deployment:** Netlify
-- **CI:** GitHub Actions (link checking on every push and PR)
+- **CI:** GitHub Actions (data integrity tests and link checking on pushes and pull requests to main)
 - **Linting:** markdownlint, Prettier
 - **Link validation:** htmltest (internal), Linkinator (external)
 - **SEO:** Auto-generated `llms.txt`, `llms-full.txt`, `robots.txt`, and sitemap
@@ -152,9 +153,8 @@ When removing `draft: true` from a page:
 A pre-commit hook runs these checks in order:
 
 1. **Markdown auto-fix** - `lint-staged` runs `markdownlint --fix` on staged `content/**/*.md` files and re-stages the fixes. Violations it cannot fix block the commit.
-2. **`npm test`** - Markdown linting across the full content tree, plus internal link checking (builds the site and validates links with htmltest)
+2. **`npm test`** - Markdown linting across the full content tree, data integrity tests for `data/triage.yaml` and the finder data files (`tests/triage-data.spec.js`, `tests/finder-data.spec.js`, and `tests/content-pages.spec.js` for the shared page resolver), plus internal link checking (builds the site and validates links with htmltest)
 3. **Layout check** - `npm run layout-check`
-4. **Triage data tests** - Playwright tests for `tests/triage-data.spec.js`
 
 All checks must pass before a commit is accepted.
 

@@ -16,7 +16,7 @@ if [ "$NEEDS_BUILD" = "true" ]; then
 fi
 
 # Data integrity tests (no server needed)
-npx playwright test tests/triage-data.spec.js
+npm run test:data
 
 # E2E tests (require a running server)
 npx http-server public -p 8080 -s &
