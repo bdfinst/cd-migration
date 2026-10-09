@@ -125,22 +125,22 @@ costly - is exactly the opposite of the fast feedback that CD requires.
 
 ## How to fix it
 
-### Step 1: Measure estimation accuracy for one sprint
+### Step 1: Measure estimation accuracy
 
-Collect data before changing anything. For every story in the current sprint, record the estimate
-in points and the actual time in days or hours. At the end of the sprint, calculate the average
-error. Present the results without judgment. In most teams, estimates are off by a factor of two
-or more on a per-story basis even when the sprint "hits velocity."
+Collect data before changing anything. For every story the team completes, record the estimate in
+points and the actual time in days or hours. Once enough stories are complete to show a pattern,
+calculate the average error. Present the results without judgment. In most teams, estimates are
+off by a factor of two or more on a per-story basis even when the sprint "hits velocity."
 
 This data creates the opening for a different approach.
 
-### Step 2: Experiment with #NoEstimates for one sprint
+### Step 2: Experiment with #NoEstimates
 
 Commit to completing stories without estimating in points. Apply a strict rule: no story enters
 the sprint unless it can be completed in one to three days. This forces the decomposition and
 clarity that estimation sessions often skip. Track throughput - number of stories completed per
-sprint - rather than velocity. Compare predictability at the sprint level between the two
-approaches.
+sprint - rather than velocity. Run the experiment until you have enough throughput data to compare
+predictability at the sprint level between the two approaches.
 
 ### Step 3: Replace story points with size categories if estimation continues
 
