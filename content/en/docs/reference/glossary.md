@@ -59,6 +59,10 @@ See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-loop" >}})
 
 See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-session" >}}).
 
+### Agent team
+
+See [Agentic CD Glossary]({{< relref "/docs/agentic-cd/glossary#agent-team" >}}).
+
 ### Artifact
 
 A packaged, versioned output of a build process (for example, a container image, JAR file, or binary).

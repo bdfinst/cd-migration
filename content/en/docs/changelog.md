@@ -7,6 +7,14 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-09 - Tokenomics: sub-agent context
+
+Corrected how [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) describes multi-agent token costs (#16):
+
+- Clarified that output quality declines steadily as the context window fills.
+- Sub-agents start with a fresh context and return a summary; oversized context bundles are an orchestrator design mistake, not inherent to sub-agents.
+- Added agent teams and their token cost, plus a new [Agent team]({{< relref "/docs/agentic-cd/glossary#agent-team" >}}) glossary entry.
+
 ## 2026-10-09 - Removed timelines from anti-pattern fix steps
 
 Removed week, month, and ongoing timeline labels from the "How to fix it" step headings on anti-pattern pages. Steps keep their order. Several step descriptions that set a schedule ("in week one", "by end of week"), a fixed repeat interval, or a fixed pilot length were reworded to tie each action to a condition instead, since the right pace depends on the team.
