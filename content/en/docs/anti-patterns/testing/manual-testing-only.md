@@ -140,7 +140,7 @@ This rule is more important than retroactive coverage. New code enters the codeb
 tested portion grows with every commit. After a few months, the most actively changed code has
 coverage, which is exactly where coverage matters most.
 
-### Step 3: Target high-change areas for retroactive coverage (weeks 3-6)
+### Step 3: Target high-change areas for retroactive coverage
 
 Use your version control history to find the files that change most often. These are the files
 where bugs are most likely and where tests provide the most value:
@@ -152,7 +152,7 @@ where bugs are most likely and where tests provide the most value:
    the untestable code and test the adapter. That approach is the Strangler Fig pattern applied
    to testing.
 
-### Step 4: Make untestable code testable incrementally (weeks 4-8)
+### Step 4: Make untestable code testable incrementally
 
 If the codebase resists testing, introduce seams one at a time:
 

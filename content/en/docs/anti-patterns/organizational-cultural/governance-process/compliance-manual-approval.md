@@ -88,7 +88,7 @@ Expect pushback and address it directly:
 | "Our auditors said we need a CAB." | Ask your auditors to cite the specific requirement. Most will describe the evidence they need, not the mechanism. Automated pipeline controls with immutable audit logs satisfy most regulatory evidence requirements. |
 | "We can't risk an audit finding." | The risk of an audit finding from automation is lower than you think if the controls are well-designed. Add automated security scanning to the pipeline first. Then bring the audit log evidence to your compliance officer and ask them to review it against the specific regulatory requirements. |
 
-### Step 2: Design automated controls that satisfy regulatory requirements (weeks 2-6)
+### Step 2: Design automated controls that satisfy regulatory requirements
 
 1. Identify the specific controls the regulation requires (for example, segregation of duties, change documentation, rollback capability) and implement each as a pipeline stage.
 2. Require code review by at least one person who did not write the change, enforced by the source control system, not by a meeting.
@@ -103,7 +103,7 @@ Expect pushback and address it directly:
 | "Automated evidence might not satisfy auditors." | Engage your auditors in the design process. Show them what the pipeline audit log captures. Most auditors prefer machine-generated evidence to manually assembled spreadsheets because it is harder to falsify. |
 | "We need a human to review every change." | For what purpose? If the purpose is catching errors, automated testing catches more errors than a human reading a change summary. If the purpose is authorization evidence, a pull request approval recorded in your source control system is a more reliable record than a meeting vote. |
 
-### Step 3: Transition the CAB to a risk advisory function (weeks 6-12)
+### Step 3: Transition the CAB to a risk advisory function
 
 1. Propose to the compliance team that the CAB shifts from approving individual changes to reviewing pipeline controls quarterly. The quarterly review should verify that automated controls are functioning, access is appropriately restricted, and audit logs are complete.
 2. Implement a risk-based exception process. Changes to high-risk systems or during high-risk periods can still require human review. Keep that review focused and its criteria explicit.

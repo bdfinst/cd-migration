@@ -173,7 +173,7 @@ The floor makes the cost of skipping tests immediate and visible. A developer wh
 will see the pipeline fail. The conversation shifts from "we'll add tests later" to "the pipeline
 won't let us merge without tests."
 
-### Step 4: Recover coverage in high-risk areas (weeks 3-6)
+### Step 4: Recover coverage in high-risk areas
 
 You cannot test everything retroactively. Prioritize the areas that matter most:
 
@@ -184,7 +184,7 @@ You cannot test everything retroactively. Prioritize the areas that matter most:
 3. Allocate a fixed percentage of each sprint (for example, 20%) to writing tests for existing code.
    This is not optional and not deferrable.
 
-### Step 5: Address the management pressure directly (ongoing)
+### Step 5: Address the management pressure directly
 
 The root cause is a manager who sees testing as optional. This requires a direct conversation:
 

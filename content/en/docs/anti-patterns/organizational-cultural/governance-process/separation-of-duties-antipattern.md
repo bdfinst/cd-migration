@@ -88,7 +88,7 @@ Expect pushback and address it directly:
 | "Our auditors specifically require a separate team." | Ask the auditors to cite the requirement. Auditors often have flexibility in how they accept controls; they want to see the control objective met. Present the automated alternative with a regulatory mapping. |
 | "We've been operating this way for years without an audit finding." | Absence of an audit finding does not mean the current control is optimal. The question is whether a better control is available. |
 
-### Step 2: Design automated SoD controls (weeks 2-6)
+### Step 2: Design automated SoD controls
 
 1. Require peer review of every change in source control before it can be merged. The reviewer must not be the author. This satisfies the "separate individual" requirement for authorization.
 2. Enforce branch protection rules that prevent the author from merging their own change, even if they have admin rights. The separation is enforced by tooling, not by policy.
@@ -103,7 +103,7 @@ Expect pushback and address it directly:
 | "Peer review is not the same as a separate team making the deployment." | Peer review that gates deployment provides the authorization separation SoD requires. The SoD objective is preventing a single individual from unilaterally making a change. Peer review achieves this. |
 | "What if reviewers collude?" | Collusion is a risk in any SoD implementation. The automated approach reduces collusion risk by making the audit trail immutable and by separating review from deployment - the reviewer approves the code, the pipeline deploys it. Neither has unilateral control. |
 
-### Step 3: Transition the deployment team to a higher-value role (weeks 6-12)
+### Step 3: Transition the deployment team to a higher-value role
 
 1. Pilot the automated SoD controls with one team or one service. Run the automated pipeline alongside the current deployment team process for one quarter, demonstrating that the controls are equivalent or better.
 2. Work with the compliance team to formally accept the automated controls as the SoD mechanism, retiring the deployment team's approval role for that service.

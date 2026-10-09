@@ -185,7 +185,7 @@ starts up is more valuable than zero tests.
 The pipeline should now fail if the build fails or if any test fails. That check is the first
 automated quality gate. No artifact is produced unless the code compiles and the tests pass.
 
-### Step 4: Automate the deployment to a non-production environment (weeks 3-4)
+### Step 4: Automate the deployment to a non-production environment
 
 Take the manual deployment steps from Step 1 and encode them in a script or pipeline stage. The
 script deploys the tested artifact to a staging or test environment:
@@ -197,7 +197,7 @@ script deploys the tested artifact to a staging or test environment:
 The team now has a pipeline that builds, tests, and deploys to a non-production environment on
 every commit. Deployments to this environment should happen without any human intervention.
 
-### Step 5: Extend the pipeline to production (weeks 5-6)
+### Step 5: Extend the pipeline to production
 
 Once the team trusts the automated deployment to non-production environments, extend it to
 production:
@@ -213,7 +213,7 @@ The first automated production deployment will be nerve-wracking. That is normal
 the manual process the first few times: deploy automatically, then verify manually. As confidence
 grows, drop the manual verification.
 
-### Step 6: Address the objections (ongoing)
+### Step 6: Address the objections
 
 | Objection | Response |
 |-----------|----------|

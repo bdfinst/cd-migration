@@ -175,7 +175,7 @@ Make the limit visible:
 The limit creates a forcing function. Developers must either integrate quickly or break their work
 into smaller pieces. Both outcomes are desirable.
 
-### Step 3: Break large features into small, integrable changes (weeks 2-3)
+### Step 3: Break large features into small, integrable changes
 
 The most common objection is "my feature is too big to merge in a day." The objection is true when the
 feature is designed as a monolithic unit. The fix is decomposition:
@@ -192,7 +192,7 @@ feature is designed as a monolithic unit. The fix is decomposition:
 Each technique lets developers merge daily without exposing incomplete functionality. The feature
 grows incrementally on trunk rather than in isolation on a branch.
 
-### Step 4: Adopt short-lived branches with daily integration (weeks 3-4)
+### Step 4: Adopt short-lived branches with daily integration
 
 Change the team's workflow:
 
@@ -209,7 +209,7 @@ above) or discard the branch and start smaller tomorrow.
 Pair this with the team's code review practice. Small changes enable fast reviews, and fast reviews
 enable short-lived branches. The two practices reinforce each other.
 
-### Step 5: Address the objections (weeks 3-4)
+### Step 5: Address the objections
 
 | Objection                                                      | Response                                                                                                                                                                                                                                              |
 |----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -142,7 +142,7 @@ clarity that estimation sessions often skip. Track throughput - number of storie
 sprint - rather than velocity. Compare predictability at the sprint level between the two
 approaches.
 
-### Step 3: Replace story points with size categories if estimation continues (weeks 2-3)
+### Step 3: Replace story points with size categories if estimation continues
 
 If the team is not ready to drop estimation entirely, replace point-scale estimation with three
 size categories. Use small (one to two days), medium (three to four days), and large (needs
@@ -152,14 +152,14 @@ The goal is to
 get all stories to small or medium. Size categories take five minutes to assign; point estimation
 takes hours. The predictive value is similar.
 
-### Step 4: Make refinement the investment, not estimation (ongoing)
+### Step 4: Make refinement the investment, not estimation
 
 Redirect the time saved from estimation ceremonies into story refinement: clarifying acceptance
 criteria, identifying dependencies, writing examples that define the boundaries of the work.
 Well-refined stories with clear acceptance criteria deliver more predictability than
 well-estimated stories with fuzzy criteria.
 
-### Step 5: Track forecast accuracy and improve (ongoing)
+### Step 5: Track forecast accuracy and improve
 
 Track how often sprint commitments are met, regardless of whether you are using throughput, size
 categories, or some estimation approach. Review misses in retrospective with a root-cause focus:

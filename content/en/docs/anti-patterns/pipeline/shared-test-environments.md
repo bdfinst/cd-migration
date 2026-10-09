@@ -85,15 +85,15 @@ Before changing anything, understand how teams use the shared environment today.
 
 This data establishes the cost of the current state and provides a baseline for measuring improvement.
 
-### Step 2: Adopt infrastructure as code to enable on-demand environments (weeks 2-4)
+### Step 2: Adopt infrastructure as code to enable on-demand environments
 
 Automate environment creation before attempting to isolate pipelines. Isolated environments are only practical if they can be created and destroyed quickly without manual intervention, which requires the infrastructure to be defined as code. If your team has not yet invested in infrastructure as code, start there. You cannot create a staging environment for each pipeline run if it takes two weeks to provision by hand. You can if Terraform provisions it in three minutes.
 
-### Step 3: Introduce ephemeral environments for each pipeline run (weeks 5-7)
+### Step 3: Introduce ephemeral environments for each pipeline run
 
 Configure the CI/CD pipeline to create a fresh, isolated environment at the start of each pipeline run. Run all tests in that environment, and destroy it when the run completes. Include the branch or pipeline run identifier in the environment name so the name is unique. Many cloud platforms and Kubernetes-based systems make this pattern straightforward. Each environment is a namespace or an isolated set of resources that you can create and delete in minutes.
 
-### Step 4: Migrate data setup into pipeline fixtures (weeks 6-8)
+### Step 4: Migrate data setup into pipeline fixtures
 
 Refactor tests that rely on a pre-seeded shared database so they set up and tear down their own data. This refactoring is often the most labor-intensive part of the transition. Start with the test suites that most frequently fail due to data contamination. Add setup steps that create required data at test start and teardown steps that remove it at test end. Alternatively, seed a fresh database for each pipeline run from a version-controlled seed script.
 

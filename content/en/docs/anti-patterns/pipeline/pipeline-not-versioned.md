@@ -77,7 +77,7 @@ Infrastructure-as-code principles apply to the pipeline as much as to the applic
 
 Capture the current pipeline state before making any changes. Most CI tools have an export or configuration-as-code option. For Jenkins, the Job DSL or Configuration as Code plugin can export job definitions. For other systems, document the pipeline stages, parameters, environment variables, and credentials references manually. This export becomes the starting point for the source-controlled version.
 
-### Step 2: Write the pipeline definition as code (weeks 2-3)
+### Step 2: Write the pipeline definition as code
 
 Translate the exported configuration into a pipeline-as-code format appropriate for your CI system. Jenkins uses Jenkinsfiles with declarative or scripted pipeline syntax. GitHub Actions uses YAML workflow files in `.github/workflows/`, and GitLab CI uses `.gitlab-ci.yml`. The goal is a file in the repository that completely describes the pipeline behavior. The CI system can execute that file with no additional UI configuration.
 
@@ -85,7 +85,7 @@ Translate the exported configuration into a pipeline-as-code format appropriate 
 
 Run both pipelines on the same commit and compare outputs. The code-defined pipeline should produce the same artifacts, run the same tests, and execute the same deployment steps as the UI-defined pipeline. Investigate and reconcile any differences. Do not skip this validation. Subtle behavioral differences between the old and new pipelines can introduce regressions.
 
-### Step 4: Migrate CI system configuration to infrastructure as code (weeks 4-5)
+### Step 4: Migrate CI system configuration to infrastructure as code
 
 Beyond the pipeline definition itself, the CI system has configuration: installed plugins, credential stores, agent definitions, and folder structures. Where the CI system supports it, bring that configuration under infrastructure-as-code management as well. Jenkins Configuration as Code (JCasC), Terraform providers for CI systems, or the CI system's own CLI can automate configuration management. Document what cannot be automated as explicit setup steps in a runbook committed to the repository.
 

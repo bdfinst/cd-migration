@@ -127,7 +127,7 @@ features/output, or does it measure delivery system health? In most organization
 be almost entirely output measures. Making this visible is the first step - it is hard to argue
 for change when people do not see the gap.
 
-### Step 2: Propose adding one delivery health metric per team (weeks 2-3)
+### Step 2: Propose adding one delivery health metric per team
 
 Do not attempt to overhaul the entire incentive system at once. Propose adding one delivery health
 metric to each team's OKRs. Good starting options:
@@ -139,7 +139,7 @@ metric to each team's OKRs. Good starting options:
 Even one metric creates a reason to discuss delivery system health in planning and review
 conversations. It legitimizes the investment of time in CD improvement work.
 
-### Step 3: Make prevention visible alongside recovery (weeks 2-4)
+### Step 3: Make prevention visible alongside recovery
 
 Change recognition patterns. When you recognize the on-call engineer's fix in a team meeting, also
 recognize prevention. Name the engineer who spent time the previous week improving test coverage
@@ -147,14 +147,14 @@ in the area that failed. When a deployment goes smoothly because a developer too
 verification, note it explicitly. Visible recognition of prevention behavior - not only heroic
 recovery - changes the cost-benefit calculation for investing in quality.
 
-### Step 4: Align operations and development incentives (weeks 4-8)
+### Step 4: Align operations and development incentives
 
 If development and operations are separate teams with separate OKRs, introduce a shared metric that
 both teams own. Change fail rate is a good candidate: development owns the change quality,
 operations owns the deployment process, both affect the outcome. A shared metric creates a reason
 to collaborate rather than negotiate.
 
-### Step 5: Include delivery system health in planning conversations (ongoing)
+### Step 5: Include delivery system health in planning conversations
 
 Every planning cycle, include a review of delivery health metrics alongside product metrics. "Our
 deployment frequency is monthly; we want it to be weekly" should have the same status in a

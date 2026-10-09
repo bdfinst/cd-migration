@@ -149,7 +149,7 @@ Before automating anything, capture the current state of each environment:
 
 This audit surfaces the drift. Most teams are surprised by how many accidental differences exist.
 
-### Step 2: Define one environment specification (weeks 2-3)
+### Step 2: Define one environment specification
 
 Choose an infrastructure-as-code tool (Terraform, Pulumi, CloudFormation, Ansible, or similar)
 and write a specification for one environment. Start with the environment you understand best -

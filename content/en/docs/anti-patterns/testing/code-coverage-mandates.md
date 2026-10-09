@@ -128,7 +128,7 @@ The floor prevents backsliding without forcing developers to write pointless tes
 arbitrary number. Coverage can only go up, but it goes up because developers are writing real
 tests for real changes.
 
-### Step 3: Introduce mutation testing on high-risk code (weeks 3-4)
+### Step 3: Introduce mutation testing on high-risk code
 
 Mutation testing measures test effectiveness, not test coverage. A mutation testing tool
 modifies your code in small ways and checks whether your tests detect the change. Typical
@@ -139,7 +139,7 @@ Start with the modules that have the highest defect rate. Run mutation testing o
 and use the surviving mutants to identify where tests are weak. Write targeted tests to kill
 surviving mutants. Targeted tests focus testing effort where it matters most.
 
-### Step 4: Shift the metric to defect detection (weeks 4-6)
+### Step 4: Shift the metric to defect detection
 
 Replace coverage as the primary quality metric with metrics that measure outcomes:
 

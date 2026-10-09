@@ -173,7 +173,7 @@ The developer picks up the highest-priority available item, not the item that ma
 specialty. The choice is intentional. It spreads knowledge, reduces bus factor, and keeps the team
 focused on priority rather than comfort.
 
-### Step 4: Address the discomfort (weeks 3-4)
+### Step 4: Address the discomfort
 
 Expect these objections and plan for them:
 
