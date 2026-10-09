@@ -129,7 +129,7 @@ delivery.]
 ### Depth per section
 - **What this looks like:** 2-3 paragraphs plus variations. Enough detail that a reader says "that's us."
 - **Why this is a problem subsections:** 2-4 paragraphs each. Each subsection should have a clear mechanism (how the anti-pattern causes this effect) and a contrast with the healthier alternative.
-- **How to fix it steps:** 3-6 ordered steps. Step headings must not include durations such as week or month labels. Concrete enough to start Monday morning.
+- **How to fix it steps:** 3-6 ordered steps. Step headings must not include timeline labels such as "(week 1)", "(weeks 2-4)", "(month 2+)", or "(ongoing)". Cadence labels for a repeating action, such as "(monthly)", and "(Optional)" are allowed. Concrete enough to start Monday morning.
 - **Measuring progress:** 4-6 metrics. Link to reference metric pages where one exists.
 - **Related content:** 3-5 links to existing guide pages.
 
@@ -144,7 +144,7 @@ delivery.]
 - Optional extra subsections go between "delivery timelines" and "Impact on continuous delivery"
 - "Impact on continuous delivery" is always the final subsection
 - Each subsection contrasts the anti-pattern with the healthier alternative
-- "How to fix it" uses ordered steps with no timelines
+- "How to fix it" uses ordered steps with no timeline labels in step headings (see Depth per section)
 
 ## Quality Impact Levels
 

@@ -129,7 +129,7 @@ These rules are enforced on every page:
 1. Front matter with title, description, tags
 2. What this looks like (observable symptoms)
 3. Why this is a problem (sub-sections per impact)
-4. How to fix it (numbered steps with objection-handling table)
+4. How to fix it (ordered steps, no timeline labels in headings, with objection-handling table)
 5. Measuring progress (specific metrics)
 6. Related content
 

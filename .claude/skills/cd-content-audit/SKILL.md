@@ -42,7 +42,7 @@ Required headings use sentence case and must match the forms below exactly. Repo
   - `### It makes delivery timelines unpredictable`
   - Zero or more optional H3 subsections
   - `### Impact on continuous delivery` (must be last H3 under this H2)
-- `## How to fix it` exists with at least one `### Step N:` subsection; step headings must not include durations
+- `## How to fix it` exists with at least one `### Step N:` subsection. Step headings must not include timeline labels such as "(week 1)", "(weeks 2-4)", "(month 2+)", or "(ongoing)". Cadence labels for a repeating action, such as "(monthly)", and "(Optional)" are allowed.
 - `## Measuring progress` exists and contains a table
 - `## Related content` exists and contains at least one link
 - `{{% pageinfo %}}` block exists after front matter
@@ -56,8 +56,9 @@ Required headings use sentence case and must match the forms below exactly. Repo
 **Guide pages:**
 - `{{% pageinfo %}}` block exists with phase indicator
 - At least 3 H2 sections exist
+- `### Step N:` headings must not include timeline labels (same rule as anti-pattern pages)
 
-**Severity:** Missing required sections are `ERROR`. Missing optional elements are `WARNING`.
+**Severity:** Missing required sections are `ERROR`. Missing optional elements are `WARNING`. A timeline label in a step heading is a `WARNING` structure violation.
 
 ### 2. Front matter validation
 

@@ -91,7 +91,7 @@ guide pages. Optional - include when dependencies are important.]
 
 ## Getting started: a tactical guide
 
-[Ordered steps for adopting the practice. Step headings must not include durations. Similar to "How to fix it"
+[Ordered steps for adopting the practice. Step headings must not include timeline labels, the same rule as anti-pattern pages. Similar to "How to fix it"
 in anti-pattern pages but framed positively as adoption rather than correction.]
 
 ### Step 1: [Action]
