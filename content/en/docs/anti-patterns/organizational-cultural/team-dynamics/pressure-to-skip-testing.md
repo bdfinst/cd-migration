@@ -167,13 +167,13 @@ Prevent further erosion with an automated guardrail:
 
 1. Measure current test coverage. Whatever it is - 30%, 50%, 70% - that is the floor.
 2. Configure the pipeline to fail if a change reduces coverage below the floor.
-3. Ratchet the floor up by 1-2 percentage points each month.
+3. Each time measured coverage stays at least 1-2 percentage points above the floor across several merges, ratchet the floor up to match.
 
 The floor makes the cost of skipping tests immediate and visible. A developer who skips tests
 will see the pipeline fail. The conversation shifts from "we'll add tests later" to "the pipeline
 won't let us merge without tests."
 
-### Step 4: Recover coverage in high-risk areas (weeks 3-6)
+### Step 4: Recover coverage in high-risk areas
 
 You cannot test everything retroactively. Prioritize the areas that matter most:
 
@@ -184,7 +184,7 @@ You cannot test everything retroactively. Prioritize the areas that matter most:
 3. Allocate a fixed percentage of each sprint (for example, 20%) to writing tests for existing code.
    This is not optional and not deferrable.
 
-### Step 5: Address the management pressure directly (ongoing)
+### Step 5: Address the management pressure directly
 
 The root cause is a manager who sees testing as optional. This requires a direct conversation:
 

@@ -170,9 +170,9 @@ one, choose an action:
 - Delete it if another test already covers the behavior.
 
 Flaky tests erode confidence and train developers to ignore failures. Target zero flaky tests
-in the gating suite by end of week.
+in the gating suite before moving to the next step.
 
-### Step 2: Build component tests for your highest-risk components (weeks 2-4)
+### Step 2: Build component tests for your highest-risk components
 
 Pick the components with the highest defect rate or the most E2E test coverage. For each one:
 
@@ -192,7 +192,7 @@ Pick the components with the highest defect rate or the most E2E test coverage. 
 As component tests come online, remove the E2E tests that covered the same behavior. Each
 replacement makes the suite faster and more reliable.
 
-### Step 3: Add unit tests where complexity demands them (weeks 2-4)
+### Step 3: Add unit tests where complexity demands them
 
 While building out component tests, identify the high-complexity logic within each component -
 discount calculations, eligibility rules, parsing, validation. Write unit tests for these using
@@ -202,7 +202,7 @@ Test public APIs, not private methods. If a refactoring that preserves behavior 
 tests, the tests are coupled to implementation details. Move that coverage up to a functional
 test.
 
-### Step 4: Reduce E2E to critical-path smoke tests (weeks 4-6)
+### Step 4: Reduce E2E to critical-path smoke tests
 
 With component tests covering component behavior, most E2E tests are now redundant. For each
 remaining E2E test, ask: "Does this test a scenario that component tests with test doubles
@@ -213,7 +213,7 @@ environment. On those paths, you need to verify the interaction between independ
 systems. Horizontal E2E tests that span multiple teams should never block the pipeline due to
 their failure surface area. Move surviving E2E tests to a post-deploy verification suite.
 
-### Step 5: Set the standard for new code (ongoing)
+### Step 5: Set the standard for new code
 
 Every change gets tests. Establish the team norm for what kind:
 

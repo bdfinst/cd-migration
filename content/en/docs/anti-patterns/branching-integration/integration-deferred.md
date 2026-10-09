@@ -194,7 +194,7 @@ Each problem is worth solving. See
 [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) for techniques to break large work
 into daily integrations.
 
-### Step 4: Make the build fast enough to provide useful feedback (weeks 2-3)
+### Step 4: Make the build fast enough to provide useful feedback
 
 A build that takes 45 minutes is a build that developers will not wait for. Target under 10
 minutes for the primary feedback loop:
@@ -208,7 +208,7 @@ The goal is a fast feedback loop: the developer pushes, waits a few minutes, and
 their change works with everything else. If they have to wait 30 minutes, they will context-switch,
 and the feedback loop breaks.
 
-### Step 5: Address the objections (weeks 3-4)
+### Step 5: Address the objections
 
 | Objection | Response |
 |-----------|----------|

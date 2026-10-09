@@ -177,7 +177,7 @@ Before changing any code, define where boundaries should be:
 Defining boundaries is a design exercise, not an implementation. The output is a diagram showing target module
 boundaries with their interfaces.
 
-### Step 3: Enforce one boundary (weeks 3-6)
+### Step 3: Enforce one boundary
 
 Pick the boundary with the best ratio of pain-reduced to effort-required and enforce it in code:
 
@@ -207,7 +207,7 @@ Once a boundary exists, use it to scope testing:
 Scoped testing immediately reduces pipeline duration for changes inside the bounded module. Developers get
 faster feedback. The pipeline is no longer "run everything for every change."
 
-### Step 5: Repeat for the next boundary (ongoing)
+### Step 5: Repeat for the next boundary
 
 Each new boundary reduces blast radius, improves test scoping, and enables more independent
 ownership. Prioritize by pain:

@@ -165,7 +165,7 @@ Addressing the underlying problem allows the train schedule to be relaxed. Relax
 schedule without addressing the underlying problem will re-create the pressure that
 led to the schedule in the first place.
 
-### Step 3: Decouple service deployments (weeks 2-4)
+### Step 3: Decouple service deployments
 
 If the release train exists to coordinate deployment of multiple services, the goal is to
 make each service deployable independently:
@@ -179,7 +179,7 @@ make each service deployable independently:
 This decoupling work is the highest-value investment for teams running multi-service release
 trains. Once services can deploy independently, coordinated release windows are unnecessary.
 
-### Step 4: Automate the deployment process (weeks 2-4)
+### Step 4: Automate the deployment process
 
 Automate every manual step in the deployment process. Manual processes require scheduling
 because they require human attention and coordination; automated deployments can run at any
@@ -194,7 +194,7 @@ The release train schedule exists partly because deployment feels like an event 
 planning and presence. Automated deployment with automated rollback makes deployment routine.
 Routine processes do not need special windows.
 
-### Step 5: Introduce feature flags for high-risk or coordinated changes (weeks 3-6)
+### Step 5: Introduce feature flags for high-risk or coordinated changes
 
 Use feature flags to decouple deployment from release for changes that genuinely need
 coordination. For example, consider a new API endpoint and the marketing campaign that
@@ -209,7 +209,7 @@ announces it:
 This pattern allows teams to deploy continuously while still coordinating user-visible releases
 for business reasons. The code is always in production - only the activation is scheduled.
 
-### Step 6: Set a deployment frequency target and track it (ongoing)
+### Step 6: Set a deployment frequency target and track it
 
 Establish a team target for deployment frequency and track it:
 

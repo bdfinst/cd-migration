@@ -168,7 +168,7 @@ Present this data to the stakeholders who maintain the deployment window policy.
 the data shows that deployment windows do not reduce incidents - they concentrate them and
 make them harder to diagnose.
 
-### Step 2: Make the deployment process safe enough to run during business hours (weeks 1-3)
+### Step 2: Make the deployment process safe enough to run during business hours
 
 Reduce deployment risk so that the 2 AM window becomes unnecessary. The window exists because
 deployments are believed to be risky enough to require low traffic and dedicated attention -
@@ -183,7 +183,7 @@ address the risk directly:
 When deployment is automated, health-checked, and limited to small blast radius, the argument
 that it can only happen at 2 AM with low traffic evaporates.
 
-### Step 3: Reduce batch size by increasing deployment frequency (weeks 2-4)
+### Step 3: Reduce batch size by increasing deployment frequency
 
 Deploy more frequently to reduce batch size - batch size is the greatest source of deployment
 risk:
@@ -198,7 +198,7 @@ risk:
 Track change fail rate and incident rate at each frequency increase. The data will show
 that higher frequency with smaller batches produces fewer incidents, not more.
 
-### Step 4: Establish a path for urgent changes outside the window (weeks 2-4)
+### Step 4: Establish a path for urgent changes outside the window
 
 Replace the bureaucratic emergency process with a technical solution. The emergency process
 exists because the deployment window policy is recognized as inflexible for genuine urgencies
@@ -213,7 +213,7 @@ but the overhead discourages its use:
 3. Track out-of-window deployments and their outcomes. Use this data to expand the criteria
    as confidence grows.
 
-### Step 5: Pilot window-free deployment for a low-risk service (weeks 3-6)
+### Step 5: Pilot window-free deployment for a low-risk service
 
 Choose a service that:
 
@@ -223,8 +223,8 @@ Choose a service that:
 - Has monitoring in place.
 
 Remove the deployment window constraint for this service. Deploy on demand whenever changes
-are ready. Track the results for two months: incident rate, time to detect failures, time
-to restore service. Present the data.
+are ready. Track incident rate, time to detect failures, and time to restore service until you
+have enough deployments to compare against the windowed process. Present the data.
 
 This pilot provides concrete evidence that deployment windows are not a safety mechanism.
 They are a risk transfer mechanism that moves risk from deployment timing to deployment

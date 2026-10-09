@@ -120,7 +120,7 @@ service is written with the same flaw.
 
 ## How to fix it
 
-### Step 1: Instrument the current services for observability (weeks 1-3)
+### Step 1: Instrument the current services for observability
 
 Before changing any ownership model, make production behavior visible to the development team.
 Add structured logging with a correlation ID that traces requests through the system. Add metrics
@@ -136,7 +136,7 @@ or involving operations. This is the minimum viable feedback loop: the team can 
 happening in the system they built. Even if they are not yet on call, direct access to production
 observability changes the development team's relationship to production behavior.
 
-### Step 3: Introduce a rotating "production week" responsibility (weeks 3-6)
+### Step 3: Introduce a rotating "production week" responsibility
 
 Before full on-call rotation, introduce a gentler entry point: one developer per week is the
 designated production liaison. They monitor the service during business hours, triage incoming
@@ -144,7 +144,7 @@ incident tickets from operations, and investigate root causes. They are the firs
 when operations escalates. This builds the team's operational knowledge without immediately adding
 after-hours pager responsibility.
 
-### Step 4: Establish a joint incident response practice (weeks 4-8)
+### Step 4: Establish a joint incident response practice
 
 For the next three significant incidents, require both the development team's production-week
 rotation and the operations team's on-call engineer to work the incident together. The goal is
@@ -152,7 +152,7 @@ mutual knowledge transfer: operations learns how the application behaves, develo
 operations sees during an incident. Write joint runbooks that capture both operational response
 steps and development-level investigation steps.
 
-### Step 5: Transfer on-call ownership incrementally (months 2-4)
+### Step 5: Transfer on-call ownership incrementally
 
 Once the development team has operational context - observability tooling, runbooks, incident
 experience - formalize on-call rotation. The development team is paged for application-level
@@ -160,7 +160,7 @@ incidents (errors, performance regressions, business logic failures). The operat
 paged for infrastructure-level incidents (hardware, network, platform). Both teams are in the
 same incident channel. The boundary is explicit and agreed upon.
 
-### Step 6: Close the feedback loop into development practice (ongoing)
+### Step 6: Close the feedback loop into development practice
 
 Every significant production incident should produce at least one change to the development
 process. Examples include a new automated test that would have caught the defect, an improved

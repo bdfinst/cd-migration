@@ -198,7 +198,7 @@ This is a better sprint demo. Stakeholders see and interact with code that is al
 not code that is still staged for deployment. "We are about to ship this" becomes "this is
 already shipped."
 
-### Step 5: Address emergency patch processes (weeks 2-4)
+### Step 5: Address emergency patch processes
 
 If the team has a separate hot patch process, examine it:
 
@@ -208,7 +208,7 @@ If the team has a separate hot patch process, examine it:
    ensure those changes use the same automated pipeline as normal deployments. Emergency
    deployments should be faster normal deployments, not a different process.
 
-### Step 6: Align stakeholder reporting to continuous delivery reality (weeks 3-6)
+### Step 6: Align stakeholder reporting to continuous delivery reality
 
 Update stakeholder communication so it reflects continuous delivery rather than sprint
 boundaries:

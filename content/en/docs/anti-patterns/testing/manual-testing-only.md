@@ -126,8 +126,8 @@ Before writing a single test, make it trivial to run tests:
    command (for example, `npm test`, `pytest`, `mvn test`).
 4. Add the test command to the CI pipeline so that tests run on every push.
 
-The goal for week one is not coverage. It is infrastructure: a working test runner in the pipeline
-that the team can build on.
+The goal of this first step is not coverage. It is infrastructure: a working test runner in the
+pipeline that the team can build on.
 
 ### Step 2: Write tests for every new change
 
@@ -140,7 +140,7 @@ This rule is more important than retroactive coverage. New code enters the codeb
 tested portion grows with every commit. After a few months, the most actively changed code has
 coverage, which is exactly where coverage matters most.
 
-### Step 3: Target high-change areas for retroactive coverage (weeks 3-6)
+### Step 3: Target high-change areas for retroactive coverage
 
 Use your version control history to find the files that change most often. These are the files
 where bugs are most likely and where tests provide the most value:
@@ -152,7 +152,7 @@ where bugs are most likely and where tests provide the most value:
    the untestable code and test the adapter. That approach is the Strangler Fig pattern applied
    to testing.
 
-### Step 4: Make untestable code testable incrementally (weeks 4-8)
+### Step 4: Make untestable code testable incrementally
 
 If the codebase resists testing, introduce seams one at a time:
 
@@ -173,7 +173,7 @@ pipeline:
 
 1. Measure current coverage. Say it is 15%.
 2. Set the pipeline to fail if coverage drops below 15%.
-3. Every two weeks, raise the floor by 2-5 percentage points.
+3. Each time measured coverage stays at least 2-5 percentage points above the floor across several merges, raise the floor to match.
 
 The floor prevents backsliding. The ratchet ensures progress. The team does not need to hit 90%
 coverage - they need to ensure that coverage only goes up.

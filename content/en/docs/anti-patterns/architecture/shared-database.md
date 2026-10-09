@@ -168,7 +168,7 @@ Pick the domain with the cleanest data ownership to pilot the migration. The cri
 A domain like "notification preferences" or "user settings" is often a good candidate. A domain
 like "orders" that is read by everything is a poor starting point.
 
-### Step 3: Build the API for the chosen domain (weeks 2-4)
+### Step 3: Build the API for the chosen domain
 
 Before removing any direct database access, add an API endpoint that provides the same data.
 
@@ -182,7 +182,7 @@ Before removing any direct database access, add an API endpoint that provides th
 Running the API alongside direct access is the safest phase. If the API has a bug, consumers are still using the database directly.
 No service is broken.
 
-### Step 4: Migrate consumers one at a time (weeks 4-8)
+### Step 4: Migrate consumers one at a time
 
 Switch consuming services from direct database queries to the new API, one service at a time.
 
@@ -210,7 +210,7 @@ Removing access grants is the only enforcement that actually holds over time. A 
 "don't access other services' databases" will be violated under pressure. Removing the credentials
 makes it a technical impossibility.
 
-### Step 6: Repeat for the next domain (ongoing)
+### Step 6: Repeat for the next domain
 
 Apply the same pattern to the next domain, working from easiest to hardest. Domains with a single
 clear writer and few readers migrate quickly. Domains that are written by multiple services require

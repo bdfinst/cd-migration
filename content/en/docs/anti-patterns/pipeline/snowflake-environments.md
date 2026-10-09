@@ -149,7 +149,7 @@ Before automating anything, capture the current state of each environment:
 
 This audit surfaces the drift. Most teams are surprised by how many accidental differences exist.
 
-### Step 2: Define one environment specification (weeks 2-3)
+### Step 2: Define one environment specification
 
 Choose an infrastructure-as-code tool (Terraform, Pulumi, CloudFormation, Ansible, or similar)
 and write a specification for one environment. Start with the environment you understand best -
@@ -201,8 +201,8 @@ pipeline run overwrites them.
 The ultimate goal is that any environment can be destroyed and recreated in minutes with no data
 loss and no human intervention:
 
-1. Practice destroying and recreating staging weekly. The practice verifies that the
-   specification stays accurate and builds team confidence.
+1. Practice destroying and recreating staging after every specification change.
+   The practice verifies that the specification stays accurate and builds team confidence.
 2. Provision ephemeral environments for feature branches or pull requests. Let the pipeline
    create and destroy them automatically.
 3. If recreating production is not feasible yet (stateful systems, licensing), ensure you can

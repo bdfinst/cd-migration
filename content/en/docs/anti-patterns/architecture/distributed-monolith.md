@@ -140,7 +140,7 @@ service can handle its business operations without synchronous calls to other do
 Cross-domain communication happens through asynchronous events or well-versioned APIs with
 backward compatibility.
 
-### Step 3: Consolidate or redraw one boundary (weeks 3-8)
+### Step 3: Consolidate or redraw one boundary
 
 Pick the cluster with the worst coupling and address it:
 
@@ -151,7 +151,7 @@ Pick the cluster with the worst coupling and address it:
   lines. Move the scattered business logic into the service that owns that domain. Extract shared
   database tables into the owning service and replace direct table access with API calls.
 
-### Step 4: Break synchronous chains (weeks 6+)
+### Step 4: Break synchronous chains
 
 For cross-domain communication that remains after boundary correction:
 
@@ -162,7 +162,7 @@ For cross-domain communication that remains after boundary correction:
   service can deploy on its own schedule.
 - Add circuit breakers and timeouts so that a failure in one service does not cascade to callers.
 
-### Step 5: Eliminate the shared database (weeks 8+)
+### Step 5: Eliminate the shared database
 
 Each service should own its data. If two services need the same data, one of them owns the table
 and the other accesses it through an API. Shared database access is the most common source of

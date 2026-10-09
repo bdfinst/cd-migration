@@ -92,7 +92,7 @@ Expect pushback and address it directly:
 | "We don't have time to measure this." | You already spend the time on the symptoms. The measurement is about making that cost visible so it can be managed. Block 4 hours for one sprint to capture the data. |
 | "Product won't accept reduced feature velocity." | Present the data showing that deferred improvement is already reducing feature velocity. The choice is not "features vs. improvement" - it is "slow features now with no improvement" versus "slightly slower features now with accelerating velocity later." |
 
-### Step 2: Protect a regular improvement allocation (weeks 2-4)
+### Step 2: Protect a regular improvement allocation
 
 1. Negotiate a standing allocation of improvement time: the standard recommendation is 20% of team capacity per sprint, but even 10% is better than zero. This is not a one-time improvement sprint - it is a permanent budget.
 2. Add improvement items to the sprint backlog alongside features with the same status as user stories: estimated, prioritized, owned, and reviewed at the sprint retrospective.
@@ -107,7 +107,7 @@ Expect pushback and address it directly:
 | "20% sounds like a lot. Can we start smaller?" | Yes. Start with 10% and measure the impact. As velocity improves, the argument for maintaining or expanding the allocation makes itself. |
 | "The improvement backlog is too large to know where to start." | Prioritize by impact on the most painful daily friction: the slow test that every developer runs ten times a day, the manual step that every deployment requires, the alert that fires every night. |
 
-### Step 3: Make improvement outcomes visible and accountable (weeks 4-8)
+### Step 3: Make improvement outcomes visible and accountable
 
 1. Set quarterly improvement goals with measurable outcomes: "Test suite run time below 10 minutes," "Zero manual deployment steps for service X," "Change fail rate below 5%."
 2. Report pipeline and delivery metrics to stakeholders monthly: build duration, change fail rate, deployment frequency. Make the connection between improvement investment and metric improvement explicit.

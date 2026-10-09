@@ -163,7 +163,7 @@ excluded from releases.
 Document the findings. Share them with the team and get agreement on which root cause to address
 first.
 
-### Step 2: Introduce feature flags for incomplete work (weeks 2-4)
+### Step 2: Introduce feature flags for incomplete work
 
 The most common reason commits are held back is that the feature is not ready for users. Feature
 flags decouple deployment from release. Incomplete work can merge to trunk and be deployed to
@@ -179,7 +179,7 @@ production while remaining invisible to users.
 Once the team sees that incomplete features do not require cherry-picking, the pull toward feature
 flags grows naturally. Each held-back commit is a candidate for the flag treatment.
 
-### Step 3: Strengthen the automated test suite (weeks 2-5)
+### Step 3: Strengthen the automated test suite
 
 Commits are also held back because of uncertainty about their safety. That uncertainty is a
 signal that the automated test suite is not providing sufficient confidence.
@@ -207,7 +207,7 @@ review work in progress rather than waiting for a release candidate. Most find e
 not harder, because
 they can give feedback while the developer is still working rather than after everything is frozen.
 
-### Step 5: Deploy trunk directly on a fixed cadence (weeks 4-6)
+### Step 5: Deploy trunk directly on a fixed cadence
 
 Once the holds are addressed - features flagged, tests strengthened, approvals moved earlier - run
 an experiment: deploy trunk directly without a cherry-pick step.
