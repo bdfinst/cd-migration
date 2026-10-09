@@ -7,6 +7,14 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-09 - Tokenomics: sub-agent context
+
+Corrected how [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}) describes multi-agent token costs (#16):
+
+- Clarified that output quality declines steadily as the context window fills.
+- Sub-agents start with a fresh context and return a summary; oversized context bundles are an orchestrator design mistake, not inherent to sub-agents.
+- Added agent teams and their token cost, plus a new [Agent team]({{< relref "/docs/agentic-cd/glossary#agent-team" >}}) glossary entry.
+
 ## 2026-10-08 - Environment branches
 
 Added guidance on long-lived branches per environment (#21):

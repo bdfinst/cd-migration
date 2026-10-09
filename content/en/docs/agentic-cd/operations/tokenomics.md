@@ -26,7 +26,9 @@ A token is roughly three-quarters of a word in English. Billing, latency, and co
 
 Single-turn interactions have predictable, bounded token usage. Agentic systems do not.
 
-[Context]({{< relref "/docs/reference/glossary#context-llm" >}}) grows across [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) steps. [Sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) receive oversized context bundles containing everything the orchestrator knows, not only what the sub-agent needs. Retries and branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once. Long-running agent sessions accumulate conversation history until the context window fills or performance degrades.
+[Context]({{< relref "/docs/reference/glossary#context-llm" >}}) grows across [orchestrator]({{< relref "/docs/reference/glossary#orchestrator" >}}) steps. Long-running agent sessions accumulate conversation history, and output quality declines as the context window fills: the model attends less reliably to earlier instructions and relevant details as more tokens compete for attention. Eventually the window runs out entirely. Retries and parallel branches multiply consumption - a failed step that retries three times costs four times the tokens of a step that succeeds once.
+
+Delegating to [sub-agents]({{< relref "/docs/reference/glossary#sub-agent" >}}) keeps the orchestrator's context small, because each sub-agent starts with a fresh context and returns only a summary, but each one spends its own tokens. The orchestrator controls how much context it passes to each sub-agent: passing its full accumulated context, rather than only what the task needs, is a common and expensive mistake. [Agent teams]({{< relref "/docs/reference/glossary#agent-team" >}}) cost more again: each teammate is an independent session, so token use grows with team size and inter-agent messaging.
 
 ## Optimization strategies
 

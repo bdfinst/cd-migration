@@ -86,6 +86,20 @@ Referenced in:
 [The Agentic Development Learning Curve]({{< relref "/docs/agentic-cd/getting-started/learning-curve" >}}),
 [Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
 
+### Agent team
+
+A group of independent [agents](#agent-ai) that work in parallel on related tasks and coordinate
+with each other directly, typically through messaging and a shared task list, rather than only
+reporting back to a single [orchestrator](#orchestrator). Each teammate runs in its own context
+window and receives a task prompt, not the lead agent's conversation history. Because every
+teammate is a separate session, token use grows with team size and with the volume of messages
+between agents. Agent teams fit work that benefits from parallel exploration or debate; for
+focused tasks where only the result matters, [sub-agents](#sub-agent) cost less.
+See [Tokenomics]({{< relref "/docs/agentic-cd/operations/tokenomics" >}}).
+
+Referenced in:
+[Tokenomics: Optimizing Token Usage in Agent Architecture]({{< relref "/docs/agentic-cd/operations/tokenomics" >}})
+
 ### AI enablement properties
 
 The five ways AI removes a dependency, each ending a specific wait:
