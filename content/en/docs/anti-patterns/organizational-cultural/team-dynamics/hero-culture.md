@@ -93,7 +93,7 @@ Expect pushback and address it directly:
 
 1. Require pair programming or pairing on all incidents and deployments for the next sprint. Make the hero the driver and a different team member the navigator each time.
 2. Create runbooks collaboratively. After each incident, the hero and at least one other team member co-author the post-mortem. Together they write the runbook for the class of problem, not only the instance.
-3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero for two weeks, then take primary ownership with the hero as backup.
+3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero until they can handle the system on their own, then take primary ownership with the hero as backup.
 4. Add a "could someone else do this?" criterion to the definition of done. If a feature or operational change requires the hero to deploy or maintain it, it is not done.
 5. Schedule explicit knowledge transfer sessions - not all-hands training, but targeted 30-minute sessions where the hero explains one specific thing to two or three team members.
 

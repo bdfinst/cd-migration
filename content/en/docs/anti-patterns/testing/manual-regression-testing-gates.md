@@ -195,7 +195,7 @@ developer knows within minutes - not weeks.
 
 ### Step 4: Shrink the manual suite as automation grows
 
-Each week, pick another batch of manual test cases and either automate or retire them:
+Keep picking batches of manual test cases and either automate or retire them:
 
 - **Automate** cases where the behavior is stable and testable at a lower level.
 - **Retire** cases that are redundant with existing automated tests or that test behavior that no

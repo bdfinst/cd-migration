@@ -152,7 +152,7 @@ participate in regular scope conversations are less surprised than those who rec
 
 Work with product ownership to decompose large features into pieces that can ship and provide value
 independently. Features designed as all-or-nothing deliveries are the root cause of most distant
-date pressure. Suppose the first slice ships in week four. The conversation shifts from "are we on
+date pressure. Suppose the first slice ships long before the full feature would have. The conversation shifts from "are we on
 track for the full feature in Q3?" to "here is what users have now; what should we build next?"
 
 ### Step 5: Build the history that enables better forecasts
