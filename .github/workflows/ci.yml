@@ -37,6 +37,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Check data integrity
+        run: npm run test:data
+
       - name: Build site
         run: npm run build
 

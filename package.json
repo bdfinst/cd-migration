@@ -37,7 +37,7 @@
     "style-check": "bash scripts/check-style.sh",
     "test:seo": "bash scripts/check-seo-output.sh",
     "test": "npm run lint && npm run test:data && npm run link-check:local",
-    "test:data": "playwright test tests/triage-data.spec.js tests/finder-data.spec.js",
+    "test:data": "playwright test tests/content-pages.spec.js tests/triage-data.spec.js tests/finder-data.spec.js",
     "sync-versions": "bash scripts/sync-versions.sh",
     "update": "npx npm-check-updates -u && npm install && hugo mod get -u ./... && hugo mod tidy && npm run sync-versions"
   },
