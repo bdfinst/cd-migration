@@ -105,7 +105,7 @@ Expect pushback and address it directly:
 
 ### Step 3: Transition the deployment team to a higher-value role
 
-1. Pilot the automated SoD controls with one team or one service. Run the automated pipeline alongside the current deployment team process until it has covered a representative range of changes, demonstrating that the controls are equivalent or better.
+1. Pilot the automated SoD controls with one team or one service. Run the automated pipeline alongside the current deployment team process until the pipeline has covered a representative range of changes, demonstrating that the controls are equivalent or better.
 2. Work with the compliance team to formally accept the automated controls as the SoD mechanism, retiring the deployment team's approval role for that service.
 3. Expand to additional services as the compliance team gains confidence in the automated controls.
 4. Redirect the deployment team's effort toward platform engineering, reliability work, and developer experience - activities that add more value than running deployment runbooks.
