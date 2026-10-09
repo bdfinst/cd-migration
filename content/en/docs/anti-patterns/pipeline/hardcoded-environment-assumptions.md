@@ -273,3 +273,4 @@ application logic (as opposed to configuration loading):
 - [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}) - Proper feature flags replace environment-name feature toggles
 - [Everything as Code]({{< relref "/docs/foundations/everything-as-code" >}}) - Configuration belongs in version control, not in conditional code
 - [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}) - A deterministic pipeline requires the same code to run in every environment
+- [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}) - A separate anti-pattern: long-lived git branches per environment, not environment checks in code

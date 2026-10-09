@@ -258,3 +258,4 @@ Use these questions in a retrospective to explore how this anti-pattern affects 
 - [Work Decomposition]({{< relref "/docs/foundations/work-decomposition" >}}) - Techniques for breaking features into small, mergeable increments
 - [PRs Waiting for Review]({{< relref "/docs/symptoms/flow/integration/prs-waiting-for-review" >}}) - Slow reviews are a common reason branches live too long
 - [Process & Deployment Defects]({{< relref "/docs/reference/defect-sources/process-and-deployment" >}}) - how large batches and long-lived branches generate defects at merge time.
+- [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}) - Long-lived branches for each environment, where merging is the deployment

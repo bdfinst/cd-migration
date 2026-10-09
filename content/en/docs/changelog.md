@@ -7,6 +7,15 @@ description: >
   Notable updates to the CD migration guide.
 ---
 
+## 2026-10-08 - Environment branches
+
+Added guidance on long-lived branches per environment (#21):
+
+- New anti-pattern: [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}), where merging into a branch is the deployment and every merge produces an untested combination of code and config.
+- New symptom: [Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}), for teams that cannot say which changes are deployed where.
+- Linked both pages from related symptoms and anti-patterns so readers can reach them from neighbouring problems.
+- Added both pages to the symptom finder, anti-pattern finder, and Team Health Check, and added Environment Branches to two triage results.
+
 ## 2026-10-07 - Style rollout phase 3
 
 Phase 3 of the style rollout: rewrote all content for sentence length, paragraph length, voice, precision, and consistent glossary terms (#99, #100, #101, #102, #103, #104, #105, #106, #107, #108, #109, #110). Long sentences and paragraphs are split, passive wording is now active and addressed to "you", and unclear "it" and "this" references name their noun.

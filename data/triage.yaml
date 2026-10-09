@@ -483,6 +483,8 @@ results:
         label: "Snowflake Environments"
       - path: /docs/anti-patterns/pipeline/hardcoded-environment-assumptions
         label: "Hardcoded Environment Assumptions"
+      - path: /docs/anti-patterns/branching-integration/environment-branches
+        label: "Environment Branches"
     solutions:
       - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"
@@ -920,6 +922,8 @@ results:
         label: "No Environment Parity"
       - path: /docs/anti-patterns/pipeline/snowflake-environments
         label: "Snowflake Environments"
+      - path: /docs/anti-patterns/branching-integration/environment-branches
+        label: "Environment Branches"
     solutions:
       - path: /docs/pipeline/production-like-environments
         label: "Production-Like Environments"

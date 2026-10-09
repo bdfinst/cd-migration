@@ -24,6 +24,7 @@ manifest as missed commitments, quality problems, and retention risk.
 
 - **[Production Issues Discovered by Customers]({{< relref "/docs/symptoms/visibility/production-issues-found-by-customers" >}})** - Customers report bugs before the team knows about them. Each incident erodes trust and creates unplanned support work.
 - **[Staging Passes but Production Fails]({{< relref "/docs/symptoms/deployment/staging-passes-production-fails" >}})** - The team followed the process - tests passed, staging looked good - but production still broke. The process gives false confidence.
+- **[Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}})** - Nobody can say which changes are in which environment, so test results do not predict what production will do.
 - **[High Coverage but Tests Miss Defects]({{< relref "/docs/symptoms/testing/high-coverage-ineffective-tests" >}})** - The team reports strong test coverage numbers, but defects keep reaching production. The metric is not measuring what it appears to measure.
 - **[Production Problems Are Discovered Hours or Days Late]({{< relref "/docs/symptoms/visibility/slow-detection" >}})** - The team does not detect problems until the blast radius has grown. The mean time to detect is hours or days, not minutes.
 - **[New Releases Introduce Regressions]({{< relref "/docs/symptoms/deployment/regressions-on-release" >}})** - Each release breaks something that worked before because testing happens too late in the process.

@@ -60,6 +60,9 @@
     - id: merge-freeze
       text: "The team stops merging code for a period before each release to stabilize"
       anti_patterns: [long-lived-feature-branches, sprint-boundary-deployments]
+    - id: env-branches
+      text: "Each environment deploys from its own long-lived branch, and merging to that branch is the deployment"
+      anti_patterns: [environment-branches]
     - id: slow-feedback
       text: "Developers wait 30 minutes or more to learn whether a pushed change passed CI"
       anti_patterns: [inverted-test-pyramid, shared-test-environments]

@@ -82,6 +82,9 @@ same source - means each artifact is a different build. Different builds can pro
 different results due to non-deterministic build processes, updated dependencies, or
 changed build environments.
 
+Keeping a long-lived git branch for each environment is a common way teams end up here, because
+every merge triggers another build; see [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}).
+
 ### SNAPSHOT or mutable versions
 
 Some version identifiers are mutable: `-SNAPSHOT` (Maven), `latest` (container images), and

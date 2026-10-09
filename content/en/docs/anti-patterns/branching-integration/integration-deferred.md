@@ -251,3 +251,4 @@ the team works.
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Fast, reliable tests are essential for a CI build that teams trust
 - [Long-Lived Feature Branches]({{< relref "/docs/anti-patterns/branching-integration/long-lived-feature-branches" >}}) - Long branches prevent daily integration and are both a cause and symptom of missing CI
 - [Working Agreements]({{< relref "/docs/foundations/working-agreements" >}}) - The team agreement to keep the build green must be explicit
+- [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}) - Per-environment branches defer integration until the final merge to production

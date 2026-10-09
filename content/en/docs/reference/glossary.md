@@ -80,6 +80,7 @@ Referenced in:
 [Developers Cannot Run the Pipeline Locally]({{< relref "/docs/symptoms/flow/developer-experience/no-local-pipeline-execution" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [End-to-End Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/e2e" >}}),
+[Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}),
 [Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}),
 [Experience Reports]({{< relref "/docs/continuous-deployment/experience-reports" >}}),
 [Component Tests]({{< relref "/docs/foundations/testing-fundamentals/test-types/component" >}}),
@@ -236,6 +237,7 @@ Referenced in:
 [Data Pipelines and ML Models Have No Deployment Automation]({{< relref "/docs/symptoms/flow/developer-experience/ml-pipeline-deployment-gaps" >}}),
 [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
+[Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}),
 [Experience Reports]({{< relref "/docs/continuous-deployment/experience-reports" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}),
@@ -303,6 +305,7 @@ Referenced in:
 [Dependency & Infrastructure Defects]({{< relref "/docs/reference/defect-sources/dependency-and-infrastructure" >}}),
 [Deterministic Pipeline]({{< relref "/docs/pipeline/deterministic-pipeline" >}}),
 [Developers Cannot Run the Pipeline Locally]({{< relref "/docs/symptoms/flow/developer-experience/no-local-pipeline-execution" >}}),
+[Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}),
 [Experience Reports]({{< relref "/docs/continuous-deployment/experience-reports" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feedback Takes Hours Instead of Minutes]({{< relref "/docs/symptoms/flow/integration/no-fast-feedback" >}}),
@@ -770,6 +773,7 @@ outside the artifact. See [Immutable Artifacts]({{< relref "/docs/pipeline/immut
 
 Referenced in:
 [CD Dependency Tree]({{< relref "/docs/reference/cd-dependency-tree" >}}),
+[Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Merge Freezes Before Deployments]({{< relref "/docs/symptoms/deployment/merge-freeze" >}})
 
@@ -881,6 +885,8 @@ Referenced in:
 [Developers Cannot Run the Pipeline Locally]({{< relref "/docs/symptoms/flow/developer-experience/no-local-pipeline-execution" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
 [Each Language Has Its Own Ad Hoc Pipeline]({{< relref "/docs/symptoms/flow/integration/polyglot-stack-no-pipeline-standards" >}}),
+[Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}),
+[Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}),
 [Every Change Rebuilds the Entire Repository]({{< relref "/docs/symptoms/flow/integration/monorepo-without-tooling" >}}),
 [Every Change Requires a Ticket and Approval Chain]({{< relref "/docs/symptoms/deployment/change-management-overhead" >}}),
 [Every Deployment Is Immediately Visible to All Users]({{< relref "/docs/symptoms/deployment/deploy-release-coupled" >}}),
@@ -1100,6 +1106,7 @@ Referenced in:
 [CD for Greenfield Projects]({{< relref "/docs/greenfield" >}}),
 [Change & Complexity Defects]({{< relref "/docs/reference/defect-sources/change-and-complexity" >}}),
 [DORA Recommended Practices]({{< relref "/docs/reference/dora-capabilities" >}}),
+[Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}),
 [FAQ]({{< relref "/docs/reference/faq" >}}),
 [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}),
 [Integration Frequency]({{< relref "/docs/reference/metrics/integration-frequency" >}}),

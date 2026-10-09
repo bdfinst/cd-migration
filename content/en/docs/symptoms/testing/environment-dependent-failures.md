@@ -61,6 +61,12 @@ fragile.
 
 **Read more:** [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}})
 
+### Environment branches
+
+When each environment deploys from its own long-lived branch, tests can pass on one environment's branch and fail on another because the code differs, not just the setup. The merged code carries a different mix of features and config than the branch that was tested.
+
+**Read more:** [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}})
+
 ## How to narrow it down
 
 1. **Are all environments provisioned from the same infrastructure code?** If not, environment
@@ -73,6 +79,9 @@ fragile.
    configuration?** If tests assume specific external state rather than declaring explicit
    dependencies, the code's coupling to its environment is the issue. Start with
    [Tightly Coupled Monolith]({{< relref "/docs/anti-patterns/architecture/tightly-coupled-monolith" >}}).
+4. **Does each environment deploy from its own long-lived branch?** If the failing environment
+   runs a branch that differs from the one where tests passed, start with
+   [Environment Branches]({{< relref "/docs/anti-patterns/branching-integration/environment-branches" >}}).
 
 ---
 
@@ -84,4 +93,5 @@ fragile.
 - [It Works on My Machine]({{< relref "/docs/symptoms/visibility/works-on-my-machine" >}}) - The same root cause affects both testing and development
 - [Snowflake Environments]({{< relref "/docs/anti-patterns/pipeline/snowflake-environments" >}}) - Eliminating environment variance
 - [Production-Like Environments]({{< relref "/docs/pipeline/production-like-environments" >}}) - Making all environments consistent
+- [Environments Run Different Code]({{< relref "/docs/symptoms/deployment/environments-run-different-code" >}}) - When each environment runs different code, not just different settings
 - [Testing Fundamentals]({{< relref "/docs/foundations/testing-fundamentals" >}}) - Designing tests that are environment-independent
