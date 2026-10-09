@@ -9,6 +9,7 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { pageExists } = require('./helpers/content-pages');
 
 const DATA_PATH = path.join(__dirname, '../data/triage.yaml');
 
@@ -210,5 +211,22 @@ test.describe('triage.yaml graph connectivity', () => {
       }
     }
     expect(bad, bad.join('\n')).toHaveLength(0);
+  });
+});
+
+test.describe('triage.yaml link targets', () => {
+  test('every link path resolves to a page under content/en', () => {
+    const missing = [];
+    for (const r of results) {
+      const links = [
+        { field: 'symptom_path', path: r.symptom_path },
+        ...['anti_patterns', 'solutions', 'also_see'].flatMap(field =>
+          (r[field] || []).map(link => ({ field, path: link.path }))),
+      ];
+      for (const { field, path: p } of links) {
+        if (p && !pageExists(p)) missing.push(`result "${r.id}" ${field}: "${p}"`);
+      }
+    }
+    expect(missing, `Link targets with no page:\n${missing.join('\n')}`).toHaveLength(0);
   });
 });
