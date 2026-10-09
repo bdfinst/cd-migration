@@ -93,7 +93,7 @@ Expect pushback and address it directly:
 2. Use infrastructure-as-code to codify environment configuration so deployment does not require human judgment about settings.
 3. Add automated smoke tests that run immediately after deployment and gate on their success.
 4. Build rollback automation so that the cost of a bad deployment is measured in minutes, not hours.
-5. Run the automated deployment alongside the manual process until it has matched the manual results across enough deployments to build confidence, then switch.
+5. Run the automated deployment alongside the manual process until it has matched the manual results for each service and environment it will deploy, with no manual corrections, then switch.
 
 Expect pushback and address it directly:
 

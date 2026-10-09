@@ -91,7 +91,7 @@ Expect pushback and address it directly:
 
 ### Step 2: Begin systematic knowledge transfer
 
-1. Require pair programming or pairing on all incidents and deployments until at least two other team members can handle each one without the hero. Make the hero the driver and a different team member the navigator each time.
+1. Require pair programming or pairing on all incidents and deployments until at least two other team members can handle each type of incident and deployment without the hero. Make the hero the driver and a different team member the navigator each time.
 2. Create runbooks collaboratively. After each incident, the hero and at least one other team member co-author the post-mortem. Together they write the runbook for the class of problem, not only the instance.
 3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero until they can handle the system on their own, then take primary ownership with the hero as backup.
 4. Add a "could someone else do this?" criterion to the definition of done. If a feature or operational change requires the hero to deploy or maintain it, it is not done.

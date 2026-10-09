@@ -201,7 +201,7 @@ pipeline run overwrites them.
 The ultimate goal is that any environment can be destroyed and recreated in minutes with no data
 loss and no human intervention:
 
-1. Practice destroying and recreating staging regularly and after every specification change.
+1. Practice destroying and recreating staging after every specification change.
    The practice verifies that the specification stays accurate and builds team confidence.
 2. Provision ephemeral environments for feature branches or pull requests. Let the pipeline
    create and destroy them automatically.

@@ -169,7 +169,7 @@ ambiguous? Fix the root cause, not the estimate.
 | Objection | Response |
 |-----------|----------|
 | "Management needs estimates for planning" | Management needs forecasts. Empirical throughput (stories per sprint) combined with a prioritized backlog provides forecasts without per-story estimation. "At our current rate, the top 20 stories will be done in 4-5 sprints" is a forecast that management can plan around. |
-| "How do we know what fits in a sprint without estimates?" | Apply a size rule: no story larger than two days. Multiply team capacity (people times working days per sprint) by that ceiling and you have your sprint limit. Try it for one sprint and compare predictability to the previous point-based approach. |
+| "How do we know what fits in a sprint without estimates?" | Apply a size rule: no story larger than two days. Multiply team capacity (people times working days per sprint) by that ceiling and you have your sprint limit. Try it until you have enough throughput data to compare predictability to the previous point-based approach. |
 | "We've been doing this for years; changing will be disruptive" | The disruption is one or two sprints of adjustment. The ongoing cost of estimation theater - hours per sprint of planning that does not improve predictability - is paid every sprint, indefinitely. One-time disruption to remove a recurring cost is a good trade. |
 
 ## Measuring progress
