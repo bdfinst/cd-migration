@@ -79,7 +79,7 @@ Identify where single-person dependencies exist before attempting to fix them.
 1. List every production system and ask: who would we call at 2 AM if this failed? If the answer is one person, document that dependency.
 2. Run a "bus factor" exercise: for each critical capability, how many team members could perform it without the hero's help? Any answer of 1 is a risk.
 3. Identify the three most frequent reasons the hero is pulled in - these are the highest-priority knowledge transfer targets.
-4. Ask the hero to log their interruptions until the same kinds of requests start repeating: every time someone asks them something, record the question and time spent.
+4. Ask the hero to log their interruptions: every time someone asks them something, record the question and time spent. Continue until the same kinds of requests start repeating.
 5. Calculate the hero's maintenance and incident time as a percentage of their total working hours.
 
 Expect pushback and address it directly:

@@ -47,7 +47,7 @@ Determine page type from file path:
 
 - "Why this is a problem" MUST have exactly three required H3 subsections plus "Impact on continuous delivery" as the final H3
 - Additional H3 subsections between "It makes delivery timelines unpredictable" and "Impact on continuous delivery" are allowed
-- "How to fix it" step headings MUST NOT include timeline labels such as "(week 1)", "(weeks 2-4)", "(month 2+)", or "(ongoing)". Cadence labels for a repeating action, such as "(monthly)", and "(Optional)" are allowed.
+- "How to fix it" step headings MUST NOT include timeline labels such as "(week 1)", "(weeks 2-4)", "(month 2+)", or "(ongoing)". Cadence labels for a repeating action, such as "(monthly)", and "(Optional)" are allowed. A violation is a `WARNING`.
 - "Measuring progress" MUST contain a table
 - "Related content" MUST contain at least one link
 - The pageinfo block with Category and risk-indicator is required after front matter

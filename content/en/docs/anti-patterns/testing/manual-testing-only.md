@@ -173,7 +173,7 @@ pipeline:
 
 1. Measure current coverage. Say it is 15%.
 2. Set the pipeline to fail if coverage drops below 15%.
-3. Raise the floor by 2-5 percentage points once the team has consistently cleared it.
+3. Each time measured coverage stays at least 2-5 percentage points above the floor across several merges, raise the floor to match.
 
 The floor prevents backsliding. The ratchet ensures progress. The team does not need to hit 90%
 coverage - they need to ensure that coverage only goes up.

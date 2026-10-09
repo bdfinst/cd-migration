@@ -109,7 +109,7 @@ Expect pushback and address it directly:
 2. Implement a risk-based exception process. Changes to high-risk systems or during high-risk periods can still require human review. Keep that review focused and its criteria explicit.
 3. Define the metrics that demonstrate control effectiveness: change fail rate, security finding rate, rollback frequency. Report these to the compliance team and auditors as evidence that the controls are working.
 4. Archive the CAB meeting minutes alongside the automated audit logs to maintain continuity of audit evidence during the transition.
-5. Run the automated controls in parallel with the CAB process before fully transitioning, until the parallel run has covered each change type the CAB currently reviews. The parallel run lets the compliance team verify that the automated evidence is equivalent or better.
+5. Run the automated controls in parallel with the CAB process until the parallel run has covered each change type the CAB currently reviews, then transition fully. The parallel run lets the compliance team verify that the automated evidence is equivalent or better.
 
 Expect pushback and address it directly:
 

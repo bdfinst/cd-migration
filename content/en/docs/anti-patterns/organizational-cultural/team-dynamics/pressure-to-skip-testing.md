@@ -167,7 +167,7 @@ Prevent further erosion with an automated guardrail:
 
 1. Measure current test coverage. Whatever it is - 30%, 50%, 70% - that is the floor.
 2. Configure the pipeline to fail if a change reduces coverage below the floor.
-3. Ratchet the floor up by 1-2 percentage points once the team has consistently cleared it.
+3. Each time measured coverage stays at least 1-2 percentage points above the floor across several merges, ratchet the floor up to match.
 
 The floor makes the cost of skipping tests immediate and visible. A developer who skips tests
 will see the pipeline fail. The conversation shifts from "we'll add tests later" to "the pipeline
