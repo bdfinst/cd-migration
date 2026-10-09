@@ -1,12 +1,20 @@
 /**
- * Builds an index of the URL paths Hugo publishes from content/en, so data
- * specs can verify that links stored in YAML point at real, published pages.
+ * Builds an index of the page and alias URL paths Hugo publishes from
+ * content/en Markdown files, so data specs can verify that links stored in
+ * YAML point at real, published pages.
  *
  * Supported content shapes: `<path>.md` pages, `<path>/_index.md` sections,
- * YAML front matter, and front matter `aliases` (absolute or page-relative).
- * Draft pages and their aliases are excluded. URL paths are compared exactly,
- * after lowercasing the published side the way Hugo does, so a case typo in
- * a data file fails even on a case-insensitive filesystem.
+ * YAML front matter, and front matter `aliases`. HTML content such as the
+ * home page (`_index.html`) is not indexed. Draft pages and their aliases are
+ * excluded.
+ *
+ * URL rules match Hugo's output (checked against a scratch build):
+ * - page paths are lowercased; alias paths keep the case they are written in
+ * - a relative alias resolves against the parent of the page URL, so
+ *   `legacy` on docs/sub/page.md is /docs/sub/legacy and on docs/_index.md
+ *   is /legacy
+ * Lookups compare exactly, so a case typo in a data file fails even on a
+ * case-insensitive filesystem.
  */
 
 const fs = require("fs");
@@ -23,7 +31,12 @@ function readFrontMatter(file) {
   const match = fs
     .readFileSync(file, "utf8")
     .match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  return match ? yaml.load(match[1]) || {} : {};
+  if (!match) return {};
+  try {
+    return yaml.load(match[1]) || {};
+  } catch (error) {
+    throw new Error(`Invalid front matter in ${file}: ${error.message}`);
+  }
 }
 
 function collectMarkdownFiles(dir) {
@@ -41,11 +54,11 @@ function pageUrlPath(contentRoot, file) {
   ).toLowerCase();
 }
 
-function resolveAlias(pageUrl, alias) {
+function resolveAlias(pageUrlPath, alias) {
   const resolved = alias.startsWith("/")
     ? alias
-    : path.posix.join(path.posix.dirname(pageUrl), alias);
-  return normalizeUrlPath(resolved).toLowerCase();
+    : path.posix.join(path.posix.dirname(pageUrlPath), alias);
+  return normalizeUrlPath(resolved);
 }
 
 /**
@@ -55,16 +68,16 @@ function resolveAlias(pageUrl, alias) {
 function buildContentIndex(contentRoot = CONTENT_ROOT) {
   const published = collectMarkdownFiles(contentRoot)
     .map((file) => ({
-      url: pageUrlPath(contentRoot, file),
+      urlPath: pageUrlPath(contentRoot, file),
       frontMatter: readFrontMatter(file),
     }))
     .filter((page) => !page.frontMatter.draft);
   return {
-    pages: new Set(published.map((page) => page.url)),
+    pages: new Set(published.map((page) => page.urlPath)),
     aliases: new Set(
       published.flatMap((page) =>
         (page.frontMatter.aliases || []).map((alias) =>
-          resolveAlias(page.url, alias),
+          resolveAlias(page.urlPath, alias),
         ),
       ),
     ),
@@ -72,15 +85,15 @@ function buildContentIndex(contentRoot = CONTENT_ROOT) {
 }
 
 /** True when the URL path is a published page. Trailing slashes are ignored. */
-function isPublishedPage(index, urlPath) {
-  return index.pages.has(normalizeUrlPath(urlPath));
+function isPublishedPage(contentIndex, urlPath) {
+  return contentIndex.pages.has(normalizeUrlPath(urlPath));
 }
 
 /** True when the URL path is a published page or an alias that redirects to one. */
-function isPublishedPageOrAlias(index, urlPath) {
+function isPublishedPageOrAlias(contentIndex, urlPath) {
   return (
-    isPublishedPage(index, urlPath) ||
-    index.aliases.has(normalizeUrlPath(urlPath))
+    isPublishedPage(contentIndex, urlPath) ||
+    contentIndex.aliases.has(normalizeUrlPath(urlPath))
   );
 }
 

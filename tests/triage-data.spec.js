@@ -14,6 +14,7 @@ let questions;
 let results;
 let questionIds;
 let resultIds;
+let contentIndex;
 
 test.beforeAll(() => {
   data = loadDataFile('triage.yaml');
@@ -21,7 +22,16 @@ test.beforeAll(() => {
   results = data.results || [];
   questionIds = new Set(questions.map(q => q.id));
   resultIds = new Set(results.map(r => r.id));
+  contentIndex = buildContentIndex();
 });
+
+function linksOf(result) {
+  return [
+    { field: 'symptom_path', target: result.symptom_path },
+    ...['anti_patterns', 'solutions', 'also_see'].flatMap(field =>
+      (result[field] || []).map(link => ({ field, target: link.path }))),
+  ];
+}
 
 test.describe('triage.yaml structure', () => {
   test('file loads and has questions and results', () => {
@@ -207,17 +217,8 @@ test.describe('triage.yaml graph connectivity', () => {
   });
 });
 
-function linksOf(result) {
-  return [
-    { field: 'symptom_path', target: result.symptom_path },
-    ...['anti_patterns', 'solutions', 'also_see'].flatMap(field =>
-      (result[field] || []).map(link => ({ field, target: link.path }))),
-  ];
-}
-
 test.describe('triage.yaml link targets', () => {
   test('every link path resolves to a published page or alias', () => {
-    const contentIndex = buildContentIndex();
     const missing = results.flatMap(result => linksOf(result)
       .filter(({ target }) => target && !isPublishedPageOrAlias(contentIndex, target))
       .map(({ field, target }) => `result "${result.id}" ${field}: "${target}"`));

@@ -88,7 +88,7 @@ cd-migration/
 - **Static site generator:** [Hugo](https://gohugo.io/) with [Docsy](https://www.docsy.dev/) theme
 - **CSS:** SCSS with PostCSS and Autoprefixer
 - **Deployment:** Netlify
-- **CI:** GitHub Actions (data integrity tests and link checking on every push and PR)
+- **CI:** GitHub Actions (data integrity tests and link checking on pushes and pull requests to main)
 - **Linting:** markdownlint, Prettier
 - **Link validation:** htmltest (internal), Linkinator (external)
 - **SEO:** Auto-generated `llms.txt`, `llms-full.txt`, `robots.txt`, and sitemap
