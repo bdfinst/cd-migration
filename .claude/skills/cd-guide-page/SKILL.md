@@ -77,8 +77,8 @@ for practices that address multiple symptoms.]
 ### How to choose your path
 
 [Option B: Step-by-step guide - when there is one clear approach]
-### Step 1: [Action] (Week N)
-### Step 2: [Action] (Week N)
+### Step 1: [Action]
+### Step 2: [Action]
 
 [Option C: Practice areas - when the topic has multiple facets]
 ### [Facet 1]
@@ -91,7 +91,7 @@ guide pages. Optional - include when dependencies are important.]
 
 ## Getting started: a tactical guide
 
-[Time-boxed weekly steps for adopting the practice. Similar to "How to fix it"
+[Ordered steps for adopting the practice. Step headings must not include durations. Similar to "How to fix it"
 in anti-pattern pages but framed positively as adoption rather than correction.]
 
 ### Step 1: [Action]
