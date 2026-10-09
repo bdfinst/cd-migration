@@ -95,13 +95,13 @@ Stop routing PRs to the original author or designated expert. Configure auto-ass
 distribute reviews across the team. When a developer reviews unfamiliar code, they learn. The
 expert can answer questions, but the review itself is shared.
 
-### Step 3: Pair on siloed areas (weeks 3-6)
+### Step 3: Pair on siloed areas
 
 When work comes in for a siloed area, pair the expert with another developer. The expert drives
 the first session, the other developer drives the next. Within a few pairing sessions, the
 second developer can work in that area independently.
 
-### Step 4: Rotate assignments (ongoing)
+### Step 4: Rotate assignments
 
 Stop assigning developers to the same areas repeatedly. When someone finishes work in one area,
 have them pick up work in an area they are less familiar with. The short-term slowdown is an

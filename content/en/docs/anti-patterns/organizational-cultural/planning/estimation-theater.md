@@ -125,24 +125,24 @@ costly - is exactly the opposite of the fast feedback that CD requires.
 
 ## How to fix it
 
-### Step 1: Measure estimation accuracy for one sprint
+### Step 1: Measure estimation accuracy
 
-Collect data before changing anything. For every story in the current sprint, record the estimate
-in points and the actual time in days or hours. At the end of the sprint, calculate the average
-error. Present the results without judgment. In most teams, estimates are off by a factor of two
-or more on a per-story basis even when the sprint "hits velocity."
+Collect data before changing anything. For every story the team completes, record the estimate in
+points and the actual time in days or hours. Once enough stories are complete to show a pattern,
+calculate the average error. Present the results without judgment. In most teams, estimates are
+off by a factor of two or more on a per-story basis even when the sprint "hits velocity."
 
 This data creates the opening for a different approach.
 
-### Step 2: Experiment with #NoEstimates for one sprint
+### Step 2: Experiment with #NoEstimates
 
 Commit to completing stories without estimating in points. Apply a strict rule: no story enters
 the sprint unless it can be completed in one to three days. This forces the decomposition and
 clarity that estimation sessions often skip. Track throughput - number of stories completed per
-sprint - rather than velocity. Compare predictability at the sprint level between the two
-approaches.
+sprint - rather than velocity. Run the experiment until you have enough throughput data to compare
+predictability at the sprint level between the two approaches.
 
-### Step 3: Replace story points with size categories if estimation continues (weeks 2-3)
+### Step 3: Replace story points with size categories if estimation continues
 
 If the team is not ready to drop estimation entirely, replace point-scale estimation with three
 size categories. Use small (one to two days), medium (three to four days), and large (needs
@@ -152,14 +152,14 @@ The goal is to
 get all stories to small or medium. Size categories take five minutes to assign; point estimation
 takes hours. The predictive value is similar.
 
-### Step 4: Make refinement the investment, not estimation (ongoing)
+### Step 4: Make refinement the investment, not estimation
 
 Redirect the time saved from estimation ceremonies into story refinement: clarifying acceptance
 criteria, identifying dependencies, writing examples that define the boundaries of the work.
 Well-refined stories with clear acceptance criteria deliver more predictability than
 well-estimated stories with fuzzy criteria.
 
-### Step 5: Track forecast accuracy and improve (ongoing)
+### Step 5: Track forecast accuracy and improve
 
 Track how often sprint commitments are met, regardless of whether you are using throughput, size
 categories, or some estimation approach. Review misses in retrospective with a root-cause focus:
@@ -169,7 +169,7 @@ ambiguous? Fix the root cause, not the estimate.
 | Objection | Response |
 |-----------|----------|
 | "Management needs estimates for planning" | Management needs forecasts. Empirical throughput (stories per sprint) combined with a prioritized backlog provides forecasts without per-story estimation. "At our current rate, the top 20 stories will be done in 4-5 sprints" is a forecast that management can plan around. |
-| "How do we know what fits in a sprint without estimates?" | Apply a size rule: no story larger than two days. Multiply team capacity (people times working days per sprint) by that ceiling and you have your sprint limit. Try it for one sprint and compare predictability to the previous point-based approach. |
+| "How do we know what fits in a sprint without estimates?" | Apply a size rule: no story larger than two days. Multiply team capacity (people times working days per sprint) by that ceiling and you have your sprint limit. Try it until you have enough throughput data to compare predictability to the previous point-based approach. |
 | "We've been doing this for years; changing will be disruptive" | The disruption is one or two sprints of adjustment. The ongoing cost of estimation theater - hours per sprint of planning that does not improve predictability - is paid every sprint, indefinitely. One-time disruption to remove a recurring cost is a good trade. |
 
 ## Measuring progress

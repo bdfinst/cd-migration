@@ -90,7 +90,7 @@ Expect pushback and address it directly:
 | "We already do security reviews. This isn't a problem." | The question is not whether you do security reviews but when. Pull the last six months of security findings and check how many were discovered after development was complete. That number is your baseline cost. |
 | "Our security team is responsible for this, not us." | Security outcomes are a shared responsibility. Automated scanning that runs in the developer's pipeline gives developers the feedback they need to improve, without adding burden to a centralized security team. |
 
-### Step 2: Add automated security scanning to the pipeline (weeks 2-6)
+### Step 2: Add automated security scanning to the pipeline
 
 1. Add Static Application Security Testing (SAST) to the CI pipeline - tools like Semgrep, CodeQL, or Checkmarx scan code for common vulnerability patterns on every commit.
 2. Add Software Composition Analysis (SCA) to scan dependencies for known CVEs on every build. Configure alerts when new CVEs are published for dependencies already in use.
@@ -106,7 +106,7 @@ Expect pushback and address it directly:
 | "Automated scanners have too many false positives." | Tune the scanner to your codebase. Start by suppressing known false positives and focus on finding categories with high true-positive rates. An imperfect scanner that runs on every commit is more effective than a perfect scanner that runs once a year. |
 | "This will slow down the pipeline." | Most SAST scans complete in under 5 minutes. SCA checks are even faster. This is acceptable overhead for the risk reduction provided. Parallelize security stages with test stages to minimize total pipeline time. |
 
-### Step 3: Shift security left into development (weeks 6-12)
+### Step 3: Shift security left into development
 
 1. Run security training focused on the finding categories your team most frequently produces. Skip generic security awareness modules; use targeted instruction on the specific vulnerability patterns your automated scanners catch.
 2. Create secure coding guidelines tailored to your technology stack - specific patterns to use and avoid, with code examples.

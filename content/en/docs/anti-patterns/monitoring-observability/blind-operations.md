@@ -139,7 +139,7 @@ Structured logging is the foundation of observability. Without it, logs are unre
    similar). Stop relying on SSH and grep.
 
 Focus on the most critical code paths first: request handling, error paths, and external service
-calls. You do not need to instrument everything in week one.
+calls. You do not need to instrument everything at once.
 
 ### Step 2: Add application-level metrics
 

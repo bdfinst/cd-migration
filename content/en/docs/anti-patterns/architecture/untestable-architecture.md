@@ -148,7 +148,7 @@ Do not try to fix the entire codebase. Start where the pain is highest.
 Document the list. It is your refactoring backlog. Treat each item as a first-class task, not
 something that happens "when we have time."
 
-### Step 2: Introduce dependency injection at the seam (weeks 2-3)
+### Step 2: Introduce dependency injection at the seam
 
 For each candidate class, apply the simplest refactor that creates a testable seam without
 changing behavior.
@@ -196,7 +196,7 @@ function processOrder(order, { repository, paymentGateway }) {
 The interface or abstraction is the key. Production code passes real implementations. Tests pass
 fast, in-memory doubles that return predictable results.
 
-### Step 3: Write the tests that are now possible (weeks 2-3)
+### Step 3: Write the tests that are now possible
 
 Immediately after creating a seam, write tests for the business logic that is now accessible.
 Do not defer this step.
@@ -209,7 +209,7 @@ Use fast doubles - in-memory fakes or simple stubs - for every external dependen
 should run in milliseconds without any network or database access. If a test requires more than
 a second to run, something is still coupling it to real infrastructure.
 
-### Step 4: Extract business logic from framework boundaries (weeks 3-5)
+### Step 4: Extract business logic from framework boundaries
 
 Framework entanglement requires a different approach. The fix is extraction: move business logic
 out of framework callbacks and into plain functions or classes that can be called from anywhere,
@@ -256,7 +256,7 @@ Once a module is testable, add controls that prevent it from becoming untestable
 Apply the same process to each new module as it is touched. Over time, the proportion of testable
 code grows without requiring a big-bang rewrite.
 
-### Step 6: Track and retire the integration test workarounds (ongoing)
+### Step 6: Track and retire the integration test workarounds
 
 As business logic becomes unit-testable, the integration tests that were previously the only
 coverage can be simplified or removed. Integration tests that verify business logic are slow and

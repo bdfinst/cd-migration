@@ -78,7 +78,7 @@ Before automating, understand what you have. List every test suite - unit, integ
 
 Start with the tests that run in under two minutes - typically unit tests and fast integration tests. Configure your CI system to run these automatically on every push to every branch. The goal is to get the shortest meaningful feedback loop running without any human involvement. Quarantine and fix flaky tests that would slow this feedback loop. Do not ignore them.
 
-### Step 3: Add integration and contract tests to the pipeline (weeks 3-4)
+### Step 3: Add integration and contract tests to the pipeline
 
 After the fast gate is stable, add the slower test suites as later stages in the pipeline. Run these stages in parallel if needed to keep total pipeline duration reasonable. Make these stages required. Do not let a pipeline run that skips them proceed to deployment.
 

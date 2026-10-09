@@ -156,7 +156,7 @@ it will do:
 Count items in each category and estimate their cost in hours. This data reveals where the
 quality problems are coming from and provides a basis for targeting prevention efforts.
 
-### Step 2: Introduce a Definition of Done that prevents deferral (weeks 1-2)
+### Step 2: Introduce a Definition of Done that prevents deferral
 
 Change the Definition of Done so that stories cannot be closed while deferring quality
 problems. Stories declared "done" before meeting quality standards are the root cause of
@@ -173,7 +173,7 @@ A story is done when:
 This definition eliminates "we'll handle that in hardening" as a valid response to a test
 failure or bug discovery. The story is not done until the quality problem is resolved.
 
-### Step 3: Move quality activities into the feature sprint (weeks 2-4)
+### Step 3: Move quality activities into the feature sprint
 
 Identify quality activities currently concentrated in hardening and distribute them across
 feature sprints:
@@ -203,7 +203,7 @@ This norm will feel painful initially because the team is used to deferring. It 
 normal within a few sprints, and the accumulation that previously required a hardening sprint
 will stop occurring.
 
-### Step 5: Replace the hardening sprint with a quality metric (weeks 4-8)
+### Step 5: Replace the hardening sprint with a quality metric
 
 Set a measurable quality gate that the product must pass before release, and track it
 continuously rather than concentrating it in a phase:

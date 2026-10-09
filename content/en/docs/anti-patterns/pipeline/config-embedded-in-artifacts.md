@@ -78,11 +78,11 @@ Separate configuration values into three categories. Each category calls for a d
 - **Sensitive credentials** (database passwords, API keys, certificates): use a secrets vault.
 - **Runtime-computed values** (hostnames assigned at deploy time): use deployment-time injection.
 
-### Step 3: Externalize non-sensitive configuration (weeks 2-3)
+### Step 3: Externalize non-sensitive configuration
 
 Move non-sensitive configuration values out of the build and into externally-managed configuration files, environment variables injected at runtime, or a configuration service. The application should read these values at startup from the environment, not from values baked in at build time. Refactor the application code to expect external configuration rather than compiled-in defaults. Test by running the same artifact against multiple configuration sets.
 
-### Step 4: Move secrets to a vault (weeks 3-4)
+### Step 4: Move secrets to a vault
 
 Do not store credentials in config files. Do not pass them as environment variables set by humans. Move them to a dedicated secrets management system - HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, or the equivalent in your infrastructure. Update the application to retrieve secrets from the vault at startup or at first use. Remove credential values from source control entirely and rotate any credentials that were ever stored in a repository.
 

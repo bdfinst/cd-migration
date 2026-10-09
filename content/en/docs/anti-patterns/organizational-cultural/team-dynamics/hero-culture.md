@@ -79,7 +79,7 @@ Identify where single-person dependencies exist before attempting to fix them.
 1. List every production system and ask: who would we call at 2 AM if this failed? If the answer is one person, document that dependency.
 2. Run a "bus factor" exercise: for each critical capability, how many team members could perform it without the hero's help? Any answer of 1 is a risk.
 3. Identify the three most frequent reasons the hero is pulled in - these are the highest-priority knowledge transfer targets.
-4. Ask the hero to log their interruptions for one week: every time someone asks them something, record the question and time spent.
+4. Ask the hero to log their interruptions: every time someone asks them something, record the question and time spent. Continue until the same kinds of requests start repeating.
 5. Calculate the hero's maintenance and incident time as a percentage of their total working hours.
 
 Expect pushback and address it directly:
@@ -89,11 +89,11 @@ Expect pushback and address it directly:
 | "The hero is fine with the workload." | The hero's experience of the work is not the only risk. A team that cannot function without one person cannot grow, cannot rotate the hero off the team, and cannot survive the hero leaving. |
 | "This sounds like we're punishing people for being good." | Heroes are not the problem. A system that creates and depends on heroes is the problem. The goal is to let the hero do harder, more interesting work by distributing the things they currently do alone. |
 
-### Step 2: Begin systematic knowledge transfer (weeks 2-6)
+### Step 2: Begin systematic knowledge transfer
 
-1. Require pair programming or pairing on all incidents and deployments for the next sprint. Make the hero the driver and a different team member the navigator each time.
+1. Require pair programming or pairing on all incidents and deployments until at least two other team members can handle each type of incident and deployment without the hero. Make the hero the driver and a different team member the navigator each time.
 2. Create runbooks collaboratively. After each incident, the hero and at least one other team member co-author the post-mortem. Together they write the runbook for the class of problem, not only the instance.
-3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero for two weeks, then take primary ownership with the hero as backup.
+3. Assign "deputy" owners for each system the hero currently owns alone. Deputies shadow the hero until they can handle the system on their own, then take primary ownership with the hero as backup.
 4. Add a "could someone else do this?" criterion to the definition of done. If a feature or operational change requires the hero to deploy or maintain it, it is not done.
 5. Schedule explicit knowledge transfer sessions - not all-hands training, but targeted 30-minute sessions where the hero explains one specific thing to two or three team members.
 
@@ -104,7 +104,7 @@ Expect pushback and address it directly:
 | "We don't have time for pairing - we have deliverables." | Pair programming overhead is typically 15% of development time. The time lost to hero dependencies is typically 20-40% of team capacity. The math favors pairing. |
 | "Runbooks get outdated immediately." | An outdated runbook is better than no runbook. Add runbook review to the incident checklist. |
 
-### Step 3: Encode knowledge in systems instead of people (weeks 6-12)
+### Step 3: Encode knowledge in systems instead of people
 
 1. Automate the deployments the hero currently performs manually. If the hero is the only one who knows the deployment steps, that is the first automation target.
 2. Add observability - logs, metrics, and alerts - to the systems only the hero currently understands. If a system cannot be diagnosed without the hero's intuition, it needs more instrumentation.

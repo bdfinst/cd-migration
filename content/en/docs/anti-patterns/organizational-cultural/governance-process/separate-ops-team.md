@@ -87,13 +87,13 @@ Expect pushback and address it directly:
 | "We need separation of duties for compliance." | Separation of duties can be satisfied by automated pipeline controls with audit logging - a developer who wrote code triggering a pipeline that requires approval or automated verification is auditable without a separate team. See the [Separation of Duties as Separate Teams]({{< relref "/docs/anti-patterns/organizational-cultural/governance-process/separation-of-duties-antipattern" >}}) page. |
 | "Ops has context developers don't have." | That context should be encoded in infrastructure-as-code, runbooks, and automated checks - not locked in people's heads. Document it and automate it. |
 
-### Step 2: Automate the deployment runbook (weeks 2-4)
+### Step 2: Automate the deployment runbook
 
 1. Take the manual runbook ops currently follows and convert each step to a script or pipeline stage.
 2. Use infrastructure-as-code to codify environment configuration so deployment does not require human judgment about settings.
 3. Add automated smoke tests that run immediately after deployment and gate on their success.
 4. Build rollback automation so that the cost of a bad deployment is measured in minutes, not hours.
-5. Run the automated deployment alongside the manual process for one sprint to build confidence before switching.
+5. Run the automated deployment alongside the manual process until it has matched the manual results for each service and environment it will deploy, with no manual corrections, then switch.
 
 Expect pushback and address it directly:
 
@@ -102,14 +102,14 @@ Expect pushback and address it directly:
 | "Automation breaks in edge cases humans handle." | Edge cases should trigger alerts, not silent human intervention. Start by automating the five most common steps in the runbook and alert on anything that falls outside them - you will handle far fewer edge cases than you expect. |
 | "We don't have time to automate." | You are already spending that time - in slower deployments, in context-switching, and in incident recovery. Time the next three manual deployments. That number is the budget for your first automation sprint. |
 
-### Step 3: Embed ops knowledge into the team (weeks 4-8)
+### Step 3: Embed ops knowledge into the team
 
 1. Pair developers with ops engineers during the next three deployments so knowledge transfers in both directions.
 2. Add operational readiness criteria to the definition of done: logging, metrics, alerts, and rollback procedures are part of the story, not an ops afterthought.
 3. Create a shared on-call rotation that includes developers, starting with a shadow rotation before full participation.
 4. Define a service ownership model where the team that builds a service is also responsible for its production health.
 5. Establish a weekly sync between development and operations focused on reducing toil rather than managing tickets.
-6. Set a six-month goal for the percentage of deployments that developers start entirely through the automated pipeline.
+6. Set a goal for the percentage of deployments that developers start entirely through the automated pipeline, and track it over time.
 
 Expect pushback and address it directly:
 

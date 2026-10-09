@@ -127,7 +127,7 @@ own untested merge at the end.
 
 ## How to fix it
 
-### Step 1: Inventory the differences and move config out of the branches (weeks 1-2)
+### Step 1: Inventory the differences and move config out of the branches
 
 Compare the branches: `git diff dev..uat` and `git diff uat..master`. List every difference and
 sort each into one of three groups:
@@ -143,7 +143,7 @@ Move the environment values out of the repository's branches and into configurat
 deployment time. See [Application Configuration]({{< relref "/docs/pipeline/application-config" >}}) for how
 to separate config from the build.
 
-### Step 2: Build one release candidate from trunk and promote it (weeks 2-4)
+### Step 2: Build one release candidate from trunk and promote it
 
 A release candidate is an
 [immutable artifact]({{< relref "/docs/reference/glossary#immutable-artifact" >}}) that has not
@@ -161,7 +161,7 @@ through a [Single Path to Production]({{< relref "/docs/pipeline/single-path-to-
 agree on what makes a candidate good enough to release with the
 [Deployable Definition]({{< relref "/docs/pipeline/deployable-definition" >}}).
 
-### Step 3: Integrate incomplete work to trunk with evolutionary coding (weeks 3-6)
+### Step 3: Integrate incomplete work to trunk with evolutionary coding
 
 Environment branches often exist to hold work that is not ready for production. Integrate that work
 to trunk instead. Start with the least intrusive technique that fits. The
@@ -182,20 +182,20 @@ choose.
   Route traffic to a new subsystem piece by piece when you are replacing a whole subsystem, not a
   single implementation.
 
-### Step 4: Use feature flags as the last resort (weeks 4-6)
+### Step 4: Use feature flags as the last resort
 
 When none of the techniques above fit, hide the incomplete work behind a toggle. See
 [Feature Flags]({{< relref "/docs/optimize/feature-flags" >}}). Flags add runtime state and cleanup
 work, so use them only where the earlier techniques do not apply.
 
-### Step 5: Retire the environment branches (weeks 6-8)
+### Step 5: Retire the environment branches
 
 Once the pipeline builds from trunk and selects each environment's config at deploy time, the
 branches have no job. Merge any changes you still want to trunk, stop accepting merges into
 `dev` and `uat`, then delete them. Keep one trunk. The pipeline, not the branch name, decides which
 environment receives the artifact.
 
-### Step 6: Address the objections (ongoing)
+### Step 6: Address the objections
 
 | Objection | Response |
 |-----------|----------|

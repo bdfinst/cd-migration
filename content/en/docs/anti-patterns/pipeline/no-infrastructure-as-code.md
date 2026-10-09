@@ -78,11 +78,11 @@ Infrastructure as code is a prerequisite for the production-like environments th
 
 Before writing any code, inventory the environments you have and what is in each one. For each environment, record the OS, the installed software and versions, the network configuration, and any environment-specific variables. This inventory is both the starting point for writing infrastructure code and a record of the configuration drift you need to close.
 
-### Step 2: Choose a tooling approach and write code for one environment (weeks 2-3)
+### Step 2: Choose a tooling approach and write code for one environment
 
 Pick an infrastructure-as-code tool that fits your stack. Use Terraform for cloud resources, Ansible or Chef for configuration management, or Pulumi if your team prefers a general-purpose language. Write the code to describe one non-production environment completely. Run it against a fresh account or namespace to verify it produces the correct result from a blank state. Commit the code to source control.
 
-### Step 3: Extend to all environments using parameterization (weeks 4-5)
+### Step 3: Extend to all environments using parameterization
 
 Use the same codebase to describe all environments, with environment-specific values (region, instance size, external endpoints) as parameters or variable files. Environments should be instances of the same template, not separate scripts. Run the code against each environment and reconcile any differences you find. Each difference is configuration drift that you must either codify or correct.
 
@@ -90,7 +90,7 @@ Use the same codebase to describe all environments, with environment-specific va
 
 Establish a policy that all infrastructure changes go through a pull request process. No engineer makes manual changes to any environment without a corresponding code change merged first. For emergency changes made under incident pressure, require a follow-up PR within 24 hours that captures what was changed and why. The follow-up PR closes the feedback loop that allows drift to accumulate.
 
-### Step 5: Automate environment creation in the pipeline (weeks 7-8)
+### Step 5: Automate environment creation in the pipeline
 
 Wire the infrastructure code into your deployment pipeline so that environment creation and configuration are pipeline steps rather than manual preconditions. Ephemeral test environments should be created at pipeline start and destroyed at pipeline end. Production deployments should apply the infrastructure code as a step before deploying the application, ensuring the environment is always in the expected state.
 

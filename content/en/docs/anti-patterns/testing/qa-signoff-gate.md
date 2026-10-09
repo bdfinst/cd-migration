@@ -166,7 +166,7 @@ caught. The remaining cases that require genuine human judgment are usually expl
 findings about usability or edge cases in new features. That scope is much smaller than a full
 regression pass.
 
-### Step 2: Automate the regression checks that the gate is compensating for (weeks 2-6)
+### Step 2: Automate the regression checks that the gate is compensating for
 
 For every bug category from Step 1 that an automated test would have caught, write the test.
 
@@ -195,7 +195,7 @@ Typical automated approval criteria:
 These criteria are not opinions. They are executable. When all criteria pass, deployment is
 authorized without manual review.
 
-### Step 4: Run manual and automated gates in parallel (weeks 4-8)
+### Step 4: Run manual and automated gates in parallel
 
 Do not remove the manual gate immediately. Run both processes simultaneously for a period.
 
@@ -207,9 +207,10 @@ Each case where manual review finds something automation missed is an opportunit
 automated test. Each case where automated criteria caught everything is evidence that the manual
 gate is redundant.
 
-After four to eight weeks of parallel operation, the data answers the question. Rarely, it
-confirms that the manual gate provides significant additional value. Commonly, it shows that
-the gate confirms what the pipeline already knows. The data makes the decision about removing the gate defensible.
+Once parallel operation has produced enough data to answer the question, review the results.
+Rarely, they confirm that the manual gate provides significant additional value. Commonly, they
+show that the gate confirms what the pipeline already knows. The data makes the decision about
+removing the gate defensible.
 
 ### Step 5: Replace the gate with risk-scoped manual testing
 
@@ -227,7 +228,7 @@ Risk-scoped testing gives the QA lead a role proportional to the actual value th
 That role is focused expert review of high-risk changes and exploratory quality work. It is not
 rubber-stamping releases the pipeline has already validated.
 
-### Step 6: Document and distribute deployment authority (ongoing)
+### Step 6: Document and distribute deployment authority
 
 A single approver is a fragility regardless of whether the approval is automated or manual.
 Distribute deployment authority explicitly.

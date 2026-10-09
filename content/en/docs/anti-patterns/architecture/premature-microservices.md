@@ -135,7 +135,7 @@ Answer these questions honestly:
 If the answer to all three is no, the team does not need microservices. A modular monolith will
 deliver faster with less operational overhead.
 
-### Step 2: Consolidate services that do not need independence (weeks 2-6)
+### Step 2: Consolidate services that do not need independence
 
 Merge services that are always deployed together. If Service A and Service B have never been
 deployed independently, they are not independent services. They are modules that should share a
@@ -144,7 +144,7 @@ deployment. Merging them is not a failure. It is a course correction based on ev
 Prioritize merging services owned by the same team. A single team running six services gets the
 same team autonomy benefit from one well-structured deployable.
 
-### Step 3: Build operational maturity for what remains (weeks 4-8)
+### Step 3: Build operational maturity for what remains
 
 For services that genuinely benefit from separation, ensure the team has the operational
 capabilities to manage them:
@@ -158,7 +158,7 @@ capabilities to manage them:
 Each missing capability is a reason to pause and invest in the platform before adding more
 services.
 
-### Step 4: Establish a service extraction checklist (ongoing)
+### Step 4: Establish a service extraction checklist
 
 Before extracting any new service, require answers to:
 

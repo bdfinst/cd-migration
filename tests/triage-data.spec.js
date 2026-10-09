@@ -6,26 +6,32 @@
  */
 
 const { test, expect } = require('@playwright/test');
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-
-const DATA_PATH = path.join(__dirname, '../data/triage.yaml');
+const { loadDataFile, findDuplicates } = require('./helpers/data-files');
+const { buildContentIndex, isPublishedPageOrAlias } = require('./helpers/content-pages');
 
 let data;
 let questions;
 let results;
 let questionIds;
 let resultIds;
+let contentIndex;
 
 test.beforeAll(() => {
-  const raw = fs.readFileSync(DATA_PATH, 'utf8');
-  data = yaml.load(raw);
+  data = loadDataFile('triage.yaml');
   questions = data.questions || [];
   results = data.results || [];
   questionIds = new Set(questions.map(q => q.id));
   resultIds = new Set(results.map(r => r.id));
+  contentIndex = buildContentIndex();
 });
+
+function linksOf(result) {
+  return [
+    { field: 'symptom_path', target: result.symptom_path },
+    ...['anti_patterns', 'solutions', 'also_see'].flatMap(field =>
+      (result[field] || []).map(link => ({ field, target: link.path }))),
+  ];
+}
 
 test.describe('triage.yaml structure', () => {
   test('file loads and has questions and results', () => {
@@ -41,15 +47,13 @@ test.describe('triage.yaml structure', () => {
 
   test('question IDs are unique', () => {
     const ids = questions.map(q => q.id);
-    const unique = new Set(ids);
-    const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+    const duplicates = findDuplicates(ids);
     expect(duplicates, `Duplicate question IDs: ${duplicates.join(', ')}`).toHaveLength(0);
   });
 
   test('result IDs are unique', () => {
     const ids = results.map(r => r.id);
-    const unique = new Set(ids);
-    const duplicates = ids.filter((id, i) => ids.indexOf(id) !== i);
+    const duplicates = findDuplicates(ids);
     expect(duplicates, `Duplicate result IDs: ${duplicates.join(', ')}`).toHaveLength(0);
   });
 
@@ -210,5 +214,14 @@ test.describe('triage.yaml graph connectivity', () => {
       }
     }
     expect(bad, bad.join('\n')).toHaveLength(0);
+  });
+});
+
+test.describe('triage.yaml link targets', () => {
+  test('every link path resolves to a published page or alias', () => {
+    const missing = results.flatMap(result => linksOf(result)
+      .filter(({ target }) => target && !isPublishedPageOrAlias(contentIndex, target))
+      .map(({ field, target }) => `result "${result.id}" ${field}: "${target}"`));
+    expect(missing, `Link targets with no published page:\n${missing.join('\n')}`).toHaveLength(0);
   });
 });

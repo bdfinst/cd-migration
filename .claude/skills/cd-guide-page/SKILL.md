@@ -77,8 +77,8 @@ for practices that address multiple symptoms.]
 ### How to choose your path
 
 [Option B: Step-by-step guide - when there is one clear approach]
-### Step 1: [Action] (Week N)
-### Step 2: [Action] (Week N)
+### Step 1: [Action]
+### Step 2: [Action]
 
 [Option C: Practice areas - when the topic has multiple facets]
 ### [Facet 1]
@@ -91,7 +91,7 @@ guide pages. Optional - include when dependencies are important.]
 
 ## Getting started: a tactical guide
 
-[Time-boxed weekly steps for adopting the practice. Similar to "How to fix it"
+[Ordered steps for adopting the practice. Similar to "How to fix it"
 in anti-pattern pages but framed positively as adoption rather than correction.]
 
 ### Step 1: [Action]
@@ -143,6 +143,7 @@ title and 1-2 paragraph explanation.]
 - Use sentence-style capitalization in headings (only capitalize first word and proper nouns).
 - Keep paragraphs to 3-4 sentences maximum.
 - Use active voice.
+- `### Step N:` headings must not include timeline labels such as "(week 1)", "(weeks 2-4)", "(month 2+)", or "(ongoing)". Cadence labels for a repeating action, such as "(monthly)", and "(Optional)" are allowed.
 - Run `/grammar-check` before finishing to catch prohibited punctuation (endashes, emdashes, hyphens used as dashes).
 
 ### Key differences from other page types

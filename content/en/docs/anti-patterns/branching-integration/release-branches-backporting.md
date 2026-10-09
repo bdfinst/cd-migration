@@ -175,7 +175,7 @@ The support policy is a business decision, not a technical one. Engineering lead
 product and customer success teams. But without a policy, the technical remediation of the
 branching problem cannot proceed.
 
-### Step 3: Invest in backward compatibility to reduce upgrade friction (weeks 2-6)
+### Step 3: Invest in backward compatibility to reduce upgrade friction
 
 Many customers stay on old versions because upgrades are painful. If every upgrade requires
 configuration changes, API updates, and re-testing, customers defer upgrades indefinitely.
@@ -190,7 +190,7 @@ Reducing upgrade friction reduces the business pressure to maintain old versions
 The goal is that upgrading from N-1 to N is low-risk and well-supported. Customers who can
 upgrade with little effort will, which reduces the population on old versions.
 
-### Step 4: Replace backporting with forward-only fixes on supported versions (weeks 4-8)
+### Step 4: Replace backporting with forward-only fixes on supported versions
 
 For versions within the support window, stop cherry-picking from trunk. Instead, fix on the oldest
 supported version and merge forward.
@@ -203,7 +203,7 @@ supported version and merge forward.
 Forward merging is still more work than a single fix on trunk. It eliminates the class of bugs
 caused by backporting a trunk-context fix to incompatible older code.
 
-### Step 5: Reduce to one supported release branch alongside trunk (weeks 6-12)
+### Step 5: Reduce to one supported release branch alongside trunk
 
 Work toward a state where only the most recent release branch is maintained, with all others
 retired.
@@ -216,7 +216,7 @@ retired.
 Once the team is running trunk and at most one release branch, the maintenance overhead drops
 dramatically. Backporting one version is manageable. Backporting five is not.
 
-### Step 6: Move to trunk-only with feature flags and staged rollouts (ongoing)
+### Step 6: Move to trunk-only with feature flags and staged rollouts
 
 The end state is trunk-only. Customers on "the current version" get staged access to new features
 through flags. There is one codebase to maintain, one pipeline to run, and one set of tests to

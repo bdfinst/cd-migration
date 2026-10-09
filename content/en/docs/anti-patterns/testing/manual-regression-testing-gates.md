@@ -171,7 +171,7 @@ Most teams discover that many of their manual test cases fall into one of three 
 - Outdated: the feature has changed.
 - Automatable at a lower level.
 
-### Step 2: Automate the highest-value cases first (weeks 2-4)
+### Step 2: Automate the highest-value cases first
 
 Pick the 20 test cases that cover the most critical paths - the ones that would cause the most
 damage if they regressed. Automate them:
@@ -193,9 +193,9 @@ phase at the end of development to a continuous activity that happens with every
 Every commit now gets immediate feedback on the critical paths. If a regression is introduced, the
 developer knows within minutes - not weeks.
 
-### Step 4: Shrink the manual suite as automation grows (weeks 4-8)
+### Step 4: Shrink the manual suite as automation grows
 
-Each week, pick another batch of manual test cases and either automate or retire them:
+Keep picking batches of manual test cases and either automate or retire them:
 
 - **Automate** cases where the behavior is stable and testable at a lower level.
 - **Retire** cases that are redundant with existing automated tests or that test behavior that no
@@ -206,7 +206,7 @@ Each week, pick another batch of manual test cases and either automate or retire
 Track the shrinkage. If the manual suite had 800 cases and now has 400, that is progress. If the
 manual testing phase took five days and now takes two, that is measurable improvement.
 
-### Step 5: Replace the testing phase with continuous testing (weeks 6-8+)
+### Step 5: Replace the testing phase with continuous testing
 
 The goal is to eliminate the dedicated testing phase entirely:
 
@@ -219,7 +219,7 @@ The goal is to eliminate the dedicated testing phase entirely:
 | QA sign-off required | Pipeline pass is the sign-off |
 | Testers do manual regression | Testers do exploratory testing, write automated tests, and improve test infrastructure |
 
-### Step 6: Address the objections (ongoing)
+### Step 6: Address the objections
 
 | Objection | Response |
 |-----------|----------|
