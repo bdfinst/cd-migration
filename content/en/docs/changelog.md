@@ -9,7 +9,7 @@ description: >
 
 ## 2026-10-09 - Removed timelines from anti-pattern fix steps
 
-Removed week and month durations from the "How to fix it" steps on every anti-pattern page. Steps keep their order and content, but no longer prescribe a schedule, since the right pace depends on the team.
+Removed week and month durations from the "How to fix it" step headings on anti-pattern pages. Steps keep their order and content, but the headings no longer prescribe a schedule, since the right pace depends on the team.
 
 ## 2026-10-08 - Environment branches
 
