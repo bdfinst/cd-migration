@@ -126,8 +126,8 @@ Before writing a single test, make it trivial to run tests:
    command (for example, `npm test`, `pytest`, `mvn test`).
 4. Add the test command to the CI pipeline so that tests run on every push.
 
-The goal of this first step is not coverage. It is infrastructure: a working test runner in the pipeline
-that the team can build on.
+The goal of this first step is not coverage. It is infrastructure: a working test runner in the
+pipeline that the team can build on.
 
 ### Step 2: Write tests for every new change
 
