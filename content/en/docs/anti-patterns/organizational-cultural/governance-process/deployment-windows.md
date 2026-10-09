@@ -223,8 +223,8 @@ Choose a service that:
 - Has monitoring in place.
 
 Remove the deployment window constraint for this service. Deploy on demand whenever changes
-are ready. Track the results for two months: incident rate, time to detect failures, time
-to restore service. Present the data.
+are ready. Track incident rate, time to detect failures, and time to restore service until you
+have enough deployments to compare against the windowed process. Present the data.
 
 This pilot provides concrete evidence that deployment windows are not a safety mechanism.
 They are a risk transfer mechanism that moves risk from deployment timing to deployment

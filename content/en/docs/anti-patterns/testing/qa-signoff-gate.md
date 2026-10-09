@@ -207,7 +207,7 @@ Each case where manual review finds something automation missed is an opportunit
 automated test. Each case where automated criteria caught everything is evidence that the manual
 gate is redundant.
 
-After four to eight weeks of parallel operation, the data answers the question. Rarely, it
+Once parallel operation has produced enough data, the data answers the question. Rarely, it
 confirms that the manual gate provides significant additional value. Commonly, it shows that
 the gate confirms what the pipeline already knows. The data makes the decision about removing the gate defensible.
 

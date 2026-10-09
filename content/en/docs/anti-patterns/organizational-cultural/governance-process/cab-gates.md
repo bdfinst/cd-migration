@@ -196,7 +196,8 @@ CAB-gated process.
 
 ### Step 4: Present the data and expand
 
-After a month of pilot data, present the results to the CAB and organizational leadership:
+Once the pilot has produced enough data to compare against the standard process, present
+the results to the CAB and organizational leadership:
 
 - How many changes were auto-approved?
 - What was the change fail rate for auto-approved changes vs. CAB-reviewed changes?

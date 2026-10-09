@@ -173,7 +173,7 @@ pipeline:
 
 1. Measure current coverage. Say it is 15%.
 2. Set the pipeline to fail if coverage drops below 15%.
-3. Every two weeks, raise the floor by 2-5 percentage points.
+3. Raise the floor by 2-5 percentage points each time the team consistently clears it.
 
 The floor prevents backsliding. The ratchet ensures progress. The team does not need to hit 90%
 coverage - they need to ensure that coverage only goes up.
